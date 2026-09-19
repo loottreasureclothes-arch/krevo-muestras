@@ -103,3 +103,11 @@
   #nosotros .is-in .s-nos-addr { transition-delay: 320ms; }
   #nosotros .is-in .s-nos-swash path { stroke-dashoffset: 0; }
 }
+
+/* Emanuel: en celular el recuadro es un cuadro partido en 4 (2x2); en compu se quedan 3 franjas horizontales */
+@media (max-width: 899px) {
+  #nosotros .s-nos-rot { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); aspect-ratio: 1 / 1; height: auto; }
+}
+@media (min-width: 900px) {
+  #nosotros .s-nos-slot--4 { display: none; }
+}
