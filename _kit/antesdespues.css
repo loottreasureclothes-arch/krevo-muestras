@@ -1,0 +1,123 @@
+/* KREVO kit: antes / después
+   Marcado: <div class="k-ba"><img class="k-ba-before"><img class="k-ba-after"></div> */
+.k-ba{
+  --p:50;
+  --ba-ease:cubic-bezier(0.23,1,0.32,1);
+  position:relative;
+  width:100%;
+  aspect-ratio:4/3;
+  border-radius:var(--radius,18px);
+  overflow:hidden;
+  background:var(--line,#e8e6e1);
+  touch-action:pan-y;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-tap-highlight-color:transparent;
+  cursor:ew-resize;
+  isolation:isolate;
+  contain:paint;
+}
+.k-ba img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  pointer-events:none;
+  -webkit-user-drag:none;
+  user-select:none;
+}
+.k-ba-after{z-index:1}
+/* "Antes" ocupa el lado izquierdo hasta la manija */
+.k-ba-before{
+  z-index:2;
+  clip-path:inset(0 calc(100% - var(--p) * 1%) 0 0);
+  will-change:clip-path;
+}
+
+/* Etiquetas */
+.k-ba-label{
+  position:absolute;z-index:4;
+  top:14px;
+  padding:7px 13px 8px;
+  border-radius:999px;
+  font-size:13px;line-height:1;
+  font-weight:600;
+  letter-spacing:.01em;
+  color:var(--ink,#111);
+  background:rgba(255,255,255,.66);
+  -webkit-backdrop-filter:blur(10px) saturate(1.4);
+  backdrop-filter:blur(10px) saturate(1.4);
+  box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 4px 14px rgba(17,17,17,.08);
+  pointer-events:none;
+  transition:opacity .35s var(--ba-ease),transform .35s var(--ba-ease);
+}
+.k-ba-label--before{left:14px}
+.k-ba-label--after{right:14px}
+.k-ba-label.is-hidden{opacity:0;transform:translateY(-4px) scale(.96)}
+
+/* Manija: capa del ancho completo que se traslada p% */
+.k-ba-track{
+  position:absolute;inset:0;z-index:3;
+  pointer-events:none;
+  transform:translate3d(calc(var(--p) * 1%),0,0);
+  will-change:transform;
+}
+.k-ba-line{
+  position:absolute;top:0;bottom:0;left:-1px;
+  width:2px;
+  background:rgba(255,255,255,.95);
+  box-shadow:0 0 0 .5px rgba(17,17,17,.08),0 0 12px rgba(17,17,17,.18);
+}
+/* La linea marca la posicion real; la manija se queda dentro del marco
+   (clamp): su centro nunca pasa de medio ancho + 6px de la orilla, asi no
+   se ve cortada en 0-10 % ni en 90-100 %. */
+.k-ba-handle{
+  --ba-hs:48px;
+  position:absolute;top:50%;
+  left:clamp(calc(var(--ba-hs) / 2 + 6px - var(--p) * 1%), 0px, calc(100% - var(--ba-hs) / 2 - 6px - var(--p) * 1%));
+  width:var(--ba-hs);height:var(--ba-hs);
+  margin:calc(var(--ba-hs) / -2) 0 0 calc(var(--ba-hs) / -2);
+  border-radius:50%;
+  background:#fff;
+  color:var(--ink,#111);
+  display:grid;place-items:center;
+  box-shadow:0 6px 20px rgba(17,17,17,.20),0 1px 3px rgba(17,17,17,.12);
+  pointer-events:auto;
+  cursor:grab;
+  transition:transform .25s var(--ba-ease),box-shadow .25s var(--ba-ease);
+}
+.k-ba-handle svg{width:22px;height:22px;display:block}
+.k-ba.is-dragging{cursor:grabbing}
+.k-ba.is-dragging .k-ba-handle{
+  cursor:grabbing;
+  transform:scale(.94);
+  box-shadow:0 3px 12px rgba(17,17,17,.22),0 1px 2px rgba(17,17,17,.12);
+}
+@media (hover:hover) and (pointer:fine){
+  .k-ba:hover .k-ba-handle{transform:scale(1.06)}
+  .k-ba.is-dragging:hover .k-ba-handle{transform:scale(.94)}
+}
+
+/* Input range oculto (teclado / lectores) */
+.k-ba-range{
+  position:absolute;z-index:5;
+  left:0;top:0;width:1px;height:1px;
+  margin:0;padding:0;
+  opacity:0;
+  pointer-events:none;
+}
+.k-ba.is-focus .k-ba-handle{
+  box-shadow:0 0 0 3px #fff,0 0 0 5px var(--brand,var(--ink,#111)),0 6px 20px rgba(17,17,17,.2);
+}
+
+@media (min-width:768px){
+  .k-ba-label{top:18px;font-size:14px;padding:8px 15px 9px}
+  .k-ba-label--before{left:18px}
+  .k-ba-label--after{right:18px}
+  .k-ba-handle{--ba-hs:56px}
+  .k-ba-handle svg{width:24px;height:24px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .k-ba-label,.k-ba-handle{transition:none}
+}

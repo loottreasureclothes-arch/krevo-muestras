@@ -1,0 +1,225 @@
+/* KREVO kit: menu (restaurantes / bares)
+   Marcado: .k-menu > .k-menu-tabs[role=tablist] > button[role=tab]  +  .k-menu-panel[role=tabpanel] > ul > li
+   Tipografia display: var(--font-display). Acento: var(--brand). */
+.k-menu{
+  --km-ink:var(--ink,#111);
+  --km-mute:var(--mute,#6b6b6b);
+  --km-line:var(--line,#e8e6e1);
+  --km-brand:var(--brand,#111);
+  --km-ease:var(--ease-out,cubic-bezier(0.23,1,0.32,1));
+  --km-radius:var(--radius,18px);
+  position:relative;
+  color:var(--km-ink);
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ---------- Pestanas ---------- */
+.k-menu-tabs{
+  position:relative;
+  display:flex;
+  gap:4px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-padding-inline:20px;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+  padding:0 20px 0;
+  margin:0 -20px;               /* sangra a la orilla en celular */
+  border-bottom:1px solid var(--km-line);
+  touch-action:pan-x pan-y;
+}
+.k-menu-tabs::-webkit-scrollbar{display:none}
+.k-menu-tabs [role="tab"]{
+  position:relative;
+  z-index:1;
+  flex:0 0 auto;
+  scroll-snap-align:center;
+  appearance:none;
+  border:0;
+  background:none;
+  margin:0;
+  padding:14px 16px 16px;
+  font:inherit;
+  font-size:16px;
+  font-weight:500;
+  letter-spacing:.01em;
+  white-space:nowrap;
+  color:var(--km-mute);
+  cursor:pointer;
+  border-radius:10px 10px 0 0;
+  transition:color .25s var(--km-ease), transform .16s var(--km-ease);
+  -webkit-tap-highlight-color:transparent;
+}
+.k-menu-tabs [role="tab"][aria-selected="true"]{color:var(--km-ink)}
+.k-menu-tabs [role="tab"]:active{transform:scale(.97)}
+.k-menu-tabs [role="tab"]:focus-visible{outline:2px solid var(--km-brand);outline-offset:-4px}
+@media (hover:hover) and (pointer:fine){
+  .k-menu-tabs [role="tab"]:hover{color:var(--km-ink)}
+}
+
+/* indicador (lo crea el JS) */
+.k-menu-ind{
+  position:absolute;
+  left:0;
+  bottom:0;
+  height:3px;
+  width:0;
+  border-radius:3px 3px 0 0;
+  background:var(--km-brand);
+  transform-origin:0 50%;
+  pointer-events:none;
+  z-index:2;
+}
+.k-menu-ind.is-anim{transition:transform .42s var(--km-ease)}
+
+/* ---------- Paneles ---------- */
+.k-menu-stack{position:relative}
+.k-menu-panel{
+  padding-top:8px;
+}
+.k-menu-panel[hidden]{display:none}
+.k-menu-panel:focus-visible{outline:2px solid var(--km-brand);outline-offset:6px;border-radius:6px}
+.k-menu-panel.is-leaving{
+  position:absolute;
+  top:0;left:0;right:0;
+  opacity:0;
+  transition:opacity .2s var(--km-ease);
+  pointer-events:none;
+}
+.k-menu-panel.is-entering{opacity:0;transform:translateY(8px)}
+.k-menu-panel.is-entered{
+  opacity:1;transform:none;
+  transition:opacity .2s var(--km-ease), transform .32s var(--km-ease);
+}
+
+.k-menu-panel ul{list-style:none;margin:0;padding:0}
+
+/* ---------- Items ---------- */
+.k-menu-panel li{
+  display:grid;
+  grid-template-columns:minmax(0,max-content) minmax(24px,1fr) auto;
+  grid-template-areas:
+    "name dots price"
+    "desc desc desc";
+  column-gap:10px;
+  row-gap:4px;
+  align-items:baseline;
+  align-items:last baseline;       /* precio alineado a la ultima linea del nombre */
+  padding:18px 0;
+  border-bottom:1px solid var(--km-line);
+}
+.k-menu-panel li:last-child{border-bottom:0}
+.k-menu-panel li::before{           /* leaders */
+  content:"";
+  grid-area:dots;
+  align-self:end;
+  margin-bottom:.38em;
+  border-bottom:2px dotted color-mix(in srgb, var(--km-ink) 28%, transparent);
+  min-width:24px;
+}
+.k-mi-name{
+  grid-area:name;
+  font-family:var(--font-display, inherit);
+  font-size:clamp(19px, 1.2rem + .3vw, 23px);
+  line-height:1.2;
+  font-weight:600;
+  letter-spacing:-.005em;
+  color:var(--km-ink);
+  overflow-wrap:anywhere;
+}
+.k-mi-desc{
+  grid-area:desc;
+  font-size:15px;
+  line-height:1.45;
+  color:var(--km-mute);
+  max-width:52ch;
+}
+.k-mi-price{
+  grid-area:price;
+  font-variant-numeric:tabular-nums;
+  font-size:17px;
+  font-weight:600;
+  white-space:nowrap;
+  color:var(--km-ink);
+  text-align:right;
+}
+.k-mi-desc{align-self:start}
+
+/* sin precio: el nombre ocupa la fila, sin puntos */
+.k-menu-panel li.k-mi--noprice{
+  grid-template-columns:minmax(0,1fr);
+  grid-template-areas:"name" "desc";
+}
+.k-menu-panel li.k-mi--noprice::before{display:none}
+
+/* con miniatura */
+.k-mi-img{
+  grid-area:img;
+  width:56px;height:56px;
+  border-radius:50%;
+  object-fit:cover;
+  align-self:center;
+  background:var(--km-line);
+}
+.k-menu-panel li.k-mi--img{
+  grid-template-columns:56px minmax(0,max-content) minmax(24px,1fr) auto;
+  grid-template-areas:
+    "img name dots price"
+    "img desc desc desc";
+  column-gap:12px;
+}
+.k-menu-panel li.k-mi--img.k-mi--noprice{
+  grid-template-columns:56px minmax(0,1fr);
+  grid-template-areas:"img name" "img desc";
+}
+.k-menu-panel li.k-mi--img .k-mi-img{margin-right:4px}
+
+/* ---------- CTA al final del panel ---------- */
+.k-menu-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:24px;
+  min-height:48px;
+  padding:0 22px;
+  border-radius:999px;
+  background:var(--km-ink);
+  color:#fff;
+  font-weight:600;
+  font-size:16px;
+  text-decoration:none;
+  transition:transform .16s var(--km-ease), background-color .2s var(--km-ease);
+}
+.k-menu-cta:active{transform:scale(.97)}
+.k-menu-cta:focus-visible{outline:2px solid var(--km-brand);outline-offset:3px}
+@media (hover:hover) and (pointer:fine){
+  .k-menu-cta:hover{background:var(--km-brand)}
+}
+
+/* ---------- Compu ---------- */
+@media (min-width:768px){
+  .k-menu-tabs{margin:0;padding:0;gap:8px;scroll-padding-inline:0}
+  .k-menu-tabs [role="tab"]{padding:16px 20px 18px;font-size:17px}
+  .k-menu-panel{padding-top:16px}
+  .k-menu-panel ul{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    column-gap:56px;
+  }
+  .k-menu-panel li:last-child{border-bottom:1px solid var(--km-line)}
+  .k-menu-panel li{padding:22px 0}
+  .k-mi-price{font-size:18px}
+}
+
+/* ---------- Movimiento reducido ---------- */
+@media (prefers-reduced-motion:reduce){
+  .k-menu-ind.is-anim,
+  .k-menu-panel.is-leaving,
+  .k-menu-panel.is-entered,
+  .k-menu-tabs [role="tab"],
+  .k-menu-cta{transition:none !important}
+  .k-menu-panel.is-entering{opacity:1;transform:none}
+  .k-menu-panel.is-leaving{display:none}
+}

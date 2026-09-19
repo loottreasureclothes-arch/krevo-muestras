@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demo slider KREVO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kit.css">
+<link rel="stylesheet" href="slider.css">
+<style>
+  :root { --font-display: "Fraunces", Georgia, serif; --font-body: "DM Sans", system-ui, sans-serif; --brand: #7a5c3e; }
+  .demo-note { padding: 40px 20px 16px; max-width: 1200px; margin: 0 auto; color: var(--mute); }
+  .demo-note h2 { font-family: var(--font-display); font-weight: 500; color: var(--ink); font-size: 1.6rem; margin-bottom: 4px; }
+  .spacer { height: 40vh; display: grid; place-items: center; color: var(--mute); }
+</style>
+</head>
+<body>
+
+<div class="demo-note"><h2>Modo objeto</h2><p>Desliza, usa las flechas, el teclado o el trackpad.</p></div>
+<div class="k-slider" data-mode="object" data-autoplay="4500" data-label="Muebles">
+  <div class="k-slide" data-bg="#f4f1ec">
+    <img src="../closetdoor/img/closet.webp" alt="Closet a la medida" width="880" height="1168">
+    <div class="k-slide-copy"><h3>Closets a tu medida</h3><p>Cada centímetro de tu espacio, aprovechado.</p><a class="k-btn" href="#cotizar">Cotizar closet</a></div>
+  </div>
+  <div class="k-slide" data-bg="#e9eef0">
+    <img src="../closetdoor/img/isla.webp" alt="Isla de cocina" width="1000" height="753">
+    <div class="k-slide-copy"><h3>Islas de cocina</h3><p>El centro de la casa, hecho a tu gusto.</p><a class="k-btn" href="#cotizar">Cotizar isla</a></div>
+  </div>
+  <div class="k-slide" data-bg="#efe9e1">
+    <img src="../closetdoor/img/puerta.webp" alt="Puerta de madera" width="880" height="1168">
+    <div class="k-slide-copy"><h3>Puertas</h3><p>La primera impresión de tu casa.</p><a class="k-btn" href="#cotizar">Cotizar puerta</a></div>
+  </div>
+</div>
+
+<div class="spacer">scroll</div>
+
+<div class="demo-note"><h2>Modo foto</h2><p>Cortinilla con clip-path.</p></div>
+<div class="k-slider" data-mode="photo" data-autoplay="5000" data-label="Proyectos">
+  <div class="k-slide" data-bg="#fff">
+    <img src="../closetdoor/img/vestidor.webp" alt="Vestidor terminado" width="1168" height="880">
+    <div class="k-slide-copy"><h3>Vestidores</h3><p>Orden que se ve bien.</p><a class="k-btn" href="#cotizar">Cotizar vestidor</a></div>
+  </div>
+  <div class="k-slide" data-bg="#f6f4f0">
+    <img src="../closetdoor/img/oficina.webp" alt="Oficina en casa" width="1168" height="880">
+    <div class="k-slide-copy"><h3>Oficinas en casa</h3><p>Trabaja cómodo, sin cables a la vista.</p><a class="k-btn" href="#cotizar">Cotizar oficina</a></div>
+  </div>
+  <div class="k-slide" data-bg="#fff">
+    <img src="../closetdoor/img/puertas.webp" alt="Puertas instaladas" width="1168" height="880">
+    <div class="k-slide-copy"><h3>Puertas interiores</h3><p>Instaladas y listas.</p><a class="k-btn" href="#cotizar">Cotizar puertas</a></div>
+  </div>
+</div>
+
+<div class="spacer">fin</div>
+<script src="slider.js"></script>
+</body>
+</html>

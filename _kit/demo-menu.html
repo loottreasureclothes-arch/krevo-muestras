@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Demo menú KREVO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="menu.css">
+<style>
+:root{--brand:#b3261e;--ink:#111;--paper:#fff;--mute:#6b6b6b;--line:#e8e6e1;--font-display:"Fraunces",Georgia,serif}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#111;font-family:"Manrope",system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:1200px;margin:0 auto;padding:48px 20px 96px}
+@media (min-width:768px){.wrap{padding:80px 40px 120px}}
+h1{font-family:var(--font-display);font-weight:600;font-size:clamp(40px,8vw,72px);line-height:1;margin:0 0 12px;letter-spacing:-.02em}
+.note{display:inline-block;font-size:13px;color:#6b6b6b;border:1px solid #e8e6e1;border-radius:999px;padding:6px 12px;margin:0 0 32px}
+</style></head>
+<body>
+<main class="wrap">
+<h1>Menú</h1>
+<p class="note">DEMO del componente k-menu. Datos de ejemplo, no son reales.</p>
+<div class="k-menu">
+<div class="k-menu-tabs" role="tablist"><button role="tab" aria-selected="true">Botanas</button><button role="tab" aria-selected="false">Platos fuertes</button><button role="tab" aria-selected="false">Sushi y rollos</button><button role="tab" aria-selected="false">Pan dulce</button><button role="tab" aria-selected="false">Cervezas</button><button role="tab" aria-selected="false">Coctelería de la casa</button><button role="tab" aria-selected="false">Postres</button></div>
+<div class="k-menu-panel" role="tabpanel"><ul>
+<li><span class="k-mi-name">Botana DEMO uno</span><span class="k-mi-desc">Descripción de ejemplo, una línea.</span><span class="k-mi-price">$000</span></li>
+<li><span class="k-mi-name">Botana DEMO dos con nombre más largo para probar</span><span class="k-mi-desc">Texto de relleno solo para el demo.</span><span class="k-mi-price">$000</span></li>
+<li><span class="k-mi-name">Botana DEMO tres</span><span class="k-mi-desc">Sin precio: se ve limpio igual.</span></li>
+<li><span class="k-mi-name">Botana DEMO cuatro</span><span class="k-mi-desc">Ejemplo.</span><span class="k-mi-price">$000</span></li>
+</ul><a class="k-menu-cta" href="#">Reservar mesa (DEMO)</a></div>
+<div class="k-menu-panel" role="tabpanel" hidden><ul>
+<li><img class="k-mi-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23d9cfc1'/%3E%3C/svg%3E" alt="" width="56" height="56" loading="lazy"><span class="k-mi-name">Plato DEMO uno</span><span class="k-mi-desc">Descripción de ejemplo.</span><span class="k-mi-price">$000</span></li>
+<li><img class="k-mi-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23c8b9a6'/%3E%3C/svg%3E" alt="" width="56" height="56" loading="lazy"><span class="k-mi-name">Plato DEMO dos</span><span class="k-mi-desc">Descripción de ejemplo.</span><span class="k-mi-price">$000</span></li>
+<li><img class="k-mi-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23e3dbd0'/%3E%3C/svg%3E" alt="" width="56" height="56" loading="lazy"><span class="k-mi-name">Plato DEMO tres</span><span class="k-mi-desc">Descripción de ejemplo.</span><span class="k-mi-price">$000</span></li>
+</ul></div>
+<div class="k-menu-panel" role="tabpanel" hidden><ul>
+<li><img class="k-mi-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23d9cfc1'/%3E%3C/svg%3E" alt="" width="56" height="56" loading="lazy"><span class="k-mi-name">Rollo DEMO uno</span><span class="k-mi-desc">Ejemplo con miniatura.</span><span class="k-mi-price">$000</span></li>
+<li><img class="k-mi-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%23c8b9a6'/%3E%3C/svg%3E" alt="" width="56" height="56" loading="lazy"><span class="k-mi-name">Rollo DEMO dos</span><span class="k-mi-desc">Ejemplo con miniatura y sin precio.</span></li>
+</ul></div>
+<div class="k-menu-panel" role="tabpanel" hidden><ul>
+<li><span class="k-mi-name">Pieza DEMO uno</span></li>
+<li><span class="k-mi-name">Pieza DEMO dos</span></li>
+<li><span class="k-mi-name">Pieza DEMO tres</span><span class="k-mi-desc">Solo nombre y descripción.</span></li>
+</ul></div>
+<div class="k-menu-panel" role="tabpanel" hidden><ul>
+<li><span class="k-mi-name">Cerveza DEMO uno</span><span class="k-mi-desc">Ejemplo.</span><span class="k-mi-price">$000</span></li>
+<li><span class="k-mi-name">Cerveza DEMO dos</span><span class="k-mi-desc">Ejemplo.</span><span class="k-mi-price">$000</span></li>
+</ul></div>
+<div class="k-menu-panel" role="tabpanel" hidden><ul>
+<li><span class="k-mi-name">Coctel DEMO uno</span><span class="k-mi-desc">Ejemplo.</span><span class="k-mi-price">$000</span></li>
+</ul></div>
+<div class="k-menu-panel" role="tabpanel" hidden><ul>
+<li><span class="k-mi-name">Postre DEMO uno</span><span class="k-mi-desc">Ejemplo.</span><span class="k-mi-price">$000</span></li>
+</ul></div>
+</div>
+<p style="margin-top:48px;color:#6b6b6b;font-size:14px">Muestra de diseño hecha por KREVO.</p>
+</main>
+<script src="menu.js"></script>
+</body></html>

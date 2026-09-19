@@ -1,0 +1,249 @@
+/* KREVO kit base: tokens, reset, header, boton WhatsApp, reveal, botones, wrap */
+
+:root {
+  --brand: #111;
+  --ink: #111;
+  --paper: #fff;
+  --mute: #6b6b6b;
+  --line: #e8e6e1;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --radius: 18px;
+  --font-display: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --k-header-h: 64px;
+  --k-gutter: 20px;
+  --k-wa-green: #25d366;
+}
+@media (min-width: 900px) {
+  :root { --k-header-h: 76px; --k-gutter: 40px; }
+}
+
+/* ---------- Reset moderno ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-padding-top: var(--k-header-h);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.05;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+p { text-wrap: pretty; overflow-wrap: break-word; }
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+img, video { height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+input, textarea, select { font-size: max(16px, 1em); } /* evita zoom en iOS */
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+a, button, [role="button"], label, summary { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+/* :where() deja la especificidad en 0 para que cualquier clase del componente
+   (p. ej. .k-ho-facts con su padding lateral) le gane al reset */
+:where(ul[class], ol[class]) { list-style: none; padding: 0; }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--brand); color: var(--paper); }
+
+/* ---------- Wrap ---------- */
+.k-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--k-gutter);
+}
+
+/* ---------- Header ---------- */
+.k-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  height: calc(var(--k-header-h) + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) max(var(--k-gutter), env(safe-area-inset-right)) 0 max(var(--k-gutter), env(safe-area-inset-left));
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  color: var(--ink);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 320ms var(--ease-out), border-color 320ms var(--ease-out), color 320ms var(--ease-out), -webkit-backdrop-filter 320ms var(--ease-out), backdrop-filter 320ms var(--ease-out);
+}
+body[data-hero-dark] .k-header:not(.is-solid) { color: #fff; }
+.k-header.is-solid {
+  background: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: saturate(1.6) blur(14px);
+  backdrop-filter: saturate(1.6) blur(14px);
+  border-bottom-color: var(--line);
+  color: var(--ink);
+}
+.k-logo {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  margin-right: auto;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.k-logo img { height: 36px; width: auto; max-width: 160px; object-fit: contain; }
+@media (min-width: 900px) { .k-logo img { height: 44px; max-width: 200px; } }
+.k-nav { display: none; }
+@media (min-width: 900px) {
+  .k-nav { display: flex; align-items: center; gap: 28px; font-size: 0.95rem; }
+  .k-nav a { position: relative; padding-block: 6px; opacity: 0.85; transition: opacity 200ms var(--ease-out); }
+  .k-nav a::after {
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: 0;
+    height: 1px; background: currentColor;
+    transform: scaleX(0); transform-origin: right;
+    transition: transform 300ms var(--ease-out);
+  }
+}
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
+  .k-nav a:hover { opacity: 1; }
+  .k-nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+}
+.k-cta {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 160ms var(--ease-out), background-color 320ms var(--ease-out), color 320ms var(--ease-out);
+}
+body[data-hero-dark] .k-header:not(.is-solid) .k-cta { background: #fff; color: var(--ink); }
+.k-cta:active { transform: scale(0.97); }
+@media (min-width: 900px) { .k-cta { height: 44px; padding: 0 22px; font-size: 0.95rem; } }
+
+/* ---------- Botones ---------- */
+.k-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 26px;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.k-btn:active { transform: scale(0.97); }
+.k-btn--ghost { background: transparent; color: var(--ink); }
+.k-btn svg { width: 20px; height: 20px; flex: none; }
+@media (hover: hover) and (pointer: fine) {
+  .k-btn:hover { background: var(--brand); border-color: var(--brand); color: var(--paper); }
+  .k-btn--ghost:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+}
+
+/* ---------- Boton flotante WhatsApp ---------- */
+.k-wa {
+  position: fixed;
+  z-index: 60;
+  right: calc(18px + env(safe-area-inset-right));
+  bottom: calc(18px + env(safe-area-inset-bottom));
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--k-wa-green);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.12);
+  animation: k-wa-in 700ms var(--ease-out) 1.2s both;
+  transition: transform 160ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.k-wa svg { width: 30px; height: 30px; fill: currentColor; }
+.k-wa:active { transform: scale(0.94); }
+@media (hover: hover) and (pointer: fine) {
+  .k-wa:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.12); }
+}
+@media (min-width: 900px) {
+  .k-wa { right: calc(28px + env(safe-area-inset-right)); bottom: calc(28px + env(safe-area-inset-bottom)); }
+}
+@keyframes k-wa-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.92); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- Reveal ---------- */
+/* Solo se esconde si hay JS; sin JS todo queda visible */
+@media (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+  }
+  [data-reveal="clip"] {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 700ms var(--ease-out);
+  }
+  [data-reveal-stagger] > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+    transition-delay: calc(var(--k-i, 0) * 70ms);
+  }
+}
+[data-reveal].is-in,
+[data-reveal-stagger].is-in > * { opacity: 1; transform: none; }
+[data-reveal="clip"].is-in { clip-path: inset(0 0 0 0); }
+
+/* ---------- Movimiento reducido: todo visible, sin animacion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal], [data-reveal="clip"], [data-reveal-stagger] > * {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
+
+/* ---------- Utilidades ---------- */
+.k-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.k-full { min-height: 100vh; min-height: 100svh; }
+.k-full-d { min-height: 100vh; min-height: 100dvh; }
