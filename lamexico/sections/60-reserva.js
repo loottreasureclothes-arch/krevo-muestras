@@ -15,6 +15,7 @@
       if (h === end && m > 0) break;
       var o = document.createElement("option"), label = fmt(h % 24, m);
       o.value = label; o.textContent = h >= 24 ? label + " (madrugada)" : label;
+      if (h >= 24) o.setAttribute("data-late", "1");
       hora.appendChild(o);
     }
     if (prev) hora.value = prev;
@@ -45,9 +46,15 @@
     var v = Math.max(1, Math.min(60, (parseInt(pers.value, 10) || 0) + +b.getAttribute("data-step")));
     pers.value = v;
   });
-  function bonita(iso) {
-    var p = iso.split("-"); var d = new Date(+p[0], +p[1] - 1, +p[2]);
+  function bonita(iso, plus) {
+    var p = iso.split("-"); var d = new Date(+p[0], +p[1] - 1, +p[2] + (plus || 0));
     try { return d.toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" }); } catch (e) { return iso; }
+  }
+  /* Después de medianoche: "noche del sábado 19, 1:00 am (ya domingo 20)" para que no se lea como la madrugada ANTES del sábado */
+  function cuando() {
+    var o = hora.options[hora.selectedIndex], late = o && o.getAttribute("data-late") === "1";
+    if (!late) return "Día: " + bonita(dia.value) + "\nHora: " + hora.value;
+    return "Día: noche del " + bonita(dia.value) + "\nHora: " + hora.value + " (ya de madrugada, " + bonita(dia.value, 1) + ")";
   }
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -60,7 +67,7 @@
     if (!ok) return;
     var msg = "Hola, quiero reservar una mesa en La México Gran Cantina (" + state.sucursal + ").\n" +
       "Nombre: " + nombre + "\nPersonas: " + (parseInt(pers.value, 10) || 1) + "\n" +
-      "Día: " + bonita(dia.value) + "\nHora: " + hora.value +
+      cuando() +
       (state.ocasion ? "\nOcasión: " + state.ocasion : "");
     var url = window.LM ? LM.openWa(msg) : "https://wa.me/524494384900?text=" + encodeURIComponent(msg);
     if (!window.LM) window.open(url, "_blank");

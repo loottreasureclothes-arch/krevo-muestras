@@ -33,13 +33,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
 <link rel="stylesheet" href="../_kit/menu.css?v=1789789229">
-<link rel="stylesheet" href="site.css?v=1789810755">
-<link rel="stylesheet" href="sections/10-hero.css?v=1789811020">
+<link rel="stylesheet" href="site.css?v=1789813039">
+<link rel="stylesheet" href="sections/10-hero.css?v=1789813182">
 <link rel="stylesheet" href="sections/20-bebidas.css?v=1789811088">
-<link rel="stylesheet" href="sections/25-menu.css?v=1789811615">
-<link rel="stylesheet" href="sections/26-pedido.css?v=1789811465">
+<link rel="stylesheet" href="sections/25-menu.css?v=1789813182">
+<link rel="stylesheet" href="sections/26-pedido.css?v=1789813323">
 <link rel="stylesheet" href="sections/30-cantina.css?v=1789811113">
-<link rel="stylesheet" href="sections/40-promos.css?v=1789811113">
+<link rel="stylesheet" href="sections/40-promos.css?v=1789813054">
 <link rel="stylesheet" href="sections/60-reserva.css?v=1789810688">
 <link rel="stylesheet" href="sections/70-resenas.css?v=1789810710">
 <link rel="stylesheet" href="sections/80-visita.css?v=1789810736">
@@ -105,8 +105,8 @@
   <section class="s-hero" id="hero" data-dark data-hide-wa aria-labelledby="hr-t">
     <div class="hr-media" aria-hidden="true">
       <picture>
-        <source media="(min-aspect-ratio: 1/1)" srcset="img/video/poster-hero-d.jpg" width="1600" height="1200">
-        <img class="hr-poster" src="img/video/poster-hero-m.jpg" width="720" height="960" alt="" fetchpriority="high">
+        <source media="(min-aspect-ratio: 1/1)" srcset="img/video/poster-hero-d.jpg" width="1920" height="1080">
+        <img class="hr-poster" src="img/video/poster-hero-m.jpg" width="1080" height="1348" alt="" fetchpriority="high">
       </picture>
       <video class="hr-vid" muted playsinline loop autoplay preload="metadata" poster="img/video/poster-hero-m.jpg" data-poster-d="img/video/poster-hero-d.jpg">
         <source src="img/video/hero-d.mp4" type="video/mp4" media="(min-aspect-ratio: 1/1)">
@@ -139,18 +139,18 @@
     <div class="k-wrap">
       <ul class="es-list" aria-label="Tragos y platillos estrella">
         <li class="es-card">
-          <figure class="es-fig"><video class="es-vid" muted playsinline loop preload="none" poster="img/video/poster-micheladas.jpg" data-src="img/video/micheladas.mp4" aria-label="Dos micheladas escarchadas con chamoy brindando en La México"></video><span class="es-n" aria-hidden="true">01</span></figure>
+          <figure class="es-fig"><video class="es-vid" muted playsinline loop preload="none" poster="img/video/poster-cerveza.jpg" data-src="img/video/cerveza.mp4" aria-label="Cerveza de barril sirviéndose en la barra de La México"></video><span class="es-n" aria-hidden="true">01</span></figure>
           <div class="es-copy">
-            <h3 class="es-name lm-d">Micheladas</h3>
-            <p>Escarchadas con chamoy, pa’ brindar.</p>
+            <h3 class="es-name lm-d">Cerveza de barril</h3>
+            <p>Bien fría, directo de la llave. 2x1 de lunes a miércoles.</p>
             <a class="lm-btn lm-btn--link" href="#menu">Pídelo<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="es-card">
-          <figure class="es-fig"><video class="es-vid" muted playsinline loop preload="none" poster="img/video/poster-molcajete.jpg" data-src="img/video/molcajete.mp4" aria-label="Molcajete de arrachera con nopales y chiles toreados"></video><span class="es-n" aria-hidden="true">02</span></figure>
+          <figure class="es-fig"><video class="es-vid" muted playsinline loop preload="none" poster="img/video/poster-trago.jpg" data-src="img/video/trago.mp4" aria-label="Trago cantinero rojo escarchado en vaso de La México"></video><span class="es-n" aria-hidden="true">02</span></figure>
           <div class="es-copy">
-            <h3 class="es-name lm-d">Molcajete de arrachera</h3><span class="es-price">$400</span>
-            <p>Arrachera, nopales y chiles toreados. 400 g.</p>
+            <h3 class="es-name lm-d">Tragos cantineros</h3>
+            <p>Escarchados y servidos en el vaso de la casa.</p>
             <a class="lm-btn lm-btn--link" href="#menu">Pídelo<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
@@ -192,12 +192,13 @@
   </section>
 
   <!-- MENÚ DE MESA (agente menú). Datos: research/menu.md. Fotos: img/menu/ (miniaturas en img/menu/t/; data-ia = ilustrativa). Pedido: sections/26-pedido.* -->
-  <section class="lm-mm" id="menu" aria-labelledby="lm-mm-title">
+  <section class="lm-mm" id="menu" data-hide-wa aria-labelledby="lm-mm-title">
     <div class="k-wrap lm-mm-head">
       <p class="lm-mm-eyebrow"><span class="lm-mm-mesa" id="lm-mm-mesa" hidden></span><span>Menú de mesa</span></p>
       <h2 class="lm-h2 lm-h2--xl lm-mm-title" id="lm-mm-title">Pide desde tu mesa.</h2>
       <p class="lm-mm-lead">Toca un platillo, arma tu pedido y mándalo por WhatsApp o enséñaselo a tu mesero.</p>
     </div>
+    <div class="k-wrap lm-mm-find"><label class="lm-mm-search" for="lm-mm-q"><span class="lm-mm-search-ic" aria-hidden="true"></span><input id="lm-mm-q" type="search" placeholder="Busca un platillo" autocomplete="off" enterkeyhint="search" aria-label="Busca un platillo o bebida"><button class="lm-mm-search-x" type="button" aria-label="Borrar búsqueda" hidden>&times;</button></label><p class="lm-mm-noresult" hidden></p></div>
     <nav class="lm-mm-chips" aria-label="Categorías del menú"><div class="lm-mm-chips-in"><a class="lm-mm-chip" href="#m-tacos">Tacos</a><a class="lm-mm-chip" href="#m-molcajetes">Molcajetes y parrilladas</a><a class="lm-mm-chip" href="#m-entradas">Entradas</a><a class="lm-mm-chip" href="#m-casa">De la casa</a><a class="lm-mm-chip" href="#m-cortes">Cortes a la parrilla</a><a class="lm-mm-chip" href="#m-pizzas">Pizzas y antojos</a><a class="lm-mm-chip" href="#m-ensaladas">Ensaladas y caldos</a><a class="lm-mm-chip" href="#m-guarniciones">Guarniciones</a><a class="lm-mm-chip" href="#m-postres">Postres</a><a class="lm-mm-chip" href="#m-cerveza">Cerveza</a><a class="lm-mm-chip" href="#m-cocteles">Cócteles</a><a class="lm-mm-chip" href="#m-toritos">Toritos y cantaritos</a><a class="lm-mm-chip" href="#m-copeo">Copeo y botella</a><a class="lm-mm-chip" href="#m-sin-alcohol">Sin alcohol y café</a><a class="lm-mm-chip" href="#m-paquetes">Paquetes y promos</a></div></nav>
     <div class="k-wrap lm-mm-body">
     <section class="lm-mm-cat" id="m-tacos" aria-labelledby="m-tacos-t">
@@ -275,8 +276,9 @@
           <div class="lm-mm-tx"><h4 class="lm-mm-name"><span>Parrillada Especial</span><i aria-hidden="true"></i><b class="lm-mm-price">$1,245</b></h4><p class="lm-mm-desc">Arrachera, rib eye y new york.</p></div>
           <div class="lm-mm-ctl"></div>
         </article>
-        <article class="lm-mm-card lm-mm-card--tx" data-id="parrillada-texana" data-name="Parrillada Texana" data-price="955" data-desc="Costillas BBQ, alitas, elotes, papas gajo y dedos de queso.">
+        <article class="lm-mm-card" data-id="parrillada-texana" data-name="Parrillada Texana" data-price="955" data-desc="Costillas BBQ, alitas, elotes, papas gajo y dedos de queso." data-img="img/menu/parrillada-texana.webp" data-ia="1">
           <button class="lm-mm-hit" type="button" aria-label="Ver Parrillada Texana"></button>
+          <figure class="lm-mm-ph"><img src="img/menu/t/parrillada-texana.webp" alt="Ilustración: Parrillada Texana" width="320" height="320" loading="lazy" decoding="async"><span class="lm-mm-ill">Foto ilustrativa</span></figure>
           <div class="lm-mm-tx"><h4 class="lm-mm-name"><span>Parrillada Texana</span><i aria-hidden="true"></i><b class="lm-mm-price">$955</b></h4><p class="lm-mm-desc">Costillas BBQ, alitas, elotes, papas gajo y dedos de queso.</p></div>
           <div class="lm-mm-ctl"></div>
         </article>
@@ -396,9 +398,8 @@
     <section class="lm-mm-cat" id="m-cortes" aria-labelledby="m-cortes-t">
       <header class="lm-mm-chead"><h3 class="lm-mm-ctitle" id="m-cortes-t">Cortes a la parrilla</h3><p class="lm-mm-cnote">350 g en crudo.</p></header>
       <div class="lm-mm-list">
-        <article class="lm-mm-card" data-id="rib-eye-nacional" data-name="Rib Eye Nacional" data-price="360" data-desc="350 g en crudo." data-img="img/menu/rib-eye-nacional.webp" data-ia="1">
+        <article class="lm-mm-card lm-mm-card--tx" data-id="rib-eye-nacional" data-name="Rib Eye Nacional" data-price="360" data-desc="350 g en crudo.">
           <button class="lm-mm-hit" type="button" aria-label="Ver Rib Eye Nacional"></button>
-          <figure class="lm-mm-ph"><img src="img/menu/t/rib-eye-nacional.webp" alt="Ilustración: Rib Eye Nacional" width="320" height="320" loading="lazy" decoding="async"><span class="lm-mm-ill">Foto ilustrativa</span></figure>
           <div class="lm-mm-tx"><h4 class="lm-mm-name"><span>Rib Eye Nacional</span><i aria-hidden="true"></i><b class="lm-mm-price">$360</b></h4><p class="lm-mm-desc">350 g en crudo.</p></div>
           <div class="lm-mm-ctl"></div>
         </article>
@@ -414,8 +415,9 @@
           <div class="lm-mm-tx"><h4 class="lm-mm-name"><span>New York</span><i aria-hidden="true"></i><b class="lm-mm-price">$340</b></h4><p class="lm-mm-desc">350 g en crudo.</p></div>
           <div class="lm-mm-ctl"></div>
         </article>
-        <article class="lm-mm-card lm-mm-card--tx" data-id="vampiro" data-name="Vampiro" data-price="349" data-desc="400 g de escalopas de filete.">
+        <article class="lm-mm-card" data-id="vampiro" data-name="Vampiro" data-price="349" data-desc="400 g de escalopas de filete." data-img="img/menu/vampiro.webp" data-ia="1">
           <button class="lm-mm-hit" type="button" aria-label="Ver Vampiro"></button>
+          <figure class="lm-mm-ph"><img src="img/menu/t/vampiro.webp" alt="Ilustración: Vampiro" width="320" height="320" loading="lazy" decoding="async"><span class="lm-mm-ill">Foto ilustrativa</span></figure>
           <div class="lm-mm-tx"><h4 class="lm-mm-name"><span>Vampiro</span><i aria-hidden="true"></i><b class="lm-mm-price">$349</b></h4><p class="lm-mm-desc">400 g de escalopas de filete.</p></div>
           <div class="lm-mm-ctl"></div>
         </article>
@@ -709,6 +711,7 @@
     </section>
     <section class="lm-mm-cat" id="m-copeo" aria-labelledby="m-copeo-t">
       <header class="lm-mm-chead"><h3 class="lm-mm-ctitle" id="m-copeo-t">Copeo y botella</h3><p class="lm-mm-cnote">2x1 en copeo todos los días de 1 a 8 pm. Copa de 44.36 ml; la primera va con 2 mezcladores, las siguientes con uno.</p></header>
+      <figure class="lm-mm-cban"><img src="img/menu/barra-copeo.webp" alt="La barra de La México con sus repisas de botellas" width="1200" height="799" loading="lazy" decoding="async"></figure>
       <div class="lm-mm-list">
         <article class="lm-mm-card lm-mm-card--tx lm-mm-card--multi" data-id="centenario-plata" data-name="Centenario Plata" data-price="114" data-desc="Tequila." data-opts='[[&quot;Copa&quot;, 114], [&quot;Botella&quot;, 1150]]'>
           <button class="lm-mm-hit" type="button" aria-label="Ver Centenario Plata"></button>
@@ -813,6 +816,11 @@
       <span class="lm-pd-bar-go" aria-hidden="true"></span>
     </button>
 
+    <button class="lm-pd-mini" id="lm-pd-mini" type="button" hidden aria-haspopup="dialog" aria-controls="lm-pd-sheet">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5z M9 9h7M9 13h7M9 17h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <span class="lm-pd-mini-l">Pedido</span><span class="lm-pd-mini-n">0</span>
+    </button>
+
     <div class="lm-pd-sheet" id="lm-pd-sheet" role="dialog" aria-modal="true" aria-labelledby="lm-pd-title" hidden>
       <button class="lm-pd-bg" type="button" data-pd-close tabindex="-1" aria-label="Cerrar"></button>
       <div class="lm-pd-box">
@@ -826,6 +834,12 @@
           <span>Nota para cocina o barra</span>
           <textarea id="lm-pd-note" rows="2" maxlength="300" placeholder="Ej. sin cebolla, salsa aparte"></textarea>
         </label>
+
+        <fieldset class="lm-pd-modes lm-pd-suc">
+          <legend>¿En qué sucursal estás?</legend>
+          <label><input type="radio" name="lm-pd-suc" value="colosio" checked><span>Colosio</span></label>
+          <label><input type="radio" name="lm-pd-suc" value="americas"><span>Américas</span></label>
+        </fieldset>
 
         <fieldset class="lm-pd-modes">
           <legend>¿Cómo lo quieres?</legend>
@@ -864,6 +878,7 @@
 
     <div class="lm-ms" id="lm-pd-mesero" role="dialog" aria-modal="true" aria-label="Pedido para el mesero" hidden>
       <button class="lm-ms-x" type="button">Cerrar</button>
+      <p class="lm-ms-suc">La México · Colosio</p>
       <p class="lm-ms-k">Mesa</p>
       <p class="lm-ms-mesa">0</p>
       <ul class="lm-ms-list"></ul>
@@ -1163,7 +1178,7 @@
         </ul>
       </div>
     </div>
-    <p class="lm-foot-note">Muestra de diseño hecha por KREVO. Fotos reales del lugar; los videos solo mueven la cámara sobre sus fotos.</p>
+    <p class="lm-foot-note">Muestra de diseño hecha por KREVO. Las fotos marcadas como ilustrativas son de referencia.</p>
   </div>
 </footer>
 
@@ -1171,13 +1186,13 @@
 
 <script src="../_kit/kit.js?v=1789789887" defer></script>
 <script src="../_kit/menu.js?v=1789789272" defer></script>
-<script src="site.js?v=1789810468" defer></script>
+<script src="site.js?v=1789813039" defer></script>
 <script src="sections/10-hero.js?v=1789810981" defer></script>
 <script src="sections/20-bebidas.js?v=1789810538" defer></script>
-<script src="sections/25-menu.js?v=1789811465" defer></script>
-<script src="sections/26-pedido.js?v=1789811465" defer></script>
+<script src="sections/25-menu.js?v=1789813182" defer></script>
+<script src="sections/26-pedido.js?v=1789813323" defer></script>
 <script src="sections/30-cantina.js?v=1789810601" defer></script>
 <script src="sections/40-promos.js?v=1789810928" defer></script>
-<script src="sections/60-reserva.js?v=1789810688" defer></script>
+<script src="sections/60-reserva.js?v=1789813054" defer></script>
 </body>
 </html>

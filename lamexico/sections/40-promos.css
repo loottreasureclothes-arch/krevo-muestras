@@ -28,8 +28,9 @@
 #promos .pr-card.is-hoy { border-color: var(--gold); background: rgba(20, 5, 7, 0.5); }
 #promos .pr-card.is-hoy .pr-flag { display: block; }
 #promos .pr-card.is-hoy .pr-big { color: var(--gold); }
-#promos .pr-list.is-filter .pr-card:not(.is-hoy) { opacity: 0.62; }
-#promos .pr-list.is-filter .pr-card:not(.is-hoy) .pr-cta { background: transparent; border-color: rgba(246, 236, 223, 0.4); color: var(--cream); box-shadow: none; }
+/* Todas las tarjetas al 100%: "hoy" solo resalta (borde y sello dorados) */
+#promos .pr-big { color: var(--cream); }
+#promos .pr-card.is-hoy { box-shadow: 0 0 0 1px var(--gold) inset; }
 #promos .lm-note { margin-top: 22px; }
 @media (min-width: 760px) {
   #promos .pr-list { grid-template-columns: repeat(2, 1fr); gap: 16px; }

@@ -1,10 +1,11 @@
   <!-- MENÚ DE MESA (agente menú). Datos: research/menu.md. Fotos: img/menu/ (miniaturas en img/menu/t/; data-ia = ilustrativa). Pedido: sections/26-pedido.* -->
-  <section class="lm-mm" id="menu" aria-labelledby="lm-mm-title">
+  <section class="lm-mm" id="menu" data-hide-wa aria-labelledby="lm-mm-title">
     <div class="k-wrap lm-mm-head">
       <p class="lm-mm-eyebrow"><span class="lm-mm-mesa" id="lm-mm-mesa" hidden></span><span>Menú de mesa</span></p>
       <h2 class="lm-h2 lm-h2--xl lm-mm-title" id="lm-mm-title">Pide desde tu mesa.</h2>
       <p class="lm-mm-lead">Toca un platillo, arma tu pedido y mándalo por WhatsApp o enséñaselo a tu mesero.</p>
     </div>
+    <div class="k-wrap lm-mm-find"><label class="lm-mm-search" for="lm-mm-q"><span class="lm-mm-search-ic" aria-hidden="true"></span><input id="lm-mm-q" type="search" placeholder="Busca un platillo" autocomplete="off" enterkeyhint="search" aria-label="Busca un platillo o bebida"><button class="lm-mm-search-x" type="button" aria-label="Borrar búsqueda" hidden>&times;</button></label><p class="lm-mm-noresult" hidden></p></div>
     <nav class="lm-mm-chips" aria-label="Categorías del menú"><div class="lm-mm-chips-in"><a class="lm-mm-chip" href="#m-tacos">Tacos</a><a class="lm-mm-chip" href="#m-molcajetes">Molcajetes y parrilladas</a><a class="lm-mm-chip" href="#m-entradas">Entradas</a><a class="lm-mm-chip" href="#m-casa">De la casa</a><a class="lm-mm-chip" href="#m-cortes">Cortes a la parrilla</a><a class="lm-mm-chip" href="#m-pizzas">Pizzas y antojos</a><a class="lm-mm-chip" href="#m-ensaladas">Ensaladas y caldos</a><a class="lm-mm-chip" href="#m-guarniciones">Guarniciones</a><a class="lm-mm-chip" href="#m-postres">Postres</a><a class="lm-mm-chip" href="#m-cerveza">Cerveza</a><a class="lm-mm-chip" href="#m-cocteles">Cócteles</a><a class="lm-mm-chip" href="#m-toritos">Toritos y cantaritos</a><a class="lm-mm-chip" href="#m-copeo">Copeo y botella</a><a class="lm-mm-chip" href="#m-sin-alcohol">Sin alcohol y café</a><a class="lm-mm-chip" href="#m-paquetes">Paquetes y promos</a></div></nav>
     <div class="k-wrap lm-mm-body">
     <section class="lm-mm-cat" id="m-tacos" aria-labelledby="m-tacos-t">
@@ -82,8 +83,9 @@
           <div class="lm-mm-tx"><h4 class="lm-mm-name"><span>Parrillada Especial</span><i aria-hidden="true"></i><b class="lm-mm-price">$1,245</b></h4><p class="lm-mm-desc">Arrachera, rib eye y new york.</p></div>
           <div class="lm-mm-ctl"></div>
         </article>
-        <article class="lm-mm-card lm-mm-card--tx" data-id="parrillada-texana" data-name="Parrillada Texana" data-price="955" data-desc="Costillas BBQ, alitas, elotes, papas gajo y dedos de queso.">
+        <article class="lm-mm-card" data-id="parrillada-texana" data-name="Parrillada Texana" data-price="955" data-desc="Costillas BBQ, alitas, elotes, papas gajo y dedos de queso." data-img="img/menu/parrillada-texana.webp" data-ia="1">
           <button class="lm-mm-hit" type="button" aria-label="Ver Parrillada Texana"></button>
+          <figure class="lm-mm-ph"><img src="img/menu/t/parrillada-texana.webp" alt="Ilustración: Parrillada Texana" width="320" height="320" loading="lazy" decoding="async"><span class="lm-mm-ill">Foto ilustrativa</span></figure>
           <div class="lm-mm-tx"><h4 class="lm-mm-name"><span>Parrillada Texana</span><i aria-hidden="true"></i><b class="lm-mm-price">$955</b></h4><p class="lm-mm-desc">Costillas BBQ, alitas, elotes, papas gajo y dedos de queso.</p></div>
           <div class="lm-mm-ctl"></div>
         </article>
@@ -203,9 +205,8 @@
     <section class="lm-mm-cat" id="m-cortes" aria-labelledby="m-cortes-t">
       <header class="lm-mm-chead"><h3 class="lm-mm-ctitle" id="m-cortes-t">Cortes a la parrilla</h3><p class="lm-mm-cnote">350 g en crudo.</p></header>
       <div class="lm-mm-list">
-        <article class="lm-mm-card" data-id="rib-eye-nacional" data-name="Rib Eye Nacional" data-price="360" data-desc="350 g en crudo." data-img="img/menu/rib-eye-nacional.webp" data-ia="1">
+        <article class="lm-mm-card lm-mm-card--tx" data-id="rib-eye-nacional" data-name="Rib Eye Nacional" data-price="360" data-desc="350 g en crudo.">
           <button class="lm-mm-hit" type="button" aria-label="Ver Rib Eye Nacional"></button>
-          <figure class="lm-mm-ph"><img src="img/menu/t/rib-eye-nacional.webp" alt="Ilustración: Rib Eye Nacional" width="320" height="320" loading="lazy" decoding="async"><span class="lm-mm-ill">Foto ilustrativa</span></figure>
           <div class="lm-mm-tx"><h4 class="lm-mm-name"><span>Rib Eye Nacional</span><i aria-hidden="true"></i><b class="lm-mm-price">$360</b></h4><p class="lm-mm-desc">350 g en crudo.</p></div>
           <div class="lm-mm-ctl"></div>
         </article>
@@ -221,8 +222,9 @@
           <div class="lm-mm-tx"><h4 class="lm-mm-name"><span>New York</span><i aria-hidden="true"></i><b class="lm-mm-price">$340</b></h4><p class="lm-mm-desc">350 g en crudo.</p></div>
           <div class="lm-mm-ctl"></div>
         </article>
-        <article class="lm-mm-card lm-mm-card--tx" data-id="vampiro" data-name="Vampiro" data-price="349" data-desc="400 g de escalopas de filete.">
+        <article class="lm-mm-card" data-id="vampiro" data-name="Vampiro" data-price="349" data-desc="400 g de escalopas de filete." data-img="img/menu/vampiro.webp" data-ia="1">
           <button class="lm-mm-hit" type="button" aria-label="Ver Vampiro"></button>
+          <figure class="lm-mm-ph"><img src="img/menu/t/vampiro.webp" alt="Ilustración: Vampiro" width="320" height="320" loading="lazy" decoding="async"><span class="lm-mm-ill">Foto ilustrativa</span></figure>
           <div class="lm-mm-tx"><h4 class="lm-mm-name"><span>Vampiro</span><i aria-hidden="true"></i><b class="lm-mm-price">$349</b></h4><p class="lm-mm-desc">400 g de escalopas de filete.</p></div>
           <div class="lm-mm-ctl"></div>
         </article>
@@ -516,6 +518,7 @@
     </section>
     <section class="lm-mm-cat" id="m-copeo" aria-labelledby="m-copeo-t">
       <header class="lm-mm-chead"><h3 class="lm-mm-ctitle" id="m-copeo-t">Copeo y botella</h3><p class="lm-mm-cnote">2x1 en copeo todos los días de 1 a 8 pm. Copa de 44.36 ml; la primera va con 2 mezcladores, las siguientes con uno.</p></header>
+      <figure class="lm-mm-cban"><img src="img/menu/barra-copeo.webp" alt="La barra de La México con sus repisas de botellas" width="1200" height="799" loading="lazy" decoding="async"></figure>
       <div class="lm-mm-list">
         <article class="lm-mm-card lm-mm-card--tx lm-mm-card--multi" data-id="centenario-plata" data-name="Centenario Plata" data-price="114" data-desc="Tequila." data-opts='[[&quot;Copa&quot;, 114], [&quot;Botella&quot;, 1150]]'>
           <button class="lm-mm-hit" type="button" aria-label="Ver Centenario Plata"></button>

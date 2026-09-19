@@ -76,7 +76,7 @@
     });
   }
 
-  /* WA flotante: fuera sobre [data-hide-wa], #reserva, #pedido y el footer */
+  /* WA flotante: fuera sobre [data-hide-wa], #menu, #reserva y el footer; con una hoja abierta lo esconde site.css (html.lm-mm-lock) */
   function initWaHide() {
     setTimeout(function () { document.body.classList.add("lm-wa-ready"); }, 2000);
     if (!("IntersectionObserver" in window)) return;
@@ -87,7 +87,7 @@
     }, { rootMargin: "0px 0px -12% 0px" });
     var seen = [];
     function scan() {
-      Array.prototype.forEach.call(document.querySelectorAll("[data-hide-wa], #reserva, #pedido, .lm-foot"), function (z) {
+      Array.prototype.forEach.call(document.querySelectorAll("[data-hide-wa], #menu, #reserva, .lm-foot"), function (z) {
         if (seen.indexOf(z) < 0) { seen.push(z); io.observe(z); }
       });
     }

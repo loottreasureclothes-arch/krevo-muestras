@@ -22,7 +22,36 @@
   var KEY = 'lm_pedido';
   var TTL = 12 * 60 * 60 * 1000; // un pedido viejo (más de 12 h) se descarta
 
-  var S = { lines: [], note: '', mode: 'mesa', mesa: '', hora: '', fecha: '', personas: '', ts: 0 };
+  /* Capas con "Atrás" (Android): cada hoja o pantalla abierta mete una entrada al historial;
+   * el botón Atrás cierra la capa de arriba en vez de sacar al cliente de la página.
+   * window.lmLayer.open(nombre, cerrar) / .close(nombre). Lo usan también el diálogo del platillo (25-menu.js). */
+  var layer = window.lmLayer = (function () {
+    var stack = [], skip = 0;
+    window.addEventListener('popstate', function () {
+      if (skip > 0) { skip--; return; }
+      var top = stack.pop();
+      if (top) top.fn();
+    });
+    return {
+      open: function (name, fn) {
+        stack = stack.filter(function (x) { return x.name !== name; });
+        stack.push({ name: name, fn: fn });
+        try { history.pushState({ lmLayer: name }, ''); } catch (e) {}
+      },
+      close: function (name) {
+        var i = -1;
+        for (var k = stack.length - 1; k >= 0; k--) if (stack[k].name === name) { i = k; break; }
+        if (i < 0) return;
+        stack.splice(i, 1);
+        skip++;
+        try { history.back(); } catch (e) { skip--; }
+      }
+    };
+  })();
+
+  var S = { lines: [], note: '', mode: 'mesa', mesa: '', suc: 'colosio', hora: '', fecha: '', personas: '', ts: 0 };
+  var SUC = { colosio: 'Colosio', americas: 'Américas' };
+  function sucName() { return SUC[S.suc] || 'Colosio'; }
   var subs = [], checkoutFns = [];
 
   function load() {
@@ -33,6 +62,7 @@
       if (!d || !d.ts || Date.now() - d.ts > TTL) return;
       for (var k in S) if (d[k] !== undefined) S[k] = d[k];
       if (!Array.isArray(S.lines)) S.lines = [];
+      if (!SUC[S.suc]) S.suc = 'colosio';
     } catch (e) {}
   }
   function save() {
@@ -64,6 +94,7 @@
     get items() { return S.lines.map(function (l) { return Object.assign({}, l); }); },
     get total() { return total(); },
     get mesa() { return S.mesa; },
+    get sucursal() { return sucName(); },
     get state() { return JSON.parse(JSON.stringify(S)); },
     add: add, setQty: setQty, qtyOf: qtyOf, money: money,
     onChange: function (fn) { subs.push(fn); },
@@ -73,19 +104,19 @@
   window.lmPedido = api;
 
   function fireCheckout(via) {
-    var p = { via: via, items: api.items, total: total(), mesa: S.mesa, modo: S.mode, nota: S.note };
+    var p = { via: via, items: api.items, total: total(), mesa: S.mesa, sucursal: sucName(), modo: S.mode, nota: S.note };
     checkoutFns.forEach(function (f) { try { f(p); } catch (e) {} });
   }
 
   /* ---------- DOM ---------- */
   var $ = function (s, r) { return (r || document).querySelector(s); };
-  var bar, sheet, list, totalEl, waBtn, meseroBtn, err, mesero, lastFocus;
+  var bar, mini, sheet, list, totalEl, waBtn, meseroBtn, err, mesero, lastFocus, sucFixed = false;
 
   function lineLabel(l) { return l.name + (l.opt ? ' (' + l.opt + ')' : ''); }
   function hhmm(d) { d = d || new Date(); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
 
   function waText() {
-    var t = 'Hola, quiero hacer un pedido en La México Gran Cantina (Colosio).\n';
+    var t = 'Hola, quiero hacer un pedido en La México Gran Cantina (' + sucName() + ').\n';
     if (S.mode === 'mesa') t += 'Estoy en la mesa ' + (S.mesa || '(sin número)') + '.\n';
     else if (S.mode === 'llevar') t += 'Es para llevar' + (S.hora ? ', paso a las ' + S.hora : '') + '.\n';
     else t += 'Quiero reservar' + (S.personas ? ' para ' + S.personas + ' personas' : '') + (S.fecha ? ' el ' + S.fecha : '') + (S.hora ? ' a las ' + S.hora : '') + ' y dejar este pedido.\n';
@@ -106,6 +137,12 @@
     $('.lm-pd-bar-n', bar).textContent = n;
     $('.lm-pd-bar-t', bar).textContent = money(tot);
     $('.lm-pd-bar-mesa', bar).textContent = S.mode === 'mesa' && S.mesa ? 'Mesa ' + S.mesa : '';
+    $('.lm-pd-mini-n', mini).textContent = n;
+    mini.hidden = n === 0;
+    mini.setAttribute('aria-label', 'Ver mi pedido: ' + n + (n === 1 ? ' producto' : ' productos'));
+    sheet.querySelectorAll('input[name="lm-pd-suc"]').forEach(function (r) { r.checked = r.value === S.suc; });
+    var sb = document.getElementById('lm-mm-mesa');
+    if (sb && S.mode === 'mesa' && S.mesa && sucFixed) { sb.textContent = 'Mesa ' + S.mesa + ' · ' + sucName(); sb.hidden = false; }
     bar.setAttribute('aria-label', 'Ver mi pedido: ' + n + (n === 1 ? ' producto' : ' productos') + ', ' + money(tot));
 
     list.innerHTML = '';
@@ -146,10 +183,13 @@
     err.hidden = true;
     sheet.hidden = false;
     lock(true);
+    layer.open('sheet', function () { closeSheet(true); });
     requestAnimationFrame(function () { sheet.classList.add('is-open'); });
     setTimeout(function () { var c = $('.lm-pd-x', sheet); c && c.focus({ preventScroll: true }); }, 30);
   }
-  function closeSheet() {
+  function closeSheet(fromPop) {
+    if (sheet.hidden) return;
+    if (fromPop !== true) layer.close('sheet');
     sheet.classList.remove('is-open');
     sheet.hidden = true;
     lock(false);
@@ -167,6 +207,7 @@
   function showMesero() {
     if (!S.lines.length || needMesa()) return;
     $('.lm-ms-mesa', mesero).textContent = S.mesa;
+    $('.lm-ms-suc', mesero).textContent = 'La México · ' + sucName();
     var ul = $('.lm-ms-list', mesero);
     ul.innerHTML = '';
     S.lines.forEach(function (l) {
@@ -183,10 +224,11 @@
     $('.lm-ms-hora', mesero).textContent = hhmm();
     mesero.hidden = false;
     lock(true);
+    layer.open('mesero', function () { closeMesero(true); });
     fireCheckout('mesero');
     setTimeout(function () { $('.lm-ms-x', mesero).focus({ preventScroll: true }); }, 30);
   }
-  function closeMesero() { mesero.hidden = true; if (sheet.hidden) lock(false); meseroBtn.focus({ preventScroll: true }); }
+  function closeMesero(fromPop) { if (mesero.hidden) return; if (fromPop !== true) layer.close('mesero'); mesero.hidden = true; if (sheet.hidden) lock(false); meseroBtn.focus({ preventScroll: true }); }
 
   function scrollToMenu() {
     var m = document.querySelector('#menu .lm-mm-head') || document.getElementById('menu');
@@ -196,18 +238,27 @@
   }
 
   function init() {
-    bar = $('#lm-pd-bar'); sheet = $('#lm-pd-sheet'); mesero = $('#lm-pd-mesero');
-    if (!bar || !sheet || !mesero) return;
+    bar = $('#lm-pd-bar'); mini = $('#lm-pd-mini'); sheet = $('#lm-pd-sheet'); mesero = $('#lm-pd-mesero');
+    if (!bar || !mini || !sheet || !mesero) return;
     list = $('.lm-pd-list', sheet); totalEl = $('.lm-pd-total b', sheet);
     waBtn = $('#lm-pd-wa'); meseroBtn = $('#lm-pd-mesero-btn'); err = $('#lm-pd-err');
     load();
+
+    // ?suc=americas|colosio fija la sucursal (el QR de cada mesa la trae); si no viene, se elige en la hoja
+    var qs = ((location.search.match(/[?&]suc=([a-z]+)/i) || [])[1] || '').toLowerCase();
+    if (SUC[qs]) { S.suc = qs; sucFixed = true; save(); }
+    var sucF = $('.lm-pd-suc', sheet);
+    if (sucF) sucF.hidden = sucFixed;
+    sheet.querySelectorAll('input[name="lm-pd-suc"]').forEach(function (r) {
+      r.addEventListener('change', function () { if (r.checked) { S.suc = r.value; emit(); } });
+    });
 
     // ?mesa=N preselecciona la mesa y abre directo en el menú
     var qm = (location.search.match(/[?&]mesa=([0-9]{1,3})\b/) || [])[1];
     if (qm) {
       S.mode = 'mesa'; S.mesa = String(+qm); save();
       var badge = document.getElementById('lm-mm-mesa');
-      if (badge) { badge.textContent = 'Mesa ' + S.mesa; badge.hidden = false; }
+      if (badge) { badge.textContent = 'Mesa ' + S.mesa + (sucFixed ? ' · ' + sucName() : ''); badge.hidden = false; }
       if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
       var moved = false;
       var mark = function () { moved = true; };
@@ -234,6 +285,21 @@
     pers.addEventListener('input', function () { S.personas = pers.value; save(); waBtn.href = waUrl(); });
 
     bar.addEventListener('click', openSheet);
+    mini.addEventListener('click', openSheet);
+    // La barra grande solo con el menú en pantalla; afuera queda el botón compacto
+    var menuSec = document.getElementById('menu');
+    if (menuSec && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        document.documentElement.classList.toggle('lm-pd-far', !es[0].isIntersecting);
+      }, { rootMargin: '0px 0px -30% 0px' }).observe(menuSec);
+    }
+    // En el hero tampoco: ahí van los datos del lugar y el botón "Ver menú"
+    var hero = document.getElementById('hero');
+    if (hero && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        document.documentElement.classList.toggle('lm-pd-hero', es[0].isIntersecting);
+      }, { rootMargin: '0px 0px -25% 0px' }).observe(hero);
+    }
     sheet.querySelectorAll('[data-pd-close]').forEach(function (b) { b.addEventListener('click', closeSheet); });
     waBtn.addEventListener('click', function (e) {
       if (!S.lines.length || needMesa()) { e.preventDefault(); return; }

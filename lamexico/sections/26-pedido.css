@@ -123,3 +123,34 @@ html.lm-pd-has body { padding-bottom: 86px; }
   .lm-pd-bar { animation: none; }
   .lm-pd-box, .lm-pd-bg { transition: none; }
 }
+
+/* ===== REVISIÓN 4 ===== */
+/* Sucursal en la hoja (2 opciones) y en la pantalla del mesero */
+.lm-pd-suc { grid-template-columns: repeat(2, 1fr); }
+.lm-ms-suc { font-size: clamp(1.2rem, 5.4vw, 1.9rem); font-weight: 800; letter-spacing: .02em; color: #fff; padding: 8px 12px; border: 2px solid #ffd84d; border-radius: 3px; align-self: flex-start; }
+
+/* En el menú el WA flotante se esconde: la barra ocupa todo el ancho */
+body.lm-wa-off .lm-pd-bar, html.lm-mm-lock .lm-pd-bar { right: calc(12px + env(safe-area-inset-right)); }
+
+/* Fuera del menú: barra grande fuera, queda un botón compacto a la izquierda del WhatsApp */
+.lm-pd-mini {
+  position: fixed; z-index: 70; display: none; align-items: center; gap: 8px;
+  right: calc(18px + 56px + 10px + env(safe-area-inset-right)); bottom: calc(18px + env(safe-area-inset-bottom));
+  height: 56px; padding: 0 12px 0 14px; border: 0; border-radius: 3px; background: #25d366; color: #0b2515; cursor: pointer;
+  font: 700 .95rem/1 var(--font-body, system-ui, sans-serif); box-shadow: 0 10px 26px -10px rgba(11, 37, 21, .55);
+}
+.lm-pd-mini svg { width: 22px; height: 22px; }
+.lm-pd-mini-n { min-width: 28px; height: 28px; padding: 0 6px; display: grid; place-items: center; border-radius: 3px; background: #0b2515; color: #25d366; font-size: .92rem; }
+html.lm-pd-far .lm-pd-bar { display: none; }
+html.lm-pd-far .lm-pd-mini:not([hidden]) { display: flex; animation: lm-pd-in 260ms cubic-bezier(.23, 1, .32, 1) both; }
+body.lm-wa-off .lm-pd-mini { right: calc(18px + env(safe-area-inset-right)); }
+@media (hover: hover) and (pointer: fine) { .lm-pd-mini:hover { background: #1ebe5b; } }
+@media (min-width: 900px) { .lm-pd-mini { bottom: calc(18px + env(safe-area-inset-bottom)); } }
+@media (prefers-reduced-motion: reduce) { html.lm-pd-far .lm-pd-mini:not([hidden]) { animation: none; } }
+/* Solo la barra grande necesita aire al pie */
+html.lm-pd-has.lm-pd-far body { padding-bottom: 0; }
+@media (min-width: 900px) {
+  .lm-pd-mini { right: calc(28px + 56px + 12px + env(safe-area-inset-right)); bottom: calc(28px + env(safe-area-inset-bottom)); }
+  body.lm-wa-off .lm-pd-mini { right: calc(28px + env(safe-area-inset-right)); }
+}
+html.lm-pd-far.lm-pd-hero .lm-pd-mini { display: none !important; }
