@@ -1,5 +1,6 @@
 /* 01b Mueble: el scroll mueve una cámara. La foto arranca dentro de un marco y se abre a sangre mientras
-   la cámara entra (zoom 1 -> 1.18); la isla recortada se acerca un poco más (parallax de 2 capas).
+   la cámara entra (compu: zoom .88 -> 1.32, capa del frente +.12; celular: .90 -> 1.26, +.10);
+   la isla recortada se acerca un poco más (parallax de 2 capas).
    Compu: la sección se sostiene +=80% de pantalla para que el recorrido se vea completo.
    Celular: sin pin, la cámara entra mientras la sección cruza la pantalla. Las dos son reversibles.
    Sin GSAP o con movimiento reducido no se hace nada: el CSS ya deja la foto a sangre con el texto. */
@@ -87,6 +88,8 @@
 (function () {
   var v = document.querySelector("#mueble .mb-vid");
   if (!v || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+  var c = navigator.connection;   /* igual que 01-hero: con ahorro de datos o 2g no se baja el video */
+  if (c && (c.saveData || /(^|-)2g$/.test(c.effectiveType || ""))) { v.remove(); return; }
   var wide = window.matchMedia("(min-width: 900px)").matches;
   var loaded = false;
   function load() {

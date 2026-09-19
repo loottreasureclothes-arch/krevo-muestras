@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Arnés de scroll</title>
+<meta name="robots" content="noindex">
+<style>
+  :root { --paper: #f3ede4; --ink: #1c1712; }
+  body { margin: 0; padding: 16px; background: var(--paper); color: var(--ink); font: 13px/1.4 system-ui, sans-serif; }
+  .row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+  figure { margin: 0; }
+  figcaption { margin-bottom: 4px; font-weight: 600; }
+  iframe { border: 1px solid rgba(0,0,0,.2); background: #fff; display: block; }
+</style>
+</head>
+<body>
+<!--
+  Arnés para capturar un momento ligado al scroll a varias fracciones de su recorrido.
+  Uso (mismo origen: sírvelo desde krevo-muestras/ o desde Pages):
+    _kit/arnes-scroll.html?page=../closetdoor/index.html&sel=%23mueble&w=390&h=844&seq=0,0.25,0.5,1
+  Opcional: &modo=pin&largo=0.8  (sección con pin: el recorrido es largo x alto de pantalla desde "top top").
+  Sin modo: recorrido "top bottom" a "bottom top" (sección sin pin).
+  Página entera cada 700 px: &ys=0,700,1400,2100 (posiciones absolutas; ignora sel y seq).
+  Cada iframe espera 1.5 s, scrollea a su fracción y espera otro 1.2 s para que el scrub alcance.
+-->
+<div class="row" id="row"></div>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var page = q.get("page") || "../closetdoor/index.html";
+  var sel = q.get("sel") || "#mueble";
+  var w = +q.get("w") || 390, h = +q.get("h") || 844;
+  var seq = (q.get("seq") || "0,0.25,0.5,1").split(",").map(parseFloat);
+  var modo = q.get("modo") || "cruza", largo = parseFloat(q.get("largo")) || 0.8;
+  var row = document.getElementById("row");
+  var ys = q.get("ys") ? q.get("ys").split(",").map(parseFloat) : null;
+  (ys || seq).forEach(function (p) {
+    var fig = document.createElement("figure");
+    var cap = document.createElement("figcaption");
+    cap.textContent = ys ? "y = " + p + " px" : sel + " al " + Math.round(p * 100) + " %";
+    var fr = document.createElement("iframe");
+    fr.width = w; fr.height = h; fr.src = page;
+    fr.addEventListener("load", function () {
+      setTimeout(function () {
+        var win = fr.contentWindow, doc = fr.contentDocument;
+        if (ys) { win.scrollTo(0, p); setTimeout(function () { win.dispatchEvent(new Event("scroll")); }, 1200); return; }
+        var el = doc && doc.querySelector(sel);
+        if (!el) { cap.textContent += " (no encontré el selector)"; return; }
+        var top = el.getBoundingClientRect().top + win.scrollY;
+        var y = modo === "pin" ? top + p * largo * h : top - h + p * (el.offsetHeight + h);
+        win.scrollTo(0, Math.max(0, y));
+        setTimeout(function () { win.dispatchEvent(new Event("scroll")); }, 1200);
+      }, 1500);
+    });
+    fig.appendChild(cap); fig.appendChild(fr); row.appendChild(fig);
+  });
+})();
+</script>
+</body>
+</html>

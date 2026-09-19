@@ -1,0 +1,50 @@
+/* 40 Promos por día: banda tinto. El JS marca el día de hoy (hora de Ags), pone arriba lo que aplica y deja elegir otro día. */
+#promos { position: relative; padding-block: var(--sec-y); color: var(--cream);
+  background: radial-gradient(90% 70% at 100% 0%, rgba(193, 11, 40, 0.35), rgba(193, 11, 40, 0) 60%), var(--wine); }
+#promos::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+#promos .k-wrap { position: relative; }
+#promos .pr-today { margin-top: 18px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; font-size: 18px; color: var(--cream-mute); max-width: 40ch; }
+#promos .pr-today-day { display: inline-flex; align-items: center; min-height: 32px; padding: 0 10px; border-radius: 3px; background: var(--gold); color: var(--deep); font-weight: 800; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+#promos .pr-today-txt { color: var(--cream); font-weight: 600; }
+#promos .pr-week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; margin: 26px 0 18px; }
+#promos .pr-day { min-width: 0; padding: 0; border-color: var(--line-dark); color: var(--cream); font-size: 14px; }
+#promos .pr-day.is-today { border-color: var(--gold); }
+#promos .pr-day[aria-pressed="true"] { background: var(--cream); border-color: var(--cream); color: var(--deep); }
+#promos .pr-list { display: grid; gap: 12px; }
+#promos .pr-card {
+  position: relative; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 4px 18px;
+  padding: 20px 18px 18px; border-radius: 3px; border: 1px solid var(--line-dark); background: rgba(20, 5, 7, 0.28);
+  transition: opacity 250ms var(--ease-out), border-color 250ms var(--ease-out), background-color 250ms var(--ease-out);
+}
+#promos .pr-big { font-size: clamp(64px, 19vw, 96px); line-height: 0.82; color: var(--cream); min-width: 2.1ch; }
+#promos .pr-name { font-family: var(--font-display); font-stretch: 75%; font-variation-settings: "wdth" 75; text-transform: uppercase; font-weight: 800; font-size: 24px; line-height: 1; }
+#promos .pr-when { margin-top: 6px; font-size: 15px; line-height: 1.35; color: var(--cream-mute); }
+#promos .pr-dots { display: flex; gap: 4px; margin-top: 10px; }
+#promos .pr-dots i { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 3px; font-style: normal; font-size: 11px; font-weight: 700; color: rgba(246, 236, 223, 0.4); border: 1px solid rgba(246, 236, 223, 0.14); }
+#promos .pr-dots i.is-d { background: rgba(231, 194, 125, 0.18); color: var(--gold); border-color: rgba(231, 194, 125, 0.5); }
+#promos .pr-cta { grid-column: 1 / -1; margin-top: 14px; width: 100%; }
+#promos .pr-flag { display: none; grid-column: 1 / -1; justify-self: start; margin-bottom: 8px; padding: 6px 10px; border-radius: 3px; background: var(--gold); color: var(--deep); font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+#promos .pr-card.is-hoy { border-color: var(--gold); background: rgba(20, 5, 7, 0.5); }
+#promos .pr-card.is-hoy .pr-flag { display: block; }
+#promos .pr-card.is-hoy .pr-big { color: var(--gold); }
+#promos .pr-list.is-filter .pr-card:not(.is-hoy) { opacity: 0.62; }
+#promos .pr-list.is-filter .pr-card:not(.is-hoy) .pr-cta { background: transparent; border-color: rgba(246, 236, 223, 0.4); color: var(--cream); box-shadow: none; }
+#promos .lm-note { margin-top: 22px; }
+@media (min-width: 760px) {
+  #promos .pr-list { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+@media (min-width: 1100px) {
+  #promos .pr-head { display: grid; grid-template-columns: 1fr 1fr; align-items: end; column-gap: 40px; }
+  #promos .pr-head .lm-eyebrow { grid-column: 1 / -1; justify-self: start; }
+  #promos .pr-today { margin: 0 0 10px; }
+  #promos .pr-week { max-width: 640px; margin-top: 40px; }
+  #promos .pr-list { grid-template-columns: repeat(5, 1fr); }
+  #promos .pr-card { grid-template-columns: 1fr; grid-template-rows: auto auto 1fr auto; align-content: start; padding: 24px 20px; }
+  #promos .pr-big { font-size: clamp(76px, 6vw, 112px); margin-bottom: 14px; }
+  #promos .pr-cta { align-self: end; }
+}
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  @keyframes pr-stamp { 0% { opacity: 0; transform: scale(1.08) rotate(-3deg); } 100% { opacity: 1; transform: none; } }
+  #promos .pr-card.is-hoy .pr-big.is-stamp { display: inline-block; animation: pr-stamp 450ms var(--ease-out) both; }
+}

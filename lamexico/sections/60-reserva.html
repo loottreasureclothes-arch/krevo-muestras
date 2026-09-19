@@ -1,0 +1,58 @@
+  <section class="s-reserva" id="reserva" data-hide-wa aria-labelledby="rs-t">
+    <div class="k-wrap rs-grid">
+      <div class="rs-copy">
+        <p class="lm-eyebrow">Reserva tu mesa</p>
+        <h2 id="rs-t" class="lm-h2 lm-h2--xl" data-reveal>Aparta <em>tu mesa.</em></h2>
+        <p class="lm-lead" data-reveal data-reveal-delay="80">Elige y se abre WhatsApp con tu reserva ya escrita.</p>
+        <ul class="rs-facts" data-reveal data-reveal-delay="120">
+          <li><b>Colosio</b><span>Diario 1 pm a 1 am</span></li>
+          <li><b>Américas</b><span>Diario 1 pm a 2 am</span></li>
+          <li><b>Sábado</b><span>Se llena de noche: reserva antes</span></li>
+        </ul>
+      </div>
+      <form class="rs-form" id="rs-form" novalidate>
+        <fieldset class="rs-set">
+          <legend>Sucursal</legend>
+          <div class="rs-chips" data-name="sucursal">
+            <button class="lm-chip" type="button" aria-pressed="true" data-v="Colosio">Colosio</button>
+            <button class="lm-chip" type="button" aria-pressed="false" data-v="Américas">Américas</button>
+          </div>
+        </fieldset>
+        <fieldset class="rs-set">
+          <legend>¿Qué festejan?</legend>
+          <div class="rs-chips rs-chips--wrap" data-name="ocasion">
+            <button class="lm-chip" type="button" aria-pressed="false" data-v="Cumpleaños">Cumpleaños</button>
+            <button class="lm-chip" type="button" aria-pressed="false" data-v="Reunión">Reunión</button>
+            <button class="lm-chip" type="button" aria-pressed="false" data-v="Sábado de música en vivo">Sábado en vivo</button>
+            <button class="lm-chip" type="button" aria-pressed="false" data-v="Solo ir a pasarla bien">Nomás a pasarla bien</button>
+          </div>
+          <p class="rs-bday" hidden>Festeja tu cumpleaños con nosotros. Dinos cuántos van y te apartamos la mesa.</p>
+        </fieldset>
+        <div class="rs-row">
+          <label class="lm-field rs-people">
+            <span>Personas</span>
+            <div class="rs-step">
+              <button type="button" class="rs-step-b" data-step="-1" aria-label="Menos personas">&minus;</button>
+              <input type="number" name="personas" inputmode="numeric" min="1" max="60" value="4" aria-label="Personas">
+              <button type="button" class="rs-step-b" data-step="1" aria-label="Más personas">+</button>
+            </div>
+          </label>
+          <label class="lm-field">
+            <span>Día</span>
+            <input type="date" name="dia" required>
+          </label>
+        </div>
+        <label class="lm-field">
+          <span>Hora</span>
+          <select name="hora" required></select>
+        </label>
+        <label class="lm-field">
+          <span>A nombre de</span>
+          <input type="text" name="nombre" autocomplete="name" placeholder="Tu nombre" required>
+        </label>
+        <p class="rs-err" role="alert" hidden>Falta el día, la hora o tu nombre.</p>
+        <button class="lm-btn lm-btn--wa rs-send" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar por WhatsApp</button>
+        <p class="rs-fallback" hidden>¿No se abrió WhatsApp? <a href="#">Toca aquí</a> o llama al <a href="tel:+524494384900">449 438 4900</a>.</p>
+      </form>
+    </div>
+  </section>

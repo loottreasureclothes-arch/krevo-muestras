@@ -1,0 +1,30 @@
+/* 80 Visítanos: dos sucursales con foto real, dirección, horario, mapa, cómo llegar y llamar */
+#visita { padding-block: var(--sec-y); background: var(--paper); }
+#visita .vi-head { margin-bottom: 28px; }
+#visita .vi-grid { display: grid; gap: 28px; }
+#visita .vi-card { display: grid; background: #fffdf9; border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+#visita .vi-ph { position: relative; margin: 0; aspect-ratio: 16 / 10; overflow: hidden; background: var(--deep); }
+#visita .vi-ph img { width: 100%; height: 100%; object-fit: cover; }
+#visita .vi-ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(20, 5, 7, 0.75), rgba(20, 5, 7, 0) 55%); }
+#visita .vi-tag { position: absolute; z-index: 1; left: 16px; bottom: 10px; font-size: clamp(48px, 14vw, 88px); color: var(--cream); --h3d-c1: #5e0e19; --h3d-c2: #45090f; --h3d-c3: #2e0509; --h3d-amb: rgba(10, 2, 3, 0.55);
+  text-shadow: 0 var(--h3d-s) 0 var(--h3d-c1), 0 calc(var(--h3d-s) * 2) 0 var(--h3d-c2), 0 calc(var(--h3d-s) * 3) 0 var(--h3d-c3), 0 calc(var(--h3d-s) * 3 + 0.04em) 0.08em var(--h3d-amb); }
+#visita .vi-body { display: grid; gap: 16px; padding: 20px 16px; }
+#visita address { font-style: normal; font-size: 17px; line-height: 1.4; }
+#visita address b { display: block; font-weight: 700; }
+#visita address small { display: block; margin-top: 6px; font-size: 14px; color: var(--mute); }
+#visita .vi-dl { display: grid; margin: 0; border-top: 1px solid var(--line); }
+#visita .vi-dl div { display: flex; justify-content: space-between; gap: 12px; align-items: center; min-height: 44px; border-bottom: 1px solid var(--line); }
+#visita .vi-dl dt { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); }
+#visita .vi-dl dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+#visita .vi-dl a { display: inline-flex; align-items: center; min-height: 44px; color: var(--wine); text-decoration: underline; text-underline-offset: 3px; }
+#visita .vi-map { aspect-ratio: 16 / 9; border-radius: 3px; overflow: hidden; background: var(--paper-2); border: 1px solid var(--line); }
+#visita .vi-map iframe { display: block; width: 100%; height: 100%; border: 0; }
+#visita .vi-acts { display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; }
+#visita .vi-acts .lm-btn { width: 100%; padding: 0 12px; }
+@media (min-width: 900px) {
+  #visita .vi-head { margin-bottom: 56px; }
+  #visita .vi-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  #visita .vi-card:nth-child(2) { margin-top: 64px; }
+  #visita .vi-body { padding: 28px; }
+  #visita .vi-tag { left: 28px; font-size: clamp(64px, 5.4vw, 104px); }
+}

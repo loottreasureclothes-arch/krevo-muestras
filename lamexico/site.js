@@ -1,198 +1,157 @@
-/* La México Gran Cantina: formulario de reservación a WhatsApp */
+/* La México Gran Cantina · FUNDACIÓN: WhatsApp, menú hamburguesa, WA flotante, blindaje, anclas, ?mesa=N
+   API para secciones:
+     window.LM.WA            número (524494384900)
+     window.LM.waUrl(msg)    link wa.me con el texto codificado
+     window.LM.openWa(msg, fallbackEl?)  abre WhatsApp; si el navegador lo bloquea cae a location.href
+     window.LM.today()       0-6 (domingo = 0) en hora de Aguascalientes
+     window.LM.mesa          número de mesa si la URL trae ?mesa=N (o null)
+   [data-wa="mensaje"] en cualquier <a> arma su link solo. [data-hide-wa] esconde el WA flotante. */
 (function () {
   "use strict";
-  var WA = "524491201728";
-
-  function pad(n) { return (n < 10 ? "0" : "") + n; }
-
-  function fechaBonita(iso) {
-    var p = iso.split("-");
-    if (p.length !== 3) return iso;
-    var d = new Date(+p[0], +p[1] - 1, +p[2]);
-    try {
-      return d.toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" });
-    } catch (e) { return iso; }
-  }
-
-  function init() {
-    var form = document.getElementById("lm-form");
-    if (!form) return;
-    var dia = form.elements.dia;
-    var now = new Date();
-    dia.min = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
-
-    var err = form.querySelector(".lm-form-err");
-
-    form.addEventListener("input", function (e) {
-      var f = e.target.closest(".lm-field");
-      if (f) f.classList.remove("is-bad");
-    });
-    form.addEventListener("change", function (e) {
-      var f = e.target.closest(".lm-field");
-      if (f) f.classList.remove("is-bad");
-    });
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var nombre = form.elements.nombre.value.trim();
-      var personas = form.elements.personas.value;
-      var d = form.elements.dia.value;
-      var h = form.elements.hora.value;
-      var ok = true;
-      [["nombre", nombre], ["personas", personas], ["dia", d], ["hora", h]].forEach(function (x) {
-        var bad = !x[1];
-        form.elements[x[0]].closest(".lm-field").classList.toggle("is-bad", bad);
-        if (bad) ok = false;
-      });
-      err.hidden = ok;
-      if (!ok) return;
-
-      var msg =
-        "Hola, quiero reservar una mesa en La México Gran Cantina (Colosio).\n" +
-        "Nombre: " + nombre + "\n" +
-        "Personas: " + personas + "\n" +
-        "Día: " + (/am/.test(h) ? "noche del " : "") + fechaBonita(d) + "\n" +
-        "Hora: " + h + (h === "12:00 am" ? " (medianoche)" : /^12:30 am/.test(h) ? " (madrugada)" : "");
-      window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
-    });
-  }
-
+  var WA = "524494384900";
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function waUrl(msg) { return "https://wa.me/" + WA + (msg ? "?text=" + encodeURIComponent(msg) : ""); }
+  function openWa(msg) {
+    var url = waUrl(msg), w = null;
+    try { w = window.open(url, "_blank", "noopener"); } catch (e) { w = null; }
+    if (!w) { try { location.href = url; } catch (e2) {} }
+    return url;
+  }
+  function today() {
+    try {
+      var n = new Intl.DateTimeFormat("en-US", { timeZone: "America/Mexico_City", weekday: "short" }).format(new Date());
+      return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(n);
+    } catch (e) { return new Date().getDay(); }
+  }
+  var mesa = null;
+  try { var m = new URLSearchParams(location.search).get("mesa"); if (m && /^\d{1,3}$/.test(m)) mesa = parseInt(m, 10); } catch (e) {}
+  window.LM = { WA: WA, waUrl: waUrl, openWa: openWa, today: today, mesa: mesa };
 
-  /* Header: tinto sobre secciones oscuras [data-dark], crema sobre las claras */
-  function initHeaderTone() {
-    var header = document.querySelector(".k-header");
-    var darks = Array.prototype.slice.call(document.querySelectorAll("[data-dark]"));
-    if (!header || !darks.length) return;
-    var ticking = false;
-    function update() {
-      ticking = false;
-      var y = header.getBoundingClientRect().bottom - 1;
-      var on = darks.some(function (el) { var r = el.getBoundingClientRect(); return r.top <= y && r.bottom > y; });
-      header.classList.toggle("lm-on-dark", on);
+  function initWa() {
+    var links = document.querySelectorAll("[data-wa]");
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i], msg = a.getAttribute("data-wa");
+      if (a.tagName !== "A") continue;
+      a.href = waUrl(msg && msg.length > 3 ? msg : "Hola, quiero información de La México Gran Cantina.");
+      a.target = "_blank"; a.rel = "noopener";
     }
-    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-    window.addEventListener("resize", update);
-    update();
   }
 
-  /* Carrusel: scroll nativo con snap, la tarjeta sigue al dedo y asoma la vecina */
-  function initCarousel() {
-    var root = document.querySelector(".lm-car");
-    if (!root) return;
-    var track = root.querySelector(".lm-car-track");
-    var slides = Array.prototype.slice.call(track.querySelectorAll(".lm-slide"));
-    var dotsWrap = root.querySelector(".lm-dots");
-    var count = document.getElementById("lm-count");
-    var index = -1, raf = 0, lastUser = 0, visible = false, drag = null;
-
-    var dots = slides.map(function (s, i) {
-      var b = document.createElement("button");
-      b.type = "button"; b.className = "lm-dot"; b.setAttribute("role", "tab");
-      b.setAttribute("aria-label", "Ver " + (s.querySelector("h3") || {}).textContent);
-      b.innerHTML = "<i></i>";
-      b.addEventListener("click", function () { user(); go(i); });
-      dotsWrap.appendChild(b);
-      return b;
+  function initNav() {
+    var btn = document.querySelector(".lm-menu-btn"), nav = document.getElementById("lm-nav");
+    if (!btn || !nav) return;
+    var body = document.body, pushed = false;
+    Array.prototype.forEach.call(nav.querySelectorAll(".lm-nav-list > a"), function (a, i) { a.style.setProperty("--i", i); });
+    var links = nav.querySelectorAll("a");
+    function set(open, fromPop) {
+      if (open === body.classList.contains("lm-nav-open")) return;
+      body.classList.toggle("lm-nav-open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.setAttribute("aria-label", open ? "Cerrar navegación" : "Abrir navegación");
+      nav.setAttribute("aria-hidden", open ? "false" : "true");
+      if (open) {
+        try { history.pushState({ lmNav: 1 }, ""); pushed = true; } catch (e) {}
+        setTimeout(function () { links[0].focus({ preventScroll: true }); }, 80);
+      } else {
+        if (pushed && !fromPop) { pushed = false; try { history.back(); } catch (e) {} }
+        pushed = false;
+        btn.focus({ preventScroll: true });
+      }
+    }
+    window.addEventListener("popstate", function () { if (body.classList.contains("lm-nav-open")) set(false, true); });
+    btn.addEventListener("click", function () { set(!body.classList.contains("lm-nav-open")); });
+    nav.addEventListener("click", function (e) {
+      if (e.target.closest("a") || e.target.classList.contains("lm-nav-scrim")) set(false);
     });
-    var spacer = document.createElement("div");
-    spacer.className = "lm-car-spacer"; spacer.setAttribute("aria-hidden", "true");
-    track.appendChild(spacer);
-    function sizeSpacer() {
-      var cs = getComputedStyle(track), last = slides[slides.length - 1];
-      var w = track.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0) - last.offsetWidth - (parseFloat(cs.columnGap || cs.gap) || 0);
-      spacer.style.flex = "0 0 " + Math.max(0, w) + "px";
-    }
-    sizeSpacer();
-    window.addEventListener("resize", sizeSpacer);
-    function pad(n) { return (n < 10 ? "0" : "") + n; }
-    function base() { return parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0; }
-    function go(i) {
-      i = (i + slides.length) % slides.length;
-      track.scrollTo({ left: slides[i].offsetLeft - base(), behavior: reduce ? "auto" : "smooth" });
-    }
-    function setActive(i) {
-      if (i === index) return;
-      index = i;
-      dots.forEach(function (d, k) { d.setAttribute("aria-selected", k === i ? "true" : "false"); });
-      if (count) count.textContent = pad(i + 1);
-    }
-    function frame() {
-      raf = 0;
-      var x = track.scrollLeft + base(), best = 0, bestD = Infinity;
-      slides.forEach(function (s, k) {
-        var d = (s.offsetLeft - x) / (s.offsetWidth || 1), ad = Math.min(Math.abs(d), 1);
-        if (Math.abs(d) < bestD) { bestD = Math.abs(d); best = k; }
-        if (!reduce) {
-          s.style.setProperty("--s", (1 - ad * 0.06).toFixed(4));
-          s.style.setProperty("--o", Math.max(0, d < 0 ? 1 - ad * 3 : 1 - ad * 0.75).toFixed(3));
-          s.style.visibility = d < -0.6 ? "hidden" : "";
-        }
-      });
-      setActive(best);
-    }
-    track.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(frame); }, { passive: true });
-    window.addEventListener("resize", function () { if (!raf) raf = requestAnimationFrame(frame); });
-
-    // arrastre con mouse en compu (en celular es scroll nativo con el dedo)
-    track.addEventListener("pointerdown", function (e) {
-      user();
-      if (e.pointerType !== "mouse" || e.button !== 0) return;
-      drag = { x: e.clientX, left: track.scrollLeft, moved: false, start: index };
-      track.classList.add("is-dragging");
-    });
-    window.addEventListener("pointermove", function (e) {
-      if (!drag) return;
-      var dx = e.clientX - drag.x;
-      if (Math.abs(dx) > 4) drag.moved = true;
-      track.scrollLeft = drag.left - dx;
-    });
-    window.addEventListener("pointerup", function (e) {
-      if (!drag) return;
-      var dx = e.clientX - drag.x, d = drag;
-      drag = null;
-      track.classList.remove("is-dragging");
-      var t = d.start;
-      if (dx < -60) t = d.start + 1; else if (dx > 60) t = d.start - 1;
-      go(Math.max(0, Math.min(slides.length - 1, t)));
-      if (d.moved) {
-        var stop = function (ev) { ev.preventDefault(); ev.stopPropagation(); track.removeEventListener("click", stop, true); };
-        track.addEventListener("click", stop, true);
-        setTimeout(function () { track.removeEventListener("click", stop, true); }, 60);
+    document.addEventListener("keydown", function (e) {
+      if (!body.classList.contains("lm-nav-open")) return;
+      if (e.key === "Escape") { e.preventDefault(); set(false); return; }
+      if (e.key === "Tab") {
+        var items = [btn].concat(Array.prototype.slice.call(links));
+        var i = items.indexOf(document.activeElement);
+        e.preventDefault();
+        if (i < 0) i = e.shiftKey ? 0 : -1;
+        items[(i + (e.shiftKey ? -1 : 1) + items.length) % items.length].focus();
       }
     });
-    track.addEventListener("touchstart", user, { passive: true });
-    track.addEventListener("wheel", user, { passive: true });
-    Array.prototype.forEach.call(root.querySelectorAll(".lm-arrow"), function (b) {
-      b.addEventListener("click", function () { user(); go(index + parseInt(b.getAttribute("data-dir"), 10)); });
-    });
-    root.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowRight") { e.preventDefault(); user(); go(index + 1); }
-      if (e.key === "ArrowLeft") { e.preventDefault(); user(); go(index - 1); }
-    });
-    function user() { lastUser = Date.now(); }
-    if (!reduce && "IntersectionObserver" in window) {
-      new IntersectionObserver(function (es) { visible = es[0].intersectionRatio > 0.5; }, { threshold: [0, 0.5, 1] }).observe(root);
-      setInterval(function () {
-        if (visible && !document.hidden && !drag && Date.now() - lastUser > 7000) go(index + 1);
-      }, 4500);
-    }
-    frame();
   }
 
-  /* En celular el boton flotante se esconde mientras hay CTAs de WhatsApp en pantalla */
+  /* WA flotante: fuera sobre [data-hide-wa], #reserva, #pedido y el footer */
   function initWaHide() {
+    setTimeout(function () { document.body.classList.add("lm-wa-ready"); }, 2000);
     if (!("IntersectionObserver" in window)) return;
-    var targets = document.querySelectorAll("#reserva .lm-form, .lm-car");
     var on = new Set();
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) on.add(e.target); else on.delete(e.target); });
-      document.body.classList.toggle("lm-hide-wa", on.size > 0);
-    }, { threshold: 0.15 });
-    Array.prototype.forEach.call(targets, function (t) { io.observe(t); });
+      document.body.classList.toggle("lm-wa-off", on.size > 0);
+    }, { rootMargin: "0px 0px -12% 0px" });
+    var seen = [];
+    function scan() {
+      Array.prototype.forEach.call(document.querySelectorAll("[data-hide-wa], #reserva, #pedido, .lm-foot"), function (z) {
+        if (seen.indexOf(z) < 0) { seen.push(z); io.observe(z); }
+      });
+    }
+    scan(); setTimeout(scan, 1500);
   }
 
-  function boot() { init(); initHeaderTone(); initCarousel(); initWaHide(); }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
-  else boot();
+  /* Blindaje: a los 1.6 s de asomarse, todo [data-reveal] queda visible pase lo que pase */
+  function initRevealSafety() {
+    var els = document.querySelectorAll("[data-reveal], [data-reveal-stagger]");
+    function show(el) { el.classList.add("is-in"); }
+    if (reduce || !("IntersectionObserver" in window)) { Array.prototype.forEach.call(els, show); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        var el = e.target;
+        setTimeout(function () { show(el); }, 1600);
+      });
+    }, { rootMargin: "0px 0px -25% 0px" });
+    Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+  }
+
+  /* Brillo al tocar */
+  function initRipple() {
+    if (reduce) return;
+    document.addEventListener("pointerdown", function (e) {
+      var b = e.target.closest && e.target.closest(".lm-btn:not(.lm-btn--link), .k-btn");
+      if (!b) return;
+      var r = b.getBoundingClientRect(), s = document.createElement("span");
+      s.className = "lm-ripple"; s.style.left = (e.clientX - r.left) + "px"; s.style.top = (e.clientY - r.top) + "px";
+      b.appendChild(s); setTimeout(function () { s.remove(); }, 460);
+    });
+  }
+
+  function scrollToEl(el, smooth) {
+    var head = document.querySelector(".k-header");
+    var top = el.getBoundingClientRect().top + window.scrollY - (head ? head.offsetHeight : 0);
+    window.scrollTo({ top: Math.max(0, top), behavior: smooth && !reduce ? "smooth" : "auto" });
+  }
+  /* anclas con scroll suave por JS (nada de scroll-behavior en html) */
+  function initAnchors() {
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a || e.defaultPrevented) return;
+      var href = a.getAttribute("href");
+      if (href.length < 2 || href.indexOf("?") > -1) return;
+      var el; try { el = document.querySelector(href); } catch (x) { return; }
+      if (!el) return;
+      e.preventDefault();
+      scrollToEl(el, true);
+      try { history.replaceState(history.state, "", href); } catch (x2) {}
+    });
+  }
+  /* ?mesa=N abre directo en el menú de mesa */
+  function initMesa() {
+    if (mesa === null) return;
+    document.documentElement.classList.add("lm-mesa");
+    function go() { var el = document.getElementById("menu"); if (el) scrollToEl(el, false); }
+    if (document.readyState === "complete") go();
+    else window.addEventListener("load", function () { requestAnimationFrame(go); }, { once: true });
+    setTimeout(go, 60);
+  }
+
+  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initRipple(); initAnchors(); initMesa(); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 })();

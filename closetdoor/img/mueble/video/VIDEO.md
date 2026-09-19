@@ -4,3 +4,4 @@
 - Elegido: job b167a73e-cc48-4d8e-ba56-3471cdee638f (dolly-in "como pasillo"). Kling respeta el aspecto de la foto (vertical) aunque se pida 16:9.
 - Otros: c32b2348 (mismo prompt 9:16), 52cfba83 y 156e950b (push-in con grúa).
 - walkin-d.mp4 (compu) y walkin-m.mp4 (celular), sin audio, h264 faststart.
+- 19 sep: walkin-d.mp4 recomprimido a crf 26 / maxrate 2400k (3.1 MB a 1.8 MB, SSIM .986) para cumplir el tope de 2.5 MB. 01b-mueble.js ya no lo baja con saveData o 2g.

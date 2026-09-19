@@ -1,0 +1,32 @@
+/* 70 Reseñas: bloque 4.3 gigante en tinto + 4 reseñas reales con autor (Google) */
+#resenas { padding-block: var(--sec-y); background: var(--paper-2); }
+#resenas .rv-score {
+  display: grid; gap: 18px; padding: 30px 20px; border-radius: 3px; color: var(--cream);
+  background: radial-gradient(90% 120% at 100% 0%, rgba(193, 11, 40, 0.5), rgba(193, 11, 40, 0) 60%), var(--wine);
+}
+#resenas .rv-num { font-size: clamp(120px, 38vw, 220px); line-height: 0.8; }
+#resenas .rv-stars { position: relative; display: inline-block; margin-top: 12px; font-size: 28px; letter-spacing: 4px; line-height: 1; }
+#resenas .rv-stars::before { content: "\2605\2605\2605\2605\2605"; color: rgba(246, 236, 223, 0.25); }
+#resenas .rv-fill { position: absolute; inset: 0 auto 0 0; width: var(--pct); overflow: hidden; white-space: nowrap; }
+#resenas .rv-fill::before { content: "\2605\2605\2605\2605\2605"; color: var(--gold); }
+#resenas .rv-t { font-size: clamp(38px, 10vw, 72px); max-width: 12ch; }
+#resenas .rv-sub { margin: 10px 0 18px; color: var(--cream-mute); font-size: 16px; }
+#resenas .rv-score .lm-btn { width: 100%; }
+#resenas .rv-list { display: grid; gap: 12px; margin-top: 16px; }
+#resenas .rv-q { display: grid; gap: 12px; align-content: start; padding: 22px 20px; border-radius: 3px; background: #fffdf9; border: 1px solid var(--line); }
+#resenas .rv-st { color: var(--brand); letter-spacing: 3px; font-size: 15px; }
+#resenas blockquote { margin: 0; font-family: var(--font-display); font-stretch: 85%; font-variation-settings: "wdth" 85; font-weight: 700; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em; }
+#resenas .rv-who { font-size: 14px; color: var(--mute); }
+#resenas .rv-who b { color: var(--ink); }
+#resenas .rv-cta { margin-top: 22px; }
+#resenas .rv-cta .lm-btn { width: 100%; }
+@media (min-width: 900px) {
+  #resenas .rv-score { grid-template-columns: auto 1fr; gap: 72px; align-items: center; padding: 64px 72px; }
+  #resenas .rv-score .lm-btn { width: auto; }
+  #resenas .rv-list { grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 18px; }
+  #resenas .rv-q:nth-child(even) { transform: translateY(28px); }
+  #resenas .rv-list.is-in > .rv-q:nth-child(even) { transform: translateY(28px); }
+  #resenas .rv-cta { margin-top: 64px; }
+  #resenas .rv-cta .lm-btn { width: auto; }
+}
+@media (min-width: 900px) and (max-width: 1200px) { #resenas .rv-list { grid-template-columns: repeat(2, 1fr); } }
