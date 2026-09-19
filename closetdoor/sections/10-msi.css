@@ -1,0 +1,120 @@
+/* 10 · MSI: banda espresso con el 12 hecho de veta real de nogal */
+#msi {
+  --msi-bg: #2b1c12;
+  position: relative; overflow: hidden; isolation: isolate;
+  background-color: var(--msi-bg);
+  color: var(--cream);
+  padding: 64px 0 56px;
+}
+/* luz calida suave + veta muy tenue de fondo */
+#msi::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(80% 70% at 18% 30%, rgba(255, 196, 130, 0.16), transparent 62%),
+    radial-gradient(70% 60% at 100% 100%, rgba(0, 0, 0, 0.35), transparent 70%);
+}
+#msi::after {
+  content: ""; position: absolute; inset: 0; z-index: -2; pointer-events: none;
+  background: url("../img/msi/veta.webp") center / cover no-repeat;
+  opacity: 0.07; mix-blend-mode: luminosity;
+}
+#msi .s-msi-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; align-items: end; }
+
+/* El 12 gigante relleno con la veta real */
+#msi .s-msi-num { line-height: 0; }
+#msi .s-msi-12 {
+  display: inline-block;
+  font-family: var(--font-display); font-stretch: 62%; font-variation-settings: "wdth" 62;
+  font-weight: 900; font-size: clamp(210px, 66vw, 420px); line-height: 0.74; letter-spacing: -0.035em;
+  margin-left: -0.04em;
+  color: #c28a55;
+  background: url("../img/msi/veta.webp") 30% 40% / 150% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-top: 0.16em; margin-top: -0.1em;
+}
+
+#msi .s-msi-copy { padding-top: 18px; }
+#msi .s-msi-h {
+  font-weight: 800; font-size: clamp(40px, 11.5vw, 72px); line-height: 0.9; letter-spacing: -0.005em;
+  color: var(--cream);
+}
+#msi .s-msi-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+#msi .s-msi-fine { margin-top: 12px; font-size: 15px; line-height: 1.45; color: var(--cream-mute); max-width: 30ch; }
+#msi .s-msi-cta:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
+#msi .s-msi-cta { touch-action: manipulation; }
+#msi .s-msi-cta { margin-top: 24px; min-height: 56px; padding-inline: 24px; font-size: 16px; width: 100%; justify-content: center; }
+
+/* Regla / cinta metrica de 12 meses */
+#msi .s-msi-rule { position: relative; margin-top: 44px; padding-top: 2px; }
+#msi .s-msi-ticks {
+  position: relative; list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(12, 1fr);
+  height: 46px;
+  border-top: 1px solid rgba(246, 238, 226, 0.35);
+  /* rayitas menores (4 por mes) */
+  background-image: repeating-linear-gradient(90deg, rgba(246, 238, 226, 0.28) 0 1px, transparent 1px calc(100% / 48));
+  background-size: 100% 9px; background-repeat: no-repeat;
+}
+/* barra que avanza hasta el 12 */
+#msi .s-msi-ticks::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -2px; height: 3px;
+  background: linear-gradient(90deg, rgba(246, 238, 226, 0.55), var(--cream));
+  transform-origin: left center; transform: scaleX(0);
+  transition: transform 1100ms var(--ease-out) 150ms;
+}
+#msi .s-msi-ticks li {
+  position: relative; padding: 18px 0 0 5px;
+  font-family: var(--font-display); font-stretch: 70%; font-variation-settings: "wdth" 70;
+  font-weight: 700; font-size: 12px; line-height: 1; color: rgba(246, 238, 226, 0.6);
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 360ms var(--ease-out), transform 360ms var(--ease-out);
+  transition-delay: calc(200ms + var(--i, 0) * 70ms);
+}
+#msi .s-msi-ticks li::before {
+  content: ""; position: absolute; left: 0; top: 0; width: 1px; height: 16px; background: rgba(246, 238, 226, 0.6);
+}
+#msi .s-msi-ticks li:last-child { color: var(--brand-on-wood); }
+#msi .s-msi-ticks li:last-child::before { background: var(--brand-on-wood); width: 2px; height: 22px; }
+#msi .s-msi-ticks li:last-child::after {
+  content: ""; position: absolute; right: 0; top: -1px; width: 1px; height: 16px; background: rgba(246, 238, 226, 0.6);
+}
+#msi .s-msi-unit {
+  display: none; position: absolute; right: 0; top: 20px;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(246, 238, 226, 0.45);
+}
+
+/* Entrada (la dispara 10-msi.js) */
+#msi.s-msi-js .s-msi-12 { clip-path: inset(100% 0 0 0); transform: translateY(18px); transition: clip-path 900ms var(--ease-out), transform 900ms var(--ease-out); }
+#msi.s-msi-js .s-msi-copy > * { opacity: 0; transform: translateY(18px); transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out); }
+#msi.s-msi-js .s-msi-copy > :nth-child(2) { transition-delay: 90ms; }
+#msi.s-msi-js .s-msi-copy > :nth-child(3) { transition-delay: 180ms; }
+#msi.is-in .s-msi-12 { clip-path: inset(-40% -10% -10% -10%); transform: none; }
+#msi.is-in .s-msi-copy > * { opacity: 1; transform: none; }
+#msi.is-in .s-msi-ticks::before { transform: scaleX(1); }
+#msi.is-in .s-msi-ticks li { opacity: 1; transform: none; }
+#msi:not(.s-msi-js) .s-msi-ticks li { opacity: 1; transform: none; }
+#msi:not(.s-msi-js) .s-msi-ticks::before { transform: scaleX(1); }
+
+@media (min-width: 560px) {
+  #msi .s-msi-cta { width: auto; }
+}
+@media (min-width: 900px) {
+  #msi { padding: 96px 0 84px; }
+  #msi .s-msi-grid { grid-template-columns: auto minmax(0, 1fr); column-gap: 56px; row-gap: 0; }
+  #msi .s-msi-12 { font-size: clamp(300px, 30vw, 440px); }
+  #msi .s-msi-copy { padding: 0 0 26px; }
+  #msi .s-msi-h { font-size: clamp(56px, 5.6vw, 88px); }
+  #msi .s-msi-fine { font-size: 16px; }
+  #msi .s-msi-rule { grid-column: 1 / -1; margin-top: 40px; }
+  #msi .s-msi-ticks { height: 54px; }
+  #msi .s-msi-ticks li { font-size: 14px; padding-left: 8px; }
+  #msi .s-msi-unit { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #msi .s-msi-12, #msi .s-msi-copy > *, #msi .s-msi-ticks li { clip-path: none !important; transform: none !important; transition-property: opacity !important; }
+  #msi.s-msi-js .s-msi-12 { opacity: 0; transition: opacity 600ms var(--ease-out); }
+  #msi.is-in .s-msi-12 { opacity: 1; }
+  #msi .s-msi-ticks::before { transform: scaleX(1) !important; transition: none !important; }
+}

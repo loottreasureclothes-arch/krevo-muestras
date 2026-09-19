@@ -1,0 +1,188 @@
+/* ============ 01 HERO: foto real a pantalla completa. Una idea de movimiento: tablas que suben ============ */
+#hero.s-hero {
+  --hero-dur: 6000ms;
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column;
+  background: #1f130a; color: var(--cream);
+}
+
+/* ---------- fotos ---------- */
+#hero .s-hero-media { position: absolute; inset: 0; z-index: -2; overflow: hidden; background: #1f130a; }
+#hero .s-hero-par { position: absolute; inset: -6% 0 0; will-change: transform; }
+#hero .s-hero-slide { position: absolute; inset: 0; margin: 0; overflow: hidden; z-index: 1; visibility: hidden; }
+#hero .s-hero-slide.is-on, #hero .s-hero-slide.is-out { z-index: 2; visibility: visible; }
+#hero .s-hero-slide.is-in { z-index: 3; visibility: visible; }
+#hero .s-hero-slide picture, #hero .s-hero-slide img { display: block; width: 100%; height: 100%; }
+#hero .s-hero-slide picture { transform-origin: 50% 70%; }
+#hero .s-hero-slide img { object-fit: cover; object-position: 50% 30%; transform-origin: 50% 40%; }
+/* video hecho con sus fotos: el JS lo mete en la primera foto; tapa la foto y la regla sigue su tiempo */
+#hero .s-hero-video { position: absolute; inset: 0; z-index: 5; display: block; width: 100%; height: 100%; object-fit: cover; background: transparent; transform-origin: 50% 70%; pointer-events: none; }
+#hero.has-video .s-hero-slide img { animation: none !important; }
+#hero.has-video .s-hero-ticks button.is-on i { animation: none; }
+
+/* velo que apaga la foto que sale (debajo de la que entra) */
+#hero .s-hero-dim { position: absolute; inset: 0; z-index: 2; background: #140b05; opacity: 0; pointer-events: none; }
+
+/* juntas de las tablas durante el cambio (las crea el JS) */
+#hero .s-hero-seams { position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0; }
+#hero .s-hero-seams.is-run { opacity: 1; }
+#hero .s-hero-seams i {
+  position: absolute; top: 0; height: 100%;
+  transform: translate3d(0, 100%, 0);
+  background: linear-gradient(to bottom, rgba(246, 238, 226, 0.7) 0 2px, rgba(20, 11, 5, 0.45) 2px, rgba(20, 11, 5, 0) 46px);
+  box-shadow: inset 1px 0 0 rgba(20, 11, 5, 0.35);
+}
+
+/* sombra para leer: arriba (header) y abajo (texto) */
+#hero .s-hero-shade {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(20, 11, 5, 0.6) 0, rgba(20, 11, 5, 0) 150px),
+    linear-gradient(to top, rgba(20, 11, 5, 0.96) 0%, rgba(20, 11, 5, 0.82) 30%, rgba(20, 11, 5, 0.35) 52%, rgba(20, 11, 5, 0) 66%);
+}
+
+/* ---------- texto ---------- */
+#hero .s-hero-in {
+  flex: 1; width: 100%; max-width: 1360px; margin-inline: auto;
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 18px;
+  padding: calc(var(--k-header-h) + env(safe-area-inset-top) + 24px) var(--k-gutter, 16px) 14px;
+}
+#hero .s-hero-title {
+  font-weight: 800; font-size: clamp(56px, 18.4vw, 96px); line-height: 0.86; letter-spacing: 0;
+  color: var(--cream); margin: 0 0 14px; text-wrap: balance;
+}
+#hero .s-hero-title em { color: var(--brand-on-wood); }
+#hero .s-nw { white-space: nowrap; }
+#hero .s-w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.07em; margin-bottom: -0.07em; }
+#hero .s-w > span { display: inline-block; }
+#hero .s-hero-sub { font-size: 16.5px; line-height: 1.42; color: rgba(246, 238, 226, 0.88); max-width: 34ch; margin: 0 0 16px; text-wrap: pretty; }
+
+#hero .s-hero-chips { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-wrap: wrap; gap: 6px; }
+#hero .s-hero-chips a {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px;
+  border-radius: 999px; border: 1px solid rgba(246, 238, 226, 0.34);
+  background: rgba(20, 11, 5, 0.42);
+  font-size: 14.5px; font-weight: 600; color: var(--cream); -webkit-tap-highlight-color: transparent;
+  transition: background-color 200ms var(--ease-out), border-color 200ms var(--ease-out), color 200ms var(--ease-out), transform 160ms var(--ease-out);
+}
+#hero .s-hero-chips a:active { transform: scale(0.97); }
+
+#hero .s-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+#hero .s-hero-actions .k-btn { min-height: 52px; padding: 0 22px; font-size: 16px; }
+
+/* ---------- regla de carpintero: progreso de las fotos ---------- */
+#hero .s-hero-rule { display: flex; flex-direction: column; gap: 4px; }
+#hero .s-hero-cap { display: flex; align-items: baseline; gap: 10px; margin: 0; font-size: 13px; color: var(--cream-mute); min-height: 20px; }
+#hero .s-hero-n { font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; font-weight: 800; font-size: 18px; color: var(--brand-on-wood); font-variant-numeric: tabular-nums; }
+#hero .s-hero-lbl { font-weight: 600; color: var(--cream); display: inline-block; overflow: hidden; vertical-align: bottom; }
+#hero .s-hero-lbl > span { display: inline-block; }
+#hero .s-hero-cap small { font-size: 12px; margin-left: auto; letter-spacing: 0.02em; }
+#hero .s-hero-ticks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+#hero .s-hero-ticks button {
+  position: relative; height: 44px; padding: 0; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+/* marcas cada 10 y cada 50, como cinta de medir */
+#hero .s-hero-ticks button::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 10px; height: 12px;
+  background:
+    linear-gradient(rgba(246, 238, 226, 0.55), rgba(246, 238, 226, 0.55)) 0 0 / 1.5px 12px no-repeat,
+    repeating-linear-gradient(to right, rgba(246, 238, 226, 0.45) 0 1px, transparent 1px 8px) 0 0 / 100% 6px no-repeat,
+    repeating-linear-gradient(to right, rgba(246, 238, 226, 0.45) 0 1px, transparent 1px 40px) 0 0 / 100% 9px no-repeat;
+}
+#hero .s-hero-ticks button::after { content: ""; position: absolute; left: 0; right: 0; top: 22px; height: 2px; background: rgba(246, 238, 226, 0.22); }
+#hero .s-hero-ticks i {
+  position: absolute; left: 0; right: 0; top: 21px; height: 4px; z-index: 1; border-radius: 2px;
+  background: var(--cream); transform: scaleX(0); transform-origin: 0 50%;
+}
+#hero .s-hero-ticks button.is-done i { transform: scaleX(1); opacity: 0.55; }
+#hero .s-hero-ticks button.is-on i { transform: scaleX(1); background: var(--brand-on-wood); }
+#hero.is-auto .s-hero-ticks button.is-on i { animation: s-hero-fill var(--hero-dur) linear both; }
+#hero.is-paused .s-hero-ticks button.is-on i { animation-play-state: paused; }
+@keyframes s-hero-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+@media (hover: hover) and (pointer: fine) {
+  #hero .s-hero-chips a:hover { background: var(--cream); border-color: var(--cream); color: var(--wood); }
+  #hero .s-hero-ticks button:hover::after { background: rgba(246, 238, 226, 0.5); }
+}
+
+/* ---------- entrada (se quita con reduced motion) ----------
+   La foto la revela el JS con tablas. Mientras, el primer cuadro espera escondido;
+   si el JS no llega en 2.5 s se muestra solo. Titulo letra por letra, lo demas detras. */
+#hero .s-c { display: inline-block; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  #hero .s-hero-slide.is-on img, #hero .s-hero-slide.is-in img, #hero .s-hero-slide.is-out img { animation: s-hero-kb calc(var(--hero-dur) + 1400ms) linear both; }
+  @keyframes s-hero-kb { from { transform: scale(1.1) translate3d(1%, 0.6%, 0); } to { transform: scale(1.02) translate3d(0, 0, 0); } }
+  #hero:not(.is-go) .s-hero-slide.is-on { visibility: hidden; animation: s-hero-failsafe 0s 2.5s forwards; }
+  @keyframes s-hero-failsafe { to { visibility: visible; } }
+
+  #hero .s-c { transform: translate3d(0, 108%, 0); transition: transform 640ms var(--ease-out); transition-delay: calc(200ms + var(--c, 0) * 18ms); }
+  #hero .s-hero-sub, #hero .s-hero-chips li, #hero .s-hero-actions, #hero .s-hero-rule {
+    opacity: 0; translate: 0 16px;
+    transition: opacity 560ms var(--ease-out), translate 560ms var(--ease-out);
+  }
+  #hero .s-hero-sub { transition-delay: 420ms; }
+  #hero .s-hero-chips li { transition-delay: calc(480ms + var(--i, 0) * 40ms); }
+  #hero .s-hero-actions { transition-delay: 560ms; }
+  #hero .s-hero-rule { transition-delay: 640ms; }
+  #hero.is-go .s-c { transform: none; }
+  #hero.is-go .s-hero-sub, #hero.is-go .s-hero-chips li, #hero.is-go .s-hero-actions, #hero.is-go .s-hero-rule { opacity: 1; translate: none; }
+
+  /* el nombre del proyecto rueda al cambiar de foto */
+  #hero.is-go .s-hero-lbl > span { animation: s-hero-roll 480ms var(--ease-out) both; }
+  @keyframes s-hero-roll { from { transform: translate3d(0, 105%, 0); } to { transform: none; } }
+
+  /* sin GSAP: parallax con scroll-driven animations donde el navegador lo soporte */
+  @supports (animation-timeline: scroll()) {
+    #hero.s-hero--css .s-hero-par { animation: s-hero-par linear both; animation-timeline: scroll(root); animation-range: 0 100svh; }
+    #hero.s-hero--css .s-hero-in { animation: s-hero-out linear both; animation-timeline: scroll(root); animation-range: 0 100svh; }
+    @keyframes s-hero-par { to { transform: translate3d(0, 14%, 0); } }
+    @keyframes s-hero-out { to { transform: translate3d(0, -70px, 0); opacity: 0.15; } }
+  }
+}
+
+/* ---------- celular: una fila de chips que se desliza, botones en una linea ---------- */
+#hero .s-hero-rule { margin-right: 68px; }
+@media (max-width: 899px) {
+  #hero .s-hero-sub-l { display: none; }
+  #hero .s-hero-sub { margin-bottom: 14px; }
+  #hero .s-hero-chips {
+    flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
+    margin-inline: calc(-1 * var(--k-gutter, 16px)); padding-inline: var(--k-gutter, 16px);
+    scroll-padding-inline: var(--k-gutter, 16px);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--k-gutter, 16px), #000 calc(100% - 36px), transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 var(--k-gutter, 16px), #000 calc(100% - 36px), transparent 100%);
+  }
+  #hero .s-hero-chips::-webkit-scrollbar { display: none; }
+  #hero .s-hero-chips li { flex: none; }
+  #hero .s-hero-actions { flex-wrap: nowrap; gap: 8px; }
+  #hero .s-hero-actions .k-btn { padding: 0 16px; font-size: 15.5px; white-space: nowrap; }
+}
+
+/* ---------- compu ---------- */
+@media (min-width: 900px) {
+  #hero .s-hero-in {
+    display: grid; grid-template-columns: minmax(0, 1fr) 340px; align-items: end; gap: 48px;
+    padding: calc(var(--k-header-h) + 40px) 40px 44px;
+  }
+  #hero .s-hero-shade {
+    background:
+      linear-gradient(to bottom, rgba(20, 11, 5, 0.55) 0, rgba(20, 11, 5, 0) 160px),
+      linear-gradient(to top, rgba(20, 11, 5, 0.85) 0%, rgba(20, 11, 5, 0.45) 38%, rgba(20, 11, 5, 0) 62%),
+      linear-gradient(to right, rgba(20, 11, 5, 0.72) 0%, rgba(20, 11, 5, 0.3) 45%, rgba(20, 11, 5, 0) 70%);
+  }
+  #hero .s-hero-slide img { object-position: 50% 50%; }
+  #hero .s-hero-title { font-size: clamp(96px, 10.2vw, 176px); margin-bottom: 22px; }
+  #hero .s-hero-sub { font-size: 19px; max-width: 40ch; margin-bottom: 24px; }
+  #hero .s-hero-chips { margin-bottom: 26px; gap: 8px; }
+  #hero .s-hero-chips a { font-size: 15px; padding: 0 18px; }
+  #hero .s-hero-actions .k-btn { min-height: 56px; font-size: 17px; }
+  #hero .s-hero-actions .k-btn { padding: 0 28px; }
+  #hero .s-hero-rule { padding-bottom: 4px; }
+  #hero .s-hero-cap { font-size: 14px; }
+  #hero .s-hero-n { font-size: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #hero .s-hero-par { will-change: auto; }
+}

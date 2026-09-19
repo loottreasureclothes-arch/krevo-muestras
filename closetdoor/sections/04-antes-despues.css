@@ -1,0 +1,121 @@
+/* 04 · Antes / después (comparador grande con toggle Closet / Cocina) */
+#antes-despues { --ad-top: 110px; padding-top: var(--sec-y); padding-bottom: var(--sec-y); }
+#antes-despues .s-ad-head { margin-bottom: var(--head-gap); }
+#antes-despues .cd-h2 { margin-bottom: 18px; overflow-wrap: normal; word-break: normal; hyphens: none; }
+#antes-despues .cd-h2 em { font-style: normal; color: var(--brand); }
+
+#antes-despues .s-ad-side { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; max-width: 100%; }
+#antes-despues .s-ad-hint { color: var(--mute); font-size: 15px; margin: 0; min-width: 0; max-width: 100%; }
+@media (min-width: 900px) { #antes-despues .s-ad-hint { white-space: nowrap; } }
+
+/* Toggle tipo segmento con pastilla que se desliza */
+#antes-despues .s-ad-tabs {
+  position: relative; display: inline-grid; grid-template-columns: 1fr 1fr;
+  padding: 4px; border-radius: 999px; background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.12);
+  -webkit-tap-highlight-color: transparent;
+}
+#antes-despues .s-ad-tabs button {
+  position: relative; z-index: 1; min-width: 104px; min-height: 44px; padding: 0 20px;
+  border: 0; background: none; border-radius: 999px; cursor: pointer;
+  font: 600 15px/1 var(--font-body); color: var(--ink);
+  transition: color 240ms var(--ease-out), transform 160ms var(--ease-out);
+}
+#antes-despues .s-ad-tabs button[aria-selected="true"] { color: var(--cream); }
+#antes-despues .s-ad-tabs button:active { transform: scale(0.97); }
+#antes-despues .s-ad-tabs button:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+#antes-despues .s-ad-pill {
+  --l: 0; --r: 50;
+  position: absolute; top: 4px; bottom: 4px; left: 4px; right: 4px;
+  border-radius: 999px; background: var(--wood);
+  background-image: repeating-linear-gradient(92deg, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 9px);
+  clip-path: inset(0 calc(var(--r) * 1%) 0 calc(var(--l) * 1%) round 999px);
+  transition: clip-path 380ms var(--ease-out);
+}
+#antes-despues .s-ad-tabs[data-on="1"] .s-ad-pill { --l: 50; --r: 0; }
+#antes-despues .s-ad-tabs.is-gsap .s-ad-pill { transition: none; }
+
+/* Escenario: a todo lo ancho en celular */
+#antes-despues .s-ad-stage { width: 100%; }
+#antes-despues .s-ad-panel[hidden] { display: none; }
+
+#antes-despues .s-ad-ba { border-radius: 0; margin-inline: auto; background: var(--wood); }
+#antes-despues .s-ad-ba--cocina { aspect-ratio: 4 / 3; width: 100%; }
+#antes-despues .s-ad-ba--closet {
+  aspect-ratio: 2 / 3;
+  width: min(100%, calc((100svh - var(--ad-top)) * 2 / 3));
+}
+#antes-despues .s-ad-ba--closet img { object-position: 50% 42%; }
+
+#antes-despues .s-ad-tag {
+  position: absolute; z-index: 4; left: 12px; bottom: 12px;
+  padding: 5px 9px; border-radius: 6px;
+  font: 600 11px/1 var(--font-body); letter-spacing: 0.06em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92); background: rgba(17, 17, 17, 0.42);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+#antes-despues .s-ad-cap { margin: 10px 20px 0; font-size: 13px; color: var(--mute); }
+
+/* CTA link con flecha */
+#antes-despues .s-ad-foot { margin-top: 26px; }
+#antes-despues .s-ad-cta {
+  display: inline-flex; align-items: center; gap: 12px; min-height: 48px;
+  font: 600 17px/1.2 var(--font-body); color: var(--ink); text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 160ms var(--ease-out);
+}
+#antes-despues .s-ad-cta:active { transform: scale(0.97); }
+#antes-despues .s-ad-cta-ic {
+  width: 44px; height: 44px; flex: none; border-radius: 50%;
+  display: grid; place-items: center; color: var(--wa-ink);
+  box-shadow: inset 0 0 0 2px var(--wa);
+  transition: background-color 220ms var(--ease-out), color 220ms var(--ease-out);
+}
+#antes-despues .s-ad-cta-ic svg { width: 22px; height: 22px; display: block; }
+#antes-despues .s-ad-cta-t { background: linear-gradient(var(--wa), var(--wa)) 0 100% / 100% 2px no-repeat; padding-bottom: 3px; }
+#antes-despues .s-ad-cta-ar { display: inline-block; transition: transform 240ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  #antes-despues .s-ad-cta:hover .s-ad-cta-ic { background: var(--wa); }
+  #antes-despues .s-ad-cta:hover .s-ad-cta-ar { transform: translateX(5px); }
+}
+
+/* Compu: grande, máximo 1100px y que quepa en la pantalla */
+@media (min-width: 900px) {
+  #antes-despues { --ad-top: 150px; }
+  #antes-despues .s-ad-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; max-width: 1180px; }
+  #antes-despues .cd-h2 { margin-bottom: 0; max-width: 12.5ch; flex: 1 1 auto; font-size: var(--fs-h2); }
+  #antes-despues .s-ad-side { flex: none; }
+  #antes-despues .s-ad-side { flex-direction: column; align-items: flex-end; gap: 12px; }
+  #antes-despues .s-ad-stage { max-width: 1180px; margin-inline: auto; padding-inline: 40px; }
+  #antes-despues .s-ad-ba { border-radius: var(--radius); box-shadow: 0 24px 60px -28px rgba(60, 38, 22, 0.45); }
+  #antes-despues .s-ad-ba--cocina { width: min(100%, 1100px, calc((100svh - var(--ad-top)) * 4 / 3)); }
+  #antes-despues .s-ad-cap { text-align: center; margin-inline: 0; }
+  #antes-despues .s-ad-foot { display: flex; justify-content: center; margin-top: 30px; }
+  #antes-despues .s-ad-tag { left: 18px; bottom: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #antes-despues .s-ad-pill, #antes-despues .s-ad-cta-ar { transition: none; }
+}
+
+/* Puerta de nogal que se corre para descubrir el comparador (entrada, la mueve 04-antes-despues.js) */
+#antes-despues .s-ad-door {
+  position: absolute; inset: 0; z-index: 6; pointer-events: none;
+  background: var(--wood);
+  background-image:
+    repeating-linear-gradient(91deg, rgba(255, 255, 255, 0.045) 0 2px, transparent 2px 13px),
+    repeating-linear-gradient(88deg, rgba(0, 0, 0, 0.08) 0 1px, transparent 1px 29px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.18), transparent 12%, transparent 88%, rgba(0, 0, 0, 0.22));
+  visibility: hidden;
+}
+/* jaladera negra, como en sus puertas */
+#antes-despues .s-ad-door i {
+  position: absolute; left: 14%; top: 50%; width: 5px; height: 22%; margin-top: -11%;
+  border-radius: 3px; background: #1a1411;
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.12), 3px 4px 8px rgba(0, 0, 0, 0.35);
+}
+#antes-despues .s-ad-ba img { transform-origin: 50% 50%; }
+
+/* Pistas en celular angosto: la instrucción baja a su propia línea */
+@media (max-width: 399px) { #antes-despues .s-ad-hint { flex-basis: 100%; } }

@@ -1,0 +1,150 @@
+/* ============ 02 Trabajos: slider de proyectos reales con profundidad ============ */
+#trabajos {
+  --tj-bg: #f6f1ea;
+  --tj-gap: 14px;
+  --tj-w: calc(100vw - 2 * var(--k-gutter) - 34px);
+  position: relative;
+  background: var(--tj-bg);
+  padding: 64px 0 36px;
+  overflow: hidden;
+}
+@media (min-width: 900px) {
+  #trabajos { --tj-gap: 44px; --tj-L: max(40px, calc((100vw - 1200px) / 2 + 40px)); --tj-w: min(1000px, calc(100vw - var(--tj-L) - 200px)); padding: 96px 0 56px; }
+}
+#trabajos .tj-alias { position: absolute; top: 0; left: 0; }
+
+/* Cabeza: solo el titulo */
+#trabajos .tj-head { margin-bottom: 22px; }
+#trabajos .tj-head .cd-h2 { margin: 0; min-width: 0; }
+/* Carril */
+#trabajos .tj-car { position: relative; padding-left: var(--k-gutter); outline: none; }
+@media (min-width: 900px) { #trabajos .tj-car { padding-left: var(--tj-L); } }
+#trabajos .tj-car:focus-visible .tj-slide.is-on .tj-media { outline: 2px solid var(--brand); outline-offset: 4px; }
+#trabajos .tj-track {
+  display: flex; gap: var(--tj-gap);
+  touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+  will-change: transform; transition: opacity 220ms var(--ease-out);
+}
+#trabajos .tj-track.is-fade { opacity: 0; }
+@media (hover: hover) and (pointer: fine) {
+  #trabajos .tj-track { cursor: grab; }
+  #trabajos .tj-track.is-drag { cursor: grabbing; }
+}
+#trabajos .tj-slide { flex: 0 0 var(--tj-w); min-width: 0; position: relative; }
+
+/* Foto con parallax interno (JS pone --o y --a) */
+#trabajos .tj-media {
+  position: relative; margin: 0; width: 100%; aspect-ratio: 4 / 5; max-height: 54svh;
+  border-radius: var(--radius); overflow: hidden; background: #e6dccd;
+  transform-origin: 50% 60%; will-change: transform;
+  box-shadow: 0 18px 40px -22px rgba(60, 35, 18, 0.45);
+}
+#trabajos .tj-media img {
+  position: absolute; top: 0; left: -12%; width: 124%; height: 100%; max-width: none; object-fit: cover;
+  pointer-events: none; -webkit-user-drag: none; will-change: transform;
+}
+#trabajos .tj-media::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: #1d130b; opacity: calc(var(--a, 0) * 0.38);
+}
+/* Texto del proyecto */
+#trabajos .tj-copy { padding: 18px 2px 0; container-type: inline-size; }
+#trabajos .tj-title {
+  font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68;
+  text-transform: uppercase; font-weight: 800; line-height: 0.86; letter-spacing: -0.005em;
+  font-size: clamp(44px, 15.5cqi, 104px); margin: 0 0 10px; overflow: hidden; padding-bottom: 0.05em;
+}
+#trabajos .tj-title span { display: block; white-space: nowrap; }
+#trabajos .tj-desc { color: var(--mute); font-size: 16px; line-height: 1.4; margin: 0 0 4px; max-width: 32ch; text-wrap: balance; }
+#trabajos .tj-cta {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 48px; margin-left: -2px;
+  font-weight: 700; font-size: 16px; color: var(--ink); text-decoration: none;
+  -webkit-tap-highlight-color: transparent; -webkit-user-drag: none;
+}
+#trabajos .tj-wa { width: 36px; height: 36px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--wa); color: var(--wa-ink); transition: transform 280ms var(--ease-out); }
+#trabajos .tj-wa svg { width: 19px; height: 19px; }
+#trabajos .tj-cta u { text-decoration: none; padding-bottom: 3px; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1.5px no-repeat; }
+#trabajos .tj-arr { width: 18px; height: 18px; color: var(--brand); transition: transform 280ms var(--ease-out); }
+#trabajos .tj-cta:active .tj-wa { transform: scale(0.92); }
+@media (hover: hover) and (pointer: fine) {
+  #trabajos .tj-cta:hover .tj-arr { transform: translateX(5px); }
+  #trabajos .tj-cta:hover .tj-wa { transform: rotate(-8deg) scale(1.06); }
+}
+
+/* Entrada del titulo al asentarse (solo con JS y con movimiento) */
+@media (prefers-reduced-motion: no-preference) {
+  #trabajos.tj-js .tj-title span { transform: translateY(108%); transition: transform 240ms var(--ease-out); }
+  #trabajos.tj-js .tj-desc,
+  #trabajos.tj-js .tj-cta { opacity: 0; transform: translateY(12px); transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); }
+  #trabajos.tj-js .tj-slide.is-on .tj-title span { transform: none; transition: transform 720ms var(--ease-out); }
+  #trabajos.tj-js .tj-slide.is-on .tj-desc { opacity: 1; transform: none; transition-duration: 560ms; transition-delay: 110ms; }
+  #trabajos.tj-js .tj-slide.is-on .tj-cta { opacity: 1; transform: none; transition-duration: 560ms; transition-delay: 190ms; }
+  /* antes de la entrada con profundidad (la dispara el JS una vez) */
+  #trabajos.tj-pre .tj-media { opacity: 0; }
+}
+
+/* Cinta metrica de progreso */
+#trabajos .tj-ui { display: flex; align-items: center; gap: 24px; padding-top: 22px; }
+#trabajos .tj-tape { position: relative; flex: 1; min-width: 0; height: 48px; }
+#trabajos .tj-rail {
+  position: absolute; left: 0; right: 0; top: 4px; height: 16px; color: rgba(17, 17, 17, 0.28);
+  background:
+    repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 6px) 0 0 / 100% 5px no-repeat,
+    repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 30px) 0 0 / 100% 9px no-repeat,
+    linear-gradient(currentColor, currentColor) 0 0 / 100% 1px no-repeat;
+}
+#trabajos .tj-fill {
+  position: absolute; inset: 0; border-radius: 0 0 2px 2px;
+  background:
+    repeating-linear-gradient(90deg, rgba(246, 238, 226, 0.75) 0 1px, transparent 1px 6px) 0 0 / 100% 5px no-repeat,
+    repeating-linear-gradient(90deg, rgba(246, 238, 226, 0.95) 0 1px, transparent 1px 30px) 0 0 / 100% 9px no-repeat,
+    linear-gradient(180deg, #6b4629, #4d311e);
+  box-shadow: 0 2px 6px rgba(60, 35, 18, 0.25);
+  clip-path: inset(0 calc(100% - var(--tj-p, 12.5%)) 0 0);
+}
+#trabajos .tj-hook {
+  position: absolute; left: 0; top: -4px; width: 5px; height: 24px; border-radius: 1px;
+  background: var(--ink); transform: translateX(calc(var(--tj-px, 0px) - 5px));
+  box-shadow: inset 0 -6px 0 var(--brand);
+}
+#trabajos .tj-stops { position: absolute; inset: 0; display: flex; }
+#trabajos .tj-stop {
+  position: relative; flex: 1; min-width: 0; height: 48px; padding: 0; border: 0; background: none; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+#trabajos .tj-stop::before { content: ""; position: absolute; right: 0; top: 4px; width: 1.5px; height: 16px; background: rgba(17, 17, 17, 0.4); }
+#trabajos .tj-stop span {
+  position: absolute; right: 0; bottom: 4px; transform: translateX(50%);
+  font: 700 11px/1 var(--font-body); letter-spacing: 0.04em; color: var(--mute); font-variant-numeric: tabular-nums;
+  transition: color 200ms var(--ease-out);
+}
+#trabajos .tj-stop:last-child span { transform: none; }
+#trabajos .tj-stop[aria-current="true"] span { color: var(--ink); }
+#trabajos .tj-stop:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; border-radius: 4px; }
+@media (max-width: 420px) { #trabajos .tj-stop:nth-child(even) span { opacity: 0; } #trabajos .tj-stop[aria-current="true"] span { opacity: 1; } }
+
+#trabajos .tj-arrows { display: none; gap: 10px; flex: none; }
+#trabajos .tj-arrow {
+  width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; cursor: pointer;
+  background: transparent; color: var(--ink); border: 1px solid rgba(17, 17, 17, 0.2);
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms;
+}
+#trabajos .tj-arrow:active { transform: scale(0.94); }
+#trabajos .tj-arrow:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  #trabajos .tj-arrow:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+}
+#trabajos .tj-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+
+/* Compu: foto vertical grande + texto al lado, la siguiente asoma */
+@media (min-width: 900px) {
+  #trabajos .tj-head { margin-bottom: 30px; }
+  #trabajos .tj-slide { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 44px; align-items: end; }
+  #trabajos .tj-media { width: auto; height: clamp(420px, 58vh, 580px); max-height: none; transform-origin: 0 60%; }
+  #trabajos .tj-copy { padding: 0 0 6px; }
+  #trabajos .tj-title { margin-bottom: 16px; }
+  #trabajos .tj-desc { font-size: 18px; margin-bottom: 10px; }
+  #trabajos .tj-ui { padding-top: 26px; }
+  #trabajos .tj-arrows { display: flex; }
+  #trabajos .tj-stop span { font-size: 12px; }
+}

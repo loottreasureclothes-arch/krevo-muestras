@@ -1,0 +1,82 @@
+  <section id="cotizar" class="cd-sec s-cotizar" aria-labelledby="cq-title">
+    <div class="k-wrap cq-grid">
+      <div class="cq-copy">
+        <h2 class="cd-h2" id="cq-title" data-reveal>Crea tu espacio,<br> <em>agenda tu diseño.</em></h2>
+        <p class="cd-lead" data-reveal data-reveal-delay="100">Tres pasos y te llega armado a WhatsApp.</p>
+      </div>
+
+      <div class="cq-card" data-reveal data-reveal-delay="120">
+        <!-- Cinta métrica de progreso -->
+        <div class="cq-tape" aria-hidden="true">
+          <div class="cq-tape-track"><span class="cq-tape-fill"></span><span class="cq-tape-hook"></span></div>
+          <ol class="cq-tape-steps">
+            <li class="is-on"><b>1</b>Qué</li>
+            <li><b>2</b>Medidas</li>
+            <li><b>3</b>Nombre</li>
+          </ol>
+        </div>
+        <p class="cq-sr" id="cq-status" aria-live="polite">Paso 1 de 3</p>
+
+        <form class="cq-form" id="cq-form" novalidate>
+          <!-- Paso 1 -->
+          <fieldset class="cq-step is-on" data-step="1">
+            <legend class="cq-q" tabindex="-1">¿Qué quieres hacer?</legend>
+            <div class="cq-opts">
+              <label class="cq-opt"><input type="radio" name="tipo" value="Cocina"><img src="img/cotizar/cocina.webp" alt="" width="480" height="400" loading="lazy"><span>Cocina</span></label>
+              <label class="cq-opt"><input type="radio" name="tipo" value="Closet o vestidor"><img src="img/cotizar/closet.webp" alt="" width="480" height="400" loading="lazy"><span>Closet o vestidor</span></label>
+              <label class="cq-opt"><input type="radio" name="tipo" value="Puerta"><img src="img/cotizar/puerta.webp" alt="" width="480" height="400" loading="lazy"><span>Puerta</span></label>
+              <label class="cq-opt"><input type="radio" name="tipo" value="Mueble a medida"><img src="img/cotizar/mueble.webp" alt="" width="480" height="400" loading="lazy"><span>Mueble a medida</span></label>
+              <label class="cq-opt"><input type="radio" name="tipo" value="Baño"><img src="img/cotizar/bano.webp" alt="" width="480" height="400" loading="lazy"><span>Baño</span></label>
+              <label class="cq-opt"><input type="radio" name="tipo" value="Remodelación"><img src="img/cotizar/remodelacion.webp" alt="" width="480" height="400" loading="lazy"><span>Remodelación</span></label>
+            </div>
+          </fieldset>
+
+          <!-- Paso 2 -->
+          <fieldset class="cq-step" data-step="2" hidden>
+            <legend class="cq-q" tabindex="-1">¿Dónde y de qué tamaño?</legend>
+            <label class="cq-field">
+              <span class="cq-label">Medidas aproximadas <small>(opcional)</small></span>
+              <input type="text" name="medidas" placeholder="Ej. 2.40 m de largo" autocomplete="off" enterkeyhint="next">
+            </label>
+            <label class="cq-field">
+              <span class="cq-label">Tu colonia</span>
+              <input type="text" name="colonia" placeholder="Ej. Villas de la Universidad" autocomplete="address-level3" enterkeyhint="next" aria-describedby="cq-err">
+            </label>
+          </fieldset>
+
+          <!-- Paso 3 -->
+          <fieldset class="cq-step" data-step="3" hidden>
+            <legend class="cq-q" tabindex="-1">¿Cómo te llamas?</legend>
+            <label class="cq-field">
+              <span class="cq-label">Tu nombre</span>
+              <input type="text" name="nombre" placeholder="Nombre" autocomplete="given-name" enterkeyhint="send" aria-describedby="cq-err">
+            </label>
+            <dl class="cq-sum" aria-label="Resumen">
+              <div><dt>Quieres</dt><dd data-sum="tipo"></dd><button type="button" class="cq-edit" data-go="1">Cambiar</button></div>
+              <div><dt>Medidas</dt><dd data-sum="medidas"></dd><button type="button" class="cq-edit" data-go="2">Cambiar</button></div>
+              <div><dt>Colonia</dt><dd data-sum="colonia"></dd><button type="button" class="cq-edit" data-go="2">Cambiar</button></div>
+            </dl>
+          </fieldset>
+
+          <!-- Listo -->
+          <div class="cq-step cq-done" data-step="4" hidden>
+            <span class="cq-stamp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Listo</b><small>Closet&amp;Door</small></span>
+            <p class="cq-q" tabindex="-1">Revisa tu WhatsApp.</p>
+            <p class="cq-done-t">Tu mensaje ya va escrito. Solo dale enviar.</p>
+            <div class="cq-done-a">
+              <a class="cq-link" id="cq-again" href="#" target="_blank" rel="noopener">¿No se abrió? Ábrelo aquí <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <button type="button" class="cq-link" id="cq-reset">Hacer otra cotización</button>
+            </div>
+          </div>
+
+          <p class="cq-err" id="cq-err" role="alert" hidden></p>
+
+          <div class="cq-nav">
+            <button type="button" class="cq-back" id="cq-back" hidden><svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg>Atrás</button>
+            <button type="submit" class="cq-next" id="cq-next">Siguiente <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <button type="submit" class="k-btn cd-green cq-send" id="cq-send" hidden><svg><use href="#i-wa"/></svg>Enviar por WhatsApp</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>

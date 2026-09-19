@@ -1,0 +1,107 @@
+/* 06 · Los detalles tambien cuentan · close-ups reales con lupa, sobre nogal oscuro */
+#detalles {
+  --det-bg: #3a2517;
+  --det-cream: #f6eee2;
+  position: relative;
+  background-color: var(--det-bg);
+  background-image:
+    radial-gradient(110% 70% at 100% 0%, rgba(255, 214, 160, 0.12), transparent 60%),
+    radial-gradient(80% 60% at 0% 100%, rgba(0, 0, 0, 0.28), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' preserveAspectRatio='none'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.09' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.05  0 0 0 0 0.02  0 0 0 1.1 -0.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: auto, auto, 2400px 600px;
+  color: var(--det-cream);
+  overflow: hidden;
+  isolation: isolate;
+}
+/* cinta metrica en el borde superior */
+#detalles::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 12px;
+  color: rgba(246, 238, 226, 0.3);
+  background:
+    repeating-linear-gradient(to right, currentColor 0 1px, transparent 1px 8px) 0 0 / 100% 5px no-repeat,
+    repeating-linear-gradient(to right, currentColor 0 1px, transparent 1px 40px) 0 0 / 100% 12px no-repeat;
+  pointer-events: none;
+}
+#detalles .s-det-grid { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 26px; }
+#detalles .s-det-h { color: var(--det-cream); font-size: var(--fs-h2); line-height: 0.9; margin: 0; max-width: 11ch; }
+#detalles .s-det-h em { color: var(--brand-on-wood); }
+#detalles .s-det-hint { margin: 14px 0 0; font-size: 15px; line-height: 1.4; color: rgba(246, 238, 226, 0.72); max-width: 30ch; }
+
+/* ---------- Mosaico ---------- */
+#detalles .s-det-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; }
+#detalles .s-det-tile { margin: 0; min-width: 0; }
+#detalles .s-det-media {
+  position: relative; overflow: hidden; border-radius: 12px;
+  aspect-ratio: 4 / 5; background: #2a1a0f;
+  box-shadow: 0 0 0 1px rgba(246, 238, 226, 0.08), 0 22px 40px -26px rgba(0, 0, 0, 0.8);
+  cursor: zoom-in; touch-action: pan-y; -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+}
+/* Taste 9.A: nada de cursor propio; con la lupa abierta queda la cruz nativa */
+#detalles .s-det-media.is-zoom { touch-action: none; cursor: crosshair; }
+#detalles .s-det-media img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; transition: filter 0.3s var(--ease-out); }
+#detalles .s-det-media.is-zoom img { filter: brightness(0.7) saturate(0.9); }
+
+/* la lupa: un circulo con la foto ampliada y anillo crema */
+#detalles .s-det-lens {
+  --L: 132px;
+  position: absolute; left: 0; top: 0; width: var(--L); height: var(--L);
+  margin: calc(var(--L) / -2) 0 0 calc(var(--L) / -2);
+  border-radius: 50%;
+  background-repeat: no-repeat; background-color: #2a1a0f;
+  box-shadow: 0 0 0 2px var(--det-cream), 0 0 0 5px rgba(58, 37, 23, 0.55), 0 18px 36px -10px rgba(0, 0, 0, 0.7);
+  /* Emil: el JS pone transform directo en la lupa (no una variable en el padre) */
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+@media (min-width: 900px) { #detalles .s-det-lens { --L: 168px; } }
+
+#detalles .s-det-ico {
+  position: absolute; right: 9px; bottom: 9px; width: 34px; height: 34px; padding: 7px;
+  border-radius: 50%; background: rgba(42, 26, 15, 0.62); color: var(--det-cream);
+  fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  transition: opacity 0.2s var(--ease-out);
+}
+#detalles .s-det-media.is-zoom .s-det-ico { opacity: 0; }
+
+#detalles figcaption {
+  display: flex; align-items: baseline; gap: 8px; margin-top: 10px;
+  font-size: 15px; font-weight: 600; line-height: 1.25; color: var(--det-cream);
+}
+/* sin numeracion 01/02 (Impeccable craft-floor, Taste 9.F): una marca de lapiz de carpintero */
+#detalles figcaption::before { content: ""; flex: none; width: 14px; height: 2px; border-radius: 2px; background: var(--brand-on-wood); transform: translateY(-4px); }
+
+/* etiqueta que viaja pegada a la lupa (solo mouse) */
+#detalles .s-det-tag {
+  position: absolute; left: 0; top: 0; z-index: 2;
+  padding: 7px 12px 8px; border-radius: 999px; white-space: nowrap;
+  background: var(--det-cream); color: #2a1a0f; font-size: 13px; font-weight: 600; line-height: 1;
+  box-shadow: 0 10px 22px -12px rgba(0, 0, 0, 0.7);
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #detalles .s-det-media:hover { box-shadow: 0 0 0 1px rgba(246, 238, 226, 0.22), 0 26px 44px -24px rgba(0, 0, 0, 0.85); }
+}
+
+/* ---------- Compu: titulo a la izquierda, 3 x 2 a la derecha ---------- */
+@media (min-width: 900px) {
+  #detalles .s-det-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 8fr); column-gap: 56px; align-items: start; }
+  #detalles .s-det-head { padding-top: 6px; }
+  #detalles .s-det-h { max-width: none; }
+  #detalles .s-det-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px 18px; }
+  #detalles .s-det-tile:nth-child(3n+2) { transform: translateY(28px); }
+  #detalles .s-det-list { padding-bottom: 28px; }
+}
+
+/* ---------- Canto de la tabla: transicion al crema de Nosotros ----------
+   El borde inferior es el canto de un tablero: filo claro, veta fina y sombra. */
+#detalles::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 9px; pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(255, 226, 190, 0.34) 0 1px, transparent 1px),
+    repeating-linear-gradient(to right, rgba(58, 37, 23, 0.0) 0 22px, rgba(58, 37, 23, 0.35) 22px 23px, rgba(58, 37, 23, 0) 23px 61px),
+    linear-gradient(to bottom, #9a6a43, #7a5033 70%, #5e3b24);
+}
+/* La entrada (lupa que se abre) y el hover los mueve 06-detalles.js con GSAP.
+   Sin JS o sin GSAP todo queda visible: nada se esconde desde el CSS. */

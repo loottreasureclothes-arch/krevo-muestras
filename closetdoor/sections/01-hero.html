@@ -1,0 +1,63 @@
+  <section id="hero" class="s-hero" aria-label="Remodela tu espacio">
+    <div class="s-hero-media">
+      <div class="s-hero-par">
+        <figure class="s-hero-slide is-on" data-label="Cocina con isla">
+          <picture>
+            <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/cocina-d.webp" width="1600" height="1000">
+            <img src="img/hero/cocina-m.webp" alt="Cocina con isla y plafón de madera hecha por Closet&amp;Door" width="660" height="1430" fetchpriority="high" decoding="async">
+          </picture>
+        </figure>
+        <figure class="s-hero-slide" data-label="Vestidor">
+          <picture>
+            <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/vestidor-d.webp" width="1600" height="1000">
+            <img src="img/hero/vestidor-m.webp" alt="Vestidor de nogal con repisas y cajonera" width="660" height="1430" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="s-hero-slide" data-label="Mueble de baño">
+          <picture>
+            <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/bano-d.webp" width="1600" height="1000">
+            <img src="img/hero/bano-m.webp" alt="Mueble de baño flotante de nogal con cubierta de piedra" width="660" height="1430" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="s-hero-slide" data-label="Celosía de nogal">
+          <picture>
+            <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/celosia-d.webp" width="1600" height="1000">
+            <img src="img/hero/celosia-m.webp" alt="Celosía de lamas de nogal que divide el vestidor" width="660" height="1430" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <!-- VIDEO hecho solo con sus fotos reales (ffmpeg: movimiento de camara, disolvencias, grading calido, loop sin corte).
+             Vertical 720x1280 para celular y 1920x1080 para compu; el JS elige, lo mete en la primera foto para que lo revelen
+             las tablas y hace que la regla siga el video. data-segs = segundo en que empieza cada proyecto (y el regreso al 1).
+             Receta para rehacerlo: research/hero-video.py. Si no puede reproducirse, siguen las fotos. -->
+        <video class="s-hero-video" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-poster-m="img/hero/poster-m.webp" data-poster-d="img/hero/poster-d.webp" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" aria-hidden="true" tabindex="-1" hidden></video>
+      </div>
+    </div>
+    <div class="s-hero-shade" aria-hidden="true"></div>
+
+    <div class="s-hero-in">
+      <div class="s-hero-copy">
+        <h1 class="s-hero-title" aria-label="Remodela tu espacio."><span class="s-w"><span>Remodela</span></span> <span class="s-nw"><span class="s-w"><span>tu</span></span> <span class="s-w"><span><em>espacio.</em></span></span></span></h1>
+        <p class="s-hero-sub"><span class="s-hero-sub-l">Cocinas, closets, puertas y muebles a la medida. </span>Diseñamos, fabricamos e instalamos.</p>
+        <ul class="s-hero-chips" aria-label="Ver trabajos por tipo">
+          <li><a href="#trabajos" data-go="1">Cocinas</a></li>
+          <li><a href="#trabajos" data-go="0">Closets</a></li>
+          <li><a href="#trabajos" data-go="2">Puertas</a></li>
+          <li><a href="#trabajos" data-go="4">Muebles</a></li>
+          <li><a href="#trabajos" data-go="3">Remodelaciones</a></li>
+        </ul>
+        <div class="s-hero-actions">
+          <a class="k-btn cd-green" data-wa="Hola Closet&Door, quiero agendar mi diseño." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Agenda tu diseño</a>
+        </div>
+      </div>
+
+      <div class="s-hero-rule" role="group" aria-label="Proyectos reales">
+        <p class="s-hero-cap" aria-live="polite"><span class="s-hero-n">01</span><span class="s-hero-lbl">Cocina con isla</span><small>Proyecto real</small></p>
+        <div class="s-hero-ticks">
+          <button type="button" class="is-on" aria-label="Ver cocina" aria-current="true"><i></i></button>
+          <button type="button" aria-label="Ver vestidor"><i></i></button>
+          <button type="button" aria-label="Ver mueble de baño"><i></i></button>
+          <button type="button" aria-label="Ver celosía"><i></i></button>
+        </div>
+      </div>
+    </div>
+  </section>

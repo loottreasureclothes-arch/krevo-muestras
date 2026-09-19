@@ -1,0 +1,92 @@
+/* ============ 13 · Visítanos ============
+   Fondo blanco cálido (la cotización de arriba es crema y el cierre de abajo es foto con capa café):
+   el único café aquí es el marco de madera del mapa. */
+#visitanos { background: var(--bg-warm); color: var(--ink); padding: var(--sec-y) 0 calc(var(--sec-y) + 8px); }
+#visitanos .cd-h2 { font-size: var(--fs-h2); margin-bottom: 10px; }
+#visitanos .vs-grid { display: grid; gap: 36px; }
+@media (min-width: 900px) { #visitanos .vs-grid { grid-template-columns: 5fr 7fr; gap: 64px; align-items: center; } }
+
+#visitanos .vs-addr { font-style: normal; display: grid; gap: 2px; margin: 0 0 var(--head-gap); font-size: 19px; line-height: 1.35; color: var(--mute); }
+#visitanos .vs-addr span:first-child { color: var(--ink); font-weight: 600; font-size: 22px; }
+@media (min-width: 900px) { #visitanos .vs-addr { font-size: 21px; } #visitanos .vs-addr span:first-child { font-size: 28px; } }
+
+#visitanos .vs-actions { display: grid; gap: 10px; max-width: 420px; }
+#visitanos .vs-main { width: 100%; min-height: 56px; }
+#visitanos .vs-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+#visitanos .vs-out {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 14px;
+  border-radius: 999px; border: 1.5px solid rgba(17, 17, 17, 0.2); color: var(--ink);
+  font-weight: 600; font-size: 16px; text-decoration: none;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation; -webkit-user-select: none; user-select: none;
+  transition: border-color 200ms var(--ease-out), background-color 200ms var(--ease-out), transform 160ms var(--ease-out);
+}
+#visitanos .vs-out svg { width: 19px; height: 19px; flex: none; color: var(--wood); }
+#visitanos .vs-out:active { transform: scale(0.97); }
+#visitanos .vs-out:focus-visible, #visitanos .vs-fb:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  #visitanos .vs-out:hover { border-color: var(--ink); background: rgba(90, 58, 36, 0.05); }
+  #visitanos .vs-fb:hover svg { transform: translateX(3px); }
+}
+
+#visitanos .vs-fb {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; width: max-content; margin-top: 18px;
+  color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(17, 17, 17, 0.3); text-underline-offset: 4px;
+}
+#visitanos .vs-fb svg { color: var(--brand); transition: transform 200ms var(--ease-out); }
+
+/* ---------- Mapa en marco de madera (4 largueros a inglete) ---------- */
+#visitanos .vs-map { position: relative; margin: 0; }
+#visitanos .vs-map-in {
+  --rail: 12px;
+  position: relative; border-radius: 20px; padding: var(--rail); overflow: hidden;
+  background: #3a2515; /* fondo del rebaje, se ve solo mientras se arma */
+  box-shadow: 0 30px 60px -32px rgba(60, 36, 18, 0.55), 0 2px 6px rgba(60, 36, 18, 0.18);
+}
+@media (min-width: 900px) { #visitanos .vs-map-in { --rail: 14px; border-radius: 22px; } }
+#visitanos .vs-rail { position: absolute; z-index: 2; pointer-events: none; }
+/* la madera va en ::before para que el inglete (clip-path) y la entrada (transform) no choquen */
+#visitanos .vs-rail::before {
+  content: ""; position: absolute; inset: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 228, 188, 0.22), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+#visitanos .vs-rail--t, #visitanos .vs-rail--b { left: 0; right: 0; height: var(--rail); }
+#visitanos .vs-rail--l, #visitanos .vs-rail--r { top: 0; bottom: 0; width: var(--rail); }
+#visitanos .vs-rail--t { top: 0; }
+#visitanos .vs-rail--b { bottom: 0; }
+#visitanos .vs-rail--l { left: 0; }
+#visitanos .vs-rail--r { right: 0; }
+/* veta a lo largo de cada larguero */
+#visitanos .vs-rail--t::before, #visitanos .vs-rail--b::before {
+  background:
+    repeating-linear-gradient(178deg, rgba(0, 0, 0, 0.09) 0 1px, transparent 1px 3px, rgba(255, 220, 170, 0.07) 3px 4px, transparent 4px 7px),
+    linear-gradient(180deg, #936340, #7a5033 55%, #5e3c25);
+}
+#visitanos .vs-rail--l::before, #visitanos .vs-rail--r::before {
+  background:
+    repeating-linear-gradient(88deg, rgba(0, 0, 0, 0.09) 0 1px, transparent 1px 3px, rgba(255, 220, 170, 0.07) 3px 4px, transparent 4px 7px),
+    linear-gradient(90deg, #8a5c3b, #714a2e 55%, #573822);
+}
+#visitanos .vs-rail--t::before { clip-path: polygon(0 0, 100% 0, calc(100% - var(--rail)) 100%, var(--rail) 100%); }
+#visitanos .vs-rail--b::before { clip-path: polygon(var(--rail) 0, calc(100% - var(--rail)) 0, 100% 100%, 0 100%); }
+#visitanos .vs-rail--l::before { clip-path: polygon(0 0, 100% var(--rail), 100% calc(100% - var(--rail)), 0 100%); }
+#visitanos .vs-rail--r::before { clip-path: polygon(0 var(--rail), 100% 0, 100% 100%, 0 calc(100% - var(--rail))); }
+
+#visitanos .vs-map-view { position: relative; z-index: 1; border-radius: 6px; overflow: hidden; background: #e9e1d4; }
+/* sombra del rebaje sobre el mapa: profundidad del marco */
+#visitanos .vs-map-view::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  box-shadow: inset 0 2px 7px rgba(40, 22, 10, 0.4), inset 0 0 0 1px rgba(40, 22, 10, 0.25);
+}
+#visitanos .vs-map iframe { display: block; width: 100%; height: 300px; border: 0; filter: saturate(0.85) sepia(0.1); }
+@media (min-width: 900px) { #visitanos .vs-map iframe { height: 440px; } }
+
+/* Pin propio: cae con un rebote sutil exactamente sobre el pin de Google (centro del mapa) y luego le cede el lugar */
+#visitanos .vs-pin {
+  position: absolute; left: 50%; top: 50%; z-index: 2; width: 26px; height: 37px; margin: -37px 0 0 -13px;
+  pointer-events: none; visibility: hidden; transform-origin: 50% 100%;
+}
+#visitanos .vs-pin svg { display: block; width: 100%; height: 100%; filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3)); }
+#visitanos .vs-pin-ring {
+  position: absolute; left: 50%; bottom: -5px; width: 34px; height: 12px; margin-left: -17px;
+  border-radius: 50%; border: 2px solid rgba(200, 30, 36, 0.55); opacity: 0;
+}

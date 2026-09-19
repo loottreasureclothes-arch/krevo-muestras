@@ -7,8 +7,7 @@
 <meta name="description" content="La México Gran Cantina, Blvd. Colosio 409, Aguascalientes. Botana, tragos, música en vivo. Abierto diario de 1 pm a 1 am. Reserva por WhatsApp.">
 <meta name="theme-color" content="#74121f">
 <script>document.documentElement.classList.add("k-js","lm-js");</script>
-<link rel="preload" as="image" href="fotos/hero_barra_m.webp" media="(max-width: 899px)">
-<link rel="preload" as="image" href="fotos/hero_barra_d.webp" media="(min-width: 900px)">
+<link rel="preload" as="image" href="fotos/ig_parrillada_hd.webp">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -47,11 +46,10 @@
   <!-- HERO: foto real a pantalla completa (listo para <video poster>) -->
   <section class="lm-hero" data-dark>
     <div class="lm-hero-media" aria-hidden="true">
-      <picture>
-        <source media="(min-width: 900px)" srcset="fotos/hero_barra_d.webp" width="1600" height="1200">
-        <img src="fotos/hero_barra_m.webp" alt="" width="800" height="1290" fetchpriority="high">
-      </picture>
-      <!-- Para video: <video autoplay muted loop playsinline poster="fotos/hero_barra_d.webp"><source src="video/hero.mp4" type="video/mp4"></video> -->
+      <!-- Para video: reemplazar las 3 capas por <video autoplay muted loop playsinline poster="fotos/ig_parrillada_hd.webp"><source src="video/hero.mp4" type="video/mp4"></video> -->
+      <div class="lm-hm"><img src="fotos/ig_parrillada_hd.webp" alt="" width="960" height="1280" fetchpriority="high"></div>
+      <div class="lm-hm"><img src="fotos/ig_cerveza_barril_hd.webp" alt="" width="960" height="1280"></div>
+      <div class="lm-hm"><img src="fotos/ig_terceras_hd.webp" alt="" width="960" height="900"></div>
     </div>
     <div class="k-wrap lm-hero-in">
       <h1 class="lm-hero-title"><span class="lm-w"><span>La</span></span> <span class="lm-w"><span>gran</span></span> <span class="lm-w"><span>cantina.</span></span></h1>
@@ -86,7 +84,7 @@
             <div class="lm-slide-copy"><h3>Tacos de arrachera</h3><p>Arrachera prime. 2x1 martes y miércoles.</p><a class="k-btn lm-btn-wa" href="https://wa.me/524491201728?text=Hola%2C%20quiero%20reservar%20mesa%20para%20la%20promo%20de%20tacos%20de%20arrachera%202x1." target="_blank" rel="noopener">Reservar</a></div>
           </article>
           <article class="lm-slide" aria-label="3 de 4">
-            <div class="lm-slide-img"><img src="fotos/ig_bebida_modelo_hd.webp" alt="Trago de la casa en La México" width="960" height="1280" loading="lazy" draggable="false"></div>
+            <div class="lm-slide-img"><img src="fotos/ig_terceras_hd.webp" alt="Tres tragos de la casa en vasos con el toro de La México" width="960" height="900" loading="lazy" draggable="false"></div>
             <div class="lm-slide-copy"><h3>2x1 en copas</h3><p>Todos los días, de 1 a 8 pm.</p><a class="k-btn lm-btn-wa" href="https://wa.me/524491201728?text=Hola%2C%20quiero%20reservar%20mesa%20en%20La%20M%C3%A9xico%20Gran%20Cantina%20%28Colosio%29." target="_blank" rel="noopener">Reservar</a></div>
           </article>
           <article class="lm-slide" aria-label="4 de 4">
@@ -108,7 +106,7 @@
   <section class="lm-split" id="cantina">
     <div class="k-wrap lm-split-grid">
       <figure class="lm-split-photo" data-reveal="clip">
-        <img src="fotos/salon_split.webp" alt="Salón con cabezas de toro en la pared" width="900" height="1200" loading="lazy">
+        <img src="fotos/salon_split.webp" alt="Cabezas de toro en la pared de ladrillo del salón" width="1200" height="600" loading="lazy">
       </figure>
       <div class="lm-split-copy">
         <h2 class="lm-h2" data-reveal>Fiesta brava.</h2>
@@ -172,6 +170,7 @@
         <div class="k-menu-panel" role="tabpanel" hidden><ul>
             <li><span class="k-mi-name">Parrillada La México</span><span class="k-mi-desc">Arrachera, pollo, chistorra, papa horno, nopales y cebollas</span><span class="k-mi-price">$975</span></li>
             <li><span class="k-mi-name">Parrillada Especial</span><span class="k-mi-desc">Arrachera, rib-eye y new york</span><span class="k-mi-price">$1,245</span></li>
+            <li><span class="k-mi-name">Parrillada Texana</span><span class="k-mi-desc">Costillas BBQ, alitas, elotes, papas gajo y dedos de queso</span><span class="k-mi-price">$955</span></li>
             <li><span class="k-mi-name">Rib Eye Nacional</span><span class="k-mi-desc">350 g en crudo</span><span class="k-mi-price">$360</span></li>
             <li><span class="k-mi-name">Rib Eye Importado</span><span class="k-mi-desc">Black angus, 350 g</span><span class="k-mi-price">$525</span></li>
             <li><span class="k-mi-name">New York</span><span class="k-mi-desc">350 g en crudo</span><span class="k-mi-price">$340</span></li>
@@ -225,7 +224,7 @@
         <label class="lm-field lm-field--full">
           <span>Hora</span>
           <select name="hora" required>
-            <option value="" disabled selected>¿A qué hora?</option><option>1:00 pm</option><option>1:30 pm</option><option>2:00 pm</option><option>2:30 pm</option><option>3:00 pm</option><option>3:30 pm</option><option>4:00 pm</option><option>4:30 pm</option><option>5:00 pm</option><option>5:30 pm</option><option>6:00 pm</option><option>6:30 pm</option><option>7:00 pm</option><option>7:30 pm</option><option>8:00 pm</option><option>8:30 pm</option><option>9:00 pm</option><option>9:30 pm</option><option>10:00 pm</option><option>10:30 pm</option><option>11:00 pm</option><option>11:30 pm</option><option>12:00 am</option><option>12:30 am</option>
+            <option value="" disabled selected>¿A qué hora?</option><option>1:00 pm</option><option>1:30 pm</option><option>2:00 pm</option><option>2:30 pm</option><option>3:00 pm</option><option>3:30 pm</option><option>4:00 pm</option><option>4:30 pm</option><option>5:00 pm</option><option>5:30 pm</option><option>6:00 pm</option><option>6:30 pm</option><option>7:00 pm</option><option>7:30 pm</option><option>8:00 pm</option><option>8:30 pm</option><option>9:00 pm</option><option>9:30 pm</option><option>10:00 pm</option><option>10:30 pm</option><option>11:00 pm</option><option>11:30 pm</option><option value="12:00 am">12:00 am (medianoche)</option><option value="12:30 am">12:30 am (madrugada)</option>
           </select>
         </label>
         <p class="lm-form-err" role="alert" hidden>Llena los cuatro datos para armar tu mensaje.</p>
@@ -234,19 +233,6 @@
           Enviar por WhatsApp
         </button>
       </form>
-    </div>
-  </section>
-
-  <!-- GALERIA -->
-  <section class="lm-sec lm-gallery" id="galeria">
-    <div class="k-wrap">
-      <h2 class="lm-h2" data-reveal>Así se vive.</h2>
-      <div class="lm-cards" id="lm-cards" data-reveal-stagger>
-        <figure class="lm-card"><img src="fotos/ta_15.webp" alt="Michelada, cerveza y totopos en la mesa" width="720" height="900" loading="lazy"><figcaption>Michelada y botana</figcaption></figure>
-        <figure class="lm-card"><img src="fotos/ta_32.webp" alt="Tacos servidos en La México" width="720" height="900" loading="lazy"><figcaption>Tacos</figcaption></figure>
-        <figure class="lm-card"><img src="fotos/ta_2c.webp" alt="Botanas servidas en La México" width="720" height="900" loading="lazy"><figcaption>Pa’ picar</figcaption></figure>
-        <figure class="lm-card"><img src="fotos/ta_20.webp" alt="Platillo servido en La México" width="720" height="900" loading="lazy"><figcaption>De la cocina</figcaption></figure>
-      </div>
     </div>
   </section>
 
@@ -264,6 +250,7 @@
           <a class="k-btn lm-ghost-light" href="https://www.google.com/maps/place/La+M%C3%A9xico+Gran+Cantina/data=!4m7!3m6!1s0x8429ef042f54dd2f:0x11cfda67ffc6a830!8m2!3d21.924469!4d-102.305629" target="_blank" rel="noopener">Ver reseñas en Google</a>
         </div>
       </div>
+      <p class="lm-quotes-src">Opiniones publicadas en Wanderlog</p>
       <div class="lm-quotes" data-reveal-stagger>
         <figure class="lm-quote"><blockquote>“Buen lugar para grupos grandes y para tomar. Te llevan botana gratis a la mesa mientras sigas pidiendo bebidas.”</blockquote><figcaption>Scott L., feb 2019 · vía Wanderlog (traducida del inglés)</figcaption></figure>
         <figure class="lm-quote"><blockquote>“Las entradas, perfectas y tradicionales. Nuestro mesero, muy atento.”</blockquote><figcaption>Daniel R., jul 2022 · vía Wanderlog (traducida del inglés)</figcaption></figure>

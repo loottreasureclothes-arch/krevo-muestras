@@ -1,0 +1,100 @@
+/* 07 NOSOTROS · ¿Quiénes somos? (banda crema; la foto va en un marco café) */
+#nosotros { position: relative; overflow: hidden; background: var(--bg-cream); color: var(--ink); }
+/* sombra suave que deja el canto de la tabla de Detalles sobre el crema */
+#nosotros::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 30px; pointer-events: none; background: linear-gradient(to bottom, rgba(46, 29, 17, 0.13), rgba(46, 29, 17, 0)); }
+#nosotros .s-nos-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+#nosotros .s-nos-h { color: var(--ink); margin: 0 0 18px; }
+
+/* El 40 gigante */
+#nosotros .s-nos-40 { display: grid; grid-template-columns: auto 1fr; align-items: end; column-gap: 14px; margin: 0 0 26px; }
+#nosotros .s-nos-num { position: relative; display: grid; margin: 0; font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; font-weight: 900; font-size: clamp(168px, 52vw, 380px); line-height: 1; letter-spacing: -0.035em; color: var(--wood); font-variant-numeric: tabular-nums; --row: 0.78em; }
+/* dos capas en la misma celda: los rodillos (cafe liso) y encima la veta real que se "cepilla" */
+#nosotros .s-nos-odo, #nosotros .s-nos-grain { grid-area: 1 / 1; display: flex; margin: 0; }
+/* cada digito recorta solo arriba y abajo (el tracking negativo no se corta) */
+/* ventana = alto del numero (0.78em): asi no se asoman los vecinos del rodillo */
+#nosotros .s-nos-dig { display: block; height: var(--row); line-height: var(--row); overflow-x: visible; overflow-y: clip; }
+#nosotros .s-nos-reel { display: block; }
+#nosotros .s-nos-reel > span { display: block; height: var(--row); }
+#nosotros .s-nos-grain {
+  color: transparent;
+  /* veta real de sus puertas, teñida a nogal con multiply para que lea fuerte sobre el crema */
+  background: url("../img/detalles/veta.webp") 50% 40% / cover, #86552f;
+  background-blend-mode: multiply;
+  -webkit-background-clip: text; background-clip: text;
+}
+#nosotros .s-nos-unit { margin: 0 0 4px; display: grid; gap: 6px; }
+#nosotros .s-nos-unit b { font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; text-transform: uppercase; font-weight: 800; font-size: clamp(30px, 8.6vw, 56px); line-height: 0.9; color: var(--brand); }
+#nosotros .s-nos-unit span { font-size: 15px; line-height: 1.25; color: var(--mute); max-width: 11ch; }
+/* regla de carpintero bajo el número */
+#nosotros .s-nos-rule { grid-column: 1 / -1; display: block; height: 11px; margin-top: 16px; color: rgba(17, 17, 17, 0.32);
+  background: repeating-linear-gradient(to right, currentColor 0 1px, transparent 1px 8px) 0 0 / 100% 6px no-repeat,
+              repeating-linear-gradient(to right, currentColor 0 1px, transparent 1px 40px) 0 0 / 100% 11px no-repeat;
+  transform-origin: 0 50%; }
+
+/* Foto real de obra */
+#nosotros .s-nos-fig { position: relative; margin: 0 0 30px; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; max-height: 52svh; width: 100%; padding: 10px; box-shadow: 0 30px 60px -30px rgba(58, 37, 23, 0.55); isolation: isolate; }
+#nosotros .s-nos-fig img { position: relative; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; border-radius: calc(var(--radius) - 10px); }
+/* el marco son 4 tablas de nogal: se arman una tras otra (JS); sin JS ya estan puestas */
+#nosotros .s-nos-bar {
+  position: absolute; z-index: 1; background-color: var(--wood);
+  background-image:
+    linear-gradient(var(--bev, to bottom), rgba(255, 220, 180, 0.2), transparent 45%, rgba(0, 0, 0, 0.22)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.09' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.12  0 0 0 0 0.06  0 0 0 0 0.02  0 0 0 1.1 -0.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: auto, 600px 600px;
+}
+#nosotros .s-nos-bar--t { left: 0; right: 0; top: 0; height: 10px; transform-origin: 0 50%; }
+#nosotros .s-nos-bar--b { left: 0; right: 0; bottom: 0; height: 10px; transform-origin: 100% 50%; --bev: to top; }
+#nosotros .s-nos-bar--r { top: 0; bottom: 0; right: 0; width: 10px; transform-origin: 50% 0; --bev: to left; }
+#nosotros .s-nos-bar--l { top: 0; bottom: 0; left: 0; width: 10px; transform-origin: 50% 100%; --bev: to right; }
+#nosotros .s-nos-tag { position: absolute; left: 22px; top: 22px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 9px; border-radius: 999px; background: rgba(246, 238, 226, 0.94); color: var(--ink); font-weight: 600; font-size: 13px; line-height: 1; }
+#nosotros .s-nos-tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--brand); }
+
+/* Texto */
+#nosotros .s-nos-lead { margin: 0 0 24px; font-size: 20px; line-height: 1.35; color: var(--ink); max-width: 30ch; text-wrap: balance; }
+#nosotros .s-nos-lead span { color: var(--mute); }
+#nosotros .s-nos-100 { display: flex; align-items: baseline; gap: 12px; margin: 0 0 26px; padding-top: 18px; border-top: 1px solid rgba(17, 17, 17, 0.12); }
+#nosotros .s-nos-100 b { font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; font-weight: 900; font-size: 64px; line-height: 0.85; color: var(--ink); }
+#nosotros .s-nos-100 span { font-size: 18px; color: var(--mute); }
+#nosotros .s-nos-sign { position: relative; display: inline-block; margin: 0 0 22px; font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; text-transform: uppercase; font-weight: 800; font-size: 34px; line-height: 1; color: var(--ink); padding-bottom: 12px; }
+#nosotros .s-nos-swash { position: absolute; left: -2px; right: -4px; bottom: -2px; width: calc(100% + 6px); height: 14px; overflow: visible; }
+#nosotros .s-nos-swash path { fill: none; stroke: var(--brand); stroke-width: 3.2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+#nosotros .s-nos-addr { display: flex; align-items: center; gap: 10px; min-height: 44px; color: var(--mute); font-size: 15px; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+#nosotros .s-nos-addr svg { width: 20px; height: 20px; flex: none; fill: none; stroke: var(--brand); stroke-width: 1.8; }
+@media (hover: hover) and (pointer: fine) {
+  #nosotros .s-nos-addr { transition: color 200ms var(--ease-out); }
+  #nosotros .s-nos-addr:hover { color: var(--ink); }
+}
+
+/* Compu: foto a la izquierda, 40 enorme a la derecha */
+@media (min-width: 900px) {
+  #nosotros .s-nos-grid { grid-template-columns: 5fr 6fr; grid-template-areas: "fig h" "fig n" "fig c"; column-gap: 88px; align-items: start; }
+  #nosotros .s-nos-h { grid-area: h; margin-bottom: 26px; }
+  #nosotros .s-nos-40 { grid-area: n; margin-bottom: 34px; column-gap: 22px; }
+  #nosotros .s-nos-fig { grid-area: fig; margin: 0; max-height: 720px; align-self: stretch; aspect-ratio: auto; min-height: 620px; }
+  #nosotros .s-nos-copy { grid-area: c; }
+  #nosotros .s-nos-num { font-size: clamp(240px, 21vw, 330px); }
+  #nosotros .s-nos-unit span { font-size: 17px; }
+  #nosotros .s-nos-lead { font-size: 23px; }
+  #nosotros .s-nos-copy { display: grid; grid-template-columns: auto 1fr; column-gap: 48px; align-items: end; }
+  #nosotros .s-nos-lead { grid-column: 1 / -1; }
+  #nosotros .s-nos-100 { margin-bottom: 0; }
+  #nosotros .s-nos-sign { font-size: 40px; margin: 0; justify-self: start; }
+  #nosotros .s-nos-addr { grid-column: 1 / -1; margin-top: 18px; }
+}
+
+/* Animación de entrada, una sola vez.
+   El 40 (rodillos + veta), la regla y el marco que se arma los mueve 07-nosotros.js con GSAP;
+   el CSS solo esconde los bloques de texto, que el JS muestra con IntersectionObserver. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  #nosotros .s-nos-h, #nosotros .s-nos-unit, #nosotros .s-nos-lead, #nosotros .s-nos-100, #nosotros .s-nos-sign, #nosotros .s-nos-addr { opacity: 0; transform: translateY(20px); transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out); }
+  #nosotros .s-nos-swash path { stroke-dashoffset: 1; transition: stroke-dashoffset 600ms var(--ease-out) 550ms; }
+
+  #nosotros .s-nos-h.is-in, #nosotros .is-in .s-nos-unit,
+  #nosotros .is-in .s-nos-lead, #nosotros .is-in .s-nos-100, #nosotros .is-in .s-nos-sign, #nosotros .is-in .s-nos-addr { opacity: 1; transform: none; }
+  #nosotros .is-in .s-nos-unit { transition-delay: 450ms; }
+  #nosotros .is-in .s-nos-lead { transition-delay: 80ms; }
+  #nosotros .is-in .s-nos-100 { transition-delay: 160ms; }
+  #nosotros .is-in .s-nos-sign { transition-delay: 240ms; }
+  #nosotros .is-in .s-nos-addr { transition-delay: 320ms; }
+  #nosotros .is-in .s-nos-swash path { stroke-dashoffset: 0; }
+}

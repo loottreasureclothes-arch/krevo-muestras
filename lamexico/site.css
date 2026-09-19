@@ -432,3 +432,73 @@ body[data-hero-dark] .k-header:not(.is-solid) .k-cta {
   .lm-hero { padding-bottom: calc(86px + env(safe-area-inset-bottom)); }
   .lm-facts b { font-size: 1.02rem; }
 }
+
+/* =====================  Ronda 3  ===================== */
+/* Hero: 3 fotos reales. Celular: fundido lento entre ellas. Compu: triptico. */
+.lm-hero-media { display: block; }
+.lm-hm { position: absolute; inset: 0; overflow: hidden; }
+.lm-hm img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; transform: scale(1.12); }
+.lm-hm + .lm-hm { opacity: 0; }
+.lm-hero-media::after {
+  background: linear-gradient(180deg, rgba(40, 6, 12, 0.5) 0%, rgba(40, 6, 12, 0.08) 26%, rgba(60, 8, 16, 0.35) 52%, rgba(66, 9, 18, 0.86) 80%, rgba(66, 9, 18, 0.94) 100%);
+  z-index: 1;
+}
+@keyframes lm-xf2 { 0%, 30% { opacity: 0; } 36%, 63% { opacity: 1; } 69%, 100% { opacity: 0; } }
+@keyframes lm-xf3 { 0%, 63% { opacity: 0; } 69%, 94% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes lm-drift { from { transform: scale(1.02); } to { transform: scale(1.08) translate3d(-1%, -1%, 0); } }
+@media (prefers-reduced-motion: no-preference) {
+  .lm-js .lm-hm img { animation: lm-kb 1600ms var(--ease-out) both, lm-drift 18s ease-in-out 1600ms infinite alternate; }
+  .lm-js .lm-hm:nth-child(2) { animation: lm-xf2 21s ease-in-out 2s infinite; }
+  .lm-js .lm-hm:nth-child(3) { animation: lm-xf3 21s ease-in-out 2s infinite; }
+}
+@media (min-width: 900px) {
+  .lm-hero-media { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .lm-hm { position: relative; inset: auto; }
+  .lm-hm + .lm-hm { opacity: 1; }
+  .lm-js .lm-hm:nth-child(2), .lm-js .lm-hm:nth-child(3) { animation: none; opacity: 1; }
+  .lm-hm + .lm-hm::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 1px; background: rgba(0,0,0,.35); z-index: 1; }
+  .lm-js .lm-hm:nth-child(2) img { animation-delay: 120ms, 1700ms; }
+  .lm-js .lm-hm:nth-child(3) img { animation-delay: 240ms, 1800ms; }
+  .lm-hero-media::after {
+    background:
+      linear-gradient(90deg, rgba(66, 9, 18, 0.9) 0%, rgba(66, 9, 18, 0.62) 34%, rgba(66, 9, 18, 0.12) 68%, rgba(66, 9, 18, 0.05) 100%),
+      linear-gradient(180deg, rgba(40, 6, 12, 0.45) 0%, rgba(40, 6, 12, 0) 22%, rgba(40, 6, 12, 0) 70%, rgba(40, 6, 12, 0.55) 100%);
+  }
+}
+
+/* Fiesta brava: recorte panorámico de los toros */
+.lm-split-photo img { height: auto; max-height: none; aspect-ratio: 4 / 3; }
+@media (min-width: 900px) { .lm-split-photo img { aspect-ratio: 16 / 10; } .lm-split-grid { grid-template-columns: 7fr 5fr; } }
+
+/* Carrusel: sangra a la orilla, sin fantasmas, foto grande */
+.lm-car-track { position: relative; }
+.lm-car-track.is-dragging, .lm-car-track.is-dragging * { user-select: none; -webkit-user-select: none; }
+.lm-slide { transition: visibility 0s; }
+@media (min-width: 900px) {
+  .lm-car-track {
+    margin-right: calc((100% - 100vw) / 2);
+    padding-right: 0;
+    -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 140px), transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 140px), transparent 100%);
+  }
+  .lm-slide { flex-basis: min(1040px, 80vw); grid-template-columns: 7fr 4fr; gap: 40px; }
+  .lm-slide-img { aspect-ratio: 5 / 4; max-height: 600px; }
+}
+
+/* WhatsApp flotante no tapa CTAs */
+.k-wa { transition: opacity 250ms var(--ease-out), transform 160ms var(--ease-out); }
+@media (max-width: 899px) { body.lm-hide-wa .k-wa { visibility: hidden; opacity: 0 !important; pointer-events: none; } }
+
+/* Reseñas */
+.lm-quotes-src { margin-top: 28px; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mute); font-weight: 600; }
+.lm-quotes { margin-top: 12px; }
+
+/* Momento firma: los 2x1 entran como sello */
+@keyframes lm-stamp { 0% { opacity: 0; transform: scale(0.92) rotate(-4deg); } 60% { opacity: 1; } 100% { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .lm-js .lm-promo b { display: inline-block; opacity: 0; transform-origin: 30% 60%; }
+  .lm-js .lm-promo-list.is-in .lm-promo b { animation: lm-stamp 450ms var(--ease-out) both; }
+  .lm-js .lm-promo-list.is-in .lm-promo:nth-child(1) b { animation-delay: 250ms; }
+  .lm-js .lm-promo-list.is-in .lm-promo:nth-child(2) b { animation-delay: 340ms; }
+  .lm-js .lm-promo-list.is-in .lm-promo:nth-child(3) b { animation-delay: 430ms; }
+}

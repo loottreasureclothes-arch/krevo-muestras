@@ -51,8 +51,8 @@
         "Hola, quiero reservar una mesa en La México Gran Cantina (Colosio).\n" +
         "Nombre: " + nombre + "\n" +
         "Personas: " + personas + "\n" +
-        "Día: " + fechaBonita(d) + "\n" +
-        "Hora: " + h;
+        "Día: " + (/am/.test(h) ? "noche del " : "") + fechaBonita(d) + "\n" +
+        "Hora: " + h + (h === "12:00 am" ? " (medianoche)" : /^12:30 am/.test(h) ? " (madrugada)" : "");
       window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
     });
   }
@@ -95,6 +95,16 @@
       dotsWrap.appendChild(b);
       return b;
     });
+    var spacer = document.createElement("div");
+    spacer.className = "lm-car-spacer"; spacer.setAttribute("aria-hidden", "true");
+    track.appendChild(spacer);
+    function sizeSpacer() {
+      var cs = getComputedStyle(track), last = slides[slides.length - 1];
+      var w = track.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0) - last.offsetWidth - (parseFloat(cs.columnGap || cs.gap) || 0);
+      spacer.style.flex = "0 0 " + Math.max(0, w) + "px";
+    }
+    sizeSpacer();
+    window.addEventListener("resize", sizeSpacer);
     function pad(n) { return (n < 10 ? "0" : "") + n; }
     function base() { return parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0; }
     function go(i) {
@@ -115,7 +125,8 @@
         if (Math.abs(d) < bestD) { bestD = Math.abs(d); best = k; }
         if (!reduce) {
           s.style.setProperty("--s", (1 - ad * 0.06).toFixed(4));
-          s.style.setProperty("--o", Math.max(0.15, d < 0 ? 1 - ad * 2.2 : 1 - ad * 0.75).toFixed(3));
+          s.style.setProperty("--o", Math.max(0, d < 0 ? 1 - ad * 3 : 1 - ad * 0.75).toFixed(3));
+          s.style.visibility = d < -0.6 ? "hidden" : "";
         }
       });
       setActive(best);
@@ -169,7 +180,19 @@
     frame();
   }
 
-  function boot() { init(); initHeaderTone(); initCarousel(); }
+  /* En celular el boton flotante se esconde mientras hay CTAs de WhatsApp en pantalla */
+  function initWaHide() {
+    if (!("IntersectionObserver" in window)) return;
+    var targets = document.querySelectorAll("#reserva .lm-form, .lm-car");
+    var on = new Set();
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) on.add(e.target); else on.delete(e.target); });
+      document.body.classList.toggle("lm-hide-wa", on.size > 0);
+    }, { threshold: 0.15 });
+    Array.prototype.forEach.call(targets, function (t) { io.observe(t); });
+  }
+
+  function boot() { init(); initHeaderTone(); initCarousel(); initWaHide(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();

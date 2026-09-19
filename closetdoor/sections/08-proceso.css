@@ -1,0 +1,87 @@
+/* 08 PROCESO · Diseño, Fabricación, Instalación con cinta métrica */
+#proceso { background: #f6f1ea; color: var(--ink); overflow: hidden; }
+#proceso .s-proc-h { margin: 0 0 34px; }
+#proceso .s-proc-body { position: relative; }
+
+/* ---- Cinta métrica (celular: baja por la izquierda) ---- */
+#proceso .s-tape { position: absolute; left: 0; top: 0; bottom: 0; width: 56px; pointer-events: none; }
+#proceso .s-tape-case { position: absolute; z-index: 2; left: 0; top: 0; width: 56px; height: 56px; border-radius: 16px 16px 16px 6px; background: #1b1714; box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.35), 0 10px 18px -10px rgba(40, 24, 12, 0.7); }
+#proceso .s-tape-case::after { content: ""; position: absolute; right: 8px; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--brand); }
+#proceso .s-tape-case i { position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; border: 2px solid rgba(246, 238, 226, 0.28); box-shadow: inset 0 0 0 5px rgba(246, 238, 226, 0.06); }
+#proceso .s-tape-track { position: absolute; left: 9px; top: 44px; bottom: 0; width: 38px; overflow: hidden; }
+#proceso .s-tape-strip { position: absolute; left: 4px; top: 0; bottom: 14px; width: 30px; border-radius: 0 0 2px 2px; color: rgba(17, 17, 17, 0.72);
+  background:
+    repeating-linear-gradient(to bottom, currentColor 0 1px, transparent 1px 8px) 0 4px / 7px 100% no-repeat,
+    repeating-linear-gradient(to bottom, currentColor 0 1.5px, transparent 1.5px 40px) 0 4px / 13px 100% no-repeat,
+    #fffcf5;
+  box-shadow: inset 0 0 0 1px rgba(90, 58, 36, 0.14), 0 6px 14px -8px rgba(90, 58, 36, 0.45); }
+#proceso .s-tape-nums { position: absolute; inset: 4px 0 0; display: flex; flex-direction: column; overflow: hidden; }
+#proceso .s-tape-nums span { flex: 0 0 40px; padding: 3px 3px 0 0; text-align: right; font: 700 10px/1 var(--font-body); color: var(--brand); font-variant-numeric: tabular-nums; }
+#proceso .s-tape-hook { position: absolute; left: -4px; right: -4px; bottom: -12px; height: 12px; border-radius: 2px 2px 3px 3px; background: linear-gradient(#4a4642, #2a2724); }
+
+/* ---- Pasos ---- */
+#proceso .s-proc-steps { list-style: none; margin: 0; padding: 82px 0 16px 76px; display: grid; gap: 0; }
+#proceso .s-proc-steps li { position: relative; display: grid; grid-template-columns: 52px 1fr; column-gap: 14px; align-items: start; padding: 20px 0 28px; }
+#proceso .s-proc-steps li + li { border-top: 1px solid rgba(90, 58, 36, 0.14); }
+/* marca roja que sale de la cinta hacia el paso */
+#proceso .s-proc-steps li::before { content: ""; position: absolute; left: -38px; top: 42px; width: 30px; height: 2px; border-radius: 2px; background: var(--brand); transform-origin: 0 50%; }
+#proceso .s-proc-ico { grid-row: 1 / 4; width: 52px; height: 52px; overflow: visible; }
+#proceso .s-proc-ico path { fill: none; stroke: var(--ink); stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+#proceso .s-proc-ico path:first-child { stroke: var(--wood); }
+#proceso .s-proc-n { font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; font-weight: 800; font-size: 15px; letter-spacing: 0.06em; color: var(--brand); line-height: 1; margin-top: 2px; }
+#proceso .s-proc-steps h3 { margin: 6px 0 6px; font-weight: 800; font-size: clamp(34px, 9.4vw, 48px); line-height: 0.92; color: var(--ink); }
+#proceso .s-proc-steps p { margin: 0; font-size: 16px; line-height: 1.4; color: #5b5147; max-width: 28ch; text-wrap: balance; }
+
+#proceso .s-proc-cta { margin-top: 26px; }
+#proceso .s-proc-cta .k-btn { width: 100%; min-height: 56px; justify-content: center; font-size: 17px; }
+
+/* ---- Compu: la cinta corre horizontal arriba de los 3 pasos ---- */
+@media (min-width: 900px) {
+  #proceso .s-proc-h { margin-bottom: 56px; }
+  #proceso .s-tape { right: 0; bottom: auto; width: auto; height: 64px; }
+  #proceso .s-tape-case { width: 64px; height: 64px; border-radius: 18px 6px 18px 18px; }
+  #proceso .s-tape-case::after { right: auto; left: 9px; top: 9px; }
+  #proceso .s-tape-case i { width: 28px; height: 28px; margin: -14px 0 0 -14px; }
+  #proceso .s-tape-track { left: 50px; right: 0; top: 13px; bottom: auto; width: auto; height: 38px; }
+  #proceso .s-tape-strip { left: 0; right: 14px; top: 4px; bottom: auto; width: auto; height: 30px; border-radius: 0 2px 2px 0;
+    background:
+      repeating-linear-gradient(to right, currentColor 0 1px, transparent 1px 8px) 4px 0 / 100% 7px no-repeat,
+      repeating-linear-gradient(to right, currentColor 0 1.5px, transparent 1.5px 40px) 4px 0 / 100% 13px no-repeat,
+      #fffcf5; }
+  #proceso .s-tape-nums { inset: 0 0 0 4px; flex-direction: row; }
+  #proceso .s-tape-nums span { padding: 16px 0 0 3px; text-align: left; }
+  #proceso .s-tape-hook { left: auto; right: -12px; top: -4px; bottom: -4px; width: 12px; height: auto; border-radius: 2px 3px 3px 2px; background: linear-gradient(90deg, #4a4642, #2a2724); }
+
+  #proceso .s-proc-steps { grid-template-columns: repeat(3, 1fr); column-gap: 48px; padding: 110px 0 0; }
+  #proceso .s-proc-steps li { grid-template-columns: 1fr; align-content: start; padding: 0; row-gap: 14px; }
+  #proceso .s-proc-steps li + li { border-top: 0; }
+  #proceso .s-proc-steps li::before { left: 0; top: -44px; width: 2px; height: 30px; transform-origin: 50% 0; }
+  #proceso .s-proc-ico { grid-row: auto; width: 76px; height: 76px; margin-bottom: 6px; }
+  #proceso .s-proc-ico path { stroke-width: 1.8; }
+  #proceso .s-proc-steps h3 { font-size: 56px; margin: 0; }
+  #proceso .s-proc-steps p { font-size: 18px; }
+  #proceso .s-proc-cta { margin-top: 64px; }
+  #proceso .s-proc-cta .k-btn { width: auto; min-height: 58px; padding-left: 30px; padding-right: 32px; }
+}
+
+/* ---- Animación ----
+   La cinta se desenrolla ligada al scroll (scrub leve, sin pin) y cada paso se enciende solo
+   cuando la cinta lo alcanza: 08-proceso.js con GSAP + ScrollTrigger. Aqui solo queda lo que
+   maneja CSS: titulo, estuche y boton. Sin JS/GSAP la cinta y los pasos ya estan completos. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  #proceso .s-proc-h { opacity: 0; transform: translateY(20px); transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out); }
+  #proceso .s-proc-h.is-in { opacity: 1; transform: none; }
+
+  #proceso .s-tape-case { transform: scale(0.94) rotate(-8deg); opacity: 0; transition: transform 500ms var(--ease-out), opacity 300ms var(--ease-out); }
+  #proceso .is-in .s-tape-case { transform: none; opacity: 1; }
+
+  /* marca roja que sale de la cinta: la enciende el JS con .is-on (solo si GSAP corre) */
+  #proceso .s-proc-steps.js-anim li::before { transform: scaleX(0); transition: transform 320ms var(--ease-out); }
+  #proceso .s-proc-steps.js-anim li.is-on::before { transform: none; }
+
+  #proceso .s-proc-cta { opacity: 0; transform: translateY(14px); transition: opacity 450ms var(--ease-out) 200ms, transform 450ms var(--ease-out) 200ms; }
+  #proceso .s-proc-cta.is-in { opacity: 1; transform: none; }
+}
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) and (min-width: 900px) {
+  #proceso .s-proc-steps.js-anim li::before { transform: scaleY(0); }
+}

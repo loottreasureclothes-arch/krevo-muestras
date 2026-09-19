@@ -14,218 +14,6 @@
     }
   }
 
-  /* ---------- Hero: titulo por palabras, espera foto y fuentes ---------- */
-  function initHero() {
-    var hero = document.querySelector(".cd-hero");
-    if (!hero) return;
-    var h = hero.querySelector("[data-split]");
-    if (h) {
-      var label = h.textContent.replace(/\s+/g, " ").trim();
-      var n = 0;
-      Array.prototype.slice.call(h.childNodes).forEach(function (node) {
-        if (node.nodeType === 3) {
-          var frag = document.createDocumentFragment();
-          node.textContent.split(/(\s+)/).forEach(function (p) {
-            if (!p) return;
-            if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(" ")); return; }
-            var o = document.createElement("span"); o.className = "cd-split-w";
-            var i = document.createElement("span"); i.textContent = p; i.style.setProperty("--w", n++);
-            o.appendChild(i); frag.appendChild(o);
-          });
-          h.replaceChild(frag, node);
-        } else if (node.nodeType === 1) {
-          var o2 = document.createElement("span"); o2.className = "cd-split-w";
-          var i2 = document.createElement("span"); i2.style.setProperty("--w", n++);
-          h.replaceChild(o2, node); i2.appendChild(node); o2.appendChild(i2);
-        }
-      });
-      h.setAttribute("aria-label", label);
-    }
-    var li = 0, fi = 0;
-    Array.prototype.forEach.call(hero.querySelectorAll(".cd-hero-list li, .cd-hero-facts li"), function (el) {
-      el.style.setProperty("--i", el.parentNode.classList.contains("cd-hero-facts") ? fi++ : li++);
-    });
-    var img = hero.querySelector(".cd-hero-img");
-    var media = hero.querySelector(".cd-hero-media");
-    var done = false;
-    function go() {
-      if (done) return; done = true;
-      requestAnimationFrame(function () { requestAnimationFrame(function () { hero.classList.add("is-go"); }); });
-    }
-    var waits = [];
-    if (img && !img.complete && img.decode) waits.push(img.decode().catch(function () {}));
-    if (document.fonts && document.fonts.ready) waits.push(document.fonts.ready);
-    Promise.all(waits).then(go, go);
-    setTimeout(go, 1200);
-
-    // si hay video, se muestra cuando ya puede reproducirse (la imagen queda de poster)
-    var video = hero.querySelector(".cd-hero-video");
-    if (video) {
-      var show = function () { hero.classList.add("has-video"); };
-      if (video.readyState >= 3) show(); else video.addEventListener("canplay", show, { once: true });
-      if (reduce) { video.pause(); video.removeAttribute("autoplay"); }
-    }
-
-    // parallax: la imagen baja a 0.3x del scroll mientras el hero se ve
-    if (!reduce && media) {
-      var ticking = false;
-      var update = function () {
-        ticking = false;
-        var y = window.scrollY || window.pageYOffset;
-        var h = hero.offsetHeight;
-        if (y > h) return;
-        media.style.setProperty("--py", (y * 0.3).toFixed(1) + "px");
-      };
-      window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-    }
-  }
-
-  /* ---------- Carrusel propio: scroll nativo con snap, la tarjeta sigue al dedo ---------- */
-  function initCarousel() {
-    var root = document.querySelector(".cd-car");
-    if (!root) return null;
-    var track = root.querySelector(".cd-car-track");
-    var slides = Array.prototype.slice.call(track.querySelectorAll(".cd-slide"));
-    var dotsWrap = document.querySelector(".cd-dots");
-    var count = document.getElementById("cd-count");
-    var index = 0, raf = 0, auto = 0, lastUser = 0;
-    var AUTOPLAY = 5000;
-
-    var dots = slides.map(function (s, i) {
-      var b = document.createElement("button");
-      b.type = "button"; b.className = "cd-dot"; b.setAttribute("role", "tab");
-      b.setAttribute("aria-label", "Ir a " + (s.querySelector("h3") || {}).textContent);
-      b.innerHTML = "<i></i>";
-      b.addEventListener("click", function () { user(); go(i); });
-      dotsWrap.appendChild(b);
-      return b;
-    });
-
-    function pad(n) { return (n < 10 ? "0" : "") + n; }
-    function slideLeft(i) { return slides[i].offsetLeft - parseFloat(getComputedStyle(track).scrollPaddingLeft || 0); }
-    function go(i, instant) {
-      // de la ultima a la primera (y al reves): se desvanece y salta, sin rebobinar
-      if ((i >= slides.length || i < 0) && !reduce) {
-        i = (i + slides.length) % slides.length;
-        track.classList.add("is-fading");
-        setTimeout(function () {
-          track.scrollTo({ left: slideLeft(i), behavior: "auto" });
-          requestAnimationFrame(function () { track.classList.remove("is-fading"); });
-        }, 200);
-        return;
-      }
-      i = (i + slides.length) % slides.length;
-      track.scrollTo({ left: slideLeft(i), behavior: instant || reduce ? "auto" : "smooth" });
-    }
-    function setActive(i) {
-      if (i === index && dots[i].getAttribute("aria-selected") === "true") return;
-      index = i;
-      dots.forEach(function (d, k) { d.setAttribute("aria-selected", k === i ? "true" : "false"); });
-      slides.forEach(function (s, k) { s.classList.toggle("is-active", k === i); s.classList.remove("is-enter"); });
-      void slides[i].offsetWidth;
-      slides[i].classList.add("is-enter");
-      if (count) count.textContent = pad(i + 1);
-    }
-    // escala y opacidad segun la distancia al centro de la posicion activa
-    function frame() {
-      raf = 0;
-      var base = parseFloat(getComputedStyle(track).scrollPaddingLeft || 0);
-      var x = track.scrollLeft + base;
-      var best = 0, bestD = Infinity;
-      slides.forEach(function (s, k) {
-        var w = s.offsetWidth || 1;
-        var d = (s.offsetLeft - x) / w;
-        var ad = Math.min(Math.abs(d), 1);
-        if (Math.abs(d) < bestD) { bestD = Math.abs(d); best = k; }
-        if (!reduce) {
-          s.style.setProperty("--s", (1 - ad * 0.06).toFixed(4));
-          s.style.setProperty("--o", Math.max(0, d < 0 ? 1 - ad * 2.2 : 1 - ad * 0.75).toFixed(3));
-        }
-      });
-      setActive(best);
-    }
-    track.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(frame); }, { passive: true });
-    window.addEventListener("resize", function () { if (!raf) raf = requestAnimationFrame(frame); });
-
-    // arrastre con mouse en compu (en celular es scroll nativo)
-    var drag = null;
-    var down = false, lastScroll = 0;
-    track.addEventListener("scroll", function () { lastScroll = Date.now(); }, { passive: true });
-    track.addEventListener("pointerdown", function (e) {
-      user(); down = true;
-      if (e.pointerType !== "mouse" || e.button !== 0) return;
-      e.preventDefault();
-      drag = { x: e.clientX, left: track.scrollLeft, moved: false, start: index };
-      track.classList.add("is-dragging");
-    });
-    window.addEventListener("pointermove", function (e) {
-      if (!drag) return;
-      var dx = e.clientX - drag.x;
-      if (Math.abs(dx) > 4) drag.moved = true;
-      track.scrollLeft = drag.left - dx;
-    });
-    ["pointerup", "pointercancel"].forEach(function (t) { window.addEventListener(t, function () { down = false; user(); }); });
-    window.addEventListener("pointerup", function (e) {
-      if (!drag) return;
-      var dx = e.clientX - drag.x, d = drag;
-      drag = null;
-      track.classList.remove("is-dragging");
-      var target = d.start;
-      if (dx < -60) target = d.start + 1; else if (dx > 60) target = d.start - 1;
-      target = Math.max(0, Math.min(slides.length - 1, target));
-      go(target);
-      if (d.moved) {
-        var stop = function (ev) { ev.preventDefault(); ev.stopPropagation(); track.removeEventListener("click", stop, true); };
-        track.addEventListener("click", stop, true);
-        setTimeout(function () { track.removeEventListener("click", stop, true); }, 50);
-      }
-    });
-    track.addEventListener("wheel", user, { passive: true });
-    // tactil: basta con 22% del ancho o un gesto rapido para avanzar 1, y nunca mas de 1
-    var t0 = null;
-    track.addEventListener("touchstart", function (e) {
-      down = true; user();
-      t0 = { left: track.scrollLeft, time: Date.now(), start: index };
-    }, { passive: true });
-    track.addEventListener("touchend", function () {
-      down = false; user();
-      if (!t0) return;
-      var d = t0; t0 = null;
-      var dx = track.scrollLeft - d.left;
-      var w = slides[0].offsetWidth || 1;
-      var v = Math.abs(dx) / Math.max(1, Date.now() - d.time);
-      if (Math.abs(dx) < 8) return;
-      var target = d.start;
-      if (Math.abs(dx) > w * 0.22 || v > 0.35) target = d.start + (dx > 0 ? 1 : -1);
-      target = Math.max(0, Math.min(slides.length - 1, target));
-      track.style.scrollSnapType = "none";
-      track.scrollTo({ left: slideLeft(target), behavior: reduce ? "auto" : "smooth" });
-      setTimeout(function () { track.style.scrollSnapType = ""; }, 520);
-    }, { passive: true });
-    track.addEventListener("touchcancel", function () { down = false; t0 = null; }, { passive: true });
-
-    Array.prototype.forEach.call(document.querySelectorAll(".cd-arrow"), function (b) {
-      b.addEventListener("click", function () { user(); go(index + parseInt(b.getAttribute("data-dir"), 10)); });
-    });
-    root.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowRight") { e.preventDefault(); user(); go(index + 1); }
-      if (e.key === "ArrowLeft") { e.preventDefault(); user(); go(index - 1); }
-    });
-
-    // autoplay: solo cuando se ve y nadie lo toco en 8 s
-    var visible = false;
-    function user() { lastUser = Date.now(); }
-    function tick() {
-      if (visible && !document.hidden && !down && !drag && Date.now() - lastUser > 8000 && Date.now() - lastScroll > 400) go(index + 1);
-    }
-    if (!reduce && "IntersectionObserver" in window) {
-      new IntersectionObserver(function (es) { visible = es[0].isIntersecting && es[0].intersectionRatio > 0.5; }, { threshold: [0, 0.5, 1] }).observe(root);
-      auto = setInterval(tick, AUTOPLAY);
-    }
-    frame();
-    return { go: function (i) { user(); go(i); } };
-  }
-
   /* ---------- Menu de celular ---------- */
   function initMenu() {
     var btn = document.querySelector(".cd-menu-btn");
@@ -262,7 +50,7 @@
   function initRipple() {
     if (reduce) return;
     document.addEventListener("pointerdown", function (e) {
-      var b = e.target.closest(".k-btn, .cd-hero-list a");
+      var b = e.target.closest(".k-btn, .cd-btn:not(.cd-btn--link), .cd-hero-list a");
       if (!b) return;
       var r = b.getBoundingClientRect();
       var s = document.createElement("span");
@@ -274,80 +62,21 @@
     });
   }
 
-  /* ---------- Chips del hero: saltan a su trabajo en el carrusel ---------- */
-  function initGo(car) {
-    Array.prototype.forEach.call(document.querySelectorAll("[data-go]"), function (a) {
-      a.addEventListener("click", function () {
-        var i = parseInt(a.getAttribute("data-go"), 10);
-        if (car) setTimeout(function () { car.go(i); }, 450);
-      });
-    });
-  }
-
-  function initSteps() {
-    var ol = document.querySelector(".cd-steps");
-    if (!ol) return;
-    Array.prototype.forEach.call(ol.children, function (li, i) { li.style.setProperty("--i", i); });
-    if (!("IntersectionObserver" in window)) { ol.classList.add("is-run"); return; }
+  /* ---------- WA flotante: se esconde donde ya hay botones de contacto ---------- */
+  function initWaHide() {
+    var zones = document.querySelectorAll("#msi, #cotizar, #visitanos, #cta-final, .cd-foot");
+    if (!zones.length || !("IntersectionObserver" in window)) return;
+    var on = new Set();
     var io = new IntersectionObserver(function (es) {
-      if (es[0].isIntersecting) { ol.classList.add("is-run"); io.disconnect(); }
-    }, { threshold: 0.25 });
-    io.observe(ol);
-  }
-
-  function initClip() {
-    var els = document.querySelectorAll(".cd-clip");
-    if (!("IntersectionObserver" in window)) { Array.prototype.forEach.call(els, function (e) { e.classList.add("is-in"); }); return; }
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
-    }, { threshold: 0.2 });
-    Array.prototype.forEach.call(els, function (e) { io.observe(e); });
-  }
-
-  /* ---------- Cotizador ---------- */
-  function initForm() {
-    var f = document.getElementById("cd-form");
-    if (!f) return;
-    var err = document.getElementById("cd-err");
-    var btn = f.querySelector(".cd-submit");
-    var t = 0;
-    f.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var tipo = f.querySelector('input[name="tipo"]:checked');
-      var med = f.medidas.value.trim();
-      var col = f.colonia.value.trim();
-      var nom = f.nombre.value.trim();
-      var miss = [];
-      f.colonia.classList.toggle("is-bad", !col);
-      f.nombre.classList.toggle("is-bad", !nom);
-      if (!tipo) miss.push("el mueble");
-      if (!col) miss.push("tu colonia");
-      if (!nom) miss.push("tu nombre");
-      if (miss.length) {
-        err.textContent = "Falta " + miss.join(", ").replace(/, ([^,]*)$/, " y $1") + ".";
-        err.hidden = false;
-        return;
-      }
-      err.hidden = true;
-      var msg = "Hola Closet&Door, soy " + nom + ". Quiero cotizar: " + tipo.value + "." +
-        (med ? "\nMedidas aprox.: " + med + "." : "") +
-        "\nColonia: " + col + ".";
-      var url = waUrl(msg);
-      var w = window.open(url, "_blank");
-      if (w) { try { w.opener = null; } catch (x) {} } else { location.href = url; }
-      btn.classList.add("is-sent");
-      clearTimeout(t);
-      t = setTimeout(function () { btn.classList.remove("is-sent"); }, 3000);
-    });
-    f.addEventListener("input", function (e) {
-      if (e.target.classList) e.target.classList.remove("is-bad");
-    });
+      es.forEach(function (e) { if (e.isIntersecting) on.add(e.target); else on.delete(e.target); });
+      document.body.classList.toggle("cd-wa-off", on.size > 0);
+    }, { rootMargin: "0px 0px -18% 0px" });
+    Array.prototype.forEach.call(zones, function (z) { io.observe(z); });
+    setTimeout(function () { document.body.classList.add("cd-wa-ready"); }, 2000);
   }
 
   function init() {
-    initWa(); initHero(); initMenu(); initRipple();
-    var car = initCarousel();
-    initGo(car); initSteps(); initClip(); initForm();
+    initWa(); initMenu(); initRipple(); initWaHide();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

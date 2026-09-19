@@ -1,0 +1,114 @@
+/* 14 · CTA final: cierre sobre foto real a sangre con capa cafe */
+#cta-final {
+  position: relative; overflow: hidden; isolation: isolate;
+  min-height: min(760px, 92svh);
+  display: flex; align-items: flex-end;
+  background: #1a100a; color: var(--cream);
+  padding: 120px 0 64px;
+}
+/* cinta metrica crema: separa de Visitanos y marca el cierre */
+#cta-final .s-ctaf-tape {
+  position: absolute; left: 0; right: 0; top: 0; height: 26px; z-index: 1;
+  background-color: var(--cream);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(90, 58, 36, 0.75) 0 1px, transparent 1px 60px),
+    repeating-linear-gradient(90deg, rgba(90, 58, 36, 0.45) 0 1px, transparent 1px 12px);
+  background-size: 100% 13px, 100% 7px;
+  background-repeat: no-repeat;
+  box-shadow: 0 6px 18px -6px rgba(0, 0, 0, 0.45);
+}
+#cta-final .s-ctaf-bg { position: absolute; inset: 0; z-index: -2; }
+#cta-final .s-ctaf-bg img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 38% 45%;
+  transform: scale(1.08); transition: transform 1200ms var(--ease-out);
+}
+/* capa cafe nogal: mas densa abajo donde va el texto */
+#cta-final::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(20, 12, 7, 0.5) 0%, rgba(24, 15, 9, 0.62) 40%, rgba(20, 12, 7, 0.92) 74%, rgba(16, 10, 6, 0.98) 100%),
+    linear-gradient(90deg, rgba(16, 10, 6, 0.45), rgba(16, 10, 6, 0.05));
+}
+#cta-final::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: url("../img/msi/veta.webp") center / cover no-repeat;
+  opacity: 0.12; mix-blend-mode: overlay;
+}
+#cta-final .s-ctaf-in { width: 100%; }
+
+#cta-final .s-ctaf-h {
+  font-weight: 800; font-size: clamp(44px, 13.2vw, 188px); line-height: 0.86; letter-spacing: -0.01em;
+  color: var(--cream); margin: 0; hyphens: none; -webkit-hyphens: none; overflow-wrap: normal; word-break: normal;
+}
+#cta-final .s-ctaf-l { display: block; overflow: hidden; padding-bottom: 0.12em; margin-bottom: -0.08em; white-space: nowrap; }
+#cta-final .s-ctaf-l > span { display: block; }
+#cta-final .s-ctaf-h em { color: var(--cream); position: relative; display: inline-block; }
+/* subrayado tipo regla bajo "Lo fabricamos." */
+#cta-final .s-ctaf-h em::after {
+  content: ""; position: absolute; left: 0.02em; right: 0.08em; bottom: -0.02em; height: 0.07em; min-height: 5px;
+  background:
+    repeating-linear-gradient(90deg, var(--brand-on-wood) 0 2px, transparent 2px 12px) left bottom / 100% 55% no-repeat,
+    linear-gradient(var(--brand-on-wood), var(--brand-on-wood)) left top / 100% 2px no-repeat;
+  transform-origin: left center;
+}
+
+#cta-final .s-ctaf-actions { display: flex; flex-direction: column; align-items: stretch; gap: 10px; margin-top: 30px; }
+#cta-final .s-ctaf-cta { min-height: 60px; padding-inline: 28px; font-size: 18px; justify-content: center; box-shadow: 0 14px 34px -14px rgba(37, 211, 102, 0.55); }
+#cta-final .s-ctaf-cta svg { width: 22px; height: 22px; }
+#cta-final .s-ctaf-call {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px;
+  font-weight: 700; font-size: 17px; color: var(--cream);
+  border: 1px solid rgba(246, 238, 226, 0.45); border-radius: 999px; padding: 0 22px;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 280ms var(--ease-out), transform 160ms var(--ease-out);
+}
+#cta-final .s-ctaf-call svg { width: 18px; height: 18px; transition: transform 280ms var(--ease-out); }
+#cta-final .s-ctaf-call:active { transform: scale(0.97); }
+#cta-final .s-ctaf-cta, #cta-final .s-ctaf-call { touch-action: manipulation; }
+#cta-final .s-ctaf-cta:focus-visible, #cta-final .s-ctaf-call:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; }
+
+#cta-final .s-ctaf-addr {
+  display: flex; align-items: flex-start; gap: 12px; margin-top: 30px; font-style: normal;
+  font-size: 14px; line-height: 1.45; color: var(--cream-mute); max-width: 34ch;
+}
+#cta-final .s-ctaf-pin { flex: none; width: 18px; height: 2px; margin-top: 9px; background: var(--brand-on-wood); }
+#cta-final .s-ctaf-cap {
+  position: absolute; right: var(--k-gutter); top: 108px;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(246, 238, 226, 0.6);
+  writing-mode: vertical-rl;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #cta-final .s-ctaf-call:hover { border-color: var(--cream); }
+  #cta-final .s-ctaf-call:hover svg { transform: translateX(4px); }
+}
+
+@media (min-width: 560px) {
+  #cta-final .s-ctaf-actions { flex-direction: row; align-items: center; gap: 14px; }
+}
+@media (min-width: 900px) {
+  #cta-final { min-height: min(820px, 96svh); padding: 160px 0 88px; }
+  #cta-final .s-ctaf-bg img { object-position: 50% 40%; }
+  #cta-final .s-ctaf-in { display: grid; grid-template-columns: 1fr auto; column-gap: 48px; align-items: end; }
+  #cta-final .s-ctaf-h { grid-column: 1 / -1; font-size: clamp(110px, 11vw, 176px); }
+  #cta-final .s-ctaf-actions { margin-top: 40px; gap: 18px; }
+  #cta-final .s-ctaf-cta { min-height: 64px; padding-inline: 34px; font-size: 19px; }
+  #cta-final .s-ctaf-call { min-height: 64px; padding: 0 28px; }
+  #cta-final .s-ctaf-addr { margin-top: 40px; justify-self: end; text-align: left; font-size: 15px; padding-bottom: 20px; }
+  #cta-final .s-ctaf-cap { top: 130px; }
+}
+
+/* entrada (la dispara 14-cta-final.js) */
+#cta-final.s-ctaf-js .s-ctaf-l > span { transform: translateY(105%); transition: transform 900ms var(--ease-out); }
+#cta-final.s-ctaf-js .s-ctaf-l + .s-ctaf-l > span { transition-delay: 110ms; }
+#cta-final.s-ctaf-js .s-ctaf-h em::after { transform: scaleX(0); transition: transform 800ms var(--ease-out) 520ms; }
+#cta-final.s-ctaf-js .s-ctaf-actions, #cta-final.s-ctaf-js .s-ctaf-addr { opacity: 0; transform: translateY(18px); transition: opacity 600ms var(--ease-out) 380ms, transform 600ms var(--ease-out) 380ms; }
+#cta-final.s-ctaf-js .s-ctaf-addr { transition-delay: 480ms; }
+#cta-final.is-in .s-ctaf-bg img { transform: scale(1); }
+#cta-final.is-in .s-ctaf-l > span { transform: none; }
+#cta-final.is-in .s-ctaf-h em::after { transform: scaleX(1); }
+#cta-final.is-in .s-ctaf-actions, #cta-final.is-in .s-ctaf-addr { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  #cta-final *, #cta-final *::after { transform: none !important; transition-property: opacity !important; }
+}
