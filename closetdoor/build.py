@@ -10,12 +10,19 @@ T=open('template.html').read()
 def assemble(t,folder):
     html=sorted(glob.glob(f'{folder}/*.html'))
     body=''.join(open(f).read().rstrip('\n')+'\n\n' for f in html)
-    css=''.join(f'<link rel="stylesheet" href="{f}">\n' for f in sorted(glob.glob(f'{folder}/*.css')))
-    js=''.join(f'<script src="{f}" defer></script>\n' for f in sorted(glob.glob(f'{folder}/*.js')))
+    V=lambda f:f'{f}?v={int(os.path.getmtime(f))}'  # rompe la caché del celular en cada cambio
+    css=''.join(f'<link rel="stylesheet" href="{V(f)}">\n' for f in sorted(glob.glob(f'{folder}/*.css')))
+    js=''.join(f'<script src="{V(f)}" defer></script>\n' for f in sorted(glob.glob(f'{folder}/*.js')))
     out=t.replace('<!--SECTIONS-->\n',body).replace('<!--SECTION_CSS-->',css.rstrip('\n')).replace('<!--SECTION_JS-->',js.rstrip('\n'))
     return out,len(html)
 
+def bust(out):
+    for f in ['site.css','site.js','../_kit/kit.css','../_kit/kit.js','../_kit/antesdespues.css','../_kit/antesdespues.js']:
+        if os.path.exists(f): out=out.replace(f'"{f}"',f'"{f}?v={int(os.path.getmtime(f))}"')
+    return out
+
 def write(name,out):
+    out=bust(out)
     tmp=name+'.tmp'; open(tmp,'w').write(out); os.replace(tmp,name)
 
 # 1) index.html (igual que siempre)
