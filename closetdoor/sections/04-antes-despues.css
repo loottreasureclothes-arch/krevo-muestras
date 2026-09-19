@@ -11,13 +11,13 @@
 /* Toggle tipo segmento con pastilla que se desliza */
 #antes-despues .s-ad-tabs {
   position: relative; display: inline-grid; grid-template-columns: 1fr 1fr;
-  padding: 4px; border-radius: 999px; background: #fff;
+  padding: 4px; border-radius: 3px; background: #fff;
   box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.12);
   -webkit-tap-highlight-color: transparent;
 }
 #antes-despues .s-ad-tabs button {
   position: relative; z-index: 1; min-width: 104px; min-height: 44px; padding: 0 20px;
-  border: 0; background: none; border-radius: 999px; cursor: pointer;
+  border: 0; background: none; border-radius: 3px; cursor: pointer;
   font: 600 15px/1 var(--font-body); color: var(--ink);
   transition: color 240ms var(--ease-out), transform 160ms var(--ease-out);
 }
@@ -27,9 +27,9 @@
 #antes-despues .s-ad-pill {
   --l: 0; --r: 50;
   position: absolute; top: 4px; bottom: 4px; left: 4px; right: 4px;
-  border-radius: 999px; background: var(--wood);
+  border-radius: 3px; background: var(--wood);
   background-image: repeating-linear-gradient(92deg, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 9px);
-  clip-path: inset(0 calc(var(--r) * 1%) 0 calc(var(--l) * 1%) round 999px);
+  clip-path: inset(0 calc(var(--r) * 1%) 0 calc(var(--l) * 1%) round 3px);
   transition: clip-path 380ms var(--ease-out);
 }
 #antes-despues .s-ad-tabs[data-on="1"] .s-ad-pill { --l: 50; --r: 0; }

@@ -1,6 +1,7 @@
 /* 11 · FAQ: acordeon accesible sobre blanco calido */
 #faq { background: #fbf8f3; position: relative; }
-#faq .s-faq-grid { display: grid; gap: 30px; }
+#faq .s-faq-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; }
+#faq .s-faq-head, #faq .s-faq-list { min-width: 0; }
 #faq .s-faq-h { margin-bottom: 0; }
 #faq .s-faq-h em { color: var(--wood); }
 #faq .s-faq-sub { margin-top: 14px; font-size: 16px; color: #6e5a4a; max-width: 28ch; }
@@ -25,7 +26,7 @@
   -webkit-tap-highlight-color: transparent; touch-action: manipulation; -webkit-user-select: none; user-select: none;
 }
 #faq .s-faq-q:focus-visible { outline: 2px solid var(--wood); outline-offset: 4px; border-radius: 6px; }
-#faq .s-faq-qt { text-wrap: balance; }
+#faq .s-faq-qt { min-width: 0; text-wrap: balance; overflow-wrap: normal; word-break: normal; hyphens: manual; }
 /* + que gira a - */
 #faq .s-faq-ic {
   position: relative; justify-self: end; width: 36px; height: 36px; border-radius: 50%;
@@ -79,10 +80,13 @@
 }
 
 @media (min-width: 900px) {
-  #faq .s-faq-grid { grid-template-columns: 5fr 7fr; gap: 72px; align-items: start; }
+  #faq .s-faq-grid { grid-template-columns: minmax(0, 5fr) minmax(440px, 7fr); gap: clamp(40px, 5vw, 72px); align-items: start; }
   #faq .s-faq-head { position: sticky; top: calc(var(--k-header-h) + 32px); }
-  #faq .s-faq-q { font-size: 21px; min-height: 76px; grid-template-columns: 44px 1fr 40px; }
-  
+  #faq .s-faq-q { font-size: 21px; min-height: 76px; grid-template-columns: minmax(0, 1fr) 40px; gap: 24px; }
+  #faq .s-faq-ic { width: 40px; height: 40px; }
+  #faq .s-faq-h { font-size: clamp(52px, 5vw, 80px); overflow-wrap: normal; word-break: normal; }
+}
+
 /* entrada escalonada al verse (la dispara 11-faq.js) */
 #faq.s-faq-js .s-faq-head, #faq.s-faq-js .s-faq-item, #faq.s-faq-js .s-faq-more {
   opacity: 0; transform: translateY(20px);

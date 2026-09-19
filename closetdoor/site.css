@@ -68,7 +68,7 @@ body { background: var(--bg-warm); }
 .cd-btn {
   position: relative; overflow: hidden; isolation: isolate;
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  min-height: 52px; padding: 0 26px; border-radius: 999px;
+  min-height: 52px; padding: 0 26px; border-radius: 3px;
   border: 1.5px solid transparent; font-weight: 700; font-size: 16px; line-height: 1;
   white-space: nowrap; cursor: pointer; user-select: none; text-decoration: none;
   transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), border-color 200ms var(--ease-out), color 200ms var(--ease-out);
@@ -89,7 +89,7 @@ body { background: var(--bg-warm); }
   .cd-btn:hover svg { transform: translateX(3px); }
   .cd-btn--link:hover { background-size: 40% 1.5px; }
 }
-.cd-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 600; transform: translateY(-160%); transition: transform 200ms var(--ease-out); }
+.cd-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; border-radius: 3px; background: var(--ink); color: #fff; font-weight: 600; transform: translateY(-160%); transition: transform 200ms var(--ease-out); }
 .cd-skip:focus { transform: none; }
 
 /* Display: Archivo condensada en mayusculas, como el logo */
@@ -147,7 +147,7 @@ body[data-hero-dark] .k-header .k-cta.cd-green {
 
 .cd-menu-btn {
   display: inline-flex; align-items: center; gap: 8px;
-  height: 44px; padding: 0 14px; border-radius: 999px;
+  height: 44px; padding: 0 14px; border-radius: 3px;
   border: 1px solid currentColor; color: inherit;
   font-weight: 600; font-size: 0.875rem;
   transition: transform 160ms var(--ease-out);
@@ -347,3 +347,6 @@ a { text-underline-offset: 0.2em; }
 .cd-menu-nav a { gap: 0; }
 .cd-nowrap { white-space: nowrap; }
 @media (min-width: 900px) { .cd-foot-map { grid-template-columns: 1fr 1fr; column-gap: 20px; } }
+
+/* Emanuel: botones cuadraditos también en el header */
+.k-header .k-cta, .k-header .cd-burger, .k-wa-label { border-radius: 3px !important; }
