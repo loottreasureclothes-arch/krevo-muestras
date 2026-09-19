@@ -27,6 +27,11 @@
     var raf = 0, last = 0, fired = true, seen = false, auto = 0, touched = false, visible = false;
 
     function pad(n) { return (n < 10 ? "0" : "") + n; }
+    // Celular: "tercia" tipo coverflow (una al frente, dos atras a los lados, en circulo).
+    var mqCover = window.matchMedia ? window.matchMedia("(max-width: 899px)") : { matches: false };
+    var cover = false, CW = 0, CH = 0, SP = 0, SIDE = 0.82;
+    function wrap(i) { return ((Math.round(i) % N) + N) % N; }
+    function circ(o) { return cover ? ((o % N) + N + N / 2) % N - N / 2 : o; }
     function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
 
     // Cinta: un tope por proyecto
@@ -41,6 +46,22 @@
     });
 
     function measure() {
+      var was = cover;
+      cover = !!mqCover.matches && N > 2;
+      sec.classList.toggle("tj-cover", cover);
+      if (was && !cover) { // volver a la fila normal: limpiar lo que puso la tercia
+        slides.forEach(function (s) { s.style.transform = ""; s.style.zIndex = ""; s.style.opacity = ""; s.style.visibility = ""; s.classList.remove("tj-l", "tj-r"); });
+        track.style.height = ""; p = target = wrap(target);
+      }
+      if (cover) {
+        CW = slides[0].offsetWidth; CH = medias[0] ? medias[0].offsetHeight : CW * 1.25;
+        SP = CW * SIDE / 2 + 7;                  // las de atras quedan a 7px del centro: sus talones no se enciman
+        step = SP * 1.2;                         // el dedo mueve una tarjeta cada ~1.2 separaciones
+        track.style.height = Math.round(CH + CH * 0.2) + "px";
+        railW = rail.offsetWidth;
+        render();
+        return;
+      }
       step = N > 1 ? (slides[1].offsetLeft - slides[0].offsetLeft) : slides[0].offsetWidth;
       if (!step) step = slides[0].offsetWidth || 1;
       railW = rail.offsetWidth;
@@ -48,25 +69,40 @@
     }
 
     function render() {
-      track.style.transform = "translate3d(" + (-p * step).toFixed(2) + "px,0,0)";
+      track.style.transform = cover ? "none" : "translate3d(" + (-p * step).toFixed(2) + "px,0,0)";
       // inclinacion por velocidad: se suaviza para que no tiemble
       tilt += (tiltGoal - tilt) * 0.3;
       if (Math.abs(tilt) < 0.02) tilt = 0;
-      var front = Math.round(p);
+      var front = cover ? wrap(p) : Math.round(p);
       for (var k = 0; k < N; k++) {
-        var o = k - p, a = reduce ? (k === front ? 0 : 1) : Math.min(Math.abs(o), 1);
-        if (Math.abs(o) > 2.2) continue;
+        var o = circ(k - p), ao = Math.abs(o), a = reduce ? (k === front ? 0 : 1) : Math.min(ao, 1);
+        if (cover) {
+          // frente: escala 1. Lados: 0.82, hundidas (bajan) y detras. Mas alla de 1.6 se desvanecen.
+          var sg = o < 0 ? -1 : 1, m1 = Math.min(ao, 1), m2 = Math.max(0, ao - 1);
+          var x = sg * (m1 * SP + m2 * SP * 0.55);
+          var sc = 1 - m1 * (1 - SIDE) - m2 * 0.08;
+          var y = m1 * CH * 0.13 + m2 * CH * 0.04;
+          var op = ao <= 1 ? 1 : Math.max(0, 1 - (ao - 1) / 0.6);
+          slides[k].style.transform = "translate3d(" + x.toFixed(2) + "px," + y.toFixed(2) + "px,0) scale(" + sc.toFixed(4) + ")";
+          slides[k].style.zIndex = String(100 - Math.round(ao * 20));
+          slides[k].style.opacity = op.toFixed(3);
+          slides[k].style.visibility = op > 0 ? "" : "hidden";
+          slides[k].classList.toggle("tj-l", o < -0.5);
+          slides[k].classList.toggle("tj-r", o > 0.5);
+          if (ao > 1.7) continue;
+        } else if (ao > 2.2) continue;
         slides[k].style.setProperty("--a", a.toFixed(4)); // solo lo usa el velo (::after)
         var ry = reduce ? 0 : tilt, rx = 0;
         if (k === front && !reduce) { ry += hov.x * 5; rx = -hov.y * 4; }
-        if (medias[k] && !entering) medias[k].style.transform = "perspective(1100px) rotateX(" + rx.toFixed(3) + "deg) rotateY(" + ry.toFixed(3) + "deg) scale(" + (1 - a * 0.075).toFixed(4) + ")";
+        if (medias[k] && !entering) medias[k].style.transform = "perspective(1100px) rotateX(" + rx.toFixed(3) + "deg) rotateY(" + ry.toFixed(3) + "deg) scale(" + (cover ? 1 : 1 - a * 0.075).toFixed(4) + ")";
         if (imgs[k]) imgs[k].style.transform = "translate3d(" + (reduce ? 0 : clamp(o, -1, 1) * -9 - hov.x * 2).toFixed(3) + "%," + (reduce ? 0 : -hov.y * 1.5).toFixed(3) + "%,0)";
-        if (copies[k]) copies[k].style.opacity = Math.max(0, 1 - a * 1.4).toFixed(3);
+        // el nombre se ve SIEMPRE en todas las tarjetas (Emanuel); descripcion y "Cotizar" solo en la del frente (CSS)
       }
-      var prog = (clamp(p, 0, N - 1) + 1) / N;
+      var prog = ((cover ? ((p % N) + N) % N : clamp(p, 0, N - 1)) + 1) / N;
+      if (cover && prog > 1) prog = 1;
       tape.style.setProperty("--tj-p", (prog * 100).toFixed(3) + "%");
       tape.style.setProperty("--tj-px", (prog * railW).toFixed(1) + "px");
-      setIndex(clamp(Math.round(p), 0, N - 1));
+      setIndex(cover ? wrap(p) : clamp(Math.round(p), 0, N - 1));
     }
 
     function setIndex(i) {
@@ -101,9 +137,10 @@
         var acc = -K * (p - target) - C * vel;
         vel += acc * h; p += vel * h;
       }
-      if (!fired && Math.abs(p - target) < 0.04) settle(target);
+      if (!fired && Math.abs(p - target) < 0.04) settle(wrap(target));
       tiltGoal = clamp(-vel * 3.2, -9, 9);
       if (Math.abs(p - target) < 0.0006 && Math.abs(vel) < 0.02) {
+        if (cover) target = wrap(target);
         p = target; vel = 0; raf = 0; tiltGoal = tilt = 0; render(); if (!fired) settle(target);
         return;
       }
@@ -126,11 +163,17 @@
       track.classList.add("is-fade");
       setTimeout(function () {
         stopAnim(); target = p = i; vel = 0; render(); fired = false; settle(i);
-        requestAnimationFrame(function () { track.classList.remove("is-fade"); fading = false; });
+        var back = function () { if (!fading) return; track.classList.remove("is-fade"); fading = false; };
+        requestAnimationFrame(back);
+        setTimeout(back, 120); /* si rAF se atora, el carril no se queda en blanco */
       }, 220);
     }
     function go(i) {
       if (fading) return;
+      if (cover) { // en circulo: la de un lado pasa al frente, sin rebobinar
+        if (!raf && (target < 0 || target >= N)) { target = p = wrap(target); }
+        animateTo(target + circ(i - target)); return;
+      }
       if (i < 0 || i >= N) { jump((i + N) % N); return; }
       animateTo(i);
     }
@@ -152,13 +195,13 @@
         drag.lock = 1;
         user();
         stopAnim();
-        drag.p0 = p; drag.from = clamp(Math.round(target), 0, N - 1);
+        drag.p0 = p; drag.from = cover ? Math.round(target) : clamp(Math.round(target), 0, N - 1);
         track.classList.add("is-drag");
         try { track.setPointerCapture(e.pointerId); } catch (x) {}
       }
       var np = drag.p0 - dx / step;
       // limite suave: a lo mucho una tarjeta desde donde empezaste, y liga en las orillas
-      var lo = Math.max(0, drag.from - 1), hi = Math.min(N - 1, drag.from + 1);
+      var lo = cover ? drag.from - 1 : Math.max(0, drag.from - 1), hi = cover ? drag.from + 1 : Math.min(N - 1, drag.from + 1);
       if (np < lo) np = lo - (lo - np) * 0.3;
       if (np > hi) np = hi + (np - hi) * 0.3;
       var prev = drag.hist[drag.hist.length - 1], dtd = Math.max(8, e.timeStamp - prev[0]);
@@ -184,7 +227,7 @@
       var moved = p - d.from, dir = 0;
       if (Math.abs(v) > 0.3) dir = v < 0 ? 1 : -1;
       else if (Math.abs(moved) > 0.18) dir = moved > 0 ? 1 : -1;
-      var t = clamp(d.from + dir, 0, N - 1);
+      var t = cover ? d.from + dir : clamp(d.from + dir, 0, N - 1);
       animateTo(t, dir ? clamp(-v * 1000 / step, -6, 6) : 0);
     }
     track.addEventListener("pointerup", end);
@@ -198,7 +241,7 @@
       var s = e.target.closest(".tj-slide");
       if (!s) return;
       var k = slides.indexOf(s);
-      if (k !== target) { e.preventDefault(); user(); go(k); }
+      if (k !== (cover ? wrap(target) : target)) { e.preventDefault(); user(); go(k); }
     }, true);
 
     // Trackpad horizontal (dos dedos): un paso por gesto
@@ -293,6 +336,25 @@
         if (es[0].isIntersecting) { eio.disconnect(); enter(); }
       }, { threshold: 0.18 });
       eio.observe(car);
+    }
+
+    /* Red de seguridad (FEEDBACK-2 #6): si el tween de entrada o los observadores se atoran
+       (rAF pausado en el navegador de WhatsApp/Instagram), a los 1.6 s de asomarse todo queda visible. */
+    function forceShow() {
+      if (!entered || entering || sec.classList.contains("tj-pre")) {
+        entered = true; entering = false;
+        sec.classList.remove("tj-pre");
+        if (window.gsap) window.gsap.killTweensOf(medias);
+        medias.forEach(function (m) { if (m) { m.style.removeProperty("opacity"); m.getAnimations && m.getAnimations().forEach(function (a) { a.finish(); }); } });
+        render();
+      }
+      if (!seen) { seen = true; on = -1; settle(target); }
+    }
+    if ("IntersectionObserver" in window) {
+      var fio = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { fio.disconnect(); setTimeout(forceShow, 1600); }
+      }, { rootMargin: "0px 0px -25% 0px" });
+      fio.observe(car);
     }
 
     // Autoplay suave: solo mientras se ve y hasta que la persona toque algo

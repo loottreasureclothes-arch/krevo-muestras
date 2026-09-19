@@ -159,37 +159,84 @@ body[data-hero-dark] .k-header .k-cta.cd-green {
 .cd-burger i:last-child { top: 7px; }
 body.cd-menu-open .cd-burger i:first-child { top: 4px; transform: rotate(45deg); }
 body.cd-menu-open .cd-burger i:last-child { top: 4px; transform: rotate(-45deg); }
-@media (min-width: 900px) { .cd-menu-btn { display: none; } }
 
+/* Menu abierto: el header se vuelve transparente sobre el nogal */
 body.cd-menu-open[data-hero-dark] .k-header,
-body.cd-menu-open .k-header { color: var(--ink); background: var(--cream); border-bottom-color: var(--line); }
-.cd-menu {
-  position: fixed; inset: 0; z-index: 45;
-  background: var(--cream); color: var(--ink);
-  padding: calc(var(--k-header-h) + env(safe-area-inset-top) + 18px) var(--k-gutter) calc(24px + env(safe-area-inset-bottom));
-  display: flex; flex-direction: column; justify-content: space-between;
-  clip-path: inset(0 0 100% 0);
-  visibility: hidden;
-  transition: clip-path 420ms var(--ease-in-out), visibility 0s linear 420ms;
-}
-body.cd-menu-open .cd-menu { clip-path: inset(0 0 0 0); visibility: visible; transition: clip-path 420ms var(--ease-in-out), visibility 0s; }
+body.cd-menu-open .k-header { color: var(--cream); background: transparent; border-bottom-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+body.cd-menu-open .k-header .cd-logo-dark { opacity: 0; }
+body.cd-menu-open .k-header .cd-logo-light { opacity: 1; }
+body.cd-menu-open .k-nav { opacity: 0; pointer-events: none; }
+.k-nav { transition: opacity 200ms var(--ease-out); }
 body.cd-menu-open { overflow: hidden; }
-.cd-menu-nav { display: grid; }
+
+.cd-menu { position: fixed; inset: 0; z-index: 45; visibility: hidden; transition: visibility 0s linear 420ms; }
+body.cd-menu-open .cd-menu { visibility: visible; transition: visibility 0s; }
+.cd-menu-scrim { position: absolute; inset: 0; background: rgba(24, 14, 8, 0.62); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); opacity: 0; transition: opacity 320ms var(--ease-out); }
+body.cd-menu-open .cd-menu-scrim { opacity: 1; }
+.cd-menu-panel {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 28px;
+  overflow-y: auto; overscroll-behavior: contain;
+  padding: calc(var(--k-header-h) + env(safe-area-inset-top) + 14px) var(--k-gutter) calc(20px + env(safe-area-inset-bottom));
+  color: var(--cream);
+  background-color: #4a2f1c;
+  background-image:
+    radial-gradient(120% 60% at 100% 0%, rgba(255, 214, 160, 0.16), transparent 60%),
+    radial-gradient(90% 60% at 0% 100%, rgba(0, 0, 0, 0.35), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.09' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.12  0 0 0 0 0.06  0 0 0 0 0.02  0 0 0 1.1 -0.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: auto, auto, 600px 600px;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 420ms var(--ease-in-out);
+}
+body.cd-menu-open .cd-menu-panel { clip-path: inset(0 0 0 0); }
+.cd-menu-nav { display: grid; counter-reset: none; }
 .cd-menu-nav a {
   display: flex; align-items: baseline; gap: 14px;
-  padding: 12px 0; min-height: 44px;
-  font-weight: 800; font-size: 42px; line-height: 1;
-  border-bottom: 1px solid rgba(17, 17, 17, 0.1);
-  opacity: 0; transform: translateY(16px);
-  transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out);
+  padding: 9px 0; min-height: 48px;
+  font-weight: 800; font-size: clamp(34px, 9.6vw, 54px); line-height: 0.94; letter-spacing: -0.005em;
+  color: var(--cream);
+  border-bottom: 1px solid var(--line-wood);
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out), color 200ms ease;
 }
-.cd-menu-nav a span { font-size: 15px; color: var(--brand); font-weight: 700; letter-spacing: 0.04em; }
-body.cd-menu-open .cd-menu-nav a { opacity: 1; transform: none; transition-delay: calc(180ms + var(--i, 0) * 50ms); }
-.cd-menu-nav a:active { color: var(--brand); }
-.cd-menu-foot { display: grid; gap: 14px; }
-.cd-menu-foot .k-btn { width: 100%; min-height: 54px; }
-.cd-menu-foot p { color: var(--mute); font-size: 14px; }
-@media (min-width: 900px) { .cd-menu { display: none; } }
+.cd-menu-nav a:first-child { border-top: 1px solid var(--line-wood); }
+.cd-menu-nav a span { flex: none; width: 2.2em; font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--brand-on-wood); transform: translateY(-0.9em); }
+body.cd-menu-open .cd-menu-nav a { opacity: 1; transform: none; transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out), color 200ms ease; transition-delay: calc(140ms + var(--i, 0) * 40ms); }
+.cd-menu-nav a:active { color: var(--brand-on-wood); }
+.cd-menu-nav a:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; border-radius: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  .cd-menu-nav a:hover { color: #fff; }
+  .cd-menu-nav a:hover span { color: var(--cream); }
+}
+.cd-menu-foot { display: grid; gap: 14px; opacity: 0; transition: opacity 200ms var(--ease-out); }
+body.cd-menu-open .cd-menu-foot { opacity: 1; transition: opacity 420ms var(--ease-out) 380ms; }
+.cd-menu .cd-menu-ruler { background: var(--ruler-cream); opacity: 0.4; margin: 0; }
+.cd-menu-acts { display: grid; grid-template-columns: 1.4fr 1fr; gap: 10px; }
+.cd-menu-acts .cd-btn { width: 100%; min-height: 52px; border-radius: 3px; }
+.cd-menu-acts .cd-btn--secondary { color: var(--cream); }
+.cd-menu-foot p { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; color: var(--cream-mute); font-size: 14px; }
+.cd-menu-foot p { align-items: center; }
+.cd-menu-foot p a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
+.cd-menu-nav a:focus { outline: none; }
+
+/* Compu: el panel entra desde la derecha como tablero, sobre un velo */
+@media (min-width: 900px) {
+  .cd-menu-panel {
+    inset: 12px 12px 12px auto; width: min(520px, 42vw);
+    border-radius: 3px;
+    padding: calc(var(--k-header-h) + 18px) 40px 32px;
+    box-shadow: -30px 0 80px rgba(0, 0, 0, 0.35);
+    clip-path: none;
+    transform: translateX(calc(100% + 24px));
+    transition: transform 480ms var(--ease-drawer, cubic-bezier(0.32, 0.72, 0, 1));
+  }
+  body.cd-menu-open .cd-menu-panel { transform: none; }
+  .cd-menu-nav a { font-size: 44px; }
+  body.cd-menu-open .k-header .k-logo { color: var(--cream); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cd-menu-panel, .cd-menu-nav a, .cd-menu-foot, .cd-menu-scrim { transition: none !important; }
+}
 
 /* ============ Madera ============ */
 .cd-wood {
@@ -296,19 +343,12 @@ body.cd-menu-open .cd-menu-nav a { opacity: 1; transform: none; transition-delay
 }
 @media (min-width: 900px) and (max-width: 1080px) { .k-nav { gap: 18px; font-size: 0.9rem; } }
 @media (min-width: 900px) { .k-header .k-cta { margin-left: 14px; padding: 0 22px; } }
-.cd-menu { background: var(--bg-cream); }
-.cd-menu-nav a { font-size: clamp(34px, 5.2svh, 44px); padding: 11px 0; }
-.cd-menu-foot .cd-btn { width: 100%; min-height: 54px; }
-.cd-menu-foot p { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px; color: var(--mute); font-size: 14px; }
-.cd-menu-foot p a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--ink); }
 body.cd-menu-open .k-wa { opacity: 0; pointer-events: none; transition: opacity 200ms var(--ease-out); }
 
 body[data-hero-dark] .k-header:not(.is-solid) { color: var(--cream); }
 
 /* ============ Ronda 3 ============ */
 /* menu: boton Cerrar visible y sin el WA flotante encima */
-body.cd-menu-open .k-header,
-body.cd-menu-open[data-hero-dark] .k-header:not(.is-solid) { color: var(--ink); }
 body.cd-menu-open .k-wa { visibility: hidden; animation: none; }
 /* fundacion: sin WA flotante sobre cotizar, visitanos, cierre y footer */
 body.cd-wa-ready .k-wa { animation: none; transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out), visibility 0s; }
@@ -320,8 +360,6 @@ body.cd-wa-off .k-wa { visibility: hidden; animation: none; opacity: 0; transfor
 
 /* Visitanos con mapa */
 
-.cd-menu-nav a:focus { outline: none; }
-.cd-menu-nav a:focus-visible { outline: 2px solid var(--brand); outline-offset: 4px; border-radius: 6px; }
 
 /* ============ Ritmo de fondos entre secciones (fundacion) ============
    Orden: hero cafe > trabajos blanco calido > incluye crema > antes/despues blanco calido >
@@ -344,9 +382,70 @@ html { accent-color: var(--wood); caret-color: var(--brand); scrollbar-color: rg
 :focus-visible { outline-color: var(--wood); }
 .cd-wood :focus-visible, .cd-foot :focus-visible { outline-color: var(--cream); }
 a { text-underline-offset: 0.2em; }
-.cd-menu-nav a { gap: 0; }
 .cd-nowrap { white-space: nowrap; }
 @media (min-width: 900px) { .cd-foot-map { grid-template-columns: 1fr 1fr; column-gap: 20px; } }
 
 /* Emanuel: botones cuadraditos también en el header */
 .k-header .k-cta, .k-header .cd-burger, .k-wa-label { border-radius: 3px !important; }
+
+/* ============ Títulos "de madera recortada" (fundación, pedido de Emanuel) ============
+   Extrusión corta en capas: la cara es la letra, el canto es madera cruda (sobre crema)
+   o nogal casi negro (sobre café). Pasos en em con mínimo de 1px para que no se vea
+   borroso en celular. Sombra teñida al fondo, nunca negro puro sobre claro (Taste 4.4).
+   Aplica solo a los títulos display grandes; "#top" le gana al "#seccion .titulo" de
+   cada archivo sin tocarlo. Para un título nuevo: agrega la clase .cd-h3d. */
+:root {
+  --h3d-s: max(1px, 0.011em);
+  --h3d-c1: #7d5434; --h3d-c2: #5f3d25; --h3d-c3: #442a18;          /* canto nogal: canto vertical ganó al diagonal (menos WordArt) */
+  --h3d-amb: rgba(90, 58, 36, 0.26);
+  --h3d-track: -0.014em;
+}
+#top :is(h1, h2):is(.cd-h2, .s-hero-title, .mb-t, .ct-title, .s-incluye-h, .s-msi-h, .s-ctaf-h, .mt-h1),
+#top .cd-h3d, .cd-h3d {
+  font-weight: 900;
+  letter-spacing: var(--h3d-track);
+  text-shadow:
+    0 var(--h3d-s) 0 var(--h3d-c1),
+    0 calc(var(--h3d-s) * 2) 0 var(--h3d-c2),
+    0 calc(var(--h3d-s) * 3) 0 var(--h3d-c3),
+    0 calc(var(--h3d-s) * 3 + 0.04em) 0.08em var(--h3d-amb);
+}
+/* sobre café: canto nogal casi negro y sombra más honda */
+#top :is(#hero, #mueble, #catalogo, #detalles, #msi, #cta-final, .cd-wood, .mt-hero), .cd-foot {
+  --h3d-c1: #3a2415; --h3d-c2: #2b1a0e; --h3d-c3: #1d1109;
+  --h3d-amb: rgba(12, 6, 2, 0.45);
+}
+/* los "em" rojos y los rellenos con veta heredan la sombra sin romperse */
+#top :is(.s-nos-grain, .s-msi-12) { text-shadow: none; }
+
+/* ============ Menú: sub-links de Materiales (fundación) ============
+   Siempre visibles (un toque menos que un acordeón), con sangría al nivel del texto
+   de los links grandes, en 2 columnas y 44px de alto para el dedo. */
+.cd-menu-nav a.cd-menu-parent { border-bottom: 0; padding-bottom: 2px; }
+.cd-menu-sub {
+  list-style: none; margin: 0; padding: 0 0 10px calc(26px + 14px);
+  display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px;
+  border-bottom: 1px solid var(--line-wood);
+}
+.cd-menu-nav .cd-menu-sub a {
+  display: flex; align-items: center; gap: 10px;
+  min-height: 44px; padding: 0; border: 0;
+  font-family: var(--font-body); font-stretch: 100%; font-variation-settings: normal;
+  text-transform: none; font-weight: 600; font-size: 16px; line-height: 1.2; letter-spacing: 0;
+  color: var(--cream-mute);
+}
+/* marca de cinta métrica en lugar de viñeta */
+.cd-menu-nav .cd-menu-sub a::before { content: ""; flex: none; width: 10px; height: 1.5px; background: var(--brand-on-wood); transition: width 200ms var(--ease-out); }
+.cd-menu-nav .cd-menu-sub a:active { color: var(--cream); }
+@media (hover: hover) and (pointer: fine) {
+  .cd-menu-nav .cd-menu-sub a:hover { color: var(--cream); }
+  .cd-menu-nav .cd-menu-sub a:hover::before { width: 16px; }
+}
+@media (min-width: 900px) {
+  .cd-menu-sub { padding-left: calc(26px + 14px); }
+  .cd-menu-nav .cd-menu-sub a { font-size: 17px; }
+}
+
+/* ScrollTrigger mide mal con scroll-behavior:smooth en <html> (bug de opacidad al regresar arriba).
+   Se desactiva global; los links internos hacen scroll suave por JS (site.js · smoothAnchors). */
+html { scroll-behavior: auto !important; }

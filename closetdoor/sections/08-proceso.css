@@ -35,7 +35,7 @@
 #proceso .s-proc-cta { margin-top: 26px; }
 #proceso .s-proc-cta .k-btn { width: 100%; min-height: 56px; justify-content: center; font-size: 17px; }
 
-/* ---- Compu: la cinta corre horizontal arriba de los 3 pasos ---- */
+/* ---- Compu: la cinta corre horizontal arriba de los 4 pasos ---- */
 @media (min-width: 900px) {
   #proceso .s-proc-h { margin-bottom: 56px; }
   #proceso .s-tape { right: 0; bottom: auto; width: auto; height: 64px; }
@@ -52,13 +52,13 @@
   #proceso .s-tape-nums span { padding: 16px 0 0 3px; text-align: left; }
   #proceso .s-tape-hook { left: auto; right: -12px; top: -4px; bottom: -4px; width: 12px; height: auto; border-radius: 2px 3px 3px 2px; background: linear-gradient(90deg, #4a4642, #2a2724); }
 
-  #proceso .s-proc-steps { grid-template-columns: repeat(3, 1fr); column-gap: 48px; padding: 110px 0 0; }
+  #proceso .s-proc-steps { grid-template-columns: repeat(4, 1fr); column-gap: clamp(28px, 3vw, 44px); padding: 110px 0 0; }
   #proceso .s-proc-steps li { grid-template-columns: 1fr; align-content: start; padding: 0; row-gap: 14px; }
   #proceso .s-proc-steps li + li { border-top: 0; }
   #proceso .s-proc-steps li::before { left: 0; top: -44px; width: 2px; height: 30px; transform-origin: 50% 0; }
   #proceso .s-proc-ico { grid-row: auto; width: 76px; height: 76px; margin-bottom: 6px; }
   #proceso .s-proc-ico path { stroke-width: 1.8; }
-  #proceso .s-proc-steps h3 { font-size: 56px; margin: 0; }
+  #proceso .s-proc-steps h3 { font-size: clamp(40px, 3.5vw, 54px); margin: 0; }
   #proceso .s-proc-steps p { font-size: 18px; }
   #proceso .s-proc-cta { margin-top: 64px; }
   #proceso .s-proc-cta .k-btn { width: auto; min-height: 58px; padding-left: 30px; padding-right: 32px; }
@@ -67,19 +67,19 @@
 /* ---- Animación ----
    La cinta se desenrolla ligada al scroll (scrub leve, sin pin) y cada paso se enciende solo
    cuando la cinta lo alcanza: 08-proceso.js con GSAP + ScrollTrigger. Aqui solo queda lo que
-   maneja CSS: titulo, estuche y boton. Sin JS/GSAP la cinta y los pasos ya estan completos. */
+   maneja CSS: titulo, estuche y boton, y SOLO si el JS puso .js-rv (si el JS falla, todo queda visible). */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  #proceso .s-proc-h { opacity: 0; transform: translateY(20px); transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out); }
+  #proceso.js-rv .s-proc-h { opacity: 0; transform: translateY(20px); transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out); }
   #proceso .s-proc-h.is-in { opacity: 1; transform: none; }
 
-  #proceso .s-tape-case { transform: scale(0.94) rotate(-8deg); opacity: 0; transition: transform 500ms var(--ease-out), opacity 300ms var(--ease-out); }
+  #proceso.js-rv .s-tape-case { transform: scale(0.94) rotate(-8deg); opacity: 0; transition: transform 500ms var(--ease-out), opacity 300ms var(--ease-out); }
   #proceso .is-in .s-tape-case { transform: none; opacity: 1; }
 
   /* marca roja que sale de la cinta: la enciende el JS con .is-on (solo si GSAP corre) */
   #proceso .s-proc-steps.js-anim li::before { transform: scaleX(0); transition: transform 320ms var(--ease-out); }
   #proceso .s-proc-steps.js-anim li.is-on::before { transform: none; }
 
-  #proceso .s-proc-cta { opacity: 0; transform: translateY(14px); transition: opacity 450ms var(--ease-out) 200ms, transform 450ms var(--ease-out) 200ms; }
+  #proceso.js-rv .s-proc-cta { opacity: 0; transform: translateY(14px); transition: opacity 450ms var(--ease-out) 200ms, transform 450ms var(--ease-out) 200ms; }
   #proceso .s-proc-cta.is-in { opacity: 1; transform: none; }
 }
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) and (min-width: 900px) {

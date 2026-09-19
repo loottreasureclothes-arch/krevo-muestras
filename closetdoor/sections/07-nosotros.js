@@ -22,6 +22,28 @@
     Array.prototype.forEach.call(blocks, function (el) { io.observe(el); });
   }
 
+  /* ---------- red de seguridad (FEEDBACK-2 #6) ----------
+     Si un observador o un tween se atora (rAF pausado en el navegador de WhatsApp/Instagram),
+     a los 1.6 s de asomarse cada bloque queda en su estado final. */
+  var CLR = ["opacity", "visibility", "transform", "translate", "rotate", "scale", "clip-path"];
+  function clr(els) {
+    Array.prototype.forEach.call(els, function (el) { if (el) CLR.forEach(function (p) { el.style.removeProperty(p); }); });
+  }
+  var safety = [];
+  var sio = ("IntersectionObserver" in window) ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      safety.forEach(function (x) { if (x.el === e.target && !x.armed) { x.armed = true; setTimeout(x.fn, 1600); } });
+    });
+  }, { rootMargin: "0px 0px -25% 0px" }) : null;
+  function onSeen(el, fn) {
+    if (!el) return;
+    if (!sio) { fn(); return; }
+    safety.push({ el: el, fn: fn });
+    sio.unobserve(el); sio.observe(el); /* re-observar entrega el estado actual */
+  }
+  if (!still) Array.prototype.forEach.call(blocks, function (el) { onSeen(el, function () { el.classList.add("is-in"); }); });
+
   /* ---------- rodillos del 40 ---------- */
   var odo = sec.querySelector(".s-nos-odo");
   var reels = [];
@@ -62,6 +84,11 @@
         .to(rule, { scaleX: 1, duration: 1.05, ease: "power4.out" }, 0.05)
         /* la veta se cepilla de izquierda a derecha al asentarse los numeros */
         .to(grain, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.55, ease: "power2.inOut" }, 0.6);
+      onSeen(sec.querySelector(".s-nos-40"), function () {
+        if (tl.progress() >= 1) return;
+        tl.progress(1); tl.kill();
+        clr([num, rule, grain]);
+      });
       return function () { reels.length = 0; };
     });
 
@@ -70,10 +97,16 @@
       var fig = sec.querySelector(".s-nos-fig");
       var t = fig.querySelector(".s-nos-bar--t"), r = fig.querySelector(".s-nos-bar--r"),
           b = fig.querySelector(".s-nos-bar--b"), l = fig.querySelector(".s-nos-bar--l");
-      var img = fig.querySelector("img"), tag = fig.querySelector(".s-nos-tag");
+      /* el zoom va en el contenedor de las 3 fotos: el rotador (00-rotador.js) cambia las <img> de adentro */
+      var img = fig.querySelector(".s-nos-rot") || fig.querySelector("img"), tag = fig.querySelector(".s-nos-tag");
       gsap.set([t, b], { scaleX: 0 });
       gsap.set([r, l], { scaleY: 0 });
-      gsap.set(img, { clipPath: "inset(100% 0% 0% 0%)", scale: 1.08 });
+      /* la foto NO se recorta (lazy + clip-path al 100% = Safari/WhatsApp no la descargan):
+         una cortina crema encima se recoge hacia arriba y la destapa de abajo hacia arriba */
+      var veil = document.createElement("span");
+      veil.className = "s-nos-veil"; veil.setAttribute("aria-hidden", "true");
+      img.parentNode.insertBefore(veil, img.nextSibling);
+      gsap.set(img, { scale: 1.08 });
       gsap.set(tag, { autoAlpha: 0, y: 8 });
 
       var tl = gsap.timeline({
@@ -86,9 +119,16 @@
         .to(b, { scaleX: 1 }, "marco+=0.32")
         .to(l, { scaleY: 1 }, "marco+=0.48")
         .addLabel("foto", 0.3)
-        .to(img, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.75, ease: "power4.inOut", clearProps: "clipPath" }, "foto")
+        .to(veil, { scaleY: 0, duration: 0.75, ease: "power4.inOut", onComplete: function () { veil.remove(); } }, "foto")
         .to(img, { scale: 1, duration: 0.9, ease: "power4.out", clearProps: "transform" }, "foto")
         .to(tag, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", clearProps: "transform" }, "foto+=0.55");
+      onSeen(fig, function () {
+        if (tl.progress() >= 1) return;
+        tl.progress(1); tl.kill();
+        veil.remove();
+        clr([t, r, b, l, img, tag]);
+      });
+      return function () { veil.remove(); };
     });
   }
 

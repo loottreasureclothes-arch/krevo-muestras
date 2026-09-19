@@ -55,6 +55,28 @@
     sec.querySelector(".s-galeria-head").classList.add("is-in");
     sec.querySelector(".s-galeria-ruler").classList.add("is-in");
   } else {
+    // Cortina por foto (FEEDBACK-2 #6): antes el botón arrancaba con clip-path al 100% y Safari/WhatsApp no
+    // descargaban la foto lazy de adentro. Ahora la foto carga normal y una cortina crema se recoge encima.
+    items.forEach(function (it) {
+      var v = document.createElement("span");
+      v.className = "s-galeria-veil"; v.setAttribute("aria-hidden", "true");
+      it.querySelector(".s-galeria-open").appendChild(v);
+    });
+    // Red de seguridad: a los 1.6 s de asomarse, cada foto (y el título) queda en su estado final.
+    var fio = new IntersectionObserver(function (en) {
+      en.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        fio.unobserve(e.target);
+        var t = e.target;
+        setTimeout(function () {
+          t.classList.add("is-in");
+          if (t.classList.contains("s-galeria-head")) sec.querySelector(".s-galeria-ruler").classList.add("is-in");
+          else { t.classList.add("is-done"); var im = t.querySelector("img"); if (im) im.classList.add("is-loaded"); }
+        }, 1600);
+      });
+    }, { rootMargin: "0px 0px -25% 0px" });
+    items.forEach(function (it) { fio.observe(it); });
+    fio.observe(sec.querySelector(".s-galeria-head"));
     // Stagger por columnas: la columna 1 arranca, la 2 le sigue a 70 ms, etc.; dentro de cada columna,
     // de arriba hacia abajo a 110 ms. Tope de 400 ms para que ninguna foto tarde más de ~1.1 s en total.
     function colOf(el) {

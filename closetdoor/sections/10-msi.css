@@ -45,44 +45,58 @@
 #msi .s-msi-cta { touch-action: manipulation; }
 #msi .s-msi-cta { margin-top: 24px; min-height: 56px; padding-inline: 24px; font-size: 16px; width: 100%; justify-content: center; }
 
-/* Regla / cinta metrica de 12 meses */
-#msi .s-msi-rule { position: relative; margin-top: 44px; padding-top: 2px; }
-#msi .s-msi-ticks {
-  position: relative; list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(12, 1fr);
-  height: 46px;
-  border-top: 1px solid rgba(246, 238, 226, 0.35);
-  /* rayitas menores (4 por mes) */
-  background-image: repeating-linear-gradient(90deg, rgba(246, 238, 226, 0.28) 0 1px, transparent 1px calc(100% / 48));
-  background-size: 100% 9px; background-repeat: no-repeat;
+/* Cinta métrica de 12 meses: estuche + cinta que sale y pega en el 12 (10-msi.js) */
+#msi .s-msi-rule {
+  position: relative; margin-top: 44px;
+  display: grid; grid-template-columns: 60px minmax(0, 1fr); align-items: end;
 }
-/* barra que avanza hasta el 12 */
-#msi .s-msi-ticks::before {
-  content: ""; position: absolute; left: 0; right: 0; top: -2px; height: 3px;
-  background: linear-gradient(90deg, rgba(246, 238, 226, 0.55), var(--cream));
-  transform-origin: left center; transform: scaleX(0);
-  transition: transform 1100ms var(--ease-out) 150ms;
+#msi .s-msi-case { grid-column: 1; grid-row: 1; position: relative; z-index: 2; width: 60px; height: 56px; transform-origin: 40% 90%; }
+#msi .s-msi-case svg { display: block; width: 100%; height: 100%; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45)); }
+/* la pista recorta solo por la izquierda: la cinta nace dentro del estuche; el rebote y el destello pueden salir */
+#msi .s-msi-track {
+  grid-column: 2; grid-row: 1; position: relative; z-index: 1;
+  margin: 0 0 6px -12px; height: 32px;
+  clip-path: inset(-40px -60px -40px 0);
+}
+#msi .s-msi-bounce, #msi .s-msi-blade { position: absolute; inset: 0; }
+#msi .s-msi-blade {
+  border-radius: 1px 2px 2px 1px;
+  background:
+    repeating-linear-gradient(90deg, rgba(17, 17, 17, 0.42) 0 1px, transparent 1px calc(100% / 48)) 0 0 / 100% 7px no-repeat,
+    linear-gradient(180deg, #f3ecdf, #e2d6c1);
+  box-shadow: inset 0 -1px 0 rgba(90, 58, 36, 0.35), 0 4px 10px -4px rgba(0, 0, 0, 0.5);
+}
+#msi .s-msi-ticks {
+  position: absolute; inset: 0; list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(12, 1fr);
 }
 #msi .s-msi-ticks li {
-  position: relative; padding: 18px 0 0 5px;
+  position: relative; display: flex; align-items: flex-end; justify-content: flex-end; padding: 0 4px 4px 0;
   font-family: var(--font-display); font-stretch: 70%; font-variation-settings: "wdth" 70;
-  font-weight: 700; font-size: 12px; line-height: 1; color: rgba(246, 238, 226, 0.6);
-  opacity: 0; transform: translateY(6px);
-  transition: opacity 360ms var(--ease-out), transform 360ms var(--ease-out);
-  transition-delay: calc(200ms + var(--i, 0) * 70ms);
+  font-weight: 800; font-size: 12px; line-height: 1; color: #2b1c12; font-variant-numeric: tabular-nums;
 }
-#msi .s-msi-ticks li::before {
-  content: ""; position: absolute; left: 0; top: 0; width: 1px; height: 16px; background: rgba(246, 238, 226, 0.6);
+#msi .s-msi-ticks li::before { content: ""; position: absolute; right: 0; top: 0; width: 1px; height: 14px; background: rgba(17, 17, 17, 0.7); }
+#msi .s-msi-ticks .s-msi-end { padding-right: 8px; color: var(--brand); }
+#msi .s-msi-ticks .s-msi-end::before { display: none; }
+#msi .s-msi-end b { display: inline-block; font-weight: 900; font-size: 15px; transform-origin: 60% 70%; }
+/* gancho metálico al final de la cinta */
+#msi .s-msi-hook {
+  position: absolute; right: -3px; top: -7px; bottom: -3px; width: 5px; border-radius: 1px;
+  background: linear-gradient(90deg, #8e8a84, #d8d3cb 45%, #6f6a63);
+  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.5);
 }
-#msi .s-msi-ticks li:last-child { color: var(--brand-on-wood); }
-#msi .s-msi-ticks li:last-child::before { background: var(--brand-on-wood); width: 2px; height: 22px; }
-#msi .s-msi-ticks li:last-child::after {
-  content: ""; position: absolute; right: 0; top: -1px; width: 1px; height: 16px; background: rgba(246, 238, 226, 0.6);
+/* destello rojo en el 12 (solo opacity + transform) */
+#msi .s-msi-flash {
+  position: absolute; right: -34px; top: 50%; width: 76px; height: 76px; margin-top: -38px; pointer-events: none;
+  border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(255, 106, 92, 0.85), rgba(255, 106, 92, 0.28) 55%, transparent);
 }
 #msi .s-msi-unit {
-  display: none; position: absolute; right: 0; top: 20px;
+  display: none; position: absolute; right: 0; top: calc(100% + 10px);
   font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(246, 238, 226, 0.45);
 }
+/* armada: la cinta espera dentro del estuche (solo con JS y movimiento; el JS la suelta) */
+#msi.s-msi-armed .s-msi-blade { transform: translateX(-100%); }
 
 /* Entrada (la dispara 10-msi.js) */
 #msi.s-msi-js .s-msi-12 { clip-path: inset(100% 0 0 0); transform: translateY(18px); transition: clip-path 900ms var(--ease-out), transform 900ms var(--ease-out); }
@@ -91,10 +105,6 @@
 #msi.s-msi-js .s-msi-copy > :nth-child(3) { transition-delay: 180ms; }
 #msi.is-in .s-msi-12 { clip-path: inset(-40% -10% -10% -10%); transform: none; }
 #msi.is-in .s-msi-copy > * { opacity: 1; transform: none; }
-#msi.is-in .s-msi-ticks::before { transform: scaleX(1); }
-#msi.is-in .s-msi-ticks li { opacity: 1; transform: none; }
-#msi:not(.s-msi-js) .s-msi-ticks li { opacity: 1; transform: none; }
-#msi:not(.s-msi-js) .s-msi-ticks::before { transform: scaleX(1); }
 
 @media (min-width: 560px) {
   #msi .s-msi-cta { width: auto; }
@@ -106,15 +116,19 @@
   #msi .s-msi-copy { padding: 0 0 26px; }
   #msi .s-msi-h { font-size: clamp(56px, 5.6vw, 88px); }
   #msi .s-msi-fine { font-size: 16px; }
-  #msi .s-msi-rule { grid-column: 1 / -1; margin-top: 40px; }
-  #msi .s-msi-ticks { height: 54px; }
-  #msi .s-msi-ticks li { font-size: 14px; padding-left: 8px; }
+  #msi .s-msi-rule { grid-column: 1 / -1; margin-top: 40px; grid-template-columns: 76px minmax(0, 1fr); }
+  #msi .s-msi-case { width: 76px; height: 71px; }
+  #msi .s-msi-track { height: 42px; margin: 0 0 8px -16px; }
+  #msi .s-msi-blade { background-size: 100% 10px, auto; }
+  #msi .s-msi-ticks li { font-size: 16px; padding: 0 6px 5px 0; }
+  #msi .s-msi-ticks li::before { height: 20px; }
+  #msi .s-msi-end b { font-size: 21px; }
   #msi .s-msi-unit { display: block; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #msi .s-msi-12, #msi .s-msi-copy > *, #msi .s-msi-ticks li { clip-path: none !important; transform: none !important; transition-property: opacity !important; }
+  #msi .s-msi-12, #msi .s-msi-copy > * { clip-path: none !important; transform: none !important; transition-property: opacity !important; }
   #msi.s-msi-js .s-msi-12 { opacity: 0; transition: opacity 600ms var(--ease-out); }
   #msi.is-in .s-msi-12 { opacity: 1; }
-  #msi .s-msi-ticks::before { transform: scaleX(1) !important; transition: none !important; }
+  #msi .s-msi-blade { transform: none !important; }
 }

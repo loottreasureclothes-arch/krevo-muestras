@@ -79,10 +79,16 @@
 #galeria .s-galeria-open:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
 #galeria .s-galeria-open img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-  opacity: 0; transform: scale(1.05);
   transition: opacity 600ms var(--ease-out), transform 900ms var(--ease-out);
 }
+/* fundido al cargar: solo con JS (sin JS la foto se ve directo) */
+#galeria.is-js .s-galeria-open img:not(.is-loaded) { opacity: 0; transform: scale(1.05); }
 #galeria .s-galeria-open img.is-loaded { opacity: 1; transform: scale(1); }
+/* cortina de entrada: por defecto recogida (visible); solo tapa mientras el item no tiene .is-in */
+#galeria .s-galeria-veil {
+  position: absolute; inset: -1px; z-index: 3; pointer-events: none;
+  background: var(--bg-cream, #f6f1ea); transform-origin: 50% 0; transform: scaleY(0);
+}
 /* velo inferior para que el texto se lea */
 #galeria .s-galeria-open::after {
   content: ""; position: absolute; inset: auto 0 0 0; height: 55%; z-index: 1; pointer-events: none;
@@ -117,9 +123,14 @@
 /* entrada al hacer scroll */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
   /* cada foto sube y se destapa de abajo hacia arriba, como un tablero que se levanta; el color de la madera (--ph) asoma primero */
-  #galeria.is-js .s-galeria-item:not(.is-in) .s-galeria-open { transform: translateY(28px); clip-path: inset(100% 0 0 0 round var(--g-radius)); }
-  #galeria.is-js .s-galeria-item .s-galeria-open { transition: transform 680ms var(--ease-out), clip-path 720ms var(--ease-out); transition-delay: var(--d, 0ms); }
+  /* sin clip-path sobre la foto lazy (Safari/WhatsApp no la descargarían): una cortina crema encima (la pone el JS)
+     se recoge hacia arriba y destapa de abajo hacia arriba */
+  #galeria.is-js .s-galeria-item:not(.is-in) .s-galeria-open { transform: translateY(28px); }
+  #galeria.is-js .s-galeria-item:not(.is-in) .s-galeria-veil { transform: none; }
+  #galeria.is-js .s-galeria-item .s-galeria-open { transition: transform 680ms var(--ease-out); transition-delay: var(--d, 0ms); }
+  #galeria.is-js .s-galeria-item .s-galeria-veil { transition: transform 720ms var(--ease-out); transition-delay: var(--d, 0ms); }
   #galeria.is-js .s-galeria-item.is-done .s-galeria-open { transition: transform 160ms var(--ease-out); transition-delay: 0ms; }
+  #galeria.is-js .s-galeria-item.is-done .s-galeria-veil { display: none; }
   #galeria.is-js .s-galeria-ruler { clip-path: inset(0 100% 0 0); transition: clip-path 1000ms var(--ease-in-out) 200ms; }
   #galeria.is-js .s-galeria-ruler.is-in { clip-path: inset(0 0 0 0); }
   #galeria.is-js .s-galeria-line { clip-path: inset(0 0 100% 0); transform: translateY(0.3em); transition: clip-path 800ms var(--ease-out), transform 800ms var(--ease-out); }

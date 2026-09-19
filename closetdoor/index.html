@@ -34,9 +34,13 @@
 <link rel="stylesheet" href="../_kit/kit.css">
 <link rel="stylesheet" href="../_kit/antesdespues.css">
 <link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="sections/00-rotador.css">
 <link rel="stylesheet" href="sections/01-hero.css">
+<link rel="stylesheet" href="sections/01b-mueble.css">
 <link rel="stylesheet" href="sections/02-trabajos.css">
+<link rel="stylesheet" href="sections/02a-contacto.css">
 <link rel="stylesheet" href="sections/02b-muebles.css">
+<link rel="stylesheet" href="sections/02c-materiales.css">
 <link rel="stylesheet" href="sections/03-incluye.css">
 <link rel="stylesheet" href="sections/04-antes-despues.css">
 <link rel="stylesheet" href="sections/05-servicios.css">
@@ -65,27 +69,41 @@
   </a>
   <nav class="k-nav" aria-label="Principal">
     <a href="#trabajos">Trabajos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#galeria">Galería</a>
-    <a href="#nosotros">Nosotros</a>
+    <a href="#catalogo">Muebles</a>
+    <a href="materiales.html">Materiales</a>
     <a href="#visitanos">Visítanos</a>
   </nav>
   <button class="cd-menu-btn" type="button" aria-expanded="false" aria-controls="cd-menu"><span class="cd-burger" aria-hidden="true"><i></i><i></i></span><span class="cd-menu-lbl">Menú</span></button>
   <a class="k-cta cd-green" href="#cotizar">Cotizar</a>
 </header>
 
-<div class="cd-menu" id="cd-menu" aria-hidden="true">
-  <nav class="cd-menu-nav" aria-label="Menú">
-    <a href="#trabajos">Trabajos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#galeria">Galería</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#cotizar">Cotizar</a>
-    <a href="#visitanos">Visítanos</a>
-  </nav>
-  <div class="cd-menu-foot">
-    <a class="cd-btn cd-btn--primary" data-wa="Hola Closet&Door, quiero información." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escríbenos por WhatsApp</a>
-    <p><span>Av. Universidad 1507, Villas de la Universidad</span><a href="https://www.facebook.com/ClosetAndDoor/" target="_blank" rel="noopener">Facebook</a></p>
+<div class="cd-menu" id="cd-menu" role="dialog" aria-modal="true" aria-label="Menú" aria-hidden="true">
+  <div class="cd-menu-scrim" aria-hidden="true"></div>
+  <div class="cd-menu-panel">
+    <nav class="cd-menu-nav" aria-label="Secciones">
+      <a href="#cotizar"><span>01</span>Agendar</a>
+      <a href="#trabajos"><span>02</span>Nuestros trabajos</a>
+      <a href="#catalogo"><span>03</span>Muebles</a>
+      <a class="cd-menu-parent" href="materiales.html"><span>04</span>Materiales</a>
+      <!-- sub-links: materiales.html#<filtro> activa el chip .mt-chip[data-f] (site.js, applyMatHash) -->
+      <ul class="cd-menu-sub" aria-label="Materiales por lugar">
+        <li><a href="materiales.html#cocina">Cocina</a></li>
+        <li><a href="materiales.html#closets">Closet</a></li>
+        <li><a href="materiales.html#bano">Baño</a></li>
+        <li><a href="materiales.html#herrajes">Herrajes y luz</a></li>
+      </ul>
+      <a href="#antes-despues"><span>05</span>Antes y después</a>
+      <a href="#nosotros"><span>06</span>Quiénes somos</a>
+      <a href="#visitanos"><span>07</span>Visítanos</a>
+    </nav>
+    <div class="cd-menu-foot">
+      <span class="cd-ruler cd-menu-ruler" aria-hidden="true"></span>
+      <div class="cd-menu-acts">
+        <a class="cd-btn cd-btn--primary" data-wa="Hola Closet&Door, quiero información." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+        <a class="cd-btn cd-btn--secondary" href="tel:+524494463411"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4-2 1.3a11 11 0 0 0 6.6 6.6l1.3-2 4 1.4v2.6a2 2 0 0 1-2.1 2A16.5 16.5 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Llamar</a>
+      </div>
+      <p><span>Av. Universidad 1507, Villas de la Universidad, Ags.</span><a href="https://www.facebook.com/ClosetAndDoor/" target="_blank" rel="noopener">Facebook</a></p>
+    </div>
   </div>
 </div>
 
@@ -134,11 +152,11 @@
           <a class="k-btn cd-green" data-wa="Hola Closet&Door, quiero agendar mi diseño." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Agenda tu diseño</a>
         </div>
         <ul class="s-hero-chips" aria-label="Ver trabajos por tipo">
-          <li><a href="#trabajos" data-go="1"><img src="img/hero/tiles/cocinas.webp" alt="" width="360" height="150" decoding="async"><span>Cocinas</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-          <li><a href="#trabajos" data-go="0"><img src="img/hero/tiles/closets-hd-360.webp" srcset="img/hero/tiles/closets-hd-360.webp 1x, img/hero/tiles/closets-hd-720.webp 2x" alt="" width="360" height="150" decoding="async"><span>Closets</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-          <li><a href="#trabajos" data-go="2"><img src="img/hero/tiles/puertas.webp" alt="" width="360" height="150" decoding="async"><span>Puertas</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-          <li><a href="#trabajos" data-go="4"><img src="img/hero/tiles/muebles-hd-360.webp" srcset="img/hero/tiles/muebles-hd-360.webp 1x, img/hero/tiles/muebles-hd-720.webp 2x" alt="" width="360" height="150" decoding="async"><span>Muebles</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-          <li><a href="#trabajos" data-go="3"><img src="img/hero/tiles/remodelaciones-hd-360.webp" srcset="img/hero/tiles/remodelaciones-hd-360.webp 1x, img/hero/tiles/remodelaciones-hd-720.webp 2x" alt="" width="360" height="150" decoding="async"><span>Remodelaciones</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="#trabajos" data-sheet="cocinas" aria-haspopup="dialog"><img src="img/hero/tiles/cocinas.webp" alt="" width="360" height="150" decoding="async"><span class="s-hero-tn">Cocinas<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">con isla y cubierta</span></a></li>
+          <li><a href="#trabajos" data-sheet="closets" aria-haspopup="dialog"><img src="img/hero/tiles/closets-hd-360.webp" srcset="img/hero/tiles/closets-hd-360.webp 1x, img/hero/tiles/closets-hd-720.webp 2x" alt="" width="360" height="150" decoding="async"><span class="s-hero-tn">Closets<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">de piso a techo, con LED</span></a></li>
+          <li><a href="#trabajos" data-sheet="puertas" aria-haspopup="dialog"><img src="img/hero/tiles/puertas.webp" alt="" width="360" height="150" decoding="async"><span class="s-hero-tn">Puertas<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">de madera, residenciales</span></a></li>
+          <li><a href="#trabajos" data-sheet="muebles" aria-haspopup="dialog"><img src="img/hero/tiles/muebles-hd-360.webp" srcset="img/hero/tiles/muebles-hd-360.webp 1x, img/hero/tiles/muebles-hd-720.webp 2x" alt="" width="360" height="150" decoding="async"><span class="s-hero-tn">Muebles<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">centros de TV y baños</span></a></li>
+          <li><a href="#trabajos" data-sheet="remodelaciones" aria-haspopup="dialog"><img src="img/hero/tiles/remodelaciones-hd-360.webp" srcset="img/hero/tiles/remodelaciones-hd-360.webp 1x, img/hero/tiles/remodelaciones-hd-720.webp 2x" alt="" width="360" height="150" decoding="async"><span class="s-hero-tn">Remodelaciones<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">muros y celosías</span></a></li>
         </ul>
       </div>
 
@@ -152,6 +170,71 @@
         </div>
       </div>
     </div>
+    <!-- Hoja de cada tipo: la llena 01-hero.js (fotos reales HD, materiales y "Armar mi..."). El JS la mueve a <body>. -->
+    <div class="s-hero-sheet" hidden>
+      <div class="s-hero-sheet-veil" data-close></div>
+      <div class="s-hero-sheet-box" role="dialog" aria-modal="true" aria-labelledby="s-hero-sheet-t" tabindex="-1">
+        <div class="s-hero-sheet-grip" aria-hidden="true"><i></i></div>
+        <header class="s-hero-sheet-head">
+          <div>
+            <h2 id="s-hero-sheet-t" class="s-hero-sheet-t"></h2>
+            <p class="s-hero-sheet-d"></p>
+          </div>
+          <button type="button" class="s-hero-sheet-x" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+        </header>
+        <div class="s-hero-sheet-car" role="region" aria-label="Fotos de proyectos reales" tabindex="0"></div>
+        <div class="s-hero-sheet-nav">
+          <button type="button" data-dir="-1" aria-label="Foto anterior"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+          <button type="button" data-dir="1" aria-label="Foto siguiente"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="s-hero-sheet-mat">
+          <h3>Materiales que se ven aquí</h3>
+          <ul class="s-hero-sheet-chips"></ul>
+        </div>
+        <div class="s-hero-sheet-foot">
+          <button type="button" class="k-btn cd-green s-hero-sheet-go"></button>
+          <a class="s-hero-sheet-all" href="materiales.html">Ver todos los materiales<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mueble" class="s-mueble" aria-labelledby="mb-t">
+    <!-- La cámara entra a su walk-in real (img/hd/cd10): la foto arranca dentro de un marco y termina a sangre
+         con zoom lento. La isla va recortada aparte (img/mueble/*-fg-*) y se acerca un poco más rápido: profundidad.
+         Sin JS, sin GSAP o con movimiento reducido: la foto a sangre, el texto y los tres bloques, siempre visibles. -->
+    <div class="mb-frame">
+      <div class="mb-cam">
+        <video class="mb-vid" muted playsinline loop preload="metadata" poster="img/mueble/video/poster.webp" aria-hidden="true"
+          data-src-m="img/mueble/video/walkin-m.mp4" data-src-d="img/mueble/video/walkin-d.mp4"></video>
+        <picture>
+          <source media="(min-width: 900px)" srcset="img/mueble/wide-1400.webp 1400w, img/mueble/wide-2000.webp 2000w, img/mueble/wide-2400.webp 2400w" sizes="135vw" width="2400" height="1500">
+          <img class="mb-bg" src="img/mueble/tall-1100.webp" width="1100" height="1935" alt="Vestidor walk-in de nogal con isla de cajones, cubierta de vidrio y repisas con luz LED, hecho por Closet&amp;Door" loading="lazy" decoding="async">
+        </picture>
+        <picture>
+          <source media="(min-width: 900px)" srcset="img/mueble/wide-fg-2400.webp" width="2400" height="1500">
+          <img class="mb-fg" src="img/mueble/tall-fg-1100.webp" width="1100" height="1935" alt="" aria-hidden="true" loading="lazy" decoding="async">
+        </picture>
+        <div class="mb-light" aria-hidden="true"></div>
+      </div>
+      <div class="mb-vig" aria-hidden="true"></div>
+      <div class="mb-scrim" aria-hidden="true"></div>
+    </div>
+
+    <div class="mb-copy">
+      <h2 id="mb-t" class="mb-t cd-h3d"><span class="mb-w">Espacios</span> <span class="mb-w">que</span> <span class="mb-w">reflejan</span> <span class="mb-w"><em>tu estilo.</em></span></h2>
+      <ul class="mb-acts">
+        <li><a class="mb-act mb-act--go" href="#cotizar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/><path d="M4 20h16"/></svg>
+          <span>Cotizar</span></a></li>
+        <li><a class="mb-act" href="materiales.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><path d="M13 17h8M17 13v8"/></svg>
+          <span>Ver materiales</span></a></li>
+        <li><a class="mb-act" href="#trabajos">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="m3 16 5-5 4 4 3-3 6 6"/><circle cx="15.5" cy="8.5" r="1.5"/></svg>
+          <span>Nuestros trabajos</span></a></li>
+      </ul>
+    </div>
   </section>
 
   <section id="trabajos" class="s-trabajos" aria-labelledby="tj-title">
@@ -163,68 +246,68 @@
     <div class="tj-car" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Proyectos reales. Usa las flechas del teclado para cambiar.">
       <div class="tj-track">
         <article class="tj-slide" aria-roledescription="diapositiva" aria-label="1 de 8: Closets">
-          <figure class="tj-media"><img src="img/trabajos/closet_led-hd-800.webp" srcset="img/trabajos/closet_led-hd-800.webp 800w, img/trabajos/closet_led-hd-1200.webp 1200w, img/trabajos/closet_led-hd-1600.webp 1600w" sizes="(min-width: 900px) 34vw, 86vw" loading="lazy" decoding="async" alt="Closet con luz LED, cajones de nogal y repisas" width="800" height="924" draggable="false"></figure>
-          <div class="tj-copy">
-            <h3 class="tj-title"><span>Closets</span></h3>
-            <p class="tj-desc">Luz LED, cajones y repisas a tu medida.</p>
-            <a class="tj-cta" data-wa="Hola Closet&Door, vi el closet con luz LED en su página y quiero cotizar uno así." href="https://wa.me/524494463411" target="_blank" rel="noopener"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar este</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
+          <figure class="tj-media"><img src="img/trabajos/closet_led-hd-800.webp" srcset="img/trabajos/closet_led-hd-800.webp 800w, img/trabajos/closet_led-hd-1200.webp 1200w, img/trabajos/closet_led-hd-1600.webp 1600w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Closet con luz LED, cajones de nogal y repisas" width="800" height="924" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Closets</span></h3><p class="tj-desc">Luz LED, cajones y repisas a tu medida.</p></div>
+              <a class="tj-cta" data-wa="Hola Closet&Door, vi el closet con luz LED en su página y quiero cotizar uno así." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar closets por WhatsApp"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </figure>
         </article>
         <article class="tj-slide" aria-roledescription="diapositiva" aria-label="2 de 8: Cocinas">
-          <figure class="tj-media"><img src="img/trabajos/cocina-hd-800.webp" srcset="img/trabajos/cocina-hd-800.webp 800w, img/trabajos/cocina-hd-1200.webp 1200w, img/trabajos/cocina-hd-1600.webp 1600w" sizes="(min-width: 900px) 34vw, 86vw" loading="lazy" decoding="async" alt="Cocina con isla, cubierta de madera y plafón de madera" width="800" height="1067" draggable="false"></figure>
-          <div class="tj-copy">
-            <h3 class="tj-title"><span>Cocinas</span></h3>
-            <p class="tj-desc">Isla, cubierta y plafón de madera.</p>
-            <a class="tj-cta" data-wa="Hola Closet&Door, vi la cocina con isla en su página y quiero cotizar una cocina." href="https://wa.me/524494463411" target="_blank" rel="noopener"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar este</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
+          <figure class="tj-media"><img src="img/trabajos/cocina-hd-800.webp" srcset="img/trabajos/cocina-hd-800.webp 800w, img/trabajos/cocina-hd-1200.webp 1200w, img/trabajos/cocina-hd-1600.webp 1600w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Cocina con isla, cubierta de madera y plafón de madera" width="800" height="1067" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Cocinas</span></h3><p class="tj-desc">Isla, cubierta y plafón de madera.</p></div>
+              <a class="tj-cta" data-wa="Hola Closet&Door, vi la cocina con isla en su página y quiero cotizar una cocina." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar cocinas por WhatsApp"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </figure>
         </article>
         <article class="tj-slide" aria-roledescription="diapositiva" aria-label="3 de 8: Puertas">
-          <figure class="tj-media"><img src="img/trabajos/puerta-hd-800.webp" srcset="img/trabajos/puerta-hd-800.webp 800w, img/trabajos/puerta-hd-1200.webp 1200w, img/trabajos/puerta-hd-1600.webp 1600w" sizes="(min-width: 900px) 34vw, 86vw" loading="lazy" decoding="async" alt="Puerta interior de nogal con jaladera negra" width="800" height="1067" draggable="false"></figure>
-          <div class="tj-copy">
-            <h3 class="tj-title"><span>Puertas</span></h3>
-            <p class="tj-desc">Puertas de nogal para toda la casa.</p>
-            <a class="tj-cta" data-wa="Hola Closet&Door, vi la puerta de nogal en su página y quiero cotizar puertas." href="https://wa.me/524494463411" target="_blank" rel="noopener"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar este</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
+          <figure class="tj-media"><img src="img/trabajos/puerta-hd-800.webp" srcset="img/trabajos/puerta-hd-800.webp 800w, img/trabajos/puerta-hd-1200.webp 1200w, img/trabajos/puerta-hd-1600.webp 1600w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Puerta interior de nogal con jaladera negra" width="800" height="1067" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Puertas</span></h3><p class="tj-desc">Puertas de nogal para toda la casa.</p></div>
+              <a class="tj-cta" data-wa="Hola Closet&Door, vi la puerta de nogal en su página y quiero cotizar puertas." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar puertas por WhatsApp"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </figure>
         </article>
         <article class="tj-slide" aria-roledescription="diapositiva" aria-label="4 de 8: Remodelaciones">
-          <figure class="tj-media"><img src="img/trabajos/recamara-hd-800.webp" srcset="img/trabajos/recamara-hd-800.webp 800w, img/trabajos/recamara-hd-1200.webp 1200w, img/trabajos/recamara-hd-1600.webp 1600w" sizes="(min-width: 900px) 34vw, 86vw" loading="lazy" decoding="async" alt="Recámara con muro de closet de nogal de piso a techo" width="800" height="974" draggable="false"></figure>
-          <div class="tj-copy">
-            <h3 class="tj-title"><span>Remodelaciones</span></h3>
-            <p class="tj-desc">Un muro de closet de piso a techo.</p>
-            <a class="tj-cta" data-wa="Hola Closet&Door, vi la remodelación de la recámara en su página y quiero cotizar una remodelación." href="https://wa.me/524494463411" target="_blank" rel="noopener"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar este</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
+          <figure class="tj-media"><img src="img/trabajos/recamara-hd-800.webp" srcset="img/trabajos/recamara-hd-800.webp 800w, img/trabajos/recamara-hd-1200.webp 1200w, img/trabajos/recamara-hd-1600.webp 1600w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Recámara con muro de closet de nogal de piso a techo" width="800" height="974" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Remodelaciones</span></h3><p class="tj-desc">Un muro de closet de piso a techo.</p></div>
+              <a class="tj-cta" data-wa="Hola Closet&Door, vi la remodelación de la recámara en su página y quiero cotizar una remodelación." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar remodelaciones por WhatsApp"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </figure>
         </article>
         <article class="tj-slide" aria-roledescription="diapositiva" aria-label="5 de 8: Muebles">
-          <figure class="tj-media"><img src="img/trabajos/tv2-hd-800.webp" srcset="img/trabajos/tv2-hd-800.webp 800w, img/trabajos/tv2-hd-1200.webp 1200w, img/trabajos/tv2-hd-1600.webp 1600w" sizes="(min-width: 900px) 34vw, 86vw" loading="lazy" decoding="async" alt="Centro de TV con lambrín ranurado de nogal" width="800" height="1026" draggable="false"></figure>
-          <div class="tj-copy">
-            <h3 class="tj-title"><span>Muebles</span></h3>
-            <p class="tj-desc">Centro de TV con lambrín ranurado.</p>
-            <a class="tj-cta" data-wa="Hola Closet&Door, vi el centro de TV con lambrín en su página y quiero cotizar uno así." href="https://wa.me/524494463411" target="_blank" rel="noopener"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar este</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
+          <figure class="tj-media"><img src="img/trabajos/tv2-hd-800.webp" srcset="img/trabajos/tv2-hd-800.webp 800w, img/trabajos/tv2-hd-1200.webp 1200w, img/trabajos/tv2-hd-1600.webp 1600w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Centro de TV con lambrín ranurado de nogal" width="800" height="1026" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Muebles</span></h3><p class="tj-desc">Centro de TV con lambrín ranurado.</p></div>
+              <a class="tj-cta" data-wa="Hola Closet&Door, vi el centro de TV con lambrín en su página y quiero cotizar uno así." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar muebles por WhatsApp"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </figure>
         </article>
         <article class="tj-slide" aria-roledescription="diapositiva" aria-label="6 de 8: Vestidores">
-          <figure class="tj-media"><img src="img/trabajos/vestidor-hd-800.webp" srcset="img/trabajos/vestidor-hd-800.webp 800w, img/trabajos/vestidor-hd-1200.webp 1200w, img/trabajos/vestidor-hd-1600.webp 1600w" sizes="(min-width: 900px) 34vw, 86vw" loading="lazy" decoding="async" alt="Vestidor de nogal con repisas, cajonera y domo de luz" width="800" height="1067" draggable="false"></figure>
-          <div class="tj-copy">
-            <h3 class="tj-title"><span>Vestidores</span></h3>
-            <p class="tj-desc">Repisas y cajonera de piso a techo.</p>
-            <a class="tj-cta" data-wa="Hola Closet&Door, vi el vestidor en su página y quiero cotizar un vestidor." href="https://wa.me/524494463411" target="_blank" rel="noopener"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar este</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
+          <figure class="tj-media"><img src="img/trabajos/vestidor-hd-800.webp" srcset="img/trabajos/vestidor-hd-800.webp 800w, img/trabajos/vestidor-hd-1200.webp 1200w, img/trabajos/vestidor-hd-1600.webp 1600w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Vestidor de nogal con repisas, cajonera y domo de luz" width="800" height="1067" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Vestidores</span></h3><p class="tj-desc">Repisas y cajonera de piso a techo.</p></div>
+              <a class="tj-cta" data-wa="Hola Closet&Door, vi el vestidor en su página y quiero cotizar un vestidor." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar vestidores por WhatsApp"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </figure>
         </article>
         <article class="tj-slide" aria-roledescription="diapositiva" aria-label="7 de 8: Baño">
-          <figure class="tj-media"><img src="img/trabajos/bano-hd-800.webp" srcset="img/trabajos/bano-hd-800.webp 800w, img/trabajos/bano-hd-1200.webp 1200w, img/trabajos/bano-hd-1600.webp 1600w" sizes="(min-width: 900px) 34vw, 86vw" loading="lazy" decoding="async" alt="Mueble de baño flotante de nogal con cubierta de piedra y ovalín" width="800" height="1067" draggable="false"></figure>
-          <div class="tj-copy">
-            <h3 class="tj-title"><span>Baño</span></h3>
-            <p class="tj-desc">Mueble flotante con cubierta de piedra.</p>
-            <a class="tj-cta" data-wa="Hola Closet&Door, vi el mueble de baño en su página y quiero cotizar uno así." href="https://wa.me/524494463411" target="_blank" rel="noopener"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar este</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
+          <figure class="tj-media"><img src="img/trabajos/bano-hd-800.webp" srcset="img/trabajos/bano-hd-800.webp 800w, img/trabajos/bano-hd-1200.webp 1200w, img/trabajos/bano-hd-1600.webp 1600w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Mueble de baño flotante de nogal con cubierta de piedra y ovalín" width="800" height="1067" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Baño</span></h3><p class="tj-desc">Mueble flotante con cubierta de piedra.</p></div>
+              <a class="tj-cta" data-wa="Hola Closet&Door, vi el mueble de baño en su página y quiero cotizar uno así." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar baño por WhatsApp"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </figure>
         </article>
         <article class="tj-slide" aria-roledescription="diapositiva" aria-label="8 de 8: Celosía">
-          <figure class="tj-media"><img src="img/trabajos/celosia-hd-800.webp" srcset="img/trabajos/celosia-hd-800.webp 800w, img/trabajos/celosia-hd-1200.webp 1200w, img/trabajos/celosia-hd-1600.webp 1600w" sizes="(min-width: 900px) 34vw, 86vw" loading="lazy" decoding="async" alt="Celosía de lamas de nogal que divide el vestidor" width="800" height="1067" draggable="false"></figure>
-          <div class="tj-copy">
-            <h3 class="tj-title"><span>Celosía</span></h3>
-            <p class="tj-desc">Lamas de nogal que dividen sin encerrar.</p>
-            <a class="tj-cta" data-wa="Hola Closet&Door, vi la celosía de nogal en su página y quiero cotizar una." href="https://wa.me/524494463411" target="_blank" rel="noopener"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar este</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
+          <figure class="tj-media"><img src="img/trabajos/celosia-hd-800.webp" srcset="img/trabajos/celosia-hd-800.webp 800w, img/trabajos/celosia-hd-1200.webp 1200w, img/trabajos/celosia-hd-1600.webp 1600w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Celosía de lamas de nogal que divide el vestidor" width="800" height="1067" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Celosía</span></h3><p class="tj-desc">Lamas de nogal que dividen sin encerrar.</p></div>
+              <a class="tj-cta" data-wa="Hola Closet&Door, vi la celosía de nogal en su página y quiero cotizar una." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar celosía por WhatsApp"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </figure>
         </article>
       </div>
     </div>
@@ -240,6 +323,72 @@
       </div>
     </div>
     <p class="tj-live" aria-live="polite"></p>
+  </section>
+
+  <section id="contacto" class="s-contacto" aria-labelledby="ct-title">
+    <div class="k-wrap">
+      <!--
+        FORMULARIO CORTO "¿Te llamamos?"
+        Hoy: el botón abre WhatsApp al 449 446 3411 con el mensaje "Nuevo cliente interesado..." ya escrito.
+        Para que le llegue al CORREO del dueño en silencio (gratis, sin abrir WhatsApp):
+          1. Escribe su correo en data-formsubmit, ej. data-formsubmit="closetanddoor@gmail.com".
+          2. La primera vez que alguien lo envíe, FormSubmit.co le manda al dueño un correo de "Activate form": que le dé clic una sola vez.
+          3. Listo. Desde ahí cada registro llega al correo como "Cliente interesado" y la persona ve "Listo, te llamamos pronto".
+        Vacío = se usa WhatsApp. Si FormSubmit falla, también cae a WhatsApp.
+      -->
+      <form class="ct-card" id="ct-form" data-formsubmit="" novalidate data-reveal>
+        <div class="ct-head">
+          <h2 class="ct-title" id="ct-title">Cotiza <em>gratis.</em></h2>
+          <p class="ct-lead"><span class="ct-dot" aria-hidden="true"></span>Te llamamos</p>
+          <p class="ct-sub">Deja tu número y platicamos tu proyecto.</p>
+        </div>
+
+        <div class="ct-fields">
+          <div class="ct-field">
+            <label class="ct-label" for="ct-nombre">Nombre</label>
+            <input id="ct-nombre" name="nombre" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" placeholder="Tu nombre" required>
+          </div>
+          <div class="ct-field">
+            <label class="ct-label" for="ct-tel">Teléfono</label>
+            <input id="ct-tel" name="telefono" type="tel" inputmode="numeric" autocomplete="tel-national" enterkeyhint="next" placeholder="449 123 4567" maxlength="14" required aria-describedby="ct-tel-hint">
+            <small class="ct-hint" id="ct-tel-hint">10 dígitos</small>
+          </div>
+          <div class="ct-field ct-field--full">
+            <label class="ct-label" for="ct-necesita">¿Qué necesitas?</label>
+            <div class="ct-select">
+              <select id="ct-necesita" name="necesita" required>
+                <option value="" selected disabled>Elige una opción</option>
+                <option>Cocina</option>
+                <option>Closet o vestidor</option>
+                <option>Puerta</option>
+                <option>Mueble a medida</option>
+                <option>Baño</option>
+                <option>Remodelación</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="ct-field ct-field--full">
+            <label class="ct-label" for="ct-detalle">Cuéntanos más <small>(opcional)</small></label>
+            <input id="ct-detalle" name="detalle" type="text" autocomplete="off" enterkeyhint="send" placeholder="Ej. closet de 2 m para la recámara">
+          </div>
+        </div>
+
+        <p class="ct-err" id="ct-err" role="alert" hidden></p>
+
+        <div class="ct-foot">
+          <button type="submit" class="cd-btn cd-btn--primary ct-send" id="ct-send"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="ct-send-t">Quiero que me llamen</span></button>
+          <p class="ct-note">Tus datos solo se usan para llamarte.</p>
+        </div>
+
+        <div class="ct-done" id="ct-done" hidden tabindex="-1">
+          <span class="ct-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <p class="ct-done-t">Listo, te llamamos pronto.</p>
+          <p class="ct-done-s" id="ct-done-s">Tu mensaje ya va escrito en WhatsApp. Solo dale enviar.</p>
+          <a class="ct-again" id="ct-again" href="https://wa.me/524494463411" target="_blank" rel="noopener" hidden>¿No se abrió WhatsApp? Ábrelo aquí<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </form>
+    </div>
   </section>
 
   <section id="catalogo" class="s-muebles cd-wood" aria-labelledby="muebles-h">
@@ -368,6 +517,78 @@
     </div>
   </section>
 
+  <section id="materiales" class="s-mat" aria-labelledby="mat-h">
+    <div class="k-wrap">
+      <div class="s-mat-head">
+        <p class="s-mat-kicker">Muestrario</p>
+        <h2 id="mat-h" class="cd-h2 s-mat-title">Elige tu <em>acabado.</em></h2>
+        <p class="s-mat-lead">Acabados de sus proyectos reales. Tócalos para verlos en grande y arma tu mueble.</p>
+      </div>
+      <ul class="s-mat-grid" role="list">
+        <li class="s-mat-item">
+          <a class="s-mat-chip" href="materiales.html#m-nogal-catedral">
+            <img src="img/materiales/nogal-catedral-400.webp" srcset="img/materiales/nogal-catedral-400.webp 400w, img/materiales/nogal-catedral-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 45vw" width="400" height="400" alt="Muro de closet con veta de nogal" loading="lazy" decoding="async">
+            <span class="s-mat-hole" aria-hidden="true"></span>
+            <span class="s-mat-talon"><span class="s-mat-n">Nogal catedral</span><span class="s-mat-l">Closets</span></span>
+          </a>
+        </li>
+        <li class="s-mat-item">
+          <a class="s-mat-chip" href="materiales.html#m-gris-veteado">
+            <img src="img/materiales/gris-veteado-400.webp" srcset="img/materiales/gris-veteado-400.webp 400w, img/materiales/gris-veteado-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 45vw" width="400" height="400" alt="Closet gris con veta vertical" loading="lazy" decoding="async">
+            <span class="s-mat-hole" aria-hidden="true"></span>
+            <span class="s-mat-talon"><span class="s-mat-n">Gris veteado</span><span class="s-mat-l">Closets</span></span>
+          </a>
+        </li>
+        <li class="s-mat-item">
+          <a class="s-mat-chip" href="materiales.html#m-almendra">
+            <img src="img/materiales/almendra-400.webp" srcset="img/materiales/almendra-400.webp 400w, img/materiales/almendra-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 45vw" width="400" height="400" alt="Interior de closet en tono almendra" loading="lazy" decoding="async">
+            <span class="s-mat-hole" aria-hidden="true"></span>
+            <span class="s-mat-talon"><span class="s-mat-n">Almendra</span><span class="s-mat-l">Interiores</span></span>
+          </a>
+        </li>
+        <li class="s-mat-item">
+          <a class="s-mat-chip" href="materiales.html#m-negro-mate">
+            <img src="img/materiales/negro-mate-400.webp" srcset="img/materiales/negro-mate-400.webp 400w, img/materiales/negro-mate-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 45vw" width="400" height="400" alt="Gabinete en negro mate" loading="lazy" decoding="async">
+            <span class="s-mat-hole" aria-hidden="true"></span>
+            <span class="s-mat-talon"><span class="s-mat-n">Negro mate</span><span class="s-mat-l">Cocina</span></span>
+          </a>
+        </li>
+        <li class="s-mat-item">
+          <a class="s-mat-chip" href="materiales.html#m-piedra-gris">
+            <img src="img/materiales/piedra-gris-400.webp" srcset="img/materiales/piedra-gris-400.webp 400w, img/materiales/piedra-gris-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 45vw" width="400" height="400" alt="Cubierta de piedra gris veteada de un baño" loading="lazy" decoding="async">
+            <span class="s-mat-hole" aria-hidden="true"></span>
+            <span class="s-mat-talon"><span class="s-mat-n">Piedra gris</span><span class="s-mat-l">Cubiertas</span></span>
+          </a>
+        </li>
+        <li class="s-mat-item">
+          <a class="s-mat-chip" href="materiales.html#m-jaladera-lineal">
+            <img src="img/materiales/jaladera-lineal-400.webp" srcset="img/materiales/jaladera-lineal-400.webp 400w, img/materiales/jaladera-lineal-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 45vw" width="400" height="400" alt="Jaladera lineal negra sobre nogal" loading="lazy" decoding="async">
+            <span class="s-mat-hole" aria-hidden="true"></span>
+            <span class="s-mat-talon"><span class="s-mat-n">Jaladera lineal</span><span class="s-mat-l">Herrajes</span></span>
+          </a>
+        </li>
+        <li class="s-mat-item">
+          <a class="s-mat-chip" href="materiales.html#m-tira-led">
+            <img src="img/materiales/tira-led-400.webp" srcset="img/materiales/tira-led-400.webp 400w, img/materiales/tira-led-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 45vw" width="400" height="400" alt="Repisas iluminadas con tira LED cálida" loading="lazy" decoding="async">
+            <span class="s-mat-hole" aria-hidden="true"></span>
+            <span class="s-mat-talon"><span class="s-mat-n">Tira LED</span><span class="s-mat-l">Luz</span></span>
+          </a>
+        </li>
+        <li class="s-mat-item">
+          <a class="s-mat-chip" href="materiales.html#m-celosia">
+            <img src="img/materiales/celosia-400.webp" srcset="img/materiales/celosia-400.webp 400w, img/materiales/celosia-1200.webp 1200w" sizes="(min-width: 900px) 22vw, 45vw" width="400" height="400" alt="Celosía de lamas de madera" loading="lazy" decoding="async">
+            <span class="s-mat-hole" aria-hidden="true"></span>
+            <span class="s-mat-talon"><span class="s-mat-n">Celosía</span><span class="s-mat-l">Muros</span></span>
+          </a>
+        </li>
+      </ul>
+      <div class="s-mat-foot">
+        <a class="cd-btn cd-btn--secondary s-mat-all" href="materiales.html">Ver todos los materiales<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <p class="s-mat-note">Cocina, closets, puertas, baño, herrajes y luz.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="incluye" class="s-incluye" aria-labelledby="incluye-t">
     <div class="k-wrap s-incluye-grid">
       <header class="s-incluye-head">
@@ -375,13 +596,25 @@
       </header>
 
       <figure class="s-incluye-fig">
-        <div class="s-incluye-photo">
-          <img src="img/incluye/vestidor-nogal-hd-800.webp" srcset="img/incluye/vestidor-nogal-hd-800.webp 800w, img/incluye/vestidor-nogal-hd-1200.webp 1200w, img/incluye/vestidor-nogal-hd-1600.webp 1600w" sizes="(min-width: 900px) 44vw, 100vw" loading="lazy" decoding="async" alt="Vestidor con repisas de madera tono nogal instalado por Closet&amp;Door" width="800" height="1000">
+        <div class="s-incluye-collage" data-rot="3">
+          <div class="s-incluye-photo" data-rot-slot>
+            <div class="s-incluye-photo-in">
+              <img class="cd-rot-img" src="img/hd/cd10-1200.webp" loading="lazy" decoding="async" alt="Vestidor walk-in de nogal con isla de cajones, proyecto real de Closet&amp;Door" width="1200" height="1548">
+            </div>
+          </div>
+          <div class="s-incluye-inset s-incluye-inset--a" data-rot-slot>
+            <img class="cd-rot-img" src="img/hd/cd20-1200.webp" loading="lazy" decoding="async" alt="Cocina con isla y techo de madera, proyecto real de Closet&amp;Door" width="1200" height="1765">
+          </div>
+          <div class="s-incluye-inset s-incluye-inset--b" data-rot-slot>
+            <div class="s-incluye-zoom">
+              <img class="cd-rot-img" src="img/hd/cd02-1200.webp" loading="lazy" decoding="async" alt="Puerta de nogal con jaladera negra, proyecto real de Closet&amp;Door" width="1200" height="1818">
+            </div>
+          </div>
         </div>
         <div class="s-incluye-ruler" aria-hidden="true">
           <span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span><span>90</span>
         </div>
-        <figcaption>Vestidor en nogal. Proyecto real.</figcaption>
+        <figcaption>Proyectos reales Closet&amp;Door.</figcaption>
       </figure>
 
       <div class="s-incluye-body">
@@ -456,28 +689,28 @@
       <div class="s-ad-side" data-reveal data-reveal-delay="100">
         <div class="s-ad-tabs" role="tablist" aria-label="Elige el proyecto">
           <span class="s-ad-pill" aria-hidden="true"></span>
-          <button type="button" role="tab" id="ad-tab-closet" aria-controls="ad-closet" aria-selected="true">Closet</button>
-          <button type="button" role="tab" id="ad-tab-cocina" aria-controls="ad-cocina" aria-selected="false" tabindex="-1">Cocina</button>
+          <button type="button" role="tab" id="ad-tab-cocina" aria-controls="ad-cocina" aria-selected="true">Cocina</button>
+          <button type="button" role="tab" id="ad-tab-closet" aria-controls="ad-closet" aria-selected="false" tabindex="-1">Closet</button>
         </div>
         <p class="s-ad-hint">Arrastra la manija.</p>
       </div>
     </div>
 
     <div class="s-ad-stage" data-reveal data-reveal-delay="60">
-      <div class="s-ad-panel is-on" id="ad-closet" role="tabpanel" aria-labelledby="ad-tab-closet">
-        <div class="k-ba s-ad-ba s-ad-ba--closet" data-label="Comparar closet antes y después">
-          <img class="k-ba-before" src="img/antes-despues/closet_antes.webp" loading="lazy" decoding="async" alt="Antes: closet de madera sin puertas, con ropa amontonada" width="988" height="1740">
-          <img class="k-ba-after" src="img/antes-despues/closet_despues.webp" loading="lazy" decoding="async" alt="Después: closet de madera con cajones, luz y ropa colgada en orden" width="988" height="1740">
-          <span class="s-ad-door" aria-hidden="true"><i></i></span>
-        </div>
-        <p class="s-ad-cap">Proyecto real Closet&amp;Door.</p>
-      </div>
-      <div class="s-ad-panel" id="ad-cocina" role="tabpanel" aria-labelledby="ad-tab-cocina" hidden>
+      <div class="s-ad-panel is-on" id="ad-cocina" role="tabpanel" aria-labelledby="ad-tab-cocina">
         <div class="k-ba s-ad-ba s-ad-ba--cocina" data-label="Comparar cocina antes y después">
           <img class="k-ba-before" src="img/cocina_antes.webp" loading="lazy" decoding="async" alt="Antes: cocina con gabinetes claros y electrodomésticos viejos" width="1168" height="880">
           <img class="k-ba-after" src="img/cocina_despues.webp" loading="lazy" decoding="async" alt="Después: cocina de nogal con cubierta blanca y luz bajo gabinete" width="1168" height="880">
           <span class="s-ad-tag">Ilustrativo</span>
+          <span class="s-ad-door" aria-hidden="true"><i></i></span>
         </div>
+      </div>
+      <div class="s-ad-panel" id="ad-closet" role="tabpanel" aria-labelledby="ad-tab-closet" hidden>
+        <div class="k-ba s-ad-ba s-ad-ba--closet" data-label="Comparar closet antes y después">
+          <img class="k-ba-before" src="img/antes-despues/closet_antes-v2.webp" loading="lazy" decoding="async" alt="Antes: closet de madera sin puertas, con ropa amontonada" width="1000" height="1700">
+          <img class="k-ba-after" src="img/antes-despues/closet_despues-v2.webp" loading="lazy" decoding="async" alt="Después: closet de madera con cajones, luz y ropa colgada en orden" width="1000" height="1700">
+        </div>
+        <p class="s-ad-cap">Proyecto real Closet&amp;Door.</p>
       </div>
     </div>
 
@@ -649,7 +882,11 @@
 
       <figure class="s-nos-fig">
         <span class="s-nos-bar s-nos-bar--t" aria-hidden="true"></span><span class="s-nos-bar s-nos-bar--r" aria-hidden="true"></span><span class="s-nos-bar s-nos-bar--b" aria-hidden="true"></span><span class="s-nos-bar s-nos-bar--l" aria-hidden="true"></span>
-        <img src="img/nosotros/bano-real-600.webp" srcset="img/nosotros/bano-real-600.webp 600w, img/nosotros/bano-real-960.webp 960w" sizes="(min-width: 900px) 40vw, 92vw" alt="Mueble de baño doble con cajones de madera nogal y espejos con marco de madera, fabricado e instalado por Closet&amp;Door" width="600" height="915" loading="lazy" decoding="async">
+        <div class="s-nos-rot" data-rot="9">
+          <div class="s-nos-slot" data-rot-slot><img class="cd-rot-img" style="object-position:50% 38%" src="img/nosotros/bano-real-600.webp" srcset="img/nosotros/bano-real-600.webp 600w, img/nosotros/bano-real-960.webp 960w" sizes="(min-width: 900px) 40vw, 92vw" alt="Mueble de baño doble con cajones de madera nogal y espejos con marco de madera, fabricado e instalado por Closet&amp;Door" width="600" height="915" loading="lazy" decoding="async"></div>
+          <div class="s-nos-slot" data-rot-slot><img class="cd-rot-img" style="object-position:50% 42%" src="img/hd/cd12-1200.webp" alt="Closet de piso a techo en nogal, proyecto real de Closet&amp;Door" width="1200" height="1463" loading="lazy" decoding="async"></div>
+          <div class="s-nos-slot" data-rot-slot><img class="cd-rot-img" style="object-position:50% 42%" src="img/hd/cd07-1200.webp" alt="Vestidor walk-in con repisas y cajones, proyecto real de Closet&amp;Door" width="1200" height="1818" loading="lazy" decoding="async"></div>
+        </div>
         <figcaption class="s-nos-tag">Obra real</figcaption>
       </figure>
 
@@ -669,7 +906,7 @@
 
   <section id="proceso" class="cd-sec s-proc" aria-labelledby="proc-t">
     <div class="k-wrap">
-      <h2 class="cd-h2 s-proc-h" id="proc-t">Tres pasos.<br><em>Un mismo carpintero.</em></h2>
+      <h2 class="cd-h2 s-proc-h" id="proc-t">Así <em>trabajamos.</em></h2>
 
       <div class="s-proc-body">
         <div class="s-tape" aria-hidden="true">
@@ -687,7 +924,7 @@
             </svg>
             <span class="s-proc-n">01</span>
             <h3>Diseño</h3>
-            <p>Medimos tu espacio y lo diseñamos contigo.</p>
+            <p>Diseñamos tu mueble contigo, a la medida de tu espacio.</p>
           </li>
           <li style="--i:1">
             <svg class="s-proc-ico" viewBox="0 0 48 48" aria-hidden="true">
@@ -697,7 +934,7 @@
             </svg>
             <span class="s-proc-n">02</span>
             <h3>Fabricación</h3>
-            <p>Lo hacemos a tu medida, con materiales de alta calidad.</p>
+            <p>Lo fabricamos en nuestro taller, con materiales de alta calidad.</p>
           </li>
           <li style="--i:2">
             <svg class="s-proc-ico" viewBox="0 0 48 48" aria-hidden="true">
@@ -708,7 +945,17 @@
             </svg>
             <span class="s-proc-n">03</span>
             <h3>Instalación</h3>
-            <p>Lo instalamos y te lo dejamos listo.</p>
+            <p>Lo instalamos en tu casa.</p>
+          </li>
+          <li style="--i:3">
+            <svg class="s-proc-ico" viewBox="0 0 48 48" aria-hidden="true">
+              <path pathLength="1" d="M24 5.4c5.2 3.4 10.4 4.8 16.3 5 .4 12.7-3.8 24.6-16.4 32.2C11.4 35.2 7.4 23.3 7.7 10.6c5.7-.3 10.9-1.8 16.3-5.2Z"/>
+              <path pathLength="1" d="M16.6 23.8l5.2 5.1 9.9-10.6"/>
+              <path pathLength="1" d="M24 10.9c3.3 1.9 6.8 3 10.6 3.4"/>
+            </svg>
+            <span class="s-proc-n">04</span>
+            <h3>Garantía</h3>
+            <p>Te respaldamos con garantía y atención personalizada.</p>
           </li>
         </ol>
       </div>
@@ -864,9 +1111,27 @@
         <a class="k-btn cd-green s-msi-cta" data-wa="Hola Closet&Door, quiero cotizar mi proyecto y pagarlo a 12 meses sin intereses." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotiza y págalo a 12 meses</a>
       </div>
       <div class="s-msi-rule" aria-hidden="true">
-        <ol class="s-msi-ticks">
-          <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li>
-        </ol>
+        <div class="s-msi-track">
+          <div class="s-msi-bounce">
+            <div class="s-msi-blade">
+              <ol class="s-msi-ticks">
+                <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li class="s-msi-end"><b>12</b></li>
+              </ol>
+              <span class="s-msi-hook"></span>
+            </div>
+          </div>
+          <span class="s-msi-flash"></span>
+        </div>
+        <div class="s-msi-case">
+          <svg viewBox="0 0 64 60" focusable="false">
+            <rect x="13" y="1" width="16" height="7" rx="2" fill="#ff6a5c"/>
+            <rect x="2" y="5" width="56" height="53" rx="11" fill="#1a110a" stroke="rgba(246,238,226,.28)" stroke-width="1.5"/>
+            <circle cx="29" cy="31" r="17" fill="none" stroke="rgba(246,238,226,.2)" stroke-width="1.5"/>
+            <circle cx="29" cy="31" r="10" fill="rgba(246,238,226,.06)" stroke="rgba(246,238,226,.14)"/>
+            <circle cx="29" cy="31" r="3" fill="rgba(246,238,226,.5)"/>
+            <rect x="50" y="36" width="12" height="18" rx="2" fill="#0d0805" stroke="rgba(246,238,226,.2)"/>
+          </svg>
+        </div>
         <span class="s-msi-unit">meses</span>
       </div>
     </div>
@@ -922,7 +1187,7 @@
     <div class="k-wrap cq-grid">
       <div class="cq-copy">
         <h2 class="cd-h2" id="cq-title" data-reveal>Crea tu espacio,<br> <em>agenda tu diseño.</em></h2>
-        <p class="cd-lead" data-reveal data-reveal-delay="100">Tres pasos y te llega armado a WhatsApp.</p>
+        <p class="cd-lead" data-reveal data-reveal-delay="100">Arma tu mueble en cuatro pasos y te llega listo a WhatsApp. Puedes regresar a cambiar lo que quieras.</p>
       </div>
 
       <div class="cq-card" data-reveal data-reveal-delay="120">
@@ -930,12 +1195,13 @@
         <div class="cq-tape" aria-hidden="true">
           <div class="cq-tape-track"><span class="cq-tape-fill"></span><span class="cq-tape-hook"></span></div>
           <ol class="cq-tape-steps">
-            <li class="is-on"><b>1</b>Qué</li>
-            <li><b>2</b>Medidas</li>
-            <li><b>3</b>Nombre</li>
+            <li class="is-on is-cur"><b>1</b><span>Qué</span></li>
+            <li><b>2</b><span>Medidas</span></li>
+            <li><b>3</b><span>Materiales</span></li>
+            <li><b>4</b><span>Enviar</span></li>
           </ol>
         </div>
-        <p class="cq-sr" id="cq-status" aria-live="polite">Paso 1 de 3</p>
+        <p class="cq-sr" id="cq-status" aria-live="polite">Paso 1 de 4</p>
 
         <form class="cq-form" id="cq-form" novalidate>
           <!-- Paso 1 -->
@@ -964,22 +1230,38 @@
             </label>
           </fieldset>
 
-          <!-- Paso 3 -->
+          <!-- Paso 3: materiales (opcional, vienen del catálogo materiales.html vía localStorage 'cd_materiales') -->
           <fieldset class="cq-step" data-step="3" hidden>
+            <legend class="cq-q" tabindex="-1">¿Ya viste materiales?</legend>
+            <p class="cq-help">Opcional. Si elegiste acabados en el catálogo, aquí aparecen y van en tu mensaje.</p>
+            <ul class="cq-mats" id="cq-mats" aria-live="polite"></ul>
+            <div class="cq-mats-empty" id="cq-mats-empty">
+              <span class="cq-swatches" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <p>Aún no eliges materiales. Puedes verlos en grande y escoger los que te gusten.</p>
+            </div>
+            <a class="cq-matlink" id="cq-matlink" href="materiales.html">Elegir materiales<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </fieldset>
+
+          <!-- Paso 4 -->
+          <fieldset class="cq-step" data-step="4" hidden>
             <legend class="cq-q" tabindex="-1">¿Cómo te llamas?</legend>
             <label class="cq-field">
               <span class="cq-label">Tu nombre</span>
               <input type="text" name="nombre" placeholder="Nombre" autocomplete="given-name" enterkeyhint="send" aria-describedby="cq-err">
             </label>
-            <dl class="cq-sum" aria-label="Resumen">
-              <div><dt>Quieres</dt><dd data-sum="tipo"></dd><button type="button" class="cq-edit" data-go="1">Cambiar</button></div>
-              <div><dt>Medidas</dt><dd data-sum="medidas"></dd><button type="button" class="cq-edit" data-go="2">Cambiar</button></div>
-              <div><dt>Colonia</dt><dd data-sum="colonia"></dd><button type="button" class="cq-edit" data-go="2">Cambiar</button></div>
-            </dl>
+            <div class="cq-ticket" aria-label="Resumen de tu cotización" role="group">
+              <p class="cq-ticket-h">Tu proyecto</p>
+              <dl class="cq-sum">
+                <div><dt>Quieres</dt><dd data-sum="tipo"></dd><button type="button" class="cq-edit" data-go="1" aria-label="Cambiar qué quieres">Cambiar</button></div>
+                <div><dt>Medidas</dt><dd data-sum="medidas"></dd><button type="button" class="cq-edit" data-go="2" aria-label="Cambiar medidas">Cambiar</button></div>
+                <div><dt>Colonia</dt><dd data-sum="colonia"></dd><button type="button" class="cq-edit" data-go="2" aria-label="Cambiar colonia">Cambiar</button></div>
+                <div><dt>Materiales</dt><dd data-sum="materiales"></dd><button type="button" class="cq-edit" data-go="3" aria-label="Cambiar materiales">Cambiar</button></div>
+              </dl>
+            </div>
           </fieldset>
 
           <!-- Listo -->
-          <div class="cq-step cq-done" data-step="4" hidden>
+          <div class="cq-step cq-done" data-step="5" hidden>
             <span class="cq-stamp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Listo</b><small>Closet&amp;Door</small></span>
             <p class="cq-q" tabindex="-1">Revisa tu WhatsApp.</p>
             <p class="cq-done-t">Tu mensaje ya va escrito. Solo dale enviar.</p>
@@ -1067,7 +1349,7 @@
     <div class="cd-foot-top">
       <div class="cd-foot-brand">
         <img src="img/logo_crema.png" alt="Closet&amp;Door. Tu carpintero siempre" width="275" height="69" loading="lazy" class="cd-foot-logo">
-        <p class="cd-foot-motto">Espacios hechos<br>para ti.</p>
+        <p class="cd-foot-motto cd-h3d">Espacios hechos<br>para ti.</p>
       </div>
       <ul class="cd-foot-phrases" aria-label="Lo que nos mueve">
         <li>Espacios que reflejan tu estilo</li>
@@ -1120,9 +1402,13 @@
 <script src="../_kit/kit.js" defer></script>
 <script src="../_kit/antesdespues.js" defer></script>
 <script src="site.js" defer></script>
+<script src="sections/00-rotador.js" defer></script>
 <script src="sections/01-hero.js" defer></script>
+<script src="sections/01b-mueble.js" defer></script>
 <script src="sections/02-trabajos.js" defer></script>
+<script src="sections/02a-contacto.js" defer></script>
 <script src="sections/02b-muebles.js" defer></script>
+<script src="sections/02c-materiales.js" defer></script>
 <script src="sections/03-incluye.js" defer></script>
 <script src="sections/04-antes-despues.js" defer></script>
 <script src="sections/05-servicios.js" defer></script>

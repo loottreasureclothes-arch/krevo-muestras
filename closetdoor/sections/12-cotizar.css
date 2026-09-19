@@ -1,4 +1,4 @@
-/* ============ 12 · Cotizar (wizard de 3 pasos) ============ */
+/* ============ 12 · Cotizar (wizard de 4 pasos: qué, medidas, materiales, enviar) ============ */
 #cotizar { background: var(--bg-cream); padding: var(--sec-y) 0 calc(var(--sec-y) + 8px); }
 #cotizar .cd-h2 { font-size: var(--fs-h2); }
 #cotizar .cd-lead { margin: 0; }
@@ -36,7 +36,7 @@
     repeating-linear-gradient(90deg, rgba(246,238,226,.8) 0 1px, transparent 1px 10%) 0 0 / 100% 9px no-repeat,
     repeating-linear-gradient(90deg, rgba(246,238,226,.45) 0 1px, transparent 1px 2%) 0 0 / 100% 5px no-repeat,
     linear-gradient(180deg, #6d4a30, var(--wood));
-  clip-path: inset(0 66.66% 0 0);
+  clip-path: inset(0 75% 0 0);
   /* resorte (Emil: bounce 0.25): la cinta se estira y asienta; fallback ease-out si no hay linear() */
   transition: clip-path 600ms var(--ease-out);
   transition: clip-path 680ms linear(0, 0.026, 0.092, 0.183, 0.286, 0.392, 0.496, 0.593, 0.681, 0.757, 0.822, 0.876, 0.92, 0.954, 0.98, 0.999, 1.012, 1.021, 1.026, 1.028, 1.028, 1.027, 1.025, 1.022, 1.019, 1.016, 1.013, 1.01, 1.008, 1.006, 1.004, 1.003, 1);
@@ -46,21 +46,29 @@
 #cotizar .cq-tape-hook {
   position: absolute; top: 0; bottom: 0; left: 0; width: 4px;
   background: var(--brand); border-radius: 2px;
-  transform: translateX(calc(33.33cqw - 2px));
+  transform: translateX(calc(25cqw - 2px));
   transition: transform 600ms var(--ease-out);
   transition: transform 680ms linear(0, 0.026, 0.092, 0.183, 0.286, 0.392, 0.496, 0.593, 0.681, 0.757, 0.822, 0.876, 0.92, 0.954, 0.98, 0.999, 1.012, 1.021, 1.026, 1.028, 1.028, 1.027, 1.025, 1.022, 1.019, 1.016, 1.013, 1.01, 1.008, 1.006, 1.004, 1.003, 1);
 }
-#cotizar[data-step="2"] .cq-tape-fill { clip-path: inset(0 33.33% 0 0); }
-#cotizar[data-step="2"] .cq-tape-hook { transform: translateX(calc(66.66cqw - 2px)); }
-#cotizar[data-step="3"] .cq-tape-fill, #cotizar[data-step="4"] .cq-tape-fill { clip-path: inset(0 0 0 0); }
-#cotizar[data-step="3"] .cq-tape-hook, #cotizar[data-step="4"] .cq-tape-hook { transform: translateX(calc(100cqw - 4px)); }
-#cotizar .cq-tape-steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); margin: 8px 0 0; padding: 0; }
-#cotizar .cq-tape-steps li { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--mute); transition: color 300ms var(--ease-out); }
-#cotizar .cq-tape-steps li:nth-child(2) { justify-content: center; }
-#cotizar .cq-tape-steps li:nth-child(3) { justify-content: flex-end; }
+#cotizar[data-step="2"] .cq-tape-fill { clip-path: inset(0 50% 0 0); }
+#cotizar[data-step="2"] .cq-tape-hook { transform: translateX(calc(50cqw - 2px)); }
+#cotizar[data-step="3"] .cq-tape-fill { clip-path: inset(0 25% 0 0); }
+#cotizar[data-step="3"] .cq-tape-hook { transform: translateX(calc(75cqw - 2px)); }
+#cotizar[data-step="4"] .cq-tape-fill, #cotizar[data-step="5"] .cq-tape-fill { clip-path: inset(0 0 0 0); }
+#cotizar[data-step="4"] .cq-tape-hook, #cotizar[data-step="5"] .cq-tape-hook { transform: translateX(calc(100cqw - 4px)); }
+/* cada etiqueta termina justo bajo su marca de la cinta (25/50/75/100%) */
+#cotizar .cq-tape-steps { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); margin: 8px 0 0; padding: 0; }
+#cotizar .cq-tape-steps li { display: flex; align-items: center; justify-content: flex-end; gap: 5px; padding-right: 2px; font-size: 13px; font-weight: 600; color: var(--mute); white-space: nowrap; transition: color 300ms var(--ease-out); }
 #cotizar .cq-tape-steps b { font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; font-size: 16px; font-weight: 800; }
 #cotizar .cq-tape-steps li.is-on { color: var(--ink); }
 #cotizar .cq-tape-steps li.is-on b { color: var(--brand); }
+#cotizar .cq-tape-steps li.is-cur { color: var(--wood); }
+/* en celular solo el paso actual lleva nombre; los demás, su número (no se amontonan) */
+@media (max-width: 559px) {
+  #cotizar .cq-tape-steps li:not(.is-cur) span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  #cotizar .cq-tape-steps li.is-cur span { animation: cq-lab 260ms var(--ease-out); }
+}
+@keyframes cq-lab { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
 
 #cotizar .cq-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -134,12 +142,74 @@
 #cotizar input[aria-invalid="true"] { border-color: var(--brand); }
 
 /* Resumen */
-#cotizar .cq-sum { margin: 4px 0 0; border-top: 1px dashed rgba(90, 58, 36, 0.35); }
-#cotizar .cq-sum div { display: grid; grid-template-columns: 76px 1fr auto; align-items: center; gap: 10px; min-height: 48px; border-bottom: 1px dashed rgba(90, 58, 36, 0.35); }
+#cotizar .cq-sum { margin: 0; }
+#cotizar .cq-sum div { display: grid; grid-template-columns: 84px 1fr auto; align-items: center; gap: 10px; min-height: 48px; border-top: 1px dashed rgba(90, 58, 36, 0.3); }
 #cotizar .cq-sum dt { font-size: 13px; color: var(--mute); }
 #cotizar .cq-sum dd { margin: 0; font-weight: 600; font-size: 15px; overflow-wrap: anywhere; }
 #cotizar .cq-sum dd.is-empty { color: var(--mute); font-weight: 400; }
 #cotizar .cq-edit { min-height: 44px; padding: 0 4px; font: inherit; font-size: 14px; font-weight: 600; color: var(--wood); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+/* Ticket de resumen: nota de taller con muescas */
+#cotizar .cq-ticket {
+  position: relative; margin-top: 2px; padding: 12px 14px 4px; border-radius: 10px;
+  background: #fbf6ee; box-shadow: inset 0 0 0 1px rgba(90, 58, 36, 0.16);
+}
+#cotizar .cq-ticket::before, #cotizar .cq-ticket::after {
+  content: ""; position: absolute; top: 34px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(90, 58, 36, 0.16);
+}
+#cotizar .cq-ticket::before { left: -7px; clip-path: inset(0 0 0 50%); }
+#cotizar .cq-ticket::after { right: -7px; clip-path: inset(0 50% 0 0); }
+#cotizar .cq-ticket-h { margin: 0 0 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wood); }
+#cotizar .cq-sum dd .cq-sum-mat { display: block; font-weight: 500; font-size: 14px; color: var(--ink); }
+#cotizar .cq-sum dd .cq-sum-mat small { color: var(--mute); font-weight: 400; }
+#cotizar .cq-sum dd.is-flash { animation: cq-flash 900ms var(--ease-out); }
+@keyframes cq-flash { 0% { background: rgba(37, 211, 102, 0.22); } 100% { background: transparent; } }
+
+/* Paso 3: materiales */
+#cotizar .cq-help { clear: both; margin: 0; color: var(--mute); font-size: 15px; line-height: 1.45; }
+#cotizar .cq-mats { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+#cotizar .cq-mats:empty { display: none; }
+#cotizar .cq-mat {
+  display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 12px;
+  min-height: 56px; padding: 6px 4px 6px 10px; border-radius: 12px;
+  background: #faf7f2; box-shadow: inset 0 0 0 1px var(--line);
+}
+#cotizar .cq-mat-sw { width: 34px; height: 34px; border-radius: 8px; background: var(--sw, #b08157) center / cover; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08); }
+#cotizar .cq-mat b { display: block; font-size: 15px; font-weight: 600; line-height: 1.2; }
+#cotizar .cq-mat small { display: block; font-size: 13px; color: var(--mute); }
+#cotizar .cq-mat-x {
+  display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 10px; background: none;
+  color: var(--mute); cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  transition: color 160ms var(--ease-out), background-color 160ms var(--ease-out), transform 140ms var(--ease-out);
+}
+#cotizar .cq-mat-x svg { width: 18px; height: 18px; }
+#cotizar .cq-mat-x:active { transform: scale(0.92); }
+#cotizar .cq-mat-x:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+@media (hover: hover) and (pointer: fine) { #cotizar .cq-mat-x:hover { color: var(--brand); background: rgba(200, 30, 36, 0.06); } }
+#cotizar .cq-mats-empty { display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 12px; border: 1.5px dashed rgba(90, 58, 36, 0.3); }
+#cotizar .cq-mats-empty[hidden] { display: none; }
+#cotizar .cq-mats-empty p { margin: 0; font-size: 15px; line-height: 1.4; color: var(--mute); }
+#cotizar .cq-swatches { flex: none; display: grid; grid-template-columns: repeat(2, 18px); gap: 4px; }
+#cotizar .cq-swatches i { width: 18px; height: 18px; border-radius: 4px; }
+#cotizar .cq-swatches i:nth-child(1) { background: #8a5a36; }
+#cotizar .cq-swatches i:nth-child(2) { background: #d8c3a5; }
+#cotizar .cq-swatches i:nth-child(3) { background: #3b3431; }
+#cotizar .cq-swatches i:nth-child(4) { background: #efe9df; box-shadow: inset 0 0 0 1px rgba(0,0,0,.1); }
+#cotizar .cq-matlink {
+  justify-self: start; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 18px;
+  border-radius: 3px; border: 1.5px solid var(--wood); color: var(--wood); font-weight: 600; font-size: 16px; text-decoration: none;
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out), transform 160ms var(--ease-out);
+}
+#cotizar .cq-matlink svg { transition: transform 200ms var(--ease-out); }
+#cotizar .cq-matlink:active { transform: scale(0.97); }
+/* con materiales ya elegidos pasa a secundario (link con flecha) para no competir con Siguiente */
+#cotizar .cq-matlink.is-quiet { padding: 0 2px; border-color: transparent; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+#cotizar .cq-matlink:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  #cotizar .cq-matlink:not(.is-quiet):hover { background: var(--wood); color: var(--cream); }
+  #cotizar .cq-matlink:hover svg { transform: translateX(3px); }
+}
 
 /* Error amable */
 #cotizar .cq-err { margin: -4px 0 0; color: var(--brand); font-size: 15px; font-weight: 600; }
@@ -153,16 +223,23 @@
   touch-action: manipulation; -webkit-user-select: none; user-select: none;
   transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out), transform 160ms var(--ease-out);
 }
-#cotizar .cq-back { padding: 0 12px 0 4px; background: none; border: 0; color: var(--mute); }
-#cotizar .cq-back svg { transform: scaleX(-1); }
+#cotizar .cq-back { padding: 0 16px 0 12px; border-radius: 3px; background: transparent; border: 1.5px solid rgba(90, 58, 36, 0.28); color: var(--wood); }
+#cotizar .cq-back svg { transform: scaleX(-1); transition: transform 200ms var(--ease-out); }
 #cotizar .cq-next { margin-left: auto; padding: 0 24px; border-radius: 3px; border: 1.5px solid var(--wood); background: transparent; color: var(--wood); }
 #cotizar .cq-next svg { transition: transform 200ms var(--ease-out); }
+#cotizar .cq-card, #cotizar .cq-form, #cotizar .cq-step { min-width: 0; }
 #cotizar .cq-send { flex: 1; min-height: 56px; }
+/* celular: en el último paso el verde va arriba a todo lo ancho y "Atrás" debajo (no se aprietan) */
+@media (max-width: 559px) {
+  #cotizar[data-step="4"] .cq-nav { flex-wrap: wrap; }
+  #cotizar[data-step="4"] .cq-send { flex: 1 1 100%; order: -1; }
+}
 #cotizar .cq-back:active, #cotizar .cq-next:active { transform: scale(0.97); }
 @media (hover: hover) and (pointer: fine) {
   #cotizar .cq-next:hover { background: var(--wood); color: var(--cream); }
   #cotizar .cq-next:hover svg { transform: translateX(3px); }
-  #cotizar .cq-back:hover { color: var(--ink); }
+  #cotizar .cq-back:hover { border-color: var(--wood); background: rgba(90, 58, 36, 0.06); }
+  #cotizar .cq-back:hover svg { transform: scaleX(-1) translateX(3px); }
 }
 #cotizar .cq-back:focus-visible, #cotizar .cq-next:focus-visible, #cotizar .cq-link:focus-visible, #cotizar .cq-edit:focus-visible, #cotizar .cq-send:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
@@ -186,7 +263,7 @@
 #cotizar .cq-done-a { display: flex; flex-wrap: wrap; gap: 4px 18px; }
 #cotizar .cq-link { padding: 0; background: none; border: 0; color: var(--wood); text-decoration: none; min-height: 44px; }
 #cotizar #cq-reset { color: var(--mute); text-decoration: underline; text-underline-offset: 3px; }
-#cotizar[data-step="4"] .cq-nav { display: none; }
+#cotizar[data-step="5"] .cq-nav { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   /* menos movimiento, no cero: la cinta cambia con un fundido corto de color, sin desplazarse con resorte */

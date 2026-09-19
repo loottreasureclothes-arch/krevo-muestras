@@ -1,0 +1,65 @@
+  <section id="contacto" class="s-contacto" aria-labelledby="ct-title">
+    <div class="k-wrap">
+      <!--
+        FORMULARIO CORTO "¿Te llamamos?"
+        Hoy: el botón abre WhatsApp al 449 446 3411 con el mensaje "Nuevo cliente interesado..." ya escrito.
+        Para que le llegue al CORREO del dueño en silencio (gratis, sin abrir WhatsApp):
+          1. Escribe su correo en data-formsubmit, ej. data-formsubmit="closetanddoor@gmail.com".
+          2. La primera vez que alguien lo envíe, FormSubmit.co le manda al dueño un correo de "Activate form": que le dé clic una sola vez.
+          3. Listo. Desde ahí cada registro llega al correo como "Cliente interesado" y la persona ve "Listo, te llamamos pronto".
+        Vacío = se usa WhatsApp. Si FormSubmit falla, también cae a WhatsApp.
+      -->
+      <form class="ct-card" id="ct-form" data-formsubmit="" novalidate data-reveal>
+        <div class="ct-head">
+          <h2 class="ct-title" id="ct-title">Cotiza <em>gratis.</em></h2>
+          <p class="ct-lead"><span class="ct-dot" aria-hidden="true"></span>Te llamamos</p>
+          <p class="ct-sub">Deja tu número y platicamos tu proyecto.</p>
+        </div>
+
+        <div class="ct-fields">
+          <div class="ct-field">
+            <label class="ct-label" for="ct-nombre">Nombre</label>
+            <input id="ct-nombre" name="nombre" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" placeholder="Tu nombre" required>
+          </div>
+          <div class="ct-field">
+            <label class="ct-label" for="ct-tel">Teléfono</label>
+            <input id="ct-tel" name="telefono" type="tel" inputmode="numeric" autocomplete="tel-national" enterkeyhint="next" placeholder="449 123 4567" maxlength="14" required aria-describedby="ct-tel-hint">
+            <small class="ct-hint" id="ct-tel-hint">10 dígitos</small>
+          </div>
+          <div class="ct-field ct-field--full">
+            <label class="ct-label" for="ct-necesita">¿Qué necesitas?</label>
+            <div class="ct-select">
+              <select id="ct-necesita" name="necesita" required>
+                <option value="" selected disabled>Elige una opción</option>
+                <option>Cocina</option>
+                <option>Closet o vestidor</option>
+                <option>Puerta</option>
+                <option>Mueble a medida</option>
+                <option>Baño</option>
+                <option>Remodelación</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="ct-field ct-field--full">
+            <label class="ct-label" for="ct-detalle">Cuéntanos más <small>(opcional)</small></label>
+            <input id="ct-detalle" name="detalle" type="text" autocomplete="off" enterkeyhint="send" placeholder="Ej. closet de 2 m para la recámara">
+          </div>
+        </div>
+
+        <p class="ct-err" id="ct-err" role="alert" hidden></p>
+
+        <div class="ct-foot">
+          <button type="submit" class="cd-btn cd-btn--primary ct-send" id="ct-send"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="ct-send-t">Quiero que me llamen</span></button>
+          <p class="ct-note">Tus datos solo se usan para llamarte.</p>
+        </div>
+
+        <div class="ct-done" id="ct-done" hidden tabindex="-1">
+          <span class="ct-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <p class="ct-done-t">Listo, te llamamos pronto.</p>
+          <p class="ct-done-s" id="ct-done-s">Tu mensaje ya va escrito en WhatsApp. Solo dale enviar.</p>
+          <a class="ct-again" id="ct-again" href="https://wa.me/524494463411" target="_blank" rel="noopener" hidden>¿No se abrió WhatsApp? Ábrelo aquí<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </form>
+    </div>
+  </section>

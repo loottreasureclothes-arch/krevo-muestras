@@ -40,12 +40,10 @@
 #antes-despues .s-ad-panel[hidden] { display: none; }
 
 #antes-despues .s-ad-ba { border-radius: 0; margin-inline: auto; background: var(--wood); }
-#antes-despues .s-ad-ba--cocina { aspect-ratio: 4 / 3; width: 100%; }
-#antes-despues .s-ad-ba--closet {
-  aspect-ratio: 2 / 3;
-  width: min(100%, calc((100svh - var(--ad-top)) * 2 / 3));
-}
-#antes-despues .s-ad-ba--closet img { object-position: 50% 42%; }
+/* Cocina y closet con el MISMO marco 4:3: al cambiar de pestaña no brinca de tamaño.
+   El closet (foto vertical) se encuadra en la barra con ganchos y la ropa, que es donde se nota el cambio. */
+#antes-despues .s-ad-ba--cocina, #antes-despues .s-ad-ba--closet { aspect-ratio: 4 / 3; width: 100%; }
+#antes-despues .s-ad-ba--closet img { object-position: 50% 44%; }
 
 #antes-despues .s-ad-tag {
   position: absolute; z-index: 4; left: 12px; bottom: 12px;
@@ -89,7 +87,7 @@
   #antes-despues .s-ad-side { flex-direction: column; align-items: flex-end; gap: 12px; }
   #antes-despues .s-ad-stage { max-width: 1180px; margin-inline: auto; padding-inline: 40px; }
   #antes-despues .s-ad-ba { border-radius: var(--radius); box-shadow: 0 24px 60px -28px rgba(60, 38, 22, 0.45); }
-  #antes-despues .s-ad-ba--cocina { width: min(100%, 1100px, calc((100svh - var(--ad-top)) * 4 / 3)); }
+  #antes-despues .s-ad-ba--cocina, #antes-despues .s-ad-ba--closet { width: min(100%, 1100px, calc((100svh - var(--ad-top)) * 4 / 3)); }
   #antes-despues .s-ad-cap { text-align: center; margin-inline: 0; }
   #antes-despues .s-ad-foot { display: flex; justify-content: center; margin-top: 30px; }
   #antes-despues .s-ad-tag { left: 18px; bottom: 18px; }

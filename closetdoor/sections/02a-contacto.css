@@ -1,0 +1,120 @@
+/* ============ 02a · Contacto corto "¿Te llamamos?" ============ */
+#contacto { background: var(--bg-cream); padding: 40px 0 48px; }
+@media (min-width: 900px) { #contacto { padding: 64px 0 72px; } }
+
+/* Tarjeta tipo "orden de taller": esquinas casi rectas, canto de cinta métrica arriba */
+#contacto .ct-card {
+  position: relative; display: grid; gap: 18px;
+  max-width: 1080px; margin: 0 auto;
+  padding: 26px 16px 18px; border-radius: 6px;
+  background: var(--paper);
+  box-shadow: 0 0 0 1px rgba(90, 58, 36, 0.14), 0 24px 48px -30px rgba(60, 36, 18, 0.45);
+}
+#contacto .ct-card::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 12px; border-radius: 6px 6px 0 0;
+  background:
+    repeating-linear-gradient(90deg, rgba(11, 7, 4, 0.55) 0 1px, transparent 1px 40px) 0 0 / 100% 8px no-repeat,
+    repeating-linear-gradient(90deg, rgba(11, 7, 4, 0.35) 0 1px, transparent 1px 8px) 0 0 / 100% 4px no-repeat,
+    linear-gradient(180deg, #e7c26a, #d9ad4c);
+}
+@media (min-width: 900px) {
+  #contacto .ct-card { grid-template-columns: 5fr 7fr; column-gap: 56px; row-gap: 14px; padding: 48px 48px 36px; align-items: center; }
+  #contacto .ct-head { grid-row: 1 / span 4; align-self: center; }
+  #contacto .ct-fields, #contacto .ct-err, #contacto .ct-foot, #contacto .ct-done { grid-column: 2; }
+}
+
+/* Encabezado */
+#contacto .ct-kicker {
+  display: inline-flex; align-items: center; gap: 8px; margin: 0 0 8px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wood);
+}
+#contacto .ct-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 0 rgba(200, 30, 36, 0.45); }
+#contacto .ct-card.is-in .ct-dot { animation: ct-ping 2.4s var(--ease-out) 900ms 3; }
+@keyframes ct-ping { 0% { box-shadow: 0 0 0 0 rgba(200, 30, 36, 0.45); } 70%, 100% { box-shadow: 0 0 0 9px rgba(200, 30, 36, 0); } }
+#contacto .ct-title {
+  margin: 0; font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68;
+  font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.005em;
+  font-size: clamp(44px, 12.6vw, 104px); color: var(--ink); white-space: nowrap;
+}
+#contacto .ct-title em { font-style: normal; color: var(--wood); }
+/* "Te llamamos": línea de apoyo bajo el título, con el punto rojo que late */
+#contacto .ct-lead {
+  display: inline-flex; align-items: center; gap: 10px; margin: 12px 0 0;
+  font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68;
+  font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1;
+  font-size: clamp(22px, 6.2vw, 34px); color: var(--ink);
+}
+#contacto .ct-lead .ct-dot { flex: none; width: 10px; height: 10px; }
+@media (min-width: 900px) {
+  /* en compu el título va en dos renglones grandes: COTIZA / GRATIS. */
+  #contacto .ct-title { white-space: normal; font-size: clamp(84px, 8.4vw, 128px); line-height: 0.86; }
+  #contacto .ct-title em { display: block; }
+}
+#contacto .ct-sub { margin: 8px 0 0; font-size: 16px; line-height: 1.45; color: var(--mute); max-width: 34ch; }
+
+/* Campos: label arriba, error abajo */
+/* nombre y teléfono lado a lado desde 340px: la tarjeta queda compacta en celular */
+#contacto .ct-fields { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 340px) {
+  #contacto .ct-fields { grid-template-columns: 1fr 1fr; column-gap: 8px; }
+  #contacto .ct-field--full { grid-column: 1 / -1; }
+}
+@media (min-width: 900px) { #contacto .ct-fields { gap: 14px 12px; } }
+#contacto .ct-field { position: relative; display: grid; gap: 6px; min-width: 0; }
+#contacto .ct-label { font-size: 14px; font-weight: 600; color: var(--ink); }
+#contacto .ct-label small { font-weight: 400; color: var(--mute); font-size: 13px; }
+#contacto .ct-hint { position: absolute; right: 2px; top: 1px; font-size: 12px; color: var(--mute); transition: color 200ms var(--ease-out); }
+#contacto .ct-field.is-ok .ct-hint { color: #1c7a42; }
+
+#contacto input, #contacto select {
+  width: 100%; min-height: 50px; padding: 0 12px; margin: 0;
+  font: inherit; font-size: 16px; color: var(--ink);
+  background: #faf7f2; border: 1px solid #d9d2c6; border-radius: 4px;
+  -webkit-appearance: none; appearance: none;
+  transition: border-color 180ms var(--ease-out), background-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+}
+#contacto input::placeholder { color: #8d867c; }
+#contacto input:focus, #contacto select:focus { outline: none; border-color: var(--wood); background: #fff; box-shadow: 0 0 0 3px rgba(90, 58, 36, 0.16); }
+#contacto [aria-invalid="true"] { border-color: var(--brand); background: #fff7f6; }
+#contacto .ct-select { position: relative; }
+#contacto .ct-select::after {
+  content: ""; position: absolute; right: 16px; top: 50%; width: 9px; height: 9px; margin-top: -7px;
+  border-right: 2px solid var(--wood); border-bottom: 2px solid var(--wood); transform: rotate(45deg); pointer-events: none;
+}
+#contacto select { padding-right: 40px; cursor: pointer; }
+#contacto select:invalid { color: #8d867c; }
+#contacto select option { color: var(--ink); }
+
+#contacto .ct-err { margin: -4px 0 0; color: var(--brand); font-size: 15px; font-weight: 600; }
+#contacto .ct-err[hidden] { display: none; }
+
+/* Pie: CTA verde a todo lo ancho en celular */
+#contacto .ct-foot { display: grid; gap: 8px; }
+#contacto .ct-send { width: 100%; min-height: 56px; font-size: 17px; }
+#contacto .ct-send[aria-busy="true"] { opacity: 0.7; pointer-events: none; }
+#contacto .ct-note { margin: 0; font-size: 13px; color: var(--mute); text-align: center; }
+@media (min-width: 560px) {
+  #contacto .ct-foot { justify-items: start; }
+  #contacto .ct-send { width: auto; padding: 0 30px; }
+  #contacto .ct-note { text-align: left; }
+}
+@media (hover: hover) and (pointer: fine) {
+  #contacto .ct-send:hover::before { clip-path: inset(0 0 0 0); }
+}
+#contacto .ct-send:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* Listo */
+#contacto .ct-done { display: grid; justify-items: start; gap: 6px; padding: 6px 0 4px; outline: none; }
+#contacto .ct-done[hidden] { display: none; }
+#contacto .ct-check { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--wa); color: var(--wa-ink); margin-bottom: 6px; }
+#contacto .ct-check svg { width: 28px; height: 28px; }
+#contacto .ct-check path { stroke-dasharray: 26; stroke-dashoffset: 0; }
+#contacto .ct-done-t { margin: 0; font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; font-weight: 800; text-transform: uppercase; font-size: 34px; line-height: 1; }
+#contacto .ct-done-s { margin: 0; color: var(--mute); font-size: 16px; }
+#contacto .ct-again { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--wood); font-weight: 600; text-decoration: none; }
+#contacto .ct-again[hidden] { display: none; }
+#contacto .ct-card.is-sent .ct-fields, #contacto .ct-card.is-sent .ct-foot, #contacto .ct-card.is-sent .ct-err { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  #contacto .ct-card.is-in .ct-dot { animation: none; }
+}

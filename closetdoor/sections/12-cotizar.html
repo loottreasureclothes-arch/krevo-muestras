@@ -2,7 +2,7 @@
     <div class="k-wrap cq-grid">
       <div class="cq-copy">
         <h2 class="cd-h2" id="cq-title" data-reveal>Crea tu espacio,<br> <em>agenda tu diseño.</em></h2>
-        <p class="cd-lead" data-reveal data-reveal-delay="100">Tres pasos y te llega armado a WhatsApp.</p>
+        <p class="cd-lead" data-reveal data-reveal-delay="100">Arma tu mueble en cuatro pasos y te llega listo a WhatsApp. Puedes regresar a cambiar lo que quieras.</p>
       </div>
 
       <div class="cq-card" data-reveal data-reveal-delay="120">
@@ -10,12 +10,13 @@
         <div class="cq-tape" aria-hidden="true">
           <div class="cq-tape-track"><span class="cq-tape-fill"></span><span class="cq-tape-hook"></span></div>
           <ol class="cq-tape-steps">
-            <li class="is-on"><b>1</b>Qué</li>
-            <li><b>2</b>Medidas</li>
-            <li><b>3</b>Nombre</li>
+            <li class="is-on is-cur"><b>1</b><span>Qué</span></li>
+            <li><b>2</b><span>Medidas</span></li>
+            <li><b>3</b><span>Materiales</span></li>
+            <li><b>4</b><span>Enviar</span></li>
           </ol>
         </div>
-        <p class="cq-sr" id="cq-status" aria-live="polite">Paso 1 de 3</p>
+        <p class="cq-sr" id="cq-status" aria-live="polite">Paso 1 de 4</p>
 
         <form class="cq-form" id="cq-form" novalidate>
           <!-- Paso 1 -->
@@ -44,22 +45,38 @@
             </label>
           </fieldset>
 
-          <!-- Paso 3 -->
+          <!-- Paso 3: materiales (opcional, vienen del catálogo materiales.html vía localStorage 'cd_materiales') -->
           <fieldset class="cq-step" data-step="3" hidden>
+            <legend class="cq-q" tabindex="-1">¿Ya viste materiales?</legend>
+            <p class="cq-help">Opcional. Si elegiste acabados en el catálogo, aquí aparecen y van en tu mensaje.</p>
+            <ul class="cq-mats" id="cq-mats" aria-live="polite"></ul>
+            <div class="cq-mats-empty" id="cq-mats-empty">
+              <span class="cq-swatches" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <p>Aún no eliges materiales. Puedes verlos en grande y escoger los que te gusten.</p>
+            </div>
+            <a class="cq-matlink" id="cq-matlink" href="materiales.html">Elegir materiales<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </fieldset>
+
+          <!-- Paso 4 -->
+          <fieldset class="cq-step" data-step="4" hidden>
             <legend class="cq-q" tabindex="-1">¿Cómo te llamas?</legend>
             <label class="cq-field">
               <span class="cq-label">Tu nombre</span>
               <input type="text" name="nombre" placeholder="Nombre" autocomplete="given-name" enterkeyhint="send" aria-describedby="cq-err">
             </label>
-            <dl class="cq-sum" aria-label="Resumen">
-              <div><dt>Quieres</dt><dd data-sum="tipo"></dd><button type="button" class="cq-edit" data-go="1">Cambiar</button></div>
-              <div><dt>Medidas</dt><dd data-sum="medidas"></dd><button type="button" class="cq-edit" data-go="2">Cambiar</button></div>
-              <div><dt>Colonia</dt><dd data-sum="colonia"></dd><button type="button" class="cq-edit" data-go="2">Cambiar</button></div>
-            </dl>
+            <div class="cq-ticket" aria-label="Resumen de tu cotización" role="group">
+              <p class="cq-ticket-h">Tu proyecto</p>
+              <dl class="cq-sum">
+                <div><dt>Quieres</dt><dd data-sum="tipo"></dd><button type="button" class="cq-edit" data-go="1" aria-label="Cambiar qué quieres">Cambiar</button></div>
+                <div><dt>Medidas</dt><dd data-sum="medidas"></dd><button type="button" class="cq-edit" data-go="2" aria-label="Cambiar medidas">Cambiar</button></div>
+                <div><dt>Colonia</dt><dd data-sum="colonia"></dd><button type="button" class="cq-edit" data-go="2" aria-label="Cambiar colonia">Cambiar</button></div>
+                <div><dt>Materiales</dt><dd data-sum="materiales"></dd><button type="button" class="cq-edit" data-go="3" aria-label="Cambiar materiales">Cambiar</button></div>
+              </dl>
+            </div>
           </fieldset>
 
           <!-- Listo -->
-          <div class="cq-step cq-done" data-step="4" hidden>
+          <div class="cq-step cq-done" data-step="5" hidden>
             <span class="cq-stamp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Listo</b><small>Closet&amp;Door</small></span>
             <p class="cq-q" tabindex="-1">Revisa tu WhatsApp.</p>
             <p class="cq-done-t">Tu mensaje ya va escrito. Solo dale enviar.</p>

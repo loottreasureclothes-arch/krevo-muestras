@@ -33,7 +33,12 @@
 
 /* Foto real de obra */
 #nosotros .s-nos-fig { position: relative; margin: 0 0 30px; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; max-height: 52svh; width: 100%; padding: 10px; box-shadow: 0 30px 60px -30px rgba(58, 37, 23, 0.55); isolation: isolate; }
-#nosotros .s-nos-fig img { position: relative; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; border-radius: calc(var(--radius) - 10px); }
+/* 3 fotos a la vez dentro del marco (las cambia 00-rotador.js); el hueco entre ellas es un larguero de nogal */
+#nosotros .s-nos-rot { position: relative; display: grid; grid-template-columns: 1fr; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 5px; width: 100%; height: 100%; background: var(--wood); border-radius: calc(var(--radius) - 10px); overflow: hidden; }
+/* 3 recuadros anchos apilados; separadores finos de nogal (el gap) */
+#nosotros .s-nos-slot { min-height: 0; background: #4a2f1d; }
+/* cortina de entrada (la crea 07-nosotros.js): se recoge hacia arriba con transform; la foto carga normal debajo */
+#nosotros .s-nos-veil { position: absolute; inset: 9px; border-radius: calc(var(--radius) - 10px); background: var(--bg-cream); transform-origin: 50% 0; pointer-events: none; will-change: transform; }
 /* el marco son 4 tablas de nogal: se arman una tras otra (JS); sin JS ya estan puestas */
 #nosotros .s-nos-bar {
   position: absolute; z-index: 1; background-color: var(--wood);
@@ -46,7 +51,7 @@
 #nosotros .s-nos-bar--b { left: 0; right: 0; bottom: 0; height: 10px; transform-origin: 100% 50%; --bev: to top; }
 #nosotros .s-nos-bar--r { top: 0; bottom: 0; right: 0; width: 10px; transform-origin: 50% 0; --bev: to left; }
 #nosotros .s-nos-bar--l { top: 0; bottom: 0; left: 0; width: 10px; transform-origin: 50% 100%; --bev: to right; }
-#nosotros .s-nos-tag { position: absolute; left: 22px; top: 22px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 9px; border-radius: 3px; background: rgba(246, 238, 226, 0.94); color: var(--ink); font-weight: 600; font-size: 13px; line-height: 1; }
+#nosotros .s-nos-tag { position: absolute; z-index: 3; left: 22px; top: 22px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 9px; border-radius: 3px; background: rgba(246, 238, 226, 0.94); color: var(--ink); font-weight: 600; font-size: 13px; line-height: 1; }
 #nosotros .s-nos-tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--brand); }
 
 /* Texto */

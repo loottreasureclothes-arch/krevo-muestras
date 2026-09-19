@@ -34,7 +34,7 @@
 
 /* Foto con parallax interno (JS pone --o y --a) */
 #trabajos .tj-media {
-  position: relative; margin: 0; width: 100%; aspect-ratio: 4 / 5; max-height: 54svh;
+  position: relative; margin: 0; width: 100%; aspect-ratio: 4 / 5; max-height: 60svh;
   border-radius: var(--radius); overflow: hidden; background: #e6dccd;
   transform-origin: 50% 60%; will-change: transform;
   box-shadow: 0 18px 40px -22px rgba(60, 35, 18, 0.45);
@@ -47,36 +47,52 @@
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background: #1d130b; opacity: calc(var(--a, 0) * 0.38);
 }
-/* Texto del proyecto */
-#trabajos .tj-copy { padding: 18px 2px 0; container-type: inline-size; }
+/* Talón: franja translúcida con blur ENCIMA de la foto (nombre + "Cotizar"). La tarjeta es solo la foto. */
+#trabajos .tj-copy {
+  position: absolute; left: 8px; right: 8px; bottom: 8px; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 10px 8px 10px 14px; border-radius: 3px;
+  background: rgba(24, 15, 8, 0.46);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2);
+  box-shadow: inset 0 1px 0 rgba(255, 240, 220, 0.16), inset 0 0 0 1px rgba(255, 240, 220, 0.08), 0 8px 24px -12px rgba(10, 5, 2, 0.6);
+  color: var(--cream); container-type: inline-size;
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  #trabajos .tj-copy { background: rgba(24, 15, 8, 0.82); }
+}
+#trabajos .tj-txt { min-width: 0; }
 #trabajos .tj-title {
   font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68;
-  text-transform: uppercase; font-weight: 800; line-height: 0.86; letter-spacing: -0.005em;
-  font-size: clamp(44px, 15.5cqi, 104px); margin: 0 0 10px; overflow: hidden; padding-bottom: 0.05em;
+  text-transform: uppercase; font-weight: 800; line-height: 0.92; letter-spacing: 0.005em;
+  /* el nombre más largo (REMODELACIONES) siempre cabe completo junto a "Cotizar" */
+  font-size: clamp(19px, calc((100cqi - 118px) / 7.4), 26px); margin: 0; overflow: hidden; padding-bottom: 0.04em; color: var(--cream);
 }
 #trabajos .tj-title span { display: block; white-space: nowrap; }
-#trabajos .tj-desc { color: var(--mute); font-size: 16px; line-height: 1.4; margin: 0 0 4px; max-width: 32ch; text-wrap: balance; }
-#trabajos .tj-cta {
-  display: inline-flex; align-items: center; gap: 10px; min-height: 48px; margin-left: -2px;
-  font-weight: 700; font-size: 16px; color: var(--ink); text-decoration: none;
-  -webkit-tap-highlight-color: transparent; -webkit-user-drag: none;
+#trabajos .tj-desc {
+  color: rgba(246, 238, 226, 0.8); font-size: 13px; line-height: 1.3; margin: 3px 0 0;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-wrap: pretty;
 }
-#trabajos .tj-wa { width: 36px; height: 36px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--wa); color: var(--wa-ink); transition: transform 280ms var(--ease-out); }
-#trabajos .tj-wa svg { width: 19px; height: 19px; }
-#trabajos .tj-cta u { text-decoration: none; padding-bottom: 3px; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1.5px no-repeat; }
-#trabajos .tj-arr { width: 18px; height: 18px; color: var(--brand); transition: transform 280ms var(--ease-out); }
+#trabajos .tj-cta {
+  flex: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 4px 0 2px;
+  font-weight: 700; font-size: 15px; color: var(--cream); text-decoration: none;
+  -webkit-tap-highlight-color: transparent; -webkit-user-drag: none; touch-action: manipulation;
+}
+#trabajos .tj-wa { width: 32px; height: 32px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--wa); color: var(--wa-ink); transition: transform 280ms var(--ease-out); }
+#trabajos .tj-wa svg { width: 17px; height: 17px; }
+#trabajos .tj-cta u { text-decoration: none; padding-bottom: 2px; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1.5px no-repeat; }
+#trabajos .tj-arr { width: 17px; height: 17px; color: var(--brand-on-wood); transition: transform 280ms var(--ease-out); }
 #trabajos .tj-cta:active .tj-wa { transform: scale(0.92); }
+#trabajos .tj-cta:focus-visible { outline: 2px solid var(--cream); outline-offset: 2px; border-radius: 3px; }
 @media (hover: hover) and (pointer: fine) {
-  #trabajos .tj-cta:hover .tj-arr { transform: translateX(5px); }
+  #trabajos .tj-cta:hover .tj-arr { transform: translateX(4px); }
   #trabajos .tj-cta:hover .tj-wa { transform: rotate(-8deg) scale(1.06); }
 }
+@media (max-width: 899px) { #trabajos .tj-wa { display: none; } }
 
 /* Entrada del titulo al asentarse (solo con JS y con movimiento) */
 @media (prefers-reduced-motion: no-preference) {
-  #trabajos.tj-js .tj-title span { transform: translateY(108%); transition: transform 240ms var(--ease-out); }
   #trabajos.tj-js .tj-desc,
-  #trabajos.tj-js .tj-cta { opacity: 0; transform: translateY(12px); transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); }
-  #trabajos.tj-js .tj-slide.is-on .tj-title span { transform: none; transition: transform 720ms var(--ease-out); }
+  #trabajos.tj-js .tj-cta { opacity: 0; transform: translateY(8px); transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); }
   #trabajos.tj-js .tj-slide.is-on .tj-desc { opacity: 1; transform: none; transition-duration: 560ms; transition-delay: 110ms; }
   #trabajos.tj-js .tj-slide.is-on .tj-cta { opacity: 1; transform: none; transition-duration: 560ms; transition-delay: 190ms; }
   /* antes de la entrada con profundidad (la dispara el JS una vez) */
@@ -136,15 +152,64 @@
 }
 #trabajos .tj-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
 
-/* Compu: foto vertical grande + texto al lado, la siguiente asoma */
+/* Compu: fotos verticales grandes en fila, cada una con su talón; la siguiente asoma */
 @media (min-width: 900px) {
+  #trabajos { --tj-w: clamp(360px, 31vw, 470px); }
   #trabajos .tj-head { margin-bottom: 30px; }
-  #trabajos .tj-slide { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 44px; align-items: end; }
-  #trabajos .tj-media { width: auto; height: clamp(420px, 58vh, 580px); max-height: none; transform-origin: 0 60%; }
-  #trabajos .tj-copy { padding: 0 0 6px; }
-  #trabajos .tj-title { margin-bottom: 16px; }
-  #trabajos .tj-desc { font-size: 18px; margin-bottom: 10px; }
+  #trabajos .tj-media { max-height: none; transform-origin: 0 60%; }
+  #trabajos .tj-copy { left: 12px; right: 12px; bottom: 12px; padding: 12px 10px 12px 18px; }
+  #trabajos .tj-title { font-size: clamp(22px, calc((100cqi - 160px) / 7.4), 32px); }
+  #trabajos .tj-desc { font-size: 14px; }
   #trabajos .tj-ui { padding-top: 26px; }
   #trabajos .tj-arrows { display: flex; }
   #trabajos .tj-stop span { font-size: 12px; }
+}
+
+/* ============ Celular: "tercia" tipo coverflow (clase tj-cover la pone el JS; sin JS queda la fila) ============
+   Una al frente, grande y centrada; dos atrás a los lados a 0.82, hundidas y con sombra. Los talones de las
+   de atrás quedan debajo de la del frente, así su nombre SIEMPRE se lee. Al deslizar, la de un lado pasa al frente. */
+@media (max-width: 899px) {
+  #trabajos.tj-cover { --tj-cw: min(62vw, 300px); }
+  #trabajos.tj-cover .tj-car { padding-left: 0; }
+  #trabajos.tj-cover .tj-track { position: relative; display: block; gap: 0; }
+  #trabajos.tj-cover .tj-slide {
+    position: absolute; top: 0; left: 50%; width: var(--tj-cw); margin-left: calc(var(--tj-cw) / -2);
+    transform-origin: 50% 100%; will-change: transform;
+  }
+  #trabajos.tj-cover .tj-media { max-height: none; box-shadow: 0 22px 44px -18px rgba(50, 28, 12, 0.55), 0 4px 10px -4px rgba(50, 28, 12, 0.25); }
+  #trabajos.tj-cover .tj-copy { left: 6px; right: 6px; bottom: 6px; padding: 8px 8px 6px 12px; flex-direction: column; align-items: stretch; gap: 0; }
+  #trabajos.tj-cover .tj-title { font-size: clamp(18px, calc((100cqi - 8px) / 7.4), 26px); }
+  /* la del frente: nombre + descripción + "Cotizar →", siempre legibles (talón más oscuro) */
+  #trabajos.tj-cover .tj-slide.is-on .tj-copy { background: rgba(20, 12, 6, 0.66); padding: 10px 8px 4px 12px; }
+  #trabajos.tj-cover .tj-desc { display: none; font-size: 13px; line-height: 1.28; color: rgba(246, 238, 226, 0.94); margin-top: 4px; }
+  #trabajos.tj-cover .tj-slide.is-on .tj-desc { display: -webkit-box; }
+  #trabajos.tj-cover .tj-copy { transition: background-color 300ms var(--ease-out); }
+  @media (prefers-reduced-motion: no-preference) {
+    @starting-style { #trabajos.tj-cover.tj-js .tj-slide.is-on .tj-desc { opacity: 0; transform: translateY(8px); } }
+  }
+  #trabajos.tj-cover .tj-cta { min-height: 38px; align-self: flex-start; font-size: 14px; margin-top: 1px; }
+  /* las de atrás: solo el nombre, pegado a su lado de adentro (el que queda a la vista bajo la del frente) */
+  #trabajos.tj-cover .tj-slide:not(.is-on) .tj-cta { display: none; }
+  #trabajos.tj-cover .tj-slide.tj-l .tj-copy { text-align: right; }
+  #trabajos.tj-cover .tj-slide.tj-l .tj-cta { align-self: flex-end; }
+}
+
+
+/* Compu: las tarjetas de atrás llevan un talón compacto (solo el nombre). Al pasar al frente
+   crece suave: la descripción abre su renglón (grid 0fr → 1fr) y "Cotizar" se despliega. */
+@media (min-width: 900px) {
+  #trabajos.tj-js .tj-copy { transition: padding 420ms var(--ease-out), background-color 300ms var(--ease-out); }
+  #trabajos.tj-js .tj-txt { display: grid; grid-template-rows: auto 0fr; transition: grid-template-rows 420ms var(--ease-out); }
+  #trabajos.tj-js .tj-desc { min-height: 0; margin-top: 0; transition: opacity 200ms var(--ease-out), margin-top 420ms var(--ease-out); }
+  #trabajos.tj-js .tj-cta { max-width: 0; min-height: 0; max-height: 0; padding: 0; overflow: hidden; transition: opacity 200ms var(--ease-out), max-width 420ms var(--ease-out), max-height 420ms var(--ease-out); }
+  #trabajos.tj-js .tj-slide:not(.is-on) .tj-copy { gap: 0; padding-block: 12px 10px; }
+  #trabajos.tj-js .tj-slide.is-on .tj-txt { grid-template-rows: auto 1fr; }
+  #trabajos.tj-js .tj-slide.is-on .tj-desc { margin-top: 3px; }
+  #trabajos.tj-js .tj-slide.is-on .tj-cta { max-width: 170px; max-height: 48px; min-height: 44px; padding: 0 4px 0 2px; overflow: visible; }
+  /* la del frente: talón más oscuro y descripción más grande para que se lea sobre fotos claras */
+  #trabajos .tj-slide.is-on .tj-copy { background: rgba(20, 12, 6, 0.64); }
+  #trabajos .tj-desc { font-size: 15px; color: rgba(246, 238, 226, 0.94); }
+}
+@media (min-width: 900px) and (prefers-reduced-motion: reduce) {
+  #trabajos.tj-js .tj-copy, #trabajos.tj-js .tj-txt, #trabajos.tj-js .tj-desc, #trabajos.tj-js .tj-cta { transition: none; }
 }

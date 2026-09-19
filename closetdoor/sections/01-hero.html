@@ -42,11 +42,11 @@
           <a class="k-btn cd-green" data-wa="Hola Closet&Door, quiero agendar mi diseño." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Agenda tu diseño</a>
         </div>
         <ul class="s-hero-chips" aria-label="Ver trabajos por tipo">
-          <li><a href="#trabajos" data-go="1"><img src="img/hero/tiles/cocinas.webp" alt="" width="360" height="150" decoding="async"><span>Cocinas</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-          <li><a href="#trabajos" data-go="0"><img src="img/hero/tiles/closets-hd-360.webp" srcset="img/hero/tiles/closets-hd-360.webp 1x, img/hero/tiles/closets-hd-720.webp 2x" alt="" width="360" height="150" decoding="async"><span>Closets</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-          <li><a href="#trabajos" data-go="2"><img src="img/hero/tiles/puertas.webp" alt="" width="360" height="150" decoding="async"><span>Puertas</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-          <li><a href="#trabajos" data-go="4"><img src="img/hero/tiles/muebles-hd-360.webp" srcset="img/hero/tiles/muebles-hd-360.webp 1x, img/hero/tiles/muebles-hd-720.webp 2x" alt="" width="360" height="150" decoding="async"><span>Muebles</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-          <li><a href="#trabajos" data-go="3"><img src="img/hero/tiles/remodelaciones-hd-360.webp" srcset="img/hero/tiles/remodelaciones-hd-360.webp 1x, img/hero/tiles/remodelaciones-hd-720.webp 2x" alt="" width="360" height="150" decoding="async"><span>Remodelaciones</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="#trabajos" data-sheet="cocinas" aria-haspopup="dialog"><img src="img/hero/tiles/cocinas.webp" alt="" width="360" height="150" decoding="async"><span class="s-hero-tn">Cocinas<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">con isla y cubierta</span></a></li>
+          <li><a href="#trabajos" data-sheet="closets" aria-haspopup="dialog"><img src="img/hero/tiles/closets-hd-360.webp" srcset="img/hero/tiles/closets-hd-360.webp 1x, img/hero/tiles/closets-hd-720.webp 2x" alt="" width="360" height="150" decoding="async"><span class="s-hero-tn">Closets<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">de piso a techo, con LED</span></a></li>
+          <li><a href="#trabajos" data-sheet="puertas" aria-haspopup="dialog"><img src="img/hero/tiles/puertas.webp" alt="" width="360" height="150" decoding="async"><span class="s-hero-tn">Puertas<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">de madera, residenciales</span></a></li>
+          <li><a href="#trabajos" data-sheet="muebles" aria-haspopup="dialog"><img src="img/hero/tiles/muebles-hd-360.webp" srcset="img/hero/tiles/muebles-hd-360.webp 1x, img/hero/tiles/muebles-hd-720.webp 2x" alt="" width="360" height="150" decoding="async"><span class="s-hero-tn">Muebles<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">centros de TV y baños</span></a></li>
+          <li><a href="#trabajos" data-sheet="remodelaciones" aria-haspopup="dialog"><img src="img/hero/tiles/remodelaciones-hd-360.webp" srcset="img/hero/tiles/remodelaciones-hd-360.webp 1x, img/hero/tiles/remodelaciones-hd-720.webp 2x" alt="" width="360" height="150" decoding="async"><span class="s-hero-tn">Remodelaciones<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">muros y celosías</span></a></li>
         </ul>
       </div>
 
@@ -57,6 +57,33 @@
           <button type="button" aria-label="Ver vestidor"><i></i></button>
           <button type="button" aria-label="Ver mueble de baño"><i></i></button>
           <button type="button" aria-label="Ver celosía"><i></i></button>
+        </div>
+      </div>
+    </div>
+    <!-- Hoja de cada tipo: la llena 01-hero.js (fotos reales HD, materiales y "Armar mi..."). El JS la mueve a <body>. -->
+    <div class="s-hero-sheet" hidden>
+      <div class="s-hero-sheet-veil" data-close></div>
+      <div class="s-hero-sheet-box" role="dialog" aria-modal="true" aria-labelledby="s-hero-sheet-t" tabindex="-1">
+        <div class="s-hero-sheet-grip" aria-hidden="true"><i></i></div>
+        <header class="s-hero-sheet-head">
+          <div>
+            <h2 id="s-hero-sheet-t" class="s-hero-sheet-t"></h2>
+            <p class="s-hero-sheet-d"></p>
+          </div>
+          <button type="button" class="s-hero-sheet-x" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+        </header>
+        <div class="s-hero-sheet-car" role="region" aria-label="Fotos de proyectos reales" tabindex="0"></div>
+        <div class="s-hero-sheet-nav">
+          <button type="button" data-dir="-1" aria-label="Foto anterior"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+          <button type="button" data-dir="1" aria-label="Foto siguiente"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="s-hero-sheet-mat">
+          <h3>Materiales que se ven aquí</h3>
+          <ul class="s-hero-sheet-chips"></ul>
+        </div>
+        <div class="s-hero-sheet-foot">
+          <button type="button" class="k-btn cd-green s-hero-sheet-go"></button>
+          <a class="s-hero-sheet-all" href="materiales.html">Ver todos los materiales<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </div>

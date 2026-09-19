@@ -1,11 +1,20 @@
 /* 05 · Servicios · GSAP + ScrollTrigger
-   - Entrada: cada foto sube como panel detrás de una máscara (clip-path) y el texto sale renglón por renglón;
-     las tarjetas que entran juntas se escalonan (ScrollTrigger.batch), una sola vez.
+   - Entrada: una cortina color crema se recoge hacia arriba sobre cada foto (transform, no clip-path) y el texto
+     sale renglón por renglón; las tarjetas que entran juntas se escalonan 80 ms. Una sola vez, con red de seguridad.
    - Compu con mouse: la tarjeta se inclina hacia el puntero (profundidad), la foto se mueve al revés,
      y una etiqueta verde "Cotizar" acompaña al puntero (quickTo). El cursor del sistema no se oculta.
    Sin GSAP o con reduced-motion todo queda visible y quieto. */
 (function () {
   "use strict";
+  /* limpia estilos en línea sin depender de GSAP (si su reloj se atora, gsap.set tampoco corre) */
+  function clr(els, props) {
+    if (!els) return;
+    if (els.nodeType) els = [els];
+    Array.prototype.forEach.call(els, function (el) {
+      props.forEach(function (p) { el.style.removeProperty(p); });
+      if (el._gsap) { el._gsap.uncache = 1; }
+    });
+  }
 
   function run() {
     var sec = document.getElementById("servicios");
@@ -23,37 +32,91 @@
       if (!ctx.conditions.ok) return;
       sec.classList.add("is-gsap");
 
-      /* ---------- Entrada por máscara ---------- */
+      /* ---------- Entrada a prueba de fallas (FEEDBACK-2 #6: "se quedaron en blanco") ----------
+         Causa probable: antes cada foto arrancaba con clip-path: inset(100%) desde que cargaba la página y
+         solo se abría con ScrollTrigger. En Safari/WebKit la carga diferida (loading="lazy") mide la
+         imagen DESPUÉS del recorte del padre: con el recorte al 100% la foto nunca "está en pantalla",
+         no se descarga, y la tarjeta queda beige vacía; si además el tween se atora (rAF pausado en el
+         navegador de WhatsApp/Instagram) nunca se descubre.
+         Ahora: (1) nada lleva clip-path; una cortina (span encima de la foto) se encoge con transform,
+         así la foto carga normal debajo; (2) el disparo lo da un IntersectionObserver nativo;
+         (3) solo se preparan las tarjetas que están abajo de la pantalla al iniciar; (4) setTimeout
+         de seguridad: 1.6 s después del disparo todo queda visible pase lo que pase. */
+      var LINES = ".s-serv-name, .s-serv-desc, .s-serv-cta, .s-serv-idea-t, .s-serv-idea-d, .s-serv-btn";
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var pending = [];
+      var queue = [], qTimer = 0;
+
+      function finish(c) {
+        if (c.__done) return; c.__done = true;
+        var veil = c.querySelector(".s-serv-veil");
+        var img = c.querySelector(".s-serv-media img");
+        var lines = c.querySelectorAll(LINES);
+        gsap.killTweensOf([veil, img, lines]);
+        if (veil) veil.remove();
+        clr(img, ["transform", "translate", "rotate", "scale"]);
+        clr(lines, ["opacity", "visibility", "transform", "translate", "rotate", "scale"]);
+      }
+
+      function reveal(batch) {
+        var tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+        batch.forEach(function (c, i) {
+          var at = i * 0.08;
+          var veil = c.querySelector(".s-serv-veil");
+          var img = c.querySelector(".s-serv-media img");
+          var lines = c.querySelectorAll(LINES);
+          if (veil) tl.to(veil, { scaleY: 0, duration: 0.8 }, at);
+          if (img) tl.to(img, { scale: 1, yPercent: 0, duration: 1.0, clearProps: "transform" }, at);
+          tl.to(lines, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.05, clearProps: "opacity,visibility,transform" }, at + 0.2);
+          tl.call(finish, [c], at + 1.05);
+          setTimeout(function () { finish(c); }, 1600 + i * 80);
+        });
+      }
+
       cards.forEach(function (c) {
+        if (c.getBoundingClientRect().top < vh * 0.95) return; /* ya visible: no se toca */
+        c.__done = false;
         var media = c.querySelector(".s-serv-media");
         var img = c.querySelector(".s-serv-media img");
-        var lines = c.querySelectorAll(".s-serv-name, .s-serv-desc, .s-serv-cta, .s-serv-idea-t, .s-serv-idea-d, .s-serv-btn");
-        if (media) gsap.set(media, { clipPath: "inset(100% 0% 0% 0%)" });
-        if (img) gsap.set(img, { scale: 1.18, yPercent: 6 });
-        if (c.classList.contains("s-serv-idea")) gsap.set(c, { clipPath: "inset(100% 0% 0% 0% round 14px)" });
-        gsap.set(lines, { autoAlpha: 0, y: 18 });
-      });
-
-      ST.batch(cards, {
-        start: "top 86%",
-        once: true,
-        interval: 0.08,
-        onEnter: function (batch) {
-          var tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-          batch.forEach(function (c, i) {
-            var at = i * 0.08;
-            var media = c.querySelector(".s-serv-media");
-            var img = c.querySelector(".s-serv-media img");
-            var lines = c.querySelectorAll(".s-serv-name, .s-serv-desc, .s-serv-cta, .s-serv-idea-t, .s-serv-idea-d, .s-serv-btn");
-            if (media) tl.to(media, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.95, clearProps: "clipPath" }, at);
-            if (img) tl.to(img, { scale: 1, yPercent: 0, duration: 1.1, clearProps: "transform" }, at);
-            if (c.classList.contains("s-serv-idea")) tl.to(c, { clipPath: "inset(0% 0% 0% 0% round 14px)", duration: 0.95, clearProps: "clipPath" }, at);
-            tl.to(lines, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.05, clearProps: "transform" }, at + 0.22);
-          });
+        if (media) {
+          var veil = document.createElement("span");
+          veil.className = "s-serv-veil"; veil.setAttribute("aria-hidden", "true");
+          media.appendChild(veil);
         }
+        if (img) gsap.set(img, { scale: 1.12, yPercent: 4 });
+        gsap.set(c.querySelectorAll(LINES), { autoAlpha: 0, y: 16 });
+        pending.push(c);
       });
 
-      if (!ctx.conditions.mouse) return;
+      var io = null;
+      if (pending.length) {
+        if (!("IntersectionObserver" in window)) pending.forEach(finish);
+        else {
+          var flush = function () {
+            qTimer = 0; var b = queue.splice(0);
+            if (!b.length) return;
+            b.sort(function (a, b2) { return a.getBoundingClientRect().top - b2.getBoundingClientRect().top; });
+            reveal(b);
+          };
+          io = new IntersectionObserver(function (es) {
+            es.forEach(function (e) {
+              if (!e.isIntersecting) return;
+              io.unobserve(e.target);
+              queue.push(e.target);
+              /* red de seguridad independiente de rAF: si el cuadro nunca llega (WhatsApp/Instagram), igual queda visible */
+              var c = e.target; setTimeout(function () { finish(c); }, 1800);
+            });
+            if (queue.length && !qTimer) {
+              qTimer = requestAnimationFrame(flush);
+              setTimeout(function () { if (queue.length) flush(); }, 100); /* rAF pausado: el lote sale igual */
+            }
+          }, { rootMargin: "0px 0px -10% 0px" });
+          pending.forEach(function (c) { io.observe(c); });
+        }
+      }
+      var revertEntrance = function () { if (io) io.disconnect(); pending.forEach(finish); };
+
+      if (!ctx.conditions.mouse) return revertEntrance;
 
       /* ---------- Profundidad al pasar el mouse ---------- */
       var cleanups = [];
@@ -118,6 +181,7 @@
       ST.addEventListener("scrollStart", hide);
 
       return function () {
+        revertEntrance();
         cleanups.forEach(function (f) { f(); });
         grid.removeEventListener("pointermove", track);
         grid.removeEventListener("pointerleave", hide);

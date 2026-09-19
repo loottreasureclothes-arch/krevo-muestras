@@ -58,21 +58,47 @@
 #hero .s-w > span { display: inline-block; }
 #hero .s-hero-sub { font-size: 16.5px; line-height: 1.42; color: rgba(246, 238, 226, 0.88); max-width: 34ch; margin: 0 0 16px; text-wrap: pretty; }
 
-/* tiles de tipo de trabajo: foto real, nombre condensado y flecha; esquinas casi rectas */
-#hero .s-hero-chips { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(136px, max-content); gap: 8px; }
+/* tiles de tipo de trabajo: foto real de fondo, nombre COMPLETO y un dato de lo que se ve.
+   Celular: rejilla 3 + 2 (nada se corta, nada se desliza). Compu: 5 en fila. Al tocar abren la hoja. */
+#hero .s-hero-chips {
+  list-style: none; padding: 0; margin: 16px 0 0;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px;
+}
+#hero .s-hero-chips li { grid-column: span 2; min-width: 0; }
+#hero .s-hero-chips li:nth-child(n + 4) { grid-column: span 3; }
 #hero .s-hero-chips a {
-  display: grid; grid-template-columns: max-content 16px; justify-content: space-between; min-width: 136px; grid-template-rows: auto 38px; align-items: center; column-gap: 6px;
-  padding: 4px 10px 0 4px; border-radius: 3px; overflow: hidden;
-  border: 1px solid rgba(246, 238, 226, 0.24); background: rgba(20, 11, 5, 0.55);
-  color: var(--cream); -webkit-tap-highlight-color: transparent; touch-action: manipulation;
-  transition: background-color 200ms var(--ease-out), border-color 200ms var(--ease-out), transform 160ms var(--ease-out);
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 3px;
+  min-height: 88px; height: 100%; padding: 8px 9px 9px; border-radius: 3px;
+  border: 1px solid rgba(246, 238, 226, 0.26); background: #2a1a0e;
+  color: var(--cream); text-decoration: none;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation; -webkit-touch-callout: none; user-select: none; -webkit-user-select: none;
+  transition: border-color 200ms var(--ease-out), transform 160ms var(--ease-out);
 }
-#hero .s-hero-chips img { grid-column: 1 / -1; width: 100%; height: 54px; border-radius: 2px; object-fit: cover; display: block; transition: transform 320ms var(--ease-out); }
-#hero .s-hero-chips span {
+#hero .s-hero-chips img {
+  position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 320ms var(--ease-out);
+}
+/* velo: la foto se ve arriba, el texto se lee abajo */
+#hero .s-hero-chips a::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(20, 11, 5, 0.05) 0%, rgba(20, 11, 5, 0.55) 45%, rgba(20, 11, 5, 0.92) 100%);
+}
+#hero .s-hero-tn {
+  display: block;
   font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; text-transform: uppercase;
-  font-weight: 800; font-size: 16px; line-height: 1; letter-spacing: 0.01em; padding-left: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font-weight: 800; font-size: 16px; line-height: 1; letter-spacing: 0.01em;
 }
-#hero .s-hero-chips svg { width: 16px; height: 16px; color: var(--brand-on-wood); transition: transform 240ms var(--ease-out); }
+#hero .s-hero-td {
+  font-size: 12px; line-height: 1.22; font-weight: 500; color: rgba(246, 238, 226, 0.84); text-wrap: balance;
+  min-height: 2.44em; /* dos renglones: los nombres quedan alineados en cada fila */
+}
+@media (max-width: 374px) { #hero .s-hero-td { font-size: 11.5px; } #hero .s-hero-chips a { padding-inline: 8px; } }
+/* flecha arriba a la derecha, sobre la foto: el nombre usa todo el ancho */
+#hero .s-hero-chips svg {
+  position: absolute; top: 6px; right: 6px; width: 22px; height: 22px; padding: 4px; border-radius: 50%;
+  background: rgba(20, 11, 5, 0.6); color: var(--cream); transition: transform 240ms var(--ease-out);
+}
 #hero .s-hero-chips a:active { transform: scale(0.97); }
 #hero .s-hero-chips a:focus-visible { outline: 2px solid var(--cream); outline-offset: 2px; }
 
@@ -111,7 +137,7 @@
 @keyframes s-hero-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
 @media (hover: hover) and (pointer: fine) {
-  #hero .s-hero-chips a:hover { background: rgba(20, 11, 5, 0.78); border-color: rgba(246, 238, 226, 0.7); }
+  #hero .s-hero-chips a:hover { border-color: rgba(246, 238, 226, 0.7); }
   #hero .s-hero-chips a:hover img { transform: scale(1.08); }
   #hero .s-hero-chips a:hover svg { transform: translateX(3px); }
   #hero .s-hero-ticks button:hover::after { background: rgba(246, 238, 226, 0.5); }
@@ -136,6 +162,11 @@
   #hero .s-hero-actions { transition-delay: 480ms; }
   #hero .s-hero-chips li { transition-delay: calc(540ms + var(--i, 0) * 40ms); }
   #hero .s-hero-rule { transition-delay: 640ms; }
+  /* red de seguridad: si el JS nunca pone .is-go, el texto aparece solo a los 2.5 s */
+  #hero:not(.is-go) .s-c { animation: s-hero-failsafe-c 0s 2.5s forwards; }
+  #hero:not(.is-go) .s-hero-sub, #hero:not(.is-go) .s-hero-chips li, #hero:not(.is-go) .s-hero-actions, #hero:not(.is-go) .s-hero-rule { animation: s-hero-failsafe-o 0s 2.5s forwards; }
+  @keyframes s-hero-failsafe-c { to { transform: none; } }
+  @keyframes s-hero-failsafe-o { to { opacity: 1; translate: none; } }
   #hero.is-go .s-c { transform: none; }
   #hero.is-go .s-hero-sub, #hero.is-go .s-hero-chips li, #hero.is-go .s-hero-actions, #hero.is-go .s-hero-rule { opacity: 1; translate: none; }
 
@@ -152,20 +183,11 @@
   }
 }
 
-/* ---------- celular: una fila de tiles que se desliza ---------- */
+/* ---------- celular ---------- */
 #hero .s-hero-rule { margin-right: 68px; }
 @media (max-width: 899px) {
   #hero .s-hero-sub-l { display: none; }
   #hero .s-hero-sub { margin-bottom: 14px; }
-  #hero .s-hero-chips {
-    overflow-x: auto; scroll-snap-type: x proximity; overscroll-behavior-x: contain; scrollbar-width: none;
-    margin-inline: calc(-1 * var(--k-gutter, 16px)); padding-inline: var(--k-gutter, 16px);
-    scroll-padding-inline: var(--k-gutter, 16px);
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--k-gutter, 16px), #000 calc(100% - 36px), transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0, #000 var(--k-gutter, 16px), #000 calc(100% - 36px), transparent 100%);
-  }
-  #hero .s-hero-chips::-webkit-scrollbar { display: none; }
-  #hero .s-hero-chips li { scroll-snap-align: start; }
   #hero .s-hero-actions { flex-wrap: nowrap; gap: 8px; }
   #hero .s-hero-actions .k-btn { padding: 0 16px; font-size: 15.5px; white-space: nowrap; }
 }
@@ -185,11 +207,10 @@
   #hero .s-hero-slide img { object-position: 50% 50%; }
   #hero .s-hero-title { font-size: clamp(96px, 10.2vw, 176px); margin-bottom: 22px; }
   #hero .s-hero-sub { font-size: 19px; max-width: 40ch; margin-bottom: 24px; }
-  #hero .s-hero-chips { margin-top: 26px; grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-auto-columns: auto; gap: 10px; max-width: 1080px; }
-  #hero .s-hero-chips a { grid-template-rows: auto 42px; grid-template-columns: minmax(0, 1fr) 16px; min-width: 0; }
-  #hero .s-hero-chips span { letter-spacing: 0; }
-  #hero .s-hero-chips img { height: 72px; }
-  #hero .s-hero-chips span { font-size: 17px; }
+  #hero .s-hero-chips { margin-top: 26px; gap: 8px; max-width: 1080px; }
+  #hero .s-hero-chips a { min-height: 100px; padding: 10px 12px 11px; gap: 4px; }
+  #hero .s-hero-tn { font-size: 18px; }
+  #hero .s-hero-td { font-size: 13px; }
   #hero .s-hero-actions .k-btn { min-height: 56px; font-size: 17px; }
   #hero .s-hero-actions .k-btn { padding: 0 28px; }
   #hero .s-hero-rule { padding-bottom: 4px; }
@@ -197,6 +218,155 @@
   #hero .s-hero-n { font-size: 22px; }
 }
 
+@media (min-width: 1360px) {
+  #hero .s-hero-chips { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+  #hero .s-hero-chips li, #hero .s-hero-chips li:nth-child(n + 4) { grid-column: auto; }
+  #hero .s-hero-chips a { min-height: 122px; padding: 12px 14px 13px; gap: 5px; }
+  #hero .s-hero-tn { font-size: 20px; }
+  #hero .s-hero-td { font-size: 13.5px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   #hero .s-hero-par { will-change: auto; }
+}
+
+/* ============ Hoja de cada tipo (el JS la mueve a <body>) ============
+   Celular: hoja desde abajo que se arrastra para cerrar. Compu: panel a la derecha.
+   Curva de cajón (Vaul): cubic-bezier(0.32, 0.72, 0, 1). Entra en 360ms, sale en 240ms. */
+.s-hero-sheet {
+  --sh-ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --sh-bg: #21150c;
+  position: fixed; inset: 0; z-index: 90;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.s-hero-sheet[hidden] { display: none; }
+.s-hero-sheet-veil {
+  position: absolute; inset: 0; background: rgba(14, 8, 3, 0.62);
+  opacity: 0; transition: opacity 360ms var(--sh-ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.s-hero-sheet-box {
+  position: relative; width: 100%; max-height: calc(100svh - 28px);
+  display: flex; flex-direction: column;
+  background: var(--sh-bg); color: var(--cream);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -18px 50px -20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 230, 200, 0.1);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  overflow: hidden; outline: none;
+  transform: translate3d(0, 100%, 0);
+  transition: transform 360ms var(--sh-ease);
+  touch-action: pan-x;
+}
+.s-hero-sheet.is-open .s-hero-sheet-veil { opacity: 1; }
+.s-hero-sheet.is-open .s-hero-sheet-box { transform: translate3d(0, var(--sh-y, 0px), 0); }
+.s-hero-sheet.is-closing .s-hero-sheet-veil { transition-duration: 240ms; }
+.s-hero-sheet.is-closing .s-hero-sheet-box { transition-duration: 240ms; }
+.s-hero-sheet.is-drag .s-hero-sheet-box, .s-hero-sheet.is-drag .s-hero-sheet-veil { transition: none; }
+body.s-hero-sheet-open .k-wa { visibility: hidden; animation: none; }
+
+.s-hero-sheet-grip { display: grid; place-items: center; height: 22px; flex: none; cursor: grab; }
+.s-hero-sheet-grip i { width: 40px; height: 4px; border-radius: 2px; background: rgba(246, 238, 226, 0.3); }
+.s-hero-sheet-head {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+  padding: 0 12px 12px 16px; flex: none;
+}
+.s-hero-sheet-t {
+  margin: 2px 0 4px; color: var(--cream);
+  font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; text-transform: uppercase;
+  font-weight: 800; font-size: 34px; line-height: 0.9; letter-spacing: 0;
+}
+.s-hero-sheet-d { margin: 0; font-size: 15px; line-height: 1.35; color: rgba(246, 238, 226, 0.78); }
+.s-hero-sheet-x {
+  flex: none; width: 44px; height: 44px; display: grid; place-items: center; margin-top: -4px;
+  border: 1px solid rgba(246, 238, 226, 0.22); border-radius: 50%; background: transparent; color: var(--cream);
+  cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+  transition: transform 140ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.s-hero-sheet-x svg { width: 20px; height: 20px; }
+.s-hero-sheet-x:active { transform: scale(0.94); }
+.s-hero-sheet-x:focus-visible, .s-hero-sheet-go:focus-visible, .s-hero-sheet-chips a:focus-visible, .s-hero-sheet-all:focus-visible, .s-hero-sheet-car:focus-visible { outline: 2px solid var(--cream); outline-offset: 2px; }
+
+/* fotos: tira con scroll nativo y snap; cada foto con su proporción real */
+.s-hero-sheet-car {
+  display: flex; gap: 8px; flex: none;
+  overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none;
+  padding: 0 16px; scroll-padding-inline: 16px;
+}
+.s-hero-sheet-car::-webkit-scrollbar { display: none; }
+.s-hero-sheet-car figure { flex: none; margin: 0; scroll-snap-align: start; position: relative; }
+.s-hero-sheet-car img {
+  display: block; height: clamp(180px, calc(100svh - 440px), 380px); width: auto; max-width: 82vw; object-fit: cover;
+  border-radius: 4px; background: #3a2616; -webkit-user-drag: none;
+}
+.s-hero-sheet-car figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 10px 8px; border-radius: 0 0 4px 4px;
+  font-size: 12.5px; line-height: 1.25; color: rgba(246, 238, 226, 0.92);
+  background: linear-gradient(to bottom, rgba(20, 11, 5, 0), rgba(20, 11, 5, 0.78));
+}
+
+/* flechas de la tira: solo con mouse (en el celular se desliza con el dedo) */
+.s-hero-sheet-nav { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .s-hero-sheet-nav { display: flex; gap: 8px; padding: 12px 16px 0; flex: none; }
+  .s-hero-sheet-nav button {
+    width: 44px; height: 44px; display: grid; place-items: center; cursor: pointer;
+    border: 1px solid rgba(246, 238, 226, 0.22); border-radius: 50%; background: transparent; color: var(--cream);
+    transition: border-color 200ms var(--ease-out), transform 140ms var(--ease-out), opacity 200ms;
+  }
+  .s-hero-sheet-nav button:hover { border-color: rgba(246, 238, 226, 0.7); }
+  .s-hero-sheet-nav button:active { transform: scale(0.94); }
+  .s-hero-sheet-nav button:disabled { opacity: 0.3; cursor: default; }
+  .s-hero-sheet-nav button:focus-visible { outline: 2px solid var(--cream); outline-offset: 2px; }
+  .s-hero-sheet-nav svg { width: 18px; height: 18px; }
+}
+.s-hero-sheet-mat { padding: 16px 16px 0; flex: none; }
+.s-hero-sheet-mat h3 { margin: 0 0 8px; text-transform: none; font: 600 14px/1.2 var(--font-body); color: rgba(246, 238, 226, 0.7); letter-spacing: 0.01em; }
+.s-hero-sheet-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.s-hero-sheet-chips a {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px 0 6px;
+  border: 1px solid rgba(246, 238, 226, 0.24); border-radius: 3px;
+  color: var(--cream); text-decoration: none; font-size: 14px; font-weight: 600;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+  transition: border-color 200ms var(--ease-out), transform 140ms var(--ease-out);
+}
+.s-hero-sheet-chips i { width: 26px; height: 26px; border-radius: 2px; background: var(--sw, #6b4629) center / cover; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12); }
+.s-hero-sheet-chips a:active { transform: scale(0.97); }
+
+.s-hero-sheet-foot { display: flex; flex-direction: column; align-items: stretch; gap: 4px; padding: 16px 16px 14px; flex: none; }
+.s-hero-sheet-go { width: 100%; min-height: 52px; border-radius: 3px; font-size: 16px; justify-content: center; border: 0; cursor: pointer; }
+.s-hero-sheet-all {
+  align-self: center; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 8px;
+  color: var(--cream); font-weight: 600; font-size: 15px; text-decoration: none;
+}
+.s-hero-sheet-all svg { width: 16px; height: 16px; color: var(--brand-on-wood); transition: transform 240ms var(--ease-out); }
+
+@media (hover: hover) and (pointer: fine) {
+  .s-hero-sheet-x:hover, .s-hero-sheet-chips a:hover { border-color: rgba(246, 238, 226, 0.7); }
+  .s-hero-sheet-all:hover svg { transform: translateX(3px); }
+}
+
+/* compu: panel a la derecha, a todo lo alto */
+@media (min-width: 900px) {
+  .s-hero-sheet { justify-content: flex-end; align-items: stretch; }
+  .s-hero-sheet-box {
+    width: min(520px, 42vw); max-height: none; height: 100%; border-radius: 0;
+    transform: translate3d(100%, 0, 0); touch-action: auto; overflow-y: auto; overscroll-behavior: contain;
+    box-shadow: -24px 0 60px -24px rgba(0, 0, 0, 0.6);
+  }
+  .s-hero-sheet.is-open .s-hero-sheet-box { transform: none; }
+  .s-hero-sheet-grip { display: none; }
+  .s-hero-sheet-head { padding: 32px 24px 20px 28px; }
+  .s-hero-sheet-t { font-size: 48px; }
+  .s-hero-sheet-d { font-size: 17px; }
+  .s-hero-sheet-car { padding: 0 28px; scroll-padding-inline: 28px; }
+  .s-hero-sheet-car img { height: clamp(260px, calc(100vh - 430px), 560px); max-width: 420px; }
+  .s-hero-sheet-nav { padding-inline: 28px; }
+  .s-hero-sheet-mat { padding: 24px 28px 0; }
+  .s-hero-sheet-foot { padding: 24px 28px 32px; margin-top: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s-hero-sheet-box, .s-hero-sheet.is-open .s-hero-sheet-box { transform: none; transition: opacity 200ms linear; opacity: 0; }
+  .s-hero-sheet.is-open .s-hero-sheet-box { opacity: 1; }
+  .s-hero-sheet.is-closing .s-hero-sheet-box { opacity: 0; }
 }

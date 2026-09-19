@@ -1,0 +1,93 @@
+/* 02c · Materiales (muestrario) · 8 muestras reales con talón; "Ver todos" -> materiales.html */
+#materiales {
+  --mt-r: 3px;
+  --mt-ease: cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  background: var(--bg-warm, #fbf8f3);
+  padding: var(--sec-y) 0 var(--sec-y);
+  overflow: hidden;
+  isolation: isolate;
+}
+#materiales .s-mat-head { max-width: 760px; margin-bottom: var(--head-gap); }
+#materiales .s-mat-kicker {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px;
+  font: 700 13px/1 var(--font-body); letter-spacing: 0.14em; text-transform: uppercase; color: var(--wood);
+}
+/* marca de lápiz de carpintero antes del kicker */
+#materiales .s-mat-kicker::before { content: ""; width: 22px; height: 2px; background: var(--brand); }
+#materiales .s-mat-title { margin: 0 0 14px; color: var(--ink); text-wrap: balance; }
+#materiales .s-mat-lead { max-width: 40ch; margin: 0; font-size: var(--fs-lead); line-height: 1.5; color: var(--mute); text-wrap: pretty; }
+
+/* Rejilla: 2 columnas en celular (muestras a media pantalla), 4 en compu */
+#materiales .s-mat-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;
+}
+@media (min-width: 900px) {
+  #materiales .s-mat-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+}
+#materiales .s-mat-item { margin: 0; }
+
+/* La muestra: cuadro con la textura real, esquinas casi rectas, barreno de muestrario y talón */
+#materiales .s-mat-chip {
+  position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden;
+  border-radius: var(--mt-r); background: #d9cdbd; color: #fff; text-decoration: none;
+  box-shadow: 0 1px 0 rgba(17, 17, 17, 0.06), 0 10px 24px -14px rgba(46, 29, 17, 0.45);
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+  transition: transform 160ms var(--mt-ease), box-shadow 240ms var(--mt-ease);
+}
+#materiales .s-mat-chip img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transition: transform 600ms var(--mt-ease);
+}
+#materiales .s-mat-chip:active { transform: scale(0.97); }
+#materiales .s-mat-chip:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  #materiales .s-mat-chip:hover { box-shadow: 0 1px 0 rgba(17, 17, 17, 0.06), 0 18px 34px -16px rgba(46, 29, 17, 0.55); }
+  #materiales .s-mat-chip:hover img { transform: scale(1.05); }
+}
+/* barreno: como las muestras físicas que cuelgan de una argolla */
+#materiales .s-mat-hole {
+  position: absolute; top: 10px; left: 10px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--bg-warm, #fbf8f3);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+/* talón translúcido abajo */
+#materiales .s-mat-talon {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; flex-direction: column; gap: 5px;
+  padding: 30px 10px 10px;
+  background: linear-gradient(180deg, rgba(20, 12, 6, 0) 0%, rgba(20, 12, 6, 0.55) 45%, rgba(20, 12, 6, 0.78) 100%);
+}
+#materiales .s-mat-n {
+  min-width: 0; font: 800 17px/1 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68;
+  text-transform: uppercase; letter-spacing: 0.01em; color: #fff;
+}
+#materiales .s-mat-l {
+  flex: none; font: 600 11px/1 var(--font-body); letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+@media (min-width: 900px) {
+  #materiales .s-mat-talon { padding: 40px 14px 13px; }
+  #materiales .s-mat-n { font-size: 22px; }
+  #materiales .s-mat-l { font-size: 12px; }
+}
+
+#materiales .s-mat-foot {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 22px;
+}
+#materiales .s-mat-all { color: var(--wood); min-height: 52px; }
+#materiales .s-mat-all svg { transition: transform 200ms var(--mt-ease); }
+@media (hover: hover) and (pointer: fine) { #materiales .s-mat-all:hover svg { transform: translateX(4px); } }
+#materiales .s-mat-note { margin: 0; font-size: var(--fs-small); color: var(--mute); }
+@media (max-width: 899px) { #materiales .s-mat-all { width: 100%; } }
+
+/* contador de "Mi selección" si el visitante ya eligió en el catálogo */
+#materiales .s-mat-sel {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  font-weight: 600; font-size: 15px; color: var(--wood); text-decoration: none;
+}
+#materiales .s-mat-sel b {
+  display: inline-grid; place-items: center; min-width: 24px; height: 24px; padding: 0 6px; border-radius: 12px;
+  background: var(--wood); color: var(--cream); font-size: 13px; font-variant-numeric: tabular-nums;
+}

@@ -152,3 +152,10 @@
 @media (hover: hover) and (pointer: fine) and (min-width: 900px) {
   #servicios.is-gsap .s-serv-chip { display: inline-flex; }
 }
+
+/* Cortina de entrada (la crea 05-servicios.js solo para tarjetas abajo de la pantalla).
+   Se encoge con transform: la foto de abajo carga normal (sin clip-path que bloquee el lazy de Safari). */
+#servicios .s-serv-veil {
+  position: absolute; inset: -1px; z-index: 2; pointer-events: none;
+  background: #f6f1ea; transform-origin: 50% 0; will-change: transform;
+}

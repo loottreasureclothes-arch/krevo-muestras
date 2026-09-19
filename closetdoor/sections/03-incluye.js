@@ -12,9 +12,11 @@
     gsap.registerPlugin(ST);
 
     var photo = sec.querySelector(".s-incluye-photo");
-    var img = photo && photo.querySelector("img");
+    /* el zoom y el parallax van en el envoltorio: el rotador (00-rotador.js) cambia las <img> de adentro */
+    var img = photo && (photo.querySelector(".s-incluye-photo-in") || photo.querySelector("img"));
     var ruler = sec.querySelector(".s-incluye-ruler");
     var cap = sec.querySelector(".s-incluye-fig figcaption");
+    var insets = gsap.utils.toArray(sec.querySelectorAll(".s-incluye-inset"));
     var items = gsap.utils.toArray(sec.querySelectorAll(".s-incluye-item"));
     var cta = sec.querySelector(".s-incluye-cta");
     var mm = gsap.matchMedia();
@@ -34,6 +36,9 @@
         .fromTo(img, { scale: 1.16 }, { scale: 1.06, duration: 1.1 }, 0)
         .fromTo(ruler, { autoAlpha: 0, x: -36, rotation: -7 },
                        { autoAlpha: 1, x: 0, rotation: -2.2, duration: 0.8, ease: "back.out(1.4)" }, 0.28)
+        /* collage: las fotos chicas caen encima de la grande, una tras otra */
+        .fromTo(insets, { autoAlpha: 0, y: 28, scale: 0.92 },
+                        { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.12, ease: "back.out(1.3)" }, 0.22)
         .fromTo(cap, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.5);
 
       /* 2. Parallax de la foto dentro de su marco (scrub, solo transform) */
@@ -62,6 +67,32 @@
                        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.7, clearProps: "filter" }, at + 0.06);
       });
       if (cta) tlList.fromTo(cta, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.5);
+
+      /* Red de seguridad (FEEDBACK-2 #6): fromTo esconde desde que carga; si ScrollTrigger mide mal o el
+         reloj de GSAP se atora (WhatsApp/Instagram), a los 1.6 s de asomarse queda el estado final.
+         El CSS ya trae el estado final (regla girada, trazos completos): basta con quitar lo que puso GSAP. */
+      var ALL = ["opacity", "visibility", "transform", "translate", "rotate", "scale", "clip-path", "stroke-dashoffset", "filter", "--inc-line"];
+      function force(tl, els) {
+        if (tl.progress() < 1) { tl.progress(1); tl.kill(); }
+        els.forEach(function (el) { if (el) ALL.forEach(function (p) { el.style.removeProperty(p); }); });
+      }
+      var sio = null;
+      if ("IntersectionObserver" in window) {
+        sio = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            sio.unobserve(e.target);
+            var isFig = e.target === photo;
+            setTimeout(function () {
+              if (isFig) force(tlFig, [photo, ruler, cap].concat(insets));
+              else force(tlList, items.concat(gsap.utils.toArray(sec.querySelectorAll(".s-incluye-ico path, .s-incluye-txt")), [cta]));
+            }, 1600);
+          });
+        }, { rootMargin: "0px 0px -25% 0px" });
+        sio.observe(photo);
+        sio.observe(sec.querySelector(".s-incluye-list"));
+      }
+      return function () { if (sio) sio.disconnect(); };
     });
   }
 

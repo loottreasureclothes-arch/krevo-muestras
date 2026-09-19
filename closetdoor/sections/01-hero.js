@@ -78,12 +78,15 @@
       b.style.left = (i * 100 / n) + "%"; b.style.width = (100 / n) + "%";
       seams.appendChild(b); bars.push(b);
     }
+    /* la foto que entra se pide ya (lazy + recorte total = Safari/WhatsApp no la descargan) */
+    Array.prototype.forEach.call(to.querySelectorAll('img[loading="lazy"]'), function (im) { im.loading = "eager"; });
     to.style.clipPath = "polygon(0 100%,100% 100%,100% 100%,0 100%)";
     if (from) { from.classList.remove("is-on"); from.classList.add("is-out"); }
     to.classList.add("is-in");
     seams.classList.add("is-run");
     var t0 = performance.now(), total = WIPE + STAG * (n - 1);
     function frame(now) {
+      if (ended) return;
       var el = now - t0, pts = [], k, g = Math.min(el / total, 1), gc = easeIO(g);
       for (k = 0; k < n; k++) {
         var p = Math.min(Math.max((el - k * STAG) / WIPE, 0), 1);
@@ -104,6 +107,15 @@
         dim.style.opacity = (0.7 * gc).toFixed(3);
       }
       if (el < total) { requestAnimationFrame(frame); return; }
+      finish();
+    }
+    /* estado final; lo llama el ultimo cuadro o, si rAF se atora (navegador de WhatsApp/Instagram), el temporizador */
+    var ended = false;
+    function finish() {
+      if (ended) return; ended = true;
+      clearTimeout(safe);
+      var k;
+      for (k = 0; k < bars.length; k++) bars[k].style.transform = "";
       to.style.clipPath = ""; for (k = 0; k < toPic.length; k++) toPic[k].style.transform = "";
       to.classList.remove("is-in"); to.classList.add("is-on");
       if (from) { from.classList.remove("is-out"); from.style.transform = ""; }
@@ -111,7 +123,8 @@
       seams.classList.remove("is-run");
       done();
     }
-    requestAnimationFrame(frame);
+    var safe = setTimeout(finish, total + 700);
+    requestAnimationFrame(function (now) { if (!ended) frame(now); });
   }
 
   /* ---- entrada: espera la primera foto y las fuentes (tope 1.2 s) ---- */
@@ -212,9 +225,27 @@
     hero.classList.add("s-hero--gs");
     var mm = gsap.matchMedia();
     mm.add("(prefers-reduced-motion: no-preference)", function () {
-      // al bajar: la foto se queda atras, el texto se adelanta y se apaga
-      gsap.to(par, { yPercent: 14, ease: "none", scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true } });
-      gsap.to(inner, { y: -70, opacity: 0.15, ease: "none", scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true } });
+      /* al bajar: la foto se queda atras, el texto se adelanta y se apaga. SIN ScrollTrigger a proposito:
+         kit.css pone html{scroll-behavior:smooth} y en cada ScrollTrigger.refresh() (lo llaman otras secciones)
+         su "scroll a 0 para medir" se anima, mide mal el inicio (start=-scrollY) y al volver arriba el texto
+         se quedaba al 20-50 %. Aqui el avance sale solo de scrollY / alto del hero: siempre reversible. */
+      var setPy = gsap.quickSetter(par, "yPercent"), setIy = gsap.quickSetter(inner, "y", "px"), setIo = gsap.quickSetter(inner, "opacity");
+      var hH = hero.offsetHeight || window.innerHeight, pend = 0;
+      function upd() {
+        pend = 0;
+        var k = Math.min(Math.max(window.scrollY / hH, 0), 1);
+        setPy(14 * k); setIy(-70 * k); setIo(1 - 0.85 * k);
+      }
+      function onScroll() { if (!pend) pend = requestAnimationFrame(upd); }
+      function onResize() { hH = hero.offsetHeight || window.innerHeight; onScroll(); }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onResize);
+      window.addEventListener("pageshow", onResize);
+      upd();
+      return function () {
+        window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onResize); window.removeEventListener("pageshow", onResize);
+        cancelAnimationFrame(pend); gsap.set([par, inner], { clearProps: "transform,opacity" });
+      };
     });
     mm.add("(prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) and (min-width: 900px)", function () {
       gsap.set(media, { scale: 1.045 });
@@ -296,4 +327,184 @@
 
   // gancho para capturas de prueba
   window.__cdHero = { go: go, pause: function () { stopped = true; clearTimeout(timer); } };
+})();
+
+/* 01 HERO · hoja de cada tipo (cuadritos). Fotos reales HD, materiales que se ven en ellas
+   (enlazan a materiales.html#lugar) y "Armar mi ..." que baja al cotizador con el tipo ya elegido.
+   Se cierra arrastrando hacia abajo, con Esc o tocando afuera. Foco atrapado mientras está abierta. */
+(function () {
+  "use strict";
+  var hero = document.getElementById("hero");
+  var root = hero && hero.querySelector(".s-hero-sheet");
+  if (!root) return;
+  document.body.appendChild(root); // fuera del hero: nada de transform/overflow encima de un fixed
+
+  var P = "img/hero/sheet/";
+  var WOOD = "#6b4226", GRAY = "#8a8580", CHAR = "#3b3f45", BLACK = "#1c1a19", LIGHT = "#c89a64", STONE = "#4a4644";
+  var DATA = {
+    cocinas: {
+      t: "Cocinas", d: "Con isla y cubierta de madera.", tipo: "Cocina", go: "Armar mi cocina",
+      f: [["cd20", 720, 1059, "Cocina con isla, plafón de madera y campana negra"],
+          ["cd20-isla", 900, 458, "Isla con cubierta de madera y repisas abiertas"],
+          ["cd20-campana", 720, 712, "Plafón de madera, campana y gabinetes gris grafito"]],
+      m: [["Madera clara", LIGHT, "cocina"], ["Gris grafito", CHAR, "cocina"], ["Nogal", WOOD, "cocina"], ["Cubierta de piedra", STONE, "cocina"]]
+    },
+    closets: {
+      t: "Closets", d: "De piso a techo, con luz LED.", tipo: "Closet o vestidor", go: "Armar mi closet",
+      f: [["cd09", 720, 832, "Closet con luz LED, cajones y tubo para colgar"],
+          ["cd10", 720, 929, "Walk-in con isla de cajones y luz LED"],
+          ["cd12", 720, 877, "Muro de closet de nogal de piso a techo"],
+          ["cd13", 720, 1133, "Closet gris con veta y jaladeras largas"]],
+      m: [["Nogal", WOOD, "closets"], ["Gris con veta", GRAY, "closets"], ["Luz LED", "#e9c98a", "closets"], ["Jaladeras", BLACK, "herrajes"]]
+    },
+    puertas: {
+      t: "Puertas", d: "De madera, residenciales y de interior.", tipo: "Puerta", go: "Armar mi puerta",
+      f: [["cd02", 720, 1091, "Puerta interior de nogal con manija negra"],
+          ["cd11", 720, 949, "Puerta residencial de nogal con veta horizontal"],
+          ["herraje", 640, 800, "Manija negra sobre puerta de nogal"]],
+      m: [["Nogal vertical", WOOD, "puertas"], ["Nogal horizontal", "#8a5a34", "puertas"], ["Manija negra", BLACK, "herrajes"]]
+    },
+    muebles: {
+      t: "Muebles", d: "Centros de TV y muebles de baño.", tipo: "Mueble a medida", go: "Armar mi mueble",
+      f: [["cd15", 720, 924, "Centro de TV con lambrín ranurado de nogal"],
+          ["cd14", 720, 983, "Centro de entretenimiento con gabinetes negros arriba"],
+          ["cd01", 720, 1090, "Mueble de baño flotante con cubierta de piedra"]],
+      m: [["Nogal", WOOD, "closets"], ["Negro mate", BLACK, "cocina"], ["Cubierta de piedra", STONE, "bano"]]
+    },
+    remodelaciones: {
+      t: "Remodelaciones", d: "Muros de madera y celosías.", tipo: "Remodelación", go: "Armar mi remodelación",
+      f: [["cd03", 720, 1091, "Muro de madera de piso a techo con jaladera lineal"],
+          ["cd05", 720, 1090, "Celosía de lamas de nogal que divide el vestidor"],
+          ["cd07", 720, 1091, "Vestidor de nogal con repisas y cajonera"]],
+      m: [["Nogal", WOOD, "closets"], ["Celosía de lamas", "#5a3a24", "closets"], ["Jaladera lineal", BLACK, "herrajes"]]
+    }
+  };
+
+  var box = root.querySelector(".s-hero-sheet-box");
+  var tEl = root.querySelector(".s-hero-sheet-t"), dEl = root.querySelector(".s-hero-sheet-d");
+  var car = root.querySelector(".s-hero-sheet-car"), chips = root.querySelector(".s-hero-sheet-chips");
+  var goBtn = root.querySelector(".s-hero-sheet-go");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var cur = null, opener = null, closeT = 0, OUT = reduce ? 200 : 240;
+
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); }
+  function fill(k) {
+    var x = DATA[k];
+    tEl.textContent = x.t; dEl.textContent = x.d;
+    car.innerHTML = x.f.map(function (f) {
+      return '<figure><img src="' + P + f[0] + '.webp" width="' + f[1] + '" height="' + f[2] + '" alt="' + esc(f[3]) + '" decoding="async" draggable="false"><figcaption>' + esc(f[3]) + '</figcaption></figure>';
+    }).join("");
+    car.scrollLeft = 0;
+    if (typeof navState === "function") setTimeout(navState, 0);
+    chips.innerHTML = x.m.map(function (m) {
+      return '<li><a href="materiales.html#' + m[2] + '"><i style="--sw:' + m[1] + '" aria-hidden="true"></i>' + esc(m[0]) + '</a></li>';
+    }).join("");
+    goBtn.innerHTML = esc(x.go) + '<svg aria-hidden="true"><use href="#i-arrow"/></svg>';
+  }
+
+  function focusables() {
+    return Array.prototype.filter.call(box.querySelectorAll('a[href], button, [tabindex="0"]'), function (el) { return el.offsetParent !== null; });
+  }
+  function open(k, from) {
+    if (!DATA[k]) return;
+    clearTimeout(closeT);
+    cur = k; opener = from || null;
+    fill(k);
+    root.classList.remove("is-closing", "is-drag");
+    box.style.removeProperty("--sh-y");
+    root.hidden = false;
+    document.body.classList.add("s-hero-sheet-open");
+    document.documentElement.style.overflow = "hidden";
+    void box.offsetHeight; // arranca desde fuera de pantalla
+    root.classList.add("is-open");
+    var x = root.querySelector(".s-hero-sheet-x");
+    setTimeout(function () { x.focus({ preventScroll: true }); }, 30);
+  }
+  function close(restore) {
+    if (!cur) return;
+    cur = null;
+    root.classList.add("is-closing");
+    root.classList.remove("is-open", "is-drag");
+    box.style.removeProperty("--sh-y");
+    document.body.classList.remove("s-hero-sheet-open");
+    document.documentElement.style.overflow = "";
+    if (restore !== false && opener) opener.focus({ preventScroll: true });
+    closeT = setTimeout(function () { root.hidden = true; root.classList.remove("is-closing"); }, OUT);
+  }
+
+  Array.prototype.forEach.call(hero.querySelectorAll("[data-sheet]"), function (a) {
+    a.addEventListener("click", function (e) { e.preventDefault(); open(a.getAttribute("data-sheet"), a); });
+  });
+  Array.prototype.forEach.call(root.querySelectorAll("[data-close]"), function (b) {
+    b.addEventListener("click", function () { close(); });
+  });
+  goBtn.addEventListener("click", function () {
+    var tipo = DATA[cur] && DATA[cur].tipo;
+    close(false);
+    try { window.dispatchEvent(new CustomEvent("cd:cotizar", { detail: { tipo: tipo } })); } catch (x) {}
+    if (location.hash === "#cotizar") { var c = document.getElementById("cotizar"); if (c) c.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); }
+    else location.hash = "#cotizar";
+  });
+  document.addEventListener("keydown", function (e) {
+    if (!cur) return;
+    if (e.key === "Escape") { e.preventDefault(); close(); return; }
+    if (e.key !== "Tab") return;
+    var f = focusables(); if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && (document.activeElement === first || !box.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && (document.activeElement === last || !box.contains(document.activeElement))) { e.preventDefault(); first.focus(); }
+  });
+
+  /* arrastrar hacia abajo para cerrar (celular). El horizontal lo deja a la tira de fotos. */
+  var dr = null;
+  var mqPhone = window.matchMedia ? window.matchMedia("(max-width: 899px)") : { matches: true };
+  box.addEventListener("pointerdown", function (e) {
+    if (!cur || !mqPhone.matches || (e.pointerType === "mouse" && e.button !== 0)) return;
+    if (box.scrollTop > 0) return;
+    dr = { id: e.pointerId, x: e.clientX, y: e.clientY, lock: 0, dy: 0, hist: [[e.timeStamp, e.clientY]] };
+  });
+  box.addEventListener("pointermove", function (e) {
+    if (!dr || e.pointerId !== dr.id) return;
+    var dx = e.clientX - dr.x, dy = e.clientY - dr.y;
+    if (!dr.lock) {
+      if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+      if (Math.abs(dx) > Math.abs(dy) || dy < 0) { dr = null; return; }
+      dr.lock = 1; root.classList.add("is-drag");
+      try { box.setPointerCapture(e.pointerId); } catch (x) {}
+    }
+    dr.dy = Math.max(0, dy);
+    box.style.setProperty("--sh-y", dr.dy + "px");
+    root.querySelector(".s-hero-sheet-veil").style.opacity = String(Math.max(0, 1 - dr.dy / (box.offsetHeight || 1)));
+    dr.hist.push([e.timeStamp, e.clientY]); if (dr.hist.length > 8) dr.hist.shift();
+  });
+  function end(e) {
+    if (!dr || e.pointerId !== dr.id) return;
+    var d = dr; dr = null;
+    root.querySelector(".s-hero-sheet-veil").style.opacity = "";
+    if (!d.lock) return;
+    root.classList.remove("is-drag");
+    var a = d.hist[0], b = d.hist[d.hist.length - 1], v = (b[1] - a[1]) / Math.max(1, b[0] - a[0]); // px/ms
+    if (d.dy > box.offsetHeight * 0.28 || v > 0.45) close();
+    else box.style.removeProperty("--sh-y");
+  }
+  box.addEventListener("pointerup", end);
+  box.addEventListener("pointercancel", end);
+
+  /* flechas (solo con mouse): una foto por clic */
+  var navs = root.querySelectorAll(".s-hero-sheet-nav button");
+  function navState() {
+    var max = car.scrollWidth - car.clientWidth - 2;
+    if (navs[0]) navs[0].disabled = car.scrollLeft <= 2;
+    if (navs[1]) navs[1].disabled = car.scrollLeft >= max;
+  }
+  Array.prototype.forEach.call(navs, function (b) {
+    b.addEventListener("click", function () {
+      var f = car.querySelector("figure"), stepX = f ? f.offsetWidth + 8 : 300;
+      car.scrollBy({ left: stepX * parseInt(b.getAttribute("data-dir"), 10), behavior: reduce ? "auto" : "smooth" });
+    });
+  });
+  car.addEventListener("scroll", navState, { passive: true });
+  car.addEventListener("load", navState, true);
+
+  window.__cdHeroSheet = { open: open, close: close };
 })();

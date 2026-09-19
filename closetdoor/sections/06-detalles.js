@@ -37,6 +37,25 @@
       tl.to(ms, { clipPath: "circle(75% at 50% 50%)", duration: 0.8, stagger: 0.06, clearProps: "clipPath" }, 0)
         .to(imgs, { scale: 1, duration: 0.9, stagger: 0.06, clearProps: "transform" }, 0)
         .to(caps, { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.06, clearProps: "transform" }, 0.25);
+
+      /* Red de seguridad (FEEDBACK-2 #6): las fotos arrancan como lente chico; si ScrollTrigger mide mal
+         o el reloj de GSAP se atora (WhatsApp/Instagram), a los 1.6 s de asomarse quedan completas. */
+      var sio = null;
+      if ("IntersectionObserver" in window) {
+        sio = new IntersectionObserver(function (es) {
+          if (!es[0].isIntersecting) return;
+          sio.disconnect();
+          setTimeout(function () {
+            if (tl.progress() >= 1) return; /* ya terminó bien: no se toca (la lupa usa transform) */
+            tl.progress(1); tl.kill();
+            ms.concat(imgs, caps).forEach(function (el) {
+              if (el) ["clip-path", "opacity", "visibility", "transform", "translate", "rotate", "scale"].forEach(function (p) { el.style.removeProperty(p); });
+            });
+          }, 1600);
+        }, { rootMargin: "0px 0px -25% 0px" });
+        sio.observe(list);
+      }
+      return function () { if (sio) sio.disconnect(); };
     });
   }
 

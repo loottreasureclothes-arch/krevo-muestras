@@ -51,27 +51,41 @@
   </a>
   <nav class="k-nav" aria-label="Principal">
     <a href="#trabajos">Trabajos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#galeria">Galería</a>
-    <a href="#nosotros">Nosotros</a>
+    <a href="#catalogo">Muebles</a>
+    <a href="materiales.html">Materiales</a>
     <a href="#visitanos">Visítanos</a>
   </nav>
   <button class="cd-menu-btn" type="button" aria-expanded="false" aria-controls="cd-menu"><span class="cd-burger" aria-hidden="true"><i></i><i></i></span><span class="cd-menu-lbl">Menú</span></button>
   <a class="k-cta cd-green" href="#cotizar">Cotizar</a>
 </header>
 
-<div class="cd-menu" id="cd-menu" aria-hidden="true">
-  <nav class="cd-menu-nav" aria-label="Menú">
-    <a href="#trabajos">Trabajos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#galeria">Galería</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#cotizar">Cotizar</a>
-    <a href="#visitanos">Visítanos</a>
-  </nav>
-  <div class="cd-menu-foot">
-    <a class="cd-btn cd-btn--primary" data-wa="Hola Closet&Door, quiero información." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escríbenos por WhatsApp</a>
-    <p><span>Av. Universidad 1507, Villas de la Universidad</span><a href="https://www.facebook.com/ClosetAndDoor/" target="_blank" rel="noopener">Facebook</a></p>
+<div class="cd-menu" id="cd-menu" role="dialog" aria-modal="true" aria-label="Menú" aria-hidden="true">
+  <div class="cd-menu-scrim" aria-hidden="true"></div>
+  <div class="cd-menu-panel">
+    <nav class="cd-menu-nav" aria-label="Secciones">
+      <a href="#cotizar"><span>01</span>Agendar</a>
+      <a href="#trabajos"><span>02</span>Nuestros trabajos</a>
+      <a href="#catalogo"><span>03</span>Muebles</a>
+      <a class="cd-menu-parent" href="materiales.html"><span>04</span>Materiales</a>
+      <!-- sub-links: materiales.html#<filtro> activa el chip .mt-chip[data-f] (site.js, applyMatHash) -->
+      <ul class="cd-menu-sub" aria-label="Materiales por lugar">
+        <li><a href="materiales.html#cocina">Cocina</a></li>
+        <li><a href="materiales.html#closets">Closet</a></li>
+        <li><a href="materiales.html#bano">Baño</a></li>
+        <li><a href="materiales.html#herrajes">Herrajes y luz</a></li>
+      </ul>
+      <a href="#antes-despues"><span>05</span>Antes y después</a>
+      <a href="#nosotros"><span>06</span>Quiénes somos</a>
+      <a href="#visitanos"><span>07</span>Visítanos</a>
+    </nav>
+    <div class="cd-menu-foot">
+      <span class="cd-ruler cd-menu-ruler" aria-hidden="true"></span>
+      <div class="cd-menu-acts">
+        <a class="cd-btn cd-btn--primary" data-wa="Hola Closet&Door, quiero información." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+        <a class="cd-btn cd-btn--secondary" href="tel:+524494463411"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4-2 1.3a11 11 0 0 0 6.6 6.6l1.3-2 4 1.4v2.6a2 2 0 0 1-2.1 2A16.5 16.5 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Llamar</a>
+      </div>
+      <p><span>Av. Universidad 1507, Villas de la Universidad, Ags.</span><a href="https://www.facebook.com/ClosetAndDoor/" target="_blank" rel="noopener">Facebook</a></p>
+    </div>
   </div>
 </div>
 
@@ -84,7 +98,7 @@
     <div class="cd-foot-top">
       <div class="cd-foot-brand">
         <img src="img/logo_crema.png" alt="Closet&amp;Door. Tu carpintero siempre" width="275" height="69" loading="lazy" class="cd-foot-logo">
-        <p class="cd-foot-motto">Espacios hechos<br>para ti.</p>
+        <p class="cd-foot-motto cd-h3d">Espacios hechos<br>para ti.</p>
       </div>
       <ul class="cd-foot-phrases" aria-label="Lo que nos mueve">
         <li>Espacios que reflejan tu estilo</li>

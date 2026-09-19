@@ -9,12 +9,23 @@
   overflow: hidden;
   isolation: isolate;
 }
-/* veta más marcada arriba y un velo oscuro abajo para que el collage asiente */
+/* Fondo de taller: veta REAL del muro de nogal (cd03, en gris y espejada para que no tenga corte)
+   fundida con soft-light sobre el café, luz cálida que entra por la esquina de arriba a la derecha,
+   grano fino y un velo abajo para que el collage asiente. Todo detrás, nada compite con las fotos. */
 #catalogo::before {
+  content: ""; position: absolute; inset: 0; z-index: -2; pointer-events: none;
+  background: url("../img/muebles/veta-fondo.webp") 50% 0 / 100% auto repeat-y;
+  mix-blend-mode: soft-light; opacity: 0.4;
+}
+#catalogo::after {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(46, 29, 17, 0) 40%, rgba(46, 29, 17, 0.45) 100%),
-    repeating-linear-gradient(94deg, rgba(255, 220, 180, 0.025) 0 2px, transparent 2px 23px, rgba(0, 0, 0, 0.035) 23px 25px, transparent 25px 61px);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.06  0 0 0 0 0.03  0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0 / 160px 160px,
+    radial-gradient(80vmax 55vmax at 100% 0%, rgba(255, 190, 115, 0.3), rgba(255, 165, 85, 0.1) 45%, transparent 72%),
+    linear-gradient(212deg, rgba(255, 214, 160, 0.12) 0%, rgba(255, 214, 160, 0) 38%),
+    radial-gradient(120% 60% at 0% 100%, rgba(22, 12, 5, 0.5), transparent 70%),
+    linear-gradient(180deg, rgba(46, 29, 17, 0) 45%, rgba(40, 24, 13, 0.5) 100%),
+    linear-gradient(rgba(34, 20, 10, 0.2), rgba(34, 20, 10, 0.2));
 }
 #catalogo ::selection { background: var(--cream); color: var(--wood); }
 

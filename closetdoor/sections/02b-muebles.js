@@ -93,6 +93,32 @@
       io.observe(sec.querySelector(".s-muebles-head"));
       io.observe(grid);
     } else { head.progress(1); body.progress(1); }
+
+    /* Red de seguridad (FEEDBACK-2 #6): .from() esconde las piezas desde que carga la página; si
+       ScrollTrigger mide mal (fotos lazy arriba) o el reloj de GSAP se atora (WhatsApp/Instagram),
+       a los 1.6 s de asomarse cada bloque queda en su estado final, sin depender del tween. */
+    function force(tl, els) {
+      if (tl.progress() < 1) { tl.progress(1); tl.kill(); }
+      Array.prototype.forEach.call(els, function (el) {
+        if (!el) return;
+        ["opacity", "visibility", "transform", "translate", "rotate", "scale"].forEach(function (p) { el.style.removeProperty(p); });
+      });
+    }
+    if ("IntersectionObserver" in window) {
+      var sio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          sio.unobserve(e.target);
+          var isGrid = e.target === grid;
+          setTimeout(function () {
+            if (isGrid) force(body, items.concat(photos));
+            else force(head, Array.prototype.slice.call(lines).concat([lead, ruler]));
+          }, 1600);
+        });
+      }, { rootMargin: "0px 0px -25% 0px" });
+      sio.observe(sec.querySelector(".s-muebles-head"));
+      sio.observe(grid);
+    }
   }
 
   intro(); // gsap y ScrollTrigger van antes (defer en orden); ScrollTrigger se recalcula solo al cargar

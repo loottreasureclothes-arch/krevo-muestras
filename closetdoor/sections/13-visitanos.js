@@ -31,13 +31,14 @@
       // Todo el armado cabe en ~0.9 s (regla de Emanuel: < 1.2 s). Solo transform y opacity.
       var tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out", duration: 0.46 } });
       tl.addLabel("marco", 0)
-        .from(box, { autoAlpha: 0, y: 22, duration: 0.5 }, "marco")
+        // opacity y no autoAlpha: con visibility:hidden el iframe lazy del mapa no se pide (FEEDBACK-2 #6)
+        .from(box, { opacity: 0, y: 22, duration: 0.5 }, "marco")
         // cada larguero entra a lo largo de su ranura, en el sentido del reloj, y cierra en el inglete
         .from(rails.t, { xPercent: -101 }, "marco+=0.05")
         .from(rails.r, { yPercent: -101 }, "marco+=0.14")
         .from(rails.b, { xPercent: 101 }, "marco+=0.23")
         .from(rails.l, { yPercent: 101 }, "marco+=0.32")
-        .from(view, { autoAlpha: 0, scale: 0.97, duration: 0.55 }, "marco+=0.36");
+        .from(view, { opacity: 0, scale: 0.97, duration: 0.55 }, "marco+=0.36");
 
       // Pin: cae, asienta con un rebote corto y a los segundos le cede el lugar al pin real de Google.
       var ptl = gsap.timeline({ paused: true });
@@ -68,7 +69,21 @@
         if (en[0].isIntersecting) { io.disconnect(); tl.play(); }
       }, { rootMargin: "0px 0px -18% 0px" });
       io.observe(fig);
-      return function () { io.disconnect(); onLoaded = null; }; // matchMedia revierte los tweens solo
+      // Red de seguridad: si el disparo o el reloj de GSAP se atoran (WhatsApp/Instagram), a los 1.6 s de
+      // asomarse el marco y el mapa quedan completos (el pin es adorno: se queda escondido).
+      var fio = new IntersectionObserver(function (en) {
+        if (!en[0].isIntersecting) return;
+        fio.disconnect();
+        setTimeout(function () {
+          if (tl.progress() >= 1) return;
+          tl.progress(1); tl.kill();
+          [box, view, rails.t, rails.r, rails.b, rails.l].forEach(function (el) {
+            if (el) ["opacity", "visibility", "transform", "translate", "rotate", "scale"].forEach(function (p) { el.style.removeProperty(p); });
+          });
+        }, 1600);
+      }, { rootMargin: "0px 0px -25% 0px" });
+      fio.observe(fig);
+      return function () { io.disconnect(); fio.disconnect(); onLoaded = null; }; // matchMedia revierte los tweens solo
     });
   });
 })();

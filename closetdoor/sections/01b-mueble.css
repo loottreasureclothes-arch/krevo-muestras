@@ -1,0 +1,141 @@
+/* 01b Mueble: la cámara entra al walk-in real. Estado por defecto = FOTO A SANGRE + texto + 3 bloques
+   (eso es lo que se ve sin JS, sin GSAP o con movimiento reducido). El JS agrega .mb-live y maneja el
+   marco que se abre, el zoom y el parallax por estilo en línea; .mb-on enciende el texto a media entrada. */
+#mueble {
+  position: relative;
+  height: 100svh;
+  min-height: 520px;
+  background: #140d08;
+  color: var(--cream);
+  overflow: clip;
+  isolation: isolate;
+}
+#mueble .mb-frame { position: absolute; inset: 0; overflow: hidden; }
+#mueble .mb-cam { position: absolute; inset: 0; will-change: transform; }
+#mueble .mb-bg,
+#mueble .mb-fg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+#mueble .mb-fg { will-change: transform; }
+
+/* luz cálida + viñeta: profundidad, sin ensuciar el centro */
+#mueble .mb-light {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(58% 46% at 62% 34%, rgba(255, 196, 128, 0.16), rgba(255, 196, 128, 0) 72%);
+  mix-blend-mode: screen;
+}
+#mueble .mb-vig {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(118% 88% at 50% 46%, rgba(10, 6, 3, 0) 42%, rgba(10, 6, 3, 0.58) 100%);
+}
+#mueble .mb-scrim {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top, rgba(10, 6, 3, 0.9) 0%, rgba(10, 6, 3, 0.66) 22%, rgba(10, 6, 3, 0.18) 46%, rgba(10, 6, 3, 0) 64%);
+}
+
+/* ---------- texto + accesos ---------- */
+#mueble .mb-copy {
+  position: absolute; z-index: 2;
+  left: 0; right: 0; bottom: 0;
+  padding: 0 16px calc(78px + env(safe-area-inset-bottom));
+}
+#mueble .mb-t {
+  margin: 0 0 16px;
+  font-size: clamp(32px, 9vw, 54px);
+  line-height: 0.94;
+  max-width: 13ch;
+  text-wrap: balance;
+}
+#mueble .mb-t em { color: var(--brand-on-wood); font-style: normal; }
+#mueble .mb-w { display: inline-block; }
+#mueble .mb-acts {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;
+}
+#mueble .mb-act {
+  display: flex; flex-direction: column; justify-content: space-between; gap: 10px;
+  min-height: 94px; height: 100%;
+  padding: 13px 12px 12px;
+  border-radius: 6px;
+  background: rgba(22, 13, 6, 0.42);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(246, 238, 226, 0.22);
+  color: var(--cream);
+  font-size: 15px; font-weight: 600; line-height: 1.15;
+  text-decoration: none;
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+#mueble .mb-act svg {
+  width: 26px; height: 26px; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+  color: var(--brand-on-wood);
+}
+#mueble .mb-act--go { background: var(--wa); border-color: var(--wa); color: var(--wa-ink); backdrop-filter: none; }
+#mueble .mb-act--go svg { color: var(--wa-ink); }
+#mueble .mb-act:active { transform: scale(0.97); }
+#mueble .mb-act:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  #mueble .mb-act:hover { background: rgba(22, 13, 6, 0.62); border-color: rgba(246, 238, 226, 0.42); }
+  #mueble .mb-act--go:hover { background: var(--wa-dark); border-color: var(--wa-dark); }
+}
+
+/* ---------- el texto entra a media cámara (solo con JS + movimiento normal) ---------- */
+#mueble.mb-live .mb-w,
+#mueble.mb-live .mb-act {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 260ms var(--ease-out), transform 420ms var(--ease-out);
+}
+#mueble.mb-live.mb-on .mb-w,
+#mueble.mb-live.mb-on .mb-act { opacity: 1; transform: none; }
+#mueble.mb-live.mb-on .mb-w:nth-child(2) { transition-delay: 60ms; }
+#mueble.mb-live.mb-on .mb-w:nth-child(3) { transition-delay: 120ms; }
+#mueble.mb-live.mb-on .mb-w:nth-child(4) { transition-delay: 180ms; }
+#mueble.mb-live.mb-on li:nth-child(1) .mb-act { transition-delay: 230ms; }
+#mueble.mb-live.mb-on li:nth-child(2) .mb-act { transition-delay: 280ms; }
+#mueble.mb-live.mb-on li:nth-child(3) .mb-act { transition-delay: 330ms; }
+
+/* ---------- compu ---------- */
+@media (min-width: 900px) {
+  #mueble .mb-scrim {
+    background:
+      linear-gradient(to right, rgba(10, 6, 3, 0.82) 0%, rgba(10, 6, 3, 0.52) 30%, rgba(10, 6, 3, 0.1) 56%, rgba(10, 6, 3, 0) 72%),
+      linear-gradient(to top, rgba(10, 6, 3, 0.7) 0%, rgba(10, 6, 3, 0.18) 34%, rgba(10, 6, 3, 0) 58%);
+  }
+  #mueble .mb-copy {
+    right: auto;
+    left: clamp(40px, 5.5vw, 104px);
+    bottom: clamp(52px, 9vh, 104px);
+    width: min(46vw, 620px);
+    padding: 0;
+  }
+  #mueble .mb-t {
+    font-size: clamp(52px, 4.9vw, 88px);
+    line-height: 0.9;
+    max-width: 11ch;
+    margin-bottom: clamp(24px, 3.2vh, 36px);
+  }
+  #mueble .mb-acts { gap: 12px; max-width: 520px; }
+  #mueble .mb-act {
+    min-height: 0; aspect-ratio: 1 / 1;
+    padding: clamp(14px, 1.4vw, 18px);
+    font-size: clamp(15px, 1.1vw, 17px);
+  }
+  #mueble .mb-act svg { width: 28px; height: 28px; }
+}
+@media (min-width: 1500px) {
+  #mueble .mb-acts { max-width: 560px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #mueble .mb-act { transition: none; }
+}
+
+/* Video de IA (Higgsfield/Kling) encima de la foto: la foto queda de respaldo si el video no carga */
+#mueble .mb-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; opacity: 0; transition: opacity 600ms cubic-bezier(0.23, 1, 0.32, 1); pointer-events: none; }
+#mueble .mb-vid.is-ready { opacity: 1; }
+#mueble .mb-cam:has(.mb-vid.is-ready) .mb-fg { opacity: 0; }
+#mueble .mb-light { z-index: 3; }
+@media (prefers-reduced-motion: reduce) { #mueble .mb-vid { display: none; } }
