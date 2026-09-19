@@ -1,14 +1,20 @@
-/* 09 soluciones extra reales en 3 renglones + CTA (sin foto: Kapital ya no se repite y la página se acorta) */
-#empresas { padding: var(--sec-y) 0; }
+/* 09 banda en el morado de la marca: foto del plotter a sangre + 3 renglones tipográficos grandes + CTA */
+.ip-violet { background-color: var(--brand); color: var(--cream);
+  background-image: radial-gradient(80% 80% at 0% 100%, rgba(20, 8, 26, 0.45), transparent 70%), radial-gradient(60% 60% at 100% 0%, rgba(196, 155, 212, 0.25), transparent 70%); }
+.ip-violet { --h3d-c1: #4a2a55; --h3d-c2: #33193b; --h3d-c3: #1a0d1f; --h3d-amb: rgba(5, 2, 8, 0.5); }
+.ip-violet .ip-eyebrow, .ip-violet em { color: var(--lime); }
+#empresas { position: relative; padding: 0 0 var(--sec-y); overflow: hidden; }
+#empresas .s-emp-fig { height: 42svh; min-height: 260px; margin: 0 0 32px; }
+#empresas .s-emp-fig img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
 #empresas .s-emp-grid { display: grid; gap: 22px; }
-#empresas .s-emp-list { display: grid; }
-#empresas .s-emp-list li { display: grid; gap: 2px; padding: 14px 0 14px 26px; border-top: 1px solid var(--line); position: relative; }
-#empresas .s-emp-list li::before { content: ""; position: absolute; left: 0; top: 22px; width: 12px; height: 12px; border-left: 1.5px solid var(--brand); border-top: 1.5px solid var(--brand); }
-#empresas .s-emp-list b { font-size: 17px; }
-#empresas .s-emp-list span { color: var(--mute); }
-#empresas .s-emp-cta { justify-self: start; border-color: rgba(11, 61, 31, 0.3); box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35); }
+#empresas .s-emp-list { display: grid; counter-reset: e; }
+#empresas .s-emp-list li { display: grid; gap: 4px; padding: 16px 0; border-top: 1px solid rgba(244, 240, 234, 0.28); counter-increment: e; }
+#empresas .s-emp-list b { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-stretch: 125%; font-variation-settings: "wdth" 125; font-size: clamp(22px, 6vw, 40px); line-height: 0.95; }
+#empresas .s-emp-list b::before { content: "0" counter(e) "  "; color: var(--lime); font-size: 0.5em; vertical-align: 0.5em; white-space: pre; }
+#empresas .s-emp-list span { color: rgba(244, 240, 234, 0.82); font-size: 16px; }
+#empresas .s-emp-cta { justify-self: start; box-shadow: 0 3px 0 rgba(11, 61, 31, 0.5); }
 @media (min-width: 900px) {
-  #empresas .s-emp-grid { grid-template-columns: 4fr 8fr; column-gap: 64px; row-gap: 28px; align-items: end; }
-  #empresas .s-emp-list { grid-template-columns: repeat(3, 1fr); column-gap: 28px; }
-  #empresas .s-emp-cta { grid-column: 2; }
+  #empresas { padding: var(--sec-y) 0; min-height: 88svh; display: flex; align-items: center; }
+  #empresas .s-emp-fig { position: absolute; left: 0; top: 0; bottom: 0; width: 42%; height: auto; margin: 0; }
+  #empresas .s-emp-grid { margin-left: 46%; width: auto; max-width: 760px; padding-inline: 0 var(--k-gutter); row-gap: 28px; }
 }

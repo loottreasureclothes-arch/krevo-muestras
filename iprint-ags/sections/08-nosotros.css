@@ -33,3 +33,16 @@
   #nosotros .s-nos-band-logo { width: 64%; }
   #nosotros .s-nos-band-in { padding-bottom: 32px; }
 }
+
+/* === V2: una reseña protagonista en grande, las otras chicas (no 3 tarjetas iguales) === */
+#nosotros .s-nos-rev { flex-wrap: wrap; overflow: visible; gap: 0 28px; }
+#nosotros .s-nos-rev li { width: 100%; max-width: none; }
+#nosotros .s-nos-rev li:first-child { border-top: 0; padding-top: 6px; }
+#nosotros .s-nos-rev li:first-child p { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 7.4vw, 60px); line-height: 1.02; max-width: 22ch; color: var(--cream);
+  text-shadow: 0 2px 0 #2a1531, 0 4px 14px rgba(0, 0, 0, 0.35); }
+#nosotros .s-nos-rev li:first-child p::before { content: ""; display: block; width: 44px; height: 4px; margin-bottom: 18px; background: var(--lime); }
+#nosotros .s-nos-rev li:not(:first-child) p { font-size: 16px; }
+@media (min-width: 900px) {
+  #nosotros .s-nos-rev { grid-template-columns: 1fr 1fr; gap: 0 48px; margin-top: 64px; }
+  #nosotros .s-nos-rev li:first-child { grid-column: 1 / -1; padding-bottom: 36px; }
+}

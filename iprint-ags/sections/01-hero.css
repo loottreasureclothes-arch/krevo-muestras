@@ -46,3 +46,34 @@
   #hero .s-hero-chips img { height: 92px; }
 }
 @media (min-width: 1800px) { #hero .s-hero-copy { max-width: 1100px; } }
+
+/* === V2 "más ganas": titular gigante con canto 3D profundo, foto a sangre protagonista === */
+#hero .s-hero-tag { font-weight: 800; letter-spacing: 0.04em; text-transform: none; color: var(--deep); background: var(--lime); padding: 5px 8px; border-radius: 2px; margin-right: 4px; text-shadow: none; }
+#hero .s-hero-title { text-transform: uppercase; font-stretch: 125%; font-variation-settings: "wdth" 125; letter-spacing: -0.01em;
+  font-size: clamp(34px, 11vw, 96px); line-height: 0.84;
+  --x: 0.012em;
+  text-shadow:
+    0 var(--x) 0 #6d3f7e, 0 calc(var(--x) * 2) 0 #5f3570, 0 calc(var(--x) * 3) 0 #522c61, 0 calc(var(--x) * 4) 0 #452453,
+    0 calc(var(--x) * 5) 0 #381c44, 0 calc(var(--x) * 6) 0 #2c1536, 0 calc(var(--x) * 7) 0 #200e28,
+    0 calc(var(--x) * 7 + 0.05em) 0.12em rgba(0, 0, 0, 0.55); }
+#hero .s-hero-title .ln { padding: 0 0.04em 0.16em 0; margin-bottom: -0.12em; }
+#hero .s-hero-title .s-hero-big { font-size: 1.38em; line-height: 0.8; margin-left: -0.04em; }
+#hero .s-hero-title em { color: var(--lime); }
+#hero .s-hero-copy { position: relative; }
+/* marcas de corte de imprenta alrededor del titular */
+#hero .s-hero-copy::before { content: ""; position: absolute; left: -14px; top: 26px; width: 22px; height: 22px; border-left: 2px solid var(--lime); border-top: 2px solid var(--lime); opacity: 0.9; }
+#hero .s-hero-sub { color: var(--cream); font-weight: 500; }
+#hero .s-hero-shade { background:
+    linear-gradient(180deg, rgba(15, 10, 18, 0.6) 0%, rgba(15, 10, 18, 0) 22%),
+    linear-gradient(0deg, rgba(20, 12, 24, 0.96) 0%, rgba(20, 12, 24, 0.7) 45%, rgba(20, 12, 24, 0.05) 72%); }
+@media (min-width: 900px) {
+  #hero .s-hero-copy::before { left: -28px; top: 34px; width: 34px; height: 34px; }
+  #hero .s-hero-title { font-size: clamp(72px, 8.4vw, 160px); }
+  #hero .s-hero-title .s-hero-big { font-size: 1.62em; }
+  #hero .s-hero-copy { max-width: none; }
+  #hero .s-hero-shade { background:
+    linear-gradient(180deg, rgba(15, 10, 18, 0.55) 0%, rgba(15, 10, 18, 0) 18%),
+    linear-gradient(90deg, rgba(20, 12, 24, 0.92) 0%, rgba(20, 12, 24, 0.55) 45%, rgba(20, 12, 24, 0) 72%),
+    linear-gradient(0deg, rgba(20, 12, 24, 0.9) 0%, rgba(20, 12, 24, 0) 40%); }
+}
+@media (min-width: 1800px) { #hero .s-hero-copy { max-width: none; } }

@@ -32,3 +32,17 @@
   #hoy .hoy-now span { font-size: 22px; }
   #hoy .hoy-acts .lm-btn--wa { flex: none; }
 }
+/* === Ganas (19 sep): las promos como letrero de neón del pizarrón, no como filas de datos === */
+#hoy .hoy-now { border-top: 0; gap: 4px; margin-top: 26px; }
+#hoy .hoy-now li { display: block; border-bottom: 0; padding: 0; }
+#hoy .hoy-now b { display: inline-block; font-size: clamp(64px, 19vw, 96px); line-height: 0.82; margin-right: 10px; vertical-align: -0.08em;
+  color: #fff4ee; text-shadow: 0 0 6px rgba(255, 255, 255, 0.5), 0 0 22px rgba(255, 80, 70, 0.9), 0 0 48px rgba(255, 60, 50, 0.6); }
+#hoy .hoy-now li:nth-child(2) b { color: #ffe3b0; text-shadow: 0 0 6px rgba(255, 240, 200, 0.5), 0 0 22px rgba(231, 170, 90, 0.85), 0 0 44px rgba(231, 170, 90, 0.5); }
+#hoy .hoy-now span { font-family: var(--font-display); font-weight: 800; font-stretch: 75%; font-variation-settings: "wdth" 75; text-transform: uppercase; font-size: clamp(22px, 6vw, 30px); line-height: 1; }
+#hoy .hoy-now small { font-family: var(--font-body); text-transform: none; margin-top: 4px; }
+#hoy .hoy-now li:nth-child(odd) { transform: rotate(-1.5deg); }
+#hoy .hoy-now li:nth-child(even) { transform: rotate(1deg); margin-left: 6%; }
+@media (min-width: 900px) { #hoy .hoy-now b { font-size: 112px; } #hoy .hoy-now span { font-size: 34px; } }
+#hoy .hoy-now li { display: flex; align-items: center; gap: 14px; }
+#hoy .hoy-now b { min-width: 0; margin-right: 0; }
+#hoy .hoy-now li > span { max-width: 12ch; }

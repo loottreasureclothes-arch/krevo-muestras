@@ -16,3 +16,22 @@
   #accesos .ac-tx { left: 20px; bottom: 20px; }
   #accesos .ac-tx span { font-size: 16px; }
 }
+/* === Ganas (19 sep): collage de tamaños distintos en vez de 4 tarjetas iguales === */
+#accesos .ac-grid { grid-template-columns: 7fr 5fr; grid-auto-rows: 92px; gap: 8px; }
+#accesos .ac-grid li:nth-child(1) { grid-column: 1; grid-row: 1 / span 4; }
+#accesos .ac-grid li:nth-child(2) { grid-column: 2; grid-row: 1 / span 2; }
+#accesos .ac-grid li:nth-child(3) { grid-column: 2; grid-row: 3 / span 2; }
+#accesos .ac-grid li:nth-child(4) { grid-column: 1 / -1; grid-row: 5 / span 2; }
+#accesos .ac-grid li:nth-child(4) .ac-tile img { object-position: 50% 30%; }
+#accesos .ac-tile { aspect-ratio: auto; height: 100%; }
+#accesos .ac-grid li:nth-child(1) .ac-tx b { font-size: clamp(30px, 9vw, 48px); }
+@media (min-width: 900px) {
+  #accesos .ac-grid { grid-template-columns: 5fr 3fr 4fr; grid-auto-rows: 150px; gap: 14px; }
+  #accesos .ac-grid li:nth-child(1) { grid-column: 1; grid-row: 1 / span 4; }
+  #accesos .ac-grid li:nth-child(2) { grid-column: 2; grid-row: 1 / span 2; }
+  #accesos .ac-grid li:nth-child(3) { grid-column: 2; grid-row: 3 / span 2; }
+  #accesos .ac-grid li:nth-child(4) { grid-column: 3; grid-row: 1 / span 4; }
+  #accesos .ac-grid li:nth-child(4) .ac-tile img { object-position: 50% 50%; }
+  #accesos .ac-grid li:nth-child(1) .ac-tx b { font-size: 72px; }
+  #accesos .ac-grid li:nth-child(4) .ac-tx b { font-size: 56px; }
+}

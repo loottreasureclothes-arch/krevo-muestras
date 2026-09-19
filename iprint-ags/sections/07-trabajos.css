@@ -37,3 +37,17 @@
   #trabajos .s-tj-cap b { font-size: 17px; }
 }
 @media (min-width: 900px) { #trabajos .s-tj-feat h3 { font-size: clamp(36px, 3vw, 60px); } }
+
+/* === V2: collage de tamaños distintos (no rejilla pareja) === */
+#trabajos .s-tj-item:nth-child(3n+1) { width: 84vw; max-width: 380px; }
+#trabajos .s-tj-item:nth-child(3n+2) img { height: 260px !important; }
+@media (min-width: 900px) {
+  #trabajos .s-tj-grid { columns: auto; display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: clamp(110px, 9.4vw, 150px); grid-auto-flow: dense; gap: 12px; }
+  #trabajos .s-tj-item, #trabajos .s-tj-item:nth-child(3n+1) { width: auto; max-width: none; margin: 0; grid-column: span 2; grid-row: span 2; }
+  #trabajos .s-tj-item:nth-child(1) { grid-column: span 4; grid-row: span 3; }
+  #trabajos .s-tj-item:nth-child(6) { grid-row: span 3; }
+  #trabajos .s-tj-item:nth-child(7), #trabajos .s-tj-item:nth-child(9) { grid-column: span 4; }
+  #trabajos .s-tj-item button { height: 100%; }
+  #trabajos .s-tj-item img, #trabajos .s-tj-item:nth-child(3n+2) img { height: 100% !important; object-fit: cover; }
+  #trabajos .s-tj-item:nth-child(1) .s-tj-cap b { font-size: 26px; }
+}

@@ -33,9 +33,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
 <link rel="stylesheet" href="site.css?v=1789838311">
-<link rel="stylesheet" href="sections/10-hero.css?v=1789835884">
-<link rel="stylesheet" href="sections/12-accesos.css?v=1789835574">
-<link rel="stylesheet" href="sections/15-hoy.css?v=1789838378">
+<link rel="stylesheet" href="sections/10-hero.css?v=1789839821">
+<link rel="stylesheet" href="sections/12-accesos.css?v=1789839842">
+<link rel="stylesheet" href="sections/15-hoy.css?v=1789839902">
+<link rel="stylesheet" href="sections/18-dosuno.css?v=1789839789">
 <link rel="stylesheet" href="sections/20-arma2x1.css?v=1789835665">
 <link rel="stylesheet" href="sections/25-menu.css?v=1789835420">
 <link rel="stylesheet" href="sections/26-pedido.css?v=1789835458">
@@ -117,18 +118,13 @@
       <div class="hr-veil"></div>
     </div>
     <div class="k-wrap hr-in">
-      <p class="lm-eyebrow hr-eb">Sushi &amp; Beer · Aguascalientes</p>
-      <h1 id="hr-t" class="hr-t lm-d lm-h3d"><span class="hr-l"><span><span class="hr-sello">2x1</span> en rollos</span></span> <span class="hr-l"><span>todos los <em>días.</em></span></span></h1>
-      <p class="hr-lead">Arma tu pedido y mándalo por WhatsApp. A domicilio o para recoger.</p>
+      <p class="lm-eyebrow hr-eb">Sushi &amp; Beer · Galerías, Aguascalientes</p>
+      <h1 id="hr-t" class="hr-t lm-d"><span class="hr-l hr-l--big"><span class="hr-dos">2x1</span></span><span class="hr-l"><span>en rollos.</span></span><span class="hr-l"><span><em>Diario.</em></span></span></h1>
+      <p class="hr-lead">Rollos desde $100. Eliges dos, lo mandas por WhatsApp y listo.</p>
       <div class="hr-acts">
         <a class="lm-btn lm-btn--wa" href="#arma2x1"><svg aria-hidden="true"><use href="#i-wa"/></svg>Arma tu 2x1</a>
         <a class="lm-btn lm-btn--line" href="#menu">Ver menú</a>
       </div>
-      <ul class="hr-facts">
-        <li><b>Desde $100</b><span>rollos clásicos</span></li>
-        <li><b>1 a 10 pm</b><span>diario en Galerías</span></li>
-        <li><b>A domicilio</b><span>o para recoger</span></li>
-      </ul>
     </div>
   </section>
 
@@ -170,6 +166,20 @@
       </figure>
     </div>
     <p class="k-wrap hoy-fine">El 2x1 aplica según la sucursal. Te lo confirmamos al pedir por WhatsApp.</p>
+  </section>
+
+  <!-- 18 Momento firma: dos rollos reales (f19, f23) chocan al hacer scroll y cae el sello 2x1. Ligado al scroll y reversible. Blindaje: sin JS o con reduced-motion se ve el estado final. -->
+  <section class="s-dosuno" id="dosuno" data-dark aria-labelledby="du-t">
+    <div class="du-stage">
+      <p class="du-kick" aria-hidden="true">1 + 1</p>
+      <figure class="du-r du-r--a"><img src="img/sec/dos-a-s.webp" srcset="img/sec/dos-a-s.webp 560w, img/sec/dos-a.webp 1000w" sizes="(min-width: 900px) 30vw, 52vw" width="560" height="560" alt="Rollo empanizado con salsa en plato rojo" loading="lazy" decoding="async"></figure>
+      <figure class="du-r du-r--b"><img src="img/sec/dos-b-s.webp" srcset="img/sec/dos-b-s.webp 560w, img/sec/dos-b.webp 1000w" sizes="(min-width: 900px) 30vw, 52vw" width="560" height="560" alt="Rollo con queso y totopos en plato rojo" loading="lazy" decoding="async"></figure>
+      <p class="du-sello" aria-hidden="true">2x1</p>
+      <div class="du-copy">
+        <h2 class="du-t lm-d" id="du-t">Pides dos. <em>Pagas uno.</em></h2>
+        <a class="lm-btn lm-btn--wa" href="#arma2x1"><svg aria-hidden="true"><use href="#i-wa"/></svg>Arma tu 2x1</a>
+      </div>
+    </div>
   </section>
 
   <!-- 20 Arma tu 2x1: elige 2 rollos del menú real (precios de 25-menu), se agregan al pedido (26-pedido) y sale por WhatsApp con domicilio o recoger -->
@@ -1192,6 +1202,7 @@
 <script src="site.js?v=1789835475" defer></script>
 <script src="sections/10-hero.js?v=1789835554" defer></script>
 <script src="sections/15-hoy.js?v=1789838387" defer></script>
+<script src="sections/18-dosuno.js?v=1789839945" defer></script>
 <script src="sections/20-arma2x1.js?v=1789835884" defer></script>
 <script src="sections/25-menu.js?v=1789835404" defer></script>
 <script src="sections/26-pedido.js?v=1789838387" defer></script>

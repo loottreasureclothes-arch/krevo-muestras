@@ -10,7 +10,10 @@
   background: radial-gradient(120% 80% at 50% 35%, rgba(20, 14, 10, 0) 45%, rgba(20, 14, 10, 0.5) 100%),
     linear-gradient(180deg, rgba(20, 14, 10, 0.3) 0%, rgba(20, 14, 10, 0) 20%, rgba(28, 20, 16, 0.1) 40%, rgba(28, 20, 16, 0.82) 66%, rgba(28, 20, 16, 0.96) 100%); }
 #hero .hr-in { position: relative; }
-#hero .hr-t { font-size: clamp(46px, 13vw, 64px); line-height: 0.95; margin-bottom: 14px; }
+#hero .hr-t { font-size: clamp(50px, 14.2vw, 82px); line-height: 0.9; letter-spacing: -0.025em; font-weight: 600; font-variation-settings: "opsz" 144; margin-bottom: 16px;
+  text-shadow: 0 1px 0 #c79a45, 0 2px 0 #a97f33, 0 3px 0 #8c6626, 0 4px 0 #6f4f1b, 0 5px 0 #553b12, 0 6px 0 #3d2a0c, 0 8px 6px rgba(0, 0, 0, 0.45), 0 22px 40px rgba(0, 0, 0, 0.55); }
+#hero .hr-t em { color: #f1c86a; }
+#hero .hr-glow { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: soft-light; background: radial-gradient(60% 50% at 70% 30%, rgba(255, 190, 90, 0.55), rgba(255, 190, 90, 0) 70%); }
 #hero .hr-l { display: block; overflow: clip; padding: 0.1em 0 0.16em; margin: -0.1em 0 -0.16em; }
 #hero .hr-l > span { display: block; white-space: nowrap; }
 #hero .hr-lead { font-size: 17px; line-height: 1.45; font-weight: 500; color: rgba(246, 239, 228, 0.92); max-width: 32ch; margin-bottom: 20px; }
@@ -22,15 +25,16 @@
 #hero .hr-rate { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; margin-top: 8px; font-size: 15px; color: var(--cream-mute); text-decoration: underline; text-decoration-color: rgba(246, 239, 228, 0.35); text-underline-offset: 4px; }
 #hero .hr-rate b { font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--cream); }
 #hero .hr-star { color: var(--gold-l); }
-@media (max-height: 700px) and (max-width: 899px) { #hero .hr-t { font-size: clamp(40px, 11.5vw, 54px); } #hero .hr-lead { margin-bottom: 14px; } }
+@media (max-height: 700px) and (max-width: 899px) { #hero .hr-t { font-size: clamp(44px, 12.5vw, 64px); } #hero .hr-lead { margin-bottom: 14px; } }
 @media (min-width: 900px) {
   #hero { align-items: center; padding-bottom: 64px; }
   #hero .hr-media img, #hero .hr-vid { object-position: 50% 50%; }
   #hero .hr-veil { background:
       radial-gradient(120% 90% at 65% 45%, rgba(20, 14, 10, 0) 45%, rgba(20, 14, 10, 0.45) 100%),
-      linear-gradient(90deg, rgba(28, 20, 16, 0.84) 0%, rgba(28, 20, 16, 0.55) 34%, rgba(28, 20, 16, 0.05) 62%, rgba(28, 20, 16, 0) 100%),
+      linear-gradient(90deg, rgba(28, 20, 16, 0.86) 0%, rgba(28, 20, 16, 0.62) 40%, rgba(28, 20, 16, 0.08) 70%, rgba(28, 20, 16, 0) 100%),
       linear-gradient(180deg, rgba(20, 14, 10, 0.4) 0%, rgba(20, 14, 10, 0) 18%, rgba(20, 14, 10, 0) 74%, rgba(20, 14, 10, 0.5) 100%); }
-  #hero .hr-t { font-size: clamp(72px, 6.4vw, 124px); }
+  #hero .hr-t { font-size: clamp(96px, 10.4vw, 196px); margin-bottom: 22px;
+    text-shadow: 0 2px 0 #c79a45, 0 4px 0 #a97f33, 0 6px 0 #8c6626, 0 8px 0 #6f4f1b, 0 10px 0 #553b12, 0 12px 0 #3d2a0c, 0 16px 12px rgba(0, 0, 0, 0.45), 0 40px 70px rgba(0, 0, 0, 0.55); }
   #hero .hr-lead { font-size: 21px; max-width: 34ch; }
   #hero .hr-acts { display: flex; gap: 12px; }
   #hero .hr-acts .sg-btn { width: auto; padding: 0 30px; min-height: 56px; }
