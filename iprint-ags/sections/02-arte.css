@@ -1,0 +1,29 @@
+/* 02 momento de cine: el dibujo de línea de la fachada se vuelve la foto real al paso del cabezal (scrub reversible) */
+#arte { padding: var(--sec-y) 0; overflow: hidden; background:
+  linear-gradient(180deg, rgba(31, 27, 34, 0.18), transparent 80px), var(--paper); }
+#arte .s-arte-pin { display: grid; gap: 28px; }
+#arte .s-arte-acts { margin-top: 22px; }
+#arte .s-arte-prog { display: none; }
+#arte .s-arte-stage { position: relative; height: 54svh; min-height: 380px; }
+#arte .s-arte-line, #arte .s-arte-photo, #arte .s-arte-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#arte .s-arte-line { border-radius: 3px; }
+#arte .s-arte-photo { overflow: hidden; border-radius: 3px; box-shadow: 0 30px 60px -30px rgba(31, 27, 34, 0.5); }
+/* estado final visible por defecto (blindaje); el JS pone el inicio */
+#arte .s-arte-head { position: absolute; left: -6px; right: -6px; top: 0; height: 10px; display: grid; grid-template-columns: repeat(4, 1fr); opacity: 0; transform: translateY(-50%); z-index: 3; box-shadow: 0 6px 18px rgba(31, 27, 34, 0.35); }
+#arte .s-arte-head i:nth-child(1) { background: var(--c); } #arte .s-arte-head i:nth-child(2) { background: var(--m); }
+#arte .s-arte-head i:nth-child(3) { background: var(--y); } #arte .s-arte-head i:nth-child(4) { background: var(--k); }
+#arte .s-arte-tag { position: absolute; left: 12px; bottom: 12px; z-index: 3; display: flex; gap: 6px; }
+#arte .s-arte-tag b { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 10px; background: rgba(31, 27, 34, 0.78); color: var(--cream); border-radius: 3px; }
+#arte .s-arte-tag b:first-child { background: var(--paper-2); color: var(--brand); }
+#arte .ip-lead { max-width: 34ch; }
+@media (min-width: 900px) {
+  #arte { padding: 0; }
+  #arte .s-arte-pin { grid-template-columns: 5fr 7fr; align-items: center; gap: 64px; min-height: 100svh; padding-top: calc(var(--k-header-h) + 24px); padding-bottom: 40px; }
+  #arte .s-arte-stage { height: calc(100svh - var(--k-header-h) - 80px); max-height: 900px; }
+  #arte .s-arte-prog { display: block; margin-top: 28px; height: 2px; width: 220px; background: var(--line); }
+  #arte .s-arte-prog i { display: block; height: 100%; background: var(--brand); transform-origin: left; transform: scaleX(1); }
+  #arte .ip-h2 { font-size: clamp(40px, 3.1vw, 64px); }
+}
+
+/* REVISIÓN 1 #8: el trazo no es el arte real del cliente, se marca */
+#arte .s-arte-note { position: absolute; right: 12px; top: 12px; z-index: 3; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; padding: 5px 8px; border-radius: 3px; background: rgba(31, 27, 34, 0.72); color: var(--cream); }

@@ -1,0 +1,50 @@
+/* 05 cotizador: resumen en vivo, preselección desde el catálogo/hoja (evento ip:cotizar) y envío a WhatsApp */
+(function () {
+  "use strict";
+  var sec = document.getElementById("cotizar");
+  if (!sec) return;
+  var f = sec.querySelector("form"), sum = sec.querySelector(".s-q-sum-t"), hint = sec.querySelector("[data-hint-impresos]");
+  var fileBox = sec.querySelector(".s-q-file"), fileT = sec.querySelector(".s-q-file-t"), fb = sec.querySelector(".ip-wa-fallback");
+  function val(n) { var e = f.elements[n]; return e && e.value ? e.value.trim() : ""; }
+  function tipo() { var r = f.querySelector('input[name="tipo"]:checked'); return r ? r.value : ""; }
+  function msg() {
+    var t = tipo(), a = val("ancho").replace(",", "."), h = val("alto").replace(",", "."), c = val("cant"), n = val("nombre"), w = val("cuando");
+    var ex = Array.prototype.map.call(f.querySelectorAll('input[name="extra"]:checked'), function (x) { return x.value; });
+    var file = f.arte.files && f.arte.files[0] ? f.arte.files[0].name : "";
+    var L = [];
+    L.push("Quiero cotizar: " + t);
+    if (a || h) L.push("Medida: " + (a || "?") + " x " + (h || "?") + " m");
+    if (c) L.push("Cantidad: " + c);
+    if (ex.length) L.push("Necesito: " + ex.join(", "));
+    L.push(file ? "Arte: " + file + " (te lo mando en este chat)" : "Arte: todavía no lo tengo");
+    if (w) L.push("Para: " + w);
+    return { body: L.join("\n"), n: n, file: file };
+  }
+  function upd() {
+    var m = msg();
+    sum.textContent = m.body;
+    hint.hidden = tipo() !== "Tarjetas / volantes";
+  }
+  f.addEventListener("input", upd);
+  f.addEventListener("change", function (e) {
+    if (e.target.name === "arte") {
+      var fl = f.arte.files && f.arte.files[0];
+      fileBox.classList.toggle("has-file", !!fl);
+      fileT.textContent = fl ? fl.name : "Elegir archivo";
+    }
+    upd();
+  });
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var m = msg();
+    var text = "Hola iPrint" + (m.n ? ", soy " + m.n : "") + ".\n" + m.body;
+    IP.openWa(text, fb);
+    sec.querySelector(".s-q-after").hidden = !m.file;
+  });
+  document.addEventListener("ip:cotizar", function (e) {
+    var t = e.detail && e.detail.tipo; if (!t) return;
+    var r = f.querySelector('input[name="tipo"][value="' + t.replace(/"/g, "") + '"]');
+    if (r) { r.checked = true; upd(); }
+  });
+  upd();
+})();

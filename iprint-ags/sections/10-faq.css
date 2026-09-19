@@ -1,0 +1,12 @@
+/* 10 FAQ solo con datos del negocio: acordeón nativo */
+#faq { padding: var(--sec-y) 0; }
+#faq .s-faq-grid { display: grid; gap: 22px; }
+#faq details { border-top: 1px solid var(--line); }
+#faq details:last-of-type { border-bottom: 1px solid var(--line); }
+#faq summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 60px; padding: 12px 0; font-weight: 700; font-size: 18px; cursor: pointer; }
+#faq summary::-webkit-details-marker { display: none; }
+#faq summary::after { content: ""; flex: none; width: 14px; height: 14px; background: linear-gradient(var(--brand), var(--brand)) center / 100% 1.5px no-repeat, linear-gradient(var(--brand), var(--brand)) center / 1.5px 100% no-repeat; transition: transform 240ms var(--ease-out); }
+#faq details[open] summary::after { transform: rotate(45deg); }
+#faq details p { color: var(--mute); padding: 0 0 18px; max-width: 56ch; }
+#faq .s-faq-cta { margin-top: 18px; font-weight: 700; }
+@media (min-width: 900px) { #faq .s-faq-grid { grid-template-columns: 5fr 7fr; gap: 64px; } }

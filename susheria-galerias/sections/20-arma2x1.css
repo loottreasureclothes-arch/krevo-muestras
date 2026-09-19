@@ -1,0 +1,42 @@
+/* 20 Arma tu 2x1: crema con el sello rojo del 2x1 */
+#arma2x1 { padding: var(--sec-y) 0; background: var(--paper); }
+#arma2x1 .ar-grid { display: grid; gap: 26px; }
+#arma2x1 .ar-t { max-width: 10ch; }
+#arma2x1 .ar-sello { display: inline-block; padding: 0.04em 0.14em 0; background: var(--brand); color: var(--cream); text-shadow: 0 1px 0 #8e1d1f, 0 2px 0 #5e1214, 0 3px 0 #350a0b; transform: rotate(-3deg); }
+#arma2x1 .ar-nojs a { font-weight: 700; text-decoration: underline; }
+#arma2x1 .ar-slots { display: grid; grid-template-columns: 1fr; gap: 10px; }
+#arma2x1 .ar-plus { justify-self: center; display: grid; place-items: center; width: 44px; height: 44px; margin: -26px 0; z-index: 1; border-radius: 3px; background: var(--deep); color: var(--cream); font: 900 28px/1 var(--font-display); }
+#arma2x1 .ar-slot { display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: center; padding: 10px; border: 1.5px solid var(--line); border-radius: 3px; background: #fbf7f0; }
+#arma2x1 .ar-ph { aspect-ratio: 1; border-radius: 3px; overflow: hidden; background: var(--deep); }
+#arma2x1 .ar-ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+#arma2x1 .ar-ph--tx { display: grid; align-content: end; gap: 4px; padding: 10px; background: var(--wine); background-image: radial-gradient(90% 90% at 100% 0%, rgba(218, 52, 50, 0.6), rgba(218, 52, 50, 0) 70%); color: var(--cream); }
+#arma2x1 .ar-ph--tx span { font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; font-weight: 900; text-transform: uppercase; font-size: 22px; line-height: 0.92; overflow-wrap: anywhere; }
+#arma2x1 .ar-ph--tx small { font-size: 11px; color: var(--gold); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+#arma2x1 .ar-in { display: grid; gap: 6px; min-width: 0; }
+#arma2x1 .ar-lab { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--wine); }
+#arma2x1 .ar-sel { width: 100%; min-width: 0; height: 48px; padding: 0 34px 0 12px; font: 600 16px/1 var(--font-body); color: var(--ink); border: 1.5px solid var(--line); border-radius: 3px; background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23141212' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 12px center; -webkit-appearance: none; appearance: none; text-overflow: ellipsis; }
+#arma2x1 .ar-sel:focus { outline: 2px solid var(--wine); outline-offset: 1px; }
+#arma2x1 .ar-desc { font-size: 13px; line-height: 1.35; color: var(--mute); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+#arma2x1 .ar-sum { margin-top: 16px; padding: 18px; border-radius: 3px; background: var(--deep); color: var(--cream); }
+#arma2x1 .ar-list { font-size: 14px; color: var(--cream-mute); }
+#arma2x1 .ar-tot { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--line-dark); }
+#arma2x1 .ar-tot span { font-weight: 600; }
+#arma2x1 .ar-tot b { font-family: var(--font-display); font-stretch: 70%; font-variation-settings: "wdth" 70; font-weight: 900; font-size: 52px; line-height: 0.9; font-variant-numeric: tabular-nums; }
+#arma2x1 .ar-fine { margin-top: 8px; font-size: 12px; color: var(--cream-mute); }
+#arma2x1 .ar-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; margin-top: 16px; }
+#arma2x1 .ar-acts .ar-go { flex: 1 1 100%; }
+#arma2x1 .ar-ok:empty { display: none; }
+#arma2x1 .ar-ok { margin-top: 10px; font-size: 14px; font-weight: 600; color: var(--wa); }
+@media (min-width: 900px) {
+  #arma2x1 .ar-grid { grid-template-columns: 4fr 7fr; gap: 64px; align-items: start; }
+  #arma2x1 .ar-head { position: sticky; top: calc(var(--k-header-h) + 40px); }
+  #arma2x1 .ar-slots { grid-template-columns: 1fr auto 1fr; align-items: stretch; gap: 0; }
+  #arma2x1 .ar-plus { align-self: center; margin: 0 -14px; }
+  #arma2x1 .ar-slot { grid-template-columns: 1fr; align-content: start; padding: 12px; }
+  #arma2x1 .ar-ph--tx span { font-size: 34px; }
+  #arma2x1 .ar-sum { display: grid; grid-template-columns: 1fr auto; column-gap: 24px; padding: 24px 28px; }
+  #arma2x1 .ar-list, #arma2x1 .ar-tot, #arma2x1 .ar-fine { grid-column: 1; }
+  #arma2x1 .ar-acts { grid-column: 2; grid-row: 1 / span 3; flex-direction: column; align-items: stretch; margin: 0; justify-content: center; }
+  #arma2x1 .ar-acts .ar-go { flex: none; min-height: 56px; padding: 0 30px; }
+  #arma2x1 .ar-ok { grid-column: 1 / -1; }
+}

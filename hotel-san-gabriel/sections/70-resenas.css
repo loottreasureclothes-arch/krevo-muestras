@@ -1,0 +1,25 @@
+/* 70 Reseñas: UN número gigante real (4.7) con la vista del hotel dentro + reseñas reales de Google */
+#resenas { background: var(--paper-2); overflow: clip; }
+#resenas .re-grid { display: grid; gap: 32px; }
+#resenas .re-big {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(170px, 56vw, 420px); line-height: 0.8; letter-spacing: -0.05em;
+  color: var(--deep);
+  background: url("../img/hd/h25-1200.webp") 50% 55% / cover no-repeat; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 3px 0 rgba(122, 90, 28, 0.55)) drop-shadow(0 14px 18px rgba(35, 29, 27, 0.25));
+  margin: 4px 0 14px -0.04em;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) { #resenas .re-big { -webkit-text-fill-color: var(--deep); background: none; } }
+#resenas .re-cap { font-family: var(--font-body); font-weight: 500; font-size: 18px; line-height: 1.4; max-width: 28ch; margin-bottom: 6px; }
+#resenas .re-cap b { font-weight: 700; }
+#resenas .re-q p { font-family: var(--font-display); font-weight: 400; font-style: italic; font-size: 22px; line-height: 1.2; }
+#resenas .re-q cite { display: block; margin-top: 8px; font-style: normal; font-size: 13px; color: var(--mute); }
+#resenas .re-q--big { padding-left: 16px; border-left: 2px solid var(--brand); margin-bottom: 26px; }
+#resenas .re-q--big p { font-size: clamp(28px, 7.6vw, 48px); line-height: 1.08; }
+#resenas .re-list { border-top: 1px solid var(--line); margin-bottom: 26px; }
+#resenas .re-list li { padding: 16px 0; border-bottom: 1px solid var(--line); }
+#resenas .re-cta { width: 100%; }
+@media (min-width: 900px) {
+  #resenas .re-grid { grid-template-columns: 6fr 6fr; gap: 72px; align-items: center; }
+  #resenas .re-big { font-size: clamp(260px, 24vw, 440px); }
+  #resenas .re-cta { width: auto; padding: 0 30px; min-height: 56px; }
+}

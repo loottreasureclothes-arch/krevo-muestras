@@ -1,0 +1,54 @@
+/* 10 Hero: foto real a sangre (luego video de IA encima), título serif 3D, mini-reserva (fechas + verde) y 4.7 de Google */
+#hero { position: relative; isolation: isolate; overflow: hidden; min-height: 100svh; display: flex; align-items: flex-end;
+  background: var(--deep); color: var(--cream);
+  padding: calc(var(--k-header-h) + env(safe-area-inset-top) + 16px) 0 calc(24px + env(safe-area-inset-bottom)); }
+#hero .hr-media { position: absolute; inset: 0; z-index: -1; }
+#hero .hr-media img, #hero .hr-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+#hero .hr-vid { opacity: 0; transition: opacity 700ms var(--ease-out); }
+#hero .hr-vid.is-on { opacity: 1; }
+#hero .hr-veil { position: absolute; inset: 0;
+  background: radial-gradient(120% 80% at 50% 35%, rgba(20, 14, 10, 0) 45%, rgba(20, 14, 10, 0.5) 100%),
+    linear-gradient(180deg, rgba(20, 14, 10, 0.3) 0%, rgba(20, 14, 10, 0) 20%, rgba(28, 20, 16, 0.1) 40%, rgba(28, 20, 16, 0.82) 66%, rgba(28, 20, 16, 0.96) 100%); }
+#hero .hr-in { position: relative; }
+#hero .hr-t { font-size: clamp(46px, 13vw, 64px); line-height: 0.95; margin-bottom: 14px; }
+#hero .hr-l { display: block; overflow: clip; padding: 0.1em 0 0.16em; margin: -0.1em 0 -0.16em; }
+#hero .hr-l > span { display: block; white-space: nowrap; }
+#hero .hr-lead { font-size: 17px; line-height: 1.45; font-weight: 500; color: rgba(246, 239, 228, 0.92); max-width: 32ch; margin-bottom: 20px; }
+#hero .hr-acts { display: grid; grid-template-columns: 1fr 1.25fr; gap: 10px; }
+#hero .hr-acts .sg-btn { width: 100%; padding: 0 12px; }
+#hero .hr-dates { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+#hero .hr-dates .sg-field > span { color: var(--cream-mute); font-size: 11px; }
+#hero .hr-dates input { height: 48px; background: rgba(246, 239, 228, 0.95); border-color: transparent; }
+#hero .hr-rate { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; margin-top: 8px; font-size: 15px; color: var(--cream-mute); text-decoration: underline; text-decoration-color: rgba(246, 239, 228, 0.35); text-underline-offset: 4px; }
+#hero .hr-rate b { font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--cream); }
+#hero .hr-star { color: var(--gold-l); }
+@media (max-height: 700px) and (max-width: 899px) { #hero .hr-t { font-size: clamp(40px, 11.5vw, 54px); } #hero .hr-lead { margin-bottom: 14px; } }
+@media (min-width: 900px) {
+  #hero { align-items: center; padding-bottom: 64px; }
+  #hero .hr-media img, #hero .hr-vid { object-position: 50% 50%; }
+  #hero .hr-veil { background:
+      radial-gradient(120% 90% at 65% 45%, rgba(20, 14, 10, 0) 45%, rgba(20, 14, 10, 0.45) 100%),
+      linear-gradient(90deg, rgba(28, 20, 16, 0.84) 0%, rgba(28, 20, 16, 0.55) 34%, rgba(28, 20, 16, 0.05) 62%, rgba(28, 20, 16, 0) 100%),
+      linear-gradient(180deg, rgba(20, 14, 10, 0.4) 0%, rgba(20, 14, 10, 0) 18%, rgba(20, 14, 10, 0) 74%, rgba(20, 14, 10, 0.5) 100%); }
+  #hero .hr-t { font-size: clamp(72px, 6.4vw, 124px); }
+  #hero .hr-lead { font-size: 21px; max-width: 34ch; }
+  #hero .hr-acts { display: flex; gap: 12px; }
+  #hero .hr-acts .sg-btn { width: auto; padding: 0 30px; min-height: 56px; }
+  #hero .hr-book { max-width: 560px; }
+  #hero .hr-dates { gap: 10px; margin-bottom: 12px; }
+  #hero .hr-dates input { height: 52px; }
+  #hero .hr-rate { margin-top: 18px; font-size: 16px; }
+  #hero .hr-rate b { font-size: 22px; }
+}
+@keyframes hr-up { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes hr-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes hr-img { from { transform: scale(1.08); filter: blur(8px); } to { transform: none; filter: none; } }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .sg-js #hero .hr-poster { animation: hr-img 1100ms var(--ease-out) both; }
+  .sg-js #hero .hr-l > span { animation: hr-up 800ms var(--ease-out) 150ms both; }
+  .sg-js #hero .hr-l + .hr-l > span { animation-delay: 240ms; }
+  .sg-js #hero .hr-eb { animation: hr-in 600ms var(--ease-out) 60ms both; }
+  .sg-js #hero .hr-lead { animation: hr-in 600ms var(--ease-out) 420ms both; }
+  .sg-js #hero .hr-book { animation: hr-in 600ms var(--ease-out) 520ms both; }
+  .sg-js #hero .hr-rate { animation: hr-in 600ms var(--ease-out) 620ms both; }
+}

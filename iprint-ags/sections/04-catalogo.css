@@ -1,0 +1,53 @@
+/* 04 catálogo tipográfico: carril deslizable en celular, 3 columnas en compu; filtros; "Cotizar esto" -> cotizador */
+#catalogo { padding: var(--sec-y) 0; background: linear-gradient(180deg, var(--paper) 0, var(--paper-2) 80px); }
+#catalogo .s-cat-head { display: grid; gap: 8px; }
+#catalogo .s-cat-chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 22px calc(var(--k-gutter) * -1) 0; padding: 0 var(--k-gutter) 4px; }
+#catalogo .s-cat-chips::-webkit-scrollbar { display: none; }
+#catalogo .s-cat-chips button { flex: none; min-height: 44px; padding: 0 16px; border: 1.5px solid var(--line); border-radius: 3px; font-weight: 600; font-size: 15px; white-space: nowrap; background: var(--paper-2); transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out); }
+#catalogo .s-cat-chips button[aria-pressed="true"] { background: var(--deep); color: var(--cream); border-color: var(--deep); }
+#catalogo .s-cat-rail { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-top: 22px; scroll-padding: 0 var(--k-gutter); }
+#catalogo .s-cat-rail::-webkit-scrollbar { display: none; }
+#catalogo .s-cat-list { display: flex; gap: 14px; padding: 0 var(--k-gutter) 8px; width: max-content; }
+#catalogo .s-cat-item { width: min(82vw, 380px); scroll-snap-align: start; display: flex; flex-direction: column; }
+#catalogo .s-cat-item[hidden] { display: none; }
+#catalogo .s-cat-fig { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; background: var(--paper); }
+#catalogo .s-cat-fig img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease-out); }
+#catalogo .s-cat-n { font-size: clamp(24px, 6.8vw, 40px); line-height: 0.95; margin-top: 16px; overflow-wrap: normal; hyphens: none; }
+#catalogo .s-cat-d { color: var(--mute); margin-top: 8px; min-height: 3em; max-width: 34ch; }
+#catalogo .s-cat-go { align-self: flex-start; margin-top: 4px; font-weight: 700; }
+#catalogo .s-cat-print { display: grid; align-content: center; justify-items: start; padding: 28px; background: var(--deep); color: var(--cream); position: relative; }
+#catalogo .s-cat-print span { font-family: var(--font-display); font-stretch: 125%; font-variation-settings: "wdth" 125; font-weight: 900; font-size: clamp(64px, 20vw, 120px); line-height: 0.85; color: var(--paper-2);
+  text-shadow: 0 1px 0 #4a2a55, 0 2px 0 #33193b, 0 3px 0 #1a0d1f; }
+#catalogo .s-cat-print small { font-size: 16px; color: var(--cream-mute); margin: 10px 0 18px; }
+#catalogo .s-cat-more { display: grid; align-content: center; padding: 28px; background: var(--plum); color: var(--cream); }
+#catalogo .s-cat-more li { font-family: var(--font-display); font-stretch: 125%; font-variation-settings: "wdth" 125; font-weight: 800; text-transform: uppercase; font-size: clamp(20px, 5.6vw, 30px); line-height: 1.25; }
+#catalogo .s-cat-more li:nth-child(odd) { color: var(--lime); }
+#catalogo .s-cat-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 22px; }
+#catalogo .s-cat-nav { display: flex; align-items: center; gap: 10px; }
+#catalogo .s-cat-nav button { width: 48px; height: 48px; display: grid; place-items: center; border: 1.5px solid var(--line); border-radius: 3px; }
+#catalogo .s-cat-nav svg { width: 20px; height: 20px; }
+#catalogo .s-cat-count { min-width: 5ch; text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+#catalogo .s-cat-foot .cd-btn--primary { border-color: rgba(11, 61, 31, 0.3); box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35); }
+@media (hover: hover) and (pointer: fine) { #catalogo .s-cat-item:hover .s-cat-fig img { transform: scale(1.04); } }
+@media (min-width: 900px) {
+  #catalogo .s-cat-head { grid-template-columns: 1fr auto; align-items: end; }
+  #catalogo .s-cat-chips { margin-inline: 0; padding-inline: 0; }
+  #catalogo .s-cat-rail { overflow: visible; }
+  #catalogo .s-cat-list { width: auto; max-width: 1320px; margin: 0 auto; padding: 0 var(--k-gutter); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 28px; }
+  #catalogo .s-cat-item { width: auto; }
+  #catalogo .s-cat-item:nth-child(3n+2) { transform: translateY(8svh); }
+  #catalogo .s-cat-list { padding-bottom: 8svh; }
+  #catalogo .s-cat-n { font-size: clamp(28px, 2.2vw, 42px); }
+  #catalogo .s-cat-nav { display: none; }
+  #catalogo .s-cat-foot { justify-content: flex-end; }
+}
+@media (min-width: 1800px) { #catalogo .s-cat-list { max-width: 1600px; } }
+#catalogo .s-cat-more ul { list-style: none; padding: 0; }
+@media (min-width: 900px) { #catalogo .s-cat-more li { font-size: clamp(18px, 1.7vw, 30px); } }
+
+/* REVISIÓN 1 #7: las 2 tarjetas sin foto van al final y con menos peso (hoja de prueba clara, sin número gigante) */
+#catalogo .s-cat-type .s-cat-fig { background: var(--paper-2); color: inherit; border: 1.5px dashed rgba(99, 55, 114, 0.35); }
+#catalogo .s-cat-print span { font-size: clamp(26px, 7vw, 40px); color: var(--brand); text-shadow: none; }
+#catalogo .s-cat-print small { color: var(--mute); font-size: 15px; }
+#catalogo .s-cat-more li, #catalogo .s-cat-more li:nth-child(odd) { font-family: var(--font-body); font-stretch: normal; font-variation-settings: normal; font-weight: 600; text-transform: none; font-size: 18px; line-height: 1.6; color: var(--mute); }
+@media (min-width: 900px) { #catalogo .s-cat-more li { font-size: 18px; } }

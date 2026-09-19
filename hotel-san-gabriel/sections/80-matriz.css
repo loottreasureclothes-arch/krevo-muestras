@@ -1,0 +1,26 @@
+/* 80 La Matriz: segunda opción de la familia (colonial) para no perder la reserva */
+#matriz { background: var(--paper); }
+#matriz .mz-grid { display: grid; gap: 36px; }
+#matriz .mz-facts { display: grid; grid-template-columns: 1fr 1fr; margin: 24px 0; border-top: 1px solid var(--line); }
+#matriz .mz-facts li { padding: 12px 8px 0 0; }
+#matriz .mz-facts li + li { padding-left: 14px; border-left: 1px solid var(--line); }
+#matriz .mz-facts b { display: block; font-family: var(--font-display); font-weight: 600; font-size: 22px; }
+#matriz .mz-facts b span { color: var(--brand); }
+#matriz .mz-facts li > span { font-size: 14px; color: var(--mute); }
+#matriz .mz-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; }
+#matriz .mz-acts .sg-btn--wa { flex: 1 1 100%; }
+#matriz .mz-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+#matriz .mz-photos figure { overflow: hidden; border-radius: 2px; }
+#matriz .mz-photos img { width: 100%; height: 100%; object-fit: cover; }
+#matriz .mz-a { grid-column: 1 / -1; height: 52svh; min-height: 320px; }
+#matriz .mz-b, #matriz .mz-c { height: 22svh; min-height: 150px; }
+#matriz .mz-d { grid-column: 1 / -1; width: 70%; height: 24svh; min-height: 160px; margin: -30px 0 0 auto; outline: 6px solid var(--paper); z-index: 1; }
+@media (min-width: 900px) {
+  #matriz .mz-grid { grid-template-columns: 7fr 5fr; gap: 72px; align-items: center; }
+  #matriz .mz-copy { order: 2; }
+  #matriz .mz-acts .sg-btn--wa { flex: none; padding: 0 28px; min-height: 56px; }
+  #matriz .mz-photos { grid-template-columns: 6fr 4fr; }
+  #matriz .mz-a { grid-column: 1; grid-row: 1 / span 3; height: 70svh; max-height: 760px; }
+  #matriz .mz-b, #matriz .mz-c, #matriz .mz-d { height: auto; min-height: 0; aspect-ratio: 3 / 2; }
+  #matriz .mz-d { grid-column: 2; width: 100%; margin: 0; }
+}

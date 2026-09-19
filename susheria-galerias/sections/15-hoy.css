@@ -1,0 +1,34 @@
+/* 15 Hoy en Susheria: banda roja profunda (el pizarrón y el rojo de sus paredes) */
+#hoy { position: relative; overflow: clip; background: var(--wine); color: var(--cream); padding: var(--sec-y) 0 44px;
+  background-image: radial-gradient(90% 70% at 100% 0%, rgba(218, 52, 50, 0.45), rgba(218, 52, 50, 0) 60%), linear-gradient(180deg, rgba(20, 18, 18, 0.35), rgba(20, 18, 18, 0) 90px); }
+#hoy .lm-eyebrow { color: var(--gold); }
+#hoy .hoy-grid { display: grid; gap: 28px; }
+#hoy .hoy-t { max-width: 11ch; }
+#hoy .hoy-day { color: var(--cream); text-decoration: underline; text-decoration-color: var(--brand); text-decoration-thickness: 0.08em; text-underline-offset: 0.08em; }
+#hoy .hoy-now { display: grid; gap: 0; margin-top: 22px; border-top: 1px solid var(--line-dark); }
+#hoy .hoy-now li { display: flex; align-items: baseline; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line-dark); }
+#hoy .hoy-now b { flex: none; min-width: 2.3em; font-family: var(--font-display); font-stretch: 70%; font-variation-settings: "wdth" 70; font-weight: 900; font-size: 44px; line-height: 0.9; color: var(--cream);
+  text-shadow: 0 1px 0 #5e1214, 0 2px 0 #350a0b, 0 4px 10px rgba(6, 4, 4, 0.5); }
+#hoy .hoy-now span { font-size: 19px; font-weight: 600; }
+#hoy .hoy-now small { display: block; font-size: 13px; font-weight: 500; color: var(--cream-mute); }
+.lm-js #hoy .hoy-now .hoy-mochi.is-off { display: none; }
+#hoy .hoy-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 24px; }
+#hoy .hoy-acts .lm-btn--wa { flex: 1 1 220px; }
+#hoy .hoy-ph { margin: 0; }
+#hoy .hoy-ph img { width: 100%; height: auto; border-radius: 3px; box-shadow: 0 18px 40px -18px rgba(6, 4, 4, 0.7); }
+#hoy .hoy-ph figcaption { margin-top: 8px; font-size: 13px; color: var(--cream-mute); }
+#hoy .hoy-ph--a { width: 62%; transform: rotate(-2deg); }
+#hoy .hoy-ph--b { width: 54%; justify-self: end; margin-top: -34%; margin-right: 8px; transform: rotate(2deg); }
+/* REV1 #8: el pizarrón y el flyer entran rápido (menos de 600 ms) */
+#hoy [data-reveal] { transition-duration: 450ms; }
+#hoy .hoy-fine { margin-top: 26px; font-size: 13px; color: var(--cream-mute); }
+@media (min-width: 900px) {
+  #hoy { padding-bottom: 72px; }
+  #hoy .hoy-grid { grid-template-columns: 6fr 5fr; grid-template-rows: auto auto; column-gap: 64px; row-gap: 40px; align-items: start; }
+  #hoy .hoy-main { grid-column: 1; grid-row: 1 / span 2; align-self: center; }
+  #hoy .hoy-ph--a { grid-column: 2; grid-row: 1 / span 2; width: 70%; align-self: start; }
+  #hoy .hoy-ph--b { grid-column: 2; grid-row: 1 / span 2; width: 52%; align-self: end; margin-top: 0; }
+  #hoy .hoy-now b { font-size: 60px; }
+  #hoy .hoy-now span { font-size: 22px; }
+  #hoy .hoy-acts .lm-btn--wa { flex: none; }
+}

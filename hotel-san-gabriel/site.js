@@ -1,0 +1,165 @@
+/* Hotel San Gabriel Justin · FUNDACIÓN: WhatsApp, menú, WA flotante, blindaje, anclas, lightbox
+   API para secciones:
+     SG.WA / SG.waUrl(msg) / SG.openWa(msg, fbEl?)  abre WhatsApp; si se bloquea cae a location.href y muestra fbEl
+     SG.goTo(el)           scroll a un elemento descontando el header
+     SG.reservar(room)     preselecciona la habitación en #reserva y baja al formulario (lo implementa 30-reserva.js)
+   [data-wa="mensaje"] en cualquier <a> arma su link. [data-hide-wa] esconde el WA flotante. [data-lb] abre lightbox. */
+(function () {
+  "use strict";
+  var WA = "523173892964";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function waUrl(msg) { return "https://wa.me/" + WA + (msg ? "?text=" + encodeURIComponent(msg) : ""); }
+  function openWa(msg, fb) {
+    var url = waUrl(msg), w = null;
+    try { w = window.open(url, "_blank", "noopener"); } catch (e) { w = null; }
+    if (!w) { try { location.href = url; } catch (e2) {} }
+    if (fb) { var a = fb.querySelector("a"); if (a) { a.href = url; a.target = "_blank"; a.rel = "noopener"; } fb.hidden = false; }
+    return url;
+  }
+  function goTo(el, smooth) {
+    var head = document.querySelector(".k-header");
+    var top = el.getBoundingClientRect().top + window.scrollY - (head ? head.offsetHeight : 0) + 1;
+    window.scrollTo({ top: Math.max(0, top), behavior: smooth !== false && !reduce ? "smooth" : "auto" });
+  }
+  window.SG = { WA: WA, waUrl: waUrl, openWa: openWa, goTo: goTo, reservar: function () { var r = document.getElementById("reserva"); if (r) goTo(r); } };
+
+  function initWa() {
+    Array.prototype.forEach.call(document.querySelectorAll("a[data-wa]"), function (a) {
+      var msg = a.getAttribute("data-wa");
+      a.href = waUrl(msg && msg.length > 3 ? msg : "Hola, quiero información de Hotel San Gabriel Justin.");
+      a.target = "_blank"; a.rel = "noopener";
+    });
+  }
+
+  function initNav() {
+    var btn = document.querySelector(".sg-menu-btn"), nav = document.getElementById("sg-nav");
+    if (!btn || !nav) return;
+    var body = document.body, pushed = false;
+    Array.prototype.forEach.call(nav.querySelectorAll(".sg-nav-list > a"), function (a, i) { a.style.setProperty("--i", i); });
+    var links = nav.querySelectorAll("a");
+    function set(open, fromPop) {
+      if (open === body.classList.contains("sg-nav-open")) return;
+      body.classList.toggle("sg-nav-open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      nav.setAttribute("aria-hidden", open ? "false" : "true");
+      if (open) {
+        try { history.pushState({ sgNav: 1 }, ""); pushed = true; } catch (e) {}
+        setTimeout(function () { links[0].focus({ preventScroll: true }); }, 80);
+      } else {
+        if (pushed && !fromPop) { try { history.back(); } catch (e) {} }
+        pushed = false;
+        btn.focus({ preventScroll: true });
+      }
+    }
+    window.addEventListener("popstate", function () { if (body.classList.contains("sg-nav-open")) set(false, true); });
+    btn.addEventListener("click", function () { set(!body.classList.contains("sg-nav-open")); });
+    nav.addEventListener("click", function (e) {
+      var a = e.target.closest("a");
+      if (a || e.target.classList.contains("sg-nav-scrim")) {
+        if (a && a.getAttribute("href").charAt(0) === "#") {
+          e.preventDefault();
+          var el = document.querySelector(a.getAttribute("href"));
+          set(false);
+          if (el) setTimeout(function () { goTo(el, false); }, pushed ? 60 : 0);
+          return;
+        }
+        set(false);
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (!body.classList.contains("sg-nav-open")) return;
+      if (e.key === "Escape") { e.preventDefault(); set(false); return; }
+      if (e.key === "Tab") {
+        var items = [btn].concat(Array.prototype.slice.call(links));
+        var i = items.indexOf(document.activeElement);
+        e.preventDefault();
+        if (i < 0) i = e.shiftKey ? 0 : -1;
+        items[(i + (e.shiftKey ? -1 : 1) + items.length) % items.length].focus();
+      }
+    });
+  }
+
+  function initWaHide() {
+    setTimeout(function () { document.body.classList.add("sg-wa-ready"); }, 2000);
+    if (!("IntersectionObserver" in window)) return;
+    var on = new Set();
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) on.add(e.target); else on.delete(e.target); });
+      document.body.classList.toggle("sg-wa-off", on.size > 0);
+    }, { rootMargin: "0px 0px -12% 0px" });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-hide-wa]"), function (z) { io.observe(z); });
+  }
+
+  /* Blindaje: el reveal arranca 60 % de pantalla ANTES de llegar (las fotos ya están cuando el visitante llega)
+     y, por si acaso, a los 1.6 s de asomarse todo [data-reveal] queda visible */
+  function initRevealSafety() {
+    var els = document.querySelectorAll("[data-reveal], [data-reveal-stagger]");
+    function show(el) { el.classList.add("is-in"); }
+    if (reduce || !("IntersectionObserver" in window)) { Array.prototype.forEach.call(els, show); return; }
+    var early = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { early.unobserve(e.target); show(e.target); } });
+    }, { rootMargin: "0px 0px 60% 0px" });
+    Array.prototype.forEach.call(els, function (el) { early.observe(el); });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (!e.isIntersecting) return; io.unobserve(e.target); var el = e.target; setTimeout(function () { show(el); }, 1600); });
+    }, { rootMargin: "0px 0px -25% 0px" });
+    Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+  }
+
+  function initAnchors() {
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a || e.defaultPrevented) return;
+      var href = a.getAttribute("href");
+      if (href.length < 2) return;
+      var el; try { el = document.querySelector(href); } catch (x) { return; }
+      if (!el) return;
+      e.preventDefault();
+      if (a.hasAttribute("data-room") && window.SG.reservar) { window.SG.reservar(a.getAttribute("data-room"), a.getAttribute("data-extra")); return; }
+      goTo(el);
+      try { history.replaceState(history.state, "", href); } catch (x2) {}
+    });
+  }
+
+  /* Lightbox: [data-lb] (img o su contenedor). Se monta en <body>; "atrás" lo cierra. */
+  function initLightbox() {
+    var items = document.querySelectorAll("[data-lb]");
+    if (!items.length) return;
+    var box = document.createElement("div");
+    box.className = "sg-lb"; box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true"); box.setAttribute("aria-label", "Foto ampliada");
+    box.innerHTML = '<img alt=""><p></p><button type="button">Cerrar</button>';
+    document.body.appendChild(box);
+    var img = box.querySelector("img"), cap = box.querySelector("p"), close = box.querySelector("button"), pushed = false, last = null;
+    function open(src, alt, from) {
+      last = from; img.src = src; img.alt = alt || ""; cap.textContent = alt || "";
+      box.classList.add("is-open"); document.documentElement.classList.add("sg-lock");
+      try { history.pushState({ sgLb: 1 }, ""); pushed = true; } catch (e) {}
+      close.focus({ preventScroll: true });
+    }
+    function shut(fromPop) {
+      if (!box.classList.contains("is-open")) return;
+      box.classList.remove("is-open"); document.documentElement.classList.remove("sg-lock");
+      if (pushed && !fromPop) { try { history.back(); } catch (e) {} }
+      pushed = false; if (last) last.focus({ preventScroll: true });
+    }
+    Array.prototype.forEach.call(items, function (it) {
+      if (!it.hasAttribute("tabindex") && it.tagName !== "BUTTON" && it.tagName !== "A") { it.setAttribute("tabindex", "0"); it.setAttribute("role", "button"); }
+      function go(e) {
+        var im = it.tagName === "IMG" ? it : it.querySelector("img");
+        if (!im) return;
+        if (e) e.preventDefault();
+        open(it.getAttribute("data-lb") || im.currentSrc || im.src, im.alt, it);
+      }
+      it.addEventListener("click", go);
+      it.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") go(e); });
+    });
+    close.addEventListener("click", function () { shut(); });
+    box.addEventListener("click", function (e) { if (e.target === box) shut(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") shut(); });
+    window.addEventListener("popstate", function () { shut(true); });
+  }
+
+  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initAnchors(); initLightbox(); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();

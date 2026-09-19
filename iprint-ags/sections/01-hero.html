@@ -1,0 +1,32 @@
+  <section id="hero" class="s-hero ip-dark" aria-label="Imprime en grande">
+    <div class="s-hero-media">
+      <picture>
+        <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/hero-d.webp" width="1920" height="1080">
+        <img class="s-hero-img" src="img/hero/hero-m.webp" alt="Fachada de Grupo TractoZone con vinil microperforado impreso e instalado por iPrint" width="1080" height="1920" fetchpriority="high" decoding="async">
+      </picture>
+      <!-- VIDEO DEL HERO (lo genera el orquestador con IA desde la foto real research/png/ip02.png = img/hd/ip02-2400.webp).
+           Para activarlo: pon las rutas en data-src-m (vertical 9:16, ≤1.5 MB) y data-src-d (16:9, ≤2.5 MB) y corre build.py.
+           Vacíos = se queda la foto. Se salta con saveData/2g y si play() falla regresa a la foto. -->
+      <video class="s-hero-video" data-src-m="" data-src-d="" poster="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" aria-hidden="true" tabindex="-1" hidden></video>
+    </div>
+    <div class="s-hero-shade" aria-hidden="true"></div>
+
+    <div class="s-hero-in k-wrap">
+      <div class="s-hero-copy">
+        <p class="ip-eyebrow s-hero-eb">Imprenta y gran formato · Aguascalientes</p>
+        <h1 class="s-hero-title ip-mask" aria-label="Imprime en grande."><span class="ln"><span>Imprime</span></span><span class="ln"><span>en <em>grande.</em></span></span></h1>
+        <p class="s-hero-sub">Lonas, vinil, letras 3D y anuncios luminosos. Imprimimos e instalamos.</p>
+        <div class="s-hero-actions">
+          <a class="cd-btn cd-btn--primary" data-wa="Hola iPrint, quiero cotizar un pedido." href="https://wa.me/524495802910" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotiza tu pedido</a>
+          <a class="cd-btn cd-btn--secondary" href="#trabajos">Ver trabajos</a>
+        </div>
+      </div>
+      <ul class="s-hero-chips" aria-label="Productos por tipo">
+        <li><button type="button" data-sheet="fachada"><img src="img/hero/tiles/letras.webp" alt="Letras 3D verdes de ad ambientes hechas por iPrint" width="720" height="300" decoding="async" loading="lazy"><span class="s-hero-tn">Letras 3D<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">acrílico, aluminio, latón</span></button></li>
+        <li><button type="button" data-sheet="micro"><img src="img/hero/tiles/micro.webp" alt="Instalación de vinil microperforado en cristales de un local" width="720" height="300" decoding="async" loading="lazy"><span class="s-hero-tn">Microperforado<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">cristales y fachadas</span></button></li>
+        <li><button type="button" data-sheet="lona"><img src="img/hero/tiles/lona.webp" alt="Espectacular de lona de Rancho Santa Mónica impreso por iPrint" width="720" height="300" decoding="async" loading="lazy"><span class="s-hero-tn">Lonas<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">de un cumpleaños a espectacular</span></button></li>
+        <li><button type="button" data-sheet="rotula"><img src="img/hero/tiles/rotula.webp" alt="Camioneta rotulada de Hacienda San Marcos por iPrint" width="720" height="300" decoding="async" loading="lazy"><span class="s-hero-tn">Rotulación<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">camionetas y refrigeradores</span></button></li>
+        <li><button type="button" data-sheet="luminoso"><img src="img/hero/tiles/luminoso.webp" alt="Caja de luz de Comex hecha por iPrint" width="720" height="300" decoding="async" loading="lazy"><span class="s-hero-tn">Luminosos<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="s-hero-td">cajas de luz y anuncios</span></button></li>
+      </ul>
+    </div>
+  </section>

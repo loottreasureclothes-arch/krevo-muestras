@@ -1,0 +1,48 @@
+/* 01 hero: foto real a sangre (luego video de IA), título extendido 3D, CTA verde + contorno, cuadritos con hoja */
+#hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; isolation: isolate; background-color: var(--deep); }
+#hero .s-hero-media { position: absolute; inset: 0; z-index: -2; }
+#hero .s-hero-media picture, #hero .s-hero-img, #hero .s-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#hero .s-hero-img { object-position: 50% 40%; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  html.ip-anim #hero .s-hero-img { animation: s-hero-kb 14s var(--ease-out) both; }
+}
+@keyframes s-hero-kb { from { transform: scale(1.08); } to { transform: scale(1); } }
+/* velo direccional solo donde va el texto + viñeta */
+#hero .s-hero-shade { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(15, 10, 18, 0.55) 0%, rgba(15, 10, 18, 0) 18%),
+    linear-gradient(0deg, rgba(20, 12, 24, 0.94) 0%, rgba(20, 12, 24, 0.78) 38%, rgba(20, 12, 24, 0.1) 66%),
+    radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(10, 6, 12, 0.5) 100%); }
+#hero .s-hero-in { padding-top: calc(var(--k-header-h) + 24px); padding-bottom: 18px; display: grid; gap: 22px; }
+#hero .s-hero-eb { color: var(--cream); margin-bottom: 12px; text-shadow: 0 1px 10px rgba(15, 10, 18, 0.75), 0 0 2px rgba(15, 10, 18, 0.6); }
+#hero .s-hero-title { font-size: clamp(38px, 10.8vw, 64px); line-height: 0.9; color: var(--cream); max-width: none; }
+#hero .s-hero-title .ln { display: block; white-space: nowrap; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.06em; }
+#hero .s-hero-sub { margin-top: 14px; font-size: 17px; line-height: 1.4; color: var(--cream-mute); max-width: 34ch; }
+#hero .s-hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+#hero .s-hero-actions .cd-btn--secondary { color: var(--cream); }
+@media (max-width: 420px) { #hero .s-hero-actions .cd-btn { flex: 1 1 100%; } #hero .s-hero-actions .cd-btn--secondary { min-height: 48px; } }
+
+/* cuadritos: carril deslizable en celular, fila de 5 en compu */
+#hero .s-hero-chips { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(var(--k-gutter) * -1); padding: 0 var(--k-gutter) 2px; }
+#hero .s-hero-chips::-webkit-scrollbar { display: none; }
+#hero .s-hero-chips li { flex: 0 0 62%; scroll-snap-align: start; }
+#hero .s-hero-chips button { position: relative; display: grid; width: 100%; text-align: left; color: var(--cream); background: rgba(31, 27, 34, 0.72); border: 1px solid var(--line-dark); border-radius: 3px; overflow: hidden; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: transform 160ms var(--ease-out), border-color 200ms var(--ease-out); }
+#hero .s-hero-chips button:active { transform: scale(0.97); }
+#hero .s-hero-chips img { width: 100%; height: 64px; object-fit: cover; }
+#hero .s-hero-tn { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 9px 12px 0; font-weight: 700; font-size: 15px; }
+#hero .s-hero-tn svg { width: 16px; height: 16px; color: var(--lime); flex: none; }
+#hero .s-hero-td { padding: 2px 12px 10px; font-size: 13px; color: var(--cream-mute); white-space: nowrap; overflow: hidden; }
+@media (hover: hover) and (pointer: fine) { #hero .s-hero-chips button:hover { border-color: var(--lime); } }
+
+@media (min-width: 900px) {
+  #hero .s-hero-shade { background:
+    linear-gradient(180deg, rgba(15, 10, 18, 0.5) 0%, rgba(15, 10, 18, 0) 16%),
+    linear-gradient(90deg, rgba(20, 12, 24, 0.9) 0%, rgba(20, 12, 24, 0.62) 38%, rgba(20, 12, 24, 0) 64%),
+    linear-gradient(0deg, rgba(20, 12, 24, 0.85) 0%, rgba(20, 12, 24, 0) 34%); }
+  #hero .s-hero-in { padding-bottom: 32px; gap: 44px; }
+  #hero .s-hero-title { font-size: clamp(64px, 6.6vw, 128px); }
+  #hero .s-hero-sub { font-size: 20px; }
+  #hero .s-hero-chips { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; margin: 0; padding: 0; gap: 12px; }
+  #hero .s-hero-chips img { height: 92px; }
+}
+@media (min-width: 1800px) { #hero .s-hero-copy { max-width: 1100px; } }

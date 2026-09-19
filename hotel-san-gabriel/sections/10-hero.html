@@ -1,0 +1,28 @@
+  <section class="s-hero sg-onphoto" id="hero" data-dark data-hide-wa aria-labelledby="hr-t">
+    <div class="hr-media" aria-hidden="true">
+      <picture>
+        <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/hero-d.webp" width="1920" height="1080">
+        <img class="hr-poster" src="img/hero/hero-m.webp" width="1080" height="1920" alt="" fetchpriority="high" decoding="async">
+      </picture>
+      <!-- Video del hero: lo genera el orquestador (IA desde la foto real research/fotos/19-justin-mirador-atardecer-catedral.jpg).
+           Llena data-src-m (9:16) y data-src-d (16:9) con las rutas de los mp4; mientras estén vacíos se queda la foto. -->
+      <video class="hr-vid" data-src-m="" data-src-d="" data-poster-m="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" poster="img/hero/hero-m.webp" muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback tabindex="-1"></video>
+      <div class="hr-veil"></div>
+    </div>
+    <div class="k-wrap hr-in">
+      <p class="sg-eyebrow hr-eb">Hotel · Unión de Tula, Jalisco</p>
+      <h1 id="hr-t" class="hr-t sg-d sg-h3d"><span class="hr-l"><span>Duerme frente</span></span> <span class="hr-l"><span>al <em>mirador.</em></span></span></h1>
+      <p class="hr-lead">Torre nueva en el centro, con alberca de vidrio y mirador 360 en la azotea.</p>
+      <form class="hr-book" id="hr-book" action="#reserva" aria-label="Elige tus fechas">
+        <div class="hr-dates">
+          <label class="sg-field"><span>Llegada</span><input type="date" name="in"></label>
+          <label class="sg-field"><span>Salida</span><input type="date" name="out"></label>
+        </div>
+        <div class="hr-acts">
+          <button class="sg-btn sg-btn--wa" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar</button>
+          <a class="sg-btn sg-btn--line" href="#habitaciones">Ver habitaciones</a>
+        </div>
+      </form>
+      <a class="hr-rate" href="#resenas"><b>4.7 <span class="hr-star" aria-hidden="true">&#9733;</span></b> · 94 reseñas en Google</a>
+    </div>
+  </section>

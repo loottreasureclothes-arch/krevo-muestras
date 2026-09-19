@@ -1,0 +1,22 @@
+/* 50 Sucursales */
+#sucursales { padding: var(--sec-y) 0; background: var(--paper-2); }
+#sucursales .su-grid { display: grid; gap: 28px; }
+#sucursales .su-map { margin-top: 22px; aspect-ratio: 4 / 3; border-radius: 3px; overflow: hidden; background: #d9cdbd; border: 1.5px solid var(--line); }
+#sucursales .su-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(0.85); }
+#sucursales .su-list { display: grid; gap: 12px; }
+#sucursales .su-card { padding: 20px 18px; border-radius: 3px; background: var(--paper); border-top: 4px solid var(--brand); scroll-margin-top: calc(var(--k-header-h) + 16px); }
+#sucursales .su-n { font-size: clamp(38px, 11vw, 56px); text-shadow: 0 1px 0 #c9a57a, 0 2px 0 #a07c55, 0 3px 0 #6e5238, 0 5px 10px rgba(20, 18, 18, 0.2); }
+#sucursales .su-a { display: flex; gap: 10px; margin-top: 10px; font-size: 16px; font-weight: 600; line-height: 1.35; }
+#sucursales .su-a svg { flex: none; width: 20px; height: 20px; margin-top: 1px; color: var(--brand); }
+#sucursales .su-a small { font-size: 14px; font-weight: 500; color: var(--mute); }
+#sucursales .su-h { margin: 8px 0 0 30px; font-size: 14px; color: var(--mute); }
+#sucursales .su-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 16px; }
+#sucursales .su-acts .lm-btn--wa { flex: 1 1 150px; }
+#sucursales .su-acts .lm-btn--line { flex: 1 1 150px; }
+@media (min-width: 900px) {
+  #sucursales .su-grid { grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
+  #sucursales .su-head { position: sticky; top: calc(var(--k-header-h) + 32px); }
+  #sucursales .su-list { grid-template-columns: 1fr 1fr; gap: 16px; }
+  #sucursales .su-card { padding: 26px 24px; display: flex; flex-direction: column; }
+  #sucursales .su-acts { margin-top: auto; padding-top: 18px; }
+}

@@ -1,0 +1,24 @@
+/* 75 Quiénes somos + lo que hemos vivido: el nombre a más del 60 % del ancho, frase real, galería con lightbox */
+#nosotros { position: relative; overflow: clip; }
+#nosotros .ns-logo { font-size: clamp(56px, 18vw, 300px); line-height: 0.85; font-weight: 600; letter-spacing: -0.045em; white-space: nowrap; color: var(--cream);
+  text-shadow: 0 0.012em 0 #7a5a1c, 0 0.024em 0 #4f3a13, 0 0.036em 0 #2a1f0b, 0 0.08em 0.12em rgba(0, 0, 0, 0.5); margin: 4px 0 28px -0.04em; }
+#nosotros .ns-t { font-size: clamp(34px, 9vw, 56px); max-width: 14ch; }
+#nosotros .ns-motto { margin-top: 18px; font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--gold-l); }
+#nosotros .ns-sub { margin: 56px 0 16px; font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-l); }
+#nosotros .ns-gal { display: grid; gap: 8px; }
+#nosotros .ns-gal figure { position: relative; overflow: hidden; border-radius: 2px; height: 34svh; min-height: 220px; }
+#nosotros .ns-gal img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms var(--ease-out); }
+#nosotros .ns-gal .ns-a { height: 46svh; }
+#nosotros .ns-gal figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 12px 10px; font-size: 13px; font-weight: 600; background: linear-gradient(180deg, transparent, rgba(15, 11, 9, 0.8)); }
+#nosotros .ns-c { width: 78%; margin: -40px 0 0 auto; outline: 6px solid var(--deep); }
+@media (hover: hover) and (pointer: fine) { #nosotros .ns-gal figure:hover img { transform: scale(1.04); } }
+@media (min-width: 900px) {
+  #nosotros .ns-logo { font-size: clamp(160px, 17vw, 330px); }
+  #nosotros .ns-intro { display: grid; grid-template-columns: 5fr 7fr; gap: 12px 72px; align-items: end; }
+  #nosotros .ns-intro .sg-lead { grid-column: 2; grid-row: 1; }
+  #nosotros .ns-motto { grid-column: 2; }
+  #nosotros .ns-gal { grid-template-columns: 7fr 5fr; grid-template-rows: auto auto; gap: 10px; }
+  #nosotros .ns-gal .ns-a { grid-row: 1 / span 2; height: 72svh; max-height: 760px; }
+  #nosotros .ns-gal .ns-b { height: 38svh; }
+  #nosotros .ns-gal .ns-c { height: 30svh; margin: 0; width: 100%; outline: 0; }
+}

@@ -1,0 +1,35 @@
+/* 08 Quiénes somos: su frase, UN número real gigante (fijo, sin contador), reseñas reales y el logo a lo ancho DENTRO de la foto real de su fachada */
+#nosotros { padding: var(--sec-y) 0 0; overflow: hidden; }
+#nosotros .s-nos-grid { display: grid; gap: 10px; }
+#nosotros .s-nos-num { display: flex; align-items: center; gap: 18px; margin-top: 18px; }
+#nosotros .s-nos-n { font-family: var(--font-display); font-stretch: 125%; font-variation-settings: "wdth" 125; font-weight: 900; font-size: clamp(88px, 28vw, 180px); line-height: 0.8; color: var(--cream); font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 0 #56305f, 0 4px 0 #2a1531, 0 6px 16px rgba(0, 0, 0, 0.4); }
+#nosotros .s-nos-num p { color: var(--cream-mute); font-size: 15px; }
+#nosotros .s-nos-num strong { display: block; color: var(--lime); font-size: 18px; }
+#nosotros .s-nos-rev { display: flex; gap: 14px; margin: 36px calc(var(--k-gutter) * -1) 0; padding: 0 var(--k-gutter); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; scroll-padding-inline: var(--k-gutter); }
+#nosotros .s-nos-rev::-webkit-scrollbar { display: none; }
+#nosotros .s-nos-rev li { flex: none; width: 80vw; max-width: 340px; scroll-snap-align: start; }
+#nosotros .s-nos-rev li { padding: 18px 0; border-top: 1px solid var(--line-dark); }
+#nosotros .s-nos-rev p { font-size: 18px; line-height: 1.4; max-width: 44ch; }
+#nosotros .s-nos-rev span { display: block; margin-top: 8px; font-size: 13px; font-weight: 600; color: var(--lime); }
+#nosotros .s-nos-more { margin-top: 10px; font-weight: 700; }
+#nosotros .s-nos-more svg { color: var(--lime); }
+@media (min-width: 900px) {
+  #nosotros .s-nos-grid { grid-template-columns: 7fr 5fr; gap: 64px; align-items: end; }
+  #nosotros .s-nos-num { margin-top: 0; justify-content: flex-end; }
+  #nosotros .s-nos-rev { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 72px 0 0; padding: 0; overflow: visible; }
+  #nosotros .s-nos-rev li { width: auto; max-width: none; }
+}
+/* banda de logo: foto real de la fachada a sangre, velo café oscuro solo abajo, logo a más del 60 % del ancho */
+#nosotros .s-nos-band { position: relative; margin-inline: 0; margin-top: 48px; height: 44svh; min-height: 320px; max-height: 820px; overflow: hidden; }
+#nosotros .s-nos-band-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+#nosotros .s-nos-band::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(0deg, rgba(20, 12, 24, 0.9) 0%, rgba(20, 12, 24, 0.55) 34%, rgba(20, 12, 24, 0) 62%), linear-gradient(180deg, var(--plum) 0, rgba(58, 33, 68, 0) 80px); }
+#nosotros .s-nos-band-in { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 0 var(--k-gutter) 22px; display: grid; justify-items: center; gap: 10px; }
+#nosotros .s-nos-band-logo { width: 88%; max-width: 1200px; height: auto; filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.5)); }
+#nosotros .s-nos-band figcaption { font-size: 13px; color: var(--cream-mute); }
+@media (min-width: 900px) {
+  #nosotros .s-nos-band { margin-top: 80px; height: 78svh; }
+  #nosotros .s-nos-band-logo { width: 64%; }
+  #nosotros .s-nos-band-in { padding-bottom: 32px; }
+}

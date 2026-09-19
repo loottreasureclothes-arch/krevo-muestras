@@ -1,0 +1,15 @@
+/* 90 Cierre: bookend del mirador (atardecer real) + frase corta + verde */
+#cierre { position: relative; isolation: isolate; overflow: hidden; min-height: 92svh; display: flex; align-items: flex-end; padding: 96px 0 calc(56px + env(safe-area-inset-bottom)); }
+#cierre .ci-media { position: absolute; inset: 0; z-index: -1; }
+#cierre .ci-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; transform: scale(var(--z, 1.08)); transition: transform 1100ms var(--ease-out); }
+#cierre.is-in .ci-media img { --z: 1; }
+#cierre .ci-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(35, 29, 27, 1) 0%, rgba(35, 29, 27, 0) 18%, rgba(28, 20, 16, 0) 45%, rgba(28, 20, 16, 0.85) 80%, rgba(28, 20, 16, 0.95) 100%); }
+#cierre .ci-t { font-size: clamp(56px, 16vw, 150px); line-height: 0.92; margin-bottom: 24px; }
+#cierre .ci-acts { display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; }
+#cierre .ci-acts .sg-btn { width: 100%; }
+@media (min-width: 900px) {
+  #cierre { min-height: 100svh; }
+  #cierre .ci-media img { object-position: 50% 45%; }
+  #cierre .ci-acts { display: flex; }
+  #cierre .ci-acts .sg-btn { width: auto; padding: 0 30px; min-height: 56px; }
+}

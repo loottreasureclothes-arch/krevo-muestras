@@ -1,0 +1,21 @@
+/* 85 Cómo llegar: fachada real para reconocerla, dirección, ruta en Google Maps, llamar, qué hay cerca */
+#visita { background: var(--paper-2); }
+#visita .vi-grid { display: grid; gap: 32px; }
+#visita .vi-fig { position: relative; height: 58svh; min-height: 340px; overflow: hidden; border-radius: 2px; margin-inline: calc(var(--k-gutter) * -1); }
+#visita .vi-fig img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
+#visita .vi-fig figcaption { position: absolute; left: var(--k-gutter); bottom: 12px; padding: 6px 10px; background: rgba(35, 29, 27, 0.75); color: var(--cream); font-size: 13px; font-weight: 600; border-radius: 3px; }
+#visita .vi-addr { font-style: normal; font-size: 19px; line-height: 1.5; margin: 20px 0 22px; }
+#visita .vi-acts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+#visita .vi-acts .sg-btn { width: 100%; padding: 0 12px; }
+#visita .vi-near { margin-top: 36px; }
+#visita .vi-near h3 { font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7a5a1c; margin-bottom: 8px; }
+#visita .vi-near ul { padding: 0; list-style: none; border-top: 1px solid var(--line); margin-bottom: 12px; }
+#visita .vi-near li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+#visita .vi-near b { font-family: var(--font-display); font-weight: 560; font-size: 21px; }
+#visita .vi-near li span { font-size: 14px; color: var(--mute); white-space: nowrap; }
+@media (min-width: 900px) {
+  #visita .vi-grid { grid-template-columns: 5fr 7fr; gap: 72px; align-items: center; }
+  #visita .vi-fig { margin: 0; height: 80svh; max-height: 860px; }
+  #visita .vi-acts { display: flex; }
+  #visita .vi-acts .sg-btn { width: auto; padding: 0 26px; min-height: 56px; }
+}

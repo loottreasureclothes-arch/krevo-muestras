@@ -1,0 +1,9 @@
+/* 12 cierre: su propio letrero encendido a sangre + frase de 4 palabras + CTA */
+#cierre { position: relative; min-height: 72svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; }
+#cierre .s-fin-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 58% 22%; z-index: -2; }
+#cierre .s-fin-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(20, 12, 24, 0.95) 0%, rgba(20, 12, 24, 0.6) 40%, rgba(20, 12, 24, 0.05) 75%), linear-gradient(180deg, var(--deep) 0, rgba(31, 27, 34, 0) 90px); }
+#cierre .s-fin-in { padding-bottom: 56px; }
+#cierre .s-fin-h { font-size: clamp(34px, 9.6vw, 120px); line-height: 0.92; color: var(--cream); }
+#cierre .s-fin-h .ln { display: block; white-space: nowrap; }
+#cierre .ip-lead { margin: 16px 0 24px; }
+@media (min-width: 900px) { #cierre { min-height: 92svh; } #cierre .s-fin-in { padding-bottom: 88px; } }

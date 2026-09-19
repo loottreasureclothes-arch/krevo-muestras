@@ -1,0 +1,23 @@
+/* 60 Amenidades reales (soluciones extra): lista con trazo + collage con desfase */
+#amenidades { background: var(--paper); }
+#amenidades .am-grid { display: grid; gap: 40px; }
+#amenidades .am-list { margin: 28px 0 18px; border-top: 1px solid var(--line); counter-reset: am; }
+#amenidades .am-list li { display: grid; grid-template-columns: 34px 1fr; column-gap: 8px; padding: 14px 0; border-bottom: 1px solid var(--line); counter-increment: am; }
+#amenidades .am-list li::before { content: counter(am, decimal-leading-zero); grid-row: span 2; font-size: 12px; font-weight: 700; color: #7a5a1c; padding-top: 5px; letter-spacing: 0.06em; }
+#amenidades .am-list b { font-family: var(--font-display); font-weight: 560; font-size: 22px; line-height: 1.1; }
+#amenidades .am-list span { color: var(--mute); font-size: 15px; }
+#amenidades .am-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+#amenidades .am-photos figure { position: relative; overflow: hidden; border-radius: 2px; }
+#amenidades .am-photos img { width: 100%; height: 100%; object-fit: cover; }
+#amenidades .am-photos figcaption { position: absolute; left: 0; bottom: 0; right: 0; padding: 28px 12px 10px; font-size: 13px; font-weight: 600; color: var(--cream); background: linear-gradient(180deg, transparent, rgba(20, 14, 10, 0.75)); }
+#amenidades .am-a { grid-column: 1 / -1; height: 56svh; min-height: 340px; }
+#amenidades .am-b { height: 34svh; min-height: 220px; }
+#amenidades .am-c { height: 34svh; min-height: 220px; margin-top: 6svh; }
+@media (min-width: 900px) {
+  #amenidades .am-grid { grid-template-columns: 5fr 7fr; gap: 72px; align-items: start; }
+  #amenidades .am-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; }
+  #amenidades .am-photos { grid-template-columns: 7fr 5fr; grid-template-rows: auto auto; }
+  #amenidades .am-a { grid-column: 1; grid-row: 1 / span 2; height: 78svh; max-height: 860px; }
+  #amenidades .am-b { height: 44svh; margin-top: 8svh; }
+  #amenidades .am-c { height: 26svh; margin: 0 0 0 -22%; z-index: 1; outline: 6px solid var(--paper); }
+}
