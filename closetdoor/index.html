@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero_sala.webp">
+<link rel="preload" as="image" href="img/r_walkin.webp" imagesrcset="img/r_walkin-600.webp 600w, img/r_walkin.webp 814w" imagesizes="(min-width: 900px) 46vw, 100vw" fetchpriority="high">
 <link rel="stylesheet" href="../_kit/kit.css">
 <link rel="stylesheet" href="../_kit/antesdespues.css">
 <link rel="stylesheet" href="site.css">
@@ -61,8 +61,17 @@
 
 <main id="top">
 
-  <!-- 1. Hero cafe madera -->
-  <section class="cd-hero cd-wood" aria-label="Remodela tu espacio">
+  <!-- 1. Hero: imagen (o video) a pantalla completa -->
+  <section class="cd-hero" aria-label="Remodela tu espacio">
+    <div class="cd-hero-media" aria-hidden="true">
+      <!-- Para usar video: agrega aqui
+      <video class="cd-hero-video" src="img/hero.mp4" poster="img/r_walkin.webp" muted autoplay loop playsinline preload="metadata"></video>
+      y site.js oculta las fotos cuando el video ya puede reproducirse. -->
+      <div class="cd-hp cd-hp-1"><img class="cd-hero-img" src="img/r_walkin.webp" srcset="img/r_walkin-600.webp 600w, img/r_walkin.webp 814w" sizes="(min-width: 900px) 46vw, 100vw" alt="" width="814" height="1050" fetchpriority="high"></div>
+      <div class="cd-hp cd-hp-2"><img class="cd-hero-img" src="img/r_puerta_res.webp" alt="" width="774" height="1020" fetchpriority="low"></div>
+      <div class="cd-hp cd-hp-3"><img class="cd-hero-img" src="img/r_muro.webp" alt="" width="1200" height="1600" fetchpriority="low"></div>
+    </div>
+    <div class="cd-hero-shade" aria-hidden="true"></div>
     <div class="cd-hero-in">
       <div class="cd-hero-copy">
         <h1 class="cd-hero-title" data-split>Remodela <span class="cd-nw">tu <em>espacio.</em></span></h1>
@@ -78,25 +87,17 @@
           <a class="k-btn cd-btn-cream" href="#muebles">Ver trabajos</a>
         </div>
       </div>
-      <figure class="cd-hero-fig">
-        <img src="img/hero_sala.webp" alt="Sala y cocina con carpintería de nogal a la medida" width="1168" height="880" fetchpriority="high">
-        <ol class="cd-hero-facts">
-          <li><b>40 años</b><span>100% hidrocálida</span></li>
-          <li><b>De inicio a fin</b><span>Diseño · Fabricación · Instalación</span></li>
-          <li><b>12 MSI</b><span>Con tarjetas participantes</span></li>
-        </ol>
-      </figure>
-    </div>
-    <div class="cd-ticker" aria-hidden="true">
-      <div class="cd-ticker-track">
-        <span>Cocinas</span><i></i><span>Closets</span><i></i><span>Vestidores</span><i></i><span>Puertas</span><i></i><span>Oficinas</span><i></i><span>Remodelaciones</span><i></i><span>Muebles a medida</span><i></i>
-        <span>Cocinas</span><i></i><span>Closets</span><i></i><span>Vestidores</span><i></i><span>Puertas</span><i></i><span>Oficinas</span><i></i><span>Remodelaciones</span><i></i><span>Muebles a medida</span><i></i>
-      </div>
+      <ol class="cd-hero-facts">
+        <li><b>40 años</b><span>100% hidrocálida</span></li>
+        <li><b>De inicio a fin</b><span>Diseño · Fabricación · Instalación</span></li>
+        <li><b>12 MSI</b><span>Con tarjetas participantes</span></li>
+      </ol>
     </div>
   </section>
 
   <!-- 2. Carrusel de trabajos (variante propia: la tarjeta sigue al dedo) -->
   <section id="muebles" class="cd-work" aria-label="Trabajos">
+    <div class="k-wrap"><span class="cd-ruler" aria-hidden="true"></span></div>
     <div class="k-wrap cd-work-head">
       <h2 class="cd-h2 cd-h2--wide" data-reveal>Hecho a tu <em>medida.</em></h2>
       <p class="cd-work-count" aria-hidden="true"><b id="cd-count">01</b><span>/ 06</span></p>
@@ -104,15 +105,15 @@
     <div class="cd-car" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Trabajos">
       <div class="cd-car-track">
         <article class="cd-slide" aria-label="1 de 6">
-          <div class="cd-slide-img"><img src="img/vestidor.webp" alt="Vestidor de nogal con repisas iluminadas" width="1168" height="880" loading="lazy" draggable="false"></div>
+          <div class="cd-slide-img"><img src="img/r_closet_led.webp" loading="lazy" decoding="async" fetchpriority="low" alt="Closet con iluminación LED, cajones de nogal y repisas" width="740" height="855" draggable="false"></div>
           <div class="cd-slide-copy">
             <h3>Closets</h3>
-            <p>Closets y vestidores a la medida de tu ropa.</p>
+            <p>Con luz LED, cajones y repisas a tu medida.</p>
             <a class="k-btn cd-green" data-wa="Hola Closet&Door, quiero cotizar un closet o vestidor." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Cotizar closet</a>
           </div>
         </article>
         <article class="cd-slide" aria-label="2 de 6">
-          <div class="cd-slide-img"><img src="img/cocina_vista2.webp" alt="Cocina de nogal con cubierta blanca y luz bajo gabinete" width="1168" height="880" loading="lazy" draggable="false"></div>
+          <div class="cd-slide-img"><img src="img/r_cocina.webp" loading="lazy" decoding="async" fetchpriority="low" alt="Cocina con isla y plafón de madera recién instalada" width="1200" height="1600" draggable="false"></div>
           <div class="cd-slide-copy">
             <h3>Cocinas</h3>
             <p>Cocinas completas, del diseño a la instalación.</p>
@@ -120,7 +121,7 @@
           </div>
         </article>
         <article class="cd-slide" aria-label="3 de 6">
-          <div class="cd-slide-img"><img src="img/puertas.webp" alt="Pasillo con puertas de nogal" width="1168" height="880" loading="lazy" draggable="false"></div>
+          <div class="cd-slide-img"><img src="img/r_puerta.webp" loading="lazy" decoding="async" fetchpriority="low" alt="Puerta interior de nogal con jaladera negra" width="1200" height="1600" draggable="false"></div>
           <div class="cd-slide-copy">
             <h3>Puertas</h3>
             <p>Puertas de madera para toda la casa.</p>
@@ -128,27 +129,27 @@
           </div>
         </article>
         <article class="cd-slide" aria-label="4 de 6">
-          <div class="cd-slide-img"><img src="img/remodelacion.webp" alt="Recámara remodelada con closet y cabecera de nogal" width="1168" height="880" loading="lazy" draggable="false"></div>
+          <div class="cd-slide-img"><img src="img/r_recamara.webp" loading="lazy" decoding="async" fetchpriority="low" alt="Recámara con muro de closet de nogal de piso a techo" width="854" height="1040" draggable="false"></div>
           <div class="cd-slide-copy">
             <h3>Remodelaciones</h3>
-            <p>Un cuarto completo, renovado con madera.</p>
+            <p>Un muro de closet de piso a techo.</p>
             <a class="k-btn cd-green" data-wa="Hola Closet&Door, quiero cotizar una remodelación." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Cotizar remodelación</a>
           </div>
         </article>
         <article class="cd-slide" aria-label="5 de 6">
-          <div class="cd-slide-img"><img src="img/mueble_tv.webp" alt="Centro de TV y librero de nogal a la medida" width="1168" height="880" loading="lazy" draggable="false"></div>
+          <div class="cd-slide-img"><img src="img/r_tv.webp" loading="lazy" decoding="async" fetchpriority="low" alt="Centro de entretenimiento con lambrín ranurado de nogal" width="714" height="975" draggable="false"></div>
           <div class="cd-slide-copy">
             <h3>Muebles</h3>
-            <p>Centros de TV, libreros y más, a tu medida.</p>
+            <p>Centros de entretenimiento con lambrín.</p>
             <a class="k-btn cd-green" data-wa="Hola Closet&Door, quiero cotizar un mueble a la medida." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Cotizar mueble</a>
           </div>
         </article>
         <article class="cd-slide" aria-label="6 de 6">
-          <div class="cd-slide-img"><img src="img/cocina_detalle.webp" alt="Detalle de cocina de nogal con estufa y luz cálida" width="577" height="722" loading="lazy" draggable="false"></div>
+          <div class="cd-slide-img"><img src="img/r_tv2.webp" loading="lazy" decoding="async" fetchpriority="low" alt="El mismo centro de entretenimiento visto de frente" width="834" height="1070" draggable="false"></div>
           <div class="cd-slide-copy">
             <h3>Otra vista</h3>
-            <p>La cocina de abajo, de cerca.</p>
-            <a class="k-btn cd-green" data-wa="Hola Closet&Door, quiero una cocina como la de su página." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Quiero esta cocina</a>
+            <p>El mismo mueble, de frente.</p>
+            <a class="k-btn cd-green" data-wa="Hola Closet&Door, quiero un centro de entretenimiento como el de su página." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Quiero uno así</a>
           </div>
         </article>
       </div>
@@ -164,14 +165,15 @@
 
   <!-- 3. Antes / despues grande -->
   <section id="antes-despues" class="cd-sec cd-ba">
+    <div class="k-wrap"><span class="cd-ruler" aria-hidden="true"></span></div>
     <div class="k-wrap cd-ba-head">
       <h2 class="cd-h2" data-reveal>Misma cocina. <em>Otra vida.</em></h2>
       <p class="cd-lead" data-reveal data-reveal-delay="100">Arrastra la manija.</p>
     </div>
     <div class="cd-ba-frame" data-reveal data-reveal-delay="60">
       <div class="k-ba">
-        <img class="k-ba-before" src="img/cocina_antes.webp" alt="Antes: cocina con gabinetes claros y electrodomésticos viejos" width="1168" height="880" loading="lazy">
-        <img class="k-ba-after" src="img/cocina_despues.webp" alt="Después: cocina de nogal con cubierta blanca y luz bajo gabinete" width="1168" height="880" loading="lazy">
+        <img class="k-ba-before" src="img/cocina_antes.webp" loading="lazy" decoding="async" fetchpriority="low" alt="Antes: cocina con gabinetes claros y electrodomésticos viejos" width="1168" height="880">
+        <img class="k-ba-after" src="img/cocina_despues.webp" loading="lazy" decoding="async" fetchpriority="low" alt="Después: cocina de nogal con cubierta blanca y luz bajo gabinete" width="1168" height="880">
       </div>
     </div>
   </section>
@@ -184,36 +186,36 @@
     </div>
     <div class="cd-cards" data-reveal-stagger>
       <article class="cd-card">
-        <a class="cd-card-img cd-card-img--obj" data-wa="Hola Closet&Door, quiero cotizar una cocina." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar cocinas">
-          <img src="img/isla.webp" alt="Isla de cocina de nogal con cubierta blanca" width="1000" height="753" loading="lazy">
+        <a class="cd-card-img" data-wa="Hola Closet&Door, quiero cotizar un vestidor." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar vestidores">
+          <img src="img/r_vestidor.webp" loading="lazy" decoding="async" fetchpriority="low" alt="Vestidor de nogal con repisas y cajonera" width="1200" height="1600">
           <span class="cd-card-veil" aria-hidden="true">Cotizar <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         </a>
-        <h3>Cocinas</h3>
-        <a class="cd-card-cta" data-wa="Hola Closet&Door, quiero cotizar una cocina." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar</a>
+        <h3>Vestidores</h3>
+        <a class="cd-card-link" data-wa="Hola Closet&Door, quiero cotizar un vestidor." href="https://wa.me/524494463411" target="_blank" rel="noopener">Cotizar <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article>
       <article class="cd-card">
-        <a class="cd-card-img cd-card-img--obj" data-wa="Hola Closet&Door, quiero cotizar un closet o vestidor." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar closets y vestidores">
-          <img src="img/closet.webp" alt="Closet de nogal abierto con repisas iluminadas" width="880" height="1168" loading="lazy">
+        <a class="cd-card-img" data-wa="Hola Closet&Door, quiero cotizar un closet." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar closets">
+          <img src="img/r_closet_gris.webp" loading="lazy" decoding="async" fetchpriority="low" alt="Closet gris de piso a techo con jaladeras largas" width="594" height="935">
           <span class="cd-card-veil" aria-hidden="true">Cotizar <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         </a>
-        <h3>Closets y vestidores</h3>
-        <a class="cd-card-cta" data-wa="Hola Closet&Door, quiero cotizar un closet o vestidor." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar</a>
+        <h3>Closets</h3>
+        <a class="cd-card-link" data-wa="Hola Closet&Door, quiero cotizar un closet." href="https://wa.me/524494463411" target="_blank" rel="noopener">Cotizar <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article>
       <article class="cd-card">
-        <a class="cd-card-img cd-card-img--obj" data-wa="Hola Closet&Door, quiero cotizar puertas." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar puertas">
-          <img src="img/puerta.webp" alt="Puerta de nogal entreabierta" width="880" height="1168" loading="lazy">
+        <a class="cd-card-img" data-wa="Hola Closet&Door, quiero cotizar un mueble de baño." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar muebles de baño">
+          <img src="img/r_bano.webp" loading="lazy" decoding="async" fetchpriority="low" alt="Mueble de baño flotante de nogal con cubierta de piedra" width="1200" height="1600">
           <span class="cd-card-veil" aria-hidden="true">Cotizar <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         </a>
-        <h3>Puertas</h3>
-        <a class="cd-card-cta" data-wa="Hola Closet&Door, quiero cotizar puertas." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar</a>
+        <h3>Muebles de baño</h3>
+        <a class="cd-card-link" data-wa="Hola Closet&Door, quiero cotizar un mueble de baño." href="https://wa.me/524494463411" target="_blank" rel="noopener">Cotizar <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article>
       <article class="cd-card">
-        <a class="cd-card-img cd-card-img--photo" data-wa="Hola Closet&Door, quiero cotizar muebles para oficina." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar oficina">
-          <img src="img/oficina.webp" alt="Oficina en casa con escritorio y libreros de nogal" width="1168" height="880" loading="lazy">
+        <a class="cd-card-img" data-wa="Hola Closet&Door, quiero cotizar una celosía." href="https://wa.me/524494463411" target="_blank" rel="noopener" aria-label="Cotizar celosías">
+          <img src="img/r_celosia.webp" loading="lazy" decoding="async" fetchpriority="low" alt="Celosía de lamas de nogal" width="1200" height="1600">
           <span class="cd-card-veil" aria-hidden="true">Cotizar <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         </a>
-        <h3>Oficina</h3>
-        <a class="cd-card-cta" data-wa="Hola Closet&Door, quiero cotizar muebles para oficina." href="https://wa.me/524494463411" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar</a>
+        <h3>Celosías</h3>
+        <a class="cd-card-link" data-wa="Hola Closet&Door, quiero cotizar una celosía." href="https://wa.me/524494463411" target="_blank" rel="noopener">Cotizar <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article>
     </div>
   </section>
@@ -244,6 +246,7 @@
         <p class="cd-giant" aria-hidden="true">3</p>
         <h2 class="cd-h2 cd-h2--side">Pasos.<br><em>Cero pendientes.</em></h2>
       </div>
+      <span class="cd-ruler cd-ruler--red" aria-hidden="true"></span>
       <ol class="cd-steps">
         <li><span class="cd-step-n">01</span><b>Diseño</b><span>Medimos y lo dibujamos contigo.</span></li>
         <li><span class="cd-step-n">02</span><b>Fabricación</b><span>Lo hacemos a tu medida.</span></li>
@@ -308,9 +311,14 @@
           </a>
         </div>
       </div>
+      <div class="cd-visit-side">
+      <div class="cd-map" data-reveal data-reveal-delay="100">
+        <iframe title="Mapa: Av. Universidad 1507, Villas de la Universidad, Aguascalientes" src="https://www.google.com/maps?q=Av.+Universidad+1507,+Villas+de+la+Universidad,+Aguascalientes&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
       <div class="cd-msi" data-reveal data-reveal-delay="120">
         <p class="cd-msi-n">12</p>
         <p class="cd-msi-t"><b>meses sin intereses</b><span>Con tarjetas participantes.<br>Aplican restricciones.</span></p>
+      </div>
       </div>
     </div>
   </section>
@@ -321,7 +329,7 @@
     <img src="img/logo.png" alt="Closet&amp;Door. Tu carpintero siempre" width="275" height="69" loading="lazy" class="cd-foot-logo">
     <nav class="cd-foot-links" aria-label="Contacto">
       <a data-wa="Hola Closet&Door, quiero información." href="https://wa.me/524494463411" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="https://www.facebook.com/ClosetAndDoor" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.facebook.com/ClosetAndDoor/" target="_blank" rel="noopener">Facebook</a>
       <a href="#cotizar">Cotizar</a>
     </nav>
     <p class="cd-credit">Muestra de diseño hecha por KREVO. Fotos ilustrativas, salvo el proyecto real.</p>

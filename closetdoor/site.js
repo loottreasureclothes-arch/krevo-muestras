@@ -45,7 +45,8 @@
     Array.prototype.forEach.call(hero.querySelectorAll(".cd-hero-list li, .cd-hero-facts li"), function (el) {
       el.style.setProperty("--i", el.parentNode.classList.contains("cd-hero-facts") ? fi++ : li++);
     });
-    var img = hero.querySelector(".cd-hero-fig img");
+    var img = hero.querySelector(".cd-hero-img");
+    var media = hero.querySelector(".cd-hero-media");
     var done = false;
     function go() {
       if (done) return; done = true;
@@ -57,11 +58,26 @@
     Promise.all(waits).then(go, go);
     setTimeout(go, 1200);
 
-    // parallax de una vez al primer scroll
-    function onScroll() {
-      if ((window.scrollY || window.pageYOffset) > 40) { hero.classList.add("is-moved"); window.removeEventListener("scroll", onScroll); }
+    // si hay video, se muestra cuando ya puede reproducirse (la imagen queda de poster)
+    var video = hero.querySelector(".cd-hero-video");
+    if (video) {
+      var show = function () { hero.classList.add("has-video"); };
+      if (video.readyState >= 3) show(); else video.addEventListener("canplay", show, { once: true });
+      if (reduce) { video.pause(); video.removeAttribute("autoplay"); }
     }
-    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // parallax: la imagen baja a 0.3x del scroll mientras el hero se ve
+    if (!reduce && media) {
+      var ticking = false;
+      var update = function () {
+        ticking = false;
+        var y = window.scrollY || window.pageYOffset;
+        var h = hero.offsetHeight;
+        if (y > h) return;
+        media.style.setProperty("--py", (y * 0.3).toFixed(1) + "px");
+      };
+      window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    }
   }
 
   /* ---------- Carrusel propio: scroll nativo con snap, la tarjeta sigue al dedo ---------- */
@@ -88,6 +104,16 @@
     function pad(n) { return (n < 10 ? "0" : "") + n; }
     function slideLeft(i) { return slides[i].offsetLeft - parseFloat(getComputedStyle(track).scrollPaddingLeft || 0); }
     function go(i, instant) {
+      // de la ultima a la primera (y al reves): se desvanece y salta, sin rebobinar
+      if ((i >= slides.length || i < 0) && !reduce) {
+        i = (i + slides.length) % slides.length;
+        track.classList.add("is-fading");
+        setTimeout(function () {
+          track.scrollTo({ left: slideLeft(i), behavior: "auto" });
+          requestAnimationFrame(function () { track.classList.remove("is-fading"); });
+        }, 200);
+        return;
+      }
       i = (i + slides.length) % slides.length;
       track.scrollTo({ left: slideLeft(i), behavior: instant || reduce ? "auto" : "smooth" });
     }
@@ -95,7 +121,9 @@
       if (i === index && dots[i].getAttribute("aria-selected") === "true") return;
       index = i;
       dots.forEach(function (d, k) { d.setAttribute("aria-selected", k === i ? "true" : "false"); });
-      slides.forEach(function (s, k) { s.classList.toggle("is-active", k === i); });
+      slides.forEach(function (s, k) { s.classList.toggle("is-active", k === i); s.classList.remove("is-enter"); });
+      void slides[i].offsetWidth;
+      slides[i].classList.add("is-enter");
       if (count) count.textContent = pad(i + 1);
     }
     // escala y opacidad segun la distancia al centro de la posicion activa
@@ -121,9 +149,12 @@
 
     // arrastre con mouse en compu (en celular es scroll nativo)
     var drag = null;
+    var down = false, lastScroll = 0;
+    track.addEventListener("scroll", function () { lastScroll = Date.now(); }, { passive: true });
     track.addEventListener("pointerdown", function (e) {
-      user();
+      user(); down = true;
       if (e.pointerType !== "mouse" || e.button !== 0) return;
+      e.preventDefault();
       drag = { x: e.clientX, left: track.scrollLeft, moved: false, start: index };
       track.classList.add("is-dragging");
     });
@@ -133,6 +164,7 @@
       if (Math.abs(dx) > 4) drag.moved = true;
       track.scrollLeft = drag.left - dx;
     });
+    ["pointerup", "pointercancel"].forEach(function (t) { window.addEventListener(t, function () { down = false; user(); }); });
     window.addEventListener("pointerup", function (e) {
       if (!drag) return;
       var dx = e.clientX - drag.x, d = drag;
@@ -149,7 +181,28 @@
       }
     });
     track.addEventListener("wheel", user, { passive: true });
-    track.addEventListener("touchstart", user, { passive: true });
+    // tactil: basta con 22% del ancho o un gesto rapido para avanzar 1, y nunca mas de 1
+    var t0 = null;
+    track.addEventListener("touchstart", function (e) {
+      down = true; user();
+      t0 = { left: track.scrollLeft, time: Date.now(), start: index };
+    }, { passive: true });
+    track.addEventListener("touchend", function () {
+      down = false; user();
+      if (!t0) return;
+      var d = t0; t0 = null;
+      var dx = track.scrollLeft - d.left;
+      var w = slides[0].offsetWidth || 1;
+      var v = Math.abs(dx) / Math.max(1, Date.now() - d.time);
+      if (Math.abs(dx) < 8) return;
+      var target = d.start;
+      if (Math.abs(dx) > w * 0.22 || v > 0.35) target = d.start + (dx > 0 ? 1 : -1);
+      target = Math.max(0, Math.min(slides.length - 1, target));
+      track.style.scrollSnapType = "none";
+      track.scrollTo({ left: slideLeft(target), behavior: reduce ? "auto" : "smooth" });
+      setTimeout(function () { track.style.scrollSnapType = ""; }, 520);
+    }, { passive: true });
+    track.addEventListener("touchcancel", function () { down = false; t0 = null; }, { passive: true });
 
     Array.prototype.forEach.call(document.querySelectorAll(".cd-arrow"), function (b) {
       b.addEventListener("click", function () { user(); go(index + parseInt(b.getAttribute("data-dir"), 10)); });
@@ -163,7 +216,7 @@
     var visible = false;
     function user() { lastUser = Date.now(); }
     function tick() {
-      if (visible && !document.hidden && Date.now() - lastUser > 8000 && !drag) go(index + 1);
+      if (visible && !document.hidden && !down && !drag && Date.now() - lastUser > 8000 && Date.now() - lastScroll > 400) go(index + 1);
     }
     if (!reduce && "IntersectionObserver" in window) {
       new IntersectionObserver(function (es) { visible = es[0].isIntersecting && es[0].intersectionRatio > 0.5; }, { threshold: [0, 0.5, 1] }).observe(root);
@@ -180,15 +233,28 @@
     if (!btn || !menu) return;
     var body = document.body;
     Array.prototype.forEach.call(menu.querySelectorAll(".cd-menu-nav a"), function (a, i) { a.style.setProperty("--i", i); });
+    var links = menu.querySelectorAll("a");
     function set(open) {
+      var was = body.classList.contains("cd-menu-open");
       body.classList.toggle("cd-menu-open", open);
+      if (open && !was) setTimeout(function () { links[0].focus(); }, 60);
+      if (!open && was) btn.focus();
       btn.setAttribute("aria-expanded", open ? "true" : "false");
       menu.setAttribute("aria-hidden", open ? "false" : "true");
       btn.querySelector(".cd-menu-lbl").textContent = open ? "Cerrar" : "Menú";
     }
     btn.addEventListener("click", function () { set(!body.classList.contains("cd-menu-open")); });
     menu.addEventListener("click", function (e) { if (e.target.closest("a")) set(false); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
+    document.addEventListener("keydown", function (e) {
+      if (!body.classList.contains("cd-menu-open")) return;
+      if (e.key === "Escape") { set(false); return; }
+      if (e.key === "Tab") {
+        var items = [btn].concat(Array.prototype.slice.call(links));
+        var i = items.indexOf(document.activeElement);
+        e.preventDefault();
+        items[(i + (e.shiftKey ? -1 : 1) + items.length) % items.length].focus();
+      }
+    });
     window.addEventListener("resize", function () { if (window.innerWidth >= 900) set(false); });
   }
 
@@ -196,7 +262,7 @@
   function initRipple() {
     if (reduce) return;
     document.addEventListener("pointerdown", function (e) {
-      var b = e.target.closest(".k-btn, .cd-card-cta, .cd-hero-list a");
+      var b = e.target.closest(".k-btn, .cd-hero-list a");
       if (!b) return;
       var r = b.getBoundingClientRect();
       var s = document.createElement("span");
