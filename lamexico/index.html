@@ -6,6 +6,9 @@
 <title>La México Gran Cantina · Aguascalientes</title>
 <meta name="description" content="La México Gran Cantina, Blvd. Colosio 409, Aguascalientes. Botana, tragos, música en vivo. Abierto diario de 1 pm a 1 am. Reserva por WhatsApp.">
 <meta name="theme-color" content="#74121f">
+<script>document.documentElement.classList.add("k-js","lm-js");</script>
+<link rel="preload" as="image" href="fotos/hero_barra_m.webp" media="(max-width: 899px)">
+<link rel="preload" as="image" href="fotos/hero_barra_d.webp" media="(min-width: 900px)">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -23,15 +26,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_kit/kit.css">
-<link rel="stylesheet" href="../_kit/heroobjeto.css">
-<link rel="stylesheet" href="../_kit/slider.css">
 <link rel="stylesheet" href="../_kit/menu.css">
 <link rel="stylesheet" href="site.css">
 </head>
-<body data-hero-dark>
+<body>
 
-<header class="k-header">
-  <a class="k-logo lm-plate" href="#inicio" aria-label="La México Gran Cantina, inicio"><img src="brand/word_white.webp" alt="La México Gran Cantina" width="360" height="119"></a>
+<header class="k-header lm-on-dark">
+  <a class="k-logo" href="#inicio" aria-label="La México Gran Cantina, inicio"><img class="lm-logo-w" src="brand/word_white.webp" alt="La México Gran Cantina" width="360" height="119"><img class="lm-logo-r" src="brand/word_wine.webp" alt="" width="360" height="119" aria-hidden="true"></a>
   <nav class="k-nav" aria-label="Principal">
     <a href="#bebidas">Bebidas</a>
     <a href="#promos">Promos</a>
@@ -43,49 +44,61 @@
 
 <main id="inicio">
 
-  <!-- HERO: objeto protagonista -->
-  <section class="k-hero-obj lm-hero" data-bg="#74121f">
-    <div class="k-ho-copy">
-      <h1 data-ho-title>La gran cantina.</h1>
-      <p>Botana con tu bebida, música en vivo y <strong>2x1 en copas de 1 a 8 pm</strong>. Blvd. Colosio, Aguascalientes.</p>
-      <div class="k-ho-actions">
+  <!-- HERO: foto real a pantalla completa (listo para <video poster>) -->
+  <section class="lm-hero" data-dark>
+    <div class="lm-hero-media" aria-hidden="true">
+      <picture>
+        <source media="(min-width: 900px)" srcset="fotos/hero_barra_d.webp" width="1600" height="1200">
+        <img src="fotos/hero_barra_m.webp" alt="" width="800" height="1290" fetchpriority="high">
+      </picture>
+      <!-- Para video: <video autoplay muted loop playsinline poster="fotos/hero_barra_d.webp"><source src="video/hero.mp4" type="video/mp4"></video> -->
+    </div>
+    <div class="k-wrap lm-hero-in">
+      <h1 class="lm-hero-title"><span class="lm-w"><span>La</span></span> <span class="lm-w"><span>gran</span></span> <span class="lm-w"><span>cantina.</span></span></h1>
+      <p class="lm-hero-lead">Botana con tu bebida, música en vivo y <strong>2x1 en copas de 1 a 8 pm</strong>. Blvd. Colosio, Aguascalientes.</p>
+      <div class="lm-hero-actions">
         <a class="k-btn lm-btn-wa" data-wa="reserva" href="https://wa.me/524491201728?text=Hola%2C%20quiero%20reservar%20una%20mesa%20en%20La%20M%C3%A9xico%20Gran%20Cantina%20%28Colosio%29." target="_blank" rel="noopener">Reservar</a>
-        <a class="k-btn k-btn--ghost lm-ghost-light" href="#menu">Ver menú</a>
+        <a class="k-btn lm-ghost-light" href="#menu">Ver menú</a>
       </div>
+      <ul class="lm-facts">
+        <li><b>4.3 &#9733;</b><span>2,590 opiniones en Google</span></li>
+        <li><b>Desde 2013</b><span>cantina clásica de Ags.</span></li>
+        <li><b>1 pm a 1 am</b><span>abierto todos los días</span></li>
+      </ul>
     </div>
-    <div class="k-ho-stage">
-      <img class="k-ho-img lm-cut" src="brand/michelada_cut.webp" alt="Michelada escarchada con chile y limón" width="640" height="906" fetchpriority="high">
-    </div>
-    <ol class="k-ho-facts">
-      <li><b>4.3 &#9733;</b><span>2,590 opiniones en Google</span></li>
-      <li><b>Desde 2013</b><span>cantina clásica de Ags.</span></li>
-      <li><b>1 pm a 1 am</b><span>todos los días</span></li>
-    </ol>
   </section>
 
   <!-- SLIDER de bebidas y botanas -->
   <section class="lm-sec lm-drinks" id="bebidas">
     <div class="k-wrap lm-head">
-      <h2 class="lm-h2" data-reveal>Pa’ la mesa.</h2>
+      <h2 class="lm-h2 lm-h2--xl" data-reveal>Pa’ la mesa.</h2>
       <p class="lm-lead" data-reveal data-reveal-delay="100">Desliza. Aquí la botana llega con tus tragos.</p>
     </div>
     <div class="k-wrap">
-      <div class="k-slider" data-mode="object" data-autoplay="4500" id="lm-slider">
-        <div class="k-slide" data-bg="#dfe3d3">
-          <img src="img/cerveza.webp" alt="Tarro de cerveza de barril bien fría" width="896" height="1120" loading="lazy">
-          <div class="k-slide-copy"><h3>Cerveza de barril</h3><p>2x1 de lunes a miércoles.</p><a class="k-btn lm-btn-wa" href="https://wa.me/524491201728?text=Hola%2C%20quiero%20reservar%20mesa%20para%20la%20promo%20de%20cerveza%20de%20barril%202x1." target="_blank" rel="noopener">Apartar mesa</a></div>
+      <div class="lm-car" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Pa’ la mesa">
+        <div class="lm-car-track">
+          <article class="lm-slide" aria-label="1 de 4">
+            <div class="lm-slide-img"><img src="fotos/ig_cerveza_barril_hd.webp" alt="Cerveza de barril servida en la barra de La México" width="960" height="1280" loading="lazy" draggable="false"></div>
+            <div class="lm-slide-copy"><h3>Cerveza de barril</h3><p>2x1 de lunes a miércoles.</p><a class="k-btn lm-btn-wa" href="https://wa.me/524491201728?text=Hola%2C%20quiero%20reservar%20mesa%20para%20la%20promo%20de%20cerveza%20de%20barril%202x1." target="_blank" rel="noopener">Apartar mesa</a></div>
+          </article>
+          <article class="lm-slide" aria-label="2 de 4">
+            <div class="lm-slide-img"><img src="fotos/ig_taco_salsa_hd.webp" alt="Taco servido con salsa en La México" width="960" height="1280" loading="lazy" draggable="false"></div>
+            <div class="lm-slide-copy"><h3>Tacos de arrachera</h3><p>Arrachera prime. 2x1 martes y miércoles.</p><a class="k-btn lm-btn-wa" href="https://wa.me/524491201728?text=Hola%2C%20quiero%20reservar%20mesa%20para%20la%20promo%20de%20tacos%20de%20arrachera%202x1." target="_blank" rel="noopener">Reservar</a></div>
+          </article>
+          <article class="lm-slide" aria-label="3 de 4">
+            <div class="lm-slide-img"><img src="fotos/ig_bebida_modelo_hd.webp" alt="Trago de la casa en La México" width="960" height="1280" loading="lazy" draggable="false"></div>
+            <div class="lm-slide-copy"><h3>2x1 en copas</h3><p>Todos los días, de 1 a 8 pm.</p><a class="k-btn lm-btn-wa" href="https://wa.me/524491201728?text=Hola%2C%20quiero%20reservar%20mesa%20en%20La%20M%C3%A9xico%20Gran%20Cantina%20%28Colosio%29." target="_blank" rel="noopener">Reservar</a></div>
+          </article>
+          <article class="lm-slide" aria-label="4 de 4">
+            <div class="lm-slide-img"><img src="fotos/ig_parrillada_hd.webp" alt="Parrillada servida en La México" width="960" height="1280" loading="lazy" draggable="false"></div>
+            <div class="lm-slide-copy"><h3>Parrilladas</h3><p>Pa’ compartir, desde $955.</p><a class="k-btn k-btn--ghost" href="#menu">Ver menú</a></div>
+          </article>
         </div>
-        <div class="k-slide" data-bg="#efe3d0">
-          <img src="img/tacos-arrachera.webp" alt="Tres tacos de arrachera con cebolla, cilantro y limón" width="896" height="1120" loading="lazy">
-          <div class="k-slide-copy"><h3>Tacos de arrachera</h3><p>Arrachera prime. 2x1 martes y miércoles.</p><a class="k-btn lm-btn-wa" href="https://wa.me/524491201728?text=Hola%2C%20quiero%20reservar%20mesa%20para%20la%20promo%20de%20tacos%20de%20arrachera%202x1." target="_blank" rel="noopener">Reservar</a></div>
-        </div>
-        <div class="k-slide" data-bg="#e8d2bd">
-          <img src="img/tequila.webp" alt="Caballito de tequila con limón y sal" width="896" height="1120" loading="lazy">
-          <div class="k-slide-copy"><h3>Tequila y copeo</h3><p>2x1 en copas diario de 1 a 8 pm.</p><a class="k-btn lm-btn-wa" href="https://wa.me/524491201728?text=Hola%2C%20quiero%20reservar%20mesa%20en%20La%20M%C3%A9xico%20Gran%20Cantina." target="_blank" rel="noopener">Reservar</a></div>
-        </div>
-        <div class="k-slide" data-bg="#f1e2c2">
-          <img src="img/molcajete.webp" alt="Molcajete de arrachera con nopales, cebollitas y salsa" width="896" height="1120" loading="lazy">
-          <div class="k-slide-copy"><h3>Molcajete</h3><p>Arrachera de 400 g, pa’ compartir.</p><a class="k-btn k-btn--ghost" href="#menu">Ver menú</a></div>
+        <div class="lm-car-ui">
+          <div class="lm-dots" role="tablist" aria-label="Elegir"></div>
+          <span class="lm-count"><b id="lm-count">01</b> / 04</span>
+          <button class="lm-arrow" type="button" data-dir="-1" aria-label="Anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+          <button class="lm-arrow" type="button" data-dir="1" aria-label="Siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
         </div>
       </div>
     </div>
@@ -95,7 +108,7 @@
   <section class="lm-split" id="cantina">
     <div class="k-wrap lm-split-grid">
       <figure class="lm-split-photo" data-reveal="clip">
-        <img src="fotos/ig_cerveza_barril.webp" alt="Cerveza de barril servida en la barra de La México" width="480" height="640" loading="lazy">
+        <img src="fotos/salon_split.webp" alt="Salón con cabezas de toro en la pared" width="900" height="1200" loading="lazy">
       </figure>
       <div class="lm-split-copy">
         <h2 class="lm-h2" data-reveal>Fiesta brava.</h2>
@@ -110,7 +123,7 @@
   </section>
 
   <!-- PROMOS -->
-  <section class="lm-promos lm-dark" id="promos">
+  <section class="lm-promos lm-dark" id="promos" data-dark>
     <div class="k-wrap">
       <h2 class="lm-h2 lm-h2--sm" data-reveal>Promos de la casa.</h2>
       <ul class="lm-promo-list" data-reveal-stagger>
@@ -126,7 +139,7 @@
   <section class="lm-sec lm-menu" id="menu">
     <div class="k-wrap lm-menu-grid">
       <div class="lm-menu-side">
-        <h2 class="lm-h2" data-reveal>El menú.</h2>
+        <h2 class="lm-h2 lm-rule" data-reveal>El menú.</h2>
         <p class="lm-lead" data-reveal data-reveal-delay="100">Grill, tacos y tragos. Clásico desde el 2013.</p>
         <a class="k-btn lm-btn-wa lm-menu-cta" data-wa="menu" href="https://wa.me/524491201728?text=Hola%2C%20%C2%BFme%20compartes%20el%20men%C3%BA%20completo%20de%20La%20M%C3%A9xico%3F" target="_blank" rel="noopener" data-reveal data-reveal-delay="160">Pide el menú completo por WhatsApp</a>
       </div>
@@ -190,7 +203,7 @@
   <section class="lm-sec lm-reserve" id="reserva">
     <div class="k-wrap lm-reserve-grid">
       <div class="lm-reserve-copy">
-        <h2 class="lm-h2" data-reveal>Reserva tu mesa.</h2>
+        <h2 class="lm-h2 lm-rule" data-reveal>Reserva tu mesa.</h2>
         <p class="lm-lead" data-reveal data-reveal-delay="100">Llenas cuatro datos y se abre WhatsApp con todo escrito.</p>
       </div>
       <form class="lm-form" id="lm-form" novalidate data-reveal data-reveal-delay="120">
@@ -229,14 +242,10 @@
     <div class="k-wrap">
       <h2 class="lm-h2" data-reveal>Así se vive.</h2>
       <div class="lm-cards" id="lm-cards" data-reveal-stagger>
-        <figure class="lm-card"><img src="fotos/ta_00.webp" alt="La barra de La México Gran Cantina" width="720" height="900" loading="lazy"><figcaption>La barra</figcaption></figure>
-        <figure class="lm-card"><img src="fotos/ig_taco_salsa.webp" alt="Taco con salsa en La México" width="480" height="640" loading="lazy"><figcaption>Taco y salsa</figcaption></figure>
         <figure class="lm-card"><img src="fotos/ta_15.webp" alt="Michelada, cerveza y totopos en la mesa" width="720" height="900" loading="lazy"><figcaption>Michelada y botana</figcaption></figure>
-        <figure class="lm-card"><img src="fotos/ig_parrillada.webp" alt="Parrillada servida en La México" width="480" height="640" loading="lazy"><figcaption>Parrillada</figcaption></figure>
-        <figure class="lm-card"><img src="fotos/ig_bebida_modelo.webp" alt="Trago de la casa en La México" width="480" height="640" loading="lazy"><figcaption>Tragos de la casa</figcaption></figure>
         <figure class="lm-card"><img src="fotos/ta_32.webp" alt="Tacos servidos en La México" width="720" height="900" loading="lazy"><figcaption>Tacos</figcaption></figure>
         <figure class="lm-card"><img src="fotos/ta_2c.webp" alt="Botanas servidas en La México" width="720" height="900" loading="lazy"><figcaption>Pa’ picar</figcaption></figure>
-        <figure class="lm-card"><img src="fotos/ta_0c.webp" alt="Salón con cabezas de toro" width="720" height="900" loading="lazy"><figcaption>El salón</figcaption></figure>
+        <figure class="lm-card"><img src="fotos/ta_20.webp" alt="Platillo servido en La México" width="720" height="900" loading="lazy"><figcaption>De la cocina</figcaption></figure>
       </div>
     </div>
   </section>
@@ -254,6 +263,10 @@
           <p class="lm-lead">Sucursal Colosio. Lee lo que dicen de la botana, el ambiente y la atención.</p>
           <a class="k-btn lm-ghost-light" href="https://www.google.com/maps/place/La+M%C3%A9xico+Gran+Cantina/data=!4m7!3m6!1s0x8429ef042f54dd2f:0x11cfda67ffc6a830!8m2!3d21.924469!4d-102.305629" target="_blank" rel="noopener">Ver reseñas en Google</a>
         </div>
+      </div>
+      <div class="lm-quotes" data-reveal-stagger>
+        <figure class="lm-quote"><blockquote>“Buen lugar para grupos grandes y para tomar. Te llevan botana gratis a la mesa mientras sigas pidiendo bebidas.”</blockquote><figcaption>Scott L., feb 2019 · vía Wanderlog (traducida del inglés)</figcaption></figure>
+        <figure class="lm-quote"><blockquote>“Las entradas, perfectas y tradicionales. Nuestro mesero, muy atento.”</blockquote><figcaption>Daniel R., jul 2022 · vía Wanderlog (traducida del inglés)</figcaption></figure>
       </div>
     </div>
   </section>
@@ -282,9 +295,9 @@
 
 </main>
 
-<footer class="lm-foot">
+<footer class="lm-foot" data-dark>
   <div class="k-wrap lm-foot-in">
-    <span class="lm-plate lm-plate--foot"><img class="lm-foot-logo" src="brand/lockup_white.webp" alt="La México Gran Cantina" width="520" height="275" loading="lazy"></span>
+    <span class="lm-foot-brand"><img class="lm-foot-logo" src="brand/lockup_white.webp" alt="La México Gran Cantina" width="520" height="275" loading="lazy"></span>
     <div class="lm-foot-links">
       <a href="https://www.instagram.com/lamexico_grancantina/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.facebook.com/LaMexicoCantina/" target="_blank" rel="noopener">Facebook</a>
@@ -296,10 +309,7 @@
 
 <a class="k-wa" data-wa="hola" href="https://wa.me/524491201728?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20La%20M%C3%A9xico%20Gran%20Cantina." aria-label="WhatsApp" target="_blank" rel="noopener"></a>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="../_kit/kit.js" defer></script>
-<script src="../_kit/heroobjeto.js" defer></script>
-<script src="../_kit/slider.js" defer></script>
 <script src="../_kit/menu.js" defer></script>
 <script src="site.js" defer></script>
 </body>
