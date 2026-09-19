@@ -1,0 +1,46 @@
+/* 60 Quiénes somos + Lo que hemos servido: número gigante real con foto dentro, collage desigual y reseñas reales */
+#nosotros { padding-block: var(--sec-y); background: var(--paper); overflow: hidden; }
+#nosotros .no-top { display: grid; gap: 24px; margin-bottom: 44px; }
+#nosotros .no-t { max-width: 11ch; }
+#nosotros .no-num { display: grid; justify-items: start; }
+#nosotros .no-big {
+  font-family: var(--font-display); font-stretch: 62%; font-variation-settings: "wdth" 62; font-weight: 900; line-height: 0.8;
+  font-size: clamp(170px, 56vw, 380px); letter-spacing: -0.02em;
+  background: linear-gradient(180deg, #b3161c 0%, var(--wine) 55%, #4a0b0c 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 4px 0 rgba(135, 21, 23, 0.9)) drop-shadow(0 12px 18px rgba(42, 12, 12, 0.25));
+}
+#nosotros .no-cap { margin-top: 10px; padding-left: 14px; border-left: 3px solid var(--wine); font-size: 15px; color: var(--mute); max-width: 24ch; }
+#nosotros .no-cap b { display: block; color: var(--ink); font-size: 18px; }
+#nosotros .no-eb2 { margin-bottom: 18px; }
+#nosotros .no-col { position: relative; display: grid; gap: 14px; }
+#nosotros figure { position: relative; margin: 0; overflow: hidden; border-radius: 3px; background: var(--paper-2); }
+#nosotros figure img { width: 100%; height: 100%; object-fit: cover; }
+#nosotros figcaption { position: absolute; left: 10px; bottom: 10px; padding: 6px 10px; border-radius: 3px; background: rgba(42, 12, 12, 0.82); color: var(--cream); font-size: 13px; font-weight: 600; }
+#nosotros .no-a { aspect-ratio: 4 / 5; max-height: 60svh; }
+#nosotros .no-a figcaption { bottom: auto; top: 10px; }
+#nosotros .no-b { width: 78%; justify-self: end; aspect-ratio: 16 / 10; margin-top: -60px; box-shadow: -10px 14px 0 var(--paper); }
+#nosotros .no-q { margin: 0; padding: 18px 0 0; }
+#nosotros blockquote p { font-family: var(--font-display); font-stretch: 78%; font-variation-settings: "wdth" 78; font-weight: 800; font-size: 24px; line-height: 1.1; text-wrap: balance; }
+#nosotros blockquote cite { display: block; margin-top: 10px; font-style: normal; font-size: 14px; color: var(--mute); }
+#nosotros .no-rs { display: grid; gap: 0; margin-top: 36px; border-top: 2px solid var(--ink); }
+#nosotros .no-rs li { padding: 20px 0; border-bottom: 1px dashed rgba(42, 12, 12, 0.3); }
+#nosotros .no-rs blockquote { margin: 0; }
+#nosotros .no-rs blockquote p { font-size: 21px; font-stretch: 85%; font-variation-settings: "wdth" 85; font-weight: 700; }
+#nosotros .no-acts { margin-top: 18px; }
+#nosotros .no-acts .lm-btn--link { color: var(--wine); font-size: 16px; white-space: normal; }
+@media (min-width: 900px) {
+  #nosotros .no-top { grid-template-columns: 7fr 5fr; align-items: end; gap: 48px; margin-bottom: 72px; }
+  #nosotros .no-num { justify-items: end; text-align: right; }
+  #nosotros .no-cap { border-left: 0; border-right: 3px solid var(--wine); padding: 0 14px 0 0; }
+  #nosotros .no-big { font-size: clamp(260px, 22vw, 420px); }
+  #nosotros .no-col { grid-template-columns: 5fr 7fr; grid-template-rows: auto auto; column-gap: 32px; row-gap: 0; }
+  #nosotros .no-a { grid-row: 1 / span 2; max-height: none; }
+  #nosotros .no-b { width: 100%; margin-top: 64px; box-shadow: none; }
+  #nosotros .no-q { align-self: start; padding: 32px 0 0; }
+  #nosotros blockquote p { font-size: 40px; max-width: 18ch; }
+  #nosotros .no-rs { grid-template-columns: repeat(3, 1fr); column-gap: 32px; margin-top: 64px; }
+  #nosotros .no-rs li { border-bottom: 0; }
+  #nosotros .no-rs blockquote p { font-size: 24px; }
+}
+@media (min-width: 1700px) { #nosotros blockquote p { font-size: 46px; } }

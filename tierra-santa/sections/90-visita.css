@@ -1,0 +1,19 @@
+/* 90 · Visítanos: dirección real + WhatsApp + cómo llegar. Horario omitido: las fuentes no coinciden (PENDIENTE-DUEÑO) */
+#visita { position: relative; background: var(--paper-2); color: var(--ink); padding: var(--sec-y) 0; overflow: hidden; }
+#visita .vis-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; }
+#visita .vis-t { font-size: clamp(44px, 13vw, 120px); line-height: .9; }
+#visita .vis-t span { display: block; white-space: nowrap; }
+#visita .vis-addr { font-style: normal; margin-top: 20px; font-size: 18px; line-height: 1.5; }
+#visita .vis-near { margin-top: 10px; }
+#visita .vis-acts { display: grid; gap: 10px; margin-top: 24px; }
+#visita .vis-acts .ts-btn { width: 100%; }
+#visita .vis-img { margin: 0 calc(var(--k-gutter) * -1); }
+#visita .vis-img img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+@media (min-width: 900px) {
+  #visita .vis-grid { grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  #visita .vis-t { font-size: clamp(80px, 6.6vw, 120px); }
+  #visita .vis-acts { display: flex; flex-wrap: wrap; }
+  #visita .vis-acts .ts-btn { width: auto; padding: 0 24px; }
+  #visita .vis-img { margin: 0; }
+  #visita .vis-img img { border-radius: 3px; }
+}

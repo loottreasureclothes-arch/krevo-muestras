@@ -1,0 +1,46 @@
+  <section class="s-rsv" id="reserva" aria-labelledby="rsv-t">
+    <div class="k-wrap rsv-grid">
+      <div class="rsv-side">
+        <p class="ts-eyebrow">Reserva directa</p>
+        <h2 class="rsv-t ts-d ts-h3d" id="rsv-t"><span>Aparta</span> <span>tu mesa.</span></h2>
+        <p class="ts-lead">Cuatro datos y te confirmamos por WhatsApp.</p>
+        <figure class="rsv-ph">
+          <img src="img/hd/fachada-calle-1200.webp" srcset="img/hd/fachada-calle-1200.webp 1200w, img/hd/fachada-calle-2400.webp 2400w" sizes="(min-width: 900px) 40vw, 100vw" width="1200" height="1200" alt="Terraza de Tierra Santa vista desde la banqueta, con jardineras de madera" loading="lazy" decoding="async">
+          <figcaption>Prol. Josefa Ortiz de Domínguez 503</figcaption>
+        </figure>
+      </div>
+      <form class="rsv-form" novalidate>
+        <div class="rsv-row">
+          <label class="ts-field"><span>Fecha</span><input name="fecha" type="date" required></label>
+          <label class="ts-field"><span>Hora</span><input name="hora" type="time" step="900" required></label>
+        </div>
+        <div class="rsv-row">
+          <label class="ts-field"><span>Personas</span>
+            <select name="personas" required>
+              <option value="">Elige</option>
+              <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11 a 20</option><option>Más de 20</option>
+            </select>
+          </label>
+          <label class="ts-field"><span>Zona</span>
+            <select name="zona">
+              <option>Terraza</option>
+              <option>Cerca del calentador</option>
+              <option>Donde haya lugar</option>
+            </select>
+          </label>
+        </div>
+        <fieldset class="rsv-oc">
+          <legend>¿Qué celebras?</legend>
+          <label><input type="radio" name="ocasion" value="" checked><span>Solo a comer</span></label>
+          <label><input type="radio" name="ocasion" value="Cumpleaños"><span>Cumpleaños</span></label>
+          <label><input type="radio" name="ocasion" value="Comida de negocios"><span>Negocios</span></label>
+          <label><input type="radio" name="ocasion" value="Aniversario"><span>Aniversario</span></label>
+        </fieldset>
+        <label class="ts-field"><span>Tu nombre</span><input name="nombre" type="text" autocomplete="name" placeholder="Para la reserva" required></label>
+        <p class="rsv-err" hidden>Falta la fecha, la hora o tu nombre.</p>
+        <button class="ts-btn ts-btn--wa rsv-go" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar por WhatsApp</button>
+        <a class="rsv-fb" href="https://wa.me/524493894792" target="_blank" rel="noopener" hidden>¿No se abrió WhatsApp? Toca aquí.</a>
+        <p class="rsv-alt">O llámanos: <a href="tel:+524493894792">449 389 4792</a></p>
+      </form>
+    </div>
+  </section>

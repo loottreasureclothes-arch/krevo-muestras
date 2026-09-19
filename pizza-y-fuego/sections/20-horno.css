@@ -1,0 +1,39 @@
+/* 20 El horno: cámara que entra al salón hasta el horno (scroll, reversible). Base = estado final visible. */
+#horno { position: relative; background: var(--deep); color: var(--cream); }
+#horno .hn-stage { position: relative; height: 100svh; min-height: 560px; overflow: hidden; isolation: isolate; }
+#horno .hn-cam { position: absolute; inset: 0; z-index: -2; transform-origin: 50% 39%; will-change: transform; }
+#horno .hn-cam img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
+#horno .hn-a11y { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+#horno .hn-veil { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(90% 70% at 50% 42%, rgba(22, 6, 8, 0) 30%, rgba(22, 6, 8, .6) 100%),
+    linear-gradient(180deg, rgba(22, 6, 8, .78) 0%, rgba(22, 6, 8, .2) 30%, rgba(22, 6, 8, .1) 52%, rgba(34, 9, 12, .9) 82%, rgba(34, 9, 12, .97) 100%);
+  opacity: var(--hn-veil, 1); }
+#horno .hn-top { position: absolute; left: 0; right: 0; top: calc(var(--k-header-h, 56px) + 18px); }
+#horno .hn-t { font-size: clamp(46px, 13.4vw, 132px); line-height: .88; max-width: 11ch; }
+#horno .hn-l { display: block; white-space: nowrap; }
+#horno .hn-bot { position: absolute; left: 0; right: 0; bottom: calc(22px + env(safe-area-inset-bottom)); }
+#horno .hn-card { display: grid; gap: 12px; max-width: 380px; }
+#horno .hn-k { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+#horno .hn-p { font-size: 17px; line-height: 1.45; color: rgba(247, 236, 220, .92); max-width: 32ch; }
+#horno .hn-card .pf-btn { justify-self: start; }
+/* Etiqueta que apunta al horno (queda en el punto de fuga del zoom) */
+#horno .hn-tag { position: absolute; left: 50%; top: 39%; z-index: 1; display: flex; align-items: center; gap: 8px; transform: translate(-6px, -50%); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cream); pointer-events: none; opacity: var(--hn-tag, 1); }
+#horno .hn-tag i { width: 12px; height: 12px; border-radius: 50%; background: var(--wa); box-shadow: 0 0 0 5px rgba(37, 211, 102, .25); flex: none; }
+#horno .hn-tag span { padding: 5px 8px; border-radius: 3px; background: rgba(22, 6, 8, .72); border-left: 1.5px solid var(--gold); }
+#horno .hn-bar { display: none; }
+@media (min-width: 900px) {
+  #horno { height: 180svh; }
+  #horno .hn-stage { position: sticky; top: 0; }
+  #horno .hn-cam { transform-origin: 48.5% 40%; }
+  #horno .hn-tag { left: 48.5%; top: 40%; }
+  #horno .hn-bot { bottom: 7svh; }
+  #horno .hn-card { max-width: 400px; padding: 22px 24px 24px; border-radius: 3px; background: rgba(22, 6, 8, .62); border: 1px solid var(--line-dark); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  #horno .hn-p { font-size: 19px; }
+  #horno .hn-top { top: calc(var(--k-header-h, 64px) + 36px); }
+}
+/* Con JS y movimiento: arranca lejos (la etiqueta aparece al acercarse). Sin JS o reduced-motion se queda así, visible. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .pf-js #horno.hn-live .hn-cam { transform: scale(var(--hn-s, 1)); }
+  .pf-js #horno.hn-live .hn-t { transform: translateY(calc(var(--hn-p, 0) * -40px)); opacity: calc(1 - var(--hn-p, 0) * .35); }
+}

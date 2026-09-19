@@ -1,0 +1,28 @@
+/* ===== 40 · Nosotros, reseñas, galería ===== */
+.nos-grid { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 960px) { .nos-grid { grid-template-columns: 1fr 1.1fr; gap: 64px; } }
+.nos-t, .res-t, .gal-t, .vi-t { font-size: clamp(2.4rem, 8vw, 4.4rem); line-height: .98; margin: 0 0 16px; }
+.nos-facts { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px 28px; }
+.nos-facts li { display: grid; gap: 2px; border-left: 2px solid var(--wine); padding-left: 12px; }
+.nos-facts b { font-family: var(--font-display); font-size: 1.6rem; color: var(--wine); }
+.nos-facts span { color: var(--mute); font-size: .9rem; }
+.nos-fig { position: relative; margin: 0 0 40px; }
+.nos-fig img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.nos-fig .nos-fig2 { position: absolute; right: -4px; bottom: -40px; width: 38%; border: 5px solid var(--paper); box-shadow: 0 16px 34px -18px rgba(43,12,16,.6); }
+.s-res { background: var(--deep); color: var(--cream); }
+.res-num { color: var(--gold); }
+.res-list { display: grid; gap: 14px; margin: 28px 0; }
+@media (min-width: 760px) { .res-list { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1200px) { .res-list { grid-template-columns: repeat(4, 1fr); } }
+.res-card { margin: 0; padding: 22px; border: 1px solid var(--line-dark); border-radius: 3px; display: grid; gap: 16px; align-content: space-between; }
+.res-card p { margin: 0; font-size: 1.02rem; line-height: 1.5; }
+.res-card footer { font-size: .88rem; color: var(--cream-mute); }
+.res-st { color: var(--gold); letter-spacing: 2px; margin-right: 6px; }
+.gal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
+.gal-grid img { display: block; width: 100%; height: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 3px; }
+.gal-grid img:first-child { grid-row: span 2; aspect-ratio: auto; }
+@media (min-width: 900px) { .gal-grid { grid-template-columns: repeat(4, 1fr); } .gal-grid img:first-child { grid-column: span 2; } }
+.nos-grid { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 960px) { .nos-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } }
+.nos-t, .res-t, .gal-t, .vi-t { font-size: clamp(2rem, 9vw, 4.4rem); overflow-wrap: anywhere; }
+.nos-fig, .gal-grid img, .res-card { min-width: 0; }

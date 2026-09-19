@@ -1,0 +1,36 @@
+/* 20 Momento de cine (sin créditos): la foto real se acerca con el scroll y los 3 renglones se encienden. Reversible.
+   Compu: escena pegada (sticky) durante +100% con barra de progreso. Celular: sin pegar, avanza mientras cruza la pantalla. */
+#cine { position: relative; background: var(--deep); color: var(--cream); }
+#cine .ci-stage { position: relative; isolation: isolate; overflow: hidden; min-height: 100svh; display: flex; align-items: flex-end; padding: 96px 0 44px; }
+#cine .ci-ph { position: absolute; inset: 0; z-index: -2; margin: 0; }
+#cine .ci-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; transform: scale(var(--ci-s, 1)); transform-origin: 50% 38%; will-change: transform; }
+#cine .ci-veil { position: absolute; inset: 0; z-index: -1; background:
+  radial-gradient(110% 70% at 50% 30%, rgba(20, 6, 5, 0) 35%, rgba(20, 6, 5, 0.55) 100%),
+  linear-gradient(180deg, rgba(42, 12, 12, 0.85) 0%, rgba(42, 12, 12, 0) 16%, rgba(42, 12, 12, 0) 40%, rgba(34, 9, 9, 0.9) 68%, rgba(34, 9, 9, 0.98) 100%); }
+#cine .ci-t { font-size: clamp(48px, 14vw, 132px); line-height: 0.88; max-width: 9ch; margin-bottom: 18px; }
+#cine .ci-lines { display: grid; gap: 2px; margin-bottom: 22px; counter-reset: ci; }
+#cine .ci-lines li { display: grid; grid-template-columns: 34px 1fr; column-gap: 8px; padding: 8px 0; border-top: 1px dashed rgba(248, 238, 214, 0.28); transition: opacity 300ms var(--ease-out); }
+#cine.ci-js .ci-lines li { opacity: 0.42; }
+#cine .ci-lines li::before { counter-increment: ci; content: "0" counter(ci); grid-row: span 2; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--gold); padding-top: 6px; }
+#cine.ci-js .ci-lines li.is-on { opacity: 1; }
+#cine .ci-lines b { font-family: var(--font-display); font-stretch: 72%; font-variation-settings: "wdth" 72; font-weight: 900; text-transform: uppercase; font-size: 24px; line-height: 1.05; }
+#cine .ci-lines span { color: var(--cream-mute); font-size: 15px; }
+#cine .ci-acts .lm-btn { width: 100%; }
+#cine .ci-bar { display: none; }
+@media (min-width: 600px) { #cine .ci-acts .lm-btn { width: auto; padding: 0 30px; } }
+@media (min-width: 900px) {
+  #cine { height: 200svh; }
+  #cine .ci-stage { position: sticky; top: 0; height: 100svh; align-items: center; padding: 80px 0 60px; }
+  #cine .ci-ph { left: 40%; }
+  #cine .ci-veil { left: 0; background:
+    linear-gradient(90deg, var(--deep) 0%, var(--deep) 40%, rgba(42, 12, 12, 0.6) 48%, rgba(42, 12, 12, 0) 66%),
+    linear-gradient(180deg, rgba(42, 12, 12, 0.6) 0%, rgba(42, 12, 12, 0) 20%, rgba(42, 12, 12, 0) 80%, rgba(42, 12, 12, 0.7) 100%); }
+  #cine .ci-in > * { max-width: 560px; }
+  #cine .ci-t { font-size: clamp(84px, 7.4vw, 148px); }
+  #cine .ci-lines b { font-size: 34px; }
+  #cine .ci-lines span { font-size: 17px; }
+  #cine .ci-bar { display: block; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(248, 238, 214, 0.14); }
+  #cine .ci-bar i { display: block; height: 100%; background: var(--gold); transform: scaleX(var(--ci-p, 0)); transform-origin: 0 50%; }
+}
+@media (min-width: 1700px) { #cine .ci-in { max-width: 1600px; } }
+@media (prefers-reduced-motion: reduce) { #cine { height: auto; } #cine .ci-stage { position: relative; } #cine .ci-lines li { opacity: 1; } #cine .ci-ph img { transform: none; } }

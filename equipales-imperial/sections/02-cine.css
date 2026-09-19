@@ -1,0 +1,18 @@
+/* ============ 02 CINE: el arco de la hacienda se abre con el scroll y "entras" al comedor (reversible) ============ */
+#cine.s-cine { position: relative; overflow: hidden; }
+#cine .s-cine-stage { position: relative; min-height: 100svh; display: grid; align-items: end; padding: calc(var(--k-header-h) + 16px) var(--k-gutter) 28px; }
+#cine .s-cine-arch { position: absolute; inset: 0; overflow: hidden; clip-path: inset(0 0 0 0 round 0); will-change: clip-path; }
+#cine .s-cine-arch picture, #cine .s-cine-arch img { display: block; width: 100%; height: 100%; }
+#cine .s-cine-arch img { object-fit: cover; object-position: 50% 55%; transform-origin: 50% 42%; }
+#cine .s-cine-veil { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(18, 9, 3, 0.95) 0%, rgba(18, 9, 3, 0.7) 30%, rgba(18, 9, 3, 0) 58%), radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(10, 6, 3, 0.5) 100%); }
+#cine .s-cine-copy { position: relative; z-index: 2; max-width: 560px; }
+#cine .s-cine-t { font-size: clamp(46px, 13vw, 118px); line-height: 0.88; font-weight: 900; margin: 0 0 14px; color: var(--cream); }
+#cine .s-cine-t .l { display: block; white-space: nowrap; }
+#cine .s-cine-sub { font-size: 17px; line-height: 1.42; color: var(--cream-mute); max-width: 32ch; margin: 0 0 18px; }
+#cine .s-cine-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(245, 237, 226, 0.14); z-index: 3; display: none; }
+#cine .s-cine-bar i { display: block; height: 100%; background: var(--brand-on-wood); transform: scaleX(0); transform-origin: 0 50%; }
+@media (min-width: 900px) {
+  #cine .s-cine-stage { height: 100svh; align-items: center; padding: 0 max(var(--k-gutter), calc((100vw - var(--wrap)) / 2 + var(--k-gutter))); }
+  #cine .s-cine-veil { background: linear-gradient(to right, rgba(18, 9, 3, 0.9) 0%, rgba(18, 9, 3, 0.55) 34%, rgba(18, 9, 3, 0) 60%), radial-gradient(120% 90% at 60% 45%, transparent 55%, rgba(10, 6, 3, 0.5) 100%); }
+  #cine .s-cine-bar { display: block; }
+}

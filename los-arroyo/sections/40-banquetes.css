@@ -1,0 +1,30 @@
+/* 40 Banquetes: banda guinda de marca, pausa tipográfica + cotizador corto a WhatsApp (servicio real: lona de Chicahuales) */
+#banquetes { position: relative; isolation: isolate; overflow: hidden; padding-block: var(--sec-y); color: var(--cream);
+  background: radial-gradient(90% 60% at 100% 0%, rgba(254, 231, 0, 0.1), transparent 60%), linear-gradient(180deg, var(--deep) 0, var(--wine) 80px, var(--wine) calc(100% - 80px), #5a0e0f 100%); }
+#banquetes::after { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0.06; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+#banquetes .bq-grid { display: grid; gap: 28px; }
+#banquetes .bq-l { display: inline-block; white-space: nowrap; }
+#banquetes .lm-eyebrow { color: var(--gold); }
+#banquetes .lm-lead { color: rgba(248, 238, 214, 0.86); }
+#banquetes .bq-big { display: none; }
+#banquetes .bq-form { display: grid; gap: 16px; padding: 20px 16px; border-radius: 3px; background: var(--paper); color: var(--ink); box-shadow: 0 30px 60px -30px rgba(20, 6, 5, 0.8); }
+#banquetes .bq-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 10px; }
+#banquetes .lm-field input { background-color: #fffaf0; }
+#banquetes .bq-pl { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
+#banquetes .bq-pl legend { grid-column: 1 / -1; margin-bottom: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
+#banquetes .bq-pl label { position: relative; }
+#banquetes .bq-pl input { position: absolute; opacity: 0; pointer-events: none; }
+#banquetes .bq-pl span { display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 12px; border: 1.5px solid var(--line); border-radius: 3px; background: #fffaf0; font-weight: 600; font-size: 15px; cursor: pointer; transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out); }
+#banquetes .bq-pl span::before { content: ""; flex: none; width: 16px; height: 16px; border: 1.5px solid currentColor; border-radius: 2px; }
+#banquetes .bq-pl input:checked + span { background: var(--deep); border-color: var(--deep); color: var(--cream); }
+#banquetes .bq-pl input:checked + span::before { background: var(--gold); border-color: var(--gold); box-shadow: inset 0 0 0 3px var(--deep); }
+#banquetes .bq-pl input:focus-visible + span { outline: 2px solid var(--wine); outline-offset: 2px; }
+#banquetes .bq-go { width: 100%; min-height: 56px; }
+#banquetes .bq-fallback { text-align: center; font-size: 14px; }
+#banquetes .bq-fallback a { display: inline-flex; min-height: 44px; align-items: center; font-weight: 700; color: var(--wine); text-decoration: underline; }
+@media (min-width: 900px) {
+  #banquetes .bq-grid { grid-template-columns: 6fr 5fr; gap: 72px; align-items: center; }
+  #banquetes .bq-big { display: block; margin-top: 36px; font-family: var(--font-display); font-stretch: 62%; font-variation-settings: "wdth" 62; font-weight: 900; text-transform: uppercase; font-size: clamp(120px, 11vw, 210px); line-height: 0.82; color: transparent; -webkit-text-stroke: 1.5px rgba(254, 231, 0, 0.55); }
+  #banquetes .bq-form { padding: 32px; }
+}

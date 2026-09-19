@@ -1,0 +1,33 @@
+/* 20 · Momento de cine: la terraza de noche se abre y "te metes". Scroll, reversible. Base = estado final. */
+#terraza { position: relative; background: var(--deep); color: var(--cream); }
+#terraza .cn-stage { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; padding: 0 0 calc(40px + env(safe-area-inset-bottom)); }
+#terraza .cn-frame { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+#terraza .cn-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; transform: scale(var(--cn-s1, 1.08)); transform-origin: 50% 38%; will-change: transform; }
+#terraza .cn-canopy { position: absolute; inset: 0; background: url("../img/hd/terraza-noche-1200.webp") 50% 40% / cover no-repeat; -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 22%, transparent 40%); mask-image: linear-gradient(180deg, #000 0%, #000 22%, transparent 40%); transform: translateY(var(--cn-y2, 0px)) scale(var(--cn-s2, 1.12)); transform-origin: 50% 0%; will-change: transform; }
+#terraza .cn-veil { position: absolute; inset: 0; background:
+  radial-gradient(110% 80% at 50% 35%, rgba(10, 9, 8, 0) 40%, rgba(10, 9, 8, .5) 100%),
+  linear-gradient(180deg, rgba(10, 9, 8, .45) 0%, rgba(10, 9, 8, 0) 20%, rgba(10, 9, 8, 0) 42%, rgba(10, 9, 8, .82) 72%, rgba(10, 9, 8, .95) 100%); }
+#terraza .cn-t { font-size: clamp(56px, 17vw, 190px); line-height: .86; margin: 4px 0 14px; }
+#terraza .cn-t span { display: block; white-space: nowrap; }
+#terraza .cn-lead { max-width: 34ch; font-size: 17px; line-height: 1.45; color: rgba(243, 237, 226, .9); margin-bottom: 22px; }
+#terraza .cn-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; }
+#terraza .cn-acts .ts-btn--wa { flex: 1 1 100%; }
+#terraza .cn-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(243, 237, 226, .12); }
+#terraza .cn-bar i { display: block; height: 100%; background: var(--gold); transform-origin: 0 50%; transform: scaleX(var(--cn-p, 1)); }
+@media (min-width: 900px) {
+  #terraza .cn-acts .ts-btn--wa { flex: none; padding: 0 30px; min-height: 56px; }
+  #terraza .cn-lead { font-size: 21px; }
+  #terraza .cn-stage { align-items: center; padding: 0; }
+  #terraza .cn-veil { background:
+    radial-gradient(110% 90% at 60% 40%, rgba(10, 9, 8, 0) 45%, rgba(10, 9, 8, .5) 100%),
+    linear-gradient(90deg, rgba(10, 9, 8, .86) 0%, rgba(10, 9, 8, .5) 36%, rgba(10, 9, 8, 0) 64%); }
+  #terraza .cn-t { font-size: clamp(96px, 9vw, 176px); }
+  /* compu: un solo pin corto (+80 %) hecho con sticky */
+  .ts-cine-on #terraza { height: 180svh; }
+  .ts-cine-on #terraza .cn-stage { position: sticky; top: 0; height: 100svh; }
+}
+/* Solo con JS y movimiento: arranca en un marco y se abre a sangre */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .ts-cine-on #terraza .cn-frame { clip-path: inset(var(--cn-ci, 0%) var(--cn-cx, 0%) round var(--cn-r, 0px)); }
+  .ts-cine-on #terraza .cn-in { opacity: var(--cn-o, 1); transform: translateY(var(--cn-ty, 0px)); }
+}

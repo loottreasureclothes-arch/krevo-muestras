@@ -1,0 +1,68 @@
+  <!-- 30 PIZZA PARA TU REUNIÓN · paso 4 y 6: cotizador de pedido grande en 3 pasos que arma el mensaje de WhatsApp.
+       No promete catering (el dueño dijo que no lo ofrecen): es un pedido grande de su carta para recoger, a domicilio o en el local. -->
+  <section class="s-reunion" id="reunion" data-dark aria-labelledby="ru-t">
+    <div class="pf-dots ru-dots" aria-hidden="true"></div>
+    <div class="k-wrap ru-grid">
+      <div class="ru-copy">
+        <p class="pf-eyebrow">Cumpleaños, oficina, fiesta en casa</p>
+        <h2 id="ru-t" class="ru-t pf-d pf-h3d"><span class="ru-l">Pizza para</span> <span class="ru-l">tu <em>reunión.</em></span></h2>
+        <p class="ru-lead">Dinos cuántos son, qué se antoja y cuándo. Te cotizamos por WhatsApp.</p>
+        <ul class="ru-facts">
+          <li><b>36 cm</b><span>la pizza grande</span></li>
+          <li><b>3 tamaños</b><span>chica, mediana y grande</span></li>
+        </ul>
+      </div>
+
+      <form class="ru-card" id="ru-form" novalidate aria-label="Cotiza tu pedido para reunión">
+        <ol class="ru-steps" aria-hidden="true"><li class="is-on">1 Personas</li><li>2 Qué se antoja</li><li>3 Cuándo</li></ol>
+
+        <fieldset class="ru-step is-on" data-step="1">
+          <legend class="ru-q">¿Para cuántas personas?</legend>
+          <div class="ru-chips" role="group">
+            <label><input type="radio" name="ru-n" value="10"><span>10</span></label>
+            <label><input type="radio" name="ru-n" value="15"><span>15</span></label>
+            <label><input type="radio" name="ru-n" value="20" checked><span>20</span></label>
+            <label><input type="radio" name="ru-n" value="30"><span>30</span></label>
+            <label><input type="radio" name="ru-n" value="40"><span>40</span></label>
+            <label><input type="radio" name="ru-n" value="otro"><span>Otro</span></label>
+          </div>
+          <label class="ru-f ru-otro" hidden><span>¿Cuántas?</span><input id="ru-n-otro" type="number" inputmode="numeric" min="1" max="500" placeholder="Ej. 60"></label>
+        </fieldset>
+
+        <fieldset class="ru-step" data-step="2">
+          <legend class="ru-q">¿Qué se antoja?</legend>
+          <div class="ru-checks">
+            <label><input type="checkbox" name="ru-que" value="Pizzas grandes (36 cm)" checked><span>Pizzas grandes<small>36 cm, a la leña</small></span></label>
+            <label><input type="checkbox" name="ru-que" value="Lasaña"><span>Lasaña<small>bolognese, en cazuela</small></span></label>
+            <label><input type="checkbox" name="ru-que" value="Pastas"><span>Pastas<small>spaghetti y fusilli</small></span></label>
+            <label><input type="checkbox" name="ru-que" value="Brusquetas"><span>Brusquetas<small>órdenes de 4</small></span></label>
+            <label><input type="checkbox" name="ru-que" value="Ensaladas"><span>Ensaladas<small>caprese, nostra, caesar</small></span></label>
+            <label><input type="checkbox" name="ru-que" value="Pizza de Nutella"><span>Postre<small>pizza de Nutella</small></span></label>
+          </div>
+          <label class="ru-f"><span>Sabores favoritos (opcional)</span><input id="ru-sabores" type="text" maxlength="120" placeholder="Ej. Fuego, Hawaiana, 4 Quesos"></label>
+        </fieldset>
+
+        <fieldset class="ru-step" data-step="3">
+          <legend class="ru-q">¿Cuándo y cómo?</legend>
+          <div class="ru-row">
+            <label class="ru-f"><span>Fecha</span><input id="ru-fecha" type="date"></label>
+            <label class="ru-f"><span>Hora</span><input id="ru-hora" type="time"></label>
+          </div>
+          <div class="ru-chips ru-chips--3" role="group" aria-label="Entrega">
+            <label><input type="radio" name="ru-como" value="Paso por él" checked><span>Paso por él</span></label>
+            <label><input type="radio" name="ru-como" value="A domicilio"><span>A domicilio</span></label>
+            <label><input type="radio" name="ru-como" value="Comer en el restaurante"><span>En el local</span></label>
+          </div>
+          <label class="ru-f"><span>Tu nombre</span><input id="ru-nombre" type="text" autocomplete="name" maxlength="50" placeholder="Para saber a quién le escribimos"></label>
+        </fieldset>
+
+        <div class="ru-nav">
+          <button type="button" class="ru-back" hidden>Atrás</button>
+          <button type="button" class="pf-btn pf-btn--wa ru-next">Siguiente</button>
+          <a class="pf-btn pf-btn--wa ru-send" href="https://wa.me/524498974488" target="_blank" rel="noopener" hidden><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir cotización</a>
+        </div>
+        <a class="ru-fb" href="https://wa.me/524498974488" target="_blank" rel="noopener" hidden>¿No se abrió WhatsApp? Toca aquí</a>
+        <p class="ru-fine">Te respondemos con cuántas pizzas te recomendamos y el total.</p>
+      </form>
+    </div>
+  </section>

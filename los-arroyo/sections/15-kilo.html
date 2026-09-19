@@ -1,0 +1,64 @@
+  <section class="s-kilo" id="kilo" aria-labelledby="ki-t">
+    <div class="k-wrap ki-grid">
+      <div class="ki-side">
+        <p class="lm-eyebrow">Para llevar</p>
+        <h2 id="ki-t" class="lm-h2 lm-h2--xl ki-t"><span class="ki-l">Aparta</span> <span class="ki-l">tu <em>kilo.</em></span></h2>
+        <p class="lm-lead">Arma tu pedido aquí y mándalo a la sucursal por WhatsApp. Llegas y te lo entregan.</p>
+        <figure class="ki-ph">
+          <img src="img/foto/barbacoa-kilo-800.webp" srcset="img/foto/barbacoa-kilo-800.webp 800w, img/foto/barbacoa-kilo-1200.webp 1200w" sizes="(min-width: 900px) 40vw, 100vw" width="800" height="1000" alt="Barbacoa de borrego con canasta de tortillas hechas a mano y salsas en molcajete, Los Arroyo" loading="lazy" decoding="async">
+          <figcaption><b>$740</b> el kilo para llevar</figcaption>
+        </figure>
+      </div>
+
+      <form class="ki-form" id="ki-form" novalidate aria-label="Aparta tu barbacoa">
+        <fieldset class="ki-step">
+          <legend><span>1</span>¿Qué barbacoa?</legend>
+          <div class="ki-chips" role="radiogroup">
+            <label class="ki-opt"><input type="radio" name="ki-tipo" value="barbacoa" checked><span>Barbacoa<small>de borrego</small></span></label>
+            <label class="ki-opt"><input type="radio" name="ki-tipo" value="maciza"><span>Especial<small>pura maciza</small></span></label>
+            <label class="ki-opt"><input type="radio" name="ki-tipo" value="pancita"><span>Pancita<small>o montalayo</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="ki-step">
+          <legend><span>2</span>¿Cuánto?</legend>
+          <div class="ki-chips ki-chips--5">
+            <label class="ki-opt"><input type="radio" name="ki-cant" value="0.25"><span>1/4 kg</span></label>
+            <label class="ki-opt"><input type="radio" name="ki-cant" value="0.5"><span>1/2 kg</span></label>
+            <label class="ki-opt"><input type="radio" name="ki-cant" value="1" checked><span>1 kg</span></label>
+            <label class="ki-opt"><input type="radio" name="ki-cant" value="2"><span>2 kg</span></label>
+            <label class="ki-opt"><input type="radio" name="ki-cant" value="3"><span>3 kg</span></label>
+          </div>
+          <p class="ki-hint" hidden></p>
+        </fieldset>
+
+        <fieldset class="ki-step">
+          <legend><span>3</span>Para acompañar</legend>
+          <div class="ki-extra"><span class="ki-extra-n">Litro de consomé<small>$100 para llevar</small></span><div class="ki-step-ctl" data-x="consome"><button type="button" data-d="-1" aria-label="Un litro menos">&minus;</button><output>0</output><button type="button" data-d="1" aria-label="Un litro más">+</button></div></div>
+          <div class="ki-extra"><span class="ki-extra-n">Docena de tortillas a mano<small>azul o blanca</small></span><div class="ki-step-ctl" data-x="tortillas"><button type="button" data-d="-1" aria-label="Una docena menos">&minus;</button><output>0</output><button type="button" data-d="1" aria-label="Una docena más">+</button></div></div>
+        </fieldset>
+
+        <fieldset class="ki-step">
+          <legend><span>4</span>¿Dónde y cuándo?</legend>
+          <div class="ki-chips ki-chips--3">
+            <label class="ki-opt"><input type="radio" name="ki-suc" value="santa-anita" checked><span>Santa Anita<small>Matriz</small></span></label>
+            <label class="ki-opt"><input type="radio" name="ki-suc" value="chicahuales"><span>Chicahuales<small>Jesús María</small></span></label>
+            <label class="ki-opt"><input type="radio" name="ki-suc" value="poniente"><span>López Mateos<small>Circunvalación</small></span></label>
+          </div>
+          <div class="ki-row">
+            <label class="lm-field"><span>Día</span><select id="ki-dia"></select></label>
+            <label class="lm-field"><span>Hora</span><select id="ki-hora"></select></label>
+          </div>
+          <label class="lm-field"><span>Tu nombre</span><input id="ki-nombre" type="text" autocomplete="given-name" maxlength="40" placeholder="Para apartarlo a tu nombre"></label>
+        </fieldset>
+
+        <div class="ki-sum" aria-live="polite">
+          <p class="ki-sum-l">Estimado</p>
+          <p class="ki-sum-t">$740</p>
+          <p class="ki-sum-f">Precios del menú impreso 2025, sujetos a cambio. La sucursal te confirma el total.</p>
+        </div>
+        <button class="lm-btn lm-btn--wa ki-go" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Apartar por WhatsApp</button>
+        <p class="ki-fallback" hidden>¿No se abrió WhatsApp? <a href="#" target="_blank" rel="noopener">Toca aquí</a></p>
+      </form>
+    </div>
+  </section>

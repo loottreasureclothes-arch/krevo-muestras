@@ -1,0 +1,37 @@
+/* 25 · Reserva corta arriba (fecha, hora, personas, zona) -> WhatsApp */
+#reserva { padding: var(--sec-y) 0; color: var(--ink); }
+#reserva .rsv-grid { display: grid; gap: 28px; }
+#reserva .rsv-t { font-size: clamp(54px, 16vw, 132px); line-height: .88; }
+#reserva .rsv-t span { display: block; white-space: nowrap; }
+#reserva .rsv-ph { position: relative; margin: 22px calc(var(--k-gutter) * -1) 0 0; }
+#reserva .rsv-ph img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px 0 0 3px; display: block; }
+#reserva .rsv-ph figcaption { position: absolute; left: 12px; bottom: 12px; padding: 6px 10px; border-radius: 2px; background: rgba(23, 22, 22, .78); color: var(--cream); font-size: 13px; font-weight: 600; }
+#reserva .rsv-form { position: relative; display: grid; gap: 14px; padding: 22px 18px 20px; margin-top: -64px; border-radius: 3px; background: var(--deep); color: var(--cream); box-shadow: 0 30px 60px -30px rgba(23, 22, 22, .6); }
+#reserva .rsv-form::before { content: ""; position: absolute; left: 18px; right: 18px; top: 8px; border-top: 1.5px dashed rgba(214, 178, 94, .5); }
+#reserva .rsv-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+#reserva .ts-field > span { color: var(--cream-mute); }
+#reserva .ts-field input, #reserva .ts-field select { background-color: #22201e; color: var(--cream); border-color: rgba(243, 237, 226, .22); color-scheme: dark; }
+#reserva .ts-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23f3ede2' stroke-width='1.6'/%3E%3C/svg%3E"); }
+#reserva .ts-field input:focus, #reserva .ts-field select:focus { border-color: var(--gold); background-color: #2a2724; }
+#reserva .ts-field.is-bad input { border-color: #e0786b; }
+#reserva .rsv-oc { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+#reserva .rsv-oc legend { width: 100%; margin-bottom: 8px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--cream-mute); }
+#reserva .rsv-oc label { position: relative; }
+#reserva .rsv-oc input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+#reserva .rsv-oc span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border: 1.5px solid rgba(243, 237, 226, .24); border-radius: 3px; font-weight: 600; font-size: 15px; transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out); }
+#reserva .rsv-oc input:checked + span { background: var(--cream); color: var(--deep); border-color: var(--cream); }
+#reserva .rsv-oc input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
+#reserva .rsv-go { width: 100%; min-height: 56px; margin-top: 4px; }
+#reserva .rsv-err { color: #f0a597; font-size: 14px; font-weight: 600; }
+#reserva .rsv-fb { display: inline-flex; min-height: 44px; align-items: center; color: var(--gold); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+#reserva .rsv-fb[hidden], #reserva .rsv-err[hidden] { display: none; }
+#reserva .rsv-alt { color: var(--cream-mute); font-size: 14px; }
+#reserva .rsv-alt a { display: inline-flex; align-items: center; min-height: 44px; color: var(--cream); font-weight: 700; }
+@media (min-width: 900px) {
+  #reserva .rsv-grid { grid-template-columns: 5fr 6fr; gap: 0; align-items: center; }
+  #reserva .rsv-ph { margin: 30px 0 0; }
+  #reserva .rsv-ph img { border-radius: 3px; aspect-ratio: 5 / 4; }
+  #reserva .rsv-form { margin: 0 0 0 -56px; padding: 34px 32px 28px; }
+  #reserva .rsv-form::before { left: 32px; right: 32px; top: 12px; }
+  #reserva .rsv-t { font-size: clamp(90px, 7.6vw, 140px); }
+}

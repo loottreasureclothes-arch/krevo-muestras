@@ -1,0 +1,47 @@
+/* ===== 30 · Pizza para tu reunión (prefijo ru-) ===== */
+.s-reunion { position: relative; background: var(--deep); color: var(--cream); padding-block: var(--sec-y, 72px); overflow: hidden; }
+.ru-dots { position: absolute; top: 0; left: 0; right: 0; }
+.ru-grid { display: grid; gap: 32px; align-items: start; }
+@media (min-width: 960px) { .ru-grid { grid-template-columns: 1fr 1.05fr; gap: 64px; align-items: center; } }
+.ru-t { font-size: clamp(2.6rem, 9vw, 5rem); line-height: .95; margin: 0 0 16px; }
+.ru-l { display: inline-block; }
+.ru-lead { color: var(--cream-mute); font-size: 1.1rem; max-width: 34ch; margin: 0 0 24px; }
+.ru-facts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px 28px; }
+.ru-facts li { display: grid; gap: 2px; border-left: 2px solid var(--gold); padding-left: 12px; }
+.ru-facts b { font-family: var(--font-display); font-size: 1.6rem; color: var(--gold); }
+.ru-facts span { color: var(--cream-mute); font-size: .9rem; }
+.ru-card { background: var(--paper); color: var(--ink); border-radius: 3px; padding: 20px; display: grid; gap: 16px; min-width: 0; }
+@media (min-width: 600px) { .ru-card { padding: 28px; } }
+.ru-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); }
+.ru-steps li { border-top: 3px solid var(--line); padding-top: 6px; }
+.ru-steps li.is-on { border-color: var(--wine); color: var(--wine); }
+.ru-step { border: 0; margin: 0; padding: 0; display: none; gap: 14px; min-width: 0; }
+.ru-step.is-on { display: grid; }
+html:not(.pf-js) .ru-step { display: grid; }
+.ru-q { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; padding: 0; }
+.ru-chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.ru-chips label, .ru-checks label { position: relative; }
+.ru-chips input, .ru-checks input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.ru-chips span { display: grid; place-items: center; min-height: 52px; padding: 6px; border: 1px solid #cdbfae; border-radius: 3px; background: #faf4ea; font-weight: 700; font-size: 1.05rem; text-align: center; line-height: 1.15; }
+.ru-chips--3 span { font-size: .9rem; }
+.ru-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ru-checks span { display: grid; gap: 2px; min-height: 60px; padding: 10px 12px; border: 1px solid #cdbfae; border-radius: 3px; background: #faf4ea; font-weight: 700; line-height: 1.2; }
+.ru-checks small { font-weight: 400; font-size: .8rem; color: var(--mute); }
+.ru-chips input:checked + span, .ru-checks input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--cream); }
+.ru-checks input:checked + span small { color: var(--cream-mute); }
+.ru-chips input:focus-visible + span, .ru-checks input:focus-visible + span { outline: 2px solid var(--wine); outline-offset: 2px; }
+.ru-f { display: grid; gap: 6px; min-width: 0; }
+.ru-f > span { font-size: .76rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); }
+.ru-f input { width: 100%; min-width: 0; min-height: 48px; padding: 10px 12px; border: 1px solid #cdbfae; border-radius: 3px; background: #faf4ea; color: var(--ink); font: 400 16px/1.3 var(--font-body); }
+.ru-f input:focus { outline: 2px solid var(--wine); border-color: var(--wine); }
+.ru-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ru-nav { display: flex; gap: 10px; }
+.ru-nav .pf-btn { flex: 1; }
+.ru-back { min-height: 52px; padding: 0 18px; border: 1px solid var(--ink); border-radius: 3px; background: transparent; color: var(--ink); font: 600 1rem var(--font-body); cursor: pointer; }
+.ru-fb { font-size: .9rem; color: var(--wine); font-weight: 600; }
+.ru-fine { margin: 0; font-size: .88rem; color: var(--mute); }
+.ru-err { margin: 0; padding: 10px 12px; border-left: 3px solid var(--wine); background: #f6e4e2; color: var(--wine); font-weight: 600; font-size: .92rem; }
+.s-reunion [hidden] { display: none !important; }
+.ru-grid { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 960px) { .ru-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); } }
+.ru-t { font-size: clamp(2.2rem, 10vw, 5rem); overflow-wrap: anywhere; }

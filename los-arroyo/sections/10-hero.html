@@ -1,0 +1,51 @@
+  <section class="s-hero" id="hero" data-dark data-hide-wa aria-labelledby="hr-t">
+    <div class="hr-media" aria-hidden="true">
+      <picture>
+        <source media="(min-width: 900px)" srcset="img/hero/hero-d.webp" width="1200" height="1500">
+        <img class="hr-poster" src="img/hero/hero-m.webp" width="1080" height="1440" alt="" fetchpriority="high">
+      </picture>
+      <!-- VIDEO IA: poner la ruta en data-src-m (9:16) y data-src-d (compu). Vacíos = se queda la foto real. -->
+      <video class="hr-vid" muted playsinline loop preload="none" poster="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" data-src-m="" data-src-d=""></video>
+      <div class="hr-veil"></div>
+    </div>
+    <div class="k-wrap hr-in">
+      <p class="lm-eyebrow hr-eb">Barbacoa de hoyo · Aguascalientes</p>
+      <h1 id="hr-t" class="hr-t lm-d lm-h3d"><span class="hr-l"><span>Barbacoa</span></span> <span class="hr-l"><span>estilo <em>Hidalgo.</em></span></span></h1>
+      <p class="hr-lead">Tortillas hechas a mano. Tres sucursales en Aguascalientes.</p>
+      <div class="hr-acts">
+        <a class="lm-btn lm-btn--wa" href="#kilo"><svg aria-hidden="true"><use href="#i-wa"/></svg>Aparta tu kilo</a>
+        <a class="lm-btn lm-btn--line" href="#menu">Ver menú</a>
+      </div>
+      <ul class="hr-facts">
+        <li><b>4.4 <span class="hr-star" aria-hidden="true">&#9733;</span></b><span>550 opiniones</span></li>
+        <li><b>Vie a dom</b><span>8 a 17 h, Santa Anita</span></li>
+        <li><b>3 sucursales</b><span>en Ags.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="s-cuad" id="antojo" data-dark aria-label="Lo más pedido">
+    <div class="k-wrap">
+      <ul class="cu-grid">
+        <li><button type="button" class="cu-tile" data-sheet="kilo" aria-haspopup="dialog"><span class="cu-n">Por kilo</span><span class="cu-d"><b>$740</b> el kilo para llevar</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></li>
+        <li><button type="button" class="cu-tile" data-sheet="tacos" aria-haspopup="dialog"><span class="cu-n">Tacos</span><span class="cu-d"><b>$55</b> en tortilla hecha a mano</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></li>
+        <li><button type="button" class="cu-tile" data-sheet="consome" aria-haspopup="dialog"><span class="cu-n">Consomé</span><span class="cu-d">desde <b>$45</b>, con garbanzo y arroz</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></li>
+        <li><button type="button" class="cu-tile" data-sheet="antojitos" aria-haspopup="dialog"><span class="cu-n">Tlacoyos</span><span class="cu-d">desde <b>$39</b>, requesón o frijol</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></li>
+      </ul>
+    </div>
+    <div class="cu-sheet" hidden>
+      <button class="cu-sheet-bg" type="button" tabindex="-1" data-close aria-label="Cerrar"></button>
+      <div class="cu-sheet-box" role="dialog" aria-modal="true" aria-labelledby="cu-sheet-t">
+        <header class="cu-sheet-head">
+          <div><p class="cu-sheet-k">Menú 2025</p><h2 class="cu-sheet-t lm-d" id="cu-sheet-t"></h2></div>
+          <button class="cu-sheet-x" type="button" data-close aria-label="Cerrar">&times;</button>
+        </header>
+        <ul class="cu-sheet-list"></ul>
+        <p class="cu-sheet-fine">Precios del menú impreso 2025, sujetos a cambio.</p>
+        <div class="cu-sheet-acts">
+          <a class="lm-btn lm-btn--wa cu-sheet-go" href="#kilo"><svg aria-hidden="true"><use href="#i-wa"/></svg><span></span></a>
+          <a class="lm-btn lm-btn--line cu-sheet-menu" href="#menu">Ver menú completo</a>
+        </div>
+      </div>
+    </div>
+  </section>

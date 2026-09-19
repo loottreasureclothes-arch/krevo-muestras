@@ -1,0 +1,62 @@
+/* 15 Aparta tu kilo: formulario corto arriba (la sección que trae el dinero entre semana y el fin) */
+#kilo { position: relative; padding-block: var(--sec-y); background: var(--paper-2); color: var(--ink); }
+#kilo .ki-grid { display: grid; gap: 26px; }
+#kilo .ki-t { max-width: 8ch; }
+#kilo .ki-l { display: inline-block; white-space: nowrap; }
+#kilo .ki-ph { position: relative; margin: 22px calc(var(--k-gutter) * -1) 0; aspect-ratio: 4 / 5; max-height: 62svh; overflow: hidden; background: var(--deep); }
+#kilo .ki-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+#kilo .ki-ph figcaption {
+  position: absolute; left: var(--k-gutter); top: 16px; padding: 10px 14px; border-radius: 3px;
+  background: var(--deep); color: var(--cream); font-weight: 600; font-size: 15px; box-shadow: 0 10px 24px -12px rgba(20, 6, 5, 0.7);
+}
+#kilo .ki-ph figcaption b { font-family: var(--font-display); font-stretch: 70%; font-variation-settings: "wdth" 70; font-weight: 900; font-size: 30px; color: var(--gold); margin-right: 6px; vertical-align: -3px; }
+
+#kilo .ki-form {
+  position: relative; display: grid; gap: 22px; margin-top: -64px; padding: 22px 16px 20px;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 3px; box-shadow: 0 24px 50px -30px rgba(42, 12, 12, 0.55);
+}
+#kilo .ki-step { display: grid; gap: 10px; margin: 0; padding: 0; border: 0; min-width: 0; }
+#kilo legend { display: flex; align-items: center; gap: 10px; padding: 0; margin-bottom: 10px; font-family: var(--font-display); font-stretch: 75%; font-variation-settings: "wdth" 75; font-weight: 800; text-transform: uppercase; font-size: 21px; }
+#kilo legend span { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 3px; background: var(--wine); color: var(--cream); font-family: var(--font-body); font-stretch: 100%; font-size: 14px; font-weight: 700; }
+#kilo .ki-chips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+#kilo .ki-chips--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+#kilo .ki-opt { position: relative; min-width: 0; }
+#kilo .ki-opt input { position: absolute; opacity: 0; pointer-events: none; }
+#kilo .ki-opt span {
+  display: grid; place-items: center; align-content: center; min-height: 56px; padding: 6px 4px; text-align: center;
+  border: 1.5px solid var(--line); border-radius: 3px; background: #fffaf0; font-weight: 700; font-size: 15px; line-height: 1.1; cursor: pointer;
+  transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 160ms var(--ease-out);
+}
+#kilo .ki-chips--5 .ki-opt span { font-size: 14px; padding: 6px 2px; }
+#kilo .ki-opt small { display: block; margin-top: 3px; font-size: 12px; font-weight: 500; color: var(--mute); }
+#kilo .ki-opt input:checked + span { background: var(--deep); border-color: var(--deep); color: var(--cream); }
+#kilo .ki-opt input:checked + span small { color: var(--cream-mute); }
+#kilo .ki-opt input:focus-visible + span { outline: 2px solid var(--wine); outline-offset: 2px; }
+#kilo .ki-opt span:active { transform: scale(0.97); }
+#kilo .ki-hint { padding: 10px 12px; border-left: 3px solid var(--wine); background: rgba(135, 21, 23, 0.07); font-size: 14px; }
+#kilo .ki-extra { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; border-bottom: 1px dashed rgba(42, 12, 12, 0.28); }
+#kilo .ki-extra-n { font-weight: 600; font-size: 16px; line-height: 1.25; }
+#kilo .ki-extra-n small { display: block; font-weight: 500; font-size: 13px; color: var(--mute); }
+#kilo .ki-step-ctl { flex: none; display: flex; align-items: center; border: 1.5px solid var(--line); border-radius: 3px; background: #fffaf0; }
+#kilo .ki-step-ctl button { width: 44px; height: 44px; border: 0; background: none; font-size: 22px; font-weight: 600; color: var(--ink); cursor: pointer; }
+#kilo .ki-step-ctl output { min-width: 28px; text-align: center; font-weight: 800; font-variant-numeric: tabular-nums; }
+#kilo .ki-row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; }
+#kilo .lm-field input, #kilo .lm-field select { background-color: #fffaf0; }
+#kilo .ki-sum { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 12px; padding-top: 14px; border-top: 2px solid var(--ink); }
+#kilo .ki-sum-l { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
+#kilo .ki-sum-t { grid-row: span 2; font-family: var(--font-display); font-stretch: 70%; font-variation-settings: "wdth" 70; font-weight: 900; font-size: 44px; line-height: 1; color: var(--wine); font-variant-numeric: tabular-nums; text-align: right; }
+#kilo .ki-sum-t small { display: block; font-family: var(--font-body); font-stretch: 100%; font-size: 12px; font-weight: 600; color: var(--mute); }
+#kilo .ki-sum-f { font-size: 13px; color: var(--mute); max-width: 30ch; }
+#kilo .ki-go { width: 100%; min-height: 56px; font-size: 17px; }
+#kilo .ki-fallback { text-align: center; font-size: 14px; }
+#kilo .ki-fallback a { display: inline-flex; min-height: 44px; align-items: center; font-weight: 700; color: var(--wine); text-decoration: underline; }
+@media (min-width: 600px) { #kilo .ki-ph { margin-inline: 0; border-radius: 3px; } }
+@media (min-width: 900px) {
+  #kilo .ki-grid { grid-template-columns: 5fr 6fr; gap: 64px; align-items: start; }
+  #kilo .ki-side { position: sticky; top: calc(var(--k-header-h) + 32px); }
+  #kilo .ki-ph { max-height: none; aspect-ratio: 5 / 4; margin-top: 32px; }
+  #kilo .ki-form { margin-top: 0; padding: 32px 32px 28px; }
+  #kilo .ki-ph figcaption { top: auto; bottom: 18px; left: 18px; }
+  #kilo .ki-opt span { min-height: 60px; }
+}
+@media (min-width: 900px) and (max-height: 820px) { #kilo .ki-ph { aspect-ratio: 16 / 10; } }

@@ -1,0 +1,22 @@
+/* ============ 03 PROYECTOS: carrusel de restaurantes reales con talón "Quiero algo así" ============ */
+#proyectos { background: var(--paper); overflow: hidden; }
+#proyectos .s-pr-head { display: grid; gap: 8px; margin-bottom: var(--head-gap); }
+#proyectos .eq-h2 { max-width: none; }
+@media (min-width: 900px) { #proyectos .s-pr-head { grid-template-columns: 1fr auto; align-items: end; gap: 40px; } #proyectos .eq-h2 .l { display: inline; } #proyectos .eq-h2 .l::after { content: " "; } #proyectos .eq-h2 { max-width: 14ch; } }
+#proyectos .s-pr-track { position: relative; list-style: none; margin: 0; padding: 4px max(var(--k-gutter), calc((100vw - var(--wrap)) / 2 + var(--k-gutter))) 10px; display: grid; grid-auto-flow: column; grid-auto-columns: 78%; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: max(var(--k-gutter), calc((100vw - var(--wrap)) / 2 + var(--k-gutter))); scrollbar-width: none; overscroll-behavior-x: contain; }
+#proyectos .s-pr-track::-webkit-scrollbar { display: none; }
+#proyectos .s-pr-card { scroll-snap-align: start; display: grid; gap: 4px; }
+#proyectos figure { position: relative; margin: 0; overflow: hidden; border-radius: 3px; background: var(--paper-2); }
+#proyectos figure img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform 600ms var(--ease-out); }
+#proyectos figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 14px 14px; display: grid; gap: 2px; color: var(--cream); background: linear-gradient(to top, rgba(18, 9, 3, 0.9), rgba(18, 9, 3, 0)); }
+#proyectos figcaption b { font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; text-transform: uppercase; font-weight: 800; font-size: 26px; line-height: 0.95; }
+#proyectos figcaption span { font-size: 14px; color: var(--cream-mute); }
+#proyectos .s-pr-n { font-family: var(--font-display); font-weight: 800; font-size: 13px !important; letter-spacing: .1em; color: var(--brand-on-wood) !important; }
+#proyectos .s-pr-go { justify-self: start; }
+#proyectos .s-pr-ctrl { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+#proyectos .s-pr-btn { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 3px; border: 1px solid rgba(80, 45, 24, 0.3); transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out); }
+#proyectos .s-pr-btn svg { width: 20px; height: 20px; }
+#proyectos .s-pr-btn:active { transform: scale(0.97); }
+#proyectos .s-pr-count { font-family: var(--font-display); font-weight: 800; font-size: 15px; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; min-width: 72px; text-align: center; }
+@media (hover: hover) and (pointer: fine) { #proyectos .s-pr-btn:hover { background: var(--paper-2); } #proyectos .s-pr-card:hover img { transform: scale(1.04); } }
+@media (min-width: 900px) { #proyectos .s-pr-track { grid-auto-columns: calc((min(100vw, var(--wrap)) - 2 * var(--k-gutter) - 42px) / 3.4); gap: 14px; } }

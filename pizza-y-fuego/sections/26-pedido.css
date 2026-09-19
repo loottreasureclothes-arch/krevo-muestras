@@ -1,0 +1,171 @@
+/* ===== 26 · Pedido de mesa (prefijo pf-pd / pf-ms) ===== */
+.pf-pd [hidden], .pf-pd[hidden] { display: none !important; }
+
+/* Barra inferior: a la izquierda del WhatsApp flotante (56 px + márgenes), nunca encima */
+.pf-pd-bar {
+  position: fixed; z-index: 70;
+  left: calc(12px + env(safe-area-inset-left));
+  right: calc(18px + 56px + 10px + env(safe-area-inset-right));
+  bottom: calc(18px + env(safe-area-inset-bottom));
+  height: 56px; display: flex; align-items: center; gap: 10px; padding: 0 14px;
+  border: 0; border-radius: 3px; background: #25d366; color: #0b3d1f; cursor: pointer; text-align: left;
+  font: 600 1rem/1.1 var(--font-body, system-ui, sans-serif);
+  box-shadow: 0 10px 26px -10px rgba(11, 37, 21, .55);
+  animation: pf-pd-in 320ms cubic-bezier(.23, 1, .32, 1) both;
+}
+.pf-pd-bar-n { flex: none; min-width: 30px; height: 30px; padding: 0 6px; display: grid; place-items: center; border-radius: 3px; background: #0b3d1f; color: #25d366; font-weight: 700; font-size: .95rem; }
+.pf-pd-bar-l { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pf-pd-bar-mesa:not(:empty)::before { content: " · "; }
+.pf-pd-bar-t { flex: none; font-weight: 800; font-size: 1.08rem; white-space: nowrap; }
+.pf-pd-bar-go { flex: none; width: 10px; height: 10px; margin: 0 4px 0 2px; border-top: 2.5px solid currentColor; border-right: 2.5px solid currentColor; transform: translateY(2px) rotate(-45deg); }
+.pf-pd-bar:active { background: #1ebe5b; }
+@media (hover: hover) and (pointer: fine) { .pf-pd-bar:hover { background: #1ebe5b; } }
+@media (min-width: 900px) {
+  .pf-pd-bar { left: 50%; right: auto; width: min(520px, calc(100vw - 220px)); transform: translateX(-50%); bottom: calc(28px + env(safe-area-inset-bottom)); height: 58px; animation-name: pf-pd-in-d; }
+}
+@keyframes pf-pd-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes pf-pd-in-d { from { opacity: 0; transform: translate(-50%, 14px); } to { opacity: 1; transform: translateX(-50%); } }
+/* Aire al final de la página para que la barra no tape el pie */
+html.pf-pd-has body { padding-bottom: 86px; }
+
+/* Hoja del pedido */
+.pf-pd-sheet { position: fixed; inset: 0; z-index: 95; display: flex; align-items: flex-end; justify-content: center; }
+.pf-pd-bg { position: absolute; inset: 0; border: 0; padding: 0; background: rgba(26, 20, 16, .62); opacity: 0; transition: opacity 220ms ease; cursor: pointer; }
+.pf-pd-box {
+  position: relative; width: 100%; max-width: 560px; max-height: 94svh; overflow-y: auto; overscroll-behavior: contain;
+  background: #f7efe2; color: #22150f; border-radius: 3px 3px 0 0;
+  padding: 0 20px calc(20px + env(safe-area-inset-bottom));
+  transform: translateY(24px); opacity: 0; transition: transform 280ms cubic-bezier(.23, 1, .32, 1), opacity 220ms ease;
+  display: grid; gap: 16px;
+}
+.pf-pd-sheet.is-open .pf-pd-bg { opacity: 1; }
+.pf-pd-sheet.is-open .pf-pd-box { transform: none; opacity: 1; }
+@media (min-width: 700px) {
+  .pf-pd-sheet { justify-content: flex-end; align-items: stretch; }
+  .pf-pd-box { max-width: 460px; max-height: none; height: 100%; border-radius: 0; transform: translateX(24px); align-content: start; padding-inline: 28px; }
+}
+.pf-pd-head { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: 16px 0 12px; background: #f7efe2; border-bottom: 2px solid #22150f; }
+.pf-pd-title { font-family: var(--font-display, Georgia, serif); font-weight: 600; font-size: 1.7rem; letter-spacing: -.02em; }
+.pf-pd-x { width: 44px; height: 44px; border: 1px solid #cdbfae; border-radius: 3px; background: #faf4ea; color: #22150f; font-size: 1.6rem; line-height: 1; cursor: pointer; }
+.pf-pd-list { display: grid; }
+.pf-pd-empty { padding: 18px 0; color: #6d5f55; }
+.pf-pd-line { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "tx t" "st st"; gap: 10px 12px; padding: 12px 0; border-bottom: 1px solid #e0cfb6; align-items: center; }
+@media (min-width: 380px) { .pf-pd-line { grid-template-columns: 1fr auto auto; grid-template-areas: "tx st t"; } }
+.pf-pd-line-tx { grid-area: tx; min-width: 0; display: grid; gap: 2px; }
+.pf-pd-line-tx b { font-weight: 600; line-height: 1.25; }
+.pf-pd-line-tx small { color: #6d5f55; font-size: .85rem; }
+.pf-pd-step { grid-area: st; justify-self: start; }
+.pf-pd-line-t { grid-area: t; font-weight: 700; min-width: 64px; text-align: right; }
+.pf-pd-f { display: grid; gap: 6px; }
+.pf-pd-f > span, .pf-pd-modes legend { font-size: .76rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #6d5f55; }
+.pf-pd-f textarea, .pf-pd-f input {
+  width: 100%; min-height: 48px; padding: 10px 12px; border: 1px solid #cdbfae; border-radius: 3px; background: #faf4ea; color: #22150f;
+  font: 400 16px/1.35 var(--font-body, system-ui, sans-serif);
+}
+.pf-pd-f textarea { resize: vertical; }
+.pf-pd-f textarea:focus, .pf-pd-f input:focus { outline: 2px solid #912129; outline-offset: 1px; border-color: #912129; }
+.pf-pd-f--mesa input { font-size: 1.6rem; font-weight: 700; max-width: 140px; }
+.pf-pd-modes { border: 0; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.pf-pd-modes legend { margin-bottom: 8px; }
+.pf-pd-modes label { position: relative; }
+.pf-pd-modes input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.pf-pd-modes span { display: grid; place-items: center; min-height: 52px; padding: 6px; border: 1px solid #cdbfae; border-radius: 3px; background: #faf4ea; text-align: center; font-size: .9rem; font-weight: 600; line-height: 1.15; }
+.pf-pd-modes input:checked + span { background: #22150f; border-color: #22150f; color: #f7ecdc; }
+.pf-pd-modes input:focus-visible + span { outline: 2px solid #912129; outline-offset: 2px; }
+.pf-pd-mf--3 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.pf-pd-mf--3 .pf-pd-f:last-child { grid-column: 1 / -1; }
+.pf-pd-err { padding: 10px 12px; border-left: 3px solid #912129; background: #f6e4e2; color: #912129; font-weight: 600; font-size: .92rem; }
+.pf-pd-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 12px; border-top: 2px solid #22150f; }
+.pf-pd-total span { font-weight: 600; }
+.pf-pd-total b { font-family: var(--font-display, Georgia, serif); font-size: 1.9rem; letter-spacing: -.02em; }
+.pf-pd-fine { margin-top: -10px; color: #6d5f55; font-size: .84rem; }
+.pf-pd-actions { display: grid; gap: 10px; }
+.pf-pd-wa, .pf-pd-show {
+  display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 16px;
+  border-radius: 3px; font: 700 1.02rem/1.1 var(--font-body, system-ui, sans-serif); text-decoration: none; cursor: pointer;
+}
+.pf-pd-wa { background: #25d366; color: #0b3d1f; border: 2px solid #25d366; }
+.pf-pd-wa svg { width: 22px; height: 22px; fill: currentColor; }
+.pf-pd-wa.is-off { opacity: .45; pointer-events: none; }
+.pf-pd-show { background: #faf4ea; color: #0b3d1f; border: 2px solid #25d366; }
+.pf-pd-show:disabled { opacity: .45; cursor: default; }
+.pf-pd-wa:active { background: #1ebe5b; border-color: #1ebe5b; }
+.pf-pd-show:active { background: #e8f9ee; }
+@media (hover: hover) and (pointer: fine) {
+  .pf-pd-wa:hover { background: #1ebe5b; border-color: #1ebe5b; }
+  .pf-pd-show:hover:not(:disabled) { background: #e8f9ee; }
+}
+.pf-pd-clear { justify-self: center; min-height: 44px; padding: 0 12px; border: 0; background: none; color: #6d5f55; font-size: .9rem; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+/* Pantalla "Mostrar a mi mesero": alto contraste, para leer de un vistazo */
+.pf-ms {
+  position: fixed; inset: 0; z-index: 100; overflow-y: auto; overscroll-behavior: contain;
+  background: #000; color: #fff; padding: calc(18px + env(safe-area-inset-top)) 22px calc(24px + env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; gap: 10px;
+  font-family: var(--font-body, system-ui, sans-serif);
+}
+.pf-ms-x { align-self: flex-end; min-width: 96px; min-height: 52px; padding: 0 16px; border: 2px solid #fff; border-radius: 3px; background: #000; color: #fff; font: 700 1.05rem/1 var(--font-body, system-ui, sans-serif); cursor: pointer; }
+.pf-ms-k { font-size: 1.1rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: #ffd84d; }
+.pf-ms-mesa { font-size: clamp(6rem, 34vw, 14rem); font-weight: 800; line-height: .85; letter-spacing: -.04em; }
+.pf-ms-list { margin-top: 16px; border-top: 3px solid #fff; }
+.pf-ms-list li { display: grid; grid-template-columns: 3.2ch 1fr; gap: 14px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid #444; font-size: clamp(1.5rem, 6.4vw, 2.4rem); font-weight: 600; line-height: 1.15; }
+.pf-ms-list li b { color: #ffd84d; font-weight: 800; text-align: right; }
+.pf-ms-note { margin-top: 8px; padding: 12px 14px; border: 2px solid #ffd84d; border-radius: 3px; font-size: clamp(1.15rem, 5vw, 1.6rem); font-weight: 600; }
+.pf-ms-foot { margin-top: auto; padding-top: 18px; display: flex; justify-content: space-between; gap: 16px; border-top: 3px solid #fff; }
+.pf-ms-foot p { display: grid; gap: 2px; }
+.pf-ms-foot span { font-size: .95rem; letter-spacing: .12em; text-transform: uppercase; color: #bbb; }
+.pf-ms-foot b { font-size: clamp(1.8rem, 8vw, 3rem); font-weight: 800; }
+.pf-ms-foot p:last-child { text-align: right; }
+@media (min-width: 900px) {
+  .pf-ms { padding-inline: max(40px, calc((100vw - 1100px) / 2)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-pd-bar { animation: none; }
+  .pf-pd-box, .pf-pd-bg { transition: none; }
+}
+
+/* ===== REVISIÓN 4 ===== */
+/* Sucursal en la hoja (2 opciones) y en la pantalla del mesero */
+.pf-pd-suc { grid-template-columns: repeat(2, 1fr); }
+.pf-ms-suc { font-size: clamp(1.2rem, 5.4vw, 1.9rem); font-weight: 800; letter-spacing: .02em; color: #fff; padding: 8px 12px; border: 2px solid #ffd84d; border-radius: 3px; align-self: flex-start; }
+
+/* En el menú el WA flotante se esconde: la barra ocupa todo el ancho */
+body.pf-wa-off .pf-pd-bar, html.pf-mm-lock .pf-pd-bar { right: calc(12px + env(safe-area-inset-right)); }
+
+/* Fuera del menú: barra grande fuera, queda un botón compacto a la izquierda del WhatsApp */
+.pf-pd-mini {
+  position: fixed; z-index: 70; display: none; align-items: center; gap: 8px;
+  right: calc(18px + 56px + 10px + env(safe-area-inset-right)); bottom: calc(18px + env(safe-area-inset-bottom));
+  height: 56px; padding: 0 12px 0 14px; border: 0; border-radius: 3px; background: #25d366; color: #0b3d1f; cursor: pointer;
+  font: 700 .95rem/1 var(--font-body, system-ui, sans-serif); box-shadow: 0 10px 26px -10px rgba(11, 37, 21, .55);
+}
+.pf-pd-mini svg { width: 22px; height: 22px; }
+.pf-pd-mini-n { min-width: 28px; height: 28px; padding: 0 6px; display: grid; place-items: center; border-radius: 3px; background: #0b3d1f; color: #25d366; font-size: .92rem; }
+html.pf-pd-far .pf-pd-bar { display: none; }
+html.pf-pd-far .pf-pd-mini:not([hidden]) { display: flex; animation: pf-pd-in 260ms cubic-bezier(.23, 1, .32, 1) both; }
+body.pf-wa-off .pf-pd-mini { right: calc(18px + env(safe-area-inset-right)); }
+@media (hover: hover) and (pointer: fine) { .pf-pd-mini:hover { background: #1ebe5b; } }
+@media (min-width: 900px) { .pf-pd-mini { bottom: calc(18px + env(safe-area-inset-bottom)); } }
+@media (prefers-reduced-motion: reduce) { html.pf-pd-far .pf-pd-mini:not([hidden]) { animation: none; } }
+/* Solo la barra grande necesita aire al pie */
+html.pf-pd-has.pf-pd-far body { padding-bottom: 0; }
+@media (min-width: 900px) {
+  .pf-pd-mini { right: calc(28px + 56px + 12px + env(safe-area-inset-right)); bottom: calc(28px + env(safe-area-inset-bottom)); }
+  body.pf-wa-off .pf-pd-mini { right: calc(28px + env(safe-area-inset-right)); }
+}
+html.pf-pd-far.pf-pd-hero .pf-pd-mini { display: none !important; }
+
+/* Pizza y Fuego: 2 campos por renglón, pista de domicilio, postre sugerido, respaldo de WhatsApp */
+.pf-pd-mf--2 { display: grid; grid-template-columns: 1fr 1.3fr; gap: 10px; }
+.pf-pd-mf { display: grid; gap: 8px; }
+.pf-pd-mf[hidden] { display: none !important; }
+.pf-pd-hint { font-size: .88rem; color: #6b5a4e; }
+.pf-pd-up { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border: 1px dashed #912129; border-radius: 3px; background: #faf4ea; }
+.pf-pd-up p { display: grid; gap: 2px; }
+.pf-pd-up p span { font-size: .88rem; color: #6b5a4e; }
+.pf-pd-up-add { width: 44px; height: 44px; flex: none; border: 0; border-radius: 3px; background: #25d366; color: #0b3d1f; font: 700 1.4rem/1 var(--font-body, system-ui, sans-serif); cursor: pointer; }
+.pf-pd-fbk { justify-self: center; display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: #0b3d1f; text-decoration: underline; text-underline-offset: 3px; }
+.pf-pd-line-t:empty { display: none; }
+.pf-pd-bar-t { font-size: 1rem; }
+.pf-ms-suc { font-family: var(--font-display); font-stretch: 75%; font-variation-settings: "wdth" 75; text-transform: uppercase; }
+.pf-ms { background: #1a0709; }

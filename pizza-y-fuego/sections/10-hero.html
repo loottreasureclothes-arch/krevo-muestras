@@ -1,0 +1,49 @@
+  <!-- 10 HERO · paso 1 (ponerlo en alto) + 3 (opciones): la pizza real a sangre, pedido directo en 1 toque y cuadritos que abren una hoja con la carta.
+       VIDEO: listo para el clip de IA hecho desde img/hero/hero-m.webp y hero-d.webp (foto real 07). Llena data-src-m / data-src-d y listo;
+       mientras estén vacíos se queda la foto (poster). -->
+  <section class="s-hero" id="hero" data-dark data-hide-wa aria-labelledby="hr-t">
+    <div class="hr-media" aria-hidden="true">
+      <picture>
+        <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/hero-d.webp" width="1920" height="1080">
+        <img class="hr-poster" src="img/hero/hero-m.webp" width="1080" height="1920" alt="" fetchpriority="high" decoding="async">
+      </picture>
+      <video class="hr-vid" data-src-m="" data-src-d="" poster="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback tabindex="-1" hidden></video>
+      <div class="hr-veil"></div>
+    </div>
+    <div class="k-wrap hr-in">
+      <p class="pf-eyebrow hr-eb">Pizzería a la leña · Aguascalientes</p>
+      <h1 id="hr-t" class="hr-t pf-d pf-h3d" aria-label="Pizza a la leña. Desde 2014."><span class="hr-l"><span>Pizza a la <em>leña.</em></span></span> <span class="hr-l"><span>Desde 2014.</span></span></h1>
+      <p class="hr-lead">Arma tu pedido y mándalo directo por WhatsApp. Sin apps de por medio.</p>
+      <div class="hr-acts">
+        <a class="pf-btn pf-btn--wa" href="#menu"><svg aria-hidden="true"><use href="#i-wa"/></svg>Arma tu pedido</a>
+        <a class="pf-btn pf-btn--line" href="#reunion">Para tu reunión</a>
+      </div>
+      <ul class="hr-tiles" aria-label="Ver la carta por tipo">
+        <li><a href="#menu" data-hoja="m-pizzas" aria-haspopup="dialog"><img src="img/tiles/pizzas.webp" alt="" width="640" height="400" decoding="async"><span class="hr-tn">Pizzas<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="hr-td">3 tamaños, a la leña</span></a></li>
+        <li><a href="#menu" data-hoja="m-pastas" aria-haspopup="dialog"><img src="img/tiles/pastas.webp" alt="" width="640" height="400" decoding="async"><span class="hr-tn">Pastas<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="hr-td">spaghetti, fusilli, lasaña</span></a></li>
+        <li><a href="#reunion"><img src="img/tiles/reunion.webp" alt="" width="640" height="400" decoding="async"><span class="hr-tn">Reunión<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="hr-td">pedido grande, cotiza</span></a></li>
+      </ul>
+      <ul class="hr-facts">
+        <li><b>4.6 <span class="hr-star" aria-hidden="true">&#9733;</span></b><span>785 reseñas en Google</span></li>
+        <li><b>Desde 2014</b><span>comida italiana</span></li>
+        <li><b>1:30 pm</b><span>abrimos de martes a domingo</span></li>
+      </ul>
+    </div>
+
+    <!-- Hoja de cada cuadrito: la llena 10-hero.js con la carta real del menú (sección 25). Se mueve a <body>. -->
+    <div class="hr-sheet" hidden>
+      <button class="hr-sheet-bg" type="button" tabindex="-1" aria-label="Cerrar" data-close></button>
+      <div class="hr-sheet-box" role="dialog" aria-modal="true" aria-labelledby="hr-sheet-t">
+        <div class="hr-sheet-grip" aria-hidden="true"><i></i></div>
+        <header class="hr-sheet-head">
+          <div><p class="hr-sheet-k">De la carta</p><h2 id="hr-sheet-t" class="hr-sheet-t"></h2></div>
+          <button type="button" class="hr-sheet-x" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+        </header>
+        <p class="hr-sheet-d"></p>
+        <ul class="hr-sheet-list"></ul>
+        <div class="hr-sheet-foot">
+          <button type="button" class="pf-btn pf-btn--wa hr-sheet-go"></button>
+        </div>
+      </div>
+    </div>
+  </section>

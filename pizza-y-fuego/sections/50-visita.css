@@ -1,0 +1,19 @@
+/* ===== 50 · Visítanos + cierre ===== */
+.vi-grid { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 960px) { .vi-grid { grid-template-columns: 1fr 1.1fr; gap: 64px; } }
+.vi-dl { margin: 20px 0 28px; display: grid; gap: 14px; }
+.vi-dl div { border-left: 2px solid var(--wine); padding-left: 12px; }
+.vi-dl dt { font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); }
+.vi-dl dd { margin: 2px 0 0; font-size: 1.05rem; line-height: 1.45; }
+.vi-acts { display: flex; flex-wrap: wrap; gap: 10px; }
+.vi-acts .pf-btn { flex: 1 1 200px; }
+@media (min-width: 960px) { .vi-acts .pf-btn { flex: none; } }
+.vi-img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.s-cierre { position: relative; overflow: hidden; background: var(--deep); color: var(--cream); min-height: 72svh; display: grid; align-items: end; }
+.ci-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.s-cierre::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(43,12,16,.92) 10%, rgba(43,12,16,.25) 60%, rgba(43,12,16,.1)); }
+.ci-in { position: relative; z-index: 1; padding-block: 64px; display: grid; gap: 22px; justify-items: start; }
+.ci-t { font-size: clamp(2.6rem, 9vw, 5.2rem); line-height: .95; margin: 0; color: var(--cream); }
+.vi-grid { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 960px) { .vi-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } }
+.vi-dl dd { overflow-wrap: anywhere; }
