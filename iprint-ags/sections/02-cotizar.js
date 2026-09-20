@@ -4,7 +4,7 @@
   var sec = document.getElementById("cotizar");
   if (!sec) return;
   var f = sec.querySelector("form"), sum = sec.querySelector(".s-q-sum-t"), hint = sec.querySelector("[data-hint-impresos]");
-  var fileBox = sec.querySelector(".s-q-file"), fileT = sec.querySelector(".s-q-file-t"), fb = sec.querySelector(".ip-wa-fallback");
+  var fileBox = sec.querySelector(".s-q-file"), fileT = sec.querySelector(".s-q-file-t"), go = document.getElementById("s-q-go");
   function val(n) { var e = f.elements[n]; return e && e.value ? e.value.trim() : ""; }
   function tipo() { var r = f.querySelector('input[name="tipo"]:checked'); return r ? r.value : ""; }
   function msg() {
@@ -20,9 +20,12 @@
     if (w) L.push("Para: " + w);
     return { body: L.join("\n"), n: n, file: file };
   }
+  /* El boton es un <a href="wa.me"> REAL (nada de window.open: Instagram lo bloquea). Cada cambio del
+     formulario reescribe el href, asi el enlace siempre lleva el pedido al dia. */
   function upd() {
     var m = msg();
     sum.textContent = m.body;
+    if (go) go.href = IP.waUrl("Hola iPrint" + (m.n ? ", soy " + m.n : "") + ".\n" + m.body);
     hint.hidden = tipo() !== "Tarjetas / volantes";
   }
   f.addEventListener("input", upd);
@@ -34,13 +37,8 @@
     }
     upd();
   });
-  f.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var m = msg();
-    var text = "Hola iPrint" + (m.n ? ", soy " + m.n : "") + ".\n" + m.body;
-    IP.openWa(text, fb);
-    sec.querySelector(".s-q-after").hidden = !m.file;
-  });
+  f.addEventListener("submit", function (e) { e.preventDefault(); upd(); if (go) go.click(); }); /* Enter en un campo */
+  if (go) go.addEventListener("click", function () { upd(); sec.querySelector(".s-q-after").hidden = !msg().file; });
   document.addEventListener("ip:cotizar", function (e) {
     var t = e.detail && e.detail.tipo; if (!t) return;
     var r = f.querySelector('input[name="tipo"][value="' + t.replace(/"/g, "") + '"]');

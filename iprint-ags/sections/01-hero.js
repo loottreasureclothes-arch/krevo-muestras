@@ -25,8 +25,8 @@
     });
   });
 
-  /* Enciende: nace APAGADO y prende AL PRINCIPIO, una sola vez: 450 ms después de que carga la página
-     (para que se alcance a ver apagado), o antes si la persona ya movió la pantalla. Tope de 2.5 s por si
+  /* Enciende: nace APAGADO y prende AL PRINCIPIO, una sola vez: 150 ms después de que carga la página
+     (para que se alcance a ver apagado), o antes si la persona ya movió la pantalla. Tope de 1.2 s por si
      el load tarda. El logo hace el parpadeo "trrr" y la frase prende letra por letra (eso va en el CSS).
      Al volver arriba NO se apaga. Blindaje: sin JS o con reduced-motion el CSS base ya lo deja encendido. */
   if (window.IP && IP.reduce) return;
@@ -42,11 +42,11 @@
   }
   function onScroll() { if ((window.pageYOffset || document.documentElement.scrollTop || 0) > 8) ignite(); }
   function onWheel(e) { if (!e || e.deltaY > 0) ignite(); }
-  function soon() { clearTimeout(timer); timer = setTimeout(ignite, 450); }
+  function soon() { clearTimeout(timer); timer = setTimeout(ignite, 150); }
   window.addEventListener("scroll", onScroll, opts);
   window.addEventListener("wheel", onWheel, opts);
   window.addEventListener("touchmove", ignite, opts);
-  timer = setTimeout(ignite, 2500);
+  timer = setTimeout(ignite, 1200);
   if (document.readyState === "complete") soon(); else window.addEventListener("load", soon, { once: true });
   onScroll(); /* si la página ya viene desplazada (recarga a media página), prende de una vez */
 })();

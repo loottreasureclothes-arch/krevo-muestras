@@ -139,7 +139,7 @@
 
   /* WA flotante: se esconde donde ya hay botones de contacto */
   function initWaHide() {
-    var zones = document.querySelectorAll("#cotizar, #visitanos, .cd-foot, #comparar-cta");
+    var zones = document.querySelectorAll("#cotizar, #trabajos, #visitanos, .s-vis-info, .cd-foot, #comparar-cta"); /* #trabajos: el flotante tapaba las tarjetas */
     if (!zones.length || !("IntersectionObserver" in window)) return;
     var on = new Set();
     var io = new IntersectionObserver(function (es) {

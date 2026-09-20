@@ -144,9 +144,9 @@
   html.ip-anim #hero:not(.is-lit) .s-hero-logo--on,
   html.ip-anim #hero:not(.is-lit) .s-hero-glow,
   html.ip-anim #hero:not(.is-lit) .s-hero-ring,
-  html.ip-anim #hero:not(.is-lit) .s-hero-dot { animation: ip-rescate-op 1ms linear 4s both; }
-  html.ip-anim #hero:not(.is-lit) .s-hero-logo:not(.s-hero-logo--on) { animation: ip-rescate-base 1ms linear 4s both; }
-  html.ip-anim #hero:not(.is-lit) .s-hero-ln i { animation: ip-letra 300ms steps(1, end) both; animation-delay: calc(4s + var(--i) * 60ms); }
+  html.ip-anim #hero:not(.is-lit) .s-hero-dot { animation: ip-rescate-op 1ms linear 2.4s both; }
+  html.ip-anim #hero:not(.is-lit) .s-hero-logo:not(.s-hero-logo--on) { animation: ip-rescate-base 1ms linear 2.4s both; }
+  html.ip-anim #hero:not(.is-lit) .s-hero-ln i { animation: ip-letra 300ms steps(1, end) both; animation-delay: calc(2.4s + var(--i) * 35ms); }
 
   /* el "trrr": logo, marco y derrame prenden con la misma ráfaga */
   html.ip-anim #hero.is-lit .s-hero-logo--on,
@@ -155,7 +155,7 @@
   html.ip-anim #hero.is-lit .s-hero-dot { animation: ip-trrr 900ms steps(1, end) both; }
   html.ip-anim #hero.is-lit .s-hero-logo:not(.s-hero-logo--on) { animation: ip-trrr-base 900ms steps(1, end) both; }
   /* el "brrr": la frase prende letra por letra, de izquierda a derecha */
-  html.ip-anim #hero.is-lit .s-hero-ln i { animation: ip-letra 300ms steps(1, end) both; animation-delay: calc(260ms + var(--i) * 60ms); }
+  html.ip-anim #hero.is-lit .s-hero-ln i { animation: ip-letra 220ms steps(1, end) both; animation-delay: calc(120ms + var(--i) * 35ms); }
 }
 @keyframes ip-rescate-op { to { opacity: 1; } }
 @keyframes ip-rescate-base { to { filter: none; } }
