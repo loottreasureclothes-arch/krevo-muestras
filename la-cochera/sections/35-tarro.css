@@ -1,0 +1,33 @@
+/* 04 · EL TARRO DE LA CASA (gmaps15 nativo, 1151x2048 recortado). Su producto
+   mas fotografiado. Sin patron de eyebrow-titulo-parrafo-boton: foto grande,
+   titulo, dos renglones y un link con flecha. Tope 900 px en celular. */
+.s-tarro { background: var(--ink); padding-bottom: 36px; }
+
+.s-tarro-media { position: relative; width: 100%; height: 52svh; max-height: 400px; overflow: hidden; }
+.s-tarro-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 46%; display: block; }
+.s-tarro-veil {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top, rgba(11,9,8,.95) 0%, rgba(11,9,8,.25) 26%, rgba(11,9,8,0) 52%);
+}
+
+.s-tarro-in { padding-top: 14px; display: flex; flex-direction: column; gap: 12px; }
+.s-tarro-h { font-size: clamp(30px, 8.6vw, 42px); max-width: 15ch; }
+.s-tarro-txt { font-size: .95rem; line-height: 1.5; color: rgba(255,255,227,.8); max-width: 46ch; }
+.s-tarro-link { align-self: flex-start; }
+
+@media (min-width: 900px) {
+  /* En compu la foto es vertical: a todo lo ancho se recortaba al logo
+     borroso del fondo. Aqui la foto se queda de un lado, entera, y el tarro
+     manda; el texto vive en el hueco oscuro del otro lado. */
+  .s-tarro { display: flex; align-items: stretch; padding-bottom: 0; }
+  .s-tarro-media { flex: none; width: 52%; height: auto; max-height: none; min-height: 70svh; }
+  .s-tarro-media img { object-position: center 42%; }
+  .s-tarro-veil { background: linear-gradient(to right, rgba(11,9,8,0) 82%, rgba(11,9,8,.55) 100%); }
+  .s-tarro-in {
+    flex: 1; min-width: 0; max-width: none; margin: 0;
+    display: flex; flex-direction: column; justify-content: center; gap: 16px;
+    padding: 56px clamp(40px, 5vw, 96px);
+  }
+  .s-tarro-h { font-size: clamp(42px, 3.8vw, 66px); max-width: 13ch; }
+  .s-tarro-txt { font-size: 1.05rem; }
+}

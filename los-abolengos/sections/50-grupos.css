@@ -1,0 +1,27 @@
+.s-grupos { padding-block: var(--sec-y); }
+.gr-t { margin-top: 4px; font-size: clamp(30px, 8.4vw, 50px); color: var(--paper); max-width: 15ch; }
+.gr-facts { margin-top: 20px; display: grid; gap: 10px; color: var(--paper-mute); font-size: 15px; }
+.gr-facts li { display: flex; align-items: baseline; gap: 10px; }
+.gr-facts .ab-rombo { color: var(--brand-ink); transform: translateY(-1px) rotate(45deg); }
+
+.gr-media { margin-top: 34px; display: grid; grid-template-columns: 1fr; gap: 10px; }
+/* 14. la foto grande va a sangre, como el hero, la carta y el pan (sale del k-wrap) */
+.gr-media-big { aspect-ratio: 16 / 9; overflow: hidden; margin: 0 calc(var(--k-gutter) * -1); }
+.gr-media-big img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; }
+/* 11. la terraza ya no tapa el mantel negro ni las copas del montaje */
+.gr-media-sm { width: 52%; margin-inline: auto 0; margin-top: -3svh; position: relative; z-index: 1; background: var(--deep-2); }
+.gr-media-sm img { aspect-ratio: 4 / 3; object-fit: cover; }
+@media (min-width: 900px) { .gr-media-big { margin-inline: calc(var(--k-gutter) * -1); } .gr-media-sm { width: 34%; margin-top: -8svh; margin-inline: auto 40px; } }
+@media (min-width: 1360px) { .gr-media-big { margin-inline: calc((100vw - 1280px) / -2); } }
+
+.gr-form { margin-top: 40px; background: var(--paper); color: var(--ink); padding: 26px var(--k-gutter); max-width: 640px; }
+.gr-form-h { font-family: var(--font-display); font-size: 20px; margin-bottom: 4px; }
+.gr-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.gr-input { width: 100%; height: 52px; padding: 0 14px; font-size: 16px; font-family: var(--font-body); border: 1.5px solid var(--line-paper); background: #fff; color: var(--ink); }
+.gr-radios { display: flex; gap: 10px; }
+.gr-radios label { flex: 1; display: flex; align-items: center; justify-content: center; height: 52px; border: 1.5px solid var(--line-paper); font-size: 14px; cursor: pointer; }
+.gr-radios input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.gr-radios input:checked + span { font-weight: 700; }
+.gr-radios label:has(input:checked) { border-color: var(--brand-ink); background: rgba(151, 135, 113, 0.12); }
+.gr-send { width: 100%; margin-top: 24px; }
+.gr-fine { color: rgba(27, 21, 18, 0.56); }

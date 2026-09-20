@@ -1,0 +1,29 @@
+/* ============ 60 EXHIBICION: mapa, direccion, horario, agendar visita ============
+   Unica seccion que repite eyebrow+titulo (permitido, hoja 7) porque es la unica de abajo.
+   Foto del dron es chica (720x1280): va en marco de arco, NO a sangre. */
+#exhibicion.s-exhibicion { padding: var(--sec-y-sm) 0; background-color: var(--deep-2); background-image: var(--grain); color: var(--cream); }
+#exhibicion .s-exh-grid { display: grid; gap: 24px; }
+#exhibicion .s-exh-addr { font-style: normal; font-size: 15px; line-height: 1.45; max-width: 40ch; margin: 0 0 5px; }
+#exhibicion .s-exh-ref { margin: 0 0 16px; color: var(--cream-mute); font-size: 14px; }
+#exhibicion .s-exh-hours { display: grid; gap: 6px; margin: 0 0 8px; padding: 13px 0; border-top: 1px solid var(--line-deep); border-bottom: 1px solid var(--line-deep); }
+#exhibicion .s-exh-hours div { display: flex; justify-content: space-between; gap: 12px; max-width: 320px; }
+#exhibicion .s-exh-hours dt { color: var(--cream-mute); font-size: 14px; }
+#exhibicion .s-exh-hours dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+#exhibicion .s-exh-note { margin: 0 0 16px; font-size: 13.5px; color: var(--cream-mute); }
+#exhibicion .s-exh-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+#exhibicion .s-exh-actions .cd-btn { flex: 1 1 auto; }
+#exhibicion .s-exh-access { margin: 0; font-size: 12.5px; color: var(--cream-mute); max-width: 40ch; }
+
+#exhibicion .s-exh-frame { display: flex; justify-content: center; }
+#exhibicion .s-exh-arc {
+  position: relative; width: min(64vw, 260px); aspect-ratio: 9 / 16;
+  border-radius: 160px 160px 0 0; overflow: hidden; background: var(--deep-2);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, .42); border: 1px solid rgba(244, 241, 238, .2);
+}
+#exhibicion .s-exh-arc img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+@media (min-width: 900px) {
+  #exhibicion .s-exh-grid { grid-template-columns: 1fr 34%; align-items: center; gap: 48px; }
+  #exhibicion .s-exh-frame { justify-content: flex-end; }
+  #exhibicion .s-exh-arc { width: 100%; max-width: none; border-radius: 210px 210px 0 0; }
+}

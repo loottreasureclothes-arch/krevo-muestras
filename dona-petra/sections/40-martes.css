@@ -1,0 +1,16 @@
+/* LOS MARTES - 2x1 en Suizas o Rojas. Foto a sangre + texto abajo. Presupuesto: 760px.
+   El alto va en `height` (con min-height solo de piso): con `min-height` el <img> de
+   height:100% se dibujaba a su alto natural y en compu dejaba 1,930 px de foto sola. */
+.pt-martes { position: relative; }
+.pt-martes-media { position: relative; height: 60svh; min-height: 360px; overflow: hidden; }
+.pt-martes-media picture { display: block; width: 100%; height: 100%; }
+.pt-martes-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
+.pt-martes-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23, 32, 44, 0.15) 0%, rgba(23, 32, 44, 0.35) 55%, var(--deep) 100%); }
+.pt-martes-in { position: relative; margin-top: -64px; padding-bottom: 8px; }
+.pt-martes-in .pt-lead { margin-top: 12px; }
+.pt-martes-in .pt-btn { margin-top: 20px; }
+@media (min-width: 900px) {
+  .pt-martes-media { height: min(76svh, 720px); min-height: 480px; }
+  .pt-martes-media img { object-position: 50% 48%; }
+  .pt-martes-in { margin-top: -110px; max-width: 640px; }
+}

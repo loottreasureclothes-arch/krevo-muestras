@@ -1,0 +1,88 @@
+/* 20-vitrina: catálogo a la vista + carrito en hoja. Sobre banda de papel. */
+.tr-vitrina { padding-block: 24px 10px; }
+.tr-vitrina .tr-arc { padding-block: 6px; }
+.tr-vitrina .k-wrap { padding-top: 4px; }
+
+.tr-vit-hero-frame { margin-bottom: 14px; }
+.tr-vit-hero-media { position: relative; height: 60svh; overflow: hidden; }
+.tr-vit-hero-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tr-vit-hero-tag { position: absolute; left: 12px; bottom: 12px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: rgba(20, 17, 16, 0.55); padding: 6px 10px; }
+
+.tr-vit-h2 { font-size: clamp(34px, 9vw, 60px); max-width: 11ch; margin-bottom: 2px; }
+
+/* Chips en una sola fila con scroll horizontal (pegados arriba al hacer scroll) */
+.tr-vit-chips-rail { position: sticky; margin-top: 10px; top: var(--tr-head-h); z-index: 5; background: var(--paper); transition: top 220ms var(--ease-out); }
+/* Degradado de 32px pegado al borde derecho: avisa que la fila se desliza y se apaga al llegar al final */
+.tr-vit-chips-rail::after {
+  content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 32px; pointer-events: none;
+  background: linear-gradient(to right, rgba(248,245,243,0), rgba(248,245,243,.96) 70%, var(--paper));
+  opacity: 1; transition: opacity 220ms var(--ease-out);
+}
+.tr-vit-chips-rail.tr-is-end::after { opacity: 0; }
+.tr-vit-chips { display: flex; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 8px; padding-block: 8px 8px; padding-inline-end: 24px; }
+.tr-vit-chips::-webkit-scrollbar { display: none; }
+.tr-vit-chip { flex: none; min-height: 40px; padding: 0 15px; border-radius: 2px; border: 1px solid var(--line-ink); background: transparent; color: var(--ink); font-size: 12px; font-weight: 600; letter-spacing: 0.03em; cursor: pointer; white-space: nowrap; transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out); }
+.tr-vit-chip.is-on { background: var(--brand-2); border-color: var(--brand-2); color: #fff; }
+@media (hover: hover) and (pointer: fine) { .tr-vit-chip:hover { border-color: var(--brand-2); } }
+
+.tr-vit-honesty { font-size: 12px; color: var(--mute-ink); margin-top: 2px; margin-bottom: 2px; }
+
+.tr-vit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 12px; margin-top: 10px; }
+/* 2 columnas en celular y 4 de 700px para arriba: con 3 columnas los marcadores honestos
+   caian en la misma columna y la vitrina se veia a medio surtir. */
+@media (min-width: 700px) { .tr-vit-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; } }
+@media (min-width: 1024px) { .tr-vit-grid { grid-template-columns: repeat(4, 1fr); gap: 22px; } }
+
+.tr-vit-card { display: flex; flex-direction: column; }
+.tr-vit-card[hidden] { display: none; }
+.tr-vit-photo { position: relative; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 2px; background: var(--paper-2); }
+.tr-vit-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tr-vit-photo::after { content: ""; position: absolute; inset: auto 0 0 0; height: 46%; background: linear-gradient(to top, rgba(20, 17, 16, 0.5), transparent); pointer-events: none; }
+.tr-vit-honesto { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 10px; padding-bottom: 40px; }
+.tr-vit-honesto::after { display: none; }
+.tr-vit-photo img.tr-vit-honesto-logo { width: 36%; height: auto; object-fit: contain; opacity: 0.14; flex: none; }
+.tr-vit-honesto-txt { width: 108px; max-width: 78%; font-size: 10.5px; color: var(--mute-ink); text-align: center; line-height: 1.3; }
+.tr-vit-honesto .tr-vit-price-tag { color: var(--ink); }
+
+/* Precio y "+" encimados en la foto (esquina inferior) */
+.tr-vit-price-tag { position: absolute; left: 8px; bottom: 8px; z-index: 2; font-family: var(--font-display); font-variant-numeric: tabular-nums; font-size: 14px; color: #fff; }
+.tr-vit-price-tag.tr-vit-price--ask { font-family: var(--font-body); font-size: 9.5px; font-weight: 700; letter-spacing: 0.02em; max-width: 62%; line-height: 1.2; }
+.tr-vit-add { position: absolute; right: 6px; bottom: 6px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; background: var(--brand); color: var(--ink); display: grid; place-items: center; border: none; cursor: pointer; flex: none; transition: transform 160ms var(--ease-out); }
+.tr-vit-add:active { transform: scale(0.88); }
+.tr-vit-add svg { width: 16px; height: 16px; }
+@media (hover: hover) and (pointer: fine) { .tr-vit-add:hover { background: var(--brand-2); color: #fff; } }
+
+.tr-vit-name { margin-top: 8px; font-size: 12.5px; line-height: 1.28; color: var(--ink); }
+
+/* ============ Barra fija "Mi pedido" ============ */
+/* Mientras la barra "Mi pedido" está puesta, el WhatsApp flotante se quita (mismo rincón) */
+body.tr-cart-bar-on .k-wa { visibility: hidden; animation: none; }
+
+.tr-cart-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); display: flex; justify-content: center; pointer-events: none; }
+.tr-cart-bar[hidden] { display: none; }
+.tr-cart-bar-btn { pointer-events: auto; width: 100%; max-width: 480px; box-shadow: 0 10px 26px -8px rgba(20, 17, 16, 0.5); }
+
+/* ============ Hoja del carrito ============ */
+.tr-cart-sheet { position: fixed; inset: 0; z-index: 96; visibility: hidden; }
+.tr-cart-sheet.is-open { visibility: visible; }
+.tr-cart-scrim { position: absolute; inset: 0; background: rgba(10, 8, 7, 0.6); opacity: 0; transition: opacity 220ms var(--ease-out); }
+.tr-cart-sheet.is-open .tr-cart-scrim { opacity: 1; }
+.tr-cart-panel { position: absolute; left: 0; right: 0; bottom: 0; max-height: 84svh; overflow: auto; background: var(--paper); color: var(--ink); border-radius: 10px 10px 0 0; padding: 22px 20px calc(20px + env(safe-area-inset-bottom)); transform: translateY(102%); transition: transform 320ms var(--ease-out); }
+.tr-cart-sheet.is-open .tr-cart-panel { transform: none; }
+.tr-cart-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.tr-cart-head h3 { font-size: 24px; }
+.tr-cart-close { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-ink); background: transparent; color: var(--ink); font-size: 20px; line-height: 1; display: grid; place-items: center; cursor: pointer; }
+.tr-cart-lines { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line-ink); border-bottom: 1px solid var(--line-ink); padding-block: 14px; }
+.tr-cart-line { display: flex; align-items: center; gap: 10px; }
+.tr-cart-line-name { flex: 1 1 auto; font-size: 13.5px; min-width: 0; }
+.tr-cart-line-price { font-family: var(--font-display); font-variant-numeric: tabular-nums; font-size: 13.5px; color: var(--mute-ink); flex: none; }
+.tr-cart-qty { display: flex; align-items: center; gap: 8px; flex: none; }
+.tr-cart-qty button { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line-ink); background: transparent; color: var(--ink); font-size: 15px; cursor: pointer; }
+.tr-cart-qty span { min-width: 16px; text-align: center; font-variant-numeric: tabular-nums; font-size: 13px; }
+.tr-cart-empty { font-size: 13px; color: var(--mute-ink); padding-block: 8px; }
+.tr-cart-pay { border: none; margin: 14px 0 0; padding: 0; }
+.tr-cart-pay legend { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brand-2); margin-bottom: 8px; }
+.tr-cart-pay label { display: flex; align-items: center; gap: 8px; font-size: 13.5px; padding-block: 6px; }
+.tr-cart-total { margin-top: 14px; font-size: 15px; }
+.tr-cart-total strong { font-family: var(--font-display); font-variant-numeric: tabular-nums; }
+.tr-cart-send { margin-top: 14px; width: 100%; }

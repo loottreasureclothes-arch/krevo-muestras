@@ -1,0 +1,145 @@
+<!-- 20-vitrina: LA VITRINA DE HOY. Catálogo a la vista estilo tienda, pegado al hero.
+     Precios reales de Rappi (19 sep 2026, research/menu-precios.md). Sin precio público = "Pregunta el precio",
+     nunca un cero. Carrito en hoja (barra fija "Mi pedido · N" + sheet con cantidades, forma de pago y WhatsApp). -->
+<section class="tr-sec tr-vitrina" id="vitrina" data-paper aria-label="La vitrina de hoy">
+  <div class="tr-arc" aria-hidden="true"><svg viewBox="0 0 120 14"><path d="M2,2 Q60,15 118,2"/></svg></div>
+  <div class="k-wrap">
+    <figure class="tr-frame tr-vit-hero-frame">
+      <svg class="tr-knot" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7c0-3 2-5 5-5s5 2 5 5-2 5-5 5-5-2-5-5Z M4 7h6"/></svg>
+      <div class="tr-vit-hero-media">
+        <img src="img/vitrina/vitrina-pan-900.webp" alt="Vitrina real con pan artesanal, roles y conchas de Tania Repostería en Praga 504" width="900" height="1600" loading="lazy">
+        <span class="tr-vit-hero-tag">01 / VITRINA · PRAGA 504</span>
+      </div>
+    </figure>
+
+    <h2 class="tr-d tr-h2 tr-vit-h2 tr-fall" data-fall>Hoy ya está hecho. <em>Llévatelo.</em></h2>
+
+    <div class="tr-vit-chips-rail" id="vitChipsRail">
+    <div class="tr-vit-chips" id="vitChips" role="group" aria-label="Categoría">
+      <button type="button" class="tr-vit-chip is-on" data-cat="todos">Todos</button>
+      <button type="button" class="tr-vit-chip" data-cat="cuchareables">Cuchareables</button>
+      <button type="button" class="tr-vit-chip" data-cat="rebanadas">Rebanadas</button>
+      <button type="button" class="tr-vit-chip" data-cat="cajas">Cajas de regalo</button>
+      <button type="button" class="tr-vit-chip" data-cat="pan">Pan</button>
+      <button type="button" class="tr-vit-chip" data-cat="temporada">Temporada</button>
+    </div>
+    </div>
+    <p class="tr-vit-honesty">Precios tomados de su tienda en Rappi el 19 de septiembre de 2026. Tania los confirma.</p>
+
+    <div class="tr-vit-grid" id="vitGrid">
+      <div class="tr-vit-card" data-cat="cuchareables" data-id="cuch-vainilla" data-name="Pastel cuchareable (vainilla 3 leches)" data-price="87">
+        <div class="tr-vit-photo"><img src="img/vitrina/cuchareable-vainilla-640.webp" width="640" height="640" alt="Vaso de pastel cuchareable de vainilla 3 leches con logo de Tania Repostería" loading="lazy"><span class="tr-vit-price-tag">$87</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar pastel cuchareable de vainilla"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Pastel cuchareable (vainilla 3 leches)</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="rebanadas" data-id="reb-zanahoria" data-name="Rebanada de zanahoria" data-price="65">
+        <div class="tr-vit-photo"><img src="img/vitrina/rebanada-zanahoria-640.webp" width="640" height="640" alt="Rebanada de pastel de zanahoria con betún de queso crema de Tania Repostería" loading="lazy"><span class="tr-vit-price-tag">$65</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar rebanada de zanahoria"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Rebanada de zanahoria</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="rebanadas" data-id="cheesecake" data-name="Cheesecake NY (rebanada)" data-price="115">
+        <div class="tr-vit-photo"><img src="img/vitrina/cheesecake-ny-640.webp" width="640" height="640" alt="Rebanada de cheesecake estilo Nueva York con mermelada de temporada de Tania Repostería" loading="lazy"><span class="tr-vit-price-tag">$115</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar cheesecake NY"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Cheesecake NY (rebanada)</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="cajas" data-id="macarons" data-name="Macarons, 7 piezas" data-price="240">
+        <div class="tr-vit-photo"><img src="img/vitrina/macarons-640.webp" width="640" height="640" alt="Caja de 7 macarons rojos y rosas de Tania Repostería" loading="lazy"><span class="tr-vit-price-tag">$240</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar macarons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Macarons, 7 piezas</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="cuchareables" data-id="cuch-oreo" data-name="Cuchareable de chocolate con Oreo" data-price="87">
+        <div class="tr-vit-photo tr-vit-honesto"><img class="tr-vit-honesto-logo" src="img/brand/logo-240.webp" alt="" aria-hidden="true"><p class="tr-vit-honesto-txt">Foto original pendiente</p><span class="tr-vit-price-tag">$87</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar cuchareable de chocolate con Oreo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Cuchareable de chocolate con Oreo</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="rebanadas" data-id="reb-3leches" data-name="Rebanada de vainilla 3 leches" data-price="59">
+        <div class="tr-vit-photo"><img src="img/vitrina/rebanada-3leches-640.webp" width="640" height="640" alt="Rebanada de pastel de vainilla 3 leches con fresas de Tania Repostería" loading="lazy"><span class="tr-vit-price-tag">$59</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar rebanada de vainilla 3 leches"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Rebanada de vainilla 3 leches</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="cuchareables" data-id="tiramisu" data-name="Tiramisú" data-price="89">
+        <div class="tr-vit-photo"><img src="img/vitrina/tiramisu-640.webp" width="640" height="640" alt="Vasos de tiramisú con cacao y macarons de Tania Repostería" loading="lazy"><span class="tr-vit-price-tag">$89</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar tiramisú"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Tiramisú</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="rebanadas" data-id="reb-chocolate" data-name="Rebanada de chocolate (sin huevo)" data-price="69">
+        <div class="tr-vit-photo tr-vit-honesto"><img class="tr-vit-honesto-logo" src="img/brand/logo-240.webp" alt="" aria-hidden="true"><p class="tr-vit-honesto-txt">Foto original pendiente</p><span class="tr-vit-price-tag">$69</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar rebanada de chocolate"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Rebanada de chocolate (sin huevo)</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="rebanadas" data-id="reb-panque" data-name="Rebanada de panqué" data-price="55">
+        <div class="tr-vit-photo"><img src="img/vitrina/rebanada-panque-640.webp" width="640" height="640" alt="Panqué entero con nuez de Tania Repostería" loading="lazy"><span class="tr-vit-price-tag">$55</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar rebanada de panqué"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Rebanada de panqué</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="cajas" data-id="ny-cookies" data-name="NY Cookies, 6 piezas" data-price="295">
+        <div class="tr-vit-photo"><img src="img/vitrina/ny-cookies-640.webp" width="640" height="640" alt="Caja de NY Cookies surtidas de Tania Repostería" loading="lazy"><span class="tr-vit-price-tag">$295</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar NY Cookies"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">NY Cookies, 6 piezas</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="temporada" data-id="tarta-calabaza" data-name="Tarta de temporada 13 cm (calabaza)" data-price="85">
+        <div class="tr-vit-photo tr-vit-honesto"><img class="tr-vit-honesto-logo" src="img/brand/logo-240.webp" alt="" aria-hidden="true"><p class="tr-vit-honesto-txt">Foto original pendiente</p><span class="tr-vit-price-tag">$85</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar tarta de calabaza"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Tarta de temporada 13 cm (calabaza)</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="rebanadas" data-id="brownie" data-name="Brownie" data-price="60">
+        <div class="tr-vit-photo"><img src="img/vitrina/brownie-640.webp" width="640" height="640" alt="Brownies de chocolate y nuez de Tania Repostería sobre tabla de madera" loading="lazy"><span class="tr-vit-price-tag">$60</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar brownie"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Brownie</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="cuchareables" data-id="cuch-compartir" data-name="Cuchareable para compartir" data-price="250">
+        <div class="tr-vit-photo"><img src="img/vitrina/cuchareable-compartir-640.webp" width="640" height="640" alt="Cuchareables surtidos de Tania Repostería para compartir" loading="lazy"><span class="tr-vit-price-tag">$250</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar cuchareable para compartir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Cuchareable para compartir</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="cuchareables" data-id="duo-cuch" data-name="Duo de cuchareables" data-price="159">
+        <div class="tr-vit-photo tr-vit-honesto"><img class="tr-vit-honesto-logo" src="img/brand/logo-240.webp" alt="" aria-hidden="true"><p class="tr-vit-honesto-txt">Foto original pendiente</p><span class="tr-vit-price-tag">$159</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar duo de cuchareables"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Duo de cuchareables</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="cajas" data-id="rafaelos" data-name="Rafaelos artesanales, 5 piezas" data-price="150">
+        <div class="tr-vit-photo"><img src="img/vitrina/rafaelos-640.webp" width="640" height="640" alt="Caja de rafaelos artesanales de coco de Tania Repostería" loading="lazy"><span class="tr-vit-price-tag">$150</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar rafaelos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Rafaelos artesanales, 5 piezas</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="pan" data-id="pan-caja" data-name="Pan de caja de masa madre, 850 g" data-price="100">
+        <div class="tr-vit-photo"><img src="img/vitrina/pan-de-caja-640.webp" width="640" height="640" alt="Pan de caja de masa madre embolsado con etiqueta de Tania Repostería" loading="lazy"><span class="tr-vit-price-tag">$100</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar pan de caja de masa madre"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Pan de caja de masa madre, 850 g</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="cajas" data-id="docena-cookies" data-name="Docena de cookies" data-price="540">
+        <div class="tr-vit-photo tr-vit-honesto"><img class="tr-vit-honesto-logo" src="img/brand/logo-240.webp" alt="" aria-hidden="true"><p class="tr-vit-honesto-txt">Foto original pendiente</p><span class="tr-vit-price-tag">$540</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar docena de cookies"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Docena de cookies</p>
+      </div>
+
+      <div class="tr-vit-card" data-cat="temporada" data-id="galletas-calabaza" data-name="Galletas de calabaza (temporada)" data-price="">
+        <div class="tr-vit-photo"><img src="img/vitrina/galletas-calabaza-640.webp" width="640" height="640" alt="Galletas con caritas de calabaza de temporada de Tania Repostería" loading="lazy"><span class="tr-vit-price-tag tr-vit-price--ask">Pregunta el precio</span><button type="button" class="tr-vit-add" data-add aria-label="Agregar galletas de calabaza"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+        <p class="tr-vit-name">Galletas de calabaza (temporada)</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="tr-cart-bar" id="vitCartBar" hidden>
+    <button type="button" class="tr-btn tr-btn--brand tr-cart-bar-btn" id="vitCartBtn"><span id="vitCartLabel">Mi pedido · 0</span></button>
+  </div>
+
+  <div class="tr-cart-sheet" id="vitCartSheet" role="dialog" aria-modal="true" aria-label="Mi pedido" aria-hidden="true">
+    <div class="tr-cart-scrim" aria-hidden="true"></div>
+    <div class="tr-cart-panel">
+      <div class="tr-cart-head">
+        <h3 class="tr-d">Mi pedido</h3>
+        <button type="button" class="tr-cart-close" id="vitCartClose" aria-label="Cerrar mi pedido">&times;</button>
+      </div>
+      <div class="tr-cart-lines" id="vitCartLines"></div>
+      <fieldset class="tr-cart-pay">
+        <legend>Forma de pago</legend>
+        <label><input type="radio" name="vitPago" value="Efectivo en el local" checked> Efectivo en el local</label>
+        <label><input type="radio" name="vitPago" value="Transferencia"> Transferencia</label>
+        <label><input type="radio" name="vitPago" value="Tarjeta en línea: te mandamos el link"> Tarjeta en línea: te mandamos el link</label>
+      </fieldset>
+      <p class="tr-cart-total" id="vitCartTotal">Total: <strong>Te lo confirmamos por WhatsApp</strong></p>
+      <a class="tr-btn tr-btn--wa tr-cart-send" id="vitCartSend" href="https://wa.me/524494136499"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Enviar mi pedido por WhatsApp</span></a>
+    </div>
+  </div>
+</section>

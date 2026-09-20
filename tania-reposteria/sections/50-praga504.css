@@ -1,0 +1,27 @@
+.tr-praga { padding-block: 24px 24px; }
+.tr-praga .tr-arc { padding-block: 6px; }
+
+.tr-praga-grid { display: grid; gap: 18px; }
+@media (min-width: 1024px) { .tr-praga-grid { grid-template-columns: 5fr 6fr; gap: 56px; align-items: start; } }
+
+.tr-praga-fotos { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; align-items: start; }
+/* La placa BAKERY vive arriba de la foto: el recorte nunca la toca (object-position arriba) */
+.tr-praga-frame-grande img { max-height: 36svh; object-fit: cover; object-position: 50% 0%; }
+.tr-praga-frame-chica img { max-height: 30svh; object-fit: cover; }
+.tr-praga-frame-chica { margin-top: 12px; }
+@media (min-width: 1024px) { .tr-praga-fotos { position: sticky; top: calc(var(--tr-head-h) + 24px); } .tr-praga-frame-grande img, .tr-praga-frame-chica img { max-height: 60svh; } }
+
+.tr-praga-info .tr-h2 { font-size: clamp(30px, 8vw, 54px); max-width: 11ch; }
+
+.tr-praga-datos { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.tr-praga-datos p { font-size: 14px; line-height: 1.4; color: var(--ink); }
+
+.tr-praga-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+
+.tr-praga-resenas { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line-ink); display: flex; flex-direction: column; gap: 12px; }
+.tr-praga-score { font-size: 14px; color: var(--mute-ink); }
+.tr-praga-score strong { font-family: var(--font-display); font-size: 18px; color: var(--ink); }
+.tr-praga-review { max-width: 52ch; }
+.tr-praga-stars { color: var(--brand-2); font-size: 13px; letter-spacing: 2px; margin-bottom: 4px; }
+.tr-praga-review blockquote { font-size: 13.5px; line-height: 1.42; color: var(--ink); }
+.tr-praga-review figcaption { margin-top: 4px; font-size: 11.5px; color: var(--mute-ink); }

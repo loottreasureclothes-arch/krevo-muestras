@@ -1,0 +1,115 @@
+/* 02 · LA CARTA A LA VISTA — catálogo estilo tienda, justo después del hero.
+   Carta tipográfica compacta (lista con precio) para lo que no tiene foto
+   digna + tarjetas destacadas ("s-feat") para lo que sí. Sin patrón de
+   eyebrow-título-párrafo-botón (regla R3). Compacto a propósito: tope de
+   7 secciones y 9,000 px en celular para TODA la página (regla R2). */
+
+.s-carta-head { padding-top: 20px; padding-bottom: 14px; }
+.s-carta-h { font-size: clamp(34px, 10vw, 50px); margin-top: 8px; }
+@media (min-width: 900px) { .s-carta-h { font-size: clamp(50px, 4.6vw, 80px); } }
+
+.s-carta-bleed { position: relative; height: 40svh; min-height: 270px; }
+.s-carta-bleed picture { display: block; width: 100%; height: 100%; }
+.s-carta-bleed img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; }
+@media (min-width: 900px) {
+  /* En compu el retrato se recortaba a un bollo gigante sin carne ni papas.
+     Aqui entra el recorte apaisado propio de gmaps16 (1600x900). */
+  .s-carta-bleed { height: 52svh; min-height: 360px; max-height: 560px; }
+  .s-carta-bleed img { object-position: center 54%; }
+}
+.s-carta-veil { position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,9,8,.75) 0%, rgba(11,9,8,0) 40%); pointer-events: none; }
+
+/* ---------- Chips de categoría, pegados arriba ---------- */
+.s-carta-chips {
+  position: sticky; top: var(--k-header-h-scrolled); z-index: 20;
+  display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  background: var(--ink); border-bottom: 1px solid rgba(255,255,227,.14);
+  padding: 10px var(--k-gutter);
+  scrollbar-width: none;
+}
+.s-carta-chips::-webkit-scrollbar { display: none; }
+.s-carta-chips a {
+  flex: none; display: inline-flex; align-items: center; height: 44px; padding: 0 14px;
+  border: 1px solid rgba(255,255,227,.35); color: rgba(255,255,227,.8);
+  font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  text-decoration: none; scroll-snap-align: start;
+}
+.s-carta-chips a.is-active { border-color: var(--brand); background: var(--brand); color: var(--paper); }
+
+.s-carta-body { padding-top: 22px; padding-bottom: 4px; }
+.s-carta-group { padding-top: 26px; scroll-margin-top: calc(var(--k-header-h-scrolled) + 52px); }
+.s-carta-group:first-child { padding-top: 0; }
+.s-carta-cat {
+  font-family: var(--font-display); text-transform: uppercase; font-weight: 400;
+  font-size: clamp(20px, 5.6vw, 26px); color: var(--paper); margin: 0 0 4px;
+}
+.s-carta-cat-note { font-size: .72rem; color: rgba(255,255,227,.5); margin: 0 0 10px; font-style: italic; }
+
+/* ---------- Tarjeta destacada (la que sí tiene foto real) ---------- */
+.s-feat { position: relative; display: flex; gap: 12px; margin-bottom: 14px; border: 1px solid rgba(255,255,227,.16); }
+.s-feat-media { flex: none; width: 34%; max-width: 150px; aspect-ratio: 4/5; overflow: hidden; background: #000; }
+.s-feat-media--wide { aspect-ratio: 5/4; }
+.s-feat-media img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: center 55%; }
+.s-feat-info { flex: 1; min-width: 0; padding: 10px 12px 10px 0; display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+.s-feat-info h4 { margin: 0; font-family: var(--font-display); font-weight: 400; text-transform: uppercase; font-size: 1.08rem; color: var(--paper); }
+.s-feat-info p { margin: 0; font-size: .78rem; line-height: 1.35; color: rgba(255,255,227,.62); }
+.s-feat-row { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; gap: 8px; }
+
+.s-row-tag {
+  position: absolute; top: 8px; left: 8px; z-index: 2;
+  background: var(--brand); color: var(--paper); font-size: .6rem; font-weight: 800;
+  letter-spacing: .05em; padding: 4px 7px;
+}
+.s-row-tag--inline { position: static; display: inline-block; margin-left: 6px; vertical-align: middle; padding: 3px 6px; }
+
+/* ---------- Lista tipográfica (sin foto) ---------- */
+.s-rows { display: flex; flex-direction: column; }
+.s-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,227,.12); }
+/* Los renglones sin foto van tipograficos, como carta de restaurante. El
+   cuadrito vacio repetido 18 veces se veia incompleto; el aviso de que las
+   fotos se las pedimos al dueno va UNA sola vez al final de la carta. */
+.s-row-info { flex: 1; min-width: 0; }
+.s-row-info h4 { margin: 0; font-family: var(--font-display); font-weight: 400; text-transform: uppercase; font-size: .95rem; color: var(--paper); }
+.s-row-info p { margin: 2px 0 0; font-size: .74rem; line-height: 1.3; color: rgba(255,255,227,.55); }
+.s-row-r { flex: none; display: flex; align-items: center; gap: 10px; }
+
+.s-row-price { font-variant-numeric: tabular-nums; font-weight: 800; font-size: .92rem; color: var(--paper); white-space: nowrap; }
+.s-row-price--ask { font-size: .62rem; font-weight: 700; letter-spacing: .01em; color: rgba(255,255,227,.7); text-transform: uppercase; white-space: nowrap; text-align: right; }
+
+.s-card-add {
+  flex: none; width: 44px; height: 44px; border: 1px solid var(--brand); background: var(--brand);
+  color: var(--paper); font-size: 1.15rem; line-height: 1; font-weight: 700; cursor: pointer;
+  transition: transform 140ms var(--ease-out), background-color 160ms var(--ease-out);
+}
+.s-card-add:active { transform: scale(.9); }
+@media (hover:hover) and (pointer:fine) { .s-card-add:hover { background: var(--brand-deep); border-color: var(--brand-deep); } }
+.s-card-add.is-added { background: var(--ink); color: var(--brand); }
+
+.s-carta-note { font-size: .72rem; color: rgba(255,255,227,.45); max-width: 62ch; margin: 22px auto 0; text-align: left; }
+
+@media (min-width: 700px) {
+  .s-feat { max-width: 520px; }
+  /* Las piezas se reparten en columnas: a 1440 las filas median ~705 px y la
+     mitad derecha era negro vacio. */
+  .s-rows { display: grid; grid-template-columns: 1fr 1fr; column-gap: 44px; }
+}
+@media (min-width: 1100px) {
+  .s-rows { grid-template-columns: 1fr 1fr 1fr; column-gap: 40px; }
+}
+
+/* ---------- Barra fija "MI PEDIDO · N" (vive en <body>, ver template) ---------- */
+.lc-cart-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
+  display: flex; justify-content: center;
+  padding: 0 16px calc(14px + env(safe-area-inset-bottom));
+  pointer-events: none;
+}
+.lc-cart-bar[hidden] { display: none; }
+.lc-cart-bar button {
+  pointer-events: auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  width: 100%; max-width: 520px; height: 52px; padding: 0 20px;
+  background: var(--brand); color: var(--paper); border: none;
+  font: inherit; font-weight: 800; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase;
+  cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,.4);
+}

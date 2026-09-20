@@ -1,0 +1,194 @@
+/* Tania Repostería · FUNDACIÓN (sobre _kit/kit.css). HOJA-DIRECCION.md manda.
+   =====================================================================
+   Tokens (research/colores.md + HOJA-DIRECCION §5):
+     --deep    #141110 negro tinta cálido (lienzo, casi toda la página)
+     --paper   #F8F5F3 banda de papel para leer (carta, formulario, "todo listo")
+     --paper-2 #EFE9E6 banda de papel alterna
+     --brand   #F0D8D0 rosa empolvado del logo (acento único)
+     --brand-2 #C9A49A marca profunda (botones/filetes sobre papel)
+     --ink     #111111
+     --wa #25d366 con texto --wa-ink #0b3d1f (SOLO lo que manda WhatsApp + flotante)
+   Tipografía: Marcellus (display, precios en tabular-nums) + DM Sans (texto).
+   Formas: círculo perfecto (sellos, "+", platón, avatar) y rectángulo de esquina recta radio 2px.
+     Divisor: arco de 1px de 120px centrado (alambre del batidor). Prohibida línea recta de borde a borde.
+     Marco de foto: filete 1px --brand-2 separado 8px + nudo de listón SVG 14px esquina sup. izq.
+   Header propio "el rodillo": ver bloque HEADER más abajo.
+   Botones: navegar/acciones en --brand relleno o contorno, finos, rectangulares, mayúsculas espaciadas.
+     Verde SOLO lo que de verdad manda WhatsApp (máx. 3 en toda la página) + el flotante.
+   Blindaje: [data-reveal] de kit.css + rescate 1.6s ya en _kit/kit.js.
+   ===================================================================== */
+:root {
+  --deep: #141110;
+  --deep-2: #1c1815;
+  --paper: #F8F5F3;
+  --paper-2: #EFE9E6;
+  --brand: #F0D8D0;
+  --brand-2: #C9A49A;
+  --ink: #111111;
+  --mute: #b9afa9;
+  --mute-ink: #6b6058;
+  --line: rgba(240, 216, 208, 0.22);
+  --line-ink: rgba(17, 17, 17, 0.14);
+  --wa: #25d366;
+  --wa-dark: #1ebe5b;
+  --wa-ink: #0b3d1f;
+  --radius: 2px;
+  --font-display: "Marcellus", "Times New Roman", serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-h2: clamp(40px, 11vw, 84px);
+  --sec-y: 72px;
+  --k-gutter: 16px;
+  --k-header-h: 56px;
+}
+@media (min-width: 600px) { :root { --k-gutter: 24px; } }
+@media (min-width: 900px) { :root { --sec-y: 112px; --k-gutter: 40px; --k-header-h: 64px; } }
+
+html { scroll-behavior: auto !important; overflow-x: clip; accent-color: var(--brand-2); scrollbar-color: var(--brand-2) var(--deep); }
+body { background: var(--deep); color: var(--brand); font-family: var(--font-body); font-size: 16px; overflow-x: clip; position: relative; }
+[data-paper] { background: var(--paper); color: var(--ink); }
+::selection { background: var(--brand-2); color: var(--deep); }
+:focus-visible { outline-color: var(--brand); border-radius: 2px; }
+[data-paper] :focus-visible { outline-color: var(--brand-2); }
+.k-wrap { max-width: 1280px; }
+@media (min-width: 1700px) { .k-wrap { max-width: 1560px; } }
+
+.tr-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; border-radius: 2px; background: var(--brand); color: var(--ink); font-weight: 600; transform: translateY(-180%); transition: transform 200ms var(--ease-out); }
+.tr-skip:focus { transform: none; }
+
+/* ============ Display / títulos que caen ============ */
+/* Dos tonos: título base en blanco cálido sobre el lienzo oscuro, negro sobre papel;
+   la última línea (em) siempre en el acento de marca, para que SÍ se note el contraste. */
+.tr-d { font-family: var(--font-display); line-height: 1.02; letter-spacing: -0.005em; text-wrap: balance; overflow-wrap: normal; color: #fdf9f7; }
+[data-paper] .tr-d { color: var(--ink); }
+.tr-h2 { font-size: var(--fs-h2); }
+em { font-style: normal; color: var(--brand); }
+[data-paper] em { color: var(--brand-2); }
+.tr-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand); }
+.tr-eyebrow::before { content: ""; width: 20px; height: 1.5px; background: currentColor; }
+[data-paper] .tr-eyebrow { color: var(--brand-2); }
+.tr-lead { margin-top: 12px; color: var(--mute); font-size: 16px; line-height: 1.45; max-width: 36ch; text-wrap: pretty; }
+[data-paper] .tr-lead { color: var(--mute-ink); }
+.tr-sec { padding-block: var(--sec-y); position: relative; }
+
+/* Título que cae: estado final visible por defecto (blindaje); .tr-drop anima con JS/WAAPI */
+.tr-fall { display: inline-block; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .tr-fall[data-fall] { opacity: 0; transform: translateY(-46px); }
+  .tr-fall[data-fall].is-fallen { opacity: 1; transform: none; transition: opacity 380ms cubic-bezier(.32,0,.67,0), transform 380ms cubic-bezier(.32,0,.67,0); }
+}
+
+/* ============ Divisor: arco de 1px de 120px, centrado (alambre del batidor) ============ */
+.tr-arc { display: flex; justify-content: center; padding-block: 4px; }
+.tr-arc svg { width: 120px; height: 14px; overflow: visible; }
+.tr-arc path { fill: none; stroke: var(--brand-2); stroke-width: 1; }
+[data-dark-arc] .tr-arc path { stroke: var(--line); }
+
+/* ============ Marco de foto: filete 1px + nudo de listón ============ */
+.tr-frame { position: relative; padding: 8px; }
+.tr-frame::before { content: ""; position: absolute; inset: 0; border: 1px solid var(--brand-2); pointer-events: none; }
+.tr-frame img { display: block; width: 100%; height: auto; }
+.tr-frame .tr-knot { position: absolute; top: -7px; left: 10px; width: 14px; height: 14px; z-index: 2; }
+.tr-frame .tr-knot path { fill: none; stroke: var(--brand-2); stroke-width: 1.5; }
+.tr-frame figcaption { margin-top: 8px; font-size: 12px; letter-spacing: 0.04em; color: var(--mute); }
+[data-paper] .tr-frame figcaption { color: var(--mute-ink); }
+
+/* ============ Foto grande a sangre con pie encimado ============ */
+.tr-bleed { position: relative; width: 100%; overflow: hidden; }
+.tr-bleed img, .tr-bleed video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tr-bleed .tr-bleed-tag { position: absolute; left: var(--k-gutter); bottom: 18px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: rgba(20, 17, 16, 0.55); padding: 6px 10px; }
+
+/* ============ Botones (radio 2px, finos, mayúsculas espaciadas) ============ */
+.tr-btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 22px; border-radius: 2px;
+  border: 1.5px solid transparent; font-weight: 600; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  line-height: 1; white-space: nowrap; cursor: pointer; user-select: none; text-decoration: none;
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), border-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.tr-btn:active { transform: scale(0.97); }
+.tr-btn svg { width: 18px; height: 18px; flex: none; }
+.tr-btn--brand { background: var(--brand); border-color: var(--brand); color: var(--ink); }
+.tr-btn--brand-ol { background: transparent; border-color: var(--brand); color: var(--brand); }
+[data-paper] .tr-btn--brand-ol,
+[data-paper] .tr-btn--line { border-color: #C9A49A; color: #111111; }
+.tr-btn--line { background: transparent; border-color: currentColor; color: inherit; }
+.tr-btn--wa { background: var(--wa); border-color: var(--wa); color: var(--wa-ink); box-shadow: 0 2px 0 rgba(11,61,31,.35); }
+[data-dark-btn] .tr-btn--wa { box-shadow: none; }
+@media (hover: hover) and (pointer: fine) {
+  .tr-btn--brand:hover { background: #fff; border-color: #fff; }
+  .tr-btn--brand-ol:hover { background: var(--brand); color: var(--ink); }
+  .tr-btn--line:hover { background: rgba(255,255,255,.08); }
+  [data-paper] .tr-btn--line:hover { background: rgba(17,17,17,.06); }
+  .tr-btn--wa:hover { background: var(--wa-dark); border-color: var(--wa-dark); }
+}
+.tr-btn[disabled], .tr-btn[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+
+/* ============ Header "el rodillo" ============ */
+:root { --tr-head-h: 56px; }
+@media (min-width: 900px) { :root { --tr-head-h: 64px; } }
+.k-header.tr-header {
+  height: var(--tr-head-h); padding: env(safe-area-inset-top) max(var(--k-gutter), env(safe-area-inset-right)) 0 max(var(--k-gutter), env(safe-area-inset-left));
+  display: flex; align-items: center; gap: 0; background: transparent; border-bottom: 0; color: var(--brand);
+  transition: height 220ms var(--ease-out), background-color 220ms var(--ease-out);
+}
+.k-header.tr-header.is-solid { height: 46px; background: var(--deep); }
+@media (min-width: 900px) { .k-header.tr-header.is-solid { height: 54px; } }
+.tr-logo { flex: none; min-height: 0; margin-right: 14px; }
+.tr-logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; transition: width 220ms var(--ease-out), height 220ms var(--ease-out); }
+.k-header.tr-header.is-solid .tr-logo img { width: 30px; height: 30px; }
+.tr-bar { flex: 1 1 auto; height: 3px; border-radius: 999px; background: var(--brand); min-width: 24px; transition: height 220ms var(--ease-out), opacity 220ms var(--ease-out); }
+.k-header.tr-header.is-solid .tr-bar { height: 1px; opacity: .35; }
+.tr-nav { display: none; }
+@media (min-width: 900px) {
+  .tr-nav { display: flex; align-items: stretch; gap: 22px; margin-inline: 22px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+  .tr-nav a { display: inline-flex; align-items: center; min-height: 40px; opacity: .88; transition: opacity 200ms var(--ease-out); }
+}
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) { .tr-nav a:hover { opacity: 1; } }
+.tr-encargar { flex: none; margin-left: 14px; height: 40px; min-height: 40px; padding: 0 16px; font-size: 11px; }
+@media (min-width: 900px) { .tr-encargar { height: 44px; min-height: 44px; padding: 0 20px; } }
+.tr-menu-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; margin-left: 10px; padding: 8px; color: inherit; }
+.tr-menu-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.tr-burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 4px; width: 20px; height: 16px; }
+.tr-burger i { display: block; height: 1.5px; background: currentColor; border-radius: 1px; transition: transform 220ms var(--ease-out), opacity 220ms var(--ease-out); }
+html.tr-nav-open .tr-burger i:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+html.tr-nav-open .tr-burger i:nth-child(2) { opacity: 0; }
+html.tr-nav-open .tr-burger i:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+/* ============ Panel "Carta" (hoja de navegación) ============ */
+.tr-nav-sheet { position: fixed; inset: 0; z-index: 90; visibility: hidden; overflow: hidden; contain: paint; }
+html.tr-nav-open .tr-nav-sheet { visibility: visible; }
+.tr-nav-scrim { position: absolute; inset: 0; background: rgba(10, 8, 7, 0.6); opacity: 0; transition: opacity 260ms var(--ease-out); }
+html.tr-nav-open .tr-nav-scrim { opacity: 1; }
+.tr-nav-panel {
+  position: absolute; inset: 0 0 0 auto; width: min(86vw, 400px); max-width: 100vw; box-sizing: border-box; overflow: hidden; background: var(--deep); color: var(--brand);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: calc(env(safe-area-inset-top) + 84px) 24px calc(env(safe-area-inset-bottom) + 28px);
+  transform: translateX(100%); transition: transform 320ms var(--ease-out);
+}
+html.tr-nav-open .tr-nav-panel { transform: none; }
+.tr-nav-list { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.tr-nav-list a { display: flex; align-items: baseline; gap: 12px; padding-block: 14px; border-bottom: 1px solid var(--line); font-family: var(--font-display); font-size: 19px; line-height: 1.3; min-width: 0; }
+.tr-nav-list a span:first-child { flex: none; font-family: var(--font-body); font-size: 11px; color: var(--brand-2); letter-spacing: 0.1em; }
+.tr-nav-list a .tr-nav-txt { flex: 1 1 auto; min-width: 0; overflow-wrap: break-word; }
+.tr-nav-foot { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.tr-nav-foot p { width: 100%; margin-top: 8px; font-size: 12px; color: var(--mute); }
+
+/* ============ Footer ============ */
+.tr-foot { background: var(--deep); color: var(--brand); padding-block: 28px 28px; }
+.tr-foot-cols { display: grid; gap: 28px; padding-bottom: 32px; border-bottom: 1px solid var(--line); }
+@media (min-width: 700px) { .tr-foot-cols { grid-template-columns: repeat(3, 1fr); } }
+.tr-foot-h { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand-2); margin-bottom: 10px; }
+.tr-foot-cols p { color: var(--mute); font-size: 14px; line-height: 1.6; }
+.tr-foot-social { display: flex; gap: 12px; }
+.tr-foot-social a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); color: var(--brand); }
+.tr-foot-social svg { width: 20px; height: 20px; }
+@media (hover: hover) and (pointer: fine) { .tr-foot-social a:hover { background: var(--brand); color: var(--ink); } }
+.tr-foot-note { margin-top: 24px; font-size: 12px; color: var(--mute-ink); color: rgba(240,216,208,.45); text-align: center; }
+
+/* ============ WA flotante: fuera sobre [data-hide-wa], el hero y el platón; con la hoja abierta ============ */
+html.tr-nav-open .k-wa,
+body.tr-wa-off .k-wa { visibility: hidden; animation: none; }
+
+/* ============ Layout base ============ */
+.tr-wrap-tight { max-width: 640px; }
+@media (min-width: 1024px) { .tr-grid-2 { display: grid; grid-template-columns: 3fr 2fr; gap: 40px; align-items: start; } }

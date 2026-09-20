@@ -1,0 +1,51 @@
+/* 03 · MOMENTO FIRMA — "La salsa todavía va cayendo" (gmaps08, recorte al
+   tercio de abajo, SIN upscale: 720x735 nativos).
+   La hoja §3 manda: si la foto sigue viéndose suave a 390 @2x, NO va a
+   sangre, va en recuadro con marco crema. Eso es lo que pasó, así que aquí
+   va enmarcada y el título cae sobre negro, debajo de la foto (antes caía
+   sobre la salsa blanca y la lechuga verde y no se leía).
+   Estado final (sin JS / reduced-motion) = foto completa y título puesto,
+   como pide el blindaje L5. Con JS, una máscara baja una sola vez ligada al
+   scroll (GSAP ScrollTrigger, scrub .5, sin pin, reversible, ~0.9 s). */
+.s-firma { background: var(--ink); padding: 34px 0 38px; }
+.s-firma-in { display: flex; flex-direction: column; gap: 16px; }
+
+.s-firma-media {
+  position: relative;
+  width: 100%; max-width: 320px; margin: 0 auto;
+}
+.s-firma-media img {
+  width: 100%; height: auto; aspect-ratio: 720/735;
+  object-fit: cover; display: block; transform-origin: center 30%;
+  clip-path: inset(0 0 0 0); transform: scale(1);
+}
+/* Estado inicial SOLO si hay JS de verdad y sin prefers-reduced-motion.
+   El JS agrega .s-firma-armed cuando el motor de scrub quedó listo. */
+.s-firma.s-firma-armed .s-firma-img {
+  clip-path: inset(46% 0% 0% 0%);
+  transform: scale(1.06);
+}
+
+.s-firma-copy { display: flex; flex-direction: column; gap: 10px; }
+.s-firma-h { font-size: clamp(30px, 8.4vw, 48px); max-width: 18ch; }
+.s-firma-h .lc-h-line { white-space: nowrap; }
+.s-firma-cap { font-size: .8rem; color: rgba(255,255,227,.7); margin: 0; }
+.s-firma-cap b { color: var(--brand); font-weight: 800; }
+
+.s-firma-link {
+  opacity: 0; transform: translateY(10px); align-self: flex-start;
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+}
+.s-firma-link.is-in { opacity: 1; transform: none; }
+
+@media (min-width: 900px) {
+  .s-firma { padding: 64px 0 66px; }
+  .s-firma-in { flex-direction: row; align-items: center; gap: 56px; }
+  .s-firma-media { flex: none; width: 42%; max-width: 440px; margin: 0; }
+  .s-firma-copy { flex: 1; min-width: 0; gap: 14px; }
+  .s-firma-h { font-size: clamp(52px, 5vw, 86px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s-firma.s-firma-armed .s-firma-img { clip-path: inset(0 0 0 0); transform: scale(1); }
+}

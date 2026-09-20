@@ -1,0 +1,26 @@
+/* Hero: la fachada de Galeana de noche con SU letrero completo. La foto NO se estira a
+   pantalla entera (ahi se comia la "U" de "UN PEDACITO" y se subia 1.63x): va en banda
+   de 62svh pegada arriba, a escala casi 1:1 en celular, y el titulo cae en la banda --deep
+   de abajo. En compu la foto se va de columna a la izquierda (vertical completa, sin
+   recorte ni upscale) y el titulo vive a su derecha. Presupuesto celular: ~860px. */
+.pt-hero { position: relative; background: var(--deep); padding-top: var(--pt-head-total, var(--k-header-h)); }
+.pt-hero-media { position: relative; height: 54svh; min-height: 360px; overflow: hidden; }
+.pt-hero-media picture { display: block; width: 100%; height: 100%; }
+.pt-hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
+.pt-hero-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23, 32, 44, 0.42) 0%, rgba(23, 32, 44, 0.1) 26%, rgba(23, 32, 44, 0.12) 68%, rgba(23, 32, 44, 0.55) 100%); }
+.pt-hero-band { position: relative; background: var(--deep); }
+.pt-hero-in { padding-top: 34px; padding-bottom: 40px; }
+.pt-hero .pt-lead { color: rgba(239, 231, 218, 0.86); }
+.pt-hero-acts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+@media (min-width: 900px) {
+  .pt-hero { display: grid; grid-template-columns: 44fr 56fr; align-items: stretch; min-height: 84svh; }
+  .pt-hero-media { height: auto; min-height: 76svh; }
+  .pt-hero-media img { object-position: 50% 46%; }
+  .pt-hero-veil { background: linear-gradient(90deg, rgba(23, 32, 44, 0.3) 0%, rgba(23, 32, 44, 0) 34%, rgba(23, 32, 44, 0.28) 100%); }
+  .pt-hero-band { display: flex; align-items: center; }
+  .pt-hero-in { max-width: 640px; padding-top: 0; padding-bottom: 0; padding-inline: clamp(32px, 4vw, 64px) var(--k-gutter); margin-inline: 0; }
+  .pt-hero-acts { margin-top: 34px; }
+  /* el renglon mas largo ("Un pedacito de México") va en nowrap: el tamano se calcula
+     para que QUEPA en la columna de texto, si no se corta a "de Méx" */
+  .pt-hero .pt-title--hero { font-size: clamp(34px, 3.8vw, 60px); }
+}

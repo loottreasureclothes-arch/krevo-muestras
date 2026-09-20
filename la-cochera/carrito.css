@@ -1,0 +1,57 @@
+/* La Cochera — hoja del carrito. Vive en <body> (L12). Papel de estraza para
+   leer, como el resto de la página con fondos claros. */
+.lc-sheet { position: fixed; inset: 0; z-index: 70; visibility: hidden; }
+.lc-sheet[aria-hidden="false"] { visibility: visible; }
+.lc-sheet-scrim { position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background 260ms var(--ease-out); }
+.lc-sheet[aria-hidden="false"] .lc-sheet-scrim { background: rgba(0,0,0,.6); }
+.lc-sheet-panel {
+  position: absolute; left: 0; right: 0; bottom: 0; max-height: 86svh;
+  background: var(--paper-band); color: var(--ink);
+  transform: translateY(100%); transition: transform 320ms var(--ease-out);
+  display: flex; flex-direction: column;
+  padding: 18px var(--k-gutter) calc(18px + env(safe-area-inset-bottom));
+  overflow-y: auto;
+}
+.lc-sheet[aria-hidden="false"] .lc-sheet-panel { transform: none; }
+
+.lc-sheet-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.lc-sheet-title { font-family: var(--font-display); text-transform: uppercase; font-weight: 400; font-size: 1.5rem; margin: 0; }
+.lc-sheet-x { background: none; border: 1px solid rgba(11,9,8,.3); width: 44px; height: 44px; font-size: 1.2rem; line-height: 1; cursor: pointer; color: var(--ink); }
+
+.lc-sheet-empty { font-size: .88rem; color: rgba(11,9,8,.6); padding: 18px 0; }
+
+.lc-cart-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 0; border-bottom: 1px solid rgba(11,9,8,.14); }
+.lc-cart-item-info { display: flex; flex-direction: column; gap: 2px; }
+.lc-cart-item-info b { font-size: .92rem; }
+.lc-cart-item-info span { font-size: .78rem; color: rgba(11,9,8,.6); font-variant-numeric: tabular-nums; }
+.lc-cart-item-qty { display: flex; align-items: center; gap: 10px; flex: none; }
+.lc-cart-item-qty button {
+  width: 44px; height: 44px; border: 1px solid var(--ink); background: transparent; color: var(--ink);
+  font-size: 1rem; font-weight: 700; cursor: pointer;
+}
+.lc-cart-item-qty span { min-width: 1.4ch; text-align: center; font-variant-numeric: tabular-nums; font-weight: 700; }
+
+.lc-sheet-pay { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(11,9,8,.16); display: flex; flex-direction: column; gap: 8px; }
+.lc-sheet-pay-label { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: rgba(11,9,8,.6); margin: 0; }
+.lc-radio { display: flex; align-items: center; gap: 10px; font-size: .86rem; min-height: 40px; cursor: pointer; }
+/* Cuadros propios, radio 0 como todo el sitio. Sin los azules nativos. */
+.lc-radio input {
+  appearance: none; -webkit-appearance: none;
+  flex: none; width: 20px; height: 20px; margin: 0;
+  border: 2px solid var(--ink); border-radius: 0; background: transparent;
+  display: inline-block; position: relative; cursor: pointer;
+  transition: background-color 160ms var(--ease-out);
+}
+.lc-radio input:checked { background: var(--brand); border-color: var(--brand); }
+.lc-radio input:checked::after {
+  content: ""; position: absolute; inset: 3px; border: 2px solid var(--paper-band);
+}
+.lc-radio input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.lc-sheet-total { display: flex; align-items: baseline; justify-content: space-between; margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(11,9,8,.16); }
+.lc-sheet-total span { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: rgba(11,9,8,.6); }
+.lc-sheet-total strong { font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+
+.lc-sheet-send { margin-top: 14px; width: 100%; }
+
+.lc-cart-item:last-child { border-bottom: 0; }

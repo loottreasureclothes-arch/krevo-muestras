@@ -1,0 +1,42 @@
+/* DOS CASAS - el componente firma en grande: dos tarjetas con horario real calculado
+   ahora + "Pregunta por tu mesa" (unico verde de la seccion). Presupuesto: 1250px. */
+.pt-casas { position: relative; }
+.pt-casas-media { position: relative; height: 46svh; min-height: 300px; overflow: hidden; }
+.pt-casas-media picture { display: block; width: 100%; height: 100%; }
+/* el encuadre deja el letrero "Petra" COMPLETO en el tercio de arriba de la banda,
+   fuera del velo oscuro y fuera del traslape del titulo */
+.pt-casas-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 92%; display: block; }
+.pt-casas-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23, 32, 44, 0.2) 0%, rgba(23, 32, 44, 0.14) 45%, rgba(23, 32, 44, 0.55) 80%, var(--deep) 100%); }
+.pt-casas-in { position: relative; margin-top: -56px; padding-bottom: 64px; }
+.pt-casas-note { margin: 18px 0 0; padding: 12px 14px; border-left: 2px solid var(--flor); background: rgba(61, 78, 104, 0.34); font-size: 13.5px; line-height: 1.45; color: var(--brand); }
+.pt-casas-note[hidden] { display: none; }
+.pt-casas-note button { display: inline-flex; align-items: center; min-height: 44px; background: none; border: 0; padding: 0; margin: 0; color: var(--flor); font: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+.pt-casas-grid { display: grid; gap: 14px; margin-top: 28px; }
+.pt-casa { padding: 20px; border: 1px solid var(--line-on-dark); background: rgba(61, 78, 104, 0.28); transition: border-color 220ms var(--ease-out); }
+.pt-casa.is-active { border-color: var(--flor); }
+.pt-casa-name { font-family: var(--font-display); font-weight: 300; font-size: 21px; margin: 0; color: var(--brand); }
+.pt-casa-addr { margin: 4px 0 0; font-size: 13px; color: var(--brand-dim); }
+.pt-casa-status { margin: 10px 0 0; font-size: 12.5px; letter-spacing: 0.02em; color: var(--flor); }
+.pt-casa-extra { margin: 6px 0 0; font-size: 12px; color: var(--brand-dim); }
+.pt-casa-acts { display: flex; gap: 10px; margin-top: 16px; }
+.pt-casa-acts .pt-btn { min-height: 42px; padding: 0 16px; font-size: 11px; flex: 1; }
+
+.pt-ask { margin-top: 30px; padding: 22px 20px; background: var(--paper); color: var(--deep); }
+.pt-ask-t { display: flex; align-items: center; gap: 9px; margin: 0 0 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--deep); }
+.pt-ask-t svg { width: 16px; height: 16px; color: var(--flor); flex: none; }
+.pt-ask-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 16px; }
+.pt-ask-field { display: flex; flex-direction: column; gap: 5px; min-width: 0; font-size: 9.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(33, 44, 60, 0.6); white-space: nowrap; }
+.pt-ask-field input { width: 100%; min-width: 0; box-sizing: border-box; min-height: 42px; padding: 0 6px; border: 1px solid rgba(33, 44, 60, 0.3); background: #fff; color: var(--deep); font-family: var(--font-body); font-size: 12px; }
+.pt-ask-send { width: 100%; }
+
+@media (min-width: 640px) {
+  .pt-casas-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 900px) {
+  .pt-casas-media { height: min(70svh, 700px); min-height: 460px; }
+  .pt-casas-media img { object-position: 50% 62%; }
+  .pt-casas-in { margin-top: -48px; padding-bottom: 96px; }
+  .pt-ask { padding: 30px 34px; max-width: 640px; }
+  .pt-ask-row { grid-template-columns: repeat(3, 1fr); }
+}

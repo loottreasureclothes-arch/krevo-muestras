@@ -1,0 +1,248 @@
+/* La Cochera Food & Beer — tokens y lenguaje de formas propio.
+   Sale del letrero: caja de luz negra rectangular sobre pared roja, persiana
+   de lámina, rojo de los cuernos. Radio 0 en todo. Un solo motivo: rayas
+   horizontales de 1px (persiana). Ver research/colores.md y HOJA-DIRECCION.md §5. */
+:root {
+  --ink: #0B0908;
+  --brand: #F10303;
+  --brand-deep: #B8182A;
+  --paper: #FFFFE3;
+  --paper-band: #FFFFE3;
+  --wa: #25d366;
+  --wa-ink: #0b3d1f;
+  --k-header-h: 64px;
+  --k-header-h-scrolled: 52px;
+  --k-gutter: 20px;
+  --k-wa-green: #25d366;
+  --radius: 0px;
+  --font-display: "Anton", "Archivo", system-ui, sans-serif;
+  --font-body: "Archivo", system-ui, sans-serif;
+}
+@media (min-width: 900px) {
+  :root { --k-header-h: 72px; --k-header-h-scrolled: 60px; --k-gutter: 40px; }
+}
+
+html, body { background: var(--ink); }
+body {
+  font-family: var(--font-body);
+  color: var(--paper);
+  background: var(--ink);
+  font-optical-sizing: auto;
+  font-feature-settings: "tnum" 1;
+}
+::selection { background: var(--brand); color: var(--paper); }
+
+/* ---------- Motivo: rayas de lámina (persiana) ---------- */
+.lc-stripes {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,227,.08) 0px,
+    rgba(255,255,227,.08) 1px,
+    transparent 1px,
+    transparent 7px
+  );
+}
+
+/* ---------- Divisor: raya roja con corte al centro ---------- */
+.lc-divider {
+  display: flex; align-items: center; gap: 12px;
+  width: 100%; max-width: 1360px; margin: 0 auto; padding: 0 var(--k-gutter);
+}
+.lc-divider::before, .lc-divider::after {
+  content: ""; flex: 1 1 auto; height: 1px; background: var(--brand);
+}
+
+/* ---------- Tipografía ---------- */
+.lc-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(255,255,227,.7); font-weight: 600;
+}
+.lc-eyebrow::before { content: ""; width: 18px; height: 1px; background: var(--brand); display: inline-block; }
+
+.lc-h {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: .96;
+  letter-spacing: .002em;
+  margin: 0;
+  text-wrap: balance;
+}
+.lc-h-line { display: block; }
+.lc-h-line.is-brand { color: var(--brand); }
+
+[data-reveal-stagger] > .lc-h-line {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity 640ms var(--ease-out), transform 640ms var(--ease-out);
+  transition-delay: calc(var(--k-i, 0) * 90ms);
+}
+[data-reveal-stagger].is-in > .lc-h-line { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal-stagger] > .lc-h-line { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+.lc-lede { font-size: 1rem; line-height: 1.5; color: rgba(255,255,227,.86); max-width: 52ch; }
+
+/* ---------- Botones: color de marca finos, verde solo WhatsApp ---------- */
+.lc-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 48px; padding: 0 22px;
+  border: 1px solid var(--brand); color: var(--paper); background: var(--brand);
+  font: inherit; font-weight: 700; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer; border-radius: 0;
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.lc-btn:active { transform: scale(.97); }
+.lc-btn svg { width: 18px; height: 18px; flex: none; }
+.lc-btn--outline { background: transparent; color: var(--paper); border-color: rgba(255,255,227,.55); }
+@media (hover:hover) and (pointer:fine) {
+  .lc-btn--outline:hover { border-color: var(--paper); }
+  .lc-btn--primary:hover { background: var(--brand-deep); border-color: var(--brand-deep); }
+}
+.lc-btn--wa, .lc-btn--line {
+  height: 44px; padding: 0 18px; font-size: .74rem;
+}
+.lc-btn--wa { background: var(--wa); border-color: var(--wa); color: var(--wa-ink); }
+.lc-btn--line { background: transparent; border-color: rgba(255,255,227,.4); color: var(--paper); }
+.lc-btn--link {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  background: none; border: none; color: var(--paper); font: inherit; font-weight: 700;
+  font-size: .95rem; text-decoration: none; padding: 4px 0; cursor: pointer;
+}
+.lc-btn--link svg { width: 18px; height: 18px; transition: transform 200ms var(--ease-out); }
+@media (hover:hover) and (pointer:fine) { .lc-btn--link:hover svg { transform: translateX(4px); } }
+
+/* ---------- Header: caja de luz negra ---------- */
+.lc-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 40;
+  height: calc(var(--k-header-h) + env(safe-area-inset-top));
+  background: var(--ink);
+  transition: height 220ms var(--ease-out);
+}
+.lc-header.is-scrolled { height: calc(var(--k-header-h-scrolled) + env(safe-area-inset-top)); }
+.lc-header-in {
+  height: 100%; padding-top: env(safe-area-inset-top);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.lc-logo { display: flex; align-items: center; height: 100%; }
+.lc-logo-plate {
+  display: flex; align-items: center; height: 40px; padding: 0 10px;
+  border: 2px solid var(--paper);
+}
+.lc-logo-plate img { height: 26px; width: auto; display: block; }
+@media (min-width: 900px) { .lc-logo-plate { height: 46px; padding: 0 14px; } .lc-logo-plate img { height: 30px; } }
+
+.lc-header-r { display: flex; align-items: center; gap: 10px; }
+.lc-cta {
+  display: inline-flex; align-items: center; height: 44px; padding: 0 16px;
+  background: var(--brand); color: var(--paper); text-decoration: none;
+  font-weight: 700; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+  border: 1px solid var(--brand);
+}
+@media (min-width: 900px) { .lc-cta { height: 46px; padding: 0 20px; font-size: .78rem; } }
+
+.lc-burger {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  background: none; border: 0; color: var(--paper); font: inherit; cursor: pointer; padding: 8px 4px;
+}
+.lc-burger-bars { display: inline-flex; flex-direction: column; gap: 4px; width: 20px; }
+.lc-burger-bars i { display: block; height: 2px; background: var(--paper); }
+.lc-burger-bars i:nth-child(2) { width: 70%; }
+.lc-burger-txt { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; }
+
+.lc-header-line {
+  position: absolute; left: 0; bottom: -2px; height: 2px; width: 0%;
+  background: var(--brand);
+  transition: width 220ms var(--ease-out);
+}
+.lc-header.is-scrolled .lc-header-line { width: 100%; }
+
+/* ---------- Menú a pantalla completa ---------- */
+.lc-nav { position: fixed; inset: 0; z-index: 60; visibility: hidden; }
+.lc-nav[aria-hidden="false"] { visibility: visible; }
+.lc-nav-scrim { position: absolute; inset: 0; background: rgba(0,0,0,.0); transition: background 260ms var(--ease-out); }
+.lc-nav[aria-hidden="false"] .lc-nav-scrim { background: rgba(0,0,0,.6); }
+.lc-nav-panel {
+  position: absolute; inset: 0; background: var(--ink);
+  transform: translateY(-100%); transition: transform 320ms var(--ease-out);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 0 var(--k-gutter) 28px;
+  overflow-y: auto;
+}
+/* Barra propia del panel: la caja de luz a la izquierda y la salida a la
+   derecha. El panel tapa el header, asi que la salida vive aqui adentro. */
+.lc-nav-top {
+  position: sticky; top: 0; z-index: 2; background: var(--ink);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  height: calc(var(--k-header-h) + env(safe-area-inset-top));
+  padding-top: env(safe-area-inset-top);
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--brand);
+}
+.lc-nav-plate { display: flex; align-items: center; height: 40px; padding: 0 10px; border: 2px solid var(--paper); }
+.lc-nav-plate img { height: 26px; width: auto; display: block; }
+.lc-nav-x {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 44px; min-width: 44px; padding: 0 16px;
+  background: transparent; border: 1px solid rgba(255,255,227,.55); color: var(--paper);
+  font: inherit; font-weight: 700; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
+  cursor: pointer;
+}
+@media (hover:hover) and (pointer:fine) { .lc-nav-x:hover { border-color: var(--paper); } }
+/* El flotante de WhatsApp no se asoma por encima del panel (L11: visibility) */
+#lc-nav[aria-hidden="false"] ~ .k-wa { visibility: hidden; animation: none; }
+.lc-nav[aria-hidden="false"] .lc-nav-panel { transform: none; }
+.lc-nav-list { display: flex; flex-direction: column; gap: 4px; }
+.lc-nav-list a {
+  display: flex; align-items: baseline; gap: 14px;
+  color: var(--paper); text-decoration: none;
+  font-family: var(--font-display); text-transform: uppercase;
+  font-size: clamp(1.6rem, 8vw, 2.6rem); line-height: 1.3;
+  border-bottom: 1px solid rgba(255,255,227,.14); padding: 8px 0;
+}
+.lc-nav-list a span { font-family: var(--font-body); font-size: .85rem; color: var(--brand); font-weight: 800; }
+.lc-nav-foot { margin-top: 24px; display: flex; flex-direction: column; gap: 16px; }
+.lc-nav-acts { display: flex; gap: 10px; flex-wrap: wrap; }
+.lc-nav-foot p { display: flex; gap: 18px; flex-wrap: wrap; }
+.lc-nav-soc { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--paper); text-decoration: none; font-size: .85rem; opacity: .85; }
+.lc-nav-soc svg { width: 18px; height: 18px; }
+
+/* ---------- Marcos de foto (solo fotos que NO van a sangre) ---------- */
+.lc-frame { position: relative; padding: 6px; }
+.lc-frame::before { content: ""; position: absolute; inset: -6px; border: 1px solid var(--paper); pointer-events: none; }
+.lc-frame img { display: block; width: 100%; height: 100%; object-fit: cover; border: 2px solid var(--paper); }
+
+/* ---------- Pie de foto numerado ---------- */
+.lc-caption {
+  position: absolute; left: 16px; bottom: 16px; z-index: 2;
+  font-size: .78rem; color: var(--paper); background: rgba(11,9,8,.55);
+  padding: 6px 10px; max-width: calc(100% - 32px);
+}
+.lc-caption b { color: var(--brand); font-weight: 800; }
+
+/* ---------- Utilidades de sección ---------- */
+.k-wrap { width: 100%; max-width: 1360px; margin: 0 auto; padding: 0 var(--k-gutter); }
+.lc-sec { position: relative; }
+.lc-bleed { position: relative; width: 100%; overflow: hidden; }
+.lc-bleed img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Skip link ---------- */
+.lc-skip {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--paper); color: var(--ink); padding: 10px 16px; font-weight: 700;
+}
+.lc-skip:focus { left: 12px; top: 12px; }
+
+/* ---------- Pie legal (fuera de la sección de cierre) ---------- */
+.lc-foot { background: var(--ink); border-top: 1px solid rgba(255,255,227,.14); }
+.lc-foot-note { padding: 18px 0; font-size: .74rem; color: rgba(255,255,227,.5); max-width: 60ch; }
+
+html {
+  overflow-x: clip;
+  scroll-behavior: auto !important;
+  /* La barra de chips queda pegada bajo el header: el ancla tiene que caer
+     por debajo de las dos para no comerse el renglon de arriba. */
+  scroll-padding-top: 130px;
+}
+@media (min-width: 900px) { html { scroll-padding-top: 142px; } }

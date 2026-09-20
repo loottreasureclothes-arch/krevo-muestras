@@ -1,0 +1,20 @@
+/* Cierre: checklist real para el dueño + el sello de Petra a >60% del ancho sobre --deep-2.
+   Presupuesto celular: 1,100px. */
+.pt-cierre-list { padding-block: var(--sec-y) 40px; }
+.pt-check { display: grid; gap: 14px; margin-top: 22px; max-width: 46ch; }
+.pt-check li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.4; color: var(--brand); padding-bottom: 14px; border-bottom: 1px solid var(--line-on-dark); }
+.pt-check li:last-child { border-bottom: 0; padding-bottom: 0; }
+.pt-check svg { width: 16px; height: 16px; margin-top: 3px; color: var(--flor); flex: none; }
+.pt-cierre-note { margin-top: 22px; font-size: 13px; letter-spacing: 0.06em; color: var(--brand-dim); }
+.pt-cierre-band { background: var(--deep-2); padding: 56px var(--k-gutter) 64px; text-align: center; }
+/* el sello ya no trae el plato circular pegado: es la flor, las letras y el bajo-letrero
+   sobre transparente, asi que NO lleva border-radius ni fondo propio */
+.pt-cierre-sello { display: block; width: min(74%, 360px); height: auto; margin: 0 auto 28px; }
+.pt-cierre-title { color: var(--brand); text-align: center; }
+@media (min-width: 900px) {
+  .pt-cierre-list { padding-block: var(--sec-y) 56px; }
+  /* la lista ocupaba un tercio del ancho y dejaba dos tercios de azul vacio */
+  .pt-check { max-width: none; grid-template-columns: 1fr 1fr; column-gap: 48px; }
+  .pt-cierre-band { padding: 96px var(--k-gutter) 108px; }
+  .pt-cierre-sello { width: min(60%, 660px); margin-bottom: 40px; }
+}

@@ -1,0 +1,29 @@
+/* ============ 10 HERO: la entrada · viga roja del porton, foto real, promo real ============
+   Celular: eyebrow+titulo+linea+botones en flujo, la foto va abajo dentro del marco de arco.
+   Compu (>=900): la foto ocupa el hero a sangre 16:9, el texto flota abajo-izquierda sobre el pavimento. */
+#hero.s-hero { padding-top: calc(56px + env(safe-area-inset-top) + 28px); padding-bottom: 0; overflow: hidden; }
+#hero .s-hero-in { display: flex; flex-direction: column; gap: 22px; padding-bottom: 26px; }
+#hero .s-hero-copy { display: grid; gap: 14px; max-width: 420px; }
+#hero .s-hero-title.cd-h2 { font-size: clamp(34px, 10.2vw, 72px); margin-bottom: 0; max-width: none; }
+#hero .s-hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+#hero .s-hero-actions .cd-btn { flex: 1 1 auto; }
+
+#hero .s-hero-media { position: relative; height: 46svh; min-height: 260px; border-radius: 160px 160px 0 0; overflow: hidden; box-shadow: 0 20px 50px rgba(0, 0, 0, .35); }
+#hero .s-hero-media picture, #hero .s-hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 26%; }
+#hero .s-hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30, 37, 43, 0) 55%, rgba(20, 24, 28, .55) 100%); pointer-events: none; }
+
+#hero .s-hero-promo { margin: 0; padding: 0 84px 0 var(--k-gutter); min-height: 44px; display: flex; align-items: center; gap: 8px; background: var(--deep-2); color: var(--cream); font-size: 13px; line-height: 1.3; }
+#hero .s-hero-promo b { color: var(--brand-on-deep); font: 900 15px/1 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; }
+
+@media (min-width: 900px) {
+  #hero.s-hero { padding-top: 0; }
+  #hero .s-hero-in { position: relative; display: block; min-height: 82svh; padding-block: 0; }
+  /* la foto arranca DEBAJO de la viga roja del header: asi el letrero del porton entra completo */
+  #hero .s-hero-media { position: absolute; inset: calc(64px + env(safe-area-inset-top)) 0 0 0; height: auto; border-radius: 0; box-shadow: none; margin-inline: calc(var(--k-gutter) * -1); width: calc(100% + var(--k-gutter) * 2); }
+  @media (min-width: 1360px) { #hero .s-hero-media { margin-inline: calc(50% - 50vw); width: 100vw; } }
+  #hero .s-hero-media img { object-position: 50% 0%; }
+  #hero .s-hero-media::after { background: linear-gradient(0deg, rgba(12, 8, 5, .93) 0%, rgba(12, 8, 5, .58) 26%, rgba(12, 8, 5, 0) 52%), linear-gradient(90deg, rgba(12, 8, 5, .52) 0%, rgba(12, 8, 5, .16) 34%, rgba(12, 8, 5, 0) 62%); }
+  #hero .s-hero-copy { position: relative; z-index: 1; max-width: 620px; padding: 0 0 56px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 82svh; }
+  #hero .s-hero-title.cd-h2 { font-size: clamp(48px, 4.6vw, 84px); }
+  #hero .s-hero-copy, #hero .s-hero-copy .cd-eyebrow, #hero .s-hero-copy .cd-lead { color: var(--cream); }
+}

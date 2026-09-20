@@ -1,0 +1,32 @@
+/* ============ 40 PAQUETES: "Pa' que te animes" · el ticket grande ============
+   Cada paquete trae una tira con las TRES piezas recortadas de sus propias fichas
+   (nunca el cartel de paquetes, que lleva el precio quemado), el precio junto al
+   nombre y el ahorro real a la vista. */
+#paquetes.s-paquetes { padding: var(--sec-y-sm) 0 44px; }
+#paquetes .s-paq-head { margin-bottom: 16px; }
+#paquetes .s-paq-head .cd-h2 { margin-bottom: 10px; }
+#paquetes .s-paq-lead { color: var(--cream-mute); font-size: 15px; line-height: 1.45; max-width: 44ch; margin: 0; }
+
+#paquetes .s-paq-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+#paquetes .s-paq-card { background: var(--deep-2); border-top: 4px solid var(--brand); display: grid; }
+#paquetes .s-paq-tira { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(244, 241, 238, .14); }
+#paquetes .s-paq-tira img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+#paquetes .s-paq-body { padding: 10px 13px 13px; display: grid; gap: 4px; }
+#paquetes .s-paq-top { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; margin: 0; }
+#paquetes .s-paq-n { font: 700 11px/1 var(--font-body); letter-spacing: .14em; color: var(--brand-on-deep); }
+#paquetes .s-paq-name { font-family: var(--font-display); font-weight: 900; font-stretch: 68%; font-variation-settings: "wdth" 68; text-transform: uppercase; font-size: clamp(19px, 5.4vw, 26px); line-height: 1; color: var(--cream); }
+#paquetes .s-paq-precio { margin-left: auto; font: 900 clamp(21px, 6vw, 28px)/1 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; color: var(--brand-on-deep); }
+#paquetes .s-paq-ahorro { display: flex; align-items: baseline; gap: 10px; margin: 0; font-size: 12px; }
+#paquetes .s-paq-ahorro s { color: var(--cream-mute); }
+#paquetes .s-paq-ahorro span { color: var(--cream); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; font-size: 11.5px; border-bottom: 1.5px solid var(--brand-on-deep); }
+#paquetes .s-paq-pieces { margin: 2px 0 6px; color: var(--cream-mute); font-size: 12.5px; line-height: 1.38; }
+#paquetes .s-paq-add { width: 100%; min-height: 44px; }
+#paquetes .s-paq-note { margin: 18px 0 0; color: var(--cream-mute); font-size: 12.5px; }
+
+@media (min-width: 760px) {
+  #paquetes .s-paq-list { grid-template-columns: 1fr 1fr; gap: 18px; }
+}
+@media (min-width: 1100px) {
+  #paquetes .s-paq-list { grid-template-columns: repeat(3, 1fr); }
+  #paquetes .s-paq-add { width: auto; justify-self: start; }
+}

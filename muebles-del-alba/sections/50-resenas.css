@@ -1,0 +1,42 @@
+/* ============ 50 RESENAS: "Lo pidio un lunes" · pausa tipografica sobre carbon ============
+   Sin foto. Cita gigante + 4 resenas reales con estrellas + 3 promesas textuales.
+   Presupuesto celular 820px: 2 columnas de resenas desde el celular para no pasarse. */
+#resenas.s-resenas {
+  padding: var(--sec-y-sm) 0; background-color: var(--deep-2); background-image: var(--grain); color: var(--cream);
+}
+#resenas .s-res-quote {
+  margin: 0 0 16px; font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68;
+  font-weight: 900; text-transform: uppercase; font-size: clamp(22px, 5.9vw, 46px); line-height: 1.02; max-width: 19ch;
+  
+}
+#resenas .s-res-quote .ln { display: block; white-space: nowrap; }
+#resenas .s-res-quote em { font-style: normal; color: var(--brand-on-deep); }
+#resenas .s-res-author { margin: 0 0 4px; font-size: 13px; color: var(--cream-mute); }
+#resenas .s-res-rating { margin: 0 0 16px; font-size: 13px; color: var(--cream-mute); padding-bottom: 14px; border-bottom: 1px solid var(--line-deep); }
+#resenas .s-res-rating b { font: 900 18px/1 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; color: var(--cream); }
+
+#resenas .s-res-list { list-style: none; margin: 0 0 18px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; }
+#resenas .s-res-stars { color: var(--brand-on-deep); font-size: 12px; letter-spacing: 1.5px; margin-bottom: 5px; }
+#resenas .s-res-text { margin: 0 0 5px; font-size: 12.5px; line-height: 1.38; color: var(--cream); }
+#resenas .s-res-name { margin: 0; font: 700 11px/1.3 var(--font-body); color: var(--cream-mute); }
+#resenas .s-res-name span { font-weight: 400; display: block; }
+
+#resenas .s-res-promises { list-style: none; margin: 0; padding: 16px 0 0; border-top: 1px solid var(--line-deep); display: grid; gap: 9px; }
+#resenas .s-res-promises li { position: relative; padding-left: 18px; font-size: 13px; line-height: 1.35; color: var(--cream); }
+#resenas .s-res-promises li::before { content: ""; position: absolute; left: 0; top: .5em; width: 9px; height: 1.5px; background: var(--brand-on-deep); }
+
+@media (min-width: 640px) {
+  #resenas .s-res-stars { font-size: 15px; letter-spacing: 2px; }
+  #resenas .s-res-text { font-size: 15px; line-height: 1.5; max-width: 46ch; }
+  #resenas .s-res-name { font-size: 13px; }
+  #resenas .s-res-name span { display: inline; }
+}
+@media (min-width: 900px) {
+  #resenas.s-resenas { padding: var(--sec-y) 0 var(--sec-y-sm); }
+  #resenas .s-res-list { grid-template-columns: repeat(4, 1fr); gap: 0 36px; }
+  #resenas .s-res-list li { border-left: 1px solid var(--line-deep); padding-left: 24px; }
+  #resenas .s-res-list li:first-child { border-left: 0; padding-left: 0; }
+  #resenas .s-res-quote { max-width: 24ch; }
+  #resenas .s-res-rating { display: flex; align-items: baseline; gap: 10px; }
+  #resenas .s-res-promises { grid-template-columns: repeat(3, 1fr); padding-top: 24px; }
+}

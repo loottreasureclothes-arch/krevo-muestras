@@ -1,0 +1,72 @@
+<!-- 30-platon: EL MOMENTO FIRMA. "El platón giratorio del pedido". Foto 05 cenital sobre disco que gira
+     18° al entrar y 120° por cada paso (tamaño → sabor → fecha), escribiendo la elección en el borde.
+     Único componente firma de esta muestra (ver COMPONENTES-USADOS.md). Un solo verde: el botón final. -->
+<section class="tr-sec tr-platon" id="platon" aria-label="Encarga tu pastel">
+  <div class="k-wrap tr-platon-wrap">
+    <div class="tr-platon-head">
+      <h2 class="tr-d tr-h2 tr-fall" data-fall>Tú pones la fecha. <em>Yo pongo el pastel.</em></h2>
+    </div>
+
+    <div class="tr-platon-grid">
+      <div class="tr-platon-stage">
+        <div class="tr-platon-disc-wrap" data-reveal>
+          <div class="tr-platon-disc" id="platonDisc">
+            <img src="img/platon/pastel-flores-1400.webp" alt="Pastel de chocolate con flores comestibles, vista cenital, hecho por Tania Repostería" width="1400" height="1859" loading="lazy">
+            <svg class="tr-platon-ring" viewBox="0 0 300 300" aria-hidden="true">
+              <path id="platonArcPath" d="M 18,150 A 132,132 0 1,0 282,150" fill="none"/>
+              <path class="tr-platon-arc-band" d="M 18,150 A 132,132 0 1,0 282,150" fill="none"/>
+              <text class="tr-platon-arc-t"><textPath href="#platonArcPath" startOffset="50%" text-anchor="middle" id="platonArcText"></textPath></text>
+            </svg>
+          </div>
+          <p class="tr-platon-legend" id="platonLegend">Elige tamaño, sabor y fecha. Aquí se va escribiendo tu pedido.</p>
+        </div>
+
+        <figure class="tr-frame tr-platon-side">
+          <svg class="tr-knot" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7c0-3 2-5 5-5s5 2 5 5-2 5-5 5-5-2-5-5Z M4 7h6"/></svg>
+          <img src="img/platon/trailer-fondant-576.webp" alt="Pastel en forma de tráiler rojo hecho en fondant, encargo de Tania Repostería" width="576" height="1328" loading="lazy">
+          <figcaption>Tráiler de fondant, por encargo.</figcaption>
+        </figure>
+      </div>
+
+      <div class="tr-platon-order">
+        <div class="tr-platon-steps" id="platonSteps">
+          <div class="tr-platon-step is-active" data-step="tamano">
+            <p class="tr-platon-step-label">01 · Tamaño</p>
+            <label class="k-sr" for="platonTamano">Para cuántas personas</label>
+            <input type="text" id="platonTamano" class="tr-platon-input" placeholder="Para cuántas personas" autocomplete="off">
+            <p class="tr-platon-note">Pregunta el precio.</p>
+            <button type="button" class="tr-btn tr-btn--brand-ol tr-platon-go" data-go="tamano">Siguiente</button>
+          </div>
+          <div class="tr-platon-step" data-step="sabor">
+            <p class="tr-platon-step-label">02 · Sabor</p>
+            <div class="tr-platon-chips" role="group" aria-label="Sabor del pastel">
+              <button type="button" class="tr-chip" data-sabor="Vainilla 3 leches">Vainilla 3 leches</button>
+              <button type="button" class="tr-chip" data-sabor="Chocolate sin huevo">Chocolate sin huevo</button>
+              <button type="button" class="tr-chip" data-sabor="Zanahoria">Zanahoria</button>
+              <button type="button" class="tr-chip" data-sabor="Naranja con nuez y mousse de cajeta">Naranja, nuez y cajeta</button>
+              <button type="button" class="tr-chip" data-sabor="Red velvet">Red velvet</button>
+              <button type="button" class="tr-chip" data-sabor="Oreo">Oreo</button>
+            </div>
+          </div>
+          <div class="tr-platon-step" data-step="fecha">
+            <p class="tr-platon-step-label">03 · Fecha</p>
+            <label class="k-sr" for="platonFecha">Fecha del pastel</label>
+            <input type="date" id="platonFecha" class="tr-platon-input">
+            <p class="tr-platon-note">Tania te confirma la fecha por WhatsApp.</p>
+          </div>
+        </div>
+
+        <div class="tr-platon-summary" id="platonSummary" hidden>
+          <p class="tr-platon-total">Total: <strong>Te lo confirmamos por WhatsApp</strong></p>
+          <a class="tr-btn tr-btn--wa tr-platon-send" id="platonSend" href="https://wa.me/524494136499"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Enviar mi pedido por WhatsApp</span></a>
+        </div>
+
+        <figure class="tr-platon-review">
+          <p class="tr-platon-stars" aria-label="5 de 5 estrellas">★★★★★</p>
+          <blockquote>&ldquo;Excelente calidad y precio. Muy recomendables los panes y los pasteles. Además te lo pueden diseñar con el tema o personaje que tú elijas.&rdquo;</blockquote>
+          <figcaption>Pedro Antonio Venegas Morales · Google</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>

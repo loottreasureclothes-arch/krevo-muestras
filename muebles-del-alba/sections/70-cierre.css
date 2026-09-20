@@ -1,0 +1,18 @@
+/* ============ 70 CIERRE: banda roja con el logotipo + "Todo listo para completar" ============ */
+#cierre.s-cierre { padding: 0; }
+#cierre .s-cierre-brand { background: var(--brand); padding: 40px var(--k-gutter) 32px; display: grid; justify-items: center; gap: 18px; text-align: center; }
+#cierre .s-cierre-logo { width: min(560px, 70vw); height: auto; }
+#cierre .s-cierre-motto { color: #fff; font-size: clamp(30px, 9vw, 56px); line-height: .96; margin: 0; }
+#cierre .s-cierre-todo { background: var(--paper); color: var(--ink); padding: 34px 0 38px; }
+#cierre .s-cierre-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 12px; }
+#cierre .s-cierre-list li { display: grid; gap: 3px; padding: 12px 0; border-top: 1px solid var(--line); }
+#cierre .s-cierre-list b { font: 800 15px/1.2 var(--font-body); }
+#cierre .s-cierre-list span { color: var(--mute); font-size: 14.5px; line-height: 1.45; }
+#cierre .s-cierre-note { margin-top: 16px; font-size: 13px; color: var(--mute); }
+#cierre .s-cierre-note code { background: var(--paper-2); padding: 2px 6px; border-radius: 2px; }
+@media (min-width: 900px) {
+  #cierre .s-cierre-brand { padding: 92px 0 76px; }
+  #cierre .s-cierre-list { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  #cierre .s-cierre-list li { border-top: 0; border-left: 1px solid var(--line); padding: 0 28px; }
+  #cierre .s-cierre-list li:first-child { border-left: 0; padding-left: 0; }
+}

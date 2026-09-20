@@ -1,0 +1,78 @@
+/* #carta: banda --paper (la única banda de lectura además de la hoja). Fondo global en site.css. */
+.s-carta { padding-bottom: var(--sec-y); }
+.mn-hero { position: relative; height: 60svh; min-height: 340px; max-height: 560px; overflow: hidden; margin: 0; }
+.mn-hero img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mn-hero figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 18px var(--k-gutter) 16px; min-height: 180px;
+  display: flex; align-items: flex-end;
+  background: linear-gradient(0deg, rgba(10, 6, 3, 0.85) 0%, rgba(10, 6, 3, 0.62) 38%, rgba(10, 6, 3, 0) 100%);
+  color: var(--paper); font-family: var(--font-display); font-size: 15px; letter-spacing: 0.02em;
+}
+.mn-hero figcaption .tab-num { color: var(--brand); font-weight: 600; margin-left: 6px; }
+@media (min-width: 900px) { .mn-hero figcaption { font-size: 18px; padding: 26px var(--k-gutter) 22px; } }
+
+.mn-in { padding-top: 44px; }
+.mn-eyebrow { color: var(--brand-ink); }
+.mn-title { font-size: clamp(30px, 8.6vw, 52px); color: var(--ink); max-width: 14ch; }
+.mn-title b { color: var(--brand-ink); }
+.mn-lead { margin-top: 12px; color: rgba(27, 21, 18, 0.62); font-size: 15px; max-width: 42ch; line-height: 1.5; }
+
+.mn-chips { position: sticky; top: var(--k-header-h); z-index: 5; display: flex; gap: 8px; overflow-x: auto; margin: 26px calc(var(--k-gutter) * -1) 0; padding: 12px var(--k-gutter); background: var(--paper); border-bottom: 1px solid var(--line-paper); scrollbar-width: none; }
+.mn-chips::-webkit-scrollbar { display: none; }
+.mn-chip {
+  flex: none; display: inline-flex; align-items: center; height: 44px; padding: 0 14px;
+  border: 1.5px solid var(--brand-ink); color: var(--brand-ink); background: transparent;
+  font-family: var(--font-display); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; white-space: nowrap; cursor: pointer;
+}
+.mn-chip[aria-selected="true"] { background: var(--brand-ink); color: var(--paper); }
+@media (hover: hover) and (pointer: fine) { .mn-chip:hover { background: var(--brand-ink); color: var(--paper); } }
+
+.mn-cat { margin-top: 32px; scroll-margin-top: calc(var(--k-header-h) + 56px); }
+/* En compu la categoría se lee como carta de mesa: las tarjetas con foto a la izquierda y
+   los renglones con precio a la derecha, para que la banda crema no quede vacía. */
+@media (min-width: 900px) {
+  .mn-cat[hidden] { display: none; }
+  .mn-cat:not([hidden]):has(.mn-grid) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 430px); column-gap: 56px; align-items: start; }
+  .mn-cat:not([hidden]):has(.mn-grid) > .mn-cat-h { grid-column: 1 / -1; }
+  .mn-cat:not([hidden]):has(.mn-grid) > .mn-grid { grid-column: 1; }
+  .mn-cat:not([hidden]):has(.mn-grid) > .mn-list { grid-column: 2; grid-row: 2; margin-top: 0; }
+  .mn-cat:not([hidden]):has(.mn-grid) > .mn-fine { grid-column: 2; }
+}
+.mn-cat-h { font-family: var(--font-display); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand-ink); margin-bottom: 16px; }
+
+/* auto-fit + tope de ancho por tarjeta: una categoría con UNA sola tarjeta no reserva
+   dos o tres columnas vacías (ni estira la foto a todo lo ancho). */
+.mn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; justify-content: start; }
+.mn-card { max-width: 230px; }
+@media (min-width: 900px) { .mn-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; } .mn-card { max-width: 330px; } }
+
+.mn-card { display: flex; flex-direction: column; background: #fff; }
+.mn-card-photo { aspect-ratio: 1 / 1; overflow: hidden; }
+.mn-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mn-card-body { padding: 12px 4px 2px; display: flex; flex-direction: column; flex: 1; }
+.mn-card-name { font-family: var(--font-display); font-weight: 500; font-size: 16px; color: var(--ink); line-height: 1.2; }
+.mn-card-note { margin-top: 4px; font-size: 12px; color: rgba(27, 21, 18, 0.58); line-height: 1.4; flex: 1; }
+.mn-card-row { margin-top: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 40px; }
+.mn-card-price { font-size: 15px; font-weight: 700; color: var(--ink); flex: none; }
+
+.mn-add {
+  border: 1.5px solid var(--brand-ink); background: transparent; color: var(--brand-ink);
+  height: 44px; padding: 0 12px; font-family: var(--font-display); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap;
+  transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { .mn-add:hover { background: var(--brand-ink); color: var(--paper); } }
+.mn-card.has-qty .mn-add { display: none; }
+.mn-stepper { display: none; align-items: stretch; border: 1.5px solid var(--brand-ink); height: 44px; }
+.mn-card.has-qty .mn-stepper { display: flex; }
+.mn-stepper button { width: 36px; height: 100%; color: var(--brand-ink); font-size: 16px; background: transparent; }
+.mn-stepper span { width: 28px; display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--ink); border-inline: 1px solid var(--line-paper); }
+
+.mn-list { margin-top: 18px; display: grid; }
+.mn-list li { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line-paper); font-size: 14.5px; color: var(--ink); }
+.mn-list li:first-child { border-top: 1px solid var(--line-paper); }
+.mn-list li i { display: block; font-style: normal; font-size: 12px; color: rgba(27, 21, 18, 0.56); margin-top: 2px; }
+.mn-list li > span:first-child { min-width: 0; }
+.mn-list li > .tab-num { flex: none; font-weight: 600; color: var(--brand-ink); }
+.mn-fine { margin-top: 18px; font-size: 12.5px; color: rgba(27, 21, 18, 0.56); }

@@ -1,0 +1,42 @@
+/* Momento firma: "Una mesa de Petra cuesta $228." La foto real de la mesa (pozole,
+   horchata y salsa) con 3 etiquetas que caen sobre los objetos REALES y el total debajo.
+   Celular: foto de 62svh con el titulo encima. Compu: la foto se va a columna izquierda
+   con alto fijo (antes usaba min-height y el <img> se dibujaba a su alto natural: 1,824 px
+   de foto sola) y el titulo, el total y el boton viven a su derecha, en la misma pantalla.
+   Presupuesto celular: 900px. */
+.pt-mesa { position: relative; }
+.pt-mesa-media { position: relative; height: 62svh; min-height: 380px; overflow: hidden; }
+.pt-mesa-media picture { display: block; width: 100%; height: 100%; }
+.pt-mesa-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
+.pt-mesa-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23, 32, 44, 0.72) 0%, rgba(23, 32, 44, 0.3) 22%, rgba(23, 32, 44, 0.08) 42%, rgba(23, 32, 44, 0.12) 74%, rgba(23, 32, 44, 0.5) 100%); }
+.pt-mesa-title { position: absolute; left: var(--k-gutter); right: var(--k-gutter); top: 24px; z-index: 3; color: var(--brand); text-shadow: 0 2px 14px rgba(23, 32, 44, 0.6); }
+.pt-mesa-tags { position: absolute; inset: 0; z-index: 2; }
+.pt-mesa-tag { position: absolute; left: var(--x); top: var(--y); max-width: 150px; display: flex; align-items: flex-start; gap: 6px; transform: translate(-50%, 8px); opacity: 0; transition: opacity 260ms var(--ease-out), transform 260ms var(--ease-out); }
+.pt-mesa-tag.is-in { opacity: 1; transform: translate(-50%, 0); }
+.pt-mesa-line { flex: none; width: 12px; height: 1px; margin-top: 7px; background: var(--flor); transform: scaleX(0); transform-origin: left; transition: transform 260ms var(--ease-out); }
+.pt-mesa-tag.is-in .pt-mesa-line { transform: scaleX(1); }
+/* la etiqueta se lee sobre cualquier parte de la foto (rabanos blancos incluidos) */
+.pt-mesa-tag p { margin: 0; padding: 5px 9px; background: rgba(23, 32, 44, 0.62); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); font-size: 11.5px; line-height: 1.3; color: #fff; }
+.pt-mesa-tag b { color: var(--flor); font-weight: 700; font-variant-numeric: tabular-nums; }
+.pt-mesa-sep { margin-inline: 0.35em; color: rgba(255, 255, 255, 0.75); }
+.pt-mesa-tag--quote { max-width: 140px; left: min(var(--x), 70%); }
+.pt-mesa-tag--quote p { font-size: 10.5px; font-style: italic; opacity: 0.95; }
+.pt-mesa-tag--quote cite { display: block; margin-top: 3px; font-style: normal; font-size: 9.5px; letter-spacing: 0.02em; color: rgba(239, 231, 218, 0.75); }
+.pt-mesa-close { padding-block: 40px; text-align: center; }
+.pt-mesa-total { font-family: var(--font-display); font-weight: 300; opacity: 0; transform: translateY(12px); transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out); }
+.pt-mesa-total.is-in { opacity: 1; transform: none; }
+.pt-mesa-total span { display: block; font-family: var(--font-body); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-dim); margin-bottom: 6px; }
+.pt-mesa-total b { font-size: clamp(48px, 14vw, 84px); font-weight: 300; color: var(--flor); line-height: 1; font-variant-numeric: tabular-nums; }
+.pt-mesa-close .pt-btn { margin-top: 22px; }
+@media (min-width: 900px) {
+  .pt-mesa { display: grid; grid-template-columns: 46fr 54fr; align-items: center; gap: clamp(28px, 3.4vw, 56px); padding-block: 96px; padding-inline: 0 max(var(--k-gutter), env(safe-area-inset-right)); }
+  .pt-mesa-media { height: min(78svh, 760px); min-height: 520px; }
+  .pt-mesa-title { position: static; text-shadow: none; }
+  .pt-mesa-tag { max-width: 200px; }
+  .pt-mesa-tag p { font-size: 15px; }
+  .pt-mesa-tag--quote { max-width: 220px; left: min(var(--x), 76%); }
+  .pt-mesa-tag--quote p { font-size: 13px; }
+  .pt-mesa-tag--quote cite { font-size: 11px; }
+  .pt-mesa-close { padding-block: 0; text-align: left; margin-inline: 0; max-width: 620px; padding-inline: clamp(24px, 2.6vw, 48px) 0; }
+  .pt-mesa-total { margin-top: 32px; }
+}

@@ -1,0 +1,26 @@
+/* 05 (interno) · POR DENTRO — reseñas reales, patrón normal (eyebrow, título,
+   dato, tarjetas). Único momento con foto en marco crema (no a sangre). */
+.s-res { padding: 26px 0 40px; background: var(--ink); }
+.s-res-grid { display: flex; flex-direction: column; gap: 18px; }
+@media (min-width: 900px) { .s-res-grid { flex-direction: row; align-items: flex-start; gap: 48px; } }
+
+.s-res-media { flex: none; width: 100%; max-width: 340px; margin: 0 auto; }
+@media (min-width: 900px) { .s-res-media { width: 38%; max-width: 380px; margin: 0; position: sticky; top: calc(var(--k-header-h) + 24px); } }
+.s-res-media img { aspect-ratio: 760/880; }
+
+.s-res-copy { flex: 1; min-width: 0; }
+.s-res-h { font-size: clamp(30px, 9vw, 44px); margin-top: 10px; max-width: 14ch; }
+@media (min-width: 900px) { .s-res-h { font-size: clamp(44px, 4vw, 64px); } }
+
+.s-res-score {
+  display: flex; align-items: center; gap: 6px; margin: 10px 0 16px;
+  font-size: .88rem; color: rgba(255,255,227,.75); font-variant-numeric: tabular-nums;
+}
+.s-res-score svg { width: 16px; height: 16px; color: var(--brand); }
+
+.s-res-list { display: flex; flex-direction: column; gap: 10px; }
+.s-res-card { border: 1px solid rgba(255,255,227,.16); padding: 13px 14px; }
+.s-res-stars { display: flex; gap: 3px; margin-bottom: 8px; }
+.s-res-stars svg { width: 14px; height: 14px; color: var(--brand); }
+.s-res-card p { margin: 0; font-size: .88rem; line-height: 1.5; color: rgba(255,255,227,.82); }
+.s-res-name { margin-top: 8px !important; font-size: .78rem !important; font-weight: 800; color: var(--paper) !important; text-transform: uppercase; letter-spacing: .04em; }
