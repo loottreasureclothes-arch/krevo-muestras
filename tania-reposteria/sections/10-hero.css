@@ -23,9 +23,12 @@
 .tr-hero-cta .tr-btn--brand-ol { border-color: rgba(255,255,255,.7); color: #fff; }
 
 @media (min-width: 900px) {
-  /* Compu: el texto va a la IZQUIERDA y el pastel al centro-derecha. El velo oscurece de lado, no de arriba
-     a abajo, para que el titular se lea sin apagar el pastel. */
-  .tr-hero-veil { background: linear-gradient(90deg, rgba(20,17,16,.86) 0%, rgba(20,17,16,.66) 34%, rgba(20,17,16,.12) 66%, rgba(20,17,16,.04) 100%), linear-gradient(180deg, rgba(20,17,16,.5) 0%, rgba(20,17,16,0) 22%, rgba(20,17,16,0) 62%, rgba(20,17,16,.9) 100%); }
+  /* Compu: el titular a la IZQUIERDA sobre fondo oscuro liso y la foto (apaisada, 1344x752, pastel al centro)
+     ocupa los dos tercios de la derecha, fundida con un degradado. Asi el titular se lee y el pastel no queda
+     debajo de las letras. */
+  .tr-hero-media { left: 30%; }
+  .tr-hero-media img { object-position: 50% 50%; }
+  .tr-hero-veil { background: linear-gradient(90deg, var(--deep) 0%, var(--deep) 30%, rgba(20,17,16,.72) 40%, rgba(20,17,16,.18) 58%, rgba(20,17,16,0) 100%), linear-gradient(180deg, rgba(20,17,16,.5) 0%, rgba(20,17,16,0) 20%, rgba(20,17,16,0) 70%, rgba(20,17,16,.85) 100%); }
   .tr-hero-in { padding-bottom: 88px; }
   .tr-hero-h1 { font-size: clamp(58px, 6.4vw, 92px); }
   .tr-hero-lead { font-size: 17px; }
