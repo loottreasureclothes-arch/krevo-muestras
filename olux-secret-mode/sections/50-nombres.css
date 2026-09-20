@@ -1,7 +1,8 @@
 /* 50-nombres: la división (NO el interruptor de dona-petra). Placa oscura partida por el parteluz
    a escala grande (120px de alto), lado a lado; abajo, los dos locales tipográficos. */
 .os-nom { background: var(--canvas-2); padding-block: var(--sec-y) 0; }
-.os-nom-h { font-size: clamp(30px, 8.2vw, 50px); max-width: 12ch; }
+.os-nom-h { font-size: clamp(30px, 8.2vw, 50px); max-width: 20ch; }
+.os-nom-h .os-fall { display: block; }
 
 /* La division es el argumento de la seccion: los dos lados cuadrados, mismo aire contra el
    parteaguas y los dos renglones de abajo arrancando a la misma altura. */
@@ -25,8 +26,6 @@
 .os-nom-cross { margin-top: 16px; text-align: center; font-size: 13px; font-weight: 600; letter-spacing: .03em; color: var(--stone); }
 
 .os-nom-body { margin-top: 40px; padding-bottom: 44px; }
-.os-nom-photo { max-width: 240px; margin: 0 0 28px; }
-.os-nom-photo img { width: 100%; height: auto; }
 
 .os-nom-locales { display: grid; gap: 26px; }
 .os-nom-local { padding-top: 16px; border-top: 1px solid var(--line-2); }
@@ -45,10 +44,9 @@
 
 @media (min-width: 700px) {
   .os-nom-locales { grid-template-columns: repeat(2, 1fr); gap: 36px; }
-  .os-nom-body { display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; }
-  .os-nom-photo { margin: 0; }
-  .os-nom-locales { grid-column: 2; }
-  .os-nom-horario { grid-column: 1 / -1; }
+  .os-nom-body { display: block; }
+
+  .os-nom-horario { max-width: 70ch; }
 }
 @media (min-width: 900px) {
   .os-nom { padding-top: 104px; }

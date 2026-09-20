@@ -2,14 +2,14 @@
 .os-pago { background: var(--canvas); padding-block: var(--sec-y); }
 .os-pago-h { margin-top: 14px; font-size: clamp(32px, 8.6vw, 52px); max-width: 12ch; }
 
-.os-pago-cols { margin-top: 34px; display: grid; gap: 0; }
-.os-pago-col { padding-block: 18px; border-top: 1px solid var(--line-2); }
+.os-pago-cols { margin-top: 26px; display: grid; gap: 0; }
+.os-pago-col { padding-block: 14px; border-top: 1px solid var(--line-2); }
 .os-pago-col:first-child { border-top: 1px solid var(--line-2); }
 .os-pago-n { display: block; font-size: 11px; font-weight: 700; letter-spacing: .14em; color: var(--stone); }
 .os-pago-t { margin-top: 8px; font-family: var(--font-display); font-size: 20px; color: var(--ink); }
 .os-pago-col p { margin-top: 6px; font-size: 14px; line-height: 1.5; color: var(--ink-2); max-width: 40ch; }
 
-.os-pago-promo { margin-top: 26px; font-size: 14px; font-weight: 600; color: var(--brand); }
+.os-pago-promo { margin-top: 20px; font-size: 14px; font-weight: 600; color: var(--brand); }
 
 .os-pago > .k-wrap > .os-btn { margin-top: 24px; }
 
@@ -19,3 +19,7 @@
   .os-pago-col:first-child { border-left: 0; padding-left: 0; }
 }
 @media (min-width: 900px) { .os-pago { padding-block: 96px; } }
+
+/* Playfair trae cifras de estilo antiguo: el "3" bajaba como descendente
+   y se leia como error junto a los precios. */
+.os-pago-h, .os-pago-promo { font-variant-numeric: lining-nums; }

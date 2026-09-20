@@ -76,9 +76,34 @@ if __name__ == "__main__":
     # --- Dos nombres: la fachada firmada Olux (foto chica, enmarcada) -------------------
     # y 18-478: se van los coches, la banqueta, los postes y los edificios vecinos de abajo.
     # No se corta el recuadro del logo Olux (x 14-266, y 27-272): el logo nunca se recorta.
-    recorte("fachada-tanyveth-navidad-olux-google.jpg", (0, 18, 442, 472), 442,
-            "img/nombres/navidad-2.webp")
+    # La foto navideña SALIO de la pagina el 20 sep 2026 (ronda 3): traia el logo "Olux American
+    # Style" quemado en un recuadro blanco encima, tapaba el letrero real y ademas es de temporada.
+    # El CHECKLIST prohibe texto quemado. La seccion "Dos nombres" se explica sola con la placa.
 
     # --- Marca: el logo con alfa (sin cuadro negro, sin mix-blend-mode) ------------------
     logo_alfa(300, "img/brand/logo-alfa-olux-300.webp", banda=(240, 620))  # header: solo "Olux"
     logo_alfa(1200, "img/brand/logo-alfa-1200.webp")                        # cierre: el lockup entero
+
+    # --- Ronda 2 (FEEDBACK-2, 20 sep 2026): "no me gusta la foto de portada" -------------
+    # Portada nueva, celular Y compu: ya no la fachada con el letrero (esa se queda abajo, en el
+    # aparador y en la seccion de los dos nombres — ahi si le gusto). Se usa el mismo exhibidor
+    # real de tenis (interior-exhibidor-tenis-google.jpg) que ya daba calzado.webp, con un recorte
+    # MAS ALTO (y280-800, se van los dos overlays de Instagram: "Visitando tu Boutique" arriba y
+    # "Envios a toda la Republica" abajo). La fuente mide solo 576 px de ancho: se reescala con
+    # LANCZOS (mismo metodo que recorte(), no es IA, es el mismo resize que ya hacia este script)
+    # a 900 px para celular y 1440 para compu — se ve un poco mas suave que una foto nativa de ese
+    # ancho, pero limpia, sin texto y sin el coche/cables de las otras dos fotos reales que
+    # quedaban. img/hero/fachada-m.webp y fachada-d.webp (el hero viejo) YA NO SE USAN: se borraron.
+    recorte("interior-exhibidor-tenis-google.jpg", (0, 280, 576, 800), 900, "img/hero/tienda-m.webp")
+    recorte("interior-exhibidor-tenis-google.jpg", (0, 280, 576, 800), 1440, "img/hero/tienda-d.webp")
+
+    # --- Ronda 2: fotos reales por aparador para los tres bloques (ya no detras de tabs) -------
+    # ROPA: recorte de la ventana derecha de la fachada, mas cerrado que el de la ronda 1 para
+    # perder el coche reflejado y quedarse con la ropa colgada (real, aunque es principalmente
+    # ropa de nina: es lo que el escaparate real trae hoy).
+    recorte("fachada-tanyveth-secret-mode-google.jpg", (1050, 850, 1329, 1195), 560, "img/aparador/ropa.webp")
+    # CARTERAS y MOCHILAS: la ventana que le toca (izquierda) es la puerta de vidrio de la entrada
+    # y con este angulo solo refleja un coche y la calle, cero producto visible (visto en
+    # storefront_wide.jpg). NO se usa: sale un coche en vidrio, igual que la navidena que ya se
+    # rechazo. Se deja SIN foto (marcador honesto en el HTML) hasta que el dueno mande una.
+    # calzado.webp NO se toca: ya esta bien (aprobado en REVISION-1).

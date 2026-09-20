@@ -1,47 +1,29 @@
-/* 10-hero: fachada real a sangre.
-   Beat A ya NO es una caja con su propia imagen recortada (eso fue lo que reprobo la ronda 1: el
-   rotulo salia con letras cortadas y el recuadro flotaba sobre pared lisa en compu). Ahora es una
-   SEGUNDA capa de la misma fachada, y 10-hero.js calcula en pixeles donde cae el rotulo REAL dentro
-   del encuadre de cada pantalla. Zona del rotulo medida sobre cada archivo:
-     fachada-m.webp (900x1740)  x  72-406, y 570-764
-     fachada-d.webp (2000x1581) x 314-631, y 482-667
-   Beat B mueve --hp-y (28% -> 86%) y --hp-s (1.06 -> 1.00) por JS ligado al scroll; --hp-x se queda
-   fijo en 50% porque las fuentes ya vienen recortadas para dejar el letrero centrado en cuadro. */
+/* 10-hero: EL APARADOR a sangre. Ronda 2: se quito la segunda capa animada del letrero
+   (.os-hero-sign) y el pan/zoom ligado al scroll (10-hero.js completo, borrado) — no se notaban
+   como algo del negocio, solo eran mas JS corriendo en cada scroll (NOTA GLOBAL 2). Ahora es una
+   sola foto fija con object-fit:cover, sin variables CSS que dependan de JS. */
 .os-hero {
-  position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate;
-  background: var(--deep); padding-bottom: 48px;
+  position: relative; min-height: 84svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate;
+  background: var(--deep); padding-bottom: 40px;
 }
-.os-hero-media { position: absolute; inset: 0; overflow: hidden; --hp-x: 12%; }
-/* --hp-x/--hp-y/--hp-s viven aqui y las heredan las DOS capas de fachada (fondo + letrero).
-   --hp-x: 12% en celular para que el rotulo real no quede pegado al borde izquierdo de la pantalla
-   (a 390 px la foto se recorta por ancho y a 50% la "s" de secret toca el filo). En compu la foto
-   ya llena el ancho justo, asi que --hp-x no cambia nada y se deja en 50%. */
+.os-hero-media { position: absolute; inset: 0; overflow: hidden; }
 .os-hero-bg {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-  object-position: var(--hp-x, 50%) var(--hp-y, 28%); transform: scale(var(--hp-s, 1.06)); transform-origin: center center;
-  will-change: transform;
+  object-position: center 30%;
 }
 .os-hero-veil {
   position: absolute; inset: 0;
   background:
-    linear-gradient(180deg, rgba(23,20,26,.18) 0%, rgba(23,20,26,.04) 26%, rgba(20,17,23,.58) 76%, rgba(17,16,23,.88) 100%),
-    linear-gradient(100deg, rgba(12,10,8,.56) 0%, rgba(12,10,8,.22) 42%, transparent 60%);
+    linear-gradient(180deg, rgba(23,20,26,.30) 0%, rgba(23,20,26,.12) 26%, rgba(20,17,23,.66) 74%, rgba(17,16,23,.92) 100%),
+    linear-gradient(100deg, rgba(12,10,8,.62) 0%, rgba(12,10,8,.26) 42%, transparent 60%);
 }
-
-/* ---------- Beat A: el letrero se prende (la MISMA foto, sin caja) ----------
-   Segunda capa de fachada-m/d.webp con object-fit/object-position/scale IDENTICOS a .os-hero-bg
-   (las variables --hp-* viven en .os-hero-media y las heredan las dos capas, asi no se pueden
-   desincronizar). 10-hero.js le pone el clip-path (barrido de izquierda a derecha) y la mascara
-   radial suave sobre la zona REAL del rotulo, en pixeles, recalculados en cada cuadro de Beat B.
-   Sin JS o si algo falla: la capa se queda invisible y el hero es la foto tal cual (blindaje). */
-.os-hero-sign { position: absolute; inset: 0; z-index: 2; pointer-events: none; display: block; opacity: 0; }
-.os-hero-sign.is-ready { opacity: 1; }
-.os-hero-sign-img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-  object-position: var(--hp-x, 50%) var(--hp-y, 28%); transform: scale(var(--hp-s, 1.06)); transform-origin: center center;
-  clip-path: inset(0 100% 0 0);
-  will-change: clip-path, filter;
+/* Etiqueta obligatoria de imagen de IA. Se esconde mientras la foto sea real (.is-real). */
+.os-hero-ia {
+  position: absolute; right: var(--k-gutter); bottom: 14px; z-index: 4;
+  font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(244,241,234,.62); background: rgba(17,16,23,.5); padding: 4px 8px;
 }
+.os-hero.is-real .os-hero-ia { display: none; }
 
 /* ---------- Texto ---------- */
 .os-hero-in { position: relative; z-index: 3; padding-bottom: 10px; width: 100%; }
@@ -54,7 +36,14 @@
 .os-hero-cta .os-btn--line { color: var(--ink); }
 
 @media (min-width: 900px) {
-  .os-hero-media { --hp-x: 50%; }
+  .os-hero-bg { object-position: center 28%; }
+  /* El titular vive en la mitad izquierda: ahi el velo tiene que ser solido para que el crema se
+     lea aunque atras caiga el vidrio del aparador (medido 0.946 de luminancia en la revision). */
+  .os-hero-veil {
+    background:
+      linear-gradient(180deg, rgba(23,20,26,.24) 0%, rgba(23,20,26,.10) 30%, rgba(20,17,23,.58) 78%, rgba(17,16,23,.92) 100%),
+      linear-gradient(90deg, rgba(12,10,8,.86) 0%, rgba(12,10,8,.74) 34%, rgba(12,10,8,.30) 56%, transparent 74%);
+  }
   .os-hero { padding-bottom: 76px; }
   .os-hero-in { max-width: 640px; }
   .os-hero-h1 { font-size: clamp(56px, 6vw, 88px); }

@@ -1,7 +1,7 @@
 /* 40-resenas: dato grande UNA vez (Playfair) + citas textuales con nombre. */
 .os-res { background: var(--deep); padding-block: var(--sec-y); }
 .os-res-big { font-family: var(--font-display); font-weight: 600; font-size: clamp(72px, 26vw, 160px); line-height: .9; color: var(--ink); }
-.os-res-sub { margin-top: 6px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--stone); }
+.os-res-sub { margin-top: 14px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--stone); }
 .os-res-h { margin-top: 22px; font-size: clamp(28px, 7.6vw, 44px); max-width: 13ch; }
 
 .os-res-list { margin-top: 30px; display: grid; gap: 0; padding: 0; }
@@ -17,3 +17,7 @@
   .os-res-item:nth-child(1), .os-res-item:nth-child(2) { border-top: 1px solid var(--line-2); }
 }
 @media (min-width: 900px) { .os-res { padding-block: 96px; } }
+
+/* Facebook no usa estrellas, usa "recomienda si/no": se marca distinto pero con su distintivo,
+   para que las cuatro resenas se lean parejas y ninguna parezca a la que le falto algo. */
+.os-res-stars--fb { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }

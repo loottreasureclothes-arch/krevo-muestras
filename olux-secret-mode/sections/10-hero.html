@@ -1,24 +1,22 @@
-<!-- 10-hero: la fachada real de Tanyveth 105-B a sangre. Beat A: el letrero "SM secret mode" se
-     prende una sola vez (700 ms) al cargar, sobre el pixel real de la foto (nada de SVG, y NADA de
-     recuadro: es una SEGUNDA capa de la MISMA fachada, con el mismo object-fit/object-position/scale,
-     recortada por clip-path + mascara suave a la zona real del rotulo, que 10-hero.js recalcula en
-     cada cuadro para que siga pegada al letrero mientras la camara baja. Beat B:
-     ligado al scroll, la cámara baja por la fachada hacia los aparadores (reversible, sin pin).
-     Resuelve los dos nombres en el primer renglón. Cero verde. Presupuesto ~844 px. -->
-<section class="os-hero" id="hero" data-hide-wa aria-label="Ólux American Style, tienda de ropa de marca en Tanyveth 105-B">
+<!-- 10-hero: la PORTADA. Ronda 3 (FEEDBACK-2, 20 sep 2026): "te dije que le cambiaras la foto del
+     banner, no esta padre". La fachada con el letrero ya la habia rechazado, asi que el hueco del
+     banner (img/hero/banner-m.webp y banner-d.webp) queda listo con una PROVISIONAL: el recorte de
+     su exhibidor real de tenis, ya sin el texto quemado del sticker de Instagram. El encargo
+     completo para la foto definitiva esta escrito en IMAGEN-HERO.md; el orquestador solo reemplaza
+     esos dos archivos.
+     Si la que se mete es hecha con IA, hay que QUITAR la clase is-real de la seccion para que
+     aparezca la etiqueta "Imagen ilustrativa" (regla dura del CHECKLIST).
+     Cero animacion de scroll (NOTA GLOBAL 2): una foto fija, sin rAF ni clip-path. Resuelve los dos
+     nombres en el primer renglon — eso NO se toca. Cero verde. -->
+<section class="os-hero is-real" id="hero" data-hide-wa aria-label="Ólux American Style, tienda de ropa de marca en Tanyveth 105-B">
   <div class="os-hero-media" aria-hidden="true">
     <picture>
-      <source media="(min-width: 900px)" srcset="img/hero/fachada-d.webp">
-      <img class="os-hero-bg" src="img/hero/fachada-m.webp" alt="" width="900" height="1740" fetchpriority="high" decoding="async">
+      <source media="(min-width: 900px)" srcset="img/hero/banner-d.webp">
+      <img class="os-hero-bg" src="img/hero/banner-m.webp" alt="" width="900" height="812" fetchpriority="high" decoding="async">
     </picture>
-    <span class="os-hero-sign" id="os-hero-sign">
-      <picture>
-        <source media="(min-width: 900px)" srcset="img/hero/fachada-d.webp">
-        <img class="os-hero-sign-img" src="img/hero/fachada-m.webp" alt="" width="900" height="1740" decoding="async">
-      </picture>
-    </span>
     <span class="os-hero-veil"></span>
   </div>
+  <p class="os-hero-ia">Imagen ilustrativa</p>
 
   <div class="k-wrap os-hero-in">
     <p class="os-eyebrow os-hero-eb"><span class="os-parteluz os-parteluz--sm" aria-hidden="true"></span>Tanyveth 105-B · Aguascalientes</p>
@@ -28,7 +26,7 @@
     </h1>
     <p class="os-hero-resolve">Nos buscas como Ólux American Style. El letrero de la calle dice <i>secret mode</i>. Es el mismo local y el mismo WhatsApp.</p>
     <div class="os-hero-cta">
-      <a class="os-btn os-btn--brand" href="#aparador">Ver el aparador</a>
+      <a class="os-btn os-btn--brand" href="#tienda">Ver la tienda</a>
       <a class="os-btn os-btn--line" href="https://www.google.com/maps/search/?api=1&#38;query=21.877047,-102.267484" target="_blank" rel="noopener">Cómo llegar</a>
     </div>
   </div>

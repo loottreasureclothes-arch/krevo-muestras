@@ -1,0 +1,217 @@
+/* 20-tienda: LA TIENDA. Reescrita el 20 sep 2026 (tarde) sobre FEEDBACK-2.
+   Lenguaje de formas del sitio (site.css): radios 0 en fotos y marcos, 2px en botones, el parteluz
+   como unico motivo, marco "aparador" con filete rosa a la izquierda. Nada redondo.
+
+   Rejilla tipo tienda: 2 columnas en celular, 3 desde 620, 4 desde 1000. Cada tarjeta es
+   foto + nombre + tallas + precio + "Encargar", y el "Encargar" es un <a href="wa.me/...?text=">
+   REAL con el mensaje de ESA pieza ya escrito en el HTML (lo pidio Emanuel: "te encargo esto").
+   Nada de <button> + window.open: el navegador de Instagram y Facebook lo bloquea.
+
+   Botones: "Encargar" y el "+" van en COLOR DE MARCA, no en verde. El verde se queda solo para
+   los tres que de verdad mandan a WhatsApp una conversacion completa (#pago, #cierre y el envio
+   del encargo) mas el flotante — regla dura de Emanuel.
+   Las fotos de producto NO llevan loading="lazy" arriba del pliegue y siempre tienen fondo de
+   relleno, para que nunca quede un marco vacio si tardan. */
+
+/* ================= cabecera ================= */
+.os-t { padding-block: var(--sec-y); }
+.os-t-head { max-width: 46ch; }
+.os-t-h { margin-top: 14px; font-size: clamp(34px, 9vw, 62px); }
+.os-t-h .os-fall { display: block; }
+.os-t-honest { margin-top: 13px; font-size: 13.5px; line-height: 1.5; color: var(--ink-2); max-width: 54ch; }
+
+/* ================= slider de destacados ================= */
+.os-t-slider {
+  display: flex; gap: 12px; margin-top: 24px; padding: 0 var(--k-gutter) 6px;
+  overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.os-t-slider::-webkit-scrollbar { display: none; }
+.os-t-slide { flex: none; width: min(70vw, 300px); scroll-snap-align: start; }
+.os-t-slide-foto { position: relative; background: var(--canvas-2); aspect-ratio: 1 / 1; overflow: hidden; }
+.os-t-slide-foto::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(244,241,234,.14); pointer-events: none; }
+.os-t-slide-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.os-t-slide-name { margin-top: 12px; font-family: var(--font-display); font-size: 17px; line-height: 1.25; }
+.os-t-slide-meta { margin-top: 4px; font-size: 12px; color: var(--mute); }
+.os-t-slide-price { margin-top: 6px; font-size: 19px; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; color: var(--ink); }
+.os-t-slide-cta { display: flex; gap: 8px; margin-top: 10px; align-items: stretch; }
+.os-t-slide-cta .os-p-btn { flex: 1 1 auto; }
+
+/* ================= bloques y rejilla ================= */
+.os-t-blocks { }
+.os-t-block { padding-top: 20px; }
+.os-t-eyebrow { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--stone); }
+.os-t-grid { list-style: none; margin: 0; padding: 14px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 12px; align-items: stretch; }
+
+.os-p { display: flex; flex-direction: column; min-width: 0; }
+.os-p-foto { position: relative; background: var(--canvas-2); aspect-ratio: 1 / 1; overflow: hidden; }
+.os-p-foto::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(244,241,234,.14); pointer-events: none; }
+.os-p-foto > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Tarjeta sin foto: tipografica a proposito, con la marca real de esa pieza. Nunca un hueco gris. */
+.os-p-sin { position: absolute; inset: 0; display: grid; align-content: center; justify-items: center; gap: 8px; padding: 10px; text-align: center; background: linear-gradient(160deg, #2B2934, #201E27); }
+.os-p-sin b { font-family: var(--font-display); font-size: 15px; line-height: 1.2; color: rgba(244,241,234,.8); }
+.os-p-sin i { font-style: normal; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); }
+/* El "+" va en color de MARCA (regla de Emanuel), 44x44 tocables, cuadrito visible de 34. */
+.os-p-add { position: absolute; right: 0; top: 0; width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: transparent; color: var(--ink); font-size: 17px; line-height: 1; z-index: 2; cursor: pointer; }
+.os-p-add span { display: grid; place-items: center; width: 30px; height: 30px; background: var(--brand); color: #1b0e14; font-weight: 700; transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out); }
+.os-p-add.is-added span { transform: scale(.86); background: var(--ink); }
+.os-p-add--inline { position: static; width: 44px; height: auto; flex: none; }
+
+.os-p-name { margin-top: 10px; font-family: var(--font-display); font-size: 14.5px; line-height: 1.28; }
+.os-p-meta { margin-top: 3px; font-size: 11.5px; line-height: 1.35; color: var(--mute); }
+.os-p-price { margin-top: 6px; font-size: 16px; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; }
+.os-p-price--ask { font-size: 12.5px; font-weight: 600; color: var(--brand); letter-spacing: .02em; }
+/* "Encargar" va de CONTORNO, no relleno: con 16 tarjetas el rosa solido convertia la pagina en un
+   muro de cupones. Contorno fino = boutique; y el unico relleno de marca que queda por tarjeta es
+   el "+", que es chico. */
+.os-p-btn {
+  display: inline-flex; align-items: center; justify-content: center; margin-top: auto;
+  min-height: 44px; padding: 0 14px; border-radius: 2px; border: 1px solid var(--brand);
+  background: transparent; color: var(--brand); font-weight: 700; font-size: 11px;
+  letter-spacing: .12em; text-transform: uppercase; text-decoration: none; white-space: nowrap;
+  transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out);
+}
+.os-p-btn:active { transform: scale(.98); }
+@media (hover: hover) and (pointer: fine) { .os-p-btn:hover { background: var(--brand); color: #1b0e14; } }
+/* En el slider si va relleno: son 6 piezas, es el escaparate y ahi si tiene que pesar. */
+.os-t-slide-cta .os-p-btn { background: var(--brand); color: #1b0e14; }
+@media (hover: hover) and (pointer: fine) { .os-t-slide-cta .os-p-btn:hover { background: #dd77a2; color: #1b0e14; } }
+
+.os-t-blockfoto { margin: 16px 0 0; max-width: 420px; }
+.os-t-blockfoto img { width: 100%; height: auto; }
+.os-t-vermas { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; margin-top: 10px; font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brand); }
+.os-t-vermas svg { width: 16px; height: 16px; }
+
+.os-t-todo { margin-top: 18px; width: 100%; }
+
+/* ================= bandas (fotos reales suyas, a sangre) ================= */
+.os-t-banda { position: relative; margin: 26px 0 0; }
+.os-t-banda img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 2.9; object-fit: cover; object-position: center 45%; }
+.os-t-banda figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 20px var(--k-gutter);
+  background: linear-gradient(180deg, transparent, rgba(17,16,23,.86) 58%);
+  color: var(--ink);
+}
+.os-t-banda figcaption b { display: block; font-family: var(--font-display); font-weight: 600; font-size: clamp(20px, 5.6vw, 30px); line-height: 1.15; max-width: 18ch; }
+.os-t-banda figcaption span { display: block; margin-top: 6px; font-size: 12.5px; color: var(--ink-2); }
+
+/* ================= los tres banners de categoria (suyos) ================= */
+.os-t-cats { list-style: none; margin: 26px 0 0; padding: 0 var(--k-gutter); display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.os-t-cats a { position: relative; display: block; overflow: hidden; background: var(--canvas-2); align-self: start; }
+.os-t-cats img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4.6; object-fit: cover; object-position: center 22%; }
+.os-t-cats span {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 8px 10px; text-align: center;
+  background: linear-gradient(180deg, transparent, rgba(17,16,23,.82) 62%);
+  font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink);
+}
+
+/* ================= catalogo.html ================= */
+.os-cat-head { padding: calc(var(--os-head-h) + 36px) 0 6px; }
+.os-cat-h { margin-top: 14px; font-size: clamp(38px, 11vw, 74px); }
+.os-cat-indice { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.os-cat-indice a { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 0 14px; border: 1px solid var(--line); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+.os-cat-indice a b { font-variant-numeric: lining-nums tabular-nums; color: var(--brand); }
+.os-cat-block { scroll-margin-top: calc(var(--os-head-h) + 12px); }
+
+@media (min-width: 760px) {
+  .os-t-grid { grid-template-columns: repeat(4, 1fr); gap: 26px 16px; }
+  .os-p--panel { grid-column: span 2; gap: 9px; padding: 22px; }
+  .os-p--panel b { font-size: clamp(21px, 2.2vw, 27px); }
+  .os-t-todo { width: auto; }
+  .os-t-banda img { aspect-ratio: 21 / 10; }
+}
+@media (min-width: 900px) {
+  .os-t-slide { width: min(38vw, 340px); }
+  .os-t-block { padding-top: 48px; }
+  .os-t-banda { margin-top: 56px; }
+  .os-t-cats { margin-top: 44px; gap: 14px; }
+}
+@media (min-width: 1000px) {
+  .os-t-grid { gap: 30px 20px; }
+  .os-p-name { font-size: 15.5px; }
+  .os-p-meta { font-size: 12px; }
+  .os-p-price { font-size: 17px; }
+}
+
+/* ================= la hoja del encargo ================= */
+.os-cart-sheet { position: fixed; inset: 0; z-index: 95; visibility: hidden; overflow: hidden; contain: paint; }
+html.os-cart-open .os-cart-sheet { visibility: visible; }
+.os-cart-scrim { position: absolute; inset: 0; background: rgba(10, 8, 12, .62); opacity: 0; transition: opacity 260ms var(--ease-out); }
+html.os-cart-open .os-cart-scrim { opacity: 1; }
+.os-cart-panel {
+  position: absolute; inset: auto 0 0 0; max-height: 84svh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  background: var(--deep); color: var(--ink); box-sizing: border-box;
+  padding: 22px var(--k-gutter) calc(env(safe-area-inset-bottom) + 24px);
+  border-top: 1px solid var(--line);
+  transform: translateY(100%); transition: transform 320ms var(--ease-out);
+}
+html.os-cart-open .os-cart-panel { transform: none; }
+.os-cart-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.os-cart-panel-h { font-size: 24px; }
+.os-cart-close { position: relative; width: 44px; height: 44px; flex: none; color: var(--ink); }
+.os-cart-close span { position: absolute; left: 50%; top: 50%; width: 16px; height: 1px; background: currentColor; }
+.os-cart-close span:first-child { transform: translate(-50%, -50%) rotate(45deg); }
+.os-cart-close span:last-child { transform: translate(-50%, -50%) rotate(-45deg); }
+
+.os-cart-empty { font-size: 14px; color: var(--ink-2); padding-block: 10px; }
+html.os-cart-has .os-cart-empty { display: none; }
+.os-cart-items { display: none; flex-direction: column; padding: 0; margin: 0 0 16px; }
+html.os-cart-has .os-cart-items { display: flex; }
+html.os-cart-has .os-cart-total { display: flex; }
+.os-cart-total strong.is-frase { font-family: var(--font-body); font-size: 13.5px; font-weight: 600; color: var(--brand); text-align: right; max-width: 60%; line-height: 1.3; }
+.os-cart-item { display: flex; align-items: center; gap: 10px; padding-block: 11px; border-top: 1px solid var(--line-2); }
+.os-cart-item:first-child { border-top: 0; }
+.os-cart-item-t { flex: 1 1 auto; min-width: 0; }
+.os-cart-item-name { font-family: var(--font-display); font-size: 14.5px; line-height: 1.3; }
+.os-cart-item-price { margin-top: 2px; font-size: 12px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.os-cart-item-qty { flex: none; display: inline-flex; align-items: center; gap: 0; }
+/* Igual que el "+": 40x44 tocables, cuadrito visible de 26x26. */
+.os-cart-item-qty button { position: relative; isolation: isolate; width: 40px; height: 44px; display: grid; place-items: center; border: 0; color: var(--ink); background: transparent; font-size: 14px; }
+.os-cart-item-qty button::before { content: ""; position: absolute; left: 50%; top: 50%; width: 26px; height: 26px; z-index: -1; transform: translate(-50%, -50%); border: 1px solid var(--line); }
+.os-cart-item-qty b { min-width: 16px; text-align: center; font-variant-numeric: tabular-nums; font-size: 13px; }
+
+.os-cart-pay { padding-block: 14px; border-top: 1px solid var(--line-2); }
+.os-cart-pay-t { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); }
+.os-cart-pay-note { margin-top: 6px; font-size: 13.5px; color: var(--ink-2); }
+.os-cart-total { display: none; align-items: baseline; justify-content: space-between; padding-block: 12px; border-top: 1px solid var(--line-2); font-family: var(--font-display); }
+.os-cart-total span { font-size: 13px; color: var(--ink-2); }
+.os-cart-total strong { font-size: 24px; font-variant-numeric: tabular-nums; }
+.os-cart-send { width: 100%; margin-top: 6px; }
+
+@media (min-width: 640px) {
+  .os-cart-panel { inset: 0 0 0 auto; left: auto; width: min(88vw, 420px); max-height: 100svh; border-top: 0; border-left: 1px solid var(--line); transform: translateX(100%); padding-top: calc(env(safe-area-inset-top) + 26px); }
+  html.os-cart-open .os-cart-panel { transform: none; }
+}
+
+/* Panel del bloque de cremas: son 2 piezas con foto, asi que el resto de la fila lo llena el dato
+   en vez de dejar dos huecos vacios. */
+/* En celular es una tira delgada (si fuera tarjeta se comia 260 px del presupuesto de alto);
+   de 760 para arriba ocupa las dos columnas que le sobran a la fila de cremas. */
+.os-p--panel { grid-column: 1 / -1; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 15px 16px; background: linear-gradient(150deg, #2B2934, #201E27); border: 1px solid rgba(244,241,234,.14); }
+.os-p--panel b { font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.15; }
+.os-p--panel p { font-size: 13px; line-height: 1.45; color: var(--ink-2); }
+.os-p--panel .os-t-vermas { margin-top: 2px; }
+
+/* ============ Lista de precios (Calzado) ============
+   Calzado es el unico bloque del que NO se rescato ni una foto de pieza: son 60 pares con precio y
+   talla reales. Cuatro recuadros de "Foto pendiente" en fila se ven rotos; una lista de precios se
+   ve intencional, cabe mas y da el mismo dato. Tambien rompe el ritmo de rejillas iguales. */
+.os-t-lista { list-style: none; margin: 0; padding: 14px 0 0; display: grid; gap: 0; }
+.os-t-fila { display: flex; align-items: center; gap: 12px; padding-block: 10px; border-top: 1px solid var(--line-2); }
+.os-t-fila:first-child { border-top: 0; }
+.os-t-fila-t { flex: 1 1 auto; min-width: 0; }
+.os-t-fila-n { font-family: var(--font-display); font-size: 15px; line-height: 1.25; }
+.os-t-fila-m { margin-top: 2px; font-size: 11.5px; color: var(--mute); }
+.os-t-fila-p { flex: none; font-size: 15px; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; }
+.os-t-fila .os-p-btn { flex: none; margin-top: 0; min-height: 44px; padding: 0 12px; font-size: 10px; }
+.os-t-fila .os-p-add { position: static; width: 44px; height: 44px; flex: none; }
+.os-t-fila .os-p-add span { width: 28px; height: 28px; }
+@media (max-width: 519px) {
+  .os-t-fila { flex-wrap: wrap; gap: 8px 10px; }
+  .os-t-fila-t { flex: 1 1 100%; }
+  .os-t-fila-p { margin-right: auto; }
+}
+@media (min-width: 760px) {
+  .os-t-lista { grid-template-columns: 1fr 1fr; column-gap: 40px; }
+  .os-t-fila:nth-child(2) { border-top: 0; }
+}
