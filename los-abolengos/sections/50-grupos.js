@@ -33,8 +33,8 @@
         "Fecha: " + fechaTxt + " · Hora: " + hour + "\n" +
         "Espacio: " + espacio +
         (platillos.trim() ? "\nPlatillos: " + platillos.trim() : "");
-      if (window.AB && window.AB.openWa) window.AB.openWa(msg);
-      else location.href = "https://wa.me/524498050420?text=" + encodeURIComponent(msg);
+      /* <a href> real: el click sigue su curso; aqui solo se enriquece el href (no window.open). */
+      send.href = "https://wa.me/524498050420?text=" + encodeURIComponent(msg);
     });
   });
 })();

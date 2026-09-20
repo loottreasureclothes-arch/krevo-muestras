@@ -13,12 +13,8 @@
 .mo-plate figcaption { margin-top: 12px; font-family: var(--font-display); font-size: 14px; color: var(--paper); line-height: 1.3; }
 .mo-sub { display: block; margin-top: 3px; font-size: 12px; color: var(--paper-mute); }
 
-/* Aterrizaje: opacity + scale(.94→1) + sombra ya puesta en el CSS de reposo (arriba).
-   Cadencia de 220ms por plato (4 platos: 0, 220, 440, 660ms + 340ms de vuelo ≈ 0.95s total). */
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  .mo-plates > .mo-plate { opacity: 0; transform: scale(0.94); transition: opacity 340ms var(--ease-out), transform 340ms var(--ease-out); transition-delay: calc(var(--k-i, 0) * 220ms); }
-}
-[data-reveal-stagger].is-in > .mo-plate { opacity: 1 !important; transform: none !important; }
+/* NOTA GLOBAL 2 (20 sep): los platos ya salen puestos; se quito el fade escalonado, que no ensenaba nada
+   del negocio. */
 
 .mo-close { margin-top: 48px; font-size: clamp(24px, 6vw, 38px); text-align: center; color: var(--paper); }
 @media (min-width: 900px) { .mo-close { margin-top: 64px; } }

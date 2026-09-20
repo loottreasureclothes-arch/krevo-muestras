@@ -278,8 +278,10 @@
     }
     var send = document.getElementById("ab-sheet-send");
     if (send) {
-      send.addEventListener("click", function (e) {
-        e.preventDefault();
+      /* <a href> REAL: el click NO se cancela. Aqui solo se reescribe el href con hora, personas y
+         carrito justo antes de que el navegador lo siga; asi funciona tambien dentro del navegador
+         de Facebook / Instagram, que bloquea window.open (revision externa, 20 sep). */
+      send.addEventListener("click", function () {
         var hour = (document.getElementById("ab-sheet-hour") || {}).value || "8:00";
         var people = (document.getElementById("ab-sheet-people") || {}).value || "2";
         var msg;
@@ -293,7 +295,7 @@
         } else {
           msg = "Hola, quiero apartar mesa en Los Abolengos a las " + hour + " para " + people + " personas.";
         }
-        openWa(msg);
+        send.href = waUrl(msg);
       });
     }
   }

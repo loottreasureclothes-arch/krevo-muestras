@@ -140,6 +140,9 @@ body { background-color: var(--deep); color: var(--paper); font-family: var(--fo
 }
 .ab-plaque::before { content: ""; position: absolute; inset: 6px; border: 1px solid var(--brand-ink-mute); pointer-events: none; }
 body.ab-scrolled .ab-plaque { background: var(--deep); }
+/* Compacta: fuera el filete interior de la placa; quedaba a 2 px de los recuadros CARTA / APARTAR y se leia
+   como doble linea mal alineada (revision externa, 20 sep). */
+body.ab-scrolled .ab-plaque::before { display: none; }
 .ab-logo { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-right: auto; padding: 0 12px; min-width: 0; overflow: hidden; }
 .ab-logo-tree { height: 30px; width: auto; flex: none; opacity: 0.95; }
 @media (min-width: 900px) { .ab-logo-tree { height: 36px; } }
@@ -149,8 +152,11 @@ body.ab-scrolled .ab-plaque { background: var(--deep); }
 @media (min-width: 600px) { .ab-logo-word { display: inline; } }
 @media (min-width: 900px) { .ab-logo-word { font-size: 13px; } }
 body.ab-scrolled .ab-logo-word { opacity: 0; }
-.ab-franja-mini { display: none; align-items: center; gap: 7px; min-width: 0; font-family: var(--font-display); font-size: 11px; letter-spacing: 0.08em; color: var(--brand); white-space: nowrap; overflow: hidden; }
+.ab-franja-mini { display: none; align-items: center; gap: 7px; flex: none; font-family: var(--font-display); font-size: 11px; letter-spacing: 0.08em; color: var(--brand); white-space: nowrap; }
+/* La mini NUNCA se aplasta (antes: min-width 0 + overflow hidden la dejaban en "faltan 1" en vez de
+   "faltan 1 h 54" a 390 px; revision externa 20 sep). Lo que cede es el logo, que en celular es solo el arbol. */
 body.ab-scrolled .ab-franja-mini { display: flex; }
+body.ab-scrolled .ab-logo { padding: 0 8px; }
 .ab-franja-mini .ab-rombo { color: var(--brand-ink); width: 5px; height: 5px; }
 /* En celular la placa compacta lleva: árbol + franja mini + APARTAR + hamburguesa sin la
    palabra CARTA. Debajo de 430px se va la pareja de horas y queda el conteo vivo. */
