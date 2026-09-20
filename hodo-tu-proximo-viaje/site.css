@@ -1,0 +1,352 @@
+/* ======================================================================
+   HODO Tu próximo viaje — fundación autocontenida (prefijo hd-)
+   Lenguaje de formas: BOLETO Y SELLO. Sin ../_kit/.
+   ---------------------------------------------------------------------
+   TOKENS
+     --paper #f3ead9 (papel arena, fondo general) · --paper-2 (tarjetas)
+     --deep #014286 (azul marino: hero, bandas, header-cta) · --sky #0b5b98 (degradado fino)
+     --brand #6ea541 (verde marca: SOLO detalles, avioncito, sellos ok)
+     --ink #0d2340 · --wa #25d366 / --wa-ink #0b3d1f (accion)
+   Tipografia: --font-display Bricolage Grotesque · --font-body Instrument Sans · --font-mono DM Mono
+   ====================================================================== */
+:root {
+  --paper: #f3ead9;
+  --paper-2: #ece0c8;
+  --paper-3: #e7d9bd;
+  --line: rgba(13, 35, 64, 0.16);
+  --line-soft: rgba(13, 35, 64, 0.1);
+  --deep: #014286;
+  --deep-2: #012c5c;
+  --sky: #0b5b98;
+  --brand: #6ea541;
+  --brand-dark: #4c7a2b;
+  --ink: #0d2340;
+  --mute: rgba(13, 35, 64, 0.64);
+  --cream: #f6f0e2;
+  --cream-mute: rgba(246, 240, 226, 0.74);
+  --wa: #25d366;
+  --wa-dark: #1ebe5b;
+  --wa-ink: #0b3d1f;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-land: cubic-bezier(0.16, 0.84, 0.44, 1);
+  --font-display: "Bricolage Grotesque", "Arial Black", sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --gutter: 18px;
+  --sec-y: 64px;
+  --sec-y-sm: 44px;
+  --head-gap: 22px;
+  --radius-tk: 14px;
+  --radius-sm: 10px;
+  --hd-h: 60px;
+  --hd-h-solid: 50px;
+  --hd-gap: 10px;
+}
+@media (min-width: 720px) {
+  :root { --gutter: 32px; --sec-y: 104px; --sec-y-sm: 68px; --head-gap: 34px; --hd-h: 76px; --hd-h-solid: 60px; --hd-gap: 14px; }
+}
+@media (min-width: 1200px) { :root { --gutter: 48px; } }
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; overflow-x: clip; scroll-padding-top: calc(var(--hd-h) + var(--hd-gap) * 2 + 10px); }
+html { scroll-behavior: auto !important; } /* L4: nunca smooth en html; los anclas usan JS */
+body {
+  min-height: 100svh; background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); line-height: 1.5; -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; overflow-x: clip;
+}
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.02; text-wrap: balance; overflow-wrap: break-word; font-weight: 800; }
+p { text-wrap: pretty; overflow-wrap: break-word; }
+img, picture, video, svg { display: block; max-width: 100%; }
+img { height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+input, select { font-size: max(16px, 1em); }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+a, button, [role="button"], label { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+:where(ul[class], ol[class]) { list-style: none; padding: 0; }
+:focus-visible { outline: 2px solid var(--deep); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--deep); color: var(--cream); }
+.hd-wrap { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: var(--gutter); }
+.hd-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.hd-nowrap { white-space: nowrap; }
+.hd-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; border-radius: 8px; background: var(--ink); color: #fff; font-weight: 600; transform: translateY(-160%); transition: transform 200ms var(--ease-out); }
+.hd-skip:focus { transform: none; }
+
+/* ============ Botones ============ */
+.hd-btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 50px; padding: 0 22px; border-radius: 10px;
+  border: 1.5px solid transparent; font-weight: 700; font-size: 16px; line-height: 1;
+  white-space: nowrap; cursor: pointer; user-select: none; text-decoration: none;
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), border-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.hd-btn svg { width: 20px; height: 20px; flex: none; }
+.hd-btn:active { transform: scale(0.97); }
+.hd-btn--wa { background: var(--wa); border-color: var(--wa); color: var(--wa-ink); }
+.hd-btn--wa:active { background: var(--wa-dark); border-color: var(--wa-dark); }
+@media (hover: hover) and (pointer: fine) { .hd-btn--wa:hover { background: var(--wa-dark); border-color: var(--wa-dark); } }
+.hd-btn--sm { min-height: 44px; padding: 0 16px; font-size: 14px; border-radius: 8px; }
+.hd-btn--ghost { background: transparent; border-color: currentColor; color: inherit; }
+@media (hover: hover) and (pointer: fine) { .hd-btn--ghost:hover { background: rgba(13, 35, 64, 0.06); } }
+.hd-btn--line {
+  min-height: 44px; padding: 0; border: 0; border-radius: 0; background: none; color: inherit; gap: 7px;
+  background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat;
+  background-size: 100% 1.5px; background-position: 0 calc(100% - 8px); font-weight: 600;
+}
+.hd-btn--line svg { width: 17px; height: 17px; color: var(--brand-dark); transition: transform 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .hd-btn--line:hover { background-size: 42% 1.5px; } .hd-btn--line:hover svg { transform: translateX(3px); } }
+.hd-on-deep .hd-btn--line svg { color: #a9d17e; }
+.hd-on-deep .hd-btn--ghost { color: var(--cream); }
+
+/* ============ Header: tira de pase de abordar ============ */
+/* z-index 90: TIENE que quedar arriba del menu (.hd-menu, 70). Si el panel tapa al header,
+   en celular no hay forma de cerrar el menu (no hay tecla Escape). Bug 1 de REVISION-1. */
+.hd-header { position: fixed; left: var(--hd-gap); right: var(--hd-gap); top: var(--hd-gap); z-index: 90; }
+.hd-bar {
+  position: relative; height: var(--hd-h); display: flex; align-items: stretch; gap: 0;
+  background: var(--paper); border-radius: var(--radius-tk);
+  box-shadow: 0 10px 30px -12px rgba(13, 35, 64, 0.28), 0 1px 0 rgba(13, 35, 64, 0.06);
+  transition: height 260ms var(--ease-out);
+}
+.hd-header.is-compact .hd-bar { height: var(--hd-h-solid); }
+.hd-bar::before, .hd-bar::after {
+  content: ""; position: absolute; top: 50%; width: 15px; height: 15px; margin-top: -7.5px;
+  border-radius: 50%; background: rgba(1, 66, 134, 0.16); box-shadow: inset 0 1px 2px rgba(13, 35, 64, 0.28); z-index: 2;
+}
+.hd-bar::before { left: -7.5px; }
+.hd-bar::after { right: -7.5px; }
+.hd-stub { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 0 12px 0 14px; }
+.hd-disc { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: #fff; box-shadow: inset 0 0 0 1px rgba(13, 35, 64, 0.1); overflow: hidden; transition: width 260ms var(--ease-out), height 260ms var(--ease-out); }
+.hd-header.is-compact .hd-disc { width: 32px; height: 32px; }
+.hd-disc img { width: 78%; height: 78%; object-fit: contain; }
+.hd-disc--lg { width: 60px; height: 60px; }
+.hd-wordmark { font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: -0.01em; color: var(--ink); }
+.hd-perf { flex: none; align-self: stretch; margin: 9px 0; width: 1px; background-image: linear-gradient(rgba(13, 35, 64, 0.3) 60%, transparent 0); background-size: 2px 7px; background-repeat: repeat-y; background-position: center; }
+.hd-route {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 0;
+  background: none; border: 0; color: var(--ink); font-family: var(--font-mono); font-weight: 500;
+  font-size: 13px; letter-spacing: 0.04em; padding: 0 6px; cursor: pointer;
+}
+.hd-route-plane { width: 15px; height: 15px; color: var(--brand); flex: none; transform: rotate(0deg); }
+.hd-route-b[data-empty]:empty::before { content: attr(data-empty); }
+.hd-route-b { color: var(--deep); font-weight: 600; }
+@media (max-width: 519px) { .hd-route { font-size: 12px; gap: 6px; } .hd-route-plane { width: 13px; height: 13px; } }
+.hd-actions { flex: none; display: flex; align-items: center; gap: 8px; padding: 0 10px 0 4px; }
+.hd-menu-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px; height: 44px; min-width: 44px; padding: 0 12px; border-radius: 8px;
+  border: 1px solid rgba(13, 35, 64, 0.22); color: var(--ink); font-weight: 600; font-size: 13px;
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out);
+}
+.hd-menu-btn:active { transform: scale(0.96); }
+/* Con el menu abierto la barra queda encima del panel: se esconde el verde para que
+   el unico boton a la vista sea la X de cerrar (y el logo siga anclando la marca). */
+body.hd-menu-open .hd-actions .hd-btn--wa { display: none; }
+body.hd-menu-open .hd-menu-btn { border-color: rgba(13, 35, 64, 0.4); background: var(--paper-2); }
+body.hd-menu-open .hd-menu-lbl { display: inline; }
+.hd-burger { position: relative; width: 15px; height: 9px; }
+.hd-burger i { position: absolute; left: 0; right: 0; height: 1.6px; border-radius: 2px; background: currentColor; transition: transform 320ms var(--ease-out), top 320ms var(--ease-out); }
+.hd-burger i:first-child { top: 0; } .hd-burger i:last-child { top: 7px; }
+body.hd-menu-open .hd-burger i:first-child { top: 3.5px; transform: rotate(45deg); }
+body.hd-menu-open .hd-burger i:last-child { top: 3.5px; transform: rotate(-45deg); }
+@media (max-width: 380px) { .hd-menu-lbl { display: none; } .hd-menu-btn { padding: 0 10px; } }
+
+/* Progreso: linea punteada con el avioncito al pie del header */
+.hd-progress { position: relative; height: 5px; margin-top: 6px; }
+.hd-progress::before {
+  content: ""; position: absolute; inset: 0; border-radius: 3px;
+  background-image: linear-gradient(rgba(13, 35, 64, 0.22) 60%, transparent 0); background-size: 7px 2px; background-repeat: repeat-x; background-position: center;
+}
+.hd-progress-fill { position: absolute; left: 0; top: 50%; height: 2px; width: 0%; background: var(--brand); border-radius: 2px; transform: translateY(-50%); transition: width 120ms linear; }
+.hd-progress-plane { position: absolute; top: 50%; left: 0%; width: 14px; height: 14px; color: var(--deep); transform: translate(-50%, -50%); transition: left 120ms linear; filter: drop-shadow(0 1px 1px rgba(13, 35, 64, 0.3)); }
+
+/* ============ Menu hamburguesa: pantalla completa azul marino ============ */
+body.hd-menu-open { overflow: hidden; }
+.hd-menu { position: fixed; inset: 0; z-index: 70; visibility: hidden; transition: visibility 0s linear 420ms; }
+body.hd-menu-open .hd-menu { visibility: visible; transition: visibility 0s; }
+.hd-menu-scrim { position: absolute; inset: 0; background: rgba(1, 22, 46, 0.5); opacity: 0; transition: opacity 320ms var(--ease-out); }
+body.hd-menu-open .hd-menu-scrim { opacity: 1; }
+.hd-menu-panel {
+  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-start; gap: 28px;
+  overflow-y: auto; overscroll-behavior: contain;
+  padding: calc(var(--hd-h) + var(--hd-gap) * 2 + 16px) var(--gutter) 28px;
+  background: var(--deep); color: var(--cream);
+  background-image: radial-gradient(120% 60% at 100% 0%, rgba(11, 91, 152, 0.5), transparent 60%), radial-gradient(90% 60% at 0% 100%, rgba(1, 44, 92, 0.6), transparent 70%);
+  clip-path: inset(0 0 100% 0); transition: clip-path 420ms var(--ease-in-out);
+}
+body.hd-menu-open .hd-menu-panel { clip-path: inset(0 0 0 0); }
+.hd-menu-nav { display: grid; }
+.hd-menu-nav a { display: flex; align-items: baseline; gap: 12px; padding: 8px 0; min-height: 46px; font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 8.6vw, 44px); line-height: 1; color: var(--cream); border-bottom: 1px solid rgba(246, 240, 226, 0.18); opacity: 0; transform: translateY(12px); transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out); }
+.hd-menu-nav a:first-child { border-top: 1px solid rgba(246, 240, 226, 0.18); }
+.hd-menu-nav a span { flex: none; width: 2em; font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--brand); transform: translateY(-0.7em); }
+body.hd-menu-open .hd-menu-nav a { opacity: 1; transform: none; transition: opacity 380ms var(--ease-out), transform 380ms var(--ease-out); transition-delay: calc(120ms + var(--i, 0) * 45ms); }
+.hd-menu-nav a.hd-menu-parent { border-bottom: 0; padding-bottom: 2px; }
+.hd-menu-sub { list-style: none; margin: 0; padding: 0 0 10px calc(2em + 12px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 10px; border-bottom: 1px solid rgba(246, 240, 226, 0.18); }
+.hd-menu-sub a { display: flex; align-items: center; gap: 8px; min-height: 42px; padding: 0; border: 0; font-family: var(--font-body); font-weight: 600; font-size: 15px; color: var(--cream-mute); }
+.hd-menu-sub a::before { content: ""; flex: none; width: 9px; height: 1.4px; background: var(--brand); }
+@media (hover: hover) and (pointer: fine) { .hd-menu-nav a:hover { color: #fff; } .hd-menu-sub a:hover { color: #fff; } }
+.hd-menu-foot { display: grid; gap: 12px; opacity: 0; transition: opacity 200ms var(--ease-out); }
+body.hd-menu-open .hd-menu-foot { opacity: 1; transition: opacity 420ms var(--ease-out) 320ms; }
+.hd-menu-ruler { display: block; height: 7px; background-image: linear-gradient(rgba(246, 240, 226, 0.35) 60%, transparent 0); background-size: 7px 2px; background-repeat: repeat-x; }
+.hd-menu-acts { display: grid; grid-template-columns: 1.5fr minmax(0, 1fr); gap: 10px; }
+.hd-menu-acts .hd-btn { width: 100%; }
+.hd-menu-foot p { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; color: var(--cream-mute); font-size: 13px; align-items: center; }
+.hd-menu-social { display: flex; align-items: center; gap: 14px; }
+.hd-menu-social a { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font-weight: 600; font-size: 13px; color: var(--cream); }
+.hd-menu-social svg { width: 17px; height: 17px; color: var(--brand); }
+@media (hover: hover) and (pointer: fine) { .hd-menu-social a:hover { color: #a9d17e; } }
+@media (min-width: 720px) {
+  .hd-menu-panel { inset: 12px 12px 12px auto; width: min(480px, 42vw); border-radius: 16px; padding: calc(var(--hd-h) + 30px) 36px 28px; box-shadow: -30px 0 80px rgba(0, 0, 0, 0.35); clip-path: none; transform: translateX(calc(100% + 24px)); transition: transform 460ms cubic-bezier(0.32, 0.72, 0, 1); }
+  body.hd-menu-open .hd-menu-panel { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .hd-menu-panel, .hd-menu-nav a, .hd-menu-foot, .hd-menu-scrim { transition: none !important; } }
+
+/* ============ Lenguaje de formas: BOLETO ============ */
+.hd-ticket {
+  position: relative; border-radius: var(--radius-tk); background: #fff;
+  box-shadow: 0 26px 50px -28px rgba(1, 44, 92, 0.5), 0 2px 6px rgba(1, 44, 92, 0.1);
+}
+.hd-ticket::before, .hd-ticket::after {
+  content: ""; position: absolute; top: var(--tk-notch-y, 50%); width: 20px; height: 20px; margin-top: -10px;
+  border-radius: 50%; background: var(--tk-bg, var(--paper)); z-index: 2;
+}
+.hd-ticket::before { left: -10px; }
+.hd-ticket::after { right: -10px; }
+
+/* Troquel de VERDAD: las muescas se recortan del papel con mask, asi se ve lo que hay
+   atras (foto incluida) en lugar de dos discos de color pegados encima. La sombra va en
+   el envoltorio con filter: drop-shadow para que siga la silueta troquelada. */
+.hd-ticket--cut {
+  box-shadow: none;
+  --notch-r: 11px;
+  -webkit-mask-image:
+    radial-gradient(circle var(--notch-r) at 0 var(--tk-notch-y, 50%), transparent calc(var(--notch-r) - 0.5px), #000 var(--notch-r)),
+    radial-gradient(circle var(--notch-r) at 100% var(--tk-notch-y, 50%), transparent calc(var(--notch-r) - 0.5px), #000 var(--notch-r));
+  mask-image:
+    radial-gradient(circle var(--notch-r) at 0 var(--tk-notch-y, 50%), transparent calc(var(--notch-r) - 0.5px), #000 var(--notch-r)),
+    radial-gradient(circle var(--notch-r) at 100% var(--tk-notch-y, 50%), transparent calc(var(--notch-r) - 0.5px), #000 var(--notch-r));
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+}
+.hd-ticket--cut::before, .hd-ticket--cut::after { display: none; }
+.hd-paper-shadow { filter: drop-shadow(0 22px 26px rgba(1, 30, 62, 0.34)) drop-shadow(0 2px 2px rgba(1, 30, 62, 0.2)); }
+
+/* Perforacion: puntitos troquelados, no una raya */
+.hd-perf-h {
+  display: block; position: relative; height: 3px; border: 0;
+  background-image: radial-gradient(circle at 2px 1.5px, rgba(13, 35, 64, 0.42) 1.4px, transparent 1.6px);
+  background-size: 9px 3px; background-repeat: repeat-x;
+}
+
+/* Codigos de aeropuerto (mono) */
+.hd-code { font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.06em; }
+
+/* ============ Sello (stamp) ============ */
+.hd-stamp {
+  position: relative; border: 2.4px solid var(--stamp-c, var(--deep)); border-radius: 12px; color: var(--stamp-c, var(--deep));
+  box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4.4px var(--stamp-c, var(--deep));
+  background: #fff;
+}
+/* Un sello girado NO puede perder su giro al revelarse: el reveal generico pone
+   transform:none y dejaba los sellos grandes como cajas rectas (pulido 14). */
+.hd-stamp[data-hd-reveal] { transform: rotate(var(--rot, -3deg)) translateY(20px); }
+.hd-stamp[data-hd-reveal].is-in { transform: rotate(var(--rot, -3deg)); }
+
+/* ============ Marco de foto tipo boleto ============ */
+figure.hd-frame { position: relative; margin: 0; border-radius: var(--radius-tk); overflow: hidden; }
+.hd-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Etiqueta chica de foto ilustrativa. Va SIEMPRE en una esquina libre, nunca sobre texto:
+   por eso se fija un solo eje horizontal (left o right, nunca los dos) o se estira. */
+.hd-illus {
+  position: absolute; left: 10px; right: auto; bottom: 10px; top: auto; z-index: 2;
+  width: max-content; max-width: calc(100% - 20px); padding: 4px 9px; border-radius: 5px;
+  background: rgba(1, 22, 46, 0.62); color: #fff; font-size: 11.5px; font-weight: 600; letter-spacing: 0.02em;
+  backdrop-filter: blur(2px);
+}
+/* Arriba a la derecha: para fotos cuyo titulo va abajo a la izquierda (salidas, bodas). */
+.hd-illus--tr { left: auto; right: 10px; top: 10px; bottom: auto; }
+
+/* ============ Titulo que cae y pega ============ */
+.hd-drop { overflow: visible; }
+.hd-word { display: inline-block; will-change: transform, opacity; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .hd-drop .hd-word { opacity: 0; }
+  .hd-drop.is-in .hd-word { animation: hd-fall 560ms cubic-bezier(0.16, 0.84, 0.44, 1) both; }
+  .hd-drop.is-in .hd-word:nth-child(1) { animation-delay: 0ms; }
+  .hd-drop.is-in .hd-word:nth-child(2) { animation-delay: 90ms; }
+  .hd-drop.is-in .hd-word:nth-child(3) { animation-delay: 180ms; }
+  .hd-drop.is-in .hd-word:nth-child(4) { animation-delay: 270ms; }
+  .hd-drop.is-in .hd-word:nth-child(5) { animation-delay: 360ms; }
+  .hd-drop.is-in .hd-word:nth-child(6) { animation-delay: 450ms; }
+}
+@keyframes hd-fall {
+  0% { transform: translateY(-44px) scaleY(1); opacity: 0; filter: drop-shadow(0 20px 12px rgba(13, 35, 64, 0.35)); }
+  56% { transform: translateY(3px) scaleY(1); opacity: 1; filter: drop-shadow(0 5px 4px rgba(13, 35, 64, 0.28)); }
+  74% { transform: translateY(-2px) scaleY(0.965); opacity: 1; filter: drop-shadow(0 3px 3px rgba(13, 35, 64, 0.22)); }
+  100% { transform: translateY(0) scaleY(1); opacity: 1; filter: drop-shadow(0 2px 2px rgba(13, 35, 64, 0.2)); }
+}
+
+/* ============ Reveal con blindaje anti-blanco (1.6 s, CSS lo cubre si falla JS) ============ */
+@media (scripting: enabled) {
+  [data-hd-reveal] { opacity: 0; transform: translateY(22px); transition: opacity 640ms var(--ease-out), transform 640ms var(--ease-out); }
+  [data-hd-reveal="clip"] { opacity: 1; transform: none; clip-path: inset(0 0 100% 0); transition: clip-path 640ms var(--ease-out); }
+}
+[data-hd-reveal].is-in { opacity: 1; transform: none; }
+[data-hd-reveal="clip"].is-in { clip-path: inset(0 0 0 0); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-delay: 0ms !important; transition-duration: 1ms !important; }
+  [data-hd-reveal], [data-hd-reveal="clip"] { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+  .hd-word { opacity: 1 !important; }
+}
+
+/* ============ Boton flotante WhatsApp ============ */
+.hd-wa {
+  position: fixed; z-index: 55; right: calc(16px + env(safe-area-inset-right)); bottom: calc(16px + env(safe-area-inset-bottom));
+  width: 56px; height: 56px; display: grid; place-items: center; border-radius: 50%; background: var(--wa); color: #fff;
+  box-shadow: 0 8px 22px rgba(1, 44, 92, 0.32); animation: hd-wa-in 640ms cubic-bezier(0.23, 1, 0.32, 1) 1s both;
+  transition: transform 160ms var(--ease-out), visibility 0s, opacity 200ms var(--ease-out);
+}
+.hd-wa svg { width: 30px; height: 30px; }
+.hd-wa:active { transform: scale(0.94); }
+body.hd-menu-open .hd-wa { visibility: hidden; animation: none; }
+body.hd-wa-off .hd-wa { visibility: hidden; opacity: 0; animation: none; }
+@keyframes hd-wa-in { from { opacity: 0; transform: translateY(14px) scale(0.9); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .hd-wa { animation: none; } }
+
+/* ============ Secciones: fundacion de ritmo ============ */
+.hd-sec { padding: var(--sec-y) 0; }
+.hd-sec--sm { padding: var(--sec-y-sm) 0; }
+.hd-sec.hd-on-deep { background: var(--deep); color: var(--cream); }
+.hd-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand-dark); margin-bottom: 10px; }
+.hd-on-deep .hd-eyebrow { color: #a9d17e; }
+.hd-h2 { font-size: clamp(36px, 11vw, 76px); line-height: 0.98; letter-spacing: -0.01em; }
+.hd-lead { color: var(--mute); font-size: 17px; line-height: 1.5; max-width: 36ch; text-wrap: balance; }
+.hd-on-deep .hd-lead { color: var(--cream-mute); }
+@media (min-width: 720px) { .hd-lead { font-size: 19px; } }
+
+/* ============ Estrellas ============ */
+.hd-stars { display: inline-flex; gap: 3px; color: #e0a91c; }
+.hd-stars svg { width: 17px; height: 17px; }
+
+/* ============ Footer ============ */
+.hd-foot { background: var(--deep-2); color: var(--cream); padding: 56px 0 calc(40px + env(safe-area-inset-bottom)); }
+.hd-foot-grid { display: grid; gap: 30px; }
+.hd-foot-brand { display: flex; align-items: center; gap: 16px; }
+.hd-foot-motto { font-family: var(--font-display); font-weight: 800; font-size: clamp(24px, 7vw, 34px); line-height: 1.02; }
+.hd-foot-h { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream-mute); margin-bottom: 12px; }
+.hd-foot-list, .hd-foot-map { display: grid; gap: 4px; }
+.hd-foot-list a, .hd-foot-map a { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; font-weight: 600; }
+.hd-foot-list svg { width: 18px; height: 18px; color: var(--brand); flex: none; }
+@media (hover: hover) and (pointer: fine) { .hd-foot-list a:hover, .hd-foot-map a:hover { color: #a9d17e; } }
+.hd-foot address { font-style: normal; font-size: 16px; line-height: 1.4; margin-bottom: 10px; color: var(--cream-mute); }
+.hd-foot-bottom { display: grid; gap: 6px; margin-top: 30px; padding-top: 18px; border-top: 1px solid rgba(246, 240, 226, 0.16); font-size: 13px; color: var(--cream-mute); }
+@media (min-width: 720px) {
+  .hd-foot-grid { grid-template-columns: 1.4fr minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); }
+  .hd-foot-bottom { grid-template-columns: minmax(0, 1fr) auto; }
+}
+

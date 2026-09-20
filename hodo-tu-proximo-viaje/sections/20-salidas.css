@@ -1,0 +1,46 @@
+/* ============ 20 · Salidas (tablero tipo aeropuerto) ============ */
+.hd-salidas { background: var(--paper); }
+.hd-salidas-photo { position: relative; height: 62svh; min-height: 320px; max-height: 560px; margin: 0 0 var(--sec-y-sm); }
+.hd-salidas-photo picture, .hd-salidas-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hd-salidas-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(1, 22, 46, 0) 45%, rgba(1, 22, 46, 0.7)); }
+.hd-salidas-cap { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 22px; z-index: 1; color: #fff; font-family: var(--font-display); font-weight: 800; font-size: clamp(22px, 6vw, 34px); }
+.hd-salidas-wrap h2 { margin-bottom: var(--head-gap); }
+
+.hd-board { border-radius: 16px; overflow: hidden; background: var(--deep-2); color: var(--cream); box-shadow: 0 20px 44px -26px rgba(1, 44, 92, 0.5); }
+.hd-board-head { display: grid; grid-template-columns: 60px minmax(0, 1fr) auto; gap: 12px 14px; padding: 12px 16px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(246, 240, 226, 0.55); border-bottom: 1px solid rgba(246, 240, 226, 0.14); }
+.hd-board-note-h { display: none; }
+@media (min-width: 620px) { .hd-board-note-h { display: block; } .hd-board-head { grid-template-columns: 60px minmax(0, 1fr) minmax(0, 1fr); } }
+.hd-board-rows[data-hd-reveal] { opacity: 1; transform: none; } /* el detalle de entrada lo hacen las filas, no el contenedor */
+
+.hd-board-row {
+  position: relative; display: grid; grid-template-columns: 60px minmax(0, 1fr) 20px; grid-template-rows: auto auto; align-items: center; gap: 4px 14px;
+  padding: 15px 16px; color: var(--cream); border-bottom: 1px solid rgba(246, 240, 226, 0.12);
+  transition: background-color 180ms var(--ease-out);
+}
+.hd-board-row:last-child { border-bottom: 0; }
+@media (min-width: 620px) { .hd-board-row { grid-template-columns: 60px minmax(0, 1fr) minmax(0, 1fr) 20px; grid-template-rows: auto; } }
+@media (hover: hover) and (pointer: fine) { .hd-board-row:hover { background: rgba(246, 240, 226, 0.06); } .hd-board-row:hover .hd-board-arrow { transform: translateX(3px); } }
+.hd-board-row:active { background: rgba(246, 240, 226, 0.1); }
+/* Colocacion explicita: en un grid con filas/columnas mixtas el auto-placement puede
+   meter la ciudad en la columna del codigo (60px) si se deja a la ambiguedad. */
+.hd-board-code { grid-column: 1; grid-row: 1 / -1; font-family: var(--font-mono); font-weight: 500; font-size: 20px; letter-spacing: 0.04em; color: var(--brand); perspective: 240px; align-self: center; }
+.hd-board-code b { display: inline-block; font-style: normal; }
+.hd-board-city { grid-column: 2; grid-row: 1; font-weight: 700; font-size: 16px; color: #fff; align-self: end; }
+.hd-board-note { grid-column: 2; grid-row: 2; font-size: 13.5px; color: rgba(246, 240, 226, 0.62); align-self: start; }
+.hd-board-arrow { grid-column: 3; grid-row: 1 / -1; width: 17px; height: 17px; color: var(--brand); flex: none; transition: transform 200ms var(--ease-out); justify-self: end; align-self: center; }
+@media (min-width: 620px) {
+  .hd-board-city { grid-column: 2; grid-row: 1; align-self: center; }
+  .hd-board-note { grid-column: 3; grid-row: 1; align-self: center; }
+  .hd-board-arrow { grid-column: 4; grid-row: 1; }
+}
+
+/* Entrada de las filas: se disparan una vez con el .hd-board-rows.is-in (blindaje generico de site.css/site.js) */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .hd-board-row { transition: opacity 440ms var(--ease-out), transform 440ms var(--ease-out), background-color 180ms var(--ease-out); transition-delay: calc(var(--ri, 0) * 70ms); }
+  .hd-board-code b { transition: opacity 260ms ease-out, transform 320ms var(--ease-out); transform-origin: 50% 60%; }
+  .hd-board-code b:nth-child(1) { transition-delay: calc(var(--ri, 0) * 70ms); }
+  .hd-board-code b:nth-child(2) { transition-delay: calc(var(--ri, 0) * 70ms + 55ms); }
+  .hd-board-code b:nth-child(3) { transition-delay: calc(var(--ri, 0) * 70ms + 110ms); }
+  .hd-board-rows:not(.is-in) .hd-board-row { opacity: 0; transform: translateY(14px); }
+  .hd-board-rows:not(.is-in) .hd-board-code b { opacity: 0; transform: rotateX(90deg); }
+}
