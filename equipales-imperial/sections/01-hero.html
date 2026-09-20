@@ -7,8 +7,10 @@
         </picture>
         <!-- VIDEO DE CINE: hecho con sus 4 fotos reales (ffmpeg, tools/hero_video.py: acercar, paneo, inclinación,
              alejar, disolvencias, grading cálido, loop sin corte). data-segs = segundo en que empieza cada foto.
-             Mientras carga o si play() falla queda la foto real (poster = la foto actual del hero). -->
-        <video class="s-hero-video" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-poster-m="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9" poster="img/hero/hero-d.webp" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" aria-hidden="true" tabindex="-1" hidden></video>
+             Mientras carga o si play() falla queda la foto real. SIN poster escrito aqui: el navegador se
+             bajaba el poster de compu (270 KB) tambien en celular. Lo pone 01-hero.js con data-poster-m/d,
+             y preload="none" + arranque despues del load para que no pelee con la primera carga. -->
+        <video class="s-hero-video" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-poster-m="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" aria-hidden="true" tabindex="-1" hidden></video>
       </div>
     </div>
     <div class="s-hero-shade" aria-hidden="true"></div>
@@ -20,23 +22,142 @@
         <p class="s-hero-sub">Es un Imperial. Piel y madera hechas a mano por cuatro generaciones.</p>
         <div class="s-hero-actions">
           <a class="cd-btn cd-btn--primary" data-wa="Hola Equipales Imperial, quiero cotizar un equipal." href="https://wa.me/523312670824" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotiza tu equipal</a>
-          <a class="cd-btn cd-btn--secondary" href="#catalogo">Ver catálogo</a>
+          <a class="cd-btn cd-btn--brand" href="#catalogo">Ver catálogo</a>
         </div>
       </div>
-      <ul class="s-hero-idx" aria-label="Piezas más pedidas">
-        <li><a href="#catalogo" data-linea="mesas" data-item="101"><span><b>Mesa tradicional</b> · desde $1,400</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="#catalogo" data-linea="cantineros" data-item="35"><span><b>Cantinero Tradicional</b> · desde $1,700</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="#catalogo" data-linea="asientos" data-item="6"><span><b>Equipal Tulum</b> · desde $2,200</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="#catalogo" data-linea="asientos" data-item="14"><span><b>Equipal Tolteca</b> · desde $3,200</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="#catalogo" data-linea="asientos" data-item="21"><span><b>Equipal Guadalajara</b> · desde $4,300</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="#catalogo" data-linea="comedores" data-item="76"><span><b>Comedor Tradicional</b> · desde $5,800</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="#catalogo" data-linea="barras" data-item="111"><span><b>Barra Lineal</b> · desde $6,000</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="#catalogo" data-linea="asientos" data-item="30"><span><b>Equipal Frida</b> · desde $7,500</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="#catalogo" data-linea="asientos" data-item="31"><span><b>Mecedora Guadalajara</b> · desde $8,900</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="#catalogo" data-linea="asientos" data-item="33"><span><b>Mecedora Tapachula</b> · desde $8,900</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="#catalogo" data-linea="salas" data-item="55"><span><b>Sala Tradicional</b> · desde $12,000</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="#catalogo" data-linea="salas" data-item="71"><span><b>Sala Guadalajara</b> · desde $32,000</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-      </ul>
+      <div class="s-hero-slider" aria-label="Lo más pedido">
+        <div class="s-hero-slider-head">
+          <h2 class="s-hero-slider-h">Lo más pedido</h2>
+          <div class="s-hero-arrows">
+            <button type="button" class="s-hero-arrow" data-dir="-1" aria-label="Piezas anteriores"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+            <button type="button" class="s-hero-arrow" data-dir="1" aria-label="Siguientes piezas"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+        <ul class="s-hero-track">
+<!--CARDS:HERO:START-->
+<li class="eq-pcard" data-c="salas" data-i="71">
+  <div class="eq-pcard-ph"><img class="eq-pcard-img" src="img/cat/sala-guadalajara.webp" alt="Sala Guadalajara de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"><span class="eq-pcard-tag">Más pedido</span></div>
+  <div class="eq-pcard-body">
+    <h3 class="eq-pcard-name">Sala Guadalajara</h3>
+    <div class="eq-pcard-row">
+      <p class="eq-pcard-price eq-price">desde $32,000 <small>+ IVA</small></p>
+      <button type="button" class="eq-pcard-add eq-pcard-add--icon" data-i="71" aria-pressed="false" aria-label="Agregar Sala Guadalajara a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+  </div>
+</li>
+<li class="eq-pcard" data-c="asientos" data-i="31">
+  <div class="eq-pcard-ph"><img class="eq-pcard-img" src="img/cat/mecedora-guadalajara.webp" alt="Mecedora Guadalajara de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"><span class="eq-pcard-tag">Más pedido</span></div>
+  <div class="eq-pcard-body">
+    <h3 class="eq-pcard-name">Mecedora Guadalajara</h3>
+    <div class="eq-pcard-row">
+      <p class="eq-pcard-price eq-price">desde $8,900 <small>+ IVA</small></p>
+      <button type="button" class="eq-pcard-add eq-pcard-add--icon" data-i="31" aria-pressed="false" aria-label="Agregar Mecedora Guadalajara a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+  </div>
+</li>
+<li class="eq-pcard" data-c="asientos" data-i="30">
+  <div class="eq-pcard-ph"><img class="eq-pcard-img" src="img/cat/equipal-frida.webp" alt="Equipal Frida de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"><span class="eq-pcard-tag">Más pedido</span></div>
+  <div class="eq-pcard-body">
+    <h3 class="eq-pcard-name">Equipal Frida</h3>
+    <div class="eq-pcard-row">
+      <p class="eq-pcard-price eq-price">desde $7,500 <small>+ IVA</small></p>
+      <button type="button" class="eq-pcard-add eq-pcard-add--icon" data-i="30" aria-pressed="false" aria-label="Agregar Equipal Frida a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+  </div>
+</li>
+<li class="eq-pcard" data-c="asientos" data-i="21">
+  <div class="eq-pcard-ph"><img class="eq-pcard-img" src="img/cat/equipal-guadalajara.webp" alt="Equipal Guadalajara de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"><span class="eq-pcard-tag">Más pedido</span></div>
+  <div class="eq-pcard-body">
+    <h3 class="eq-pcard-name">Equipal Guadalajara</h3>
+    <div class="eq-pcard-row">
+      <p class="eq-pcard-price eq-price">desde $4,300 <small>+ IVA</small></p>
+      <button type="button" class="eq-pcard-add eq-pcard-add--icon" data-i="21" aria-pressed="false" aria-label="Agregar Equipal Guadalajara a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+  </div>
+</li>
+<li class="eq-pcard" data-c="asientos" data-i="33">
+  <div class="eq-pcard-ph"><img class="eq-pcard-img" src="img/cat/mecedora-tapachula.webp" alt="Mecedora Tapachula de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"><span class="eq-pcard-tag">Más pedido</span></div>
+  <div class="eq-pcard-body">
+    <h3 class="eq-pcard-name">Mecedora Tapachula</h3>
+    <div class="eq-pcard-row">
+      <p class="eq-pcard-price eq-price">desde $8,900 <small>+ IVA</small></p>
+      <button type="button" class="eq-pcard-add eq-pcard-add--icon" data-i="33" aria-pressed="false" aria-label="Agregar Mecedora Tapachula a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+  </div>
+</li>
+<li class="eq-pcard" data-c="asientos" data-i="6">
+  <div class="eq-pcard-ph"><img class="eq-pcard-img" src="img/cat/equipal-tulum.webp" alt="Equipal Tulum de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"><span class="eq-pcard-tag">Más pedido</span></div>
+  <div class="eq-pcard-body">
+    <h3 class="eq-pcard-name">Equipal Tulum</h3>
+    <div class="eq-pcard-row">
+      <p class="eq-pcard-price eq-price">desde $2,200 <small>+ IVA</small></p>
+      <button type="button" class="eq-pcard-add eq-pcard-add--icon" data-i="6" aria-pressed="false" aria-label="Agregar Equipal Tulum a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+  </div>
+</li>
+<li class="eq-pcard" data-c="asientos" data-i="14">
+  <div class="eq-pcard-ph"><img class="eq-pcard-img" src="img/cat/equipal-tolteca.webp" alt="Equipal Tolteca de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"><span class="eq-pcard-tag">Más pedido</span></div>
+  <div class="eq-pcard-body">
+    <h3 class="eq-pcard-name">Equipal Tolteca</h3>
+    <div class="eq-pcard-row">
+      <p class="eq-pcard-price eq-price">desde $3,200 <small>+ IVA</small></p>
+      <button type="button" class="eq-pcard-add eq-pcard-add--icon" data-i="14" aria-pressed="false" aria-label="Agregar Equipal Tolteca a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+  </div>
+</li>
+<li class="eq-pcard" data-c="cantineros" data-i="35">
+  <div class="eq-pcard-ph"><img class="eq-pcard-img" src="img/cat/cantinero-tradicional.webp" alt="Cantinero Tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"><span class="eq-pcard-tag">Más pedido</span></div>
+  <div class="eq-pcard-body">
+    <h3 class="eq-pcard-name">Cantinero Tradicional</h3>
+    <div class="eq-pcard-row">
+      <p class="eq-pcard-price eq-price">desde $1,700 <small>+ IVA</small></p>
+      <button type="button" class="eq-pcard-add eq-pcard-add--icon" data-i="35" aria-pressed="false" aria-label="Agregar Cantinero Tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+  </div>
+</li>
+<li class="eq-pcard" data-c="comedores" data-i="76">
+  <div class="eq-pcard-ph"><img class="eq-pcard-img" src="img/cat/comedor-tradicional.webp" alt="Comedor Tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"><span class="eq-pcard-tag">Más pedido</span></div>
+  <div class="eq-pcard-body">
+    <h3 class="eq-pcard-name">Comedor Tradicional</h3>
+    <div class="eq-pcard-row">
+      <p class="eq-pcard-price eq-price">desde $5,800 <small>+ IVA</small></p>
+      <button type="button" class="eq-pcard-add eq-pcard-add--icon" data-i="76" aria-pressed="false" aria-label="Agregar Comedor Tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+  </div>
+</li>
+<li class="eq-pcard" data-c="mesas" data-i="101">
+  <div class="eq-pcard-ph"><img class="eq-pcard-img" src="img/cat/mesa-tradicional.webp" alt="Mesa tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"><span class="eq-pcard-tag">Más pedido</span></div>
+  <div class="eq-pcard-body">
+    <h3 class="eq-pcard-name">Mesa tradicional</h3>
+    <div class="eq-pcard-row">
+      <p class="eq-pcard-price eq-price">desde $1,400 <small>+ IVA</small></p>
+      <button type="button" class="eq-pcard-add eq-pcard-add--icon" data-i="101" aria-pressed="false" aria-label="Agregar Mesa tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+  </div>
+</li>
+<li class="eq-pcard" data-c="barras" data-i="111">
+  <div class="eq-pcard-ph"><img class="eq-pcard-img" src="img/cat/barra-lineal.webp" alt="Barra Lineal de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"><span class="eq-pcard-tag">Más pedido</span></div>
+  <div class="eq-pcard-body">
+    <h3 class="eq-pcard-name">Barra Lineal</h3>
+    <div class="eq-pcard-row">
+      <p class="eq-pcard-price eq-price">desde $6,000 <small>+ IVA</small></p>
+      <button type="button" class="eq-pcard-add eq-pcard-add--icon" data-i="111" aria-pressed="false" aria-label="Agregar Barra Lineal a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+  </div>
+</li>
+<li class="eq-pcard" data-c="salas" data-i="55">
+  <div class="eq-pcard-ph"><img class="eq-pcard-img" src="img/cat/sala-tradicional.webp" alt="Sala Tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"><span class="eq-pcard-tag">Más pedido</span></div>
+  <div class="eq-pcard-body">
+    <h3 class="eq-pcard-name">Sala Tradicional</h3>
+    <div class="eq-pcard-row">
+      <p class="eq-pcard-price eq-price">desde $12,000 <small>+ IVA</small></p>
+      <button type="button" class="eq-pcard-add eq-pcard-add--icon" data-i="55" aria-pressed="false" aria-label="Agregar Sala Tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+  </div>
+</li>
+<!--CARDS:HERO:END-->
+        </ul>
+      </div>
       <p class="s-hero-note">Precios de su tienda en línea, MXN + IVA.</p>
     </div>
   </section>

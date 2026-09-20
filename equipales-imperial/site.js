@@ -37,6 +37,23 @@ window.EQ = (function () {
   };
   function money(n) { return "$" + Number(n).toLocaleString("es-MX"); }
   function priceTxt(p) { return p.length > 1 && p[1] !== p[0] ? money(p[0]) + " a " + money(p[1]) : money(p[0]); }
+  /* aviso chico "Agregado a tu pedido · Ver" (2 s); onView abre Mi pedido */
+  var toastEl = null, toastT = null;
+  function toast(msg, onView) {
+    if (!toastEl) {
+      toastEl = document.createElement("div");
+      toastEl.className = "eq-toast";
+      toastEl.setAttribute("role", "status");
+      toastEl.innerHTML = '<span class="eq-toast-msg"></span><button type="button" class="eq-toast-view">Ver</button>';
+      document.body.appendChild(toastEl);
+    }
+    toastEl.querySelector(".eq-toast-msg").textContent = msg;
+    toastEl.querySelector(".eq-toast-view").onclick = function () { hideToast(); if (onView) onView(); };
+    clearTimeout(toastT);
+    requestAnimationFrame(function () { toastEl.classList.add("is-on"); });
+    toastT = setTimeout(hideToast, 2000);
+  }
+  function hideToast() { if (toastEl) toastEl.classList.remove("is-on"); clearTimeout(toastT); }
   /* foto que entra desde blur (receta 14, catalogo-motion.md): quita el blur al decodificar o a los 1.6 s (blindaje) */
   function blurIn(img) {
     if (!img) return;
@@ -68,7 +85,7 @@ window.EQ = (function () {
     document.addEventListener("keydown", function (e) { if (open && e.key === "Escape") close(); });
     return { open: show, close: function () { close(); }, isOpen: function () { return open; } };
   }
-  return { wa: WA, waUrl: waUrl, send: send, layer: layer, store: store, money: money, priceTxt: priceTxt, sheet: sheet, blurIn: blurIn };
+  return { wa: WA, waUrl: waUrl, send: send, layer: layer, store: store, money: money, priceTxt: priceTxt, sheet: sheet, blurIn: blurIn, toast: toast };
 })();
 
 /* Equipales Imperial: base clonada de Closet&Door (WhatsApp, menú, microinteracciones, blindaje) + helpers EQ */
@@ -156,7 +173,7 @@ window.EQ = (function () {
 
   /* ---------- WA flotante: se esconde donde ya hay botones de contacto ---------- */
   function initWaHide() {
-    var zones = document.querySelectorAll("#cotiza, #personaliza, #visitanos, #cierre, .cd-foot");
+    var zones = document.querySelectorAll("#catalogo, #cotiza, #personaliza, #visitanos, #cierre, .cd-foot");
     if (!zones.length || !("IntersectionObserver" in window)) return;
     var on = new Set();
     var io = new IntersectionObserver(function (es) {
@@ -213,8 +230,89 @@ window.EQ = (function () {
     window.addEventListener("hashchange", function () { applyMatHash(true); });
   }
 
+  /* ---------- Barra de tienda (eq-topbar): se compacta al bajar, mismo umbral que .is-solid del kit ---------- */
+  function initTopbar() {
+    if (!document.querySelector(".eq-topbar")) return;
+    var ticking = false;
+    function update() { ticking = false; document.body.classList.toggle("eq-bar-off", (window.scrollY || window.pageYOffset) > 40); }
+    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+  }
+
+  /* ---------- Ícono "Mi pedido" del header: abre la misma hoja que la barra fija del catálogo ---------- */
+  function initMiniPedido() {
+    var btn = document.querySelector(".eq-mp-btn");
+    if (!btn) return;
+    btn.addEventListener("click", function () { if (window.EQpedido) window.EQpedido.open(); });
+  }
+
+  /* ---------- Títulos de sección: caen desde arriba y pegan con rebote corto (misma técnica que el
+     "8" de #nosotros: resorte muestreado e^(-z t) sin(w t) por WAAPI, no CSS). Una vez por título,
+     blindaje a 1.6 s (si el observador no dispara, el título ya está en su lugar por el CSS de reposo). ---------- */
+  function initTitleDrop() {
+    var els = Array.prototype.slice.call(document.querySelectorAll("[data-title-drop]"));
+    if (!els.length) return;
+    if (reduce || !els[0].animate) return;
+    els.forEach(function (el) { el.classList.add("td-pre"); });
+    function spring(n, amp, turns, decay, fmt) {
+      var k = [];
+      for (var i = 0; i <= n; i++) {
+        var t = i / n, v = i === n ? 0 : amp * Math.exp(-decay * t) * Math.sin(turns * Math.PI * 2 * t);
+        k.push({ transform: fmt(v) });
+      }
+      return k;
+    }
+    var DROP = 60, RUN = 460, HIT = 240;
+    var done = new WeakSet();
+    function play(el) {
+      if (done.has(el)) return; done.add(el);
+      el.classList.remove("td-pre");
+      var run = el.animate(
+        [{ transform: "translateY(-" + DROP + "px)", opacity: 0 },
+         { transform: "translateY(-" + (DROP * 0.12).toFixed(1) + "px)", opacity: 1, offset: 0.82 },
+         { transform: "translateY(0)", opacity: 1 }],
+        { duration: RUN, easing: "cubic-bezier(0.55,0,0.85,0.35)", fill: "backwards" }
+      );
+      el.animate(spring(16, 6, 1.4, 4, function (v) { return "translateY(" + v.toFixed(2) + "px)"; }), { duration: HIT, delay: RUN, easing: "linear" });
+      setTimeout(function () { if (run.playState === "running") run.finish(); }, RUN + HIT + 700);
+    }
+    /* Disparo por posición de scroll (no IntersectionObserver: en algunos Chrome headless/in-app
+       no dispara con saltos de scroll instantáneos). Mismo patrón que la línea de #nosotros. */
+    var pending = els.slice(), q = false;
+    function check() {
+      q = false;
+      if (!pending.length) return;
+      var vh = window.innerHeight || document.documentElement.clientHeight || 800;
+      pending = pending.filter(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top > vh || r.bottom < 0) return true; /* aún no asoma o ya se fue por arriba: sigue pendiente */
+        /* (el umbral es la orilla de abajo exacta: con 0.92 un título que asomaba en el último 8 % de la
+           pantalla se quedaba en opacidad 0 a la vista, y eso se leía como un hueco) */
+        play(el);
+        return false;
+      });
+      if (!pending.length) { window.removeEventListener("scroll", on); window.removeEventListener("resize", on); }
+    }
+    function on() { if (!q) { q = true; requestAnimationFrame(check); } }
+    window.addEventListener("scroll", on, { passive: true });
+    window.addEventListener("resize", on);
+    check();
+    setTimeout(check, 400);
+    window.addEventListener("load", check);
+    /* Blindaje: a 1.6 s, solo los títulos que YA están en pantalla quedan en su lugar (sin animar).
+       Los de abajo del pliegue siguen pendientes para que caigan cuando el usuario llegue a ellos:
+       marcarlos todos aquí era lo que tenía muerto el efecto en las 7 secciones. */
+    setTimeout(function () {
+      var vh = window.innerHeight || document.documentElement.clientHeight || 800;
+      els.forEach(function (el) {
+        if (done.has(el)) return;
+        if (el.getBoundingClientRect().top < vh) { done.add(el); el.classList.remove("td-pre"); }
+      });
+    }, 1600);
+  }
+
   function init() {
-    fixCrossPageLinks(); initWa(); initMenu(); initRipple(); initWaHide(); initRevealSafety();
+    fixCrossPageLinks(); initWa(); initMenu(); initRipple(); initWaHide(); initRevealSafety(); initTopbar(); initMiniPedido(); initTitleDrop();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

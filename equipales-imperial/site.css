@@ -79,6 +79,15 @@ body { background: var(--bg-warm); }
 .cd-btn--primary { background: var(--wa); border-color: rgba(11, 61, 31, 0.3); color: var(--wa-ink); box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35); --sweep: var(--wa-dark); }
 .cd-btn--primary:active { background: var(--wa-dark); }
 .cd-btn--secondary { background: transparent; border-color: currentColor; color: inherit; --sweep: rgba(127, 127, 127, 0.14); }
+/* ============ Botón de NAVEGACIÓN: color de marca (cuero con texto crema), fino y rectangular ============
+   Regla de Emanuel (19 sep): el VERDE es solo de los botones que de verdad mandan el WhatsApp
+   (enviar Mi pedido, enviar Cotiza gratis, cotizar la línea, agendar visita y el flotante).
+   Lo que solo lleva a otra parte de la página —Ver catálogo, Cotizar del header, Ver más,
+   abrir Mi pedido, Cómo llegar, las tarjetas de Colecciones— va en cuero. */
+.cd-btn--brand { min-height: 46px; background: var(--brand-logo); border-color: rgba(245, 237, 226, 0.22); color: var(--cream); --sweep: #6a3d20; }
+.cd-btn--brand svg { color: var(--cream); }
+.cd-btn--brand:active { background: #3c210f; }
+.cd-btn--thin { min-height: 44px; padding: 0 18px; font-size: 15px; }
 .cd-btn--link { min-height: 44px; padding: 0; border: 0; border-radius: 0; background: none; color: inherit; gap: 8px;
   background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 100% 1.5px; background-position: 0 calc(100% - 9px); }
 .cd-btn--link::before { display: none; }
@@ -125,6 +134,9 @@ em { font-style: normal; color: var(--brand); }
 }
 @keyframes cd-ripple { from { opacity: 1; transform: scale(0.3); } to { opacity: 0; transform: scale(1.6); } }
 
+.k-cta.eq-cta-brand, body[data-hero-dark] .k-header:not(.is-solid) .k-cta.eq-cta-brand { background: var(--brand-logo); border-color: rgba(245, 237, 226, 0.28); color: var(--cream); font-weight: 700; --sweep: #6a3d20; }
+.k-cta.eq-cta-brand:active { background: #3c210f; }
+@media (hover: hover) and (pointer: fine) { .k-cta.eq-cta-brand:hover { background: #3c210f; color: var(--cream); } }
 .cd-green,
 body[data-hero-dark] .k-header .k-cta.cd-green {
   background: var(--wa); border-color: var(--wa); color: var(--wa-ink); font-weight: 700;
@@ -144,6 +156,40 @@ body[data-hero-dark] .k-header .k-cta.cd-green {
 .k-header.is-solid .cd-logo-dark, body.cd-menu-open .cd-logo-dark { opacity: 1; }
 .k-header.is-solid .cd-logo-light, body.cd-menu-open .cd-logo-light { opacity: 0; }
 .k-cta { height: 44px; }
+
+/* ============ Header de tienda propio: barra de anuncio + fila principal ============
+   Distinto al header genérico del kit: agrega una barra delgada (envíos + WhatsApp) que
+   se compacta (desaparece) al bajar (body.eq-bar-off, ver site.js), y a la derecha
+   un ícono de "Mi pedido" con contador que abre la misma hoja que la barra fija del catálogo. */
+:root { --eq-topbar-h: 34px; }
+@media (min-width: 900px) { :root { --eq-topbar-h: 38px; } }
+.eq-topbar {
+  position: fixed; z-index: 51; left: 0; right: 0; top: 0; height: var(--eq-topbar-h);
+  overflow: hidden; background: var(--deep); color: var(--cream-mute);
+  transition: transform 260ms var(--ease-out), opacity 200ms var(--ease-out), visibility 0s linear 260ms;
+}
+body:not(.eq-bar-off) .eq-topbar { visibility: visible; transition: transform 260ms var(--ease-out), opacity 200ms var(--ease-out), visibility 0s; }
+.eq-topbar-in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 14px; font-size: 11.5px; }
+.eq-topbar-msg { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.eq-topbar-wa { position: relative; flex: none; display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--cream); }
+.eq-topbar-wa::after { content: ""; position: absolute; left: 50%; top: 50%; width: calc(100% + 26px); min-width: 44px; height: 44px; transform: translate(-50%, -50%); } /* area de clic invisible de 44x44 sin engordar la barra (en celular queda solo el icono) */
+.eq-topbar-wa svg { width: 13px; height: 13px; color: var(--wa); }
+body.eq-bar-off .eq-topbar { transform: translateY(-100%); opacity: 0; visibility: hidden; } /* hidden de verdad: ni el lector de pantalla ni el Tab la alcanzan cuando no se ve */
+@media (max-width: 559px) {
+  .eq-topbar-largo { display: none; }
+  .eq-topbar-in { justify-content: space-between; gap: 10px; }
+  .eq-topbar-wa .eq-topbar-num { display: none; }   /* solo el icono de WhatsApp: el numero no cabe */
+  .eq-topbar-wa svg { width: 15px; height: 15px; }
+}
+.eq-header { top: var(--eq-topbar-h); transition: background-color 320ms var(--ease-out), border-color 320ms var(--ease-out), color 320ms var(--ease-out), -webkit-backdrop-filter 320ms var(--ease-out), backdrop-filter 320ms var(--ease-out), top 260ms var(--ease-out); }
+body.eq-bar-off .eq-header { top: 0; }
+.eq-header-acts { display: flex; align-items: center; gap: 10px; }
+.eq-mp-btn { position: relative; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 3px; color: inherit; }
+.eq-mp-btn svg { width: 22px; height: 22px; }
+.eq-mp-n { position: absolute; top: 0; right: 0; min-width: 17px; height: 17px; padding: 0 4px; border-radius: 3px; display: grid; place-items: center; background: var(--wa); color: var(--wa-ink); font-size: 10.5px; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1; }
+.eq-mp-n[data-n="0"] { display: none; }
+@media (min-width: 900px) { .eq-header .cd-menu-btn { display: none; } }
+@media (max-width: 899px) { .eq-header-acts .k-cta.cd-green { display: none; } }
 
 .cd-menu-btn {
   display: inline-flex; align-items: center; gap: 8px;
@@ -309,8 +355,20 @@ body.cd-menu-open .cd-menu-foot { opacity: 1; transition: opacity 420ms var(--ea
 .cd-foot-phrases li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line-wood); color: var(--cream-mute); font-size: 16px; }
 .cd-foot-phrases li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--brand-on-wood); flex: none; }
 .cd-foot-ruler { display: block; height: 9px; margin: 44px 0 36px; background: var(--ruler-cream); opacity: 0.35; }
-.cd-foot-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 20px; }
+.cd-foot-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px 20px; }
+.cd-foot-list a, .cd-foot-map a, .cd-foot address { overflow-wrap: anywhere; }
+.cd-foot-col { min-width: 0; }
 .cd-foot-col:first-child, .cd-foot-msi { grid-column: 1 / -1; }
+/* Síguenos a fila completa en celular: 4 iconos de 44 px no caben en media columna de 360/390 y se apilaban */
+.cd-foot-col--social { grid-column: 1 / -1; }
+.cd-foot-social { flex-wrap: nowrap; }
+/* Abajo de 560 el pie va en UNA columna: en dos, "EE.UU. 805 885 9713" y el correo se encimaban
+   con la columna de al lado (no desbordaban la página, pero se leían montados). */
+@media (max-width: 559px) {
+  .cd-foot-cols { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .cd-foot-col, .cd-foot-col:first-child, .cd-foot-col--social { grid-column: 1 / -1; }
+  .cd-foot-map { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; }
+}
 .cd-foot-h { font-family: var(--font-body); font-stretch: 100%; font-variation-settings: normal; text-transform: none; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; color: var(--cream-mute); margin-bottom: 12px; }
 .cd-foot address { font-style: normal; font-size: 18px; line-height: 1.4; margin-bottom: 4px; }
 .cd-foot-list, .cd-foot-map { list-style: none; padding: 0; margin: 0; display: grid; }
@@ -318,6 +376,12 @@ body.cd-menu-open .cd-menu-foot { opacity: 1; transition: opacity 420ms var(--ea
 .cd-foot-list svg { width: 18px; height: 18px; flex: none; color: var(--brand-on-wood); }
 .cd-foot-list a:active, .cd-foot-map a:active { color: var(--brand-on-wood); }
 @media (hover: hover) and (pointer: fine) { .cd-foot-list a:hover, .cd-foot-map a:hover { color: var(--brand-on-wood); } }
+/* Síguenos: solo las redes reales de research/hechos.md, como logotipos (no texto) */
+.cd-foot-social { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.cd-foot-social a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 3px; color: var(--cream-mute); transition: color 200ms var(--ease-out), transform 160ms var(--ease-out); }
+.cd-foot-social svg { width: 44px; height: 44px; }
+.cd-foot-social a:active { transform: scale(0.94); }
+@media (hover: hover) and (pointer: fine) { .cd-foot-social a:hover { color: var(--brand-on-wood); } }
 .cd-foot-msi { display: flex; align-items: center; gap: 16px; padding: 20px; border: 1px solid var(--line-wood); border-radius: var(--radius); }
 .cd-foot-msi b { font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; font-weight: 900; font-size: 84px; line-height: 0.8; color: var(--brand-on-wood); }
 .cd-foot-msi p { color: var(--cream-mute); font-size: 14px; line-height: 1.4; }
@@ -329,7 +393,7 @@ body.cd-menu-open .cd-menu-foot { opacity: 1; transition: opacity 420ms var(--ea
   .cd-foot-top { grid-template-columns: 1.3fr 1fr; align-items: end; gap: 72px; }
   .cd-foot-logo { width: 240px; }
   .cd-foot-cols { grid-template-columns: 1.2fr 1fr 1fr 1.2fr; gap: 40px; }
-  .cd-foot-col:first-child, .cd-foot-msi { grid-column: auto; }
+  .cd-foot-col:first-child, .cd-foot-msi, .cd-foot-col--social { grid-column: auto; }
   .cd-foot-msi { align-self: start; }
   .cd-foot-bottom { grid-template-columns: 1fr auto; padding-right: 96px; }
 }
@@ -533,4 +597,58 @@ select.eq-input { appearance: none; background-image: linear-gradient(45deg, tra
   .eq-sheet-grip { display: none; }
 }
 body.eq-lock { overflow: hidden; }
+body.eq-lock .eq-topbar { opacity: 0; pointer-events: none; }
+
+/* =====================================================================
+   TARJETA DE PRODUCTO (compartida: slider "Lo más pedido" del hero + catálogo)
+   Estilo tienda: foto cuadrada sobre fondo plano #f3ede4, sin degradado ni sombra falsa,
+   nombre, precio, botón "Agregar" en crema con borde (secundario; el verde es solo WhatsApp).
+   ===================================================================== */
+.eq-pcard { position: relative; display: flex; flex-direction: column; min-width: 0; background: var(--paper); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; cursor: pointer; }
+.eq-pcard-ph { position: relative; aspect-ratio: 1 / 1; background: #f3ede4; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: transform 220ms var(--ease-out); }
+/* Las 9 piezas que aun no tienen foto: silueta del logo en muy bajo contraste y "Foto en camino".
+   El cuadro rayado salia 6 veces seguidas en Comedores y se veia roto. Van al final de su linea (03-catalogo.js). */
+.eq-pcard-ph.is-noimg { background: #f3ede4; flex-direction: column; gap: 8px; padding: 12px; text-align: center; }
+.eq-pcard-noimg-logo { width: 56%; max-width: 150px; height: auto; opacity: 0.11; }
+.eq-pcard-noimg-t { font-size: 11.5px; font-weight: 700; line-height: 1.3; color: var(--mute); }
+.eq-pcard-noimg-t small { display: block; margin-top: 2px; font-size: 10.5px; font-weight: 500; }
+.eq-pcard-img { width: 94%; height: 94%; object-fit: contain; }
+.eq-pcard-tag { position: absolute; z-index: 1; top: 8px; left: 8px; padding: 4px 7px; border-radius: 3px; background: var(--brand-logo); color: var(--cream); font-size: 10px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; line-height: 1; }
+.eq-pcard-body { display: flex; flex-direction: column; flex: 1; gap: 2px; padding: 9px 10px 10px; color: var(--ink); } /* fija el color: si la tarjeta vive en una sección oscura (hero) no hereda el texto claro */
+.eq-pcard-name { font-family: var(--font-body); font-weight: 700; font-size: 14px; line-height: 1.25; min-height: 2.5em; color: var(--ink); }
+.eq-pcard-price { font-weight: 800; font-size: clamp(14px, 4.2vw, 17px); line-height: 1.2; margin: 3px 0 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.eq-pcard-price small { font-weight: 500; font-size: 11px; color: var(--mute); white-space: nowrap; }
+.eq-pcard-meta { font-size: 12px; line-height: 1.3; color: var(--mute); margin: 3px 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.eq-pcard-meta:empty { display: none; }
+.eq-pcard-row { display: flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 8px; }
+.eq-pcard-add { flex: 1 1 auto; display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 10px; border-radius: 3px; border: 1.5px solid rgba(80, 45, 24, 0.45); background: var(--cream); color: var(--brand-logo); font-weight: 700; font-size: 13px; transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms var(--ease-out), transform 160ms var(--ease-out), box-shadow 180ms var(--ease-out); }
+.eq-pcard-add svg { width: 15px; height: 15px; flex: none; }
+.eq-pcard-add[aria-pressed="true"] { background: var(--brand-logo); border-color: var(--brand-logo); color: var(--cream); }
+.eq-pcard-add:active { transform: scale(0.94); }
+.eq-pcard-view { flex: none; display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 0 8px; font-size: 12.5px; font-weight: 600; color: var(--brand-logo); text-decoration: underline; text-underline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  .eq-pcard:hover .eq-pcard-ph { transform: translateY(-4px); }
+  .eq-pcard-add:not([aria-pressed="true"]):hover { background: var(--brand-logo); border-color: var(--brand-logo); color: var(--cream); box-shadow: 0 4px 10px -4px rgba(20, 11, 5, 0.45); }
+  .eq-pcard-add[aria-pressed="true"]:hover { background: #3c210f; }
+}
+/* variante icono (hero: botón cuadrado chico, sin texto) */
+.eq-pcard-add--icon { flex: none; width: 44px; height: 44px; min-height: 44px; padding: 0; }
+.eq-pcard-add--icon svg { width: 17px; height: 17px; }
+
+/* aviso "Agregado a tu pedido · Ver" (2 s) */
+.eq-toast { position: fixed; z-index: 65; left: 50%; bottom: calc(92px + env(safe-area-inset-bottom)); transform: translate(-50%, 10px); display: flex; align-items: center; gap: 10px; max-width: calc(100vw - 32px); padding: 11px 14px; border-radius: 3px; background: var(--deep); color: var(--cream); font-size: 13.5px; font-weight: 600; box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.55); opacity: 0; pointer-events: none; transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out); }
+.eq-toast.is-on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.eq-toast-view { flex: none; color: var(--cream); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; min-height: 24px; }
+@media (min-width: 900px) { .eq-toast { left: auto; right: 28px; bottom: 112px; transform: translateY(10px); } .eq-toast.is-on { transform: none; } }
+
+/* Títulos de sección: caen desde arriba y pegan con rebote corto (una vez; JS: initTitleDrop en site.js).
+   Blindaje: el reposo (sin .td-pre) ya está en su lugar; solo se esconde con JS y con movimiento. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-title-drop].td-pre { opacity: 0; transform: translateY(-60px); }
+}
+
+/* contador de "Mi pedido": brinco corto al agregar */
+@keyframes s-ped-bump { 0% { transform: scale(1); } 40% { transform: scale(1.32) translateY(-3px); } 100% { transform: scale(1); } }
+.s-ped-n.is-bump { animation: s-ped-bump 200ms var(--ease-out); }
+@media (prefers-reduced-motion: reduce) { .s-ped-n.is-bump { animation: none; } }
 body.eq-lock .k-wa { visibility: hidden; animation: none; }

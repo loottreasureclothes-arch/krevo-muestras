@@ -1,0 +1,19 @@
+/* ============ 02 COLECCIONES: rejilla de 7 líneas con foto de ambiente (estilo Shopify) ============ */
+#colecciones { background: var(--paper); }
+#colecciones .s-col-head { margin-bottom: 22px; }
+#colecciones .s-col-grid { list-style: none; margin: 0; padding-top: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+#colecciones .s-col-tile { position: relative; }
+#colecciones .s-col-tile a { position: relative; display: block; aspect-ratio: 3 / 4; border-radius: 3px; overflow: hidden; isolation: isolate; background: var(--cuero); }
+#colecciones .s-col-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 400ms var(--ease-out); }
+#colecciones .s-col-tile a::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(18, 9, 3, 0.42) 0%, rgba(18, 9, 3, 0.12) 34%, rgba(18, 9, 3, 0) 58%); pointer-events: none; }
+#colecciones .s-col-ill { position: absolute; z-index: 2; top: 8px; right: 8px; padding: 3px 7px; border-radius: 3px; background: rgba(0, 0, 0, 0.55); color: var(--cream); font-size: 10px; font-weight: 600; line-height: 1.4; }
+#colecciones .s-col-n { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; padding: 9px 10px 10px; background: var(--brand-logo); font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; text-transform: uppercase; font-weight: 800; font-size: clamp(17px, 5.4vw, 22px); line-height: 1; color: var(--cream); text-shadow: none; transition: background-color 200ms var(--ease-out); }
+#colecciones .s-col-n small { display: block; margin-top: 4px; font-family: var(--font-body); font-weight: 500; text-transform: none; font-size: 11.5px; letter-spacing: 0; color: rgba(246, 238, 226, 0.82); text-shadow: none; }
+/* la foto de asientos (real, a contraluz) trae de fondo el logo fantasma de su marca: refuerzo extra del velo abajo */
+#colecciones .s-col-tile:first-child a::after { background: linear-gradient(to top, rgba(10, 5, 2, 0.6) 0%, rgba(10, 5, 2, 0.28) 40%, rgba(10, 5, 2, 0.04) 66%, transparent 80%); }
+@media (hover: hover) and (pointer: fine) { #colecciones .s-col-tile a:hover .s-col-img { transform: scale(1.05); } #colecciones .s-col-tile a:hover .s-col-n { background: #3c210f; } }
+@media (min-width: 900px) {
+  #colecciones .s-col-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  #colecciones .s-col-tile a { aspect-ratio: 4 / 5; }
+  #colecciones .s-col-n { padding: 12px 14px 13px; font-size: clamp(19px, 1.7vw, 24px); }
+}

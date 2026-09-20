@@ -1,0 +1,91 @@
+/* ============ 03 CATÁLOGO: rejilla de tarjetas estilo tienda (2/3/4 columnas), chips fijos al bajar ============ */
+#catalogo { background: var(--paper-2); }
+#catalogo .s-cat-top { padding-top: 4px; }
+#catalogo .s-cat-head { display: grid; gap: 8px; margin-bottom: 18px; }
+@media (min-width: 900px) { #catalogo .s-cat-head { grid-template-columns: 1fr auto; align-items: end; gap: 40px; } }
+
+/* Chips: fila con scroll horizontal, se pegan bajo el header al bajar dentro del catálogo */
+#catalogo .s-cat-chips-wrap { position: sticky; top: calc(var(--k-header-h) + env(safe-area-inset-top)); z-index: 22; background: var(--paper-2); padding-block: 10px; margin-bottom: 18px; box-shadow: 0 1px 0 var(--line); }
+#catalogo .s-cat-chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: nowrap; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+#catalogo .s-cat-chips::-webkit-scrollbar { display: none; }
+#catalogo .s-cat-chip { flex: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 3px; border: 1px solid rgba(80, 45, 24, 0.3); font-weight: 600; font-size: 14px; color: var(--ink); background: rgba(255, 255, 255, 0.5); white-space: nowrap; transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 160ms var(--ease-out); }
+#catalogo .s-cat-chip span { font-size: 11.5px; font-variant-numeric: tabular-nums; opacity: 0.7; }
+#catalogo .s-cat-chip[aria-pressed="true"] { background: var(--brand-logo); border-color: var(--brand-logo); color: var(--cream); }
+#catalogo .s-cat-chip:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) { #catalogo .s-cat-chip:hover { border-color: var(--brand-logo); } }
+
+/* Subtítulo del filtro activo (reemplaza la foto de ambiente gigante, ya está en Colecciones) */
+#catalogo .s-cat-sub { font-size: 14px; color: var(--mute); margin: 0 0 12px; }
+/* con el filtro "Lo más pedido" puesto, el sello "MÁS PEDIDO" en las 12 tarjetas es ruido (lo pone 03-catalogo.js) */
+body.eq-top-on #catalogo .eq-pcard-tag { display: none; }
+
+/* Rejilla de tarjetas: 2 cel · 3 tablet · 4 compu */
+#catalogo .s-cat-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+#catalogo .s-cat-grid > li.is-hidden { display: none; }
+#catalogo .s-cat-grid > li.is-new { animation: s-cat-in 360ms var(--ease-out) both; animation-delay: calc(var(--k, 0) * 24ms); }
+@keyframes s-cat-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (min-width: 620px) { #catalogo .s-cat-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; } }
+@media (min-width: 900px) { #catalogo .s-cat-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; } }
+
+#catalogo .s-cat-more-wrap { display: flex; justify-content: center; margin-top: 22px; }
+#catalogo .s-cat-more { color: var(--brand-logo); }
+#catalogo .s-cat-more[hidden] { display: none; } /* .cd-btn fija display:inline-flex y le gana a [hidden] del UA; aquí lo recuperamos (bug de origen: mesas/barras/complementos/top nunca llegan a 12 piezas) */
+#catalogo .s-cat-cta-wrap { display: flex; justify-content: center; margin-top: 18px; }
+#catalogo .s-cat-cta { min-width: min(100%, 320px); }
+#catalogo .s-cat-foot { font-size: 14px; color: var(--mute); margin: 18px auto 0; max-width: 60ch; text-align: center; }
+
+/* Hoja de detalle de una pieza (toca el nombre o "Ver"): ahí sí va la foto grande recortada */
+.s-cat-detail .s-cd-ph { position: relative; aspect-ratio: 1 / 1; display: grid; place-items: center; border-radius: 2px; overflow: hidden; margin-bottom: 14px;
+  background: #f3ede4; box-shadow: none; } /* plano, el mismo de la tarjeta: nada "en el aire" */
+.s-cat-detail .s-cd-img { width: 92%; height: 92%; object-fit: contain; filter: none; }
+.s-cat-detail .s-cd-price { font-size: 21px; font-weight: 800; margin: 0 0 4px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.s-cat-detail .s-cd-price small { font-size: 14px; font-weight: 500; color: var(--mute); }
+.s-cat-detail .s-cd-meta { font-size: 14.5px; color: var(--mute); margin: 0 0 14px; }
+.s-cat-detail .s-cd-cal { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.s-cat-detail .s-cd-cal:empty { display: none; margin: 0; }
+.s-cat-detail .s-cd-chip { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border-radius: 3px; border: 1px solid rgba(80, 45, 24, 0.3); font-size: 13px; font-weight: 600; }
+/* "Agregar" NO es verde (el verde es solo de los que mandan el WhatsApp): crema con borde de cuero,
+   y cuando ya está en el pedido se invierte a cuero sólido. */
+.s-cat-detail .s-cd-add { width: 100%; background: var(--cream); border: 1.5px solid rgba(80, 45, 24, 0.45); color: var(--brand-logo); --sweep: rgba(80, 45, 24, 0.12); }
+.s-cat-detail .s-cd-add[aria-pressed="true"] { background: var(--brand-logo); border-color: var(--brand-logo); color: var(--cream); }
+
+/* Mi pedido: barra fija inferior */
+.s-ped-bar { position: fixed; z-index: 58; left: 0; right: 0; bottom: 0; display: flex; gap: 8px; align-items: center; padding: 8px var(--k-gutter) calc(8px + env(safe-area-inset-bottom)); background: rgba(34, 20, 11, 0.96); color: var(--cream); border-top: 1px solid rgba(245, 237, 226, 0.14); transform: translateY(110%); transition: transform 280ms var(--ease-out), visibility 0s linear 280ms; }
+.s-ped-bar.is-on { transform: none; visibility: visible; transition: transform 280ms var(--ease-out), visibility 0s; }
+.s-ped-bar:not(.is-on) { visibility: hidden; }
+.s-ped-open { flex: 1; display: flex; align-items: center; gap: 10px; min-height: 48px; color: var(--cream); text-align: left; min-width: 0; }
+.s-ped-n { flex: none; display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 6px; border-radius: 3px; background: var(--cream); color: var(--brand-logo); font-weight: 800; font-variant-numeric: tabular-nums; }
+.s-ped-l { font-weight: 700; }
+.s-ped-t { font-size: 13px; color: var(--cream-mute); white-space: nowrap; overflow: hidden; }
+.s-ped-go { flex: none; min-height: 48px; padding: 0 18px; }
+body.eq-ped-on .k-wa { bottom: calc(84px + env(safe-area-inset-bottom)); }
+@media (min-width: 900px) { .s-ped-bar { left: auto; right: 28px; bottom: 28px; width: 440px; border-radius: 3px; border: 1px solid rgba(245, 237, 226, 0.16); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35); }
+  .s-ped-bar:not(.is-on) { transform: translateY(calc(100% + 40px)); visibility: hidden; } body.eq-ped-on .k-wa { bottom: calc(108px + env(safe-area-inset-bottom)); } }
+.s-ped-sheet .s-ped-list { list-style: none; padding: 0; margin: 0 0 14px; display: grid; gap: 10px; }
+.s-ped-sheet .s-ped-li { display: grid; grid-template-columns: 72px 1fr; gap: 10px 12px; align-items: center; padding: 10px; border-radius: 3px; background: var(--paper-2); }
+.s-ped-sheet .s-ped-li img { width: 72px; height: 72px; object-fit: contain; padding: 4px; border-radius: 3px; background: #f3ede4; }
+.s-ped-sheet .s-ped-li .ph { width: 72px; height: 72px; border-radius: 3px; background: #f3ede4 repeating-linear-gradient(135deg, rgba(80, 45, 24, 0.07) 0 2px, transparent 2px 14px); }
+.s-ped-sheet .s-ped-li b { display: block; font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; text-transform: uppercase; font-weight: 800; font-size: 20px; line-height: 1; }
+.s-ped-sheet .s-ped-li small { font-size: 13px; color: var(--mute); }
+.s-ped-sheet .s-ped-ctl { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.s-ped-sheet .s-ped-q { display: inline-flex; align-items: center; border: 1px solid rgba(80, 45, 24, 0.3); border-radius: 3px; }
+.s-ped-sheet .s-ped-q button { width: 44px; height: 44px; display: grid; place-items: center; }
+.s-ped-sheet .s-ped-q button svg { width: 18px; height: 18px; }
+.s-ped-sheet .s-ped-q output { min-width: 28px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+.s-ped-sheet .s-ped-cal { flex: 1 1 140px; min-height: 44px; }
+.s-ped-sheet .s-ped-del { min-height: 44px; padding: 0 6px; font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; color: var(--mute); }
+.s-ped-sheet .s-ped-form { display: grid; gap: 12px; margin-bottom: 12px; }
+@media (min-width: 600px) { .s-ped-sheet .s-ped-form { grid-template-columns: 1fr 1fr; } }
+.s-ped-sheet .s-ped-sum { font-size: 14px; color: var(--mute); margin: 0 0 12px; }
+.s-ped-sheet .s-ped-send { width: 100%; border-color: rgba(11, 61, 31, 0.3); box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35); }
+.s-ped-sheet .s-ped-empty { color: var(--mute); margin: 0 0 14px; }
+
+/* un solo CTA verde por línea (19 sep: antes había 125 "Preguntar" por WhatsApp) */
+/* ¿Cómo pagas? en Mi pedido */
+.s-ped-sheet .s-ped-pago { border: 1px solid rgba(80, 45, 24, 0.25); border-radius: 3px; padding: 10px 12px 6px; margin: 0 0 12px; display: grid; gap: 4px; }
+.s-ped-sheet .s-ped-pago legend { font-weight: 700; font-size: 14px; padding: 0 4px; }
+.s-ped-sheet .s-ped-pago label { display: flex; gap: 10px; align-items: flex-start; min-height: 44px; cursor: pointer; }
+.s-ped-sheet .s-ped-pago input { margin-top: 5px; accent-color: var(--brand-logo); width: 18px; height: 18px; }
+.s-ped-sheet .s-ped-pago span { display: grid; font-weight: 600; }
+.s-ped-sheet .s-ped-pago small { font-size: 12px; font-weight: 400; color: var(--mute); }
+.s-ped-sheet .s-ped-card { width: 100%; margin-bottom: 10px; }

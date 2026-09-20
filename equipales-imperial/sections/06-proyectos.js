@@ -30,7 +30,10 @@
     function measure() {
       CW = slides[0].offsetWidth || 300;
       CH = medias[0] ? medias[0].offsetHeight : CW * 1.25;
-      SP = CW * SIDE / 2 + 7;
+      /* En compu las de los lados iban 59 % tapadas detras de la del frente (SP = CW*SIDE/2+7 = 163 px
+         contra 380 px de tarjeta). Ahi se separan de verdad y llenan el carrusel; en celular se queda
+         el asomo lateral, que ahi si es lo correcto. */
+      SP = window.innerWidth >= 900 ? CW * (1 + SIDE) / 2 + 14 : CW * SIDE / 2 + 7;
       track.style.height = Math.round(CH + 60) + "px";
       render();
     }

@@ -1,98 +1,80 @@
-/* 05 CATÁLOGO + MI PEDIDO
-   Las 125 piezas vienen escritas en el HTML como renglones tipográficos (sin JS se ven todas, agrupadas
-   por línea; Google lee nombre y precio). El JS filtra por línea (chips), pinta el capítulo (foto de
-   ambiente + nombre gigante, o banda de cuero si no hay foto), muestra de 12 en 12, abre una hoja chica
-   con la foto del catálogo al tocar el nombre, y arma "Mi pedido" (localStorage en try/catch) que se
-   envía por WhatsApp.
-   API: window.EQcatalogo.show(linea, scroll)  ·  window.EQpedido.add(i) */
+/* 03 CATÁLOGO + MI PEDIDO
+   Las 125 piezas vienen escritas en el HTML como tarjetas (sin JS se ven todas, agrupadas
+   por línea, con precio; Google las lee). El JS filtra por línea (chips fijos al bajar),
+   muestra de 12 en 12, abre una hoja con foto grande al tocar "Ver", y arma "Mi pedido"
+   (localStorage en try/catch) que se envía por WhatsApp. También sincroniza el contador
+   del ícono "Mi pedido" del header (ver template.html / site.js).
+   API: window.EQcatalogo.show(linea, scroll) · window.EQcatalogo.open(i) · window.EQpedido.add(i) */
 (function () {
   "use strict";
   var sec = document.getElementById("catalogo");
   if (!sec || !window.EQ) return;
   var DATA = window.EQ_CATALOGO || [];
-  var rows = Array.prototype.slice.call(sec.querySelectorAll(".s-cat-row"));
+  var rows = Array.prototype.slice.call(sec.querySelectorAll(".eq-pcard"));
   var chips = Array.prototype.slice.call(sec.querySelectorAll(".s-cat-chip"));
   var more = sec.querySelector(".s-cat-more");
+  var sub = sec.querySelector(".s-cat-sub");
   var PAGE = 12, filt = "top", shown = PAGE;
-  var NAMES = { top: "Lo más pedido", asientos: "asientos", cantineros: "cantineros", salas: "salas", comedores: "comedores", mesas: "mesas", barras: "barras", complementos: "complementos" };
+  var NAMES = { top: "piezas más pedidas", asientos: "asientos", cantineros: "cantineros", salas: "salas", comedores: "comedores", mesas: "mesas", barras: "barras", complementos: "complementos" };
   var LINE_LABEL = { asientos: "Asientos", cantineros: "Cantineros", salas: "Salas", comedores: "Comedores", mesas: "Mesas", barras: "Barras", complementos: "Complementos" };
-  /* fotos reales de ambiente en "top" y "asientos"; el resto son las 6 ilustraciones de IA
-     (img/scene/, ver IMAGENES.md) hechas a partir de sus piezas reales: llevan etiqueta y alt "Ilustración:" */
-  var BANNERS = {
-    top: { img: "img/gal/mecedora-bosque.webp", alt: "Mecedora de Equipales Imperial en el bosque", n: "Lo más pedido" },
-    asientos: { img: "img/gal/contraluz.webp", alt: "Equipal de Equipales Imperial a contraluz en el campo al atardecer", n: "Asientos" },
-    cantineros: { img: "img/scene/cantineros", ill: true, alt: "Ilustración: cantinero de Equipales Imperial en una barra de casa", n: "Cantineros" },
-    salas: { img: "img/scene/salas", ill: true, alt: "Ilustración: sala de Equipales Imperial en una terraza", n: "Salas" },
-    comedores: { img: "img/scene/comedores", ill: true, alt: "Ilustración: comedor de Equipales Imperial en un restaurante", n: "Comedores" },
-    mesas: { img: "img/scene/mesas", ill: true, alt: "Ilustración: mesa de Equipales Imperial en una sala", n: "Mesas" },
-    barras: { img: "img/scene/barras", ill: true, alt: "Ilustración: barra de Equipales Imperial con copero", n: "Barras" },
-    complementos: { img: "img/scene/complementos", ill: true, alt: "Ilustración: biombo y cabecera de Equipales Imperial", n: "Complementos" }
-  };
-  var blurIn = EQ.blurIn;
 
   function list() {
     if (filt === "top") return rows.filter(function (c) { return c.hasAttribute("data-top"); }).sort(function (a, b) { return a.getAttribute("data-top") - b.getAttribute("data-top"); });
-    return rows.filter(function (c) { return c.getAttribute("data-c") === filt; });
+    /* las que todavía no tienen foto ("Foto en camino") se van al final de su línea */
+    var L = rows.filter(function (c) { return c.getAttribute("data-c") === filt; });
+    var con = [], sin = [];
+    L.forEach(function (c) { (c.hasAttribute("data-noimg") ? sin : con).push(c); });
+    return con.concat(sin);
   }
   function render(anim) {
-    var L = list(), ul = sec.querySelector(".s-cat-list");
+    var L = list(), ul = sec.querySelector(".s-cat-grid");
     rows.forEach(function (c) { c.classList.add("is-hidden"); c.classList.remove("is-new"); });
     L.forEach(function (c, k) {
-      ul.appendChild(c); /* orden de la lista */
+      ul.appendChild(c); /* orden de la rejilla */
       if (k < shown) { c.classList.remove("is-hidden"); if (anim) { c.style.setProperty("--k", k % PAGE); c.classList.add("is-new"); } }
     });
     var rest = L.length - shown;
     more.hidden = rest <= 0;
     if (rest > 0) more.textContent = "Ver " + Math.min(rest, PAGE) + " más de " + L.length;
   }
-  function bannerMinPrice(f) {
-    var items = f === "top" ? rows.filter(function (c) { return c.hasAttribute("data-top"); }).map(function (c) { return DATA[+c.getAttribute("data-i")]; }) : DATA.filter(function (x) { return x.c === f; });
-    var mins = items.map(function (x) { return x.p[0]; });
-    return { n: items.length, min: Math.min.apply(null, mins) };
-  }
-  function paintBanner(f) {
-    var b = BANNERS[f]; if (!b) return;
-    var box = sec.querySelector(".s-cat-banner"), ph = box.querySelector(".s-cat-banner-ph"), h = box.querySelector(".s-cat-banner-n"), m = box.querySelector(".s-cat-banner-m");
-    box.setAttribute("data-c", f);
-    box.classList.toggle("is-leather", !!b.leather);
-    if (b.leather) {
-      ph.innerHTML = "";
-    } else if (b.ill) {
-      ph.innerHTML = '<picture><source media="(max-width: 767px)" srcset="' + b.img + '-1200.webp">'
-        + '<img class="eq-blurin is-pre" src="' + b.img + '-2000.webp" alt="' + b.alt + '" width="1400" height="1400" loading="lazy" decoding="async"></picture>'
-        + '<span class="s-cat-banner-ill">Imagen ilustrativa</span>';
-      blurIn(ph.querySelector("img"));
-    } else {
-      ph.innerHTML = '<img class="eq-blurin is-pre" src="' + b.img + '" alt="' + b.alt + '" width="1400" height="1400" loading="lazy" decoding="async">';
-      blurIn(ph.querySelector("img"));
-    }
-    h.textContent = b.n;
-    var agg = bannerMinPrice(f);
-    m.innerHTML = agg.n + " piezas · desde " + EQ.money(agg.min) + " <small>+ IVA</small>";
+  function paintSub(f) {
+    var L = list();
+    var mins = L.map(function (c) { return DATA[+c.getAttribute("data-i")].p[0]; });
+    if (!mins.length) { sub.textContent = ""; return; }
+    sub.innerHTML = L.length + " " + NAMES[f] + " · desde " + EQ.money(Math.min.apply(null, mins)) + " <small>+ IVA</small>";
   }
   function show(f, scroll) {
     if (!NAMES[f]) return;
     filt = f; shown = PAGE;
     chips.forEach(function (c) { c.setAttribute("aria-pressed", c.getAttribute("data-f") === f ? "true" : "false"); });
+    document.body.classList.toggle("eq-top-on", f === "top"); /* el sello "Más pedido" sobra si el filtro ya se llama así */
     var cta = sec.querySelector(".s-cat-cta");
-    if (cta) { cta.querySelector("span").textContent = f === "top" ? "Cotizar por WhatsApp" : "Cotizar " + NAMES[f]; cta.href = EQ.waUrl("Hola Equipales Imperial, quiero cotizar " + (f === "top" ? "piezas de su catálogo" : NAMES[f]) + "."); }
-    paintBanner(f);
+    if (cta) { cta.querySelector("span").textContent = f === "top" ? "Cotizar por WhatsApp" : "Cotizar " + LINE_LABEL[f]; cta.href = EQ.waUrl("Hola Equipales Imperial, quiero cotizar " + (f === "top" ? "piezas de su catálogo" : LINE_LABEL[f]) + "."); }
+    paintSub(f);
     render(true);
     if (scroll) {
-      var h = document.querySelector(".k-header");
-      var top = sec.querySelector(".s-cat-chips").getBoundingClientRect().top + window.scrollY - (h ? h.offsetHeight : 0) - 12;
+      var h = document.querySelector(".k-header"), tb = document.querySelector(".eq-topbar");
+      var off = (h ? h.offsetHeight : 0) + (tb && !document.body.classList.contains("eq-bar-off") ? tb.offsetHeight : 0);
+      var top = sec.querySelector(".s-cat-chips-wrap").getBoundingClientRect().top + window.scrollY - off - 4;
       window.scrollTo({ top: top, behavior: "auto" });
     }
   }
   sec.addEventListener("click", function (e) {
     var c = e.target.closest(".s-cat-chip"); if (c) { show(c.getAttribute("data-f"), false); return; }
     if (e.target.closest(".s-cat-more")) { shown += PAGE; render(false); return; }
-    var info = e.target.closest(".s-cat-info"); if (info) { openDetail(+info.getAttribute("data-open")); return; }
-    var a = e.target.closest(".s-cat-add");
-    if (a) { var i = +a.getAttribute("data-i"); toggle(i); }
+    var view = e.target.closest(".eq-pcard-view"); if (view) { openDetail(+view.getAttribute("data-open")); return; }
+    var add = e.target.closest(".eq-pcard-add");
+    if (add) {
+      var i = +add.getAttribute("data-i"), was = find(i) > -1;
+      toggle(i);
+      if (!was) EQ.toast("Agregado a tu pedido: " + DATA[i].n, function () { fillSheet(); sh.open(); });
+      return; /* Agregar no abre el detalle */
+    }
+    /* como en cualquier tienda: tocar la foto o el nombre abre la pieza */
+    var card = e.target.closest(".eq-pcard");
+    if (card && card.hasAttribute("data-i")) { openDetail(+card.getAttribute("data-i")); return; }
   });
-  /* sub-links del menú y del índice del hero: #catalogo con data-linea (y, en el hero, data-item
-     con la pieza exacta: abre su línea y, encima, su hoja de detalle) */
+  /* sub-links del menú, de Colecciones y del slider del hero (data-linea, y opcional data-item para abrir la pieza) */
   document.addEventListener("click", function (e) {
     var a = e.target.closest("a[data-linea]"); if (!a) return;
     e.preventDefault();
@@ -103,11 +85,10 @@
       if (item > -1) setTimeout(function () { openDetail(item); }, 260);
     }, 60);
   });
-  paintBanner(filt);
-  render(false);
-  window.EQcatalogo = { show: show };
+  show(filt, false);
+  window.EQcatalogo = { show: show, open: function (i) { openDetail(i); } };
 
-  /* ---------------- Hoja de detalle (toca el nombre de una pieza) ---------------- */
+  /* ---------------- Hoja de detalle (toca "Ver" en una tarjeta) ---------------- */
   var detailEl = sec.querySelector(".s-cat-detail");
   var dsh = EQ.sheet(detailEl, "cat-detail");
   var dEye = detailEl.querySelector(".s-cd-eye"), dT = detailEl.querySelector(".eq-sheet-t"), dPh = detailEl.querySelector(".s-cd-ph"), dImg = detailEl.querySelector(".s-cd-img");
@@ -135,7 +116,12 @@
     paintDetailAdd();
     dsh.open();
   }
-  dAdd.addEventListener("click", function () { if (curDetail > -1) { toggle(curDetail); paintDetailAdd(); } });
+  dAdd.addEventListener("click", function () {
+    if (curDetail < 0) return;
+    var was = find(curDetail) > -1;
+    toggle(curDetail); paintDetailAdd();
+    if (!was) EQ.toast("Agregado a tu pedido: " + DATA[curDetail].n, function () { fillSheet(); sh.open(); });
+  });
 
   /* ---------------- Mi pedido ---------------- */
   var KEY = "eq_pedido", P = EQ.store.get(KEY, { lines: [], cp: "", nombre: "" });
@@ -167,20 +153,30 @@
   }
   function count() { return P.lines.reduce(function (s, l) { return s + l.q; }, 0); }
   function desde() { return P.lines.reduce(function (s, l) { return s + DATA[l.i].p[0] * l.q; }, 0); }
+  var prevCount = 0;
+  function bump(el) { if (!el) return; el.classList.remove("is-bump"); void el.offsetWidth; el.classList.add("is-bump"); }
   function paint() {
     var n = count();
-    rows.forEach(function (c) {
-      var i = +c.getAttribute("data-i"), on = find(i) > -1, b = c.querySelector(".s-cat-add");
+    /* document, no "rows": el slider "Lo más pedido" del hero repite piezas del catálogo y también
+       tiene su botón Agregar (ver sections/01-hero.html) */
+    Array.prototype.forEach.call(document.querySelectorAll(".eq-pcard-add[data-i]"), function (b) {
+      var i = +b.getAttribute("data-i"); if (!DATA[i]) return;
+      var on = find(i) > -1;
       b.setAttribute("aria-pressed", on ? "true" : "false");
       b.setAttribute("aria-label", (on ? "Quitar " : "Agregar ") + DATA[i].n + (on ? " de mi pedido" : " a mi pedido"));
       b.querySelector("use").setAttribute("href", on ? "#i-check" : "#i-plus");
+      var t = b.querySelector(".eq-pcard-add-t"); if (t) t.textContent = on ? "Agregado" : "Agregar";
     });
     paintDetailAdd();
     bar.hidden = false;
     bar.classList.toggle("is-on", n > 0);
     document.body.classList.toggle("eq-ped-on", n > 0);
-    bar.querySelector(".s-ped-n").textContent = n;
+    var barN = bar.querySelector(".s-ped-n"), headN = document.querySelector(".eq-mp-n");
+    barN.textContent = n;
+    if (headN) { headN.textContent = n; headN.setAttribute("data-n", n); }
     bar.querySelector(".s-ped-t").textContent = n ? "desde " + EQ.money(desde()) + " + IVA" : "";
+    if (n > prevCount) { bump(barN); bump(headN); }
+    prevCount = n;
     if (sh.isOpen()) fillSheet();
   }
   function fillSheet() {
@@ -239,6 +235,7 @@
     var io = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) on.add(x.target); else on.delete(x.target); }); bar.style.visibility = on.size ? "hidden" : ""; }, { rootMargin: "0px 0px -30% 0px" });
     ["#hero", "#cotiza", "#personaliza", "#restaurantes", "#cierre"].forEach(function (s) { var el = document.querySelector(s); if (el) io.observe(el); });
   }
+  prevCount = count();
   paint();
   window.EQpedido = { add: function (i) { if (find(i) < 0) toggle(i); }, open: function () { fillSheet(); sh.open(); } };
 })();

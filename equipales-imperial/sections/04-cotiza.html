@@ -1,12 +1,12 @@
   <section id="cotiza" class="s-cot eq-cuero eq-sec" aria-labelledby="cot-t">
-    <div class="k-wrap s-cot-grid">
-      <div class="s-cot-head">
-        <p class="eq-eye">Sin compromiso</p>
-        <h2 id="cot-t" class="eq-h2 cd-h3d"><span class="l">Cotiza</span><span class="l"><em>gratis.</em></span></h2>
-        <p class="eq-lead">Dinos qué buscas y a dónde lo enviamos. Te contestamos por WhatsApp.</p>
-        <span class="eq-estacas s-cot-x" aria-hidden="true"></span>
-      </div>
+    <div class="k-wrap s-cot-wrap">
+      <!-- El título y el texto van DENTRO de la tarjeta del formulario, en una sola línea de encabezado:
+           así esta sección no arranca igual que #catalogo, #cine y #proyectos (REVISION-10 #23). -->
       <form class="s-cot-form" novalidate data-reveal>
+        <div class="s-cot-formhead">
+          <h2 id="cot-t" class="s-cot-t cd-h3d" data-title-drop>Cotiza <em>gratis.</em></h2>
+          <p class="s-cot-lead">Dinos qué buscas y a dónde lo enviamos. Te contestamos por WhatsApp, sin compromiso.</p>
+        </div>
         <label class="eq-field"><span>Tu nombre</span><input class="eq-input" name="nombre" type="text" autocomplete="name" autocapitalize="words" placeholder="Nombre" required></label>
         <label class="eq-field"><span>¿Qué buscas?</span>
           <select class="eq-input" name="busca" required>
