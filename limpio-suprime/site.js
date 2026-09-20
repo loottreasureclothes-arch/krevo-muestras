@@ -53,8 +53,11 @@
   function initWaFloatHide() {
     var float = document.querySelector(".ls-wa-float");
     if (!float || !("IntersectionObserver" in window)) return;
+    /* pe-btn ya no manda WhatsApp directo (ahora es un boton de color de marca que solo
+       baja al cotizador): si sigue en esta lista, el flotante se esconde en #personal sin
+       dejar ningun boton verde real a la vista. */
     var targets = Array.prototype.slice.call(document.querySelectorAll(
-      ".s-hero-actions .ls-btn--primary, #cq-send, #pe-btn, #ci-send, #cq-m2, .ls-foot"
+      ".s-hero-actions .ls-btn--primary, #cq-send, #ci-send, #cq-m2, .ls-foot"
     ));
     if (!targets.length) return;
     var visibles = new Set();
@@ -297,7 +300,9 @@
       var vh = window.innerHeight || document.documentElement.clientHeight;
       var start = vh * 0.88, end = vh * 0.18;
       var p = (start - r.top) / (start - end);
-      setP(scene, Math.max(0, Math.min(1, p)));
+      p = Math.max(0, Math.min(1, p));
+      setP(scene, p);
+      scene.classList.toggle("is-done", p >= 0.999); // remate de luz cuando el jalador ya termino su pasada
       scene.__lsRan = true;
       clearSafety(scene);
       scene.classList.remove("is-safe"); // el scroll manda mientras se ve

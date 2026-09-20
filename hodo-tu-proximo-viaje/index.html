@@ -30,14 +30,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Instrument+Sans:wght@400..600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/destinos/cancun-m.webp" media="(max-width: 640px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/destinos/cancun-d.webp" media="(min-width: 641px)" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1789892156">
+<link rel="stylesheet" href="site.css?v=1789928245">
 <link rel="stylesheet" href="sections/10-hero.css?v=1789892868">
-<link rel="stylesheet" href="sections/20-planes.css?v=1789892230">
-<link rel="stylesheet" href="sections/30-pase.css?v=1789892311">
+<link rel="stylesheet" href="sections/20-planes.css?v=1789928245">
+<link rel="stylesheet" href="sections/30-pase.css?v=1789928245">
 <link rel="stylesheet" href="sections/40-bodas.css?v=1789885674">
-<link rel="stylesheet" href="sections/50-sellos.css?v=1789892243">
+<link rel="stylesheet" href="sections/50-sellos.css?v=1789928245">
 <link rel="stylesheet" href="sections/60-oficina.css?v=1789892264">
-<link rel="stylesheet" href="sections/70-cierre.css?v=1789885846">
+<link rel="stylesheet" href="sections/70-cierre.css?v=1789928245">
 <noscript><style>[data-hd-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}.hd-word{opacity:1!important}</style></noscript>
 </head>
 <body>
@@ -68,7 +68,7 @@
       <span class="hd-route-b" id="hd-route-b" data-empty="¿?">¿?</span>
     </button>
     <div class="hd-actions">
-      <a class="hd-btn hd-btn--wa hd-btn--sm" data-wa="Hola HODO, quiero cotizar mi próximo viaje." href="https://wa.me/524494262277?text=Hola%20HODO%2C%20quiero%20cotizar%20mi%20pr%C3%B3ximo%20viaje." target="_blank" rel="noopener">Cotizar</a>
+      <a class="hd-btn hd-btn--deep hd-btn--sm" href="#pase">Cotizar</a>
       <button class="hd-menu-btn" type="button" aria-expanded="false" aria-controls="hd-menu"><span class="hd-burger" aria-hidden="true"><i></i><i></i></span><span class="hd-menu-lbl">Menú</span></button>
     </div>
   </div>
@@ -117,8 +117,8 @@
     </div>
 
     <div class="hd-fotitos hd-hero-fotitos" aria-hidden="true">
-      <span class="hd-fotito hd-fotito--cinta hd-hero-f1" data-hd-reveal style="--rot:-6deg"><img src="img/fotitos/pareja-playa-s.webp" alt="" width="450" height="563" loading="lazy"></span>
-      <span class="hd-fotito hd-fotito--sello hd-hero-f2" data-hd-reveal style="--rot:5deg"><img src="img/fotitos/ventanilla-avion-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+      <span class="hd-fotito hd-fotito--cinta hd-hero-f1" data-hd-reveal style="--rot:-6deg"><img src="img/fotitos/pareja-playa-s.webp" alt="" width="450" height="563"></span>
+      <span class="hd-fotito hd-fotito--sello hd-hero-f2" data-hd-reveal style="--rot:5deg"><img src="img/fotitos/ventanilla-avion-s.webp" alt="" width="450" height="563"></span>
       <span class="hd-fotito hd-fotito--cinta hd-fotito--cinta-l hd-hero-f3" data-hd-reveal style="--rot:4deg"><img src="img/fotitos/alberca-resort-s.webp" alt="" width="450" height="563" loading="lazy"></span>
       <span class="hd-fotito hd-hero-f4" data-hd-reveal style="--rot:-4.5deg"><img src="img/fotitos/snorkel-s.webp" alt="" width="450" height="563" loading="lazy"></span>
     </div>
@@ -149,7 +149,7 @@
 
       <div class="hd-hero-fichas" id="hd-hero-fichas" role="group" aria-label="Destinos rápidos">
         <button class="hd-ficha" type="button" aria-pressed="false" data-slug="cancun"><span class="hd-ficha-code hd-code">CUN</span><span class="hd-ficha-name">Cancún</span></button>
-        <button class="hd-ficha" type="button" aria-pressed="false" data-slug="riviera-maya"><span class="hd-ficha-code hd-code">CUN</span><span class="hd-ficha-name">Riviera Maya</span></button>
+        <button class="hd-ficha" type="button" aria-pressed="false" data-slug="riviera-maya"><span class="hd-ficha-code hd-code">vía CUN</span><span class="hd-ficha-name">Riviera Maya</span></button>
         <button class="hd-ficha" type="button" aria-pressed="false" data-slug="punta-cana"><span class="hd-ficha-code hd-code">PUJ</span><span class="hd-ficha-name">Punta Cana</span></button>
         <button class="hd-ficha" type="button" aria-pressed="false" data-slug="puerto-vallarta"><span class="hd-ficha-code hd-code">PVR</span><span class="hd-ficha-name">Puerto Vallarta</span></button>
         <button class="hd-ficha" type="button" aria-pressed="false" data-slug="punta-mita"><span class="hd-ficha-code hd-code">PVR</span><span class="hd-ficha-name">Punta Mita</span></button>
@@ -195,7 +195,7 @@
       <article class="hd-ticket hd-plan" data-slug="riviera-maya" data-grupo="playa">
         <figure class="hd-plan-foto">
           <img src="img/destinos/riviera-maya-m.webp" alt="" width="960" height="1200" loading="lazy">
-          <span class="hd-plan-code hd-code" aria-hidden="true">CUN</span>
+          <span class="hd-plan-code hd-plan-code--via hd-code" aria-hidden="true"><small>vía</small>CUN</span>
         </figure>
         <span class="hd-perf-h" aria-hidden="true"></span>
         <div class="hd-plan-body">
@@ -398,7 +398,7 @@
           </fieldset>
 
           <p class="hd-pase-err" id="hd-pase-err" role="alert" hidden></p>
-          <a class="hd-btn hd-btn--wa hd-pase-send" id="hd-pase-send" role="button" href="https://wa.me/524494262277?text=Hola%20HODO%2C%20quiero%20cotizar%20mi%20pr%C3%B3ximo%20viaje.%20Destino%3A%20(la%20que%20me%20recomienden).%20Salida%3A%20(sin%20elegir).%20Regreso%3A%20(sin%20elegir).%20Viajamos%3A%202%20adultos.%20Mi%20nombre%3A%20___" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mandar mi pase por WhatsApp</a>
+          <a class="hd-btn hd-btn--wa hd-pase-send" id="hd-pase-send" role="button" href="https://wa.me/524494262277?text=Hola%20HODO%2C%20quiero%20cotizar%20mi%20pr%C3%B3ximo%20viaje.%20Destino%3A%20(la%20que%20me%20recomienden).%20Fechas%3A%20todav%C3%ADa%20no%20las%20tengo.%20Viajamos%3A%202%20adultos." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mandar mi pase por WhatsApp</a>
           <div class="hd-pase-foot">
             <span class="hd-pase-barcode" aria-hidden="true"></span>
             <span class="hd-pase-barlbl hd-code" aria-hidden="true">HODO · TU PRÓXIMO VIAJE</span>
@@ -464,26 +464,32 @@
       <div class="hd-sellos-carrusel">
         <div class="hd-sellos-track" id="hd-sellos-track" data-hd-reveal tabindex="0" role="group" aria-label="Opiniones de clientes">
           <blockquote class="hd-stamp hd-stamp--rev" style="--rot:-3deg">
+            <span class="hd-stars hd-stars--xs" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
             <p>“Quiero recomendar ampliamente esta agencia de viajes. Mi esposo y yo los contactamos para que nos apoyaran con nuestra luna de miel y todo estuvo increíble. El seguimiento tan atentos de vuelos, hotel, transporte. No tuvimos incidentes, ni percances de nada. Excelente servicio!!”</p>
             <cite>Alma Isabel Barba Sánchez <span>· Google</span></cite>
           </blockquote>
           <blockquote class="hd-stamp hd-stamp--rev" style="--rot:3.4deg">
+            <span class="hd-stars hd-stars--xs" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
             <p>“Super recomiendo la agencia de viajes HODO, siempre muy puntuales, atentos y super amables. Estuvieron al pendiente desde antes como al término de nuestro viaje y eso se…”</p>
             <cite>Ma Dolores Martin <span>· Google</span></cite>
           </blockquote>
           <blockquote class="hd-stamp hd-stamp--rev" style="--rot:-4.6deg">
+            <span class="hd-stars hd-stars--xs" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
             <p>“Hodo es tu mejor opción para viajar, excelentes paquetes para tus próximos viajes super amables y muy atentos al servicio al cliente lo recomiendo mucho…”</p>
             <cite>Rafael Adrián Iñiguez Esparza <span>· Google</span></cite>
           </blockquote>
           <blockquote class="hd-stamp hd-stamp--rev" style="--rot:5.2deg">
+            <span class="hd-stars hd-stars--xs" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
             <p>“Excelente servicio, súper recomendable, sin duda alguna volveré a viajar con ellos.”</p>
             <cite>Alexis Carlos <span>· Google</span></cite>
           </blockquote>
           <blockquote class="hd-stamp hd-stamp--rev" style="--rot:-3.6deg">
+            <span class="hd-stars hd-stars--xs" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
             <p>“Excelente precio, mejor que cualquier otra agencia que encontré en TikTok. Son 100% honestos y auténticos. Organizaron mi viaje a la Riviera Maya con el mejor precio y las mejores recomendaciones. Por eso lo recomendé allí, ¡y…”</p>
             <cite>CK <span>· Google, traducida</span></cite>
           </blockquote>
           <blockquote class="hd-stamp hd-stamp--rev" style="--rot:4.2deg">
+            <span class="hd-stamp-fb" aria-hidden="true">Recomienda</span>
             <p>“Excelente servicio de atención, siempre estuvieron al pendiente de los detalles durante y después de la estancia volvemos a viajar con HODO”</p>
             <cite>Sandy Ibarra <span>· Facebook</span></cite>
           </blockquote>
@@ -503,10 +509,10 @@
         <div class="hd-oficina-copy">
           <h2 class="hd-h2 hd-drop" id="oficina-title" data-hd-reveal><span class="hd-word">Hodophile:</span> <span class="hd-word">persona</span> <span class="hd-word">que ama</span> <span class="hd-word hd-oficina-title-b">viajar.</span></h2>
           <blockquote class="hd-oficina-lema" data-hd-reveal>“Amamos viajar, y que nos hagas parte de TU PRÓXIMO VIAJE nos emociona.”</blockquote>
-          <p class="hd-lead" data-hd-reveal>Su oficina en Aguascalientes, desde marzo de 2023.</p>
+          <p class="hd-lead" data-hd-reveal>Nuestra oficina en Aguascalientes, desde marzo de 2023.</p>
         </div>
         <figure class="hd-frame hd-oficina-fachada" data-hd-reveal>
-          <img src="img/real/fachada.webp" alt="Fachada de HODO Tu próximo viaje, con su letrero iluminado, en Río Tiber 141 B, Aguascalientes." width="960" height="1280" loading="lazy">
+          <img src="img/real/fachada.webp" alt="Fachada de HODO Tu próximo viaje, con su letrero iluminado, en Río Tiber 141 B, Aguascalientes." width="900" height="1200" decoding="sync" fetchpriority="high">
           <span class="hd-illus hd-illus--real">Foto real</span>
         </figure>
       </div>
@@ -514,12 +520,12 @@
       <div class="hd-oficina-bottom">
         <div class="hd-oficina-info" data-hd-reveal>
           <figure class="hd-frame hd-oficina-interior">
-            <img src="img/real/interior.webp" alt="Interior de la oficina de HODO celebrando su segundo aniversario, con globos y el letrero de la marca." width="900" height="1600" loading="lazy">
+            <img src="img/real/interior.webp" alt="Interior de la oficina de HODO celebrando su segundo aniversario, con globos y el letrero de la marca." width="900" height="1600" decoding="sync" fetchpriority="high">
             <span class="hd-illus hd-illus--real">Foto real</span>
           </figure>
           <div class="hd-oficina-datos">
             <address>Río Tiber 141 B<br>Colinas del Río, C.P. 20010<br>Aguascalientes, Ags.</address>
-            <p class="hd-oficina-fact">Aceptan tarjeta de crédito y débito.</p>
+            <p class="hd-oficina-fact">Aceptamos tarjeta de crédito y débito.</p>
             <div class="hd-oficina-datos-acciones">
               <a class="hd-btn hd-btn--line" href="https://www.google.com/maps/dir/?api=1&amp;destination=R%C3%ADo+Tiber+141+B%2C+Colinas+del+R%C3%ADo%2C+Aguascalientes" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
               <a class="hd-btn hd-btn--line" href="tel:+524494262277">Llamar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -534,38 +540,58 @@
   </section>
 
   <section id="cierre" class="hd-sec hd-sec--sm hd-cierre" aria-labelledby="cierre-title">
-    <div class="hd-cierre-bg" aria-hidden="true">
-      <img class="hd-cierre-img" id="hd-cierre-img" src="img/destinos/cancun-m.webp" srcset="img/destinos/cancun-m.webp 960w, img/destinos/cancun-d.webp 1920w" sizes="100vw" alt="" width="960" height="1200" loading="lazy">
-      <span class="hd-cierre-veil"></span>
-      <span class="hd-illus hd-illus--tr">Imágenes ilustrativas</span>
-    </div>
-    <div class="hd-fotitos hd-cierre-fotitos" aria-hidden="true">
-      <span class="hd-fotito hd-fotito--cinta hd-cierre-f1" data-hd-reveal style="--rot:-6.5deg"><img src="img/fotitos/ventanilla-avion-s.webp" alt="" width="450" height="563" loading="lazy"></span>
-      <span class="hd-fotito hd-fotito--sello hd-cierre-f2" data-hd-reveal style="--rot:5deg"><img src="img/fotitos/maleta-s.webp" alt="" width="450" height="563" loading="lazy"></span>
-    </div>
-    <div class="hd-wrap hd-cierre-wrap">
-      <div class="hd-ticket hd-ticket--cut hd-cierre-card" data-hd-reveal>
-        <div class="hd-cierre-talon">
-          <span class="hd-pase-eyebrow">Pase de abordar</span>
-          <span class="hd-cierre-route" aria-hidden="true">
-            <span class="hd-code">AGS</span>
-            <span class="hd-cierre-path"></span>
-            <span class="hd-code hd-cierre-code" id="hd-cierre-code">¿?</span>
-          </span>
-        </div>
-        <span class="hd-perf-h" aria-hidden="true"></span>
-        <div class="hd-cierre-body">
-          <div class="hd-cierre-ready" id="hd-cierre-ready" hidden>
-            <h2 class="hd-h2 hd-h2--sm" id="cierre-title">Tu pase ya casi está.</h2>
-            <dl class="hd-cierre-sum" id="hd-cierre-sum"></dl>
-            <a class="hd-btn hd-btn--wa hd-cierre-send" id="hd-cierre-send" role="button" href="https://wa.me/524494262277?text=Hola%20HODO%2C%20quiero%20cotizar%20mi%20pr%C3%B3ximo%20viaje.%20Destino%3A%20(la%20que%20me%20recomienden).%20Salida%3A%20(sin%20elegir).%20Regreso%3A%20(sin%20elegir).%20Viajamos%3A%202%20adultos.%20Mi%20nombre%3A%20___" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mandarlo por WhatsApp</a>
+    <div class="hd-cierre-top">
+      <div class="hd-cierre-bg" aria-hidden="true">
+        <img class="hd-cierre-img" id="hd-cierre-img" src="img/destinos/cancun-m.webp" srcset="img/destinos/cancun-m.webp 960w, img/destinos/cancun-d.webp 1920w" sizes="100vw" alt="" width="960" height="1200" loading="lazy">
+        <span class="hd-cierre-veil"></span>
+        <span class="hd-illus hd-illus--tr">Imágenes ilustrativas</span>
+      </div>
+      <div class="hd-fotitos hd-cierre-fotitos" aria-hidden="true">
+        <span class="hd-fotito hd-fotito--cinta hd-cierre-f1" data-hd-reveal style="--rot:-6.5deg"><img src="img/fotitos/ventanilla-avion-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+        <span class="hd-fotito hd-fotito--sello hd-cierre-f2" data-hd-reveal style="--rot:5deg"><img src="img/fotitos/maleta-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+      </div>
+      <div class="hd-wrap hd-cierre-wrap">
+        <div class="hd-ticket hd-ticket--cut hd-cierre-card" data-hd-reveal>
+          <div class="hd-cierre-talon">
+            <span class="hd-pase-eyebrow">Pase de abordar</span>
+            <span class="hd-cierre-route" aria-hidden="true">
+              <span class="hd-code">AGS</span>
+              <span class="hd-cierre-path"></span>
+              <span class="hd-code hd-cierre-code" id="hd-cierre-code">¿?</span>
+            </span>
           </div>
-          <div class="hd-cierre-empty" id="hd-cierre-empty">
-            <h2 class="hd-h2 hd-h2--sm">Falta el destino.</h2>
-            <p class="hd-lead">Elige a dónde quieres ir y te armamos el mensaje para HODO.</p>
-            <a class="hd-btn hd-btn--line" href="#pase">Elegir destino<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <span class="hd-perf-h" aria-hidden="true"></span>
+          <div class="hd-cierre-body">
+            <div class="hd-cierre-ready" id="hd-cierre-ready" hidden>
+              <h2 class="hd-h2 hd-h2--sm" id="cierre-title">Tu pase ya casi está.</h2>
+              <dl class="hd-cierre-sum" id="hd-cierre-sum"></dl>
+              <a class="hd-btn hd-btn--wa hd-cierre-send" id="hd-cierre-send" role="button" href="https://wa.me/524494262277?text=Hola%20HODO%2C%20quiero%20cotizar%20mi%20pr%C3%B3ximo%20viaje.%20Destino%3A%20(la%20que%20me%20recomienden).%20Fechas%3A%20todav%C3%ADa%20no%20las%20tengo.%20Viajamos%3A%202%20adultos." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mandarlo por WhatsApp</a>
+            </div>
+            <div class="hd-cierre-empty" id="hd-cierre-empty">
+              <h2 class="hd-h2 hd-h2--sm">Falta el destino.</h2>
+              <p class="hd-lead">Elige a dónde quieres ir y te armamos el mensaje para HODO.</p>
+              <a class="hd-btn hd-btn--line" href="#pase">Elegir destino<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="hd-completar-wrap">
+      <div class="hd-ticket hd-ticket--cut hd-completar-card" data-hd-reveal>
+        <h2 class="hd-h2 hd-h2--sm hd-drop hd-completar-title" id="completar-title" data-hd-reveal>
+          <span class="hd-word">Todo listo</span> <span class="hd-word">para</span> <span class="hd-word hd-completar-title-b">completar.</span>
+        </h2>
+        <p class="hd-completar-lead">Esta es una muestra. Para dejarla tuya solo falta que nos pases:</p>
+        <ul class="hd-completar-list">
+          <li><span class="hd-completar-tag hd-code">PZ 01</span>Horario completo de atención</li>
+          <li><span class="hd-completar-tag hd-code">PZ 02</span>Fotos de clientes viajando, con su permiso</li>
+          <li><span class="hd-completar-tag hd-code">PZ 03</span>Precios o rangos de sus planes</li>
+          <li><span class="hd-completar-tag hd-code">PZ 04</span>Si manejan meses sin intereses o apartado</li>
+          <li><span class="hd-completar-tag hd-code">PZ 05</span>Destinos internacionales que más venden</li>
+          <li><span class="hd-completar-tag hd-code">PZ 06</span>Link de cobro, si quieren cobrar anticipos en línea</li>
+        </ul>
+        <p class="hd-completar-note">Tarjeta en línea: te mandamos el link.</p>
+        <a class="hd-btn hd-btn--line hd-completar-send" data-wa="Hola, vi la muestra de mi página. Les paso lo que falta:" href="https://wa.me/524494262277?text=Hola%2C%20vi%20la%20muestra%20de%20mi%20p%C3%A1gina.%20Les%20paso%20lo%20que%20falta%3A" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mandarlo por WhatsApp</a>
       </div>
     </div>
   </section>
@@ -583,8 +609,8 @@
       <ul class="hd-foot-list">
         <li><a data-wa="Hola HODO, quiero cotizar mi próximo viaje." href="https://wa.me/524494262277?text=Hola%20HODO%2C%20quiero%20cotizar%20mi%20pr%C3%B3ximo%20viaje." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="hd-nowrap">449 426 2277</span></a></li>
         <li><a href="mailto:miviaje@hodo.com.mx">miviaje@hodo.com.mx</a></li>
-        <li><a href="https://www.facebook.com/HODOtuproximoviaje/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a></li>
-        <li><a href="https://www.instagram.com/hodo_viajes/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>Instagram</a></li>
+        <li><a class="hd-foot-social" href="https://www.facebook.com/HODOtuproximoviaje/" target="_blank" rel="noopener"><span class="hd-foot-social-ic"><svg aria-hidden="true"><use href="#i-fb"/></svg></span>Facebook</a></li>
+        <li><a class="hd-foot-social" href="https://www.instagram.com/hodo_viajes/" target="_blank" rel="noopener"><span class="hd-foot-social-ic"><svg aria-hidden="true"><use href="#i-ig"/></svg></span>Instagram</a></li>
       </ul>
     </div>
     <div class="hd-foot-col">
@@ -656,7 +682,7 @@
   else run();
 })();
 </script>
-<script src="site.js?v=1789885895" defer></script>
+<script src="site.js?v=1789928245" defer></script>
 <script src="sections/10-hero.js?v=1789885355" defer></script>
 <script src="sections/20-planes.js?v=1789885489" defer></script>
 <script src="sections/30-pase.js?v=1789885638" defer></script>

@@ -30,12 +30,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@700;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/fotos/sala-m.webp" media="(max-width: 719px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/fotos/sala-d.webp" media="(min-width: 720px)" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1789887395">
+<link rel="stylesheet" href="site.css?v=1789928245">
 <link rel="stylesheet" href="sections/10-jalador.css?v=1789879876">
-<link rel="stylesheet" href="sections/20-cotiza.css?v=1789884557">
-<link rel="stylesheet" href="sections/30-limpiamos.css?v=1789884708">
+<link rel="stylesheet" href="sections/20-cotiza.css?v=1789928245">
+<link rel="stylesheet" href="sections/30-limpiamos.css?v=1789928245">
 <link rel="stylesheet" href="sections/50-personal.css?v=1789884394">
 <link rel="stylesheet" href="sections/60-cierre.css?v=1789884336">
+<link rel="stylesheet" href="sections/70-completar.css?v=1789927392">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -114,7 +115,7 @@
       <h1 class="ls-h1 s-hero-title" data-ls-drop data-ls-drop-sync="s-hero-scene" data-ls-drop-sync-at="0.55">Tú pones el presupuesto.</h1>
       <p class="ls-lead s-hero-sub" data-ls-reveal data-ls-reveal-delay>Nosotros lo dejamos limpio. Casas, empresas y locales en Aguascalientes.</p>
       <div class="s-hero-actions">
-        <a class="ls-btn ls-btn--primary" href="#cotiza"><svg aria-hidden="true"><use href="#i-arrow"/></svg>Armar mi limpieza</a>
+        <a class="ls-btn ls-btn--brand" href="#cotiza"><svg aria-hidden="true"><use href="#i-arrow"/></svg>Armar mi limpieza</a>
         <button type="button" class="ls-replay" id="s-hero-replay"><svg aria-hidden="true"><use href="#i-arrow"/></svg>Pasarle otra vez</button>
       </div>
     </div>
@@ -196,7 +197,7 @@
           </fieldset>
 
           <fieldset class="cq-block">
-            <legend class="cq-q">¿Cada cuándo?</legend>
+            <legend class="cq-q">¿Cada cuándo lo necesitas?</legend>
             <div class="cq-freq" id="cq-freq">
               <button type="button" class="ls-disc ls-disc--freq" data-freq="Una vez" aria-pressed="true"><span class="ls-disc-face"><b>1</b><i>vez</i><span class="cq-check-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span>Una vez</span></button>
               <button type="button" class="ls-disc ls-disc--freq" data-freq="Cada semana" aria-pressed="false"><span class="ls-disc-face"><b>7</b><i>días</i><span class="cq-check-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span>Cada semana</span></button>
@@ -206,17 +207,19 @@
             </div>
             <p class="cq-month-pie" aria-hidden="true">Así se vería tu mes</p>
             <div class="cq-month" id="cq-month" aria-hidden="true"></div>
+            <p class="cq-freq-nota">Lo confirmamos contigo por WhatsApp.</p>
           </fieldset>
 
           <fieldset class="cq-block">
             <legend class="cq-q">Para afinar tu cotización <small>Opcional</small></legend>
             <div class="cq-opt-fields">
-              <label class="cq-field"><span>¿Qué presupuesto traes?</span><input type="text" id="cq-presupuesto" inputmode="numeric" placeholder="Ej. 800"></label>
+              <label class="cq-field"><span>Tu presupuesto <small>(opcional)</small></span><input type="text" id="cq-presupuesto" inputmode="numeric" placeholder="El que tú manejes"></label>
               <label class="cq-field"><span>Colonia o zona</span><input type="text" id="cq-zona" placeholder="Ej. Jardines de la Concepción" autocomplete="address-level3"></label>
             </div>
           </fieldset>
 
           <a class="ls-btn ls-btn--primary cq-send" id="cq-send" href="https://wa.me/524493989612?text=Hola%20Limpio%20Suprime%2C%20quiero%20cotizar%20una%20limpieza." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mandar por WhatsApp</a>
+          <p class="cq-send-nota">Tu total te lo confirmamos por WhatsApp.</p>
         </form>
       </div>
     </div>
@@ -233,27 +236,27 @@
       <ul class="s-limpiamos-list" data-ls-reveal-stagger>
         <li><button type="button" class="s-limpiamos-row is-activa" data-tipo="Empresa u oficina" data-necesita="Limpieza" data-foto="oficina" aria-pressed="true">
           <span class="s-limpiamos-foto-mini ls-foto-circulo"><img src="img/fotos/oficina-c.webp" alt="" width="140" height="140" loading="lazy"></span>
-          <span class="s-limpiamos-txt">Limpieza de empresa</span>
+          <span class="s-limpiamos-txtwrap"><span class="s-limpiamos-txt">Limpieza de empresa</span><span class="s-limpiamos-sub">Pregunta el precio</span></span>
           <svg class="s-limpiamos-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
         </button></li>
         <li><button type="button" class="s-limpiamos-row" data-necesita="Personal de limpieza" data-foto="pasillo" aria-pressed="false">
           <span class="s-limpiamos-foto-mini ls-foto-circulo"><img src="img/fotos/pasillo-c.webp" alt="" width="140" height="140" loading="lazy"></span>
-          <span class="s-limpiamos-txt">Personal de limpieza</span>
+          <span class="s-limpiamos-txtwrap"><span class="s-limpiamos-txt">Personal de limpieza</span><span class="s-limpiamos-sub">Pregunta el precio</span></span>
           <svg class="s-limpiamos-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
         </button></li>
         <li><button type="button" class="s-limpiamos-row" data-tipo="Casa" data-necesita="Limpieza" data-foto="cocina" aria-pressed="false">
           <span class="s-limpiamos-foto-mini ls-foto-circulo"><img src="img/fotos/cocina-c.webp" alt="" width="140" height="140" loading="lazy"></span>
-          <span class="s-limpiamos-txt">Limpieza de casas</span>
+          <span class="s-limpiamos-txtwrap"><span class="s-limpiamos-txt">Limpieza de casas</span><span class="s-limpiamos-sub">Pregunta el precio</span></span>
           <svg class="s-limpiamos-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
         </button></li>
         <li><button type="button" class="s-limpiamos-row" data-tipo="Local" data-necesita="Limpieza" data-foto="local" aria-pressed="false">
           <span class="s-limpiamos-foto-mini ls-foto-circulo"><img src="img/fotos/local-c.webp" alt="" width="140" height="140" loading="lazy"></span>
-          <span class="s-limpiamos-txt">Limpieza de locales</span>
+          <span class="s-limpiamos-txtwrap"><span class="s-limpiamos-txt">Limpieza de locales</span><span class="s-limpiamos-sub">Pregunta el precio</span></span>
           <svg class="s-limpiamos-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
         </button></li>
         <li><button type="button" class="s-limpiamos-row" data-necesita="Mantenimiento" data-foto="mantenimiento" aria-pressed="false">
           <span class="s-limpiamos-foto-mini ls-foto-circulo"><img src="img/fotos/mantenimiento-c.webp" alt="" width="140" height="140" loading="lazy"></span>
-          <span class="s-limpiamos-txt">Mantenimiento preventivo y correctivo</span>
+          <span class="s-limpiamos-txtwrap"><span class="s-limpiamos-txt">Mantenimiento preventivo y correctivo</span><span class="s-limpiamos-sub">Pregunta el precio</span></span>
           <svg class="s-limpiamos-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
         </button></li>
       </ul>
@@ -274,7 +277,7 @@
       <h2 class="ls-h2 s-personal-title" id="pe-title" data-ls-drop>Eficiente, honesto y dedicado.</h2>
       <div class="s-personal-foot" data-ls-reveal>
         <span class="s-personal-mini ls-foto-circulo"><img src="img/fotos/pasillo-c.webp" alt="Persona de limpieza con carrito en un pasillo, imagen ilustrativa" width="120" height="120" loading="lazy"><span class="ls-nota-ilustrativa">Imagen ilustrativa</span></span>
-        <a class="ls-btn ls-btn--primary" href="#cotiza" id="pe-btn"><svg aria-hidden="true"><use href="#i-arrow"/></svg>Pedir personal de limpieza</a>
+        <a class="ls-btn ls-btn--brand" href="#cotiza" id="pe-btn"><svg aria-hidden="true"><use href="#i-arrow"/></svg>Pedir personal de limpieza</a>
       </div>
     </div>
   </section>
@@ -294,6 +297,23 @@
       <h2 class="ls-h2 s-cierre-title" id="ci-title" data-ls-drop>¿Lo dejamos limpio?</h2>
       <p class="s-cierre-resumen" id="ci-resumen" aria-live="polite">Casa · 100 m² aprox. · Una vez</p>
       <a class="ls-btn ls-btn--primary" id="ci-send" href="https://wa.me/524493989612?text=Hola%20Limpio%20Suprime%2C%20quiero%20cotizar%20una%20limpieza." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mandar por WhatsApp</a>
+    </div>
+  </section>
+
+  <section id="completar" class="s-completar" aria-labelledby="completar-title">
+    <div class="ls-wrap s-completar-in">
+      <h2 class="ls-h2 s-completar-title" id="completar-title" data-ls-drop>Todo listo para completar.</h2>
+      <p class="ls-lead" data-ls-reveal>Esta es una muestra. Para dejarla tuya solo falta que nos pases:</p>
+      <ul class="s-completar-list" data-ls-reveal-stagger>
+        <li class="s-completar-item"><span class="s-completar-bubble" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Tu logo</li>
+        <li class="s-completar-item"><span class="s-completar-bubble" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>3 fotos reales de tu gente o de un trabajo</li>
+        <li class="s-completar-item"><span class="s-completar-bubble" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Zonas que cubren dentro de Aguascalientes</li>
+        <li class="s-completar-item"><span class="s-completar-bubble" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Tu horario de atención</li>
+        <li class="s-completar-item"><span class="s-completar-bubble" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Cómo cobran (por visita, por hora, por m²)</li>
+        <li class="s-completar-item"><span class="s-completar-bubble" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Link de cobro, si quieren cobrar en línea</li>
+      </ul>
+      <p class="s-completar-note" data-ls-reveal>Tarjeta en línea: te mandamos el link.</p>
+      <a class="ls-btn ls-btn--link s-completar-send" href="https://wa.me/524493989612?text=Hola%2C%20vi%20la%20muestra%20de%20mi%20p%C3%A1gina.%20Les%20paso%20lo%20que%20falta%3A" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mandarlo por WhatsApp</a>
     </div>
   </section>
 
@@ -323,7 +343,7 @@
 
 <a class="ls-wa-float" data-ls-wa="Hola Limpio Suprime, vi su página y quiero cotizar una limpieza." href="https://wa.me/524493989612" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
 
-<script src="site.js?v=1789887395" defer></script>
+<script src="site.js?v=1789928245" defer></script>
 <script src="sections/10-jalador.js?v=1789879881" defer></script>
 <script src="sections/20-cotiza.js?v=1789884351" defer></script>
 <script src="sections/30-limpiamos.js?v=1789884721" defer></script>

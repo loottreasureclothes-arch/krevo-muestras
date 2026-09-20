@@ -1,5 +1,10 @@
 /* ============ 70 · Cierre (bookend: el mismo pase, ya con lo que eligio) ============ */
 .hd-cierre { position: relative; overflow: clip; background: var(--deep); }
+/* Contenedor propio para el fondo/fotitos/boleto de cierre: asi el fondo e inset:0 de las
+   fotitos NO se estiran hasta el fondo de "Todo listo para completar" (que vive despues,
+   como hermano). Sin esto, las fotitos ancladas por "bottom" se resbalaban hasta el fondo
+   real de la seccion (ahora mas alta) y tapaban el link de WhatsApp de esa tarjeta. */
+.hd-cierre-top { position: relative; }
 /* Fotitos de vuelta a casa: van DETRAS de la tarjeta (la tarjeta se pinta despues en el
    DOM), asomandose por los bordes. En compu se separan a los costados. */
 .hd-cierre-f1 { --w: 116px; --l: -36px; --t: 26px; }

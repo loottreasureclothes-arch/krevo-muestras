@@ -167,9 +167,9 @@ a, button, [role="button"], label { -webkit-tap-highlight-color: transparent; to
   transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out);
 }
 .hd-menu-btn:active { transform: scale(0.96); }
-/* Con el menu abierto la barra queda encima del panel: se esconde el verde para que
+/* Con el menu abierto la barra queda encima del panel: se esconde el boton de accion para que
    el unico boton a la vista sea la X de cerrar (y el logo siga anclando la marca). */
-body.hd-menu-open .hd-actions .hd-btn--wa { display: none; }
+body.hd-menu-open .hd-actions .hd-btn { display: none; }
 body.hd-menu-open .hd-menu-btn { border-color: rgba(13, 35, 64, 0.4); background: var(--paper-2); }
 body.hd-menu-open .hd-menu-lbl { display: inline; }
 .hd-burger { position: relative; width: 15px; height: 9px; }
@@ -331,7 +331,9 @@ figure.hd-frame { position: relative; margin: 0; border-radius: var(--radius-tk)
   box-shadow: 0 14px 24px -12px rgba(1, 26, 54, 0.55), 0 1px 0 rgba(13, 35, 64, 0.14);
   transform: rotate(var(--rot, -4deg));
 }
-.hd-fotito img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; background: var(--paper-3); }
+/* Sin fondo crema: un marco sin decodificar todavia con relleno crema se ve identico a una
+   foto en blanco "terminada". Mejor transparente y el marco no se revela hasta decode(). */
+.hd-fotito img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
 /* Cinta adhesiva */
 .hd-fotito--cinta::before {
   content: ""; position: absolute; top: -8px; left: 50%; width: 52%; min-width: 46px; height: 19px;
@@ -437,6 +439,23 @@ body.hd-wa-off .hd-wa { visibility: hidden; opacity: 0; animation: none; }
 .hd-stars { display: inline-flex; gap: 3px; color: #e0a91c; }
 .hd-stars svg { width: 17px; height: 17px; }
 
+/* ============ Todo listo para completar (cierre de venta con el dueño) ============
+   Vive AL FINAL de 70-cierre (no suma una 8a seccion). Mismo lenguaje de formas: boleto
+   con perforacion y renglones tipo lista de equipaje (PZ 01, PZ 02...). Un solo link
+   (no boton verde) manda por WhatsApp lo que falta. */
+.hd-completar-wrap { margin-top: 34px; display: flex; justify-content: center; }
+.hd-completar-card { --tk-notch-y: 50%; background: #fff; width: 100%; max-width: 480px; padding: 26px 24px 24px; }
+.hd-completar-title-b { color: var(--deep); }
+.hd-completar-lead { color: var(--mute); font-size: 14.5px; line-height: 1.45; margin: 0; }
+.hd-completar-list { display: grid; gap: 0; margin: 18px 0 20px; }
+.hd-completar-list li { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px dashed rgba(13, 35, 64, 0.18); font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+.hd-completar-list li:last-child { border-bottom: 1px dashed rgba(13, 35, 64, 0.18); }
+.hd-completar-tag { display: inline-flex; flex: none; align-items: center; justify-content: center; min-width: 40px; height: 22px; padding: 0 6px; border-radius: 6px; background: var(--paper-2); color: var(--deep); font-size: 10.5px; }
+.hd-completar-note { font-size: 12.5px; color: var(--mute); margin: 0 0 16px; }
+.hd-completar-send { width: 100%; justify-content: center; }
+.hd-completar-send svg { color: var(--wa-dark); }
+@media (min-width: 720px) { .hd-completar-card { padding: 32px 34px 30px; } }
+
 /* ============ Footer ============ */
 .hd-foot { background: var(--deep-2); color: var(--cream); padding: 56px 0 calc(40px + env(safe-area-inset-bottom)); }
 .hd-foot-grid { display: grid; gap: 30px; }
@@ -446,6 +465,10 @@ body.hd-wa-off .hd-wa { visibility: hidden; opacity: 0; animation: none; }
 .hd-foot-list, .hd-foot-map { display: grid; gap: 4px; }
 .hd-foot-list a, .hd-foot-map a { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; font-weight: 600; }
 .hd-foot-list svg { width: 18px; height: 18px; color: var(--brand); flex: none; }
+/* Redes reales: logotipo de verdad a 44 px, no un glifo pegado al texto (regla del checklist). */
+.hd-foot-social-ic { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(246, 240, 226, 0.1); flex: none; }
+.hd-foot-social-ic svg { width: 22px; height: 22px; color: var(--brand); }
+@media (hover: hover) and (pointer: fine) { .hd-foot-social:hover .hd-foot-social-ic { background: rgba(246, 240, 226, 0.18); } }
 @media (hover: hover) and (pointer: fine) { .hd-foot-list a:hover, .hd-foot-map a:hover { color: #a9d17e; } }
 .hd-foot address { font-style: normal; font-size: 16px; line-height: 1.4; margin-bottom: 10px; color: var(--cream-mute); }
 .hd-foot-bottom { display: grid; gap: 6px; margin-top: 30px; padding-top: 18px; border-top: 1px solid rgba(246, 240, 226, 0.16); font-size: 13px; color: var(--cream-mute); }

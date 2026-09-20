@@ -60,7 +60,7 @@
       var s = state;
       var partes = ["Hola HODO, quiero cotizar mi próximo viaje."];
       partes.push("Destino: " + (s.destinoNombre || "(la que me recomienden)") + ".");
-      if (s.sinFechas) {
+      if (s.sinFechas || (!s.salida && !s.regreso)) {
         partes.push("Fechas: todavía no las tengo" + (s.mesAprox ? ", buscamos para " + fmtMes(s.mesAprox) : "") + ".");
       } else {
         partes.push("Salida: " + (s.salida ? fmtFecha(s.salida) : "(sin elegir)") + ".");
@@ -71,7 +71,9 @@
       var p = "Viajamos: " + adultos + (adultos === 1 ? " adulto" : " adultos") + (menores > 0 ? " y " + menores + (menores === 1 ? " menor" : " menores") : "") + ".";
       partes.push(p);
       if (s.tipo) partes.push("Tipo de viaje: " + s.tipo + ".");
-      partes.push("Mi nombre: " + (s.nombre ? s.nombre : "___"));
+      /* Sin nombre (campo opcional) no se escribe la frase: "Mi nombre: ___" se leia como
+         un dato pendiente de verdad, no como un campo que la persona dejo en blanco. */
+      if (s.nombre && String(s.nombre).trim()) partes.push("Mi nombre: " + s.nombre);
       return partes.join(" ");
     }
     function waUrlPase() { return waUrl(message()); }
@@ -238,8 +240,19 @@
     var els = document.querySelectorAll("[data-hd-reveal], .hd-drop");
     if (!els.length) return;
     function show(el) { el.classList.add("is-in"); }
+    /* Las fotitos no se revelan hasta que su <img> decodifique: si no, el marco aparece
+       "terminado" (con su sombra y giro) antes de que la foto real haya pintado, y por una
+       fraccion de segundo se ve un rectangulo en blanco que parece una foto vacia. */
+    function reveal(el) {
+      var img = el.classList.contains("hd-fotito") ? el.querySelector("img") : null;
+      if (!img || img.complete) { show(el); return; }
+      var done = false;
+      function go() { if (done) return; done = true; show(el); }
+      if (img.decode) img.decode().then(go, go); else { img.addEventListener("load", go); img.addEventListener("error", go); }
+      setTimeout(go, 1200); /* respaldo corto: nunca depende solo del decode */
+    }
     if (reduce) { Array.prototype.forEach.call(els, show); return; }
-    watchVisible(els, 0.9, show);
+    watchVisible(els, 0.9, reveal);
   }
 
   /* ---------- Scroll suave a #anclas (sin scroll-behavior en CSS) ---------- */

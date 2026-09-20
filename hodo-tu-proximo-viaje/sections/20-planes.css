@@ -59,6 +59,10 @@
   text-shadow: 0 3px 14px rgba(1, 22, 46, 0.55);
 }
 .hd-plan--xl .hd-plan-code { font-size: 78px; }
+/* Riviera Maya usa el mismo aeropuerto que Cancun: sin la palabra "via" arriba, dos
+   boletos seguidos con el mismo codigo gigante se leen como un error de copiado. */
+.hd-plan-code--via { display: flex; flex-direction: column; gap: 2px; line-height: 0.9; }
+.hd-plan-code--via small { font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
 .hd-plan .hd-perf-h { margin: 0 12px; }
 
 .hd-plan-body { padding: 14px 15px 16px; display: grid; gap: 7px; }

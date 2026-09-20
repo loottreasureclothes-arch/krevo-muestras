@@ -157,6 +157,11 @@ html.js [data-ls-reveal-stagger].is-in > * { opacity: 1; transform: none; }
 .ls-btn--primary { background: var(--wa); border-color: var(--wa); color: var(--wa-ink); box-shadow: 0 2px 0 rgba(11, 61, 31, 0.28); }
 .ls-btn--primary:active { background: var(--wa-dark); }
 @media (hover: hover) and (pointer: fine) { .ls-btn--primary:hover { background: var(--wa-dark); box-shadow: 0 4px 14px rgba(11, 61, 31, 0.3); } }
+/* Verde SOLO para lo que de verdad manda WhatsApp. Estos botones solo bajan al cotizador
+   (href="#cotiza"): color de marca, fino, mayusculas con tracking, sin logo de WhatsApp. */
+.ls-btn--brand { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); min-height: 46px; padding: 0 22px; font-size: 14px; letter-spacing: 0.09em; text-transform: uppercase; box-shadow: none; }
+.ls-btn--brand:active { filter: brightness(0.93); }
+@media (hover: hover) and (pointer: fine) { .ls-btn--brand:hover { filter: brightness(0.93); box-shadow: 0 4px 14px rgba(74, 60, 5, 0.22); } }
 .ls-btn--ghost { background: transparent; border-color: currentColor; color: inherit; }
 @media (hover: hover) and (pointer: fine) { .ls-btn--ghost:hover { background: rgba(255, 255, 255, 0.08); } }
 .ls-btn--link { min-height: 44px; padding: 0; border: 0; border-radius: 0; background: none; color: inherit; gap: 8px; font-weight: 700;
@@ -320,6 +325,8 @@ body.ls-menu-open .ls-wa-float { visibility: hidden; animation: none; opacity: 0
 }
 /* en las fotos a sangre la esquina de abajo es del WhatsApp flotante: la etiqueta sube */
 #hero .ls-nota-ilustrativa, #cierre .ls-nota-ilustrativa, #personal .ls-nota-ilustrativa { bottom: calc(86px + env(safe-area-inset-bottom)); }
+/* en compu el piso claro del hero se traga la etiqueta a 62% de opacidad: mas opaca ahi */
+#hero .ls-nota-ilustrativa { background: rgba(12, 36, 35, 0.8); }
 /* celular: en Personal el botón verde vive abajo; la etiqueta sube a la esquina de arriba para no partirse */
 @media (max-width: 899px) { #personal .ls-nota-ilustrativa { top: calc(var(--header-h) + 12px); bottom: auto; } }
 .ls-foto-circulo .ls-nota-ilustrativa { position: static; margin-top: 6px; background: none; color: var(--mute); padding: 0; font-size: 10px; text-align: center; }

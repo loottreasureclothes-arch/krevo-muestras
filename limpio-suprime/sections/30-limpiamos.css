@@ -32,7 +32,11 @@
 .s-limpiamos-foto-mini { width: 64px; height: 64px; flex: none; border: 2px solid transparent; transition: border-color 200ms var(--ease-out); }
 .s-limpiamos-foto-mini img { width: 100%; height: 100%; object-fit: cover; }
 .s-limpiamos-row.is-activa .s-limpiamos-foto-mini { border-color: var(--brand); }
-.s-limpiamos-txt { font-family: var(--font-display); font-weight: 800; font-size: clamp(18px, 5vw, 24px); line-height: 1.08; letter-spacing: -0.01em; flex: 1; }
+.s-limpiamos-txtwrap { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+.s-limpiamos-txt { font-family: var(--font-display); font-weight: 800; font-size: clamp(18px, 5vw, 24px); line-height: 1.08; letter-spacing: -0.01em; }
+/* Regla de la casa: nunca $0, y aqui no hay ni un precio real en research/. En vez de
+   inventarlo, cada renglon deja claro que se pregunta por WhatsApp. */
+.s-limpiamos-sub { font-family: var(--font-body); font-weight: 600; font-size: 12.5px; color: var(--mute); }
 /* en celular la flecha se queda puesta: el renglón avisa que se toca */
 .s-limpiamos-arrow { width: 20px; height: 20px; flex: none; color: var(--deep); opacity: 0.45; transform: none; transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); }
 .s-limpiamos-row:active .s-limpiamos-arrow { opacity: 1; transform: translateX(3px); }

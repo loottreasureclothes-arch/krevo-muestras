@@ -1,0 +1,19 @@
+/* 70 · Todo listo para completar: banda crema tipo papel (lectura), no una banda oscura.
+   Lista con burbujas que se "limpian" (se llenan de amarillo y palomean) al revelarse,
+   con el mismo timing que ya trae [data-ls-reveal-stagger] (nada de scroll ligado). */
+.s-completar { padding: var(--sec-y-sm) 0; background: var(--paper-2); }
+.s-completar-in { max-width: 640px; }
+.s-completar-title { color: var(--ink); margin: 0 0 10px; }
+.s-completar-list { display: grid; gap: 0; margin: 22px 0 18px; border-top: 1px solid var(--line); }
+.s-completar-item { display: flex; align-items: center; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--line); font-weight: 700; font-size: 15px; color: var(--ink); }
+.s-completar-bubble {
+  width: 30px; height: 30px; flex: none; border-radius: 50%;
+  display: grid; place-items: center; border: 1.5px solid var(--line); background: var(--paper);
+  color: transparent; transition: background 220ms var(--ease-out), border-color 220ms var(--ease-out), color 220ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 80ms + 220ms);
+}
+.s-completar-bubble svg { width: 14px; height: 14px; }
+.s-completar-list.is-in .s-completar-bubble { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.s-completar-note { font-size: 13px; color: var(--mute); margin: 0 0 18px; }
+.s-completar-send svg { color: var(--wa-dark); }
+@media (prefers-reduced-motion: reduce) { .s-completar-bubble { transition: none !important; } }

@@ -175,9 +175,15 @@
 .cq-opt-fields { display: grid; gap: 14px; }
 @media (min-width: 560px) { .cq-opt-fields { grid-template-columns: 1fr 1fr; } }
 .cq-opt-fields .cq-field { margin-top: 0; }
+.cq-field small { font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--mute); margin-left: 2px; }
+
+/* Las 5 frecuencias son una pregunta al cliente, no una promesa del negocio (no hay
+   frecuencias confirmadas en research/): se lo confirmamos por WhatsApp. */
+.cq-freq-nota { font-size: 12px; color: var(--mute); margin: 10px 0 0; }
 
 .cq-send { width: 100%; }
 @media (min-width: 560px) { .cq-send { width: auto; } }
+.cq-send-nota { font-size: 12.5px; color: var(--mute); margin: 10px 0 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .ls-disc-face, .cq-month i, .ls-floor-grid i, .ls-floor-grid i::after { transition: none !important; }
