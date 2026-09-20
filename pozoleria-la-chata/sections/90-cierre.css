@@ -1,0 +1,36 @@
+.s-cierre { background: var(--deep); padding: 56px 0 40px; border-top: 1px solid var(--line-brand); }
+.s-cierre-in { display: flex; flex-direction: column; align-items: center; gap: 34px; text-align: center; }
+
+.s-cierre-list { width: 100%; max-width: 440px; }
+.s-cierre-list ul { display: flex; flex-direction: column; margin-top: 14px; }
+.s-cierre-list li {
+  display: flex; align-items: baseline; gap: 12px;
+  text-align: left;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-brand);
+  color: rgba(244,239,228,.86);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.s-cierre-list li span {
+  font-family: var(--font-alt); font-weight: 700; font-size: 12px; color: var(--accent); flex: none;
+}
+
+/* El logo, UNA sola vez en toda la página y completo: cuadrado en su placa crema, nada cortado.
+   La hoja pide que llene más del 60 % del ancho. */
+.s-cierre-logo { width: 64%; max-width: 360px; margin: 0; }
+.s-cierre-logo img { width: 100%; height: auto; }
+
+.s-cierre-lema {
+  font-family: var(--font-display);
+  font-weight: 850;
+  text-transform: uppercase;
+  font-size: clamp(22px, 6.5vw, 34px);
+  color: var(--paper);
+  max-width: 18ch;
+}
+
+@media (min-width: 900px) {
+  .s-cierre { padding: 88px 0 64px; }
+  .s-cierre-logo { width: 34%; max-width: 380px; }
+}

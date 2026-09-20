@@ -1,0 +1,41 @@
+.s-hero { background: var(--deep); color: var(--paper); padding: calc(96px + env(safe-area-inset-top)) 0 48px; }
+.s-hero-in { display: flex; flex-direction: column; gap: 28px; align-items: center; text-align: center; }
+.s-hero-copy { max-width: 100%; }
+.s-hero-h1 {
+  font-size: clamp(34px, 9.2vw, 56px);
+  max-width: 13ch;
+  margin-inline: auto;
+  text-transform: uppercase;
+  margin-top: 10px;
+  letter-spacing: -.01em;
+}
+.s-hero-h1 em { display: block; font-style: normal; color: var(--brand-lit); }
+.s-hero-line { margin-top: 16px; font-size: 16px; line-height: 1.5; color: rgba(244,239,228,.86); max-width: 34ch; margin-inline: auto; }
+.s-hero-ctas { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.s-hero-photo {
+  /* el letrero es el protagonista: la hoja pide 62 % de ancho Y 58 svh de alto, que no caben
+     juntos en 390 x 844; se respeta el alto, que es lo que hace que el letrero mande. */
+  width: min(86%, calc(46svh * 1.1187));
+  min-width: 240px;
+  aspect-ratio: 820 / 733;
+}
+.s-hero-photo picture, .s-hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.s-hero-cap {
+  margin-top: 8px;
+  font-family: var(--font-alt);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(244,239,228,.7);
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .s-hero { padding-top: calc(120px + env(safe-area-inset-top)); padding-bottom: 72px; }
+  .s-hero-in { flex-direction: row; align-items: center; text-align: left; gap: 56px; justify-content: space-between; }
+  .s-hero-copy { max-width: 560px; }
+  .s-hero-h1 { margin-inline: 0; max-width: 11ch; }
+  .s-hero-line { margin-inline: 0; }
+  .s-hero-ctas { justify-content: flex-start; }
+  .s-hero-photo { width: min(42%, calc(58svh * 1.1187)); flex: none; }
+}

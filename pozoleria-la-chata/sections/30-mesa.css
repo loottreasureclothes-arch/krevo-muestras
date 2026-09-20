@@ -1,0 +1,44 @@
+/* Sección 3: La mesa de barro. Foto a sangre con el pie encimado, dato gigante real y tres citas.
+   Cero contadores inventados: el 4.6 y el 159 son los únicos números de la página. */
+.s-mesa { background: var(--deep); padding-bottom: 44px; border-top: 1px solid var(--line-brand); }
+.s-mesa-shotband { position: relative; height: 62svh; min-height: 320px; overflow: hidden; }
+.s-mesa-shotband picture, .s-mesa-shotband img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%; }
+.s-mesa-pie {
+  position: absolute; left: var(--k-gutter); bottom: 14px;
+  font-family: var(--font-alt); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--paper);
+  background: rgba(12,30,19,.78);
+  padding: 7px 10px; border-radius: var(--radius);
+}
+.s-mesa-in { padding-top: 26px; display: flex; flex-direction: column; gap: 26px; }
+.s-mesa-num {
+  font-family: var(--font-display); font-weight: 850; line-height: .82;
+  font-size: clamp(76px, 26vw, 140px);
+  color: var(--paper); margin-top: 8px; letter-spacing: -.02em;
+}
+.s-mesa-stars { display: flex; gap: 4px; margin-top: 10px; }
+.s-mesa-stars svg { width: 22px; height: 22px; color: var(--accent); fill: currentColor; }
+.s-mesa-stars svg.is-off { opacity: .28; }
+.s-mesa-stars--sm svg { width: 14px; height: 14px; }
+.s-mesa-h2 {
+  margin-top: 16px;
+  font-size: clamp(26px, 8vw, 44px); text-transform: uppercase; color: var(--paper); max-width: 15ch;
+}
+.s-mesa-h2 em { display: block; font-style: normal; color: var(--brand-lit); }
+.s-mesa-list { display: flex; flex-direction: column; gap: 0; }
+.s-mesa-res { padding: 18px 0; border-top: 1px solid var(--line-brand); }
+.s-mesa-res:last-child { border-bottom: 1px solid var(--line-brand); }
+.s-mesa-res blockquote { margin: 10px 0 0; font-size: 15px; line-height: 1.5; color: rgba(244,239,228,.88); }
+.s-mesa-firma {
+  margin-top: 10px;
+  font-family: var(--font-alt); font-weight: 600; font-size: 11px;
+  letter-spacing: .1em; text-transform: uppercase; color: rgba(244,239,228,.6);
+}
+@media (min-width: 900px) {
+  .s-mesa { padding-bottom: 72px; }
+  .s-mesa-shotband { min-height: 420px; }
+  .s-mesa-in { flex-direction: row; gap: 56px; padding-top: 44px; align-items: flex-start; }
+  .s-mesa-dato { flex: 0 0 42%; }
+  .s-mesa-list { flex: 1; }
+  .s-mesa-res:first-child { border-top: 0; padding-top: 0; }
+}

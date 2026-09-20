@@ -1,0 +1,57 @@
+/* Sección 4: El reloj de la esquina (COMPONENTE FIRMA, HOJA §4).
+   Las 7 fichas miden lo mismo; los dos días que sí abren son más anchos (ahí cabe su horario
+   legible en crema, no en rojo sobre verde) y el cuadrito de "hoy" va DENTRO de la ficha. */
+.s-reloj { background: var(--deep); padding: 48px 0; border-top: 1px solid var(--line-brand); }
+.s-reloj-in { display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; }
+
+.s-reloj-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) minmax(0, 2.15fr) minmax(0, 2.15fr);
+  align-items: stretch;
+  gap: 6px; width: 100%; max-width: 520px;
+}
+.s-reloj-day {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 4px;
+  min-height: 64px;
+  padding: 8px 2px;
+  border-radius: var(--radius);
+  background: rgba(244,239,228,.06);
+  color: rgba(244,239,228,.42);
+}
+.s-reloj-day::before {
+  content: ""; position: absolute; left: 26%; right: 26%; top: 52%; height: 1px; background: rgba(244,239,228,.42);
+}
+.s-reloj-d { font-family: var(--font-alt); font-weight: 700; font-size: 14px; text-transform: uppercase; line-height: 1; }
+.s-reloj-day--on { background: var(--brand); color: var(--paper); }
+.s-reloj-day--on::before { display: none; }
+.s-reloj-day--on .s-reloj-d { font-size: 16px; }
+.s-reloj-h {
+  font-family: var(--font-alt); font-weight: 500;
+  font-size: 11px; line-height: 1.25; letter-spacing: .02em;
+  color: var(--paper);
+}
+.s-reloj-day[data-today]::after {
+  content: ""; position: absolute; top: 5px; left: 5px;
+  width: 6px; height: 6px; background: var(--accent); border-radius: 1px;
+}
+
+.s-reloj-title {
+  font-size: clamp(26px, 7.5vw, 42px);
+  text-transform: uppercase;
+  color: var(--paper);
+  max-width: 16ch;
+}
+.s-reloj-title em { display: block; font-style: normal; color: var(--brand-lit); }
+.s-reloj-live {
+  font-family: var(--font-alt);
+  font-size: 13px;
+  letter-spacing: .04em;
+  color: rgba(244,239,228,.78);
+}
+.s-reloj-note { font-size: 12px; color: rgba(244,239,228,.55); margin-top: -6px; }
+@media (min-width: 900px) {
+  .s-reloj { padding: 76px 0; }
+  .s-reloj-h { font-size: 12px; }
+}

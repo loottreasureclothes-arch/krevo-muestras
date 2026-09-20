@@ -1,0 +1,152 @@
+/* Sección 2: La carta. Banda de foto a sangre (62 svh) + rejilla de tienda.
+   Lenguaje de formas de la hoja: radio 2 px, paspartú crema de 8 px con borde verde al 60 %,
+   nada redondeado salvo el medallón y los platos. */
+.s-carta { background: var(--deep); padding-bottom: 44px; }
+
+/* --- foto grande a sangre con el título encima --- */
+.s-carta-shotband { position: relative; height: 62svh; min-height: 340px; overflow: hidden; }
+.s-carta-shotband picture, .s-carta-shotband img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; }
+.s-carta-shotband-copy {
+  position: absolute; inset: auto 0 0 0;
+  padding: 0 0 22px;
+  background: linear-gradient(to top, rgba(12,30,19,.92) 0%, rgba(12,30,19,.72) 42%, rgba(12,30,19,0) 100%);
+}
+.s-carta-h2 {
+  font-size: clamp(30px, 9vw, 52px);
+  text-transform: uppercase;
+  color: var(--paper);
+  max-width: 14ch;
+}
+.s-carta-h2 em { display: block; font-style: normal; color: var(--brand-lit); }
+
+/* --- rejilla de tienda: 2 columnas en celular, 3 en compu --- */
+.s-carta-in { padding-top: 24px; }
+.s-carta-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.s-carta-card {
+  display: flex; flex-direction: column;
+  background: rgba(244,239,228,.05);
+  border: 1px solid var(--line-brand);
+  border-radius: var(--radius);
+  padding: 8px 8px 10px;
+}
+.s-carta-card--wide { grid-column: 1 / -1; align-items: center; padding-top: 18px; }
+
+.s-carta-shot { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; display: grid; }
+.s-carta-shot img { width: 100%; height: 100%; object-fit: cover; }
+.s-carta-shot--falta {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  background: var(--deep); box-shadow: inset 0 0 0 1px rgba(1,98,48,.5); padding: 14px 0;
+}
+.s-carta-shot--falta::before {
+  /* el plato de barro vacío: el círculo es el único motivo redondo de la página */
+  content: ""; display: block; width: 52px; height: 52px; flex: none;
+  border: 1.5px solid rgba(244,239,228,.38); border-radius: 50%;
+  box-shadow: inset 0 0 0 4px rgba(244,239,228,.08);
+}
+.s-carta-shot--falta p {
+  margin: 0; padding: 0 10px; text-align: center;
+  font-family: var(--font-alt); font-size: 11px; line-height: 1.35;
+  letter-spacing: .04em; text-transform: uppercase; color: rgba(244,239,228,.55);
+}
+
+.s-carta-body { margin-top: 10px; width: 100%; }
+.s-carta-row { margin-top: 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; }
+.s-carta-name {
+  font-family: var(--font-display); font-weight: 850; text-transform: uppercase;
+  font-size: 15px; line-height: 1.06; color: var(--paper);
+}
+.s-carta-price {
+  /* el rojo de marca se reserva para el cuadrito de "hoy" del reloj; aquí, texto normal */
+  font-family: var(--font-alt); font-weight: 600; font-size: 10.5px;
+  letter-spacing: .03em; text-transform: uppercase; color: rgba(244,239,228,.55);
+}
+.s-carta-add {
+  flex: none; width: 44px; height: 44px;
+  display: grid; place-items: center;
+  /* "+" en COLOR DE MARCA y fino (contorno), no un bloque verde por platillo: el verde
+     lleno se reserva para lo que de verdad manda WhatsApp. Al agregarlo sí se llena. */
+  background: transparent; color: var(--brand-lit);
+  border: 1.5px solid rgba(87,201,138,.55); border-radius: var(--radius);
+  font-family: var(--font-alt); font-weight: 600; font-size: 24px; line-height: 1;
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out);
+}
+.s-carta-add span { transform: translateY(-1px); }
+.s-carta-add:active { transform: scale(.94); }
+.s-carta-add.is-added { background: var(--brand); border-color: var(--brand); color: var(--paper); }
+@media (hover: hover) and (pointer: fine) { .s-carta-add:hover { background: rgba(87,201,138,.14); border-color: var(--brand-lit); } }
+
+/* --- carta tipográfica: los antojitos sin foto digna, como renglones de menú --- */
+.s-carta-list { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--line-brand); }
+.s-carta-list-row {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 13px 0; border-bottom: 1px solid var(--line-brand);
+}
+.s-carta-list-name {
+  flex: none; max-width: 62%;
+  font-family: var(--font-display); font-weight: 850; text-transform: uppercase;
+  font-size: 14px; line-height: 1.15; color: var(--paper);
+}
+.s-carta-list-fill {
+  flex: 1 1 auto; min-width: 14px; align-self: center;
+  border-bottom: 1px dotted rgba(244,239,228,.3);
+}
+.s-carta-list-price {
+  flex: none;
+  font-family: var(--font-alt); font-weight: 600; font-size: 10.5px;
+  letter-spacing: .03em; text-transform: uppercase; color: rgba(244,239,228,.55);
+}
+.s-carta-list-row .s-carta-add { flex: none; }
+.s-carta-list-note {
+  padding: 14px 2px 0; list-style: none;
+  font-family: var(--font-alt); font-size: 11px; line-height: 1.4; letter-spacing: .03em;
+  color: rgba(244,239,228,.5);
+}
+
+.s-carta-rango {
+  margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line-brand);
+  font-size: 13px; line-height: 1.5; color: rgba(244,239,228,.72);
+}
+
+/* --- momento firma "El medallón se sirve": 200 px fijos, foto real de 414 px, no se estira --- */
+.s-carta-medal { position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; flex: none; }
+.s-carta-medal-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.s-carta-medal-disc,
+.s-carta-medal-ring {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  background-image: url("../img/brand/medallon.webp");
+  background-size: cover; background-position: center;
+}
+.s-carta-medal-disc {
+  -webkit-mask-image: radial-gradient(circle closest-side at 50% 50%, #000 0 70%, transparent 72%);
+  mask-image: radial-gradient(circle closest-side at 50% 50%, #000 0 70%, transparent 72%);
+  transform-origin: 50% 50%; transform: scale(1); will-change: transform;
+}
+.s-carta-medal-ring {
+  -webkit-mask-image: radial-gradient(circle closest-side at 50% 50%, transparent 0 68%, #000 71% 100%);
+  mask-image: radial-gradient(circle closest-side at 50% 50%, transparent 0 68%, #000 71% 100%);
+  transform-origin: 50% 50%; transform: rotate(0deg); will-change: transform;
+}
+.s-carta-card--wide .s-carta-body { margin-top: 16px; max-width: 320px; text-align: left; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  html.chata-js [data-momento-text] {
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out);
+  }
+  html.chata-js [data-momento-text].is-in { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .s-carta-medal-disc { transform: scale(.02) !important; }
+  .s-carta-medal-ring { transform: rotate(10deg) !important; }
+}
+
+@media (min-width: 900px) {
+  .s-carta { padding-bottom: 72px; }
+  .s-carta-shotband { height: 62svh; min-height: 420px; }
+  .s-carta-shotband-copy { padding-bottom: 34px; }
+  .s-carta-in { padding-top: 34px; }
+  .s-carta-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .s-carta-card--wide { grid-column: span 2; flex-direction: row; align-items: center; gap: 24px; padding: 16px; }
+  .s-carta-card--wide .s-carta-body { margin-top: 0; flex: 0 1 300px; max-width: 300px; }
+  .s-carta-name { font-size: 17px; }
+  .s-carta-rango { font-size: 14px; }
+}
