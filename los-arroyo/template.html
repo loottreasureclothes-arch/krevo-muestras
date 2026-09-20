@@ -44,19 +44,32 @@
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5h2.6l1.4 4-2 1.3a11 11 0 0 0 6.6 6.6l1.3-2 4 1.4v2.6a2 2 0 0 1-2.1 2A16.5 16.5 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z M9 9h7M9 13h7M9 17h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 16 16"><path fill="currentColor" d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7L5.8 21l1.6-7L2 9.2l7.1-.6L12 2z"/></symbol>
 </svg>
 
-<header class="k-header">
-  <a class="k-logo" href="#inicio" aria-label="Los Arroyo Restaurante, inicio"><span class="la-logo-chip"><img class="la-logo" src="img/brand/logo.webp" alt="Los Arroyo, auténtica barbacoa de hoyo estilo Hidalgo" width="686" height="290"></span></a>
-  <nav class="k-nav" aria-label="Principal">
-    <a href="#kilo">Por kilo</a>
-    <a href="#banquetes">Banquetes</a>
-    <a href="#sucursales">Sucursales</a>
-    <a href="#sabado">Sábado</a>
+<!-- Franja guinda: horario + WhatsApp. Se esconde al bajar 40px (body.la-scrolled, site.js) y el header se compacta a una sola línea. -->
+<div class="la-topbar">
+  <div class="k-wrap la-topbar-in">
+    <p class="la-topbar-sched"><span>Fines de semana 8 a 5</span><span class="la-topbar-locs"> · Santa Anita, Chicahuales y López Mateos</span></p>
+    <a class="la-topbar-wa" data-wa="Hola, quiero hacer un pedido en Los Arroyo." href="https://wa.me/524495542823"><svg aria-hidden="true"><use href="#i-wa"/></svg>449 554 2823</a>
+  </div>
+</div>
+
+<header class="k-header la-header">
+  <button class="lm-menu-btn la-burger" type="button" aria-expanded="false" aria-controls="lm-nav" aria-label="Abrir navegación"><span class="lm-burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  <nav class="k-nav la-nav la-nav-l" aria-label="Principal">
+    <a href="#kilo">Kilo</a>
+    <a href="#menu">Menú</a>
   </nav>
-  <a class="lm-hmenu" href="#menu"><svg aria-hidden="true"><use href="#i-menu"/></svg>Menú</a>
-  <button class="lm-menu-btn" type="button" aria-expanded="false" aria-controls="lm-nav" aria-label="Abrir navegación"><span class="lm-burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
-  <a class="k-cta lm-hcta" href="#kilo">Pedir</a>
+  <a class="k-logo la-logo" href="#inicio" aria-label="Los Arroyo Restaurante, inicio"><span class="la-logo-chip"><img class="la-logo" src="img/brand/logo.webp" alt="Los Arroyo, auténtica barbacoa de hoyo estilo Hidalgo" width="686" height="290"></span></a>
+  <div class="la-right">
+    <nav class="k-nav la-nav la-nav-r" aria-label="Secundaria">
+      <a href="#sucursales">Sucursales</a>
+      <a href="#banquetes">Banquetes</a>
+    </nav>
+    <a class="k-cta lm-hcta la-cta" href="#kilo">Pedir</a>
+  </div>
 </header>
 
 <div class="lm-nav" id="lm-nav" role="dialog" aria-modal="true" aria-label="Navegación" aria-hidden="true">
@@ -83,7 +96,7 @@
         <a class="lm-btn lm-btn--wa" data-wa="Hola, quiero hacer un pedido en Los Arroyo." href="https://wa.me/524495542823"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
         <a class="lm-btn lm-btn--line" href="tel:+524495542823"><svg aria-hidden="true"><use href="#i-phone"/></svg>Llamar</a>
       </div>
-      <p>Santa Anita abre viernes a domingo, 8 a 17 h · <a href="https://www.facebook.com/losarroyorestaurantes" target="_blank" rel="noopener">Facebook</a></p>
+      <p>Santa Anita abre viernes a domingo, 8 a 17 h · <a class="lm-nav-fb" href="https://www.facebook.com/losarroyorestaurantes" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a></p>
     </div>
   </div>
 </div>
@@ -108,7 +121,7 @@
       <div><h2 class="lm-foot-h">López Mateos</h2><p>Av. López Mateos Pte. 806, Circunvalación Pte.<br>Sábado, 8 a 17 h<br><a href="tel:+524492310357">449 231 0357</a></p></div>
       <div><h2 class="lm-foot-h">Síguenos</h2>
         <ul class="lm-foot-list">
-          <li><a href="https://www.facebook.com/losarroyorestaurantes" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.facebook.com/losarroyorestaurantes" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a></li>
           <li><a data-wa="Hola, quiero hacer un pedido en Los Arroyo." href="https://wa.me/524495542823"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a></li>
         </ul>
       </div>

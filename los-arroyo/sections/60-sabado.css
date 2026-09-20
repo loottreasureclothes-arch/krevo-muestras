@@ -32,7 +32,8 @@
 /* ---------- Texto ---------- */
 #sabado .sb-t { max-width: 13ch; margin: 0 0 18px; }
 #sabado .sb-lines { display: grid; gap: 6px; margin: 0 0 16px; padding: 0; list-style: none; }
-#sabado .sb-lines li { font-size: 16px; line-height: 1.35; color: var(--ink); }
+#sabado .sb-lines li { display: flex; align-items: baseline; gap: 10px; font-size: 16px; line-height: 1.35; color: var(--ink); }
+#sabado .sb-lines li::before { content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--wine); transform: translateY(-1px); }
 #sabado .sb-rating { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-weight: 700; font-size: 15px; color: var(--wine); text-decoration: none; -webkit-tap-highlight-color: transparent; }
 #sabado .sb-rating svg { width: 16px; height: 16px; transition: transform 240ms var(--ease-out); }
 #sabado .sb-rs { display: grid; gap: 0; margin: 0 0 26px; padding: 0; list-style: none; }
@@ -40,7 +41,7 @@
 #sabado .sb-rs li:first-child { border-top: 1px solid var(--ink); }
 #sabado .sb-rs blockquote { margin: 0; }
 #sabado .sb-rs blockquote p { margin: 0; font-family: var(--font-display); font-stretch: 82%; font-variation-settings: "wdth" 82; font-weight: 700; font-size: 16px; line-height: 1.3; color: var(--ink); text-wrap: balance; }
-#sabado .sb-rs blockquote cite { display: block; margin-top: 6px; font-style: normal; font-size: 13px; color: var(--mute); }
+#sabado .sb-rs blockquote cite { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-style: normal; font-size: 13px; color: var(--mute); }
 #sabado .sb-go { width: 100%; }
 @media (hover: hover) and (pointer: fine) {
   #sabado .sb-rating:hover svg { transform: translateX(3px); }

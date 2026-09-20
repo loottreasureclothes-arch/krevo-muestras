@@ -20,7 +20,7 @@
   var MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
   var x = { consome: 0, tortillas: 0 };
   var $ = function (s) { return form.querySelector(s); };
-  var dia = $("#ki-dia"), hora = $("#ki-hora"), nombre = $("#ki-nombre"), hint = $(".ki-hint"), sumT = $(".ki-sum-t"), fb = $(".ki-fallback"), pagar = $("#ki-pagar");
+  var dia = $("#ki-dia"), hora = $("#ki-hora"), nombre = $("#ki-nombre"), hint = $(".ki-hint"), sumL = $(".ki-sum-l"), sumT = $(".ki-sum-t"), fb = $(".ki-fallback"), pagar = $("#ki-pagar");
   var PAGO = { efectivo: "Efectivo al recoger", tarjeta: "Tarjeta en línea" };
 
   function val(name) { var r = form.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ""; }
@@ -65,7 +65,17 @@
     var pend = [];
     if (r.precio == null) pend.push("barbacoa");
     if (x.tortillas) pend.push("tortillas");
-    sumT.innerHTML = money(r.total) + (pend.length ? "<small>+ " + pend.join(" y ") + " por confirmar</small>" : "");
+    /* Si la barbacoa elegida no trae precio en el menú, NO se enseña cifra: un "$100" de 44 px para un
+       pedido que ronda los $485 miente más de lo que informa. Se dice lo que sí se sabe y ya. */
+    if (r.precio == null) {
+      sumL.textContent = "Tu pedido";
+      sumT.innerHTML = '<span class="ki-sum-ask">Precio en sucursal</span><small>'
+        + (x.consome ? money(x.consome * CONSOME) + " de consomé · " : "")
+        + pend.join(" y ") + " por confirmar</small>";
+    } else {
+      sumL.textContent = "Estimado";
+      sumT.innerHTML = money(r.total) + (pend.length ? "<small>+ " + pend.join(" y ") + " por confirmar</small>" : "");
+    }
   }
   function paintPago() {
     if (!pagar) return;
@@ -82,7 +92,9 @@
     t += "\nPago: " + (PAGO[val("ki-pago")] || PAGO.efectivo) + ".";
     t += "\nPaso a recoger el " + dia.value.toLowerCase() + " a las " + hora.value + ".";
     if (nombre.value.trim()) t += "\nA nombre de: " + nombre.value.trim();
-    t += "\nEstimado: " + money(r.total) + (r.precio == null || x.tortillas ? " (más lo que me confirmen)" : "") + ". ¿Me lo confirman?";
+    /* Sin precio publicado y sin extras no hay cifra que mandar: "$0" sería peor que no decir nada */
+    if (r.precio == null && !r.total) t += "\n¿Me confirman el precio, por favor?";
+    else t += "\nEstimado: " + money(r.total) + (r.precio == null || x.tortillas ? " (más lo que me confirmen)" : "") + ". ¿Me lo confirman?";
     return { text: t, wa: s.wa };
   }
 
@@ -161,21 +173,4 @@
   io.observe(tag);
   /* blindaje: si el observer nunca dispara (o se traba), a los 1.6 s el precio queda puesto */
   setTimeout(function () { sec.classList.add("ki-in"); }, 1600);
-})();
-
-/* Cortina guinda del hero a "Aparta tu kilo": dispara cada vez que #kilo cruza al asomar (reversible, no una sola vez). */
-(function () {
-  "use strict";
-  var sec = document.getElementById("kilo");
-  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!sec || reduce || !("IntersectionObserver" in window)) return;
-  var last = 0;
-  var io = new IntersectionObserver(function (es) {
-    if (!es[0].isIntersecting) return;
-    var now = Date.now();
-    if (now - last < 900) return;
-    last = now;
-    if (window.LM && typeof window.LM.curtain === "function") window.LM.curtain();
-  }, { threshold: 0 });
-  io.observe(sec);
 })();

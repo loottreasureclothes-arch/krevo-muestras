@@ -1,12 +1,13 @@
   <section class="s-banq" id="banquetes" data-dark aria-labelledby="bq-t">
     <div class="k-wrap bq-grid">
       <div class="bq-head">
-        <p class="lm-eyebrow">Banquetes y servicio a domicilio</p>
-        <h2 id="bq-t" class="lm-h2 lm-h2--xl bq-t"><span class="bq-l">Tu fiesta,</span> <span class="bq-l">con <em>barbacoa.</em></span></h2>
-        <p class="lm-lead">Cuéntanos la fecha y cuántos son. Te mandamos la cotización por WhatsApp.</p>
+        <!-- Sin eyebrow ni lead a propósito: cinco secciones seguidas abrían igual (eyebrow → título → lead).
+             Aquí manda el título y el "Estilo Hidalgo." de fondo; lo que hace el formulario lo dice su botón. -->
+        <h2 id="bq-t" class="lm-h2 lm-h2--xl bq-t" data-drop><span class="bq-l">Tu fiesta,</span> <span class="bq-l">con <em>barbacoa.</em></span></h2>
         <p class="bq-big" aria-hidden="true">Estilo<br>Hidalgo.</p>
       </div>
       <form class="bq-form" id="bq-form" novalidate aria-label="Cotiza tu banquete">
+        <p class="bq-k">Banquetes y servicio a domicilio</p>
         <div class="bq-row">
           <label class="lm-field"><span>Fecha</span><input id="bq-fecha" type="date"></label>
           <label class="lm-field"><span>Personas</span><input id="bq-personas" type="number" inputmode="numeric" min="5" max="2000" placeholder="Ej. 50"></label>

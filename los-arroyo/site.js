@@ -12,6 +12,12 @@
   var WA = "524495542823";
   window.LA_PAGO_LINK = window.LA_PAGO_LINK || ""; // link de pago con tarjeta (Stripe/Mercado Pago); vacío = el botón "Pagar con tarjeta" queda oculto
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* El menú hamburguesa y la hoja de los cuadritos meten una entrada al historial y la sacan con
+     history.back() al cerrarse. Con scrollRestoration "auto" el navegador aprovecha ese back para
+     devolver el scroll a donde estaba, y se comía el scroll suave del ancla recién tocada: tocabas
+     "Banquetes" en la hamburguesa, se cerraba el menú y la página no se movía. En manual, el scroll
+     lo manda solo el sitio. */
+  try { if ("scrollRestoration" in history) history.scrollRestoration = "manual"; } catch (e) {}
   function waUrl(msg) { return "https://wa.me/" + WA + (msg ? "?text=" + encodeURIComponent(msg) : ""); }
   function openWa(msg) {
     var url = waUrl(msg), w = null;
@@ -28,33 +34,10 @@
   var mesa = null;
   try { var m = new URLSearchParams(location.search).get("mesa"); if (m && /^\d{1,3}$/.test(m)) mesa = parseInt(m, 10); } catch (e) {}
 
-  /* Cortina guinda de cambio de capítulo (receta: catalogo-motion.md #15, closetdoor no la trae hecha).
-     Franja fija de body, ajena a cualquier sección con <img loading="lazy"> (nunca les tapa el clip-path).
-     Tapa y destapa en <=600ms, reversible: la usan 15-kilo.js (hero->kilo) y 60-sabado.js (sucursales->sábado). */
-  var curtainEl = null, curtainAnim = null;
-  function curtain() {
-    return; /* 19 sep: Emanuel la vio ("cuadro rojo bien gacho") y la quitó. Se queda la función para no romper llamadas. */
-    if (reduce || typeof document.body.animate !== "function") return;
-    if (!curtainEl) {
-      curtainEl = document.createElement("div");
-      curtainEl.className = "lm-curtain";
-      curtainEl.setAttribute("aria-hidden", "true");
-      document.body.appendChild(curtainEl);
-    }
-    if (curtainAnim) { try { curtainAnim.cancel(); } catch (e) {} }
-    curtainEl.style.clipPath = "inset(100% 0 0 0)";
-    curtainAnim = curtainEl.animate(
-      [
-        { clipPath: "inset(100% 0 0 0)", offset: 0, easing: "cubic-bezier(.65,0,.35,1)" },
-        { clipPath: "inset(0% 0 0 0)", offset: 0.47, easing: "cubic-bezier(.22,.61,.36,1)" },
-        { clipPath: "inset(0 0 100% 0)", offset: 1 }
-      ],
-      { duration: 600, fill: "forwards" }
-    );
-    curtainAnim.onfinish = function () { curtainEl.style.clipPath = "inset(100% 0 0 0)"; };
-  }
+  /* 19 sep: la cortina guinda de cambio de capítulo se borró completa (Emanuel: "cuadro rojo bien gacho"):
+     la función, la regla .lm-curtain y los dos observers que la llamaban (15-kilo.js y 60-sabado.js). */
 
-  window.LM = { WA: WA, waUrl: waUrl, openWa: openWa, today: today, mesa: mesa, curtain: curtain };
+  window.LM = { WA: WA, waUrl: waUrl, openWa: openWa, today: today, mesa: mesa };
 
   function initWa() {
     var links = document.querySelectorAll("[data-wa]");
@@ -181,7 +164,83 @@
     setTimeout(go, 60);
   }
 
-  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initRipple(); initAnchors(); initMesa(); }
+  /* Topbar (horario + WhatsApp): se esconde al bajar 40 px, mismo umbral que kit.js usa para .k-header.is-solid,
+     para que el header se compacte a una sola línea al mismo tiempo. body.la-scrolled mueve --la-bar-h/--la-head-row-h (site.css). */
+  function initTopbar() {
+    var ticking = false;
+    function update() { ticking = false; document.body.classList.toggle("la-scrolled", (window.scrollY || window.pageYOffset) > 40); }
+    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+  }
+
+  /* Estrellas reales: arma fondo (5 apagadas) + capa recortada al % de data-r/5 sobre [data-r] .la-stars.
+     Sin inventar calificación: el número/★ de texto que ya trae cada lugar sigue ahí, esto solo lo ilustra. */
+  function initStars() {
+    var els = document.querySelectorAll(".la-stars[data-r]");
+    if (!els.length) return;
+    var ICONS = '<svg aria-hidden="true"><use href="#i-star"/></svg>'.repeat(5);
+    Array.prototype.forEach.call(els, function (el) {
+      var r = Math.max(0, Math.min(5, parseFloat(el.getAttribute("data-r")) || 0));
+      var bg = document.createElement("span"); bg.className = "la-stars-row la-stars-bg"; bg.innerHTML = ICONS;
+      var fgWrap = document.createElement("span"); fgWrap.className = "la-stars-fg"; fgWrap.style.width = (r / 5 * 100) + "%";
+      var fg = document.createElement("span"); fg.className = "la-stars-row"; fg.innerHTML = ICONS;
+      fgWrap.appendChild(fg);
+      el.appendChild(bg); el.appendChild(fgWrap);
+    });
+  }
+
+  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initRipple(); initAnchors(); initMesa(); initTopbar(); initStars(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
+})();
+
+/* Títulos de sección [data-drop]: caen desde arriba (-60px) y pegan con rebote corto, una vez al asomar.
+   Resorte muestreado: misma receta que el sello del kilo (15-kilo.js), copiada de closetdoor/10-msi.js.
+   Blindaje: reposo del CSS ya trae el título puesto; solo se esconde con body.la-titles-js (scripting +
+   sin prefers-reduced-motion, site.css), y 1.6 s después de asomarse queda puesto pase lo que pase. */
+(function () {
+  "use strict";
+  var els = document.querySelectorAll("[data-drop]");
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!els.length || reduce || !document.body.animate || !("IntersectionObserver" in window)) return;
+  document.body.classList.add("la-titles-js");
+
+  function spring(n, amp, turns, decay) {
+    var k = [];
+    for (var i = 0; i <= n; i++) {
+      var t = i / n;
+      k.push(i === n ? 0 : amp * Math.exp(-decay * t) * Math.sin(turns * Math.PI * 2 * t));
+    }
+    return k;
+  }
+  function play(el) {
+    var ND = 10, NB = 16, total = ND + NB, frames = [], i, t, e, y, start = -60;
+    for (i = 0; i <= ND; i++) { t = i / ND; e = t * t * t; y = start * (1 - e); frames.push({ transform: "translateY(" + y.toFixed(2) + "px)", opacity: i === 0 ? 0 : 1, offset: i / total }); }
+    var bounce = spring(NB, 8, 1.5, 4.6);
+    for (i = 1; i <= NB; i++) { frames.push({ transform: "translateY(" + bounce[i - 1].toFixed(2) + "px)", opacity: 1, offset: (ND + i) / total }); }
+    el.animate(frames, { duration: 700, easing: "linear" });
+    el.classList.add("is-dropped");
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      play(e.target);
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -8% 0px" });
+  Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+
+  /* Blindaje aparte, con su propio observador sin margen: el de arriba solo dispara cuando el título
+     entra un 8% por encima del borde, así que si el cliente se queda con el título asomado justo
+     abajo, nunca arrancaba el temporizador y el hueco se quedaba en blanco. Este mira "¿se ve aunque
+     sea un pixel?" y a los 1.6 s lo deja puesto pase lo que pase. */
+  var safe = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      safe.unobserve(e.target);
+      var el = e.target;
+      setTimeout(function () { el.classList.add("is-dropped"); }, 1600);
+    });
+  }, { threshold: 0 });
+  Array.prototype.forEach.call(els, function (el) { safe.observe(el); });
 })();

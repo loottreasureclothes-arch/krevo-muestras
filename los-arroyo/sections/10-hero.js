@@ -76,6 +76,10 @@
     list.innerHTML = d.rows.map(function (r) { return "<li><span>" + esc(r[0]) + (r[1] ? "<small>" + esc(r[1]) + "</small>" : "") + "</span><b>" + esc(r[2]) + "</b></li>"; }).join("");
     go.querySelector("span").textContent = d.go;
     go.setAttribute("href", d.href || (window.LM ? window.LM.waUrl(d.wa) : "#kilo"));
+    /* Color honesto: verde + logo de WhatsApp solo si el botón de verdad abre WhatsApp; si solo ancla a #kilo va guinda con flecha */
+    go.classList.toggle("lm-btn--wa", !!d.wa);
+    go.classList.toggle("lm-btn--brand", !d.wa);
+    go.querySelector("svg use").setAttribute("href", d.wa ? "#i-wa" : "#i-arrow");
     if (d.wa) { go.target = "_blank"; go.rel = "noopener"; } else { go.removeAttribute("target"); }
     sh.hidden = false;
     document.documentElement.classList.add("lm-mm-lock");

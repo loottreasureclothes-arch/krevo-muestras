@@ -5,16 +5,22 @@
 #kilo .ki-l { display: inline-block; white-space: nowrap; }
 #kilo .ki-ph { position: relative; margin: 22px calc(var(--k-gutter) * -1) 0; aspect-ratio: 4 / 5; max-height: 62svh; overflow: hidden; background: var(--deep); }
 #kilo .ki-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+/* Sello de fonda: círculo que cae y pega (la caída la sigue haciendo 15-kilo.js sobre este mismo elemento) */
 #kilo .ki-ph figcaption {
-  position: absolute; isolation: isolate; left: var(--k-gutter); top: 16px; padding: 10px 14px; border-radius: 3px;
-  background: var(--deep); color: var(--cream); font-weight: 600; font-size: 15px; box-shadow: 0 10px 24px -12px rgba(20, 6, 5, 0.7);
+  position: absolute; isolation: isolate; left: var(--k-gutter); top: 16px;
+  width: 92px; height: 92px; padding: 6px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  background: var(--deep); border: 2px solid var(--gold); color: var(--cream);
+  font-weight: 600; font-size: 10.5px; line-height: 1.15;
+  box-shadow: 0 10px 24px -12px rgba(20, 6, 5, 0.7), inset 0 0 0 4px rgba(254, 231, 0, 0.18);
+  transform: rotate(-8deg);
 }
-#kilo .ki-ph figcaption b { display: inline-block; font-family: var(--font-display); font-stretch: 70%; font-variation-settings: "wdth" 70; font-weight: 900; font-size: 30px; color: var(--gold); margin-right: 6px; vertical-align: -3px; transform-origin: 30% 70%; }
+#kilo .ki-ph figcaption b { display: block; font-family: var(--font-display); font-stretch: 70%; font-variation-settings: "wdth" 70; font-weight: 900; font-size: 22px; line-height: 1; color: var(--gold); margin-bottom: 2px; transform-origin: 50% 50%; }
 /* Caidita del precio: receta de la cinta de closetdoor/sections/10-msi.js (cae y pega con rebote muestreado).
    Blindaje: el reposo del CSS es el precio ya puesto; 15-kilo.js solo esconde con opacity bajo scripting +
    sin prefers-reduced-motion, y siempre hay un timeout de rescate a 1.6 s. La caída/rebote la hace WAAPI (transform inline). */
 #kilo .ki-ph .ki-flash {
-  position: absolute; z-index: -1; inset: -12px; border-radius: 3px; pointer-events: none; opacity: 0;
+  position: absolute; z-index: -1; inset: -12px; border-radius: 50%; pointer-events: none; opacity: 0;
   background: radial-gradient(closest-side, rgba(135, 21, 23, 0.85), rgba(254, 231, 0, 0.22) 55%, transparent);
 }
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
@@ -24,11 +30,11 @@
 
 #kilo .ki-form {
   position: relative; display: grid; gap: 22px; margin-top: -64px; padding: 22px 16px 20px;
-  background: var(--paper); border: 1px solid var(--line); border-radius: 3px; box-shadow: 0 24px 50px -30px rgba(42, 12, 12, 0.55);
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 24px 50px -30px rgba(42, 12, 12, 0.55);
 }
 #kilo .ki-step { display: grid; gap: 10px; margin: 0; padding: 0; border: 0; min-width: 0; }
 #kilo legend { display: flex; align-items: center; gap: 10px; padding: 0; margin-bottom: 10px; font-family: var(--font-display); font-stretch: 75%; font-variation-settings: "wdth" 75; font-weight: 800; text-transform: uppercase; font-size: 21px; }
-#kilo legend span { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 3px; background: var(--wine); color: var(--cream); font-family: var(--font-body); font-stretch: 100%; font-size: 14px; font-weight: 700; }
+#kilo legend span { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 14px; background: var(--wine); color: var(--cream); font-family: var(--font-body); font-stretch: 100%; font-size: 14px; font-weight: 700; }
 #kilo .ki-chips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 #kilo .ki-chips--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
 #kilo .ki-chips--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -36,7 +42,7 @@
 #kilo .ki-opt input { position: absolute; opacity: 0; pointer-events: none; }
 #kilo .ki-opt span {
   display: grid; place-items: center; align-content: center; min-height: 56px; padding: 6px 4px; text-align: center;
-  border: 1.5px solid var(--line); border-radius: 3px; background: #fffaf0; font-weight: 700; font-size: 15px; line-height: 1.1; cursor: pointer;
+  border: 1.5px solid var(--line); border-radius: 14px; background: #fffaf0; font-weight: 700; font-size: 15px; line-height: 1.1; cursor: pointer;
   transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 160ms var(--ease-out);
 }
 #kilo .ki-chips--5 .ki-opt span { font-size: 14px; padding: 6px 2px; }
@@ -49,7 +55,7 @@
 #kilo .ki-extra { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; border-bottom: 1px dashed rgba(42, 12, 12, 0.28); }
 #kilo .ki-extra-n { font-weight: 600; font-size: 16px; line-height: 1.25; }
 #kilo .ki-extra-n small { display: block; font-weight: 500; font-size: 13px; color: var(--mute); }
-#kilo .ki-step-ctl { flex: none; display: flex; align-items: center; border: 1.5px solid var(--line); border-radius: 3px; background: #fffaf0; }
+#kilo .ki-step-ctl { flex: none; display: flex; align-items: center; border: 1.5px solid var(--line); border-radius: 14px; background: #fffaf0; }
 #kilo .ki-step-ctl button { width: 44px; height: 44px; border: 0; background: none; font-size: 22px; font-weight: 600; color: var(--ink); cursor: pointer; }
 #kilo .ki-step-ctl output { min-width: 28px; text-align: center; font-weight: 800; font-variant-numeric: tabular-nums; }
 #kilo .ki-row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; }
@@ -58,18 +64,22 @@
 #kilo .ki-sum-l { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
 #kilo .ki-sum-t { grid-row: span 2; font-family: var(--font-display); font-stretch: 70%; font-variation-settings: "wdth" 70; font-weight: 900; font-size: 44px; line-height: 1; color: var(--wine); font-variant-numeric: tabular-nums; text-align: right; }
 #kilo .ki-sum-t small { display: block; font-family: var(--font-body); font-stretch: 100%; font-size: 12px; font-weight: 600; color: var(--mute); }
+/* Cuando el corte elegido no trae precio publicado, aquí no va una cifra: va la verdad, del mismo tamaño */
+#kilo .ki-sum-ask { display: block; font-size: 26px; line-height: 1.05; letter-spacing: 0.005em; }
+@media (min-width: 420px) { #kilo .ki-sum-ask { font-size: 30px; } }
 #kilo .ki-sum-f { font-size: 13px; color: var(--mute); max-width: 30ch; }
 #kilo .ki-go { width: 100%; min-height: 56px; font-size: 17px; }
 #kilo .ki-pagar { width: 100%; margin-top: -8px; }
 #kilo .ki-fallback { text-align: center; font-size: 14px; }
 #kilo .ki-fallback a { display: inline-flex; min-height: 44px; align-items: center; font-weight: 700; color: var(--wine); text-decoration: underline; }
-@media (min-width: 600px) { #kilo .ki-ph { margin-inline: 0; border-radius: 3px; } }
+@media (min-width: 600px) { #kilo .ki-ph { margin-inline: 0; border-radius: 14px; } }
 @media (min-width: 900px) {
   #kilo .ki-grid { grid-template-columns: 5fr 6fr; gap: 64px; align-items: start; }
   #kilo .ki-side { position: sticky; top: calc(var(--k-header-h) + 32px); }
   #kilo .ki-ph { max-height: none; aspect-ratio: 5 / 4; margin-top: 32px; }
   #kilo .ki-form { margin-top: 0; padding: 32px 32px 28px; }
-  #kilo .ki-ph figcaption { top: auto; bottom: 18px; left: 18px; }
+  #kilo .ki-ph figcaption { top: auto; bottom: 18px; left: 18px; width: 108px; height: 108px; font-size: 12px; }
+  #kilo .ki-ph figcaption b { font-size: 26px; }
   #kilo .ki-opt span { min-height: 60px; }
 }
 @media (min-width: 900px) and (max-height: 820px) { #kilo .ki-ph { aspect-ratio: 16 / 10; } }

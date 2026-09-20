@@ -7,17 +7,20 @@
    - Pausa si no se ve (IntersectionObserver) o si la pestaña está oculta. Con reduced-motion: quieto. */
 (function () {
   "use strict";
+  /* Sin las 3 fachadas de sucursal (ya salen en sus tarjetas) ni salsas-1200 (1er segmento del video del
+     hero): Emanuel pidió que ninguna foto se repita en la página, tampoco al rotar.
+     f[3] = grupo. Tres de estas fotos son de la misma mesa y el mismo plato azul (consomé + tlacoyo):
+     aunque son archivos distintos, puestas lado a lado se leen como repetidas, así que del grupo "azul"
+     nunca se enseña más de una a la vez. */
   var FOTOS = [
-    ["img/foto/salsas-1200.webp", "Salsas en molcajete, cebolla, cilantro y limón, Los Arroyo", 45],
-    ["img/foto/consome-tlacoyo-1600.webp", "Consomé de borrego y tlacoyo azul con salsas, Los Arroyo", 40],
-    ["img/foto/comedor-1600.webp", "Comedor de Los Arroyo Chicahuales con papel picado de colores", 45],
-    ["img/foto/santa-anita-1200.webp", "Interior de Los Arroyo Santa Anita con mesas de madera", 45],
-    ["img/foto/chicahuales-1200.webp", "Fachada de Los Arroyo Chicahuales", 45],
-    ["img/foto/poniente-1200.webp", "Fachada de Los Arroyo sobre Avenida López Mateos Poniente", 45],
-    ["img/foto/barbacoa-kilo-1200.webp", "Barbacoa de borrego con tortillas hechas a mano, Los Arroyo", 40],
-    ["img/menu/tlacoyo.webp", "Tlacoyo azul con salsa verde y roja, Los Arroyo", 50],
-    ["img/menu/quesadilla.webp", "Quesadilla dorada en plato de talavera, Los Arroyo", 50]
-  ].map(function (f) { return { src: f[0], alt: f[1], y: f[2] }; });
+    ["img/foto/consome-tlacoyo-1600.webp", "Consomé de borrego y tlacoyo azul con salsas, Los Arroyo", 40, "azul"],
+    ["img/menu/sopes.webp", "Sopes con salsa, cebolla y queso en plato de barro, Los Arroyo", 50, "sopes"],
+    ["img/foto/comedor-1600.webp", "Comedor de Los Arroyo Chicahuales con papel picado de colores", 45, "comedor"],
+    ["img/menu/quesadilla.webp", "Quesadilla dorada en plato de talavera, Los Arroyo", 50, "quesadilla"],
+    ["img/menu/jugo-naranja.webp", "Jarra de jugo de naranja en la mesa, Los Arroyo", 50, "jugo"],
+    ["img/menu/tlacoyo.webp", "Tlacoyo azul con salsa verde y roja, Los Arroyo", 50, "azul"],
+    ["img/menu/consome.webp", "Consomé de borrego con garbanzo y arroz, Los Arroyo", 50, "azul"]
+  ].map(function (f) { return { src: f[0], alt: f[1], y: f[2], g: f[3] }; });
   /* f[2] = altura (%) donde está lo importante de cada foto, para encuadrarla bien en recuadros distintos */
 
   var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -44,22 +47,26 @@
 
     function current(slot) { var a = slot.querySelectorAll(".cd-rot-img"); return a[a.length - 1]; }
     function showing() { return slots.map(function (s) { var c = current(s); return c && c.getAttribute("src"); }); }
-    function peek() {
-      var on = showing();
+    function grupoDe(src) { for (var i = 0; i < FOTOS.length; i++) if (FOTOS[i].src === src) return FOTOS[i].g; return null; }
+    function peek(salvo) {
+      var on = showing(), grupos = [];
+      for (var i = 0; i < on.length; i++) { if (on[i] === salvo) continue; var g = grupoDe(on[i]); if (g) grupos.push(g); }
       for (var k = 0; k < FOTOS.length; k++) {
         var f = FOTOS[(ptr + k) % FOTOS.length];
-        if (on.indexOf(f.src) === -1 && cache[f.src] !== "error") return { f: f, k: k };
+        if (on.indexOf(f.src) === -1 && grupos.indexOf(f.g) === -1 && cache[f.src] !== "error") return { f: f, k: k };
       }
       return null;
     }
-    function warm() { var n = peek(); if (n) preload(n.f.src); }
+    function proxima() {
+      var slot = slots[turn % slots.length], old = current(slot);
+      return { slot: slot, old: old, n: peek(old && old.getAttribute("src")) };
+    }
+    function warm() { var p = proxima(); if (p.n) preload(p.n.f.src); }
 
     function swap() {
-      var slot = slots[turn % slots.length];
-      var n = peek();
+      var p = proxima(), slot = p.slot, n = p.n, old = p.old;
       if (!n) return;
       if (cache[n.f.src] !== "ok") { preload(n.f.src); return; }
-      var old = current(slot);
       if (!old || busy) return;
       ptr = (ptr + n.k + 1) % FOTOS.length;
       turn++;
@@ -146,21 +153,4 @@
     });
   }, { threshold: 0.15 });
   Array.prototype.forEach.call(imgs, function (im) { io.observe(im); });
-})();
-
-/* Cortina guinda de sucursales a "Sábado en Los Arroyo": dispara cada vez que #sabado cruza al asomar (reversible). */
-(function () {
-  "use strict";
-  var sec = document.getElementById("sabado");
-  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!sec || reduce || !("IntersectionObserver" in window)) return;
-  var last = 0;
-  var io = new IntersectionObserver(function (es) {
-    if (!es[0].isIntersecting) return;
-    var now = Date.now();
-    if (now - last < 900) return;
-    last = now;
-    if (window.LM && typeof window.LM.curtain === "function") window.LM.curtain();
-  }, { threshold: 0 });
-  io.observe(sec);
 })();

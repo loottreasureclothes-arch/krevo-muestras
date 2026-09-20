@@ -9,11 +9,12 @@
      --gold    #fee700 amarillo de las letras del logo (detalle sobre oscuro)
      --wa #25d366 con texto --wa-ink #0b3d1f (acciones)
    Tipografía: --font-display Archivo condensada MAYÚSCULAS · --font-body Instrument Sans
-   Botones (radio 3px, nada de píldoras):
+   Formas redondas (decisión Emanuel 19 sep): --radius 14px en fotos/tarjetas/botones;
+     chips y filtros (.lm-chip, .lm-mm-chip, .lm-mm-opt, .ki-opt, tag/mesa del menú) en píldora 999px.
      .lm-btn.lm-btn--wa    verde WhatsApp (acción principal, uno por bloque)
      .lm-btn.lm-btn--line  contorno (toma currentColor)
      .lm-btn.lm-btn--link  texto con flecha
-     .lm-chip              chip cuadrado 3px
+     .lm-chip              chip píldora 999px
    Títulos: .lm-d (display) + .lm-h3d (canto 3D; en bandas oscuras sale solo con [data-dark])
    Legado que sigue funcionando: .k-btn, .lm-btn-wa, .lm-sec, .lm-h2, .lm-lead, .lm-rule, .lm-note
    Blindaje: data-reveal (kit) + rescate a 1.6 s en site.js. Ocultar solo bajo
@@ -38,7 +39,11 @@
   --cream-mute: rgba(248, 238, 214, 0.76);
   --line-dark: rgba(248, 238, 214, 0.18);
   --warm: var(--paper-2);
-  --radius: 3px;
+  --radius: 14px;
+  --radius-pill: 999px;
+  /* Grano fino reutilizable: crema (paper, cálido) y guinda (wine, muy sutil) */
+  --grain-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.36  0 0 0 0 0.24  0 0 0 0 0.12  0 0 0 1.35 -0.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  --grain-wine: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.1 -0.82'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");
   --font-display: "Archivo", "Arial Narrow", sans-serif;
   --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --display: var(--font-display);
@@ -46,19 +51,28 @@
   --fs-h2-sm: clamp(36px, 9.6vw, 64px);
   --sec-y: 76px;
   --k-gutter: 16px;
+  /* Header propio de fonda: franja guinda + fila del logo. La fila se compacta con body.la-scrolled (site.js, umbral 40px) */
+  --la-bar-h: 38px;
+  --la-head-row-h: 84px;
+  --k-header-h: calc(var(--la-bar-h) + var(--la-head-row-h));
 }
 @media (min-width: 600px) { :root { --k-gutter: 24px; } }
-@media (min-width: 900px) { :root { --sec-y: 124px; --k-gutter: 40px; } }
+@media (min-width: 900px) { :root { --sec-y: 124px; --k-gutter: 40px; --la-bar-h: 38px; --la-head-row-h: 100px; } }
+body.la-scrolled { --la-bar-h: 0px; --la-head-row-h: 64px; }
+@media (min-width: 900px) { body.la-scrolled { --la-head-row-h: 76px; } }
 
 html { scroll-behavior: auto !important; overflow-x: clip; accent-color: var(--wine); scrollbar-color: rgba(135, 21, 23, 0.5) var(--paper); }
-body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; }
+body {
+  background-color: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px;
+  background-image: var(--grain-paper); background-size: 180px 180px;
+}
 ::selection { background: var(--wine); color: var(--cream); }
-:focus-visible { outline-color: var(--wine); border-radius: 3px; }
+:focus-visible { outline-color: var(--wine); border-radius: 14px; }
 [data-dark] :focus-visible { outline-color: var(--cream); }
 .k-wrap { max-width: 1320px; }
 @media (min-width: 1700px) { .k-wrap { max-width: 1600px; } }
 
-.lm-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; border-radius: 3px; background: var(--deep); color: var(--cream); font-weight: 600; transform: translateY(-180%); transition: transform 200ms var(--ease-out); }
+.lm-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; border-radius: 14px; background: var(--deep); color: var(--cream); font-weight: 600; transform: translateY(-180%); transition: transform 200ms var(--ease-out); }
 .lm-skip:focus { transform: none; }
 
 /* ============ Display ============ */
@@ -100,7 +114,8 @@ em { font-style: normal; color: var(--brand); }
 }
 
 /* ============ Botones (3px, nada de píldoras) ============ */
-.k-btn, .k-cta, .lm-btn, .lm-chip, .k-menu-tabs button, .lm-dot { border-radius: 3px !important; }
+.k-btn, .k-cta, .lm-btn, .k-menu-tabs button, .lm-dot { border-radius: var(--radius) !important; }
+.lm-chip { border-radius: var(--radius-pill) !important; }
 .lm-btn[hidden] { display: none; } /* [hidden] antes de .lm-btn en la cascada: sin esto un lm-btn oculto se ve igual (botón "Pagar con tarjeta") */
 .lm-btn {
   position: relative; overflow: hidden; isolation: isolate;
@@ -113,11 +128,18 @@ em { font-style: normal; color: var(--brand); }
 .lm-btn svg { width: 20px; height: 20px; flex: none; transition: transform 240ms var(--ease-out); }
 .lm-btn:active { transform: scale(0.97); }
 .lm-btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--sweep, rgba(0, 0, 0, 0.1)); clip-path: inset(0 100% 0 0); transition: clip-path 280ms var(--ease-out); }
+/* REGLA DE COLOR (Emanuel, 19 sep): el VERDE es solo de los botones que de verdad mandan el WhatsApp
+   (apartar el kilo, enviar el pedido, cotizar el banquete, "Pedir por WhatsApp") y del flotante.
+   Todo lo que navega (anclas, "Ver menú", "Ver sucursales", "Cómo llegar", "Pedir" del header) va en
+   color de marca: .lm-btn--brand guinda sobre fondo claro, .lm-btn--gold amarillo sobre fondo oscuro. */
 .lm-btn--wa, .k-btn.lm-btn-wa, .lm-submit {
   background: var(--wa); border-color: rgba(11, 61, 31, 0.3); color: var(--wa-ink); --sweep: var(--wa-dark);
   box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35);
 }
 [data-dark] .lm-btn--wa { box-shadow: none; }
+.lm-btn--brand { background: var(--wine); border-color: rgba(42, 12, 12, 0.3); color: var(--cream); --sweep: var(--wine-2); }
+.lm-btn--gold { background: var(--gold); border-color: rgba(42, 12, 12, 0.32); color: var(--deep); --sweep: #ffd400; }
+.lm-btn--brand svg, .lm-btn--gold svg { order: 1; opacity: 0.9; } /* la flecha del botón de marca va después del texto, venga como venga en el HTML */
 .lm-btn--line { background: transparent; border-color: currentColor; color: inherit; --sweep: rgba(127, 127, 127, 0.16); }
 .lm-btn--link { min-height: 44px; padding: 0; border: 0; background: none; gap: 8px; color: inherit;
   background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 100% 1.5px; background-position: 0 calc(100% - 9px); }
@@ -144,33 +166,81 @@ em { font-style: normal; color: var(--brand); }
 .lm-chip:active { transform: scale(0.97); }
 .lm-chip[aria-pressed="true"], .lm-chip.is-on { background: var(--deep); border-color: var(--deep); color: var(--cream); }
 
-/* ============ Header ============ */
+/* ============ Topbar (franja guinda: horario + WhatsApp) ============ */
+.la-topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 51;
+  height: calc(var(--la-bar-h) + env(safe-area-inset-top));
+  padding-top: env(safe-area-inset-top);
+  overflow: hidden;
+  background-color: var(--wine);
+  background-image: var(--grain-wine); background-size: 160px 160px;
+  color: var(--gold);
+  transition: opacity 220ms var(--ease-out), visibility 0s linear;
+}
+body.la-scrolled .la-topbar { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 200ms var(--ease-out), visibility 0s linear 200ms; }
+.la-topbar-in { height: var(--la-bar-h); display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.la-topbar-sched { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; font-weight: 700; letter-spacing: 0.01em; }
+.la-topbar-locs { opacity: 0.9; }
+@media (max-width: 419px) { .la-topbar-locs { display: none; } }
+.la-topbar-wa { position: relative; flex: none; display: inline-flex; align-items: center; justify-content: flex-end; gap: 6px; height: 100%; min-width: 44px; font-size: 12px; font-weight: 800; letter-spacing: 0.01em; color: var(--gold); }
+/* Área de clic invisible: el número de la franja medía 21 px de ancho a 360 px. El alto lo limita la
+   propia franja (overflow: hidden), por eso la franja subió a 38 px en celular. */
+.la-topbar-wa::after { content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: max(100%, 44px); height: 44px; }
+.la-topbar-wa svg { width: 14px; height: 14px; color: var(--gold); }
+@media (min-width: 900px) { .la-topbar-sched, .la-topbar-wa { font-size: 13px; } .la-topbar-wa svg { width: 15px; height: 15px; } }
+@media (prefers-reduced-motion: reduce) { .la-topbar { transition: none; } }
+
+/* ============ Header (fila del logo, debajo del topbar) ============ */
 .k-header { gap: 8px; color: var(--cream); }
 body[data-hero-dark] .k-header:not(.is-solid) { color: var(--cream); }
 .k-header::before { content: ""; position: absolute; inset: 0 0 -30px; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(20, 6, 5, 0.55), rgba(20, 6, 5, 0)); transition: opacity 320ms var(--ease-out); }
 .k-header.is-solid::before { opacity: 0; }
 .k-header.is-solid { background: rgba(250, 243, 226, 0.95); border-bottom-color: var(--line); color: var(--ink); }
-.k-logo { position: relative; min-height: 44px; margin-right: auto; }
+.la-header {
+  top: calc(var(--la-bar-h) + env(safe-area-inset-top)); height: var(--la-head-row-h); padding-top: 0;
+  transition: background-color 320ms var(--ease-out), border-color 320ms var(--ease-out), color 320ms var(--ease-out), -webkit-backdrop-filter 320ms var(--ease-out), backdrop-filter 320ms var(--ease-out), top 320ms var(--ease-out), height 320ms var(--ease-out);
+}
+@media (prefers-reduced-motion: reduce) { .la-header { transition: background-color 320ms var(--ease-out), border-color 320ms var(--ease-out), color 320ms var(--ease-out); } }
+.la-burger { flex: none; }
+/* Logo centrado (siempre en celular; en compu solo mientras no se compacta) */
+.k-logo.la-logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); min-height: 0; margin: 0; }
+/* Área de clic invisible de 44 px: el rótulo puede ser bajito al compactarse y aun así se pica bien */
+.k-logo.la-logo::after { content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: max(100%, 44px); height: max(100%, 44px); }
 .la-logo-chip { display: inline-flex; align-items: center; padding: 0; background: transparent; box-shadow: none; }
-.la-logo-chip img { filter: drop-shadow(0 1px 2px rgba(20, 6, 5, 0.55)) drop-shadow(0 6px 14px rgba(20, 6, 5, 0.35)); }
+/* Header transparente sobre el hero: el eslogan rojo del logo se hundía contra el video café.
+   Halo crema (no sombra oscura) para que "Auténtica Barbacoa de hoyo estilo Hidalgo" se lea. */
+.la-logo-chip img { filter: drop-shadow(0 0 2px rgba(255, 248, 232, 0.85)) drop-shadow(0 6px 14px rgba(20, 6, 5, 0.45)); }
 .k-header.is-solid .la-logo-chip img { filter: none; }
 .k-header.is-solid .la-logo-chip { background: transparent; box-shadow: none; padding-inline: 0; }
-.k-logo img { height: 36px; width: auto; max-width: none; }
-@media (min-width: 900px) { .k-logo img { height: 46px; } }
-.k-nav a { font-weight: 600; }
-@media (min-width: 900px) { .k-nav { gap: 24px; margin-right: 10px; } .k-nav a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; } .k-nav a::after { bottom: 10px; } }
-@media (min-width: 900px) and (max-width: 1100px) { .k-nav { gap: 16px; font-size: 0.88rem; } }
-/* "Menú" del header: el más visible después del verde */
-.lm-hmenu {
-  display: inline-flex; align-items: center; gap: 7px; height: 44px; padding: 0 13px;
-  border-radius: 3px; background: var(--cream); color: var(--deep);
-  font-weight: 800; font-size: 15px; letter-spacing: 0.01em; flex: none;
-  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out);
+/* Logo de fonda: grande en reposo, chico al compactarse */
+.la-logo img { height: 54px; width: auto; max-width: none; transition: height 320ms var(--ease-out); }
+body.la-scrolled .la-logo img { height: 40px; }
+.la-right { display: flex; align-items: center; gap: 14px; margin-left: auto; }
+.la-nav a { font-weight: 600; }
+.k-nav.la-nav { gap: 20px; }
+@media (min-width: 900px) {
+  .la-logo img { height: 76px; } /* rótulo de fonda, no header de plantilla */
+  .lm-menu-btn.la-burger { display: none; }
+  .la-right { margin-left: 0; gap: 24px; }
+  .k-nav.la-nav { display: flex; gap: 24px; }
+  .la-nav a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; }
+  .la-nav a::after { bottom: 10px; }
+  /* Reposo: nav a los lados, logo centrado y grande */
+  .la-header:not(.is-solid) { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; column-gap: 20px; }
+  .la-header:not(.is-solid) .la-nav-l { grid-column: 1; justify-content: flex-end; }
+  /* position:static aquí: un hijo grid absoluto usa como bloque contenedor su propia área de columna
+     (no todo el header), y la columna "auto" no se ensancha porque el abspos no cuenta para su tamaño;
+     en reposo (no is-solid) mejor que fluya normal y se centre solo entre las dos columnas 1fr. */
+  .la-header:not(.is-solid) .la-logo { position: relative; transform: none; grid-column: 2; justify-self: center; }
+  .la-header:not(.is-solid) .la-right { grid-column: 3; justify-content: flex-end; }
+  /* Compacto al bajar 40px: una sola línea, logo chico a la izquierda */
+  .la-header.is-solid { display: flex; }
+  .la-header.is-solid .la-logo { position: static; transform: none; order: -1; margin-right: 22px; }
+  .la-header.is-solid .la-logo img { height: 40px; }
+  .la-header.is-solid .la-nav-l { order: 0; }
 }
-.lm-hmenu svg { width: 18px; height: 18px; }
-.k-header.is-solid .lm-hmenu { background: var(--deep); color: var(--cream); }
-.lm-hmenu:active { transform: scale(0.97); }
-.lm-menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 3px; border: 1.5px solid currentColor; color: inherit; flex: none; }
+@media (min-width: 900px) and (max-width: 1100px) { .k-nav.la-nav { gap: 16px; font-size: 0.88rem; } .la-right { gap: 16px; } }
+.lm-menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; border: 1.5px solid currentColor; color: inherit; flex: none; }
 .lm-burger { position: relative; width: 18px; height: 12px; }
 .lm-burger i { position: absolute; left: 0; right: 0; height: 1.8px; background: currentColor; transition: transform 300ms var(--ease-out), opacity 200ms; }
 .lm-burger i:nth-child(1) { top: 0; }
@@ -179,18 +249,20 @@ body[data-hero-dark] .k-header:not(.is-solid) { color: var(--cream); }
 body.lm-nav-open .lm-burger i:nth-child(1) { transform: translateY(5px) rotate(45deg); }
 body.lm-nav-open .lm-burger i:nth-child(2) { opacity: 0; }
 body.lm-nav-open .lm-burger i:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+/* "Pedir" ancla al pedido, no manda WhatsApp: va en guinda de marca con texto crema. Guinda y no
+   amarillo para no pelearse con las letras doradas del logo, que están justo al lado. */
 .k-header .k-cta.lm-hcta, body[data-hero-dark] .k-header:not(.is-solid) .k-cta.lm-hcta {
-  height: 44px; padding: 0 14px; background: var(--wa); color: var(--wa-ink); font-weight: 800; font-size: 15px;
+  height: 44px; padding: 0 14px; background: var(--wine); border-color: rgba(254, 231, 0, 0.45); color: var(--cream); font-weight: 800; font-size: 15px; flex: none;
 }
-@media (hover: hover) and (pointer: fine) { .k-header .k-cta.lm-hcta:hover { background: var(--wa-dark); } }
-@media (min-width: 900px) { .k-header .k-cta.lm-hcta { padding: 0 22px; } .lm-hmenu { padding: 0 18px; font-size: 16px; } }
-@media (max-width: 360px) { .lm-hmenu svg { display: none; } .k-header .k-cta.lm-hcta { padding: 0 11px; } }
+.k-header.is-solid .k-cta.lm-hcta { border-color: rgba(42, 12, 12, 0.3); }
+@media (hover: hover) and (pointer: fine) { .k-header .k-cta.lm-hcta:hover { background: var(--wine-2); } }
+@media (min-width: 900px) { .k-header .k-cta.lm-hcta { padding: 0 22px; } }
+@media (max-width: 360px) { .k-header .k-cta.lm-hcta { padding: 0 11px; } .la-topbar-wa { font-size: 0; } .la-topbar-wa svg { width: 15px; height: 15px; } .la-topbar-wa::after { width: 44px; } }
 
 /* ============ Menú hamburguesa ============ */
 body.lm-nav-open { overflow: hidden; }
 body.lm-nav-open .k-header { color: var(--cream); background: transparent; border-bottom-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
 body.lm-nav-open .k-nav { opacity: 0; pointer-events: none; }
-body.lm-nav-open .lm-hmenu { background: var(--cream); color: var(--deep); }
 .lm-nav { position: fixed; inset: 0; z-index: 45; visibility: hidden; transition: visibility 0s linear 420ms; }
 body.lm-nav-open .lm-nav { visibility: visible; transition: visibility 0s; }
 .lm-nav-scrim { position: absolute; inset: 0; background: rgba(20, 6, 5, 0.6); opacity: 0; transition: opacity 300ms var(--ease-out); }
@@ -223,16 +295,17 @@ body.lm-nav-open .lm-nav-list > a { opacity: 1; transform: none; transition: opa
 .lm-nav-sub { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; padding: 0 0 8px calc(26px + 14px); border-bottom: 1px solid var(--line-dark); opacity: 0; transition: opacity 200ms; }
 body.lm-nav-open .lm-nav-sub { opacity: 1; transition: opacity 420ms var(--ease-out) 260ms; }
 .lm-nav-sub a { display: flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 600; font-size: 16px; color: var(--cream-mute); }
-.lm-nav-sub a::before { content: ""; width: 10px; height: 1.5px; background: var(--gold); flex: none; }
+.lm-nav-sub a::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex: none; }
 @media (hover: hover) and (pointer: fine) { .lm-nav-list > a:hover, .lm-nav-sub a:hover { color: #fff; } }
 .lm-nav-foot { display: grid; gap: 12px; opacity: 0; transition: opacity 200ms; }
 body.lm-nav-open .lm-nav-foot { opacity: 1; transition: opacity 420ms var(--ease-out) 360ms; }
 .lm-nav-acts { display: grid; grid-template-columns: 1.4fr 1fr; gap: 10px; }
 .lm-nav-acts .lm-btn { width: 100%; }
 .lm-nav-foot p { color: var(--cream-mute); font-size: 14px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.lm-nav-foot p a { display: inline-flex; align-items: center; min-height: 44px; color: var(--cream); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.lm-nav-foot p a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--cream); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.lm-nav-foot .lm-nav-fb svg { width: 18px; height: 18px; flex: none; color: #1877f2; } /* igual que sus vecinos WhatsApp y Llamar: con su logotipo */
 @media (min-width: 900px) {
-  .lm-nav-panel { inset: 12px 12px 12px auto; width: min(540px, 42vw); border-radius: 3px; padding: calc(var(--k-header-h) + 16px) 40px 30px; clip-path: none; transform: translateX(calc(100% + 24px)); transition: transform 480ms cubic-bezier(0.32, 0.72, 0, 1); box-shadow: -30px 0 80px rgba(0, 0, 0, 0.35); }
+  .lm-nav-panel { inset: 12px 12px 12px auto; width: min(540px, 42vw); border-radius: 14px; padding: calc(var(--k-header-h) + 16px) 40px 30px; clip-path: none; transform: translateX(calc(100% + 24px)); transition: transform 480ms cubic-bezier(0.32, 0.72, 0, 1); box-shadow: -30px 0 80px rgba(0, 0, 0, 0.35); }
   body.lm-nav-open .lm-nav-panel { transform: none; }
   .lm-nav-list > a { font-size: 42px; }
 }
@@ -259,7 +332,7 @@ body.lm-wa-off .k-wa, body.lm-nav-open .k-wa, html.lm-mm-lock .k-wa { visibility
 .lm-field > span { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
 .lm-field input, .lm-field select, .lm-field textarea {
   width: 100%; min-width: 0; height: 52px; padding: 0 14px; font-size: 16px;
-  border: 1.5px solid var(--line); border-radius: 3px; background: var(--paper); color: var(--ink);
+  border: 1.5px solid var(--line); border-radius: 14px; background: var(--paper); color: var(--ink);
   -webkit-appearance: none; appearance: none;
 }
 .lm-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%232a0c0c' stroke-width='1.6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
@@ -274,8 +347,10 @@ body.lm-wa-off .k-wa, body.lm-nav-open .k-wa, html.lm-mm-lock .k-wa { visibility
   background-size: 600px 600px;
 }
 .lm-foot-top { display: grid; gap: 20px; padding-bottom: 36px; border-bottom: 1px solid var(--line-dark); }
-.la-foot-logo { display: inline-flex; padding: 10px 14px; border-radius: 3px; background: var(--cream); justify-self: start; }
-.la-foot-logo img { width: 190px; height: auto; }
+/* 19 sep: el logo va solo, sin recuadro crema atrás (orden de Emanuel). Sobre la madera oscura
+   se sostiene con sombra, nunca con caja. */
+.la-foot-logo { display: inline-flex; justify-self: start; }
+.la-foot-logo img { width: 190px; height: auto; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.55)) drop-shadow(0 14px 22px rgba(0, 0, 0, 0.4)); }
 .lm-foot-motto { font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; text-transform: uppercase; font-weight: 900; font-size: clamp(42px, 12vw, 96px); line-height: 0.9; max-width: 11ch; }
 .lm-foot-acts { display: flex; flex-wrap: wrap; gap: 10px; }
 .lm-foot-acts .lm-btn { flex: 1 1 150px; }
@@ -283,9 +358,10 @@ body.lm-wa-off .k-wa, body.lm-nav-open .k-wa, html.lm-mm-lock .k-wa { visibility
 .lm-foot-cols > div:last-child { grid-column: 1 / -1; }
 .lm-foot-h { font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
 .lm-foot-cols p { color: var(--cream-mute); font-size: 15px; line-height: 1.5; }
-.lm-foot-list { display: flex; flex-wrap: wrap; gap: 0 22px; }
-.lm-foot-list a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; }
-.lm-foot-list svg { width: 18px; height: 18px; color: var(--wa); }
+.lm-foot-list { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+.lm-foot-list a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 600; }
+.lm-foot-list svg { width: 44px; height: 44px; padding: 9px; border-radius: 50%; background: rgba(248, 238, 214, 0.1); color: var(--wa); }
+.lm-foot-list a[href*="facebook"] svg { color: #1877f2; }
 .lm-foot-note { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line-dark); color: var(--cream-mute); font-size: 13px; }
 @media (min-width: 900px) {
   .lm-foot { padding: 104px 0 44px; }
@@ -296,6 +372,7 @@ body.lm-wa-off .k-wa, body.lm-nav-open .k-wa, html.lm-mm-lock .k-wa { visibility
 }
 
 /* ============ Ritmo de fondos (main > #id le gana a cada sección) ============ */
+main > #kilo, main > #menu, main > #sucursales, main > #sabado { background-image: var(--grain-paper); background-size: 180px 180px; }
 main > #kilo { background-color: var(--paper-2); }
 main > #menu { background-color: var(--paper); }
 main > #sucursales { background-color: var(--paper-2); }
@@ -307,11 +384,31 @@ main > #sabado { background-color: var(--paper); }
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
   [data-reveal] { transform: translateY(28px); }
 }
+
+/* Títulos de sección: caen desde arriba y pegan con rebote corto (resorte, receta de closetdoor/10-msi.js;
+   misma técnica que el sello del kilo). Blindaje: reposo del CSS = título ya puesto; solo se esconde bajo
+   scripting + sin prefers-reduced-motion con body.la-titles-js, y a 1.6 s de asomarse queda puesto sí o sí. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  body.la-titles-js [data-drop] { opacity: 0; transform: translateY(-60px); }
+}
+[data-drop].is-dropped { opacity: 1 !important; transform: none !important; }
+
+/* Estrellas (calificación real): fondo apagado + capa dorada recortada a data-r/5 (site.js las arma).
+   5 estrellas siempre; la fracción (4.4, 3.8) se ve en la última estrella a medio llenar. */
+.la-stars { position: relative; display: inline-flex; flex: none; width: 92px; height: 16px; vertical-align: -3px; }
+.la-stars-row { position: absolute; inset: 0; display: flex; gap: 3px; width: 92px; }
+.la-stars-row svg { width: 16px; height: 16px; flex: none; }
+.la-stars-bg svg { color: rgba(109, 95, 90, 0.3); }
+.la-stars-fg { position: absolute; inset: 0 auto 0 0; overflow: hidden; width: 0; }
+.la-stars-fg svg { color: var(--wine); }
+[data-dark] .la-stars-bg svg { color: rgba(248, 238, 214, 0.28); }
+[data-dark] .la-stars-fg svg { color: var(--gold); }
+.la-topbar .la-stars-fg svg, .lm-mm-chips .la-stars-fg svg { color: var(--gold); }
+.la-stars--sm { width: 68px; height: 12px; vertical-align: -2px; }
+.la-stars--sm .la-stars-row { width: 68px; gap: 2px; }
+.la-stars--sm .la-stars-row svg { width: 12px; height: 12px; }
 .lm-ripple { position: absolute; z-index: -1; width: 180px; height: 180px; margin: -90px 0 0 -90px; border-radius: 50%; pointer-events: none; background: radial-gradient(closest-side, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0)); animation: lm-ripple 420ms var(--ease-out) forwards; }
 @keyframes lm-ripple { from { opacity: 1; transform: scale(0.3); } to { opacity: 0; transform: scale(1.6); } }
 
-/* Cortina guinda de cambio de capítulo (catalogo-motion.md #15): franja fija, ajena a cualquier <img loading="lazy">
-   (nunca les recorta el clip-path). window.LM.curtain() la crea y la anima; site.js pone el estado de reposo tapado
-   por arriba (invisible) y siempre la vuelve a dejar así al terminar. */
-.lm-curtain { position: fixed; inset: 0; z-index: 60; background: var(--wine); clip-path: inset(100% 0 0 0); pointer-events: none; }
-@media (prefers-reduced-motion: reduce) { .lm-curtain { display: none; } }
+/* La cortina guinda de cambio de capítulo se quitó el 19 sep (Emanuel: "cuadro rojo bien gacho").
+   Se borraron también su regla .lm-curtain y los observers que la llamaban (15-kilo.js / 60-sabado.js). */

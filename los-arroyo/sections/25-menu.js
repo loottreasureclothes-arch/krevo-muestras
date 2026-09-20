@@ -172,6 +172,21 @@
         toTop();
       });
     });
+    /* Anclas de categoría desde fuera del menú (el "Tacos" del menú hamburguesa): hay que elegir la
+       categoría antes de saltar, porque las que no están elegidas van en display:none y el ancla
+       aterrizaba en la nada. Captura para ganarle al scroll suave de site.js. */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#m-"]');
+      if (!a || a.classList.contains('lm-mm-chip')) return;
+      var href = a.getAttribute('href'), i = -1;
+      chips.forEach(function (c, j) { if (c.getAttribute('href') === href) i = j; });
+      if (i < 0 || !cats[i]) return;
+      e.preventDefault();
+      if (q && q.value) { q.value = ''; search(); }
+      setOn(i);
+      toTop(true);
+    }, true);
+
     function norm(t) { return String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
     cards.forEach(function (c) { var d = data(c); c.__txt = norm(d.name + ' ' + d.desc + ' ' + (d.tag || '')); });
     function search() {

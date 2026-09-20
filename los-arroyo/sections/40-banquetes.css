@@ -8,15 +8,17 @@
 #banquetes .lm-eyebrow { color: var(--gold); }
 #banquetes .lm-lead { color: rgba(248, 238, 214, 0.86); }
 #banquetes .bq-big { display: none; }
-#banquetes .bq-form { display: grid; gap: 16px; padding: 20px 16px; border-radius: 3px; background: var(--paper); color: var(--ink); box-shadow: 0 30px 60px -30px rgba(20, 6, 5, 0.8); }
+#banquetes .bq-form { display: grid; gap: 16px; padding: 20px 16px; border-radius: 14px; background: var(--paper); color: var(--ink); box-shadow: 0 30px 60px -30px rgba(20, 6, 5, 0.8); }
+/* El dato real de la lona vive dentro de la tarjeta, no como lead de sección (la entrada ya no repite el molde) */
+#banquetes .bq-k { margin-bottom: -4px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--wine); }
 #banquetes .bq-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 10px; }
 #banquetes .lm-field input { background-color: #fffaf0; }
 #banquetes .bq-pl { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
 #banquetes .bq-pl legend { grid-column: 1 / -1; margin-bottom: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
 #banquetes .bq-pl label { position: relative; }
 #banquetes .bq-pl input { position: absolute; opacity: 0; pointer-events: none; }
-#banquetes .bq-pl span { display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 12px; border: 1.5px solid var(--line); border-radius: 3px; background: #fffaf0; font-weight: 600; font-size: 15px; cursor: pointer; transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out); }
-#banquetes .bq-pl span::before { content: ""; flex: none; width: 16px; height: 16px; border: 1.5px solid currentColor; border-radius: 2px; }
+#banquetes .bq-pl span { display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 12px; border: 1.5px solid var(--line); border-radius: 14px; background: #fffaf0; font-weight: 600; font-size: 15px; cursor: pointer; transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out); }
+#banquetes .bq-pl span::before { content: ""; flex: none; width: 16px; height: 16px; border: 1.5px solid currentColor; border-radius: 50%; }
 #banquetes .bq-pl input:checked + span { background: var(--deep); border-color: var(--deep); color: var(--cream); }
 #banquetes .bq-pl input:checked + span::before { background: var(--gold); border-color: var(--gold); box-shadow: inset 0 0 0 3px var(--deep); }
 #banquetes .bq-pl input:focus-visible + span { outline: 2px solid var(--wine); outline-offset: 2px; }
