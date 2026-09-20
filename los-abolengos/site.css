@@ -156,7 +156,6 @@ body.ab-scrolled .ab-logo-word { opacity: 0; }
 /* La mini NUNCA se aplasta (antes: min-width 0 + overflow hidden la dejaban en "faltan 1" en vez de
    "faltan 1 h 54" a 390 px; revision externa 20 sep). Lo que cede es el logo, que en celular es solo el arbol. */
 body.ab-scrolled .ab-franja-mini { display: flex; }
-body.ab-scrolled .ab-logo { padding: 0 8px; }
 .ab-franja-mini .ab-rombo { color: var(--brand-ink); width: 5px; height: 5px; }
 /* En celular la placa compacta lleva: árbol + franja mini + APARTAR + hamburguesa sin la
    palabra CARTA. Debajo de 430px se va la pareja de horas y queda el conteo vivo. */
@@ -347,3 +346,13 @@ main > section[id], #visitanos { scroll-margin-top: calc(var(--k-header-h) + 16p
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
   [data-reveal] { transform: translateY(24px); }
 }
+
+/* ===== Segunda vuelta (20 sep): el logo NUNCA se corta =====
+   El arreglo de la manana dejo la mini sin encoger y el que cedio fue el logo: el arbol salia partido a la mitad
+   a 390 px. Ahora el logo no encoge y, abajo de 430 px, la mini se va completa (el riel del hero ya trae el dato). */
+.ab-logo { flex: none; overflow: visible; }
+@media (max-width: 429px) { body.ab-scrolled .ab-franja-mini { display: none; } }
+/* Compacta: la placa ocupa todo el alto del header (56 px) y el header es solido hasta arriba. Antes quedaban
+   8 px transparentes por donde se asomaba el boton verde de Visitanos, y los recuadros de 44 px quedaban a 2 px
+   del borde de una placa de 48. */
+body.ab-scrolled .k-header.ab-header { padding-top: env(safe-area-inset-top); background: var(--deep); }

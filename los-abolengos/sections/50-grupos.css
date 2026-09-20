@@ -11,7 +11,7 @@
 /* 11. la terraza ya no tapa el mantel negro ni las copas del montaje */
 .gr-media-sm { width: 52%; margin-inline: auto 0; margin-top: -3svh; position: relative; z-index: 1; background: var(--deep-2); }
 .gr-media-sm img { aspect-ratio: 4 / 3; object-fit: cover; }
-@media (min-width: 900px) { .gr-media-big { margin-inline: calc(var(--k-gutter) * -1); } .gr-media-sm { width: 34%; margin-top: -8svh; margin-inline: auto 40px; } }
+@media (min-width: 768px) { .gr-media-big { margin-inline: calc(var(--k-gutter) * -1); } .gr-media-sm { width: 34%; margin-top: -8svh; margin-inline: auto 40px; } }
 @media (min-width: 1360px) { .gr-media-big { margin-inline: calc((100vw - 1280px) / -2); } }
 
 .gr-form { margin-top: 40px; background: var(--paper); color: var(--ink); padding: 26px var(--k-gutter); max-width: 640px; }
@@ -29,3 +29,6 @@
 .gr-radios label:has(input:checked) { border-color: var(--brand-ink); background: rgba(151, 135, 113, 0.12); }
 .gr-send { width: 100%; margin-top: 24px; }
 .gr-fine { color: rgba(27, 21, 18, 0.56); }
+
+/* De 768 px en adelante el formulario va centrado: pegado a la izquierda dejaba media pantalla vacia a 893 px. */
+@media (min-width: 768px) { .gr-form { margin-inline: auto; } }
