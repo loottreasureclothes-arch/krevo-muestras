@@ -1,14 +1,21 @@
-/* 70 Reseñas: UN número gigante real (4.7) con la vista del hotel dentro + reseñas reales de Google */
+/* 60 Reseñas: UN número gigante real (4.7) con la vista del hotel dentro + reseñas reales de Google.
+   Caidita (adaptada de closetdoor/sections/10-msi.*): el 4.7 cae desde arriba y pega con un rebote muestreado, una vez. */
 #resenas { background: var(--paper-2); overflow: clip; }
 #resenas .re-grid { display: grid; gap: 32px; }
+#resenas .re-bigwrap { position: relative; }
 #resenas .re-big {
   font-family: var(--font-display); font-weight: 700; font-size: clamp(170px, 56vw, 420px); line-height: 0.8; letter-spacing: -0.05em;
-  color: var(--deep);
+  color: var(--deep); transform-origin: 50% 100%;
   background: url("../img/hd/h25-1200.webp") 50% 55% / cover no-repeat; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 3px 0 rgba(122, 90, 28, 0.55)) drop-shadow(0 14px 18px rgba(35, 29, 27, 0.25));
   margin: 4px 0 14px -0.04em;
 }
 @supports not ((-webkit-background-clip: text) or (background-clip: text)) { #resenas .re-big { -webkit-text-fill-color: var(--deep); background: none; } }
+#resenas .re-flash { position: absolute; left: 50%; top: 32%; width: 44%; aspect-ratio: 1; margin: -22% 0 0 -22%; pointer-events: none; border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, rgba(217, 178, 90, 0.85), rgba(217, 178, 90, 0.22) 55%, transparent); }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .sg-js #resenas:not(.re-done) .re-big { transform: translateY(-0.55em); }
+}
 #resenas .re-cap { font-family: var(--font-body); font-weight: 500; font-size: 18px; line-height: 1.4; max-width: 28ch; margin-bottom: 6px; }
 #resenas .re-cap b { font-weight: 700; }
 #resenas .re-q p { font-family: var(--font-display); font-weight: 400; font-style: italic; font-size: 22px; line-height: 1.2; }

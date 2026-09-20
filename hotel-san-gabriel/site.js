@@ -93,18 +93,20 @@
   /* Blindaje: el reveal arranca 60 % de pantalla ANTES de llegar (las fotos ya están cuando el visitante llega)
      y, por si acaso, a los 1.6 s de asomarse todo [data-reveal] queda visible */
   function initRevealSafety() {
-    var els = document.querySelectorAll("[data-reveal], [data-reveal-stagger]");
+    var els = document.querySelectorAll("[data-reveal], [data-reveal-stagger], [data-blur]");
     function show(el) { el.classList.add("is-in"); }
     if (reduce || !("IntersectionObserver" in window)) { Array.prototype.forEach.call(els, show); return; }
     var early = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { early.unobserve(e.target); show(e.target); } });
     }, { rootMargin: "0px 0px 60% 0px" });
     Array.prototype.forEach.call(els, function (el) { early.observe(el); });
+    /* red de seguridad: si algo se atora, a los 1.6 s de asomarse queda visible aunque no haya disparado antes */
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (!e.isIntersecting) return; io.unobserve(e.target); var el = e.target; setTimeout(function () { show(el); }, 1600); });
-    }, { rootMargin: "0px 0px -25% 0px" });
+    }, { rootMargin: "0px 0px 0px 0px" });
     Array.prototype.forEach.call(els, function (el) { io.observe(el); });
   }
+
 
   function initAnchors() {
     document.addEventListener("click", function (e) {

@@ -32,19 +32,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
-<link rel="stylesheet" href="site.css?v=1789838154">
+<link rel="stylesheet" href="site.css?v=1789868175">
 <link rel="stylesheet" href="sections/10-hero.css?v=1789839727">
-<link rel="stylesheet" href="sections/20-recorrido.css?v=1789841995">
-<link rel="stylesheet" href="sections/30-reserva.css?v=1789839754">
-<link rel="stylesheet" href="sections/40-habitaciones.css?v=1789838138">
-<link rel="stylesheet" href="sections/50-romantica.css?v=1789835648">
-<link rel="stylesheet" href="sections/60-amenidades.css?v=1789840916">
-<link rel="stylesheet" href="sections/65-top.css?v=1789836034">
-<link rel="stylesheet" href="sections/70-resenas.css?v=1789835753">
-<link rel="stylesheet" href="sections/75-nosotros.css?v=1789835991">
-<link rel="stylesheet" href="sections/80-matriz.css?v=1789839754">
-<link rel="stylesheet" href="sections/85-visita.css?v=1789835918">
-<link rel="stylesheet" href="sections/90-cierre.css?v=1789835806">
+<link rel="stylesheet" href="sections/20-habitaciones.css?v=1789867199">
+<link rel="stylesheet" href="sections/30-recorrido.css?v=1789841995">
+<link rel="stylesheet" href="sections/40-reserva.css?v=1789839754">
+<link rel="stylesheet" href="sections/50-extras.css?v=1789867242">
+<link rel="stylesheet" href="sections/60-resenas.css?v=1789867488">
+<link rel="stylesheet" href="sections/70-visita.css?v=1789867545">
 </head>
 <body data-hero-dark>
 <a class="sg-skip" href="#reserva">Saltar a reservar</a>
@@ -62,9 +57,9 @@
 <header class="k-header">
   <a class="k-logo sg-logo" href="#inicio" aria-label="Hotel San Gabriel Justin, inicio"><span class="sg-logo-a">San Gabriel</span><span class="sg-logo-b">Justin</span></a>
   <nav class="k-nav" aria-label="Principal">
-    <a href="#recorrido">Recorrido</a>
     <a href="#habitaciones">Habitaciones</a>
-    <a href="#top">Top Pool &amp; Bar</a>
+    <a href="#recorrido">Recorrido</a>
+    <a href="#romantica">Extras</a>
     <a href="#visita">Cómo llegar</a>
   </nav>
   <button class="sg-menu-btn" type="button" aria-expanded="false" aria-controls="sg-nav"><span class="sg-burger" aria-hidden="true"><i></i><i></i><i></i></span><span class="sg-menu-t">Menú</span></button>
@@ -80,15 +75,13 @@
         <li><a href="#hb-sencilla">Sencilla</a></li>
         <li><a href="#hb-suite">Suite con jacuzzi</a></li>
         <li><a href="#hb-familiar">Familiar</a></li>
-        <li><a href="#romantica">Noche romántica</a></li>
       </ul>
       <a href="#reserva"><span>02</span>Reservar</a>
       <a class="sg-nav-parent" href="#recorrido"><span>03</span>El hotel</a>
       <ul class="sg-nav-sub" aria-label="El hotel">
         <li><a href="#recorrido">Recorrido</a></li>
-        <li><a href="#amenidades">Amenidades</a></li>
+        <li><a href="#romantica">Noche romántica</a></li>
         <li><a href="#top">Top Pool &amp; Bar</a></li>
-        <li><a href="#nosotros">Quiénes somos</a></li>
       </ul>
       <a href="#resenas"><span>04</span>Reseñas</a>
       <a class="sg-nav-parent" href="#visita"><span>05</span>Cómo llegar</a>
@@ -114,9 +107,9 @@
         <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/hero-d.webp" width="1920" height="1080">
         <img class="hr-poster" src="img/hero/hero-m.webp" width="1080" height="1920" alt="" fetchpriority="high" decoding="async">
       </picture>
-      <!-- Video del hero: lo genera el orquestador (IA desde la foto real research/fotos/19-justin-mirador-atardecer-catedral.jpg).
-           Llena data-src-m (9:16) y data-src-d (16:9) con las rutas de los mp4; mientras estén vacíos se queda la foto. -->
-      <video class="hr-vid" data-src-m="" data-src-d="" data-poster-m="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" poster="img/hero/hero-m.webp" muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback tabindex="-1"></video>
+      <!-- Video del hero: 4 fotos reales (catedral al atardecer, alberca en la azotea, habitación, torre de noche)
+           montadas con hero_video.py. data-segs marca el corte de cada foto para quien reuse la regla del tiempo. -->
+      <video class="hr-vid" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-poster-m="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9" poster="img/hero/hero-m.webp" muted playsinline loop preload="metadata" disablepictureinpicture disableremoteplayback tabindex="-1"></video>
       <div class="hr-veil"></div><div class="hr-glow"></div>
     </div>
     <div class="k-wrap hr-in">
@@ -134,6 +127,69 @@
         </div>
       </form>
       <a class="hr-rate" href="#resenas"><b>4.7 <span class="hr-star" aria-hidden="true">&#9733;</span></b> · 94 reseñas en Google</a>
+    </div>
+  </section>
+
+  <section class="s-hb sg-sec" id="habitaciones" aria-labelledby="hb-t">
+    <div class="k-wrap">
+      <header class="hb-head">
+        <p class="sg-eyebrow">Habitaciones</p>
+        <h2 id="hb-t" class="sg-d sg-h2 sg-h3d"><span class="sg-l">Elige dónde</span> <span class="sg-l"><em>despertar.</em></span></h2>
+        <p class="hb-run"><span>Alberca en la azotea</span><i></i><span>Mirador 360</span><i></i><span>Gimnasio 24 h</span><i></i><span>Top Pool &amp; Bar</span><i></i><span>Minibar</span></p>
+      </header>
+
+      <article class="hb-room" id="hb-sencilla" aria-labelledby="hb-n1">
+        <div class="hb-gal">
+          <div class="hb-track" tabindex="0" aria-label="Fotos de la habitación sencilla">
+            <figure><img data-blur src="img/hd/h08-1200.webp" srcset="img/hd/h08-1200.webp 900w, img/hd/h08-2400.webp 1728w" sizes="(min-width: 900px) 34vw, 100vw" width="900" height="1600" alt="Habitación sencilla: cama king blanca con cojines negros y luz cálida" loading="eager" decoding="async"></figure>
+            <figure><img data-blur src="img/hd/h09-1200.webp" srcset="img/hd/h09-1200.webp 900w, img/hd/h09-2400.webp 1728w" sizes="(min-width: 900px) 34vw, 100vw" width="900" height="1600" alt="Habitación sencilla completa: banca, TV en muro, escritorio y cortinas" loading="lazy" decoding="async"></figure>
+            <figure><img data-blur src="img/hd/h10-1200.webp" srcset="img/hd/h10-1200.webp 900w, img/hd/h10-2400.webp 1728w" sizes="(min-width: 900px) 34vw, 100vw" width="900" height="1600" alt="Minibar y escritorio de la habitación sencilla" loading="lazy" decoding="async"></figure>
+          </div>
+          <p class="hb-count" aria-hidden="true"><b>1</b> / 3 · desliza</p>
+        </div>
+        <div class="hb-info">
+          <p class="hb-n">01</p>
+          <h3 id="hb-n1" class="hb-name sg-d">Habitación sencilla</h3>
+          <ul class="hb-feat">
+            <li>Cama king o queen</li><li>Escritorio y TV en muro</li><li>Minibar</li><li>Piso de madera</li>
+          </ul>
+          <div class="hb-acts">
+            <a class="sg-btn sg-btn--wa" href="#reserva" data-room="Habitación sencilla"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar esta</a>
+            <a class="sg-btn sg-btn--link" data-wa="Hola, ¿cuál es la tarifa de la habitación sencilla en Hotel San Gabriel Justin?" href="https://wa.me/523173892964">Preguntar tarifa<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="hb-room hb-room--r" id="hb-suite" aria-labelledby="hb-n2">
+        <div class="hb-gal">
+          <div class="hb-track" tabindex="0" aria-label="Fotos de la suite con jacuzzi">
+            <figure class="hb-wide"><img data-blur src="img/hd/h11-1200.webp" srcset="img/hd/h11-1200.webp 1200w, img/hd/h11-2400.webp 2400w" sizes="(min-width: 900px) 34vw, 100vw" width="1200" height="493" alt="Suite: sala blanca, muro 3D y jacuzzi con luz LED azul al fondo" loading="eager" decoding="async"></figure>
+            <figure><img data-blur src="img/hd/h05-1200.webp" srcset="img/hd/h05-1200.webp 900w, img/hd/h05-2400.webp 2400w" sizes="(min-width: 900px) 34vw, 100vw" width="900" height="1600" alt="Sala blanca de la suite con muro 3D y piso de madera" loading="lazy" decoding="async"></figure>
+          </div>
+          <p class="hb-count" aria-hidden="true"><b>1</b> / 2 · desliza</p>
+        </div>
+        <div class="hb-info">
+          <p class="hb-n">02</p>
+          <h3 id="hb-n2" class="hb-name sg-d">Suite con jacuzzi</h3>
+          <ul class="hb-feat">
+            <li>Jacuzzi con luz LED</li><li>Sala</li><li>TV en muro</li><li>Muro 3D</li>
+          </ul>
+          <div class="hb-acts">
+            <a class="sg-btn sg-btn--wa" href="#reserva" data-room="Suite con jacuzzi"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar esta</a>
+            <a class="sg-btn sg-btn--link" data-wa="Hola, ¿cuál es la tarifa de la suite con jacuzzi en Hotel San Gabriel Justin?" href="https://wa.me/523173892964">Preguntar tarifa<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="hb-fam" id="hb-familiar" aria-labelledby="hb-n3" data-reveal>
+        <p class="hb-n">03</p>
+        <h3 id="hb-n3" class="hb-name sg-d">Habitación familiar</h3>
+        <blockquote class="hb-q"><p>“Muy amplia y de costo muy accesible.”</p><cite>Cesar Benitez Acero, reseña en Google</cite></blockquote>
+        <div class="hb-acts">
+          <a class="sg-btn sg-btn--wa" href="#reserva" data-room="Habitación familiar"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar esta</a>
+          <a class="sg-btn sg-btn--link" data-wa="Hola, ¿para cuántas personas es la habitación familiar y cuál es su tarifa?" href="https://wa.me/523173892964">¿Para cuántos es?<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -219,123 +275,26 @@
     </div>
   </section>
 
-  <section class="s-hb sg-sec" id="habitaciones" aria-labelledby="hb-t">
-    <div class="k-wrap">
-      <header class="hb-head">
-        <p class="sg-eyebrow">Habitaciones</p>
-        <h2 id="hb-t" class="sg-d sg-h2 sg-h3d"><span class="sg-l">Elige dónde</span> <span class="sg-l"><em>despertar.</em></span></h2>
-      </header>
-
-      <article class="hb-room" id="hb-sencilla" aria-labelledby="hb-n1">
-        <div class="hb-gal" data-reveal>
-          <div class="hb-track" tabindex="0" aria-label="Fotos de la habitación sencilla">
-            <figure><img src="img/hd/h08-1200.webp" srcset="img/hd/h08-1200.webp 900w, img/hd/h08-2400.webp 1728w" sizes="(min-width: 900px) 34vw, 100vw" width="900" height="1600" alt="Habitación sencilla: cama king blanca con cojines negros y luz cálida" loading="eager" decoding="async"></figure>
-            <figure><img src="img/hd/h09-1200.webp" srcset="img/hd/h09-1200.webp 900w, img/hd/h09-2400.webp 1728w" sizes="(min-width: 900px) 34vw, 100vw" width="900" height="1600" alt="Habitación sencilla completa: banca, TV en muro, escritorio y cortinas" loading="lazy" decoding="async"></figure>
-            <figure><img src="img/hd/h10-1200.webp" srcset="img/hd/h10-1200.webp 900w, img/hd/h10-2400.webp 1728w" sizes="(min-width: 900px) 34vw, 100vw" width="900" height="1600" alt="Minibar y escritorio de la habitación sencilla" loading="lazy" decoding="async"></figure>
-          </div>
-          <p class="hb-count" aria-hidden="true"><b>1</b> / 3 · desliza</p>
-        </div>
-        <div class="hb-info">
-          <p class="hb-n">01</p>
-          <h3 id="hb-n1" class="hb-name sg-d">Habitación sencilla</h3>
-          <ul class="hb-feat">
-            <li>Cama king o queen</li><li>Escritorio y TV en muro</li><li>Minibar</li><li>Piso de madera</li>
-          </ul>
-          <div class="hb-acts">
-            <a class="sg-btn sg-btn--wa" href="#reserva" data-room="Habitación sencilla"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar esta</a>
-            <a class="sg-btn sg-btn--link" data-wa="Hola, ¿cuál es la tarifa de la habitación sencilla en Hotel San Gabriel Justin?" href="https://wa.me/523173892964">Preguntar tarifa<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
-        </div>
-      </article>
-
-      <article class="hb-room hb-room--r" id="hb-suite" aria-labelledby="hb-n2">
-        <div class="hb-gal" data-reveal>
-          <div class="hb-track" tabindex="0" aria-label="Fotos de la suite con jacuzzi">
-            <figure class="hb-wide"><img src="img/hd/h11-1200.webp" srcset="img/hd/h11-1200.webp 1200w, img/hd/h11-2400.webp 2400w" sizes="(min-width: 900px) 34vw, 100vw" width="1200" height="493" alt="Suite: sala blanca, muro 3D y jacuzzi con luz LED azul al fondo" loading="eager" decoding="async"></figure>
-            <figure><img src="img/hd/h05-1200.webp" srcset="img/hd/h05-1200.webp 900w, img/hd/h05-2400.webp 2400w" sizes="(min-width: 900px) 34vw, 100vw" width="900" height="1600" alt="Sala blanca de la suite con muro 3D y piso de madera" loading="lazy" decoding="async"></figure>
-          </div>
-          <p class="hb-count" aria-hidden="true"><b>1</b> / 2 · desliza</p>
-        </div>
-        <div class="hb-info">
-          <p class="hb-n">02</p>
-          <h3 id="hb-n2" class="hb-name sg-d">Suite con jacuzzi</h3>
-          <ul class="hb-feat">
-            <li>Jacuzzi con luz LED</li><li>Sala</li><li>TV en muro</li><li>Muro 3D</li>
-          </ul>
-          <div class="hb-acts">
-            <a class="sg-btn sg-btn--wa" href="#reserva" data-room="Suite con jacuzzi"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar esta</a>
-            <a class="sg-btn sg-btn--link" data-wa="Hola, ¿cuál es la tarifa de la suite con jacuzzi en Hotel San Gabriel Justin?" href="https://wa.me/523173892964">Preguntar tarifa<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
-        </div>
-      </article>
-
-      <article class="hb-fam" id="hb-familiar" aria-labelledby="hb-n3" data-reveal>
-        <p class="hb-n">03</p>
-        <h3 id="hb-n3" class="hb-name sg-d">Habitación familiar</h3>
-        <blockquote class="hb-q"><p>“Muy amplia y de costo muy accesible.”</p><cite>Cesar Benitez Acero, reseña en Google</cite></blockquote>
-        <div class="hb-acts">
-          <a class="sg-btn sg-btn--wa" href="#reserva" data-room="Habitación familiar"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar esta</a>
-          <a class="sg-btn sg-btn--link" data-wa="Hola, ¿para cuántas personas es la habitación familiar y cuál es su tarifa?" href="https://wa.me/523173892964">¿Para cuántos es?<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="s-ro sg-sec sg-grain" id="romantica" data-dark aria-labelledby="ro-t">
-    <div class="k-wrap ro-grid">
-      <div class="ro-copy">
+  <section class="s-ex sg-sec sg-grain" id="romantica" data-dark aria-labelledby="ex-t1">
+    <div class="k-wrap ex-wrap">
+      <article class="ex-block ex-block--ro">
         <p class="sg-eyebrow">Para parejas</p>
-        <h2 id="ro-t" class="sg-d sg-h2 sg-h3d"><span class="sg-l">Noche</span> <span class="sg-l"><em>romántica.</em></span></h2>
+        <h2 id="ex-t1" class="sg-d sg-h2 sg-h3d"><span class="sg-l">Noche</span> <span class="sg-l"><em>romántica.</em></span></h2>
         <p class="sg-lead">Suite decorada con pétalos, jacuzzi con velas y cena en la esfera de cristal del mirador.</p>
-        <div class="ro-acts">
+        <figure class="ex-fig" data-blur><img src="img/hd/h12-1200.webp" srcset="img/hd/h12-1200.webp 900w, img/hd/h12-2400.webp 2160w" sizes="(min-width: 900px) 42vw, 100vw" width="900" height="1600" alt="Suite decorada: corazón de pétalos sobre la cama" loading="lazy" decoding="async"></figure>
+        <div class="ex-acts">
           <a class="sg-btn sg-btn--wa" href="#reserva" data-room="Noche romántica (suite decorada)"><svg aria-hidden="true"><use href="#i-wa"/></svg>Apártala para tu fecha</a>
           <a class="sg-btn sg-btn--link" data-wa="Hola, ¿qué incluye la noche romántica y cuánto cuesta?" href="https://wa.me/523173892964">¿Qué incluye?<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
-      </div>
-      <div class="ro-collage">
-        <figure class="ro-a" data-reveal><img src="img/hd/h12-1200.webp" srcset="img/hd/h12-1200.webp 900w, img/hd/h12-2400.webp 2160w" sizes="(min-width: 900px) 30vw, 70vw" width="900" height="1600" alt="Suite decorada: corazón de pétalos sobre la cama" loading="lazy" decoding="async"></figure>
-        <figure class="ro-b" data-reveal data-reveal-delay="120"><img src="img/hd/h13-1200.webp" srcset="img/hd/h13-1200.webp 900w, img/hd/h13-2400.webp 2160w" sizes="(min-width: 900px) 22vw, 52vw" width="900" height="1600" alt="Jacuzzi escalonado con velas y pétalos" loading="lazy" decoding="async"></figure>
-        <figure class="ro-c" data-reveal data-reveal-delay="220"><img src="img/hd/h14-1200.webp" srcset="img/hd/h14-1200.webp 900w, img/hd/h14-2400.webp 2160w" sizes="(min-width: 900px) 16vw, 40vw" width="900" height="1600" alt="Sala de la suite con sillones blancos y pétalos" loading="lazy" decoding="async"></figure>
-      </div>
-    </div>
-  </section>
+      </article>
 
-  <section class="s-am sg-sec sg-grain" id="amenidades" data-dark aria-labelledby="am-t">
-    <div class="k-wrap">
-      <header class="am-head">
-        <p class="sg-eyebrow">Incluido en tu estancia</p>
-        <h2 id="am-t" class="sg-d sg-h2 sg-h3d am-t"><span class="sg-l">Todo en la</span> <span class="sg-l"><em>misma torre.</em></span></h2>
-      </header>
-      <div class="am-col">
-        <figure class="am-a" data-reveal><img src="img/hd/h01-1200.webp" srcset="img/hd/h01-1200.webp 1598w, img/hd/h01-2400.webp 2157w" sizes="(min-width: 900px) 42vw, 100vw" width="1598" height="1600" alt="La torre blanca del Hotel San Gabriel Justin vista desde dron, con los cerros detrás" loading="lazy" decoding="async"><figcaption><b>La torre</b>Veracruz Ote. 66</figcaption></figure>
-        <figure class="am-b" data-reveal data-reveal-delay="80"><img src="img/hd/h25-1200.webp" srcset="img/hd/h25-1200.webp 1200w, img/hd/h25-2400.webp 2400w" sizes="(min-width: 900px) 56vw, 100vw" width="1200" height="900" alt="Vista panorámica de Unión de Tula desde el mirador 360, con los paneles solares del hotel" loading="lazy" decoding="async"><figcaption><b>Mirador 360</b>la región completa</figcaption></figure>
-        <figure class="am-c" data-reveal data-reveal-delay="140"><img src="img/hd/h06-1200.webp" srcset="img/hd/h06-1200.webp 900w, img/hd/h06-2400.webp 2400w" sizes="(min-width: 900px) 24vw, 50vw" width="900" height="1600" alt="Toallas con el logo del hotel y amenidades frente a la ventana con vista a los cerros" loading="lazy" decoding="async"><figcaption><b>Amenidades</b>con vista</figcaption></figure>
-        <figure class="am-d" data-reveal data-reveal-delay="200"><img src="img/hd/h07-1200.webp" srcset="img/hd/h07-1200.webp 900w, img/hd/h07-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 50vw" width="900" height="1600" alt="Regadera de mármol con amenidades" loading="lazy" decoding="async"><figcaption><b>Mármol</b>en la regadera</figcaption></figure>
-        <figure class="am-e" data-reveal data-reveal-delay="120"><img src="img/hd/h26-1200.webp" srcset="img/hd/h26-1200.webp 1200w, img/hd/h26-2400.webp 2400w" sizes="(min-width: 900px) 42vw, 100vw" width="1200" height="552" alt="Gimnasio Justin Fit con aparatos, abierto 24 horas" loading="lazy" decoding="async"><figcaption><b>Justin Fit</b>abierto 24 h</figcaption></figure>
-      </div>
-      <p class="am-run">Alberca en la azotea <i></i> Mirador 360 <i></i> Gimnasio 24 h <i></i> Top Pool &amp; Bar <i></i> Minibar</p>
-      <a class="sg-btn sg-btn--link" data-wa="Hola, tengo una pregunta sobre los servicios de Hotel San Gabriel Justin." href="https://wa.me/523173892964">Pregunta lo que necesites<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    </div>
-  </section>
-
-  <section class="s-tp sg-sec sg-grain" id="top" data-dark aria-labelledby="tp-t">
-    <div class="k-wrap">
-      <div class="tp-head">
+      <article class="ex-block ex-block--tp" id="top" aria-labelledby="ex-t2">
         <p class="sg-eyebrow">Top Pool &amp; Bar · en la azotea</p>
-        <h2 id="tp-t" class="sg-d sg-h2 sg-h3d"><span class="sg-l">Sube a cenar</span> <span class="sg-l">con <em>vista.</em></span></h2>
+        <h3 id="ex-t2" class="sg-d ex-h3 sg-h3d">Sube a cenar con vista.</h3>
         <p class="sg-lead">Restaurante y bar junto a la alberca, con el mirador 360 enfrente.</p>
-      </div>
-      <div class="tp-grid">
-        <figure class="tp-a" data-reveal><img src="img/hd/h16-1200.webp" srcset="img/hd/h16-1200.webp 900w, img/hd/h16-2400.webp 1728w" sizes="(min-width: 900px) 40vw, 100vw" width="900" height="1600" alt="Restaurante Top Pool &amp; Bar: mesas de madera en la doble altura" loading="lazy" decoding="async"></figure>
-        <figure class="tp-b" data-reveal data-reveal-delay="100"><img src="img/hd/h17-1200.webp" srcset="img/hd/h17-1200.webp 1200w, img/hd/h17-2400.webp 2400w" sizes="(min-width: 900px) 50vw, 100vw" width="1200" height="388" alt="La doble altura del Top Pool &amp; Bar con la terraza" loading="lazy" decoding="async"></figure>
-        <figure class="tp-c" data-reveal data-reveal-delay="160"><img src="img/hd/h22-1200.webp" srcset="img/hd/h22-1200.webp 1047w, img/hd/h22-2400.webp 1728w" sizes="(min-width: 900px) 24vw, 48vw" width="1047" height="1600" alt="Rollos de sushi empanizado con la alberca de fondo" loading="lazy" decoding="async"><figcaption>Sushi</figcaption></figure>
-        <figure class="tp-d" data-reveal data-reveal-delay="220"><img src="img/hd/h23-1200.webp" srcset="img/hd/h23-1200.webp 1047w, img/hd/h23-2400.webp 1728w" sizes="(min-width: 900px) 24vw, 48vw" width="1047" height="1600" alt="Tacos servidos en tabla de madera" loading="lazy" decoding="async"><figcaption>Tacos</figcaption></figure>
-        <div class="tp-card">
-          <p class="tp-card-t sg-d">Mesa arriba, con la catedral enfrente.</p>
-          <a class="sg-btn sg-btn--wa" data-wa="Hola, quiero reservar una mesa en Top Pool & Bar." href="https://wa.me/523173892964"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar mesa</a>
-          <a class="sg-btn sg-btn--link" data-wa="Hola, ¿qué eventos tienen próximamente en Top Pool & Bar?" href="https://wa.me/523173892964">Pregunta la cartelera<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-      </div>
+        <figure class="ex-fig" data-blur><img src="img/hd/h16-1200.webp" srcset="img/hd/h16-1200.webp 900w, img/hd/h16-2400.webp 1728w" sizes="(min-width: 900px) 42vw, 100vw" width="900" height="1600" alt="Restaurante Top Pool &amp; Bar: mesas de madera en la doble altura" loading="lazy" decoding="async"></figure>
+        <a class="sg-btn sg-btn--link ex-tp-cta" href="#reserva" data-room="" data-extra="Mesa en Top Pool &amp; Bar">Pido mesa en el Top<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </article>
     </div>
   </section>
 
@@ -343,7 +302,10 @@
     <div class="k-wrap re-grid">
       <div class="re-num" data-reveal>
         <p class="sg-eyebrow">Lo dicen en Google</p>
-        <p class="re-big" aria-hidden="true">4.7</p>
+        <div class="re-bigwrap">
+          <p class="re-big" aria-hidden="true">4.7</p>
+          <span class="re-flash" aria-hidden="true"></span>
+        </div>
         <h2 id="re-t" class="re-cap"><b>4.7 de 5</b> con 94 reseñas. 78 son de cinco estrellas.</h2>
         <a class="sg-btn sg-btn--link" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20San%20Gabriel%20Justin%2C%20Veracruz%20Ote.%2066%2C%20Uni%C3%B3n%20de%20Tula" target="_blank" rel="noopener">Ver reseñas en Google<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
@@ -355,93 +317,33 @@
         <ul class="re-list" data-reveal-stagger>
           <li><blockquote class="re-q"><p>“Bonito, amplio, moderno, instalaciones nuevas, bonita vista, atención excelente.”</p><cite>pina flores · Local Guide · 5 estrellas</cite></blockquote></li>
           <li><blockquote class="re-q"><p>“La atención del personal fue súper amable.”</p><cite>Cesar Benitez Acero · 5 estrellas</cite></blockquote></li>
-          <li><blockquote class="re-q"><p>“Una excelente opción para descansar y disfrutar.”</p><cite>Carlos González · 5 estrellas</cite></blockquote></li>
         </ul>
         <a class="sg-btn sg-btn--wa re-cta" href="#reserva" data-room=""><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar</a>
       </div>
     </div>
   </section>
 
-  <section class="s-ns sg-sec sg-grain" id="nosotros" data-dark aria-labelledby="ns-t">
-    <div class="k-wrap">
-      <p class="sg-eyebrow">Quiénes somos</p>
-      <p class="ns-logo sg-d" aria-hidden="true">San Gabriel</p>
-      <div class="ns-intro">
-        <h2 id="ns-t" class="sg-d ns-t">Dos hoteles, <em>una familia.</em></h2>
-        <p class="sg-lead">La torre Justin, nueva y con mirador. La Matriz, colonial, a una cuadra. Los dos en el centro de Unión de Tula.</p>
-        <p class="ns-motto">“Lo hacemos posible.”</p>
-      </div>
-      <h3 class="ns-sub">Lo que hemos vivido aquí</h3>
-      <div class="ns-gal">
-        <figure class="ns-a" data-lb="img/hd/h24-2400.webp" data-reveal><img src="img/hd/h24-1200.webp" srcset="img/hd/h24-1200.webp 1200w, img/hd/h24-2400.webp 2376w" sizes="(min-width: 900px) 58vw, 100vw" width="1200" height="873" alt="Fiestas patrias: la torre Justin iluminada de verde, blanco y rojo, de noche" loading="lazy" decoding="async"><figcaption>Fiestas patrias: la torre de verde, blanco y rojo</figcaption></figure>
-        <figure class="ns-b" data-lb="img/hd/h34-2400.webp" data-reveal data-reveal-delay="100"><img src="img/hd/h34-1200.webp" srcset="img/hd/h34-1200.webp 1200w, img/hd/h34-2400.webp 2376w" sizes="(min-width: 900px) 40vw, 100vw" width="1200" height="873" alt="El Hotel San Gabriel Matriz iluminado de noche, visto desde dron" loading="lazy" decoding="async"><figcaption>La Matriz, iluminada de noche</figcaption></figure>
-        <figure class="ns-c" data-lb="img/hd/h33-2400.webp" data-reveal data-reveal-delay="160"><img src="img/hd/h33-1200.webp" srcset="img/hd/h33-1200.webp 1200w, img/hd/h33-2400.webp 2400w" sizes="(min-width: 900px) 34vw, 100vw" width="1200" height="797" alt="Patio de la Matriz con los cerros al fondo" loading="lazy" decoding="async"><figcaption>Los cerros desde la Matriz</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="s-mz sg-sec" id="matriz" aria-labelledby="mz-t">
-    <div class="k-wrap mz-grid">
-      <div class="mz-copy">
-        <p class="sg-eyebrow">Hotel San Gabriel Matriz</p>
-        <h2 id="mz-t" class="sg-d sg-h2 sg-h3d"><span class="sg-l">¿Prefieres</span> <span class="sg-l"><em>colonial?</em></span></h2>
-        <p class="sg-lead">Arcos, lobby de muebles tallados y suite con jacuzzi, a una cuadra de la torre.</p>
-        <ul class="mz-facts">
-          <li><b>4.5 <span aria-hidden="true">&#9733;</span></b><span>508 reseñas en Google</span></li>
-          <li><b>Puebla Nte. 54</b><span>Centro</span></li>
-        </ul>
-        <div class="mz-acts">
-          <a class="sg-btn sg-btn--wa" href="#reserva" data-room="Hotel Matriz"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar en la Matriz</a>
-          <a class="sg-btn sg-btn--link" href="tel:+523163712040">Llamar a la Matriz<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-      </div>
-      <div class="mz-photos">
-        <figure class="mz-a" data-reveal><img src="img/hd/h27-1200.webp" srcset="img/hd/h27-1200.webp 1200w, img/hd/h27-2400.webp 2160w" sizes="(min-width: 900px) 34vw, 100vw" width="1200" height="1200" alt="Fachada colonial roja del Hotel San Gabriel Matriz, con arcos y fuente" loading="lazy" decoding="async"></figure>
-        <figure class="mz-b" data-reveal data-reveal-delay="100"><img src="img/hd/h29-1200.webp" srcset="img/hd/h29-1200.webp 1200w, img/hd/h29-2400.webp 2400w" sizes="(min-width: 900px) 24vw, 60vw" width="1200" height="797" alt="Lobby de la Matriz con sillones rojos tallados y espejo" loading="lazy" decoding="async"></figure>
-        <figure class="mz-c" data-reveal data-reveal-delay="160"><img src="img/hd/h32-1200.webp" srcset="img/hd/h32-1200.webp 1200w, img/hd/h32-2400.webp 2400w" sizes="(min-width: 900px) 24vw, 60vw" width="1200" height="797" alt="Jacuzzi de la suite de la Matriz con toallas" loading="lazy" decoding="async"></figure>
-        <figure class="mz-d" data-reveal data-reveal-delay="220"><img src="img/hd/h30-1200.webp" srcset="img/hd/h30-1200.webp 1200w, img/hd/h30-2400.webp 2400w" sizes="(min-width: 900px) 24vw, 60vw" width="1200" height="797" alt="Habitación de la Matriz con cama y cabecera de madera" loading="lazy" decoding="async"></figure>
-      </div>
-    </div>
-  </section>
-
   <section class="s-vi sg-sec" id="visita" aria-labelledby="vi-t">
     <div class="k-wrap vi-grid">
-      <figure class="vi-fig" data-reveal>
-        <img src="img/hd/h02-1200.webp" srcset="img/hd/h02-1200.webp 1200w, img/hd/h02-2400.webp 2400w" sizes="(min-width: 900px) 40vw, 100vw" width="1200" height="1600" alt="Fachada del Hotel San Gabriel Justin desde la calle, con su estacionamiento al frente" loading="lazy" decoding="async">
-        <figcaption>Así se ve desde la calle</figcaption>
-      </figure>
+      <div class="vi-photos">
+        <figure class="vi-a" data-blur><img src="img/hd/h34-1200.webp" srcset="img/hd/h34-1200.webp 1200w, img/hd/h34-2400.webp 2376w" sizes="(min-width: 900px) 42vw, 100vw" width="1200" height="873" alt="El Hotel San Gabriel Matriz iluminado de noche, visto desde dron" loading="lazy" decoding="async"></figure>
+        <figure class="vi-b" data-blur><img src="img/hd/h02-1200.webp" srcset="img/hd/h02-1200.webp 1200w, img/hd/h02-2400.webp 2400w" sizes="(min-width: 900px) 20vw, 48vw" width="1200" height="1600" alt="Fachada del Hotel San Gabriel Justin desde la calle, con su estacionamiento al frente" loading="lazy" decoding="async"></figure>
+        <figure class="vi-c" data-blur><img src="img/hd/h27-1200.webp" srcset="img/hd/h27-1200.webp 1200w, img/hd/h27-2400.webp 2160w" sizes="(min-width: 900px) 20vw, 48vw" width="1200" height="1200" alt="Fachada colonial roja del Hotel San Gabriel Matriz, con arcos y fuente" loading="lazy" decoding="async"></figure>
+      </div>
       <div class="vi-copy">
         <p class="sg-eyebrow">Cómo llegar</p>
         <h2 id="vi-t" class="sg-d sg-h2 sg-h3d"><span class="sg-l">En el centro</span> <span class="sg-l">de <em>Unión de Tula.</em></span></h2>
         <address class="vi-addr">Veracruz Ote. 66, Centro<br>48000 Unión de Tula, Jalisco</address>
-        <div class="vi-acts">
-          <a class="sg-btn sg-btn--wa" href="https://www.google.com/maps/dir/?api=1&amp;destination=19.9580025,-104.2679387" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
-          <a class="sg-btn sg-btn--line" href="tel:+523173892964"><svg aria-hidden="true"><use href="#i-phone"/></svg>317 389 2964</a>
+        <div class="vi-links">
+          <a class="sg-btn sg-btn--link" href="https://www.google.com/maps/dir/?api=1&amp;destination=19.9580025,-104.2679387" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="sg-btn sg-btn--link" href="tel:+523173892964">Llamar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
-        <div class="vi-near">
-          <h3>Cerca, para tu fin de semana</h3>
-          <ul>
-            <li><b>Ejutla</b><span>a 20 min</span></li>
-            <li><b>Presa Tacotán</b></li>
-            <li><b>Presa Santa Rosa</b></li>
-            <li><b>Presa Trigomil</b></li>
-          </ul>
-          <a class="sg-btn sg-btn--link" data-wa="Hola, quiero armar un fin de semana en Unión de Tula: hospedaje en Hotel San Gabriel Justin y paseo a Ejutla o las presas." href="https://wa.me/523173892964">Arma tu fin de semana<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <div class="vi-mz" id="matriz">
+          <h3>¿Prefieres colonial?</h3>
+          <p>Hotel San Gabriel Matriz, a una cuadra. Puebla Nte. 54, Centro. 4.5 con 508 reseñas en Google.</p>
+          <a class="sg-btn sg-btn--link" href="tel:+523163712040">Llamar a la Matriz<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="s-ci sg-onphoto" id="cierre" data-dark data-hide-wa aria-labelledby="ci-t">
-    <div class="ci-media" aria-hidden="true">
-      <img src="img/hd/h18-1200.webp" srcset="img/hd/h18-1200.webp 900w, img/hd/h18-2400.webp 1728w" sizes="100vw" width="900" height="1600" alt="" loading="lazy" decoding="async">
-    </div>
-    <div class="k-wrap ci-in">
-      <p class="sg-eyebrow">Atardecer desde el mirador</p>
-      <h2 id="ci-t" class="sg-d sg-h3d ci-t"><span class="sg-l">Tu vista</span> <span class="sg-l"><em>te espera.</em></span></h2>
-      <div class="ci-acts">
-        <a class="sg-btn sg-btn--wa" href="#reserva" data-room=""><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar</a>
-        <a class="sg-btn sg-btn--line" href="tel:+523173892964"><svg aria-hidden="true"><use href="#i-phone"/></svg>Llamar</a>
+        <a class="sg-btn sg-btn--wa vi-cta" href="#reserva" data-room=""><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar</a>
       </div>
     </div>
   </section>
@@ -452,7 +354,7 @@
   <div class="k-wrap">
     <div class="sg-foot-top">
       <p class="sg-foot-name"><span>Hotel</span> San Gabriel <em>Justin</em></p>
-      <p class="sg-foot-motto">Lo hacemos posible.</p>
+      <p class="sg-foot-motto">Mirador 360 sobre Unión de Tula.</p>
       <div class="sg-foot-acts">
         <a class="sg-btn sg-btn--wa" data-wa="Hola, quiero reservar en Hotel San Gabriel Justin." href="https://wa.me/523173892964"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar</a>
         <a class="sg-btn sg-btn--line" href="tel:+523173892964"><svg aria-hidden="true"><use href="#i-phone"/></svg>317 389 2964</a>
@@ -476,11 +378,11 @@
 <a class="k-wa" data-wa="Hola, quiero información para hospedarme en Hotel San Gabriel Justin." href="https://wa.me/523173892964" aria-label="WhatsApp"></a>
 
 <script src="../_kit/kit.js?v=1789789887" defer></script>
-<script src="site.js?v=1789838148" defer></script>
+<script src="site.js?v=1789868190" defer></script>
 <script src="sections/10-hero.js?v=1789838116" defer></script>
-<script src="sections/20-recorrido.js?v=1789841391" defer></script>
-<script src="sections/30-reserva.js?v=1789838116" defer></script>
-<script src="sections/40-habitaciones.js?v=1789835629" defer></script>
-<script src="sections/90-cierre.js?v=1789835806" defer></script>
+<script src="sections/20-habitaciones.js?v=1789835629" defer></script>
+<script src="sections/30-recorrido.js?v=1789841391" defer></script>
+<script src="sections/40-reserva.js?v=1789838116" defer></script>
+<script src="sections/60-resenas.js?v=1789867501" defer></script>
 </body>
 </html>
