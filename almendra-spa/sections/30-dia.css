@@ -1,0 +1,69 @@
+/* 30-dia — la pausa en crema con filetes dorados: día, hora y el mensaje listo */
+.al-dia { background: var(--crema-2); }
+.al-dia .al-filete { margin-bottom: 14px; }
+.al-dia-cab { margin-bottom: 10px; }
+.al-dia-cuerpo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.al-dia-col { min-width: 0; }
+.al-rot2 { font-family: var(--tc); font-size: 11.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--suave); margin-bottom: 10px; }
+.al-rot2 + .al-horas { margin-bottom: 4px; }
+
+.al-tira { display: flex; gap: 8px; min-width: 0; max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; margin: 0 0 16px; padding: 2px 0 10px; scrollbar-width: none; }
+.al-tira::-webkit-scrollbar { display: none; }
+.al-nojs { font-size: 15px; color: var(--suave); max-width: 46ch; }
+.al-dia-chip {
+  flex: none; scroll-snap-align: start; width: 74px; min-height: 84px;
+  display: grid; align-content: center; justify-items: center; gap: 1px;
+  border: 1px solid var(--dorado); border-radius: 18px 0 18px 0;
+  background: var(--crema); color: var(--tinta);
+  transition: background-color 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease);
+}
+.al-dia-chip small { font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--suave); }
+.al-dia-chip b { font-family: var(--tt); font-size: 26px; font-weight: 600; line-height: 1; }
+.al-dia-chip i { font-style: normal; font-size: 11px; color: var(--suave); }
+.al-dia-chip[aria-pressed="true"] { background: var(--olivo); border-color: var(--olivo); color: var(--crema); }
+.al-dia-chip[aria-pressed="true"] small, .al-dia-chip[aria-pressed="true"] i { color: var(--dorado-claro); }
+.al-dia-chip[disabled] { opacity: 0.44; background: transparent; border-style: dashed; cursor: default; }
+@media (hover: hover) and (pointer: fine) { .al-dia-chip:not([disabled]):hover { background: var(--crema-3); } .al-dia-chip[aria-pressed="true"]:hover { background: var(--olivo-claro); } }
+
+.al-horas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.al-hora {
+  min-height: 46px; padding: 0 15px; display: inline-flex; align-items: center;
+  border: 1px solid var(--dorado); border-radius: 12px 0 12px 0;
+  background: var(--crema); font-size: 14.5px; font-weight: 600; color: var(--tinta);
+  font-variant-numeric: tabular-nums;
+  transition: background-color 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease);
+}
+.al-hora[aria-pressed="true"] { background: var(--olivo); border-color: var(--olivo); color: var(--crema); }
+@media (hover: hover) and (pointer: fine) { .al-hora:hover { background: var(--crema-3); } .al-hora[aria-pressed="true"]:hover { background: var(--olivo-claro); } }
+.al-dia-nota { font-size: 13.5px; color: var(--suave); max-width: 46ch; }
+/* la pausa en crema ya no va pelona: dos almendras chicas antes de la tarjeta "Tu cita" */
+.al-dia-fot { display: grid; gap: 6px; justify-items: start; margin-top: 12px; }
+.al-dia-fot .al-fotito { width: 110px; }
+@media (min-width: 900px) { .al-dia-fot { margin-top: 22px; } .al-dia-fot .al-fotito { width: 132px; } }
+
+.al-resumen { padding: 18px 16px; background: var(--crema); border: 1px solid var(--dorado); border-radius: 30px 0 30px 0; display: grid; gap: 12px; align-content: start; }
+.al-res-t { font-family: var(--tt); font-size: 24px; font-weight: 600; }
+.al-res-lista { display: grid; gap: 10px; }
+.al-res-lista li { display: flex; align-items: baseline; gap: 10px; font-size: 15px; line-height: 1.3; }
+.al-res-lista b { margin-left: auto; font-family: var(--tt); font-weight: 600; color: var(--dorado-t); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.al-res-lista button { flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--linea); display: grid; place-items: center; color: var(--suave); }
+.al-res-lista button svg { width: 14px; height: 14px; }
+@media (hover: hover) and (pointer: fine) { .al-res-lista button:hover { border-color: var(--olivo); color: var(--olivo); } }
+.al-res-vacia { font-size: 14.5px; color: var(--suave); }
+.al-res-cuando { font-size: 14.5px; color: var(--suave); }
+.al-res-cuando b { color: var(--tinta); font-weight: 700; }
+.al-res-tot { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid var(--dorado); font-size: 14.5px; }
+.al-res-tot b { font-size: 30px; text-align: right; }
+/* cuando no hay cifra que enseñar, el total habla en palabras (nunca "$0") */
+.al-res-tot b.es-texto, .al-res-lista b.es-texto { font-family: var(--tc); font-weight: 700; color: var(--suave); }
+.al-res-tot b.es-texto { font-size: 15px; line-height: 1.3; max-width: 22ch; }
+.al-res-lista b.es-texto { font-size: 12.5px; }
+.al-res-tot b small { display: block; font-family: var(--tc); font-size: 12.5px; font-weight: 600; line-height: 1.3; color: var(--suave); margin-top: 3px; max-width: 24ch; }
+.al-res-cot { font-size: 13px; color: var(--suave); }
+.al-res-wa { width: 100%; }
+.al-res-volver { justify-content: flex-start; }
+
+@media (min-width: 900px) {
+  .al-dia-cuerpo { grid-template-columns: minmax(0, 1fr) 360px; gap: 44px; align-items: start; }
+  .al-resumen { position: sticky; top: calc(var(--header-h) + 22px); padding: 28px; }
+  }

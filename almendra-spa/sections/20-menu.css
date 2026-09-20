@@ -1,0 +1,135 @@
+/* 20-menu — EL MENÚ QUE SUMA TU CITA (componente firma).
+   Sin JS se ve la primera categoría completa (nunca un bloque en blanco);
+   con JS se abre una categoría a la vez y cada renglón suma en la barra de cita. */
+.al-menu { background: var(--crema); padding-bottom: calc(var(--sec-y) - 10px); }
+.al-menu-cuerpo, .al-cats, .al-cat { min-width: 0; }
+
+/* ---- fichas de categoría: rectángulo con una esquina en punta (la almendra) ---- */
+.al-fichas {
+  display: flex; gap: 8px; min-width: 0; max-width: 100%;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
+  padding: 2px 0 12px; margin-bottom: 4px;
+  scrollbar-width: none;
+}
+.al-fichas::-webkit-scrollbar { display: none; }
+/* pista de que hay más categorías: la tira se desvanece 24 px en el borde derecho
+   y el degradado se apaga solo cuando ya llegaste al final (js-fin) */
+.al-fichas { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 24px), transparent 100%); mask-image: linear-gradient(90deg, #000 calc(100% - 24px), transparent 100%); }
+.al-fichas.js-fin { -webkit-mask-image: none; mask-image: none; }
+.al-ficha {
+  flex: none; scroll-snap-align: start;
+  min-height: 46px; padding: 0 18px;
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--dorado); border-radius: 18px 0 18px 0;
+  background: transparent; color: var(--tinta);
+  font-family: var(--tc); font-size: 14.5px; font-weight: 600; white-space: nowrap;
+  transition: background-color 200ms var(--ease), color 200ms var(--ease), border-color 200ms var(--ease);
+}
+.al-ficha[aria-selected="true"] { background: var(--olivo); border-color: var(--olivo); color: var(--crema); }
+@media (hover: hover) and (pointer: fine) { .al-ficha:hover { background: var(--crema-2); } .al-ficha[aria-selected="true"]:hover { background: var(--olivo-claro); } }
+
+/* ---- panel de categoría ---- */
+html.js .al-cats.js-lista > .al-cat { display: none; }
+/* el cambio de categoría cruza en 240 ms: sin corte seco (y termina visible) */
+html.js .al-cats.js-lista > .al-cat.is-activa { display: block; animation: al-cat-in 240ms var(--ease) both; }
+@keyframes al-cat-in { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { html.js .al-cats.js-lista > .al-cat.is-activa { animation: none !important; } }
+.al-cat + .al-cat { margin-top: 42px; }
+html.js .al-cats.js-lista > .al-cat + .al-cat { margin-top: 0; }
+.al-cat-cab { display: flex; align-items: center; gap: 16px; padding: 12px 0 14px; }
+.al-cat-f { width: 92px; aspect-ratio: 100 / 140; }
+.al-cat-cab .al-h3 { margin-bottom: 2px; }
+.al-cat-d { font-size: 15px; color: var(--suave); margin-bottom: 4px; }
+.al-cat-nota { margin-top: 14px; font-size: 13.5px; color: var(--suave); max-width: 52ch; }
+.al-cat-link { font-weight: 700; color: var(--olivo); box-shadow: inset 0 -1px 0 0 var(--dorado); }
+.al-cat-real { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(183, 154, 91, 0.4); }
+.al-cat-real .al-fotito { width: 104px; }
+
+/* ---- renglones que se agregan ---- */
+.al-filas { display: grid; }
+.al-fila { border-top: 1px solid rgba(183, 154, 91, 0.45); }
+.al-fila:last-child { border-bottom: 1px solid rgba(183, 154, 91, 0.45); }
+.al-fila-b {
+  width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center; gap: 12px; min-height: 66px; padding: 12px 2px 12px 0;
+  text-align: left; color: inherit;
+  transition: background-color 200ms var(--ease);
+}
+.al-fila-txt { display: grid; gap: 2px; min-width: 0; }
+.al-fila-n { font-family: var(--tt); font-size: 18.5px; font-weight: 600; line-height: 1.16; }
+.al-fila-d { font-size: 13.5px; line-height: 1.35; color: var(--suave); }
+.al-fila-p { font-size: 19px; white-space: nowrap; }
+.al-cotiza { font-family: var(--tt); font-size: 14.5px; font-weight: 600; color: var(--suave); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.al-fila-mas {
+  position: relative; width: 38px; height: 38px; flex: none; border-radius: 50%;
+  border: 1.5px solid var(--olivo); color: var(--olivo);
+  display: grid; place-items: center;
+  transition: background-color 200ms var(--ease), color 200ms var(--ease), transform 200ms var(--ease);
+}
+.al-fila-mas svg { position: absolute; width: 20px; height: 20px; transition: opacity 180ms var(--ease), transform 220ms var(--ease); }
+.al-i-pal { opacity: 0; transform: scale(0.6); }
+.al-fila-b[aria-pressed="true"] { background: rgba(100, 91, 26, 0.09); }
+.al-fila-b[aria-pressed="true"] .al-fila-mas { background: var(--olivo); color: var(--crema); }
+.al-fila-b[aria-pressed="true"] .al-i-mas { opacity: 0; transform: rotate(90deg) scale(0.6); }
+.al-fila-b[aria-pressed="true"] .al-i-pal { opacity: 1; transform: none; }
+.al-fila-b.is-marcada { animation: al-marca 1400ms var(--ease) 1; }
+@keyframes al-marca { 0%, 100% { background: transparent; } 20%, 60% { background: rgba(183, 154, 91, 0.32); } }
+@media (hover: hover) and (pointer: fine) {
+  .al-fila-b:hover { background: rgba(183, 154, 91, 0.14); }
+  .al-fila-b:hover .al-fila-mas { transform: scale(1.06); }
+}
+@media (prefers-reduced-motion: reduce) { .al-fila-b, .al-fila-mas, .al-fila-mas svg { transition: none !important; animation: none !important; } }
+
+/* fila con opciones (largo de acrílicas) */
+.al-fila--op { padding: 16px 0 14px; }
+.al-fila-cab { display: grid; gap: 2px; margin-bottom: 12px; }
+.al-ops { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.al-op {
+  display: inline-flex; align-items: baseline; gap: 7px; min-height: 44px; padding: 0 14px;
+  border: 1px solid var(--dorado); border-radius: 12px 0 12px 0;
+  font-size: 14px; font-weight: 600; color: var(--tinta);
+  transition: background-color 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease);
+}
+.al-op b { font-family: var(--tt); font-weight: 600; color: var(--dorado-t); font-variant-numeric: tabular-nums; }
+.al-op[aria-pressed="true"] { background: var(--olivo); border-color: var(--olivo); color: var(--crema); }
+.al-op[aria-pressed="true"] b { color: var(--dorado-claro); }
+.al-fila-b--ancho { grid-template-columns: minmax(0, 1fr) auto; min-height: 60px; padding-top: 6px; padding-bottom: 6px; }
+.al-fila-b--ancho .al-fila-n { font-family: var(--tc); font-size: 15px; font-weight: 700; }
+
+/* ---- panel pegajoso de la cita (compu) ---- */
+.al-panel, .al-panel-col { display: none; }
+@media (min-width: 1024px) {
+  /* la columna se estira a todo lo alto de la lista: el panel va pegajoso de verdad
+     y el pie de fotos se queda abajo, así no queda crema vacía al lado del menú */
+  .al-menu-cuerpo { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 44px; align-items: stretch; }
+  .al-panel-col { display: flex; flex-direction: column; min-width: 0; }
+  /* el panel viaja dentro de ESTA caja: nunca se encima con el pie de fotos */
+  .al-panel-sticky { flex: 1 1 auto; min-height: 0; }
+  .al-panel {
+    display: grid; gap: 12px; position: sticky; top: calc(var(--header-h) + 22px); z-index: 2;
+    padding: 22px; background: var(--crema-2);
+    border: 1px solid var(--dorado); border-radius: 26px 0 26px 0;
+  }
+  .al-panel-pie { flex: none; padding-top: 26px; display: grid; gap: 10px; justify-items: start; }
+  .al-panel-pie .al-hr { width: 100%; }
+  .al-panel-hora { font-size: 14px; font-weight: 700; color: var(--suave); }
+  .al-panel-fot { gap: 14px; }
+  .al-panel-fot .al-fotito { width: 148px; }
+  .al-panel-t { font-family: var(--tt); font-size: 22px; font-weight: 600; }
+  .al-panel-lista { display: grid; gap: 9px; max-height: 40svh; overflow-y: auto; }
+  .al-panel-lista li { display: flex; align-items: baseline; gap: 10px; font-size: 14px; line-height: 1.3; }
+  .al-panel-lista b { margin-left: auto; font-family: var(--tt); font-weight: 600; color: var(--dorado-t); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .al-panel-lista button { flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--linea); display: grid; place-items: center; color: var(--suave); }
+  .al-panel-lista button svg { width: 13px; height: 13px; }
+  .al-panel-vacia { font-size: 14px; color: var(--suave); }
+  .al-panel-tot { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding-top: 12px; border-top: 1px solid var(--dorado); font-size: 14px; }
+  .al-panel-tot b { font-size: 26px; text-align: right; }
+  .al-panel-tot b.es-texto, .al-panel-lista b.es-texto { font-family: var(--tc); font-weight: 700; color: var(--suave); }
+  .al-panel-tot b.es-texto { font-size: 14.5px; line-height: 1.3; max-width: 20ch; }
+  .al-panel-lista b.es-texto { font-size: 12px; }
+  .al-panel-tot b small { display: block; font-family: var(--tc); font-size: 12px; font-weight: 600; line-height: 1.3; color: var(--suave); margin-top: 3px; max-width: 22ch; }
+  .al-panel-cot { font-size: 13px; color: var(--suave); }
+  .al-panel-wa { width: 100%; }
+  .al-panel-dia { justify-content: flex-start; }
+}

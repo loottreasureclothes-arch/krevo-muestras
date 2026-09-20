@@ -1,0 +1,374 @@
+/* Almendra Beauty SPA — hoja base (FUNDACIÓN). Autocontenida: no depende de ../_kit/.
+   Lenguaje de formas propio: LA ALMENDRA (óvalo con dos puntas) + filete dorado + el NEÓN.
+   Componente firma: EL MENÚ QUE SUMA TU CITA + EL NEÓN QUE SE ENCIENDE.
+   ======================================================================
+   TOKENS
+     --crema #F3ECDD fondo general (nunca blanco plano) · --crema-2 banda de pausa
+     --olivo #645B1A color de marca (bandas, botones de navegar) · --olivo-claro #8A7E34
+     --olivo-hondo #3B3610 (cabina, pie) · --tinta #2A2710 texto
+     --dorado #B79A5B filetes finos · --dorado-t precios sobre crema
+     --wa #25D366 con texto --wa-ink (SOLO lo que manda WhatsApp)
+   Tipografías: Fraunces (títulos y precios, itálica para una palabra) · Mulish (cuerpo)
+   Radios: 14px botones · almendra por máscara SVG en fotos · 60% 0 60% 0 en fichas
+   ====================================================================== */
+:root {
+  --crema: #f3ecdd;
+  --crema-2: #e9dfc9;
+  --crema-3: #ded2b6;
+  --olivo: #645b1a;
+  --olivo-claro: #8a7e34;
+  --olivo-hondo: #3b3610;
+  --tinta: #2a2710;
+  --suave: #5e5733;
+  --dorado: #b79a5b;
+  --dorado-t: #856a28;
+  --dorado-claro: #d9c08a;
+  --sobre-olivo: #f1e9d6;
+  --sobre-olivo-2: rgba(241, 233, 214, 0.74);
+  --linea: rgba(42, 39, 16, 0.16);
+  --linea-olivo: rgba(241, 233, 214, 0.22);
+  --wa: #25d366;
+  --wa-2: #1fbb59;
+  --wa-ink: #0b3d1f;
+  --tt: "Fraunces", Georgia, "Times New Roman", serif;
+  --tc: "Mulish", system-ui, -apple-system, sans-serif;
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-io: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-golpe: cubic-bezier(0.24, 0.9, 0.3, 1);
+  --r: 14px;
+  --gutter: 20px;
+  --wrap: 1180px;
+  --header-h: 62px;
+  --cita-h: 68px;
+  --sec-y: 30px;
+  --almendra: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140" preserveAspectRatio="none"><path d="M50 0C86 40 86 100 50 140 14 100 14 40 50 0Z" fill="%23fff"/></svg>');
+  --almendra-ancha: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 100" preserveAspectRatio="none"><path d="M0 50C26 8 134 8 160 50 134 92 26 92 0 50Z" fill="%23fff"/></svg>');
+}
+@media (min-width: 768px) {
+  :root { --gutter: 32px; --header-h: 74px; --sec-y: 104px; }
+}
+@media (min-width: 1024px) {
+  :root { --cita-h: 0px; }
+}
+
+/* ===================== Reset ===================== */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-padding-top: calc(var(--header-h) + 10px);
+  overflow-x: clip;
+  accent-color: var(--olivo);
+  scroll-behavior: auto !important; /* el scroll suave lo hace el JS; nunca CSS */
+}
+body {
+  min-height: 100svh;
+  margin: 0;
+  background: var(--crema);
+  color: var(--tinta);
+  font-family: var(--tc);
+  font-size: 16px;
+  line-height: 1.55;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* la barra de cita RESERVA su espacio: nunca tapa el pie ni el último botón */
+  padding-bottom: calc(var(--cita-h) + env(safe-area-inset-bottom));
+}
+h1, h2, h3 { font-family: var(--tt); font-weight: 600; line-height: 1.02; letter-spacing: -0.012em; text-wrap: balance; overflow-wrap: break-word; font-optical-sizing: auto; }
+p { text-wrap: pretty; overflow-wrap: break-word; }
+img, picture, svg, iframe { display: block; max-width: 100%; }
+img { height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+input, select, textarea { font-size: max(16px, 1em); }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+a, button, label, summary { touch-action: manipulation; }
+ul[class], ol[class] { list-style: none; padding: 0; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--olivo); outline-offset: 3px; border-radius: 4px; }
+.al-nav :focus-visible, .al-pie :focus-visible, .al-oscuro :focus-visible { outline-color: var(--dorado-claro); }
+::selection { background: var(--olivo); color: var(--crema); }
+
+.al-wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.al-skip { position: fixed; left: 12px; top: 12px; z-index: 120; padding: 12px 18px; border-radius: var(--r); background: var(--olivo); color: var(--crema); font-weight: 700; transform: translateY(-180%); transition: transform 200ms var(--ease); }
+.al-skip:focus { transform: none; }
+.al-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ===================== Tipografía ===================== */
+.al-rotulo { display: inline-flex; align-items: center; gap: 9px; font-family: var(--tc); font-size: 11.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dorado-t); }
+.al-rotulo::before { content: ""; width: 26px; height: 1px; background: var(--dorado); flex: none; }
+.al-oscuro .al-rotulo, .al-pie .al-rotulo { color: var(--dorado-claro); }
+.al-oscuro .al-rotulo::before, .al-pie .al-rotulo::before { background: var(--dorado-claro); }
+.al-h1 { font-size: clamp(46px, 14vw, 104px); font-weight: 500; }
+.al-h2 { font-size: clamp(36px, 10.5vw, 68px); font-weight: 500; }
+.al-h3 { font-size: clamp(22px, 5.6vw, 30px); font-weight: 600; }
+.al-it { font-style: italic; font-weight: 400; }
+.al-oro { color: var(--dorado-t); }
+.al-oscuro .al-oro { color: var(--dorado-claro); }
+.al-lead { font-size: 17px; color: var(--suave); max-width: 38ch; }
+.al-oscuro .al-lead { color: var(--sobre-olivo-2); }
+@media (min-width: 768px) { .al-lead { font-size: 19px; } }
+.al-precio { font-family: var(--tt); font-weight: 600; font-variant-numeric: tabular-nums; color: var(--dorado-t); }
+.al-oscuro .al-precio { color: var(--dorado-claro); }
+
+/* Filete dorado con almendra al centro: el divisor propio de la página */
+.al-hr { display: block; position: relative; height: 1px; background: linear-gradient(90deg, transparent, var(--dorado) 22%, var(--dorado) 78%, transparent); opacity: 0.6; }
+.al-filete { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.al-filete::before, .al-filete::after { content: ""; height: 1px; flex: 1 1 auto; max-width: 120px; background: linear-gradient(90deg, transparent, var(--dorado)); }
+.al-filete::after { background: linear-gradient(90deg, var(--dorado), transparent); }
+.al-semilla { display: inline-block; width: 9px; height: 14px; flex: none; background: var(--dorado); -webkit-mask-image: var(--almendra); mask-image: var(--almendra); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; }
+
+/* ===================== Títulos que caen y pegan ===================== */
+html.js [data-al-cae] { position: relative; }
+html.js [data-al-cae] .al-w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+html.js [data-al-cae] .al-w > span {
+  display: inline-block;
+  transform: translateY(-42px);
+  opacity: 0;
+  transition: transform 480ms var(--ease-golpe), opacity 180ms linear;
+  transition-delay: calc(var(--i, 0) * 74ms);
+  will-change: transform;
+}
+html.js [data-al-cae].is-in .al-w > span { transform: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-al-cae] .al-w > span { transition: none !important; transform: none !important; opacity: 1 !important; }
+}
+
+/* ===================== Reveal (blindaje anti-blanco) =====================
+   Sin JS (html:not(.js)) todo se ve. Con JS se esconde y el motor lo muestra por
+   IntersectionObserver Y por un tope duro de 1.6 s pase lo que pase. */
+html.js [data-al-ap] { opacity: 0; transform: translateY(20px); transition: opacity 620ms var(--ease), transform 620ms var(--ease); }
+html.js [data-al-ap].is-in { opacity: 1; transform: none; }
+html.js [data-al-esc] > * { opacity: 0; transform: translateY(18px); transition: opacity 540ms var(--ease), transform 540ms var(--ease); transition-delay: calc(var(--i, 0) * 70ms); }
+html.js [data-al-esc].is-in > * { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-al-ap], html.js [data-al-esc] > * { transition: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* ===================== Fotos en almendra con filete dorado ===================== */
+/* La almendra se hace con dos máscaras: el marco dorado por fuera y la foto 2px adentro.
+   Si el navegador no soporta máscaras, queda un rectángulo con filete dorado (nada se rompe). */
+.al-alm {
+  position: relative; display: block; flex: none; line-height: 0; padding: 2px;
+  background: linear-gradient(160deg, var(--dorado-claro), var(--dorado) 45%, #9c7f42);
+  -webkit-mask-image: var(--almendra); mask-image: var(--almendra);
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+}
+.al-alm img, .al-alm .al-alm-in {
+  width: 100%; height: 100%; object-fit: cover; background: var(--crema-3);
+  -webkit-mask-image: var(--almendra); mask-image: var(--almendra);
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+}
+.al-fotito { width: 104px; aspect-ratio: 100 / 140; }
+@media (min-width: 768px) { .al-fotito { width: 132px; } }
+.al-fotitos { display: flex; gap: 14px; align-items: flex-start; }
+.al-nota-il { font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--suave); font-weight: 600; }
+.al-oscuro .al-nota-il { color: var(--sobre-olivo-2); }
+.al-sello-real { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dorado-t); }
+.al-sello-real::before { content: ""; width: 6px; height: 9px; background: currentColor; -webkit-mask-image: var(--almendra); mask-image: var(--almendra); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; }
+.al-oscuro .al-sello-real { color: var(--dorado-claro); }
+
+/* ===================== Botones =====================
+   Verde SOLO lo que de verdad manda WhatsApp (radio 14, con su logotipo).
+   Navegar: color de marca, fino, rectangular y en mayúsculas espaciadas. */
+.al-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 50px; padding: 0 22px; border-radius: var(--r);
+  border: 1.5px solid transparent; font-family: var(--tc); font-weight: 700; font-size: 15.5px; line-height: 1.1;
+  letter-spacing: 0.01em; cursor: pointer; text-align: center;
+  transition: transform 150ms var(--ease), background-color 200ms var(--ease), border-color 200ms var(--ease), box-shadow 200ms var(--ease);
+}
+.al-btn svg { width: 20px; height: 20px; flex: none; }
+.al-btn:active { transform: scale(0.975); }
+.al-btn--wa { background: var(--wa); border-color: rgba(11, 61, 31, 0.32); color: var(--wa-ink); box-shadow: 0 2px 0 rgba(11, 61, 31, 0.3); }
+@media (hover: hover) and (pointer: fine) { .al-btn--wa:hover { background: var(--wa-2); box-shadow: 0 4px 12px rgba(11, 61, 31, 0.26); } }
+/* los de navegar: finos, rectangulares, mayúsculas espaciadas */
+.al-btn--olivo, .al-btn--linea {
+  min-height: 48px; padding: 0 20px; border-radius: 3px; border-width: 1px;
+  font-size: 12.5px; font-weight: 700; letter-spacing: 0.17em; text-transform: uppercase;
+}
+.al-btn--olivo svg, .al-btn--linea svg { width: 17px; height: 17px; }
+.al-btn--olivo { background: var(--olivo); border-color: var(--olivo); color: var(--crema); }
+@media (hover: hover) and (pointer: fine) { .al-btn--olivo:hover { background: var(--olivo-claro); border-color: var(--olivo-claro); } }
+.al-btn--linea { background: transparent; border-color: currentColor; color: inherit; }
+@media (hover: hover) and (pointer: fine) { .al-btn--linea:hover { background: rgba(100, 91, 26, 0.09); } }
+.al-oscuro .al-btn--linea:hover { background: rgba(241, 233, 214, 0.12); }
+.al-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 700; font-size: 15px; color: var(--olivo); }
+.al-link svg { width: 17px; height: 17px; flex: none; transition: transform 220ms var(--ease); }
+.al-link > span { box-shadow: inset 0 -1px 0 0 var(--dorado); }
+@media (hover: hover) and (pointer: fine) { .al-link:hover svg { transform: translateX(4px); } }
+.al-oscuro .al-link { color: var(--dorado-claro); }
+
+/* ===================== Header: medallón + franja que se esconde ===================== */
+.al-header { position: fixed; inset: 0 0 auto 0; z-index: 60; pointer-events: none; transition: transform 240ms var(--ease); }
+/* se esconde COMPLETO: la franja y el medallón que cuelga (si no, asomaba media luna) */
+.al-header.is-oculto { transform: translateY(calc(-1 * (var(--header-h) + env(safe-area-inset-top) + 36px))); }
+body.al-nav-abierto .al-header { transform: none; }
+.al-bar {
+  position: relative; pointer-events: none;
+  display: flex; align-items: center; gap: 12px;
+  height: calc(var(--header-h) + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) max(var(--gutter), env(safe-area-inset-right)) 0 max(var(--gutter), env(safe-area-inset-left));
+  background: rgba(243, 236, 221, 0.92);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  border-bottom: 1px solid var(--dorado);
+  box-shadow: 0 1px 0 rgba(183, 154, 91, 0.25);
+}
+.al-med {
+  pointer-events: auto; position: relative; z-index: 2; flex: none;
+  width: 74px; height: 74px; margin-bottom: -26px;
+  border-radius: 50%; overflow: hidden;
+  border: 1.5px solid var(--dorado);
+  box-shadow: 0 6px 18px rgba(42, 39, 16, 0.22);
+  background: var(--olivo);
+  transition: width 240ms var(--ease), height 240ms var(--ease), margin-bottom 240ms var(--ease);
+}
+.al-med img { width: 100%; height: 100%; object-fit: cover; }
+.al-header.is-compacto .al-med { width: 42px; height: 42px; margin-bottom: 0; }
+.al-marca { pointer-events: auto; display: grid; align-content: center; min-height: 44px; margin-right: auto; font-family: var(--tt); line-height: 1.05; }
+.al-marca span { font-size: 18px; font-weight: 600; letter-spacing: 0.01em; }
+.al-marca i { font-style: normal; font-family: var(--tc); font-size: 9.5px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dorado-t); }
+.al-abierto { pointer-events: auto; display: none; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--suave); white-space: nowrap; }
+.al-punto { width: 7px; height: 7px; border-radius: 50%; background: var(--wa-2); flex: none; box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.18); }
+.al-abierto[data-cerrado="si"] .al-punto { background: var(--dorado); box-shadow: 0 0 0 3px rgba(183, 154, 91, 0.2); }
+@media (min-width: 560px) { .al-abierto { display: inline-flex; } }
+.al-burger { pointer-events: auto; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 4px 0 6px; font-family: var(--tc); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tinta); flex: none; }
+.al-burger > span { position: relative; width: 22px; height: 12px; display: block; }
+.al-burger i { position: absolute; left: 0; height: 1.6px; background: var(--olivo); transition: transform 300ms var(--ease), width 300ms var(--ease), opacity 200ms; }
+.al-burger i:nth-child(1) { top: 0; width: 22px; }
+.al-burger i:nth-child(2) { top: 5px; width: 15px; }
+.al-burger i:nth-child(3) { top: 10px; width: 22px; }
+@media (hover: hover) and (pointer: fine) { .al-burger:hover i:nth-child(2) { width: 22px; } }
+@media (min-width: 768px) {
+  .al-bar { justify-content: center; }
+  .al-med { position: absolute; left: 50%; top: calc(env(safe-area-inset-top) + 8px); transform: translateX(-50%); width: 84px; height: 84px; margin-bottom: 0; }
+  .al-header.is-compacto .al-med { width: 46px; height: 46px; top: calc(env(safe-area-inset-top) + 14px); }
+  .al-marca { margin-right: 0; position: absolute; left: max(var(--gutter), env(safe-area-inset-left)); top: 50%; transform: translateY(-50%); }
+  .al-abierto { position: absolute; right: calc(max(var(--gutter), env(safe-area-inset-right)) + 92px); top: 50%; transform: translateY(-50%); }
+  .al-burger { position: absolute; right: max(var(--gutter), env(safe-area-inset-right)); top: 50%; transform: translateY(-50%); }
+}
+@media (prefers-reduced-motion: reduce) { .al-header, .al-med { transition: none !important; } }
+
+/* ===================== Menú de la página ===================== */
+.al-nav { position: fixed; inset: 0; z-index: 90; visibility: hidden; transition: visibility 0s linear 420ms; }
+body.al-nav-abierto { overflow: hidden; }
+body.al-nav-abierto .al-nav { visibility: visible; transition: visibility 0s; }
+.al-nav-velo { position: absolute; inset: 0; background: rgba(26, 24, 8, 0.45); opacity: 0; transition: opacity 320ms var(--ease); }
+body.al-nav-abierto .al-nav-velo { opacity: 1; }
+.al-nav-panel {
+  position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain;
+  display: flex; flex-direction: column; gap: 18px;
+  padding: calc(64px + env(safe-area-inset-top)) var(--gutter) calc(20px + env(safe-area-inset-bottom));
+  background: var(--olivo); color: var(--sobre-olivo);
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 440ms var(--ease-io);
+}
+body.al-nav-abierto .al-nav-panel { clip-path: inset(0 0 0 0); }
+.al-nav-cerrar { position: absolute; top: calc(16px + env(safe-area-inset-top)); right: var(--gutter); width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid var(--linea-olivo); border-radius: 50%; color: var(--sobre-olivo); }
+.al-nav-cerrar svg { width: 20px; height: 20px; }
+.al-nav-marca { display: flex; align-items: center; gap: 12px; font-family: var(--tt); font-size: 18px; }
+.al-nav-marca img { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--dorado-claro); }
+.al-nav-links { display: grid; margin-block: auto; }
+/* fotitos en el panel del menú: el olivo vacío entre los links y el WhatsApp ya trabaja */
+.al-nav-fot { display: grid; gap: 6px; justify-items: start; }
+.al-nav-fot .al-fotito { width: 104px; }
+.al-nav-fot .al-nota-il { color: var(--sobre-olivo-2); }
+@media (max-height: 700px) { .al-nav-fot { display: none; } }
+.al-nav-links a { display: flex; align-items: baseline; gap: 14px; padding: 9px 0; min-height: 48px; font-family: var(--tt); font-weight: 500; font-size: clamp(29px, 8.3vw, 44px); border-bottom: 1px solid var(--linea-olivo); }
+.al-nav-links em { font-family: var(--tc); font-style: normal; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: var(--dorado-claro); }
+.al-nav-pie { display: grid; gap: 12px; }
+.al-nav-pie .al-btn { width: fit-content; max-width: 100%; }
+.al-nav-pie p { font-size: 14px; color: var(--sobre-olivo-2); }
+@media (min-width: 768px) { .al-nav-panel { max-width: 560px; margin-left: auto; } }
+@media (prefers-reduced-motion: reduce) { .al-nav-panel, .al-nav-velo { transition: none !important; } }
+
+/* ===================== Barra de cita (su firma de navegación) ===================== */
+.al-cita {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
+  display: flex; align-items: center; gap: 12px;
+  height: calc(var(--cita-h) + env(safe-area-inset-bottom));
+  padding: 0 max(14px, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(14px, env(safe-area-inset-left));
+  background: var(--olivo); color: var(--sobre-olivo);
+  border-top: 1px solid var(--dorado);
+  box-shadow: 0 -8px 24px rgba(42, 39, 16, 0.18);
+}
+.al-cita-res { flex: 1 1 auto; display: grid; gap: 1px; text-align: left; min-height: 48px; align-content: center; color: inherit; }
+.al-cita-t { font-family: var(--tt); font-size: 17px; font-weight: 600; line-height: 1.15; }
+.al-cita-d { font-size: 12.5px; color: var(--sobre-olivo-2); line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.al-cita-wa { flex: none; min-height: 46px; padding: 0 18px; }
+.al-cita[data-estado="llena"] .al-cita-t { color: #fff; }
+@media (min-width: 1024px) { .al-cita { display: none; } }
+
+/* ===================== Pie ===================== */
+.al-pie { background: var(--olivo-hondo); color: var(--sobre-olivo); padding: 26px 0 22px; }
+.al-pie-in { display: grid; gap: 14px; }
+.al-pie-med { width: 70px; height: 70px; border-radius: 50%; border: 1px solid var(--dorado); }
+.al-pie-cols { display: grid; gap: 12px; }
+.al-pie-t { font-family: var(--tt); font-size: 26px; font-weight: 500; margin-bottom: 8px; }
+.al-pie address { font-style: normal; color: var(--sobre-olivo-2); font-size: 15px; }
+.al-pie-rot { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dorado-claro); margin-bottom: 8px; }
+.al-pie-txt { color: var(--sobre-olivo-2); font-size: 15px; }
+.al-pie-wa, .al-pie-red { display: flex; width: fit-content; align-items: center; gap: 12px; min-height: 44px; font-weight: 700; font-size: 16px; color: var(--sobre-olivo); }
+/* logotipo oficial en área de 44x44 (decisión del 20 sep) */
+.al-pie-wa svg, .al-pie-red svg { width: 44px; height: 44px; color: var(--dorado-claro); flex: none; }
+.al-pie-red { margin-top: 8px; }
+@media (hover: hover) and (pointer: fine) { .al-pie-wa:hover, .al-pie-red:hover { color: var(--dorado-claro); } }
+.al-pie-nota { font-size: 12px; color: var(--sobre-olivo-2); max-width: 62ch; }
+@media (min-width: 768px) {
+  .al-pie-cols { grid-template-columns: 1.3fr 1fr 1fr; gap: 32px; }
+}
+
+/* ===================== Secciones ===================== */
+main > section { position: relative; }
+.al-sec { padding: var(--sec-y) 0; }
+.al-oscuro { background: var(--olivo-hondo); color: var(--sobre-olivo); }
+.al-cab { display: grid; gap: 12px; margin-bottom: 20px; }
+
+/* ===================== EL NEÓN =====================
+   Trazo blanco con resplandor, como su letrero. Sin JS (o si algo falla): ENCENDIDO. */
+.al-neon { color: #fff; filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.85)) drop-shadow(0 0 16px rgba(214, 233, 255, 0.55)) drop-shadow(0 0 34px rgba(160, 200, 255, 0.35)); }
+.al-neon svg { width: 100%; height: 100%; }
+html.js .al-neon .n-p { stroke-dasharray: 1.02; stroke-dashoffset: 0; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  /* solo se apaga si el motor ya lo tomó (js-armado). Si site.js no corre, queda ENCENDIDO. */
+  html.js .al-neon.js-armado:not(.is-on):not(.is-scroll) .n-p { stroke-dashoffset: 1.02; }
+  html.js .al-neon.is-on .n-p { animation: al-traza 620ms var(--ease) both; }
+  html.js .al-neon.is-on .n-rayo { animation-delay: 60ms; }
+  html.js .al-neon.is-on .n-punto { animation-delay: 140ms; }
+  html.js .al-neon.is-on .n-alm { animation-delay: 190ms; }
+  html.js .al-neon.is-on .n-mano { animation-delay: 300ms; }
+  html.js .al-neon.is-on { animation: al-prende 900ms steps(1, end) both; }
+  /* modo scroll (cierre): reversible, ligado al dedo */
+  html.js .al-neon.is-scroll .n-p { stroke-dashoffset: calc(1.02 - 1.02 * var(--al-p, 0)); transition: stroke-dashoffset 90ms linear; }
+  html.js .al-neon.is-scroll { opacity: calc(0.25 + 0.75 * var(--al-p, 0)); }
+}
+@keyframes al-traza { from { stroke-dashoffset: 1.02; } to { stroke-dashoffset: 0; } }
+@keyframes al-prende {
+  0% { opacity: 0.35; }
+  55% { opacity: 0.35; }
+  62% { opacity: 1; }
+  68% { opacity: 0.4; }
+  74% { opacity: 1; }
+  80% { opacity: 0.55; }
+  100% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js .al-neon .n-p { stroke-dashoffset: 0 !important; animation: none !important; }
+  html.js .al-neon { animation: none !important; opacity: 1 !important; }
+}
+
+/* ===================== Estrellas reales ===================== */
+.al-estrellas { display: inline-flex; align-items: center; gap: 3px; }
+.al-estrellas svg { width: 17px; height: 17px; color: var(--dorado); }
+.al-estrellas .al-est-media { position: relative; width: 17px; height: 17px; }
+.al-estrellas .al-est-media svg { position: absolute; inset: 0; }
+.al-estrellas .al-est-media svg:first-child { color: rgba(183, 154, 91, 0.32); }
+.al-estrellas .al-est-media svg:last-child { clip-path: inset(0 70% 0 0); }
+.al-oscuro .al-estrellas svg { color: var(--dorado-claro); }
+.al-oscuro .al-estrellas .al-est-media svg:first-child { color: rgba(217, 192, 138, 0.3); }

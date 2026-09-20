@@ -1,0 +1,108 @@
+/* 60-visita — la calle, el horario, el mapa en almendra ancha y el neón que se vuelve a encender */
+.al-visita { background: var(--crema); padding-bottom: calc(var(--sec-y) - 8px); }
+.al-visita-in { display: grid; gap: 24px; }
+.al-visita-txt { display: grid; gap: 12px; justify-items: start; }
+.al-visita .al-h2 { max-width: 13ch; }
+
+/* el horario y una fotita chica: la crema libre de este renglón ya trabaja */
+.al-horario-fila { display: flex; align-items: center; gap: 14px; width: 100%; }
+.al-horario-fila .al-horario { flex: 1 1 auto; min-width: 0; margin-top: 0; }
+/* a lo angosto el renglón se parte en dos líneas: el horario nunca queda cortado */
+@media (max-width: 599px) {
+  .al-horario-fila .al-horario > div { display: block; padding: 9px 0; }
+  .al-horario-fila .al-horario dd { margin-top: 1px; }
+}
+.al-visita-fot { flex: none; display: grid; gap: 5px; justify-items: center; }
+.al-visita-f { width: 110px; }
+/* en compu la foto real del sillón ya vive junto al mapa: esta fotita es de celular */
+@media (min-width: 900px) { .al-visita-fot { display: none; } }
+.al-visita-fot .al-nota-il { font-size: 9.5px; line-height: 1.25; max-width: 110px; text-align: center; }
+.al-horario { display: grid; gap: 0; width: 100%; max-width: 380px; margin: 4px 0 6px; }
+.al-horario > div { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 11px 0; border-top: 1px solid rgba(183, 154, 91, 0.45); }
+.al-horario > div:last-child { border-bottom: 1px solid rgba(183, 154, 91, 0.45); }
+.al-horario dt { font-size: 14.5px; font-weight: 700; }
+.al-horario dd { margin: 0; font-family: var(--tt); font-size: 16px; font-weight: 600; color: var(--dorado-t); font-variant-numeric: tabular-nums; }
+.al-visita-cta { display: flex; flex-wrap: wrap; gap: 10px; }
+.al-visita-cta .al-btn--linea { color: var(--olivo); }
+
+.al-mapa { margin: 0; display: grid; gap: 10px; justify-items: center; }
+.al-mapa-marco {
+  width: 100%; aspect-ratio: 16 / 9; padding: 2px;
+  background: linear-gradient(160deg, var(--dorado-claro), var(--dorado) 45%, #9c7f42);
+  -webkit-mask-image: var(--almendra-ancha); mask-image: var(--almendra-ancha);
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+}
+.al-mapa-marco iframe {
+  width: 100%; height: 100%; border: 0; background: var(--crema-3);
+  -webkit-mask-image: var(--almendra-ancha); mask-image: var(--almendra-ancha);
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+}
+.al-mapa figcaption { font-size: 13px; color: var(--suave); }
+.al-mapa-pie { display: flex; align-items: center; gap: 14px; width: 100%; margin-top: 4px; }
+.al-mapa-f { width: 126px; }
+@media (min-width: 900px) { .al-mapa-f { width: 150px; } }
+
+.al-extra { display: grid; margin-top: 16px; }
+.al-extra li { padding: 10px 0; border-top: 1px solid rgba(183, 154, 91, 0.45); display: grid; gap: 6px; }
+.al-extra li:last-child { border-bottom: 1px solid rgba(183, 154, 91, 0.45); }
+.al-extra-txt { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+.al-extra-n { font-family: var(--tt); font-size: 20px; font-weight: 600; }
+.al-extra-p { font-size: 20px; white-space: nowrap; }
+.al-extra .al-cotiza { font-size: 15px; }
+.al-extra-d { font-size: 13.5px; color: var(--suave); max-width: 54ch; }
+.al-agrega--claro { color: var(--olivo); }
+@media (hover: hover) and (pointer: fine) { .al-agrega--claro:hover { color: var(--tinta); } }
+.al-agrega--claro[aria-pressed="true"] .al-agrega-i { background: var(--olivo); color: var(--crema); border-color: var(--olivo); }
+
+.al-cierre {
+  margin-top: 12px; padding: 18px 20px 16px;
+  background: var(--olivo-hondo); color: var(--sobre-olivo);
+  border-radius: 40px 0 40px 0;
+  display: grid; gap: 10px; justify-items: center; text-align: center;
+}
+/* el letrero redibujado calca el suyo: manos abiertas, almendra con su línea y el arco de rayitos */
+.al-cierre-neon { width: 126px; height: 176px; }
+.al-cierre-t { font-family: var(--tt); font-size: clamp(26px, 7vw, 38px); font-weight: 500; color: var(--crema); }
+.al-cierre-d { font-size: 13.5px; color: var(--sobre-olivo-2); }
+
+/* ---- "Todo listo para completar": banda de papel antes del pie ---- */
+.al-listo {
+  margin-top: 14px; padding: 16px 18px 14px;
+  background: var(--crema-2); border: 1px solid var(--dorado);
+  border-radius: 30px 0 30px 0;
+  display: grid; gap: 6px; justify-items: start;
+}
+.al-listo .al-filete { width: 100%; margin-bottom: 2px; }
+.al-listo-t { font-family: var(--tt); font-weight: 500; font-size: clamp(27px, 7.4vw, 44px); line-height: 1.02; letter-spacing: -0.012em; }
+.al-listo-d { font-size: 14.5px; color: var(--suave); max-width: 46ch; }
+.al-listo-lista { display: grid; width: 100%; margin-top: 2px; }
+.al-listo-lista li {
+  position: relative; padding: 4px 0 4px 20px;
+  border-top: 1px solid rgba(183, 154, 91, 0.45);
+  font-size: 13.5px; line-height: 1.34; color: var(--tinta);
+}
+.al-listo-lista li:last-child { border-bottom: 1px solid rgba(183, 154, 91, 0.45); }
+.al-listo-lista li::before {
+  content: ""; position: absolute; left: 0; top: 1.05em; width: 8px; height: 12px;
+  background: var(--dorado); -webkit-mask-image: var(--almendra); mask-image: var(--almendra);
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+}
+.al-listo-extra { font-size: 14.5px; font-weight: 700; color: var(--dorado-t); }
+/* nada de link a WhatsApp aquí: mandarían el mensaje a su propia línea */
+.al-listo-manda { font-size: 14.5px; font-weight: 600; color: var(--suave); max-width: 46ch; }
+
+@media (min-width: 900px) {
+  .al-visita-in { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 48px; align-items: center; }
+  .al-cierre { padding: 44px 32px 38px; }
+  .al-cierre-neon { width: 168px; height: 235px; }
+  /* dos columnas también en el cierre del bloque: "Tarjeta en línea" y la nota se van
+     a la columna derecha, que antes quedaba en blanco */
+  .al-listo { padding: 34px 38px 30px; grid-template-columns: 1fr 1fr; column-gap: 38px; }
+  .al-listo > .al-filete, .al-listo > .al-rotulo, .al-listo-t, .al-listo-d, .al-listo-lista { grid-column: 1 / -1; }
+  .al-listo-extra { grid-column: 1; align-self: center; }
+  .al-listo-manda { grid-column: 2; align-self: center; margin-top: 0; }
+  .al-listo-lista { grid-template-columns: 1fr 1fr; column-gap: 38px; margin-top: 6px; }
+  .al-listo-lista li:nth-last-child(-n+2) { border-bottom: 1px solid rgba(183, 154, 91, 0.45); }
+}
