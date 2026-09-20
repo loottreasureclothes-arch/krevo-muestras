@@ -1,0 +1,47 @@
+/* 06 Para empresas + Visítanos, fusionados en un solo cierre (antes 09-empresas y 11-visitanos) */
+#empresas { padding: var(--sec-y) 0; }
+#empresas .s-emp-top { display: grid; gap: 22px; }
+#empresas .s-emp-fig { height: 42svh; min-height: 260px; border-radius: 3px; overflow: hidden; }
+#empresas .s-emp-fig img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+#empresas .s-emp-list { display: grid; counter-reset: e; margin-top: 4px; }
+#empresas .s-emp-list li { display: grid; gap: 4px; padding: 16px 0; border-top: 1px solid var(--line-dark); counter-increment: e; }
+#empresas .s-emp-list b { font-family: var(--font-display); font-weight: 900; text-transform: uppercase; font-stretch: 125%; font-variation-settings: "wdth" 125; font-size: clamp(22px, 6vw, 34px); line-height: 0.95; }
+#empresas .s-emp-list b::before { content: "0" counter(e) "  "; color: var(--lime); font-size: 0.5em; vertical-align: 0.5em; white-space: pre; }
+#empresas .s-emp-list span { color: var(--cream-mute); font-size: 16px; }
+
+#empresas .s-emp-rule { display: block; max-width: none; margin: 44px 0; opacity: 0.7; }
+
+#empresas .s-vis-grid { display: grid; gap: 32px; }
+#empresas .s-vis-h { font-size: clamp(30px, 8vw, 52px); line-height: 0.94; margin: 6px 0 14px; }
+#empresas .s-vis-addr { font-style: normal; font-size: 17px; line-height: 1.45; color: var(--cream-mute); }
+#empresas .s-vis-hrs { display: grid; margin: 18px 0; max-width: 380px; }
+#empresas .s-vis-hrs div { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line-dark); }
+#empresas .s-vis-hrs dt { color: var(--cream-mute); }
+#empresas .s-vis-hrs dd { font-weight: 700; font-variant-numeric: tabular-nums; }
+#empresas .s-vis-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; margin-bottom: 24px; }
+#empresas .s-vis-acts .cd-btn--link { color: var(--cream); }
+#empresas .s-vis-acts .cd-btn--link svg { color: var(--lime); }
+#empresas .s-vis-faq { display: grid; gap: 12px; padding-top: 18px; border-top: 1px solid var(--line-dark); max-width: 56ch; }
+#empresas .s-vis-faq p { font-size: 14px; line-height: 1.5; color: var(--cream-mute); }
+#empresas .s-vis-faq b { display: block; color: var(--cream); font-weight: 700; font-size: 15px; margin-bottom: 2px; }
+
+#empresas .s-vis-map { position: relative; height: 32svh; min-height: 240px; }
+#empresas .s-vis-map iframe { width: 100%; height: 100%; border: 0; border-radius: 3px; filter: saturate(0.85) contrast(1.02); background: transparent; position: relative; z-index: 1; }
+#empresas .s-vis-ph { position: absolute; inset: 0; z-index: 0; display: grid; place-content: center; justify-items: center; gap: 6px; border-radius: 3px; color: var(--deep); text-align: center;
+  background-color: #ebe5dc;
+  background-image:
+    linear-gradient(28deg, transparent 47%, #fbf8f3 47%, #fbf8f3 53%, transparent 53%),
+    linear-gradient(-62deg, transparent 48.5%, #fbf8f3 48.5%, #fbf8f3 51.5%, transparent 51.5%),
+    repeating-linear-gradient(0deg, transparent 0 58px, rgba(31, 27, 24, 0.07) 58px 60px),
+    repeating-linear-gradient(90deg, transparent 0 74px, rgba(31, 27, 24, 0.07) 74px 76px); }
+#empresas .s-vis-pin { width: 34px; height: 45px; color: var(--brand); filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.25)); }
+#empresas .s-vis-ph b { font-size: 16px; margin-top: 4px; }
+#empresas .s-vis-ph span { font-size: 14px; font-weight: 600; color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (min-width: 900px) {
+  #empresas .s-emp-top { grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; }
+  #empresas .s-emp-fig { height: 56svh; max-height: 560px; }
+  #empresas .s-vis-grid { grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
+  #empresas .s-vis-map { height: 46svh; max-height: 480px; }
+  #empresas .s-emp-rule { margin: 64px 0; }
+}

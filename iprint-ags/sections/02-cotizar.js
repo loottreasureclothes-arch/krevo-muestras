@@ -1,4 +1,4 @@
-/* 05 cotizador: resumen en vivo, preselección desde el catálogo/hoja (evento ip:cotizar) y envío a WhatsApp */
+/* 02 cotizador: resumen en vivo, preselección desde el catálogo/hoja (evento ip:cotizar) y envío a WhatsApp */
 (function () {
   "use strict";
   var sec = document.getElementById("cotizar");
@@ -47,4 +47,30 @@
     if (r) { r.checked = true; upd(); }
   });
   upd();
+
+  /* ---------- Caidita: el 4.5 real de Google cae y pega, una sola vez (WAAPI) ---------- */
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var drop = sec.querySelector(".s-q-drop-fall");
+  if (drop && drop.animate && !reduce && "IntersectionObserver" in window) {
+    sec.classList.add("s-q-js");
+    var played = false;
+    function play() {
+      if (played) return;
+      played = true;
+      sec.classList.add("is-dropped");
+      drop.animate([
+        { transform: "translateY(-46px) rotate(-8deg)", opacity: 0, offset: 0 },
+        { transform: "translateY(0) rotate(0deg)", opacity: 1, offset: 0.5 },
+        { transform: "translateY(-9px) rotate(2deg)", offset: 0.68 },
+        { transform: "translateY(0) rotate(0deg)", offset: 0.84 },
+        { transform: "translateY(-3px)", offset: 0.93 },
+        { transform: "translateY(0)", offset: 1 }
+      ], { duration: 1050, easing: "cubic-bezier(.33,0,.67,1)", fill: "forwards" });
+    }
+    var dio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { dio.disconnect(); play(); } }, { threshold: 0.4, rootMargin: "0px 0px -10% 0px" });
+    dio.observe(drop);
+    /* red de seguridad: a 1.6 s de asomarse, si no jugó, queda visible sin animar */
+    var fio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { fio.disconnect(); setTimeout(function () { sec.classList.add("is-dropped"); }, 1600); } }, { rootMargin: "0px 0px -25% 0px" });
+    fio.observe(drop);
+  }
 })();

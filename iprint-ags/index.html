@@ -32,22 +32,18 @@
 <link rel="preload" as="image" href="img/hero/hero-m.webp" media="not all and (min-aspect-ratio: 1/1)" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero/hero-d.webp" media="(min-aspect-ratio: 1/1)" fetchpriority="high">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
-<link rel="stylesheet" href="site.css?v=1789838545">
+<link rel="stylesheet" href="site.css?v=1789867853">
 <link rel="stylesheet" href="sections/01-hero.css?v=1789842145">
-<link rel="stylesheet" href="sections/02-enciende.css?v=1789840109">
-<link rel="stylesheet" href="sections/03-cotiza-rapido.css?v=1789836137">
-<link rel="stylesheet" href="sections/04-catalogo.css?v=1789840404">
-<link rel="stylesheet" href="sections/05-cotizar.css?v=1789835676">
-<link rel="stylesheet" href="sections/06-proceso.css?v=1789838500">
-<link rel="stylesheet" href="sections/07-trabajos.css?v=1789839853">
-<link rel="stylesheet" href="sections/08-nosotros.css?v=1789839853">
-<link rel="stylesheet" href="sections/09-empresas.css?v=1789839853">
-<link rel="stylesheet" href="sections/10-faq.css?v=1789835826">
-<link rel="stylesheet" href="sections/11-visitanos.css?v=1789838500">
-<link rel="stylesheet" href="sections/12-cierre.css?v=1789838545">
+<link rel="stylesheet" href="sections/02-cotizar.css?v=1789866900">
+<link rel="stylesheet" href="sections/03-catalogo.css?v=1789840404">
+<link rel="stylesheet" href="sections/04-enciende.css?v=1789840109">
+<link rel="stylesheet" href="sections/05-trabajos.css?v=1789867126">
+<link rel="stylesheet" href="sections/06-empresas.css?v=1789867216">
 </head>
 <body data-hero-dark>
 <a class="cd-skip" href="#catalogo">Saltar al contenido</a>
+<div class="k-curtain" data-curtain-before="cotizar" aria-hidden="true"></div>
+<div class="k-curtain" data-curtain-before="enciende" aria-hidden="true"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
@@ -64,7 +60,7 @@
   <nav class="k-nav" aria-label="Principal">
     <a href="#catalogo">Productos</a>
     <a href="#trabajos">Trabajos</a>
-    <a href="#nosotros">Nosotros</a>
+    <a href="#empresas">Empresas</a>
     <a href="#visitanos">Visítanos</a>
   </nav>
   <button class="cd-menu-btn" type="button" aria-expanded="false" aria-controls="cd-menu"><span class="cd-burger" aria-hidden="true"><i></i><i></i></span><span class="cd-menu-lbl">Menú</span></button>
@@ -84,10 +80,8 @@
         <li><a href="#catalogo" data-cat-f="impresos">Impresos</a></li>
       </ul>
       <a href="#trabajos"><span>03</span>Trabajos</a>
-      <a href="#proceso"><span>04</span>Cómo trabajamos</a>
-      <a href="#nosotros"><span>05</span>Quiénes somos</a>
-      <a href="#empresas"><span>06</span>Para empresas</a>
-      <a href="#visitanos"><span>07</span>Visítanos</a>
+      <a href="#empresas"><span>04</span>Para empresas</a>
+      <a href="#visitanos"><span>05</span>Visítanos</a>
     </nav>
     <div class="cd-menu-foot">
       <span class="ip-cmyk" aria-hidden="true"></span>
@@ -107,10 +101,9 @@
         <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/hero-d.webp" width="1920" height="1080">
         <img class="s-hero-img" src="img/hero/hero-m.webp" alt="Fachada de Grupo TractoZone con vinil microperforado impreso e instalado por iPrint" width="1080" height="1920" fetchpriority="high" decoding="async">
       </picture>
-      <!-- VIDEO DEL HERO (lo genera el orquestador con IA desde la foto real research/png/ip02.png = img/hd/ip02-2400.webp).
-           Para activarlo: pon las rutas en data-src-m (vertical 9:16, ≤1.5 MB) y data-src-d (16:9, ≤2.5 MB) y corre build.py.
-           Vacíos = se queda la foto. Se salta con saveData/2g y si play() falla regresa a la foto. -->
-      <video class="s-hero-video" data-src-m="" data-src-d="" poster="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" aria-hidden="true" tabindex="-1" hidden></video>
+      <!-- VIDEO DEL HERO: fachada TractoZone, Comex, Barbería Tres46 y nuestro letrero de noche
+           (hero_video.py desde fotos reales de img/hd/). Se salta con saveData/2g y si play() falla regresa a la foto. -->
+      <video class="s-hero-video" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9" poster="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" aria-hidden="true" tabindex="-1" hidden></video>
     </div>
     <div class="s-hero-shade" aria-hidden="true"></div>
 
@@ -134,149 +127,17 @@
     </div>
   </section>
 
-  <section id="enciende" class="s-on ip-dark" aria-labelledby="s-on-t">
-    <div class="s-on-pin">
-      <div class="s-on-bg" aria-hidden="true"><img src="img/hd/ip06-1200.webp" srcset="img/hd/ip06-1200.webp 1200w, img/hd/ip06-2400.webp 2400w" sizes="100vw" alt="" width="1200" height="900" decoding="async" loading="lazy"></div>
-      <div class="s-on-veil" aria-hidden="true"></div>
-      <div class="s-on-in k-wrap">
-        <p class="ip-eyebrow">Letras 3D y luminosos</p>
-        <h2 class="s-on-h" id="s-on-t" aria-label="Enciende tu marca.">
-          <span class="s-on-word" aria-hidden="true"><span class="s-on-off">Enciende</span><span class="s-on-lit">Enciende</span></span>
-          <span class="s-on-sub" aria-hidden="true">tu marca.</span>
-        </h2>
-        <p class="s-on-lead">Así se ve nuestro letrero de noche, en Nacozari 1809. El tuyo puede verse igual.</p>
-        <a class="cd-btn cd-btn--primary" data-wa="Hola iPrint, quiero cotizar un anuncio luminoso o letras 3D." href="https://wa.me/524495802910" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotiza tu luminoso</a>
-      </div>
-      <ul class="s-on-proof" aria-label="Luminosos y letras 3D hechos por iPrint">
-        <li class="s-on-p1"><img src="img/hd/ip08-1200.webp" alt="Caja de luz de Comex hecha por iPrint" width="1200" height="684" loading="lazy" decoding="async"><span>Comex · caja de luz</span></li>
-        <li class="s-on-p2"><img src="img/hd/ip18-1200.webp" alt="Letras doradas en la fachada de Barbería Tres46" width="1200" height="900" loading="lazy" decoding="async"><span>Barbería Tres46 · letras</span></li>
-        <li class="s-on-p3"><img src="img/hd/ip07-1200.webp" alt="Letras 3D verdes de ad ambientes" width="1200" height="702" loading="lazy" decoding="async"><span>ad ambientes · letras 3D</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="cotiza-rapido" class="s-cr ip-plum" aria-labelledby="s-cr-t">
-    <div class="k-wrap s-cr-grid">
-      <div class="s-cr-copy">
-        <p class="ip-eyebrow">Cotiza gratis</p>
-        <h2 class="ip-h2 s-cr-h" id="s-cr-t" data-ip-reveal><span class="ln">Dinos qué</span><span class="ln">necesitas.</span></h2>
-        <p class="ip-lead">Te contestamos por WhatsApp de lunes a viernes, de 9 a 6.</p>
-      </div>
-      <form class="s-cr-form" novalidate data-ip-reveal style="--d:120ms">
-        <label class="s-cr-f"><span>Tu nombre</span><input name="nombre" autocomplete="given-name" placeholder="Ej. Ana" required></label>
-        <label class="s-cr-f"><span>¿Qué necesitas?</span>
-          <select name="tipo">
-            <option>Lona</option><option>Vinil / wallgraphic</option><option>Microperforado</option><option>Letras 3D</option>
-            <option>Anuncio luminoso / caja de luz</option><option>Rotulación de vehículo</option><option>Señalética / coroplast</option>
-            <option>Espectacular</option><option>Acrílico / latón</option><option>Tarjetas / volantes</option><option>Stickers / playeras</option><option>Otro</option>
-          </select></label>
-        <label class="s-cr-f s-cr-wide"><span>Medida o cantidad (opcional)</span><input name="det" placeholder="Ej. 3 x 1.5 m, o 1000 volantes"></label>
-        <button type="submit" class="cd-btn cd-btn--primary s-cr-go"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp</button>
-        <a class="ip-wa-fallback" href="https://wa.me/524495802910" target="_blank" rel="noopener">¿No se abrió WhatsApp? Toca aquí</a>
-        <p class="s-cr-err" role="alert" hidden>Escribe tu nombre para saber cómo llamarte.</p>
-      </form>
-    </div>
-  </section>
-
-  <section id="catalogo" class="s-cat ip-light2" aria-labelledby="s-cat-t">
-    <div class="k-wrap">
-      <div class="s-cat-head">
-        <div>
-          <p class="ip-eyebrow">Productos</p>
-          <h2 class="ip-h2 ip-mask" id="s-cat-t"><span class="ln"><span>¿Qué vas a</span></span><span class="ln"><span><em>imprimir?</em></span></span></h2>
-        </div>
-        <p class="ip-lead">Elige y cotiza. Si no lo ves aquí, pregúntanos.</p>
-      </div>
-      <div class="s-cat-chips" role="group" aria-label="Filtrar productos">
-        <button type="button" data-f="all" aria-pressed="true">Todo</button>
-        <button type="button" data-f="fachada" aria-pressed="false">Para tu fachada</button>
-        <button type="button" data-f="gran" aria-pressed="false">Gran formato</button>
-        <button type="button" data-f="rotula" aria-pressed="false">Rotulación</button>
-        <button type="button" data-f="impresos" aria-pressed="false">Impresos</button>
-      </div>
-    </div>
-    <div class="s-cat-rail" role="region" aria-label="Catálogo de productos" tabindex="0">
-      <ul class="s-cat-list">
-        <li class="s-cat-item" data-cat="fachada">
-          <figure class="s-cat-fig"><img src="img/hd/ip07-1200.webp" srcset="img/hd/ip07-1200.webp 1200w, img/hd/ip07-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Letras 3D verdes de ad ambientes hechas por iPrint" width="1200" height="1200" loading="lazy" decoding="async"></figure>
-          <h3 class="s-cat-n">Letras 3D</h3>
-          <p class="s-cat-d">En acrílico, aluminio o latón.</p>
-          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Letras 3D">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </li>
-        <li class="s-cat-item" data-cat="fachada">
-          <figure class="s-cat-fig"><img src="img/hd/ip08-1200.webp" srcset="img/hd/ip08-1200.webp 1200w, img/hd/ip08-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Caja de luz de Comex hecha por iPrint" width="1200" height="1200" loading="lazy" decoding="async"></figure>
-          <h3 class="s-cat-n">Luminosos</h3>
-          <p class="s-cat-d">Cajas de luz y anuncios luminosos.</p>
-          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Anuncio luminoso / caja de luz">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </li>
-        <li class="s-cat-item" data-cat="fachada">
-          <figure class="s-cat-fig"><img src="img/hd/ip10-1200.webp" srcset="img/hd/ip10-1200.webp 1200w, img/hd/ip10-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Logo 3D metálico de Kapital Bank sobre muro de madera" width="1200" height="1200" loading="lazy" decoding="async"></figure>
-          <h3 class="s-cat-n">Acrílico y latón</h3>
-          <p class="s-cat-d">Marcos de acrílico, cuadros gigantes, logos 3D y anuncios en latón.</p>
-          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Acrílico / latón">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </li>
-        <li class="s-cat-item" data-cat="fachada gran">
-          <figure class="s-cat-fig"><img src="img/hd/ip33-1200.webp" srcset="img/hd/ip33-1200.webp 1200w, img/hd/ip33-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Instalación de vinil microperforado en los cristales de Burdo, Rosa y Santino" width="1200" height="1200" loading="lazy" decoding="async"></figure>
-          <h3 class="s-cat-n">Microperforado</h3>
-          <p class="s-cat-d">Vinil para cristales y fachadas, impreso e instalado.</p>
-          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Microperforado">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </li>
-        <li class="s-cat-item" data-cat="gran">
-          <figure class="s-cat-fig"><img src="img/hd/ip26-1200.webp" srcset="img/hd/ip26-1200.webp 1200w, img/hd/ip26-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Espectacular de lona de Rancho Santa Mónica" width="1200" height="1200" loading="lazy" decoding="async"></figure>
-          <h3 class="s-cat-n">Lonas</h3>
-          <p class="s-cat-d">Lona 13 oz, del cumpleaños al espectacular.</p>
-          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Lona">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </li>
-        <li class="s-cat-item" data-cat="gran">
-          <figure class="s-cat-fig"><img src="img/hd/ip22-1200.webp" srcset="img/hd/ip22-1200.webp 1200w, img/hd/ip22-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Vinil wallgraphic de motocross en una cortina" width="1200" height="1200" loading="lazy" decoding="async"></figure>
-          <h3 class="s-cat-n">Vinil</h3>
-          <p class="s-cat-d">Etiquetas, vallas, muros y cortinas en vinil.</p>
-          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Vinil / wallgraphic">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </li>
-        <li class="s-cat-item" data-cat="gran">
-          <figure class="s-cat-fig"><img src="img/hd/ip25-1200.webp" srcset="img/hd/ip25-1200.webp 1200w, img/hd/ip25-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Espectacular unipolar en carretera" width="1200" height="1200" loading="lazy" decoding="async"></figure>
-          <h3 class="s-cat-n">Espectaculares</h3>
-          <p class="s-cat-d">Unipolares y estructuras metálicas.</p>
-          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Espectacular">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </li>
-        <li class="s-cat-item" data-cat="rotula">
-          <figure class="s-cat-fig"><img src="img/hd/ip23-1200.webp" srcset="img/hd/ip23-1200.webp 1200w, img/hd/ip23-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Camioneta rotulada de Hacienda San Marcos" width="1200" height="1200" loading="lazy" decoding="async"></figure>
-          <h3 class="s-cat-n">Rotulación</h3>
-          <p class="s-cat-d">Camionetas, autos y refrigeradores.</p>
-          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Rotulación de vehículo">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </li>
-        <li class="s-cat-item" data-cat="rotula fachada">
-          <figure class="s-cat-fig"><img src="img/hd/ip30-1200.webp" srcset="img/hd/ip30-1200.webp 1200w, img/hd/ip30-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Letrero de papelería en Plaza Santa Mónica" width="1200" height="1200" loading="lazy" decoding="async"></figure>
-          <h3 class="s-cat-n">Señalética</h3>
-          <p class="s-cat-d">Señalamiento de seguridad, letreros y coroplast.</p>
-          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Señalética / coroplast">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </li>
-        <li class="s-cat-item s-cat-type" data-cat="impresos">
-          <div class="s-cat-fig s-cat-print" aria-hidden="true"><span>Offset</span><small>De 1000 piezas en adelante</small><i class="ip-cmyk"></i></div>
-          <h3 class="s-cat-n">Tarjetas y volantes</h3>
-          <p class="s-cat-d">Offset a todo color, terminado brillante.</p>
-          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Tarjetas / volantes">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </li>
-        <li class="s-cat-item s-cat-type" data-cat="impresos">
-          <div class="s-cat-fig s-cat-more" aria-hidden="true"><ul><li>Stickers</li><li>Playeras</li><li>Banderas</li><li>Toldos</li><li>Calendarios</li><li>Promocionales</li></ul></div>
-          <h3 class="s-cat-n">Y también</h3>
-          <p class="s-cat-d">Stickers, playeras personalizadas, banderas, toldos, calendarios y promocionales con tu logo.</p>
-          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Stickers / playeras">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        </li>
-      </ul>
-    </div>
-    <div class="k-wrap s-cat-foot">
-      <div class="s-cat-nav"><button type="button" data-dir="-1" aria-label="Anterior"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button><span class="s-cat-count" aria-live="polite">1 / 11</span><button type="button" data-dir="1" aria-label="Siguiente"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
-      <a class="cd-btn cd-btn--primary" data-wa="Hola iPrint, quiero preguntar por un producto." href="https://wa.me/524495802910" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pregunta por tu pedido</a>
-    </div>
-  </section>
-
   <section id="cotizar" class="s-q ip-dark" aria-labelledby="s-q-t">
     <div class="k-wrap s-q-grid">
       <div class="s-q-side">
-        <p class="ip-eyebrow">Arma tu pedido</p>
+        <p class="ip-eyebrow">Cotiza gratis</p>
         <h2 class="ip-h2 ip-mask" id="s-q-t"><span class="ln"><span>Cotiza tu</span></span><span class="ln"><span><em>pedido.</em></span></span></h2>
         <p class="ip-lead">Tipo, medida, cantidad y tu arte. Te llega a WhatsApp ya armado.</p>
+        <p class="s-q-flow">Diseño, impresión e instalación. Un solo responsable.</p>
+        <a class="s-q-drop" href="https://search.google.com/local/reviews?placeid=ChIJ1_Z-P0XuKYQRVlPbPm-oU54" target="_blank" rel="noopener" aria-label="4.5 de 5 en Google, 53 reseñas. Ver reseñas en Google">
+          <span class="s-q-drop-fall" aria-hidden="true"><span class="s-q-drop-num">4.5</span></span>
+          <span class="s-q-drop-cap"><b>4.5 de 5</b> en Google · 53 reseñas</span>
+        </a>
         <figure class="s-q-fig ip-crop"><img src="img/hd/ip13-1200.webp" alt="Operador de iPrint en el plotter de gran formato" width="1200" height="1920" loading="lazy" decoding="async"></figure>
       </div>
       <form class="s-q-form" novalidate>
@@ -333,144 +194,264 @@
     </div>
   </section>
 
-  <section id="proceso" class="s-pr ip-light" aria-labelledby="s-pr-t">
+  <section id="catalogo" class="s-cat ip-light2" aria-labelledby="s-cat-t">
     <div class="k-wrap">
-      <p class="ip-eyebrow">Cómo trabajamos</p>
-      <h2 class="ip-h2 ip-mask" id="s-pr-t"><span class="ln"><span>Tú mandas</span></span><span class="ln"><span>la idea.</span></span></h2>
-      <p class="ip-lead">Nosotros nos hacemos cargo de todo. Así se hizo Grupo TractoZone.</p>
-      <ol class="s-pr-list">
-        <li class="s-pr-step s-pr-art" data-ip-reveal>
-          <div class="s-pr-media s-pr-type" aria-hidden="true"><span>JPG</span><small>300 ppp · CMYK</small><i class="ip-cmyk"></i></div>
-          <p class="s-pr-n">01</p><h3>Tu arte</h3><p>Mándanos tu diseño o lo diseñamos nosotros.</p>
+      <div class="s-cat-head">
+        <div>
+          <p class="ip-eyebrow">Productos</p>
+          <h2 class="ip-h2 ip-mask" id="s-cat-t"><span class="ln"><span>¿Qué vas a</span></span><span class="ln"><span><em>imprimir?</em></span></span></h2>
+        </div>
+        <p class="ip-lead">Elige y cotiza. Si no lo ves aquí, pregúntanos.</p>
+      </div>
+      <div class="s-cat-chips" role="group" aria-label="Filtrar productos">
+        <button type="button" data-f="all" aria-pressed="true">Todo</button>
+        <button type="button" data-f="fachada" aria-pressed="false">Para tu fachada</button>
+        <button type="button" data-f="gran" aria-pressed="false">Gran formato</button>
+        <button type="button" data-f="rotula" aria-pressed="false">Rotulación</button>
+        <button type="button" data-f="impresos" aria-pressed="false">Impresos</button>
+      </div>
+    </div>
+    <div class="s-cat-rail" role="region" aria-label="Catálogo de productos" tabindex="0">
+      <ul class="s-cat-list">
+        <li class="s-cat-item" data-cat="fachada">
+          <figure class="s-cat-fig"><img data-blur-in src="img/hd/ip07-1200.webp" srcset="img/hd/ip07-1200.webp 1200w, img/hd/ip07-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Letras 3D verdes de ad ambientes hechas por iPrint" width="1200" height="1200" loading="lazy" decoding="async"></figure>
+          <h3 class="s-cat-n">Letras 3D</h3>
+          <p class="s-cat-d">En acrílico, aluminio o latón.</p>
+          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Letras 3D">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
         </li>
-        <li class="s-pr-step" data-ip-reveal style="--d:80ms">
-          <figure class="s-pr-media"><img src="img/hd/ip11-1200.webp" srcset="img/hd/ip11-1200.webp 1200w, img/hd/ip11-2400.webp 2400w" sizes="(min-width: 900px) 24vw, 92vw" alt="Cabezal del plotter de gran formato de iPrint imprimiendo sobre lona" width="1200" height="1920" loading="lazy" decoding="async"></figure>
-          <p class="s-pr-n">02</p><h3>Imprimimos</h3><p>En plotter de gran formato, en nuestro taller.</p>
+        <li class="s-cat-item" data-cat="fachada">
+          <figure class="s-cat-fig"><img data-blur-in src="img/hd/ip08-1200.webp" srcset="img/hd/ip08-1200.webp 1200w, img/hd/ip08-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Caja de luz de Comex hecha por iPrint" width="1200" height="1200" loading="lazy" decoding="async"></figure>
+          <h3 class="s-cat-n">Luminosos</h3>
+          <p class="s-cat-d">Cajas de luz y anuncios luminosos.</p>
+          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Anuncio luminoso / caja de luz">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
         </li>
-        <li class="s-pr-step" data-ip-reveal style="--d:160ms">
-          <figure class="s-pr-media"><img src="img/hd/ip04-1200.webp" style="object-position: 40% 88%" srcset="img/hd/ip04-1200.webp 1200w, img/hd/ip04-2400.webp 2400w" sizes="(min-width: 900px) 24vw, 92vw" alt="Instalación del vinil en la fachada de TractoZone con andamio" width="1200" height="1600" loading="lazy" decoding="async"></figure>
-          <p class="s-pr-n">03</p><h3>Instalamos</h3><p>Colocamos el trabajo en tu local.</p>
+        <li class="s-cat-item" data-cat="fachada">
+          <figure class="s-cat-fig"><img data-blur-in src="img/hd/ip10-1200.webp" srcset="img/hd/ip10-1200.webp 1200w, img/hd/ip10-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Logo 3D metálico de Kapital Bank sobre muro de madera" width="1200" height="1200" loading="lazy" decoding="async"></figure>
+          <h3 class="s-cat-n">Acrílico y latón</h3>
+          <p class="s-cat-d">Marcos de acrílico, cuadros gigantes, logos 3D y anuncios en latón.</p>
+          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Acrílico / latón">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
         </li>
-        <li class="s-pr-step s-pr-done" data-ip-reveal style="--d:240ms">
-          <a class="s-pr-media s-pr-type s-pr-go" href="#trabajos"><span>Listo</span><small>Así quedó TractoZone</small><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <p class="s-pr-n">04</p><h3>Listo</h3><p>Tu marca en grande, lista para vender.</p>
+        <li class="s-cat-item" data-cat="fachada gran">
+          <figure class="s-cat-fig"><img data-blur-in src="img/hd/ip33-1200.webp" srcset="img/hd/ip33-1200.webp 1200w, img/hd/ip33-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Instalación de vinil microperforado en los cristales de Burdo, Rosa y Santino" width="1200" height="1200" loading="lazy" decoding="async"></figure>
+          <h3 class="s-cat-n">Microperforado</h3>
+          <p class="s-cat-d">Vinil para cristales y fachadas, impreso e instalado.</p>
+          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Microperforado">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
         </li>
-      </ol>
-      <a class="cd-btn cd-btn--link s-pr-cta" href="#cotizar">Empezar mi pedido<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <li class="s-cat-item" data-cat="gran">
+          <figure class="s-cat-fig"><img data-blur-in src="img/hd/ip26-1200.webp" srcset="img/hd/ip26-1200.webp 1200w, img/hd/ip26-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Espectacular de lona de Rancho Santa Mónica" width="1200" height="1200" loading="lazy" decoding="async"></figure>
+          <h3 class="s-cat-n">Lonas</h3>
+          <p class="s-cat-d">Lona 13 oz, del cumpleaños al espectacular.</p>
+          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Lona">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </li>
+        <li class="s-cat-item" data-cat="gran">
+          <figure class="s-cat-fig"><img data-blur-in src="img/hd/ip22-1200.webp" srcset="img/hd/ip22-1200.webp 1200w, img/hd/ip22-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Vinil wallgraphic de motocross en una cortina" width="1200" height="1200" loading="lazy" decoding="async"></figure>
+          <h3 class="s-cat-n">Vinil</h3>
+          <p class="s-cat-d">Etiquetas, vallas, muros y cortinas en vinil.</p>
+          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Vinil / wallgraphic">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </li>
+        <li class="s-cat-item" data-cat="gran">
+          <figure class="s-cat-fig"><img data-blur-in src="img/hd/ip25-1200.webp" srcset="img/hd/ip25-1200.webp 1200w, img/hd/ip25-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Espectacular unipolar en carretera" width="1200" height="1200" loading="lazy" decoding="async"></figure>
+          <h3 class="s-cat-n">Espectaculares</h3>
+          <p class="s-cat-d">Unipolares y estructuras metálicas.</p>
+          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Espectacular">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </li>
+        <li class="s-cat-item" data-cat="rotula">
+          <figure class="s-cat-fig"><img data-blur-in src="img/hd/ip23-1200.webp" srcset="img/hd/ip23-1200.webp 1200w, img/hd/ip23-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Camioneta rotulada de Hacienda San Marcos" width="1200" height="1200" loading="lazy" decoding="async"></figure>
+          <h3 class="s-cat-n">Rotulación</h3>
+          <p class="s-cat-d">Camionetas, autos y refrigeradores.</p>
+          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Rotulación de vehículo">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </li>
+        <li class="s-cat-item" data-cat="rotula fachada">
+          <figure class="s-cat-fig"><img data-blur-in src="img/hd/ip30-1200.webp" srcset="img/hd/ip30-1200.webp 1200w, img/hd/ip30-2400.webp 2400w" sizes="(min-width: 900px) 30vw, 82vw" alt="Letrero de papelería en Plaza Santa Mónica" width="1200" height="1200" loading="lazy" decoding="async"></figure>
+          <h3 class="s-cat-n">Señalética</h3>
+          <p class="s-cat-d">Señalamiento de seguridad, letreros y coroplast.</p>
+          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Señalética / coroplast">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </li>
+        <li class="s-cat-item s-cat-type" data-cat="impresos">
+          <div class="s-cat-fig s-cat-print" aria-hidden="true"><span>Offset</span><small>De 1000 piezas en adelante</small><i class="ip-cmyk"></i></div>
+          <h3 class="s-cat-n">Tarjetas y volantes</h3>
+          <p class="s-cat-d">Offset a todo color, terminado brillante.</p>
+          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Tarjetas / volantes">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </li>
+        <li class="s-cat-item s-cat-type" data-cat="impresos">
+          <div class="s-cat-fig s-cat-more" aria-hidden="true"><ul><li>Stickers</li><li>Playeras</li><li>Banderas</li><li>Toldos</li><li>Calendarios</li><li>Promocionales</li></ul></div>
+          <h3 class="s-cat-n">Y también</h3>
+          <p class="s-cat-d">Stickers, playeras personalizadas, banderas, toldos, calendarios y promocionales con tu logo.</p>
+          <button type="button" class="cd-btn cd-btn--link s-cat-go" data-tipo="Stickers / playeras">Cotizar esto<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </li>
+      </ul>
+    </div>
+    <div class="k-wrap s-cat-foot">
+      <div class="s-cat-nav"><button type="button" data-dir="-1" aria-label="Anterior"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button><span class="s-cat-count" aria-live="polite">1 / 11</span><button type="button" data-dir="1" aria-label="Siguiente"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+      <a class="cd-btn cd-btn--primary" data-wa="Hola iPrint, quiero preguntar por un producto." href="https://wa.me/524495802910" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pregunta por tu pedido</a>
     </div>
   </section>
 
-  <section id="trabajos" class="s-tj ip-light2" aria-labelledby="s-tj-t">
-    <div class="k-wrap">
+  <section id="enciende" class="s-on ip-dark" aria-labelledby="s-on-t">
+    <div class="s-on-pin">
+      <div class="s-on-bg" aria-hidden="true"><img src="img/hd/ip06-1200.webp" srcset="img/hd/ip06-1200.webp 1200w, img/hd/ip06-2400.webp 2400w" sizes="100vw" alt="" width="1200" height="900" decoding="async" loading="lazy"></div>
+      <div class="s-on-veil" aria-hidden="true"></div>
+      <div class="s-on-in k-wrap">
+        <p class="ip-eyebrow">Letras 3D y luminosos</p>
+        <h2 class="s-on-h" id="s-on-t" aria-label="Enciende tu marca.">
+          <span class="s-on-word" aria-hidden="true"><span class="s-on-off">Enciende</span><span class="s-on-lit">Enciende</span></span>
+          <span class="s-on-sub" aria-hidden="true">tu marca.</span>
+        </h2>
+        <p class="s-on-lead">Así se ve nuestro letrero de noche, en Nacozari 1809. El tuyo puede verse igual.</p>
+        <a class="cd-btn cd-btn--primary" data-wa="Hola iPrint, quiero cotizar un anuncio luminoso o letras 3D." href="https://wa.me/524495802910" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotiza tu luminoso</a>
+      </div>
+      <ul class="s-on-proof" aria-label="Luminosos y letras 3D hechos por iPrint">
+        <li class="s-on-p1"><img src="img/hd/ip08-1200.webp" alt="Caja de luz de Comex hecha por iPrint" width="1200" height="684" loading="lazy" decoding="async"><span>Comex · caja de luz</span></li>
+        <li class="s-on-p2"><img src="img/hd/ip18-1200.webp" alt="Letras doradas en la fachada de Barbería Tres46" width="1200" height="900" loading="lazy" decoding="async"><span>Barbería Tres46 · letras</span></li>
+        <li class="s-on-p3"><img src="img/hd/ip07-1200.webp" alt="Letras 3D verdes de ad ambientes" width="1200" height="702" loading="lazy" decoding="async"><span>ad ambientes · letras 3D</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="trabajos" class="s-trabajos" aria-labelledby="tj-title">
+    <div class="k-wrap tj-head">
       <p class="ip-eyebrow">Lo que hemos hecho</p>
-      <h2 class="ip-h2 ip-mask" id="s-tj-t"><span class="ln"><span>Marcas que</span></span><span class="ln"><span>ya se <em>ven.</em></span></span></h2>
-      <article class="s-tj-feat">
-        <figure class="s-tj-feat-fig ip-crop"><img src="img/hd/ip05-1200.webp" srcset="img/hd/ip05-1200.webp 1200w, img/hd/ip05-2400.webp 2400w" sizes="(min-width: 900px) 40vw, 92vw" alt="Fachada de Grupo TractoZone con el vinil microperforado de iPrint ya instalado" width="1200" height="1600" loading="lazy" decoding="async"></figure>
-        <div class="s-tj-feat-copy" data-ip-reveal>
-          <p class="s-tj-kick">Vinil microperforado · Instalación</p>
-          <h3>Grupo TractoZone</h3>
-          <p>Impresión y colocación de vinil microperforado en toda su fachada, coordinado a distancia.</p>
-          <blockquote class="s-tj-q">
-            <p>“Somos una empresa con 11 sucursales en todo el país y en la sucursal de Aguascalientes quedamos satisfechos con el tiempo de instalación.”</p>
-            <footer>Pamela Chávez · Grupo TractoZone · Google</footer>
-          </blockquote>
-          <a class="cd-btn cd-btn--primary" data-wa="Hola iPrint, vi el trabajo de TractoZone y quiero cotizar algo así para mi negocio." href="https://wa.me/524495802910" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quiero algo así</a>
-        </div>
-      </article>
-      <div class="s-tj-chips" role="group" aria-label="Filtrar trabajos">
-        <button type="button" data-f="all" aria-pressed="true">Todos</button>
-        <button type="button" data-f="fachada" aria-pressed="false">Fachadas</button>
-        <button type="button" data-f="interior" aria-pressed="false">Interiores</button>
-        <button type="button" data-f="instala" aria-pressed="false">Instalación</button>
-        <button type="button" data-f="rotula" aria-pressed="false">Rotulado</button>
+      <h2 id="tj-title" class="ip-h2 ip-mask"><span class="ln"><span>Marcas que</span></span><span class="ln"><span>ya se <em>ven.</em></span></span></h2>
+    </div>
+
+    <div class="tj-car" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Trabajos reales de iPrint. Usa las flechas del teclado para cambiar.">
+      <div class="tj-track">
+        <article class="tj-slide" aria-roledescription="diapositiva" aria-label="1 de 9: Grupo TractoZone">
+          <figure class="tj-media"><img src="img/hd/ip05-1200.webp" srcset="img/hd/ip05-1200.webp 1200w, img/hd/ip05-2400.webp 2400w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Fachada de Grupo TractoZone con el vinil microperforado de iPrint ya instalado" width="1200" height="1600" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>TractoZone</span></h3><p class="tj-desc">Vinil microperforado en toda la fachada.</p></div>
+              <button type="button" class="tj-cta" data-k="ip05" data-n="Grupo TractoZone" data-d="Vinil microperforado en toda la fachada, coordinado a distancia" data-alt="Fachada de Grupo TractoZone con el vinil microperforado de iPrint ya instalado" aria-label="Cotizar un trabajo como el de TractoZone"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </figure>
+        </article>
+        <article class="tj-slide" aria-roledescription="diapositiva" aria-label="2 de 9: Kapital Bank">
+          <figure class="tj-media"><img src="img/hd/ip34c-1200.webp" srcset="img/hd/ip34c-1200.webp 1200w, img/hd/ip34c-2400.webp 2400w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Fachada de Kapital Bank con logo 3D y vinil impreso por iPrint" width="750" height="480" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Kapital Bank</span></h3><p class="tj-desc">Fachada con vinil, logo 3D y letras.</p></div>
+              <button type="button" class="tj-cta" data-k="ip34c" data-n="Kapital Bank" data-d="Fachada con vinil, logo 3D y letras" data-alt="Fachada de Kapital Bank con logo 3D y vinil impreso por iPrint" aria-label="Cotizar un trabajo como el de Kapital Bank"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </figure>
+        </article>
+        <article class="tj-slide" aria-roledescription="diapositiva" aria-label="3 de 9: Barbería Tres46">
+          <figure class="tj-media"><img src="img/hd/ip18-1200.webp" srcset="img/hd/ip18-1200.webp 1200w, img/hd/ip18-2400.webp 2400w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Letras doradas en la fachada negra de Barbería Tres46" width="960" height="720" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Barbería Tres46</span></h3><p class="tj-desc">Letras doradas en fachada.</p></div>
+              <button type="button" class="tj-cta" data-k="ip18" data-n="Barbería Tres46" data-d="Letras doradas en fachada" data-alt="Letras doradas en la fachada negra de Barbería Tres46" aria-label="Cotizar letras como las de Barbería Tres46"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </figure>
+        </article>
+        <article class="tj-slide" aria-roledescription="diapositiva" aria-label="4 de 9: Cremería">
+          <figure class="tj-media"><img src="img/hd/ip20-1200.webp" srcset="img/hd/ip20-1200.webp 1200w, img/hd/ip20-2400.webp 2400w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Wallgraphic de frutas y carnes en el interior de una cremería" width="960" height="525" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Cremería</span></h3><p class="tj-desc">Wallgraphic de frutas y carnes.</p></div>
+              <button type="button" class="tj-cta" data-k="ip20" data-n="Cremería" data-d="Wallgraphic de frutas y carnes en el interior" data-alt="Wallgraphic de frutas y carnes en el interior de una cremería" aria-label="Cotizar un wallgraphic de interior"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </figure>
+        </article>
+        <article class="tj-slide" aria-roledescription="diapositiva" aria-label="5 de 9: Premier Sneaker Gallery">
+          <figure class="tj-media"><img src="img/hd/ip28-1200.webp" srcset="img/hd/ip28-1200.webp 1200w, img/hd/ip28-2400.webp 2400w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Fachada de Premier Sneaker Gallery en instalación" width="627" height="606" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Premier Sneaker</span></h3><p class="tj-desc">Fachada en instalación.</p></div>
+              <button type="button" class="tj-cta" data-k="ip28" data-n="Premier Sneaker Gallery" data-d="Fachada en instalación" data-alt="Fachada de Premier Sneaker Gallery en instalación" aria-label="Cotizar una fachada como la de Premier Sneaker Gallery"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </figure>
+        </article>
+        <article class="tj-slide" aria-roledescription="diapositiva" aria-label="6 de 9: Barbería Tres46, vinil en cristal">
+          <figure class="tj-media"><img src="img/hd/ip19-1200.webp" srcset="img/hd/ip19-1200.webp 1200w, img/hd/ip19-2400.webp 2400w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Instalador de iPrint colocando vinil en el cristal de Barbería Tres46" width="960" height="720" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Vinil en cristal</span></h3><p class="tj-desc">Instalación en Barbería Tres46.</p></div>
+              <button type="button" class="tj-cta" data-k="ip19" data-n="Barbería Tres46" data-d="Vinil en cristal" data-alt="Instalador de iPrint colocando vinil en el cristal de Barbería Tres46" aria-label="Cotizar vinil para cristal"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </figure>
+        </article>
+        <article class="tj-slide" aria-roledescription="diapositiva" aria-label="7 de 9: El Rancho Carnicerías">
+          <figure class="tj-media"><img src="img/hd/ip27-1200.webp" srcset="img/hd/ip27-1200.webp 1200w, img/hd/ip27-2400.webp 2400w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Fachada de El Rancho Carnicerías con su letrero" width="768" height="829" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>El Rancho</span></h3><p class="tj-desc">Fachada con letrero.</p></div>
+              <button type="button" class="tj-cta" data-k="ip27" data-n="El Rancho Carnicerías" data-d="Fachada con letrero" data-alt="Fachada de El Rancho Carnicerías con su letrero" aria-label="Cotizar un letrero como el de El Rancho"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </figure>
+        </article>
+        <article class="tj-slide" aria-roledescription="diapositiva" aria-label="8 de 9: Cremería, instalación">
+          <figure class="tj-media"><img src="img/hd/ip21-1200.webp" srcset="img/hd/ip21-1200.webp 1200w, img/hd/ip21-2400.webp 2400w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Instalación del wallgraphic de la cremería con andamio" width="960" height="562" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>Instalación</span></h3><p class="tj-desc">Con andamio, en la cremería.</p></div>
+              <button type="button" class="tj-cta" data-k="ip21" data-n="Cremería" data-d="Instalación con andamio" data-alt="Instalación del wallgraphic de la cremería con andamio" aria-label="Cotizar instalación con andamio"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </figure>
+        </article>
+        <article class="tj-slide" aria-roledescription="diapositiva" aria-label="9 de 9: La Mandarina Boutique">
+          <figure class="tj-media"><img src="img/hd/ip17-1200.webp" srcset="img/hd/ip17-1200.webp 1200w, img/hd/ip17-2400.webp 2400w" sizes="(min-width: 900px) 40vw, 110vw" loading="lazy" decoding="async" alt="Instalación de las letras de La Mandarina Boutique con stencil" width="960" height="537" draggable="false">
+            <div class="tj-copy">
+              <div class="tj-txt"><h3 class="tj-title"><span>La Mandarina</span></h3><p class="tj-desc">Letras con stencil.</p></div>
+              <button type="button" class="tj-cta" data-k="ip17" data-n="La Mandarina Boutique" data-d="Letras con stencil" data-alt="Instalación de las letras de La Mandarina Boutique con stencil" aria-label="Cotizar letras con stencil"><span class="tj-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg></span><u>Cotizar</u><svg class="tj-arr" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </figure>
+        </article>
       </div>
-      <ul class="s-tj-grid">
-        <li class="s-tj-item" data-g="fachada"><button type="button" data-k="ip34c" data-n="Kapital Bank" data-d="Fachada con vinil, logo 3D y letras" data-alt="Fachada de Kapital Bank con logo 3D y vinil impreso por iPrint"><img src="img/hd/ip34c-1200.webp" alt="Fachada de Kapital Bank con logo 3D y vinil impreso por iPrint" width="750" height="480" loading="lazy" decoding="async"><span class="s-tj-cap"><b>Kapital Bank</b>Fachada con vinil, logo 3D y letras</span></button></li>
-        <li class="s-tj-item" data-g="fachada"><button type="button" data-k="ip18" data-n="Barbería Tres46" data-d="Letras doradas en fachada" data-alt="Letras doradas en la fachada negra de Barbería Tres46"><img src="img/hd/ip18-1200.webp" alt="Letras doradas en la fachada negra de Barbería Tres46" width="960" height="720" loading="lazy" decoding="async"><span class="s-tj-cap"><b>Barbería Tres46</b>Letras doradas en fachada</span></button></li>
-        <li class="s-tj-item" data-g="interior"><button type="button" data-k="ip20" data-n="Cremería" data-d="Wallgraphic de frutas y carnes" data-alt="Wallgraphic de frutas y carnes en el interior de una cremería"><img src="img/hd/ip20-1200.webp" alt="Wallgraphic de frutas y carnes en el interior de una cremería" width="960" height="525" loading="lazy" decoding="async"><span class="s-tj-cap"><b>Cremería</b>Wallgraphic de frutas y carnes</span></button></li>
-        <li class="s-tj-item" data-g="fachada"><button type="button" data-k="ip28" data-n="Premier Sneaker Gallery" data-d="Fachada en instalación" data-alt="Fachada de Premier Sneaker Gallery en instalación"><img src="img/hd/ip28-1200.webp" alt="Fachada de Premier Sneaker Gallery en instalación" width="627" height="606" loading="lazy" decoding="async"><span class="s-tj-cap"><b>Premier Sneaker Gallery</b>Fachada en instalación</span></button></li>
-        <li class="s-tj-item" data-g="instala"><button type="button" data-k="ip19" data-n="Barbería Tres46" data-d="Vinil en cristal" data-alt="Instalador de iPrint colocando vinil en el cristal de Barbería Tres46"><img src="img/hd/ip19-1200.webp" alt="Instalador de iPrint colocando vinil en el cristal de Barbería Tres46" width="960" height="720" loading="lazy" decoding="async"><span class="s-tj-cap"><b>Barbería Tres46</b>Vinil en cristal</span></button></li>
-        <li class="s-tj-item" data-g="fachada"><button type="button" data-k="ip27" data-n="El Rancho Carnicerías" data-d="Fachada con letrero" data-alt="Fachada de El Rancho Carnicerías con su letrero"><img src="img/hd/ip27-1200.webp" alt="Fachada de El Rancho Carnicerías con su letrero" width="768" height="829" loading="lazy" decoding="async"><span class="s-tj-cap"><b>El Rancho Carnicerías</b>Fachada con letrero</span></button></li>
-        <li class="s-tj-item" data-g="instala"><button type="button" data-k="ip21" data-n="Cremería" data-d="Instalación con andamio" data-alt="Instalación del wallgraphic de la cremería con andamio"><img src="img/hd/ip21-1200.webp" alt="Instalación del wallgraphic de la cremería con andamio" width="960" height="562" loading="lazy" decoding="async"><span class="s-tj-cap"><b>Cremería</b>Instalación con andamio</span></button></li>
-        <li class="s-tj-item" data-g="rotula"><button type="button" data-k="ip24" data-n="Refrigerador comercial" data-d="Rotulado completo" data-alt="Refrigerador comercial rotulado"><img src="img/hd/ip24-1200.webp" alt="Refrigerador comercial rotulado" width="768" height="829" loading="lazy" decoding="async"><span class="s-tj-cap"><b>Refrigerador comercial</b>Rotulado completo</span></button></li>
-        <li class="s-tj-item" data-g="instala"><button type="button" data-k="ip17" data-n="La Mandarina Boutique" data-d="Letras con stencil" data-alt="Instalación de las letras de La Mandarina Boutique con stencil"><img src="img/hd/ip17-1200.webp" alt="Instalación de las letras de La Mandarina Boutique con stencil" width="960" height="537" loading="lazy" decoding="async"><span class="s-tj-cap"><b>La Mandarina Boutique</b>Letras con stencil</span></button></li>
-      </ul>
+    </div>
+
+    <div class="k-wrap tj-ui">
+      <div class="tj-tape" role="group" aria-label="Elegir trabajo">
+        <div class="tj-rail" aria-hidden="true"><span class="tj-fill"></span><span class="tj-hook"></span></div>
+        <div class="tj-stops"></div>
+      </div>
+      <div class="tj-arrows">
+        <button class="tj-arrow" type="button" data-tj="-1" aria-label="Trabajo anterior"><svg width="20" height="20" style="transform:scaleX(-1)" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <button class="tj-arrow" type="button" data-tj="1" aria-label="Siguiente trabajo"><svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+    <p class="tj-live" aria-live="polite"></p>
+
+    <div class="k-wrap tj-revs">
+      <blockquote class="tj-rev" data-ip-reveal>
+        <p>"Somos una empresa con 11 sucursales en todo el país y en la sucursal de Aguascalientes quedamos satisfechos con el tiempo de instalación."</p>
+        <footer>Pamela Chávez · Grupo TractoZone · Google</footer>
+      </blockquote>
+      <blockquote class="tj-rev" data-ip-reveal style="--d:90ms">
+        <p>"Servicio profesional, en 24 horas me imprimieron una lona para un evento, con buena calidad y a un precio razonable."</p>
+        <footer>Alex García · Google</footer>
+      </blockquote>
+      <a class="cd-btn cd-btn--link tj-revs-more" href="https://search.google.com/local/reviews?placeid=ChIJ1_Z-P0XuKYQRVlPbPm-oU54" target="_blank" rel="noopener">Ver las 53 reseñas en Google<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </section>
 
-  <section id="nosotros" class="s-nos ip-plum" aria-labelledby="s-nos-t">
-    <div class="k-wrap">
-      <div class="s-nos-grid">
-        <div class="s-nos-copy">
-          <p class="ip-eyebrow">Quiénes somos</p>
-          <h2 class="ip-h2 ip-mask" id="s-nos-t"><span class="ln"><span>Tu impresión</span></span><span class="ln"><span>con <em>prestigio.</em></span></span></h2>
-          <p class="ip-lead">Producimos impresos publicitarios con la más alta calidad, a precio competitivo y con tecnología de vanguardia.</p>
-        </div>
-        <div class="s-nos-num" data-ip-reveal>
-          <b class="s-nos-n">4.5</b>
-          <p><strong>de 5 en Google</strong>53 reseñas de clientes</p>
-        </div>
-      </div>
-      <ul class="s-nos-rev" aria-label="Reseñas de Google">
-        <li data-ip-reveal><p>“Servicio profesional, en 24 horas me imprimieron una lona para un evento, con buena calidad y a un precio razonable.”</p><span>Alex Garcia · Google</span></li>
-        <li data-ip-reveal style="--d:90ms"><p>“He realizado algunos trabajos de vinil, microperforado y volantes. Me han quedado muy bien, y respetan tiempos de entrega, buena calidad y buen servicio.”</p><span>vera strega · Google</span></li>
-        <li data-ip-reveal style="--d:180ms"><p>“Muy bien servicio, atención y calidad.”</p><span>Juan Daniel Martínez Echeverría · Google</span></li>
-      </ul>
-      <a class="cd-btn cd-btn--link s-nos-more" href="https://search.google.com/local/reviews?placeid=ChIJ1_Z-P0XuKYQRVlPbPm-oU54" target="_blank" rel="noopener">Ver las reseñas en Google<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    </div>
-    <figure class="s-nos-band">
-      <img class="s-nos-band-img" src="img/hd/ip01-1200.webp" srcset="img/hd/ip01-1200.webp 1200w, img/hd/ip01-2400.webp 2400w" sizes="100vw" alt="Fachada de iPrint en Av. Héroe de Nacozari con su letrero y lonas" width="1200" height="1111" loading="lazy" decoding="async">
-      <div class="s-nos-band-in">
-        <img class="s-nos-band-logo" src="img/logo-oscuro-1600.png" alt="" aria-hidden="true" width="1600" height="667" loading="lazy" decoding="async">
-        <figcaption>Nuestro local · Av. Héroe de Nacozari Nte. 1809</figcaption>
-      </div>
-    </figure>
-  </section>
-
-  <section id="empresas" class="s-emp ip-violet" aria-labelledby="s-emp-t">
-    <figure class="s-emp-fig"><img src="img/hd/ip12-1200.webp" srcset="img/hd/ip12-1200.webp 1200w, img/hd/ip12-2400.webp 2400w" sizes="(min-width: 900px) 45vw, 100vw" alt="Plotter de gran formato de iPrint imprimiendo en su taller" width="750" height="1200" loading="lazy" decoding="async"></figure>
-    <div class="k-wrap s-emp-grid">
+  <section id="empresas" class="s-emp ip-dark" aria-labelledby="s-emp-t">
+    <div class="k-wrap s-emp-top">
       <div class="s-emp-head">
         <p class="ip-eyebrow">Para empresas</p>
-        <h2 class="ip-h2 ip-mask" id="s-emp-t"><span class="ln"><span>Todo en</span></span><span class="ln"><span>un <em>lugar.</em></span></span></h2>
+        <h2 class="ip-h2 ip-mask" id="s-emp-t"><span class="ln"><span>Para tu</span></span><span class="ln"><span><em>empresa.</em></span></span></h2>
       </div>
+      <figure class="s-emp-fig ip-crop"><img src="img/hd/ip12-1200.webp" srcset="img/hd/ip12-1200.webp 1200w, img/hd/ip12-2400.webp 2400w" sizes="(min-width: 900px) 34vw, 100vw" alt="Plotter de gran formato de iPrint imprimiendo en su taller" width="750" height="1200" loading="lazy" decoding="async"></figure>
       <ul class="s-emp-list">
         <li data-ip-reveal><b>Diseño e instalación</b><span>Con tu diseño o con el nuestro.</span></li>
         <li data-ip-reveal style="--d:60ms"><b>Factura, mayoreo y menudeo</b><span>Por volumen o por pieza.</span></li>
         <li data-ip-reveal style="--d:120ms"><b>Sucursales y cotos</b><span>Coordinamos a distancia.</span></li>
       </ul>
-      <a class="cd-btn cd-btn--primary s-emp-cta" data-wa="Hola iPrint, quiero cotizar para mi empresa." href="https://wa.me/524495802910" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar para mi empresa</a>
     </div>
-  </section>
 
-  <section id="faq" class="s-faq ip-light2" aria-labelledby="s-faq-t">
-    <div class="k-wrap s-faq-grid">
-      <div>
-        <p class="ip-eyebrow">Preguntas</p>
-        <h2 class="ip-h2 ip-mask" id="s-faq-t"><span class="ln"><span>Antes de</span></span><span class="ln"><span><em>imprimir.</em></span></span></h2>
-      </div>
-      <div class="s-faq-list">
-        <details><summary>¿En qué formato mando mi arte?</summary><p>En JPG a 300 ppp en CMYK. Si viene de otra forma no respondemos por colores, tamaño o errores. Si no tienes arte, lo diseñamos.</p></details>
-        <details><summary>¿Hacen tarjetas y volantes?</summary><p>Sí, en offset a todo color con terminado brillante, de 1000 piezas en adelante.</p></details>
-        <details><summary>¿También instalan?</summary><p>Sí. Imprimimos e instalamos vinil, microperforado, letras 3D y anuncios en tu local.</p></details>
-        <details><summary>¿Qué horario tienen?</summary><p>Lunes a viernes de 9:00 a 18:00 y sábado de 9:00 a 12:00.</p></details>
-        <a class="cd-btn cd-btn--link s-faq-cta" data-wa="Hola iPrint, tengo una pregunta." href="https://wa.me/524495802910" target="_blank" rel="noopener">Pregúntanos por WhatsApp<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-  </section>
+    <span class="ip-cmyk s-emp-rule" aria-hidden="true"></span>
 
-  <section id="visitanos" class="s-vis ip-dark" aria-labelledby="s-vis-t">
     <div class="k-wrap s-vis-grid">
-      <div>
+      <div id="visitanos" class="s-vis-info">
         <p class="ip-eyebrow">Visítanos</p>
-        <h2 class="ip-h2 ip-mask" id="s-vis-t"><span class="ln"><span>Nacozari</span></span><span class="ln"><span><em>1809.</em></span></span></h2>
+        <h3 class="s-vis-h cd-h3d">Nacozari <em>1809.</em></h3>
         <address class="s-vis-addr">Av. Héroe de Nacozari Nte. 1809<br>Col. Gremial, C.P. 20030, Aguascalientes</address>
-        <dl class="s-vis-hrs"><div><dt>Lunes a viernes</dt><dd>9:00 a 18:00</dd></div><div><dt>Sábado</dt><dd>9:00 a 12:00</dd></div><div><dt>Domingo</dt><dd>Cerrado</dd></div></dl>
+        <dl class="s-vis-hrs">
+          <div><dt>Lunes a viernes</dt><dd>9:00 a 18:00</dd></div>
+          <div><dt>Sábado</dt><dd>9:00 a 12:00</dd></div>
+          <div><dt>Domingo</dt><dd>Cerrado</dd></div>
+        </dl>
         <div class="s-vis-acts">
-          <a class="cd-btn cd-btn--primary" data-wa="Hola iPrint, quiero ir a su local. ¿Me confirman si están?" href="https://wa.me/524495802910" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escríbenos</a>
-          <a class="cd-btn cd-btn--secondary" href="tel:+524499960561"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar</a>
+          <a class="cd-btn cd-btn--primary" data-wa="Hola iPrint, quiero información." href="https://wa.me/524495802910" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escríbenos por WhatsApp</a>
+          <a class="cd-btn cd-btn--link" href="tel:+524499960561"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar</a>
+          <a class="cd-btn cd-btn--link" href="https://www.google.com/maps/place/?q=place_id:ChIJ1_Z-P0XuKYQRVlPbPm-oU54" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
-        <a class="cd-btn cd-btn--link" href="https://www.google.com/maps/place/?q=place_id:ChIJ1_Z-P0XuKYQRVlPbPm-oU54" target="_blank" rel="noopener">Cómo llegar en Google Maps<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <div class="s-vis-faq">
+          <p><b>¿En qué formato mando mi arte?</b> JPG a 300 ppp en CMYK. Si no tienes arte, lo diseñamos.</p>
+          <p><b>¿Hacen tarjetas y volantes?</b> Sí, en offset a todo color, de 1000 piezas en adelante.</p>
+          <p><b>¿También instalan?</b> Sí. Imprimimos e instalamos vinil, microperforado y anuncios en tu local.</p>
+        </div>
       </div>
       <div class="s-vis-map ip-crop">
         <a class="s-vis-ph" href="https://www.google.com/maps/place/?q=place_id:ChIJ1_Z-P0XuKYQRVlPbPm-oU54" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
@@ -480,16 +461,6 @@
         </a>
         <iframe title="Mapa de iPrint Aguascalientes" src="https://maps.google.com/maps?q=21.9002347,-102.2877326&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-    </div>
-  </section>
-
-  <section id="cierre" class="s-fin ip-dark" aria-labelledby="s-fin-t">
-    <img class="s-fin-img" src="img/hd/ip06-1200.webp" srcset="img/hd/ip06-1200.webp 1200w, img/hd/ip06-2400.webp 2400w" sizes="100vw" alt="Letrero luminoso de iPrint encendido de noche en su local" width="1200" height="900" loading="lazy" decoding="async">
-    <div class="s-fin-shade" aria-hidden="true"></div>
-    <div class="k-wrap s-fin-in">
-      <h2 class="s-fin-h cd-h3d ip-mask" id="s-fin-t"><span class="ln"><span>Tu pedido,</span></span><span class="ln"><span>sin <em>vueltas.</em></span></span></h2>
-      <p class="ip-lead">Mándanos lo que necesitas y te cotizamos por WhatsApp.</p>
-      <a class="cd-btn cd-btn--primary" data-wa="Hola iPrint, quiero cotizar un pedido." href="https://wa.me/524495802910" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotiza tu pedido</a>
     </div>
   </section>
 
@@ -549,12 +520,11 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="../_kit/kit.js?v=1789789887" defer></script>
-<script src="site.js?v=1789835450" defer></script>
+<script src="site.js?v=1789867863" defer></script>
 <script src="sections/01-hero.js?v=1789838156" defer></script>
-<script src="sections/02-enciende.js?v=1789839819" defer></script>
-<script src="sections/03-cotiza-rapido.js?v=1789835576" defer></script>
-<script src="sections/04-catalogo.js?v=1789835632" defer></script>
-<script src="sections/05-cotizar.js?v=1789835676" defer></script>
-<script src="sections/07-trabajos.js?v=1789835744" defer></script>
+<script src="sections/02-cotizar.js?v=1789866919" defer></script>
+<script src="sections/03-catalogo.js?v=1789835632" defer></script>
+<script src="sections/04-enciende.js?v=1789839819" defer></script>
+<script src="sections/05-trabajos.js?v=1789867027" defer></script>
 </body>
 </html>

@@ -103,7 +103,7 @@
 
   /* WA flotante: se esconde donde ya hay botones de contacto */
   function initWaHide() {
-    var zones = document.querySelectorAll("#cotiza-rapido, #cotizar, #visitanos, #cierre, .cd-foot, #comparar-cta");
+    var zones = document.querySelectorAll("#cotizar, #visitanos, .cd-foot, #comparar-cta");
     if (!zones.length || !("IntersectionObserver" in window)) return;
     var on = new Set();
     var io = new IntersectionObserver(function (es) {
@@ -116,7 +116,7 @@
 
   /* Reveal con blindaje: IO (-25 %) + rescate a los 1.6 s; sin JS o con reduced-motion todo se ve */
   function initReveal() {
-    var els = document.querySelectorAll("[data-ip-reveal], .ip-mask, [data-reveal], [data-reveal-stagger]");
+    var els = document.querySelectorAll("[data-ip-reveal], .ip-mask, [data-reveal], [data-reveal-stagger], [data-blur-in]");
     Array.prototype.forEach.call(document.querySelectorAll(".ip-mask"), function (m) {
       Array.prototype.forEach.call(m.querySelectorAll(".ln"), function (l, i) { l.style.setProperty("--l", i); });
     });
@@ -214,7 +214,30 @@
     setTimeout(function () { sBox.focus({ preventScroll: true }); }, 60);
   };
 
-  function init() { initWa(); initMenu(); initRipple(); initWaHide(); initReveal(); }
+  /* Cortina morada de cambio de capítulo (receta 15): cubre y destapa (≤600 ms) al cruzar hero->cotiza
+     y catálogo->enciende. Reversible: se repite cada vez que se cruza el límite, en cualquier sentido. */
+  function initCurtains() {
+    if (reduce || !("IntersectionObserver" in window)) return;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-curtain-before]"), function (c) {
+      var target = document.getElementById(c.getAttribute("data-curtain-before"));
+      if (!target || !c.animate) return;
+      var busy = false;
+      function sweep() {
+        if (busy) return;
+        busy = true;
+        c.animate([{ clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)" }], { duration: 280, easing: "cubic-bezier(.65,0,.35,1)", fill: "forwards" }).onfinish = function () {
+          c.animate([{ clipPath: "inset(0% 0 0 0)" }, { clipPath: "inset(0 0 100% 0)" }], { duration: 320, easing: "cubic-bezier(.33,1,.68,1)", fill: "forwards" }).onfinish = function () {
+            c.style.clipPath = "inset(100% 0 0 0)";
+            busy = false;
+          };
+        };
+      }
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) sweep(); }, { threshold: 0, rootMargin: "0px 0px -85% 0px" });
+      io.observe(target);
+    });
+  }
+
+  function init() { initWa(); initMenu(); initRipple(); initWaHide(); initReveal(); initCurtains(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
