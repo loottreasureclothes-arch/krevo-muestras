@@ -52,12 +52,21 @@
           <label class="lm-field"><span>Tu nombre</span><input id="ki-nombre" type="text" autocomplete="given-name" maxlength="40" placeholder="Para apartarlo a tu nombre"></label>
         </fieldset>
 
+        <fieldset class="ki-step">
+          <legend><span>5</span>¿Cómo pagas?</legend>
+          <div class="ki-chips ki-chips--2">
+            <label class="ki-opt"><input type="radio" name="ki-pago" value="efectivo" checked><span>Efectivo al recoger</span></label>
+            <label class="ki-opt"><input type="radio" name="ki-pago" value="tarjeta"><span>Tarjeta en línea<small>Te mandamos el link de pago por WhatsApp</small></span></label>
+          </div>
+        </fieldset>
+
         <div class="ki-sum" aria-live="polite">
           <p class="ki-sum-l">Estimado</p>
           <p class="ki-sum-t">$740</p>
           <p class="ki-sum-f">Precios del menú impreso 2025, sujetos a cambio. La sucursal te confirma el total.</p>
         </div>
         <button class="lm-btn lm-btn--wa ki-go" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Apartar por WhatsApp</button>
+        <a class="lm-btn lm-btn--line ki-pagar" id="ki-pagar" href="#" target="_blank" rel="noopener" hidden>Pagar con tarjeta</a>
         <p class="ki-fallback" hidden>¿No se abrió WhatsApp? <a href="#" target="_blank" rel="noopener">Toca aquí</a></p>
       </form>
     </div>

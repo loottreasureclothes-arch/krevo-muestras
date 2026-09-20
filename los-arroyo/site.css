@@ -101,6 +101,7 @@ em { font-style: normal; color: var(--brand); }
 
 /* ============ Botones (3px, nada de píldoras) ============ */
 .k-btn, .k-cta, .lm-btn, .lm-chip, .k-menu-tabs button, .lm-dot { border-radius: 3px !important; }
+.lm-btn[hidden] { display: none; } /* [hidden] antes de .lm-btn en la cascada: sin esto un lm-btn oculto se ve igual (botón "Pagar con tarjeta") */
 .lm-btn {
   position: relative; overflow: hidden; isolation: isolate;
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
@@ -287,7 +288,7 @@ body.lm-wa-off .k-wa, body.lm-nav-open .k-wa, html.lm-mm-lock .k-wa { visibility
 main > #kilo { background-color: var(--paper-2); }
 main > #menu { background-color: var(--paper); }
 main > #sucursales { background-color: var(--paper-2); }
-main > #nosotros { background-color: var(--paper); }
+main > #sabado { background-color: var(--paper); }
 @media (min-width: 900px) { .la-foot-cols { grid-template-columns: repeat(4, 1fr) !important; } .la-foot-cols > div:last-child { grid-column: auto; } }
 .la-foot-cols p a { color: var(--cream); font-weight: 700; display: inline-flex; min-height: 44px; align-items: center; text-decoration: underline; text-underline-offset: 3px; }
 

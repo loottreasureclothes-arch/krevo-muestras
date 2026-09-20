@@ -20,7 +20,8 @@
   var MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
   var x = { consome: 0, tortillas: 0 };
   var $ = function (s) { return form.querySelector(s); };
-  var dia = $("#ki-dia"), hora = $("#ki-hora"), nombre = $("#ki-nombre"), hint = $(".ki-hint"), sumT = $(".ki-sum-t"), fb = $(".ki-fallback");
+  var dia = $("#ki-dia"), hora = $("#ki-hora"), nombre = $("#ki-nombre"), hint = $(".ki-hint"), sumT = $(".ki-sum-t"), fb = $(".ki-fallback"), pagar = $("#ki-pagar");
+  var PAGO = { efectivo: "Efectivo al recoger", tarjeta: "Tarjeta en línea" };
 
   function val(name) { var r = form.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ""; }
   function money(n) { return "$" + Math.round(n).toLocaleString("es-MX"); }
@@ -66,12 +67,19 @@
     if (x.tortillas) pend.push("tortillas");
     sumT.innerHTML = money(r.total) + (pend.length ? "<small>+ " + pend.join(" y ") + " por confirmar</small>" : "");
   }
+  function paintPago() {
+    if (!pagar) return;
+    var on = val("ki-pago") === "tarjeta" && window.LA_PAGO_LINK;
+    pagar.hidden = !on;
+    if (on) pagar.href = window.LA_PAGO_LINK;
+  }
   function msg() {
     var r = calc(), s = SUC[val("ki-suc")];
     var t = "Hola, quiero apartar barbacoa para llevar en Los Arroyo (" + s.n + ").\n\n";
     t += "- " + cantTxt(r.cant) + " de " + r.tipo.n + (r.precio != null ? " (" + money(r.precio) + ")" : "") + "\n";
     if (x.consome) t += "- " + x.consome + (x.consome === 1 ? " litro" : " litros") + " de consomé (" + money(x.consome * CONSOME) + ")\n";
     if (x.tortillas) t += "- " + x.tortillas + (x.tortillas === 1 ? " docena" : " docenas") + " de tortillas a mano\n";
+    t += "\nPago: " + (PAGO[val("ki-pago")] || PAGO.efectivo) + ".";
     t += "\nPaso a recoger el " + dia.value.toLowerCase() + " a las " + hora.value + ".";
     if (nombre.value.trim()) t += "\nA nombre de: " + nombre.value.trim();
     t += "\nEstimado: " + money(r.total) + (r.precio == null || x.tortillas ? " (más lo que me confirmen)" : "") + ". ¿Me lo confirman?";
@@ -80,6 +88,7 @@
 
   form.addEventListener("change", function (e) {
     if (e.target.name === "ki-suc") fillDias();
+    if (e.target.name === "ki-pago") paintPago();
     paint();
   });
   Array.prototype.forEach.call(form.querySelectorAll(".ki-step-ctl"), function (ctl) {
@@ -98,5 +107,5 @@
     if (!w) { try { location.href = url; } catch (er2) {} }
   });
   window.laKilo = { msg: msg };
-  fillDias(); fillHoras(); paint();
+  fillDias(); fillHoras(); paint(); paintPago();
 })();

@@ -32,15 +32,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
-<link rel="stylesheet" href="site.css?v=1789835827">
-<link rel="stylesheet" href="sections/10-hero.css?v=1789836392">
-<link rel="stylesheet" href="sections/15-kilo.css?v=1789835951">
-<link rel="stylesheet" href="sections/20-cine.css?v=1789836015">
+<link rel="stylesheet" href="site.css?v=1789864910">
+<link rel="stylesheet" href="sections/10-hero.css?v=1789864406">
+<link rel="stylesheet" href="sections/15-kilo.css?v=1789864508">
 <link rel="stylesheet" href="sections/25-menu.css?v=1789836082">
-<link rel="stylesheet" href="sections/26-pedido.css?v=1789836082">
+<link rel="stylesheet" href="sections/26-pedido.css?v=1789864575">
+<link rel="stylesheet" href="sections/30-sucursales.css?v=1789864450">
 <link rel="stylesheet" href="sections/40-banquetes.css?v=1789836110">
-<link rel="stylesheet" href="sections/50-sucursales.css?v=1789836143">
-<link rel="stylesheet" href="sections/60-nosotros.css?v=1789836335">
+<link rel="stylesheet" href="sections/60-sabado.css?v=1789864686">
 <link rel="stylesheet" href="sections/90-cierre.css?v=1789836222">
 </head>
 <body data-hero-dark>
@@ -60,7 +59,7 @@
     <a href="#kilo">Por kilo</a>
     <a href="#banquetes">Banquetes</a>
     <a href="#sucursales">Sucursales</a>
-    <a href="#nosotros">Nosotros</a>
+    <a href="#sabado">Sábado</a>
   </nav>
   <a class="lm-hmenu" href="#menu"><svg aria-hidden="true"><use href="#i-menu"/></svg>Menú</a>
   <button class="lm-menu-btn" type="button" aria-expanded="false" aria-controls="lm-nav" aria-label="Abrir navegación"><span class="lm-burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
@@ -71,20 +70,20 @@
   <div class="lm-nav-scrim" aria-hidden="true"></div>
   <div class="lm-nav-panel">
     <nav class="lm-nav-list" aria-label="Secciones">
-      <a class="lm-nav-parent" href="#menu"><span>01</span>Menú y pedido</a>
+      <a href="#kilo"><span>01</span>Aparta tu kilo</a>
+      <a class="lm-nav-parent" href="#menu"><span>02</span>Menú y pedido</a>
       <ul class="lm-nav-sub" aria-label="Menú">
         <li><a href="#menu">Menú con fotos</a></li>
         <li><a href="#m-tacos">Tacos</a></li>
       </ul>
-      <a href="#kilo"><span>02</span>Aparta tu kilo</a>
-      <a href="#banquetes"><span>03</span>Banquetes</a>
-      <a class="lm-nav-parent" href="#sucursales"><span>04</span>Sucursales</a>
+      <a class="lm-nav-parent" href="#sucursales"><span>03</span>Sucursales</a>
       <ul class="lm-nav-sub" aria-label="Sucursales">
         <li><a href="#suc-santa-anita">Santa Anita</a></li>
         <li><a href="#suc-chicahuales">Chicahuales</a></li>
         <li><a href="#suc-poniente">López Mateos</a></li>
       </ul>
-      <a href="#nosotros"><span>05</span>Quiénes somos</a>
+      <a href="#banquetes"><span>04</span>Banquetes</a>
+      <a href="#sabado"><span>05</span>Sábado en Los Arroyo</a>
     </nav>
     <div class="lm-nav-foot">
       <div class="lm-nav-acts">
@@ -115,11 +114,7 @@
         <a class="lm-btn lm-btn--wa" href="#kilo"><svg aria-hidden="true"><use href="#i-wa"/></svg>Aparta tu kilo</a>
         <a class="lm-btn lm-btn--line" href="#menu">Ver menú</a>
       </div>
-      <ul class="hr-facts">
-        <li><b>4.4 <span class="hr-star" aria-hidden="true">&#9733;</span></b><span>550 opiniones</span></li>
-        <li><b>Vie a dom</b><span>8 a 17 h, Santa Anita</span></li>
-        <li><b>3 sucursales</b><span>en Ags.</span></li>
-      </ul>
+      <p class="hr-note">Fines de semana de 8 a 5. Tres sucursales en Aguascalientes.</p>
     </div>
   </section>
 
@@ -203,36 +198,23 @@
           <label class="lm-field"><span>Tu nombre</span><input id="ki-nombre" type="text" autocomplete="given-name" maxlength="40" placeholder="Para apartarlo a tu nombre"></label>
         </fieldset>
 
+        <fieldset class="ki-step">
+          <legend><span>5</span>¿Cómo pagas?</legend>
+          <div class="ki-chips ki-chips--2">
+            <label class="ki-opt"><input type="radio" name="ki-pago" value="efectivo" checked><span>Efectivo al recoger</span></label>
+            <label class="ki-opt"><input type="radio" name="ki-pago" value="tarjeta"><span>Tarjeta en línea<small>Te mandamos el link de pago por WhatsApp</small></span></label>
+          </div>
+        </fieldset>
+
         <div class="ki-sum" aria-live="polite">
           <p class="ki-sum-l">Estimado</p>
           <p class="ki-sum-t">$740</p>
           <p class="ki-sum-f">Precios del menú impreso 2025, sujetos a cambio. La sucursal te confirma el total.</p>
         </div>
         <button class="lm-btn lm-btn--wa ki-go" type="submit"><svg aria-hidden="true"><use href="#i-wa"/></svg>Apartar por WhatsApp</button>
+        <a class="lm-btn lm-btn--line ki-pagar" id="ki-pagar" href="#" target="_blank" rel="noopener" hidden>Pagar con tarjeta</a>
         <p class="ki-fallback" hidden>¿No se abrió WhatsApp? <a href="#" target="_blank" rel="noopener">Toca aquí</a></p>
       </form>
-    </div>
-  </section>
-
-  <section class="s-cine" id="cine" data-dark aria-labelledby="ci-t">
-    <div class="ci-stage">
-      <figure class="ci-ph">
-        <img src="img/foto/consome-tlacoyo-900.webp" srcset="img/foto/consome-tlacoyo-900.webp 900w, img/foto/consome-tlacoyo-1600.webp 1200w" sizes="(min-width: 900px) 60vw, 100vw" width="900" height="1200" alt="Consomé de borrego y tlacoyo azul con salsas sobre mantel de rayas, Los Arroyo" loading="lazy" decoding="async">
-      </figure>
-      <div class="ci-veil" aria-hidden="true"></div>
-      <div class="k-wrap ci-in">
-        <p class="lm-eyebrow">Fin de semana en Los Arroyo</p>
-        <h2 id="ci-t" class="ci-t lm-d lm-h3d">Del hoyo <em>a tu mesa.</em></h2>
-        <ol class="ci-lines">
-          <li class="is-on"><b>Barbacoa de hoyo</b><span>de borrego, estilo Hidalgo</span></li>
-          <li><b>Consomé</b><span>con garbanzo y arroz</span></li>
-          <li><b>Tortilla azul</b><span>de maíz, hecha a mano</span></li>
-        </ol>
-        <div class="ci-acts">
-          <a class="lm-btn lm-btn--wa" href="#menu"><svg aria-hidden="true"><use href="#i-menu"/></svg>Arma tu pedido</a>
-        </div>
-      </div>
-      <div class="ci-bar" aria-hidden="true"><i></i></div>
     </div>
   </section>
 
@@ -490,15 +472,21 @@
         </div>
         <p class="lm-pd-err" id="lm-pd-err" hidden>Escribe tu número de mesa para que te lo lleven.</p>
 
+        <fieldset class="lm-pd-modes lm-pd-pago">
+          <legend>¿Cómo pagas?</legend>
+          <label><input type="radio" name="lm-pd-pago" value="efectivo" checked><span>Efectivo al recoger</span></label>
+          <label><input type="radio" name="lm-pd-pago" value="tarjeta"><span>Tarjeta en línea<small>Te mandamos el link de pago por WhatsApp</small></span></label>
+        </fieldset>
+
         <p class="lm-pd-total"><span>Total estimado</span><b>$0</b></p>
         <p class="lm-pd-fine">Precios del menú 2025, sujetos a cambio. Lo marcado "precio en sucursal" te lo confirman.</p>
 
         <div class="lm-pd-actions">
-          <!-- PAGO FUTURO: aquí iría el botón "Pagar con tarjeta" (Stripe / Mercado Pago) que usa window.lmPedido.onCheckout. -->
           <a class="lm-pd-wa" id="lm-pd-wa" href="https://wa.me/524495542823" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
             Enviar por WhatsApp
           </a>
+          <a class="lm-btn lm-btn--line lm-pd-pagar" id="lm-pd-pagar" href="#" target="_blank" rel="noopener" hidden>Pagar con tarjeta</a>
           <button class="lm-pd-show" id="lm-pd-mesero-btn" type="button">Mostrar a mi mesero</button>
           <button class="lm-pd-clear" id="lm-pd-clear" type="button">Vaciar pedido</button>
         </div>
@@ -518,6 +506,55 @@
       </div>
     </div>
   </div>
+
+  <section class="s-suc" id="sucursales" aria-labelledby="su-t">
+    <div class="k-wrap">
+      <div class="su-head">
+        <p class="lm-eyebrow">Tres sucursales</p>
+        <h2 id="su-t" class="lm-h2 lm-h2--xl">La más <em>cerca</em> de ti.</h2>
+        <p class="lm-lead">Elige la tuya: cómo llegar y horario.</p>
+      </div>
+      <nav class="su-tabs" aria-label="Sucursales"><a class="lm-chip" href="#suc-santa-anita">Santa Anita</a><a class="lm-chip" href="#suc-chicahuales">Chicahuales</a><a class="lm-chip" href="#suc-poniente">López Mateos</a></nav>
+      <div class="su-list">
+        <article class="su-card" id="suc-santa-anita" data-reveal>
+          <figure class="su-ph"><img src="img/foto/santa-anita-1200.webp" width="1200" height="900" sizes="(min-width: 900px) 40vw, 100vw" alt="Interior de Los Arroyo Santa Anita: dos pisos, mesas de madera y el logo en la pared" loading="lazy" decoding="async"><figcaption><span class="su-k">Matriz</span><span class="su-tag lm-d">Santa Anita</span></figcaption></figure>
+          <div class="su-body">
+            <address><b>Av. de la Convención de 1914 Ote. 704, Int. B</b>Santa Anita 1a. Sección, 20169 Ags.<small>Frente a la Prepa Benito Juárez.</small></address>
+            <dl class="su-dl"><div><dt>Horario</dt><dd>Viernes a domingo, 8 a 17 h</dd></div><div><dt>Teléfono</dt><dd><a href="tel:+524495542823">449 554 2823<svg aria-hidden="true"><use href="#i-arrow"/></svg></a></dd></div><div><dt>Google</dt><dd><a href="https://maps.google.com/?cid=6109296599101266733" target="_blank" rel="noopener">4.4 ★ · 550 opiniones</a></dd></div><div><dt>Además</dt><dd>Estacionamiento en la calle</dd></div></dl>
+            <div class="su-map"><iframe title="Mapa de Los Arroyo Santa Anita" src="https://maps.google.com/maps?q=21.896096,-102.2787839&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+            <div class="su-acts">
+              <a class="lm-btn lm-btn--link" href="https://www.google.com/maps/dir/?api=1&amp;destination=21.896096,-102.2787839" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
+        </article>
+        <article class="su-card" id="suc-chicahuales" data-reveal>
+          <figure class="su-ph"><img src="img/foto/chicahuales-1200.webp" width="1200" height="900" sizes="(min-width: 900px) 40vw, 100vw" alt="Fachada de Los Arroyo Chicahuales con la lona del logo y el horario de sábados y domingos" loading="lazy" decoding="async"><figcaption><span class="su-k">Jesús María</span><span class="su-tag lm-d">Chicahuales</span></figcaption></figure>
+          <div class="su-body">
+            <address><b>P.º de los Chicahuales 2830</b>Corral de Barrancos, Jesús María, 20900 Ags.<small>Jardín con juegos para niños.</small></address>
+            <dl class="su-dl"><div><dt>Horario</dt><dd>Sábado y domingo, 8 a 17 h</dd></div><div><dt>Teléfono</dt><dd><a href="tel:+524492310357">449 231 0357<svg aria-hidden="true"><use href="#i-arrow"/></svg></a></dd></div><div><dt>Google</dt><dd><a href="https://maps.google.com/?cid=7405976511160360651" target="_blank" rel="noopener">4.4 ★ en Google</a></dd></div><div><dt>Además</dt><dd>Banquetes y servicio a domicilio</dd></div></dl>
+            <div class="su-map"><iframe title="Mapa de Los Arroyo Chicahuales" src="https://maps.google.com/maps?q=21.9448413,-102.3293762&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+            <div class="su-acts">
+              <a class="lm-btn lm-btn--link" href="https://www.google.com/maps/dir/?api=1&amp;destination=21.9448413,-102.3293762" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
+        </article>
+        <article class="su-card" id="suc-poniente" data-reveal>
+          <figure class="su-ph"><img src="img/foto/poniente-1200.webp" width="1200" height="900" sizes="(min-width: 900px) 40vw, 100vw" alt="Fachada de Los Arroyo sobre Avenida López Mateos Poniente" loading="lazy" decoding="async"><figcaption><span class="su-k">Sucursal 3</span><span class="su-tag lm-d">López Mateos</span></figcaption></figure>
+          <div class="su-body">
+            <address><b>Av. Lic. Adolfo López Mateos Pte. 806</b>Circunvalación Poniente, 20210 Ags.</address>
+            <dl class="su-dl"><div><dt>Horario</dt><dd>Sábado, 8 a 17 h</dd></div><div><dt>Teléfono</dt><dd><a href="tel:+524492310357">449 231 0357<svg aria-hidden="true"><use href="#i-arrow"/></svg></a></dd></div><div><dt>Google</dt><dd><a href="https://maps.google.com/?cid=14129299344472534702" target="_blank" rel="noopener">3.8 ★ en Google</a></dd></div><div><dt>Además</dt><dd>También en Rappi y Uber Eats</dd></div></dl>
+            <div class="su-map"><iframe title="Mapa de Los Arroyo López Mateos" src="https://maps.google.com/maps?q=21.8735497,-102.3130666&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+            <div class="su-acts">
+              <a class="lm-btn lm-btn--link" href="https://www.google.com/maps/dir/?api=1&amp;destination=21.8735497,-102.3130666" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="su-final">
+        <button type="button" class="lm-btn lm-btn--wa" id="su-pedir-wa"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir por WhatsApp</button>
+      </div>
+    </div>
+  </section>
 
   <section class="s-banq" id="banquetes" data-dark aria-labelledby="bq-t">
     <div class="k-wrap bq-grid">
@@ -548,83 +585,35 @@
     </div>
   </section>
 
-  <section class="s-suc" id="sucursales" aria-labelledby="su-t">
-    <div class="k-wrap">
-      <div class="su-head">
-        <p class="lm-eyebrow">Tres sucursales</p>
-        <h2 id="su-t" class="lm-h2 lm-h2--xl">La más <em>cerca</em> de ti.</h2>
-        <p class="lm-lead">Elige la tuya: cómo llegar, horario y WhatsApp directo.</p>
-      </div>
-      <nav class="su-tabs" aria-label="Sucursales"><a class="lm-chip" href="#suc-santa-anita">Santa Anita</a><a class="lm-chip" href="#suc-chicahuales">Chicahuales</a><a class="lm-chip" href="#suc-poniente">López Mateos</a></nav>
-      <div class="su-list">
-        <article class="su-card" id="suc-santa-anita" data-reveal>
-          <figure class="su-ph"><img src="img/foto/santa-anita-1200.webp" width="1200" height="900" sizes="(min-width: 900px) 40vw, 100vw" alt="Interior de Los Arroyo Santa Anita: dos pisos, mesas de madera y el logo en la pared" loading="lazy" decoding="async"><figcaption><span class="su-k">Matriz</span><span class="su-tag lm-d">Santa Anita</span></figcaption></figure>
-          <div class="su-body">
-            <address><b>Av. de la Convención de 1914 Ote. 704, Int. B</b>Santa Anita 1a. Sección, 20169 Ags.<small>Frente a la Prepa Benito Juárez.</small></address>
-            <dl class="su-dl"><div><dt>Horario</dt><dd>Viernes a domingo, 8 a 17 h</dd></div><div><dt>Teléfono</dt><dd><a href="tel:+524495542823">449 554 2823</a></dd></div><div><dt>Google</dt><dd><a href="https://maps.google.com/?cid=6109296599101266733" target="_blank" rel="noopener">4.4 ★ · 550 opiniones</a></dd></div><div><dt>Además</dt><dd>Estacionamiento en la calle</dd></div></dl>
-            <div class="su-map"><iframe title="Mapa de Los Arroyo Santa Anita" src="https://maps.google.com/maps?q=21.896096,-102.2787839&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-            <div class="su-acts">
-              <a class="lm-btn lm-btn--wa" data-wa="Hola, quiero hacer un pedido en Los Arroyo Santa Anita." href="https://wa.me/524495542823"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir aquí</a>
-              <a class="lm-btn lm-btn--line" href="https://www.google.com/maps/dir/?api=1&amp;destination=21.896096,-102.2787839" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
-            </div>
-          </div>
-        </article>
-        <article class="su-card" id="suc-chicahuales" data-reveal>
-          <figure class="su-ph"><img src="img/foto/chicahuales-1200.webp" width="1200" height="900" sizes="(min-width: 900px) 40vw, 100vw" alt="Fachada de Los Arroyo Chicahuales con la lona del logo y el horario de sábados y domingos" loading="lazy" decoding="async"><figcaption><span class="su-k">Jesús María</span><span class="su-tag lm-d">Chicahuales</span></figcaption></figure>
-          <div class="su-body">
-            <address><b>P.º de los Chicahuales 2830</b>Corral de Barrancos, Jesús María, 20900 Ags.<small>Jardín con juegos para niños.</small></address>
-            <dl class="su-dl"><div><dt>Horario</dt><dd>Sábado y domingo, 8 a 17 h</dd></div><div><dt>Teléfono</dt><dd><a href="tel:+524492310357">449 231 0357</a></dd></div><div><dt>Google</dt><dd><a href="https://maps.google.com/?cid=7405976511160360651" target="_blank" rel="noopener">4.4 ★ en Google</a></dd></div><div><dt>Además</dt><dd>Banquetes y servicio a domicilio</dd></div></dl>
-            <div class="su-map"><iframe title="Mapa de Los Arroyo Chicahuales" src="https://maps.google.com/maps?q=21.9448413,-102.3293762&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-            <div class="su-acts">
-              <a class="lm-btn lm-btn--wa" data-wa="Hola, quiero hacer un pedido en Los Arroyo Chicahuales." href="https://wa.me/524492310357"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir aquí</a>
-              <a class="lm-btn lm-btn--line" href="https://www.google.com/maps/dir/?api=1&amp;destination=21.9448413,-102.3293762" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
-            </div>
-          </div>
-        </article>
-        <article class="su-card" id="suc-poniente" data-reveal>
-          <figure class="su-ph"><img src="img/foto/poniente-1200.webp" width="1200" height="900" sizes="(min-width: 900px) 40vw, 100vw" alt="Fachada de Los Arroyo sobre Avenida López Mateos Poniente" loading="lazy" decoding="async"><figcaption><span class="su-k">Sucursal 3</span><span class="su-tag lm-d">López Mateos</span></figcaption></figure>
-          <div class="su-body">
-            <address><b>Av. Lic. Adolfo López Mateos Pte. 806</b>Circunvalación Poniente, 20210 Ags.</address>
-            <dl class="su-dl"><div><dt>Horario</dt><dd>Sábado, 8 a 17 h</dd></div><div><dt>Teléfono</dt><dd><a href="tel:+524492310357">449 231 0357</a></dd></div><div><dt>Google</dt><dd><a href="https://maps.google.com/?cid=14129299344472534702" target="_blank" rel="noopener">3.8 ★ en Google</a></dd></div><div><dt>Además</dt><dd>También en Rappi y Uber Eats</dd></div></dl>
-            <div class="su-map"><iframe title="Mapa de Los Arroyo López Mateos" src="https://maps.google.com/maps?q=21.8735497,-102.3130666&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-            <div class="su-acts">
-              <a class="lm-btn lm-btn--wa" data-wa="Hola, quiero hacer un pedido en Los Arroyo López Mateos." href="https://wa.me/524492310357"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir aquí</a>
-              <a class="lm-btn lm-btn--line" href="https://www.google.com/maps/dir/?api=1&amp;destination=21.8735497,-102.3130666" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="s-nos" id="nosotros" aria-labelledby="no-t">
-    <div class="k-wrap">
-      <div class="no-top">
-        <div class="no-txt">
-          <p class="lm-eyebrow">Quiénes somos</p>
-          <h2 id="no-t" class="lm-h2 lm-h2--xl no-t">Comida <em>artesanal,</em> de fin de semana.</h2>
-          <p class="lm-lead">Auténtica barbacoa de hoyo estilo Hidalgo, tortillas de maíz hechas a mano y salsas en molcajete. En Santa Anita, Chicahuales y López Mateos.</p>
+  <!-- Sábado en Los Arroyo: el trabajo de esta franja es cerrar la venta de fin de semana con fotos reales vivas + reseñas reales. Rotador: motor copiado de closetdoor/00-rotador.*, prefijo .sb-/#sabado. -->
+  <section class="s-sabado" id="sabado" aria-labelledby="sb-t">
+    <div class="k-wrap sb-grid">
+      <figure class="sb-fig" data-reveal>
+        <div class="sb-rot" data-rot="0">
+          <div class="sb-slot" data-rot-slot><img class="cd-rot-img" src="img/foto/salsas-1200.webp" width="1200" height="1500" alt="Salsas en molcajete, cebolla, cilantro y limón, Los Arroyo" loading="lazy" decoding="async"></div>
+          <div class="sb-slot" data-rot-slot><img class="cd-rot-img" src="img/foto/consome-tlacoyo-1600.webp" width="1200" height="1600" alt="Consomé de borrego y tlacoyo azul con salsas, Los Arroyo" loading="lazy" decoding="async"></div>
+          <div class="sb-slot" data-rot-slot><img class="cd-rot-img" src="img/foto/comedor-1600.webp" width="1600" height="1040" alt="Comedor de Los Arroyo Chicahuales con papel picado de colores" loading="lazy" decoding="async"></div>
+          <div class="sb-slot sb-slot--4" data-rot-slot><img class="cd-rot-img" src="img/foto/santa-anita-1200.webp" width="1200" height="900" alt="Interior de Los Arroyo Santa Anita con mesas de madera" loading="lazy" decoding="async"></div>
         </div>
-        <div class="no-num" aria-label="4.4 estrellas en Google, 550 opiniones en Santa Anita">
-          <span class="no-big" aria-hidden="true">4.4</span>
-          <span class="no-cap"><b>550 opiniones</b> en Google, sucursal Santa Anita</span>
-        </div>
-      </div>
+      </figure>
 
-      <p class="lm-eyebrow no-eb2">Lo que hemos servido</p>
-      <div class="no-col">
-        <figure class="no-a" data-reveal><img src="img/foto/salsas-1200.webp" width="1200" height="1500" sizes="(min-width: 900px) 42vw, 100vw" alt="Salsas en molcajete, cebolla, cilantro y limón sobre el mantel de rayas de Los Arroyo" loading="lazy" decoding="async"><figcaption>Salsas en molcajete</figcaption></figure>
-        <figure class="no-b" data-reveal data-reveal-delay="120"><img src="img/foto/comedor-1600.webp" width="1600" height="1040" sizes="(min-width: 900px) 50vw, 76vw" alt="Comedor de Los Arroyo Chicahuales con papel picado de colores" loading="lazy" decoding="async"><figcaption>Comedor en Chicahuales</figcaption></figure>
-        <blockquote class="no-q no-q1" data-reveal><p>"Las salsas muy ricas y no tan picantes, los tlacoyos son excepcionales."</p><cite>Juan F. Díaz de León, Google</cite></blockquote>
-      </div>
+      <div class="sb-copy">
+        <p class="lm-eyebrow">Sábado en Los Arroyo</p>
+        <h2 id="sb-t" class="lm-h2 sb-t">Tortillas a mano. <em>Barbacoa de hoyo.</em> Solo fin de semana.</h2>
+        <ul class="sb-lines">
+          <li>Barbacoa de borrego estilo Hidalgo.</li>
+          <li>Tortillas de maíz a mano, azul y blanca.</li>
+          <li>Cecina de Yecapixtla.</li>
+        </ul>
+        <a class="sb-rating" href="https://maps.google.com/?cid=6109296599101266733" target="_blank" rel="noopener">4.4 en Google, 550 opiniones<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
 
-      <ul class="no-rs" data-reveal-stagger>
-        <li><blockquote><p>"Riquísima la barbacoa, los tlacoyos, las flautas. En general la comida muy buena."</p><cite>Gabriela Godinez · Google, Santa Anita</cite></blockquote></li>
-        <li><blockquote><p>"Excelente servicio. Super atentos, rápidos y amables. La comida es deliciosa."</p><cite>Arturo Rosales · Local Guide, Santa Anita</cite></blockquote></li>
-        <li><blockquote><p>"Excelente atención y la barbacoa y quesadillas siempre exquisitas."</p><cite>Opinión destacada por Google · Santa Anita</cite></blockquote></li>
-      </ul>
-      <div class="no-acts">
-        <a class="lm-btn lm-btn--link" href="https://maps.google.com/?cid=6109296599101266733" target="_blank" rel="noopener">Ver las 550 opiniones en Google<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <ul class="sb-rs" data-reveal-stagger>
+          <li><blockquote><p>"Riquísima la barbacoa, los tlacoyos, las flautas."</p><cite>Gabriela Godinez · Google</cite></blockquote></li>
+          <li><blockquote><p>"Excelente servicio, super atentos, rápidos y amables."</p><cite>Arturo Rosales · Google</cite></blockquote></li>
+          <li><blockquote><p>"Las salsas muy ricas y no tan picantes, los tlacoyos son excepcionales."</p><cite>Juan F. Díaz de León · Google</cite></blockquote></li>
+        </ul>
+
+        <a class="lm-btn lm-btn--wa sb-go" href="#kilo"><svg aria-hidden="true"><use href="#i-wa"/></svg>Aparta tu kilo</a>
       </div>
     </div>
   </section>
@@ -670,12 +659,13 @@
 <a class="k-wa" data-wa="Hola, quiero hacer un pedido en Los Arroyo." href="https://wa.me/524495542823" aria-label="WhatsApp"></a>
 
 <script src="../_kit/kit.js?v=1789789887" defer></script>
-<script src="site.js?v=1789836312" defer></script>
+<script src="site.js?v=1789864471" defer></script>
 <script src="sections/10-hero.js?v=1789835906" defer></script>
-<script src="sections/15-kilo.js?v=1789835977" defer></script>
-<script src="sections/20-cine.js?v=1789836015" defer></script>
+<script src="sections/15-kilo.js?v=1789864495" defer></script>
 <script src="sections/25-menu.js?v=1789836069" defer></script>
-<script src="sections/26-pedido.js?v=1789836069" defer></script>
+<script src="sections/26-pedido.js?v=1789864548" defer></script>
+<script src="sections/30-sucursales.js?v=1789864444" defer></script>
 <script src="sections/40-banquetes.js?v=1789836110" defer></script>
+<script src="sections/60-sabado.js?v=1789864385" defer></script>
 </body>
 </html>

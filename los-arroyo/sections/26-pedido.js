@@ -49,7 +49,8 @@
     };
   })();
 
-  var S = { lines: [], note: '', mode: 'mesa', mesa: '', suc: 'santa-anita', hora: '', fecha: '', personas: '', ts: 0 };
+  var S = { lines: [], note: '', mode: 'mesa', mesa: '', suc: 'santa-anita', hora: '', fecha: '', personas: '', pago: 'efectivo', ts: 0 };
+  var PAGO = { efectivo: 'Efectivo al recoger', tarjeta: 'Tarjeta en línea' };
   var SUC = { 'santa-anita': 'Santa Anita', chicahuales: 'Chicahuales', poniente: 'López Mateos' };
   function sucName() { return SUC[S.suc] || 'Santa Anita'; }
   var subs = [], checkoutFns = [];
@@ -110,7 +111,7 @@
 
   /* ---------- DOM ---------- */
   var $ = function (s, r) { return (r || document).querySelector(s); };
-  var bar, mini, sheet, list, totalEl, waBtn, meseroBtn, err, mesero, lastFocus, sucFixed = false;
+  var bar, mini, sheet, list, totalEl, waBtn, payBtn, meseroBtn, err, mesero, lastFocus, sucFixed = false;
 
   function lineLabel(l) { return l.name + (l.opt ? ' (' + l.opt + ')' : ''); }
   function hhmm(d) { d = d || new Date(); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
@@ -123,6 +124,7 @@
     t += '\n';
     S.lines.forEach(function (l) { t += l.qty + ' x ' + lineLabel(l) + (l.price ? ' (' + money(l.price * l.qty) + ')' : ' (precio por confirmar)') + '\n'; });
     t += '\nTotal estimado: ' + money(total()) + (hasAsk() ? ' más lo que me confirmen' : '');
+    t += '\nPago: ' + (PAGO[S.pago] || PAGO.efectivo);
     if (S.note.trim()) t += '\nNota: ' + S.note.trim();
     t += '\n(Precios sujetos a cambio)';
     return t;
@@ -142,6 +144,12 @@
     mini.hidden = n === 0;
     mini.setAttribute('aria-label', 'Ver mi pedido: ' + n + (n === 1 ? ' producto' : ' productos'));
     sheet.querySelectorAll('input[name="lm-pd-suc"]').forEach(function (r) { r.checked = r.value === S.suc; });
+    sheet.querySelectorAll('input[name="lm-pd-pago"]').forEach(function (r) { r.checked = r.value === S.pago; });
+    if (payBtn) {
+      var showPay = S.pago === 'tarjeta' && window.LA_PAGO_LINK;
+      payBtn.hidden = !showPay;
+      if (showPay) payBtn.href = window.LA_PAGO_LINK;
+    }
     var sb = document.getElementById('lm-mm-mesa');
     if (sb && S.mode === 'mesa' && S.mesa && sucFixed) { sb.textContent = 'Mesa ' + S.mesa + ' · ' + sucName(); sb.hidden = false; }
     bar.setAttribute('aria-label', 'Ver mi pedido: ' + n + (n === 1 ? ' producto' : ' productos') + ', ' + money(tot));
@@ -242,7 +250,7 @@
     bar = $('#lm-pd-bar'); mini = $('#lm-pd-mini'); sheet = $('#lm-pd-sheet'); mesero = $('#lm-pd-mesero');
     if (!bar || !mini || !sheet || !mesero) return;
     list = $('.lm-pd-list', sheet); totalEl = $('.lm-pd-total b', sheet);
-    waBtn = $('#lm-pd-wa'); meseroBtn = $('#lm-pd-mesero-btn'); err = $('#lm-pd-err');
+    waBtn = $('#lm-pd-wa'); payBtn = $('#lm-pd-pagar'); meseroBtn = $('#lm-pd-mesero-btn'); err = $('#lm-pd-err');
     load();
 
     // ?suc=santa-anita|chicahuales|poniente fija la sucursal (el QR de cada mesa la trae); si no viene, se elige en la hoja
@@ -252,6 +260,9 @@
     if (sucF) sucF.hidden = sucFixed;
     sheet.querySelectorAll('input[name="lm-pd-suc"]').forEach(function (r) {
       r.addEventListener('change', function () { if (r.checked) { S.suc = r.value; emit(); } });
+    });
+    sheet.querySelectorAll('input[name="lm-pd-pago"]').forEach(function (r) {
+      r.addEventListener('change', function () { if (r.checked) { S.pago = r.value; emit(); } });
     });
 
     // ?mesa=N preselecciona la mesa y abre directo en el menú

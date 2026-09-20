@@ -5,10 +5,12 @@
      window.LM.openWa(msg, fallbackEl?)  abre WhatsApp; si el navegador lo bloquea cae a location.href
      window.LM.today()       0-6 (domingo = 0) en hora de Aguascalientes
      window.LM.mesa          número de mesa si la URL trae ?mesa=N (o null)
+     window.LA_PAGO_LINK     link de pago con tarjeta (vacío = botón "Pagar con tarjeta" oculto en 15-kilo y 26-pedido)
    [data-wa="mensaje"] en cualquier <a> arma su link solo. [data-hide-wa] esconde el WA flotante. */
 (function () {
   "use strict";
   var WA = "524495542823";
+  window.LA_PAGO_LINK = window.LA_PAGO_LINK || ""; // link de pago con tarjeta (Stripe/Mercado Pago); vacío = el botón "Pagar con tarjeta" queda oculto
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   function waUrl(msg) { return "https://wa.me/" + WA + (msg ? "?text=" + encodeURIComponent(msg) : ""); }
   function openWa(msg) {
@@ -107,7 +109,7 @@
         var el = e.target;
         setTimeout(function () { show(el); }, 1600);
       });
-    }, { rootMargin: "0px 0px -25% 0px" });
+    }, { rootMargin: "0px 0px 0px 0px" });
     Array.prototype.forEach.call(els, function (el) { io.observe(el); });
   }
 

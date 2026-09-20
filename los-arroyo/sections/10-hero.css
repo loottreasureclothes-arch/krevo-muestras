@@ -23,13 +23,8 @@
 #hero .hr-lead { font-size: 17px; line-height: 1.4; font-weight: 500; color: rgba(248, 238, 214, 0.94); max-width: 30ch; margin-bottom: 18px; }
 #hero .hr-acts { display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; }
 #hero .hr-acts .lm-btn { width: 100%; padding: 0 12px; }
-#hero .hr-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 20px; border-top: 1px solid rgba(248, 238, 214, 0.24); }
-#hero .hr-facts li { padding: 12px 6px 0 0; min-width: 0; }
-#hero .hr-facts li + li { padding-left: 10px; border-left: 1px solid rgba(248, 238, 214, 0.24); }
-#hero .hr-facts b { display: block; font-family: var(--font-display); font-stretch: 75%; font-variation-settings: "wdth" 75; font-weight: 800; font-size: 19px; white-space: nowrap; text-transform: uppercase; }
-#hero .hr-star { color: var(--gold); }
-#hero .hr-facts li > span { display: block; margin-top: 2px; font-size: 13px; line-height: 1.25; color: var(--cream-mute); }
-@media (max-height: 700px) and (max-width: 899px) { #hero .hr-t { font-size: clamp(44px, 12.5vw, 60px); } #hero .hr-facts { margin-top: 12px; } }
+#hero .hr-note { margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(248, 238, 214, 0.24); font-size: 14px; line-height: 1.4; font-weight: 600; color: var(--cream-mute); max-width: 34ch; }
+@media (max-height: 700px) and (max-width: 899px) { #hero .hr-t { font-size: clamp(44px, 12.5vw, 60px); } #hero .hr-note { margin-top: 12px; } }
 @media (min-width: 900px) {
   #hero { align-items: center; padding-bottom: 56px; }
   #hero .hr-media { left: 38%; }
@@ -46,11 +41,7 @@
   #hero .hr-lead { font-size: 21px; max-width: 32ch; }
   #hero .hr-acts { display: flex; gap: 12px; }
   #hero .hr-acts .lm-btn { width: auto; padding: 0 30px; min-height: 56px; }
-  #hero .hr-facts { max-width: 600px; margin-top: 40px; }
-  #hero .hr-facts b { font-size: 28px; }
-  #hero .hr-facts li > span { font-size: 15px; }
-  #hero .hr-facts li { padding-right: 18px; }
-  #hero .hr-facts li + li { padding-left: 22px; }
+  #hero .hr-note { margin-top: 40px; font-size: 16px; }
 }
 @media (min-width: 1700px) { #hero .hr-in { max-width: 1600px; } }
 /* entrada: título por renglón, línea, botones y datos (≤1.2 s). Blindaje: estado final es el CSS base */
@@ -62,7 +53,7 @@
   .lm-js #hero .hr-eb { animation: hr-in 600ms var(--ease-out) 60ms both; }
   .lm-js #hero .hr-lead { animation: hr-in 600ms var(--ease-out) 420ms both; }
   .lm-js #hero .hr-acts { animation: hr-in 600ms var(--ease-out) 520ms both; }
-  .lm-js #hero .hr-facts { animation: hr-in 600ms var(--ease-out) 620ms both; }
+  .lm-js #hero .hr-note { animation: hr-in 600ms var(--ease-out) 620ms both; }
 }
 
 /* Cuadritos: 4 accesos con dato real que abren una hoja con precios */

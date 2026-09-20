@@ -1,0 +1,60 @@
+/* 60 Sábado en Los Arroyo: collage vivo (rotador) + 3 datos reales + reseñas + un solo botón verde.
+   Motor de fotos copiado de closetdoor/sections/00-rotador.css, adaptado con prefijo #sabado / .sb-. */
+#sabado [data-rot-slot] { position: relative; overflow: hidden; }
+#sabado .cd-rot-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+#sabado .cd-rot-img.is-enter { z-index: 1; clip-path: inset(0 0 0 100%); transform: scale(1.08); }
+#sabado .cd-rot-img.is-enter.from-l { clip-path: inset(0 100% 0 0); }
+#sabado .cd-rot-img.is-enter.from-b { clip-path: inset(100% 0 0 0); }
+#sabado .cd-rot-img.is-go {
+  clip-path: inset(0 0 0 0); transform: scale(1);
+  transition: clip-path 620ms cubic-bezier(0.23, 1, 0.32, 1), transform 900ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+#sabado .cd-rot-img.is-leave { transform: scale(1.04); filter: brightness(0.86); transition: transform 700ms cubic-bezier(0.23, 1, 0.32, 1), filter 700ms ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  #sabado .cd-rot-img.is-enter, #sabado .cd-rot-img.is-go, #sabado .cd-rot-img.is-leave { clip-path: none; transform: none; filter: none; transition: none; }
+}
+
+/* ---------- Franja y grid ---------- */
+#sabado { padding-block: var(--sec-y); background: var(--paper); overflow: hidden; }
+#sabado .sb-grid { display: grid; gap: 32px; }
+
+/* ---------- Collage: 2x2 en celular, 3 franjas en compu ---------- */
+#sabado .sb-fig { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden; }
+#sabado .sb-rot {
+  position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 4px; aspect-ratio: 1 / 1; width: 100%; height: auto; background: var(--deep); border-radius: var(--radius); overflow: hidden;
+}
+#sabado .sb-slot { min-height: 0; background: var(--deep); }
+
+/* ---------- Texto ---------- */
+#sabado .sb-t { max-width: 13ch; margin: 0 0 18px; }
+#sabado .sb-lines { display: grid; gap: 6px; margin: 0 0 16px; padding: 0; list-style: none; }
+#sabado .sb-lines li { font-size: 16px; line-height: 1.35; color: var(--ink); }
+#sabado .sb-rating { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-weight: 700; font-size: 15px; color: var(--wine); text-decoration: none; -webkit-tap-highlight-color: transparent; }
+#sabado .sb-rating svg { width: 16px; height: 16px; transition: transform 240ms var(--ease-out); }
+#sabado .sb-rs { display: grid; gap: 0; margin: 0 0 26px; padding: 0; list-style: none; }
+#sabado .sb-rs li { padding: 14px 0; border-bottom: 1px dashed rgba(42, 12, 12, 0.26); }
+#sabado .sb-rs li:first-child { border-top: 1px solid var(--ink); }
+#sabado .sb-rs blockquote { margin: 0; }
+#sabado .sb-rs blockquote p { margin: 0; font-family: var(--font-display); font-stretch: 82%; font-variation-settings: "wdth" 82; font-weight: 700; font-size: 16px; line-height: 1.3; color: var(--ink); text-wrap: balance; }
+#sabado .sb-rs blockquote cite { display: block; margin-top: 6px; font-style: normal; font-size: 13px; color: var(--mute); }
+#sabado .sb-go { width: 100%; }
+@media (hover: hover) and (pointer: fine) {
+  #sabado .sb-rating:hover svg { transform: translateX(3px); }
+}
+
+@media (min-width: 900px) {
+  #sabado .sb-grid { grid-template-columns: 5fr 6fr; gap: 72px; align-items: center; }
+  #sabado .sb-fig { align-self: stretch; }
+  #sabado .sb-rot { grid-template-columns: 1fr; grid-template-rows: repeat(3, minmax(0, 1fr)); aspect-ratio: auto; height: 100%; min-height: 620px; gap: 5px; }
+  #sabado .sb-slot--4 { display: none; }
+  #sabado .sb-t { max-width: 15ch; }
+  #sabado .sb-lines li { font-size: 17px; }
+  #sabado .sb-rs { grid-template-columns: repeat(3, 1fr); column-gap: 28px; }
+  #sabado .sb-rs li { border-bottom: 0; padding: 0; }
+  #sabado .sb-rs li:first-child { border-top: 0; padding-top: 0; }
+  #sabado .sb-go { width: auto; padding: 0 30px; }
+}
