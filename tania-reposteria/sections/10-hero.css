@@ -1,6 +1,6 @@
 .tr-hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; background: var(--deep); }
 .tr-hero-media { position: absolute; inset: 0; }
-.tr-hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+.tr-hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; }
 /* El texto cae sobre el fondant BLANCO y el plato dorado: con el velo viejo (.18 / .32) el titular no se leia
    en compu y apenas en celular (revision externa, 20 sep). Ahora la mitad de abajo, donde va el texto, oscurece
    de verdad y el pastel sigue limpio arriba. */
@@ -23,13 +23,14 @@
 .tr-hero-cta .tr-btn--brand-ol { border-color: rgba(255,255,255,.7); color: #fff; }
 
 @media (min-width: 900px) {
-  /* Compu: el titular a la IZQUIERDA sobre fondo oscuro liso y la foto (apaisada, 1344x752, pastel al centro)
-     ocupa los dos tercios de la derecha, fundida con un degradado. Asi el titular se lee y el pastel no queda
-     debajo de las letras. */
-  .tr-hero-media { left: 30%; }
-  .tr-hero-media img { object-position: 50% 50%; }
-  .tr-hero-veil { background: linear-gradient(90deg, var(--deep) 0%, var(--deep) 30%, rgba(20,17,16,.72) 40%, rgba(20,17,16,.18) 58%, rgba(20,17,16,0) 100%), linear-gradient(180deg, rgba(20,17,16,.5) 0%, rgba(20,17,16,0) 20%, rgba(20,17,16,0) 70%, rgba(20,17,16,.85) 100%); }
+  /* Compu: la foto trae el tercio izquierdo libre (pared y madera) para el titular; va a sangre y alineada a la
+     derecha para que los seis pasteles nunca queden debajo de las letras. */
+  .tr-hero-media img { object-position: 100% 50%; }
+  .tr-hero-veil { background: linear-gradient(90deg, rgba(20,17,16,.82) 0%, rgba(20,17,16,.6) 30%, rgba(20,17,16,.08) 52%, rgba(20,17,16,0) 100%), linear-gradient(180deg, rgba(20,17,16,.5) 0%, rgba(20,17,16,0) 20%, rgba(20,17,16,0) 72%, rgba(20,17,16,.8) 100%); }
   .tr-hero-in { padding-bottom: 88px; }
   .tr-hero-h1 { font-size: clamp(58px, 6.4vw, 92px); }
   .tr-hero-lead { font-size: 17px; }
 }
+
+/* Etiqueta de imagen hecha con IA (regla de Emanuel: siempre a la vista). */
+.tr-hero-ia { position: absolute; z-index: 1; right: var(--k-gutter); bottom: 12px; margin: 0; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.72); }
