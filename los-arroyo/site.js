@@ -27,7 +27,33 @@
   }
   var mesa = null;
   try { var m = new URLSearchParams(location.search).get("mesa"); if (m && /^\d{1,3}$/.test(m)) mesa = parseInt(m, 10); } catch (e) {}
-  window.LM = { WA: WA, waUrl: waUrl, openWa: openWa, today: today, mesa: mesa };
+
+  /* Cortina guinda de cambio de capítulo (receta: catalogo-motion.md #15, closetdoor no la trae hecha).
+     Franja fija de body, ajena a cualquier sección con <img loading="lazy"> (nunca les tapa el clip-path).
+     Tapa y destapa en <=600ms, reversible: la usan 15-kilo.js (hero->kilo) y 60-sabado.js (sucursales->sábado). */
+  var curtainEl = null, curtainAnim = null;
+  function curtain() {
+    if (reduce || typeof document.body.animate !== "function") return;
+    if (!curtainEl) {
+      curtainEl = document.createElement("div");
+      curtainEl.className = "lm-curtain";
+      curtainEl.setAttribute("aria-hidden", "true");
+      document.body.appendChild(curtainEl);
+    }
+    if (curtainAnim) { try { curtainAnim.cancel(); } catch (e) {} }
+    curtainEl.style.clipPath = "inset(100% 0 0 0)";
+    curtainAnim = curtainEl.animate(
+      [
+        { clipPath: "inset(100% 0 0 0)", offset: 0, easing: "cubic-bezier(.65,0,.35,1)" },
+        { clipPath: "inset(0% 0 0 0)", offset: 0.47, easing: "cubic-bezier(.22,.61,.36,1)" },
+        { clipPath: "inset(0 0 100% 0)", offset: 1 }
+      ],
+      { duration: 600, fill: "forwards" }
+    );
+    curtainAnim.onfinish = function () { curtainEl.style.clipPath = "inset(100% 0 0 0)"; };
+  }
+
+  window.LM = { WA: WA, waUrl: waUrl, openWa: openWa, today: today, mesa: mesa, curtain: curtain };
 
   function initWa() {
     var links = document.querySelectorAll("[data-wa]");

@@ -6,10 +6,21 @@
 #kilo .ki-ph { position: relative; margin: 22px calc(var(--k-gutter) * -1) 0; aspect-ratio: 4 / 5; max-height: 62svh; overflow: hidden; background: var(--deep); }
 #kilo .ki-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
 #kilo .ki-ph figcaption {
-  position: absolute; left: var(--k-gutter); top: 16px; padding: 10px 14px; border-radius: 3px;
+  position: absolute; isolation: isolate; left: var(--k-gutter); top: 16px; padding: 10px 14px; border-radius: 3px;
   background: var(--deep); color: var(--cream); font-weight: 600; font-size: 15px; box-shadow: 0 10px 24px -12px rgba(20, 6, 5, 0.7);
 }
-#kilo .ki-ph figcaption b { font-family: var(--font-display); font-stretch: 70%; font-variation-settings: "wdth" 70; font-weight: 900; font-size: 30px; color: var(--gold); margin-right: 6px; vertical-align: -3px; }
+#kilo .ki-ph figcaption b { display: inline-block; font-family: var(--font-display); font-stretch: 70%; font-variation-settings: "wdth" 70; font-weight: 900; font-size: 30px; color: var(--gold); margin-right: 6px; vertical-align: -3px; transform-origin: 30% 70%; }
+/* Caidita del precio: receta de la cinta de closetdoor/sections/10-msi.js (cae y pega con rebote muestreado).
+   Blindaje: el reposo del CSS es el precio ya puesto; 15-kilo.js solo esconde con opacity bajo scripting +
+   sin prefers-reduced-motion, y siempre hay un timeout de rescate a 1.6 s. La caída/rebote la hace WAAPI (transform inline). */
+#kilo .ki-ph .ki-flash {
+  position: absolute; z-index: -1; inset: -12px; border-radius: 3px; pointer-events: none; opacity: 0;
+  background: radial-gradient(closest-side, rgba(135, 21, 23, 0.85), rgba(254, 231, 0, 0.22) 55%, transparent);
+}
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  #kilo.ki-js .ki-ph figcaption { opacity: 0; }
+}
+#kilo.ki-in .ki-ph figcaption { opacity: 1; }
 
 #kilo .ki-form {
   position: relative; display: grid; gap: 22px; margin-top: -64px; padding: 22px 16px 20px;

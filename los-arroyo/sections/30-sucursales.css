@@ -7,7 +7,7 @@
 #sucursales .su-list { display: grid; gap: 28px; }
 #sucursales .su-card { display: grid; background: var(--paper); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; scroll-margin-top: calc(var(--k-header-h) + 12px); }
 #sucursales .su-ph { position: relative; margin: 0; aspect-ratio: 4 / 3; max-height: 56svh; width: 100%; overflow: hidden; background: var(--deep); }
-#sucursales .su-ph img { width: 100%; height: 100%; object-fit: cover; }
+#sucursales .su-ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms cubic-bezier(.23, 1, .32, 1); }
 #sucursales .su-ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(20, 6, 5, 0.8), rgba(20, 6, 5, 0) 55%); }
 #sucursales .su-ph figcaption { position: absolute; z-index: 1; left: 16px; right: 16px; bottom: 10px; color: var(--cream); }
 #sucursales .su-k { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
@@ -27,6 +27,10 @@
 #sucursales .su-map { aspect-ratio: 16 / 9; border-radius: 3px; overflow: hidden; background: var(--paper-2); border: 1px solid var(--line); }
 #sucursales .su-map iframe { display: block; width: 100%; height: 100%; border: 0; }
 #sucursales .su-acts { margin-top: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  #sucursales .su-card:hover .su-ph img { transform: scale(1.04); }
+  #sucursales .su-card:hover .su-tag { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+}
 #sucursales .su-final { display: grid; margin-top: 32px; }
 #sucursales .su-final .lm-btn { width: 100%; }
 @media (min-width: 900px) {

@@ -57,7 +57,12 @@
 }
 
 /* Cuadritos: 4 accesos con dato real que abren una hoja con precios */
-#antojo { position: relative; background: var(--deep); color: var(--cream); padding: 6px 0 44px; }
+#antojo {
+  position: relative; background-color: var(--deep); color: var(--cream); padding: 6px 0 44px;
+  /* grano al 5% (receta de closetdoor/site.css .cd-wood/.cd-menu-panel) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.09' numOctaves='3' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0.12  0 0 0 0 0.06  0 0 0 0 0.02  0 0 0 1.1 -0.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 600px 600px;
+}
 #antojo::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 40px; background: linear-gradient(180deg, rgba(242, 228, 194, 0), var(--paper-2)); pointer-events: none; opacity: 0.18; }
 #antojo .cu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 #antojo .cu-tile {
@@ -81,6 +86,13 @@
   #antojo .cu-n { font-size: 36px; }
   #antojo .cu-d { font-size: 15px; }
 }
+
+/* Cuadritos escalonados: blindaje, el CSS base es el estado final visible; solo se esconde con
+   scripting activo y sin prefers-reduced-motion, con la clase que pone 10-hero.js */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  #antojo.cu-js .cu-tile { opacity: 0; transform: translateY(22px); transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out); transition-delay: calc(60ms + var(--i, 0) * 70ms); }
+}
+#antojo.cu-in .cu-tile, #antojo:not(.cu-js) .cu-tile { opacity: 1; transform: none; }
 
 /* Hoja (se mueve a <body> por JS) */
 .cu-sheet { position: fixed; inset: 0; z-index: 80; display: flex; align-items: flex-end; justify-content: center; }

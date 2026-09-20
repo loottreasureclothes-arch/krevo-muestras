@@ -109,3 +109,73 @@
   window.laKilo = { msg: msg };
   fillDias(); fillHoras(); paint(); paintPago();
 })();
+
+/* Caidita del precio "$740 el kilo para llevar": cae y pega con rebote muestreado, una vez, blindada.
+   Misma receta que la cinta de closetdoor/sections/10-msi.js (resorte amortiguado por keyframes:
+   amp * e^-decay*t * sin(turns*2*PI*t)), pero cayendo en vertical en vez de correr en horizontal. */
+(function () {
+  "use strict";
+  var sec = document.getElementById("kilo");
+  var tag = sec && sec.querySelector(".ki-ph figcaption");
+  var flash = tag && tag.querySelector(".ki-flash"); // elemento aparte: no compite por "opacity" con la caída de figcaption
+  var num = tag && tag.querySelector("b");
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!sec || !tag || reduce || !tag.animate || !("IntersectionObserver" in window)) return;
+  sec.classList.add("ki-js");
+
+  function spring(n, amp, turns, decay, fmt) {
+    var k = [];
+    for (var i = 0; i <= n; i++) {
+      var t = i / n, v = i === n ? 0 : amp * Math.exp(-decay * t) * Math.sin(turns * Math.PI * 2 * t);
+      k.push({ transform: fmt(v) });
+    }
+    return k;
+  }
+
+  var played = false;
+  function play() {
+    if (played) return; played = true;
+    var h = tag.getBoundingClientRect().height || 40, start = -(h + 24);
+    var ND = 14, NB = 20, total = ND + NB, frames = [], i, t, e, y;
+    for (i = 0; i <= ND; i++) { // caída: acelera como gravedad (ease-in), llega con velocidad
+      t = i / ND; e = t * t * t; y = start * (1 - e);
+      frames.push({ transform: "translateY(" + y.toFixed(2) + "px)", opacity: i === 0 ? 0 : 1, offset: i / total });
+    }
+    var bounce = spring(NB, 12, 1.6, 4.3, function (v) { return v; }); // rebote muestreado (resorte amortiguado), en px sobre el reposo
+    for (i = 1; i <= NB; i++) {
+      y = bounce[i - 1].transform; // spring() ya devuelve { transform: v } con v numérico
+      frames.push({ transform: "translateY(" + Number(y).toFixed(2) + "px)", opacity: 1, offset: (ND + i) / total });
+    }
+    sec.classList.add("ki-in");
+    tag.animate(frames, { duration: 1100, easing: "linear" });
+    if (flash) flash.animate(
+      [{ opacity: 0 }, { opacity: 0.9, offset: 0.5 }, { opacity: 0 }],
+      { duration: 620, delay: (ND / total) * 1100 - 30, easing: "cubic-bezier(.23,1,.32,1)" }
+    );
+    if (num) num.animate(
+      [{ transform: "scale(1)" }, { transform: "scale(1.32)", offset: 0.3 }, { transform: "scale(0.96)", offset: 0.62 }, { transform: "scale(1)" }],
+      { duration: 480, delay: (ND / total) * 1100 - 20, easing: "cubic-bezier(.23,1,.32,1)" }
+    );
+  }
+  var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { play(); io.disconnect(); } }, { threshold: 0.5 });
+  io.observe(tag);
+  /* blindaje: si el observer nunca dispara (o se traba), a los 1.6 s el precio queda puesto */
+  setTimeout(function () { sec.classList.add("ki-in"); }, 1600);
+})();
+
+/* Cortina guinda del hero a "Aparta tu kilo": dispara cada vez que #kilo cruza al asomar (reversible, no una sola vez). */
+(function () {
+  "use strict";
+  var sec = document.getElementById("kilo");
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!sec || reduce || !("IntersectionObserver" in window)) return;
+  var last = 0;
+  var io = new IntersectionObserver(function (es) {
+    if (!es[0].isIntersecting) return;
+    var now = Date.now();
+    if (now - last < 900) return;
+    last = now;
+    if (window.LM && typeof window.LM.curtain === "function") window.LM.curtain();
+  }, { threshold: 0 });
+  io.observe(sec);
+})();

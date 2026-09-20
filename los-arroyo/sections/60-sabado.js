@@ -121,3 +121,46 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
+
+/* Las 4 fotos del collage entran desde blur la primera vez que se ven (catalogo-motion.md #14).
+   Solo las fotos que ya están en el HTML al cargar; el rotador (arriba) trae su propio clip-path para los cambios. */
+(function () {
+  "use strict";
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var imgs = document.querySelectorAll("#sabado .sb-slot > img.cd-rot-img");
+  if (!imgs.length || reduce || !("IntersectionObserver" in window)) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      var img = e.target;
+      var run = function () {
+        if (!img.animate || !img.isConnected) return;
+        img.animate(
+          [{ filter: "blur(16px)", transform: "scale(1.06)", opacity: 0.6 }, { filter: "blur(0px)", transform: "scale(1)", opacity: 1 }],
+          { duration: 1100, easing: "cubic-bezier(.23,1,.32,1)" }
+        );
+      };
+      if (img.complete) { img.decode ? img.decode().then(run, run) : run(); }
+      else img.addEventListener("load", function () { img.decode ? img.decode().then(run, run) : run(); }, { once: true });
+    });
+  }, { threshold: 0.15 });
+  Array.prototype.forEach.call(imgs, function (im) { io.observe(im); });
+})();
+
+/* Cortina guinda de sucursales a "Sábado en Los Arroyo": dispara cada vez que #sabado cruza al asomar (reversible). */
+(function () {
+  "use strict";
+  var sec = document.getElementById("sabado");
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!sec || reduce || !("IntersectionObserver" in window)) return;
+  var last = 0;
+  var io = new IntersectionObserver(function (es) {
+    if (!es[0].isIntersecting) return;
+    var now = Date.now();
+    if (now - last < 900) return;
+    last = now;
+    if (window.LM && typeof window.LM.curtain === "function") window.LM.curtain();
+  }, { threshold: 0 });
+  io.observe(sec);
+})();

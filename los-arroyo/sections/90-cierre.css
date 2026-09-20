@@ -1,10 +1,13 @@
 /* 90 Cierre: el logo real a más del 60 % del ancho sobre la banda maíz + frase + CTA */
-#cierre { position: relative; padding: 72px 0 80px; text-align: center; color: var(--ink);
-  background: radial-gradient(80% 60% at 50% 20%, rgba(254, 231, 0, 0.22), transparent 70%), linear-gradient(180deg, var(--paper) 0, var(--paper-2) 80px, var(--paper-2) 100%); }
+/* 19 sep: Emanuel pidió el logo solo, sin fondo claro atrás: banda guinda oscura */
+#cierre { position: relative; padding: 72px 0 80px; text-align: center; color: var(--paper);
+  background: radial-gradient(80% 60% at 50% 18%, rgba(254, 231, 0, 0.12), transparent 70%), linear-gradient(180deg, #4a0b0d 0, var(--wine) 60%, #5a0e10 100%); }
+#cierre .cz-t { color: var(--paper); }
+#cierre .cz-t em { color: var(--gold); }
 #cierre .cz-in { display: grid; justify-items: center; gap: 22px; }
-#cierre .cz-logo { width: min(92%, 880px); height: auto; filter: drop-shadow(0 18px 24px rgba(42, 12, 12, 0.18)); }
+#cierre .cz-logo { width: min(92%, 880px); height: auto; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5)) drop-shadow(0 22px 30px rgba(0, 0, 0, 0.4)); }
 #cierre .cz-t { font-size: clamp(44px, 12.4vw, 120px); line-height: 0.9; max-width: 11ch; }
 #cierre .cz-acts { display: grid; justify-items: center; gap: 6px; width: 100%; }
 #cierre .cz-acts .lm-btn--wa { width: 100%; max-width: 360px; min-height: 56px; }
-#cierre .cz-acts .lm-btn--link { color: var(--wine); }
+#cierre .cz-acts .lm-btn--link { color: var(--paper); }
 @media (min-width: 900px) { #cierre { padding: 120px 0 128px; } #cierre .cz-acts { display: flex; justify-content: center; gap: 28px; } #cierre .cz-acts .lm-btn--wa { width: auto; padding: 0 36px; } }

@@ -13,7 +13,6 @@
     var src = (wide ? v.getAttribute("data-src-d") : v.getAttribute("data-src-m")) || "";
     if (!src || reduce || (c && (c.saveData || /(^|-)2g$/.test(c.effectiveType || "")))) { v.remove(); v = null; }
     else {
-      if (wide) v.poster = v.getAttribute("data-poster-d");
       v.src = src; v.preload = "metadata";
       var kill = function () { v.classList.remove("is-on"); try { v.pause(); } catch (e) {} v.remove(); };
       v.addEventListener("playing", function () { v.classList.add("is-on"); });
@@ -26,6 +25,18 @@
   }
   /* blindaje: a los 1.6 s el texto queda puesto pase lo que pase */
   setTimeout(function () { sec.getAnimations && sec.getAnimations({ subtree: true }).forEach(function (a) { try { a.finish(); } catch (e) {} }); }, 1600);
+
+  /* ---------- Cuadritos: entran escalonados al asomar #antojo (base CSS = visibles; blindaje 1.6 s) ---------- */
+  var antojo = document.getElementById("antojo");
+  if (antojo && !reduce && "IntersectionObserver" in window) {
+    var tiles = antojo.querySelectorAll(".cu-tile");
+    Array.prototype.forEach.call(tiles, function (t, i) { t.style.setProperty("--i", i); });
+    antojo.classList.add("cu-js");
+    var antojoIn = function () { antojo.classList.add("cu-in"); };
+    var ioAntojo = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { antojoIn(); ioAntojo.disconnect(); } }, { threshold: 0.25 });
+    ioAntojo.observe(antojo);
+    setTimeout(antojoIn, 1600);
+  }
 
   /* ---------- Hoja de los cuadritos ---------- */
   var D = {
