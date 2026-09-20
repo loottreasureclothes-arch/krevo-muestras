@@ -1,0 +1,61 @@
+/* 30 · Esto limpiamos: lista con foto circular por renglón + una foto grande que
+   cambia con crossfade al renglón activo/tocado (compu: sticky a la derecha, hover) */
+.s-limpiamos { padding: var(--sec-y) 0; }
+.s-limpiamos-grid {
+  display: grid; gap: 28px;
+  grid-template-columns: 1fr;
+  grid-template-areas: "eyebrow" "title" "foto" "list";
+}
+.s-limpiamos-eyebrow { grid-area: eyebrow; }
+.s-limpiamos-title { grid-area: title; color: var(--ink); margin: 0; }
+
+/* la foto grande: marco de jabón, cambia con crossfade (nunca la pasada del jalador: es otro
+   componente) */
+.s-limpiamos-foto { grid-area: foto; position: relative; aspect-ratio: 4 / 3; box-shadow: 0 16px 34px rgba(12, 36, 35, 0.16); }
+.s-limpiamos-foto img { width: 100%; height: 100%; object-fit: cover; transition: opacity 180ms var(--ease-out); }
+.s-limpiamos-foto.is-cambiando img { opacity: 0; }
+
+.s-limpiamos-list { grid-area: list; margin-top: 6px; border-top: 1px solid var(--line); }
+.s-limpiamos-row {
+  position: relative; width: 100%; display: flex; align-items: center; gap: 16px;
+  padding: 16px 4px; border-bottom: 1px solid var(--line); text-align: left;
+  filter: grayscale(45%) brightness(0.94); overflow: hidden;
+  transition: filter 260ms var(--ease-out), background 200ms var(--ease-out);
+}
+[data-ls-reveal-stagger].is-in .s-limpiamos-row { filter: none; transition-delay: calc(var(--i, 0) * 90ms); }
+.s-limpiamos-row::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(112deg, transparent 44%, rgba(255, 255, 255, 0.75) 50%, transparent 56%);
+  transform: translateX(-150%); opacity: 0;
+}
+[data-ls-reveal-stagger].is-in .s-limpiamos-row::before { animation: ls-shine 560ms var(--ease-out) 1 both; animation-delay: calc(var(--i, 0) * 90ms + 160ms); }
+.s-limpiamos-foto-mini { width: 64px; height: 64px; flex: none; border: 2px solid transparent; transition: border-color 200ms var(--ease-out); }
+.s-limpiamos-foto-mini img { width: 100%; height: 100%; object-fit: cover; }
+.s-limpiamos-row.is-activa .s-limpiamos-foto-mini { border-color: var(--brand); }
+.s-limpiamos-txt { font-family: var(--font-display); font-weight: 800; font-size: clamp(18px, 5vw, 24px); line-height: 1.08; letter-spacing: -0.01em; flex: 1; }
+/* en celular la flecha se queda puesta: el renglón avisa que se toca */
+.s-limpiamos-arrow { width: 20px; height: 20px; flex: none; color: var(--deep); opacity: 0.45; transform: none; transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); }
+.s-limpiamos-row:active .s-limpiamos-arrow { opacity: 1; transform: translateX(3px); }
+.s-limpiamos-row:active .s-limpiamos-txt, .s-limpiamos-row.is-activa .s-limpiamos-txt { color: var(--deep-2); }
+@media (hover: hover) and (pointer: fine) {
+  .s-limpiamos-arrow { opacity: 0; transform: translateX(-6px); }
+  .s-limpiamos-row:hover { background: rgba(15, 63, 61, 0.05); }
+  .s-limpiamos-row:hover .s-limpiamos-arrow, .s-limpiamos-row.is-activa .s-limpiamos-arrow { opacity: 1; transform: translateX(2px); }
+  .s-limpiamos-row:hover .s-limpiamos-txt { color: var(--deep-2); }
+}
+.s-limpiamos-row:active { background: rgba(15, 63, 61, 0.08); }
+
+@media (min-width: 900px) {
+  .s-limpiamos-grid {
+    grid-template-columns: 6fr 5fr; column-gap: 48px; align-items: start;
+    grid-template-areas: "eyebrow foto" "title foto" "list foto";
+  }
+  .s-limpiamos-foto { position: sticky; top: calc(var(--header-h) + 24px); aspect-ratio: 4 / 5; }
+  .s-limpiamos-row { padding: 22px 4px; gap: 22px; }
+  .s-limpiamos-txt { font-size: clamp(22px, 2.4vw, 28px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .s-limpiamos-row { filter: none !important; }
+  .s-limpiamos-row::before { display: none; }
+  .s-limpiamos-foto img { transition: none !important; }
+}

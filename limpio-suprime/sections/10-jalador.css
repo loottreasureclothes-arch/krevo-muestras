@@ -1,0 +1,19 @@
+/* 10 · Hero: la pasada del jalador (version hero, 1.1s al cargar) */
+.s-hero { position: relative; min-height: 100svh; overflow: hidden; }
+.s-hero-scene { position: absolute; inset: 0; z-index: 1; }
+.s-hero-scene img { object-position: center 38%; }
+/* el degradado oscuro SOLO abajo (para leer el titulo): arriba la foto queda limpia y luminosa */
+.s-hero-veil {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(to top, rgba(12, 36, 35, 0.9) 0%, rgba(12, 36, 35, 0.66) 20%, rgba(12, 36, 35, 0.26) 42%, rgba(12, 36, 35, 0.04) 60%, transparent 72%);
+}
+.s-hero-copy { position: relative; z-index: 3; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 56px; padding-top: calc(var(--header-h) + 24px); }
+.s-hero-title { color: var(--paper); margin-bottom: 16px; }
+.s-hero-sub { color: var(--mute-on-deep); max-width: 30ch; margin-bottom: 26px; }
+.s-hero-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.ls-replay { background: none; border: 0; }
+.ls-replay svg { transform: rotate(135deg); }
+@media (min-width: 900px) {
+  .s-hero-copy { padding-bottom: 88px; }
+  .s-hero-actions { flex-direction: row; align-items: center; gap: 22px; }
+}

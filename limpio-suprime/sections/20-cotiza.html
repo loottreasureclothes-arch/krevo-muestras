@@ -1,0 +1,101 @@
+  <section id="cotiza" class="s-cotiza" aria-labelledby="cq-title">
+    <div class="ls-wrap s-cotiza-grid">
+      <div class="s-cotiza-copy">
+        <span class="ls-eyebrow" data-ls-reveal><span class="ls-spark"></span>Cotiza en 3 toques</span>
+        <h2 class="ls-h2" id="cq-title" data-ls-drop>Arma tu limpieza.</h2>
+        <p class="ls-lead" data-ls-reveal>Elige tu espacio y los metros. Armamos tu mensaje para WhatsApp.</p>
+        <div class="s-cotiza-scene ls-scene ls-foto-jabon" data-ls-jalador="trigger" id="cq-scene">
+          <picture id="cq-pic">
+            <source media="(min-width: 720px)" srcset="img/fotos/sala-d.webp" id="cq-src-d">
+            <img src="img/fotos/sala-m.webp" alt="Casa: sala impecable, imagen ilustrativa" width="960" height="1200" loading="lazy" id="cq-img">
+          </picture>
+          <div class="ls-vaho" aria-hidden="true"></div>
+          <div class="ls-jalador" aria-hidden="true"><span class="ls-jalador-wet"></span><span class="ls-jalador-bar"></span><span class="ls-jalador-shine"></span></div>
+          <span class="ls-nota-ilustrativa">Imagen ilustrativa</span>
+        </div>
+      </div>
+
+      <div class="s-cotiza-card" data-ls-reveal>
+        <form id="cq-form" novalidate>
+          <fieldset class="cq-block">
+            <legend class="cq-q">¿Qué espacio es?</legend>
+            <div class="cq-espacios" id="cq-espacios">
+              <button type="button" class="ls-disc" data-tipo="Casa" aria-pressed="true">
+                <span class="ls-disc-face" style="background-image:url(img/fotos/sala-c.webp)"><span class="cq-check-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+                <span>Casa</span>
+              </button>
+              <button type="button" class="ls-disc" data-tipo="Empresa u oficina" aria-pressed="false">
+                <span class="ls-disc-face" style="background-image:url(img/fotos/oficina-c.webp)"><span class="cq-check-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+                <span>Empresa u oficina</span>
+              </button>
+              <button type="button" class="ls-disc" data-tipo="Local" aria-pressed="false">
+                <span class="ls-disc-face" style="background-image:url(img/fotos/local-c.webp)"><span class="cq-check-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+                <span>Local</span>
+              </button>
+              <button type="button" class="ls-disc" data-tipo="Otro" aria-pressed="false">
+                <span class="ls-disc-face" style="background-image:url(img/fotos/cocina-c.webp)"><span class="cq-check-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+                <span>Otro</span>
+              </button>
+            </div>
+            <label class="cq-field" id="cq-otro-wrap" hidden>
+              <span>¿Qué espacio es?</span>
+              <input type="text" id="cq-otro" placeholder="Cuéntanos qué espacio es" autocomplete="off">
+            </label>
+          </fieldset>
+
+          <fieldset class="cq-block">
+            <legend class="cq-q">¿Qué necesitas? <small>Opcional</small></legend>
+            <div class="cq-chips" id="cq-chips">
+              <button type="button" class="ls-chip" data-necesita="Limpieza" aria-pressed="false">Limpieza</button>
+              <button type="button" class="ls-chip" data-necesita="Personal de limpieza" aria-pressed="false">Personal de limpieza</button>
+              <button type="button" class="ls-chip" data-necesita="Mantenimiento" aria-pressed="false">Mantenimiento</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="cq-block">
+            <legend class="cq-q">¿Cuántos metros?</legend>
+            <div class="cq-m2-head">
+              <span class="cq-m2-num" id="cq-m2-val">100</span><span class="cq-m2-unit" id="cq-m2-unit">m² aprox.</span>
+            </div>
+            <div class="ls-floor" id="cq-floor" aria-hidden="true">
+              <div class="ls-floor-stage"><div class="ls-floor-grid" id="cq-floor-grid"></div></div>
+              <span class="ls-floor-spark" id="cq-floor-spark"></span>
+            </div>
+            <p class="cq-m2-pie" aria-hidden="true">Cada mosaico es de 10 m²</p>
+            <input type="range" min="20" max="1000" step="10" value="100" id="cq-m2" aria-label="Metros cuadrados aproximados" aria-valuetext="100 metros cuadrados">
+            <label class="cq-check">
+              <input type="checkbox" id="cq-nosabe">
+              <span>No sé los metros</span>
+            </label>
+            <label class="cq-field" id="cq-cuartos-wrap" hidden>
+              <span>¿Cuántos cuartos o áreas, aprox.?</span>
+              <input type="number" min="1" id="cq-cuartos" inputmode="numeric" placeholder="Ej. 4">
+            </label>
+          </fieldset>
+
+          <fieldset class="cq-block">
+            <legend class="cq-q">¿Cada cuándo?</legend>
+            <div class="cq-freq" id="cq-freq">
+              <button type="button" class="ls-disc ls-disc--freq" data-freq="Una vez" aria-pressed="true"><span class="ls-disc-face"><b>1</b><i>vez</i><span class="cq-check-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span>Una vez</span></button>
+              <button type="button" class="ls-disc ls-disc--freq" data-freq="Cada semana" aria-pressed="false"><span class="ls-disc-face"><b>7</b><i>días</i><span class="cq-check-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span>Cada semana</span></button>
+              <button type="button" class="ls-disc ls-disc--freq" data-freq="Cada 15 días" aria-pressed="false"><span class="ls-disc-face"><b>15</b><i>días</i><span class="cq-check-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span>Cada 15 días</span></button>
+              <button type="button" class="ls-disc ls-disc--freq" data-freq="Cada mes" aria-pressed="false"><span class="ls-disc-face"><b>30</b><i>días</i><span class="cq-check-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span>Cada mes</span></button>
+              <button type="button" class="ls-disc ls-disc--freq" data-freq="Personal fijo" aria-pressed="false"><span class="ls-disc-face"><b>fijo</b><i>de planta</i><span class="cq-check-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span><span>Personal fijo</span></button>
+            </div>
+            <p class="cq-month-pie" aria-hidden="true">Así se vería tu mes</p>
+            <div class="cq-month" id="cq-month" aria-hidden="true"></div>
+          </fieldset>
+
+          <fieldset class="cq-block">
+            <legend class="cq-q">Para afinar tu cotización <small>Opcional</small></legend>
+            <div class="cq-opt-fields">
+              <label class="cq-field"><span>¿Qué presupuesto traes?</span><input type="text" id="cq-presupuesto" inputmode="numeric" placeholder="Ej. 800"></label>
+              <label class="cq-field"><span>Colonia o zona</span><input type="text" id="cq-zona" placeholder="Ej. Jardines de la Concepción" autocomplete="address-level3"></label>
+            </div>
+          </fieldset>
+
+          <a class="ls-btn ls-btn--primary cq-send" id="cq-send" href="https://wa.me/524493989612?text=Hola%20Limpio%20Suprime%2C%20quiero%20cotizar%20una%20limpieza." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mandar por WhatsApp</a>
+        </form>
+      </div>
+    </div>
+  </section>

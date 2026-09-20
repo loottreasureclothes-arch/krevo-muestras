@@ -1,0 +1,8 @@
+/* 60 · ¿Lo dejamos limpio?: bookend, la pasada del jalador ligada al scroll (reversible) */
+.s-cierre { position: relative; min-height: 92svh; display: flex; align-items: center; overflow: hidden; }
+.s-cierre-scene { position: absolute; inset: 0; z-index: 0; }
+.s-cierre-scene img { object-position: center 55%; }
+.s-cierre-veil { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(11, 32, 30, 0.72) 0%, rgba(11, 32, 30, 0.42) 45%, rgba(11, 32, 30, 0.74) 100%); }
+.s-cierre-in { position: relative; z-index: 2; width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center; padding: 64px 0; }
+.s-cierre-title { color: var(--paper); max-width: 11ch; margin-bottom: 16px; }
+.s-cierre-resumen { color: var(--mute-on-deep); font-size: 15px; font-weight: 600; margin-bottom: 26px; max-width: 26ch; margin-inline: auto; text-wrap: balance; }

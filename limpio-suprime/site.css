@@ -1,0 +1,469 @@
+/* Limpio Suprime — hoja base (FUNDACIÓN). Autocontenido: no depende de ../_kit/.
+   Lenguaje de formas propio: BURBUJA Y BRILLO. Componente firma: LA PASADA DEL JALADOR.
+   =====================================================================
+   TOKENS
+     --paper #f1efe6 lino (fondo general) · --paper-2 tono lino un poco mas oscuro (bandas claras alternas)
+     --deep  #0f3f3d verde petroleo (hero y bandas) · --ink #0c2423 tinta (texto y footer)
+     --brand #f2d84b amarillo guante (SOLO detalles: destellos, filo del jalador, subrayados)
+     --wa #25d366 con texto --wa-ink oscuro
+   Tipografia: --font-display Gabarito 700/800/900 · --font-body Figtree
+   Radios: --radius 28px (fotos grandes, forma de jabon) · --radius-btn 16px (botones, redondeado NO pildora)
+   ===================================================================== */
+:root {
+  --paper: #f1efe6;
+  --paper-2: #e8e3d4;
+  --deep: #0f3f3d;
+  --deep-2: #0b302e;
+  --ink: #0c2423;
+  --mute: #4d615f;
+  --mute-on-deep: rgba(241, 239, 230, 0.72);
+  --line: rgba(12, 36, 35, 0.14);
+  --line-deep: rgba(241, 239, 230, 0.18);
+  --brand: #f2d84b;
+  --brand-ink: #4a3c05;
+  --wa: #25d366;
+  --wa-dark: #1ebe5b;
+  --wa-ink: #0b3d1f;
+  --font-display: "Gabarito", "Arial Black", sans-serif;
+  --font-body: "Figtree", system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drop: cubic-bezier(0.32, 0.94, 0.6, 1);
+  --radius: 28px;
+  --radius-sm: 16px;
+  --radius-btn: 16px;
+  --sec-y: 72px;
+  --sec-y-sm: 52px;
+  --wrap: 1240px;
+  --gutter: 20px;
+  --header-h: 64px;
+}
+@media (min-width: 900px) {
+  :root { --sec-y: 116px; --sec-y-sm: 80px; --gutter: 40px; --header-h: 76px; }
+}
+
+/* ============ Reset moderno (autocontenido) ============ */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-padding-top: var(--header-h);
+  overflow-x: clip;
+  accent-color: var(--deep);
+  caret-color: var(--deep);
+}
+html { scroll-behavior: auto !important; } /* JS hace scroll suave; nunca CSS (rompe medicion de scroll) */
+body {
+  min-height: 100svh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 800; line-height: 0.98; letter-spacing: -0.01em; text-wrap: balance; overflow-wrap: break-word; }
+p { text-wrap: pretty; overflow-wrap: break-word; max-width: 60ch; }
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+img, video { height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+input, textarea, select { font-size: max(16px, 1em); }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; text-underline-offset: 0.2em; }
+a, button, [role="button"], label, summary { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+:where(ul[class], ol[class]) { list-style: none; padding: 0; }
+[hidden] { display: none !important; } /* el atributo hidden siempre gana, aunque una clase ponga display:grid/flex */
+:focus-visible { outline: 2px solid var(--deep); outline-offset: 3px; border-radius: 6px; }
+.ls-menu :focus-visible, .ls-foot :focus-visible, [data-hero-dark] :focus-visible { outline-color: var(--brand); }
+::selection { background: var(--deep); color: var(--paper); }
+
+.ls-wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.ls-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; border-radius: var(--radius-btn); background: var(--ink); color: var(--paper); font-weight: 700; transform: translateY(-160%); transition: transform 200ms var(--ease-out); }
+.ls-skip:focus { transform: none; }
+
+/* ============ Tipografia ============ */
+.ls-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); margin-bottom: 12px; }
+[data-hero-dark] .ls-eyebrow, .ls-deep .ls-eyebrow { color: var(--mute-on-deep); }
+.ls-h1 { font-size: clamp(40px, 11.5vw, 92px); }
+.ls-h2 { font-size: clamp(34px, 9.5vw, 64px); }
+.ls-lead { color: var(--mute); font-size: 17px; line-height: 1.45; max-width: 36ch; }
+.ls-deep .ls-lead, [data-hero-dark] .ls-lead { color: var(--mute-on-deep); }
+@media (min-width: 900px) { .ls-lead { font-size: 19px; } }
+
+/* ============ Títulos que caen y pegan (regla de toda la página) ============
+   [data-ls-drop] envuelve cada palabra en .ls-drop-w > span. Estado final (sin JS) = visible.
+   Con JS: cae 40px por palabra y pega; al aterrizar, un brillo diagonal cruza el título una vez. */
+html.js [data-ls-drop] { position: relative; overflow: hidden; } /* contiene el brillo (::after) para que no infle document.body.scrollWidth */
+html.js [data-ls-drop] .ls-drop-w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+html.js [data-ls-drop] .ls-drop-w > span {
+  display: inline-block;
+  transform: translateY(-42px);
+  opacity: 0;
+  transition: transform 420ms var(--ease-drop), opacity 220ms linear;
+  transition-delay: calc(var(--i, 0) * 70ms);
+  will-change: transform;
+}
+html.js [data-ls-drop].is-in .ls-drop-w > span { transform: none; opacity: 1; }
+html.js [data-ls-drop]::after {
+  content: ""; position: absolute; inset: -14% -25%; z-index: 1; pointer-events: none;
+  background: linear-gradient(115deg, transparent 42%, rgba(242, 216, 75, 0.65) 50%, transparent 58%);
+  transform: translateX(-140%); opacity: 0;
+}
+html.js [data-ls-drop].is-in::after { animation: ls-shine 620ms var(--drop-shine-delay, 480ms) var(--ease-out) 1 both; }
+@keyframes ls-shine { from { transform: translateX(-140%); opacity: 1; } to { transform: translateX(140%); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-ls-drop] .ls-drop-w > span { transition: none !important; transform: none !important; opacity: 1 !important; }
+  html.js [data-ls-drop]::after { animation: none !important; }
+}
+
+/* ============ Reveal genérico (bloques que no son título) ============
+   Blindaje anti-blanco: sin JS, todo visible. Con JS, se esconde y el motor (site.js)
+   lo muestra por IntersectionObserver Y por un tope duro de 1.6s pase lo que pase. */
+html.js [data-ls-reveal] { opacity: 0; transform: translateY(22px); transition: opacity 640ms var(--ease-out), transform 640ms var(--ease-out); }
+html.js [data-ls-reveal].is-in { opacity: 1; transform: none; }
+html.js [data-ls-reveal-stagger] > * { opacity: 0; transform: translateY(22px); transition: opacity 560ms var(--ease-out), transform 560ms var(--ease-out); transition-delay: calc(var(--i, 0) * 80ms); }
+html.js [data-ls-reveal-stagger].is-in > * { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-ls-reveal], html.js [data-ls-reveal-stagger] > * { transition: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* ============ Burbuja y brillo: divisor propio ============ */
+.ls-divider { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 auto; padding: 0; }
+.ls-divider i { display: block; border-radius: 50%; background: var(--brand); }
+.ls-divider i:nth-child(1) { width: 7px; height: 7px; opacity: 0.55; }
+.ls-divider i:nth-child(2) { width: 13px; height: 13px; }
+.ls-divider i:nth-child(3) { width: 7px; height: 7px; opacity: 0.55; }
+.ls-spark { position: relative; display: inline-block; width: 14px; height: 14px; flex: none; }
+.ls-spark::before, .ls-spark::after { content: ""; position: absolute; inset: 0; background: var(--brand); }
+.ls-spark::before { clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%); }
+.ls-spark::after { clip-path: polygon(50% 20%, 56% 44%, 80% 50%, 56% 56%, 50% 80%, 44% 56%, 20% 50%, 44% 44%); background: var(--paper); opacity: 0.35; }
+
+/* ============ Botones ============ */
+.ls-btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 26px; border-radius: var(--radius-btn);
+  border: 1.5px solid transparent; font-weight: 700; font-size: 16px; line-height: 1;
+  white-space: nowrap; cursor: pointer; user-select: none; text-decoration: none;
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.ls-btn svg { width: 20px; height: 20px; flex: none; }
+.ls-btn:active { transform: scale(0.97); }
+.ls-btn--primary { background: var(--wa); border-color: var(--wa); color: var(--wa-ink); box-shadow: 0 2px 0 rgba(11, 61, 31, 0.28); }
+.ls-btn--primary:active { background: var(--wa-dark); }
+@media (hover: hover) and (pointer: fine) { .ls-btn--primary:hover { background: var(--wa-dark); box-shadow: 0 4px 14px rgba(11, 61, 31, 0.3); } }
+.ls-btn--ghost { background: transparent; border-color: currentColor; color: inherit; }
+@media (hover: hover) and (pointer: fine) { .ls-btn--ghost:hover { background: rgba(255, 255, 255, 0.08); } }
+.ls-btn--link { min-height: 44px; padding: 0; border: 0; border-radius: 0; background: none; color: inherit; gap: 8px; font-weight: 700;
+  background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 100% 1.5px; background-position: 0 calc(100% - 8px); }
+.ls-btn--link svg { width: 18px; height: 18px; color: var(--deep); transition: transform 240ms var(--ease-out); }
+.ls-deep .ls-btn--link svg, [data-hero-dark] .ls-btn--link svg, .ls-foot .ls-btn--link svg { color: var(--brand); }
+@media (hover: hover) and (pointer: fine) { .ls-btn--link:hover svg { transform: translateX(4px); } }
+
+/* ============ Header: barra de vidrio que se esconde (bajar) o se hace compacta (subir) ============
+   3 estados en <header id="ls-header">: arriba (sin clase) = barra completa fija;
+   .is-hidden = TODO el header se esconde arriba (se bajó, no está arriba del todo);
+   .is-compact = se subió >8px: la barra completa se apaga y aparece una barra compacta de 56px
+   a todo lo ancho (vidrio esmerilado) con las burbujas LS/menú adentro, a los lados.
+   Con el menú abierto el header nunca se esconde (lo cubre el menú, z-index 70 > 60 de todos modos). */
+.ls-header { position: fixed; inset: 0 0 auto 0; z-index: 60; height: calc(var(--header-h) + env(safe-area-inset-top)); pointer-events: none; transition: transform 220ms var(--ease-out); }
+.ls-header.is-hidden { transform: translateY(-100%); }
+body.ls-menu-open .ls-header { transform: none; }
+.ls-bar {
+  /* pointer-events:none en la barra: solo sus controles reales (abajo) lo reactivan, para que
+     el hueco vacio del medio (mucho en celular, sin nav) nunca tape lo que hay detras */
+  position: absolute; inset: 0; pointer-events: none; visibility: visible; overflow: hidden;
+  display: flex; align-items: center; gap: 18px;
+  padding: env(safe-area-inset-top) max(var(--gutter), env(safe-area-inset-right)) 0 max(var(--gutter), env(safe-area-inset-left));
+  background: rgba(241, 239, 230, 0.62);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 0 rgba(12, 36, 35, 0.06);
+  color: var(--ink);
+  transition: opacity 200ms var(--ease-out), visibility 0s linear 0s;
+}
+.ls-bar::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  background: linear-gradient(115deg, transparent 42%, rgba(255, 255, 255, 0.55) 50%, transparent 58%);
+  transform: translateX(-130%);
+}
+html.js .ls-bar::after { animation: ls-shine 900ms 500ms var(--ease-out) 1 both; }
+.ls-header.is-compact .ls-bar { opacity: 0; pointer-events: none; visibility: hidden; transition: opacity 200ms var(--ease-out), visibility 0s linear 200ms; }
+.ls-brand { pointer-events: auto; display: inline-flex; align-items: center; min-height: 44px; gap: 8px; margin-right: auto; font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; white-space: nowrap; }
+.ls-nav { display: none; }
+@media (min-width: 900px) {
+  .ls-nav { pointer-events: auto; display: flex; align-items: center; gap: 30px; position: absolute; left: 50%; top: 0; bottom: 0; transform: translateX(-50%); }
+  .ls-nav a { position: relative; display: inline-flex; align-items: center; height: 100%; font-weight: 600; font-size: 0.95rem; opacity: 0.85; transition: opacity 200ms var(--ease-out); }
+  .ls-nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 22px; height: 2px; background: var(--brand); transform: scaleX(0); transition: transform 260ms var(--ease-out); }
+}
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) { .ls-nav a:hover { opacity: 1; } .ls-nav a:hover::after { transform: scaleX(1); } }
+.ls-acts { pointer-events: auto; display: flex; align-items: center; gap: 10px; flex: none; }
+.ls-circle {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--wa); color: var(--wa-ink);
+  transition: transform 160ms var(--ease-out), box-shadow 200ms var(--ease-out);
+  box-shadow: 0 2px 8px rgba(11, 61, 31, 0.25);
+}
+.ls-circle:active { transform: scale(0.94); }
+.ls-circle svg { width: 22px; height: 22px; }
+.ls-menu-toggle { background: var(--ink); color: var(--paper); box-shadow: none; }
+.ls-burger { position: relative; width: 16px; height: 10px; }
+.ls-burger i { position: absolute; left: 0; right: 0; height: 1.8px; border-radius: 2px; background: currentColor; transition: transform 320ms var(--ease-out), top 320ms var(--ease-out), opacity 200ms; }
+.ls-burger i:first-child { top: 1px; }
+.ls-burger i:last-child { top: 7px; }
+body.ls-menu-open .ls-burger i:first-child { top: 4px; transform: rotate(45deg); }
+body.ls-menu-open .ls-burger i:last-child { top: 4px; transform: rotate(-45deg); }
+
+/* Barra compacta (aparece al subir >8px; la barra completa se apaga): vidrio esmerilado de
+   56px a todo lo ancho con la burbuja LS a la izquierda y la del menú a la derecha, para que
+   el contenido pase por debajo del vidrio y ninguna burbuja quede suelta encima de un botón. */
+.ls-bar-compact {
+  position: absolute; left: 0; right: 0; top: env(safe-area-inset-top); height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 max(var(--gutter), env(safe-area-inset-right)) 0 max(var(--gutter), env(safe-area-inset-left));
+  background: rgba(241, 239, 230, 0.82);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  backdrop-filter: blur(18px) saturate(1.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 4px 16px rgba(12, 36, 35, 0.14);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 200ms var(--ease-out), visibility 0s linear 200ms;
+}
+/* pointer-events se queda en none incluso activa: SOLO las burbujas (abajo) lo reactivan, para
+   que el hueco vacio del medio de la barra compacta nunca tape un renglon que pasa por debajo */
+.ls-header.is-compact .ls-bar-compact { opacity: 1; visibility: visible; transition: opacity 200ms var(--ease-out), visibility 0s linear 0s; }
+.ls-bubble {
+  pointer-events: auto;
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--deep); color: var(--paper);
+  font-family: var(--font-display); font-weight: 800; font-size: 14px;
+  box-shadow: 0 2px 8px rgba(12, 36, 35, 0.25);
+  transition: transform 160ms var(--ease-out);
+}
+.ls-bubble--menu { background: var(--ink); }
+.ls-bubble:active { transform: scale(0.92); }
+@media (prefers-reduced-motion: reduce) { .ls-header, .ls-bar, .ls-bar-compact, .ls-bubble, .ls-bar::after { transition: none !important; animation: none !important; } }
+
+/* ============ Menú a pantalla completa (verde petróleo) ============ */
+.ls-menu { position: fixed; inset: 0; z-index: 70; visibility: hidden; transition: visibility 0s linear 420ms; }
+body.ls-menu-open .ls-menu { visibility: visible; transition: visibility 0s; }
+.ls-menu-scrim { position: absolute; inset: 0; background: rgba(6, 18, 17, 0.4); opacity: 0; transition: opacity 320ms var(--ease-out); }
+body.ls-menu-open .ls-menu-scrim { opacity: 1; }
+.ls-menu-panel {
+  position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain;
+  display: flex; flex-direction: column; gap: 30px;
+  padding: calc(84px + env(safe-area-inset-top)) var(--gutter) calc(28px + env(safe-area-inset-bottom));
+  background: var(--deep); color: var(--paper);
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 460ms var(--ease-in-out);
+}
+body.ls-menu-open .ls-menu-panel { clip-path: inset(0 0 0 0); }
+.ls-menu-close { position: absolute; top: calc(16px + env(safe-area-inset-top)); right: var(--gutter); background: var(--ink); color: var(--paper); }
+.ls-menu-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; color: var(--paper); opacity: 0; transform: translateY(10px); transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); }
+body.ls-menu-open .ls-menu-brand { opacity: 1; transform: none; transition-delay: 120ms; }
+/* margin-block:auto reparte el hueco arriba/abajo del bloque de links (antes se quedaba todo
+   junto entre "Personal" y el pie); junto con letras un poco mas grandes, el panel se lee lleno. */
+.ls-menu-nav { display: grid; gap: 4px; margin-block: auto; }
+.ls-menu-nav > a { display: flex; align-items: center; min-height: 50px; font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 11vw, 56px); border-bottom: 1px solid var(--line-deep); opacity: 0; transform: translateY(14px); transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); }
+body.ls-menu-open .ls-menu-nav > a, body.ls-menu-open .ls-menu-group { opacity: 1 !important; transform: none !important; transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out); transition-delay: calc(140ms + var(--i, 0) * 60ms); }
+.ls-menu-group { opacity: 0; transform: translateY(14px); transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); }
+.ls-menu-parent { display: flex; align-items: center; min-height: 50px; font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 11vw, 56px); border-bottom: 0; }
+.ls-menu-sub { list-style: none; margin: 0; padding: 4px 0 14px; display: grid; gap: 2px; border-bottom: 1px solid var(--line-deep); }
+.ls-menu-sub button { display: flex; align-items: center; gap: 10px; min-height: 46px; text-align: left; font-family: var(--font-body); font-weight: 600; font-size: 16px; color: var(--mute-on-deep); }
+.ls-menu-sub button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--brand); flex: none; transition: transform 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .ls-menu-sub button:hover { color: var(--paper); } .ls-menu-sub button:hover::before { transform: scale(1.3); } }
+.ls-menu-foot { margin-top: auto; display: grid; gap: 14px; }
+.ls-menu-line { display: block; height: 1px; background: var(--line-deep); }
+.ls-menu-foot .ls-btn { width: fit-content; }
+.ls-menu-foot p { color: var(--mute-on-deep); font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { .ls-menu-panel, .ls-menu-nav > a, .ls-menu-group, .ls-menu-scrim { transition: none !important; } }
+@media (min-width: 900px) {
+  .ls-menu-nav > a, .ls-menu-parent { font-size: 44px; }
+  .ls-menu-panel { max-width: 640px; }
+}
+
+/* ============ WhatsApp flotante ============ */
+.ls-wa-float {
+  position: fixed; z-index: 55; right: calc(18px + env(safe-area-inset-right)); bottom: calc(18px + env(safe-area-inset-bottom));
+  width: 56px; height: 56px; display: grid; place-items: center; border-radius: 50%;
+  background: var(--wa); color: var(--wa-ink);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22), 0 1px 3px rgba(0, 0, 0, 0.14);
+  animation: ls-wa-in 700ms var(--ease-out) 1.1s both;
+  transition: transform 160ms var(--ease-out), box-shadow 200ms var(--ease-out), opacity 200ms var(--ease-out), visibility 0s;
+}
+.ls-wa-float svg { width: 30px; height: 30px; }
+.ls-wa-float:active { transform: scale(0.94); }
+@media (hover: hover) and (pointer: fine) { .ls-wa-float:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.24); } }
+@keyframes ls-wa-in { from { opacity: 0; transform: translateY(16px) scale(0.9); } to { opacity: 1; transform: none; } }
+body.ls-menu-open .ls-wa-float { visibility: hidden; animation: none; opacity: 0; }
+/* se esconde mientras hay un boton verde de seccion o el footer a la vista, para no tapar nada.
+   animation:none es necesario: si no, la animacion de entrada (fill-mode both) sigue "rellenando"
+   opacity:1 y gana sobre esta regla aunque tenga la clase (mismo caso que ls-menu-open arriba). */
+.ls-wa-float.is-hidden-by-btn { opacity: 0; animation: none; transform: translateY(10px) scale(0.8); pointer-events: none; transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out); }
+@media (prefers-reduced-motion: reduce) { .ls-wa-float { animation: none; transition: none !important; } }
+
+/* ============ Fotos: marcos propios (jabón y círculo) ============ */
+.ls-foto-jabon { border-radius: var(--radius); overflow: hidden; position: relative; }
+.ls-foto-circulo { border-radius: 50%; overflow: hidden; position: relative; flex: none; }
+.ls-nota-ilustrativa {
+  position: absolute; z-index: 3; bottom: 10px; right: 10px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.02em; color: #fff;
+  background: rgba(12, 36, 35, 0.62); padding: 4px 9px; border-radius: 4px;
+}
+/* en las fotos a sangre la esquina de abajo es del WhatsApp flotante: la etiqueta sube */
+#hero .ls-nota-ilustrativa, #cierre .ls-nota-ilustrativa, #personal .ls-nota-ilustrativa { bottom: calc(86px + env(safe-area-inset-bottom)); }
+/* celular: en Personal el botón verde vive abajo; la etiqueta sube a la esquina de arriba para no partirse */
+@media (max-width: 899px) { #personal .ls-nota-ilustrativa { top: calc(var(--header-h) + 12px); bottom: auto; } }
+.ls-foto-circulo .ls-nota-ilustrativa { position: static; margin-top: 6px; background: none; color: var(--mute); padding: 0; font-size: 10px; text-align: center; }
+
+/* ============ LA PASADA DEL JALADOR (componente firma) ============
+   .ls-scene contiene la foto + .ls-vaho (vidrio empañado y enjabonado, se recorta) + .ls-jalador
+   (barra fisica que cruza). Se recorta la CAPA, nunca la <img>.
+   .is-safe NO es el estado final normal: es el RESCATE que site.js pone solo si la pasada no
+   arranco o no llego al final. Una escena que todavia no se usa se queda empañada, lista. */
+.ls-scene { position: relative; overflow: hidden; isolation: isolate; contain: paint; }
+.ls-scene picture, .ls-scene img { width: 100%; height: 100%; object-fit: cover; }
+/* la foto termina NITIDA y luminosa: el empujoncito de luz entra cuando el jalador acaba */
+.ls-scene img { transition: filter 560ms var(--ease-out); }
+.ls-scene.is-done img, .ls-scene.is-safe img { filter: saturate(1.06) contrast(1.04) brightness(1.03); }
+
+/* --- el vaho: vidrio empañado Y enjabonado (velo lechoso + gotas + escurridos) --- */
+.ls-vaho {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden;
+  -webkit-backdrop-filter: blur(30px) saturate(0.34) brightness(1.05);
+  backdrop-filter: blur(30px) saturate(0.34) brightness(1.05);
+  background:
+    radial-gradient(circle at 18% 26%, rgba(255, 255, 255, 0.5) 0 5.5%, rgba(255, 255, 255, 0.12) 7%, transparent 8%),
+    radial-gradient(circle at 58% 62%, rgba(255, 255, 255, 0.44) 0 7%, rgba(255, 255, 255, 0.1) 8.5%, transparent 9.5%),
+    radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.4) 0 4.5%, transparent 6%),
+    radial-gradient(circle at 32% 82%, rgba(255, 255, 255, 0.42) 0 6%, transparent 7.5%),
+    radial-gradient(circle at 88% 72%, rgba(255, 255, 255, 0.38) 0 4.5%, transparent 6%),
+    radial-gradient(circle at 8% 58%, rgba(255, 255, 255, 0.34) 0 4%, transparent 5.5%),
+    radial-gradient(circle at 46% 38%, rgba(255, 255, 255, 0.3) 0 3%, transparent 4.5%),
+    radial-gradient(circle at 70% 90%, rgba(255, 255, 255, 0.3) 0 3.5%, transparent 5%),
+    linear-gradient(rgba(206, 212, 201, 0.28), rgba(206, 212, 201, 0.28)),
+    linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4));
+  clip-path: inset(0 0 0 calc(var(--ls-p, 0) * 100%));
+  transition: opacity 260ms linear;
+}
+/* escurridos: rayas verticales de jabon que bajan y se pierden */
+.ls-vaho::before {
+  content: ""; position: absolute; inset: -2% -2% 0;
+  background:
+    radial-gradient(ellipse 62% 32% at 22% 28%, rgba(255, 255, 255, 0.2), transparent 72%),
+    radial-gradient(ellipse 48% 38% at 74% 62%, rgba(255, 255, 255, 0.18), transparent 72%),
+    repeating-linear-gradient(93deg, rgba(255, 255, 255, 0.42) 0 3px, rgba(255, 255, 255, 0.1) 3px 9px, transparent 9px 34px),
+    repeating-linear-gradient(88deg, rgba(255, 255, 255, 0.28) 0 2px, transparent 2px 61px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.45) 58%, transparent 92%);
+  mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.45) 58%, transparent 92%);
+}
+/* gotas gordas con cola (las que de verdad escurren) */
+.ls-vaho::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 9px 30px at 26% 34%, rgba(255, 255, 255, 0.5), transparent 72%),
+    radial-gradient(ellipse 7px 24px at 63% 20%, rgba(255, 255, 255, 0.46), transparent 72%),
+    radial-gradient(ellipse 11px 38px at 41% 68%, rgba(255, 255, 255, 0.42), transparent 74%),
+    radial-gradient(ellipse 6px 22px at 78% 52%, rgba(255, 255, 255, 0.4), transparent 72%),
+    radial-gradient(ellipse 8px 26px at 12% 74%, rgba(255, 255, 255, 0.38), transparent 74%),
+    radial-gradient(ellipse 7px 28px at 92% 34%, rgba(255, 255, 255, 0.34), transparent 74%);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .ls-vaho { background: rgba(236, 238, 232, 0.9); }
+}
+.ls-scene.is-safe .ls-vaho, .ls-scene.no-js .ls-vaho { opacity: 0; }
+html:not(.js) .ls-vaho, html:not(.js) .ls-jalador { display: none; }
+/* Nota tecnica: los hijos se posicionan con "left: calc(--ls-p * 100%)" + transform contra el
+   contenedor REAL (ancho completo de la escena), nunca contra un contenedor de ancho 0: eso
+   inflaba document.body.scrollWidth aunque quedara recortado a la vista (bug real, visto con
+   krevo-shot: "SCROLL HORIZONTAL"). */
+/* el jalador se desvanece en el ultimo tramo (tambien cuando va ligado al scroll) */
+.ls-jalador { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: clamp(0, calc((1 - var(--ls-p, 0)) * 8), 1); transition: opacity 420ms var(--ease-out); }
+/* orilla de agua que queda atras del hule y se desvanece */
+.ls-jalador-wet {
+  position: absolute; left: calc(var(--ls-p, 0) * 100%); top: 0; bottom: 0; width: 132px;
+  transform: translateX(-100%); mix-blend-mode: screen;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.16) 38%, transparent 100%);
+}
+/* la barra: hule oscuro con filo amarillo, mango, sombra y una inclinacion de mano */
+.ls-jalador-bar {
+  position: absolute; left: calc(var(--ls-p, 0) * 100%); top: -5%; bottom: -5%; width: 18px;
+  transform: translateX(-50%) rotate(-2.2deg);
+  background: linear-gradient(90deg, #32322c 0%, #171714 26%, #080807 62%, #1e1e19 100%);
+  border-radius: 5px;
+  box-shadow: 7px 0 24px rgba(0, 0, 0, 0.34), -3px 0 12px rgba(0, 0, 0, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.ls-jalador-bar::before { /* filo amarillo (el hule) */
+  content: ""; position: absolute; top: 0; bottom: 0; right: -4px; width: 5px;
+  background: linear-gradient(180deg, #fff0a3, var(--brand) 18%, #d9bd2e 82%, #fff0a3);
+  border-radius: 3px; box-shadow: 0 0 14px rgba(242, 216, 75, 0.7);
+}
+.ls-jalador-bar::after { /* mango */
+  content: ""; position: absolute; top: 50%; left: 50%; width: 46px; height: 32px;
+  transform: translate(-62%, -50%);
+  background: linear-gradient(180deg, #3a3a33 0%, #1b1b17 46%, #0b0b09 100%);
+  border-radius: 9px 5px 5px 9px;
+  box-shadow: -4px 3px 14px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+.ls-jalador-shine {
+  position: absolute; left: calc(var(--ls-p, 0) * 100%); top: -10%; bottom: -10%; width: 170px;
+  transform: translateX(-100%) skewX(-11deg); mix-blend-mode: screen;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.44), transparent 74%);
+}
+@media (min-width: 900px) { /* en compu el jalador es mas grande, para que se vea la herramienta */
+  .ls-jalador-bar { width: 24px; }
+  .ls-jalador-bar::before { width: 6px; right: -5px; }
+  .ls-jalador-bar::after { width: 64px; height: 42px; border-radius: 12px 6px 6px 12px; }
+  .ls-jalador-wet { width: 190px; }
+  .ls-jalador-shine { width: 260px; }
+}
+.ls-scene.is-done .ls-jalador { opacity: 0; }
+.ls-scene.is-safe .ls-jalador, .ls-scene.no-js .ls-jalador { display: none; }
+.ls-scene::after {
+  content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  background: linear-gradient(112deg, transparent 44%, rgba(255, 255, 255, 0.55) 50%, transparent 56%);
+  transform: translateX(-140%); opacity: 0;
+}
+.ls-scene.is-done::after { animation: ls-shine 620ms 40ms var(--ease-out) 1 both; }
+.ls-replay { display: inline-flex; align-items: center; min-height: 44px; gap: 6px; font-size: 13px; font-weight: 700; color: var(--paper); opacity: 0.85; margin-top: 10px; }
+.ls-replay svg { width: 15px; height: 15px; }
+@media (prefers-reduced-motion: reduce) {
+  .ls-vaho, .ls-jalador, .ls-scene::after { display: none !important; }
+  .ls-scene img { transition: none !important; }
+}
+
+/* ============ Ritmo de fondos entre secciones ============ */
+main > #hero { background: var(--deep); }
+main > #cotiza { background: var(--paper); }
+main > #limpiamos { background: var(--paper-2); }
+main > #personal { background: var(--deep-2); }
+main > #cierre { background: var(--deep-2); }
+.ls-deep { color: var(--paper); }
+.ls-foot { background: var(--ink); color: var(--paper); padding: 56px 0 calc(96px + env(safe-area-inset-bottom)); }
+.ls-foot-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+/* contacto del pie: link de texto con el logotipo de WhatsApp (aqui no va otro boton verde) */
+.ls-foot-wa {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 48px;
+  font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; color: var(--paper);
+  background-image: linear-gradient(var(--wa), var(--wa)); background-repeat: no-repeat;
+  background-size: 100% 2px; background-position: 0 calc(100% - 10px);
+  transition: background-size 220ms var(--ease-out);
+}
+.ls-foot-wa svg { width: 24px; height: 24px; flex: none; color: var(--wa); }
+@media (hover: hover) and (pointer: fine) { .ls-foot-wa:hover { background-size: 100% 3px; } }
+.ls-foot-brand { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 8vw, 40px); }
+.ls-foot-city { margin-top: 14px; color: var(--mute-on-deep); font-size: 15px; }
+.ls-foot-servicios { margin-top: 26px; display: grid; gap: 8px; }
+.ls-foot-servicios li { font-size: 15px; color: var(--mute-on-deep); padding-left: 16px; position: relative; }
+.ls-foot-servicios li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--brand); }
+.ls-foot-line { display: block; height: 1px; background: var(--line-deep); margin: 32px 0 22px; }
+.ls-foot-bottom { display: flex; flex-direction: column; gap: 6px; color: var(--mute-on-deep); font-size: 13px; }
+@media (min-width: 900px) { .ls-foot-servicios { grid-template-columns: 1fr 1fr; column-gap: 24px; } .ls-foot-bottom { flex-direction: row; justify-content: space-between; } }

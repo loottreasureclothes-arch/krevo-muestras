@@ -1,0 +1,185 @@
+/* 20 · Arma tu limpieza: EL TRABAJO de la página */
+.s-cotiza { padding: var(--sec-y) 0; }
+.s-cotiza-grid { display: grid; gap: 40px; }
+.s-cotiza-copy .ls-h2 { color: var(--ink); margin-bottom: 14px; }
+.s-cotiza-copy .ls-lead { margin-bottom: 26px; }
+/* en celular es una banda ancha arriba de la tarjeta (ahi corre la pasada del jalador);
+   en compu vuelve a ser la foto 4:5 al lado del formulario */
+.s-cotiza-scene { height: 208px; max-width: none; box-shadow: 0 16px 34px rgba(12, 36, 35, 0.16); }
+.s-cotiza-scene img { object-position: center 62%; }
+@media (min-width: 720px) {
+  .s-cotiza-scene { height: auto; aspect-ratio: 4 / 5; max-width: 420px; box-shadow: 0 20px 44px rgba(12, 36, 35, 0.18); }
+  .s-cotiza-scene img { object-position: center 50%; }
+}
+
+.s-cotiza-card {
+  background: #fff; border-radius: var(--radius); padding: 26px 20px 28px;
+  box-shadow: 0 24px 50px rgba(12, 36, 35, 0.1); border: 1px solid var(--line);
+}
+@media (min-width: 900px) { .s-cotiza-card { padding: 38px 36px 40px; } }
+@media (min-width: 900px) {
+  .s-cotiza-grid { grid-template-columns: 5fr 7fr; align-items: start; }
+  /* la columna de texto/foto acompaña a la tarjeta mientras se llena el formulario (1440/1920) */
+  .s-cotiza-copy { position: sticky; top: calc(var(--header-h) + 24px); align-self: start; }
+}
+
+.cq-block { border: 0; padding: 0; margin: 0 0 28px; }
+.cq-block:last-of-type { margin-bottom: 22px; }
+.cq-q { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; margin-bottom: 14px; padding: 0; }
+.cq-q small { font-family: var(--font-body); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mute); margin-left: 8px; }
+
+/* ---------- Discos (espacio y frecuencia): burbuja y brillo, se "llenan" al elegir ---------- */
+.cq-espacios, .cq-freq { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 10px; }
+@media (min-width: 480px) { .cq-freq { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 640px) { .cq-espacios { grid-template-columns: repeat(4, 1fr); } .cq-freq { grid-template-columns: repeat(5, 1fr); } }
+.ls-disc { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; font-size: 13px; font-weight: 700; color: var(--ink); }
+.ls-disc-face {
+  width: 76px; height: 76px; border-radius: 50%; background-size: cover; background-position: center;
+  background-color: var(--paper-2); display: flex; align-items: center; justify-content: center;
+  border: 3px solid transparent; position: relative; isolation: isolate;
+  transition: border-color 200ms var(--ease-out), transform 160ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.ls-disc-face::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: rgba(12, 36, 35, 0.16); transition: background 200ms var(--ease-out); }
+.ls-disc-face b { position: relative; z-index: 1; font-family: var(--font-display); font-size: 15px; color: #fff; letter-spacing: -0.01em; }
+/* discos de frecuencia: misma familia que los de espacio, pero en verde petroleo con el numero en amarillo */
+.ls-disc--freq .ls-disc-face {
+  flex-direction: column; gap: 1px; line-height: 1;
+  background: radial-gradient(circle at 34% 26%, #1c5f5b, var(--deep) 62%);
+}
+.ls-disc--freq .ls-disc-face::after { background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 55%); }
+.ls-disc--freq .ls-disc-face b { font-size: 26px; font-weight: 800; color: var(--brand); }
+.ls-disc--freq .ls-disc-face i { position: relative; z-index: 1; font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: 0.02em; color: var(--mute-on-deep); }
+.ls-disc--freq[aria-pressed="true"] .ls-disc-face::after { background: linear-gradient(180deg, rgba(242, 216, 75, 0.18), transparent 60%); }
+.ls-disc--freq[aria-pressed="true"] .ls-disc-face i { color: var(--paper); }
+.ls-disc[aria-pressed="true"] .ls-disc-face { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(242, 216, 75, 0.28), 0 6px 16px rgba(12, 36, 35, 0.22); transform: scale(1.04); }
+.ls-disc[aria-pressed="true"] .ls-disc-face::after { background: rgba(15, 63, 61, 0.22); }
+.ls-disc[aria-pressed="true"] span:last-child { color: var(--deep-2); }
+.ls-disc:active .ls-disc-face { transform: scale(0.96); }
+.cq-check-badge { position: absolute; z-index: 2; right: -2px; bottom: -2px; width: 22px; height: 22px; border-radius: 50%; background: var(--brand); color: var(--brand-ink); display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.6); transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out); }
+.ls-disc .cq-check-badge svg { width: 13px; height: 13px; }
+.ls-disc[aria-pressed="true"] .cq-check-badge { opacity: 1; transform: none; }
+@media (hover: hover) and (pointer: fine) { .ls-disc:hover .ls-disc-face { transform: scale(1.05); } }
+@media (min-width: 640px) { .ls-disc-face { width: 88px; height: 88px; } }
+
+.cq-field { display: grid; gap: 6px; font-size: 13px; font-weight: 700; color: var(--ink); margin-top: 14px; }
+.cq-field input { height: 48px; padding: 0 16px; border-radius: var(--radius-sm); border: 1.5px solid var(--line); background: var(--paper); font-weight: 500; transition: border-color 160ms var(--ease-out), box-shadow 300ms var(--ease-out); }
+.cq-field input:focus-visible { border-color: var(--deep); }
+.cq-field input.is-marcado { border-color: var(--deep); box-shadow: 0 0 0 4px rgba(242, 216, 75, 0.55); }
+
+/* ---------- Fichas de "¿Qué necesitas?": NADA de píldoras. Radio 13 px y un disco
+     chico a la izquierda que se rellena (burbuja); elegida = verde petróleo con palomita. ---------- */
+.cq-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.ls-chip {
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 48px; padding: 0 16px 0 13px; border-radius: 13px;
+  border: 1.5px solid var(--line); font-weight: 700; font-size: 14px; color: var(--ink); background: var(--paper);
+  transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+.ls-chip::before {
+  content: ""; flex: none; width: 20px; height: 20px; border-radius: 50%;
+  border: 2px solid rgba(12, 36, 35, 0.3); background: transparent;
+  transition: background 180ms var(--ease-out), border-color 180ms var(--ease-out);
+}
+.ls-chip[aria-pressed="true"] { background: var(--deep); border-color: var(--deep); color: var(--paper); }
+.ls-chip[aria-pressed="true"]::before {
+  border-color: var(--brand);
+  background: var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.5 12.5l5 5L20 6.5' fill='none' stroke='%230c2423' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px 12px no-repeat;
+}
+.ls-chip:active { transform: scale(0.98); }
+@media (hover: hover) and (pointer: fine) { .ls-chip:hover { border-color: var(--deep); } }
+
+/* ---------- Piso de mosaicos: 10 x 10 mosaicos, cada uno 10 m² (de 20 a 1,000) ----------
+   Los "limpios" (m²/10) se encienden en orden, de adelante hacia atras, fila por fila:
+   de opacos y manchados pasan a brillantes con reflejo. El ultimo recibe el destello amarillo. */
+.cq-m2-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; }
+.cq-m2-num { font-family: var(--font-display); font-weight: 900; font-size: clamp(38px, 9vw, 52px); color: var(--deep-2); line-height: 1; display: inline-block; }
+.cq-m2-num.is-texto { font-size: clamp(26px, 6vw, 34px); color: var(--mute); }
+.cq-m2-unit { font-size: 14px; font-weight: 600; color: var(--mute); }
+.cq-m2-pie { font-size: 12px; font-weight: 600; color: var(--mute); margin: -4px 0 10px; }
+.ls-floor {
+  position: relative; height: 202px; border-radius: var(--radius-sm); overflow: hidden;
+  margin-bottom: 12px; contain: paint;
+  background:
+    radial-gradient(64% 46% at 50% 64%, rgba(242, 216, 75, 0.12), transparent 72%),
+    linear-gradient(180deg, #0c3331 0%, #15423f 44%, #0a2b29 100%);
+  box-shadow: inset 0 0 0 1px rgba(12, 36, 35, 0.16), inset 0 26px 40px rgba(0, 0, 0, 0.26);
+}
+@media (min-width: 900px) { .ls-floor { height: 226px; } }
+.ls-floor.is-apagado { filter: grayscale(0.7) brightness(0.72); } /* con "No sé los metros" el piso se apaga */
+.ls-floor-stage {
+  position: absolute; left: 50%; bottom: 8px; width: 108%; height: 420px;
+  transform: translateX(-50%) perspective(460px) rotateX(56deg);
+  transform-origin: bottom center;
+}
+.ls-floor-grid { display: grid; grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(10, 1fr); gap: 2px; width: 100%; height: 100%; }
+.ls-floor-grid i {
+  position: relative; display: block; overflow: hidden;
+  /* sucio: verde petroleo desaturado con manchones (nada de cafe, es la unica pieza que se
+     salia de la paleta de la pagina) */
+  background: linear-gradient(158deg, #5c6a61 0%, #47554e 54%, #566356 100%);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+  transition: background 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+.ls-floor-grid i::after { /* el reflejo del mosaico limpio */
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(126deg, transparent 30%, rgba(255, 255, 255, 0.6) 48%, transparent 64%);
+  opacity: 0; transition: opacity 300ms var(--ease-out);
+}
+.ls-floor-grid i.is-on {
+  /* limpio: tonos lino (nunca blanco puro), para que a 600-1000 m² no se aplane */
+  background: linear-gradient(158deg, #f6f2e3 0%, #ece5d0 46%, #f1ecd9 62%, #ddd5bd 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55), 0 0 10px rgba(255, 255, 255, 0.16);
+  transition-delay: calc(var(--k, 0) * 5ms);
+}
+.ls-floor-grid i.is-on::after { opacity: 0.55; transition-delay: calc(var(--k, 0) * 5ms); }
+.ls-floor-spark { /* destello amarillo de 4 puntas en el ultimo mosaico encendido */
+  position: absolute; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px;
+  pointer-events: none; opacity: 0;
+  background: var(--brand);
+  clip-path: polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%);
+  filter: drop-shadow(0 0 8px rgba(242, 216, 75, 0.85));
+}
+.ls-floor-spark.is-on { animation: cq-spark 680ms var(--ease-out) 1 both; }
+@keyframes cq-spark { /* con plateau: se sostiene arriba en vez de picar y bajar de inmediato */
+  0% { opacity: 0; transform: scale(0.3) rotate(-25deg); }
+  28% { opacity: 1; transform: scale(1.15) rotate(0deg); }
+  62% { opacity: 1; transform: scale(1.02) rotate(4deg); }
+  100% { opacity: 0; transform: scale(0.82) rotate(12deg); }
+}
+.ls-floor::after { /* al soltar, un brillo cruza todo lo que quedo limpio */
+  content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
+  background: linear-gradient(104deg, transparent 42%, rgba(242, 216, 75, 0.5) 50%, transparent 58%);
+  transform: translateX(-130%); opacity: 0;
+}
+.ls-floor.is-brillo::after { animation: ls-shine 620ms var(--ease-out) 1 both; }
+
+/* deslizador: area tocable de 44 px, pulgar grande (sigue siendo input range nativo) */
+#cq-m2 { -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 44px; background: transparent; margin: 0 0 4px; }
+#cq-m2::-webkit-slider-runnable-track { height: 10px; border-radius: 6px; background: linear-gradient(90deg, var(--deep) 0 var(--cq-fill, 9%), var(--paper-2) var(--cq-fill, 9%) 100%); box-shadow: inset 0 1px 2px rgba(12, 36, 35, 0.22); }
+#cq-m2::-moz-range-track { height: 10px; border-radius: 6px; background: var(--paper-2); box-shadow: inset 0 1px 2px rgba(12, 36, 35, 0.22); }
+#cq-m2::-moz-range-progress { height: 10px; border-radius: 6px; background: var(--deep); }
+#cq-m2::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 30px; height: 30px; margin-top: -10px; border-radius: 50%; background: radial-gradient(circle at 34% 30%, #fff3aa, var(--brand) 62%); border: 2px solid var(--deep); box-shadow: 0 3px 10px rgba(12, 36, 35, 0.3); cursor: grab; }
+#cq-m2::-moz-range-thumb { width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 34% 30%, #fff3aa, var(--brand) 62%); border: 2px solid var(--deep); box-shadow: 0 3px 10px rgba(12, 36, 35, 0.3); cursor: grab; }
+#cq-m2:active::-webkit-slider-thumb { transform: scale(0.94); }
+#cq-m2:disabled::-webkit-slider-thumb { background: var(--line); border-color: var(--mute); }
+#cq-m2:disabled { opacity: 0.55; }
+.cq-check { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--mute); min-height: 44px; }
+.cq-check input { width: 20px; height: 20px; accent-color: var(--deep); flex: none; }
+
+/* ---------- El mes de verdad (7 columnas), con los dias que te tocan ---------- */
+.cq-month-pie { font-size: 12px; font-weight: 600; color: var(--mute); margin: 18px 0 8px; }
+.cq-month { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; max-width: 244px; }
+.cq-month i { display: block; width: 100%; aspect-ratio: 1; border-radius: 50%; background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--line); transition: background 220ms var(--ease-out), transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
+.cq-month i.is-on { background: var(--brand); box-shadow: 0 0 0 3px rgba(242, 216, 75, 0.24); transform: scale(1.08); }
+
+.cq-opt-fields { display: grid; gap: 14px; }
+@media (min-width: 560px) { .cq-opt-fields { grid-template-columns: 1fr 1fr; } }
+.cq-opt-fields .cq-field { margin-top: 0; }
+
+.cq-send { width: 100%; }
+@media (min-width: 560px) { .cq-send { width: auto; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ls-disc-face, .cq-month i, .ls-floor-grid i, .ls-floor-grid i::after { transition: none !important; }
+  .ls-floor-spark, .ls-floor::after { display: none !important; }
+}
