@@ -25,17 +25,25 @@
     });
   });
 
-  /* Enciende: el letrero se prende solo, una vez, 1.2 s después de aparecer.
-     Blindaje: sin JS o con reduced-motion el CSS base ya lo deja encendido. */
+  /* Enciende: nace APAGADO y prende con el primer scroll hacia abajo, una sola vez, con el parpadeo
+     "trrr" de 900 ms. Si nadie hace scroll en 2.5 s, prende solo. Al volver arriba NO se apaga.
+     Blindaje: sin JS o con reduced-motion el CSS base ya lo deja encendido y fijo. */
   if (window.IP && IP.reduce) return;
-  var lit = false;
+  var lit = false, timer = null, opts = { passive: true };
   function ignite() {
     if (lit) return;
     lit = true;
-    setTimeout(function () { hero.classList.add("is-lit"); }, 1250);
+    clearTimeout(timer);
+    window.removeEventListener("scroll", onScroll, opts);
+    window.removeEventListener("wheel", onWheel, opts);
+    window.removeEventListener("touchmove", ignite, opts);
+    hero.classList.add("is-lit");
   }
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); ignite(); } });
-    io.observe(hero);
-  } else ignite();
+  function onScroll() { if ((window.pageYOffset || document.documentElement.scrollTop || 0) > 8) ignite(); }
+  function onWheel(e) { if (!e || e.deltaY > 0) ignite(); }
+  window.addEventListener("scroll", onScroll, opts);
+  window.addEventListener("wheel", onWheel, opts);
+  window.addEventListener("touchmove", ignite, opts);
+  timer = setTimeout(ignite, 2500);
+  onScroll(); /* si la página ya viene desplazada (recarga a media página), prende de una vez */
 })();

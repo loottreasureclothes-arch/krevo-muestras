@@ -43,7 +43,7 @@ if glob.glob('sections-comparar/*.html'):
     t=re.sub(r'(<meta name="description" content=")[^"]*(")',r'\1Comparativo de la página actual de iPrint Aguascalientes contra la nueva muestra de KREVO: WhatsApp, catálogo, cotizador y Google.\2',t,count=1)
     t=t.replace(f'<link rel="canonical" href="{BASE}">',f'<link rel="canonical" href="{BASE}comparar.html">')
     t=t.replace(f'<meta property="og:url" content="{BASE}">',f'<meta property="og:url" content="{BASE}comparar.html">')
-    t=re.sub(r'<link rel="preload" as="image" href="img/hd/ip06[^>]*>\n','',t)
+    t=re.sub(r'<link rel="preload" as="image" href="img/logo-muro[^>]*>\n','',t)
     t=re.sub(r'<script type="application/ld\+json">.*?</script>\n','',t,count=1,flags=re.S)
     t=t.replace('<meta name="format-detection" content="telephone=no">','<meta name="format-detection" content="telephone=no">\n<meta name="robots" content="noindex">')
     t=t.replace('<body data-hero-dark>','<body data-hero-dark data-page="comparar">')

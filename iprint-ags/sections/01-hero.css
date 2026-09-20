@@ -1,8 +1,8 @@
-/* 01 hero: fondo ciruela con grano + el letrero REAL de iPrint (Nacozari 1809) dentro de una CAJA DE LUZ
-   (marco oscuro con brillo lima) que se enciende sola al cargar, una vez, 1.25 s después.
-   Compu: titular 5 / caja de luz 7 (máx. 900 px, nunca por encima del detalle real de la foto de 1024 px).
-   Celular: titular, caja al ancho y cuadritos deslizables.
-   Blindaje: sin JS o con reduced-motion la caja ya sale encendida. */
+/* 01 hero: fondo ciruela con grano + el LOGO real de iPrint montado como letrero luminoso sobre un muro
+   oscuro, dentro de una CAJA DE LUZ (marco oscuro con brillo lima). Nace APAGADO y se enciende con el
+   primer scroll hacia abajo (o solo a los 2.5 s) con un parpadeo de tubo "trrr" de 900 ms; ya no se apaga.
+   Compu: titular 5 / caja de luz 7 (máx. 900 px). Celular: titular, caja al ancho y cuadritos deslizables.
+   Blindaje: sin JS o con reduced-motion la caja y el titular ya salen ENCENDIDOS y fijos. */
 #hero {
   position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
   overflow: hidden; isolation: isolate;
@@ -36,47 +36,132 @@
 #hero .s-hero-title .ln { display: block; white-space: nowrap; overflow: hidden; line-height: 1; padding: 0.02em 0.04em 0.06em 0; margin-bottom: 0; }
 #hero .s-hero-title .s-hero-big { font-size: 1.38em; line-height: 1; }
 #hero .s-hero-title em { color: var(--lime); }
-/* "Enciende": palabra apagada (contorno) que se llena de lima de izq. a der., una vez, al cargar.
-   Base sin blindaje = ya encendida (letra lima); el JS solo agrega "is-lit" tras el timeout. */
+/* "ENCIENDE": prende al mismo tiempo que el letrero, con el mismo parpadeo.
+   Base (sin JS / reduced-motion) = ya encendida, lima con halo; el JS solo agrega "is-lit" para el parpadeo. */
 #hero .s-hero-ignite { position: relative; display: block; }
 #hero .s-hero-off { display: none; }
-#hero .s-hero-lit { display: block; color: var(--lime); }
+#hero .s-hero-lit {
+  display: block; color: var(--lime);
+  text-shadow:
+    0 0 0.05em rgba(213, 243, 122, 0.95), 0 0 0.2em rgba(166, 200, 73, 0.8), 0 0 0.55em rgba(166, 200, 73, 0.45),
+    0 0.02em 0 #6f8a2a, 0 0.04em 0 #4d6219, 0 0.06em 0 #2e3b0e, 0 0.07em 0.1em rgba(0, 0, 0, 0.5);
+}
 #hero .s-hero-sub { margin-top: 14px; font-size: 17px; line-height: 1.4; color: var(--cream); font-weight: 500; max-width: 34ch; }
 #hero .s-hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
 #hero .s-hero-actions .cd-btn--secondary { color: var(--cream); }
 @media (max-width: 420px) { #hero .s-hero-actions .cd-btn { flex: 1 1 100%; } #hero .s-hero-actions .cd-btn--secondary { min-height: 48px; } }
 
-/* ---------- Caja de luz con la foto real ---------- */
+/* ---------- Caja de luz: el LOGO real montado en un muro oscuro ---------- */
 #hero .s-hero-box {
-  position: relative; margin: 0; width: 100%; max-width: 1330px; /* nunca más de 1.3x el original (1024 px) */
+  position: relative; margin: 0; width: 100%; max-width: 1330px;
   padding: 10px 10px 8px; border-radius: 4px;
   background: linear-gradient(180deg, #26152f, #150c1c);
-  border: 1px solid rgba(166, 200, 73, 0.45);
-  box-shadow:
-    0 0 0 1px rgba(166, 200, 73, 0.16),
-    0 0 46px -6px rgba(166, 200, 73, 0.4),
-    0 26px 60px -28px rgba(0, 0, 0, 0.85),
-    inset 0 1px 0 rgba(255, 255, 255, 0.07);
-  transition: box-shadow 950ms var(--ease-out), border-color 950ms var(--ease-out);
+  border: 1px solid rgba(244, 240, 234, 0.12);
+  box-shadow: 0 26px 60px -28px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
-#hero .s-hero-img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; background: #0e0814; }
-#hero .s-hero-cap { display: flex; align-items: center; gap: 8px; margin-top: 9px; font-size: 13px; line-height: 1.3; color: var(--cream-mute); }
+/* el aro lima de la caja: lo que "prende" del marco (por eso va aparte del borde base) */
+#hero .s-hero-ring {
+  position: absolute; inset: 0; z-index: 1; border-radius: 4px; pointer-events: none;
+  box-shadow:
+    0 0 0 1px rgba(166, 200, 73, 0.5),
+    0 0 0 2px rgba(166, 200, 73, 0.12),
+    0 0 46px -6px rgba(166, 200, 73, 0.42),
+    inset 0 0 26px -10px rgba(166, 200, 73, 0.5);
+}
+/* el muro: ciruela muy oscuro con grano, sin fotos */
+#hero .s-hero-muro {
+  position: relative; display: grid; place-items: center; overflow: hidden;
+  aspect-ratio: 4 / 3; border-radius: 2px;
+  background-color: #140b1a;
+  background-image:
+    radial-gradient(118% 88% at 50% 40%, rgba(94, 52, 112, 0.5), rgba(45, 24, 55, 0.35) 45%, rgba(13, 7, 17, 0.8) 78%, rgba(8, 4, 11, 0.95) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 38%, transparent 62%, rgba(0, 0, 0, 0.5)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+}
+/* el derrame de luz del letrero sobre el muro */
+#hero .s-hero-glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(56% 38% at 50% 47%, rgba(186, 220, 96, 0.3), rgba(166, 200, 73, 0) 72%),
+    radial-gradient(44% 32% at 63% 50%, rgba(214, 82, 160, 0.2), rgba(214, 82, 160, 0) 74%),
+    radial-gradient(78% 30% at 50% 76%, rgba(166, 200, 73, 0.16), rgba(166, 200, 73, 0) 78%),
+    radial-gradient(80% 34% at 50% 20%, rgba(166, 200, 73, 0.1), rgba(166, 200, 73, 0) 80%);
+}
+/* el letrero: el logo real + su sombra de contacto contra el muro */
+#hero .s-hero-sign { position: relative; display: block; width: 80%; filter: drop-shadow(0 13px 11px rgba(0, 0, 0, 0.58)); }
+#hero .s-hero-logo { display: block; width: 100%; height: auto; }
+#hero .s-hero-logo--on {
+  position: absolute; left: 0; top: 0;
+  filter:
+    drop-shadow(0 0 4px rgba(224, 248, 150, 0.75))
+    drop-shadow(0 0 15px rgba(166, 200, 73, 0.65))
+    drop-shadow(0 0 36px rgba(214, 82, 160, 0.5));
+}
+#hero .s-hero-cap { position: relative; z-index: 2; display: flex; align-items: center; gap: 8px; margin-top: 9px; font-size: 13px; line-height: 1.3; color: var(--cream-mute); }
 #hero .s-hero-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 8px rgba(166, 200, 73, 0.9); }
 
-/* el letrero se enciende solo, una vez (blindaje: sin JS/reduced-motion ya está encendido) */
+/* ---------- Encendido tipo neón ----------
+   Apagado: el logo queda oscuro y desaturado, sin halo, y el marco sin lima.
+   "trrr": 7 destellos irregulares en 900 ms con steps (saltos bruscos, nada de fades) y se queda fijo.
+   Blindaje: esto solo existe con JS y sin reduced-motion; si no, el CSS de arriba ya está encendido. */
+@keyframes ip-trrr {
+  0% { opacity: 0; }
+  4% { opacity: 1; }
+  7% { opacity: 0; }
+  14% { opacity: 0; }
+  17% { opacity: 0.55; }
+  20% { opacity: 0; }
+  29% { opacity: 0; }
+  32% { opacity: 1; }
+  36% { opacity: 0; }
+  41% { opacity: 0; }
+  44% { opacity: 0.72; }
+  49% { opacity: 0; }
+  55% { opacity: 0; }
+  58% { opacity: 1; }
+  62% { opacity: 0.14; }
+  67% { opacity: 1; }
+  71% { opacity: 0; }
+  76% { opacity: 0; }
+  80% { opacity: 1; }
+  100% { opacity: 1; }
+}
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  html.ip-anim #hero .s-hero-img { transition: filter 950ms var(--ease-out); }
-  html.ip-anim #hero .s-hero-dot { transition: opacity 950ms var(--ease-out); }
-  html.ip-anim #hero:not(.is-lit) .s-hero-img { filter: brightness(0.32) saturate(0.35); }
-  html.ip-anim #hero:not(.is-lit) .s-hero-dot { opacity: 0.25; }
-  html.ip-anim #hero:not(.is-lit) .s-hero-box {
-    border-color: rgba(244, 240, 234, 0.12);
-    box-shadow: 0 26px 60px -28px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  }
-  html.ip-anim #hero .s-hero-off { display: block; color: transparent; -webkit-text-stroke: 1.5px rgba(244, 240, 234, 0.55); text-shadow: none; }
-  html.ip-anim #hero .s-hero-lit { position: absolute; inset: 0; clip-path: inset(-20% 100% -20% 0%); transition: clip-path 950ms var(--ease-out);
-    text-shadow: 0 0 0.14em rgba(166, 200, 73, 0.8), 0 0 0.5em rgba(166, 200, 73, 0.5), 0 0.02em 0 #6f8a2a, 0 0.04em 0 #4d6219, 0 0.06em 0 #2e3b0e; }
-  html.ip-anim #hero.is-lit .s-hero-lit { clip-path: inset(-20% 0% -20% 0%); }
+  /* apagado */
+  html.ip-anim #hero:not(.is-lit) .s-hero-logo:not(.s-hero-logo--on) { filter: brightness(0.22) saturate(0.25); }
+  html.ip-anim #hero:not(.is-lit) .s-hero-logo--on,
+  html.ip-anim #hero:not(.is-lit) .s-hero-glow,
+  html.ip-anim #hero:not(.is-lit) .s-hero-ring,
+  html.ip-anim #hero:not(.is-lit) .s-hero-lit { opacity: 0; }
+  html.ip-anim #hero:not(.is-lit) .s-hero-dot { opacity: 0.22; }
+  html.ip-anim #hero .s-hero-off { display: block; color: transparent; -webkit-text-stroke: 1.5px rgba(244, 240, 234, 0.42); text-shadow: none; }
+  html.ip-anim #hero .s-hero-lit { position: absolute; left: 0; top: 0; width: 100%; }
+
+  /* el "trrr": todo prende con la misma ráfaga */
+  html.ip-anim #hero.is-lit .s-hero-logo--on,
+  html.ip-anim #hero.is-lit .s-hero-glow,
+  html.ip-anim #hero.is-lit .s-hero-ring,
+  html.ip-anim #hero.is-lit .s-hero-dot,
+  html.ip-anim #hero.is-lit .s-hero-lit { animation: ip-trrr 900ms steps(1, end) both; }
+  html.ip-anim #hero.is-lit .s-hero-logo:not(.s-hero-logo--on) { animation: ip-trrr-base 900ms steps(1, end) both; }
+}
+/* el logo de abajo sube de brillo con la misma ráfaga (así no queda borde oscuro debajo del encendido) */
+@keyframes ip-trrr-base {
+  0% { filter: brightness(0.22) saturate(0.25); }
+  4% { filter: none; }
+  7% { filter: brightness(0.22) saturate(0.25); }
+  17% { filter: brightness(0.6) saturate(0.6); }
+  20% { filter: brightness(0.22) saturate(0.25); }
+  32% { filter: none; }
+  36% { filter: brightness(0.22) saturate(0.25); }
+  44% { filter: brightness(0.75) saturate(0.8); }
+  49% { filter: brightness(0.22) saturate(0.25); }
+  58% { filter: none; }
+  62% { filter: brightness(0.3) saturate(0.35); }
+  67% { filter: none; }
+  71% { filter: brightness(0.22) saturate(0.25); }
+  80% { filter: none; }
+  100% { filter: none; }
 }
 
 /* ---------- Cuadritos: carril deslizable en celular, fila de 5 en compu ---------- */
@@ -109,6 +194,15 @@
   #hero .s-hero-box { grid-area: caja; justify-self: end; max-width: 900px; }
   #hero .s-hero-chips { grid-area: chips; }
   #hero .s-hero-copy::before { left: -28px; top: 34px; width: 34px; height: 34px; }
+  /* el letrero es más grande, así que el halo también */
+  #hero .s-hero-sign { filter: drop-shadow(0 20px 16px rgba(0, 0, 0, 0.58)); }
+  #hero .s-hero-logo--on {
+    filter:
+      drop-shadow(0 0 7px rgba(224, 248, 150, 0.75))
+      drop-shadow(0 0 26px rgba(166, 200, 73, 0.6))
+      drop-shadow(0 0 64px rgba(214, 82, 160, 0.48));
+  }
+  #hero .s-hero-ring { box-shadow: 0 0 0 1px rgba(166, 200, 73, 0.55), 0 0 0 3px rgba(166, 200, 73, 0.12), 0 0 64px -8px rgba(166, 200, 73, 0.5), inset 0 0 34px -12px rgba(166, 200, 73, 0.55); }
   /* el renglón grande siempre cabe en su columna: 100cqi = ancho del bloque de texto */
   #hero .s-hero-title { font-size: min(58px, 8.3cqi); }
   #hero .s-hero-title .s-hero-big { font-size: 1.62em; }

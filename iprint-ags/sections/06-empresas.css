@@ -38,10 +38,18 @@
 #empresas .s-vis-ph b { font-size: 16px; margin-top: 4px; }
 #empresas .s-vis-ph span { font-size: 14px; font-weight: 600; color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
 
+/* la foto real del local, chica (antes estaba en el hero) */
+#empresas .s-vis-foto { margin: 0; max-width: 320px; }
+#empresas .s-vis-foto img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; }
+#empresas .s-vis-foto figcaption { margin-top: 8px; font-size: 13px; line-height: 1.35; color: var(--cream-mute); }
+
 @media (min-width: 900px) {
   #empresas .s-emp-top { grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; }
   #empresas .s-emp-fig { height: 56svh; max-height: 560px; }
-  #empresas .s-vis-grid { grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
-  #empresas .s-vis-map { height: 46svh; max-height: 480px; }
+  /* la foto se va debajo del mapa, en la misma columna */
+  #empresas .s-vis-grid { grid-template-columns: 5fr 7fr; grid-template-areas: "info mapa" "info foto"; gap: 32px 64px; align-items: start; align-content: start; }
+  #empresas .s-vis-info { grid-area: info; }
+  #empresas .s-vis-map { grid-area: mapa; height: 46svh; max-height: 480px; }
+  #empresas .s-vis-foto { grid-area: foto; }
   #empresas .s-emp-rule { margin: 64px 0; }
 }
