@@ -1,22 +1,29 @@
-/* 02-ebesa: "Quien abrio con nosotros". Foto grande + tira de 9 montajes
-   reales + resenas reales. Sin parrafo propio, sin boton verde. */
+/* 02-ebesa: "Quien abrio con nosotros". Los DIEZ montajes reales de EBESA
+   2025, todos del mismo tamaño. Sin parrafo propio, sin boton verde.
+
+   20 sep 2026 (tarde), por voz de Emanuel: "esta pinche foto hay que quitarla
+   porque esta fatalisima" -> se fue la foto GRANDE de Fajas Colombianas y NO
+   entro ninguna otra en grande. Las fotos originales son de Instagram a 414 px
+   y solo aguantan chicas: ninguna pasa de ~240 px de ancho. Fajas Colombianas
+   se queda como una mas de la tira, para que sigan siendo diez.
+   La tira es scroll nativo con snap en celular y rejilla en pantalla ancha:
+   cero JavaScript. */
 .s-ebesa-h2 { margin-bottom: 28px; }
 
-/* Un negocio que vende como se ve un stand ENSENA stands (revision externa,
-   20 sep): una foto grande + una tira deslizable con los otros 9 montajes
-   reales de EBESA 2025, cada uno con el nombre del cliente. Las fotos son las
-   suyas de Instagram, recortadas al puro stand y subidas de resolucion; el
-   pase de lista en texto desaparece y cada nombre es el pie de su foto.
-   La tira es scroll nativo con snap: cero JavaScript. */
-.s-ebesa-grande { display: block; width: 100%; margin: 0 0 14px; }
-.s-ebesa-grande img { aspect-ratio: 1 / 1; object-fit: cover; }
 .s-ebesa-tira {
   list-style: none; margin: 0 calc(var(--k-gutter) * -1); padding: 0 var(--k-gutter) 4px;
   display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  /* El snap alinea con el borde del scrollport, no con el del contenido: sin
+     esto el navegador arrancaba la tira desplazada 20px y la primera foto
+     salia pegada al filo de la pantalla, sin margen. */
+  scroll-padding-inline: var(--k-gutter);
 }
 .s-ebesa-tira::-webkit-scrollbar { display: none; }
-.s-ebesa-tira li { flex: 0 0 46%; scroll-snap-align: start; }
+/* Tope de 232px: son fotos de Instagram de 414 px, mas grandes se ven sucias.
+   El min() tambien evita la estampilla al reves: a 893 px la tira pasa de
+   3 fotos de 160 px a 3 y media de 232. */
+.s-ebesa-tira li { flex: 0 0 auto; width: min(46%, 232px); scroll-snap-align: start; }
 .s-ebesa-tira .su-frame { width: 100%; display: block; margin: 0; }
 .s-ebesa-tira img { aspect-ratio: 4 / 5; object-fit: cover; }
 .s-ebesa-tira figcaption { font-size: 10px; letter-spacing: 0.06em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -39,12 +46,17 @@
 .s-ebesa-cita p:not(.s-ebesa-stars) { font-size: 15px; line-height: 1.4; color: var(--ink-deep); margin-bottom: 6px; }
 .s-ebesa-cita cite { font-style: normal; font-weight: 700; font-size: 13px; color: var(--mute-deep); }
 
-/* Compu: foto grande a la izquierda (5) y los otros 9 en rejilla de 3 x 3 a
-   la derecha (7); las resenas abajo, a dos columnas. */
+/* Compu: los diez en una rejilla de 5 x 2 a todo lo ancho (ahi estaba el hueco
+   que dejaba la foto grande). Diez fotos solo cuadran en 1, 2, 5 o 10 columnas:
+   con 3 o 4 el ultimo renglon queda cojo, por eso no hay paso intermedio y
+   abajo de 900 se queda la tira que se desliza. max-width para que ni en
+   1800 px pase de ~240 px por foto: son fotos de 414 px de origen. */
 @media (min-width: 900px) {
-  .s-ebesa-split { display: grid; grid-template-columns: 5fr 7fr; column-gap: 40px; align-items: start; margin-bottom: 40px; }
-  .s-ebesa-grande { margin: 0; }
-  .s-ebesa-tira { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 0; padding: 0; overflow: visible; }
+  .s-ebesa-tira {
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px;
+    max-width: 1240px; margin: 0 0 40px; padding: 0; overflow: visible;
+  }
+  .s-ebesa-tira li { width: auto; }
   .s-ebesa-tira img { aspect-ratio: 1 / 1; }
   .s-ebesa-tira figcaption { font-size: 11px; }
   .s-ebesa-pista { display: none; }

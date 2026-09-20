@@ -9,8 +9,8 @@
 <link rel="canonical" href="https://loottreasureclothes-arch.github.io/krevo-muestras/pozoleria-la-chata/">
 <meta name="format-detection" content="telephone=no">
 <script>document.documentElement.classList.add("chata-js");</script>
-<link rel="preload" as="image" href="img/hero/hero-m.webp" media="(max-width: 899px)" fetchpriority="high">
-<link rel="preload" as="image" href="img/hero/hero-d.webp" media="(min-width: 900px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/brand/logo-hero-m.webp" media="(max-width: 699px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/brand/logo-hero.webp" media="(min-width: 700px)" fetchpriority="high">
 <link rel="icon" type="image/png" sizes="32x32" href="img/brand/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="img/brand/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -32,11 +32,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,500..900&family=Oswald:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css?v=1789889521">
-<link rel="stylesheet" href="sections/10-hero.css?v=1789889433">
-<link rel="stylesheet" href="sections/20-carta.css?v=1789892594">
-<link rel="stylesheet" href="sections/30-mesa.css?v=1789888838">
+<link rel="stylesheet" href="sections/10-hero.css?v=1789941642">
+<link rel="stylesheet" href="sections/20-carta.css?v=1789941935">
+<link rel="stylesheet" href="sections/30-mesa.css?v=1789941165">
 <link rel="stylesheet" href="sections/40-reloj.css?v=1789889433">
-<link rel="stylesheet" href="sections/60-visitanos.css?v=1789889521">
+<link rel="stylesheet" href="sections/60-visitanos.css?v=1789942161">
 <link rel="stylesheet" href="sections/90-cierre.css?v=1789889107">
 </head>
 <body data-hero-dark>
@@ -83,25 +83,19 @@
 </div>
 
 <main id="inicio">
-<!-- Sección 1: La esquina (hero). Razón: contesta en 3s día+hora+calle (Google trae mal la hora) y empuja a la carta. -->
-<section class="s-hero" id="hero" data-band="deep">
+<!-- Sección 1: La esquina (hero). 20 sep, encargo de Emanuel: banner DELGADO, sin foto real.
+     Solo su logotipo, la frase del fin de semana y dos botones. En celular la carta ya se asoma. -->
+<section class="s-hero" id="hero" data-band="brand">
   <div class="k-wrap s-hero-in">
-    <div class="s-hero-copy" data-reveal>
-      <p class="chata-eyebrow">Col. Gremial / Aguascalientes</p>
-      <h1 class="s-hero-h1">Sábado y domingo,<em>hay pozole.</em></h1>
-      <p class="s-hero-line">Jesús R. Macías 602, esquina 20 de Noviembre. De 3:30 a 10 de la noche.</p>
+    <img class="s-hero-logo" src="img/brand/logo-hero.webp" srcset="img/brand/logo-hero-m.webp 360w, img/brand/logo-hero.webp 640w" sizes="(min-width: 1100px) 232px, (min-width: 700px) 190px, 130px" width="640" height="657" alt="Logotipo de La Chata Pozolería: el medallón verde con la niña de trenzas" fetchpriority="high" decoding="async">
+    <div class="s-hero-copy">
+      <h1 class="s-hero-h1">Sábados y domingos<em>hay pozole.</em></h1>
+      <p class="s-hero-line">Jesús R. Macías 602, esquina 20 de Noviembre. De 3:30 a 10:00 pm.</p>
       <div class="s-hero-ctas">
-        <a class="chata-btn" href="#carta">Ver la carta</a>
-        <a class="chata-btn chata-btn--outline" href="#llegar">Cómo llegar</a>
+        <a class="chata-btn chata-btn--paper" href="#carta">Ver la carta</a>
+        <a class="chata-btn chata-btn--paper-line" href="https://maps.google.com/?q=Jes%C3%BAs%20R.%20Mac%C3%ADas%20602%2C%20esquina%2020%20de%20Noviembre%2C%20Col.%20Gremial%2C%2020030%20Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
       </div>
     </div>
-    <figure class="s-hero-photo chata-frame" data-reveal data-reveal-delay="120">
-      <picture>
-        <source srcset="img/hero/hero-d.webp" media="(min-width: 900px)">
-        <img src="img/hero/hero-m.webp" width="820" height="733" alt="Letrero real de La Chata Pozolería en su poste, esquina de Jesús R. Macías" loading="eager" fetchpriority="high">
-      </picture>
-      <figcaption class="s-hero-cap">Su letrero, en su esquina de siempre.</figcaption>
-    </figure>
   </div>
 </section>
 
@@ -220,7 +214,8 @@
 </section>
 
 <!-- Sección 3: La mesa de barro (HOJA §6.4). Prueba real: el 4.6 y las 159 opiniones de Google,
-     con tres reseñas TEXTUALES de research/resenas.md (nombre y estrellitas, sin editar).
+     con tres reseñas COMPLETAS y textuales de research/resenas.md (nombre tal como lo firmó el cliente,
+     estrellitas reales, sin recortar ni una palabra).
      Sin párrafo y sin botón: foto a sangre, dato gigante y tres citas. -->
 <section class="s-mesa" id="mesa" data-band="deep">
   <div class="s-mesa-shotband">
@@ -247,21 +242,21 @@
           <svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg>
         </p>
         <blockquote>Un lugar muy acogedor donde el pozole es el protagonista, la verdad está muy rico, muy bien servido y definitivamente esas tostadas caseras están de 10, ampliamente recomendado.</blockquote>
-        <p class="s-mesa-firma">Luis Andrés Esquivel Ortega</p>
+        <p class="s-mesa-firma">Luis Andres Esquivel Ortega</p>
       </li>
       <li class="s-mesa-res">
         <p class="s-mesa-stars s-mesa-stars--sm" role="img" aria-label="5 estrellas">
           <svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg>
         </p>
-        <blockquote>Muy ricos los pozoles rojo y verde, muy buenas porciones, también probe los tacos dorados y estaban deliciosos.</blockquote>
-        <p class="s-mesa-firma">Víctor Manuel</p>
+        <blockquote>Muy ricos los pozoles rojo y verde, muy buenas porciones, también probe los tacos dorados y estaban deliciosos. Tardo un poco el servicio, pero valió la pena la espera ;)</blockquote>
+        <p class="s-mesa-firma">Victor Manuel</p>
       </li>
       <li class="s-mesa-res">
-        <p class="s-mesa-stars s-mesa-stars--sm" role="img" aria-label="4 estrellas">
-          <svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg class="is-off" aria-hidden="true"><use href="#i-star"/></svg>
+        <p class="s-mesa-stars s-mesa-stars--sm" role="img" aria-label="5 estrellas">
+          <svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg>
         </p>
-        <blockquote>Antojitos mexicanos 10/10. Lugar muy tranquilo, no hay música ni tv, nada de eso. Creo que solo aceptan efectivo.</blockquote>
-        <p class="s-mesa-firma">Montserrat Muma</p>
+        <blockquote>La comida es excelente y el lugar muy bonito, recomendado al 100%. Si deseas probar un poco de todo, el plato hidrocalido es la mejor opción. El personal es muy amable.</blockquote>
+        <p class="s-mesa-firma">Guillermo Campos Calvillo</p>
       </li>
     </ul>
   </div>
@@ -303,7 +298,7 @@
         <div><dt>Dónde</dt><dd>Col. Gremial, C.P. 20030, Aguascalientes</dd></div>
         <div><dt>Cuándo</dt><dd>Sábado y domingo, 3:30 a 10:00 pm</dd></div>
         <div><dt>Teléfono</dt><dd><a href="tel:+524492563283">449 256 3283</a></dd></div>
-        <div><dt>Pago</dt><dd>Solo efectivo</dd></div>
+        <div><dt>Pago</dt><dd>Solo efectivo, según lo que reportan sus clientes en Google</dd></div>
         <div><dt>Servicio</dt><dd>Para comer aquí o para llevar</dd></div>
         <div><dt>Código plus</dt><dd>VPV7+39 Aguascalientes</dd></div>
       </dl>
@@ -315,7 +310,12 @@
     </div>
 
     <div class="s-llegar-mapa chata-frame">
-      <iframe src="https://www.google.com/maps?q=21.8926738,-102.2865058&amp;z=17&amp;output=embed" loading="lazy" title="Mapa de La Chata Pozolería, Jesús R. Macías 602" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <!-- El mapa carga tarde: debajo va un relleno oscuro con la esquina escrita, para que
+           nunca se vea un rectángulo vacío color papel mientras tanto. -->
+      <div class="s-llegar-mapa-box">
+        <p class="s-llegar-mapa-espera" aria-hidden="true"><svg aria-hidden="true"><use href="#i-pin"/></svg>Jesús R. Macías y 20 de Noviembre<span>Col. Gremial, Aguascalientes</span></p>
+        <iframe src="https://www.google.com/maps?q=21.8926738,-102.2865058&amp;z=17&amp;output=embed" loading="lazy" title="Mapa de La Chata Pozolería, Jesús R. Macías 602" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -377,7 +377,7 @@
 
 <a class="chata-wa-float" data-wa="Hola, quiero apartar mi pedido en La Chata Pozolería." href="https://wa.me/524492563283" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
 
-<script src="site.js?v=1789889018" defer></script>
+<script src="site.js?v=1789941112" defer></script>
 <script src="sections/20-carta.js?v=1789888799" defer></script>
 <script src="sections/40-reloj.js?v=1789888957" defer></script>
 </body>

@@ -35,8 +35,20 @@
   letter-spacing: .1em; text-transform: uppercase; color: rgba(244,239,228,.6);
 }
 @media (min-width: 900px) {
-  .s-mesa { padding-bottom: 72px; }
-  .s-mesa-shotband { min-height: 420px; }
+  .s-mesa { padding-top: 56px; padding-bottom: 72px; }
+  /* Igual que la carta: en compu la foto va en paspartú topado a 1100 px, no a sangre. */
+  .s-mesa-shotband {
+    height: auto; min-height: 0;
+    width: min(1100px, 100% - 2 * var(--k-gutter));
+    margin-inline: auto;
+    background: var(--paper);
+    padding: 8px;
+    border: 1px solid var(--frame-brand);
+    border-radius: var(--radius);
+  }
+  .s-mesa-shotband picture { display: block; }
+  .s-mesa-shotband img { height: auto; aspect-ratio: 1600 / 900; object-position: 50% 48%; border-radius: 1px; }
+  .s-mesa-pie { left: 20px; bottom: 20px; }
   .s-mesa-in { flex-direction: row; gap: 56px; padding-top: 44px; align-items: flex-start; }
   .s-mesa-dato { flex: 0 0 42%; }
   .s-mesa-list { flex: 1; }

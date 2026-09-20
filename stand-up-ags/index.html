@@ -28,11 +28,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero/hero-m.webp" imagesrcset="img/hero/hero-m.webp 560w, img/hero/hero-d.webp 1120w" imagesizes="(min-width: 900px) 46vw, 78vw" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero/banner-m.webp" media="(max-width: 899px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero/banner-d.webp" media="(min-width: 900px)" fetchpriority="high">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
 <link rel="stylesheet" href="site.css?v=1789933190">
-<link rel="stylesheet" href="sections/01-hero.css?v=1789933294">
-<link rel="stylesheet" href="sections/02-ebesa.css?v=1789927178">
+<link rel="stylesheet" href="sections/01-hero.css?v=1789942606">
+<link rel="stylesheet" href="sections/02-ebesa.css?v=1789942606">
 <link rel="stylesheet" href="sections/03-catalogo.css?v=1789933190">
 <link rel="stylesheet" href="sections/04-firma.css?v=1789927071">
 <link rel="stylesheet" href="sections/05-fecha.css?v=1789930967">
@@ -107,7 +108,14 @@
 </div>
 
 <main id="top">
-<section id="hero" class="s-hero su-dark su-grid" aria-label="Stand Up Diseño">
+<section id="hero" class="s-hero su-dark" aria-label="Stand Up Diseño">
+  <picture class="s-hero-foto">
+    <source media="(min-width: 900px)" srcset="img/hero/banner-d.webp" width="1920" height="820">
+    <img src="img/hero/banner-m.webp" width="780" height="1000" fetchpriority="high" decoding="async"
+      alt="Piso de un pabellón de exposiciones con un stand ya armado.">
+  </picture>
+  <span class="s-hero-velo" aria-hidden="true"></span>
+
   <div class="k-wrap s-hero-wrap">
     <p class="su-eyebrow">Aguascalientes · Av. Tecnológico 401</p>
     <h1 class="su-h2 s-hero-title">
@@ -116,23 +124,14 @@
       <span class="ln"><em>TE LO ENTREGAMOS</em></span>
       <span class="ln"><em>DE PIE.</em></span>
     </h1>
-    <p class="su-lead">Diseño, renta y montaje de stands. Av. Tecnológico 401, Aguascalientes.</p>
+    <p class="su-lead">Diseño, renta y montaje de stands para ferias.</p>
     <div class="s-hero-cta">
       <a class="cd-btn cd-btn--marca" href="#catalogo"><span>Ver las 15 medidas</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       <a class="cd-btn cd-btn--secondary" href="#ebesa"><span>Ver 10 stands de EBESA 2025</span></a>
     </div>
   </div>
-  <div class="s-hero-stage">
-    <img class="s-hero-obj"
-      src="img/hero/hero-m.webp"
-      srcset="img/hero/hero-m.webp 560w, img/hero/hero-d.webp 1120w"
-      sizes="(min-width: 900px) 46vw, 78vw"
-      width="666" height="481"
-      decoding="async"
-      alt="Stand para Newmi Universidad, uno de los montajes de Stand Up.">
-    <div class="s-hero-shadow" aria-hidden="true"></div>
-    <p class="s-hero-pie">Montaje real · Newmi Universidad</p>
-  </div>
+
+  <p class="s-hero-ilus">Imagen ilustrativa</p>
 </section>
 
 <section id="ebesa" class="s-ebesa su-dark" aria-label="Quién abrió con nosotros">
@@ -145,54 +144,49 @@
       <span class="ln"><em>DE AQUÍ.</em></span>
     </h2>
 
-  <div class="s-ebesa-split">
-    <figure class="su-frame s-ebesa-grande">
-      <img src="img/ebesa/fajas-colombianas-600.webp" srcset="img/ebesa/fajas-colombianas-600.webp 600w, img/ebesa/fajas-colombianas-1200.webp 970w" sizes="(min-width: 900px) 520px, 92vw" width="600" height="588" fetchpriority="high" decoding="async" alt="Stand de Fajas Colombianas montado por Stand Up en EBESA 2025.">
-      <figcaption>Fajas Colombianas · montaje real, EBESA 2025</figcaption>
-    </figure>
-
-    <div class="s-ebesa-der">
-      <ul class="s-ebesa-tira" aria-label="Los otros nueve stands de EBESA 2025">
-        <li><figure class="su-frame su-frame--tight">
-          <img src="img/ebesa/elixderm-600.webp" srcset="img/ebesa/elixderm-600.webp 600w, img/ebesa/elixderm-1200.webp 867w" sizes="(min-width: 900px) 200px, 46vw" width="600" height="692" loading="lazy" decoding="async" alt="Stand de Elixderm montado por Stand Up en EBESA 2025.">
-          <figcaption>Elixderm</figcaption>
-        </figure></li>
-        <li><figure class="su-frame su-frame--tight">
-          <img src="img/ebesa/venofye-a-600.webp" srcset="img/ebesa/venofye-a-600.webp 600w, img/ebesa/venofye-a-1200.webp 658w" sizes="(min-width: 900px) 200px, 46vw" width="600" height="788" loading="lazy" decoding="async" alt="Stand de Venofye montado por Stand Up en EBESA 2025.">
-          <figcaption>Venofye</figcaption>
-        </figure></li>
-        <li><figure class="su-frame su-frame--tight">
-          <img src="img/ebesa/dabalash-600.webp" srcset="img/ebesa/dabalash-600.webp 600w, img/ebesa/dabalash-1200.webp 625w" sizes="(min-width: 900px) 200px, 46vw" width="600" height="954" loading="lazy" decoding="async" alt="Stand de Dabalash montado por Stand Up en EBESA 2025.">
-          <figcaption>Dabalash</figcaption>
-        </figure></li>
-        <li><figure class="su-frame su-frame--tight">
-          <img src="img/ebesa/chemisette-600.webp" srcset="img/ebesa/chemisette-600.webp 600w, img/ebesa/chemisette-1200.webp 1198w" sizes="(min-width: 900px) 200px, 46vw" width="600" height="598" loading="lazy" decoding="async" alt="Stand de Chemisette montado por Stand Up en EBESA 2025.">
-          <figcaption>Chemisette</figcaption>
-        </figure></li>
-        <li><figure class="su-frame su-frame--tight">
-          <img src="img/ebesa/xelha-haircare-600.webp" srcset="img/ebesa/xelha-haircare-600.webp 600w, img/ebesa/xelha-haircare-1200.webp 1116w" sizes="(min-width: 900px) 200px, 46vw" width="600" height="678" loading="lazy" decoding="async" alt="Stand de Xel-Há Hair Care montado por Stand Up en EBESA 2025.">
-          <figcaption>Xel-Há Hair Care</figcaption>
-        </figure></li>
-        <li><figure class="su-frame su-frame--tight">
-          <img src="img/ebesa/natural-slim-600.webp" srcset="img/ebesa/natural-slim-600.webp 600w, img/ebesa/natural-slim-1200.webp 977w" sizes="(min-width: 900px) 200px, 46vw" width="600" height="537" loading="lazy" decoding="async" alt="Stand de Natural Slim montado por Stand Up en EBESA 2025.">
-          <figcaption>Natural Slim</figcaption>
-        </figure></li>
-        <li><figure class="su-frame su-frame--tight">
-          <img src="img/ebesa/natural-yee-600.webp" srcset="img/ebesa/natural-yee-600.webp 600w, img/ebesa/natural-yee-1200.webp 830w" sizes="(min-width: 900px) 200px, 46vw" width="600" height="692" loading="lazy" decoding="async" alt="Stand de Natural Yee montado por Stand Up en EBESA 2025.">
-          <figcaption>Natural Yee</figcaption>
-        </figure></li>
-        <li><figure class="su-frame su-frame--tight">
-          <img src="img/ebesa/extensiones-diaz-600.webp" srcset="img/ebesa/extensiones-diaz-600.webp 600w, img/ebesa/extensiones-diaz-1200.webp 828w" sizes="(min-width: 900px) 200px, 46vw" width="600" height="597" loading="lazy" decoding="async" alt="Stand de Extensiones Díaz montado por Stand Up en EBESA 2025.">
-          <figcaption>Extensiones Díaz</figcaption>
-        </figure></li>
-        <li><figure class="su-frame su-frame--tight">
-          <img src="img/ebesa/papas-barber-600.webp" srcset="img/ebesa/papas-barber-600.webp 600w, img/ebesa/papas-barber-1200.webp 1010w" sizes="(min-width: 900px) 200px, 46vw" width="600" height="507" loading="lazy" decoding="async" alt="Stand de Papas Barber montado por Stand Up en EBESA 2025.">
-          <figcaption>Papas Barber</figcaption>
-        </figure></li>
-      </ul>
-      <p class="s-ebesa-pista" aria-hidden="true">Desliza: son 10 montajes reales</p>
-    </div>
-  </div>
+    <ul class="s-ebesa-tira" aria-label="Los diez stands de EBESA 2025">
+      <li><figure class="su-frame su-frame--tight">
+        <img src="img/ebesa/elixderm-600.webp" srcset="img/ebesa/elixderm-600.webp 600w, img/ebesa/elixderm-1200.webp 867w" sizes="232px" width="600" height="692" fetchpriority="high" decoding="async" alt="Stand de Elixderm montado por Stand Up en EBESA 2025.">
+        <figcaption>Elixderm</figcaption>
+      </figure></li>
+      <li><figure class="su-frame su-frame--tight">
+        <img src="img/ebesa/venofye-a-600.webp" srcset="img/ebesa/venofye-a-600.webp 600w, img/ebesa/venofye-a-1200.webp 658w" sizes="232px" width="600" height="788" decoding="async" alt="Stand de Venofye montado por Stand Up en EBESA 2025.">
+        <figcaption>Venofye</figcaption>
+      </figure></li>
+      <li><figure class="su-frame su-frame--tight">
+        <img src="img/ebesa/dabalash-600.webp" srcset="img/ebesa/dabalash-600.webp 600w, img/ebesa/dabalash-1200.webp 625w" sizes="232px" width="600" height="954" decoding="async" alt="Stand de Dabalash montado por Stand Up en EBESA 2025.">
+        <figcaption>Dabalash</figcaption>
+      </figure></li>
+      <li><figure class="su-frame su-frame--tight">
+        <img src="img/ebesa/chemisette-600.webp" srcset="img/ebesa/chemisette-600.webp 600w, img/ebesa/chemisette-1200.webp 1198w" sizes="232px" width="600" height="598" decoding="async" alt="Stand de Chemisette montado por Stand Up en EBESA 2025.">
+        <figcaption>Chemisette</figcaption>
+      </figure></li>
+      <li><figure class="su-frame su-frame--tight">
+        <img src="img/ebesa/xelha-haircare-600.webp" srcset="img/ebesa/xelha-haircare-600.webp 600w, img/ebesa/xelha-haircare-1200.webp 1116w" sizes="232px" width="600" height="678" decoding="async" alt="Stand de Xel-Há Hair Care montado por Stand Up en EBESA 2025.">
+        <figcaption>Xel-Há Hair Care</figcaption>
+      </figure></li>
+      <li><figure class="su-frame su-frame--tight">
+        <img src="img/ebesa/fajas-colombianas-600.webp" srcset="img/ebesa/fajas-colombianas-600.webp 600w, img/ebesa/fajas-colombianas-1200.webp 970w" sizes="232px" width="600" height="588" loading="lazy" decoding="async" alt="Stand de Fajas Colombianas montado por Stand Up en EBESA 2025.">
+        <figcaption>Fajas Colombianas</figcaption>
+      </figure></li>
+      <li><figure class="su-frame su-frame--tight">
+        <img src="img/ebesa/natural-slim-600.webp" srcset="img/ebesa/natural-slim-600.webp 600w, img/ebesa/natural-slim-1200.webp 977w" sizes="232px" width="600" height="537" loading="lazy" decoding="async" alt="Stand de Natural Slim montado por Stand Up en EBESA 2025.">
+        <figcaption>Natural Slim</figcaption>
+      </figure></li>
+      <li><figure class="su-frame su-frame--tight">
+        <img src="img/ebesa/natural-yee-600.webp" srcset="img/ebesa/natural-yee-600.webp 600w, img/ebesa/natural-yee-1200.webp 830w" sizes="232px" width="600" height="692" loading="lazy" decoding="async" alt="Stand de Natural Yee montado por Stand Up en EBESA 2025.">
+        <figcaption>Natural Yee</figcaption>
+      </figure></li>
+      <li><figure class="su-frame su-frame--tight">
+        <img src="img/ebesa/extensiones-diaz-600.webp" srcset="img/ebesa/extensiones-diaz-600.webp 600w, img/ebesa/extensiones-diaz-1200.webp 828w" sizes="232px" width="600" height="597" loading="lazy" decoding="async" alt="Stand de Extensiones Díaz montado por Stand Up en EBESA 2025.">
+        <figcaption>Extensiones Díaz</figcaption>
+      </figure></li>
+      <li><figure class="su-frame su-frame--tight">
+        <img src="img/ebesa/papas-barber-600.webp" srcset="img/ebesa/papas-barber-600.webp 600w, img/ebesa/papas-barber-1200.webp 1010w" sizes="232px" width="600" height="507" loading="lazy" decoding="async" alt="Stand de Papas Barber montado por Stand Up en EBESA 2025.">
+        <figcaption>Papas Barber</figcaption>
+      </figure></li>
+    </ul>
+    <p class="s-ebesa-pista" aria-hidden="true">Desliza: son 10 montajes reales</p>
 
     <div class="s-ebesa-resenas su-paper">
       <p class="s-ebesa-rotulo">4.8 en Google <span class="cd-nowrap">· 6 opiniones</span></p>

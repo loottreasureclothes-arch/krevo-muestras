@@ -205,7 +205,9 @@
     });
   }
 
-  /* Blindaje: a los 1.6 s de asomarse, [data-reveal]/[data-reveal-stagger] quedan visibles pase lo que pase */
+  /* [data-reveal]/[data-reveal-stagger] entran AL VERSE. Lo que ya está dentro de la primera
+     pantalla al cargar se revela de golpe (nada de la portada depende de un temporizador).
+     El plazo de 1.6 s se queda solo como red de seguridad, no como único disparador. */
   function initRevealSafety() {
     var groups = document.querySelectorAll("[data-reveal-stagger]");
     for (var g = 0; g < groups.length; g++) {
@@ -219,11 +221,20 @@
       es.forEach(function (e) {
         if (!e.isIntersecting) return;
         io.unobserve(e.target);
-        var el = e.target;
-        setTimeout(function () { show(el); }, 1600);
+        show(e.target);
       });
     }, { rootMargin: "0px", threshold: 0 });
-    Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+    var vh = window.innerHeight || document.documentElement.clientHeight || 800;
+    Array.prototype.forEach.call(els, function (el) {
+      if (el.getBoundingClientRect().top < vh) show(el); else io.observe(el);
+    });
+    setTimeout(function () {
+      var v = window.innerHeight || document.documentElement.clientHeight || 800;
+      Array.prototype.forEach.call(els, function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < v && r.bottom > 0) show(el);
+      });
+    }, 1600);
   }
 
   function scrollToEl(el) {

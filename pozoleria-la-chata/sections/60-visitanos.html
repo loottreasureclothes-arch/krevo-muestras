@@ -9,7 +9,7 @@
         <div><dt>Dónde</dt><dd>Col. Gremial, C.P. 20030, Aguascalientes</dd></div>
         <div><dt>Cuándo</dt><dd>Sábado y domingo, 3:30 a 10:00 pm</dd></div>
         <div><dt>Teléfono</dt><dd><a href="tel:+524492563283">449 256 3283</a></dd></div>
-        <div><dt>Pago</dt><dd>Solo efectivo</dd></div>
+        <div><dt>Pago</dt><dd>Solo efectivo, según lo que reportan sus clientes en Google</dd></div>
         <div><dt>Servicio</dt><dd>Para comer aquí o para llevar</dd></div>
         <div><dt>Código plus</dt><dd>VPV7+39 Aguascalientes</dd></div>
       </dl>
@@ -21,7 +21,12 @@
     </div>
 
     <div class="s-llegar-mapa chata-frame">
-      <iframe src="https://www.google.com/maps?q=21.8926738,-102.2865058&amp;z=17&amp;output=embed" loading="lazy" title="Mapa de La Chata Pozolería, Jesús R. Macías 602" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <!-- El mapa carga tarde: debajo va un relleno oscuro con la esquina escrita, para que
+           nunca se vea un rectángulo vacío color papel mientras tanto. -->
+      <div class="s-llegar-mapa-box">
+        <p class="s-llegar-mapa-espera" aria-hidden="true"><svg aria-hidden="true"><use href="#i-pin"/></svg>Jesús R. Macías y 20 de Noviembre<span>Col. Gremial, Aguascalientes</span></p>
+        <iframe src="https://www.google.com/maps?q=21.8926738,-102.2865058&amp;z=17&amp;output=embed" loading="lazy" title="Mapa de La Chata Pozolería, Jesús R. Macías 602" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </div>
 </section>
