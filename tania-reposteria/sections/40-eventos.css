@@ -24,3 +24,6 @@
 .tr-paper-input::placeholder { color: var(--mute-ink); }
 .tr-paper-note { font-size: 12px; color: var(--mute-ink); margin: 2px 0 10px; }
 .tr-eventos-send { width: 100%; }
+
+/* El boton verde de eventos no es una barra de 845 px: de 700 en adelante mide lo de un boton. */
+@media (min-width: 700px) { .tr-eventos-send { width: auto; min-width: 300px; max-width: 340px; } }

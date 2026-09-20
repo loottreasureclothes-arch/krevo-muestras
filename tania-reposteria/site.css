@@ -200,3 +200,7 @@ body.tr-wa-off .k-wa { visibility: hidden; animation: none; }
 
 /* De 1024 para arriba la barra ya ensena las mismas secciones: el boton CARTA sobraba (revision externa). */
 @media (min-width: 1024px) { .tr-menu-btn { display: none; } }
+
+/* Panel "Carta": los renglones mas grandes y centrados en alto; antes quedaban ~620 px de negro entre la lista y los botones. */
+.tr-nav-list { margin-block: auto; gap: 8px; }
+.tr-nav-list a { font-size: clamp(22px, 6.2vw, 30px); padding-block: 20px; }

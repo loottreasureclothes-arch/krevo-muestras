@@ -72,3 +72,6 @@
 /* El pedido repetido en texto legible antes del boton verde (en el arco va curvado y a 10 px). */
 .tr-platon-pedido { margin: 0 0 8px; font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--brand-2); }
 .tr-platon-pedido:empty { display: none; }
+
+/* De 700 px en adelante los pasos no se estiran a lo ancho (el input media 845 px a 893). */
+@media (min-width: 700px) { .tr-platon-steps, .tr-platon-summary { max-width: 420px; } .tr-platon-input { max-width: 360px; } }
