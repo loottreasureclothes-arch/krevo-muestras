@@ -71,12 +71,12 @@
      y se va rellenando con lo que el cliente elige. */
   function renderSend() {
     if (!send) return;
-    function campo(v) { return v ? v + "." : "__ ."; }
     var t = tamanoTexto();
-    var msg = "Hola Tania, quiero encargar un pastel. " + (/^Para \d+ personas$/.test(t) ? t + "." : "Tamaño: " + campo(t)) +
-      " Sabor: " + campo(choice.sabor) +
-      " Fecha: " + campo(choice.fecha ? fechaBonita(choice.fecha) : "") +
-      " ¿Me confirmas precio?";
+    var partes = [];
+    if (t) partes.push(/^Para \d+ personas$/.test(t) ? t + "." : "Tamaño: " + t + ".");
+    if (choice.sabor) partes.push("Sabor: " + choice.sabor + ".");
+    if (choice.fecha) partes.push("Fecha: " + fechaBonita(choice.fecha) + ".");
+    var msg = "Hola Tania, quiero encargar un pastel. " + partes.join(" ") + (partes.length ? " " : "") + "¿Me confirmas precio?";
     send.setAttribute("data-wa", msg);
     send.href = window.TR ? window.TR.waUrl(msg) : send.href;
   }

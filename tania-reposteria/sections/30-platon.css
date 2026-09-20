@@ -75,3 +75,8 @@
 
 /* De 700 px en adelante los pasos no se estiran a lo ancho (el input media 845 px a 893). */
 @media (min-width: 700px) { .tr-platon-steps, .tr-platon-summary { max-width: 420px; } .tr-platon-input { max-width: 360px; } }
+
+/* Tercera vuelta: el platon y los pasos van lado a lado desde 700 px y centrados en alto; antes la columna de
+   los pasos era corta y dejaba un hueco negro de 720x506 abajo a la derecha en compu. */
+@media (min-width: 700px) { .tr-platon-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; } }
+@media (min-width: 1024px) { .tr-platon-grid { align-items: center; gap: 56px; } }
