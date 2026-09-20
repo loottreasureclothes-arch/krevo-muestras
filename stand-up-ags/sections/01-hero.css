@@ -6,7 +6,7 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: safe center; /* safe: si el contenido no cabe (893x802) no se mete debajo del header */
   overflow: clip;
 }
 @media (min-width: 900px) {
@@ -75,3 +75,7 @@
   margin: 10px 0 0; text-align: center; font-family: var(--font-body); font-size: 11px; font-weight: 700;
   letter-spacing: 0.1em; text-transform: uppercase; color: var(--brand);
 }
+
+/* "section[id] { padding-block }" de site.css le ganaba a .s-hero (mas especifico) y el eyebrow quedaba pegado
+   debajo del header a 893 px. Con #hero el aire de arriba vuelve a ser header + 34. */
+@media (max-width: 899px) { #hero.s-hero { padding-top: calc(var(--su-header-h) + 34px); } }

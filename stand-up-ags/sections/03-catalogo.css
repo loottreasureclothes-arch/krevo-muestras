@@ -131,3 +131,6 @@
 /* Dato tecnico de cada medida (area y paredes): es lo que distingue una tarjeta de otra ademas del dibujo. */
 .s-cat-dato { margin: 2px 0 6px; font-family: var(--font-body); font-size: 12px; line-height: 1.35; color: var(--mute); }
 .s-cat-dato:empty { display: none; }
+
+/* Tercera vuelta: el dibujo no crece sin tope (a 1440 media 360 px y dejaba un rectangulo negro arriba). */
+@media (min-width: 700px) { .s-cat-card:not(.s-cat-card--especial) .s-cat-plan { max-width: 230px; margin-inline: auto; } }

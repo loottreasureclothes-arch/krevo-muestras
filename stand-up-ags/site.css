@@ -341,3 +341,18 @@ section[id] { padding-block: var(--sec-y-sm); }
 /* El flotante se quita sobre el catalogo: ahi ya esta la barra "Mi cotizacion" y tapaba "+ Agregar". */
 /* visibility y no opacity: la animacion de entrada del kit (k-wa-in, fill both) pisa opacity y transform. */
 body.su-wa-off .k-wa { visibility: hidden; pointer-events: none; }
+
+/* ===== Tercera vuelta: paredes del volumen =====
+   Los retornos laterales ya no llevan filete claro arriba (cruzaba la pared del fondo como una muesca blanca)
+   y van un tono mas oscuros: se leen como pared de lado. */
+.su-wall--izq, .su-wall--der { border-top-color: transparent; background: linear-gradient(180deg, #46813a, #21431b); }
+/* OCTANORM se lee como sistema modular: perfil de aluminio arriba y a los lados, y junta marcada cada metro.
+   CUSTOM es pared corrida, lisa, sin una sola linea. */
+.su-wall.is-octanorm {
+  border-top: 3px solid #e3ecdf; box-shadow: inset 2px 0 0 #e3ecdf, inset -2px 0 0 #e3ecdf;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(227, 236, 223, 0.95) 0 2px, transparent 2px calc(100% / var(--su-mods, 1))),
+    linear-gradient(180deg, #5a9e44, #2e5a25);
+}
+.su-wall:not(.is-octanorm) { border-top: 1.5px solid #6fb257; background: linear-gradient(180deg, #4f9340, #356c2b); }
+.su-wall--izq:not(.is-octanorm), .su-wall--der:not(.is-octanorm) { border-top-color: transparent; background: linear-gradient(180deg, #3f7a33, #21431b); }
