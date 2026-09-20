@@ -1,0 +1,27 @@
+/* ============ 50 VISITANOS: "Tecuexe 201, Local 2" ============
+   Sin foto (marco vacio no; bloque de direccion grande en Archivo). Eyebrow, titulo,
+   bloque de datos, los 2 WhatsApp grandes, boton "Cómo llegar" a Maps. Sin mapa embebido,
+   sin parrafo. Presupuesto celular: 900px. */
+#visitanos.s-vis { padding: var(--sec-y-sm) 0; }
+#visitanos .s-vis-h2 { max-width: 13ch; }
+
+#visitanos .s-vis-data { margin-top: 18px; display: grid; gap: 4px; }
+#visitanos .s-vis-data p { margin: 0; font: 500 15px/1.4 var(--font-body); color: var(--cream-mute); }
+#visitanos .s-vis-plus { font-variant-numeric: tabular-nums; }
+
+#visitanos .s-vis-wa { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line-deep); display: grid; gap: 10px; }
+#visitanos .s-vis-wa-link {
+  display: inline-block; padding: 6px 0; margin: -6px 0;
+  font: 800 clamp(28px, 9vw, 40px)/1 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68;
+  color: var(--cream); text-decoration: none; font-variant-numeric: tabular-nums; width: max-content;
+  background-image: linear-gradient(var(--brand), var(--brand)); background-repeat: no-repeat; background-size: 0 2px; background-position: 0 100%;
+  transition: background-size 220ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { #visitanos .s-vis-wa-link:hover { background-size: 100% 2px; } }
+
+#visitanos .s-vis-btn { margin-top: 28px; }
+
+@media (min-width: 900px) {
+  #visitanos.s-vis { padding: var(--sec-y) 0; }
+  #visitanos .s-vis-wa { flex-direction: row; display: flex; gap: 40px; }
+}

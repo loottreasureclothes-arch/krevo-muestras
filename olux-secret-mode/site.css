@@ -1,0 +1,211 @@
+/* Ólux American Style · secret mode — FUNDACIÓN (sobre ../_kit/kit.css). HOJA-DIRECCION.md manda.
+   =====================================================================
+   Tokens (HOJA §5.3, muestreados sobre research/fotos/fachada-tanyveth-secret-mode-google.jpg):
+     --canvas  #26242E  azulejo de la fachada (lienzo de casi toda la pagina)
+     --deep    #17161D  bandas oscuras, pie, velo del hero
+     --stone   #BCAE8B  cantera real de planta baja — eyebrows, numeros, hairlines
+     --paper   #E9E0CC  UNICA banda clara, solo para leer
+     --ink     #F4F1EA  texto sobre oscuro
+     --brand   #C85E8D  rosa del neon real del letrero (medido #B75180, subido para contraste)
+     --brand-deep #2A2D7C  azul del mismo neon — solo hairlines y el subrayado, nunca fondo
+     --brand-ink  #BB5583  el mismo rosa oscurecido, UNICO acento sobre la banda papel
+     --wa #25d366 con texto --wa-ink #0b3d1f (SOLO lo que manda WhatsApp + el flotante)
+   Tipografia: Playfair Display (titulares + "secret mode" en italica) + DM Sans (cuerpo, tabular-nums).
+   Formas propias de este sitio ("la marquesina de Tanyveth"):
+     Radios: 0px en fotos/marcos/bandas, 2px en botones. Nada redondo, ninguna pildora.
+     Motivo grafico UNICO: el parteluz (linea vertical 1px + travesano horizontal 10px, en --brand) —
+       es el signo de la ventana real de la fachada, se repite en el header, eyebrows y divisores.
+     Marco de foto ("el aparador"): filete 1px rgba(244,241,234,.28) con inset 6px + segunda linea
+       1px --brand al 45% SOLO del lado izquierdo (el perfil del aluminio).
+     Divisor de seccion: 1px horizontal rgba(244,241,234,.14) interrumpido al centro por el travesano
+       vertical de 10px en --brand. Es el UNICO separador; nunca cortinas de color entre secciones.
+   Header: "La marquesina de Tanyveth" — ver bloque HEADER mas abajo.
+   Botones: navegar/acciones en --brand (relleno o contorno), finos, rectangulares, mayusculas
+     espaciadas. Verde SOLO lo que de verdad manda WhatsApp (maximo 3 en toda la pagina) + el flotante.
+   Blindaje: [data-reveal] de kit.css + rescate 1.6s ya en _kit/kit.js.
+   ===================================================================== */
+:root {
+  --canvas: #26242E;
+  --canvas-2: #201E27;
+  --deep: #17161D;
+  --stone: #BCAE8B;
+  --paper: #E9E0CC;
+  --ink: #F4F1EA;
+  --ink-2: rgba(244, 241, 234, 0.64);
+  --mute: rgba(244, 241, 234, 0.5);
+  --mute-ink: rgba(23, 22, 29, 0.62);
+  --line: rgba(244, 241, 234, 0.18);
+  --line-2: rgba(244, 241, 234, 0.14);
+  --brand: #C85E8D;
+  --brand-deep: #2A2D7C;
+  --brand-ink: #BB5583; /* el MISMO rosa, oscurecido, para la banda papel: 3.38:1 sobre --paper */
+  --wa: #25d366;
+  --wa-dark: #1ebe5b;
+  --wa-ink: #0b3d1f;
+  --radius: 2px;
+  --font-display: "Playfair Display", "Times New Roman", serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-h2: clamp(38px, 10.5vw, 80px);
+  --sec-y: 68px;
+  --k-gutter: 16px;
+  --k-header-h: 84px;
+  --os-head-h: 84px;
+}
+@media (min-width: 600px) { :root { --k-gutter: 24px; } }
+@media (min-width: 900px) { :root { --sec-y: 104px; --k-gutter: 40px; --os-head-h: 92px; } }
+
+html { scroll-behavior: auto !important; overflow-x: clip; accent-color: var(--brand); scrollbar-color: var(--brand) var(--canvas); }
+body { background: var(--canvas); color: var(--ink); font-family: var(--font-body); font-size: 16px; overflow-x: clip; position: relative; }
+[data-paper] { background: var(--paper); color: #17161D; }
+[data-deep] { background: var(--deep); color: var(--ink); }
+::selection { background: var(--brand); color: var(--ink); }
+:focus-visible { outline-color: var(--brand); border-radius: 2px; }
+[data-paper] :focus-visible { outline-color: var(--brand-ink); }
+.k-wrap { max-width: 1280px; }
+@media (min-width: 1700px) { .k-wrap { max-width: 1560px; } }
+
+.os-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; border-radius: 2px; background: var(--brand); color: var(--ink); font-weight: 600; transform: translateY(-180%); transition: transform 200ms var(--ease-out); }
+.os-skip:focus { transform: none; }
+
+/* ============ El parteluz: UNICO motivo grafico de la pagina ============ */
+.os-parteluz { display: inline-block; width: 12px; height: 26px; position: relative; flex: none; }
+.os-parteluz::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--brand); transform: translateX(-50%); }
+.os-parteluz::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 1px; background: var(--brand); transform: translate(-50%, -50%); }
+.os-parteluz--sm { width: 9px; height: 18px; }
+.os-parteluz--sm::after { width: 7px; }
+.os-parteluz--lg { width: 30px; height: 120px; }
+.os-parteluz--lg::after { width: 22px; }
+
+/* ============ Display / titulos que caen y pegan ============ */
+.os-d { font-family: var(--font-display); line-height: 1.03; letter-spacing: -0.006em; text-wrap: balance; overflow-wrap: normal; color: var(--ink); }
+[data-paper] .os-d { color: #17161D; }
+.os-h2 { font-size: var(--fs-h2); }
+.os-d em { font-style: normal; color: var(--brand); }
+[data-paper] .os-d em { color: var(--brand-ink); }
+.os-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); }
+[data-paper] .os-eyebrow { color: rgba(23, 22, 29, 0.6); }
+.os-lead { margin-top: 12px; color: var(--ink-2); font-size: 15px; line-height: 1.5; max-width: 40ch; text-wrap: pretty; }
+[data-paper] .os-lead { color: var(--mute-ink); }
+.os-sec { padding-block: var(--sec-y); position: relative; }
+
+/* Titulo que cae: estado final visible por defecto (blindaje); .os-fall anima con JS/CSS */
+.os-fall { display: inline-block; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .os-fall[data-fall] { opacity: 0; transform: translateY(-40px); }
+  .os-fall[data-fall].is-fallen { opacity: 1; transform: none; transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out); }
+}
+
+/* ============ Divisor de seccion: linea interrumpida por el travesano ============ */
+.os-divider { display: flex; align-items: center; justify-content: center; padding-block: 2px; }
+.os-divider::before, .os-divider::after { content: ""; flex: 1 1 auto; height: 1px; background: var(--line-2); }
+.os-divider-mark { flex: none; width: 10px; height: 1px; background: var(--brand); margin-inline: -1px; position: relative; }
+.os-divider-mark::before { content: ""; position: absolute; left: 50%; top: -7px; bottom: -7px; width: 1px; background: var(--brand); transform: translateX(-50%); }
+
+/* ============ Marco de foto: "el aparador" ============ */
+.os-frame { position: relative; padding: 6px; }
+.os-frame::before { content: ""; position: absolute; inset: 0; border: 1px solid rgba(244, 241, 234, 0.28); pointer-events: none; }
+.os-frame::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: rgba(200, 94, 141, 0.45); }
+.os-frame img { display: block; width: 100%; height: auto; }
+.os-frame figcaption { margin-top: 8px; font-size: 12px; letter-spacing: 0.03em; color: var(--mute); }
+[data-paper] .os-frame figcaption { color: var(--mute-ink); }
+
+/* ============ Botones: finos, rectangulares (2px), mayusculas espaciadas ============ */
+.os-btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 44px; padding: 0 22px; border-radius: 2px;
+  border: 1px solid transparent; font-weight: 600; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  line-height: 1; white-space: nowrap; cursor: pointer; user-select: none; text-decoration: none;
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), border-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.os-btn:active { transform: scale(0.97); }
+.os-btn svg { width: 17px; height: 17px; flex: none; }
+.os-btn--brand { background: var(--brand); border-color: var(--brand); color: #1b0e14; }
+.os-btn--brand-ol { background: transparent; border-color: var(--brand); color: var(--brand); }
+[data-paper] .os-btn--brand-ol { border-color: var(--brand-ink); color: var(--brand-ink); }
+.os-btn--line { background: transparent; border-color: currentColor; color: inherit; }
+.os-btn--wa { background: var(--wa); border-color: var(--wa); color: var(--wa-ink); box-shadow: 0 2px 0 rgba(11,61,31,.35); font-weight: 700; }
+[data-deep] .os-btn--wa, [data-canvas] .os-btn--wa { box-shadow: none; }
+@media (hover: hover) and (pointer: fine) {
+  .os-btn--brand:hover { background: #dd77a2; border-color: #dd77a2; }
+  .os-btn--brand-ol:hover { background: var(--brand); color: #1b0e14; }
+  .os-btn--line:hover { background: rgba(244,241,234,.08); }
+  [data-paper] .os-btn--line:hover { background: rgba(23,22,29,.06); }
+  .os-btn--wa:hover { background: var(--wa-dark); border-color: var(--wa-dark); }
+}
+.os-btn[disabled], .os-btn[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+
+/* ============ HEADER — "La marquesina de Tanyveth" ============
+   Azulejo oscuro + letrero iluminado + el parteluz de aluminio que divide los aparadores.
+   84px celular / 92px compu, transparente sobre el hero, hairline inferior 1px. Un solo boton (APARTAR,
+   en --brand). Al pasar 40px se compacta a 54px, fondo solido con blur, logo baja, "secret mode" se
+   esconde y queda el lockup compacto (logo + parteluz + subrayado de neon). Ningun verde aqui. */
+.k-header.os-header {
+  height: var(--os-head-h); padding: env(safe-area-inset-top) max(var(--k-gutter), env(safe-area-inset-right)) 0 max(var(--k-gutter), env(safe-area-inset-left));
+  display: flex; align-items: center; gap: 12px; background: transparent; border-bottom: 1px solid var(--line); color: var(--ink);
+  transition: height 240ms var(--ease-out), background-color 240ms var(--ease-out), border-color 240ms var(--ease-out);
+}
+.k-header.os-header.is-solid { height: 54px; background: rgba(23, 22, 29, 0.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-color: var(--line-2); }
+@media (min-width: 900px) { .k-header.os-header.is-solid { height: 62px; } }
+
+.os-logo { flex: none; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; margin-left: -10px; padding-inline: 10px; }
+.os-logo img { height: 26px; width: auto; display: block; transition: height 240ms var(--ease-out); }
+.k-header.os-header.is-solid .os-logo img { height: 20px; }
+
+/* El parteaguas: el parteluz de aluminio que divide los aparadores, entre el logo y "secret mode".
+   Es el signo grafico del sitio y NO desaparece al compactar: el lockup de la barra chica es
+   logo + parteaguas + subrayado de neon. */
+.os-head-part { flex: none; margin-inline: -1px; transition: height 240ms var(--ease-out); }
+.k-header.os-header.is-solid .os-head-part { height: 20px; }
+
+.os-sm { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.os-sm-t { display: block; max-width: 160px; overflow: hidden; font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 15px; letter-spacing: 0.06em; line-height: 1; color: var(--ink); white-space: nowrap; transition: max-width 240ms var(--ease-out), opacity 200ms var(--ease-out); }
+.k-header.os-header.is-solid .os-sm-t { max-width: 0; opacity: 0; }
+.os-sm-u { display: block; width: 28px; height: 2px; background: linear-gradient(90deg, var(--brand-deep), var(--brand)); }
+
+.os-head-sp { flex: 1 1 auto; }
+.os-menu-word { display: none; }
+@media (min-width: 560px) { .os-menu-word { display: inline; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin-right: 4px; } }
+.os-apartar { flex: none; height: 44px; min-height: 44px; padding: 0 18px; font-size: 11px; }
+
+.os-menu-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: inherit; margin-left: 2px; }
+.os-burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 20px; height: 16px; }
+.os-burger i { display: block; height: 1px; background: currentColor; transition: transform 220ms var(--ease-out), opacity 220ms var(--ease-out); }
+html.os-nav-open .os-burger i:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+html.os-nav-open .os-burger i:nth-child(2) { opacity: 0; }
+html.os-nav-open .os-burger i:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ---------------- carrito compacto (lo llena el turno 2; la barra ya existe) ---------------- */
+.os-cart-bar { display: none; align-items: center; gap: 8px; height: 28px; padding: 0 10px; margin-left: 4px; background: var(--brand); color: #1b0e14; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+body[data-cart-n]:not([data-cart-n="0"]) .os-cart-bar { display: inline-flex; }
+
+/* ============ Panel de menu: "Carta" en hoja completa ============ */
+.os-nav-sheet { position: fixed; inset: 0; z-index: 90; visibility: hidden; overflow: hidden; contain: paint; }
+html.os-nav-open .os-nav-sheet { visibility: visible; }
+.os-nav-scrim { position: absolute; inset: 0; background: rgba(10, 8, 12, 0.66); opacity: 0; transition: opacity 260ms var(--ease-out); }
+html.os-nav-open .os-nav-scrim { opacity: 1; }
+.os-nav-panel {
+  position: absolute; inset: 0 0 0 auto; width: min(88vw, 400px); max-width: 100vw; box-sizing: border-box; overflow: hidden; background: var(--deep); color: var(--ink);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: calc(env(safe-area-inset-top) + 96px) 24px calc(env(safe-area-inset-bottom) + 28px);
+  transform: translateX(100%); transition: transform 320ms var(--ease-out);
+}
+html.os-nav-open .os-nav-panel { transform: none; }
+.os-nav-list { display: flex; flex-direction: column; gap: 0; min-width: 0; }
+.os-nav-list a { display: flex; align-items: center; gap: 14px; padding-block: 15px; border-bottom: 1px solid var(--line-2); font-family: var(--font-display); font-size: 19px; line-height: 1.3; min-width: 0; }
+.os-nav-list a span.os-nav-n { flex: none; font-family: var(--font-body); font-size: 11px; color: var(--stone); letter-spacing: 0.1em; }
+.os-nav-list a .os-nav-txt { flex: 1 1 auto; min-width: 0; overflow-wrap: break-word; }
+.os-nav-foot { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.os-nav-foot p { width: 100%; margin-top: 8px; font-size: 12px; color: var(--mute); }
+
+/* ============ Footer ============ */
+/* Horario, direccion y redes viven en la seccion 7 (el cierre), tres renglones arriba: el pie NO
+   los repite. Aqui solo queda el credito de KREVO. */
+.os-foot { background: var(--deep); color: var(--ink); padding-block: 20px 22px; border-top: 1px solid var(--line-2); }
+.os-foot-note { font-size: 12px; color: rgba(244,241,234,.4); text-align: center; }
+
+/* ============ WA flotante: fuera en hero y con la hoja abierta ============ */
+html.os-nav-open .k-wa,
+body.os-wa-off .k-wa { visibility: hidden; animation: none; }
+
+/* ============ Layout base ============ */
+.os-wrap-tight { max-width: 640px; }

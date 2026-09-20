@@ -1,0 +1,21 @@
+/* 70-cierre: el logo a pantalla. Ya NO depende de mix-blend-mode ni del fondo: img/brand/
+   logo-alfa-1200.webp trae canal alfa (build_img.py le quito el cuadro negro al JPG). */
+.os-cierre { background: var(--deep); padding-block: 56px 40px; text-align: center; }
+.os-cierre-in { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.os-cierre-logo { width: 72%; max-width: 360px; height: auto; }
+.os-cierre-h { font-size: clamp(30px, 9vw, 46px); }
+.os-cierre-datos { display: flex; flex-direction: column; gap: 6px; color: var(--ink-2); font-size: 14px; line-height: 1.6; }
+.os-cierre-tels { display: inline-flex; align-items: center; gap: 10px; }
+.os-cierre-tels a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 4px; color: var(--ink); text-decoration: none; }
+.os-cierre-tels .os-parteluz { height: 14px; }
+.os-cierre-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 4px; }
+.os-cierre-call { color: var(--ink); }
+.os-cierre-social { display: flex; gap: 16px; margin-top: 6px; }
+.os-cierre-social a { display: grid; place-items: center; width: 44px; height: 44px; color: var(--ink); border: 1px solid var(--line); }
+.os-cierre-social svg { width: 20px; height: 20px; }
+@media (hover: hover) and (pointer: fine) { .os-cierre-social a:hover { border-color: var(--brand); color: var(--brand); } }
+
+@media (min-width: 900px) {
+  .os-cierre { padding-block: 80px 56px; }
+  .os-cierre-logo { max-width: 460px; }
+}

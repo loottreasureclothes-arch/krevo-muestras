@@ -1,0 +1,158 @@
+/* 20-aparador: EL APARADOR. Componente firma "Los tres aparadores" — zonas posicionadas en % sobre
+   el recorte de fachada-tanyveth-secret-mode-google.jpg que toca en cada pantalla (ver build_img.py).
+   El aspect-ratio del contenedor es IDÉNTICO al del recorte, para que object-fit:cover no desplace
+   nada y los % de las zonas sigan cuadrando. Dos recortes, dos juegos de zonas:
+     celular (< 900px)  ventanas-m2.webp 1270x692 (original x135-1405, y565-1257) — banda ALTA:
+                        213 px a 390 de ancho, en vez de los 130 px de listón de la ronda 1
+     compu   (>= 900px) ventanas-d.webp  2200x734 (original x130-1500, y800-1257) — la banda ancha
+   Las zonas van aquí y NO en el style= del HTML, para que el media query pueda cambiarlas. */
+.os-ap { background: var(--canvas); padding-top: var(--sec-y); padding-bottom: 40px; }
+.os-ap-head { margin-bottom: 22px; }
+.os-ap-h { font-size: clamp(34px, 9vw, 58px); max-width: 11ch; }
+.os-ap-honest { margin-top: 10px; font-size: 13px; line-height: 1.55; color: var(--ink-2); max-width: 44ch; }
+
+/* ---------- Las tres ventanas ---------- */
+.os-ap-photo { position: relative; width: 100%; aspect-ratio: 1270 / 692; overflow: hidden; background: var(--deep); }
+
+/* Zonas medidas sobre ventanas-m2.webp (celular) */
+.os-ap-zone[data-dept="carteras"] { --zl: 3.6%; --zt: 36.5%; --zw: 25.4%; --zh: 50.8%; --zd: 0ms; }
+.os-ap-zone[data-dept="calzado"]  { --zl: 37.2%; --zt: 38.5%; --zw: 24.4%; --zh: 49.0%; --zd: 70ms; }
+.os-ap-zone[data-dept="ropa"]     { --zl: 65.0%; --zt: 39.5%; --zw: 28.2%; --zh: 47.8%; --zd: 140ms; }
+.os-ap-photo-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.os-ap-zone {
+  position: absolute; left: var(--zl); top: var(--zt); width: var(--zw); height: var(--zh);
+  padding: 0; border: 0; background: transparent; cursor: pointer; display: block; -webkit-tap-highlight-color: transparent;
+}
+.os-ap-zone-veil { position: absolute; inset: 0; background: rgba(10, 8, 6, .64); clip-path: inset(100% 0 0 0); pointer-events: none; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .os-ap-zone-veil { clip-path: inset(0 0 0 0); transition: clip-path 420ms var(--ease-out); transition-delay: var(--zd, 0ms); }
+  html.os-js .os-ap-photo.is-lit .os-ap-zone-veil { clip-path: inset(100% 0 0 0); }
+}
+.os-ap-zone-tone { position: absolute; inset: 0; background: rgba(8, 6, 5, 0); box-shadow: inset 0 0 0 0 var(--brand); transition: background-color 320ms var(--ease-out), box-shadow 320ms var(--ease-out); pointer-events: none; }
+.os-ap-zone.is-dim .os-ap-zone-tone { background: rgba(8, 6, 5, .48); }
+.os-ap-zone.is-active .os-ap-zone-tone { background: rgba(200, 94, 141, .12); box-shadow: inset 0 0 0 1px var(--brand); }
+.os-ap-zone-label {
+  position: absolute; left: 6px; right: 6px; bottom: 6px; font-size: 11px; font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--ink-2); text-shadow: 0 1px 3px rgba(0,0,0,.7); line-height: 1.15;
+  transition: color 320ms var(--ease-out);
+}
+.os-ap-zone.is-active .os-ap-zone-label { color: var(--ink); }
+:focus-visible.os-ap-zone { outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .os-ap-zone:not(.is-active):hover .os-ap-zone-tone { background: rgba(8, 6, 5, .28); }
+}
+@media (min-width: 560px) { .os-ap-zone-label { font-size: 12px; left: 8px; right: 8px; bottom: 8px; } }
+@media (min-width: 900px) { .os-ap-zone-label { font-size: 13px; } }
+
+/* ---------- Cuerpo: foto de calzado (solo si el depto activo es calzado) + lista ---------- */
+.os-ap-body { margin-top: 26px; }
+.os-ap-calzado-foto { max-width: 288px; margin: 0 0 22px; opacity: 1; max-height: 400px; transition: opacity 220ms var(--ease-out), max-height 220ms var(--ease-out), margin 220ms var(--ease-out); overflow: hidden; }
+.os-ap-calzado-foto[hidden] { display: block; opacity: 0; max-height: 0; margin-bottom: 0; pointer-events: none; }
+.os-ap-calzado-foto img { width: 100%; height: auto; }
+
+.os-ap-list-wrap { position: relative; overflow: hidden; transition: height 260ms var(--ease-out); min-height: var(--os-ap-min, 0px); }
+.os-ap-list { padding: 0; margin: 0; } /* sin JS: los tres grupos quedan visibles, apilados; nada se esconde */
+html.os-js .os-ap-list { display: none; opacity: 0; transition: opacity 200ms var(--ease-out); }
+html.os-js .os-ap-list.is-active { display: block; opacity: 1; }
+
+.os-ap-eyebrow-row { padding-block: 4px 10px; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--stone); }
+.os-ap-row { display: flex; align-items: center; gap: 12px; padding-block: 13px; border-top: 1px solid var(--line-2); }
+.os-ap-row-t { flex: 1 1 auto; min-width: 0; }
+.os-ap-row-name { font-family: var(--font-display); font-size: 16px; line-height: 1.3; color: var(--ink); }
+.os-ap-row-mini { font-style: italic; color: var(--ink-2); font-size: 13px; }
+.os-ap-row-note { margin-top: 3px; font-size: 12px; color: var(--mute); line-height: 1.4; }
+.os-ap-row-price { flex: none; font-variant-numeric: tabular-nums; font-weight: 600; font-size: 15px; color: var(--ink); }
+.os-ap-row-price--ask { font-size: 12px; font-weight: 600; color: var(--brand); text-transform: uppercase; letter-spacing: .04em; }
+/* El boton mide 44x44 (toque) pero el cuadrado que se VE es el ::before de 34x34 con contorno de
+   1 px en --brand, como manda la HOJA §5.2. Nunca verde. */
+.os-ap-add {
+  position: relative; isolation: isolate;
+  flex: none; width: 44px; height: 44px; display: grid; place-items: center; padding: 0;
+  border: 0; background: transparent; color: var(--brand); font-size: 19px; line-height: 1;
+  cursor: pointer; transition: color 160ms var(--ease-out), transform 160ms var(--ease-out);
+}
+.os-ap-add::before {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 34px; height: 34px; z-index: -1;
+  transform: translate(-50%, -50%); border: 1px solid var(--brand); background: transparent;
+  transition: background-color 160ms var(--ease-out);
+}
+.os-ap-add:active { transform: scale(.92); }
+.os-ap-add.is-added { color: #1b0e14; }
+.os-ap-add.is-added::before { background: var(--brand); }
+@media (hover: hover) and (pointer: fine) {
+  .os-ap-add:hover { color: #1b0e14; }
+  .os-ap-add:hover::before { background: var(--brand); }
+}
+
+@media (min-width: 700px) {
+  .os-ap-body { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
+  .os-ap-calzado-foto { margin: 0; }
+  .os-ap-calzado-foto[hidden] { display: none; }
+}
+@media (min-width: 900px) {
+  .os-ap { padding-bottom: 56px; }
+  .os-ap-row-name { font-size: 18px; }
+  /* en compu entra ventanas-d.webp (recorte ancho): otro aspect-ratio y otras zonas */
+  .os-ap-photo { aspect-ratio: 1370 / 457; }
+  .os-ap-zone[data-dept="carteras"] { --zl: 4.7%; --zt: 9.8%; --zw: 22.6%; --zh: 76.6%; }
+  .os-ap-zone[data-dept="calzado"]  { --zl: 35.4%; --zt: 10.9%; --zw: 21.9%; --zh: 74.4%; }
+  .os-ap-zone[data-dept="ropa"]     { --zl: 59.8%; --zt: 10.5%; --zw: 29.9%; --zh: 75.9%; }
+}
+
+/* La barra del header ya existe en template.html (turno 1); este archivo la hace interactiva.
+   white-space evita que "Mi apartado · N" se parta en dos líneas si se agrega algo con el header
+   todavía transparente (sobre el hero, antes de pasar los 40px que lo compactan). */
+#os-cart-bar { cursor: pointer; white-space: nowrap; flex: none; }
+
+/* =====================================================================
+   Hoja "Mi apartado": carrito + cierre. Mismos radios (0) y color de marca
+   que el resto del sitio; el verde SOLO en el boton que manda WhatsApp. */
+.os-cart-sheet { position: fixed; inset: 0; z-index: 95; visibility: hidden; overflow: hidden; contain: paint; }
+html.os-cart-open .os-cart-sheet { visibility: visible; }
+.os-cart-scrim { position: absolute; inset: 0; background: rgba(10, 8, 12, .62); opacity: 0; transition: opacity 260ms var(--ease-out); }
+html.os-cart-open .os-cart-scrim { opacity: 1; }
+.os-cart-panel {
+  position: absolute; inset: auto 0 0 0; max-height: 84svh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  background: var(--deep); color: var(--ink); box-sizing: border-box;
+  padding: 22px var(--k-gutter) calc(env(safe-area-inset-bottom) + 24px);
+  border-top: 1px solid var(--line);
+  transform: translateY(100%); transition: transform 320ms var(--ease-out);
+}
+html.os-cart-open .os-cart-panel { transform: none; }
+.os-cart-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.os-cart-panel-h { font-size: 24px; }
+.os-cart-close { position: relative; width: 44px; height: 44px; flex: none; color: var(--ink); }
+.os-cart-close span { position: absolute; left: 50%; top: 50%; width: 16px; height: 1px; background: currentColor; }
+.os-cart-close span:first-child { transform: translate(-50%, -50%) rotate(45deg); }
+.os-cart-close span:last-child { transform: translate(-50%, -50%) rotate(-45deg); }
+
+.os-cart-empty { font-size: 14px; color: var(--ink-2); padding-block: 10px; }
+html.os-cart-has .os-cart-empty { display: none; }
+.os-cart-items { display: none; flex-direction: column; padding: 0; margin: 0 0 16px; }
+html.os-cart-has .os-cart-items { display: flex; }
+html.os-cart-has .os-cart-total { display: flex; }
+.os-cart-total strong.is-frase { font-family: var(--font-body); font-size: 13.5px; font-weight: 600; color: var(--brand); text-align: right; max-width: 60%; line-height: 1.3; }
+.os-cart-item { display: flex; align-items: center; gap: 10px; padding-block: 11px; border-top: 1px solid var(--line-2); }
+.os-cart-item:first-child { border-top: 0; }
+.os-cart-item-t { flex: 1 1 auto; min-width: 0; }
+.os-cart-item-name { font-family: var(--font-display); font-size: 14.5px; line-height: 1.3; }
+.os-cart-item-price { margin-top: 2px; font-size: 12px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.os-cart-item-qty { flex: none; display: inline-flex; align-items: center; gap: 0; }
+/* Igual que el "+": 40x44 tocables, cuadrito visible de 26x26. */
+.os-cart-item-qty button { position: relative; isolation: isolate; width: 40px; height: 44px; display: grid; place-items: center; border: 0; color: var(--ink); background: transparent; font-size: 14px; }
+.os-cart-item-qty button::before { content: ""; position: absolute; left: 50%; top: 50%; width: 26px; height: 26px; z-index: -1; transform: translate(-50%, -50%); border: 1px solid var(--line); }
+.os-cart-item-qty b { min-width: 16px; text-align: center; font-variant-numeric: tabular-nums; font-size: 13px; }
+
+.os-cart-pay { padding-block: 14px; border-top: 1px solid var(--line-2); }
+.os-cart-pay-t { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); }
+.os-cart-pay-note { margin-top: 6px; font-size: 13.5px; color: var(--ink-2); }
+.os-cart-total { display: none; align-items: baseline; justify-content: space-between; padding-block: 12px; border-top: 1px solid var(--line-2); font-family: var(--font-display); }
+.os-cart-total span { font-size: 13px; color: var(--ink-2); }
+.os-cart-total strong { font-size: 24px; font-variant-numeric: tabular-nums; }
+.os-cart-send { width: 100%; margin-top: 6px; }
+
+@media (min-width: 640px) {
+  .os-cart-panel { inset: 0 0 0 auto; left: auto; width: min(88vw, 420px); max-height: 100svh; border-top: 0; border-left: 1px solid var(--line); transform: translateX(100%); padding-top: calc(env(safe-area-inset-top) + 26px); }
+  html.os-cart-open .os-cart-panel { transform: none; }
+}

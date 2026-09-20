@@ -1,0 +1,57 @@
+/* 50-nombres: la división (NO el interruptor de dona-petra). Placa oscura partida por el parteluz
+   a escala grande (120px de alto), lado a lado; abajo, los dos locales tipográficos. */
+.os-nom { background: var(--canvas-2); padding-block: var(--sec-y) 0; }
+.os-nom-h { font-size: clamp(30px, 8.2vw, 50px); max-width: 12ch; }
+
+/* La division es el argumento de la seccion: los dos lados cuadrados, mismo aire contra el
+   parteaguas y los dos renglones de abajo arrancando a la misma altura. */
+.os-nom-plate {
+  margin-top: 30px; padding-block: 26px; background: var(--deep);
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; text-align: center;
+}
+.os-nom-side { min-width: 0; padding-inline: 14px; }
+.os-nom-mark { flex: none; align-self: center; }
+.os-nom-name {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 2.2em; /* la misma caja en los DOS lados: los renglones de abajo arrancan parejos */
+  font-family: var(--font-display); font-weight: 600; font-size: clamp(19px, 5.6vw, 30px); line-height: 1.14; letter-spacing: .01em; color: var(--ink);
+}
+.os-nom-name-2 { display: block; margin-top: 6px; font-family: var(--font-body); font-weight: 600; font-size: .46em; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+.os-nom-name--sm { font-style: italic; font-weight: 500; }
+/* el subrayado del neon real de su letrero (azul -> rosa), igual que en el header */
+.os-nom-neon { display: block; width: 48px; height: 2px; margin-top: 8px; background: linear-gradient(90deg, var(--brand-deep), var(--brand)); }
+.os-nom-name--sm em { font-style: italic; }
+.os-nom-sub { margin-top: 10px; font-size: 11px; line-height: 1.4; color: var(--ink-2); max-width: 20ch; margin-inline: auto; }
+
+.os-nom-cross { margin-top: 16px; text-align: center; font-size: 13px; font-weight: 600; letter-spacing: .03em; color: var(--stone); }
+
+.os-nom-body { margin-top: 40px; padding-bottom: 44px; }
+.os-nom-photo { max-width: 240px; margin: 0 0 28px; }
+.os-nom-photo img { width: 100%; height: auto; }
+
+.os-nom-locales { display: grid; gap: 26px; }
+.os-nom-local { padding-top: 16px; border-top: 1px solid var(--line-2); }
+.os-nom-local-h { font-family: var(--font-display); font-size: 21px; color: var(--ink); }
+.os-nom-local-p { margin-top: 6px; font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+.os-nom-local-p a {
+  display: inline-flex; align-items: center; min-height: 44px; padding-inline: 1px;
+  color: var(--ink); text-decoration: underline; text-decoration-color: var(--brand);
+  text-decoration-thickness: 1px; text-underline-offset: 4px;
+}
+.os-nom-local-stars { margin-top: 4px; font-size: 13px; color: var(--brand); font-weight: 600; }
+.os-nom-local-honest { margin-top: 4px; font-size: 12.5px; color: var(--mute); font-style: italic; }
+.os-nom-local .os-btn { margin-top: 14px; }
+
+.os-nom-horario { margin-top: 30px; display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line-2); padding-top: 20px; }
+
+@media (min-width: 700px) {
+  .os-nom-locales { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+  .os-nom-body { display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; }
+  .os-nom-photo { margin: 0; }
+  .os-nom-locales { grid-column: 2; }
+  .os-nom-horario { grid-column: 1 / -1; }
+}
+@media (min-width: 900px) {
+  .os-nom { padding-top: 104px; }
+  .os-nom-plate { padding-block: 40px; }
+  .os-nom-mark { width: 30px; height: 120px; }
+}

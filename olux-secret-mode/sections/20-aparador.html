@@ -1,0 +1,168 @@
+<!-- 20-aparador: EL APARADOR — el catálogo a la vista, con el componente firma "Los tres
+     aparadores" (HOJA-DIRECCION.md §4): las tres ventanas reales de su fachada (recorte inferior
+     de la misma foto del hero) se prenden una a la vez y filtran la lista de precio real de abajo.
+     Beat C del momento firma (HOJA §3) al entrar esta sección. Sin foto de producto: ni una existe.
+     Presupuesto ~2,900 px. -->
+<section class="os-ap" id="aparador" aria-label="El aparador: catálogo con precio real">
+  <div class="k-wrap os-ap-head">
+    <h2 class="os-d os-ap-h">
+      <span class="os-fall" data-fall data-reveal-delay="0">Tres aparadores.</span>
+      <span class="os-fall" data-fall data-reveal-delay="100"><em>Ábrelos desde aquí.</em></span>
+    </h2>
+    <p class="os-ap-honest">Precios tal como ustedes los publicaron en su tienda en línea (catálogo de enero de 2026). Los de hoy te los confirmamos por WhatsApp.</p>
+  </div>
+
+  <div class="os-ap-photo" id="os-ap-photo" aria-label="Elige un departamento tocando su ventana">
+    <picture>
+      <source media="(min-width: 900px)" srcset="img/aparador/ventanas-d.webp">
+      <img class="os-ap-photo-img" src="img/aparador/ventanas-m2.webp" alt="Los tres aparadores reales de la fachada de Tanyveth 105-B" width="1270" height="692" loading="lazy" decoding="async">
+    </picture>
+
+    <button class="os-ap-zone is-dim" type="button" data-dept="carteras" aria-pressed="false">
+      <span class="os-ap-zone-veil" aria-hidden="true"></span>
+      <span class="os-ap-zone-tone" aria-hidden="true"></span>
+      <span class="os-ap-zone-label">Carteras y mochilas</span>
+    </button>
+    <button class="os-ap-zone is-active" type="button" data-dept="calzado" aria-pressed="true">
+      <span class="os-ap-zone-veil" aria-hidden="true"></span>
+      <span class="os-ap-zone-tone" aria-hidden="true"></span>
+      <span class="os-ap-zone-label">Calzado</span>
+    </button>
+    <button class="os-ap-zone is-dim" type="button" data-dept="ropa" aria-pressed="false">
+      <span class="os-ap-zone-veil" aria-hidden="true"></span>
+      <span class="os-ap-zone-tone" aria-hidden="true"></span>
+      <span class="os-ap-zone-label">Ropa</span>
+    </button>
+  </div>
+
+  <div class="k-wrap os-ap-body">
+    <figure class="os-frame os-ap-calzado-foto" data-dept-photo="calzado">
+      <img src="img/aparador/calzado.webp" width="576" height="540" alt="Su exhibidor real de calzado dentro de la tienda" loading="lazy" decoding="async">
+      <figcaption>Su exhibidor real, tal cual está en tienda.</figcaption>
+    </figure>
+
+    <div class="os-ap-list-wrap" id="os-ap-list-wrap">
+
+      <ul class="os-ap-list" data-dept-group="carteras" aria-label="Carteras y mochilas">
+        <li class="os-ap-row">
+          <p class="os-ap-eyebrow-row">Carteras y mochilas</p>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Backpack Tommy Hilfiger</p><p class="os-ap-row-note">4 modelos a este precio (uno con tarjetero)</p></div>
+          <p class="os-ap-row-price">$2,290</p>
+          <button class="os-ap-add" type="button" data-add data-name="Backpack Tommy Hilfiger" data-price="2290" aria-label="Agregar Backpack Tommy Hilfiger a mi apartado">+</button>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Backpack Tommy Hilfiger</p></div>
+          <p class="os-ap-row-price">$2,390</p>
+          <button class="os-ap-add" type="button" data-add data-name="Backpack Tommy Hilfiger (otro modelo)" data-price="2390" aria-label="Agregar Backpack Tommy Hilfiger, otro modelo, a mi apartado">+</button>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Cartera Michael Kors</p><p class="os-ap-row-note">3 modelos a este precio</p></div>
+          <p class="os-ap-row-price">$2,590</p>
+          <button class="os-ap-add" type="button" data-add data-name="Cartera Michael Kors" data-price="2590" aria-label="Agregar Cartera Michael Kors a mi apartado">+</button>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Cartera Michael Kors</p></div>
+          <p class="os-ap-row-price">$1,990</p>
+          <button class="os-ap-add" type="button" data-add data-name="Cartera Michael Kors (otro modelo)" data-price="1990" aria-label="Agregar Cartera Michael Kors, otro modelo, a mi apartado">+</button>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Cartera Calvin Klein <span class="os-ap-row-mini">RFID protection</span></p><p class="os-ap-row-note">3 colores a este precio</p></div>
+          <p class="os-ap-row-price">$1,250</p>
+          <button class="os-ap-add" type="button" data-add data-name="Cartera Calvin Klein RFID protection" data-price="1250" aria-label="Agregar Cartera Calvin Klein RFID protection a mi apartado">+</button>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Cartera Calvin Klein <span class="os-ap-row-mini">RFID protection</span></p></div>
+          <p class="os-ap-row-price">$1,190</p>
+          <button class="os-ap-add" type="button" data-add data-name="Cartera Calvin Klein RFID protection (otro color)" data-price="1190" aria-label="Agregar Cartera Calvin Klein RFID protection, otro color, a mi apartado">+</button>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Cartera Guess</p></div>
+          <p class="os-ap-row-price">$1,050</p>
+          <button class="os-ap-add" type="button" data-add data-name="Cartera Guess" data-price="1050" aria-label="Agregar Cartera Guess a mi apartado">+</button>
+        </li>
+      </ul>
+
+      <ul class="os-ap-list" data-dept-group="calzado" aria-label="Calzado">
+        <li class="os-ap-row">
+          <p class="os-ap-eyebrow-row">Calzado</p>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Botas de lluvia Tommy Hilfiger</p></div>
+          <p class="os-ap-row-price">$2,190</p>
+          <button class="os-ap-add" type="button" data-add data-name="Botas de lluvia Tommy Hilfiger" data-price="2190" aria-label="Agregar Botas de lluvia Tommy Hilfiger a mi apartado">+</button>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Botas niña DKNY</p><p class="os-ap-row-note">2 modelos a este precio</p></div>
+          <p class="os-ap-row-price">$2,100</p>
+          <button class="os-ap-add" type="button" data-add data-name="Botas niña DKNY" data-price="2100" aria-label="Agregar Botas niña DKNY a mi apartado">+</button>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Tenis niño Tommy Hilfiger</p></div>
+          <p class="os-ap-row-price">$1,790</p>
+          <button class="os-ap-add" type="button" data-add data-name="Tenis niño Tommy Hilfiger" data-price="1790" aria-label="Agregar Tenis niño Tommy Hilfiger a mi apartado">+</button>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Tenis niño Polo Ralph Lauren</p></div>
+          <p class="os-ap-row-price">$1,350</p>
+          <button class="os-ap-add" type="button" data-add data-name="Tenis niño Polo Ralph Lauren" data-price="1350" aria-label="Agregar Tenis niño Polo Ralph Lauren a mi apartado">+</button>
+        </li>
+      </ul>
+
+      <ul class="os-ap-list" data-dept-group="ropa" aria-label="Ropa">
+        <li class="os-ap-row">
+          <p class="os-ap-eyebrow-row">Ropa</p>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Blusa Tommy Hilfiger cuello alto</p></div>
+          <p class="os-ap-row-price">$1,050</p>
+          <button class="os-ap-add" type="button" data-add data-name="Blusa Tommy Hilfiger cuello alto" data-price="1050" aria-label="Agregar Blusa Tommy Hilfiger cuello alto a mi apartado">+</button>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Blusa DKNY</p></div>
+          <p class="os-ap-row-price">$850</p>
+          <button class="os-ap-add" type="button" data-add data-name="Blusa DKNY" data-price="850" aria-label="Agregar Blusa DKNY a mi apartado">+</button>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Playera Tommy Hilfiger</p></div>
+          <p class="os-ap-row-price">$750</p>
+          <button class="os-ap-add" type="button" data-add data-name="Playera Tommy Hilfiger" data-price="750" aria-label="Agregar Playera Tommy Hilfiger a mi apartado">+</button>
+        </li>
+        <li class="os-ap-row">
+          <div class="os-ap-row-t"><p class="os-ap-row-name">Vestido Tommy Hilfiger corte cintura baja</p></div>
+          <p class="os-ap-row-price os-ap-row-price--ask">Pregunta el precio</p>
+          <button class="os-ap-add" type="button" data-add data-name="Vestido Tommy Hilfiger corte cintura baja" data-price="" aria-label="Agregar Vestido Tommy Hilfiger corte cintura baja a mi apartado">+</button>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+<div class="os-cart-sheet" id="os-cart-sheet" role="dialog" aria-modal="true" aria-label="Mi apartado" aria-hidden="true">
+  <div class="os-cart-scrim" aria-hidden="true"></div>
+  <div class="os-cart-panel">
+    <div class="os-cart-panel-head">
+      <h3 class="os-d os-cart-panel-h">Mi apartado</h3>
+      <button class="os-cart-close" type="button" aria-label="Cerrar"><span></span><span></span></button>
+    </div>
+
+    <p class="os-cart-empty" id="os-cart-empty">Todavía no agregas nada. Toca el <b>+</b> junto a una pieza del aparador.</p>
+    <ul class="os-cart-items" id="os-cart-items"></ul>
+
+    <div class="os-cart-pay">
+      <p class="os-cart-pay-t">Forma de pago</p>
+      <p class="os-cart-pay-note">Tarjeta en línea: te mandamos el link.</p>
+    </div>
+
+    <div class="os-cart-total" id="os-cart-total">
+      <span>Total</span>
+      <strong id="os-cart-total-n">Te lo confirmamos por WhatsApp</strong>
+    </div>
+
+    <a class="os-btn os-btn--wa os-cart-send" id="os-cart-send" href="https://wa.me/524491371706">
+      <svg aria-hidden="true"><use href="#i-wa"/></svg>Apartar por WhatsApp
+    </a>
+  </div>
+</div>

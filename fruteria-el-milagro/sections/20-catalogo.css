@@ -1,0 +1,57 @@
+/* ============ 20 CATALOGO: "Los paquetes" ============
+   Lista tipografica pura (HOJA-DIRECCION §6, Seccion 2): sin foto (no existe ninguna),
+   sin eyebrow, sin parrafo, sin boton verde. Nombre + contenido escrito + cartelito de
+   precio inclinado + "+" rojo. Presupuesto celular: 2,200px. */
+#catalogo.s-cat { padding: var(--sec-y-sm) 0 40px; }
+#catalogo .s-cat-h2 { max-width: none; }
+#catalogo .s-cat-grp {
+  margin: 34px 0 4px; padding-bottom: 10px; border-bottom: 1px solid var(--line-deep);
+  font: 700 12px/1 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68;
+  color: var(--brand); letter-spacing: .16em; text-transform: uppercase;
+}
+#catalogo .s-cat-list:first-of-type,
+#catalogo .s-cat-grp:first-of-type { margin-top: 8px; }
+#catalogo .s-cat-list { list-style: none; margin: 0; padding: 0; }
+#catalogo .s-cat-row {
+  display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 14px;
+  padding: 18px 0; border-bottom: 1px solid var(--line-deep);
+}
+#catalogo .s-cat-info { min-width: 0; }
+#catalogo .s-cat-name {
+  margin: 0 0 6px; font: 800 26px/1 var(--font-display); font-stretch: 68%;
+  font-variation-settings: "wdth" 68; text-transform: uppercase; color: var(--cream);
+}
+#catalogo .s-cat-desc { margin: 0; font: 400 13px/1.5 var(--font-body); color: var(--cream-mute); text-wrap: pretty; }
+#catalogo .s-cat-extra { margin: 6px 0 0; font: 400 12px/1.4 var(--font-body); color: rgba(244, 241, 230, .48); font-style: italic; }
+#catalogo .s-cat-buy { flex: none; display: grid; justify-items: center; gap: 10px; padding-top: 2px; }
+#catalogo .s-cat-add.is-added { animation: cat-added 480ms var(--ease-out); }
+@keyframes cat-added { 35% { transform: scale(1.18); } }
+/* Cambio 3: cuando el pizarron existe, su pestaña vive en x 350-390; el renglon se
+   recorre para que no tape el cartelito ni el "+". La clase la pone site.js:201. */
+body.has-piz #catalogo .s-cat-row { padding-right: 46px; }
+
+/* Cambio 14: un solo renglon, alineado a la izquierda como el resto de la seccion,
+   con la flecha pegada al texto (en caja y minusculas: es una pregunta, no un boton). */
+#catalogo .s-cat-suelto { margin-top: 26px; text-align: left; }
+#catalogo .s-cat-suelto .cd-btn--link {
+  max-width: 100%; text-align: left; white-space: normal; gap: 6px;
+  text-transform: none; letter-spacing: .01em; font: 600 15px/1.25 var(--font-body);
+  background-position: 0 calc(100% - 3px);
+}
+
+@media (min-width: 900px) {
+  #catalogo.s-cat { padding: var(--sec-y) 0 64px; }
+  /* Cambio 9: la lista se topa en 880px para que el cartelito quede pegado al texto
+     (antes: 1fr 96px sobre 1320px dejaba 560px de vacio en los ocho renglones). */
+  #catalogo .s-cat-grp,
+  #catalogo .s-cat-list,
+  #catalogo .s-cat-suelto { max-width: 880px; }
+  #catalogo .s-cat-row { grid-template-columns: minmax(0, 1fr) 132px; gap: 32px; padding: 22px 0; }
+  #catalogo .s-cat-name { font-size: 28px; }
+  #catalogo .s-cat-desc { font-size: 14px; max-width: none; }
+  #catalogo .s-cat-buy { gap: 12px; }
+  #catalogo .s-cat-buy .fem-tag { height: 34px; min-width: 64px; justify-content: center; font-size: 17px; }
+  #catalogo .s-cat-buy .fem-plus { width: 50px; height: 50px; background: radial-gradient(circle at 50% 50%, var(--brand) 0 19.5px, transparent 20.5px); }
+  #catalogo .s-cat-buy .fem-plus svg { width: 20px; height: 20px; }
+  #catalogo .s-cat-suelto .cd-btn--link { font-size: 16px; }
+}

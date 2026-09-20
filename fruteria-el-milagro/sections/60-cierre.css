@@ -1,0 +1,21 @@
+/* ============ 60 CIERRE: el logo al 76% + "Todo listo para completar" ============ */
+#cierre.s-cierre { padding: 0; }
+#cierre .s-cierre-brand { padding: 48px var(--k-gutter) 40px; display: grid; justify-items: center; gap: 16px; text-align: center; }
+#cierre .s-cierre-logo { width: min(76%, 420px); height: auto; border-radius: 50%; }
+#cierre .s-cierre-motto { color: var(--cream); font-size: clamp(30px, 9vw, 58px); line-height: .96; margin: 0; max-width: none; }
+#cierre .s-cierre-remate { margin: 4px 0 0; font: 700 15px/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--brand); }
+/* Cambio 15: una sola banda clara en toda la pagina (la de leer, Seccion 3). Esta
+   lista vive sobre el lienzo oscuro con las casillas en filete crema. */
+#cierre .s-cierre-todo { padding: 36px 0 42px; }
+#cierre .s-cierre-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 4px; }
+#cierre .s-cierre-list li { position: relative; display: grid; gap: 3px; padding: 14px 0 14px 34px; border-top: 1px solid var(--line-deep); }
+#cierre .s-cierre-list li::before { content: ""; position: absolute; left: 0; top: 16px; width: 18px; height: 18px; border: 1px solid var(--cream-mute); }
+#cierre .s-cierre-list b { font: 800 15px/1.2 var(--font-body); color: var(--cream); }
+#cierre .s-cierre-list span { color: var(--cream-mute); font-size: 14.5px; line-height: 1.45; }
+@media (min-width: 900px) {
+  #cierre .s-cierre-brand { padding: 96px 0 80px; }
+  #cierre .s-cierre-list { grid-template-columns: repeat(3, 1fr); gap: 8px 32px; }
+  #cierre .s-cierre-list li { border-top: 0; border-left: 1px solid var(--line-deep); padding: 0 24px 0 34px; }
+  #cierre .s-cierre-list li::before { top: 2px; }
+  #cierre .s-cierre-list li:first-child { border-left: 0; }
+}

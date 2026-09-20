@@ -1,0 +1,37 @@
+/* ============ 30 PEDIDO: "Pídelo y te llega" ============
+   Unica banda crema de la pagina (HOJA §6, Seccion 3): eyebrow, titulo, 3 pasos, horario
+   estatico, UN boton verde (1 de 3 en toda la pagina). Presupuesto celular: 900px. */
+#pedido.s-ped { padding: var(--sec-y-sm) 0; }
+#pedido .s-ped-in { display: grid; }
+#pedido .s-ped-h2 { max-width: 11ch; }
+#pedido .s-ped-h2 em { display: block; }
+
+#pedido .s-ped-steps { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 14px; }
+#pedido .s-ped-steps li { display: flex; align-items: baseline; gap: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+#pedido .s-ped-steps li:last-child { border-bottom: 0; padding-bottom: 0; }
+#pedido .s-ped-n { flex: none; font: 800 15px/1 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; color: var(--brand); }
+#pedido .s-ped-steps p { margin: 0; font: 500 16px/1.35 var(--font-body); color: var(--ink); }
+#pedido .s-ped-envio { margin: 16px 0 0; font: 500 13px/1.4 var(--font-body); color: var(--mute); }
+
+#pedido .s-ped-hrs { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); }
+#pedido .s-ped-hrs-list { display: grid; gap: 8px; margin: 0; }
+#pedido .s-ped-hrs-list div { display: flex; justify-content: space-between; gap: 12px; }
+#pedido .s-ped-hrs-list dt { color: var(--mute); font: 500 14px/1.3 var(--font-body); }
+#pedido .s-ped-hrs-list dd { margin: 0; font: 700 14px/1.3 var(--font-body); font-variant-numeric: tabular-nums; }
+#pedido .s-ped-hrs-note { margin: 12px 0 0; font: 600 13px/1.3 var(--font-body); color: var(--brand); }
+
+#pedido .s-ped-actions { margin-top: 28px; display: grid; gap: 16px; }
+#pedido .s-ped-actions .cd-btn--wa { width: 100%; }
+#pedido .s-ped-actions .cd-btn--link { justify-self: start; color: var(--ink); }
+
+@media (min-width: 900px) {
+  #pedido.s-ped { padding: var(--sec-y) 0; }
+  #pedido .s-ped-in { grid-template-columns: 5fr 7fr; gap: 56px; align-items: start; }
+  #pedido .s-ped-h2 { grid-column: 1; }
+  #pedido .cd-eyebrow { grid-column: 1; }
+  #pedido .s-ped-steps, #pedido .s-ped-envio, #pedido .s-ped-hrs, #pedido .s-ped-actions { grid-column: 2; }
+  #pedido .s-ped-steps { margin-top: 0; }
+  #pedido .s-ped-hrs { margin-top: 24px; }
+  #pedido .s-ped-actions { grid-template-columns: auto 1fr; align-items: center; }
+  #pedido .s-ped-actions .cd-btn--wa { width: auto; }
+}
