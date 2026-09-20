@@ -33,6 +33,7 @@
      Tapa y destapa en <=600ms, reversible: la usan 15-kilo.js (hero->kilo) y 60-sabado.js (sucursales->sábado). */
   var curtainEl = null, curtainAnim = null;
   function curtain() {
+    return; /* 19 sep: Emanuel la vio ("cuadro rojo bien gacho") y la quitó. Se queda la función para no romper llamadas. */
     if (reduce || typeof document.body.animate !== "function") return;
     if (!curtainEl) {
       curtainEl = document.createElement("div");

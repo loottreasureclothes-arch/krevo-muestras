@@ -217,6 +217,7 @@
   /* Cortina morada de cambio de capítulo (receta 15): cubre y destapa (≤600 ms) al cruzar hero->cotiza
      y catálogo->enciende. Reversible: se repite cada vez que se cruza el límite, en cualquier sentido. */
   function initCurtains() {
+    return; /* 19 sep: Emanuel rechazó la cortina de color entre secciones. */
     if (reduce || !("IntersectionObserver" in window)) return;
     Array.prototype.forEach.call(document.querySelectorAll("[data-curtain-before]"), function (c) {
       var target = document.getElementById(c.getAttribute("data-curtain-before"));
