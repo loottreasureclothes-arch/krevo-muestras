@@ -108,6 +108,19 @@
       window.addEventListener("resize", onClipScroll, { passive: true });
       checkClips(); // lo que ya se ve al cargar entra sin esperar a un scroll
     }
+
+    // Red de seguridad: si a los 1.6 s algo sigue escondido pero ya esta
+    // dentro de la pantalla, se muestra a la fuerza. Sin esto, cuando el IO
+    // no dispara (clip-path, img lazy, seccion medida en cero) el bloque se
+    // queda en blanco para siempre. Regla 7 del criterio: nada en blanco.
+    window.setTimeout(function () {
+      var vh = window.innerHeight || doc.clientHeight;
+      var todos = document.querySelectorAll("[data-reveal]:not(.is-in), [data-reveal-stagger]:not(.is-in)");
+      for (var t = 0; t < todos.length; t++) {
+        var c = todos[t].getBoundingClientRect();
+        if (c.bottom > 0 && c.top < vh * 1.2) todos[t].classList.add("is-in");
+      }
+    }, 1600);
   }
 
   function init() {
