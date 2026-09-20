@@ -9,7 +9,7 @@
 .pt-hero { position: relative; background: var(--deep); }
 .pt-hero-media { position: relative; height: 54svh; min-height: 360px; overflow: hidden; }
 .pt-hero-media picture { display: block; width: 100%; height: 100%; }
-.pt-hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
+.pt-hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 55% 6%; display: block; } /* el letrero "Petra" siempre a la vista */
 .pt-hero-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23, 32, 44, 0.42) 0%, rgba(23, 32, 44, 0.1) 26%, rgba(23, 32, 44, 0.12) 68%, rgba(23, 32, 44, 0.55) 100%); }
 .pt-hero-band { position: relative; background: var(--deep); }
 .pt-hero-in { padding-top: 34px; padding-bottom: 40px; }
@@ -18,7 +18,7 @@
 @media (min-width: 900px) {
   .pt-hero { display: grid; grid-template-columns: 44fr 56fr; align-items: stretch; min-height: 84svh; }
   .pt-hero-media { height: auto; min-height: 76svh; }
-  .pt-hero-media img { object-position: 50% 46%; }
+  .pt-hero-media img { object-position: 50% 18%; }
   .pt-hero-veil { background: linear-gradient(90deg, rgba(23, 32, 44, 0.3) 0%, rgba(23, 32, 44, 0) 34%, rgba(23, 32, 44, 0.28) 100%); }
   .pt-hero-band { display: flex; align-items: center; }
   .pt-hero-in { max-width: 640px; padding-top: 0; padding-bottom: 0; padding-inline: clamp(32px, 4vw, 64px) var(--k-gutter); margin-inline: 0; }
@@ -27,3 +27,8 @@
      para que QUEPA en la columna de texto, si no se corta a "de Méx" */
   .pt-hero .pt-title--hero { font-size: clamp(34px, 3.8vw, 60px); }
 }
+
+/* 700 a 899 px: la foto va a lo ancho y corta de alto; se usa la version apaisada con el letrero a la derecha. */
+@media (min-width: 700px) and (max-width: 899px) { .pt-hero-media img { object-position: 78% 30%; } }
+/* Etiqueta de imagen hecha con IA (siempre a la vista). */
+.pt-hero-ia { position: absolute; right: 12px; bottom: 8px; z-index: 2; margin: 0; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.75); }

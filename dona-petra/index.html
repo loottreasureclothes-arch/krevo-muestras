@@ -34,7 +34,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,700&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
 <link rel="stylesheet" href="site.css?v=1789917023">
-<link rel="stylesheet" href="sections/10-hero.css?v=1789915950">
+<link rel="stylesheet" href="sections/10-hero.css?v=1789942549">
 <link rel="stylesheet" href="sections/20-carta.css?v=1789915999">
 <link rel="stylesheet" href="sections/30-mesa.css?v=1789890732">
 <link rel="stylesheet" href="sections/40-martes.css?v=1789889352">
@@ -75,9 +75,11 @@
   <section class="pt-hero" id="hero" data-dark data-hide-wa aria-labelledby="hr-t">
     <div class="pt-hero-media">
       <picture>
-        <source media="(min-width: 900px)" srcset="img/fotos/galeana-noche-1400.webp">
-        <img src="img/fotos/galeana-noche-900.webp" alt="Fachada de Petra en Galeana Sur 382 de noche, con el letrero dorado encendido: Petra, un pedacito de México en tu mesa" width="900" height="1035" fetchpriority="high">
+        <source media="(min-width: 900px)" srcset="img/hero/fachada-v-1300.webp">
+        <source media="(min-width: 700px)" srcset="img/hero/fachada-w-1700.webp">
+        <img src="img/hero/fachada-v-780.webp" alt="Fachada de cantera de Petra en Galeana Sur 382 al anochecer, con el letrero iluminado: Petra, un pedacito de México en tu mesa" width="780" height="1035" fetchpriority="high">
       </picture>
+      <p class="pt-hero-ia">Imagen ilustrativa</p>
       <div class="pt-hero-veil" aria-hidden="true"></div>
     </div>
     <div class="pt-hero-band">
@@ -97,7 +99,7 @@
 
   <section class="pt-carta" id="carta" data-hide-wa aria-labelledby="ct-t">
     <div class="k-wrap pt-carta-head">
-      <p class="pt-eyebrow" data-reveal><svg aria-hidden="true"><use href="#i-flor"/></svg>La carta</p>
+      <p class="pt-eyebrow"><svg aria-hidden="true"><use href="#i-flor"/></svg>La carta</p>
       <h2 id="ct-t" class="pt-title pt-title--sec pt-carta-title">
         <span><i>Pide lo de siempre,</i></span>
         <span><i><em>o algo nuevo.</em></i></span>
@@ -225,6 +227,15 @@
           </div>
         </article>
 
+        <article class="pt-card" data-cat="bebidas" data-id="agua-de-horchata" data-name="Agua de Horchata" data-price="49">
+          <div class="pt-frame pt-card-fr"><img src="img/menu/agua-de-horchata.webp" width="600" height="900" alt="Agua de horchata de Petra" loading="lazy" decoding="async"></div>
+          <div class="pt-card-info">
+            <h3 class="pt-card-name">Agua de Horchata</h3>
+            <p class="pt-card-desc">Agua fresca de horchata, 355 ml.</p>
+            <div class="pt-card-row"><span class="pt-card-price">$49</span><button class="pt-card-add" type="button" data-add>+ Agregar</button></div>
+          </div>
+        </article>
+
       </div>
     </div>
 
@@ -251,7 +262,6 @@
         <li class="pt-list-row" data-id="limonada" data-name="Limonada" data-price="74"><span class="pt-list-name">Limonada</span><span class="pt-list-price">$74</span><button class="pt-list-add" type="button" data-add aria-label="Agregar Limonada">+</button></li>
         <li class="pt-list-row" data-id="atole" data-name="Atole" data-price="65"><span class="pt-list-name">Atole</span><span class="pt-list-price">$65</span><button class="pt-list-add" type="button" data-add aria-label="Agregar Atole">+</button></li>
         <li class="pt-list-row" data-id="cafe-de-olla" data-name="Café de Olla" data-price="57"><span class="pt-list-name">Café de Olla</span><span class="pt-list-price">$57</span><button class="pt-list-add" type="button" data-add aria-label="Agregar Café de Olla">+</button></li>
-        <li class="pt-list-row" data-id="agua-de-horchata" data-name="Agua de Horchata" data-price="49"><span class="pt-list-name">Agua de Horchata</span><span class="pt-list-price">$49</span><button class="pt-list-add" type="button" data-add aria-label="Agregar Agua de Horchata">+</button></li>
         <li class="pt-list-row" data-id="agua-de-jamaica" data-name="Agua de Jamaica" data-price="49"><span class="pt-list-name">Agua de Jamaica</span><span class="pt-list-price">$49</span><button class="pt-list-add" type="button" data-add aria-label="Agregar Agua de Jamaica">+</button></li>
       </ul>
     </div>
@@ -326,32 +336,32 @@
       <div class="pt-martes-veil"></div>
     </div>
     <div class="k-wrap pt-martes-in">
-      <p class="pt-eyebrow" data-reveal><svg aria-hidden="true"><use href="#i-flor"/></svg>Martes en Petra</p>
+      <p class="pt-eyebrow"><svg aria-hidden="true"><use href="#i-flor"/></svg>Martes en Petra</p>
       <h2 id="mt-t" class="pt-title pt-title--sec">
         <span><i>Las suizas, o las rojas,</i></span>
         <span><i><em>van 2x1.</em></i></span>
       </h2>
-      <p class="pt-lead" data-reveal>Solo los martes. Enchiladas Suizas $211 o Enchiladas Rojas $204.</p>
-      <button class="pt-btn pt-btn--primary" type="button" data-add-suizas data-reveal>Agregar suizas</button>
+      <p class="pt-lead">Solo los martes. Enchiladas Suizas $211 o Enchiladas Rojas $204.</p>
+      <button class="pt-btn pt-btn--primary" type="button" data-add-suizas>Agregar suizas</button>
     </div>
   </section>
 
   <section class="pt-resenas" id="resenas" data-dark aria-labelledby="rs-t">
     <h2 id="rs-t" class="pt-sr">Lo que dicen de Petra Cenaduría</h2>
     <div class="k-wrap pt-resenas-in">
-      <p class="pt-resenas-score" data-reveal><b>4.9</b><span>de 66 opiniones en Petra Cenaduría<br>(Google, sep 2026)</span></p>
+      <p class="pt-resenas-score"><b>4.9</b><span>de 66 opiniones en Petra Cenaduría<br>(Google, sep 2026)</span></p>
       <div class="pt-resenas-list">
-        <blockquote class="pt-resena" data-reveal>
+        <blockquote class="pt-resena">
           <div class="pt-resena-stars" aria-label="5 de 5 estrellas">★★★★★</div>
           <p>&ldquo;Es mi primera vez que visito Petra Cenaduria y me pareció una comida excelente y un servicio increíble. Pedí un Pozole Verde y estuvo delicioso&hellip;&rdquo;</p>
           <cite>Arturo Villanueva Alvarado, reseña de Google</cite>
         </blockquote>
-        <blockquote class="pt-resena" data-reveal>
+        <blockquote class="pt-resena">
           <div class="pt-resena-stars" aria-label="5 de 5 estrellas">★★★★★</div>
           <p>&ldquo;Excelente servicio! Las enchiladas deliciosas! Las de crema me encantaron&hellip;&rdquo;</p>
           <cite>Cristina Salas, reseña de Google</cite>
         </blockquote>
-        <blockquote class="pt-resena" data-reveal>
+        <blockquote class="pt-resena">
           <div class="pt-resena-stars" aria-label="5 de 5 estrellas">★★★★★</div>
           <p>&ldquo;¡Wow! El dueño es un amor, súper atento y servicial. La comida está de 10: riquísima y con un sazón único que no encuentras en todos lados.&rdquo;</p>
           <cite>Sofia Esquivel, reseña de Google</cite>
