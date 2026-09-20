@@ -1,25 +1,26 @@
 /* ===== 26 · Pedido de mesa (prefijo pf-pd / pf-ms) ===== */
 .pf-pd [hidden], .pf-pd[hidden] { display: none !important; }
 
-/* Barra inferior: a la izquierda del WhatsApp flotante (56 px + márgenes), nunca encima */
+/* Barra inferior: a la izquierda del WhatsApp flotante (56 px + márgenes), nunca encima.
+   Solo ABRE la hoja del pedido (no manda WhatsApp): color de marca, no verde. */
 .pf-pd-bar {
   position: fixed; z-index: 70;
   left: calc(12px + env(safe-area-inset-left));
   right: calc(18px + 56px + 10px + env(safe-area-inset-right));
   bottom: calc(18px + env(safe-area-inset-bottom));
   height: 56px; display: flex; align-items: center; gap: 10px; padding: 0 14px;
-  border: 0; border-radius: 3px; background: #25d366; color: #0b3d1f; cursor: pointer; text-align: left;
+  border: 0; border-radius: 3px; background: var(--wine); color: var(--cream); cursor: pointer; text-align: left;
   font: 600 1rem/1.1 var(--font-body, system-ui, sans-serif);
   box-shadow: 0 10px 26px -10px rgba(11, 37, 21, .55);
   animation: pf-pd-in 320ms cubic-bezier(.23, 1, .32, 1) both;
 }
-.pf-pd-bar-n { flex: none; min-width: 30px; height: 30px; padding: 0 6px; display: grid; place-items: center; border-radius: 3px; background: #0b3d1f; color: #25d366; font-weight: 700; font-size: .95rem; }
+.pf-pd-bar-n { flex: none; min-width: 30px; height: 30px; padding: 0 6px; display: grid; place-items: center; border-radius: 3px; background: var(--wine-2); color: var(--cream); font-weight: 700; font-size: .95rem; }
 .pf-pd-bar-l { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .pf-pd-bar-mesa:not(:empty)::before { content: " · "; }
 .pf-pd-bar-t { flex: none; font-weight: 800; font-size: 1.08rem; white-space: nowrap; }
 .pf-pd-bar-go { flex: none; width: 10px; height: 10px; margin: 0 4px 0 2px; border-top: 2.5px solid currentColor; border-right: 2.5px solid currentColor; transform: translateY(2px) rotate(-45deg); }
-.pf-pd-bar:active { background: #1ebe5b; }
-@media (hover: hover) and (pointer: fine) { .pf-pd-bar:hover { background: #1ebe5b; } }
+.pf-pd-bar:active { background: var(--wine-2); }
+@media (hover: hover) and (pointer: fine) { .pf-pd-bar:hover { background: var(--wine-2); } }
 @media (min-width: 900px) {
   .pf-pd-bar { left: 50%; right: auto; width: min(520px, calc(100vw - 220px)); transform: translateX(-50%); bottom: calc(28px + env(safe-area-inset-bottom)); height: 58px; animation-name: pf-pd-in-d; }
 }
@@ -87,13 +88,14 @@ html.pf-pd-has body { padding-bottom: 86px; }
 .pf-pd-wa { background: #25d366; color: #0b3d1f; border: 2px solid #25d366; }
 .pf-pd-wa svg { width: 22px; height: 22px; fill: currentColor; }
 .pf-pd-wa.is-off { opacity: .45; pointer-events: none; }
-.pf-pd-show { background: #faf4ea; color: #0b3d1f; border: 2px solid #25d366; }
+/* Mostrar a mi mesero: NO manda WhatsApp, solo abre una pantalla en el mismo teléfono. Color de marca. */
+.pf-pd-show { background: #faf4ea; color: var(--wine); border: 2px solid var(--wine); }
 .pf-pd-show:disabled { opacity: .45; cursor: default; }
 .pf-pd-wa:active { background: #1ebe5b; border-color: #1ebe5b; }
-.pf-pd-show:active { background: #e8f9ee; }
+.pf-pd-show:active { background: rgba(145, 33, 41, .08); }
 @media (hover: hover) and (pointer: fine) {
   .pf-pd-wa:hover { background: #1ebe5b; border-color: #1ebe5b; }
-  .pf-pd-show:hover:not(:disabled) { background: #e8f9ee; }
+  .pf-pd-show:hover:not(:disabled) { background: rgba(145, 33, 41, .08); }
 }
 .pf-pd-clear { justify-self: center; min-height: 44px; padding: 0 12px; border: 0; background: none; color: #6d5f55; font-size: .9rem; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 
@@ -143,19 +145,20 @@ html.pf-pd-has body { padding-bottom: 86px; }
 /* En el menú el WA flotante se esconde: la barra ocupa todo el ancho */
 body.pf-wa-off .pf-pd-bar, html.pf-mm-lock .pf-pd-bar { right: calc(12px + env(safe-area-inset-right)); }
 
-/* Fuera del menú: barra grande fuera, queda un botón compacto a la izquierda del WhatsApp */
+/* Fuera del menú: barra grande fuera, queda un botón compacto a la izquierda del WhatsApp.
+   También solo ABRE la hoja del pedido: color de marca, no verde. */
 .pf-pd-mini {
   position: fixed; z-index: 70; display: none; align-items: center; gap: 8px;
   right: calc(18px + 56px + 10px + env(safe-area-inset-right)); bottom: calc(18px + env(safe-area-inset-bottom));
-  height: 56px; padding: 0 12px 0 14px; border: 0; border-radius: 3px; background: #25d366; color: #0b3d1f; cursor: pointer;
+  height: 56px; padding: 0 12px 0 14px; border: 0; border-radius: 3px; background: var(--wine); color: var(--cream); cursor: pointer;
   font: 700 .95rem/1 var(--font-body, system-ui, sans-serif); box-shadow: 0 10px 26px -10px rgba(11, 37, 21, .55);
 }
 .pf-pd-mini svg { width: 22px; height: 22px; }
-.pf-pd-mini-n { min-width: 28px; height: 28px; padding: 0 6px; display: grid; place-items: center; border-radius: 3px; background: #0b3d1f; color: #25d366; font-size: .92rem; }
+.pf-pd-mini-n { min-width: 28px; height: 28px; padding: 0 6px; display: grid; place-items: center; border-radius: 3px; background: var(--wine-2); color: var(--cream); font-size: .92rem; }
 html.pf-pd-far .pf-pd-bar { display: none; }
 html.pf-pd-far .pf-pd-mini:not([hidden]) { display: flex; animation: pf-pd-in 260ms cubic-bezier(.23, 1, .32, 1) both; }
 body.pf-wa-off .pf-pd-mini { right: calc(18px + env(safe-area-inset-right)); }
-@media (hover: hover) and (pointer: fine) { .pf-pd-mini:hover { background: #1ebe5b; } }
+@media (hover: hover) and (pointer: fine) { .pf-pd-mini:hover { background: var(--wine-2); } }
 @media (min-width: 900px) { .pf-pd-mini { bottom: calc(18px + env(safe-area-inset-bottom)); } }
 @media (prefers-reduced-motion: reduce) { html.pf-pd-far .pf-pd-mini:not([hidden]) { animation: none; } }
 /* Solo la barra grande necesita aire al pie */
@@ -174,7 +177,7 @@ html.pf-pd-far.pf-pd-hero .pf-pd-mini { display: none !important; }
 .pf-pd-up { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border: 1px dashed #912129; border-radius: 3px; background: #faf4ea; }
 .pf-pd-up p { display: grid; gap: 2px; }
 .pf-pd-up p span { font-size: .88rem; color: #6b5a4e; }
-.pf-pd-up-add { width: 44px; height: 44px; flex: none; border: 0; border-radius: 3px; background: #25d366; color: #0b3d1f; font: 700 1.4rem/1 var(--font-body, system-ui, sans-serif); cursor: pointer; }
+.pf-pd-up-add { width: 44px; height: 44px; flex: none; border: 0; border-radius: 3px; background: #912129; color: #fff6ea; font: 700 1.4rem/1 var(--font-body, system-ui, sans-serif); cursor: pointer; }
 .pf-pd-fbk { justify-self: center; display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: #0b3d1f; text-decoration: underline; text-underline-offset: 3px; }
 .pf-pd-line-t:empty { display: none; }
 .pf-pd-bar-t { font-size: 1rem; }

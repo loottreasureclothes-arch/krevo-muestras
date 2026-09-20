@@ -1,25 +1,26 @@
 /* ===== 26 · Pedido de mesa (prefijo lm-pd / lm-ms) ===== */
 .lm-pd [hidden], .lm-pd[hidden] { display: none !important; }
 
-/* Barra inferior: a la izquierda del WhatsApp flotante (56 px + márgenes), nunca encima */
+/* Barra inferior: a la izquierda del WhatsApp flotante (56 px + márgenes), nunca encima.
+   Solo ABRE la hoja del pedido (no manda WhatsApp): color de marca, no verde. */
 .lm-pd-bar {
   position: fixed; z-index: 70;
   left: calc(12px + env(safe-area-inset-left));
   right: calc(18px + 56px + 10px + env(safe-area-inset-right));
   bottom: calc(18px + env(safe-area-inset-bottom));
   height: 56px; display: flex; align-items: center; gap: 10px; padding: 0 14px;
-  border: 0; border-radius: 3px; background: #25d366; color: #0b2515; cursor: pointer; text-align: left;
+  border: 0; border-radius: 3px; background: var(--wine); color: var(--cream); cursor: pointer; text-align: left;
   font: 600 1rem/1.1 var(--font-body, system-ui, sans-serif);
   box-shadow: 0 10px 26px -10px rgba(11, 37, 21, .55);
   animation: lm-pd-in 320ms cubic-bezier(.23, 1, .32, 1) both;
 }
-.lm-pd-bar-n { flex: none; min-width: 30px; height: 30px; padding: 0 6px; display: grid; place-items: center; border-radius: 3px; background: #0b2515; color: #25d366; font-weight: 700; font-size: .95rem; }
+.lm-pd-bar-n { flex: none; min-width: 30px; height: 30px; padding: 0 6px; display: grid; place-items: center; border-radius: 3px; background: var(--wine-2); color: var(--cream); font-weight: 700; font-size: .95rem; }
 .lm-pd-bar-l { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .lm-pd-bar-mesa:not(:empty)::before { content: " · "; }
 .lm-pd-bar-t { flex: none; font-weight: 800; font-size: 1.08rem; white-space: nowrap; }
 .lm-pd-bar-go { flex: none; width: 10px; height: 10px; margin: 0 4px 0 2px; border-top: 2.5px solid currentColor; border-right: 2.5px solid currentColor; transform: translateY(2px) rotate(-45deg); }
-.lm-pd-bar:active { background: #1ebe5b; }
-@media (hover: hover) and (pointer: fine) { .lm-pd-bar:hover { background: #1ebe5b; } }
+.lm-pd-bar:active { background: var(--wine-2); }
+@media (hover: hover) and (pointer: fine) { .lm-pd-bar:hover { background: var(--wine-2); } }
 @media (min-width: 900px) {
   .lm-pd-bar { left: 50%; right: auto; width: min(520px, calc(100vw - 220px)); transform: translateX(-50%); bottom: calc(28px + env(safe-area-inset-bottom)); height: 58px; animation-name: lm-pd-in-d; }
 }
@@ -87,13 +88,14 @@ html.lm-pd-has body { padding-bottom: 86px; }
 .lm-pd-wa { background: #25d366; color: #0b2515; border: 2px solid #25d366; }
 .lm-pd-wa svg { width: 22px; height: 22px; fill: currentColor; }
 .lm-pd-wa.is-off { opacity: .45; pointer-events: none; }
-.lm-pd-show { background: #fffdf9; color: #0b2515; border: 2px solid #25d366; }
+/* Mostrar a mi mesero: NO manda WhatsApp, solo abre una pantalla en el mismo teléfono. Color de marca. */
+.lm-pd-show { background: #fffdf9; color: var(--wine); border: 2px solid var(--wine); }
 .lm-pd-show:disabled { opacity: .45; cursor: default; }
 .lm-pd-wa:active { background: #1ebe5b; border-color: #1ebe5b; }
-.lm-pd-show:active { background: #e8f9ee; }
+.lm-pd-show:active { background: rgba(142, 29, 31, .08); }
 @media (hover: hover) and (pointer: fine) {
   .lm-pd-wa:hover { background: #1ebe5b; border-color: #1ebe5b; }
-  .lm-pd-show:hover:not(:disabled) { background: #e8f9ee; }
+  .lm-pd-show:hover:not(:disabled) { background: rgba(142, 29, 31, .08); }
 }
 .lm-pd-clear { justify-self: center; min-height: 44px; padding: 0 12px; border: 0; background: none; color: #6d5f55; font-size: .9rem; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 
@@ -132,19 +134,20 @@ html.lm-pd-has body { padding-bottom: 86px; }
 /* En el menú el WA flotante se esconde: la barra ocupa todo el ancho */
 body.lm-wa-off .lm-pd-bar, html.lm-mm-lock .lm-pd-bar { right: calc(12px + env(safe-area-inset-right)); }
 
-/* Fuera del menú: barra grande fuera, queda un botón compacto a la izquierda del WhatsApp */
+/* Fuera del menú: barra grande fuera, queda un botón compacto a la izquierda del WhatsApp.
+   También solo ABRE la hoja del pedido: color de marca, no verde. */
 .lm-pd-mini {
   position: fixed; z-index: 70; display: none; align-items: center; gap: 8px;
   right: calc(18px + 56px + 10px + env(safe-area-inset-right)); bottom: calc(18px + env(safe-area-inset-bottom));
-  height: 56px; padding: 0 12px 0 14px; border: 0; border-radius: 3px; background: #25d366; color: #0b2515; cursor: pointer;
+  height: 56px; padding: 0 12px 0 14px; border: 0; border-radius: 3px; background: var(--wine); color: var(--cream); cursor: pointer;
   font: 700 .95rem/1 var(--font-body, system-ui, sans-serif); box-shadow: 0 10px 26px -10px rgba(11, 37, 21, .55);
 }
 .lm-pd-mini svg { width: 22px; height: 22px; }
-.lm-pd-mini-n { min-width: 28px; height: 28px; padding: 0 6px; display: grid; place-items: center; border-radius: 3px; background: #0b2515; color: #25d366; font-size: .92rem; }
+.lm-pd-mini-n { min-width: 28px; height: 28px; padding: 0 6px; display: grid; place-items: center; border-radius: 3px; background: var(--wine-2); color: var(--cream); font-size: .92rem; }
 html.lm-pd-far .lm-pd-bar { display: none; }
 html.lm-pd-far .lm-pd-mini:not([hidden]) { display: flex; animation: lm-pd-in 260ms cubic-bezier(.23, 1, .32, 1) both; }
 body.lm-wa-off .lm-pd-mini { right: calc(18px + env(safe-area-inset-right)); }
-@media (hover: hover) and (pointer: fine) { .lm-pd-mini:hover { background: #1ebe5b; } }
+@media (hover: hover) and (pointer: fine) { .lm-pd-mini:hover { background: var(--wine-2); } }
 @media (min-width: 900px) { .lm-pd-mini { bottom: calc(18px + env(safe-area-inset-bottom)); } }
 @media (prefers-reduced-motion: reduce) { html.lm-pd-far .lm-pd-mini:not([hidden]) { animation: none; } }
 /* Solo la barra grande necesita aire al pie */

@@ -9,7 +9,7 @@
      --gold    #e9c98f masa tostada (eyebrows sobre oscuro)
      --wa #25d366 con texto --wa-ink #0b3d1f (acciones)
    Tipografía: Archivo condensada MAYÚSCULAS + Instrument Sans.
-   Botones radio 3px: .pf-btn.pf-btn--wa (verde, uno por bloque) · .pf-btn--line · .pf-btn--link
+   Botones radio 3px: .pf-btn.pf-btn--wa (verde, solo el que manda WhatsApp) · .pf-btn--go (vino, navegación) · .pf-btn--line · .pf-btn--link
    Títulos: .pf-d (display) + .pf-h3d (canto 3D).
    Blindaje: data-reveal (kit) + rescate a 1.6 s en site.js; ocultar solo bajo
      @media (scripting: enabled) and (prefers-reduced-motion: no-preference).
@@ -114,6 +114,9 @@ em { font-style: normal; color: var(--brand); }
   box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35);
 }
 [data-dark] .pf-btn--wa { box-shadow: none; }
+/* Navegación (no manda WhatsApp): rojo vino de marca, texto crema */
+.pf-btn--go { background: var(--wine); border-color: var(--wine); color: var(--cream); --sweep: var(--wine-2); box-shadow: 0 2px 0 rgba(43, 12, 16, 0.35); }
+[data-dark] .pf-btn--go { box-shadow: none; }
 .pf-btn--line { background: transparent; border-color: currentColor; color: inherit; --sweep: rgba(127, 127, 127, 0.16); }
 .pf-btn--link { min-height: 44px; padding: 0; border: 0; background: none; gap: 8px; color: inherit;
   background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 100% 1.5px; background-position: 0 calc(100% - 9px); }
@@ -218,16 +221,16 @@ em { font-style: normal; color: var(--brand); }
 body.pf-nav-open .pf-burger i:nth-child(1) { transform: translateY(5px) rotate(45deg); }
 body.pf-nav-open .pf-burger i:nth-child(2) { opacity: 0; }
 body.pf-nav-open .pf-burger i:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
-/* Pedir: verde, muy redondeado (única excepción al radio de 3px del sitio) */
+/* Pedir: color de marca, muy redondeado (única excepción al radio de 3px del sitio). Solo ancla a #menu: no manda WhatsApp, por eso ya no es verde. */
 .pf-pedir {
   flex: none; display: inline-flex; align-items: center; gap: 7px; height: 44px; padding: 0 16px;
-  border-radius: 999px !important; border: 1.5px solid rgba(11, 61, 31, 0.3);
-  background: var(--wa); color: var(--wa-ink); font-weight: 800; font-size: 15px;
+  border-radius: 999px !important; border: 1.5px solid rgba(247, 236, 220, 0.3);
+  background: var(--wine); color: var(--cream); font-weight: 800; font-size: 15px;
   transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out);
 }
 .pf-pedir svg { width: 19px; height: 19px; flex: none; }
 .pf-pedir:active { transform: scale(0.96); }
-@media (hover: hover) and (pointer: fine) { .pf-pedir:hover { background: var(--wa-dark); } }
+@media (hover: hover) and (pointer: fine) { .pf-pedir:hover { background: var(--wine-2); } }
 @media (min-width: 900px) { .pf-pedir { height: 48px; padding: 0 22px; font-size: 16px; } }
 @media (max-width: 359px) { .pf-pedir span { display: none; } .pf-pedir { width: 44px; height: 44px; padding: 0; justify-content: center; } }
 

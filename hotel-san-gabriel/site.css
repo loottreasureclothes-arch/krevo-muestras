@@ -5,7 +5,7 @@
      --brand   #b8892e dorado (barra "JUSTIN" bajada a dorado; solo detalles)
      --wa      #25d366 con texto --wa-ink #0b3d1f (acciones)
    Tipografía: Fraunces (serif editorial de hotel) + Instrument Sans.
-   Botones: .sg-btn--wa (verde, uno por bloque), --line (contorno), --link (flecha). Radio 3px.
+   Botones: .sg-btn--wa (verde, solo el que manda WhatsApp), .sg-btn--go (dorado, navegación), --line (contorno), --link (flecha). Radio 3px.
    Títulos: .sg-d (serif) + .sg-h3d (canto 3D). Blindaje: base visible; se esconde solo con scripting + sin reduced-motion. */
 :root {
   --paper: #f3ece2;
@@ -16,6 +16,7 @@
   --wa-dark: #1ebe5b;
   --wa-ink: #0b3d1f;
   --gold-l: #d9b25a;
+  --brand-dark: #976f26;
   --ink: #221b18;
   --mute: #6a5d55;
   --line: rgba(35, 29, 27, 0.16);
@@ -97,6 +98,9 @@ main > section[id], #matriz, .hb-card[id] { scroll-margin-top: calc(var(--k-head
 .sg-btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--sweep, rgba(0, 0, 0, 0.1)); clip-path: inset(0 100% 0 0); transition: clip-path 280ms var(--ease-out); }
 .sg-btn--wa { background: var(--wa); border-color: rgba(11, 61, 31, 0.3); color: var(--wa-ink); --sweep: var(--wa-dark); box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35); }
 [data-dark] .sg-btn--wa, .sg-onphoto .sg-btn--wa { border-color: var(--wa); box-shadow: none; }
+/* Navegación (no manda WhatsApp): dorado de marca, texto café oscuro; en fondos oscuros pasa a contorno dorado */
+.sg-btn--go { background: var(--brand); border-color: rgba(34, 27, 24, 0.3); color: var(--ink); --sweep: var(--brand-dark); box-shadow: 0 2px 0 rgba(34, 27, 24, 0.25); }
+[data-dark] .sg-btn--go, .sg-onphoto .sg-btn--go, .sg-nav-panel .sg-btn--go { background: transparent; border-color: var(--gold-l); color: var(--gold-l); --sweep: rgba(217, 178, 90, 0.16); box-shadow: none; }
 .sg-btn--line { background: transparent; border-color: currentColor; color: inherit; --sweep: rgba(127, 127, 127, 0.18); }
 .sg-btn--link { min-height: 44px; padding: 0; border: 0; background: none; gap: 8px; color: inherit;
   background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 100% 1.5px; background-position: 0 calc(100% - 9px); }
@@ -161,8 +165,8 @@ main > section[id], #matriz, .hb-card[id] { scroll-margin-top: calc(var(--k-head
 body.sg-nav-open .sg-burger i:nth-child(1) { transform: translateY(5px) rotate(45deg); }
 body.sg-nav-open .sg-burger i:nth-child(2) { opacity: 0; }
 body.sg-nav-open .sg-burger i:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
-.k-header .k-cta.sg-hcta, body[data-hero-dark] .k-header:not(.is-solid) .k-cta.sg-hcta { height: 44px; padding: 0 14px; background: var(--wa); color: var(--wa-ink); font-weight: 800; font-size: 15px; }
-@media (hover: hover) and (pointer: fine) { .k-header .k-cta.sg-hcta:hover { background: var(--wa-dark); } }
+.k-header .k-cta.sg-hcta, body[data-hero-dark] .k-header:not(.is-solid) .k-cta.sg-hcta { height: 44px; padding: 0 14px; background: var(--brand); color: var(--ink); font-weight: 800; font-size: 15px; }
+@media (hover: hover) and (pointer: fine) { .k-header .k-cta.sg-hcta:hover { background: var(--brand-dark); } }
 
 @media (min-width: 900px) {
   .sg-head2-bar { padding-inline: var(--k-gutter); font-size: 12px; max-height: 44px; }

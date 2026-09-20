@@ -10,7 +10,8 @@
      --wa #25d366 con texto --wa-ink #0b3d1f (acciones)
    Tipografía: --font-display Archivo condensada MAYÚSCULAS · --font-body Instrument Sans
    Botones (radio 3px, nada de píldoras):
-     .lm-btn.lm-btn--wa    verde WhatsApp (acción principal, uno por bloque)
+     .lm-btn.lm-btn--wa    verde WhatsApp (solo el que manda WhatsApp)
+     .lm-btn.lm-btn--go    rojo tinto de marca (navegación)
      .lm-btn.lm-btn--line  contorno (toma currentColor)
      .lm-btn.lm-btn--link  texto con flecha
      .lm-chip              chip cuadrado 3px
@@ -119,6 +120,9 @@ em { font-style: normal; color: var(--brand); }
   box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35);
 }
 [data-dark] .lm-btn--wa { box-shadow: none; }
+/* Navegación (no manda WhatsApp): rojo tinto de marca, texto crema */
+.lm-btn--go { background: var(--wine); border-color: var(--wine); color: var(--cream); --sweep: var(--wine-2); box-shadow: 0 2px 0 rgba(20, 18, 18, 0.35); }
+[data-dark] .lm-btn--go { box-shadow: none; }
 .lm-btn--line { background: transparent; border-color: currentColor; color: inherit; --sweep: rgba(127, 127, 127, 0.16); }
 .lm-btn--link { min-height: 44px; padding: 0; border: 0; background: none; gap: 8px; color: inherit;
   background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 100% 1.5px; background-position: 0 calc(100% - 9px); }
@@ -173,9 +177,9 @@ body.lm-nav-open .lm-burger i:nth-child(1) { transform: translateY(5px) rotate(4
 body.lm-nav-open .lm-burger i:nth-child(2) { opacity: 0; }
 body.lm-nav-open .lm-burger i:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
 .k-header .k-cta.lm-hcta, body[data-hero-dark] .k-header:not(.is-solid) .k-cta.lm-hcta {
-  height: 44px; padding: 0 14px; background: var(--wa); color: var(--wa-ink); font-weight: 800; font-size: 15px;
+  height: 44px; padding: 0 14px; background: var(--wine); color: var(--cream); font-weight: 800; font-size: 15px;
 }
-@media (hover: hover) and (pointer: fine) { .k-header .k-cta.lm-hcta:hover { background: var(--wa-dark); } }
+@media (hover: hover) and (pointer: fine) { .k-header .k-cta.lm-hcta:hover { background: var(--wine-2); } }
 @media (min-width: 900px) { .k-header .k-cta.lm-hcta { padding: 0 22px; } }
 @media (max-width: 360px) { .k-header .k-cta.lm-hcta { padding: 0 11px; } }
 
