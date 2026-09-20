@@ -3,25 +3,24 @@
    dentro del marco): la animacion de planta->volumen solo se enciende con
    scripting + sin prefers-reduced-motion (03-firma.js). */
 .s-firma-wrap { display: flex; flex-direction: column; align-items: center; text-align: center; }
-/* El momento firma PESA: antes el stage medía 131px de alto en celular y era
-   la seccion mas chica de la pagina. Ahora la caja es de 58svh (62svh en
-   compu) y las dos mitades del cross-fade van centradas dentro, al ancho de
-   placa 88vw / 720px. El aire de arriba es el que necesita el volumen cuando
-   la planta se levanta (si no, las paredes se salen de cuadro). */
+/* La caja mide EXACTO lo que mide el plano 6x3 (viewBox 218x128): el volumen
+   de pie cabe dentro de esa misma caja (la planta inclinada mide 53 % de alto
+   y las paredes suben 42 % del lado corto), asi que no hace falta aire extra.
+   Antes la caja era de 58svh y dejaba ~150 px negros arriba y abajo del
+   render en celular (revision externa, 20 sep). Plano y render van
+   superpuestos y centrados en la misma caja. */
 .s-firma-stage {
   position: relative;
-  width: 100%;
-  max-width: 720px;
-  min-height: 58svh;
+  width: min(88vw, 720px);
+  aspect-ratio: 218 / 128;
   margin-inline: auto;
 }
-@media (min-width: 900px) { .s-firma-stage { min-height: 62svh; } }
 .s-firma-photo,
 .s-firma-plan {
   position: absolute;
   left: 50%; top: 50%;
   transform: translate(-50%, -50%);
-  width: min(88vw, 720px);
+  width: 100%;
   margin: 0;
 }
 .s-firma-photo { padding: 10px; aspect-ratio: 960 / 415; opacity: 1; transition: opacity 320ms var(--ease-out); }
@@ -41,8 +40,9 @@
 .s-firma-plan .su-plan-3d,
 .s-firma-plan .su-plan-box { position: absolute; inset: 0; width: 100%; height: 100%; }
 .s-firma-plan .su-plan-floor { width: 100%; height: 100%; }
+.s-firma-h2 { margin-bottom: 22px; }
 .s-firma-line {
-  margin-top: 8px;
+  margin-top: 14px;
   font-family: var(--font-display); font-stretch: 122%; font-variation-settings: "wdth" 122;
   text-transform: uppercase; font-weight: 800; font-size: clamp(18px, 3vw, 24px);
   color: var(--ink);

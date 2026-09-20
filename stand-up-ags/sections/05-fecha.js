@@ -20,22 +20,29 @@
     sel.addEventListener("focus", apply); // se actualiza si agrego algo despues, antes de abrir el select
   }
 
+  /* El boton es un <a href="wa.me/..."> REAL: funciona aunque el navegador de
+     Instagram o Facebook bloquee window.open, y aunque este JS no corra (el
+     HTML ya trae el mensaje base). Aqui solo se ENRIQUECE el href con medida,
+     fecha y feria cada vez que cambia un campo. */
   function initForm() {
     var form = document.getElementById("s-fecha-form");
-    if (!form) return;
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var medida = (document.getElementById("s-fecha-medida") || {}).value || "";
-      var fecha = (document.getElementById("s-fecha-fecha") || {}).value || "";
-      var nombre = (document.getElementById("s-fecha-nombre") || {}).value || "";
+    var send = document.getElementById("s-fecha-send");
+    if (!form || !send) return;
+    function val(id) { return ((document.getElementById(id) || {}).value || "").trim(); }
+    function update() {
+      var medida = val("s-fecha-medida"), fecha = val("s-fecha-fecha"), nombre = val("s-fecha-nombre");
       var msg = "Hola Stand Up, quiero cotizar un stand.";
       if (medida) msg += "\nMedida: " + medida;
       if (fecha) msg += "\nFecha de montaje: " + SU.fechaLarga(fecha);
       if (nombre) msg += "\nFeria o evento: " + nombre;
-      var url = SU.openWa(msg);
-      // eslint-disable-next-line no-console
-      console.log("WA_URL_FECHA:", url);
-    });
+      send.href = SU.waUrl(msg);
+    }
+    form.addEventListener("input", update);
+    form.addEventListener("change", update);
+    send.addEventListener("pointerdown", update); /* por si la medida se precargo del carrito */
+    send.addEventListener("focus", update);
+    form.addEventListener("submit", function (e) { e.preventDefault(); update(); send.click(); }); /* Enter en un campo */
+    update();
   }
 
   function init() { prefill(); initForm(); }

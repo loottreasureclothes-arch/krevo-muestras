@@ -1,9 +1,9 @@
 /* 04-firma: "Del plano al 3D". El plano en SVG (SU.plantaHTML, compartido con
    el catalogo del turno 2) se inclina y se levanta en volumen ligado al
-   scroll (scrub .5, sin pin, reversible), y termina en cross-fade de 320ms
-   con el render real de Lapisa Agricola. Blindaje: el HTML ya trae el render
+   scroll (sin pin, reversible, sin libreria), y termina en cross-fade con el
+   render real de Lapisa Agricola. Blindaje: el HTML ya trae el render
    visible por defecto; esto SOLO se activa con scripting + sin
-   prefers-reduced-motion, y si GSAP no carga en 4s se deja tal cual esta. */
+   prefers-reduced-motion. */
 (function () {
   "use strict";
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -14,15 +14,9 @@
   var tag = document.querySelector("[data-firma-tag]");
   if (!stage || !planWrap || !photo || !tag || !window.SU) return;
 
-  var tries = 0;
-  (function waitGsap() {
-    if (window.gsap && window.ScrollTrigger) return setup();
-    if (++tries > 40) return; // 4s: si no cargo GSAP, se queda el estado final (blindaje)
-    setTimeout(waitGsap, 100);
-  })();
+  setup();
 
   function setup() {
-    gsap.registerPlugin(ScrollTrigger);
     planWrap.innerHTML = SU.plantaHTML(6, 3, "cabecera");
     planWrap.hidden = false;
     planWrap.setAttribute("data-firma-ready", "");
@@ -48,16 +42,38 @@
       var cross = Math.max(0, Math.min(1, (p - 0.72) / 0.28));
       photo.style.opacity = String(cross);
       planWrap.style.opacity = String(1 - cross);
+      /* el que queda en 0 se esconde de verdad: no ocupa foco ni sale como bloque invisible */
+      photo.style.visibility = cross <= 0 ? "hidden" : "visible";
+      planWrap.style.visibility = cross >= 1 ? "hidden" : "visible";
       tag.textContent = cross > 0.5 ? TAG_3D : TAG_PLAN;
     }
-    render(0);
-
-    ScrollTrigger.create({
-      trigger: stage,
-      start: "top 78%",
-      end: "top 22%",
-      scrub: 0.5,
-      onUpdate: function (self) { render(self.progress); },
-    });
+    /* Avance ligado al scroll SIN libreria (antes GSAP + ScrollTrigger, 110 KB
+       para esta sola animacion; NOTA GLOBAL 2). Mismo recorrido que tenia:
+       empieza cuando el borde de arriba de la caja cruza el 78 % de la
+       pantalla y termina en el 22 %. El listener de scroll SOLO vive mientras
+       la caja esta cerca de la pantalla (IntersectionObserver), asi no corre
+       nada en el resto de la pagina. */
+    var ticking = false, listening = false;
+    function progress() {
+      var r = stage.getBoundingClientRect(), vh = window.innerHeight || 1;
+      var p = (vh * 0.78 - r.top) / (vh * 0.56);
+      return p < 0 ? 0 : p > 1 ? 1 : p;
+    }
+    function tick() { ticking = false; render(progress()); }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(tick); } }
+    function listen(on) {
+      if (on === listening) return;
+      listening = on;
+      window[on ? "addEventListener" : "removeEventListener"]("scroll", onScroll, { passive: true });
+      window[on ? "addEventListener" : "removeEventListener"]("resize", onScroll, { passive: true });
+      if (on) onScroll();
+    }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) {
+        listen(es[es.length - 1].isIntersecting);
+        if (!listening) render(progress()); /* al salir, deja el estado que toca (0 o 1) */
+      }, { rootMargin: "30% 0px 30% 0px" }).observe(stage);
+    } else { listen(true); }
+    render(progress());
   }
 })();

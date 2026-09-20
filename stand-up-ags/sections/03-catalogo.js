@@ -69,6 +69,32 @@
     });
   }
 
+  /* Menu "Las 15 medidas": cada renglon prende el chip de su tamano y lleva a
+     SU tarjeta (antes los 15 caian en #catalogo mostrando 3x3). El menu se
+     cierra solo (site.js); aqui se espera a que cierre y a que termine el
+     cambio de filtro antes de moverse. */
+  function initMenuMedidas() {
+    var links = document.querySelectorAll("[data-medida]");
+    Array.prototype.forEach.call(links, function (a) {
+      a.addEventListener("click", function (e) {
+        var name = a.getAttribute("data-medida");
+        var card = null;
+        Array.prototype.forEach.call(document.querySelectorAll(".s-cat-card"), function (c) {
+          if (c.getAttribute("data-name") === name) card = c;
+        });
+        if (!card) return; /* sin tarjeta: que el ancla #catalogo haga lo suyo */
+        e.preventDefault();
+        var chip = document.querySelector('.s-cat-chip[data-filter="' + card.getAttribute("data-size") + '"]');
+        if (chip) chip.click();
+        setTimeout(function () {
+          if (window.SU && SU.go) SU.go(card); else card.scrollIntoView();
+          card.classList.add("is-marked");
+          setTimeout(function () { card.classList.remove("is-marked"); }, 1600);
+        }, 320);
+      });
+    });
+  }
+
   function findItem(name) {
     for (var i = 0; i < cart.length; i++) if (cart[i].name === name) return cart[i];
     return null;
@@ -167,6 +193,7 @@
     initAdd();
     initSheet();
     updateBar();
+    initMenuMedidas();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

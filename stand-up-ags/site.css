@@ -332,3 +332,8 @@ section[id] { padding-block: var(--sec-y-sm); }
   text-transform: uppercase; color: var(--brand); margin-bottom: 14px;
 }
 .su-cota-label { font-family: var(--font-cota); font-weight: 700; font-size: 11px; fill: var(--brand); }
+
+/* El flotante de WhatsApp (56 px, abajo a la derecha) tapaba el credito del
+   pie en celular (revision externa, 20 sep): aire abajo para que nada quede
+   debajo de la burbuja. */
+@media (max-width: 899px) { .su-foot { padding-bottom: 84px; } }
