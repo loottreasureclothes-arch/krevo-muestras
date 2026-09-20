@@ -1,0 +1,47 @@
+/* 02-ebesa: "Quien abrio con nosotros" (HOJA §4 (ahora seccion 02: sube arriba del catalogo)). Pase de lista tipografico
+   (sin foto, sin icono, sin tarjeta) + 3 fotos chicas (max 165px celular,
+   marco de placa) + resenas reales. Sin parrafo propio, sin boton verde. */
+.s-ebesa-h2 { margin-bottom: 28px; }
+
+.s-ebesa-lista {
+  list-style: none; margin: 0 0 32px; padding: 0;
+  display: grid; gap: 2px;
+  border-top: 1px solid var(--line-brand);
+}
+.s-ebesa-lista li {
+  font-family: var(--font-display); font-stretch: 122%; font-variation-settings: "wdth" 122;
+  text-transform: uppercase; font-weight: 800; font-size: clamp(18px, 5.2vw, 30px);
+  padding: 10px 0; border-bottom: 1px solid var(--line-brand);
+}
+
+/* Tres fotos en TRES columnas: en dos columnas la tercera quedaba sola y
+   dejaba un hueco huerfano (regla del collage). */
+.s-ebesa-fotos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 32px; }
+.s-ebesa-fotos .su-frame { width: 100%; display: block; }
+.s-ebesa-fotos img { aspect-ratio: 330/364; object-fit: cover; }
+.s-ebesa-fotos figcaption { font-size: 10px; letter-spacing: 0.06em; }
+
+.s-ebesa-resenas { padding: 24px 20px; }
+.s-ebesa-rotulo {
+  font-family: var(--font-body); font-weight: 700; font-size: 12px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--brand-dim); margin-bottom: 16px;
+}
+.s-ebesa-cita { margin: 0 0 18px; }
+.s-ebesa-cita:last-child { margin-bottom: 0; }
+/* Estrellas reales de Google, en --brand: el ambar era el unico color calido
+   vivo en una paleta que la hoja pidio fria. */
+.s-ebesa-stars { display: flex; gap: 3px; margin-bottom: 6px; color: var(--brand); }
+.s-ebesa-stars svg { width: 14px; height: 14px; display: block; }
+.s-ebesa-cita p:not(.s-ebesa-stars) { font-size: 15px; line-height: 1.4; color: var(--ink-deep); margin-bottom: 6px; }
+.s-ebesa-cita cite { font-style: normal; font-weight: 700; font-size: 13px; color: var(--mute-deep); }
+
+/* Compu: split 5/7. Pase de lista a la izquierda; placas + resenas a la
+   derecha. Antes todo iba pegado a la izquierda con la mitad derecha vacia
+   (d-07.png). */
+@media (min-width: 900px) {
+  .s-ebesa-split { display: grid; grid-template-columns: 5fr 7fr; column-gap: 48px; align-items: start; }
+  .s-ebesa-lista { margin-bottom: 0; }
+  .s-ebesa-fotos { gap: 14px; }
+  .s-ebesa-fotos figcaption { font-size: 11px; }
+  .s-ebesa-resenas { padding: 28px 26px; }
+}

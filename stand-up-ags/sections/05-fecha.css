@@ -1,0 +1,22 @@
+/* 05-fecha: "Tu feria tiene fecha" (HOJA §5). Banda tipo placa para escribir.
+   Sin eyebrow, sin parrafo. 3 campos y un solo boton verde. */
+.s-fecha-wrap { max-width: 460px; }
+.s-fecha-h2 { margin-bottom: 24px; }
+/* Compu: split 5/7, titulo a la izquierda y los tres campos a la derecha.
+   Antes el bloque de 460px se quedaba pegado a la izquierda y la mitad
+   derecha de la banda salia vacia (d-08.png). */
+@media (min-width: 900px) {
+  .s-fecha-wrap { max-width: none; display: grid; grid-template-columns: 5fr 7fr; column-gap: 48px; align-items: start; }
+  .s-fecha-h2 { margin-bottom: 0; }
+  .s-fecha-form { max-width: 520px; }
+}
+.s-fecha-form { display: flex; flex-direction: column; gap: 16px; }
+.s-fecha-form label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute-deep); }
+.s-fecha-form select,
+.s-fecha-form input {
+  display: block; width: 100%; margin-top: 6px; min-height: 48px; padding: 0 12px;
+  border: 1px solid var(--line-brand-strong); background: #fff; color: var(--ink-deep);
+  font-family: var(--font-body); font-size: 15px; border-radius: 0;
+}
+.s-fecha-send { margin-top: 4px; width: 100%; }
+.s-fecha-horario { text-align: center; font-size: 13px; color: var(--mute-deep); margin-top: -6px; }

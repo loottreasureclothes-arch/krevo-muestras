@@ -1,0 +1,334 @@
+/* Stand Up Diseño (Aguascalientes) · FUNDACIÓN sobre el kit KREVO
+   =====================================================================
+   Tokens de color (HOJA-DIRECCION.md §5, medidos con cuentagotas):
+     --deep    #122533  lienzo de toda la pagina (azul marino del lema)
+     --deep-2  #0C1822  bandas mas hondas, pie
+     --brand   #51913D  verde de marca: navegacion, "+Agregar", trazos, cotas
+     --brand-dim #2E5A25 hover, lineas al 22%
+     --paper   #EFF2EC  banda tipo placa, solo para leer (nunca #fff plano)
+     --wa/--wa-ink #25d366 / #0b3d1f  SOLO WhatsApp
+   Lenguaje de formas propio de este sitio (no se parece a otra muestra):
+     radio 0 en todo lo estructural; unico circulo = el WhatsApp flotante
+     (y el icono redondo del logo, que es arte, no un contenedor con radio);
+     marco de placa de expositor en toda foto (paspartu 10px + linea 1px);
+     reticula de modulo de 1m como unico motivo grafico de fondo;
+     cotas de plano (linea con topes en T + numero tabular), NUNCA cinta.
+   Tipografia: Archivo extendida (wdth 118-125, 800) en titulos, mayusculas ·
+     Instrument Sans en texto · Quicksand SOLO en las etiquetas de medida
+     de las plantas (acento redondeado que le guiña al logo).
+   ===================================================================== */
+:root {
+  --deep: #122533;
+  --deep-2: #0c1822;
+  --brand: #51913d;
+  --brand-dim: #2e5a25;
+  --brand-soft: rgba(81, 145, 61, 0.22);
+  --paper: #eff2ec;
+  --paper-2: #e4e9df;
+  --wa: #25d366;
+  --wa-dark: #1ebe5b;
+  --wa-ink: #0b3d1f;
+  --ink: #eef1ee;
+  --ink-deep: #10202c;
+  --mute: rgba(238, 241, 238, 0.66);
+  --mute-deep: #4b5a55;
+  --line-brand: rgba(81, 145, 61, 0.22);
+  --line-brand-strong: rgba(81, 145, 61, 0.35);
+  --grid-line: rgba(238, 241, 238, 0.08);
+  --grid-line-deep: rgba(18, 37, 51, 0.1);
+  --font-display: "Archivo", "Arial Black", sans-serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
+  --font-cota: "Quicksand", var(--font-body);
+  --fs-h2: clamp(30px, 7.6vw, 80px);
+  --fs-lead: 17px;
+  --sec-y: 60px;
+  --sec-y-sm: 52px;
+  --radius: 0px;
+  --su-header-h: 64px;
+  --su-header-h-c: 48px;
+  --bg-wood: var(--deep);
+  --wood: var(--deep);
+  --line-wood: var(--line-brand);
+  --brand-on-wood: var(--brand);
+}
+@media (min-width: 900px) {
+  :root { --fs-h2: clamp(42px, 3.2vw, 68px); --fs-lead: 19px; --sec-y: 116px; --sec-y-sm: 84px; --su-header-h: 72px; }
+}
+html, body { background: var(--deep); }
+body { color: var(--ink); }
+.k-wrap { max-width: 1280px; }
+@media (min-width: 1800px) { .k-wrap { max-width: 1560px; } }
+
+/* Reticula de modulo de 1 m: unico motivo grafico de la pagina */
+.su-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+.su-light .su-grid, .su-paper .su-grid {
+  background-image:
+    linear-gradient(var(--grid-line-deep) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-deep) 1px, transparent 1px);
+}
+
+/* Bandas: oscura por defecto; .su-paper = banda tipo placa, solo para leer */
+.su-dark { background: var(--deep); color: var(--ink); }
+.su-paper { background: var(--paper); color: var(--ink-deep); }
+.su-paper .su-mute { color: var(--mute-deep); }
+
+/* Divisor: hairline verde 22%, jamas una banda de color */
+.su-hr { border: 0; border-top: 1px solid var(--line-brand); margin: 24px 0; }
+
+/* ============ Botones ============ */
+.cd-btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 50px; padding: 0 24px; border-radius: 0;
+  border: 1.5px solid transparent; font-weight: 700; font-size: 14px; line-height: 1;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  white-space: nowrap; cursor: pointer; user-select: none; text-decoration: none;
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), border-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.cd-btn svg { width: 18px; height: 18px; flex: none; transition: transform 280ms var(--ease-out); }
+.cd-btn:active { transform: scale(0.97); }
+.cd-btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--sweep, rgba(0, 0, 0, 0.1)); clip-path: inset(0 100% 0 0); transition: clip-path 280ms var(--ease-out); }
+/* VERDE: solo lo que de verdad manda WhatsApp */
+.cd-btn--primary { background: var(--wa); border-color: var(--wa); color: var(--wa-ink); --sweep: var(--wa-dark); }
+/* Navegacion y acciones normales: color de marca, fino, rectangular, mayusculas espaciadas */
+.cd-btn--marca { background: var(--brand); border-color: var(--brand); color: #f3f7ef; min-height: 46px; --sweep: var(--brand-dim); }
+.cd-btn--secondary { background: transparent; border-color: currentColor; color: inherit; font-weight: 700; --sweep: rgba(127, 127, 127, 0.14); }
+.cd-btn--mini { min-height: 44px; padding: 0 16px; font-size: 12px; gap: 8px; }
+.cd-btn--mini svg { width: 16px; height: 16px; }
+.cd-btn--link { min-height: 44px; padding: 0; border: 0; border-radius: 0; background: none; color: var(--brand); gap: 8px; display: inline-flex; align-items: center;
+  text-transform: none; letter-spacing: 0; font-size: 15px; font-weight: 600;
+  background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 100% 1.5px; background-position: 0 calc(100% - 7px); }
+.su-dark .cd-btn--link { color: #8fc47c; }
+.cd-btn--link::before { display: none; }
+.cd-btn--link svg { width: 17px; height: 17px; }
+@media (hover: hover) and (pointer: fine) {
+  .cd-btn:hover::before { clip-path: inset(0 0 0 0); }
+  .cd-btn:hover svg { transform: translateX(3px); }
+  .cd-btn--link:hover { background-size: 40% 1.5px; }
+}
+.cd-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; background: var(--deep); color: var(--ink); font-weight: 600; transform: translateY(-160%); transition: transform 200ms var(--ease-out); }
+.cd-skip:focus { transform: none; }
+
+/* ============ Tipografia ============ */
+h1, h2, h3, .cd-menu-nav a {
+  font-family: var(--font-display);
+  font-stretch: 122%; font-variation-settings: "wdth" 122;
+  text-transform: uppercase; font-weight: 800;
+  letter-spacing: -0.005em;
+}
+em { font-style: normal; color: var(--brand); }
+/* Eyebrow de un solo renglon: con flex-wrap se partia en dos a 390px y el
+   segundo renglon abria con el punto medio. Ahora es UN texto de 11px con
+   letter-spacing .14em que no quiebra (la rayita sigue dibujada en CSS). */
+.su-eyebrow { display: flex; flex-wrap: nowrap; align-items: center; gap: 10px; white-space: nowrap; font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand); margin-bottom: 16px; }
+.su-eyebrow::before { content: ""; width: 18px; height: 1px; background: var(--brand); flex: none; }
+.su-h2 { font-size: var(--fs-h2); line-height: 0.94; margin-bottom: 16px; max-width: 14ch; text-wrap: balance; }
+.su-h2 .ln { display: block; white-space: nowrap; }
+.su-lead { color: var(--mute); font-size: var(--fs-lead); line-height: 1.45; max-width: 42ch; text-wrap: pretty; }
+.su-paper .su-lead { color: var(--mute-deep); }
+.cd-nowrap { white-space: nowrap; }
+.k-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Extrusion corta en tonos navy/verde, sutil (no compite con el logo) */
+:root { --h3d-s: max(1px, 0.01em); --h3d-c1: #0e2029; --h3d-c2: #0a171f; --h3d-c3: var(--deep-2); }
+.su-h2 {
+  text-shadow: 0 var(--h3d-s) 0 var(--h3d-c1), 0 calc(var(--h3d-s) * 2) 0 var(--h3d-c2), 0 calc(var(--h3d-s) * 3) 0.06em var(--h3d-c3);
+}
+.su-paper .su-h2 { text-shadow: 0 var(--h3d-s) 0 rgba(18,37,51,.18), 0 calc(var(--h3d-s) * 2) 0.05em rgba(18,37,51,.14); }
+
+/* tabular-nums en cualquier medida/cota */
+.su-num { font-variant-numeric: tabular-nums; }
+
+/* ============ Marco de placa de expositor (toda foto va enmarcada) ======= */
+.su-frame {
+  background: var(--paper);
+  padding: 10px;
+  border: 1px solid var(--line-brand-strong);
+  display: inline-block;
+  max-width: 100%;
+}
+.su-frame img { display: block; width: 100%; height: auto; }
+.su-frame figcaption {
+  margin-top: 8px; font-family: var(--font-body); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute-deep);
+}
+.su-frame--tight { padding: 6px; }
+
+/* ============ HEADER PROPIO (HOJA §5) ============
+   64px celular / 72px compu, transparente sobre el hero, solido #122533 con
+   blur al pasar 40px. Logo completo 132px a la izquierda (nunca recortado,
+   puede sobresalir del alto de la barra porque trae su bajada). A la derecha
+   "MEDIDAS" en texto y la hamburguesa de 3 barras de anchos distintos (silueta
+   de panel Octanorm). Hairline verde 1px al 30% pegada al borde inferior.
+   Al bajar 40px: header 64->48px, el logo hace cross-fade a solo el circulo
+   "up", la hairline crece a 2px y se vuelve barra de avance de lectura. */
+.su-header {
+  height: var(--su-header-h);
+  padding-inline: 18px;
+  gap: 14px;
+  background: transparent;
+  border-bottom: 0;
+  transition: height 260ms var(--ease-out), background-color 320ms var(--ease-out), -webkit-backdrop-filter 320ms var(--ease-out), backdrop-filter 320ms var(--ease-out);
+}
+@media (min-width: 900px) { .su-header { padding-inline: 40px; } }
+.su-header.is-solid {
+  background: rgba(18, 37, 51, 0.92);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 0;
+}
+.su-header.is-compact { height: var(--su-header-h-c); }
+.su-logo { position: relative; margin-right: auto; overflow: visible; height: 100%; display: flex; align-items: center; }
+.su-logo-full, .su-logo-up { position: relative; width: 132px; height: auto; max-width: 132px; }
+.su-logo-up { position: absolute; left: 0; top: 50%; width: 40px; transform: translateY(-50%); opacity: 0; transition: opacity 200ms var(--ease-out); }
+.su-logo-full { transition: opacity 200ms var(--ease-out); }
+.su-header.is-compact .su-logo-full { opacity: 0; }
+.su-header.is-compact .su-logo-up { opacity: 1; }
+.su-header-medidas {
+  font-family: var(--font-body); font-weight: 700; font-size: 12.5px;
+  text-transform: uppercase; letter-spacing: 0.14em; color: var(--brand);
+  white-space: nowrap;
+  display: inline-flex; align-items: center; min-height: 44px;
+}
+@media (hover: hover) and (pointer: fine) { .su-header-medidas:hover { color: #8fc47c; } }
+.su-burger { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -10px; }
+.su-burger-bars { display: flex; flex-direction: column; gap: 5px; width: 22px; }
+.su-burger-bars i { display: block; height: 2px; background: currentColor; border-radius: 0; transition: transform 200ms var(--ease-out), opacity 200ms var(--ease-out); }
+.su-burger-bars i:nth-child(1) { width: 100%; }
+.su-burger-bars i:nth-child(2) { width: 72%; align-self: flex-end; }
+.su-burger-bars i:nth-child(3) { width: 100%; }
+body.cd-menu-open .su-burger-bars i:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 100%; }
+body.cd-menu-open .su-burger-bars i:nth-child(2) { opacity: 0; }
+body.cd-menu-open .su-burger-bars i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 100%; align-self: center; }
+.su-header-rule {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--line-brand-strong);
+  transform-origin: left; transform: scaleX(1);
+  transition: height 260ms var(--ease-out), transform 120ms linear;
+}
+.su-header.is-compact .su-header-rule { height: 2px; background: var(--brand); }
+
+/* ============ Menu (panel completo, radio 0, numerado) ============
+   Base del overlay: le faltaba a este site.css desde la fundacion (turno 1)
+   -- sin position:fixed + visibility:hidden el panel #cd-menu quedaba en el
+   flujo normal del documento y empujaba TODO el hero hacia abajo (se veia
+   siempre "abierto"). Detectado en la verificacion del turno 2 con
+   krevo-shot. Panel completo en celular, como pide HOJA §5. */
+.cd-menu { position: fixed; inset: 0; z-index: 70; visibility: hidden; transition: visibility 0s linear 360ms; }
+body.cd-menu-open .cd-menu { visibility: visible; transition: visibility 0s; }
+.cd-menu-scrim { position: absolute; inset: 0; background: rgba(9, 17, 24, 0.74); opacity: 0; transition: opacity 320ms var(--ease-out); }
+body.cd-menu-open .cd-menu-scrim { opacity: 1; }
+.cd-menu-panel {
+  position: absolute; inset: 0; overflow-y: auto;
+  padding: calc(var(--su-header-h) + 24px) 20px 24px;
+  display: flex; flex-direction: column; min-height: 100%;
+  transform: translateY(-14px); opacity: 0;
+  transition: transform 320ms var(--ease-out), opacity 240ms var(--ease-out);
+}
+body.cd-menu-open .cd-menu-panel { transform: none; opacity: 1; }
+body.cd-menu-open { overflow: hidden; }
+.cd-menu-nav { display: flex; flex-direction: column; }
+.cd-menu-nav > a { display: flex; align-items: center; min-height: 52px; font-size: 19px; border-bottom: 1px solid var(--line-brand); }
+.cd-menu-nav > a:first-child { border-top: 1px solid var(--line-brand); }
+.cd-menu-nav .cd-menu-parent { border-bottom: 0; padding-bottom: 2px; }
+.cd-menu-foot { margin-top: auto; padding-top: 20px; }
+.cd-menu-datos { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; font-size: 14px; color: var(--mute); }
+.cd-menu-acts { display: flex; gap: 10px; margin-bottom: 16px; }
+.cd-menu-acts .cd-btn { flex: 1; }
+.cd-menu-foot > p { font-size: 13px; color: var(--mute); }
+@media (prefers-reduced-motion: reduce) { .cd-menu, .cd-menu-scrim, .cd-menu-panel { transition: none !important; } }
+.su-menu .cd-menu-panel { background: var(--deep); color: var(--ink); border-radius: 0; }
+.su-menu .cd-menu-nav a { color: var(--ink); }
+.su-menu .cd-menu-nav a span { color: var(--brand); font-family: var(--font-body); font-weight: 700; margin-right: 10px; font-size: 13px; }
+.su-menu-sub { display: grid; grid-template-columns: 1fr 1fr; }
+.su-menu-sub a { min-height: 44px; display: flex; align-items: center; font-size: 13px; text-transform: none; letter-spacing: 0; font-weight: 500; font-family: var(--font-body); color: var(--mute); border-bottom: 1px solid var(--line-brand); }
+.su-menu-foot { border-top: 1px solid var(--line-brand); }
+
+/* ============ WhatsApp flotante: unico circulo de la pagina (con el icono del logo) ============ */
+.k-wa { border-radius: 50%; background: var(--wa); }
+
+/* ============ Cierre / pie ============ */
+.su-foot { background: var(--deep-2); color: var(--ink); padding-top: var(--sec-y-sm); }
+.su-foot-close { text-align: center; padding-bottom: 40px; }
+.su-foot-logo { width: min(62vw, 620px); margin-inline: auto; height: auto; }
+.su-foot-motto {
+  margin-top: 24px; font-family: var(--font-display); font-stretch: 122%; font-variation-settings: "wdth" 122;
+  text-transform: uppercase; font-weight: 800; color: var(--brand);
+  font-size: clamp(22px, 5vw, 34px);
+}
+.su-foot-cols { display: grid; gap: 32px; padding-block: 32px; border-top: 1px solid var(--line-brand); }
+@media (min-width: 700px) { .su-foot-cols { grid-template-columns: repeat(3, 1fr); } }
+.cd-foot-h { font-size: 12px; letter-spacing: 0.14em; color: var(--brand); margin-bottom: 14px; font-family: var(--font-body); font-weight: 700; text-transform: uppercase; }
+.cd-foot-list { display: flex; flex-direction: column; }
+.cd-foot-list a { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-size: 14px; min-height: 44px; }
+.cd-foot-list svg { width: 17px; height: 17px; color: var(--brand); flex: none; }
+/* Redes reales con logotipo SVG de 44px (decision de Emanuel): el glifo mide
+   44 y el area de toque 56. WhatsApp va en la misma fila, no como renglon. */
+.su-social-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.su-social { width: 56px; height: 56px; display: grid; place-items: center; border: 1px solid var(--line-brand-strong); color: var(--brand); }
+.su-social svg { width: 44px; height: 44px; }
+/* El glifo va en --brand como los otros dos: el verde de WhatsApp se queda
+   para los 3 botones que de verdad mandan el mensaje mas el flotante. */
+.su-social-pie { margin-top: 12px; font-size: 13px; color: var(--mute); }
+.su-foot-bottom { display: flex; flex-direction: column; gap: 6px; padding-block: 22px; border-top: 1px solid var(--line-brand); font-size: 12.5px; color: var(--mute); }
+.cd-credit { opacity: 0.7; }
+
+/* ============ Layout base de secciones ============ */
+section[id] { padding-block: var(--sec-y-sm); }
+@media (min-width: 900px) { section[id] { padding-block: var(--sec-y); } }
+
+/* ============ Componente compartido: "Planta que se levanta" ============
+   Usado en el momento firma (03) y en el catalogo (02, turno 2). Ver
+   SU.plantaHTML() en site.js. Trazo lleno verde = pared; punteado = lado
+   abierto. Retro de la escena: rotacion en X + paredes que suben (scaleY). */
+.su-plan-scene { perspective: 1100px; }
+.su-plan-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg);
+  transform-origin: 50% 100%;
+  transition: transform 420ms var(--ease-out);
+}
+.su-plan-3d.is-vol { transform: rotateX(58deg); }
+/* preserve-3d TAMBIEN aqui: sin esto la caja aplanaba a sus hijos y la pared
+   con rotateX(90deg) quedaba de canto (invisible). Por eso el volumen no
+   aparecia en ninguna captura aunque los estilos computados fueran correctos. */
+.su-plan-box { position: relative; width: 100%; transform-style: preserve-3d; }
+.su-plan-floor { display: block; width: 100%; height: auto; position: relative; z-index: 1; }
+/* La pared se LEVANTA del plano: bisagra en su linea de pared (origin abajo)
+   y rotacion contraria a la del plano, para que quede de pie de verdad. Antes
+   era rotateX(90deg) dentro de una caja aplanada: quedaba de canto y no se
+   veia nunca. --wx lo mueve el momento firma cuadro a cuadro; --wy da el giro
+   de los retornos laterales (paredes izquierda y derecha del cajon). */
+.su-wall {
+  position: absolute;
+  --wx: 0deg; --wy: 0deg; --wk: 0;
+  background: linear-gradient(180deg, #5a9e44, #2e5a25);
+  border-top: 1.5px solid #cfe7c4;
+  transform-origin: bottom center;
+  transform: rotateX(var(--wx)) rotateY(var(--wy)) scaleY(var(--wk));
+  transition: transform 420ms var(--ease-out);
+  z-index: 2;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+.su-wall--izq { transform-origin: bottom left; }
+.su-wall--der { transform-origin: bottom right; }
+.su-plan-3d.is-vol .su-wall { --wx: -58deg; --wk: 1; }
+/* Octanorm: junta de panel cada modulo de 1 m sobre la pared del volumen.
+   Custom va sin juntas (pared continua). --su-mods lo pone SU.plantaHTML. */
+.su-wall.is-octanorm {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(207, 231, 196, 0.55) 0 1px, transparent 1px calc(100% / var(--su-mods, 1))),
+    linear-gradient(180deg, #5a9e44, #2e5a25);
+}
+.su-plan-tag {
+  font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--brand); margin-bottom: 14px;
+}
+.su-cota-label { font-family: var(--font-cota); font-weight: 700; font-size: 11px; fill: var(--brand); }

@@ -1,0 +1,48 @@
+/* 06-visitanos: direccion real + "Todo listo para completar" (HOJA §6).
+   El logo grande + la frase de cierre ya viven en el footer (su-foot-close,
+   template.html); aqui NO se repite el momento de logo. */
+.s-visita-h2 { margin-bottom: 24px; }
+.s-visita-datos p { font-size: 15px; line-height: 1.5; margin-bottom: 10px; color: var(--mute); }
+.s-visita-datos b { color: var(--ink); }
+.s-visita-plus { font-size: 13px; letter-spacing: 0.04em; }
+.s-visita-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; margin-bottom: 28px; }
+
+/* Marcador honesto de la fachada como BANDA DE PLACA, no como hueco: en compu
+   era un rectangulo vacio de ~1200x640 px, lo mas grande de la pagina. Ahora
+   es una banda 16/5 topada a 220px, con el texto a la izquierda y la reticula
+   de 1 m de fondo. La honestidad se queda, el vacio se va. */
+.s-visita-fachada {
+  aspect-ratio: 16 / 5;
+  max-height: 220px;
+  display: flex;
+  align-items: center;
+  padding: 18px 20px;
+  background-color: var(--deep-2);
+  border: 1px dashed var(--line-brand-strong);
+  margin-bottom: 32px;
+}
+.s-visita-fachada-mark {
+  color: var(--mute);
+  font-size: 13px; line-height: 1.5;
+  max-width: 34ch;
+  margin: 0;
+}
+
+.s-visita-listo { padding: 24px 20px; }
+.s-visita-listo-rotulo {
+  font-family: var(--font-display); font-stretch: 122%; font-variation-settings: "wdth" 122;
+  text-transform: uppercase; font-weight: 800; font-size: clamp(16px, 4vw, 20px);
+  color: var(--brand-dim); margin-bottom: 14px;
+}
+.s-visita-listo-lista { margin: 0; padding-left: 18px; color: var(--ink-deep); }
+.s-visita-listo-lista li { font-size: 14px; line-height: 1.5; margin-bottom: 8px; }
+.s-visita-listo-lista li:last-child { margin-bottom: 0; }
+
+/* Compu: split 5/7. La direccion a la izquierda, la banda "Lo que necesitamos
+   de ti" a la derecha; antes todo quedaba pegado a la izquierda con la mitad
+   derecha vacia (d-09.png). */
+@media (min-width: 900px) {
+  .s-visita-split { display: grid; grid-template-columns: 5fr 7fr; column-gap: 48px; align-items: start; }
+  .s-visita-fachada { margin-bottom: 0; }
+  .s-visita-listo { padding: 32px 28px; }
+}

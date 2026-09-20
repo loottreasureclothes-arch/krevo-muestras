@@ -1,0 +1,126 @@
+/* 03-catalogo: "Las 15 medidas que arman" (HOJA §2). Sin parrafo. Producto a
+   la vista justo despues del hero, estilo tienda: planta SVG + nombre + sello
+   + "Pregunta el precio" + Agregar (color de marca). Hoja: solo carrito y
+   cierre. NUNCA "$0"; el total dice "te lo confirmamos por WhatsApp". */
+.s-cat-h2 { margin-bottom: 24px; }
+
+.s-cat-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.s-cat-chip {
+  min-height: 40px; padding: 0 16px; border: 1.5px solid var(--line-brand-strong);
+  background: transparent; color: var(--ink); font-family: var(--font-body);
+  font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.1em;
+  border-radius: 0; cursor: pointer;
+}
+.s-cat-chip.is-active { background: var(--brand); border-color: var(--brand); color: #f3f7ef; }
+
+.s-cat-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (min-width: 900px) { .s-cat-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+/* Crossfade de chip a chip: solo opacidad, nunca alto ni ancho (regla de la
+   hoja). El grid entero se apaga y se prende en menos de 300ms; las tarjetas
+   cambian de "hidden" mientras esta a 0 de opacidad, asi no se ve el salto. */
+.s-cat-grid { transition: opacity 140ms var(--ease-out); opacity: 1; }
+.s-cat-grid.is-switching { opacity: 0; }
+.s-cat-tally { font-size: 12.5px; color: var(--mute); margin: 14px 0 0; }
+.s-cat-tally b { color: var(--ink); font-family: var(--font-display); font-variation-settings: "wdth" 110; }
+.s-cat-card {
+  background: var(--deep-2);
+  border: 1px solid var(--line-brand);
+  padding: 12px 12px 16px;
+  display: flex; flex-direction: column;
+}
+.s-cat-card[hidden] { display: none; }
+/* "Medidas Especiales" hace fila entera: 15 tarjetas en 2 columnas (3 en
+   compu) dejaban la ultima sola con un hueco huerfano al lado. Aqui la planta
+   punteada va ancha a la izquierda y el texto al lado. */
+.s-cat-card--especial {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  column-gap: 16px;
+  align-items: center;
+}
+.s-cat-card--especial .s-cat-plan { grid-row: 1 / span 3; margin-bottom: 0; align-self: center; }
+.s-cat-card--especial .s-cat-name { align-self: end; margin-bottom: 6px; min-height: 0; }
+.s-cat-card--especial .s-cat-price { margin-bottom: 12px; }
+.s-cat-card--especial .s-cat-add { margin-top: 0; align-self: start; }
+@media (min-width: 900px) {
+  .s-cat-card--especial { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); column-gap: 28px; padding: 18px 20px 22px; }
+  /* la planta punteada no se estira a toda la columna: se lee como plano, no
+     como un cuadro vacio de media pantalla */
+  .s-cat-card--especial .s-cat-plan { max-width: 240px; justify-self: start; }
+}
+.s-cat-plan { margin-bottom: 10px; cursor: pointer; color: var(--ink); }
+.s-cat-plan .su-plan-scene { display: block; }
+.s-cat-card[data-hide-cota] .su-cota,
+.s-cat-plan[data-hide-cota] .su-cota { display: none; }
+.s-cat-name {
+  font-family: var(--font-display); font-stretch: 122%; font-variation-settings: "wdth" 118;
+  text-transform: uppercase; font-weight: 800; font-size: 14px; line-height: 1.15;
+  margin-bottom: 8px; min-height: 32px;
+}
+.s-cat-sello { margin-bottom: 6px; }
+.s-cat-sello span {
+  display: inline-block; border: 1px solid var(--line-brand-strong); color: var(--brand);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; padding: 3px 7px;
+}
+.s-cat-price { font-size: 13px; color: var(--mute); margin-bottom: 12px; }
+/* Boton de contorno en color de marca: relleno solo al tocarlo o cuando ya
+   se agrego. Con 15 rectangulos macizos la rejilla se leia como un muro verde
+   (m-04.png). Sigue siendo --brand, como lo ordeno Emanuel para "+ Agregar". */
+.s-cat-add {
+  margin-top: auto; min-height: 44px;
+  background: transparent; border: 1.5px solid var(--brand); color: var(--brand);
+  font-family: var(--font-body); font-weight: 700; font-size: 12.5px; text-transform: uppercase;
+  letter-spacing: 0.08em; border-radius: 0; cursor: pointer;
+  transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { .s-cat-add:hover { background: var(--brand); color: #f3f7ef; } }
+.s-cat-add:active { background: var(--brand); color: #f3f7ef; }
+.s-cat-add.is-added { background: var(--brand); border-color: var(--brand); color: #f3f7ef; }
+
+/* Barra fija "Mi cotizacion - N", color de marca, aparece al agregar */
+.s-cat-bar {
+  position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 40; min-height: 54px; padding-inline: 20px;
+  background: var(--brand); color: #f3f7ef; border: 0; border-radius: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--font-body); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35); cursor: pointer;
+}
+.s-cat-bar[hidden] { display: none; }
+.s-cat-bar b { font-family: var(--font-display); font-size: 18px; }
+@media (min-width: 900px) { .s-cat-bar { left: auto; right: 40px; bottom: 32px; width: 280px; } }
+
+/* Hoja: solo el carrito y el cierre */
+.s-cat-sheet { position: fixed; inset: 0; z-index: 60; }
+.s-cat-sheet[hidden] { display: none; }
+.s-cat-sheet-scrim { position: absolute; inset: 0; background: rgba(12, 24, 34, 0.6); }
+.s-cat-sheet-panel {
+  position: absolute; left: 0; right: 0; bottom: 0; max-height: 86svh; overflow-y: auto;
+  padding: 24px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--line-brand-strong);
+}
+@media (min-width: 700px) { .s-cat-sheet-panel { left: 50%; right: auto; bottom: auto; top: 50%; transform: translate(-50%, -50%); width: min(460px, 90vw); max-height: 84vh; border: 1px solid var(--line-brand-strong); } }
+.s-cat-sheet-x { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; display: grid; place-items: center; background: none; border: 0; color: var(--ink-deep); cursor: pointer; }
+.s-cat-sheet-x svg { width: 18px; height: 18px; }
+.s-cat-sheet-h {
+  font-family: var(--font-display); font-stretch: 122%; font-variation-settings: "wdth" 122;
+  text-transform: uppercase; font-weight: 800; font-size: 20px; margin-bottom: 16px;
+}
+.s-cat-sheet-list { list-style: none; margin: 0 0 16px; padding: 0; }
+.s-cat-sheet-list li { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line-brand); font-size: 14px; }
+.s-cat-sheet-list b { flex: 1; font-weight: 700; }
+.s-cat-qty { display: flex; align-items: center; gap: 8px; }
+.s-cat-qty button { width: 28px; height: 28px; border: 1px solid var(--line-brand-strong); background: none; color: var(--ink-deep); font-size: 16px; line-height: 1; cursor: pointer; }
+.s-cat-qty span { min-width: 16px; text-align: center; font-variant-numeric: tabular-nums; }
+.s-cat-sheet-fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+.s-cat-sheet-fields label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mute-deep); }
+.s-cat-sheet-fields input {
+  display: block; width: 100%; margin-top: 6px; min-height: 46px; padding: 0 12px;
+  border: 1px solid var(--line-brand-strong); background: #fff; color: var(--ink-deep);
+  font-family: var(--font-body); font-size: 15px; border-radius: 0;
+}
+.s-cat-total { font-size: 13px; color: var(--mute-deep); margin-bottom: 16px; }
+.s-cat-total b { color: var(--ink-deep); }
+.s-cat-send { width: 100%; }
+.s-cat-empty { font-size: 14px; color: var(--mute-deep); padding: 8px 0; }
