@@ -32,13 +32,13 @@
 <link rel="preload" as="image" href="img/hero/hero-m.webp" media="not all and (min-aspect-ratio: 1/1)" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero/hero-d.webp" media="(min-aspect-ratio: 1/1)" fetchpriority="high">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
-<link rel="stylesheet" href="site.css?v=1789836123">
-<link rel="stylesheet" href="sections/01-hero.css?v=1789836286">
-<link rel="stylesheet" href="sections/02-catalogo.css?v=1789863482">
+<link rel="stylesheet" href="site.css?v=1789868206">
+<link rel="stylesheet" href="sections/01-hero.css?v=1789865170">
+<link rel="stylesheet" href="sections/02-catalogo.css?v=1789867231">
 <link rel="stylesheet" href="sections/03-cotiza.css?v=1789836400">
-<link rel="stylesheet" href="sections/04-cine.css?v=1789836318">
-<link rel="stylesheet" href="sections/05-proyectos.css?v=1789863603">
-<link rel="stylesheet" href="sections/06-nosotros.css?v=1789863550">
+<link rel="stylesheet" href="sections/04-cine.css?v=1789869640">
+<link rel="stylesheet" href="sections/05-proyectos.css?v=1789868028">
+<link rel="stylesheet" href="sections/06-nosotros.css?v=1789867670">
 <link rel="stylesheet" href="sections/07-envios.css?v=1789863482">
 </head>
 <body data-hero-dark>
@@ -106,9 +106,10 @@
           <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/hero-d.webp" width="1920" height="1080">
           <img class="s-hero-img" src="img/hero/hero-m.webp" alt="Cantinero Equipales Imperial con respaldo de piel cincelada a mano, en el campo de Jalisco al atardecer" width="900" height="1600" fetchpriority="high" decoding="async">
         </picture>
-        <!-- VIDEO DE CINE (pendiente): se llena data-src-m (9:16, ≤1.5 MB) y data-src-d (16:9, ≤2.5 MB).
-             Mientras esté vacío se queda la foto real. El JS lo salta con saveData/2g o si play() falla. -->
-        <video class="s-hero-video" data-src-m="" data-src-d="" data-poster-m="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" poster="img/hero/hero-d.webp" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" aria-hidden="true" tabindex="-1" hidden></video>
+        <!-- VIDEO DE CINE: hecho con sus 4 fotos reales (ffmpeg, tools/hero_video.py: acercar, paneo, inclinación,
+             alejar, disolvencias, grading cálido, loop sin corte). data-segs = segundo en que empieza cada foto.
+             Mientras carga o si play() falla queda la foto real (poster = la foto actual del hero). -->
+        <video class="s-hero-video" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-poster-m="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9" poster="img/hero/hero-d.webp" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" aria-hidden="true" tabindex="-1" hidden></video>
       </div>
     </div>
     <div class="s-hero-shade" aria-hidden="true"></div>
@@ -123,929 +124,1067 @@
           <a class="cd-btn cd-btn--secondary" href="#catalogo">Ver catálogo</a>
         </div>
       </div>
-      <ul class="s-hero-chips" aria-label="Líneas del catálogo">
-        <li><button type="button" data-linea="asientos" aria-haspopup="dialog"><img src="img/tiles/asientos.webp" alt="" width="479" height="520" decoding="async"><span class="s-hero-tn">Asientos</span><span class="s-hero-td">34 piezas · desde $600</span></button></li>
-        <li><button type="button" data-linea="cantineros" aria-haspopup="dialog"><img src="img/tiles/cantineros.webp" alt="" width="465" height="520" decoding="async"><span class="s-hero-tn">Cantineros</span><span class="s-hero-td">20 piezas · desde $1,400</span></button></li>
-        <li><button type="button" data-linea="salas" aria-haspopup="dialog"><img src="img/tiles/salas.webp" alt="" width="520" height="251" decoding="async"><span class="s-hero-tn">Salas</span><span class="s-hero-td">22 piezas · desde $9,800</span></button></li>
-        <li><button type="button" data-linea="comedores" aria-haspopup="dialog"><img src="img/tiles/comedores.webp" alt="" width="520" height="259" decoding="async"><span class="s-hero-tn">Comedores</span><span class="s-hero-td">24 piezas · desde $5,800</span></button></li>
-        <li><button type="button" data-linea="mesas" aria-haspopup="dialog"><img src="img/tiles/mesas.webp" alt="" width="520" height="373" decoding="async"><span class="s-hero-tn">Mesas</span><span class="s-hero-td">11 piezas · desde $900</span></button></li>
-        <li><button type="button" data-linea="barras" aria-haspopup="dialog"><img src="img/tiles/barras.webp" alt="" width="386" height="520" decoding="async"><span class="s-hero-tn">Barras</span><span class="s-hero-td">6 piezas · desde $6,000</span></button></li>
+      <ul class="s-hero-idx" aria-label="Piezas más pedidas">
+        <li><a href="#catalogo" data-linea="mesas" data-item="101"><span><b>Mesa tradicional</b> · desde $1,400</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="cantineros" data-item="35"><span><b>Cantinero Tradicional</b> · desde $1,700</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="asientos" data-item="6"><span><b>Equipal Tulum</b> · desde $2,200</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="asientos" data-item="14"><span><b>Equipal Tolteca</b> · desde $3,200</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="asientos" data-item="21"><span><b>Equipal Guadalajara</b> · desde $4,300</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="comedores" data-item="76"><span><b>Comedor Tradicional</b> · desde $5,800</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="barras" data-item="111"><span><b>Barra Lineal</b> · desde $6,000</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="asientos" data-item="30"><span><b>Equipal Frida</b> · desde $7,500</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="asientos" data-item="31"><span><b>Mecedora Guadalajara</b> · desde $8,900</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="asientos" data-item="33"><span><b>Mecedora Tapachula</b> · desde $8,900</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="salas" data-item="55"><span><b>Sala Tradicional</b> · desde $12,000</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="salas" data-item="71"><span><b>Sala Guadalajara</b> · desde $32,000</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
       </ul>
       <p class="s-hero-note">Precios de su tienda en línea, MXN + IVA.</p>
-    </div>
-
-    <!-- Hoja por línea: la llena 01-hero.js con las piezas reales del catálogo. El JS la mueve a <body>. -->
-    <div class="eq-sheet s-hero-sheet" hidden>
-      <div class="eq-sheet-veil" data-close></div>
-      <div class="eq-sheet-box" role="dialog" aria-modal="true" aria-labelledby="s-hero-sheet-t" tabindex="-1">
-        <div class="eq-sheet-grip" aria-hidden="true"><i></i></div>
-        <header class="eq-sheet-head">
-          <div>
-            <p class="eq-eye s-hs-eye">Línea</p>
-            <h2 id="s-hero-sheet-t" class="eq-sheet-t cd-h3d"></h2>
-            <p class="s-hs-d"></p>
-          </div>
-          <button type="button" class="eq-sheet-x" data-close aria-label="Cerrar"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
-        </header>
-        <div class="s-hs-car" role="region" aria-label="Piezas de esta línea" tabindex="0"></div>
-        <div class="s-hs-foot">
-          <a class="cd-btn cd-btn--primary s-hs-go" href="https://wa.me/523312670824" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Cotizar</span></a>
-          <a class="cd-btn cd-btn--link s-hs-all" href="#catalogo">Ver todas con precio<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-      </div>
     </div>
   </section>
 
   <section id="catalogo" class="s-cat eq-sec eq-onlight" aria-labelledby="cat-t">
-    <div class="k-wrap">
+    <div class="k-wrap s-cat-top">
       <div class="s-cat-head">
         <div>
           <p class="eq-eye">125 piezas con precio</p>
           <h2 id="cat-t" class="eq-h2 cd-h3d"><span class="l">Elige</span><span class="l">tu pieza.</span></h2>
         </div>
-        <p class="eq-lead">Precios de su tienda en línea, en pesos más IVA. Arma tu pedido y mándalo por WhatsApp.</p>
+        <p class="eq-lead">Precios de su tienda en línea, en pesos más IVA. Toca el nombre para ver la pieza y arma tu pedido para mandarlo por WhatsApp.</p>
       </div>
-      <ul class="s-cat-chips" aria-label="Filtrar por línea"><li><button type="button" class="s-cat-chip" data-f="top" aria-pressed="true">Lo más pedido <span>7</span></button></li><li><button type="button" class="s-cat-chip" data-f="asientos" aria-pressed="false">Asientos <span>34</span></button></li><li><button type="button" class="s-cat-chip" data-f="cantineros" aria-pressed="false">Cantineros <span>20</span></button></li><li><button type="button" class="s-cat-chip" data-f="salas" aria-pressed="false">Salas <span>22</span></button></li><li><button type="button" class="s-cat-chip" data-f="comedores" aria-pressed="false">Comedores <span>24</span></button></li><li><button type="button" class="s-cat-chip" data-f="mesas" aria-pressed="false">Mesas <span>11</span></button></li><li><button type="button" class="s-cat-chip" data-f="barras" aria-pressed="false">Barras <span>6</span></button></li><li><button type="button" class="s-cat-chip" data-f="complementos" aria-pressed="false">Complementos <span>8</span></button></li></ul>
-      <ul class="s-cat-grid" aria-live="polite">
-        <li class="s-cat-card" data-c="asientos" data-i="0">
-          <div class="s-cat-ph"><img src="img/cat/banco-loco.webp" alt="Banco Loco de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Banco Loco</h3>
-          <p class="s-cat-pr eq-price">$600 a $3,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Plata, Platino · 1 pieza · asiento a 49 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="1">
-          <div class="s-cat-ph"><img src="img/cat/equipal-tradicional.webp" alt="Equipal Tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Tradicional</h3>
-          <p class="s-cat-pr eq-price">$1,100 a $2,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Plata, Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="2">
-          <div class="s-cat-ph"><img src="img/cat/banco-loco-azteca.webp" alt="Banco Loco Azteca de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Banco Loco Azteca</h3>
-          <p class="s-cat-pr eq-price">$1,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante · 1 pieza · asiento a 49 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="3">
-          <div class="s-cat-ph"><img src="img/cat/equipal-cola-de-pavo.webp" alt="Equipal Cola de Pavo de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Cola de Pavo</h3>
-          <p class="s-cat-pr eq-price">$1,700 a $2,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 50 cm · 60 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="4">
-          <div class="s-cat-ph"><img src="img/cat/equipal-envarillado.webp" alt="Equipal Envarillado de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Envarillado</h3>
-          <p class="s-cat-pr eq-price">$1,900 a $2,400 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="5">
-          <div class="s-cat-ph"><img src="img/cat/equipal-acapulco.webp" alt="Equipal Acapulco de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Acapulco</h3>
-          <p class="s-cat-pr eq-price">$2,000 a $2,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="6" data-top="5">
-          <div class="s-cat-ph"><img src="img/cat/equipal-tulum.webp" alt="Equipal Tulum de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Tulum</h3>
-          <p class="s-cat-pr eq-price">$2,200 a $2,900 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="7">
-          <div class="s-cat-ph"><img src="img/cat/equipal-charro.webp" alt="Equipal Charro de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Charro</h3>
-          <p class="s-cat-pr eq-price">$2,200 a $2,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 48 cm · 66 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="8">
-          <div class="s-cat-ph"><img src="img/cat/equipal-cancun.webp" alt="Equipal Cancún de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Cancún</h3>
-          <p class="s-cat-pr eq-price">$2,400 a $2,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 52 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="9">
-          <div class="s-cat-ph"><img src="img/cat/equipal-tequila.webp" alt="Equipal Tequila de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Tequila</h3>
-          <p class="s-cat-pr eq-price">$2,400 a $2,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="10">
-          <div class="s-cat-ph"><img src="img/cat/equipal-chetumal.webp" alt="Equipal Chetumal de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Chetumal</h3>
-          <p class="s-cat-pr eq-price">$2,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 48 cm · 71 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="11">
-          <div class="s-cat-ph"><img src="img/cat/equipal-ixtapa.webp" alt="Equipal Ixtapa de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Ixtapa</h3>
-          <p class="s-cat-pr eq-price">$2,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 52 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="12">
-          <div class="s-cat-ph"><img src="img/cat/equipal-cuauhtemoc.webp" alt="Equipal Cuauhtémoc de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Cuauhtémoc</h3>
-          <p class="s-cat-pr eq-price">$3,000 a $4,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 50 cm · 71 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="13">
-          <div class="s-cat-ph"><img src="img/cat/equipal-cuzumel.webp" alt="Equipal Cuzumel de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Cuzumel</h3>
-          <p class="s-cat-pr eq-price">$3,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 47 cm · 71 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="14" data-top="6">
-          <div class="s-cat-ph"><img src="img/cat/equipal-tolteca.webp" alt="Equipal Tolteca de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Tolteca</h3>
-          <p class="s-cat-pr eq-price">$3,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 48 cm · 71 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="15">
-          <div class="s-cat-ph"><img src="img/cat/equipal-imperio.webp" alt="Equipal Imperio de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Imperio</h3>
-          <p class="s-cat-pr eq-price">$3,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 52 cm · 70 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="16">
-          <div class="s-cat-ph"><img src="img/cat/equipal-azteca.webp" alt="Equipal Azteca de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Azteca</h3>
-          <p class="s-cat-pr eq-price">$3,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="17">
-          <div class="s-cat-ph"><img src="img/cat/equipal-xochitl.webp" alt="Equipal Xóchitl de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Xóchitl</h3>
-          <p class="s-cat-pr eq-price">$3,200 a $4,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 53 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="18">
-          <div class="s-cat-ph"><img src="img/cat/equipal-provincia.webp" alt="Equipal Provincia de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Provincia</h3>
-          <p class="s-cat-pr eq-price">$3,300 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 46 cm · 68 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="19">
-          <div class="s-cat-ph"><img src="img/cat/equipal-chilpancingo.webp" alt="Equipal Chilpancingo de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Chilpancingo</h3>
-          <p class="s-cat-pr eq-price">$3,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="20">
-          <div class="s-cat-ph"><img src="img/cat/equipal-media-luna.webp" alt="Equipal Media Luna de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Media Luna</h3>
-          <p class="s-cat-pr eq-price">$3,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="21" data-top="3">
-          <div class="s-cat-ph"><img src="img/cat/equipal-guadalajara.webp" alt="Equipal Guadalajara de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Guadalajara</h3>
-          <p class="s-cat-pr eq-price">$4,300 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 1 pieza · asiento a 48 cm · 71 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="22">
-          <div class="s-cat-ph"><img src="img/cat/equipal-arandas.webp" alt="Equipal Arandas de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Arandas</h3>
-          <p class="s-cat-pr eq-price">$5,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 50 cm · 83 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="23">
-          <div class="s-cat-ph"><img src="img/cat/equipal-reynosa.webp" alt="Equipal Reynosa de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Reynosa</h3>
-          <p class="s-cat-pr eq-price">$5,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 50 cm · 84 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="24">
-          <div class="s-cat-ph"><img src="img/cat/equipal-piramide-del-sol.webp" alt="Equipal Piramide del sol de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Piramide del sol</h3>
-          <p class="s-cat-pr eq-price">$5,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 55 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="25">
-          <div class="s-cat-ph"><img src="img/cat/equipal-tepatitlan.webp" alt="Equipal Tepatitlán de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Tepatitlán</h3>
-          <p class="s-cat-pr eq-price">$5,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 50 cm · 81 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="26">
-          <div class="s-cat-ph s-cat-ph--txt" aria-hidden="true"><span>Equipal Madero</span><small>Pide la foto por WhatsApp</small></div>
-          <h3 class="s-cat-n">Equipal Madero</h3>
-          <p class="s-cat-pr eq-price">$6,000 a $7,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">1 pieza</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="27">
-          <div class="s-cat-ph"><img src="img/cat/equipal-allende.webp" alt="Equipal Allende de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Allende</h3>
-          <p class="s-cat-pr eq-price">$6,000 a $7,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Vinipiel · 1 pieza</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="28">
-          <div class="s-cat-ph"><img src="img/cat/equipal-altamira.webp" alt="Equipal Altamira de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Altamira</h3>
-          <p class="s-cat-pr eq-price">$6,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 1 pieza · asiento a 50 cm · 84 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="29">
-          <div class="s-cat-ph"><img src="img/cat/equipal-tolteca-giratorio.webp" alt="Equipal Tolteca Giratorio de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Tolteca Giratorio</h3>
-          <p class="s-cat-pr eq-price">$6,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 48 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="30" data-top="2">
-          <div class="s-cat-ph"><img src="img/cat/equipal-frida.webp" alt="Equipal Frida de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Equipal Frida</h3>
-          <p class="s-cat-pr eq-price">$7,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro · 1 pieza · asiento a 55 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="31" data-top="1">
-          <div class="s-cat-ph"><img src="img/cat/mecedora-guadalajara.webp" alt="Mecedora Guadalajara de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mecedora Guadalajara</h3>
-          <p class="s-cat-pr eq-price">$8,900 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 1 pieza · asiento a 51 cm · 93 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="32">
-          <div class="s-cat-ph"><img src="img/cat/mecedora-frida.webp" alt="Mecedora Frida de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mecedora Frida</h3>
-          <p class="s-cat-pr eq-price">$8,900 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro · 1 pieza · asiento a 51 cm · 93 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="asientos" data-i="33" data-top="4">
-          <div class="s-cat-ph"><img src="img/cat/mecedora-tapachula.webp" alt="Mecedora Tapachula de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mecedora Tapachula</h3>
-          <p class="s-cat-pr eq-price">$8,900 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 51 cm · 93 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="34">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-sin-respaldo.webp" alt="Cantinero sin respaldo de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero sin respaldo</h3>
-          <p class="s-cat-pr eq-price">$1,400 a $2,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="35">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-tradicional.webp" alt="Cantinero Tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Tradicional</h3>
-          <p class="s-cat-pr eq-price">$1,700 a $2,600 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Plata, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="36">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-acapulco.webp" alt="Cantinero Acapulco de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Acapulco</h3>
-          <p class="s-cat-pr eq-price">$2,100 a $3,600 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="37">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-envarillado.webp" alt="Cantinero Envarillado de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Envarillado</h3>
-          <p class="s-cat-pr eq-price">$2,100 a $3,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="38">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-charro.webp" alt="Cantinero Charro de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Charro</h3>
-          <p class="s-cat-pr eq-price">$2,300 a $3,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="39">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-cancun.webp" alt="Cantinero Cancún de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Cancún</h3>
-          <p class="s-cat-pr eq-price">$2,300 a $2,900 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="40">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-ixtapa.webp" alt="Cantinero Ixtapa de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Ixtapa</h3>
-          <p class="s-cat-pr eq-price">$2,300 a $3,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="41">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-imperial.webp" alt="CantInero Imperial de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">CantInero Imperial</h3>
-          <p class="s-cat-pr eq-price">$2,350 a $3,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="42">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-chetumal.webp" alt="Cantinero Chetumal de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Chetumal</h3>
-          <p class="s-cat-pr eq-price">$2,350 a $3,700 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="43">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-tequila.webp" alt="Cantinero Tequila de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Tequila</h3>
-          <p class="s-cat-pr eq-price">$2,400 a $4,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="44">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-tulum.webp" alt="Cantinero Tulum de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Tulum</h3>
-          <p class="s-cat-pr eq-price">$2,700 a $4,400 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="45">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-cuauhtemoc.webp" alt="Cantinero Cuauhtemoc de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Cuauhtemoc</h3>
-          <p class="s-cat-pr eq-price">$3,800 a $4,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="46">
-          <div class="s-cat-ph s-cat-ph--txt" aria-hidden="true"><span>Cantinero Imperio</span><small>Pide la foto por WhatsApp</small></div>
-          <h3 class="s-cat-n">Cantinero Imperio</h3>
-          <p class="s-cat-pr eq-price">$4,000 a $5,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="47">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-xochitl.webp" alt="Cantinero Xochitl de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Xochitl</h3>
-          <p class="s-cat-pr eq-price">$4,000 a $5,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="48">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-quetzal.webp" alt="Cantinero Quetzal de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Quetzal</h3>
-          <p class="s-cat-pr eq-price">$4,000 a $5,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="49">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-tolteca.webp" alt="Cantinero Tolteca de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Tolteca</h3>
-          <p class="s-cat-pr eq-price">$4,200 a $5,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="50">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-guadalajara.webp" alt="Cantinero Guadalajara de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Guadalajara</h3>
-          <p class="s-cat-pr eq-price">$5,300 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 1 pieza</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="51">
-          <div class="s-cat-ph s-cat-ph--txt" aria-hidden="true"><span>Cantinero Allende</span><small>Pide la foto por WhatsApp</small></div>
-          <h3 class="s-cat-n">Cantinero Allende</h3>
-          <p class="s-cat-pr eq-price">$7,000 a $8,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="52">
-          <div class="s-cat-ph"><img src="img/cat/cantinero-monterrey.webp" alt="Cantinero Monterrey de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cantinero Monterrey</h3>
-          <p class="s-cat-pr eq-price">$7,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 1 pieza · asiento a 70 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="cantineros" data-i="53">
-          <div class="s-cat-ph"><img src="img/cat/canrinero-giratorio-guadalajara.webp" alt="Canrinero Giratorio Guadalajara de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Canrinero Giratorio Guadalajara</h3>
-          <p class="s-cat-pr eq-price">$7,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 1 pieza</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="54">
-          <div class="s-cat-ph"><img src="img/cat/sala-rustica-tradicional.webp" alt="Sala Rustica Tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Rustica Tradicional</h3>
-          <p class="s-cat-pr eq-price">$9,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Plata, Platino · 3 piezas · asiento a 45 cm · 60 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="55">
-          <div class="s-cat-ph"><img src="img/cat/sala-tradicional.webp" alt="Sala Tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Tradicional</h3>
-          <p class="s-cat-pr eq-price">$12,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 45 cm · 60 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="56">
-          <div class="s-cat-ph"><img src="img/cat/sala-tequila.webp" alt="Sala Tequila de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Tequila</h3>
-          <p class="s-cat-pr eq-price">$13,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro, Platino · 3 piezas · asiento a 40 cm · 140 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="57">
-          <div class="s-cat-ph"><img src="img/cat/sala-envarillada.webp" alt="Sala Envarillada de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Envarillada</h3>
-          <p class="s-cat-pr eq-price">$16,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="58">
-          <div class="s-cat-ph"><img src="img/cat/sala-cuauhtemoc.webp" alt="Sala Cuauhtémoc de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Cuauhtémoc</h3>
-          <p class="s-cat-pr eq-price">$17,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 3 piezas · asiento a 40 cm · 140 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="59">
-          <div class="s-cat-ph"><img src="img/cat/sala-acapulco.webp" alt="Sala Acapulco de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Acapulco</h3>
-          <p class="s-cat-pr eq-price">$18,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="60">
-          <div class="s-cat-ph"><img src="img/cat/sala-cancun.webp" alt="Sala Cancún de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Cancún</h3>
-          <p class="s-cat-pr eq-price">$20,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="61">
-          <div class="s-cat-ph"><img src="img/cat/sala-tapalpa.webp" alt="Sala Tapalpa de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Tapalpa</h3>
-          <p class="s-cat-pr eq-price">$22,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="62">
-          <div class="s-cat-ph"><img src="img/cat/sala-imperial.webp" alt="Sala Imperial de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Imperial</h3>
-          <p class="s-cat-pr eq-price">$22,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="63">
-          <div class="s-cat-ph"><img src="img/cat/sala-ixtapa.webp" alt="Sala Ixtapa de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Ixtapa</h3>
-          <p class="s-cat-pr eq-price">$22,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="64">
-          <div class="s-cat-ph"><img src="img/cat/sala-tulum.webp" alt="Sala Tulum de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Tulum</h3>
-          <p class="s-cat-pr eq-price">$25,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="65">
-          <div class="s-cat-ph"><img src="img/cat/sala-quetzal.webp" alt="Sala Quetzal de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Quetzal</h3>
-          <p class="s-cat-pr eq-price">$25,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 3 piezas · asiento a 40 cm · 140 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="66">
-          <div class="s-cat-ph"><img src="img/cat/sala-mazamitla.webp" alt="Sala Mazamitla de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Mazamitla</h3>
-          <p class="s-cat-pr eq-price">$28,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="67">
-          <div class="s-cat-ph"><img src="img/cat/sala-tenochtitlan.webp" alt="Sala Tenochtitlán de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Tenochtitlán</h3>
-          <p class="s-cat-pr eq-price">$30,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 3 piezas · asiento a 40 cm</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="68">
-          <div class="s-cat-ph"><img src="img/cat/sala-xochitl.webp" alt="Sala Xochitl de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Xochitl</h3>
-          <p class="s-cat-pr eq-price">$30,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Plata, Platino, Vinipiel · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="69">
-          <div class="s-cat-ph"><img src="img/cat/sala-reynosa.webp" alt="Sala Reynosa de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Reynosa</h3>
-          <p class="s-cat-pr eq-price">$32,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="70">
-          <div class="s-cat-ph"><img src="img/cat/sala-monterrey.webp" alt="Sala Monterrey de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Monterrey</h3>
-          <p class="s-cat-pr eq-price">$32,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="71" data-top="0">
-          <div class="s-cat-ph"><img src="img/cat/sala-guadalajara.webp" alt="Sala Guadalajara de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Guadalajara</h3>
-          <p class="s-cat-pr eq-price">$32,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="72">
-          <div class="s-cat-ph"><img src="img/cat/sala-tolteca.webp" alt="Sala Tolteca de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Tolteca</h3>
-          <p class="s-cat-pr eq-price">$32,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="73">
-          <div class="s-cat-ph"><img src="img/cat/sala-imperio.webp" alt="Sala Imperio de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Imperio</h3>
-          <p class="s-cat-pr eq-price">$32,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="74">
-          <div class="s-cat-ph"><img src="img/cat/sala-tapachula.webp" alt="Sala Tapachula de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Tapachula</h3>
-          <p class="s-cat-pr eq-price">$38,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">3 piezas</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="salas" data-i="75">
-          <div class="s-cat-ph"><img src="img/cat/sala-altamira.webp" alt="Sala Altamira de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Sala Altamira</h3>
-          <p class="s-cat-pr eq-price">$38,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">3 piezas · asiento a 40 cm · 90 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="76">
-          <div class="s-cat-ph"><img src="img/cat/comedor-tradicional.webp" alt="Comedor Tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Tradicional</h3>
-          <p class="s-cat-pr eq-price">$5,800 a $15,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Plata, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="77">
-          <div class="s-cat-ph"><img src="img/cat/comedor-cola-de-pavo.webp" alt="Comedor Cola de Pavo de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Cola de Pavo</h3>
-          <p class="s-cat-pr eq-price">$8,500 a $11,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 50 cm · 60 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="78">
-          <div class="s-cat-ph"><img src="img/cat/comedor-envarillado.webp" alt="Comedor Envarillado de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Envarillado</h3>
-          <p class="s-cat-pr eq-price">$9,300 a $11,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="79">
-          <div class="s-cat-ph"><img src="img/cat/comedor-acapulco.webp" alt="Comedor Acapulco de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Acapulco</h3>
-          <p class="s-cat-pr eq-price">$9,700 a $12,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="80">
-          <div class="s-cat-ph"><img src="img/cat/comedor-provincia.webp" alt="Comedor Provincia de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Provincia</h3>
-          <p class="s-cat-pr eq-price">$10,500 a $20,300 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 46 cm · 68 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="81">
-          <div class="s-cat-ph"><img src="img/cat/comedor-charro.webp" alt="Comedor Charro de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Charro</h3>
-          <p class="s-cat-pr eq-price">$10,500 a $12,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 48 cm · 66 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="82">
-          <div class="s-cat-ph s-cat-ph--txt" aria-hidden="true"><span>Comedor Chetumal</span><small>Pide la foto por WhatsApp</small></div>
-          <h3 class="s-cat-n">Comedor Chetumal</h3>
-          <p class="s-cat-pr eq-price">$10,900 a $18,300 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 48 cm · 71 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="83">
-          <div class="s-cat-ph"><img src="img/cat/comedor-cancun.webp" alt="Comedor Cancún de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Cancún</h3>
-          <p class="s-cat-pr eq-price">$11,300 a $13,400 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 52 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="84">
-          <div class="s-cat-ph"><img src="img/cat/comedor-tequila.webp" alt="Comedor Tequila de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Tequila</h3>
-          <p class="s-cat-pr eq-price">$11,300 a $13,400 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="85">
-          <div class="s-cat-ph"><img src="img/cat/comedor-ixtapa.webp" alt="Comedor Ixtapa de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Ixtapa</h3>
-          <p class="s-cat-pr eq-price">$12,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 52 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="86">
-          <div class="s-cat-ph s-cat-ph--txt" aria-hidden="true"><span>Comedor Cozumel</span><small>Pide la foto por WhatsApp</small></div>
-          <h3 class="s-cat-n">Comedor Cozumel</h3>
-          <p class="s-cat-pr eq-price">$13,400 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 47 cm · 71 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="87">
-          <div class="s-cat-ph s-cat-ph--txt" aria-hidden="true"><span>Comedor Tulum</span><small>Pide la foto por WhatsApp</small></div>
-          <h3 class="s-cat-n">Comedor Tulum</h3>
-          <p class="s-cat-pr eq-price">$13,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="88">
-          <div class="s-cat-ph"><img src="img/cat/comedor-cuauhtemoc.webp" alt="Comedor Cuauhtémoc de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Cuauhtémoc</h3>
-          <p class="s-cat-pr eq-price">$14,000 a $19,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 50 cm · 71 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="89">
-          <div class="s-cat-ph"><img src="img/cat/comedor-tolteca.webp" alt="Comedor Tolteca de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Tolteca</h3>
-          <p class="s-cat-pr eq-price">$14,900 a $19,900 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 48 cm · 71 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="90">
-          <div class="s-cat-ph"><img src="img/cat/comedor-imperio.webp" alt="Comedor Imperio de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Imperio</h3>
-          <p class="s-cat-pr eq-price">$14,900 a $19,900 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 52 cm · 70 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="91">
-          <div class="s-cat-ph"><img src="img/cat/comedor-xochitl.webp" alt="Comedor Xochitl de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Xochitl</h3>
-          <p class="s-cat-pr eq-price">$14,900 a $19,900 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 53 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="92">
-          <div class="s-cat-ph"><img src="img/cat/comedor-azteca.webp" alt="Comedor Azteca de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Azteca</h3>
-          <p class="s-cat-pr eq-price">$15,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="93">
-          <div class="s-cat-ph s-cat-ph--txt" aria-hidden="true"><span>Comedor Chilpancingo</span><small>Pide la foto por WhatsApp</small></div>
-          <h3 class="s-cat-n">Comedor Chilpancingo</h3>
-          <p class="s-cat-pr eq-price">$17,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="94">
-          <div class="s-cat-ph"><img src="img/cat/comedor-tradicional-2.webp" alt="Comedor Tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Tradicional</h3>
-          <p class="s-cat-pr eq-price">$17,700 a $25,400 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="95">
-          <div class="s-cat-ph"><img src="img/cat/comedor-tradicional-8-asientos.webp" alt="Comedor Tradicional 8 asientos de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Tradicional 8 asientos</h3>
-          <p class="s-cat-pr eq-price">$22,100 a $26,100 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 9 piezas · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="96">
-          <div class="s-cat-ph"><img src="img/cat/comedor-acapulco-2.webp" alt="Comedor Acapulco de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Acapulco</h3>
-          <p class="s-cat-pr eq-price">$23,700 a $37,100 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="97">
-          <div class="s-cat-ph s-cat-ph--txt" aria-hidden="true"><span>Comedor Arandas</span><small>Pide la foto por WhatsApp</small></div>
-          <h3 class="s-cat-n">Comedor Arandas</h3>
-          <p class="s-cat-pr eq-price">$27,000 a $33,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 50 cm · 83 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="98">
-          <div class="s-cat-ph s-cat-ph--txt" aria-hidden="true"><span>Comedor Tepatitlán</span><small>Pide la foto por WhatsApp</small></div>
-          <h3 class="s-cat-n">Comedor Tepatitlán</h3>
-          <p class="s-cat-pr eq-price">$29,000 a $35,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 50 cm · 81 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="comedores" data-i="99">
-          <div class="s-cat-ph"><img src="img/cat/comedor-tolteca-2.webp" alt="Comedor Tolteca de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Comedor Tolteca</h3>
-          <p class="s-cat-pr eq-price">$34,000 a $43,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 48 cm · 71 cm de ancho</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="mesas" data-i="100">
-          <div class="s-cat-ph"><img src="img/cat/mesa-lateral.webp" alt="Mesa lateral de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mesa lateral</h3>
-          <p class="s-cat-pr eq-price">$900 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="mesas" data-i="101">
-          <div class="s-cat-ph"><img src="img/cat/mesa-tradicional.webp" alt="Mesa tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mesa tradicional</h3>
-          <p class="s-cat-pr eq-price">$1,400 a $2,100 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro, Plata, Platino · 80 cm de largo</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="mesas" data-i="102">
-          <div class="s-cat-ph"><img src="img/cat/mesa-lateral-envarillada.webp" alt="Mesa lateral envarillada de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mesa lateral envarillada</h3>
-          <p class="s-cat-pr eq-price">$1,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro · 60 cm de largo</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="mesas" data-i="103">
-          <div class="s-cat-ph"><img src="img/cat/mesa-de-centro.webp" alt="Mesa de centro de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mesa de centro</h3>
-          <p class="s-cat-pr eq-price">$1,800 a $2,100 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro, Platino · 100 cm de largo</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="mesas" data-i="104">
-          <div class="s-cat-ph"><img src="img/cat/mesa-cantinera.webp" alt="Mesa cantinera de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mesa cantinera</h3>
-          <p class="s-cat-pr eq-price">$2,200 a $2,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro, Platino</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="mesas" data-i="105">
-          <div class="s-cat-ph"><img src="img/cat/mesa-de-centro-estrella.webp" alt="Mesa de centro estrella de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mesa de centro estrella</h3>
-          <p class="s-cat-pr eq-price">$2,300 a $2,700 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro, Platino · 100 cm de largo</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="mesas" data-i="106">
-          <div class="s-cat-ph"><img src="img/cat/mesa-base-de-copa.webp" alt="Mesa base de copa de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mesa base de copa</h3>
-          <p class="s-cat-pr eq-price">$2,300 a $2,800 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro, Platino</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="mesas" data-i="107">
-          <div class="s-cat-ph"><img src="img/cat/mesa-envarillada-base-de-copa.webp" alt="Mesa envarillada base de copa de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mesa envarillada base de copa</h3>
-          <p class="s-cat-pr eq-price">$2,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="mesas" data-i="108">
-          <div class="s-cat-ph"><img src="img/cat/mesa-de-centro-tapachula.webp" alt="Mesa de centro Tapachula de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mesa de centro Tapachula</h3>
-          <p class="s-cat-pr eq-price">$3,200 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 100 cm de largo</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="mesas" data-i="109">
-          <div class="s-cat-ph"><img src="img/cat/mesa-tradicional-2.webp" alt="Mesa Tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mesa Tradicional</h3>
-          <p class="s-cat-pr eq-price">$7,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 160 cm de largo</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="mesas" data-i="110">
-          <div class="s-cat-ph"><img src="img/cat/mesa-tradicional-3.webp" alt="Mesa tradicional de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Mesa tradicional</h3>
-          <p class="s-cat-pr eq-price">$7,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 80 cm de largo</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="barras" data-i="111">
-          <div class="s-cat-ph"><img src="img/cat/barra-lineal.webp" alt="Barra Lineal de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Barra Lineal</h3>
-          <p class="s-cat-pr eq-price">$6,000 a $9,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro, Platino · 1 pieza · 160 cm de largo</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="barras" data-i="112">
-          <div class="s-cat-ph"><img src="img/cat/barra-escuadra.webp" alt="Barra Escuadra de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Barra Escuadra</h3>
-          <p class="s-cat-pr eq-price">$7,000 a $10,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro, Platino · 1 pieza</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="barras" data-i="113">
-          <div class="s-cat-ph"><img src="img/cat/barra-lineal-con-copero.webp" alt="Barra Lineal con Copero de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Barra Lineal con Copero</h3>
-          <p class="s-cat-pr eq-price">$9,000 a $12,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro, Platino · 2 piezas · 160 cm de largo</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="barras" data-i="114">
-          <div class="s-cat-ph"><img src="img/cat/barra-escuadra-con-copero.webp" alt="Barra Escuadra con Copero de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Barra Escuadra con Copero</h3>
-          <p class="s-cat-pr eq-price">$12,000 a $15,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Oro, Platino · 2 piezas</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="barras" data-i="115">
-          <div class="s-cat-ph"><img src="img/cat/barra-media-luna.webp" alt="Barra Media Luna de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Barra Media Luna</h3>
-          <p class="s-cat-pr eq-price">$15,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 1 pieza</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="barras" data-i="116">
-          <div class="s-cat-ph"><img src="img/cat/barra-media-luna-con-copero.webp" alt="Barra Media Luna con Copero de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Barra Media Luna con Copero</h3>
-          <p class="s-cat-pr eq-price">$18,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Calidades: Platino · 2 piezas</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="complementos" data-i="117">
-          <div class="s-cat-ph"><img src="img/cat/buro.webp" alt="Buró de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Buró</h3>
-          <p class="s-cat-pr eq-price">$2,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">1 pieza · 57 cm de largo</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="complementos" data-i="118">
-          <div class="s-cat-ph"><img src="img/cat/marco-de-equipal-patzcuaro.webp" alt="Marco de equipal Pátzcuaro de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Marco de equipal Pátzcuaro</h3>
-          <p class="s-cat-pr eq-price">$4,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">1 pieza</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="complementos" data-i="119">
-          <div class="s-cat-ph"><img src="img/cat/marco-de-equipal-chapala.webp" alt="Marco de equipal Chapala de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Marco de equipal Chapala</h3>
-          <p class="s-cat-pr eq-price">$4,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">1 pieza</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="complementos" data-i="120">
-          <div class="s-cat-ph"><img src="img/cat/base.webp" alt="Base de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Base</h3>
-          <p class="s-cat-pr eq-price">$5,000 a $8,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Tamaños: Individual, King, Matrimonial, Queen</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="complementos" data-i="121">
-          <div class="s-cat-ph"><img src="img/cat/cabecera.webp" alt="Cabecera de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Cabecera</h3>
-          <p class="s-cat-pr eq-price">$5,000 a $8,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">Tamaños: Individual, King, Matrimonial, Queen · 1 pieza</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="complementos" data-i="122">
-          <div class="s-cat-ph"><img src="img/cat/biombo.webp" alt="Biombo de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Biombo</h3>
-          <p class="s-cat-pr eq-price">$5,500 <small>+ IVA</small></p>
-          <p class="s-cat-meta">1 pieza · 200 cm de largo</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="complementos" data-i="123">
-          <div class="s-cat-ph"><img src="img/cat/marco-de-equipal-chapala-2.webp" alt="Marco de equipal Chapala de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Marco de equipal Chapala</h3>
-          <p class="s-cat-pr eq-price">$8,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">1 pieza</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
-        </li>
-        <li class="s-cat-card" data-c="complementos" data-i="124">
-          <div class="s-cat-ph"><img src="img/cat/tocador.webp" alt="Tocador de Equipales Imperial" width="600" height="600" loading="lazy" decoding="async"></div>
-          <h3 class="s-cat-n">Tocador</h3>
-          <p class="s-cat-pr eq-price">$9,000 <small>+ IVA</small></p>
-          <p class="s-cat-meta">1 pieza · 145 cm de largo</p>
-          <div class="s-cat-acts"><button type="button" class="s-cat-add" aria-pressed="false"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button></div>
+      <ul class="s-cat-chips" aria-label="Filtrar por línea"><li><button type="button" class="s-cat-chip" data-f="top" aria-pressed="true">Lo más pedido <span>12</span></button></li><li><button type="button" class="s-cat-chip" data-f="asientos" aria-pressed="false">Asientos <span>34</span></button></li><li><button type="button" class="s-cat-chip" data-f="cantineros" aria-pressed="false">Cantineros <span>20</span></button></li><li><button type="button" class="s-cat-chip" data-f="salas" aria-pressed="false">Salas <span>22</span></button></li><li><button type="button" class="s-cat-chip" data-f="comedores" aria-pressed="false">Comedores <span>24</span></button></li><li><button type="button" class="s-cat-chip" data-f="mesas" aria-pressed="false">Mesas <span>11</span></button></li><li><button type="button" class="s-cat-chip" data-f="barras" aria-pressed="false">Barras <span>6</span></button></li><li><button type="button" class="s-cat-chip" data-f="complementos" aria-pressed="false">Complementos <span>8</span></button></li></ul>
+    </div>
+
+    <div class="s-cat-banner" data-c="top">
+      <div class="s-cat-banner-ph"><img class="s-cat-banner-img" src="img/gal/mecedora-bosque.webp" alt="Mecedora de Equipales Imperial en el bosque" width="1400" height="788" loading="lazy" decoding="async"></div>
+      <div class="s-cat-banner-tx">
+        <h3 class="s-cat-banner-n">Lo más pedido</h3>
+        <p class="s-cat-banner-m">12 piezas · desde $1,400 <small>+ IVA</small></p>
+      </div>
+    </div>
+
+    <div class="k-wrap">
+      <ul class="s-cat-list" aria-live="polite">
+        <li class="s-cat-row" data-c="asientos" data-i="0">
+          <button type="button" class="s-cat-info" data-open="0" aria-label="Ver Banco Loco">
+            <h3 class="s-cat-name">Banco Loco</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Plata, Platino · 1 pieza · asiento a 49 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$600 a $3,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="0" aria-pressed="false" aria-label="Agregar Banco Loco a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="1">
+          <button type="button" class="s-cat-info" data-open="1" aria-label="Ver Equipal Tradicional">
+            <h3 class="s-cat-name">Equipal Tradicional</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Plata, Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$1,100 a $2,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="1" aria-pressed="false" aria-label="Agregar Equipal Tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="2">
+          <button type="button" class="s-cat-info" data-open="2" aria-label="Ver Banco Loco Azteca">
+            <h3 class="s-cat-name">Banco Loco Azteca</h3>
+            <p class="s-cat-meta">Calidades: Diamante · 1 pieza · asiento a 49 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$1,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="2" aria-pressed="false" aria-label="Agregar Banco Loco Azteca a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="3">
+          <button type="button" class="s-cat-info" data-open="3" aria-label="Ver Equipal Cola de Pavo">
+            <h3 class="s-cat-name">Equipal Cola de Pavo</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 50 cm · 60 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$1,700 a $2,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="3" aria-pressed="false" aria-label="Agregar Equipal Cola de Pavo a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="4">
+          <button type="button" class="s-cat-info" data-open="4" aria-label="Ver Equipal Envarillado">
+            <h3 class="s-cat-name">Equipal Envarillado</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$1,900 a $2,400 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="4" aria-pressed="false" aria-label="Agregar Equipal Envarillado a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="5">
+          <button type="button" class="s-cat-info" data-open="5" aria-label="Ver Equipal Acapulco">
+            <h3 class="s-cat-name">Equipal Acapulco</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,000 a $2,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="5" aria-pressed="false" aria-label="Agregar Equipal Acapulco a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="6" data-top="5">
+          <button type="button" class="s-cat-info" data-open="6" aria-label="Ver Equipal Tulum">
+            <h3 class="s-cat-name">Equipal Tulum</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,200 a $2,900 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="6" aria-pressed="false" aria-label="Agregar Equipal Tulum a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="7">
+          <button type="button" class="s-cat-info" data-open="7" aria-label="Ver Equipal Charro">
+            <h3 class="s-cat-name">Equipal Charro</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 48 cm · 66 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,200 a $2,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="7" aria-pressed="false" aria-label="Agregar Equipal Charro a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="8">
+          <button type="button" class="s-cat-info" data-open="8" aria-label="Ver Equipal Cancún">
+            <h3 class="s-cat-name">Equipal Cancún</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 52 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,400 a $2,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="8" aria-pressed="false" aria-label="Agregar Equipal Cancún a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="9">
+          <button type="button" class="s-cat-info" data-open="9" aria-label="Ver Equipal Tequila">
+            <h3 class="s-cat-name">Equipal Tequila</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,400 a $2,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="9" aria-pressed="false" aria-label="Agregar Equipal Tequila a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="10">
+          <button type="button" class="s-cat-info" data-open="10" aria-label="Ver Equipal Chetumal">
+            <h3 class="s-cat-name">Equipal Chetumal</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 48 cm · 71 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="10" aria-pressed="false" aria-label="Agregar Equipal Chetumal a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="11">
+          <button type="button" class="s-cat-info" data-open="11" aria-label="Ver Equipal Ixtapa">
+            <h3 class="s-cat-name">Equipal Ixtapa</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 52 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="11" aria-pressed="false" aria-label="Agregar Equipal Ixtapa a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="12">
+          <button type="button" class="s-cat-info" data-open="12" aria-label="Ver Equipal Cuauhtémoc">
+            <h3 class="s-cat-name">Equipal Cuauhtémoc</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 50 cm · 71 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$3,000 a $4,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="12" aria-pressed="false" aria-label="Agregar Equipal Cuauhtémoc a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="13">
+          <button type="button" class="s-cat-info" data-open="13" aria-label="Ver Equipal Cuzumel">
+            <h3 class="s-cat-name">Equipal Cuzumel</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 47 cm · 71 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$3,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="13" aria-pressed="false" aria-label="Agregar Equipal Cuzumel a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="14" data-top="6">
+          <button type="button" class="s-cat-info" data-open="14" aria-label="Ver Equipal Tolteca">
+            <h3 class="s-cat-name">Equipal Tolteca</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 48 cm · 71 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$3,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="14" aria-pressed="false" aria-label="Agregar Equipal Tolteca a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="15">
+          <button type="button" class="s-cat-info" data-open="15" aria-label="Ver Equipal Imperio">
+            <h3 class="s-cat-name">Equipal Imperio</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 52 cm · 70 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$3,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="15" aria-pressed="false" aria-label="Agregar Equipal Imperio a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="16">
+          <button type="button" class="s-cat-info" data-open="16" aria-label="Ver Equipal Azteca">
+            <h3 class="s-cat-name">Equipal Azteca</h3>
+            <p class="s-cat-meta">Calidades: Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$3,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="16" aria-pressed="false" aria-label="Agregar Equipal Azteca a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="17">
+          <button type="button" class="s-cat-info" data-open="17" aria-label="Ver Equipal Xóchitl">
+            <h3 class="s-cat-name">Equipal Xóchitl</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 53 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$3,200 a $4,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="17" aria-pressed="false" aria-label="Agregar Equipal Xóchitl a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="18">
+          <button type="button" class="s-cat-info" data-open="18" aria-label="Ver Equipal Provincia">
+            <h3 class="s-cat-name">Equipal Provincia</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 46 cm · 68 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$3,300 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="18" aria-pressed="false" aria-label="Agregar Equipal Provincia a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="19">
+          <button type="button" class="s-cat-info" data-open="19" aria-label="Ver Equipal Chilpancingo">
+            <h3 class="s-cat-name">Equipal Chilpancingo</h3>
+            <p class="s-cat-meta">Calidades: Platino · 1 pieza · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$3,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="19" aria-pressed="false" aria-label="Agregar Equipal Chilpancingo a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="20">
+          <button type="button" class="s-cat-info" data-open="20" aria-label="Ver Equipal Media Luna">
+            <h3 class="s-cat-name">Equipal Media Luna</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino</p>
+          </button>
+          <p class="s-cat-price eq-price">$3,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="20" aria-pressed="false" aria-label="Agregar Equipal Media Luna a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="21" data-top="3">
+          <button type="button" class="s-cat-info" data-open="21" aria-label="Ver Equipal Guadalajara">
+            <h3 class="s-cat-name">Equipal Guadalajara</h3>
+            <p class="s-cat-meta">Calidades: Platino · 1 pieza · asiento a 48 cm · 71 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$4,300 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="21" aria-pressed="false" aria-label="Agregar Equipal Guadalajara a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="22">
+          <button type="button" class="s-cat-info" data-open="22" aria-label="Ver Equipal Arandas">
+            <h3 class="s-cat-name">Equipal Arandas</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 50 cm · 83 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$5,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="22" aria-pressed="false" aria-label="Agregar Equipal Arandas a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="23">
+          <button type="button" class="s-cat-info" data-open="23" aria-label="Ver Equipal Reynosa">
+            <h3 class="s-cat-name">Equipal Reynosa</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 50 cm · 84 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$5,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="23" aria-pressed="false" aria-label="Agregar Equipal Reynosa a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="24">
+          <button type="button" class="s-cat-info" data-open="24" aria-label="Ver Equipal Piramide del sol">
+            <h3 class="s-cat-name">Equipal Piramide del sol</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 55 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$5,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="24" aria-pressed="false" aria-label="Agregar Equipal Piramide del sol a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="25">
+          <button type="button" class="s-cat-info" data-open="25" aria-label="Ver Equipal Tepatitlán">
+            <h3 class="s-cat-name">Equipal Tepatitlán</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 50 cm · 81 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$5,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="25" aria-pressed="false" aria-label="Agregar Equipal Tepatitlán a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="26">
+          <button type="button" class="s-cat-info" data-open="26" aria-label="Ver Equipal Madero">
+            <h3 class="s-cat-name">Equipal Madero</h3>
+            <p class="s-cat-meta">1 pieza</p>
+          </button>
+          <p class="s-cat-price eq-price">$6,000 a $7,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="26" aria-pressed="false" aria-label="Agregar Equipal Madero a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="27">
+          <button type="button" class="s-cat-info" data-open="27" aria-label="Ver Equipal Allende">
+            <h3 class="s-cat-name">Equipal Allende</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Vinipiel · 1 pieza</p>
+          </button>
+          <p class="s-cat-price eq-price">$6,000 a $7,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="27" aria-pressed="false" aria-label="Agregar Equipal Allende a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="28">
+          <button type="button" class="s-cat-info" data-open="28" aria-label="Ver Equipal Altamira">
+            <h3 class="s-cat-name">Equipal Altamira</h3>
+            <p class="s-cat-meta">Calidades: Platino · 1 pieza · asiento a 50 cm · 84 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$6,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="28" aria-pressed="false" aria-label="Agregar Equipal Altamira a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="29">
+          <button type="button" class="s-cat-info" data-open="29" aria-label="Ver Equipal Tolteca Giratorio">
+            <h3 class="s-cat-name">Equipal Tolteca Giratorio</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 48 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$6,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="29" aria-pressed="false" aria-label="Agregar Equipal Tolteca Giratorio a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="30" data-top="2">
+          <button type="button" class="s-cat-info" data-open="30" aria-label="Ver Equipal Frida">
+            <h3 class="s-cat-name">Equipal Frida</h3>
+            <p class="s-cat-meta">Calidades: Oro · 1 pieza · asiento a 55 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$7,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="30" aria-pressed="false" aria-label="Agregar Equipal Frida a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="31" data-top="1">
+          <button type="button" class="s-cat-info" data-open="31" aria-label="Ver Mecedora Guadalajara">
+            <h3 class="s-cat-name">Mecedora Guadalajara</h3>
+            <p class="s-cat-meta">Calidades: Platino · 1 pieza · asiento a 51 cm · 93 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$8,900 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="31" aria-pressed="false" aria-label="Agregar Mecedora Guadalajara a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="32">
+          <button type="button" class="s-cat-info" data-open="32" aria-label="Ver Mecedora Frida">
+            <h3 class="s-cat-name">Mecedora Frida</h3>
+            <p class="s-cat-meta">Calidades: Oro · 1 pieza · asiento a 51 cm · 93 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$8,900 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="32" aria-pressed="false" aria-label="Agregar Mecedora Frida a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="asientos" data-i="33" data-top="4">
+          <button type="button" class="s-cat-info" data-open="33" aria-label="Ver Mecedora Tapachula">
+            <h3 class="s-cat-name">Mecedora Tapachula</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 51 cm · 93 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$8,900 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="33" aria-pressed="false" aria-label="Agregar Mecedora Tapachula a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="34">
+          <button type="button" class="s-cat-info" data-open="34" aria-label="Ver Cantinero sin respaldo">
+            <h3 class="s-cat-name">Cantinero sin respaldo</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$1,400 a $2,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="34" aria-pressed="false" aria-label="Agregar Cantinero sin respaldo a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="35" data-top="7">
+          <button type="button" class="s-cat-info" data-open="35" aria-label="Ver Cantinero Tradicional">
+            <h3 class="s-cat-name">Cantinero Tradicional</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Plata, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$1,700 a $2,600 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="35" aria-pressed="false" aria-label="Agregar Cantinero Tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="36">
+          <button type="button" class="s-cat-info" data-open="36" aria-label="Ver Cantinero Acapulco">
+            <h3 class="s-cat-name">Cantinero Acapulco</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,100 a $3,600 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="36" aria-pressed="false" aria-label="Agregar Cantinero Acapulco a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="37">
+          <button type="button" class="s-cat-info" data-open="37" aria-label="Ver Cantinero Envarillado">
+            <h3 class="s-cat-name">Cantinero Envarillado</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,100 a $3,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="37" aria-pressed="false" aria-label="Agregar Cantinero Envarillado a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="38">
+          <button type="button" class="s-cat-info" data-open="38" aria-label="Ver Cantinero Charro">
+            <h3 class="s-cat-name">Cantinero Charro</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,300 a $3,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="38" aria-pressed="false" aria-label="Agregar Cantinero Charro a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="39">
+          <button type="button" class="s-cat-info" data-open="39" aria-label="Ver Cantinero Cancún">
+            <h3 class="s-cat-name">Cantinero Cancún</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,300 a $2,900 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="39" aria-pressed="false" aria-label="Agregar Cantinero Cancún a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="40">
+          <button type="button" class="s-cat-info" data-open="40" aria-label="Ver Cantinero Ixtapa">
+            <h3 class="s-cat-name">Cantinero Ixtapa</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,300 a $3,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="40" aria-pressed="false" aria-label="Agregar Cantinero Ixtapa a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="41">
+          <button type="button" class="s-cat-info" data-open="41" aria-label="Ver CantInero Imperial">
+            <h3 class="s-cat-name">CantInero Imperial</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,350 a $3,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="41" aria-pressed="false" aria-label="Agregar CantInero Imperial a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="42">
+          <button type="button" class="s-cat-info" data-open="42" aria-label="Ver Cantinero Chetumal">
+            <h3 class="s-cat-name">Cantinero Chetumal</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,350 a $3,700 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="42" aria-pressed="false" aria-label="Agregar Cantinero Chetumal a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="43">
+          <button type="button" class="s-cat-info" data-open="43" aria-label="Ver Cantinero Tequila">
+            <h3 class="s-cat-name">Cantinero Tequila</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,400 a $4,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="43" aria-pressed="false" aria-label="Agregar Cantinero Tequila a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="44">
+          <button type="button" class="s-cat-info" data-open="44" aria-label="Ver Cantinero Tulum">
+            <h3 class="s-cat-name">Cantinero Tulum</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,700 a $4,400 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="44" aria-pressed="false" aria-label="Agregar Cantinero Tulum a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="45">
+          <button type="button" class="s-cat-info" data-open="45" aria-label="Ver Cantinero Cuauhtemoc">
+            <h3 class="s-cat-name">Cantinero Cuauhtemoc</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$3,800 a $4,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="45" aria-pressed="false" aria-label="Agregar Cantinero Cuauhtemoc a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="46">
+          <button type="button" class="s-cat-info" data-open="46" aria-label="Ver Cantinero Imperio">
+            <h3 class="s-cat-name">Cantinero Imperio</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$4,000 a $5,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="46" aria-pressed="false" aria-label="Agregar Cantinero Imperio a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="47">
+          <button type="button" class="s-cat-info" data-open="47" aria-label="Ver Cantinero Xochitl">
+            <h3 class="s-cat-name">Cantinero Xochitl</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$4,000 a $5,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="47" aria-pressed="false" aria-label="Agregar Cantinero Xochitl a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="48">
+          <button type="button" class="s-cat-info" data-open="48" aria-label="Ver Cantinero Quetzal">
+            <h3 class="s-cat-name">Cantinero Quetzal</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$4,000 a $5,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="48" aria-pressed="false" aria-label="Agregar Cantinero Quetzal a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="49">
+          <button type="button" class="s-cat-info" data-open="49" aria-label="Ver Cantinero Tolteca">
+            <h3 class="s-cat-name">Cantinero Tolteca</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$4,200 a $5,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="49" aria-pressed="false" aria-label="Agregar Cantinero Tolteca a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="50">
+          <button type="button" class="s-cat-info" data-open="50" aria-label="Ver Cantinero Guadalajara">
+            <h3 class="s-cat-name">Cantinero Guadalajara</h3>
+            <p class="s-cat-meta">Calidades: Platino · 1 pieza</p>
+          </button>
+          <p class="s-cat-price eq-price">$5,300 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="50" aria-pressed="false" aria-label="Agregar Cantinero Guadalajara a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="51">
+          <button type="button" class="s-cat-info" data-open="51" aria-label="Ver Cantinero Allende">
+            <h3 class="s-cat-name">Cantinero Allende</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 1 pieza</p>
+          </button>
+          <p class="s-cat-price eq-price">$7,000 a $8,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="51" aria-pressed="false" aria-label="Agregar Cantinero Allende a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="52">
+          <button type="button" class="s-cat-info" data-open="52" aria-label="Ver Cantinero Monterrey">
+            <h3 class="s-cat-name">Cantinero Monterrey</h3>
+            <p class="s-cat-meta">Calidades: Platino · 1 pieza · asiento a 70 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$7,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="52" aria-pressed="false" aria-label="Agregar Cantinero Monterrey a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="cantineros" data-i="53">
+          <button type="button" class="s-cat-info" data-open="53" aria-label="Ver Canrinero Giratorio Guadalajara">
+            <h3 class="s-cat-name">Canrinero Giratorio Guadalajara</h3>
+            <p class="s-cat-meta">Calidades: Platino · 1 pieza</p>
+          </button>
+          <p class="s-cat-price eq-price">$7,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="53" aria-pressed="false" aria-label="Agregar Canrinero Giratorio Guadalajara a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="54">
+          <button type="button" class="s-cat-info" data-open="54" aria-label="Ver Sala Rustica Tradicional">
+            <h3 class="s-cat-name">Sala Rustica Tradicional</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Plata, Platino · 3 piezas · asiento a 45 cm · 60 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$9,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="54" aria-pressed="false" aria-label="Agregar Sala Rustica Tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="55" data-top="11">
+          <button type="button" class="s-cat-info" data-open="55" aria-label="Ver Sala Tradicional">
+            <h3 class="s-cat-name">Sala Tradicional</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 45 cm · 60 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$12,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="55" aria-pressed="false" aria-label="Agregar Sala Tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="56">
+          <button type="button" class="s-cat-info" data-open="56" aria-label="Ver Sala Tequila">
+            <h3 class="s-cat-name">Sala Tequila</h3>
+            <p class="s-cat-meta">Calidades: Oro, Platino · 3 piezas · asiento a 40 cm · 140 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$13,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="56" aria-pressed="false" aria-label="Agregar Sala Tequila a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="57">
+          <button type="button" class="s-cat-info" data-open="57" aria-label="Ver Sala Envarillada">
+            <h3 class="s-cat-name">Sala Envarillada</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$16,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="57" aria-pressed="false" aria-label="Agregar Sala Envarillada a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="58">
+          <button type="button" class="s-cat-info" data-open="58" aria-label="Ver Sala Cuauhtémoc">
+            <h3 class="s-cat-name">Sala Cuauhtémoc</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 3 piezas · asiento a 40 cm · 140 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$17,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="58" aria-pressed="false" aria-label="Agregar Sala Cuauhtémoc a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="59">
+          <button type="button" class="s-cat-info" data-open="59" aria-label="Ver Sala Acapulco">
+            <h3 class="s-cat-name">Sala Acapulco</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$18,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="59" aria-pressed="false" aria-label="Agregar Sala Acapulco a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="60">
+          <button type="button" class="s-cat-info" data-open="60" aria-label="Ver Sala Cancún">
+            <h3 class="s-cat-name">Sala Cancún</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$20,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="60" aria-pressed="false" aria-label="Agregar Sala Cancún a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="61">
+          <button type="button" class="s-cat-info" data-open="61" aria-label="Ver Sala Tapalpa">
+            <h3 class="s-cat-name">Sala Tapalpa</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$22,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="61" aria-pressed="false" aria-label="Agregar Sala Tapalpa a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="62">
+          <button type="button" class="s-cat-info" data-open="62" aria-label="Ver Sala Imperial">
+            <h3 class="s-cat-name">Sala Imperial</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$22,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="62" aria-pressed="false" aria-label="Agregar Sala Imperial a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="63">
+          <button type="button" class="s-cat-info" data-open="63" aria-label="Ver Sala Ixtapa">
+            <h3 class="s-cat-name">Sala Ixtapa</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$22,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="63" aria-pressed="false" aria-label="Agregar Sala Ixtapa a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="64">
+          <button type="button" class="s-cat-info" data-open="64" aria-label="Ver Sala Tulum">
+            <h3 class="s-cat-name">Sala Tulum</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$25,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="64" aria-pressed="false" aria-label="Agregar Sala Tulum a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="65">
+          <button type="button" class="s-cat-info" data-open="65" aria-label="Ver Sala Quetzal">
+            <h3 class="s-cat-name">Sala Quetzal</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 3 piezas · asiento a 40 cm · 140 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$25,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="65" aria-pressed="false" aria-label="Agregar Sala Quetzal a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="66">
+          <button type="button" class="s-cat-info" data-open="66" aria-label="Ver Sala Mazamitla">
+            <h3 class="s-cat-name">Sala Mazamitla</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$28,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="66" aria-pressed="false" aria-label="Agregar Sala Mazamitla a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="67">
+          <button type="button" class="s-cat-info" data-open="67" aria-label="Ver Sala Tenochtitlán">
+            <h3 class="s-cat-name">Sala Tenochtitlán</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 3 piezas · asiento a 40 cm</p>
+          </button>
+          <p class="s-cat-price eq-price">$30,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="67" aria-pressed="false" aria-label="Agregar Sala Tenochtitlán a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="68">
+          <button type="button" class="s-cat-info" data-open="68" aria-label="Ver Sala Xochitl">
+            <h3 class="s-cat-name">Sala Xochitl</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Plata, Platino, Vinipiel · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$30,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="68" aria-pressed="false" aria-label="Agregar Sala Xochitl a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="69">
+          <button type="button" class="s-cat-info" data-open="69" aria-label="Ver Sala Reynosa">
+            <h3 class="s-cat-name">Sala Reynosa</h3>
+            <p class="s-cat-meta">3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$32,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="69" aria-pressed="false" aria-label="Agregar Sala Reynosa a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="70">
+          <button type="button" class="s-cat-info" data-open="70" aria-label="Ver Sala Monterrey">
+            <h3 class="s-cat-name">Sala Monterrey</h3>
+            <p class="s-cat-meta">3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$32,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="70" aria-pressed="false" aria-label="Agregar Sala Monterrey a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="71" data-top="0">
+          <button type="button" class="s-cat-info" data-open="71" aria-label="Ver Sala Guadalajara">
+            <h3 class="s-cat-name">Sala Guadalajara</h3>
+            <p class="s-cat-meta">3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$32,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="71" aria-pressed="false" aria-label="Agregar Sala Guadalajara a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="72">
+          <button type="button" class="s-cat-info" data-open="72" aria-label="Ver Sala Tolteca">
+            <h3 class="s-cat-name">Sala Tolteca</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$32,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="72" aria-pressed="false" aria-label="Agregar Sala Tolteca a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="73">
+          <button type="button" class="s-cat-info" data-open="73" aria-label="Ver Sala Imperio">
+            <h3 class="s-cat-name">Sala Imperio</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$32,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="73" aria-pressed="false" aria-label="Agregar Sala Imperio a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="74">
+          <button type="button" class="s-cat-info" data-open="74" aria-label="Ver Sala Tapachula">
+            <h3 class="s-cat-name">Sala Tapachula</h3>
+            <p class="s-cat-meta">3 piezas</p>
+          </button>
+          <p class="s-cat-price eq-price">$38,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="74" aria-pressed="false" aria-label="Agregar Sala Tapachula a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="salas" data-i="75">
+          <button type="button" class="s-cat-info" data-open="75" aria-label="Ver Sala Altamira">
+            <h3 class="s-cat-name">Sala Altamira</h3>
+            <p class="s-cat-meta">3 piezas · asiento a 40 cm · 90 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$38,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="75" aria-pressed="false" aria-label="Agregar Sala Altamira a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="76" data-top="8">
+          <button type="button" class="s-cat-info" data-open="76" aria-label="Ver Comedor Tradicional">
+            <h3 class="s-cat-name">Comedor Tradicional</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Plata, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$5,800 a $15,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="76" aria-pressed="false" aria-label="Agregar Comedor Tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="77">
+          <button type="button" class="s-cat-info" data-open="77" aria-label="Ver Comedor Cola de Pavo">
+            <h3 class="s-cat-name">Comedor Cola de Pavo</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 50 cm · 60 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$8,500 a $11,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="77" aria-pressed="false" aria-label="Agregar Comedor Cola de Pavo a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="78">
+          <button type="button" class="s-cat-info" data-open="78" aria-label="Ver Comedor Envarillado">
+            <h3 class="s-cat-name">Comedor Envarillado</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$9,300 a $11,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="78" aria-pressed="false" aria-label="Agregar Comedor Envarillado a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="79">
+          <button type="button" class="s-cat-info" data-open="79" aria-label="Ver Comedor Acapulco">
+            <h3 class="s-cat-name">Comedor Acapulco</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$9,700 a $12,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="79" aria-pressed="false" aria-label="Agregar Comedor Acapulco a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="80">
+          <button type="button" class="s-cat-info" data-open="80" aria-label="Ver Comedor Provincia">
+            <h3 class="s-cat-name">Comedor Provincia</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 46 cm · 68 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$10,500 a $20,300 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="80" aria-pressed="false" aria-label="Agregar Comedor Provincia a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="81">
+          <button type="button" class="s-cat-info" data-open="81" aria-label="Ver Comedor Charro">
+            <h3 class="s-cat-name">Comedor Charro</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 48 cm · 66 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$10,500 a $12,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="81" aria-pressed="false" aria-label="Agregar Comedor Charro a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="82">
+          <button type="button" class="s-cat-info" data-open="82" aria-label="Ver Comedor Chetumal">
+            <h3 class="s-cat-name">Comedor Chetumal</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 48 cm · 71 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$10,900 a $18,300 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="82" aria-pressed="false" aria-label="Agregar Comedor Chetumal a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="83">
+          <button type="button" class="s-cat-info" data-open="83" aria-label="Ver Comedor Cancún">
+            <h3 class="s-cat-name">Comedor Cancún</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 52 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$11,300 a $13,400 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="83" aria-pressed="false" aria-label="Agregar Comedor Cancún a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="84">
+          <button type="button" class="s-cat-info" data-open="84" aria-label="Ver Comedor Tequila">
+            <h3 class="s-cat-name">Comedor Tequila</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$11,300 a $13,400 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="84" aria-pressed="false" aria-label="Agregar Comedor Tequila a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="85">
+          <button type="button" class="s-cat-info" data-open="85" aria-label="Ver Comedor Ixtapa">
+            <h3 class="s-cat-name">Comedor Ixtapa</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 52 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$12,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="85" aria-pressed="false" aria-label="Agregar Comedor Ixtapa a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="86">
+          <button type="button" class="s-cat-info" data-open="86" aria-label="Ver Comedor Cozumel">
+            <h3 class="s-cat-name">Comedor Cozumel</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 47 cm · 71 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$13,400 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="86" aria-pressed="false" aria-label="Agregar Comedor Cozumel a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="87">
+          <button type="button" class="s-cat-info" data-open="87" aria-label="Ver Comedor Tulum">
+            <h3 class="s-cat-name">Comedor Tulum</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$13,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="87" aria-pressed="false" aria-label="Agregar Comedor Tulum a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="88">
+          <button type="button" class="s-cat-info" data-open="88" aria-label="Ver Comedor Cuauhtémoc">
+            <h3 class="s-cat-name">Comedor Cuauhtémoc</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 50 cm · 71 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$14,000 a $19,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="88" aria-pressed="false" aria-label="Agregar Comedor Cuauhtémoc a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="89">
+          <button type="button" class="s-cat-info" data-open="89" aria-label="Ver Comedor Tolteca">
+            <h3 class="s-cat-name">Comedor Tolteca</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 48 cm · 71 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$14,900 a $19,900 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="89" aria-pressed="false" aria-label="Agregar Comedor Tolteca a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="90">
+          <button type="button" class="s-cat-info" data-open="90" aria-label="Ver Comedor Imperio">
+            <h3 class="s-cat-name">Comedor Imperio</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 52 cm · 70 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$14,900 a $19,900 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="90" aria-pressed="false" aria-label="Agregar Comedor Imperio a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="91">
+          <button type="button" class="s-cat-info" data-open="91" aria-label="Ver Comedor Xochitl">
+            <h3 class="s-cat-name">Comedor Xochitl</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 53 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$14,900 a $19,900 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="91" aria-pressed="false" aria-label="Agregar Comedor Xochitl a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="92">
+          <button type="button" class="s-cat-info" data-open="92" aria-label="Ver Comedor Azteca">
+            <h3 class="s-cat-name">Comedor Azteca</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$15,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="92" aria-pressed="false" aria-label="Agregar Comedor Azteca a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="93">
+          <button type="button" class="s-cat-info" data-open="93" aria-label="Ver Comedor Chilpancingo">
+            <h3 class="s-cat-name">Comedor Chilpancingo</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$17,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="93" aria-pressed="false" aria-label="Agregar Comedor Chilpancingo a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="94">
+          <button type="button" class="s-cat-info" data-open="94" aria-label="Ver Comedor Tradicional">
+            <h3 class="s-cat-name">Comedor Tradicional</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$17,700 a $25,400 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="94" aria-pressed="false" aria-label="Agregar Comedor Tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="95">
+          <button type="button" class="s-cat-info" data-open="95" aria-label="Ver Comedor Tradicional 8 asientos">
+            <h3 class="s-cat-name">Comedor Tradicional 8 asientos</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 9 piezas · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$22,100 a $26,100 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="95" aria-pressed="false" aria-label="Agregar Comedor Tradicional 8 asientos a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="96">
+          <button type="button" class="s-cat-info" data-open="96" aria-label="Ver Comedor Acapulco">
+            <h3 class="s-cat-name">Comedor Acapulco</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Oro, Platino · 5 piezas · asiento a 51 cm · 65 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$23,700 a $37,100 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="96" aria-pressed="false" aria-label="Agregar Comedor Acapulco a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="97">
+          <button type="button" class="s-cat-info" data-open="97" aria-label="Ver Comedor Arandas">
+            <h3 class="s-cat-name">Comedor Arandas</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 50 cm · 83 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$27,000 a $33,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="97" aria-pressed="false" aria-label="Agregar Comedor Arandas a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="98">
+          <button type="button" class="s-cat-info" data-open="98" aria-label="Ver Comedor Tepatitlán">
+            <h3 class="s-cat-name">Comedor Tepatitlán</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 50 cm · 81 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$29,000 a $35,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="98" aria-pressed="false" aria-label="Agregar Comedor Tepatitlán a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="comedores" data-i="99">
+          <button type="button" class="s-cat-info" data-open="99" aria-label="Ver Comedor Tolteca">
+            <h3 class="s-cat-name">Comedor Tolteca</h3>
+            <p class="s-cat-meta">Calidades: Diamante, Platino · 5 piezas · asiento a 48 cm · 71 cm de ancho</p>
+          </button>
+          <p class="s-cat-price eq-price">$34,000 a $43,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="99" aria-pressed="false" aria-label="Agregar Comedor Tolteca a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="mesas" data-i="100">
+          <button type="button" class="s-cat-info" data-open="100" aria-label="Ver Mesa lateral">
+            <h3 class="s-cat-name">Mesa lateral</h3>
+            <p class="s-cat-meta">Calidades: Oro</p>
+          </button>
+          <p class="s-cat-price eq-price">$900 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="100" aria-pressed="false" aria-label="Agregar Mesa lateral a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="mesas" data-i="101" data-top="9">
+          <button type="button" class="s-cat-info" data-open="101" aria-label="Ver Mesa tradicional">
+            <h3 class="s-cat-name">Mesa tradicional</h3>
+            <p class="s-cat-meta">Calidades: Oro, Plata, Platino · 80 cm de largo</p>
+          </button>
+          <p class="s-cat-price eq-price">$1,400 a $2,100 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="101" aria-pressed="false" aria-label="Agregar Mesa tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="mesas" data-i="102">
+          <button type="button" class="s-cat-info" data-open="102" aria-label="Ver Mesa lateral envarillada">
+            <h3 class="s-cat-name">Mesa lateral envarillada</h3>
+            <p class="s-cat-meta">Calidades: Oro · 60 cm de largo</p>
+          </button>
+          <p class="s-cat-price eq-price">$1,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="102" aria-pressed="false" aria-label="Agregar Mesa lateral envarillada a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="mesas" data-i="103">
+          <button type="button" class="s-cat-info" data-open="103" aria-label="Ver Mesa de centro">
+            <h3 class="s-cat-name">Mesa de centro</h3>
+            <p class="s-cat-meta">Calidades: Oro, Platino · 100 cm de largo</p>
+          </button>
+          <p class="s-cat-price eq-price">$1,800 a $2,100 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="103" aria-pressed="false" aria-label="Agregar Mesa de centro a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="mesas" data-i="104">
+          <button type="button" class="s-cat-info" data-open="104" aria-label="Ver Mesa cantinera">
+            <h3 class="s-cat-name">Mesa cantinera</h3>
+            <p class="s-cat-meta">Calidades: Oro, Platino</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,200 a $2,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="104" aria-pressed="false" aria-label="Agregar Mesa cantinera a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="mesas" data-i="105">
+          <button type="button" class="s-cat-info" data-open="105" aria-label="Ver Mesa de centro estrella">
+            <h3 class="s-cat-name">Mesa de centro estrella</h3>
+            <p class="s-cat-meta">Calidades: Oro, Platino · 100 cm de largo</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,300 a $2,700 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="105" aria-pressed="false" aria-label="Agregar Mesa de centro estrella a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="mesas" data-i="106">
+          <button type="button" class="s-cat-info" data-open="106" aria-label="Ver Mesa base de copa">
+            <h3 class="s-cat-name">Mesa base de copa</h3>
+            <p class="s-cat-meta">Calidades: Oro, Platino</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,300 a $2,800 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="106" aria-pressed="false" aria-label="Agregar Mesa base de copa a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="mesas" data-i="107">
+          <button type="button" class="s-cat-info" data-open="107" aria-label="Ver Mesa envarillada base de copa">
+            <h3 class="s-cat-name">Mesa envarillada base de copa</h3>
+            <p class="s-cat-meta">Calidades: Oro</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="107" aria-pressed="false" aria-label="Agregar Mesa envarillada base de copa a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="mesas" data-i="108">
+          <button type="button" class="s-cat-info" data-open="108" aria-label="Ver Mesa de centro Tapachula">
+            <h3 class="s-cat-name">Mesa de centro Tapachula</h3>
+            <p class="s-cat-meta">Calidades: Platino · 100 cm de largo</p>
+          </button>
+          <p class="s-cat-price eq-price">$3,200 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="108" aria-pressed="false" aria-label="Agregar Mesa de centro Tapachula a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="mesas" data-i="109">
+          <button type="button" class="s-cat-info" data-open="109" aria-label="Ver Mesa Tradicional">
+            <h3 class="s-cat-name">Mesa Tradicional</h3>
+            <p class="s-cat-meta">Calidades: Platino · 160 cm de largo</p>
+          </button>
+          <p class="s-cat-price eq-price">$7,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="109" aria-pressed="false" aria-label="Agregar Mesa Tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="mesas" data-i="110">
+          <button type="button" class="s-cat-info" data-open="110" aria-label="Ver Mesa tradicional">
+            <h3 class="s-cat-name">Mesa tradicional</h3>
+            <p class="s-cat-meta">Calidades: Platino · 80 cm de largo</p>
+          </button>
+          <p class="s-cat-price eq-price">$7,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="110" aria-pressed="false" aria-label="Agregar Mesa tradicional a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="barras" data-i="111" data-top="10">
+          <button type="button" class="s-cat-info" data-open="111" aria-label="Ver Barra Lineal">
+            <h3 class="s-cat-name">Barra Lineal</h3>
+            <p class="s-cat-meta">Calidades: Oro, Platino · 1 pieza · 160 cm de largo</p>
+          </button>
+          <p class="s-cat-price eq-price">$6,000 a $9,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="111" aria-pressed="false" aria-label="Agregar Barra Lineal a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="barras" data-i="112">
+          <button type="button" class="s-cat-info" data-open="112" aria-label="Ver Barra Escuadra">
+            <h3 class="s-cat-name">Barra Escuadra</h3>
+            <p class="s-cat-meta">Calidades: Oro, Platino · 1 pieza</p>
+          </button>
+          <p class="s-cat-price eq-price">$7,000 a $10,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="112" aria-pressed="false" aria-label="Agregar Barra Escuadra a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="barras" data-i="113">
+          <button type="button" class="s-cat-info" data-open="113" aria-label="Ver Barra Lineal con Copero">
+            <h3 class="s-cat-name">Barra Lineal con Copero</h3>
+            <p class="s-cat-meta">Calidades: Oro, Platino · 2 piezas · 160 cm de largo</p>
+          </button>
+          <p class="s-cat-price eq-price">$9,000 a $12,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="113" aria-pressed="false" aria-label="Agregar Barra Lineal con Copero a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="barras" data-i="114">
+          <button type="button" class="s-cat-info" data-open="114" aria-label="Ver Barra Escuadra con Copero">
+            <h3 class="s-cat-name">Barra Escuadra con Copero</h3>
+            <p class="s-cat-meta">Calidades: Oro, Platino · 2 piezas</p>
+          </button>
+          <p class="s-cat-price eq-price">$12,000 a $15,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="114" aria-pressed="false" aria-label="Agregar Barra Escuadra con Copero a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="barras" data-i="115">
+          <button type="button" class="s-cat-info" data-open="115" aria-label="Ver Barra Media Luna">
+            <h3 class="s-cat-name">Barra Media Luna</h3>
+            <p class="s-cat-meta">Calidades: Platino · 1 pieza</p>
+          </button>
+          <p class="s-cat-price eq-price">$15,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="115" aria-pressed="false" aria-label="Agregar Barra Media Luna a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="barras" data-i="116">
+          <button type="button" class="s-cat-info" data-open="116" aria-label="Ver Barra Media Luna con Copero">
+            <h3 class="s-cat-name">Barra Media Luna con Copero</h3>
+            <p class="s-cat-meta">Calidades: Platino · 2 piezas</p>
+          </button>
+          <p class="s-cat-price eq-price">$18,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="116" aria-pressed="false" aria-label="Agregar Barra Media Luna con Copero a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="complementos" data-i="117">
+          <button type="button" class="s-cat-info" data-open="117" aria-label="Ver Buró">
+            <h3 class="s-cat-name">Buró</h3>
+            <p class="s-cat-meta">1 pieza · 57 cm de largo</p>
+          </button>
+          <p class="s-cat-price eq-price">$2,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="117" aria-pressed="false" aria-label="Agregar Buró a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="complementos" data-i="118">
+          <button type="button" class="s-cat-info" data-open="118" aria-label="Ver Marco de equipal Pátzcuaro">
+            <h3 class="s-cat-name">Marco de equipal Pátzcuaro</h3>
+            <p class="s-cat-meta">1 pieza</p>
+          </button>
+          <p class="s-cat-price eq-price">$4,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="118" aria-pressed="false" aria-label="Agregar Marco de equipal Pátzcuaro a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="complementos" data-i="119">
+          <button type="button" class="s-cat-info" data-open="119" aria-label="Ver Marco de equipal Chapala">
+            <h3 class="s-cat-name">Marco de equipal Chapala</h3>
+            <p class="s-cat-meta">1 pieza</p>
+          </button>
+          <p class="s-cat-price eq-price">$4,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="119" aria-pressed="false" aria-label="Agregar Marco de equipal Chapala a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="complementos" data-i="120">
+          <button type="button" class="s-cat-info" data-open="120" aria-label="Ver Base">
+            <h3 class="s-cat-name">Base</h3>
+            <p class="s-cat-meta">Tamaños: Individual, King, Matrimonial, Queen</p>
+          </button>
+          <p class="s-cat-price eq-price">$5,000 a $8,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="120" aria-pressed="false" aria-label="Agregar Base a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="complementos" data-i="121">
+          <button type="button" class="s-cat-info" data-open="121" aria-label="Ver Cabecera">
+            <h3 class="s-cat-name">Cabecera</h3>
+            <p class="s-cat-meta">Tamaños: Individual, King, Matrimonial, Queen · 1 pieza</p>
+          </button>
+          <p class="s-cat-price eq-price">$5,000 a $8,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="121" aria-pressed="false" aria-label="Agregar Cabecera a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="complementos" data-i="122">
+          <button type="button" class="s-cat-info" data-open="122" aria-label="Ver Biombo">
+            <h3 class="s-cat-name">Biombo</h3>
+            <p class="s-cat-meta">1 pieza · 200 cm de largo</p>
+          </button>
+          <p class="s-cat-price eq-price">$5,500 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="122" aria-pressed="false" aria-label="Agregar Biombo a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="complementos" data-i="123">
+          <button type="button" class="s-cat-info" data-open="123" aria-label="Ver Marco de equipal Chapala">
+            <h3 class="s-cat-name">Marco de equipal Chapala</h3>
+            <p class="s-cat-meta">1 pieza</p>
+          </button>
+          <p class="s-cat-price eq-price">$8,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="123" aria-pressed="false" aria-label="Agregar Marco de equipal Chapala a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+        </li>
+        <li class="s-cat-row" data-c="complementos" data-i="124">
+          <button type="button" class="s-cat-info" data-open="124" aria-label="Ver Tocador">
+            <h3 class="s-cat-name">Tocador</h3>
+            <p class="s-cat-meta">1 pieza · 145 cm de largo</p>
+          </button>
+          <p class="s-cat-price eq-price">$9,000 <small>+ IVA</small></p>
+          <button type="button" class="s-cat-add" data-i="124" aria-pressed="false" aria-label="Agregar Tocador a mi pedido"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
         </li>
       </ul>
       <div class="s-cat-more-wrap"><button type="button" class="cd-btn cd-btn--secondary s-cat-more" hidden>Ver más piezas</button></div>
       <div class="s-cat-cta-wrap"><a class="cd-btn cd-btn--primary s-cat-cta" data-wa="Hola Equipales Imperial, quiero cotizar piezas de su catálogo." href="https://wa.me/523312670824" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Cotizar por WhatsApp</span></a></div>
       <p class="s-cat-foot">La calidad (Plata, Oro, Platino, Diamante o Vinipiel) cambia el precio. El flete se cotiza aparte y se paga al recibir.</p>
+    </div>
+
+    <!-- Hoja de detalle de una pieza (toca el nombre en la lista; reutiliza EQ.sheet) -->
+    <div class="eq-sheet s-cat-detail" hidden>
+      <div class="eq-sheet-veil" data-close></div>
+      <div class="eq-sheet-box" role="dialog" aria-modal="true" aria-labelledby="cd-t" tabindex="-1">
+        <div class="eq-sheet-grip" aria-hidden="true"><i></i></div>
+        <header class="eq-sheet-head">
+          <div><p class="eq-eye s-cd-eye">Línea</p><h2 id="cd-t" class="eq-sheet-t cd-h3d"></h2></div>
+          <button type="button" class="eq-sheet-x" data-close aria-label="Cerrar"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+        </header>
+        <div class="s-cd-ph"><img class="s-cd-img" src="" alt="" width="600" height="600" loading="lazy" decoding="async"></div>
+        <p class="s-cd-price eq-price"></p>
+        <p class="s-cd-meta"></p>
+        <div class="s-cd-cal" role="group" aria-label="Calidades"></div>
+        <button type="button" class="cd-btn cd-btn--primary s-cd-add"><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Agregar</span></button>
+      </div>
     </div>
 
     <!-- Barra fija "Mi pedido" y su hoja (el JS la mueve a <body>) -->
@@ -1115,9 +1254,12 @@
   <section id="cine" class="s-cine eq-dark" aria-labelledby="cine-t">
     <div class="s-cine-stage">
       <div class="s-cine-arch">
+        <!-- La mesa gira con el scroll: 24 cuadros reales por lado (Kling, ya pagados y extraídos en
+             img/cine/mesa-m|d/01..24.webp). El JS cambia el src del cuadro 01 al 24 según el progreso del
+             scroll de la sección (reversible). Blindaje: sin JS o con movimiento reducido, se queda el cuadro 01. -->
         <picture>
-          <source media="(min-width: 900px)" srcset="img/cine/patio-d.webp" width="1600" height="1031">
-          <img src="img/cine/patio-m.webp" alt="Comedor de equipales de piel en el patio de una hacienda, bajo un arco de ladrillo" width="1200" height="1800" loading="lazy" decoding="async">
+          <source media="(min-width: 900px)" srcset="img/cine/mesa-d/01.webp" width="1280" height="826">
+          <img class="s-cine-frame" src="img/cine/mesa-m/01.webp" alt="Comedor de equipales de piel girando en el patio de una hacienda, bajo un arco de ladrillo" width="720" height="1080" loading="lazy" decoding="async">
         </picture>
         <div class="s-cine-veil" aria-hidden="true"></div>
       </div>
@@ -1126,6 +1268,13 @@
         <h2 id="cine-t" class="s-cine-t cd-h3d"><span class="l">La mesa</span><span class="l">ya está puesta.</span></h2>
         <p class="s-cine-sub">Comedores de 5, 7 y 9 piezas, desde $5,800 + IVA.</p>
         <a class="cd-btn cd-btn--primary" data-wa="Hola Equipales Imperial, quiero cotizar un comedor de equipales." href="https://wa.me/523312670824" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotiza tu comedor</a>
+      </div>
+      <!-- Collage de 3 huecos de anchos desiguales con las fotos reales que se liberaron de los capítulos
+           del catálogo (fijo, sin rotador: el protagonista de movimiento de esta escena es el cuadro de arriba). -->
+      <div class="s-cine-collage" aria-label="Más equipales Imperial en distintos espacios">
+        <div class="s-cine-ph s-cine-ph--a"><img class="eq-blurin is-pre" src="img/gal/negro-bordado-campo.webp" alt="Equipales bordados de Equipales Imperial entre nopales al atardecer" width="1400" height="788" loading="lazy" decoding="async"></div>
+        <div class="s-cine-ph s-cine-ph--b"><img class="eq-blurin is-pre" src="img/gal/si-senor-atardecer.webp" alt="Equipales Imperial en Sí Señor, Punta Mita, Nayarit, entre palmeras al atardecer" width="1400" height="1867" loading="lazy" decoding="async"></div>
+        <div class="s-cine-ph s-cine-ph--c"><img class="eq-blurin is-pre" src="img/gal/piel-vaca-casa.webp" alt="Equipal de piel de vaca de Equipales Imperial en una casa" width="615" height="623" loading="lazy" decoding="async"></div>
       </div>
       <span class="s-cine-bar" aria-hidden="true"><i></i></span>
     </div>
@@ -1139,70 +1288,74 @@
       </div>
       <p class="eq-lead">De Querétaro a Tennessee. Proyectos publicados por Equipales Imperial.</p>
     </div>
-    <div class="s-pr-rail" data-reveal>
-      <ul class="s-pr-track" tabindex="0" aria-label="Proyectos reales, desliza para ver más">
-        <li class="s-pr-card">
-          <figure>
-            <img src="img/proy/don-lole-interior.webp" alt="Equipales Imperial en Barbacoa de Hoyo Don Lole, Querétaro" width="1000" height="1250" loading="lazy" decoding="async">
-            <figcaption><span class="s-pr-n">01</span><b>Barbacoa de Hoyo Don Lole</b><span>Querétaro · Salón interior</span></figcaption>
-          </figure>
-          <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Barbacoa de Hoyo Don Lole">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </li>
-        <li class="s-pr-card">
-          <figure>
-            <img src="img/proy/nachos-1.webp" alt="Equipales Imperial en Nacho's Mexican Restaurant, Tennessee, EE.UU." width="1000" height="1250" loading="lazy" decoding="async">
-            <figcaption><span class="s-pr-n">02</span><b>Nacho's Mexican Restaurant</b><span>Tennessee, EE.UU. · Nashville, Franklin y Murfreesboro</span></figcaption>
-          </figure>
-          <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Nacho's Mexican Restaurant">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </li>
-        <li class="s-pr-card">
-          <figure>
-            <img src="img/proy/si-senor.webp" alt="Equipales Imperial en Sí Señor, Punta Mita, Nayarit" width="1000" height="1250" loading="lazy" decoding="async">
-            <figcaption><span class="s-pr-n">03</span><b>Sí Señor</b><span>Punta Mita, Nayarit · Frente al mar</span></figcaption>
-          </figure>
-          <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Sí Señor">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </li>
-        <li class="s-pr-card">
-          <figure>
-            <img src="img/proy/tarascos.webp" alt="Equipales Imperial en Tarascos, Dardanelle, Arkansas" width="1000" height="1250" loading="lazy" decoding="async">
-            <figcaption><span class="s-pr-n">04</span><b>Tarascos</b><span>Dardanelle, Arkansas · Salón completo</span></figcaption>
-          </figure>
-          <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Tarascos">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </li>
-        <li class="s-pr-card">
-          <figure>
-            <img src="img/proy/save.webp" alt="Equipales Imperial en Save, Guadalajara y Monterrey" width="1000" height="1250" loading="lazy" decoding="async">
-            <figcaption><span class="s-pr-n">05</span><b>Save</b><span>Guadalajara y Monterrey · Terraza</span></figcaption>
-          </figure>
-          <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Save">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </li>
-        <li class="s-pr-card">
-          <figure>
-            <img src="img/proy/don-lole-patio.webp" alt="Equipales Imperial en Barbacoa de Hoyo Don Lole, Querétaro" width="1000" height="1250" loading="lazy" decoding="async">
-            <figcaption><span class="s-pr-n">06</span><b>Barbacoa de Hoyo Don Lole</b><span>Querétaro · Patio de piedra</span></figcaption>
-          </figure>
-          <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Barbacoa de Hoyo Don Lole">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </li>
-        <li class="s-pr-card">
-          <figure>
-            <img src="img/proy/nachos-2.webp" alt="Equipales Imperial en Nacho's Mexican Restaurant, Tennessee, EE.UU." width="1000" height="1250" loading="lazy" decoding="async">
-            <figcaption><span class="s-pr-n">07</span><b>Nacho's Mexican Restaurant</b><span>Tennessee, EE.UU. · Otra vista del salón</span></figcaption>
-          </figure>
-          <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Nacho's Mexican Restaurant">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </li>
-        <li class="s-pr-card">
-          <figure>
-            <img src="img/proy/tarascos-2.webp" alt="Equipales Imperial en Tarascos, Dardanelle, Arkansas" width="1000" height="1250" loading="lazy" decoding="async">
-            <figcaption><span class="s-pr-n">08</span><b>Tarascos</b><span>Dardanelle, Arkansas · Área de mesas</span></figcaption>
-          </figure>
-          <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Tarascos">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </li>
-      </ul>
-      <div class="k-wrap s-pr-ctrl">
+
+    <div class="k-wrap s-pr-carwrap">
+      <div class="s-pr-car" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Proyectos reales. Usa las flechas del teclado para cambiar.">
+        <div class="s-pr-track">
+          <article class="s-pr-card" aria-roledescription="diapositiva" aria-label="1 de 8: Barbacoa de Hoyo Don Lole">
+            <figure>
+              <img src="img/proy/don-lole-interior.webp" alt="Equipales Imperial en Barbacoa de Hoyo Don Lole, Querétaro" width="1000" height="1250" loading="lazy" decoding="async" draggable="false">
+              <figcaption><span class="s-pr-n">01</span><b>Barbacoa de Hoyo Don Lole</b><span>Querétaro · Salón interior</span></figcaption>
+            </figure>
+            <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Barbacoa de Hoyo Don Lole" tabindex="-1">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="s-pr-card" aria-roledescription="diapositiva" aria-label="2 de 8: Nacho's Mexican Restaurant">
+            <figure>
+              <img src="img/proy/nachos-1.webp" alt="Equipales Imperial en Nacho's Mexican Restaurant, Tennessee, EE.UU." width="1000" height="1250" loading="lazy" decoding="async" draggable="false">
+              <figcaption><span class="s-pr-n">02</span><b>Nacho's Mexican Restaurant</b><span>Tennessee, EE.UU. · Nashville, Franklin y Murfreesboro</span></figcaption>
+            </figure>
+            <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Nacho's Mexican Restaurant" tabindex="-1">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="s-pr-card" aria-roledescription="diapositiva" aria-label="3 de 8: Sí Señor">
+            <figure>
+              <img src="img/proy/si-senor.webp" alt="Equipales Imperial en Sí Señor, Punta Mita, Nayarit" width="1000" height="1250" loading="lazy" decoding="async" draggable="false">
+              <figcaption><span class="s-pr-n">03</span><b>Sí Señor</b><span>Punta Mita, Nayarit · Frente al mar</span></figcaption>
+            </figure>
+            <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Sí Señor" tabindex="-1">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="s-pr-card" aria-roledescription="diapositiva" aria-label="4 de 8: Tarascos">
+            <figure>
+              <img src="img/proy/tarascos.webp" alt="Equipales Imperial en Tarascos, Dardanelle, Arkansas" width="1000" height="1250" loading="lazy" decoding="async" draggable="false">
+              <figcaption><span class="s-pr-n">04</span><b>Tarascos</b><span>Dardanelle, Arkansas · Salón completo</span></figcaption>
+            </figure>
+            <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Tarascos" tabindex="-1">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="s-pr-card" aria-roledescription="diapositiva" aria-label="5 de 8: Save">
+            <figure>
+              <img src="img/proy/save.webp" alt="Equipales Imperial en Save, Guadalajara y Monterrey" width="1000" height="1250" loading="lazy" decoding="async" draggable="false">
+              <figcaption><span class="s-pr-n">05</span><b>Save</b><span>Guadalajara y Monterrey · Terraza</span></figcaption>
+            </figure>
+            <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Save" tabindex="-1">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="s-pr-card" aria-roledescription="diapositiva" aria-label="6 de 8: Barbacoa de Hoyo Don Lole">
+            <figure>
+              <img src="img/proy/don-lole-patio.webp" alt="Equipales Imperial en Barbacoa de Hoyo Don Lole, Querétaro" width="1000" height="1250" loading="lazy" decoding="async" draggable="false">
+              <figcaption><span class="s-pr-n">06</span><b>Barbacoa de Hoyo Don Lole</b><span>Querétaro · Patio de piedra</span></figcaption>
+            </figure>
+            <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Barbacoa de Hoyo Don Lole" tabindex="-1">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="s-pr-card" aria-roledescription="diapositiva" aria-label="7 de 8: Nacho's Mexican Restaurant">
+            <figure>
+              <img src="img/proy/nachos-2.webp" alt="Equipales Imperial en Nacho's Mexican Restaurant, Tennessee, EE.UU." width="1000" height="1250" loading="lazy" decoding="async" draggable="false">
+              <figcaption><span class="s-pr-n">07</span><b>Nacho's Mexican Restaurant</b><span>Tennessee, EE.UU. · Otra vista del salón</span></figcaption>
+            </figure>
+            <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Nacho's Mexican Restaurant" tabindex="-1">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="s-pr-card" aria-roledescription="diapositiva" aria-label="8 de 8: Tarascos">
+            <figure>
+              <img src="img/proy/tarascos-2.webp" alt="Equipales Imperial en Tarascos, Dardanelle, Arkansas" width="1000" height="1250" loading="lazy" decoding="async" draggable="false">
+              <figcaption><span class="s-pr-n">08</span><b>Tarascos</b><span>Dardanelle, Arkansas · Área de mesas</span></figcaption>
+            </figure>
+            <a class="cd-btn cd-btn--link s-pr-go" href="#cotiza" data-proyecto="Tarascos" tabindex="-1">Quiero algo así<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+        </div>
+      </div>
+      <div class="s-pr-ctrl">
         <button type="button" class="s-pr-btn" data-dir="-1" aria-label="Proyecto anterior"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
         <span class="s-pr-count" aria-live="polite">01 / 08</span>
         <button type="button" class="s-pr-btn" data-dir="1" aria-label="Proyecto siguiente"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
       </div>
+      <p class="s-pr-live" aria-live="polite"></p>
     </div>
   </section>
 
@@ -1325,13 +1478,13 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="../_kit/kit.js?v=1789789887" defer></script>
-<script src="site.js?v=1789863482" defer></script>
-<script src="sections/01-hero.js?v=1789836286" defer></script>
+<script src="site.js?v=1789868219" defer></script>
+<script src="sections/01-hero.js?v=1789865206" defer></script>
 <script src="sections/02-catalogo-data.js?v=1789835941" defer></script>
-<script src="sections/02-catalogo.js?v=1789863482" defer></script>
+<script src="sections/02-catalogo.js?v=1789868459" defer></script>
 <script src="sections/03-cotiza.js?v=1789863482" defer></script>
-<script src="sections/04-cine.js?v=1789836318" defer></script>
-<script src="sections/05-proyectos.js?v=1789836377" defer></script>
-<script src="sections/06-nosotros.js?v=1789863482" defer></script>
+<script src="sections/04-cine.js?v=1789869671" defer></script>
+<script src="sections/05-proyectos.js?v=1789867971" defer></script>
+<script src="sections/06-nosotros.js?v=1789867687" defer></script>
 </body>
 </html>

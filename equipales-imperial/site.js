@@ -37,6 +37,15 @@ window.EQ = (function () {
   };
   function money(n) { return "$" + Number(n).toLocaleString("es-MX"); }
   function priceTxt(p) { return p.length > 1 && p[1] !== p[0] ? money(p[0]) + " a " + money(p[1]) : money(p[0]); }
+  /* foto que entra desde blur (receta 14, catalogo-motion.md): quita el blur al decodificar o a los 1.6 s (blindaje) */
+  function blurIn(img) {
+    if (!img) return;
+    var go = function () { img.classList.remove("is-pre"); };
+    if (img.decode) img.decode().then(go, go);
+    else if (img.complete) go();
+    else img.addEventListener("load", go, { once: true });
+    setTimeout(go, 1600);
+  }
   /* hoja inferior: mueve a <body>, bloquea scroll, atrás cierra, Escape cierra, foco dentro */
   function sheet(el, name) {
     if (el.parentNode !== document.body) document.body.appendChild(el);
@@ -59,7 +68,7 @@ window.EQ = (function () {
     document.addEventListener("keydown", function (e) { if (open && e.key === "Escape") close(); });
     return { open: show, close: function () { close(); }, isOpen: function () { return open; } };
   }
-  return { wa: WA, waUrl: waUrl, send: send, layer: layer, store: store, money: money, priceTxt: priceTxt, sheet: sheet };
+  return { wa: WA, waUrl: waUrl, send: send, layer: layer, store: store, money: money, priceTxt: priceTxt, sheet: sheet, blurIn: blurIn };
 })();
 
 /* Equipales Imperial: base clonada de Closet&Door (WhatsApp, menú, microinteracciones, blindaje) + helpers EQ */

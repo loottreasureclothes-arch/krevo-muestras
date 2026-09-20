@@ -76,7 +76,7 @@ body { background: var(--bg-warm); }
 .cd-btn svg { width: 20px; height: 20px; flex: none; transition: transform 280ms var(--ease-out); }
 .cd-btn:active { transform: scale(0.97); }
 .cd-btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--sweep, rgba(0, 0, 0, 0.1)); clip-path: inset(0 100% 0 0); transition: clip-path 280ms var(--ease-out); }
-.cd-btn--primary { background: var(--wa); border-color: var(--wa); color: var(--wa-ink); --sweep: var(--wa-dark); }
+.cd-btn--primary { background: var(--wa); border-color: rgba(11, 61, 31, 0.3); color: var(--wa-ink); box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35); --sweep: var(--wa-dark); }
 .cd-btn--primary:active { background: var(--wa-dark); }
 .cd-btn--secondary { background: transparent; border-color: currentColor; color: inherit; --sweep: rgba(127, 127, 127, 0.14); }
 .cd-btn--link { min-height: 44px; padding: 0; border: 0; border-radius: 0; background: none; color: inherit; gap: 8px;
@@ -487,8 +487,12 @@ body { background: var(--paper); color: var(--ink); font-size: 16px; }
     repeating-linear-gradient(60deg, currentColor 0 1.5px, transparent 1.5px 14px),
     repeating-linear-gradient(-60deg, currentColor 0 1.5px, transparent 1.5px 14px);
   -webkit-mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
-/* sobre crema el verde necesita borde y sombra dura (regla 1.77:1) */
-.eq-onlight .cd-btn--primary { border-color: rgba(11, 61, 31, 0.3); box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35); }
+/* el borde y la sombra dura del verde ya son parte de .cd-btn--primary (arriba, fila 00) */
+/* foto que entra desde blur (receta 14): reposo = nítida; el "pre" solo existe con JS y movimiento */
+.eq-blurin { transition: filter 1.1s var(--ease-out), opacity 1.1s var(--ease-out), transform 1.1s var(--ease-out); }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .eq-blurin.is-pre { filter: blur(16px); opacity: 0.55; transform: scale(1.06); }
+}
 /* aviso "¿No se abrió WhatsApp?" */
 .eq-wa-fallback { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 /* formularios compartidos */

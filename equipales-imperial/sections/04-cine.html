@@ -1,9 +1,12 @@
   <section id="cine" class="s-cine eq-dark" aria-labelledby="cine-t">
     <div class="s-cine-stage">
       <div class="s-cine-arch">
+        <!-- La mesa gira con el scroll: 24 cuadros reales por lado (Kling, ya pagados y extraídos en
+             img/cine/mesa-m|d/01..24.webp). El JS cambia el src del cuadro 01 al 24 según el progreso del
+             scroll de la sección (reversible). Blindaje: sin JS o con movimiento reducido, se queda el cuadro 01. -->
         <picture>
-          <source media="(min-width: 900px)" srcset="img/cine/patio-d.webp" width="1600" height="1031">
-          <img src="img/cine/patio-m.webp" alt="Comedor de equipales de piel en el patio de una hacienda, bajo un arco de ladrillo" width="1200" height="1800" loading="lazy" decoding="async">
+          <source media="(min-width: 900px)" srcset="img/cine/mesa-d/01.webp" width="1280" height="826">
+          <img class="s-cine-frame" src="img/cine/mesa-m/01.webp" alt="Comedor de equipales de piel girando en el patio de una hacienda, bajo un arco de ladrillo" width="720" height="1080" loading="lazy" decoding="async">
         </picture>
         <div class="s-cine-veil" aria-hidden="true"></div>
       </div>
@@ -12,6 +15,13 @@
         <h2 id="cine-t" class="s-cine-t cd-h3d"><span class="l">La mesa</span><span class="l">ya está puesta.</span></h2>
         <p class="s-cine-sub">Comedores de 5, 7 y 9 piezas, desde $5,800 + IVA.</p>
         <a class="cd-btn cd-btn--primary" data-wa="Hola Equipales Imperial, quiero cotizar un comedor de equipales." href="https://wa.me/523312670824" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotiza tu comedor</a>
+      </div>
+      <!-- Collage de 3 huecos de anchos desiguales con las fotos reales que se liberaron de los capítulos
+           del catálogo (fijo, sin rotador: el protagonista de movimiento de esta escena es el cuadro de arriba). -->
+      <div class="s-cine-collage" aria-label="Más equipales Imperial en distintos espacios">
+        <div class="s-cine-ph s-cine-ph--a"><img class="eq-blurin is-pre" src="img/gal/negro-bordado-campo.webp" alt="Equipales bordados de Equipales Imperial entre nopales al atardecer" width="1400" height="788" loading="lazy" decoding="async"></div>
+        <div class="s-cine-ph s-cine-ph--b"><img class="eq-blurin is-pre" src="img/gal/si-senor-atardecer.webp" alt="Equipales Imperial en Sí Señor, Punta Mita, Nayarit, entre palmeras al atardecer" width="1400" height="1867" loading="lazy" decoding="async"></div>
+        <div class="s-cine-ph s-cine-ph--c"><img class="eq-blurin is-pre" src="img/gal/piel-vaca-casa.webp" alt="Equipal de piel de vaca de Equipales Imperial en una casa" width="615" height="623" loading="lazy" decoding="async"></div>
       </div>
       <span class="s-cine-bar" aria-hidden="true"><i></i></span>
     </div>

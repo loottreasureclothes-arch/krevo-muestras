@@ -1,5 +1,10 @@
 /* ============ 06 DESDE 1915: momento firma (línea que el scroll dibuja, reversible) ============ */
 #nosotros { background: var(--bg-cream); color: var(--ink); overflow: hidden; }
+/* Caída del 8 (como la cinta métrica de 10-msi.js): reposo en CSS = ya en su lugar; el "pre" solo existe
+   con JS y movimiento, y el JS lo suelta con un rebote muestreado (una vez). */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  #nosotros.s-nos-pre .s-nos-num { opacity: 0; transform: translateY(-64%); }
+}
 #nosotros .eq-h2 em { color: var(--brand); font-style: normal; }
 #nosotros .s-nos-grid { display: grid; gap: 24px; margin: var(--head-gap) 0 36px; }
 #nosotros .s-nos-big { margin: 0; display: grid; gap: 6px; }

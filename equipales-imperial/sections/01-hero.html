@@ -5,9 +5,10 @@
           <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/hero-d.webp" width="1920" height="1080">
           <img class="s-hero-img" src="img/hero/hero-m.webp" alt="Cantinero Equipales Imperial con respaldo de piel cincelada a mano, en el campo de Jalisco al atardecer" width="900" height="1600" fetchpriority="high" decoding="async">
         </picture>
-        <!-- VIDEO DE CINE (pendiente): se llena data-src-m (9:16, ≤1.5 MB) y data-src-d (16:9, ≤2.5 MB).
-             Mientras esté vacío se queda la foto real. El JS lo salta con saveData/2g o si play() falla. -->
-        <video class="s-hero-video" data-src-m="" data-src-d="" data-poster-m="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" poster="img/hero/hero-d.webp" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" aria-hidden="true" tabindex="-1" hidden></video>
+        <!-- VIDEO DE CINE: hecho con sus 4 fotos reales (ffmpeg, tools/hero_video.py: acercar, paneo, inclinación,
+             alejar, disolvencias, grading cálido, loop sin corte). data-segs = segundo en que empieza cada foto.
+             Mientras carga o si play() falla queda la foto real (poster = la foto actual del hero). -->
+        <video class="s-hero-video" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-poster-m="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9" poster="img/hero/hero-d.webp" muted loop playsinline disablepictureinpicture disableremoteplayback preload="metadata" aria-hidden="true" tabindex="-1" hidden></video>
       </div>
     </div>
     <div class="s-hero-shade" aria-hidden="true"></div>
@@ -22,35 +23,20 @@
           <a class="cd-btn cd-btn--secondary" href="#catalogo">Ver catálogo</a>
         </div>
       </div>
-      <ul class="s-hero-chips" aria-label="Líneas del catálogo">
-        <li><button type="button" data-linea="asientos" aria-haspopup="dialog"><img src="img/tiles/asientos.webp" alt="" width="479" height="520" decoding="async"><span class="s-hero-tn">Asientos</span><span class="s-hero-td">34 piezas · desde $600</span></button></li>
-        <li><button type="button" data-linea="cantineros" aria-haspopup="dialog"><img src="img/tiles/cantineros.webp" alt="" width="465" height="520" decoding="async"><span class="s-hero-tn">Cantineros</span><span class="s-hero-td">20 piezas · desde $1,400</span></button></li>
-        <li><button type="button" data-linea="salas" aria-haspopup="dialog"><img src="img/tiles/salas.webp" alt="" width="520" height="251" decoding="async"><span class="s-hero-tn">Salas</span><span class="s-hero-td">22 piezas · desde $9,800</span></button></li>
-        <li><button type="button" data-linea="comedores" aria-haspopup="dialog"><img src="img/tiles/comedores.webp" alt="" width="520" height="259" decoding="async"><span class="s-hero-tn">Comedores</span><span class="s-hero-td">24 piezas · desde $5,800</span></button></li>
-        <li><button type="button" data-linea="mesas" aria-haspopup="dialog"><img src="img/tiles/mesas.webp" alt="" width="520" height="373" decoding="async"><span class="s-hero-tn">Mesas</span><span class="s-hero-td">11 piezas · desde $900</span></button></li>
-        <li><button type="button" data-linea="barras" aria-haspopup="dialog"><img src="img/tiles/barras.webp" alt="" width="386" height="520" decoding="async"><span class="s-hero-tn">Barras</span><span class="s-hero-td">6 piezas · desde $6,000</span></button></li>
+      <ul class="s-hero-idx" aria-label="Piezas más pedidas">
+        <li><a href="#catalogo" data-linea="mesas" data-item="101"><span><b>Mesa tradicional</b> · desde $1,400</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="cantineros" data-item="35"><span><b>Cantinero Tradicional</b> · desde $1,700</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="asientos" data-item="6"><span><b>Equipal Tulum</b> · desde $2,200</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="asientos" data-item="14"><span><b>Equipal Tolteca</b> · desde $3,200</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="asientos" data-item="21"><span><b>Equipal Guadalajara</b> · desde $4,300</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="comedores" data-item="76"><span><b>Comedor Tradicional</b> · desde $5,800</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="barras" data-item="111"><span><b>Barra Lineal</b> · desde $6,000</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="asientos" data-item="30"><span><b>Equipal Frida</b> · desde $7,500</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="asientos" data-item="31"><span><b>Mecedora Guadalajara</b> · desde $8,900</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="asientos" data-item="33"><span><b>Mecedora Tapachula</b> · desde $8,900</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="salas" data-item="55"><span><b>Sala Tradicional</b> · desde $12,000</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#catalogo" data-linea="salas" data-item="71"><span><b>Sala Guadalajara</b> · desde $32,000</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
       </ul>
       <p class="s-hero-note">Precios de su tienda en línea, MXN + IVA.</p>
-    </div>
-
-    <!-- Hoja por línea: la llena 01-hero.js con las piezas reales del catálogo. El JS la mueve a <body>. -->
-    <div class="eq-sheet s-hero-sheet" hidden>
-      <div class="eq-sheet-veil" data-close></div>
-      <div class="eq-sheet-box" role="dialog" aria-modal="true" aria-labelledby="s-hero-sheet-t" tabindex="-1">
-        <div class="eq-sheet-grip" aria-hidden="true"><i></i></div>
-        <header class="eq-sheet-head">
-          <div>
-            <p class="eq-eye s-hs-eye">Línea</p>
-            <h2 id="s-hero-sheet-t" class="eq-sheet-t cd-h3d"></h2>
-            <p class="s-hs-d"></p>
-          </div>
-          <button type="button" class="eq-sheet-x" data-close aria-label="Cerrar"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
-        </header>
-        <div class="s-hs-car" role="region" aria-label="Piezas de esta línea" tabindex="0"></div>
-        <div class="s-hs-foot">
-          <a class="cd-btn cd-btn--primary s-hs-go" href="https://wa.me/523312670824" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Cotizar</span></a>
-          <a class="cd-btn cd-btn--link s-hs-all" href="#catalogo">Ver todas con precio<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-      </div>
     </div>
   </section>

@@ -1,22 +1,56 @@
-/* ============ 03 PROYECTOS: carrusel de restaurantes reales con talón "Quiero algo así" ============ */
+/* ============ 03 PROYECTOS: tercia/coverflow con resorte (closetdoor/02-trabajos.js adaptado, K=130) ============
+   Blindaje: sin JS o con datos-rot ausente, .s-pr-card queda en flujo normal (lista simple, todo legible).
+   El JS agrega .s-pr-js y ahí sí las tarjetas se posicionan absolutas y el motor las mueve por transform. */
 #proyectos { background: var(--paper); overflow: hidden; }
 #proyectos .s-pr-head { display: grid; gap: 8px; margin-bottom: var(--head-gap); }
 #proyectos .eq-h2 { max-width: none; }
 @media (min-width: 900px) { #proyectos .s-pr-head { grid-template-columns: 1fr auto; align-items: end; gap: 40px; } #proyectos .eq-h2 .l { display: inline; white-space: normal; } #proyectos .eq-h2 .l::after { content: " "; } #proyectos .eq-h2 { max-width: 14ch; } }
-#proyectos .s-pr-track { position: relative; list-style: none; margin: 0; padding: 4px max(var(--k-gutter), calc((100vw - var(--wrap)) / 2 + var(--k-gutter))) 10px; display: grid; grid-auto-flow: column; grid-auto-columns: 78%; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: max(var(--k-gutter), calc((100vw - var(--wrap)) / 2 + var(--k-gutter))); scrollbar-width: none; overscroll-behavior-x: contain; }
-#proyectos .s-pr-track::-webkit-scrollbar { display: none; }
-#proyectos .s-pr-card { scroll-snap-align: start; display: grid; gap: 4px; }
-#proyectos figure { position: relative; margin: 0; overflow: hidden; border-radius: 3px; background: var(--paper-2); }
-#proyectos figure img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform 600ms var(--ease-out); }
-#proyectos figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 14px 14px; display: grid; gap: 2px; color: var(--cream); background: linear-gradient(to top, rgba(18, 9, 3, 0.9), rgba(18, 9, 3, 0)); }
-#proyectos figcaption b { font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; text-transform: uppercase; font-weight: 800; font-size: 26px; line-height: 0.95; }
-#proyectos figcaption span { font-size: 14px; color: var(--cream-mute); }
-#proyectos .s-pr-n { font-family: var(--font-display); font-weight: 800; font-size: 13px !important; letter-spacing: .1em; color: var(--brand-on-wood) !important; }
-#proyectos .s-pr-go { justify-self: start; }
-#proyectos .s-pr-ctrl { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+
+#proyectos .s-pr-carwrap { position: relative; }
+#proyectos .s-pr-car { position: relative; outline: none; }
+#proyectos .s-pr-car:focus-visible .s-pr-card.is-on figure { outline: 2px solid var(--brand); outline-offset: 4px; }
+#proyectos .s-pr-track { position: relative; }
+#proyectos .s-pr-card { position: relative; width: 100%; margin: 0 0 16px; }
+#proyectos figure { position: relative; margin: 0; overflow: hidden; border-radius: 3px; background: var(--paper-2); box-shadow: 0 18px 36px -18px rgba(50, 28, 12, 0.4), 0 3px 8px -3px rgba(50, 28, 12, 0.2); }
+#proyectos figure img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; pointer-events: none; -webkit-user-drag: none; transition: transform 600ms var(--ease-out); }
+#proyectos figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 48px 14px 14px; display: grid; gap: 2px; color: var(--cream); background: linear-gradient(to top, rgba(18, 9, 3, 0.88), rgba(18, 9, 3, 0)); }
+#proyectos figcaption b { font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; text-transform: uppercase; font-weight: 800; font-size: 24px; line-height: 0.95; }
+#proyectos figcaption span { font-size: 13.5px; color: var(--cream-mute); }
+#proyectos .s-pr-n { font-family: var(--font-display); font-weight: 800; font-size: 12px !important; letter-spacing: 0.1em; color: var(--brand-on-wood) !important; }
+#proyectos .s-pr-go { justify-self: start; margin-top: 10px; }
+@media (hover: hover) and (pointer: fine) { #proyectos .s-pr-card:hover img { transform: scale(1.04); } }
+
+#proyectos .s-pr-ctrl { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
 #proyectos .s-pr-btn { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 3px; border: 1px solid rgba(80, 45, 24, 0.3); transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out); }
 #proyectos .s-pr-btn svg { width: 20px; height: 20px; }
 #proyectos .s-pr-btn:active { transform: scale(0.97); }
 #proyectos .s-pr-count { font-family: var(--font-display); font-weight: 800; font-size: 15px; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; min-width: 72px; text-align: center; }
-@media (hover: hover) and (pointer: fine) { #proyectos .s-pr-btn:hover { background: var(--paper-2); } #proyectos .s-pr-card:hover img { transform: scale(1.04); } }
-@media (min-width: 900px) { #proyectos .s-pr-track { grid-auto-columns: calc((min(100vw, var(--wrap)) - 2 * var(--k-gutter) - 42px) / 3.4); gap: 14px; } }
+@media (hover: hover) and (pointer: fine) { #proyectos .s-pr-btn:hover { background: var(--paper-2); } }
+#proyectos .s-pr-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+
+/* ============ Tercia/coverflow (la pone .s-pr-js del JS): una al frente, dos atrás a los lados ============ */
+#proyectos.s-pr-js .s-pr-car { touch-action: pan-y; }
+#proyectos.s-pr-js .s-pr-track { height: var(--pr-h, 62vw); max-height: 420px; }
+#proyectos.s-pr-js .s-pr-card {
+  --pr-cw: min(72vw, 320px);
+  position: absolute; top: 0; left: 50%; width: var(--pr-cw); margin: 0 0 0 calc(var(--pr-cw) / -2);
+  transform-origin: 50% 100%; will-change: transform;
+}
+@media (hover: hover) and (pointer: fine) { #proyectos.s-pr-js .s-pr-track { cursor: grab; } #proyectos.s-pr-js .s-pr-track.is-drag { cursor: grabbing; } }
+#proyectos.s-pr-js .s-pr-track { user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+/* la del frente: pie completo. Las de atrás: solo el nombre, sin CTA (Emanuel: el nombre se ve siempre) */
+#proyectos.s-pr-js .s-pr-card:not(.is-on) .s-pr-go { display: none; }
+#proyectos.s-pr-js .s-pr-card:not(.is-on) figcaption { padding-bottom: 10px; }
+#proyectos.s-pr-js .s-pr-card:not(.is-on) figcaption span { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  #proyectos.s-pr-js .s-pr-card.is-on .s-pr-go, #proyectos.s-pr-js .s-pr-card.is-on figcaption span { opacity: 1; transform: none; transition: opacity 460ms var(--ease-out) 90ms, transform 460ms var(--ease-out) 90ms; }
+  /* display:none -> visible no se puede animar sin punto de partida: @starting-style se lo da (Chrome/Safari/Firefox recientes) */
+  @starting-style {
+    #proyectos.s-pr-js .s-pr-card.is-on .s-pr-go, #proyectos.s-pr-js .s-pr-card.is-on figcaption span { opacity: 0; transform: translateY(8px); }
+  }
+}
+
+@media (min-width: 900px) {
+  #proyectos.s-pr-js .s-pr-card { --pr-cw: min(30vw, 380px); }
+  #proyectos.s-pr-js .s-pr-track { height: calc(min(30vw, 380px) * 1.25 + 60px); max-height: none; }
+}

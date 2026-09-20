@@ -16,3 +16,15 @@
   #cine .s-cine-veil { background: linear-gradient(to right, rgba(18, 9, 3, 0.9) 0%, rgba(18, 9, 3, 0.55) 34%, rgba(18, 9, 3, 0) 60%), radial-gradient(120% 90% at 60% 45%, transparent 55%, rgba(10, 6, 3, 0.5) 100%); }
   #cine .s-cine-bar { display: block; }
 }
+
+/* Collage vivo (varias fotillos): 3 huecos de anchos desiguales, motor de 00-rotador adaptado a #cine/.s-cine- */
+#cine .s-cine-collage { position: relative; z-index: 2; margin-top: 20px; height: 46vw; max-height: 190px; }
+#cine .s-cine-ph { position: absolute; overflow: hidden; border-radius: 3px; background: var(--cuero); border: 1px solid rgba(245, 237, 226, 0.16); box-shadow: 0 14px 30px -16px rgba(10, 6, 3, 0.65); }
+#cine .s-cine-ph--a { left: 0; top: 0; width: 56%; height: 100%; }
+#cine .s-cine-ph--b { right: 0; top: 0; width: 38%; height: 56%; }
+#cine .s-cine-ph--c { right: 5%; bottom: 0; width: 27%; height: 40%; }
+@media (min-width: 900px) {
+  #cine .s-cine-collage { position: absolute; z-index: 2; right: max(var(--k-gutter), calc((100vw - var(--wrap)) / 2 + var(--k-gutter))); bottom: 64px; margin-top: 0; width: min(30vw, 400px); height: min(30vw, 320px); max-height: none; }
+}
+#cine .s-cine-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 600ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { #cine .s-cine-ph:hover img { transform: scale(1.04); } }
