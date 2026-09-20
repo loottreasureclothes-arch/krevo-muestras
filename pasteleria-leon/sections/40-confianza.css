@@ -1,0 +1,49 @@
+/* #confianza — UN número gigante (33, verificado en dos fuentes) + su vitrina real +
+   la reseña textual completa de Google. Nada de fila de contadores. */
+
+.s-cf { display: grid; gap: 28px; }
+@media (min-width: 900px) {
+  .s-cf {
+    grid-template-columns: 1fr 420px;
+    grid-template-areas: "dato foto" "res foto" "agg agg";
+    column-gap: 54px; row-gap: 26px; align-items: start;
+  }
+  .s-cf-dato { grid-area: dato; }
+  .s-cf-foto { grid-area: foto; align-self: stretch; }
+  .s-cf-res { grid-area: res; }
+  .s-cf-agg { grid-area: agg; }
+}
+
+.s-cf-num {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(110px, 33vw, 216px);
+  line-height: 0.82;
+  color: var(--dorado);
+  letter-spacing: -0.04em;
+  margin: 2px 0 10px;
+}
+.s-cf-num > span { display: block; }
+.s-cf-t {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(22px, 6.2vw, 36px); line-height: 1.08;
+  color: var(--crema);
+  max-width: 16ch;
+}
+
+.s-cf-foto { aspect-ratio: 4 / 5; overflow: hidden; max-width: 420px; }
+@media (min-width: 900px) { .s-cf-foto { aspect-ratio: 4 / 5; } }
+
+.s-cf-res {
+  padding: 18px 20px;
+  background: rgba(251, 246, 236, 0.055);
+  border-left: 3px solid var(--dorado);
+}
+.s-cf-res .pl-stars { margin-bottom: 8px; }
+.s-cf-res p { font-size: clamp(16px, 4.4vw, 20px); line-height: 1.45; color: var(--crema); max-width: 34ch; }
+.s-cf-res cite {
+  display: block; margin-top: 10px; font-style: normal;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute);
+}
+
+.s-cf-agg { font-size: 14px; color: var(--mute); max-width: 62ch; }
+.s-cf-agg b { color: var(--crema); font-weight: 700; }

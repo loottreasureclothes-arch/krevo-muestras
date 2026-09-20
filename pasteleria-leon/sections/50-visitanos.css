@@ -1,0 +1,39 @@
+/* #visitanos — su rótulo real completo (con dirección y teléfonos pintados) y el tablero
+   de datos. El horario sale de allbiz.mx y panaderiadeleite.com, que coinciden. */
+
+/* En celular la fachada se sale del gutter para que el rótulo se lea; en compu vuelve
+   al ancho del contenido con el recorte panorámico. */
+.s-vi-foto {
+  margin: 24px calc(var(--k-gutter) * -1) 26px;
+  aspect-ratio: 1176 / 486;
+  overflow: hidden;
+}
+.s-vi-foto picture, .s-vi-foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 760px) { .s-vi-foto { margin-inline: 0; aspect-ratio: 1176 / 450; } }
+
+.s-vi-grid { display: grid; gap: 18px; }
+@media (min-width: 760px) { .s-vi-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
+
+.s-vi-box {
+  padding: 18px 18px 20px;
+  background: rgba(251, 246, 236, 0.05);
+  border-top: 2px solid var(--rojo);
+}
+.s-vi-h {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--dorado); margin-bottom: 10px;
+}
+.s-vi-box p { font-size: 15px; color: var(--crema); }
+.s-vi-box .pl-link { margin-top: 10px; }
+
+.s-vi-tab { width: 100%; border-collapse: collapse; }
+.s-vi-tab th, .s-vi-tab td { padding: 8px 0; border-bottom: 1px solid var(--line-dark); font-size: 14px; }
+.s-vi-tab th { text-align: left; font-weight: 500; color: var(--mute); }
+.s-vi-tab td { text-align: right; color: var(--crema); font-weight: 700; white-space: nowrap; }
+
+.s-vi-tels { margin-top: 8px; font-family: var(--font-display); font-weight: 800; font-size: 21px; line-height: 1.32; }
+.s-vi-tels a { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(232, 180, 0, 0.5); }
+.s-vi-fine { margin-top: 10px; font-size: 12.5px; color: var(--mute) !important; }
+
+.s-vi-cta { display: grid; gap: 10px; margin-top: 26px; }
+@media (min-width: 560px) { .s-vi-cta { grid-template-columns: auto auto; justify-content: start; gap: 12px; } }

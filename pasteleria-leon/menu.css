@@ -1,0 +1,60 @@
+/* menu.html — la carta completa. Mismo header, mismo pie, mismo carrito que el inicio.
+   Las tarjetas son las de sections/20-catalogo.css: no se duplica el diseño. */
+
+.m-top {
+  padding: calc(var(--k-header-h) + env(safe-area-inset-top) + 34px) 0 22px;
+  background: var(--deep);
+}
+.m-top .pl-h2 { margin-bottom: 10px; }
+
+/* Chips de categoría pegados arriba, debajo del header */
+.m-chips {
+  position: sticky;
+  top: calc(var(--k-header-h) + env(safe-area-inset-top));
+  z-index: 40;
+  background: var(--deep-2);
+  border-bottom: 1px solid var(--line-dark);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+}
+body.pl-scrolled .m-chips { top: calc(52px + env(safe-area-inset-top)); }
+@media (min-width: 900px) { body.pl-scrolled .m-chips { top: calc(62px + env(safe-area-inset-top)); } }
+.m-chips-in {
+  display: flex; gap: 8px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 10px var(--k-gutter);
+  mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 34px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 34px), transparent 100%);
+}
+.m-chips-in::-webkit-scrollbar { display: none; }
+.m-chips-in a {
+  flex: none;
+  display: inline-flex; align-items: center;
+  min-height: 44px; padding: 0 15px;
+  border: 1.5px solid rgba(251, 246, 236, 0.28);
+  color: var(--crema);
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  white-space: nowrap;
+}
+@media (hover: hover) and (pointer: fine) { .m-chips-in a:hover { background: var(--rojo); border-color: var(--rojo); } }
+
+.m-cat { padding: 34px 0 10px; }
+.m-cat:nth-of-type(even) { background: var(--deep-2); }
+.m-cat:nth-of-type(odd) { background: var(--deep); }
+.m-cat:last-of-type { padding-bottom: 40px; }
+.m-cat-h {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(24px, 6.6vw, 38px); line-height: 1.06;
+  color: var(--crema);
+}
+.m-cat-d { font-size: 14px; color: var(--mute); margin-top: 6px; max-width: 48ch; }
+.m-cat .s-cat-grid { margin-top: 20px; margin-bottom: 26px; }
+
+.m-nota {
+  background: var(--crema); color: var(--deep);
+  padding: 22px var(--k-gutter) 26px;
+}
+.m-nota-in { max-width: 1180px; margin-inline: auto; }
+.m-nota p { font-size: 14.5px; max-width: 60ch; color: var(--mute-ink); }
+.m-nota b { color: var(--deep); }
+.m-nota .pl-btn { margin-top: 16px; }

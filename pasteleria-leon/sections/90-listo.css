@@ -1,0 +1,46 @@
+/* #listo — banda de papel crema (única junto con la carta y la hoja del pedido).
+   Sin link de cobro, sin mensualidades: esta muestra no cobra nada aquí. */
+
+#listo .pl-h2 { color: var(--deep); }
+
+.s-li-list {
+  counter-reset: li;
+  display: grid; gap: 0;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line-paper);
+}
+.s-li-list li {
+  counter-increment: li;
+  position: relative;
+  padding: 16px 0 16px 42px;
+  border-bottom: 1px solid var(--line-paper);
+  font-size: 14.5px; line-height: 1.6;
+  color: var(--mute-ink);
+}
+.s-li-list li::before {
+  content: counter(li, decimal-leading-zero);
+  position: absolute; left: 0; top: 17px;
+  font-family: var(--font-body); font-size: 12px; font-weight: 800;
+  letter-spacing: 0.08em; color: var(--rojo);
+}
+.s-li-list b {
+  display: block;
+  font-family: var(--font-display); font-weight: 800; font-size: 17px;
+  color: var(--deep); margin-bottom: 3px;
+}
+@media (min-width: 760px) {
+  .s-li-list { grid-template-columns: 1fr 1fr; column-gap: 40px; border-top: 0; }
+  .s-li-list li { border-top: 1px solid var(--line-paper); border-bottom: 0; }
+}
+
+.s-li-fine {
+  margin-top: 22px;
+  font-size: 14px; font-weight: 500;
+  color: var(--deep);
+  padding: 14px 16px;
+  background: rgba(210, 36, 30, 0.08);
+  border-left: 3px solid var(--rojo);
+  max-width: 54ch;
+}

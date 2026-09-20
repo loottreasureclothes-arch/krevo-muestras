@@ -1,0 +1,123 @@
+/* #tufoto — COMPONENTE FIRMA: "Tu foto en el pastel".
+   Sale literal de su reseña de 5 estrellas (Vicky Lozano): decoraron un pastel con la foto
+   de la boda de sus papás. El visitante elige una foto de su propio celular, se ve dentro
+   del disco de betún sobre la foto real de su pastel, y escribe el nombre del festejado,
+   que se escribe solo de izquierda a derecha con letra de repostería.
+   Reposo del CSS = todo visible (disco con su leyenda y el nombre puesto): sin JS no hay
+   ningún hueco en blanco. Único lugar de la página donde aparece el azul de la patineta. */
+
+/* En celular: título, luego el pastel (para que se entienda de un vistazo) y abajo las
+   herramientas. En compu: el pastel a la derecha, todo lo demás a la izquierda. */
+.s-tf { display: grid; gap: 26px; }
+@media (min-width: 900px) {
+  .s-tf {
+    grid-template-columns: 1fr minmax(360px, 440px);
+    grid-template-areas: "head foto" "copy foto";
+    column-gap: 54px; row-gap: 24px; align-items: start;
+  }
+  .s-tf-head { grid-area: head; }
+  .s-tf-copy { grid-area: copy; }
+  .s-tf-cake { grid-area: foto; align-self: center; }
+}
+
+/* ---------- Columna de texto ---------- */
+.s-tf-quote {
+  margin: 0 0 22px;
+  padding: 18px 20px;
+  background: rgba(251, 246, 236, 0.055);
+  border-left: 3px solid var(--rojo);
+}
+.s-tf-quote .pl-stars { margin-bottom: 8px; }
+.s-tf-quote p { font-size: 15px; line-height: 1.6; color: var(--crema); max-width: 46ch; }
+.s-tf-quote cite {
+  display: block; margin-top: 10px; font-style: normal;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--mute);
+}
+
+.s-tf-tools { display: grid; gap: 14px; }
+@media (min-width: 560px) { .s-tf-tools { grid-template-columns: auto 1fr; align-items: end; gap: 14px; } }
+
+.s-tf-pick { display: block; position: relative; }
+.s-tf-pick label { width: 100%; cursor: pointer; }
+.s-tf-pick:focus-within label { outline: 2px solid var(--dorado); outline-offset: 3px; }
+
+.s-tf-field { display: grid; gap: 6px; }
+.s-tf-field > span {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--mute);
+}
+.s-tf-field input {
+  width: 100%; min-height: 48px; padding: 12px 13px;
+  background: rgba(251, 246, 236, 0.07);
+  color: var(--crema);
+  border: 1px solid var(--line-dark); border-radius: 0;
+  font-size: 16px;
+}
+.s-tf-field input::placeholder { color: rgba(251, 246, 236, 0.42); }
+
+.s-tf-note { font-size: 12.5px; color: var(--mute); margin: 16px 0 18px; max-width: 46ch; }
+.s-tf-send { width: 100%; }
+@media (min-width: 560px) { .s-tf-send { width: auto; } }
+
+/* ---------- El pastel ---------- */
+.s-tf-cake { max-width: 440px; }
+.s-tf-cake figcaption { margin-top: 12px; font-size: 12.5px; color: var(--mute); }
+.s-tf-plate {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--deep-3);
+  overflow: hidden;
+}
+.s-tf-base { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.s-tf-disc {
+  position: absolute;
+  left: 50%; top: 43%;
+  width: 54%; aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid; place-items: center;
+  background: var(--crema-2);
+  box-shadow: 0 2px 10px rgba(42, 14, 12, 0.22), inset 0 0 0 1px rgba(42, 14, 12, 0.10);
+}
+.s-tf-disc img { width: 100%; height: 100%; object-fit: cover; grid-area: 1 / 1; }
+.s-tf-hint {
+  grid-area: 1 / 1; z-index: 2;
+  max-width: 68%; text-align: center;
+  font-family: var(--font-body); font-size: clamp(10px, 2.6vw, 13px);
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #2E7DA3; /* el azul de la patineta, oscurecido para que se lea sobre crema */
+}
+.s-tf-disc.has-photo .s-tf-hint { display: none; }
+.s-tf-ring {
+  position: absolute; inset: 0; z-index: 3;
+  width: 100%; height: 100%;
+  color: var(--crema);
+  pointer-events: none;
+}
+
+.s-tf-name {
+  position: absolute; left: 0; right: 0; top: 78%;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: clamp(26px, 8.4vw, 46px);
+  line-height: 1;
+  color: #4B2E2A;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
+  padding-inline: 8%;
+}
+@media (min-width: 900px) { .s-tf-name { font-size: 42px; } }
+.s-tf-name span { display: inline-block; max-width: 100%; overflow-wrap: break-word; }
+.s-tf-name .is-ph { color: rgba(75, 46, 42, 0.45); }
+
+/* El nombre se escribe de izquierda a derecha. Solo con JS y sin reduced-motion;
+   el reposo es el nombre COMPLETO, así que nunca se queda a medias. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .s-tf-name span.is-writing { animation: tf-write 900ms var(--ease-out) both; }
+}
+@keyframes tf-write {
+  from { clip-path: inset(0 100% -20% 0); }
+  to { clip-path: inset(0 -6% -20% 0); }
+}

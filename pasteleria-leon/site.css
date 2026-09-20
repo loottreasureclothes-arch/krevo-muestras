@@ -1,0 +1,405 @@
+/* Pastelería León · FUNDACIÓN (20 sep 2026) — sobre _kit/kit.css
+   =====================================================================
+   HOJA-DIRECCION.md manda. Lienzo OSCURO (chocolate cálido), crema SOLO para leer.
+   Tokens medidos con PIL sobre su logo real (research/colores.md):
+     --deep   #2A0E0C  chocolate casi negro, cálido (lienzo dominante)
+     --deep-2 #3A1512  banda alterna
+     --rojo   #D2241E  rojo del corazón del logo: navegar, "+ Agregar", festón
+     --rojo-claro #F2736C  el rojo cuando tiene que leerse sobre oscuro
+     --dorado #E8B400  melena del león: segunda línea de títulos, estrellas, el 33
+     --crema  #FBF6EC  papel SOLO para leer (header, carta, hoja del pedido)
+     --azul   #87C3E1  la patineta. UNA sola vez en toda la página (#tufoto)
+     --wa     #25D366  solo lo que de verdad manda WhatsApp + el flotante
+   MOTIVO GRÁFICO ÚNICO: el FESTÓN DE BETÚN (.pl-fest / ::after del header y de los marcos),
+     el borde de conchitas que ellos pipean en la base de sus pasteles (fotos 08, 09, 15, 17, 18).
+   RADIO: 0 px en botones y marcos. Nada redondo salvo los discos del componente firma.
+   Tipografía: Gabarito 600/800 (títulos) · Karla 400/500 (cuerpo) · Grand Hotel (UNA vez:
+     el nombre escrito en el betún). Prohibidas Inter, Poppins, Montserrat.
+   Componente firma: "Tu foto en el pastel" (sections/30-tufoto.*). No está en
+     COMPONENTES-USADOS.md.
+   Animación: SOLO los títulos que caen ([data-drop]) y el componente firma. Nada más.
+   Blindaje: reposo del CSS = estado final; red de seguridad a 1.6 s en site.js.
+   WhatsApp flotante: se esconde con visibility (no opacity) sobre [data-hide-wa] y el pie.
+   OJO: `main > section[id] { padding-block }` le gana a `.s-hero { padding-top }`:
+     por eso el hero se escribe `#hero.s-hero`.
+   ===================================================================== */
+
+:root {
+  --deep: #2A0E0C;
+  --deep-2: #3A1512;
+  --deep-3: #481A15;
+  --rojo: #D2241E;
+  --rojo-hover: #B31C17;
+  --rojo-claro: #F2736C;
+  --dorado: #E8B400;
+  --crema: #FBF6EC;
+  --crema-2: #F2E7D3;
+  --azul: #87C3E1;
+  --wa: #25D366;
+  --wa-dark: #1EBE5B;
+  --wa-ink: #0B3D1F;
+
+  --ink: #2A0E0C;
+  --paper: #FBF6EC;
+  --brand: #D2241E;
+  --mute: rgba(251, 246, 236, 0.70);
+  --mute-ink: rgba(42, 14, 12, 0.68);
+  --line-dark: rgba(251, 246, 236, 0.16);
+  --line-paper: rgba(42, 14, 12, 0.14);
+  --radius: 0px;
+
+  --font-display: "Gabarito", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Karla", system-ui, sans-serif;
+  --font-hand: "Grand Hotel", "Snell Roundhand", cursive;
+
+  --k-header-h: 60px;
+  --k-gutter: 18px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+@media (min-width: 900px) {
+  :root { --k-header-h: 74px; --k-gutter: 40px; }
+}
+
+html { overflow-x: clip; scroll-behavior: auto; }
+body {
+  background: var(--deep);
+  color: var(--crema);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+}
+::selection { background: var(--dorado); color: var(--deep); }
+:focus-visible { outline: 2px solid var(--dorado); outline-offset: 3px; border-radius: 0; }
+.tab-num { font-variant-numeric: tabular-nums; }
+
+.pl-skip {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--dorado); color: var(--deep); padding: 12px 18px; font-weight: 700;
+}
+.pl-skip:focus { left: 8px; top: 8px; }
+
+/* ============================================================ RITMO DE FONDOS */
+main > section[id] { padding-block: clamp(52px, 9vw, 84px); position: relative; }
+#hero.s-hero { padding: 0; }
+#catalogo { background: var(--deep); }
+#tufoto { background: var(--deep-2); }
+#confianza { background: var(--deep); }
+#visitanos { background: var(--deep-2); }
+#listo { background: var(--crema); color: var(--deep); }
+
+.k-wrap { max-width: 1180px; padding-inline: var(--k-gutter); }
+
+/* ============================================================ EL FESTÓN (motivo único) */
+/* Conchitas de betún. --fw = ancho de cada concha, --fc = color. */
+.pl-fest {
+  --fw: 22px; --fc: var(--rojo);
+  height: calc(var(--fw) * 0.58);
+  background:
+    radial-gradient(circle at 50% 0, var(--fc) calc(var(--fw) * 0.5 - 0.5px), transparent calc(var(--fw) * 0.5))
+    repeat-x 0 0 / var(--fw) 100%;
+}
+.pl-fest--up {
+  background:
+    radial-gradient(circle at 50% 100%, var(--fc) calc(var(--fw) * 0.5 - 0.5px), transparent calc(var(--fw) * 0.5))
+    repeat-x 0 0 / var(--fw) 100%;
+}
+/* Divisor entre secciones: tira fina de festón dorado */
+.pl-sep { --fw: 20px; --fc: rgba(232, 180, 0, 0.30); }
+
+/* ============================================================ TIPOGRAFÍA */
+.pl-eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--dorado);
+  margin-bottom: 14px;
+}
+#listo .pl-eyebrow { color: var(--rojo); }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.015em; }
+
+.pl-h1 {
+  font-size: clamp(38px, 11.2vw, 76px);
+  line-height: 1.0;
+  max-width: 13ch;
+  text-wrap: balance;
+}
+.pl-h2 {
+  font-size: clamp(28px, 7.6vw, 50px);
+  line-height: 1.04;
+  max-width: 15ch;
+}
+.pl-h1 > span, .pl-h2 > span { display: block; }
+.pl-au { color: var(--dorado); }
+#listo .pl-au { color: var(--rojo); }
+
+.pl-lede {
+  max-width: 44ch;
+  font-size: clamp(15px, 4.1vw, 17px);
+  color: var(--mute);
+  margin-top: 14px;
+}
+#listo .pl-lede { color: var(--mute-ink); }
+
+/* ============================================================ BOTONES
+   Verde SOLO lo que manda WhatsApp (uno por sección) + el flotante.
+   Navegar y "+ Agregar" en ROJO de marca. Rectangulares, mayúsculas espaciadas. */
+.pl-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 48px; padding: 0 20px;
+  border: 1.5px solid transparent; border-radius: 0;
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.10em; text-transform: uppercase; line-height: 1;
+  text-align: center;
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out),
+              border-color 200ms var(--ease-out), transform 140ms var(--ease-out);
+}
+.pl-btn:active { transform: scale(0.975); }
+.pl-btn svg { width: 19px; height: 19px; flex: none; }
+
+.pl-btn--brand { background: var(--rojo); color: #fff; border-color: var(--rojo); }
+.pl-btn--line { background: transparent; color: var(--crema); border-color: rgba(251, 246, 236, 0.42); }
+#listo .pl-btn--line { color: var(--deep); border-color: rgba(42, 14, 12, 0.34); }
+.pl-btn--wa {
+  background: var(--wa); color: var(--wa-ink);
+  border-color: rgba(11, 61, 31, 0.32);
+  box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35);
+  font-weight: 800;
+}
+@media (hover: hover) and (pointer: fine) {
+  .pl-btn--brand:hover { background: var(--rojo-hover); border-color: var(--rojo-hover); }
+  .pl-btn--line:hover { background: rgba(251, 246, 236, 0.10); border-color: var(--crema); }
+  #listo .pl-btn--line:hover { background: rgba(42, 14, 12, 0.07); border-color: var(--deep); }
+  .pl-btn--wa:hover { background: var(--wa-dark); }
+}
+
+/* Link con flecha (terciario) */
+.pl-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--dorado);
+  border-bottom: 1px solid rgba(232, 180, 0, 0.45);
+}
+.pl-link svg { width: 18px; height: 18px; }
+@media (hover: hover) and (pointer: fine) { .pl-link:hover { color: var(--crema); border-bottom-color: var(--crema); } }
+
+/* ============================================================ MARCOS DE FOTO (con festón arriba) */
+.pl-frame { position: relative; background: var(--deep-3); }
+.pl-frame::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; z-index: 2;
+  --fw: 20px; --fc: var(--crema);
+  height: 11px;
+  background:
+    radial-gradient(circle at 50% 100%, var(--fc) 9.5px, transparent 10px)
+    repeat-x 0 0 / var(--fw) 100%;
+}
+.pl-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ============================================================ HEADER PROPIO
+   Franja crema (el gris de su rótulo pintado) que TERMINA EN FESTÓN de betún. */
+.pl-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 50;
+  height: calc(var(--k-header-h) + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) max(var(--k-gutter), env(safe-area-inset-right)) 0 max(var(--k-gutter), env(safe-area-inset-left));
+  display: flex; align-items: center; gap: 12px;
+  background: var(--crema);
+  color: var(--deep);
+  border-bottom: 0;
+  transition: height 260ms var(--ease-out), box-shadow 260ms var(--ease-out);
+}
+.pl-header::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 11px;
+  background:
+    radial-gradient(circle at 50% 0, var(--crema) 9.5px, transparent 10px)
+    repeat-x 0 0 / 20px 100%;
+  pointer-events: none;
+}
+body.pl-scrolled .pl-header { height: calc(52px + env(safe-area-inset-top)); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28); }
+@media (min-width: 900px) {
+  body.pl-scrolled .pl-header { height: calc(62px + env(safe-area-inset-top)); }
+}
+
+.pl-logo { display: inline-flex; align-items: center; gap: 9px; margin-right: auto; min-width: 0; min-height: 44px; }
+.pl-logo img { height: 38px; width: auto; transition: height 260ms var(--ease-out); }
+body.pl-scrolled .pl-logo img { height: 32px; }
+.pl-word { display: block; line-height: 1; }
+.pl-word b {
+  display: block; font-family: var(--font-display); font-weight: 800;
+  font-size: 14px; letter-spacing: 0.02em; color: var(--rojo);
+}
+.pl-word i {
+  display: block; font-style: normal; font-size: 9px; font-weight: 500;
+  letter-spacing: 0.17em; text-transform: uppercase; color: rgba(42, 14, 12, 0.55); margin-top: 2px;
+}
+@media (min-width: 900px) {
+  .pl-logo img { height: 46px; }
+  .pl-word b { font-size: 18px; }
+  .pl-word i { font-size: 10px; }
+}
+
+.pl-head-acts { display: flex; align-items: center; gap: 6px; flex: none; }
+.pl-head-link {
+  display: inline-flex; align-items: center; height: 44px; padding: 0 10px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase;
+  color: var(--rojo);
+}
+@media (hover: hover) and (pointer: fine) { .pl-head-link:hover { color: var(--deep); } }
+
+.pl-burger { width: 44px; height: 44px; display: grid; place-items: center; }
+.pl-burger i { display: block; width: 21px; height: 2px; background: var(--deep); margin: 2.5px 0; transition: transform 240ms var(--ease-out), opacity 180ms; }
+body.pl-nav-open .pl-burger i:nth-child(1) { transform: translateY(4.5px) rotate(45deg); }
+body.pl-nav-open .pl-burger i:nth-child(2) { opacity: 0; }
+body.pl-nav-open .pl-burger i:nth-child(3) { transform: translateY(-4.5px) rotate(-45deg); }
+
+/* ============================================================ PANEL DE NAVEGACIÓN */
+#pl-nav { position: fixed; inset: 0; z-index: 80; visibility: hidden; }
+body.pl-nav-open #pl-nav { visibility: visible; }
+.pl-nav-scrim {
+  position: absolute; inset: 0; background: rgba(15, 5, 4, 0.62);
+  opacity: 0; transition: opacity 260ms var(--ease-out);
+}
+body.pl-nav-open .pl-nav-scrim { opacity: 1; }
+.pl-nav-panel {
+  position: absolute; inset: 0 0 auto 0;
+  background: var(--deep-2);
+  padding: calc(var(--k-header-h) + env(safe-area-inset-top) + 26px) var(--k-gutter) 26px;
+  transform: translateY(-100%);
+  transition: transform 320ms var(--ease-out);
+  border-bottom: 2px solid var(--rojo);
+}
+body.pl-nav-open .pl-nav-panel { transform: none; }
+@media (min-width: 900px) {
+  .pl-nav-panel { left: auto; width: 420px; bottom: 0; transform: translateX(100%); }
+  body.pl-nav-open .pl-nav-panel { transform: none; }
+}
+.pl-nav-list a {
+  display: flex; align-items: baseline; gap: 12px;
+  padding: 11px 0; min-height: 46px;
+  font-family: var(--font-display); font-weight: 600; font-size: 21px;
+  color: var(--crema);
+  border-bottom: 1px solid var(--line-dark);
+}
+.pl-nav-list a span { font-family: var(--font-body); font-size: 11px; font-weight: 700; color: var(--dorado); letter-spacing: 0.1em; }
+.pl-nav-list a[aria-current] { color: var(--dorado); }
+.pl-nav-foot { margin-top: 20px; display: grid; gap: 10px; }
+.pl-nav-foot p { font-size: 13px; color: var(--mute); }
+
+/* ============================================================ HOJA DEL PEDIDO */
+.pl-sheet { position: fixed; inset: 0; z-index: 90; visibility: hidden; }
+body.pl-sheet-open .pl-sheet { visibility: visible; }
+.pl-sheet-bg {
+  position: absolute; inset: 0; width: 100%; background: rgba(15, 5, 4, 0.66);
+  opacity: 0; transition: opacity 240ms var(--ease-out);
+}
+body.pl-sheet-open .pl-sheet-bg { opacity: 1; }
+.pl-sheet-box {
+  position: absolute; inset: auto 0 0 0;
+  max-height: 88svh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  background: var(--crema); color: var(--deep);
+  padding: 24px var(--k-gutter) calc(26px + env(safe-area-inset-bottom));
+  transform: translateY(100%);
+  transition: transform 320ms var(--ease-out);
+  border-top: 3px solid var(--rojo);
+}
+body.pl-sheet-open .pl-sheet-box { transform: none; }
+@media (min-width: 900px) {
+  .pl-sheet-box { inset: 0 0 0 auto; width: 460px; max-height: none; transform: translateX(100%); border-top: 0; border-left: 3px solid var(--rojo); }
+}
+.pl-sheet-x { position: absolute; top: 10px; right: 12px; width: 44px; height: 44px; font-size: 26px; line-height: 1; color: var(--deep); }
+.pl-sheet-t { font-size: 27px; margin-bottom: 4px; }
+.pl-sheet-sub { font-size: 13px; color: var(--mute-ink); margin-bottom: 16px; }
+
+.pl-cart-list { display: grid; gap: 0; margin: 4px 0 10px; }
+.pl-cart-row {
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px;
+  padding: 11px 0; border-bottom: 1px solid var(--line-paper);
+}
+.pl-cart-row-name { font-size: 14px; font-weight: 500; }
+.pl-cart-row-p { font-size: 12px; color: var(--mute-ink); letter-spacing: 0.04em; }
+.pl-cart-qty { display: inline-flex; align-items: center; gap: 2px; }
+.pl-cart-qty button {
+  width: 34px; height: 34px; display: grid; place-items: center;
+  border: 1px solid var(--line-paper); color: var(--deep); font-size: 16px; line-height: 1;
+}
+.pl-cart-qty b { min-width: 24px; text-align: center; font-size: 14px; }
+.pl-cart-total {
+  display: flex; justify-content: space-between; gap: 12px; align-items: baseline;
+  padding: 12px 0; border-top: 2px solid var(--deep); margin-top: 4px;
+  font-family: var(--font-display); font-weight: 800; font-size: 16px;
+}
+.pl-cart-total span { font-family: var(--font-body); font-weight: 500; font-size: 13px; text-align: right; max-width: 20ch; }
+.pl-empty { font-size: 14px; color: var(--mute-ink); padding: 10px 0 16px; }
+
+.pl-field { display: grid; gap: 6px; margin-bottom: 14px; }
+.pl-field > span { font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--mute-ink); }
+.pl-field input, .pl-field select, .pl-field textarea {
+  width: 100%; min-height: 48px; padding: 12px 13px;
+  background: #fff; color: var(--deep);
+  border: 1px solid var(--line-paper); border-radius: 0;
+  font-size: 16px;
+}
+.pl-field textarea { min-height: 76px; resize: vertical; }
+.pl-sheet-send { width: 100%; margin-top: 4px; }
+.pl-sheet-fine { font-size: 12px; color: var(--mute-ink); margin-top: 12px; }
+
+/* Barra fija "Mi pedido" (color de marca, NO verde) */
+.pl-cart-bar {
+  position: fixed; z-index: 58;
+  left: 0; right: 0; bottom: 0;
+  display: none; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 13px max(var(--k-gutter), env(safe-area-inset-right)) calc(13px + env(safe-area-inset-bottom)) max(var(--k-gutter), env(safe-area-inset-left));
+  background: var(--rojo); color: #fff;
+  font-family: var(--font-body); font-size: 13px; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3);
+}
+.pl-cart-bar.is-visible { display: flex; }
+.pl-cart-bar b { display: inline-grid; place-items: center; min-width: 26px; height: 26px; padding: 0 7px; background: #fff; color: var(--rojo); }
+@media (min-width: 900px) {
+  .pl-cart-bar { left: auto; right: 0; bottom: 0; width: auto; padding: 16px 28px; }
+}
+
+/* ============================================================ WHATSAPP FLOTANTE */
+.k-wa { background: var(--wa); border-radius: 50%; }
+body.pl-wa-off .k-wa,
+body:not(.pl-wa-ready) .k-wa { visibility: hidden; animation: none; }
+body.pl-cart-on .k-wa { bottom: calc(76px + env(safe-area-inset-bottom)); }
+@media (min-width: 900px) { body.pl-cart-on .k-wa { bottom: calc(28px + env(safe-area-inset-bottom)); } }
+
+/* ============================================================ ESTRELLAS (solo con reseña real) */
+.pl-stars { display: inline-flex; gap: 2px; color: var(--dorado); }
+.pl-stars svg { width: 15px; height: 15px; }
+
+/* ============================================================ PIE */
+.pl-foot { background: var(--deep-3); color: var(--crema); padding: 52px 0 calc(34px + env(safe-area-inset-bottom)); position: relative; }
+.pl-foot-top { --fw: 22px; --fc: var(--deep-3); position: absolute; left: 0; right: 0; top: -12px; height: 13px;
+  background: radial-gradient(circle at 50% 100%, var(--deep-3) 10.5px, transparent 11px) repeat-x 0 0 / 22px 100%; }
+.pl-foot-logo { width: min(260px, 62vw); height: auto; margin-bottom: 22px; }
+.pl-foot-close { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 7.4vw, 42px); line-height: 1.06; margin-bottom: 28px; }
+.pl-foot-close b { color: var(--dorado); font-weight: 800; }
+.pl-foot-grid { display: grid; gap: 26px; }
+@media (min-width: 760px) { .pl-foot-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
+.pl-foot-h { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dorado); margin-bottom: 9px; }
+.pl-foot-grid p { font-size: 14px; color: var(--mute); }
+.pl-foot-grid a { text-decoration: underline; text-underline-offset: 3px; }
+.pl-foot-social { display: flex; gap: 10px; margin-top: 12px; }
+.pl-foot-social a {
+  width: 44px; height: 44px; display: grid; place-items: center;
+  border: 1px solid var(--line-dark); color: var(--crema);
+}
+.pl-foot-social svg { width: 21px; height: 21px; }
+@media (hover: hover) and (pointer: fine) { .pl-foot-social a:hover { background: var(--crema); color: var(--deep-3); border-color: var(--crema); } }
+.pl-foot-note { margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--line-dark); font-size: 12px; color: rgba(251, 246, 236, 0.5); }
+
+/* ============================================================ TÍTULOS QUE CAEN
+   Reposo = título PUESTO (blindaje). Solo se esconde con JS y sin reduced-motion. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  body.pl-titles-js [data-drop] > span { opacity: 0; }
+  body.pl-titles-js [data-drop].is-drop > span { opacity: 1; }
+}
+
+/* ============================================================ MOVIMIENTO REDUCIDO */
+@media (prefers-reduced-motion: reduce) {
+  [data-drop] > span { opacity: 1 !important; transform: none !important; }
+}
