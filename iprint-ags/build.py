@@ -32,14 +32,18 @@ print('index.html armado con',n,'secciones')
 
 if glob.glob('sections-comparar/*.html'):
     t=T
-    t=re.sub(r'(<a class="cd-skip" href=")#[\w-]+(")',r'\1#comparar\2',t)
     # links "#x" del template -> index.html#x (no toca <use href="#i-...">)
     t=re.sub(r'(<a\b[^>]*?\shref=")#([\w-]*)(")',lambda m:f'{m.group(1)}index.html#{m.group(2) or "top"}{m.group(3)}',t)
+    # el "saltar al contenido" se queda DENTRO de esta página (después del rewrite, si no queda index.html#comparar)
+    t=re.sub(r'(<a class="cd-skip" href=")[^"]+(")',r'\1#comparar\2',t)
+    # la liga del pie al comparativo aquí es el camino de vuelta a la muestra
+    t=t.replace('<a class="cd-foot-cmp" href="comparar.html">Ver el antes y después de su página',
+                '<a class="cd-foot-cmp" href="index.html#trabajos">Volver a los trabajos de la muestra')
     t=re.sub(r'<title>.*?</title>','<title>Antes y después de su página | iPrint Aguascalientes</title>',t,count=1,flags=re.S)
     t=re.sub(r'(<meta name="description" content=")[^"]*(")',r'\1Comparativo de la página actual de iPrint Aguascalientes contra la nueva muestra de KREVO: WhatsApp, catálogo, cotizador y Google.\2',t,count=1)
     t=t.replace(f'<link rel="canonical" href="{BASE}">',f'<link rel="canonical" href="{BASE}comparar.html">')
     t=t.replace(f'<meta property="og:url" content="{BASE}">',f'<meta property="og:url" content="{BASE}comparar.html">')
-    t=re.sub(r'<link rel="preload" as="image" href="img/hero/[^>]*>\n','',t)
+    t=re.sub(r'<link rel="preload" as="image" href="img/hd/ip06[^>]*>\n','',t)
     t=re.sub(r'<script type="application/ld\+json">.*?</script>\n','',t,count=1,flags=re.S)
     t=t.replace('<meta name="format-detection" content="telephone=no">','<meta name="format-detection" content="telephone=no">\n<meta name="robots" content="noindex">')
     t=t.replace('<body data-hero-dark>','<body data-hero-dark data-page="comparar">')

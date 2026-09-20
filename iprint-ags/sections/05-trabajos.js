@@ -26,7 +26,7 @@
     var copies = slides.map(function (s) { return s.querySelector(".tj-copy"); });
     var tilt = 0, tiltGoal = 0, hov = { x: 0, y: 0, gx: 0, gy: 0 }, entering = false;
 
-    var p = 0, vel = 0, target = 0, index = -1, on = -1, step = 1, railW = 0;
+    var p = 0, vel = 0, target = 0, index = -1, on = -1, step = 1, railW = 0, maxShift = 0;
     var raf = 0, last = 0, fired = true, seen = false, auto = 0, touched = false, visible = false;
 
     function pad(n) { return (n < 10 ? "0" : "") + n; }
@@ -68,11 +68,26 @@
       step = N > 1 ? (slides[1].offsetLeft - slides[0].offsetLeft) : slides[0].offsetWidth;
       if (!step) step = slides[0].offsetWidth || 1;
       railW = rail.offsetWidth;
+      maxShift = topeDerecho();
       render();
     }
 
+    /* Compu: al llegar a la última tarjeta el riel se topa contra el margen derecho del k-wrap,
+       así no queda media pantalla vacía al final (si no hay tope, 0 = sin límite). */
+    function topeDerecho() {
+      var ref = sec.querySelector(".tj-ui") || sec.querySelector(".k-wrap");
+      if (!ref) return 0;
+      var cs = window.getComputedStyle(ref);
+      var bordeDer = ref.getBoundingClientRect().right - (parseFloat(cs.paddingRight) || 0);
+      var carL = car.getBoundingClientRect().left + (parseFloat(window.getComputedStyle(car).paddingLeft) || 0);
+      var anchoRiel = (N - 1) * step + slides[N - 1].offsetWidth;
+      return Math.max(0, carL + anchoRiel - bordeDer);
+    }
+
     function render() {
-      track.style.transform = cover ? "none" : "translate3d(" + (-p * step).toFixed(2) + "px,0,0)";
+      var tx = -p * step;
+      if (!cover && maxShift && tx < -maxShift) tx = -maxShift;   // tope: la última tarjeta cierra contra el margen
+      track.style.transform = cover ? "none" : "translate3d(" + tx.toFixed(2) + "px,0,0)";
       // inclinacion por velocidad: se suaviza para que no tiemble
       tilt += (tiltGoal - tilt) * 0.3;
       if (Math.abs(tilt) < 0.02) tilt = 0;

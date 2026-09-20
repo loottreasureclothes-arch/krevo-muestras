@@ -1,28 +1,85 @@
-/* 01 hero: foto real a sangre (luego video de IA), título extendido 3D, CTA verde + contorno, cuadritos con hoja */
-#hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; isolation: isolate; background-color: var(--deep); }
-#hero .s-hero-media { position: absolute; inset: 0; z-index: -2; }
-#hero .s-hero-media picture, #hero .s-hero-img, #hero .s-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-#hero .s-hero-img { object-position: 50% 40%; }
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  html.ip-anim #hero .s-hero-img { animation: s-hero-kb 14s var(--ease-out) both; }
+/* 01 hero: fondo ciruela con grano + el letrero REAL de iPrint (Nacozari 1809) dentro de una CAJA DE LUZ
+   (marco oscuro con brillo lima) que se enciende sola al cargar, una vez, 1.25 s después.
+   Compu: titular 5 / caja de luz 7 (máx. 900 px, nunca por encima del detalle real de la foto de 1024 px).
+   Celular: titular, caja al ancho y cuadritos deslizables.
+   Blindaje: sin JS o con reduced-motion la caja ya sale encendida. */
+#hero {
+  position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
+  overflow: hidden; isolation: isolate;
+  background-color: var(--plum);
+  background-image:
+    radial-gradient(120% 80% at 82% 4%, rgba(166, 200, 73, 0.12), transparent 58%),
+    radial-gradient(100% 70% at 6% 100%, rgba(0, 0, 0, 0.45), transparent 72%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-@keyframes s-hero-kb { from { transform: scale(1.08); } to { transform: scale(1); } }
-/* velo direccional solo donde va el texto + viñeta */
-#hero .s-hero-shade { position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(15, 10, 18, 0.55) 0%, rgba(15, 10, 18, 0) 18%),
-    linear-gradient(0deg, rgba(20, 12, 24, 0.94) 0%, rgba(20, 12, 24, 0.78) 38%, rgba(20, 12, 24, 0.1) 66%),
-    radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(10, 6, 12, 0.5) 100%); }
-#hero .s-hero-in { padding-top: calc(var(--k-header-h) + 24px); padding-bottom: 18px; display: grid; gap: 22px; }
-#hero .s-hero-eb { color: var(--cream); margin-bottom: 12px; text-shadow: 0 1px 10px rgba(15, 10, 18, 0.75), 0 0 2px rgba(15, 10, 18, 0.6); }
-#hero .s-hero-title { font-size: clamp(38px, 10.8vw, 64px); line-height: 0.9; color: var(--cream); max-width: none; }
-#hero .s-hero-title .ln { display: block; white-space: nowrap; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.06em; }
-#hero .s-hero-sub { margin-top: 14px; font-size: 17px; line-height: 1.4; color: var(--cream-mute); max-width: 34ch; }
+#hero .s-hero-in {
+  padding-top: calc(var(--k-header-h) + 22px); padding-bottom: 24px;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; align-content: center;
+}
+
+/* ---------- Titular ---------- */
+#hero .s-hero-copy { position: relative; min-width: 0; container-type: inline-size; }
+/* marca de corte de imprenta arriba a la izquierda del titular */
+#hero .s-hero-copy::before { content: ""; position: absolute; left: -14px; top: 26px; width: 22px; height: 22px; border-left: 2px solid var(--lime); border-top: 2px solid var(--lime); opacity: 0.9; }
+#hero .s-hero-eb { color: var(--cream); margin-bottom: 12px; }
+#hero .s-hero-tag { font-weight: 800; letter-spacing: 0.04em; text-transform: none; color: var(--deep); background: var(--lime); padding: 5px 8px; border-radius: 2px; margin-right: 4px; text-shadow: none; }
+#hero .s-hero-title {
+  text-transform: uppercase; font-stretch: 125%; font-variation-settings: "wdth" 125; letter-spacing: -0.01em;
+  color: var(--cream); max-width: none; margin-bottom: 0.3em;
+  font-size: clamp(29px, 9.2vw, 96px); line-height: 1;
+  --x: 0.012em;
+  text-shadow:
+    0 var(--x) 0 #6d3f7e, 0 calc(var(--x) * 2) 0 #5f3570, 0 calc(var(--x) * 3) 0 #522c61, 0 calc(var(--x) * 4) 0 #452453,
+    0 calc(var(--x) * 5) 0 #381c44, 0 calc(var(--x) * 6) 0 #2c1536, 0 calc(var(--x) * 7) 0 #200e28,
+    0 calc(var(--x) * 7 + 0.05em) 0.12em rgba(0, 0, 0, 0.55);
+}
+#hero .s-hero-title .ln { display: block; white-space: nowrap; overflow: hidden; line-height: 1; padding: 0.02em 0.04em 0.06em 0; margin-bottom: 0; }
+#hero .s-hero-title .s-hero-big { font-size: 1.38em; line-height: 1; }
+#hero .s-hero-title em { color: var(--lime); }
+/* "Enciende": palabra apagada (contorno) que se llena de lima de izq. a der., una vez, al cargar.
+   Base sin blindaje = ya encendida (letra lima); el JS solo agrega "is-lit" tras el timeout. */
+#hero .s-hero-ignite { position: relative; display: block; }
+#hero .s-hero-off { display: none; }
+#hero .s-hero-lit { display: block; color: var(--lime); }
+#hero .s-hero-sub { margin-top: 14px; font-size: 17px; line-height: 1.4; color: var(--cream); font-weight: 500; max-width: 34ch; }
 #hero .s-hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
 #hero .s-hero-actions .cd-btn--secondary { color: var(--cream); }
 @media (max-width: 420px) { #hero .s-hero-actions .cd-btn { flex: 1 1 100%; } #hero .s-hero-actions .cd-btn--secondary { min-height: 48px; } }
 
-/* cuadritos: carril deslizable en celular, fila de 5 en compu */
+/* ---------- Caja de luz con la foto real ---------- */
+#hero .s-hero-box {
+  position: relative; margin: 0; width: 100%; max-width: 1330px; /* nunca más de 1.3x el original (1024 px) */
+  padding: 10px 10px 8px; border-radius: 4px;
+  background: linear-gradient(180deg, #26152f, #150c1c);
+  border: 1px solid rgba(166, 200, 73, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(166, 200, 73, 0.16),
+    0 0 46px -6px rgba(166, 200, 73, 0.4),
+    0 26px 60px -28px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transition: box-shadow 950ms var(--ease-out), border-color 950ms var(--ease-out);
+}
+#hero .s-hero-img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; background: #0e0814; }
+#hero .s-hero-cap { display: flex; align-items: center; gap: 8px; margin-top: 9px; font-size: 13px; line-height: 1.3; color: var(--cream-mute); }
+#hero .s-hero-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 8px rgba(166, 200, 73, 0.9); }
+
+/* el letrero se enciende solo, una vez (blindaje: sin JS/reduced-motion ya está encendido) */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  html.ip-anim #hero .s-hero-img { transition: filter 950ms var(--ease-out); }
+  html.ip-anim #hero .s-hero-dot { transition: opacity 950ms var(--ease-out); }
+  html.ip-anim #hero:not(.is-lit) .s-hero-img { filter: brightness(0.32) saturate(0.35); }
+  html.ip-anim #hero:not(.is-lit) .s-hero-dot { opacity: 0.25; }
+  html.ip-anim #hero:not(.is-lit) .s-hero-box {
+    border-color: rgba(244, 240, 234, 0.12);
+    box-shadow: 0 26px 60px -28px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  html.ip-anim #hero .s-hero-off { display: block; color: transparent; -webkit-text-stroke: 1.5px rgba(244, 240, 234, 0.55); text-shadow: none; }
+  html.ip-anim #hero .s-hero-lit { position: absolute; inset: 0; clip-path: inset(-20% 100% -20% 0%); transition: clip-path 950ms var(--ease-out);
+    text-shadow: 0 0 0.14em rgba(166, 200, 73, 0.8), 0 0 0.5em rgba(166, 200, 73, 0.5), 0 0.02em 0 #6f8a2a, 0 0.04em 0 #4d6219, 0 0.06em 0 #2e3b0e; }
+  html.ip-anim #hero.is-lit .s-hero-lit { clip-path: inset(-20% 0% -20% 0%); }
+}
+
+/* ---------- Cuadritos: carril deslizable en celular, fila de 5 en compu ---------- */
 #hero .s-hero-chips { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(var(--k-gutter) * -1); padding: 0 var(--k-gutter) 2px; }
 #hero .s-hero-chips::-webkit-scrollbar { display: none; }
 #hero .s-hero-chips li { flex: 0 0 62%; scroll-snap-align: start; }
@@ -35,50 +92,26 @@
 @media (hover: hover) and (pointer: fine) { #hero .s-hero-chips button:hover { border-color: var(--lime); } }
 
 @media (min-width: 900px) {
-  #hero .s-hero-shade { background:
-    linear-gradient(180deg, rgba(15, 10, 18, 0.5) 0%, rgba(15, 10, 18, 0) 16%),
-    linear-gradient(90deg, rgba(20, 12, 24, 0.9) 0%, rgba(20, 12, 24, 0.62) 38%, rgba(20, 12, 24, 0) 64%),
-    linear-gradient(0deg, rgba(20, 12, 24, 0.85) 0%, rgba(20, 12, 24, 0) 34%); }
-  #hero .s-hero-in { padding-bottom: 32px; gap: 44px; }
-  #hero .s-hero-title { font-size: clamp(64px, 6.6vw, 128px); }
+  #hero .s-hero-in { padding-bottom: 32px; }
   #hero .s-hero-sub { font-size: 20px; }
   #hero .s-hero-chips { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; margin: 0; padding: 0; gap: 12px; }
   #hero .s-hero-chips img { height: 92px; }
 }
-@media (min-width: 1800px) { #hero .s-hero-copy { max-width: 1100px; } }
 
-/* === V2 "más ganas": titular gigante con canto 3D profundo, foto a sangre protagonista === */
-#hero .s-hero-tag { font-weight: 800; letter-spacing: 0.04em; text-transform: none; color: var(--deep); background: var(--lime); padding: 5px 8px; border-radius: 2px; margin-right: 4px; text-shadow: none; }
-#hero .s-hero-title { text-transform: uppercase; font-stretch: 125%; font-variation-settings: "wdth" 125; letter-spacing: -0.01em;
-  font-size: clamp(34px, 11vw, 96px); line-height: 0.84;
-  --x: 0.012em;
-  text-shadow:
-    0 var(--x) 0 #6d3f7e, 0 calc(var(--x) * 2) 0 #5f3570, 0 calc(var(--x) * 3) 0 #522c61, 0 calc(var(--x) * 4) 0 #452453,
-    0 calc(var(--x) * 5) 0 #381c44, 0 calc(var(--x) * 6) 0 #2c1536, 0 calc(var(--x) * 7) 0 #200e28,
-    0 calc(var(--x) * 7 + 0.05em) 0.12em rgba(0, 0, 0, 0.55); }
-#hero .s-hero-title .ln { padding: 0 0.04em 0.16em 0; margin-bottom: -0.12em; }
-#hero .s-hero-title .s-hero-big { font-size: 1.38em; line-height: 0.8; margin-left: -0.04em; }
-#hero .s-hero-title em { color: var(--lime); }
-#hero .s-hero-copy { position: relative; }
-/* marcas de corte de imprenta alrededor del titular */
-#hero .s-hero-copy::before { content: ""; position: absolute; left: -14px; top: 26px; width: 22px; height: 22px; border-left: 2px solid var(--lime); border-top: 2px solid var(--lime); opacity: 0.9; }
-#hero .s-hero-sub { color: var(--cream); font-weight: 500; }
-#hero .s-hero-shade { background:
-    linear-gradient(180deg, rgba(15, 10, 18, 0.6) 0%, rgba(15, 10, 18, 0) 22%),
-    linear-gradient(0deg, rgba(20, 12, 24, 0.96) 0%, rgba(20, 12, 24, 0.7) 45%, rgba(20, 12, 24, 0.05) 72%); }
-@media (min-width: 900px) {
+/* ---------- Compu: titular 5 / caja de luz 7 ---------- */
+@media (min-width: 1024px) {
+  #hero .s-hero-in {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-areas: "copy caja" "chips chips";
+    column-gap: 48px; row-gap: 44px; align-items: center;
+  }
+  #hero .s-hero-copy { grid-area: copy; }
+  #hero .s-hero-box { grid-area: caja; justify-self: end; max-width: 900px; }
+  #hero .s-hero-chips { grid-area: chips; }
   #hero .s-hero-copy::before { left: -28px; top: 34px; width: 34px; height: 34px; }
-  #hero .s-hero-title { font-size: clamp(72px, 8.4vw, 160px); }
+  /* el renglón grande siempre cabe en su columna: 100cqi = ancho del bloque de texto */
+  #hero .s-hero-title { font-size: min(58px, 8.3cqi); }
   #hero .s-hero-title .s-hero-big { font-size: 1.62em; }
-  #hero .s-hero-copy { max-width: none; }
-  #hero .s-hero-shade { background:
-    linear-gradient(180deg, rgba(15, 10, 18, 0.55) 0%, rgba(15, 10, 18, 0) 18%),
-    linear-gradient(90deg, rgba(20, 12, 24, 0.92) 0%, rgba(20, 12, 24, 0.55) 45%, rgba(20, 12, 24, 0) 72%),
-    linear-gradient(0deg, rgba(20, 12, 24, 0.9) 0%, rgba(20, 12, 24, 0) 40%); }
+  #hero .s-hero-cap { font-size: 14px; }
 }
-@media (min-width: 1800px) { #hero .s-hero-copy { max-width: none; } }
-
-/* fix: líneas del título sin recorte ni encime con el texto */
-#hero .s-hero-title { line-height: 1; margin-bottom: 0.35em; }
-#hero .s-hero-title .ln { line-height: 1; padding: 0.02em 0.04em 0.06em 0; margin-bottom: 0; }
-#hero .s-hero-title .s-hero-big { line-height: 1; }
+@media (min-width: 1800px) { #hero .s-hero-title { font-size: min(74px, 8.3cqi); } }

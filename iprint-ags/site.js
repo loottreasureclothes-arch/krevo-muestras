@@ -11,6 +11,8 @@
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   var doc = document.documentElement;
   doc.classList.add("ip-anim");
+  /* raya lima del header: "se imprime" de izq. a der. una vez, 600ms tras el primer paint (L: sin JS ya está completa) */
+  requestAnimationFrame(function () { requestAnimationFrame(function () { doc.classList.add("ip-rule-on"); }); });
   var IP = window.IP = window.IP || {};
   IP.WA = WA;
   IP.reduce = reduce;
@@ -203,6 +205,11 @@
       sCar.appendChild(fig);
     });
     sCta = o.cta || null;
+    /* verde solo si de verdad manda el WhatsApp; si nada más baja al cotizador, va en color de marca */
+    var navega = !!(sCta && sCta.tipo != null);
+    sGo.classList.toggle("cd-btn--marca", navega);
+    sGo.classList.toggle("cd-btn--primary", !navega);
+    sGo.querySelector("svg use").setAttribute("href", navega ? "#i-arrow" : "#i-wa");
     sGo.hidden = !sCta; sGo.querySelector("span").textContent = sCta ? sCta.txt : "";
     sFb.classList.remove("is-on");
     sheet.hidden = false;
@@ -214,31 +221,39 @@
     setTimeout(function () { sBox.focus({ preventScroll: true }); }, 60);
   };
 
-  /* Cortina morada de cambio de capítulo (receta 15): cubre y destapa (≤600 ms) al cruzar hero->cotiza
-     y catálogo->enciende. Reversible: se repite cada vez que se cruza el límite, en cualquier sentido. */
-  function initCurtains() {
-    return; /* 19 sep: Emanuel rechazó la cortina de color entre secciones. */
-    if (reduce || !("IntersectionObserver" in window)) return;
-    Array.prototype.forEach.call(document.querySelectorAll("[data-curtain-before]"), function (c) {
-      var target = document.getElementById(c.getAttribute("data-curtain-before"));
-      if (!target || !c.animate) return;
-      var busy = false;
-      function sweep() {
-        if (busy) return;
-        busy = true;
-        c.animate([{ clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)" }], { duration: 280, easing: "cubic-bezier(.65,0,.35,1)", fill: "forwards" }).onfinish = function () {
-          c.animate([{ clipPath: "inset(0% 0 0 0)" }, { clipPath: "inset(0 0 100% 0)" }], { duration: 320, easing: "cubic-bezier(.33,1,.68,1)", fill: "forwards" }).onfinish = function () {
-            c.style.clipPath = "inset(100% 0 0 0)";
-            busy = false;
-          };
-        };
+  /* Títulos de sección: caen desde arriba y pegan con rebote corto (resorte muestreado, como
+     closetdoor/10-msi), una vez al asomar. Blindaje: si nunca corre, el CSS base ya los deja visibles
+     (la clase que los esconde solo la pone este JS, justo antes de animar) + rescate a 1.6 s. */
+  function initTitleDrop() {
+    if (reduce) return;
+    var els = document.querySelectorAll(".ip-h2.ip-mask");
+    if (!els.length || !("IntersectionObserver" in window) || !els[0].animate) return;
+    function spring(n, amp, turns, decay) {
+      var k = [];
+      for (var i = 0; i <= n; i++) {
+        var t = i / n, v = i === n ? 0 : -amp * Math.exp(-decay * t) * Math.cos(turns * Math.PI * 2 * t);
+        k.push({ transform: "translateY(" + v.toFixed(2) + "px)", offset: t });
       }
-      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) sweep(); }, { threshold: 0, rootMargin: "0px 0px -85% 0px" });
-      io.observe(target);
+      return k;
+    }
+    Array.prototype.forEach.call(els, function (el) {
+      el.classList.add("ip-drop-armed");
+      var done = false;
+      function drop() {
+        if (done) return;
+        done = true;
+        el.classList.remove("ip-drop-armed");
+        el.animate(spring(22, 60, 1.15, 4.6), { duration: 700, easing: "linear", fill: "backwards" });
+        el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260, easing: "ease-out", fill: "backwards" });
+      }
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); drop(); } }, { threshold: 0.2, rootMargin: "0px 0px -10% 0px" });
+      io.observe(el);
+      var fio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { fio.disconnect(); setTimeout(drop, 1600); } });
+      fio.observe(el);
     });
   }
 
-  function init() { initWa(); initMenu(); initRipple(); initWaHide(); initReveal(); initCurtains(); }
+  function init() { initWa(); initMenu(); initRipple(); initWaHide(); initReveal(); initTitleDrop(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
