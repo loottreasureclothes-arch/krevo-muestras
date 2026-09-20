@@ -197,8 +197,9 @@
     function update() { ticking = false; header.classList.toggle("is-solid", (window.scrollY || window.pageYOffset) > 40); }
     window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
     update();
-    /* el hero empieza DEBAJO del header (y del aviso, cuando sale): si la foto se mete
-       atras de la barra, el letrero "Petra" se ve cortado por arriba. */
+    /* --pt-head-total: alto real del header (+ el aviso de miercoles cuando sale).
+       Ya NO empuja al hero (FEEDBACK 20 sep: el header va transparente ENCIMA de
+       la foto), pero lo dejamos calculado por si otra seccion lo necesita. */
     function syncH() {
       var h = header.offsetHeight;
       if (h) document.documentElement.style.setProperty("--pt-head-total", h + "px");
@@ -265,13 +266,21 @@
     }, 1600);
   }
 
-  /* Rescate por scroll (no solo el temporizador de 1.6 s del kit): cualquier bloque que
-     quede dentro de la pantalla se pinta, aunque el IntersectionObserver no haya disparado.
-     Asi ningun bloque se queda invisible si el visitante se para a media pagina. */
+  /* Red de seguridad CON DEBOUNCE, no por frame (FEEDBACK 20 sep, "zoom raro al
+     hacer scroll"): la version anterior leia getBoundingClientRect() de TODOS
+     los [data-reveal]/.pt-title en CADA frame de scroll (via rAF), encima del
+     propio listener de scroll de kit.js y del ScrollTrigger de GSAP (30-mesa.js)
+     - tres lecturas de layout forzadas ~60 veces por segundo mientras se
+     deslizaba, que en celular real se sentian como un tartamudeo/"zoom". Sigue
+     haciendo falta un rescate ligado al scroll (un salto rapido de scroll, como
+     el de krevo-shot o un tap en un enlace de ancla, puede meter un bloque en
+     pantalla sin que el IntersectionObserver ni el temporizador de 1.6 s de
+     kit.js lo alcancen a tiempo - measured: blockquote.pt-resena se quedaba
+     invisible al saltar directo a y:5019), pero se dispara SOLO cuando el
+     scroll se detiene (debounce de 220 ms) en vez de en cada frame: unas
+     pocas veces por gesto, no 60 veces por segundo. */
   function initRescue() {
-    var ticking = false;
     function pass() {
-      ticking = false;
       var vh = window.innerHeight || document.documentElement.clientHeight;
       var els = document.querySelectorAll('[data-reveal]:not(.is-in), [data-reveal-stagger]:not(.is-in), .pt-title:not(.is-in)');
       for (var i = 0; i < els.length; i++) {
@@ -279,9 +288,13 @@
         if (r.bottom > 0 && r.top < vh) els[i].classList.add("is-in");
       }
     }
-    function ask() { if (!ticking) { ticking = true; requestAnimationFrame(pass); } }
-    window.addEventListener("scroll", ask, { passive: true });
-    window.addEventListener("resize", ask, { passive: true });
+    var debounceId = null;
+    function debounced() {
+      clearTimeout(debounceId);
+      debounceId = setTimeout(pass, 220);
+    }
+    window.addEventListener("scroll", debounced, { passive: true });
+    window.addEventListener("resize", debounced, { passive: true });
     setTimeout(pass, 400);
     setTimeout(pass, 1700);
   }

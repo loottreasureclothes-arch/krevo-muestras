@@ -1,48 +1,60 @@
-/* 20-catalogo: chips que filtran, interruptor de acabado (componente firma),
-   "Ver los 76 muebles" y el "+" que manda a Mi casa. */
+/* 20-catalogo: el piso partido en 3 bloques (banda a sangre -> productos, y otra vez,
+   como lo pidio Emanuel). Cada bloque manda sus propios chips y su propia rejilla;
+   ningun chip muestra menos de 10 piezas. Ademas: interruptor de acabado (componente
+   firma) y el "+" que manda a Mi casa. */
 (function () {
   "use strict";
   var sec = document.getElementById("catalogo");
   if (!sec) return;
 
-  var chips = sec.querySelector("[data-chips]");
-  var cards = Array.prototype.slice.call(sec.querySelectorAll("[data-grid] .s-cat-card"));
-  var more = sec.querySelector("[data-more]");
-  var cat = "todos";
-  var todo = false;
+  var MAX = 10; // Emanuel: "10 piezas por grupo, no 4 ni 8". Ningun grupo tiene menos de 10.
+  var bloques = [];
 
-  function pinta() {
-    cards.forEach(function (li) {
-      var suya = li.getAttribute("data-cat") === cat;
-      li.hidden = !(cat === "todos" ? (todo || li.hasAttribute("data-top")) : suya);
-    });
-    if (more) {
-      more.hidden = cat !== "todos";
-      more.setAttribute("aria-expanded", todo ? "true" : "false");
-      more.firstChild.nodeValue = todo ? "Ver solo lo más pedido" : "Ver los " + cards.length + " muebles del piso";
-    }
-  }
+  Array.prototype.forEach.call(sec.querySelectorAll("[data-block]"), function (blk) {
+    var chips = blk.querySelector("[data-chips]");
+    var cards = Array.prototype.slice.call(blk.querySelectorAll("[data-grid] .s-cat-card"));
+    var on = chips && chips.querySelector(".s-chip.is-on");
+    var b = { el: blk, chips: chips, cards: cards, cat: on ? on.getAttribute("data-chip") : "" };
+    bloques.push(b);
 
-  if (chips) {
-    chips.addEventListener("click", function (ev) {
-      var b = ev.target.closest(".s-chip");
-      if (!b) return;
-      cat = b.getAttribute("data-chip");
-      Array.prototype.forEach.call(chips.querySelectorAll(".s-chip"), function (c) {
-        var on = c === b;
-        c.classList.toggle("is-on", on);
-        c.setAttribute("aria-selected", on ? "true" : "false");
+    function pinta() {
+      var shown = 0;
+      b.cards.forEach(function (li) {
+        var visible = li.getAttribute("data-cat") === b.cat && shown < MAX;
+        li.hidden = !visible;
+        if (visible) shown++;
       });
-      pinta();
-      if (b.scrollIntoView) b.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
-    });
-    document.addEventListener("mda:cat", function (ev) {
-      var b = chips.querySelector('[data-chip="' + ev.detail + '"]');
-      if (b) b.click();
-    });
-  }
-  if (more) more.addEventListener("click", function () { todo = !todo; pinta(); });
-  pinta();
+    }
+    b.pinta = pinta;
+
+    if (chips) {
+      chips.addEventListener("click", function (ev) {
+        var bt = ev.target.closest(".s-chip");
+        if (!bt) return;
+        b.cat = bt.getAttribute("data-chip");
+        Array.prototype.forEach.call(chips.querySelectorAll(".s-chip"), function (c) {
+          var sel = c === bt;
+          c.classList.toggle("is-on", sel);
+          c.setAttribute("aria-selected", sel ? "true" : "false");
+        });
+        pinta();
+        if (bt.scrollIntoView) bt.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+      });
+    }
+    pinta();
+  });
+
+  /* Los botones del hero ("Compra ahora") caen en el bloque de esa categoria */
+  document.addEventListener("mda:cat", function (ev) {
+    for (var i = 0; i < bloques.length; i++) {
+      var b = bloques[i];
+      var bt = b.chips && b.chips.querySelector('[data-chip="' + ev.detail + '"]');
+      if (!bt) continue;
+      bt.click();
+      if (b.el.scrollIntoView) b.el.scrollIntoView({ block: "start", behavior: "smooth" });
+      return;
+    }
+  });
 
   /* ---------- Interruptor de acabado (componente firma) ---------- */
   Array.prototype.forEach.call(sec.querySelectorAll("[data-fin-group]"), function (group) {

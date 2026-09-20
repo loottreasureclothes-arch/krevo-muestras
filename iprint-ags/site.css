@@ -201,6 +201,9 @@ body[data-hero-dark] .k-header:not(.is-solid) { color: var(--cream); }
   .k-nav { gap: 26px; }
   .k-nav a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; font-weight: 500; }
   .k-nav a::after { bottom: 10px; }
+  /* estado activo: la seccion que se esta viendo, no solo al hover (NOTA GLOBAL FEEDBACK-1.md) */
+  .k-nav a.is-active { opacity: 1; font-weight: 700; }
+  .k-nav a.is-active::after { transform: scaleX(1); transform-origin: left; background: var(--lime); }
   .k-header .k-cta { margin-left: 14px; padding: 0 22px; }
 }
 .cd-menu-btn { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; border-radius: 3px; border: 1px solid currentColor; color: inherit; font-weight: 600; font-size: 0.875rem; transition: transform 160ms var(--ease-out); }
@@ -245,6 +248,9 @@ body.cd-menu-open .cd-menu-nav a { opacity: 1; transform: none; transition: opac
   font-family: var(--font-body); font-stretch: 100%; font-variation-settings: normal; text-transform: none; font-weight: 600; font-size: 16px; letter-spacing: 0; color: var(--cream-mute); }
 .cd-menu-nav .cd-menu-sub a::before { content: ""; flex: none; width: 10px; height: 1.5px; background: var(--lime); }
 @media (hover: hover) and (pointer: fine) { .cd-menu-nav a:hover, .cd-menu-nav .cd-menu-sub a:hover { color: #fff8ee; } }
+/* estado activo: la seccion que se esta viendo ahorita, con marca a la izquierda (NOTA GLOBAL FEEDBACK-1.md) */
+.cd-menu-nav > a.is-active { color: var(--lime); border-color: var(--lime); }
+.cd-menu-nav > a.is-active span { color: var(--cream); }
 .cd-menu-foot { display: grid; gap: 14px; opacity: 0; transition: opacity 200ms var(--ease-out); }
 .cd-menu-datos { display: grid; gap: 2px; }
 .cd-menu-datos b { font-family: var(--font-display); font-weight: 900; font-stretch: 100%; font-variation-settings: "wdth" 100; font-size: clamp(26px, 7vw, 34px); line-height: 1; letter-spacing: 0.01em; font-variant-numeric: tabular-nums; }

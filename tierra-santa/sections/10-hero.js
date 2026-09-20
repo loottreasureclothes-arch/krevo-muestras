@@ -9,13 +9,13 @@
 
   /* ---- Hoja de fotos de los accesos ---- */
   var DATA = {
-    cortes: { t: "Cortes", d: "Rib eye sellado a alta temperatura, T-bone y arrachera para tu parrillada.", go: "Ver cortes", href: "#m-cortes",
+    cortes: { t: "Cortes", d: "Rib eye sellado a alta temperatura, T-bone y arrachera para tu parrillada.", go: "Ver menú de cortes", href: "menu.html#m-cortes",
       wa: "Hola, quiero reservar una mesa en Tierra Santa para comer cortes.",
       f: [["img/hd/ribeye-mesa-1200.webp", "Rib eye"], ["img/hd/tbone-1200.webp", "T-bone"], ["img/hd/arrachera-1200.webp", "Arrachera"]] },
-    bistro: { t: "Bistro", d: "El lado italiano: pastas, salmón y carpaccio de atún.", go: "Ver bistro", href: "#m-bistro",
+    bistro: { t: "Bistro", d: "El lado italiano: pastas, salmón y carpaccio de atún.", go: "Ver menú de bistro", href: "menu.html#m-bistro",
       wa: "Hola, quiero reservar una mesa en Tierra Santa.",
       f: [["img/hd/pasta-bolonesa-1200.webp", "Pasta boloñesa"], ["img/hd/carpaccio-1200.webp", "Carpaccio de atún"], ["img/hd/guacamole-1200.webp", "Guacamole recién hecho"]] },
-    bebidas: { t: "Bebidas", d: "Agua Santa de coco y maracuyá, hecha en la barra, y smoothies frappé.", go: "Ver bebidas", href: "#m-bebidas",
+    bebidas: { t: "Bebidas", d: "Agua Santa de coco y maracuyá, hecha en la barra, y smoothies frappé.", go: "Ver menú de bebidas", href: "menu.html#m-bebidas",
       wa: "Hola, quiero reservar una mesa en Tierra Santa.",
       f: [["img/hd/agua-santa-1200.webp", "Agua Santa"], ["img/hd/jamaica-1200.webp", "Smoothie de jamaica"], ["img/hd/maracuya-1200.webp", "Smoothie de maracuyá"]] },
     terraza: { t: "Terraza", d: "Enredadera, focos cálidos y calentador de torre para las noches frías.", go: "Ver la terraza", href: "#terraza",
@@ -71,7 +71,11 @@
     e.preventDefault(); e.stopPropagation();
     var href = this.getAttribute("href");
     close("go");
-    setTimeout(function () { if (window.TS && TS.go) TS.go(href, false); }, 140);
+    if (href.indexOf("#") === 0) {
+      setTimeout(function () { if (window.TS && TS.go) TS.go(href, false); }, 140);
+    } else {
+      setTimeout(function () { location.href = href; }, 140);
+    }
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !sh.hidden) close(); });
 })();

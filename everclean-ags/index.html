@@ -30,14 +30,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/hero/hero-m.webp" media="(max-width: 719px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero/hero-d.webp" media="(min-width: 720px)" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1789891265">
-<link rel="stylesheet" href="sections/10-hero.css?v=1789891567">
-<link rel="stylesheet" href="sections/20-catalogo.css?v=1789890686">
-<link rel="stylesheet" href="sections/30-pruebas.css?v=1789891265">
-<link rel="stylesheet" href="sections/40-colchon.css?v=1789888105">
+<link rel="stylesheet" href="site.css?v=1789919865">
+<link rel="stylesheet" href="sections/10-hero.css?v=1789919261">
+<link rel="stylesheet" href="sections/20-catalogo.css?v=1789918984">
+<link rel="stylesheet" href="sections/30-pruebas.css?v=1789919493">
 <link rel="stylesheet" href="sections/50-visita.css?v=1789888113">
-<link rel="stylesheet" href="sections/60-recomiendan.css?v=1789888121">
-<link rel="stylesheet" href="sections/70-completar.css?v=1789890733">
+<link rel="stylesheet" href="sections/60-recomiendan.css?v=1789918583">
+<link rel="stylesheet" href="sections/70-completar.css?v=1789915797">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -54,7 +53,7 @@
 <header class="ec-header" id="ec-header">
   <div class="ec-header-bg"></div>
   <div class="ec-bar">
-    <a class="ec-brand" href="#top" aria-label="Everclean, inicio"><img src="img/logo/logo-header.webp" alt="Everclean, un estilo de vida" width="192" height="130" loading="eager"></a>
+    <a class="ec-brand" href="#top" aria-label="Everclean, inicio"><span class="ec-brand-pic"><img src="img/logo/logo-header.webp" alt="Everclean, un estilo de vida" width="192" height="130" loading="eager"></span></a>
     <nav class="ec-nav" aria-label="Principal">
       <a href="#20-catalogo">Qué lavamos</a>
       <a href="#30-pruebas">Pruebas</a>
@@ -77,6 +76,15 @@
   <div class="ec-menu-scrim"></div>
   <div class="ec-menu-panel">
     <button class="ec-menu-close" type="button" aria-label="Cerrar menú"><svg width="18" height="18" aria-hidden="true"><use href="#i-close"/></svg></button>
+    <p class="ec-menu-title">Ir a</p>
+    <nav class="ec-menu-nav" aria-label="Secciones">
+      <a href="#10-hero">Inicio<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="#20-catalogo">Qué lavamos<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="#30-pruebas">Pruebas<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="#50-visita">Apartar visita<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="#60-recomiendan">Nos recomiendan<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="#70-completar">Todo listo para completar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </nav>
     <p class="ec-menu-title">Qué lavamos</p>
     <ul class="ec-menu-piezas">
       <li><button type="button" data-ec-pieza="Salas y sillones">Salas y sillones<svg aria-hidden="true"><use href="#i-arrow"/></svg></button></li>
@@ -89,11 +97,6 @@
       <li><button type="button" data-ec-pieza="Carriolas">Carriolas<svg aria-hidden="true"><use href="#i-arrow"/></svg></button></li>
       <li><button type="button" data-ec-pieza="Cama para perro">Cama para perro<svg aria-hidden="true"><use href="#i-arrow"/></svg></button></li>
     </ul>
-    <nav class="ec-menu-nav" aria-label="Secciones">
-      <a href="#30-pruebas">Pruebas</a>
-      <a href="#60-recomiendan">Nos recomiendan</a>
-      <a href="#70-completar">Todo listo para completar</a>
-    </nav>
     <div class="ec-menu-foot">
       <span style="display:block;height:1px;background:var(--linea)"></span>
       <a class="ec-btn ec-btn--glifo" data-ec-wa="Hola Everclean, quiero información sobre sus servicios de limpieza a domicilio." href="https://wa.me/524491925369"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
@@ -103,15 +106,16 @@
 </div>
 
 <main id="top">
-<section class="s-hero" id="10-hero" aria-label="Inicio">
+<section class="s-hero ec-grano" id="10-hero" aria-label="Inicio">
   <div class="ec-wrap s-hero-grid">
     <div class="s-hero-copy">
       <p class="ec-eyebrow">Aguascalientes · A domicilio</p>
       <h1 class="ec-h1" data-ec-drop>
-        <span class="s-hero-line1">Trabajamos los domingos.</span>
-        <span class="s-hero-line2 ec-tono2">Y el domicilio es gratis.</span>
+        <span class="s-hero-l">Trabajamos</span>
+        <span class="s-hero-l">los domingos.</span>
+        <span class="s-hero-l ec-tono2">Y el domicilio</span>
+        <span class="s-hero-l ec-tono2">es gratis.</span>
       </h1>
-      <p class="ec-lead">Limpieza a vapor de salas, colchones, sillas, tapetes e interiores de auto. Llegamos a tu casa.</p>
       <div class="s-hero-actions">
         <a class="ec-btn ec-btn--solid" href="#20-catalogo">Ver qué lavamos</a>
         <a class="ec-link" href="#50-visita">Apartar visita<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -128,27 +132,26 @@
         <span class="ec-frame__tag">Limpieza a vapor</span>
       </div>
     </div>
+    <p class="ec-lead s-hero-lead">Limpieza a vapor de salas, colchones, sillas, tapetes e interiores de auto. Llegamos a tu casa.</p>
   </div>
 </section>
 
-<section class="s-cat ec-sec" id="20-catalogo" aria-label="Qué lavamos">
+<section class="s-cat ec-sec ec-grano" id="20-catalogo" aria-label="Qué lavamos">
   <div class="ec-wrap">
     <h2 class="ec-h2" data-ec-drop>
       <span class="s-cat-line1">Nueve cosas</span>
       <span class="ec-tono2">que lavamos a vapor.</span>
     </h2>
+    <p class="s-cat-regla">Pregunta el precio: todavía no hay lista pública. Te lo confirmamos por WhatsApp.</p>
 
     <div class="s-cat-filaA">
       <article class="s-cat-card" data-ec-reveal>
         <div class="ec-frame">
           <div class="ec-frame__pic">
-            <img src="img/catalogo/salas.webp" alt="Sala seccional completa ya lavada a vapor por Everclean, foto real." width="800" height="450" loading="lazy">
+            <img src="img/catalogo/salas.webp" alt="Sala seccional completa ya lavada a vapor por Everclean, foto real." width="800" height="450" loading="lazy" decoding="async">
           </div>
           <span class="ec-frame__tag">Salas y sillones</span>
-        </div>
-        <div class="s-cat-row">
-          <span class="s-cat-price">Pregunta el precio</span>
-          <button type="button" class="s-cat-plus" data-ec-add="Salas y sillones" aria-label="Agregar salas y sillones a mi visita">
+          <button type="button" class="s-cat-plus s-cat-plus--foto" data-ec-add="Salas y sillones" aria-label="Agregar salas y sillones a mi visita">
             <span class="s-cat-plus-i" aria-hidden="true">+</span>
             <span class="s-cat-plus-n" aria-hidden="true"></span>
           </button>
@@ -158,13 +161,10 @@
       <article class="s-cat-card" data-ec-reveal>
         <div class="ec-frame">
           <div class="ec-frame__pic">
-            <img src="img/catalogo/colchon.webp" alt="Colchón después de la limpieza a vapor de Everclean, foto real." width="364" height="244" loading="lazy">
+            <img src="img/catalogo/colchon.webp" alt="Colchón después de la limpieza a vapor de Everclean, foto real." width="364" height="244" loading="lazy" decoding="async">
           </div>
           <span class="ec-frame__tag">Colchones</span>
-        </div>
-        <div class="s-cat-row">
-          <span class="s-cat-price">Pregunta el precio</span>
-          <button type="button" class="s-cat-plus" data-ec-add="Colchones" aria-label="Agregar colchones a mi visita">
+          <button type="button" class="s-cat-plus s-cat-plus--foto" data-ec-add="Colchones" aria-label="Agregar colchones a mi visita">
             <span class="s-cat-plus-i" aria-hidden="true">+</span>
             <span class="s-cat-plus-n" aria-hidden="true"></span>
           </button>
@@ -174,13 +174,10 @@
       <article class="s-cat-card" data-ec-reveal>
         <div class="ec-frame">
           <div class="ec-frame__pic">
-            <img src="img/catalogo/sillas.webp" alt="Sillas turquesa ya lavadas por Everclean, foto real." width="296" height="222" loading="lazy">
+            <img src="img/catalogo/sillas.webp" alt="Sillas de comedor ya lavadas a vapor por Everclean, foto real." width="354" height="266" loading="lazy" decoding="async">
           </div>
           <span class="ec-frame__tag">Sillas</span>
-        </div>
-        <div class="s-cat-row">
-          <span class="s-cat-price">Pregunta el precio</span>
-          <button type="button" class="s-cat-plus" data-ec-add="Sillas" aria-label="Agregar sillas a mi visita">
+          <button type="button" class="s-cat-plus s-cat-plus--foto" data-ec-add="Sillas" aria-label="Agregar sillas a mi visita">
             <span class="s-cat-plus-i" aria-hidden="true">+</span>
             <span class="s-cat-plus-n" aria-hidden="true"></span>
           </button>
@@ -188,62 +185,57 @@
       </article>
     </div>
 
+    <p class="s-cat-filaB-label">Y también, sin foto propia todavía</p>
     <ul class="s-cat-filaB">
-      <li class="s-cat-row s-cat-row--b" data-ec-reveal>
-        <div class="s-cat-row-txt">
-          <p class="s-cat-nombre">Sofá cama</p>
-          <p class="s-cat-sello">Foto original pendiente · Pregunta el precio</p>
-        </div>
+      <li class="s-cat-ficha" data-ec-reveal>
+        <span class="s-cat-ficha-num" aria-hidden="true">04</span>
+        <p class="s-cat-nombre">Sofá cama</p>
+        <span class="s-cat-sello">Foto pendiente</span>
         <button type="button" class="s-cat-plus" data-ec-add="Sofá cama" aria-label="Agregar sofá cama a mi visita">
           <span class="s-cat-plus-i" aria-hidden="true">+</span>
           <span class="s-cat-plus-n" aria-hidden="true"></span>
         </button>
       </li>
-      <li class="s-cat-row s-cat-row--b" data-ec-reveal>
-        <div class="s-cat-row-txt">
-          <p class="s-cat-nombre">Tapetes y alfombras</p>
-          <p class="s-cat-sello">Foto original pendiente · Pregunta el precio</p>
-        </div>
+      <li class="s-cat-ficha" data-ec-reveal>
+        <span class="s-cat-ficha-num" aria-hidden="true">05</span>
+        <p class="s-cat-nombre">Tapetes y alfombras</p>
+        <span class="s-cat-sello">Foto pendiente</span>
         <button type="button" class="s-cat-plus" data-ec-add="Tapetes y alfombras" aria-label="Agregar tapetes y alfombras a mi visita">
           <span class="s-cat-plus-i" aria-hidden="true">+</span>
           <span class="s-cat-plus-n" aria-hidden="true"></span>
         </button>
       </li>
-      <li class="s-cat-row s-cat-row--b" data-ec-reveal>
-        <div class="s-cat-row-txt">
-          <p class="s-cat-nombre">Reposet / Love seat</p>
-          <p class="s-cat-sello">Foto original pendiente · Pregunta el precio</p>
-        </div>
+      <li class="s-cat-ficha" data-ec-reveal>
+        <span class="s-cat-ficha-num" aria-hidden="true">06</span>
+        <p class="s-cat-nombre">Reposet / Love seat</p>
+        <span class="s-cat-sello">Foto pendiente</span>
         <button type="button" class="s-cat-plus" data-ec-add="Reposet / Love seat" aria-label="Agregar reposet o love seat a mi visita">
           <span class="s-cat-plus-i" aria-hidden="true">+</span>
           <span class="s-cat-plus-n" aria-hidden="true"></span>
         </button>
       </li>
-      <li class="s-cat-row s-cat-row--b" data-ec-reveal>
-        <div class="s-cat-row-txt">
-          <p class="s-cat-nombre">Interiores de auto</p>
-          <p class="s-cat-sello">Foto original pendiente · Pregunta el precio</p>
-        </div>
+      <li class="s-cat-ficha" data-ec-reveal>
+        <span class="s-cat-ficha-num" aria-hidden="true">07</span>
+        <p class="s-cat-nombre">Interiores de auto</p>
+        <span class="s-cat-sello">Foto pendiente</span>
         <button type="button" class="s-cat-plus" data-ec-add="Interiores de auto" aria-label="Agregar interiores de auto a mi visita">
           <span class="s-cat-plus-i" aria-hidden="true">+</span>
           <span class="s-cat-plus-n" aria-hidden="true"></span>
         </button>
       </li>
-      <li class="s-cat-row s-cat-row--b" data-ec-reveal>
-        <div class="s-cat-row-txt">
-          <p class="s-cat-nombre">Carriolas</p>
-          <p class="s-cat-sello">Foto original pendiente · Pregunta el precio</p>
-        </div>
+      <li class="s-cat-ficha" data-ec-reveal>
+        <span class="s-cat-ficha-num" aria-hidden="true">08</span>
+        <p class="s-cat-nombre">Carriolas</p>
+        <span class="s-cat-sello">Foto pendiente</span>
         <button type="button" class="s-cat-plus" data-ec-add="Carriolas" aria-label="Agregar carriolas a mi visita">
           <span class="s-cat-plus-i" aria-hidden="true">+</span>
           <span class="s-cat-plus-n" aria-hidden="true"></span>
         </button>
       </li>
-      <li class="s-cat-row s-cat-row--b" data-ec-reveal>
-        <div class="s-cat-row-txt">
-          <p class="s-cat-nombre">Cama para perro</p>
-          <p class="s-cat-sello">Foto original pendiente · Pregunta el precio</p>
-        </div>
+      <li class="s-cat-ficha" data-ec-reveal>
+        <span class="s-cat-ficha-num" aria-hidden="true">09</span>
+        <p class="s-cat-nombre">Cama para perro</p>
+        <span class="s-cat-sello">Foto pendiente</span>
         <button type="button" class="s-cat-plus" data-ec-add="Cama para perro" aria-label="Agregar cama para perro a mi visita">
           <span class="s-cat-plus-i" aria-hidden="true">+</span>
           <span class="s-cat-plus-n" aria-hidden="true"></span>
@@ -257,7 +249,7 @@
   </a>
 </section>
 
-<section class="s-pruebas" id="30-pruebas" aria-label="Pruebas reales">
+<section class="s-pruebas ec-grano" id="30-pruebas" aria-label="Pruebas reales">
   <div class="ec-wrap">
     <h2 class="ec-h2" data-ec-drop>
       <span class="s-pruebas-line1">Esta sala no se cambió.</span>
@@ -268,10 +260,10 @@
       <div class="ec-embona-frame">
         <div class="ec-embona-track">
           <div class="ec-embona-half ec-embona-half--antes">
-            <img src="img/pruebas/sofa-antes.webp" alt="Sala seccional antes, con manchas fuertes. Foto real de Everclean." width="496" height="664" loading="lazy">
+            <img src="img/pruebas/sofa-antes.webp" alt="Sala seccional antes, con manchas fuertes. Foto real de Everclean." width="496" height="664" loading="lazy" decoding="async">
           </div>
           <div class="ec-embona-half ec-embona-half--despues">
-            <img src="img/pruebas/sofa-despues.webp" alt="La misma sala seccional después, limpia. Foto real de Everclean." width="496" height="664" loading="lazy">
+            <img src="img/pruebas/sofa-despues.webp" alt="La misma sala seccional después, limpia. Foto real de Everclean." width="496" height="664" loading="lazy" decoding="async">
           </div>
         </div>
         <span class="ec-embona-seam" aria-hidden="true"></span>
@@ -289,10 +281,10 @@
         <div class="ec-embona-frame">
           <div class="ec-embona-track">
             <div class="ec-embona-half ec-embona-half--antes">
-              <img src="img/pruebas/silla-antes.webp" alt="Silla de metal antes, con manchas en el asiento. Foto real de Everclean." width="280" height="372" loading="lazy">
+              <img src="img/pruebas/silla-antes.webp" alt="Silla de metal antes, con manchas en el asiento. Foto real de Everclean." width="280" height="372" loading="lazy" decoding="async">
             </div>
             <div class="ec-embona-half ec-embona-half--despues">
-              <img src="img/pruebas/silla-despues.webp" alt="La misma silla de metal después, limpia. Foto real de Everclean." width="280" height="372" loading="lazy">
+              <img src="img/pruebas/silla-despues.webp" alt="La misma silla de metal después, limpia. Foto real de Everclean." width="280" height="372" loading="lazy" decoding="async">
             </div>
           </div>
           <span class="ec-embona-seam" aria-hidden="true"></span>
@@ -300,38 +292,16 @@
         <p class="ec-embona-pie"><strong>Silla de comedor.</strong> Antes y después, foto de ellos.</p>
       </div>
 
-      <div class="ec-embona">
-        <div class="ec-embona-frame">
-          <div class="ec-embona-track">
-            <div class="ec-embona-half ec-embona-half--antes">
-              <img src="img/pruebas/negro-antes.webp" alt="Silla negra de comedor antes, con el asiento manchado. Foto real de Everclean." width="282" height="388" loading="lazy">
-            </div>
-            <div class="ec-embona-half ec-embona-half--despues">
-              <img src="img/pruebas/negro-despues.webp" alt="La misma silla negra después, con el asiento blanco otra vez. Foto real de Everclean." width="236" height="326" loading="lazy">
-            </div>
+      <div class="s-pruebas-colchon">
+        <div class="ec-frame">
+          <div class="ec-frame__pic">
+            <img src="img/colchon/manchas.webp" alt="Colchón matrimonial con manchas fuertes, foto real de Everclean antes de lavarlo." width="360" height="405" loading="lazy" decoding="async">
           </div>
-          <span class="ec-embona-seam" aria-hidden="true"></span>
+          <span class="ec-frame__tag">Colchón</span>
         </div>
-        <p class="ec-embona-pie"><strong>Silla tapizada.</strong> Antes y después, foto de ellos.</p>
+        <p class="s-pruebas-colchon-h">Esa mancha del colchón. <span class="ec-tono2">Se va.</span></p>
+        <a class="ec-link s-pruebas-colchon-a" data-ec-add="Colchones" data-ec-confirm="Colchón agregado. Ir a mi visita" href="#50-visita">Agregar colchón<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="s-colchon ec-sec ec-sec--tinta" id="40-colchon" aria-label="Colchones">
-  <div class="ec-wrap s-colchon-grid">
-    <div class="ec-frame s-colchon-foto">
-      <div class="ec-frame__pic">
-        <img src="img/colchon/manchas.webp" alt="Colchón matrimonial con manchas fuertes, foto real de Everclean antes de lavarlo." width="360" height="405" loading="lazy">
-      </div>
-      <span class="ec-frame__tag">Colchón</span>
-    </div>
-    <div class="s-colchon-copy">
-      <h2 class="ec-h1 s-colchon-h" data-ec-drop>
-        <span class="s-colchon-line1">Esa mancha del colchón.</span>
-        <span class="ec-tono2">Se va.</span>
-      </h2>
-      <a class="ec-link" data-ec-add="Colchones" data-ec-confirm="Colchón agregado. Ir a mi visita" href="#50-visita">Agregar colchón a mi visita<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
@@ -344,7 +314,7 @@
       <div class="ec-frame__pic">
         <picture>
           <source srcset="img/visita/exterior-d.webp" media="(min-width: 720px)">
-          <img src="img/visita/exterior-m.webp" alt="Sillón recién lavado a vapor en el patio de un cliente, foto real de Everclean." width="720" height="1280" loading="lazy">
+          <img src="img/visita/exterior-m.webp" alt="Sillón recién lavado a vapor en el patio de un cliente, foto real de Everclean." width="720" height="1280" loading="lazy" decoding="async">
         </picture>
       </div>
       <span class="ec-frame__tag">Vamos a tu casa</span>
@@ -355,7 +325,7 @@
         <span class="s-visita-line1">Junta todo</span>
         <span class="ec-tono2">en una sola visita.</span>
       </h2>
-      <p class="s-visita-lead">Servicio a domicilio gratis.</p>
+      <p class="s-visita-lead">El domicilio no se cobra.</p>
 
       <div class="s-visita-box">
         <div class="s-visita-resumen" id="s-visita-resumen"></div>
@@ -384,7 +354,7 @@
   </div>
 </section>
 
-<section class="s-rec ec-sec ec-sec--tinta" id="60-recomiendan" aria-label="Nos recomiendan">
+<section class="s-rec ec-sec ec-sec--papel" id="60-recomiendan" aria-label="Nos recomiendan">
   <div class="ec-wrap s-rec-wrap">
     <h2 class="ec-h2" data-ec-drop>
       <span class="s-rec-line1">Seis opiniones en Facebook.</span>
@@ -394,7 +364,7 @@
       <p>&ldquo;Muy buen servicio, puntualidad, amabilidad y sobre todo calidad en el servicio.&rdquo;</p>
       <cite>Ccy Lop · Facebook · 14 de octubre de 2024</cite>
     </blockquote>
-    <ul class="s-rec-lista" data-ec-reveal>
+    <ul class="s-rec-sellos" data-ec-reveal>
       <li>Personal capacitado y confiable.</li>
       <li>Productos de limpieza ecológicos.</li>
       <li>Servicio a domicilio gratis.</li>
@@ -402,7 +372,7 @@
   </div>
 </section>
 
-<section class="s-completar ec-sec" id="70-completar" aria-label="Todo listo para completar">
+<section class="s-completar ec-sec ec-grano" id="70-completar" aria-label="Todo listo para completar">
   <div class="ec-wrap s-completar-grid">
     <div>
       <h2 class="ec-h2" data-ec-drop>
@@ -411,13 +381,13 @@
       </h2>
     </div>
     <div class="s-completar-lista">
-      <ul class="s-completar-ul">
+      <ol class="s-completar-ul">
         <li>Tabla de precios real por pieza (sala, colchón, silla, tapete por m², reposet, sofá cama, auto, carriola, cama de perro).</li>
         <li>Confirmar cuál de los 3 números es el WhatsApp activo: 449 192 5369, 449 118 67 53 o 449 118 09 33.</li>
         <li>Fotos originales, sin texto encima, de: tapete, carriola, cama de perro, sofá cama e interior de auto.</li>
         <li>El logotipo original en PNG o SVG con fondo transparente.</li>
         <li>Link de cobro con tarjeta (Mercado Pago, Clip o el que usen).</li>
-      </ul>
+      </ol>
       <a class="ec-btn" data-ec-wa="Hola Everclean, les ayudo a completar su página. Les mando lo que falta: precios, fotos y el WhatsApp correcto." href="https://wa.me/524491925369">Mandar lo que falta</a>
       <p class="s-completar-honestidad">Muestra de diseño. Todas las fotos son de Everclean, tomadas de su Instagram y su Facebook.</p>
     </div>
@@ -426,9 +396,11 @@
 
 </main>
 
-<footer class="ec-foot" aria-label="Pie de página">
+<footer class="ec-foot ec-grano" aria-label="Pie de página">
   <div class="ec-wrap">
-    <a class="ec-foot-logo" href="#top" aria-label="Everclean, ir arriba"><img src="img/logo/logo-footer.webp" alt="Everclean, un estilo de vida" width="480" height="324" loading="lazy"></a>
+    <p class="ec-eyebrow ec-foot-eyebrow">Aguascalientes · A domicilio</p>
+    <a class="ec-foot-logo ec-frame" href="#top" aria-label="Everclean, ir arriba"><span class="ec-frame__pic"><img src="img/logo/logo-footer.webp" alt="Everclean, un estilo de vida" width="480" height="324" loading="lazy" decoding="async"></span></a>
+    <p class="ec-foot-tagline" data-ec-reveal>Un estilo de vida.</p>
     <svg class="ec-foot-arc" viewBox="0 0 100 16" preserveAspectRatio="none" aria-hidden="true"><path d="M0,2 Q50,14 100,2"></path></svg>
     <div class="ec-foot-mid">
       <p class="ec-foot-tel">449 192 5369</p>
@@ -453,7 +425,7 @@
 
 <a class="ec-wa-float" data-ec-wa="Hola Everclean, vi su página y quiero apartar una visita." href="https://wa.me/524491925369" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
 
-<script src="site.js?v=1789890761" defer></script>
+<script src="site.js?v=1789918616" defer></script>
 <script src="sections/20-catalogo.js?v=1789890710" defer></script>
 <script src="sections/50-visita.js?v=1789890710" defer></script>
 </body>

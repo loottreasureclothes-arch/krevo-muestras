@@ -158,21 +158,28 @@ body.ab-scrolled .ab-franja-mini { display: flex; }
 /* Debajo de 430px solo cabe el dato vivo (el par de horas ya está en el riel del hero). */
 @media (max-width: 429px) { .ab-franja-mini .ab-fm-h, .ab-franja-mini .ab-rombo { display: none; } }
 body.ab-closed .ab-franja-mini .ab-fm-h, body.ab-closed .ab-franja-mini .ab-rombo { display: none; }
-body.ab-scrolled .ab-burger-txt { display: none; }
-@media (min-width: 900px) { body.ab-scrolled .ab-burger-txt { display: inline; } }
 .ab-head-actions { display: flex; align-items: center; gap: 8px; padding-right: 8px; flex: none; }
+/* "CARTA" es link real a menu.html (página propia), no el disparador del panel de anclas:
+   Emanuel, 20 sep — "el menú hamburguesa no lleva a ninguna página". */
+.ab-carta-link {
+  display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 14px;
+  border: 1px solid var(--brand-ink-mute); color: var(--paper); background: transparent;
+  font-family: var(--font-display); font-weight: 500; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  text-decoration: none; white-space: nowrap; flex: none; transition: border-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) { .ab-carta-link:hover { border-color: var(--brand); color: var(--brand); } }
 .ab-apartar.k-cta { height: 44px; padding: 0 14px; background: var(--brand); color: var(--deep); font-family: var(--font-display); font-weight: 500; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; border-radius: 0; white-space: nowrap; flex: none; }
 @media (hover: hover) and (pointer: fine) { .ab-apartar.k-cta:hover { background: #dcd0ba; } }
-@media (min-width: 900px) { .ab-apartar.k-cta { height: 44px; padding: 0 22px; font-size: 13px; } }
-.ab-burger { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; min-width: 44px; padding: 0 12px; border: 1px solid var(--brand-ink-mute); color: var(--paper); flex: none; }
+@media (min-width: 900px) { .ab-apartar.k-cta { height: 44px; padding: 0 22px; font-size: 13px; } .ab-carta-link { height: 44px; padding: 0 20px; font-size: 13px; } }
+/* Hamburguesa: solo ícono, abre el panel de secciones de ESTA página (ver .ab-nav-list). */
+.ab-burger { display: inline-flex; align-items: center; justify-content: center; height: 44px; width: 44px; padding: 0; border: 1px solid var(--brand-ink-mute); color: var(--paper); flex: none; }
 .ab-burger-ic { position: relative; width: 16px; height: 11px; flex: none; }
 .ab-burger-ic i { position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor; transition: transform 300ms var(--ease-out), opacity 200ms; }
 .ab-burger-ic i:nth-child(1) { top: 0; } .ab-burger-ic i:nth-child(2) { top: 5px; } .ab-burger-ic i:nth-child(3) { top: 10px; }
 body.ab-nav-open .ab-burger-ic i:nth-child(1) { transform: translateY(5px) rotate(45deg); }
 body.ab-nav-open .ab-burger-ic i:nth-child(2) { opacity: 0; }
 body.ab-nav-open .ab-burger-ic i:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
-.ab-burger-txt { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
-@media (max-width: 380px) { .ab-burger-txt { display: none; } .ab-apartar.k-cta { padding: 0 12px; } }
+@media (max-width: 380px) { .ab-carta-link, .ab-apartar.k-cta { padding: 0 10px; font-size: 11px; } }
 
 /* ============ Franja de la mañana (componente firma) ============ */
 .ab-franja { position: relative; }
@@ -229,6 +236,9 @@ body.ab-nav-open .ab-nav-panel { clip-path: inset(0 0 0 0); }
 .ab-nav-list > a span { flex: none; width: 2.2em; font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--brand-ink); transform: translateY(-0.7em); }
 body.ab-nav-open .ab-nav-list > a { opacity: 1; transform: none; transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out); transition-delay: calc(120ms + var(--i, 0) * 40ms); }
 @media (hover: hover) and (pointer: fine) { .ab-nav-list > a:hover { color: var(--brand); } }
+/* Estado activo: la sección visible se marca en el panel (site.js la calcula al desplazar). */
+.ab-nav-list > a[aria-current="true"] { color: var(--brand); }
+.ab-nav-list > a[aria-current="true"] span { color: var(--brand); }
 .ab-nav-foot { display: grid; gap: 14px; opacity: 0; transition: opacity 200ms; }
 body.ab-nav-open .ab-nav-foot { opacity: 1; transition: opacity 420ms var(--ease-out) 320ms; }
 .ab-nav-acts { display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; }
@@ -322,6 +332,10 @@ main > #pan { background-color: var(--deep); }
 main > #grupos { background-color: var(--deep-2); }
 main > #resenas { background-color: var(--deep); }
 main > #listo { background-color: var(--deep); }
+
+/* El ancla nunca queda tapada por la placa del header, venga del clic (site.js) o de un
+   salto nativo (URL con #hash, atrás del navegador). */
+main > section[id], #visitanos { scroll-margin-top: calc(var(--k-header-h) + 16px); }
 
 /* Reveal: pasos cortos */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {

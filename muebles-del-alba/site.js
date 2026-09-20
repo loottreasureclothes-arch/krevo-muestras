@@ -93,6 +93,32 @@
     });
   }
 
+  /* ---------- Menú: estado activo (que se sienta navegación real, no anclas sueltas) ---------- */
+  function initMenuSpy() {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".cd-menu-nav a[href^='#']"));
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var map = links.map(function (a) {
+      return { a: a, sec: document.getElementById(a.getAttribute("href").slice(1)) };
+    }).filter(function (m) { return m.sec; });
+    if (!map.length) return;
+    var current = null;
+    function mark(sec) {
+      if (sec === current) return;
+      current = sec;
+      map.forEach(function (m) {
+        var on = m.sec === sec;
+        m.a.classList.toggle("is-current", on);
+        if (on) m.a.setAttribute("aria-current", "true"); else m.a.removeAttribute("aria-current");
+      });
+    }
+    var io = new IntersectionObserver(function (entries) {
+      var best = null, bestRatio = 0;
+      entries.forEach(function (e) { if (e.isIntersecting && e.intersectionRatio > bestRatio) { best = e.target; bestRatio = e.intersectionRatio; } });
+      if (best) mark(best);
+    }, { rootMargin: "-45% 0px -45% 0px", threshold: [0, .25, .5, .75, 1] });
+    map.forEach(function (m) { io.observe(m.sec); });
+  }
+
   function initRipple() {
     if (reduce) return;
     document.addEventListener("pointerdown", function (e) {
@@ -304,7 +330,7 @@
   }
 
   function init() {
-    initWa(); initMenu(); initRipple(); initWaHide(); initReveal(); initSel();
+    initWa(); initMenu(); initMenuSpy(); initRipple(); initWaHide(); initReveal(); initSel();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

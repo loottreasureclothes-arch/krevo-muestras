@@ -1,33 +1,45 @@
-/* 01-hero — foto a sangre + titulo a dos tonos + LA PLACA DE CANELA (componente firma). */
-.s-hero { position: relative; min-height: 100svh; overflow: hidden; background: var(--deep); }
-.s-hero-scene { position: absolute; inset: 0; z-index: 0; }
+/* 01-hero — foto real de la camada + titular con el HECHO + LA PLACA DE CANELA (firma).
+
+   REVISION-2, cambios 1, 2 y 10:
+   · La foto ya no es fondo de pantalla completa en celular. En celular es una BANDA bajo el
+     header: los cuatro gatitos se ven completos y a 390@2x no se escala ni un pixel (el
+     recorte trae 768 px de origen para 780 px de pantalla). En compu sí va a sangre, porque
+     a 1440x900 cabe casi la foto entera.
+   · Eso arregla de raíz el eyebrow ilegible: en celular cae sobre el lienzo oscuro, no sobre
+     pelo blanco. En compu se le subió el velo de la franja de arriba.
+   · El titular baja a ~28 px y a dos renglones; Alicia y Luis viven en el renglón de apoyo. */
+.s-hero { position: relative; background: var(--deep); display: flex; flex-direction: column; min-height: 100svh; }
+
+/* ---------- Celular: banda de foto ---------- */
+.s-hero-scene { position: relative; flex: none; margin-top: calc(var(--header-h) + env(safe-area-inset-top)); aspect-ratio: 4 / 3; max-height: 40svh; overflow: hidden; background: var(--deep-3); }
 .s-hero-scene picture, .s-hero-scene img { width: 100%; height: 100%; }
 .s-hero-scene img {
-  object-fit: cover; object-position: 50% 26%;
+  object-fit: cover; object-position: 50% 44%;
   filter: blur(18px); opacity: 0; transform: scale(1.04);
   transition: filter 1.1s cubic-bezier(.165,.84,.44,1), opacity 900ms linear, transform 1.1s cubic-bezier(.165,.84,.44,1);
 }
 .s-hero-scene img.is-loaded { filter: blur(0); opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .s-hero-scene img { filter: none; opacity: 1; transform: none; transition: none; } }
-.s-hero-velo {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  /* el titulo arranca al 21% del alto del hero (no al 30%): el velo tiene que seguir
-     fuerte alla arriba o las dos primeras lineas caen sobre la cara blanca del gato.
-     Medido sobre la captura: sub >= 4.5:1, oliva y titulo >= 3:1 en el peor pixel. */
-  background: linear-gradient(to top, rgba(10,6,3,.92) 0%, rgba(10,6,3,.86) 26%, rgba(10,6,3,.78) 48%, rgba(10,6,3,.68) 68%, rgba(10,6,3,.52) 84%, rgba(10,6,3,.10) 100%);
-}
 
-.s-hero-content { position: relative; z-index: 2; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding-top: calc(var(--header-h) + 32px); padding-bottom: 36px; }
-/* cuando la barra fija del carrito esta puesta (56px) le damos aire abajo al hero para que
-   no se coma la placa recien dibujada (la pone 02-servicios.js: body.srv-bar-on). */
-body.srv-bar-on .s-hero-content { padding-bottom: calc(36px + 56px + env(safe-area-inset-bottom)); }
-.s-hero-title { color: var(--paper); }
+/* pie numerado encimado sobre la foto (la bolita del compa que ya traía la 02) */
+.s-hero-velo { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(10,6,3,.80) 0%, rgba(10,6,3,.30) 26%, transparent 52%); }
+.s-hero-pie {
+  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 12px; z-index: 2;
+  display: flex; align-items: baseline; gap: 8px; color: var(--paper);
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.s-hero-pie-num { font-family: var(--font-display); font-weight: 800; font-size: 15px; color: var(--brand); letter-spacing: 0; text-transform: none; }
+
+.s-hero-content { position: relative; z-index: 2; flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; padding-top: 26px; padding-bottom: 34px; }
+.s-hero-eyebrow { color: var(--brand-2); }
+.s-hero-title { color: var(--paper); font-weight: 700; font-size: clamp(26px, 7vw, 38px); max-width: 16ch; }
 .s-hero-line { display: block; }
-.s-hero-sub { margin-top: 14px; }
+.s-hero-apoyo { margin-top: 14px; color: var(--paper); font-size: 15px; font-weight: 600; max-width: 34ch; }
+.s-hero-sub { margin-top: 6px; font-size: 13.5px; }
 .s-hero-ctas { display: flex; align-items: center; gap: 10px 22px; flex-wrap: wrap; margin-top: 22px; }
 
 /* ---------- La placa de Canela ---------- */
-.s-hero-placa { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line-deep); }
+.s-hero-placa { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line-deep); }
 .s-hero-campo { display: block; }
 .s-hero-campo-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute-on-deep); margin-bottom: 6px; }
 .s-hero-campo input {
@@ -37,7 +49,7 @@ body.srv-bar-on .s-hero-content { padding-bottom: calc(36px + 56px + env(safe-ar
 .s-hero-campo input::placeholder { color: var(--mute-on-deep); font-family: var(--font-body); font-weight: 400; font-size: 16px; }
 .s-hero-campo input:focus { outline: none; border-bottom-color: var(--brand); box-shadow: 0 1px 0 var(--brand); }
 
-.s-hero-especies { margin-top: 18px; }
+.s-hero-especies { margin-top: 16px; }
 .s-hero-especies-fila { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
 .s-hero-especie { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid transparent; transition: transform 160ms var(--ease-out), border-color 200ms var(--ease-out); }
 .s-hero-especie:active { transform: scale(0.92); }
@@ -48,7 +60,7 @@ body.srv-bar-on .s-hero-content { padding-bottom: calc(36px + 56px + env(safe-ar
 @media (hover: hover) and (pointer: fine) { .s-hero-especie:hover .vi-especie-icon * { opacity: .8; } }
 .s-hero-especies-nota { margin-top: 10px; font-size: 12px; color: var(--mute-on-deep); max-width: 34ch; }
 
-.s-hero-placa-render { margin-top: 20px; }
+.s-hero-placa-render { margin-top: 18px; }
 .s-placa-shape {
   position: relative; display: inline-flex; align-items: center; gap: 10px;
   padding: 11px 18px 11px 24px; border-radius: 14px; color: var(--deep);
@@ -66,8 +78,20 @@ body.srv-bar-on .s-hero-content { padding-bottom: calc(36px + 56px + env(safe-ar
 .s-placa-nombre { font-family: var(--font-display); font-weight: 800; font-size: 15px; letter-spacing: 0.01em; white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { .s-placa-shape { transition: none !important; clip-path: inset(0 0 0 0) !important; } }
 
+/* ---------- Compu: foto a sangre otra vez (a 1440x900 cabe casi completa) ---------- */
 @media (min-width: 900px) {
-  .s-hero-content { max-width: 720px; padding-bottom: 64px; }
-  body.srv-bar-on .s-hero-content { padding-bottom: calc(64px + 56px + env(safe-area-inset-bottom)); }
-  .s-hero-scene img { object-position: 62% 22%; }
+  .s-hero { display: block; overflow: hidden; }
+  .s-hero-scene { position: absolute; inset: 0; margin-top: 0; aspect-ratio: auto; max-height: none; z-index: 0; }
+  .s-hero-scene img { object-position: 50% 42%; }
+  /* franja de arriba mucho más cargada: ahí cae el eyebrow y el pelo blanco de los gatitos
+     lo dejaba ilegible (REVISION-2, cambio 10). Medido: eyebrow y sub por encima de 4.5:1. */
+  .s-hero-velo { background: linear-gradient(to right, rgba(10,6,3,.93) 0%, rgba(10,6,3,.90) 28%, rgba(10,6,3,.80) 38%, rgba(10,6,3,.52) 48%, rgba(10,6,3,.20) 60%, transparent 72%); }
+  .s-hero-pie { left: auto; right: var(--gutter); bottom: 20px; width: auto; justify-content: flex-end; }
+  /* la columna de texto se pega a la IZQUIERDA (sin el margin auto de .vi-wrap): el velo
+     tambien corre de izquierda a derecha, y asi el texto siempre cae sobre la parte cargada
+     y los gatitos de la derecha se quedan limpios. */
+  .s-hero-content { position: relative; z-index: 2; min-height: 100svh; max-width: 660px; margin-inline: 0; justify-content: center; padding-top: calc(var(--header-h) + 28px); padding-bottom: 64px; }
+  .s-hero-title { font-size: clamp(42px, 3.6vw, 58px); }
+  .s-hero-apoyo { font-size: 17px; }
+  .s-hero-sub { font-size: 14.5px; }
 }

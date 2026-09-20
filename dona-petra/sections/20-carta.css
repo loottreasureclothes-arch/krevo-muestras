@@ -15,8 +15,13 @@
 .pt-card { display: none; opacity: 0; transform: translateY(10px); transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out); }
 .pt-card.is-cat { display: flex; flex-direction: column; }
 .pt-card.is-cat.is-in { opacity: 1; transform: none; }
-.pt-card-fr { aspect-ratio: 2 / 3; }
-.pt-card-fr img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* box-sizing: content-box a proposito (FEEDBACK 20 sep: "las fotos se ven
+   agrandadas"): con border-box el aspect-ratio 2/3 se calculaba SOBRE el marco
+   de 10 px de .pt-frame, asi que la foto de adentro salia mas alta que 2:3 y
+   object-fit:cover la recortaba de mas (se veia mas encimada/zoom de lo real).
+   Con content-box el 2:3 aplica a la foto misma; el marco de 10 px se suma aparte. */
+.pt-card-fr { box-sizing: content-box; aspect-ratio: 2 / 3; }
+.pt-card-fr img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
 /* la ficha crece y el renglon de precio + Agregar se pega abajo: todas las tarjetas
    de la fila terminan a la misma altura aunque el nombre ocupe dos renglones */
 .pt-card-info { padding-top: 10px; display: flex; flex-direction: column; flex: 1; }

@@ -234,6 +234,17 @@ body.pf-nav-open .pf-burger i:nth-child(3) { transform: translateY(-5px) rotate(
 @media (min-width: 900px) { .pf-pedir { height: 48px; padding: 0 22px; font-size: 16px; } }
 @media (max-width: 359px) { .pf-pedir span { display: none; } .pf-pedir { width: 44px; height: 44px; padding: 0; justify-content: center; } }
 
+/* Botón de regreso de menu.html (FEEDBACK-1 20 sep: "carta" en su propia página, con botón de regreso claro) */
+.pf-back-wrap { padding: calc(var(--k-header-h, 64px) + 18px) var(--k-gutter, 20px) 0; max-width: calc(1320px + 2 * var(--k-gutter, 20px)); margin: 0 auto; }
+.pf-back { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 4px; color: var(--wine); font-weight: 700; font-size: .92rem; text-decoration: none; }
+.pf-back svg { width: 18px; height: 18px; flex: none; transform: scaleX(-1); }
+@media (hover: hover) and (pointer: fine) { .pf-back:hover { text-decoration: underline; text-underline-offset: 3px; } }
+
+/* Estado activo del menú (NOTA GLOBAL 20 sep: "que se sienta como navegación de verdad") */
+.k-nav a.is-on { opacity: 1; }
+.k-nav a.is-on::after { transform: scaleX(1); transform-origin: left; }
+.pf-nav-list > a.is-on, .pf-nav-sub a.is-on { color: var(--gold) !important; }
+
 /* ============ Menú hamburguesa ============ */
 body.pf-nav-open { overflow: hidden; }
 body.pf-nav-open .pf-topbar { max-height: 0; opacity: 0; }
@@ -378,23 +389,15 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.05  0 0 0 0 0.06  0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
   background-repeat: repeat; background-size: 220px 220px; background-blend-mode: multiply;
 }
-/* Fondos: rojo oscuro con grano fino también en el footer (mismo blindaje que #horno/#nosotros) */
+/* Fondos: rojo oscuro con grano fino también en el footer (mismo blindaje que #nosotros) */
 .pf-foot[data-grain]::after { opacity: .045; }
-
-/* Madera sutil detrás de la tarjeta del horno (vetas cálidas, muy baja opacidad) */
-#horno .hn-card { position: relative; isolation: isolate; }
-#horno .hn-card::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; opacity: .16; mix-blend-mode: overlay;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.012 0.11' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.63  0 0 0 0 0.45  0 0 0 0 0.28  0 0 0 0.8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E") repeat;
-  background-size: 260px 260px;
-}
 
 /* Botones verdes: siempre redondeados (14 px), aunque el resto del sitio use 3 px.
    REVISIÓN 10: el cotizador de reunión ya NO es la excepción; "Siguiente" y "Pedir cotización"
    heredan los mismos 14 px que todos los demás verdes (antes volvían a 3 px y se veían como ladrillo). */
 .pf-btn--wa, .k-btn.pf-btn-wa, .pf-submit { border-radius: 14px !important; }
 
-/* Tarjetas del sitio a 18 px (reseñas y hoja de detalle ya tienen su propio 18 px en 20-menu.css/30-horno.css) */
+/* Tarjetas del sitio a 18 px (reseñas y hoja de detalle ya tienen su propio 18 px en 20-menu.css) */
 #nosotros .res-card { border-radius: 18px; }
 
 /* Footer: fila de iconos sociales oficiales, 44 px */
@@ -409,10 +412,9 @@ body {
 @media (hover: hover) and (pointer: fine) { .pf-foot-social a:hover { background: rgba(247, 236, 220, .2); } }
 
 /* Títulos de sección: caen desde arriba y pegan con rebote corto (site.js initTitleDrop, misma técnica
-   que el 2014/closetdoor-10-msi). REVISIÓN 10: caen TODOS los títulos de sección, incluidos el horno
-   (#hn-t, se le quitó el transform ligado al scroll y se pasó a sus renglones .hn-l) y la reunión
+   que el 2014/closetdoor-10-msi). Caen los títulos de menú, ubicación (#vi-t), quiénes somos y la reunión
    (#ru-t, cae renglón por renglón con los spans .ru-l que ya estaban en el HTML y no animaba nadie).
    El hero se queda fuera a propósito: tiene su propia entrada por renglón con máscara (hr-up). */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  #pf-mm-title, #nos-t, #vi-t, #hn-t, #ru-t .ru-l { opacity: 0; transform: translateY(-60px); }
+  #pf-mm-title, #nos-t, #vi-t, #ru-t .ru-l { opacity: 0; transform: translateY(-60px); }
 }

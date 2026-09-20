@@ -10,8 +10,8 @@
       </ul>
 
       <div class="gr-media">
-        <figure class="gr-media-big"><img src="img/f/12-crop-1600.webp" width="1600" height="730" loading="lazy" alt="Mesa de evento montada con mantel negro y copas, Los Abolengos"></figure>
-        <figure class="gr-media-sm ab-frame"><img src="img/f/10-1600.webp" width="1600" height="1200" loading="lazy" alt="Terraza con sombrillas de Los Abolengos"></figure>
+        <figure class="gr-media-big"><img src="img/f/12-crop-1600.webp" width="1600" height="730" loading="lazy" decoding="async" alt="Mesa de evento montada con mantel negro y copas, Los Abolengos"></figure>
+        <figure class="gr-media-sm ab-frame"><img src="img/f/10-1600.webp" width="1600" height="1200" loading="lazy" decoding="async" alt="Terraza con sombrillas de Los Abolengos"></figure>
       </div>
 
       <form class="gr-form" id="gr-form">
@@ -26,12 +26,6 @@
             </div>
           </div>
           <div class="ab-field">
-            <span>Fecha</span>
-            <input type="date" id="gr-date" class="gr-input">
-          </div>
-        </div>
-        <div class="gr-row">
-          <div class="ab-field">
             <span>Hora</span>
             <select id="gr-hour">
               <option value="8:00">8:00</option>
@@ -42,12 +36,16 @@
               <option value="1:00">1:00</option>
             </select>
           </div>
-          <div class="ab-field">
-            <span>Espacio</span>
-            <div class="gr-radios" role="radiogroup" aria-label="Salón o terraza">
-              <label><input type="radio" name="gr-espacio" value="Salón privado" checked><span>Salón</span></label>
-              <label><input type="radio" name="gr-espacio" value="Terraza"><span>Terraza</span></label>
-            </div>
+        </div>
+        <div class="ab-field">
+          <span>Fecha</span>
+          <input type="date" id="gr-date" class="gr-input gr-input--date">
+        </div>
+        <div class="ab-field">
+          <span>Espacio</span>
+          <div class="gr-radios" role="radiogroup" aria-label="Salón o terraza">
+            <label><input type="radio" name="gr-espacio" value="Salón privado" checked><span>Salón</span></label>
+            <label><input type="radio" name="gr-espacio" value="Terraza"><span>Terraza</span></label>
           </div>
         </div>
         <div class="ab-field">

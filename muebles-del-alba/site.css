@@ -200,22 +200,30 @@ body.cd-menu-open .cd-menu-panel { clip-path: inset(0 0 0 0); }
 .cd-menu-nav > a { display: flex; align-items: baseline; gap: 14px; padding: 8px 0; min-height: 48px; font-weight: 800; font-size: clamp(32px, 9vw, 52px); line-height: .94; color: var(--cream); border-bottom: 1px solid var(--line-deep); opacity: 0; transform: translateY(14px); transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out); }
 .cd-menu-nav > a:first-child { border-top: 1px solid var(--line-deep); }
 .cd-menu-nav a span { flex: none; width: 2.2em; font: 600 12px/1 var(--font-body); letter-spacing: .08em; color: var(--brand-on-deep); transform: translateY(-.9em); }
+/* Estado activo: la sección donde vas queda marcada, para que el menú se sienta navegación real */
+.cd-menu-nav > a[aria-current] { color: var(--brand-on-deep); border-bottom-color: var(--brand-on-deep); }
+.cd-menu-nav > a[aria-current] span { color: var(--cream); }
 body.cd-menu-open .cd-menu-nav > a, body.cd-menu-open .cd-menu-sub { opacity: 1; transform: none; transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out); transition-delay: calc(120ms + var(--i, 0) * 40ms); }
 .cd-menu-nav a.cd-menu-parent { border-bottom: 0; padding-bottom: 2px; }
 .cd-menu-sub { list-style: none; margin: 0; padding: 0 0 10px 40px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; border-bottom: 1px solid var(--line-deep); opacity: 0; transform: translateY(14px); }
 .cd-menu-sub a { display: flex; align-items: center; gap: 10px; min-height: 44px; font: 600 16px/1.2 var(--font-body); color: var(--cream-mute); }
 .cd-menu-sub a::before { content: ""; flex: none; width: 10px; height: 1.5px; background: var(--brand-on-deep); }
 @media (hover: hover) and (pointer: fine) { .cd-menu-nav a:hover, .cd-menu-sub a:hover { color: #fff; } }
+/* El panel no deja huecos muertos: la cinta del 10% y el horario en grande llenan
+   lo que antes eran ~380 px de nada entre "05 Contacto" y los botones. */
+.cd-menu-promo { display: flex; align-items: center; gap: 12px; margin: 0; padding: 12px 14px; background: var(--brand); color: #fff; border-radius: 2px; }
+.cd-menu-promo b { flex: none; font: 900 30px/.9 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; }
+.cd-menu-promo span { font-size: 13px; line-height: 1.3; color: #fff; }
 .cd-menu-foot { display: grid; gap: 14px; opacity: 0; transition: opacity 200ms var(--ease-out); }
 body.cd-menu-open .cd-menu-foot { opacity: 1; transition: opacity 400ms var(--ease-out) 360ms; }
-.cd-menu-hours { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 0; padding-bottom: 4px; }
-.cd-menu-hours div { display: flex; gap: 6px; align-items: baseline; }
-.cd-menu-hours dt { color: var(--cream-mute); font-size: 12px; }
-.cd-menu-hours dd { margin: 0; font: 700 13px/1 var(--font-body); font-variant-numeric: tabular-nums; }
+.cd-menu-hours { display: grid; gap: 7px; margin: 0; padding: 12px 0 4px; border-top: 1px solid var(--line-deep); }
+.cd-menu-hours div { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.cd-menu-hours dt { color: var(--cream-mute); font-size: 15px; }
+.cd-menu-hours dd { margin: 0; font: 700 18px/1 var(--font-body); font-variant-numeric: tabular-nums; }
 .cd-menu-acts { display: grid; grid-template-columns: 1.4fr 1fr; gap: 10px; }
 .cd-menu-acts .cd-btn { width: 100%; }
 .cd-menu-acts .cd-btn--secondary { color: var(--cream); }
-.cd-menu-foot p { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 16px; color: var(--cream-mute); font-size: 14px; }
+.cd-menu-foot > p:not(.cd-menu-promo) { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 16px; color: var(--cream-mute); font-size: 14px; }
 .cd-menu-foot p a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--cream); text-decoration: underline; }
 @media (min-width: 900px) {
   .cd-menu-panel { inset: 12px 12px 12px auto; width: min(540px, 42vw); border-radius: 3px; padding: calc(64px + 18px) 40px 32px; box-shadow: -30px 0 80px rgba(0, 0, 0, .35); clip-path: none; transform: translateX(calc(100% + 24px)); transition: transform 460ms cubic-bezier(.32, .72, 0, 1); }
@@ -299,27 +307,28 @@ body.cd-menu-open .sel-bar, body.mda-modal .sel-bar { visibility: hidden; }
 /* ============ Footer (el pie: carbon, telefono, direccion, horario, sello) ============
    El logotipo grande y "Todo listo para completar" viven en la seccion 70-cierre;
    este pie solo trae datos de contacto + redes reales. */
-.cd-foot { background-color: var(--deep-2); background-image: var(--grain); color: var(--cream); padding: 48px 0 calc(110px + env(safe-area-inset-bottom)); }
-.cd-foot-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 20px; }
+.cd-foot { background-color: var(--deep-2); background-image: var(--grain); color: var(--cream); padding: 26px 0 calc(86px + env(safe-area-inset-bottom)); }
+.cd-foot-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px; }
 .cd-foot-cols > :last-child { grid-column: 1 / -1; }
 .cd-foot-col:first-child { grid-column: 1 / -1; }
-.cd-foot-h { font: 600 12px/1.2 var(--font-body); text-transform: uppercase; letter-spacing: .1em; color: var(--cream-mute); margin-bottom: 12px; }
-.cd-foot address { font-style: normal; font-size: 16px; line-height: 1.5; }
+.cd-foot-h { font: 600 12px/1.2 var(--font-body); text-transform: uppercase; letter-spacing: .1em; color: var(--cream-mute); margin-bottom: 9px; }
+.cd-foot address { font-style: normal; font-size: 15px; line-height: 1.45; }
+.cd-foot-maps { margin: 6px 0 0; color: var(--cream-mute); font-size: 12.5px; line-height: 1.4; }
 .cd-foot-list { list-style: none; padding: 0; margin: 0; display: grid; }
-.cd-foot-list a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 600; font-size: 16px; }
+.cd-foot-list a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 600; font-size: 15px; }
 .cd-foot-list svg { width: 18px; height: 18px; color: var(--brand-on-deep); }
-.cd-foot-hours { display: grid; gap: 8px; margin: 0; }
-.cd-foot-hours div { display: grid; gap: 2px; }
+.cd-foot-hours { display: grid; gap: 6px; margin: 0; }
+.cd-foot-hours div { display: grid; gap: 1px; }
 .cd-foot-hours dt { color: var(--cream-mute); font-size: 13px; }
 .cd-foot-hours dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
-.cd-foot-social { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.cd-foot-social { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 7px; }
 .cd-foot-social a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 2px; border: 1px solid var(--line-deep); color: var(--cream); }
 .cd-foot-social svg { width: 20px; height: 20px; }
 @media (hover: hover) and (pointer: fine) {
   .cd-foot-list a:hover { color: var(--brand-on-deep); }
   .cd-foot-social a:hover { border-color: var(--brand-on-deep); color: var(--brand-on-deep); }
 }
-.cd-foot-bottom { display: grid; gap: 8px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line-deep); color: var(--cream-mute); font-size: 13px; }
+.cd-foot-bottom { display: grid; gap: 6px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line-deep); color: var(--cream-mute); font-size: 12.5px; line-height: 1.4; }
 .cd-foot-bottom .cd-credit { opacity: .7; }
 @media (min-width: 900px) {
   .cd-foot { padding: 72px 0 48px; }

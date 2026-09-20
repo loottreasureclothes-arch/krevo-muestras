@@ -16,6 +16,20 @@
   padding-top: calc(var(--k-header-h) + 22px); padding-bottom: 24px;
   display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; align-content: center;
 }
+/* Celular: logo arriba (mas grande), "Enciende tu marca" debajo, botones lado a lado; mas compacto
+   (Emanuel, FEEDBACK-1.md #1). El orden visual en compu ya lo fija grid-template-areas mas abajo,
+   sin tocarlo. */
+@media (max-width: 1023px) {
+  #hero { min-height: 0; }
+  #hero .s-hero-in { padding-top: calc(var(--k-header-h) + 14px); padding-bottom: 16px; gap: 14px; }
+  #hero .s-hero-box { padding: 8px 8px 6px; }
+  #hero .s-hero-muro { aspect-ratio: 3 / 2; }
+  #hero .s-hero-sign { width: 88%; }
+  #hero .s-hero-cap { margin-top: 6px; }
+  #hero .s-hero-eb { margin-bottom: 8px; }
+  #hero .s-hero-sub { margin-top: 8px; }
+  #hero .s-hero-actions { margin-top: 14px; }
+}
 
 /* ---------- Titular ---------- */
 #hero .s-hero-copy { position: relative; min-width: 0; container-type: inline-size; }
@@ -47,9 +61,12 @@
     0 0.02em 0 #6f8a2a, 0 0.04em 0 #4d6219, 0 0.06em 0 #2e3b0e, 0 0.07em 0.1em rgba(0, 0, 0, 0.5);
 }
 #hero .s-hero-sub { margin-top: 14px; font-size: 17px; line-height: 1.4; color: var(--cream); font-weight: 500; max-width: 34ch; }
-#hero .s-hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+/* Dos botones SIEMPRE lado a lado (Emanuel: "izquierda y derecha"), incluso en celular chico:
+   se reparten el ancho a la mitad y el texto puede bajar a 2 lineas en vez de desbordar. */
+#hero .s-hero-actions { display: flex; gap: 10px; margin-top: 22px; }
+#hero .s-hero-actions .cd-btn { flex: 1 1 0; white-space: normal; text-align: center; }
 #hero .s-hero-actions .cd-btn--secondary { color: var(--cream); }
-@media (max-width: 420px) { #hero .s-hero-actions .cd-btn { flex: 1 1 100%; } #hero .s-hero-actions .cd-btn--secondary { min-height: 48px; } }
+@media (max-width: 420px) { #hero .s-hero-actions .cd-btn { padding: 0 10px; font-size: 14.5px; gap: 6px; } #hero .s-hero-actions .cd-btn svg { width: 17px; height: 17px; } }
 
 /* ---------- Caja de luz: el LOGO real montado en un muro oscuro ---------- */
 #hero .s-hero-box {

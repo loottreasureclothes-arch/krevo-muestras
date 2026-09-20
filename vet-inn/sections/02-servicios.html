@@ -1,14 +1,4 @@
-<section id="servicios" class="s-srv" aria-label="Servicios">
-
-  <div class="s-srv-foto vi-foto-grande">
-    <picture>
-      <source media="(min-width: 720px)" srcset="img/fotos/servicios-d.webp">
-      <img src="img/fotos/servicios-m.webp" alt="Camada de gatitos en transportadora azul, dentro de la clínica Vet Inn, foto real del negocio." width="1200" height="675" loading="lazy">
-    </picture>
-    <div class="s-srv-foto-velo" aria-hidden="true"></div>
-    <p class="s-srv-foto-pie"><span class="s-srv-foto-num">02</span> / EL DORADO · Cuatro que llegaron juntos.</p>
-  </div>
-
+<section id="servicios" class="s-srv" aria-label="Servicios y solicitud de cita">
   <div class="s-srv-paper">
     <div class="vi-wrap">
       <h2 class="vi-h2 s-srv-title">
@@ -17,92 +7,86 @@
         <span class="s-hero-line vi-tono" data-vi-drop id="srv-mascota">tu mascota.</span>
       </h2>
 
-      <div class="s-srv-grid" data-vi-reveal-stagger>
-        <article class="s-srv-card" data-item="consultas">
-          <div class="vi-marco s-srv-card-foto">
-            <div class="vi-marco-foto"><img src="img/fotos/srv-consultas.webp" width="414" height="414" loading="lazy" alt="Doberman sobre la mesa de exploración de acero de Vet Inn, foto real de la clínica."></div>
-          </div>
-          <div class="s-srv-card-body">
-            <h3>Consultas</h3>
-            <p class="s-srv-precio">Pregunta el precio</p>
-            <button type="button" class="vi-btn vi-btn--agregar s-srv-add" data-add="consultas">+ Agregar</button>
-          </div>
-        </article>
-
-        <article class="s-srv-card" data-item="pension">
-          <div class="vi-marco s-srv-card-foto">
-            <div class="vi-marco-foto"><img src="img/fotos/srv-pension.webp" width="1024" height="498" loading="lazy" alt="Dos gatos dormidos juntos sobre un sillón de la sala de espera de Vet Inn, foto real de la clínica."></div>
-          </div>
-          <div class="s-srv-card-body">
-            <h3>Pensión</h3>
-            <p class="s-srv-precio">Pregunta el precio</p>
-            <button type="button" class="vi-btn vi-btn--agregar s-srv-add" data-add="pension">+ Agregar</button>
-          </div>
-        </article>
-
-        <article class="s-srv-card" data-item="lab">
-          <div class="vi-marco s-srv-card-foto s-srv-card-foto--chica">
-            <div class="vi-marco-foto"><img src="img/fotos/srv-lab.webp" width="352" height="330" loading="lazy" alt="Toma de muestra de sangre a un perro sobre la mesa de acero de Vet Inn, foto real de la clínica."></div>
-          </div>
-          <div class="s-srv-card-body">
-            <h3>Estudios de laboratorio</h3>
-            <p class="s-srv-precio">Pregunta el precio</p>
-            <button type="button" class="vi-btn vi-btn--agregar s-srv-add" data-add="lab">+ Agregar</button>
-          </div>
-        </article>
-
-        <article class="s-srv-card" data-item="cachorros">
-          <div class="vi-marco s-srv-card-foto">
-            <div class="vi-marco-foto"><img src="img/fotos/srv-cachorros.webp" width="768" height="1024" loading="lazy" alt="Cachorro dentro de una transportadora, acariciado por una mano, foto real de Vet Inn."></div>
-          </div>
-          <div class="s-srv-card-body">
-            <h3>Cachorros y mascotas</h3>
-            <p class="s-srv-precio">Pregunta el precio</p>
-            <button type="button" class="vi-btn vi-btn--agregar s-srv-add" data-add="cachorros">+ Agregar</button>
-          </div>
-        </article>
+      <!-- Vitrina: solo fotos + nombre, sin precio ni botón. Los servicios ya no son
+           productos (FEEDBACK-1): lo que se agenda vive abajo, en la solicitud de cita. -->
+      <div class="s-srv-showcase" data-vi-reveal-stagger>
+        <figure class="s-srv-tile s-srv-tile--wide">
+          <div class="vi-marco s-srv-tile-foto"><div class="vi-marco-foto"><img src="img/fotos/srv-pension.webp" width="1400" height="788" loading="lazy" decoding="async" alt="Dos gatos dormidos juntos sobre un sillón de la sala de espera de Vet Inn, foto real de la clínica."></div></div>
+          <figcaption><span class="s-srv-ico" style="--c:#2C5C87"><svg aria-hidden="true"><use href="#i-s-cama"/></svg></span>Pensión</figcaption>
+        </figure>
+        <figure class="s-srv-tile">
+          <div class="vi-marco s-srv-tile-foto"><div class="vi-marco-foto"><img src="img/fotos/srv-consultas.webp" width="620" height="620" loading="lazy" decoding="async" alt="Perro doberman echado con la correa puesta dentro de la clínica Vet Inn, foto real del negocio."></div></div>
+          <figcaption><span class="s-srv-ico" style="--c:#2F6F9B"><svg aria-hidden="true"><use href="#i-s-estetoscopio"/></svg></span>Consultas</figcaption>
+        </figure>
+        <figure class="s-srv-tile">
+          <div class="vi-marco s-srv-tile-foto"><div class="vi-marco-foto"><img src="img/fotos/srv-cachorros.webp" width="662" height="882" loading="lazy" decoding="async" alt="Cachorro dentro de una transportadora, acariciado por una mano, foto real de Vet Inn."></div></div>
+          <figcaption><span class="s-srv-ico" style="--c:#AA4A6C"><svg aria-hidden="true"><use href="#i-s-huella"/></svg></span>Cachorros y mascotas</figcaption>
+        </figure>
       </div>
 
-      <ul class="s-srv-carta" data-vi-reveal-stagger>
-        <li class="s-srv-fila" data-item="cirugias"><span class="s-srv-fila-hueco" aria-hidden="true"></span><span class="s-srv-fila-nombre">Cirugías</span><span class="s-srv-fila-precio">Pregunta el precio</span><button type="button" class="s-srv-fila-add" data-add="cirugias" aria-label="Agregar Cirugías">+</button></li>
-        <li class="s-srv-fila" data-item="vacunas"><span class="s-srv-fila-hueco" aria-hidden="true"></span><span class="s-srv-fila-nombre">Vacunas</span><span class="s-srv-fila-precio">Pregunta el precio</span><button type="button" class="s-srv-fila-add" data-add="vacunas" aria-label="Agregar Vacunas">+</button></li>
-        <li class="s-srv-fila" data-item="desparasitacion"><span class="s-srv-fila-hueco" aria-hidden="true"></span><span class="s-srv-fila-nombre">Desparasitación</span><span class="s-srv-fila-precio">Pregunta el precio</span><button type="button" class="s-srv-fila-add" data-add="desparasitacion" aria-label="Agregar Desparasitación">+</button></li>
-        <li class="s-srv-fila" data-item="estetica"><span class="s-srv-fila-hueco" aria-hidden="true"></span><span class="s-srv-fila-nombre">Estética canina</span><span class="s-srv-fila-precio">Pregunta el precio</span><button type="button" class="s-srv-fila-add" data-add="estetica" aria-label="Agregar Estética canina">+</button></li>
-        <li class="s-srv-fila" data-item="alimento"><span class="s-srv-fila-hueco" aria-hidden="true"></span><span class="s-srv-fila-nombre">Alimento</span><span class="s-srv-fila-precio">Pregunta el precio</span><button type="button" class="s-srv-fila-add" data-add="alimento" aria-label="Agregar Alimento">+</button></li>
-        <li class="s-srv-fila" data-item="accesorios"><span class="s-srv-fila-hueco" aria-hidden="true"></span><span class="s-srv-fila-nombre">Accesorios</span><span class="s-srv-fila-precio">Pregunta el precio</span><button type="button" class="s-srv-fila-add" data-add="accesorios" aria-label="Agregar Accesorios">+</button></li>
-        <li class="s-srv-fila" data-item="asesoria"><span class="s-srv-fila-hueco" aria-hidden="true"></span><span class="s-srv-fila-nombre">Asesoría especializada</span><span class="s-srv-fila-precio">Pregunta el precio</span><button type="button" class="s-srv-fila-add" data-add="asesoria" aria-label="Agregar Asesoría especializada">+</button></li>
-        <li class="s-srv-fila" data-item="acuario"><span class="s-srv-fila-hueco" aria-hidden="true"></span><span class="s-srv-fila-nombre">Acuario</span><span class="s-srv-fila-precio">Pregunta el precio</span><button type="button" class="s-srv-fila-add" data-add="acuario" aria-label="Agregar Acuario">+</button></li>
+      <!-- Lo que atendemos. REVISION-2, cambio 4 ("los carritos de colores"): cada servicio
+           lleva SU icono de trazo y SU color. Nada de precio ni botón "+": no es carrito.
+           El precio real solo sale por WhatsApp (regla dura). -->
+      <ul class="s-srv-lista" data-vi-reveal-stagger>
+        <li class="s-srv-item"><span class="s-srv-ico" style="--c:#BE4231"><svg aria-hidden="true"><use href="#i-s-corazon"/></svg></span>Cirugías</li>
+        <li class="s-srv-item"><span class="s-srv-ico" style="--c:#74519E"><svg aria-hidden="true"><use href="#i-s-jeringa"/></svg></span>Vacunas</li>
+        <li class="s-srv-item"><span class="s-srv-ico" style="--c:#1F7E70"><svg aria-hidden="true"><use href="#i-s-escudo"/></svg></span>Desparasitación</li>
+        <li class="s-srv-item"><span class="s-srv-ico" style="--c:#BB6A1C"><svg aria-hidden="true"><use href="#i-s-tijeras"/></svg></span>Estética canina</li>
+        <li class="s-srv-item"><span class="s-srv-ico" style="--c:#4A5AA0"><svg aria-hidden="true"><use href="#i-s-matraz"/></svg></span>Estudios de laboratorio</li>
+        <li class="s-srv-item"><span class="s-srv-ico" style="--c:#7A7C22"><svg aria-hidden="true"><use href="#i-s-charla"/></svg></span>Asesoría especializada</li>
+        <li class="s-srv-item"><span class="s-srv-ico" style="--c:#8B562B"><svg aria-hidden="true"><use href="#i-s-tazon"/></svg></span>Alimento y accesorios</li>
+        <li class="s-srv-item"><span class="s-srv-ico" style="--c:#2C8A52"><svg aria-hidden="true"><use href="#i-s-pez"/></svg></span>Acuario</li>
       </ul>
+      <p class="s-srv-nota" data-vi-reveal>Pregunta el precio de cualquiera: te lo confirmamos por WhatsApp.</p>
 
-      <p class="s-srv-total" data-vi-reveal>Te lo confirmamos por WhatsApp.</p>
-    </div>
-  </div>
+      <!-- SOLICITUD DE CITA — reemplaza al carrito (FEEDBACK-1). Se elige el servicio, se
+           ponen los datos de la mascota y de ahí sale el mensaje de WhatsApp.
+           REVISION-2, cambios 5 y 6: el nombre de la mascota se escribe AQUÍ (sincronizado
+           con la placa del hero, ya no hay link "Ponlo arriba") y en compu son dos columnas. -->
+      <div class="s-srv-cita" data-vi-reveal>
+        <div class="s-srv-cita-col">
+          <h3 class="s-srv-cita-h">Solicita tu <span class="vi-tono">cita.</span></h3>
 
-  <div class="s-srv-bar" id="srv-bar" hidden>
-    <button type="button" class="s-srv-bar-btn" id="srv-bar-btn">
-      <span id="srv-bar-txt">La placa de tu mascota · 0 servicios</span>
-      <svg aria-hidden="true"><use href="#i-arrow"/></svg>
-    </button>
-  </div>
+          <label class="s-srv-cita-field" for="cita-mascota">
+            <span class="s-srv-cita-label">¿Cómo se llama tu mascota?</span>
+            <input type="text" id="cita-mascota" maxlength="24" placeholder="El nombre de tu mascota" autocomplete="off">
+          </label>
+          <p class="s-srv-cita-placa" id="cita-placa"></p>
 
-  <div class="s-srv-sheet" id="srv-sheet" role="dialog" aria-modal="true" aria-label="Lo que quieres preguntar" aria-hidden="true">
-    <div class="s-srv-sheet-scrim" data-srv-close></div>
-    <div class="s-srv-sheet-panel">
-      <button type="button" class="s-srv-sheet-close" data-srv-close aria-label="Cerrar"><svg width="18" height="18" aria-hidden="true"><use href="#i-close"/></svg></button>
-      <div class="s-srv-sheet-placa" id="srv-sheet-placa"></div>
-      <h3 class="s-srv-sheet-h">Lo que quieres preguntar</h3>
-      <ul class="s-srv-sheet-list" id="srv-sheet-list"></ul>
-      <label class="s-srv-sheet-field">
-        <span>Tu nombre</span>
-        <input type="text" id="srv-tunombre" autocomplete="name" maxlength="60" placeholder="¿Cómo te llamas?">
-      </label>
-      <label class="s-srv-sheet-field">
-        <span>¿Qué le pasa?</span>
-        <textarea id="srv-quepasa" rows="2" maxlength="240" placeholder="Cuéntanos en pocas palabras"></textarea>
-      </label>
-      <p class="s-srv-sheet-honesto">Desde aquí no se cobra nada. Solo se manda el mensaje.</p>
-      <a class="vi-btn vi-btn--wa s-srv-sheet-send" id="srv-sheet-send" href="https://wa.me/524492202495" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp</a>
-      <a class="s-srv-sheet-fallback" id="srv-sheet-fallback" href="https://wa.me/524492202495" target="_blank" rel="noopener" hidden>¿No se abrió WhatsApp? Toca aquí</a>
+          <div class="s-srv-cita-field">
+            <span class="s-srv-cita-label">¿Qué necesita?</span>
+            <div class="s-srv-cita-servicios" role="group" aria-label="Elige el servicio" id="cita-servicios">
+              <button type="button" class="s-srv-cita-chip" data-servicio="Consulta" aria-pressed="false">Consulta</button>
+              <button type="button" class="s-srv-cita-chip" data-servicio="Vacuna" aria-pressed="false">Vacuna</button>
+              <button type="button" class="s-srv-cita-chip" data-servicio="Desparasitación" aria-pressed="false">Desparasitación</button>
+              <button type="button" class="s-srv-cita-chip" data-servicio="Cirugía" aria-pressed="false">Cirugía</button>
+              <button type="button" class="s-srv-cita-chip" data-servicio="Estética" aria-pressed="false">Estética</button>
+              <button type="button" class="s-srv-cita-chip" data-servicio="Pensión" aria-pressed="false">Pensión</button>
+              <button type="button" class="s-srv-cita-chip" data-servicio="Estudios" aria-pressed="false">Estudios</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="s-srv-cita-col">
+          <label class="s-srv-cita-field" for="cita-edad">
+            <span class="s-srv-cita-label">Edad de tu mascota (opcional)</span>
+            <input type="text" id="cita-edad" maxlength="20" placeholder="Ej. 2 años" autocomplete="off">
+          </label>
+
+          <label class="s-srv-cita-field" for="cita-quepasa">
+            <span class="s-srv-cita-label">¿Qué le pasa?</span>
+            <textarea id="cita-quepasa" rows="3" maxlength="240" placeholder="Cuéntanos en pocas palabras"></textarea>
+          </label>
+
+          <label class="s-srv-cita-field" for="cita-tunombre">
+            <span class="s-srv-cita-label">Tu nombre</span>
+            <input type="text" id="cita-tunombre" autocomplete="name" maxlength="60" placeholder="¿Cómo te llamas?">
+          </label>
+
+          <p class="s-srv-cita-honesto">Desde aquí no se cobra nada. Solo se manda el mensaje.</p>
+          <a class="vi-btn vi-btn--wa s-srv-cita-send" id="cita-send" href="https://wa.me/524492202495" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

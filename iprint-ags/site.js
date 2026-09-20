@@ -88,6 +88,40 @@
     });
   }
 
+  /* Estado activo del menu/nav mientras se hace scroll (NOTA GLOBAL, FEEDBACK-1.md: que la navegacion
+     "se sienta de verdad"). Marca is-active + aria-current en el renglon de la seccion visible,
+     tanto en el nav de header como en el panel de la hamburguesa. */
+  function initActiveNav() {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.k-nav a[href^="#"], .cd-menu-nav > a[href^="#"]'));
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var map = {};
+    links.forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      if (id) (map[id] = map[id] || []).push(a);
+    });
+    var idEls = [];
+    Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) idEls.push(el); });
+    idEls.sort(function (a, b) { return (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1; });
+    var ids = idEls.map(function (el) { return el.id; });
+    if (!ids.length) return;
+    var seen = {};
+    function mark(id) {
+      links.forEach(function (a) {
+        var on = a.getAttribute("href") === "#" + id;
+        a.classList.toggle("is-active", on);
+        if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+      });
+    }
+    var headerH = (document.querySelector(".k-header") || {}).offsetHeight || 72;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { seen[e.target.id] = e.isIntersecting; });
+      var active = null;
+      ids.forEach(function (id) { if (seen[id]) active = id; });
+      if (active) mark(active);
+    }, { rootMargin: "-" + (headerH + 12) + "px 0px -65% 0px", threshold: 0 });
+    idEls.forEach(function (el) { io.observe(el); });
+  }
+
   function initRipple() {
     if (reduce) return;
     document.addEventListener("pointerdown", function (e) {
@@ -253,7 +287,7 @@
     });
   }
 
-  function init() { initWa(); initMenu(); initRipple(); initWaHide(); initReveal(); initTitleDrop(); }
+  function init() { initWa(); initMenu(); initRipple(); initWaHide(); initReveal(); initTitleDrop(); initActiveNav(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

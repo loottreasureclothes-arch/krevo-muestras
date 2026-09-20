@@ -214,7 +214,9 @@ body.sg-nav-open .sg-nav-list > a { opacity: 1; transform: none; transition: opa
 .sg-nav-sub { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; padding: 0 0 8px 40px; border-bottom: 1px solid var(--line-dark); opacity: 0; transition: opacity 200ms; }
 body.sg-nav-open .sg-nav-sub { opacity: 1; transition: opacity 420ms var(--ease-out) 260ms; }
 .sg-nav-sub a { display: flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 600; font-size: 16px; color: var(--cream-mute); }
-.sg-nav-sub a::before { content: ""; width: 10px; height: 1.5px; background: var(--gold-l); flex: none; }
+.sg-nav-sub a::before { content: ""; width: 10px; height: 1.5px; background: var(--gold-l); flex: none; transition: width 200ms var(--ease-out); }
+.sg-nav-list > a.is-active, .sg-nav-sub a.is-active { color: var(--gold-l); }
+.sg-nav-sub a.is-active::before { width: 18px; }
 @media (hover: hover) and (pointer: fine) { .sg-nav-list > a:hover, .sg-nav-sub a:hover { color: var(--gold-l); } }
 .sg-nav-foot { display: grid; gap: 12px; opacity: 0; transition: opacity 200ms; }
 body.sg-nav-open .sg-nav-foot { opacity: 1; transition: opacity 420ms var(--ease-out) 360ms; }
@@ -240,17 +242,10 @@ body.sg-wa-off .k-wa, body.sg-nav-open .k-wa, html.sg-lock .k-wa { visibility: h
   border: 1.5px solid var(--line); border-radius: 3px; background: #fbf7f1; color: var(--ink);
   -webkit-appearance: none; appearance: none;
 }
-/* Fechas: con -webkit-appearance:none el input es un flex y el ícono del calendario quedaba apretado contra
-   el borde y se cortaba a la mitad. Se saca del flujo (absoluto, a 12px del borde) y el texto reserva su
-   lugar con padding-right, así nunca se encima ni se recorta. */
-.sg-field input[type="date"] { position: relative; display: flex; align-items: center; padding-right: 42px; }
-.sg-field input[type="date"]::-webkit-datetime-edit { flex: 1 1 auto; min-width: 0; padding: 0; }
-.sg-field input[type="date"]::-webkit-inner-spin-button, .sg-field input[type="date"]::-webkit-clear-button { display: none; -webkit-appearance: none; }
-.sg-field input[type="date"]::-webkit-calendar-picker-indicator {
-  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-  width: 18px; height: 18px; margin: 0; padding: 0; opacity: 0.6; cursor: pointer;
-}
-@media (hover: hover) and (pointer: fine) { .sg-field input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity: 1; } }
+/* Fechas: campo de texto con máscara de diagonales a la vista (00/00/0000), como en la recepción de un
+   hotel de verdad. font-variant-numeric:tabular-nums para que los dígitos no bailen al escribir. */
+.sg-field input.sg-date-mask { font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
+.sg-field input.sg-date-mask::placeholder { color: #b9ab97; opacity: 1; }
 .sg-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23231d1b' stroke-width='1.6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
 .sg-field input:focus, .sg-field select:focus { outline: none; border-color: var(--brand); }
 .sg-field.is-bad input, .sg-field.is-bad select { border-color: #a3261b; }

@@ -201,8 +201,12 @@
       q.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); q.blur(); } });
       qx.addEventListener('click', function () { q.value = ''; search(); q.focus(); });
     }
-    // Arranca en Pizzas (primera categoría)
-    setOn(0);
+    // Arranca en Pizzas (primera categoría), o en la del hash si llega con una (menu.html#m-pizzas desde el hamburguesa)
+    (function initHash() {
+      var h = (location.hash || '').slice(1);
+      var i = h ? cats.findIndex(function (c) { return c && c.id === h; }) : -1;
+      setOn(i >= 0 ? i : 0);
+    })();
     /* API: abre una categoría desde fuera (hoja del hero, menú hamburguesa con data-cat) */
     window.pfMenuCat = function (id, scroll) {
       var i = cats.findIndex(function (c) { return c && c.id === id; });

@@ -73,16 +73,37 @@
       var cleanupSteps = [];
       list.classList.add("js-anim");
 
-      /* 1) cinta ligada al scroll: tramo corto (unos 55% de pantalla), scrub leve, sin pin */
-      gsap.fromTo(strip, wide ? { xPercent: -100 } : { yPercent: -100 }, {
-        xPercent: 0, yPercent: 0, ease: "none",
-        scrollTrigger: {
-          trigger: body,
-          start: wide ? "top 88%" : "top 82%",
-          end: wide ? "top 38%" : "bottom 70%",
-          scrub: 0.6
-        }
+      /* 1) cinta ligada al scroll: tramo corto (unos 55% de pantalla), sin pin.
+         NO usa scrub numerico: ese modo pinta el movimiento con el ticker interno de GSAP
+         (rAF), y si el ticker se atora (pestaña sin foco, hilo principal cargado por el
+         peso de la pagina) la cinta se queda pegada en -100% aunque el scroll siga avanzando
+         (self.progress SI queda correcto, pero nada pinta el valor). onUpdate en cambio se
+         llama directo y sincronico en cada scroll, sin depender del ticker: fija el transform
+         a mano con el progreso ya calculado. */
+      function paintTape(p) {
+        strip.style.transform = wide ? "translate(" + ((p - 1) * 100) + "%,0)" : "translate(0," + ((p - 1) * 100) + "%)";
+      }
+      paintTape(0);
+      var stTape = ScrollTrigger.create({
+        trigger: body,
+        start: wide ? "top 88%" : "top 82%",
+        end: wide ? "top 38%" : "bottom 70%",
+        onUpdate: function (self) { paintTape(self.progress); },
+        onRefresh: function (self) { paintTape(self.progress); }
       });
+      cleanupSteps.push(function () { stTape.kill(); strip.style.transform = ""; });
+      /* red de seguridad: cuando el usuario ya salio de la seccion por abajo (la paso
+         de largo) la cinta SIEMPRE debe quedar completa; nunca a medio desenrollar. Cubre
+         el caso de un scroll muy rapido (varias pantallas de un jalón) donde el navegador
+         puede saltarse eventos de scroll intermedios. */
+      var tapeDone = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) return; // sigue visible: nada que forzar
+        var r = body.getBoundingClientRect();
+        if (r.bottom < 0) paintTape(1); // ya quedó arriba de la pantalla: forzar completo
+      }, { threshold: 0 });
+      tapeDone.observe(body);
+      cleanupSteps.push(function () { tapeDone.disconnect(); });
+      cleanupSteps.push(function () { tapeSafe.disconnect(); });
 
       /* 2) cada paso se enciende solo, una vez, cuando la cinta lo alcanza */
       var vh = window.innerHeight || document.documentElement.clientHeight;

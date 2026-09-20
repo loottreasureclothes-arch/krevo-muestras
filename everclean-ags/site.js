@@ -106,6 +106,39 @@
     });
   }
 
+  /* ---------- Menu: en que seccion va el visitante (aria-current + costura cian) ----------
+     Lo unico que Emanuel pidio del menu: que se sienta navegacion de verdad. Marca el renglon
+     de la seccion que esta en pantalla, se actualiza al bajar y al girar el telefono. */
+  function initScrollSpy() {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".ec-menu-nav a[href^='#']"));
+    var mapa = [];
+    links.forEach(function (a) {
+      var el = document.getElementById(a.getAttribute("href").slice(1));
+      if (el) mapa.push({ a: a, el: el });
+    });
+    if (!mapa.length) return;
+    var ticking = false;
+    function marca() {
+      ticking = false;
+      var linea = (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 56) + 14;
+      var activo = mapa[0];
+      for (var i = 0; i < mapa.length; i++) {
+        if (mapa[i].el.getBoundingClientRect().top - linea <= 0) activo = mapa[i];
+      }
+      var fondo = window.innerHeight + (window.scrollY || 0) >= document.documentElement.scrollHeight - 4;
+      if (fondo) activo = mapa[mapa.length - 1];
+      for (var j = 0; j < mapa.length; j++) {
+        if (mapa[j] === activo) mapa[j].a.setAttribute("aria-current", "true");
+        else mapa[j].a.removeAttribute("aria-current");
+      }
+    }
+    window.addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(marca); }
+    }, { passive: true });
+    window.addEventListener("resize", marca, { passive: true });
+    marca();
+  }
+
   /* ---------- Scroll suave a #anclas ---------- */
   function scrollToId(id) {
     var el = document.getElementById(id);
@@ -208,6 +241,7 @@
     initHeader();
     initWaFloatHide();
     initMenu();
+    initScrollSpy();
     initSmoothAnchors();
     initDropTitles();
     initReveal();

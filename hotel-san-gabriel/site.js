@@ -21,7 +21,42 @@
     var top = el.getBoundingClientRect().top + window.scrollY - (head ? head.offsetHeight : 0) + 1;
     window.scrollTo({ top: Math.max(0, top), behavior: smooth !== false && !reduce ? "smooth" : "auto" });
   }
-  window.SG = { WA: WA, waUrl: waUrl, openWa: openWa, goTo: goTo, reservar: function () { var r = document.getElementById("reserva"); if (r) goTo(r); } };
+
+  /* Fechas con máscara de diagonales (00/00/0000), como en la recepción de un hotel: el input es de texto,
+     se autocompletan las "/" al escribir y solo se acepta una fecha de calendario real.
+     SG.maskDate(input) engancha el input. SG.parseDMY("dd/mm/aaaa") -> Date o null. SG.formatDMY(Date) -> string.
+     SG.prettyDMY("dd/mm/aaaa") -> "lunes 3 de marzo" para el mensaje de WhatsApp. */
+  function pad2(n) { return (n < 10 ? "0" : "") + n; }
+  function parseDMY(v) {
+    var m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(v || "");
+    if (!m) return null;
+    var d = +m[1], mo = +m[2], y = +m[3];
+    var dt = new Date(y, mo - 1, d);
+    if (dt.getFullYear() !== y || dt.getMonth() !== mo - 1 || dt.getDate() !== d) return null;
+    return dt;
+  }
+  function formatDMY(dt) { return pad2(dt.getDate()) + "/" + pad2(dt.getMonth() + 1) + "/" + dt.getFullYear(); }
+  function prettyDMY(v) { var d = parseDMY(v); try { return d ? d.toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" }) : v; } catch (e) { return v; } }
+  function maskDate(input) {
+    input.type = "text";
+    input.classList.add("sg-date-mask");
+    input.setAttribute("inputmode", "numeric");
+    input.setAttribute("autocomplete", "off");
+    input.setAttribute("maxlength", "10");
+    input.setAttribute("placeholder", "00/00/0000");
+    input.addEventListener("input", function () {
+      var digits = input.value.replace(/\D/g, "").slice(0, 8);
+      var out = digits;
+      if (digits.length > 4) out = digits.slice(0, 2) + "/" + digits.slice(2, 4) + "/" + digits.slice(4);
+      else if (digits.length > 2) out = digits.slice(0, 2) + "/" + digits.slice(2);
+      input.value = out;
+    });
+  }
+  window.SG = {
+    WA: WA, waUrl: waUrl, openWa: openWa, goTo: goTo,
+    maskDate: maskDate, parseDMY: parseDMY, formatDMY: formatDMY, prettyDMY: prettyDMY,
+    reservar: function () { var r = document.getElementById("reserva"); if (r) goTo(r); }
+  };
 
   function initWa() {
     Array.prototype.forEach.call(document.querySelectorAll("a[data-wa]"), function (a) {
@@ -77,6 +112,35 @@
         items[(i + (e.shiftKey ? -1 : 1) + items.length) % items.length].focus();
       }
     });
+
+    /* Estado activo: resalta en el panel la sección que se está leyendo, para que el menú se sienta
+       navegación de verdad y no solo un salto ciego. Un link de #sub también enciende a su padre (01/03/05). */
+    var byId = {};
+    Array.prototype.forEach.call(links, function (a) {
+      var href = a.getAttribute("href");
+      if (!href || href.charAt(0) !== "#" || href.length < 2) return;
+      var sub = a.closest(".sg-nav-sub");
+      var parent = sub && sub.previousElementSibling && sub.previousElementSibling.classList.contains("sg-nav-parent") ? sub.previousElementSibling : null;
+      (byId[href.slice(1)] = byId[href.slice(1)] || []).push({ a: a, parent: parent });
+    });
+    var spyIds = Object.keys(byId), spyTargets = [];
+    spyIds.forEach(function (id) { var t = document.getElementById(id); if (t) spyTargets.push(t); });
+    if (spyTargets.length && "IntersectionObserver" in window) {
+      var curId = null;
+      function markActive(id) {
+        if (id === curId) return;
+        curId = id;
+        Array.prototype.forEach.call(links, function (a) { a.classList.remove("is-active"); a.removeAttribute("aria-current"); });
+        (byId[id] || []).forEach(function (e) {
+          e.a.classList.add("is-active"); e.a.setAttribute("aria-current", "true");
+          if (e.parent) e.parent.classList.add("is-active");
+        });
+      }
+      var spy = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) markActive(e.target.id); });
+      }, { rootMargin: "-42% 0px -50% 0px", threshold: 0 });
+      spyTargets.forEach(function (t) { spy.observe(t); });
+    }
   }
 
   function initWaHide() {

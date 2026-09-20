@@ -35,14 +35,12 @@
 <link rel="stylesheet" href="site.css?v=1789877625">
 <link rel="stylesheet" href="sections/10-hero.css?v=1789877023">
 <link rel="stylesheet" href="sections/20-reserva.css?v=1789877099">
-<link rel="stylesheet" href="sections/30-menu.css?v=1789877200">
-<link rel="stylesheet" href="sections/31-pedido.css?v=1789877215">
 <link rel="stylesheet" href="sections/40-terraza.css?v=1789877380">
 <link rel="stylesheet" href="sections/50-eventos.css?v=1789877788">
 <link rel="stylesheet" href="sections/60-resenas.css?v=1789877177">
 </head>
 <body data-hero-dark class="ts-paper">
-<a class="ts-skip" href="#menu">Saltar al menú</a>
+<a class="ts-skip" href="#hero">Saltar al contenido</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
@@ -58,24 +56,24 @@
   <a class="ts-hlogo" href="#inicio" aria-label="Tierra Santa Parrilla &amp; Bistro, inicio"><img src="img/brand/logo-cream.webp" alt="Tierra Santa Parrilla &amp; Bistro" width="691" height="161"></a>
   <button class="ts-menu-btn" type="button" aria-expanded="false" aria-controls="ts-nav" aria-label="Abrir navegación"><span class="ts-burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
   <nav class="ts-hnav" aria-label="Principal">
+    <a href="menu.html">Menú</a>
     <a href="#reserva">Reservar</a>
-    <a href="#menu">Menú</a>
     <a href="#terraza">Terraza</a>
     <a href="#eventos">Festejos</a>
   </nav>
-  <a class="ts-hcta" href="#reserva">Reservar</a>
+  <a class="ts-hcta" href="menu.html">Menú</a>
 </header>
 
 <div class="ts-nav" id="ts-nav" role="dialog" aria-modal="true" aria-label="Navegación" aria-hidden="true">
   <div class="ts-nav-scrim" aria-hidden="true"></div>
   <div class="ts-nav-panel">
     <nav class="ts-nav-list" aria-label="Secciones">
-      <a class="ts-nav-parent" href="#menu"><span>01</span>Menú</a>
+      <a class="ts-nav-parent" href="menu.html"><span>01</span>Menú, carta completa</a>
       <ul class="ts-nav-sub" aria-label="Menú">
-        <li><a href="#m-cortes">Cortes y parrilla</a></li>
-        <li><a href="#m-bistro">Bistro</a></li>
-        <li><a href="#m-bebidas">Bebidas</a></li>
-        <li><a href="#m-temporada">Del mes</a></li>
+        <li><a href="menu.html#m-cortes">Cortes y parrilla</a></li>
+        <li><a href="menu.html#m-bistro">Bistro</a></li>
+        <li><a href="menu.html#m-bebidas">Bebidas</a></li>
+        <li><a href="menu.html#m-temporada">Del mes</a></li>
       </ul>
       <a href="#reserva"><span>02</span>Reservar mesa</a>
       <a class="ts-nav-parent" href="#terraza"><span>03</span>La terraza</a>
@@ -117,8 +115,8 @@
       <h1 id="hr-t" class="hr-t ts-d ts-h3d"><span class="hr-l"><span>Cortes al carbón,</span></span> <span class="hr-l"><span>terraza de <em>noche.</em></span></span></h1>
       <p class="hr-lead">Parrilla argentina y cocina italiana en Jardines de la Asunción.</p>
       <div class="hr-acts">
-        <a class="ts-btn ts-btn--go" href="#reserva">Reservar mesa<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="ts-btn ts-btn--line" href="#menu">Ver menú</a>
+        <a class="ts-btn ts-btn--go" href="menu.html">Ver el menú<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="ts-btn ts-btn--line" href="#reserva">Reservar mesa</a>
       </div>
     </div>
   </section>
@@ -126,9 +124,9 @@
   <section class="s-acc ts-grain" id="accesos" data-dark aria-label="Lo que hay en Tierra Santa">
     <div class="k-wrap">
       <ul class="acc-list">
-        <li><a href="#m-cortes" data-sheet="cortes" aria-haspopup="dialog"><img src="img/hd/parrillada-close-1200.webp" alt="" width="1200" height="675" loading="lazy" decoding="async"><span class="acc-n">Cortes<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="acc-d">rib eye, T-bone, arrachera</span></a></li>
-        <li><a href="#m-bistro" data-sheet="bistro" aria-haspopup="dialog"><img src="img/hd/salmon-1200.webp" alt="" width="1200" height="1200" loading="lazy" decoding="async"><span class="acc-n">Bistro<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="acc-d">pastas, salmón, carpaccio</span></a></li>
-        <li><a href="#m-bebidas" data-sheet="bebidas" aria-haspopup="dialog"><img src="img/hd/bebidas-frutales-1200.webp" alt="" width="1200" height="1125" loading="lazy" decoding="async"><span class="acc-n">Bebidas<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="acc-d">Agua Santa y smoothies</span></a></li>
+        <li><a href="menu.html#m-cortes" data-sheet="cortes" aria-haspopup="dialog"><img src="img/hd/parrillada-close-1200.webp" alt="" width="1200" height="675" loading="lazy" decoding="async"><span class="acc-n">Cortes<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="acc-d">rib eye, T-bone, arrachera</span></a></li>
+        <li><a href="menu.html#m-bistro" data-sheet="bistro" aria-haspopup="dialog"><img src="img/hd/salmon-1200.webp" alt="" width="1200" height="1200" loading="lazy" decoding="async"><span class="acc-n">Bistro<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="acc-d">pastas, salmón, carpaccio</span></a></li>
+        <li><a href="menu.html#m-bebidas" data-sheet="bebidas" aria-haspopup="dialog"><img src="img/hd/bebidas-frutales-1200.webp" alt="" width="1200" height="1125" loading="lazy" decoding="async"><span class="acc-n">Bebidas<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="acc-d">Agua Santa y smoothies</span></a></li>
         <li><a href="#terraza" data-sheet="terraza" aria-haspopup="dialog"><img src="img/hd/terraza-dia-1200.webp" alt="" width="1200" height="1200" loading="lazy" decoding="async"><span class="acc-n">Terraza<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="acc-d">enredadera y focos</span></a></li>
       </ul>
     </div>
@@ -180,250 +178,6 @@
       </form>
     </div>
   </section>
-
-  <!-- MENÚ DE MESA (base: lamexico/sections/25-menu). Datos: research/catalogo.md. SIN precios públicos: "Pregunta el precio". Pedido: 31-pedido.* -->
-  <section class="ts-mm" id="menu" data-hide-wa aria-labelledby="ts-mm-title">
-    <div class="k-wrap ts-mm-head">
-      <p class="ts-mm-eyebrow"><span class="ts-mm-mesa" id="ts-mm-mesa" hidden></span><span>Menú de mesa</span></p>
-      <h2 class="ts-h2 ts-h2--xl ts-mm-title" id="ts-mm-title" data-reveal="drop">Pide desde tu mesa.</h2>
-      <p class="ts-mm-lead">Toca un platillo, arma tu pedido y mándalo por WhatsApp o enséñaselo a tu mesero.</p>
-    </div>
-    <div class="k-wrap ts-mm-find"><label class="ts-mm-search" for="ts-mm-q"><span class="ts-mm-search-ic" aria-hidden="true"></span><input id="ts-mm-q" type="search" placeholder="Busca un platillo" autocomplete="off" enterkeyhint="search" aria-label="Busca un platillo o bebida"><button class="ts-mm-search-x" type="button" aria-label="Borrar búsqueda" hidden>&times;</button></label><p class="ts-mm-noresult" hidden></p></div>
-    <nav class="ts-mm-chips" aria-label="Categorías del menú"><div class="ts-mm-chips-in"><a class="ts-mm-chip" href="#m-cortes">Cortes y parrilla</a><a class="ts-mm-chip" href="#m-bistro">Bistro</a><a class="ts-mm-chip" href="#m-temporada">Del mes</a><a class="ts-mm-chip" href="#m-bebidas">Bebidas</a></div></nav>
-    <div class="k-wrap ts-mm-body">
-    <section class="ts-mm-cat" id="m-cortes" aria-labelledby="m-cortes-t">
-      <header class="ts-mm-chead"><h3 class="ts-mm-ctitle" id="m-cortes-t">Cortes y parrilla</h3><p class="ts-mm-cnote">Al carbón, al centro de la mesa.</p></header>
-      <div class="ts-mm-list">
-        <article class="ts-mm-card" data-id="rib-eye" data-name="Rib Eye" data-desc="Sellado a alta temperatura." data-img="img/hd/ribeye-mesa-1200.webp">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Rib Eye"></button>
-          <figure class="ts-mm-ph"><img src="img/hd/ribeye-mesa-1200.webp" alt="Rib Eye en Tierra Santa Parrilla &amp; Bistro" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Rib Eye</span></h4><p class="ts-mm-desc">Sellado a alta temperatura.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card" data-id="t-bone" data-name="T-bone" data-desc="Corte al carbón, con papas y cebolla." data-img="img/hd/tbone-1200.webp">
-          <button class="ts-mm-hit" type="button" aria-label="Ver T-bone"></button>
-          <figure class="ts-mm-ph"><img src="img/hd/tbone-1200.webp" alt="T-bone en Tierra Santa Parrilla &amp; Bistro" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>T-bone</span></h4><p class="ts-mm-desc">Corte al carbón, con papas y cebolla.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card" data-id="arrachera" data-name="Arrachera" data-desc="Disfrútala en tu parrillada." data-img="img/hd/arrachera-1200.webp">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Arrachera"></button>
-          <figure class="ts-mm-ph"><img src="img/hd/arrachera-1200.webp" alt="Arrachera en Tierra Santa Parrilla &amp; Bistro" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Arrachera</span></h4><p class="ts-mm-desc">Disfrútala en tu parrillada.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card" data-id="parrillada-dos" data-name="Parrillada mixta para dos" data-desc="Cortes al carbón para compartir." data-img="img/hd/parrillada-1200.webp">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Parrillada mixta para dos"></button>
-          <figure class="ts-mm-ph"><img src="img/hd/parrillada-1200.webp" alt="Parrillada mixta para dos en Tierra Santa Parrilla &amp; Bistro" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Parrillada mixta para dos</span></h4><p class="ts-mm-desc">Cortes al carbón para compartir.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card" data-id="tacos-corte" data-name="Tacos de corte al carbón" data-desc="Con chile toreado, bien calientitos." data-img="img/hd/tacos-corte-1200.webp">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Tacos de corte al carbón"></button>
-          <figure class="ts-mm-ph"><img src="img/hd/tacos-corte-1200.webp" alt="Tacos de corte al carbón en Tierra Santa Parrilla &amp; Bistro" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Tacos de corte al carbón</span></h4><p class="ts-mm-desc">Con chile toreado, bien calientitos.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card ts-mm-card--tx" data-id="bife-chorizo" data-name="Bife de chorizo" data-desc="Corte argentino.">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Bife de chorizo"></button>
-          
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Bife de chorizo</span></h4><p class="ts-mm-desc">Corte argentino.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card ts-mm-card--tx" data-id="tuetanos" data-name="Tuétanos asados" data-desc="">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Tuétanos asados"></button>
-          
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Tuétanos asados</span></h4></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-      </div>
-    </section>
-    <section class="ts-mm-cat" id="m-bistro" aria-labelledby="m-bistro-t">
-      <header class="ts-mm-chead"><h3 class="ts-mm-ctitle" id="m-bistro-t">Bistro</h3><p class="ts-mm-cnote">El lado italiano de la casa.</p></header>
-      <div class="ts-mm-list">
-        <article class="ts-mm-card" data-id="pasta-bolonesa" data-name="Pasta boloñesa" data-desc="Con parmesano y pan tostado." data-img="img/hd/pasta-bolonesa-1200.webp">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Pasta boloñesa"></button>
-          <figure class="ts-mm-ph"><img src="img/hd/pasta-bolonesa-1200.webp" alt="Pasta boloñesa en Tierra Santa Parrilla &amp; Bistro" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Pasta boloñesa</span></h4><p class="ts-mm-desc">Con parmesano y pan tostado.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card" data-id="carpaccio-atun" data-name="Carpaccio de atún" data-desc="Con aguacate y limón." data-img="img/hd/carpaccio-1200.webp">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Carpaccio de atún"></button>
-          <figure class="ts-mm-ph"><img src="img/hd/carpaccio-1200.webp" alt="Carpaccio de atún en Tierra Santa Parrilla &amp; Bistro" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Carpaccio de atún</span></h4><p class="ts-mm-desc">Con aguacate y limón.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card" data-id="guacamole" data-name="Guacamole" data-desc="Recién hecho, con totopos." data-img="img/hd/guacamole-1200.webp">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Guacamole"></button>
-          <figure class="ts-mm-ph"><img src="img/hd/guacamole-1200.webp" alt="Guacamole en Tierra Santa Parrilla &amp; Bistro" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Guacamole</span></h4><p class="ts-mm-desc">Recién hecho, con totopos.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card ts-mm-card--tx" data-id="salmon-caprice" data-name="Salmón Caprice" data-desc="El famoso de la casa.">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Salmón Caprice"></button>
-          
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Salmón Caprice</span></h4><p class="ts-mm-desc">El famoso de la casa.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card ts-mm-card--tx" data-id="pasta-pesto" data-name="Pasta al pesto" data-desc="">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Pasta al pesto"></button>
-          
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Pasta al pesto</span></h4></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card ts-mm-card--tx" data-id="ensalada-mariana" data-name="Ensalada Mariana" data-desc="">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Ensalada Mariana"></button>
-          
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Ensalada Mariana</span></h4></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card ts-mm-card--tx" data-id="esparragos-tocino" data-name="Espárragos con tocino" data-desc="">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Espárragos con tocino"></button>
-          
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Espárragos con tocino</span></h4></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-      </div>
-    </section>
-    <section class="ts-mm-cat" id="m-temporada" aria-labelledby="m-temporada-t">
-      <header class="ts-mm-chead"><h3 class="ts-mm-ctitle" id="m-temporada-t">Del mes</h3><p class="ts-mm-cnote">Solo por temporada.</p></header>
-      <div class="ts-mm-list">
-        <article class="ts-mm-card" data-id="chile-nogada" data-name="Chile en nogada" data-desc="Nogada de nuez de Castilla y granada fresca." data-img="img/hd/nogada-cenital-1200.webp" data-tag="Solo 30 días">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Chile en nogada"></button>
-          <figure class="ts-mm-ph"><img src="img/hd/nogada-cenital-1200.webp" alt="Chile en nogada en Tierra Santa Parrilla &amp; Bistro" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Chile en nogada</span></h4><p class="ts-mm-desc">Nogada de nuez de Castilla y granada fresca.</p><span class="ts-mm-tag">Solo 30 días</span></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-      </div>
-    </section>
-    <section class="ts-mm-cat" id="m-bebidas" aria-labelledby="m-bebidas-t">
-      <header class="ts-mm-chead"><h3 class="ts-mm-ctitle" id="m-bebidas-t">Bebidas</h3><p class="ts-mm-cnote">Hechas al momento en la barra.</p></header>
-      <div class="ts-mm-list">
-        <article class="ts-mm-card" data-id="agua-santa" data-name="Agua Santa" data-desc="Coco y maracuyá, creada en nuestra barra." data-img="img/hd/agua-santa-1200.webp" data-tag="De la casa">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Agua Santa"></button>
-          <figure class="ts-mm-ph"><img src="img/hd/agua-santa-1200.webp" alt="Agua Santa en Tierra Santa Parrilla &amp; Bistro" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Agua Santa</span></h4><p class="ts-mm-desc">Coco y maracuyá, creada en nuestra barra.</p><span class="ts-mm-tag">De la casa</span></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card" data-id="smoothie-jamaica" data-name="Smoothie de jamaica" data-desc="Frappé, preparado al momento." data-img="img/hd/jamaica-1200.webp">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Smoothie de jamaica"></button>
-          <figure class="ts-mm-ph"><img src="img/hd/jamaica-1200.webp" alt="Smoothie de jamaica en Tierra Santa Parrilla &amp; Bistro" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Smoothie de jamaica</span></h4><p class="ts-mm-desc">Frappé, preparado al momento.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card" data-id="smoothie-maracuya" data-name="Smoothie de maracuyá" data-desc="Frappé, preparado al momento." data-img="img/hd/maracuya-1200.webp">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Smoothie de maracuyá"></button>
-          <figure class="ts-mm-ph"><img src="img/hd/maracuya-1200.webp" alt="Smoothie de maracuyá en Tierra Santa Parrilla &amp; Bistro" width="1200" height="900" loading="lazy" decoding="async"></figure>
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Smoothie de maracuyá</span></h4><p class="ts-mm-desc">Frappé, preparado al momento.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card ts-mm-card--tx" data-id="agua-frutos-rojos" data-name="Agua de frutos rojos" data-desc="">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Agua de frutos rojos"></button>
-          
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Agua de frutos rojos</span></h4></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card ts-mm-card--tx" data-id="michelada" data-name="Michelada" data-desc="Bien helada.">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Michelada"></button>
-          
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Michelada</span></h4><p class="ts-mm-desc">Bien helada.</p></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-        <article class="ts-mm-card ts-mm-card--tx" data-id="cerveza" data-name="Cerveza" data-desc="">
-          <button class="ts-mm-hit" type="button" aria-label="Ver Cerveza"></button>
-          
-          <div class="ts-mm-tx"><h4 class="ts-mm-name"><span>Cerveza</span></h4></div>
-          <div class="ts-mm-ctl"></div>
-        </article>
-      </div>
-    </section>
-      <p class="ts-mm-legal">Precios y carta completa con tu mesero o por WhatsApp. También para llevar.</p>
-    </div>
-  </section>
-
-  <!-- PEDIDO DE MESA (clonado de lamexico/26-pedido, sin precios). Barra fija + hoja + pantalla "Mostrar a mi mesero". Sin JS todo queda oculto (hidden) y el menú se lee igual. -->
-  <div class="ts-pd" id="pedido">
-    <button class="ts-pd-bar" id="ts-pd-bar" type="button" hidden aria-haspopup="dialog" aria-controls="ts-pd-sheet">
-      <span class="ts-pd-bar-n">0</span>
-      <span class="ts-pd-bar-l">Mi pedido<span class="ts-pd-bar-mesa"></span></span>
-      <span class="ts-pd-bar-t">Ver</span>
-      <span class="ts-pd-bar-go" aria-hidden="true"></span>
-    </button>
-
-    <button class="ts-pd-mini" id="ts-pd-mini" type="button" hidden aria-haspopup="dialog" aria-controls="ts-pd-sheet">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5z M9 9h7M9 13h7M9 17h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-      <span class="ts-pd-mini-l">Pedido</span><span class="ts-pd-mini-n">0</span>
-    </button>
-
-    <div class="ts-pd-sheet" id="ts-pd-sheet" role="dialog" aria-modal="true" aria-labelledby="ts-pd-title" hidden>
-      <button class="ts-pd-bg" type="button" data-pd-close tabindex="-1" aria-label="Cerrar"></button>
-      <div class="ts-pd-box">
-        <header class="ts-pd-head">
-          <h2 class="ts-pd-title" id="ts-pd-title">Tu pedido</h2>
-          <button class="ts-pd-x" type="button" data-pd-close aria-label="Cerrar pedido">&times;</button>
-        </header>
-        <ul class="ts-pd-list" aria-live="polite"></ul>
-
-        <label class="ts-pd-f">
-          <span>Nota para cocina o barra</span>
-          <textarea id="ts-pd-note" rows="2" maxlength="300" placeholder="Ej. término medio, salsa aparte"></textarea>
-        </label>
-
-        <fieldset class="ts-pd-modes">
-          <legend>¿Cómo lo quieres?</legend>
-          <label><input type="radio" name="ts-pd-mode" value="mesa" checked><span>En mi mesa</span></label>
-          <label><input type="radio" name="ts-pd-mode" value="llevar"><span>Para llevar</span></label>
-          <label><input type="radio" name="ts-pd-mode" value="reservar"><span>Reservar y pedir</span></label>
-        </fieldset>
-
-        <div class="ts-pd-mf" data-mode-f="mesa">
-          <label class="ts-pd-f ts-pd-f--mesa"><span>Número de mesa</span><input id="ts-pd-mesa" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" placeholder="Ej. 7"></label>
-        </div>
-        <div class="ts-pd-mf" data-mode-f="llevar" hidden>
-          <label class="ts-pd-f"><span>¿A qué hora pasas?</span><input id="ts-pd-hora" type="time"></label>
-        </div>
-        <div class="ts-pd-mf ts-pd-mf--3" data-mode-f="reservar" hidden>
-          <label class="ts-pd-f"><span>Fecha</span><input id="ts-pd-fecha" type="date"></label>
-          <label class="ts-pd-f"><span>Hora</span><input id="ts-pd-hora2" type="time"></label>
-          <label class="ts-pd-f"><span>Personas</span><input id="ts-pd-personas" type="number" inputmode="numeric" min="1" max="60" placeholder="4"></label>
-        </div>
-        <p class="ts-pd-err" id="ts-pd-err" hidden>Escribe tu número de mesa para que te lo lleven.</p>
-
-        <fieldset class="ts-pd-pago">
-          <legend>¿Cómo pagas?</legend>
-          <label><input type="radio" name="ts-pd-pago" value="En el restaurante" checked><span>En el restaurante</span></label>
-          <label><input type="radio" name="ts-pd-pago" value="Tarjeta en línea"><span>Tarjeta en línea</span></label>
-        </fieldset>
-        <p class="ts-pd-pago-note">Te mandamos el link de pago por WhatsApp.</p>
-
-        <p class="ts-pd-fine">Te confirmamos precios y tiempo por WhatsApp o con tu mesero.</p>
-
-        <div class="ts-pd-actions">
-          <a class="ts-pd-fbk" id="ts-pd-fbk" href="https://wa.me/524493894792" target="_blank" rel="noopener" hidden>¿No se abrió WhatsApp? Toca aquí.</a>
-          <a class="ts-pd-wa" id="ts-pd-wa" href="https://wa.me/524493894792" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
-            Enviar por WhatsApp
-          </a>
-          <!-- Pago con tarjeta: oculto mientras TS_PAGO_LINK esté vacío (site.js). El [hidden] del atributo gana a cualquier clase. -->
-          <a class="ts-pd-pagar ts-btn ts-btn--line" id="ts-pd-pagar" href="#" target="_blank" rel="noopener" hidden>Pagar con tarjeta</a>
-          <button class="ts-pd-show" id="ts-pd-mesero-btn" type="button">Mostrar a mi mesero</button>
-          <button class="ts-pd-clear" id="ts-pd-clear" type="button">Vaciar pedido</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="ts-ms" id="ts-pd-mesero" role="dialog" aria-modal="true" aria-label="Pedido para el mesero" hidden>
-      <button class="ts-ms-x" type="button">Cerrar</button>
-      <p class="ts-ms-suc">Tierra Santa · Parrilla &amp; Bistro</p>
-      <p class="ts-ms-k">Mesa</p>
-      <p class="ts-ms-mesa">0</p>
-      <ul class="ts-ms-list"></ul>
-      <p class="ts-ms-note" hidden></p>
-      <div class="ts-ms-foot">
-        <p><span>Hora</span><b class="ts-ms-hora">00:00</b></p>
-      </div>
-    </div>
-  </div>
 
   <!-- 40 · NOCHES DE TERRAZA: momento de cine (la terraza a sangre) + fusión de la antigua galería "Así llega a tu
        mesa" (solo sus 3 mejores fotos, entran desde blur). -->
@@ -543,8 +297,8 @@
     <div class="ts-foot-top">
       <p class="ts-foot-motto ts-h3d">Cortes al carbón. Terraza toda la noche.</p>
       <div class="ts-foot-acts">
-        <a class="ts-btn ts-btn--go" href="#reserva">Reservar mesa<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="ts-btn ts-btn--line" href="#menu">Ver menú</a>
+        <a class="ts-btn ts-btn--go" href="menu.html">Ver menú completo<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="ts-btn ts-btn--line" href="#reserva">Reservar mesa</a>
       </div>
     </div>
     <div class="ts-foot-cols">
@@ -564,12 +318,10 @@
 
 <a class="k-wa" data-wa="Hola, quiero reservar una mesa en Tierra Santa." href="https://wa.me/524493894792" aria-label="WhatsApp"></a>
 
-<script src="../_kit/kit.js?v=1789789887" defer></script>
+<script src="../_kit/kit.js?v=1789882113" defer></script>
 <script src="site.js?v=1789868208" defer></script>
-<script src="sections/10-hero.js?v=1789877037" defer></script>
+<script src="sections/10-hero.js?v=1789915725" defer></script>
 <script src="sections/20-reserva.js?v=1789867300" defer></script>
-<script src="sections/30-menu.js?v=1789836259" defer></script>
-<script src="sections/31-pedido.js?v=1789867220" defer></script>
 <script src="sections/40-terraza.js?v=1789868344" defer></script>
 <script src="sections/50-eventos.js?v=1789867612" defer></script>
 <script src="sections/60-resenas.js?v=1789874115" defer></script>

@@ -4,20 +4,28 @@
   "use strict";
   var sec = document.getElementById("hero");
   if (!sec) return;
-  /* Mini-reserva: pasa las fechas al formulario #rs-form y baja con SG.reservar. Sin JS, el botón solo baja a #reserva. */
+  /* Mini-reserva: fechas con máscara de diagonales (00/00/0000); pasa las fechas al formulario #rs-form
+     y baja con SG.reservar. Sin JS, el botón solo baja a #reserva. */
   var bk = document.getElementById("hr-book");
-  if (bk) {
+  if (bk && window.SG) {
     var bi = bk.elements["in"], bo = bk.elements.out;
-    var pd = function (n) { return (n < 10 ? "0" : "") + n; }, iso = function (d) { return d.getFullYear() + "-" + pd(d.getMonth() + 1) + "-" + pd(d.getDate()); };
-    var td = new Date(); bi.min = iso(td); bo.min = iso(new Date(td.getFullYear(), td.getMonth(), td.getDate() + 1));
-    bi.addEventListener("change", function () { if (!bi.value) return; var p = bi.value.split("-"), m = new Date(+p[0], +p[1] - 1, +p[2] + 1); bo.min = iso(m); if (!bo.value || bo.value <= bi.value) bo.value = iso(m); });
+    SG.maskDate(bi); SG.maskDate(bo);
+    function hoy() { var t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate()); }
+    bi.addEventListener("input", function () {
+      var din = SG.parseDMY(bi.value);
+      if (!din || bi.value.length !== 10 || din < hoy()) return;
+      var m = new Date(din); m.setDate(m.getDate() + 1);
+      var dout = SG.parseDMY(bo.value);
+      if (!dout || dout <= din) bo.value = SG.formatDMY(m);
+    });
     bk.addEventListener("submit", function (e) {
       var f = document.getElementById("rs-form");
-      if (!f || !window.SG) return;
+      if (!f) return;
       e.preventDefault();
       var fi = f.elements["in"], fo = f.elements.out;
-      if (bi.value) { fi.value = bi.value; fi.dispatchEvent(new Event("change")); }
-      if (bo.value && bo.value > fi.value) { fo.value = bo.value; fo.dispatchEvent(new Event("change")); }
+      if (bi.value) { fi.value = bi.value; fi.dispatchEvent(new Event("input")); }
+      var din = SG.parseDMY(fi.value), dout = SG.parseDMY(bo.value);
+      if (dout && din && dout > din) { fo.value = bo.value; fo.dispatchEvent(new Event("input")); }
       SG.reservar("");
     });
   }

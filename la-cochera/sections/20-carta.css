@@ -87,6 +87,16 @@
 
 .s-carta-note { font-size: .72rem; color: rgba(255,255,227,.45); max-width: 62ch; margin: 22px auto 0; text-align: left; }
 
+/* ---------- Teaser del home (la carta completa vive en menu.html,
+   FEEDBACK-1 nota global punto 2): 3 piezas con foto real + un solo CTA. ---------- */
+.s-carta-body--teaser { padding-top: 22px; }
+.s-carta-body--teaser .s-carta-group { padding-top: 0; }
+.s-carta-cta { display: flex; width: 100%; margin-top: 6px; }
+@media (min-width: 700px) {
+  .s-carta-body--teaser .s-feat { max-width: none; }
+  .s-carta-cta { width: max-content; margin: 18px auto 0; }
+}
+
 @media (min-width: 700px) {
   .s-feat { max-width: 520px; }
   /* Las piezas se reparten en columnas: a 1440 las filas median ~705 px y la

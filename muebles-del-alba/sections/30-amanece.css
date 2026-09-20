@@ -1,32 +1,35 @@
 /* ============ 30 AMANECE: momento firma · el sol de su logo abre la nave ============
    La foto es un cuadro de video de 1080 px: por regla propia NO va a sangre, va dentro
-   del marco de arco (la silueta de su logo). Blindaje: la base (sin JS) es el estado
-   FINAL ya abierto; 30-amanece.js solo agrega el estado inicial cuando hay GSAP. */
+   de un marco RECTO con el radio de marca. NUNCA un arco (Emanuel, FEEDBACK-1 punto 2:
+   "fotos completas, no recortadas en arquito"): aqui no hay ni --arcr ni border-radius
+   animado, y el JS solo abre el ANCHO. Blindaje: la base (sin JS) es el estado FINAL
+   ya abierto; 30-amanece.js solo agrega el estado inicial cuando hay GSAP. */
 #amanece.s-amanece {
   position: relative; overflow: hidden;
-  padding: var(--sec-y-sm) 0 calc(var(--sec-y-sm) + 6px);
-  --arcw: 100%;
-  --arcr: 0px;
+  padding: 28px 0 30px;
+  --frame-w: 100%;
   --grade: saturate(1) brightness(1) contrast(1);
   --veil-o: 0;
   --sun-o: 0;
   --sun-off: 0;
 }
-#amanece .s-amanece-in { display: grid; gap: 22px; }
-#amanece .s-amanece-frame { position: relative; isolation: isolate; }
-#amanece .s-amanece-arc {
-  position: relative; margin: 0 auto;
-  width: var(--arcw); aspect-ratio: 27 / 19;
-  border-radius: var(--arcr) var(--arcr) 0 0;
+#amanece .s-amanece-in { display: grid; gap: 12px; }
+/* El marco de afuera fija el alto: el JS solo abre el ANCHO del de adentro,
+   asi la pagina no cambia de alto mientras bajas. */
+#amanece .s-amanece-frame { position: relative; isolation: isolate; aspect-ratio: 27 / 19; }
+#amanece .s-amanece-frame-in {
+  position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+  width: var(--frame-w); height: 100%;
+  border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid rgba(244, 241, 238, .22);
   box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
 }
 #amanece .s-amanece-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 46%; filter: var(--grade); }
 #amanece .s-amanece-veil { position: absolute; inset: 0; background: linear-gradient(200deg, rgba(30, 70, 110, .55), rgba(10, 16, 24, .3) 60%); opacity: var(--veil-o); }
-#amanece .s-amanece-arc::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10, 6, 4, .42) 0%, rgba(10, 6, 4, 0) 40%); pointer-events: none; }
+#amanece .s-amanece-frame-in::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10, 6, 4, .42) 0%, rgba(10, 6, 4, 0) 40%); pointer-events: none; }
 
-/* El sol sale DETRAS del arco: solo se asoman las puntas de los 7 rayos del logo */
+/* El sol sale DETRAS del marco: solo se asoman las puntas de los 7 rayos del logo */
 #amanece .s-amanece-sun {
   position: absolute; left: 50%; top: -38px; width: min(56vw, 250px); height: min(56vw, 250px);
   transform: translateX(-50%);
@@ -44,8 +47,8 @@
   font-size: clamp(30px, 8.6vw, 58px); line-height: .94; margin: 0; letter-spacing: -.012em;
 }
 #amanece .s-amanece-h span { color: var(--brand-on-deep); }
-#amanece .s-amanece-stat { display: flex; align-items: baseline; gap: 10px; margin: 10px 0 12px; }
-#amanece .s-amanece-stat b { font: 900 clamp(44px, 14vw, 100px)/.85 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; }
+#amanece .s-amanece-stat { display: flex; align-items: baseline; gap: 10px; margin: 8px 0 10px; }
+#amanece .s-amanece-stat b { font: 900 clamp(40px, 11.5vw, 100px)/.85 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; }
 #amanece .s-amanece-stat span { font-size: 14px; color: var(--cream-mute); text-transform: uppercase; letter-spacing: .08em; }
 #amanece .s-amanece-link { color: var(--cream); justify-self: start; }
 #amanece .s-amanece-link svg { color: var(--brand-on-deep); }
@@ -58,6 +61,6 @@
 
 @media (min-width: 900px) {
   #amanece .s-amanece-in { grid-template-columns: 7fr 5fr; align-items: center; gap: 48px; }
-  #amanece .s-amanece-arc { aspect-ratio: 7 / 5; }
+  #amanece .s-amanece-frame { aspect-ratio: 7 / 5; }
   #amanece .s-amanece-sun { top: -54px; width: 280px; height: 280px; }
 }

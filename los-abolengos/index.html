@@ -32,12 +32,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
-<link rel="stylesheet" href="site.css?v=1789892226">
+<link rel="stylesheet" href="site.css?v=1789915937">
 <link rel="stylesheet" href="sections/10-hero.css?v=1789892451">
-<link rel="stylesheet" href="sections/20-carta.css?v=1789892826">
+<link rel="stylesheet" href="sections/20-carta.css?v=1789916379">
 <link rel="stylesheet" href="sections/30-momento.css?v=1789885343">
 <link rel="stylesheet" href="sections/40-pan.css?v=1789891976">
-<link rel="stylesheet" href="sections/50-grupos.css?v=1789891912">
+<link rel="stylesheet" href="sections/50-grupos.css?v=1789915904">
 <link rel="stylesheet" href="sections/60-resenas-visitanos.css?v=1789888110">
 <link rel="stylesheet" href="sections/90-cierre.css?v=1789892183">
 </head>
@@ -62,8 +62,9 @@
     </a>
     <p class="ab-franja-mini" aria-hidden="true"><span class="ab-fm-h">8:00 a 1:00</span><span class="ab-rombo"></span><span class="ab-fm-t" data-franja-mini-text>8:00 a 1:00</span></p>
     <div class="ab-head-actions">
+      <a class="ab-carta-link" href="menu.html">CARTA</a>
       <button class="ab-apartar k-cta" type="button" data-open-sheet>APARTAR</button>
-      <button class="ab-burger" type="button" aria-expanded="false" aria-controls="ab-nav" aria-label="Abrir carta"><span class="ab-burger-ic" aria-hidden="true"><i></i><i></i><i></i></span><span class="ab-burger-txt">CARTA</span></button>
+      <button class="ab-burger" type="button" aria-expanded="false" aria-controls="ab-nav" aria-label="Abrir menú de secciones"><span class="ab-burger-ic" aria-hidden="true"><i></i><i></i><i></i></span></button>
     </div>
   </div>
 </header>
@@ -72,13 +73,13 @@
   <div class="ab-nav-scrim" aria-hidden="true"></div>
   <div class="ab-nav-panel">
     <nav class="ab-nav-list" aria-label="Secciones">
-      <a href="#inicio"><span>01</span>Abrimos cinco horas</a>
-      <a href="#carta"><span>02</span>La carta</a>
-      <a href="#momento"><span>03</span>Así se pone tu mesa</a>
-      <a href="#pan"><span>04</span>El pan de la casa</a>
-      <a href="#grupos"><span>05</span>Desayunos de grupo</a>
-      <a href="#resenas"><span>06</span>Lo que dicen</a>
-      <a href="#visitanos"><span>07</span>Cómo llegar</a>
+      <a href="#inicio" data-section="inicio"><span>01</span>Abrimos cinco horas</a>
+      <a href="menu.html"><span>02</span>La carta</a>
+      <a href="#momento" data-section="momento"><span>03</span>Así se pone tu mesa</a>
+      <a href="#pan" data-section="pan"><span>04</span>El pan de la casa</a>
+      <a href="#grupos" data-section="grupos"><span>05</span>Desayunos de grupo</a>
+      <a href="#resenas" data-section="resenas"><span>06</span>Lo que dicen</a>
+      <a href="#visitanos" data-section="resenas"><span>07</span>Cómo llegar</a>
     </nav>
     <div class="ab-nav-foot">
       <div class="ab-nav-acts">
@@ -167,14 +168,15 @@
 
   <section class="s-carta" id="carta" aria-labelledby="mn-t">
     <figure class="mn-hero">
-      <img src="img/f/27-1600.webp" width="1600" height="1600" loading="lazy" alt="Chilaquiles Alameda con fajitas de arrachera, servidos en Los Abolengos">
+      <img src="img/f/27-1600.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="Chilaquiles Alameda con fajitas de arrachera, servidos en Los Abolengos">
       <figcaption>Chilaquiles Alameda con fajitas de arrachera <span class="tab-num">$160</span></figcaption>
     </figure>
 
     <div class="k-wrap mn-in">
       <p class="ab-eyebrow mn-eyebrow">La carta · 8:00 a 1:00</p>
       <h2 id="mn-t" class="mn-title ab-d" data-drop>Chilaquiles, enfrijoladas,<br>tamachile.<br><b>Agrégalos a tu mesa.</b></h2>
-      <p class="mn-lead">Foto y precio reales, de la carta de abril 2025. Lo que no ves aquí, nos lo preguntas por WhatsApp.</p>
+      <p class="mn-lead">Precio real, de la carta de abril 2025. Toca el <b>+</b> para agregar. Lo que no ves aquí, nos lo preguntas por WhatsApp.</p>
+      <a class="ab-btn ab-btn--link mn-full-link" href="menu.html">Ver la carta completa en su propia página<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
 
       <div class="mn-chips" role="tablist" aria-label="Categorías de la carta">
         <button type="button" class="mn-chip" data-cat-tab="cat-huevos" role="tab" aria-selected="false">Huevos</button>
@@ -187,251 +189,333 @@
 
       <div class="mn-cat" id="cat-huevos" hidden>
         <p class="mn-cat-h">Huevos Abolengos</p>
-        <div class="mn-grid">
-          <article class="mn-card" data-item-id="omelette">
-            <div class="mn-card-photo"><img src="img/menu/17.webp" width="800" height="800" loading="lazy" alt="Omelette en salsa roja con jitomates confitados, Los Abolengos"></div>
-            <div class="mn-card-body">
-              <h3 class="mn-card-name">Omelette, elige relleno</h3>
-              <p class="mn-card-note">Milpa, jamón o salchicha, desde $140</p>
-              <div class="mn-card-row">
-                <span class="mn-card-price tab-num">$140</span>
-                <button type="button" class="mn-add" data-add-item data-item-id="omelette" data-item-name="Omelette (elige relleno)" data-item-price="140">+ Agregar</button>
-                <div class="mn-stepper">
-                  <button type="button" data-item-dec="omelette" aria-label="Quitar un Omelette">&minus;</button>
-                  <span data-item-qty>0</span>
-                  <button type="button" data-item-inc="omelette" aria-label="Agregar un Omelette">+</button>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
         <ul class="mn-list">
-          <li><span>Huevos a la cazuela <i>con nopales, frijol negro y chicharrón</i></span><span class="tab-num">$160</span></li>
-          <li><span>Huevos rancheros <i>estrellados, salsa roja, frijoles refritos</i></span><span class="tab-num">$140</span></li>
-          <li><span>Huevos pelea de gallos <i>salsa roja y verde de la casa</i></span><span class="tab-num">$140</span></li>
-          <li><span>Huevos al gusto <i>estrellados o revueltos</i></span><span class="tab-num">$120</span></li>
+          <li class="mn-row" data-item-id="omelette">
+            <span class="mn-row-txt"><b>Omelette, elige relleno</b><i>Milpa, jamón o salchicha, desde $140</i></span>
+            <span class="mn-row-price tab-num">$140</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="omelette" data-item-name="Omelette (elige relleno)" data-item-price="140" aria-label="Agregar Omelette">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="omelette" aria-label="Quitar un Omelette">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="omelette" aria-label="Agregar un Omelette">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="huevos-cazuela">
+            <span class="mn-row-txt"><b>Huevos a la cazuela</b><i>Con nopales, frijol negro y chicharrón</i></span>
+            <span class="mn-row-price tab-num">$160</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="huevos-cazuela" data-item-name="Huevos a la cazuela" data-item-price="160" aria-label="Agregar Huevos a la cazuela">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="huevos-cazuela" aria-label="Quitar Huevos a la cazuela">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="huevos-cazuela" aria-label="Agregar Huevos a la cazuela">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="huevos-rancheros">
+            <span class="mn-row-txt"><b>Huevos rancheros</b><i>Estrellados, salsa roja, frijoles refritos</i></span>
+            <span class="mn-row-price tab-num">$140</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="huevos-rancheros" data-item-name="Huevos rancheros" data-item-price="140" aria-label="Agregar Huevos rancheros">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="huevos-rancheros" aria-label="Quitar Huevos rancheros">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="huevos-rancheros" aria-label="Agregar Huevos rancheros">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="huevos-pelea">
+            <span class="mn-row-txt"><b>Huevos pelea de gallos</b><i>Salsa roja y verde de la casa</i></span>
+            <span class="mn-row-price tab-num">$140</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="huevos-pelea" data-item-name="Huevos pelea de gallos" data-item-price="140" aria-label="Agregar Huevos pelea de gallos">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="huevos-pelea" aria-label="Quitar Huevos pelea de gallos">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="huevos-pelea" aria-label="Agregar Huevos pelea de gallos">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="huevos-gusto">
+            <span class="mn-row-txt"><b>Huevos al gusto</b><i>Estrellados o revueltos</i></span>
+            <span class="mn-row-price tab-num">$120</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="huevos-gusto" data-item-name="Huevos al gusto" data-item-price="120" aria-label="Agregar Huevos al gusto">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="huevos-gusto" aria-label="Quitar Huevos al gusto">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="huevos-gusto" aria-label="Agregar Huevos al gusto">+</button></span>
+            </span>
+          </li>
         </ul>
       </div>
 
       <div class="mn-cat" id="cat-chilaquiles">
         <p class="mn-cat-h">Chilaquiles y enchiladas</p>
-        <div class="mn-grid">
-          <article class="mn-card" data-item-id="chilaquiles">
-            <div class="mn-card-photo"><img src="img/menu/27.webp" width="800" height="800" loading="lazy" alt="Chilaquiles Alameda con fajitas de arrachera, Los Abolengos"></div>
-            <div class="mn-card-body">
-              <h3 class="mn-card-name">Chilaquiles Alameda</h3>
-              <p class="mn-card-note">Con fajitas de arrachera</p>
-              <div class="mn-card-row">
-                <span class="mn-card-price tab-num">$160</span>
-                <button type="button" class="mn-add" data-add-item data-item-id="chilaquiles" data-item-name="Chilaquiles Alameda con fajitas de arrachera" data-item-price="160">+ Agregar</button>
-                <div class="mn-stepper">
-                  <button type="button" data-item-dec="chilaquiles" aria-label="Quitar un Chilaquiles Alameda">&minus;</button>
-                  <span data-item-qty>0</span>
-                  <button type="button" data-item-inc="chilaquiles" aria-label="Agregar un Chilaquiles Alameda">+</button>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
         <ul class="mn-list">
-          <li><span>Chilaquiles Alameda <i>salsa verde o roja, sin extra</i></span><span class="tab-num">$140</span></li>
-          <li><span>Enchiladas Abolengos <i>adobo de chiles secos, queso y cebolla</i></span><span class="tab-num">$160</span></li>
+          <li class="mn-row" data-item-id="chilaquiles">
+            <span class="mn-row-txt"><b>Chilaquiles Alameda</b><i>Con fajitas de arrachera</i></span>
+            <span class="mn-row-price tab-num">$160</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="chilaquiles" data-item-name="Chilaquiles Alameda con fajitas de arrachera" data-item-price="160" aria-label="Agregar Chilaquiles Alameda">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="chilaquiles" aria-label="Quitar Chilaquiles Alameda">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="chilaquiles" aria-label="Agregar Chilaquiles Alameda">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="chilaquiles-base">
+            <span class="mn-row-txt"><b>Chilaquiles Alameda</b><i>Salsa verde o roja, sin extra</i></span>
+            <span class="mn-row-price tab-num">$140</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="chilaquiles-base" data-item-name="Chilaquiles Alameda" data-item-price="140" aria-label="Agregar Chilaquiles Alameda sin extra">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="chilaquiles-base" aria-label="Quitar Chilaquiles Alameda">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="chilaquiles-base" aria-label="Agregar Chilaquiles Alameda">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="enchiladas">
+            <span class="mn-row-txt"><b>Enchiladas Abolengos</b><i>Adobo de chiles secos, queso y cebolla</i></span>
+            <span class="mn-row-price tab-num">$160</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="enchiladas" data-item-name="Enchiladas Abolengos" data-item-price="160" aria-label="Agregar Enchiladas Abolengos">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="enchiladas" aria-label="Quitar Enchiladas Abolengos">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="enchiladas" aria-label="Agregar Enchiladas Abolengos">+</button></span>
+            </span>
+          </li>
         </ul>
       </div>
 
       <div class="mn-cat" id="cat-especialidades" hidden>
         <p class="mn-cat-h">Especialidades Abolengos</p>
-        <div class="mn-grid">
-          <article class="mn-card" data-item-id="enfrijoladas">
-            <div class="mn-card-photo"><img src="img/menu/16.webp" width="800" height="800" loading="lazy" alt="Enfrijoladas Allende con aguacate y queso, Los Abolengos"></div>
-            <div class="mn-card-body">
-              <h3 class="mn-card-name">Enfrijoladas Allende</h3>
-              <p class="mn-card-note">Chicharrón, frijol negro estilo San Miguel, queso y aguacate</p>
-              <div class="mn-card-row">
-                <span class="mn-card-price tab-num">$160</span>
-                <button type="button" class="mn-add" data-add-item data-item-id="enfrijoladas" data-item-name="Enfrijoladas Allende" data-item-price="160">+ Agregar</button>
-                <div class="mn-stepper">
-                  <button type="button" data-item-dec="enfrijoladas" aria-label="Quitar unas Enfrijoladas Allende">&minus;</button>
-                  <span data-item-qty>0</span>
-                  <button type="button" data-item-inc="enfrijoladas" aria-label="Agregar unas Enfrijoladas Allende">+</button>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="mn-card" data-item-id="tamachile">
-            <div class="mn-card-photo"><img src="img/menu/22.webp" width="800" height="800" loading="lazy" alt="Tamachile abierto con salsas roja y de frijol, Los Abolengos"></div>
-            <div class="mn-card-body">
-              <h3 class="mn-card-name">Tamachile</h3>
-              <p class="mn-card-note">Tamal relleno de chile poblano y cochinita pibil</p>
-              <div class="mn-card-row">
-                <span class="mn-card-price tab-num">$160</span>
-                <button type="button" class="mn-add" data-add-item data-item-id="tamachile" data-item-name="Tamachile" data-item-price="160">+ Agregar</button>
-                <div class="mn-stepper">
-                  <button type="button" data-item-dec="tamachile" aria-label="Quitar un Tamachile">&minus;</button>
-                  <span data-item-qty>0</span>
-                  <button type="button" data-item-inc="tamachile" aria-label="Agregar un Tamachile">+</button>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
         <ul class="mn-list">
-          <li><span>Menudo Abolengo <i>completa $170 · media $115</i></span><span class="tab-num">$170</span></li>
-          <li><span>Birria de res estilo Bajío <i>completa $170 · media $115</i></span><span class="tab-num">$170</span></li>
-          <li><span>Huarache de arrachera <i>frijoles negros, salsa verde tatemada</i></span><span class="tab-num">$165</span></li>
-          <li><span>Enfrijoladas Convención <i>deshebrada de res, salsa tatemada</i></span><span class="tab-num">$160</span></li>
-          <li><span>Pastel Azteca <i>tortilla, pollo, rajas, manchego gratinado</i></span><span class="tab-num">$160</span></li>
+          <li class="mn-row" data-item-id="enfrijoladas">
+            <span class="mn-row-txt"><b>Enfrijoladas Allende</b><i>Chicharrón, frijol negro estilo San Miguel, queso y aguacate</i></span>
+            <span class="mn-row-price tab-num">$160</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="enfrijoladas" data-item-name="Enfrijoladas Allende" data-item-price="160" aria-label="Agregar Enfrijoladas Allende">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="enfrijoladas" aria-label="Quitar Enfrijoladas Allende">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="enfrijoladas" aria-label="Agregar Enfrijoladas Allende">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="tamachile">
+            <span class="mn-row-txt"><b>Tamachile</b><i>Tamal relleno de chile poblano y cochinita pibil</i></span>
+            <span class="mn-row-price tab-num">$160</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="tamachile" data-item-name="Tamachile" data-item-price="160" aria-label="Agregar Tamachile">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="tamachile" aria-label="Quitar Tamachile">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="tamachile" aria-label="Agregar Tamachile">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="menudo">
+            <span class="mn-row-txt"><b>Menudo Abolengo</b><i>Completa $170 · media $115</i></span>
+            <span class="mn-row-price tab-num">$170</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="menudo" data-item-name="Menudo Abolengo (completa)" data-item-price="170" aria-label="Agregar Menudo Abolengo">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="menudo" aria-label="Quitar Menudo Abolengo">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="menudo" aria-label="Agregar Menudo Abolengo">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="birria">
+            <span class="mn-row-txt"><b>Birria de res estilo Bajío</b><i>Completa $170 · media $115</i></span>
+            <span class="mn-row-price tab-num">$170</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="birria" data-item-name="Birria de res estilo Bajío (completa)" data-item-price="170" aria-label="Agregar Birria de res">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="birria" aria-label="Quitar Birria de res">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="birria" aria-label="Agregar Birria de res">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="huarache">
+            <span class="mn-row-txt"><b>Huarache de arrachera</b><i>Frijoles negros, salsa verde tatemada</i></span>
+            <span class="mn-row-price tab-num">$165</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="huarache" data-item-name="Huarache de arrachera" data-item-price="165" aria-label="Agregar Huarache de arrachera">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="huarache" aria-label="Quitar Huarache de arrachera">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="huarache" aria-label="Agregar Huarache de arrachera">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="enfrijoladas-conv">
+            <span class="mn-row-txt"><b>Enfrijoladas Convención</b><i>Deshebrada de res, salsa tatemada</i></span>
+            <span class="mn-row-price tab-num">$160</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="enfrijoladas-conv" data-item-name="Enfrijoladas Convención" data-item-price="160" aria-label="Agregar Enfrijoladas Convención">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="enfrijoladas-conv" aria-label="Quitar Enfrijoladas Convención">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="enfrijoladas-conv" aria-label="Agregar Enfrijoladas Convención">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="pastel-azteca">
+            <span class="mn-row-txt"><b>Pastel Azteca</b><i>Tortilla, pollo, rajas, manchego gratinado</i></span>
+            <span class="mn-row-price tab-num">$160</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="pastel-azteca" data-item-name="Pastel Azteca" data-item-price="160" aria-label="Agregar Pastel Azteca">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="pastel-azteca" aria-label="Quitar Pastel Azteca">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="pastel-azteca" aria-label="Agregar Pastel Azteca">+</button></span>
+            </span>
+          </li>
         </ul>
       </div>
 
       <div class="mn-cat" id="cat-compartir" hidden>
         <p class="mn-cat-h">Para compartir</p>
-        <div class="mn-grid">
-          <article class="mn-card" data-item-id="sopes">
-            <div class="mn-card-photo"><img src="img/menu/18.webp" width="800" height="800" loading="lazy" alt="Sopes de deshebrada con aguacate, Los Abolengos"></div>
-            <div class="mn-card-body">
-              <h3 class="mn-card-name">Sopes</h3>
-              <p class="mn-card-note">3 piezas, deshebrada en salsa roja tatemada</p>
-              <div class="mn-card-row">
-                <span class="mn-card-price tab-num">$150</span>
-                <button type="button" class="mn-add" data-add-item data-item-id="sopes" data-item-name="Sopes" data-item-price="150">+ Agregar</button>
-                <div class="mn-stepper">
-                  <button type="button" data-item-dec="sopes" aria-label="Quitar unos Sopes">&minus;</button>
-                  <span data-item-qty>0</span>
-                  <button type="button" data-item-inc="sopes" aria-label="Agregar unos Sopes">+</button>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="mn-card" data-item-id="molletes">
-            <div class="mn-card-photo"><img src="img/menu/23.webp" width="800" height="800" loading="lazy" alt="Molletes en tabla de madera con aguacate, Los Abolengos"></div>
-            <div class="mn-card-body">
-              <h3 class="mn-card-name">Molletes</h3>
-              <p class="mn-card-note">4 piezas de pan horneado en casa</p>
-              <div class="mn-card-row">
-                <span class="mn-card-price tab-num">$110</span>
-                <button type="button" class="mn-add" data-add-item data-item-id="molletes" data-item-name="Molletes" data-item-price="110">+ Agregar</button>
-                <div class="mn-stepper">
-                  <button type="button" data-item-dec="molletes" aria-label="Quitar unos Molletes">&minus;</button>
-                  <span data-item-qty>0</span>
-                  <button type="button" data-item-inc="molletes" aria-label="Agregar unos Molletes">+</button>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="mn-card" data-item-id="baguett">
-            <div class="mn-card-photo"><img src="img/menu/19.webp" width="800" height="800" loading="lazy" alt="Baguett del Granero, pan de la casa con germen de alfalfa, Los Abolengos"></div>
-            <div class="mn-card-body">
-              <h3 class="mn-card-name">Baguett del Granero</h3>
-              <p class="mn-card-note">Pollo, aguacate, panela y pimientos</p>
-              <div class="mn-card-row">
-                <span class="mn-card-price tab-num">$110</span>
-                <button type="button" class="mn-add" data-add-item data-item-id="baguett" data-item-name="Baguett del Granero" data-item-price="110">+ Agregar</button>
-                <div class="mn-stepper">
-                  <button type="button" data-item-dec="baguett" aria-label="Quitar un Baguett del Granero">&minus;</button>
-                  <span data-item-qty>0</span>
-                  <button type="button" data-item-inc="baguett" aria-label="Agregar un Baguett del Granero">+</button>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
         <ul class="mn-list">
-          <li><span>Guarnición de chilaquiles</span><span class="tab-num">$65</span></li>
-          <li><span>Frijoles refritos negros</span><span class="tab-num">$45</span></li>
-          <li><span>Tocino</span><span class="tab-num">$45</span></li>
-          <li><span>Chorizo</span><span class="tab-num">$40</span></li>
-          <li><span>Aguacate</span><span class="tab-num">$35</span></li>
-          <li><span>Arrachera, extra</span><span class="tab-num">$60</span></li>
+          <li class="mn-row" data-item-id="sopes">
+            <span class="mn-row-txt"><b>Sopes</b><i>3 piezas, deshebrada en salsa roja tatemada</i></span>
+            <span class="mn-row-price tab-num">$150</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="sopes" data-item-name="Sopes" data-item-price="150" aria-label="Agregar Sopes">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="sopes" aria-label="Quitar Sopes">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="sopes" aria-label="Agregar Sopes">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="molletes">
+            <span class="mn-row-txt"><b>Molletes</b><i>4 piezas de pan horneado en casa</i></span>
+            <span class="mn-row-price tab-num">$110</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="molletes" data-item-name="Molletes" data-item-price="110" aria-label="Agregar Molletes">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="molletes" aria-label="Quitar Molletes">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="molletes" aria-label="Agregar Molletes">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="baguett">
+            <span class="mn-row-txt"><b>Baguett del Granero</b><i>Pollo, aguacate, panela y pimientos</i></span>
+            <span class="mn-row-price tab-num">$110</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="baguett" data-item-name="Baguett del Granero" data-item-price="110" aria-label="Agregar Baguett del Granero">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="baguett" aria-label="Quitar Baguett del Granero">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="baguett" aria-label="Agregar Baguett del Granero">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="guarnicion-chilaquiles">
+            <span class="mn-row-txt"><b>Guarnición de chilaquiles</b></span>
+            <span class="mn-row-price tab-num">$65</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="guarnicion-chilaquiles" data-item-name="Guarnición de chilaquiles" data-item-price="65" aria-label="Agregar Guarnición de chilaquiles">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="guarnicion-chilaquiles" aria-label="Quitar Guarnición de chilaquiles">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="guarnicion-chilaquiles" aria-label="Agregar Guarnición de chilaquiles">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="frijoles-refritos">
+            <span class="mn-row-txt"><b>Frijoles refritos negros</b></span>
+            <span class="mn-row-price tab-num">$45</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="frijoles-refritos" data-item-name="Frijoles refritos negros" data-item-price="45" aria-label="Agregar Frijoles refritos negros">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="frijoles-refritos" aria-label="Quitar Frijoles refritos negros">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="frijoles-refritos" aria-label="Agregar Frijoles refritos negros">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="tocino">
+            <span class="mn-row-txt"><b>Tocino</b></span>
+            <span class="mn-row-price tab-num">$45</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="tocino" data-item-name="Tocino" data-item-price="45" aria-label="Agregar Tocino">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="tocino" aria-label="Quitar Tocino">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="tocino" aria-label="Agregar Tocino">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="chorizo">
+            <span class="mn-row-txt"><b>Chorizo</b></span>
+            <span class="mn-row-price tab-num">$40</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="chorizo" data-item-name="Chorizo" data-item-price="40" aria-label="Agregar Chorizo">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="chorizo" aria-label="Quitar Chorizo">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="chorizo" aria-label="Agregar Chorizo">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="aguacate">
+            <span class="mn-row-txt"><b>Aguacate</b></span>
+            <span class="mn-row-price tab-num">$35</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="aguacate" data-item-name="Aguacate" data-item-price="35" aria-label="Agregar Aguacate">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="aguacate" aria-label="Quitar Aguacate">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="aguacate" aria-label="Agregar Aguacate">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="arrachera-extra">
+            <span class="mn-row-txt"><b>Arrachera, extra</b></span>
+            <span class="mn-row-price tab-num">$60</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="arrachera-extra" data-item-name="Arrachera, extra" data-item-price="60" aria-label="Agregar Arrachera, extra">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="arrachera-extra" aria-label="Quitar Arrachera, extra">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="arrachera-extra" aria-label="Agregar Arrachera, extra">+</button></span>
+            </span>
+          </li>
         </ul>
       </div>
 
       <div class="mn-cat" id="cat-panaderia" hidden>
         <p class="mn-cat-h">Panadería de la casa</p>
-        <div class="mn-grid">
-          <article class="mn-card" data-item-id="concha">
-            <div class="mn-card-photo"><img src="img/menu/24.webp" width="800" height="800" loading="lazy" alt="Concha de chocolate horneada en casa, Los Abolengos"></div>
-            <div class="mn-card-body">
-              <h3 class="mn-card-name">Concha de la casa</h3>
-              <p class="mn-card-note">Horneada aquí, desde las 8:00</p>
-              <div class="mn-card-row">
-                <span class="mn-card-price tab-num">$35</span>
-                <button type="button" class="mn-add" data-add-item data-item-id="concha" data-item-name="Concha de la casa" data-item-price="35">+ Agregar</button>
-                <div class="mn-stepper">
-                  <button type="button" data-item-dec="concha" aria-label="Quitar Concha de la casa">&minus;</button>
-                  <span data-item-qty>0</span>
-                  <button type="button" data-item-inc="concha" aria-label="Agregar Concha de la casa">+</button>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
         <ul class="mn-list">
-          <li><span>Hot cakes</span><span class="tab-num">$90</span></li>
-          <li><span>Pan de nata y almendra, pieza</span><span class="tab-num">$35</span></li>
-          <li><span>Pan de nata y almendra, completo</span><span class="tab-num">$195</span></li>
+          <li class="mn-row" data-item-id="concha">
+            <span class="mn-row-txt"><b>Concha de la casa</b><i>Horneada aquí, desde las 8:00</i></span>
+            <span class="mn-row-price tab-num">$35</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="concha" data-item-name="Concha de la casa" data-item-price="35" aria-label="Agregar Concha de la casa">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="concha" aria-label="Quitar Concha de la casa">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="concha" aria-label="Agregar Concha de la casa">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="hotcakes">
+            <span class="mn-row-txt"><b>Hot cakes</b></span>
+            <span class="mn-row-price tab-num">$90</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="hotcakes" data-item-name="Hot cakes" data-item-price="90" aria-label="Agregar Hot cakes">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="hotcakes" aria-label="Quitar Hot cakes">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="hotcakes" aria-label="Agregar Hot cakes">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="pan-pieza">
+            <span class="mn-row-txt"><b>Pan de nata y almendra</b><i>Pieza</i></span>
+            <span class="mn-row-price tab-num">$35</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="pan-pieza" data-item-name="Pan de nata y almendra, pieza" data-item-price="35" aria-label="Agregar Pan de nata, pieza">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="pan-pieza" aria-label="Quitar Pan de nata, pieza">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="pan-pieza" aria-label="Agregar Pan de nata, pieza">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="pan-completo">
+            <span class="mn-row-txt"><b>Pan de nata y almendra</b><i>Completo</i></span>
+            <span class="mn-row-price tab-num">$195</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="pan-completo" data-item-name="Pan de nata y almendra, completo" data-item-price="195" aria-label="Agregar Pan de nata, completo">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="pan-completo" aria-label="Quitar Pan de nata, completo">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="pan-completo" aria-label="Agregar Pan de nata, completo">+</button></span>
+            </span>
+          </li>
         </ul>
       </div>
 
       <div class="mn-cat" id="cat-bebidas" hidden>
         <p class="mn-cat-h">Bebidas</p>
-        <div class="mn-grid">
-          <article class="mn-card" data-item-id="fruta">
-            <div class="mn-card-photo"><img src="img/menu/20.webp" width="800" height="800" loading="lazy" alt="Plato de fruta con papaya, melón y manzana, Los Abolengos"></div>
-            <div class="mn-card-body">
-              <h3 class="mn-card-name">Plato de fruta</h3>
-              <p class="mn-card-note">Papaya, melón y manzana</p>
-              <div class="mn-card-row">
-                <span class="mn-card-price tab-num">$58</span>
-                <button type="button" class="mn-add" data-add-item data-item-id="fruta" data-item-name="Plato de fruta" data-item-price="58">+ Agregar</button>
-                <div class="mn-stepper">
-                  <button type="button" data-item-dec="fruta" aria-label="Quitar Plato de fruta">&minus;</button>
-                  <span data-item-qty>0</span>
-                  <button type="button" data-item-inc="fruta" aria-label="Agregar Plato de fruta">+</button>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="mn-card" data-item-id="catrina">
-            <div class="mn-card-photo"><img src="img/menu/20b.webp" width="800" height="800" loading="lazy" alt="Jugo Catrina de zanahoria, naranja y betabel, Los Abolengos"></div>
-            <div class="mn-card-body">
-              <h3 class="mn-card-name">Jugo Catrina</h3>
-              <p class="mn-card-note">Zanahoria, naranja y betabel</p>
-              <div class="mn-card-row">
-                <span class="mn-card-price tab-num">$48</span>
-                <button type="button" class="mn-add" data-add-item data-item-id="catrina" data-item-name="Jugo Catrina" data-item-price="48">+ Agregar</button>
-                <div class="mn-stepper">
-                  <button type="button" data-item-dec="catrina" aria-label="Quitar Jugo Catrina">&minus;</button>
-                  <span data-item-qty>0</span>
-                  <button type="button" data-item-inc="catrina" aria-label="Agregar Jugo Catrina">+</button>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="mn-card" data-item-id="chocolate">
-            <div class="mn-card-photo"><img src="img/menu/25.webp" width="800" height="800" loading="lazy" alt="Chocolate caliente servido en Los Abolengos"></div>
-            <div class="mn-card-body">
-              <h3 class="mn-card-name">Chocolate caliente</h3>
-              <p class="mn-card-note">Servido en taza de la casa</p>
-              <div class="mn-card-row">
-                <span class="mn-card-price tab-num">$50</span>
-                <button type="button" class="mn-add" data-add-item data-item-id="chocolate" data-item-name="Chocolate caliente" data-item-price="50">+ Agregar</button>
-                <div class="mn-stepper">
-                  <button type="button" data-item-dec="chocolate" aria-label="Quitar Chocolate caliente">&minus;</button>
-                  <span data-item-qty>0</span>
-                  <button type="button" data-item-inc="chocolate" aria-label="Agregar Chocolate caliente">+</button>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
         <ul class="mn-list">
-          <li><span>Jugo Abolengos <i>naranja, fresa y miel de maple</i></span><span class="tab-num">$58</span></li>
-          <li><span>Licuado <i>fresa, plátano, avena, Oreo</i></span><span class="tab-num">$58</span></li>
-          <li><span>Cappuccino</span><span class="tab-num">$55</span></li>
-          <li><span>Café de olla o americano</span><span class="tab-num">$50</span></li>
-          <li><span>Refresco</span><span class="tab-num">$37</span></li>
-          <li><span>Corona o Victoria</span><span class="tab-num">$45</span></li>
+          <li class="mn-row" data-item-id="fruta">
+            <span class="mn-row-txt"><b>Plato de fruta</b><i>Papaya, melón y manzana</i></span>
+            <span class="mn-row-price tab-num">$58</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="fruta" data-item-name="Plato de fruta" data-item-price="58" aria-label="Agregar Plato de fruta">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="fruta" aria-label="Quitar Plato de fruta">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="fruta" aria-label="Agregar Plato de fruta">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="catrina">
+            <span class="mn-row-txt"><b>Jugo Catrina</b><i>Zanahoria, naranja y betabel</i></span>
+            <span class="mn-row-price tab-num">$48</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="catrina" data-item-name="Jugo Catrina" data-item-price="48" aria-label="Agregar Jugo Catrina">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="catrina" aria-label="Quitar Jugo Catrina">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="catrina" aria-label="Agregar Jugo Catrina">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="chocolate">
+            <span class="mn-row-txt"><b>Chocolate caliente</b><i>Servido en taza de la casa</i></span>
+            <span class="mn-row-price tab-num">$50</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="chocolate" data-item-name="Chocolate caliente" data-item-price="50" aria-label="Agregar Chocolate caliente">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="chocolate" aria-label="Quitar Chocolate caliente">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="chocolate" aria-label="Agregar Chocolate caliente">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="jugo-abolengos">
+            <span class="mn-row-txt"><b>Jugo Abolengos</b><i>Naranja, fresa y miel de maple</i></span>
+            <span class="mn-row-price tab-num">$58</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="jugo-abolengos" data-item-name="Jugo Abolengos" data-item-price="58" aria-label="Agregar Jugo Abolengos">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="jugo-abolengos" aria-label="Quitar Jugo Abolengos">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="jugo-abolengos" aria-label="Agregar Jugo Abolengos">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="licuado">
+            <span class="mn-row-txt"><b>Licuado</b><i>Fresa, plátano, avena, Oreo</i></span>
+            <span class="mn-row-price tab-num">$58</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="licuado" data-item-name="Licuado" data-item-price="58" aria-label="Agregar Licuado">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="licuado" aria-label="Quitar Licuado">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="licuado" aria-label="Agregar Licuado">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="cappuccino">
+            <span class="mn-row-txt"><b>Cappuccino</b></span>
+            <span class="mn-row-price tab-num">$55</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="cappuccino" data-item-name="Cappuccino" data-item-price="55" aria-label="Agregar Cappuccino">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="cappuccino" aria-label="Quitar Cappuccino">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="cappuccino" aria-label="Agregar Cappuccino">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="cafe-olla">
+            <span class="mn-row-txt"><b>Café de olla o americano</b></span>
+            <span class="mn-row-price tab-num">$50</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="cafe-olla" data-item-name="Café de olla o americano" data-item-price="50" aria-label="Agregar Café de olla">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="cafe-olla" aria-label="Quitar Café de olla">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="cafe-olla" aria-label="Agregar Café de olla">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="refresco">
+            <span class="mn-row-txt"><b>Refresco</b></span>
+            <span class="mn-row-price tab-num">$37</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="refresco" data-item-name="Refresco" data-item-price="37" aria-label="Agregar Refresco">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="refresco" aria-label="Quitar Refresco">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="refresco" aria-label="Agregar Refresco">+</button></span>
+            </span>
+          </li>
+          <li class="mn-row" data-item-id="cerveza">
+            <span class="mn-row-txt"><b>Corona o Victoria</b></span>
+            <span class="mn-row-price tab-num">$45</span>
+            <span class="mn-row-ctrl">
+              <button type="button" class="mn-row-add" data-add-item data-item-id="cerveza" data-item-name="Corona o Victoria" data-item-price="45" aria-label="Agregar cerveza">+</button>
+              <span class="mn-row-stepper"><button type="button" data-item-dec="cerveza" aria-label="Quitar cerveza">&minus;</button><span data-item-qty>0</span><button type="button" data-item-inc="cerveza" aria-label="Agregar cerveza">+</button></span>
+            </span>
+          </li>
         </ul>
         <p class="mn-fine">¿Algo que no ves aquí? Pregunta el precio por WhatsApp.</p>
       </div>
@@ -443,19 +527,19 @@
     <div class="k-wrap">
       <div class="mo-plates" data-reveal-stagger>
         <figure class="mo-plate">
-          <img src="img/momento/15-enfrijoladas.webp" width="900" height="900" loading="lazy" alt="Enfrijoladas Allende con café de olla, servidas en la mesa de Los Abolengos">
+          <img src="img/momento/15-enfrijoladas.webp" width="900" height="900" loading="lazy" decoding="async" alt="Enfrijoladas Allende con café de olla, servidas en la mesa de Los Abolengos">
           <figcaption>Enfrijoladas Allende <span class="tab-num">$160</span><span class="mo-sub">Café de olla <span class="tab-num">$50</span></span></figcaption>
         </figure>
         <figure class="mo-plate">
-          <img src="img/momento/18-sopes.webp" width="900" height="900" loading="lazy" alt="Sopes de deshebrada con aguacate, Los Abolengos">
+          <img src="img/momento/18-sopes.webp" width="900" height="900" loading="lazy" decoding="async" alt="Sopes de deshebrada con aguacate, Los Abolengos">
           <figcaption>Sopes <span class="tab-num">$150</span></figcaption>
         </figure>
         <figure class="mo-plate">
-          <img src="img/momento/20-fruta.webp" width="900" height="900" loading="lazy" alt="Plato de fruta y jugo Catrina, Los Abolengos">
+          <img src="img/momento/20-fruta.webp" width="900" height="900" loading="lazy" decoding="async" alt="Plato de fruta y jugo Catrina, Los Abolengos">
           <figcaption>Plato de fruta <span class="tab-num">$58</span><span class="mo-sub">Jugo Catrina <span class="tab-num">$48</span></span></figcaption>
         </figure>
         <figure class="mo-plate mo-plate--frame">
-          <span class="ab-frame"><img src="img/momento/26-pan.webp" width="640" height="853" loading="lazy" alt="Canasta de pan de la casa, Los Abolengos"></span>
+          <span class="ab-frame"><img src="img/momento/26-pan.webp" width="640" height="853" loading="lazy" decoding="async" alt="Canasta de pan de la casa, Los Abolengos"></span>
           <figcaption>Pan de la casa <span class="tab-num">$35</span></figcaption>
         </figure>
       </div>
@@ -472,7 +556,7 @@
     <div class="pan-media" aria-hidden="true">
       <picture>
         <source media="(min-width: 900px)" srcset="img/f/24-wide-1600.webp" width="1536" height="750">
-        <img src="img/f/24-logo-1600.webp" width="1400" height="1796" loading="lazy" alt="">
+        <img src="img/f/24-logo-1600.webp" width="1400" height="1796" loading="lazy" decoding="async" alt="">
       </picture>
       <div class="pan-veil"></div>
     </div>
@@ -495,8 +579,8 @@
       </ul>
 
       <div class="gr-media">
-        <figure class="gr-media-big"><img src="img/f/12-crop-1600.webp" width="1600" height="730" loading="lazy" alt="Mesa de evento montada con mantel negro y copas, Los Abolengos"></figure>
-        <figure class="gr-media-sm ab-frame"><img src="img/f/10-1600.webp" width="1600" height="1200" loading="lazy" alt="Terraza con sombrillas de Los Abolengos"></figure>
+        <figure class="gr-media-big"><img src="img/f/12-crop-1600.webp" width="1600" height="730" loading="lazy" decoding="async" alt="Mesa de evento montada con mantel negro y copas, Los Abolengos"></figure>
+        <figure class="gr-media-sm ab-frame"><img src="img/f/10-1600.webp" width="1600" height="1200" loading="lazy" decoding="async" alt="Terraza con sombrillas de Los Abolengos"></figure>
       </div>
 
       <form class="gr-form" id="gr-form">
@@ -511,12 +595,6 @@
             </div>
           </div>
           <div class="ab-field">
-            <span>Fecha</span>
-            <input type="date" id="gr-date" class="gr-input">
-          </div>
-        </div>
-        <div class="gr-row">
-          <div class="ab-field">
             <span>Hora</span>
             <select id="gr-hour">
               <option value="8:00">8:00</option>
@@ -527,12 +605,16 @@
               <option value="1:00">1:00</option>
             </select>
           </div>
-          <div class="ab-field">
-            <span>Espacio</span>
-            <div class="gr-radios" role="radiogroup" aria-label="Salón o terraza">
-              <label><input type="radio" name="gr-espacio" value="Salón privado" checked><span>Salón</span></label>
-              <label><input type="radio" name="gr-espacio" value="Terraza"><span>Terraza</span></label>
-            </div>
+        </div>
+        <div class="ab-field">
+          <span>Fecha</span>
+          <input type="date" id="gr-date" class="gr-input gr-input--date">
+        </div>
+        <div class="ab-field">
+          <span>Espacio</span>
+          <div class="gr-radios" role="radiogroup" aria-label="Salón o terraza">
+            <label><input type="radio" name="gr-espacio" value="Salón privado" checked><span>Salón</span></label>
+            <label><input type="radio" name="gr-espacio" value="Terraza"><span>Terraza</span></label>
           </div>
         </div>
         <div class="ab-field">
@@ -548,7 +630,7 @@
   <div class="ab-seam" style="background:linear-gradient(180deg, var(--deep-2), var(--deep))" aria-hidden="true"><span class="ab-rombo"></span><span class="ab-rombo"></span><span class="ab-rombo"></span></div>
   <section class="s-resenas" id="resenas" data-dark aria-labelledby="rv-t">
     <figure class="rv-media">
-      <img src="img/f/01-crop-1600.webp" width="1140" height="1200" loading="lazy" alt="Fachada de Los Abolengos con la placa del árbol, Alameda 810">
+      <img src="img/f/01-crop-1600.webp" width="1140" height="1200" loading="lazy" decoding="async" alt="Fachada de Los Abolengos con la placa del árbol, Alameda 810">
     </figure>
     <div class="k-wrap rv-in">
       <h2 id="rv-t" class="rv-t ab-d" data-drop>Lo que dicen<br>los que ya <b>llegaron.</b></h2>
@@ -579,7 +661,7 @@
 
       <div class="ab-seam" aria-hidden="true"><span class="ab-rombo"></span><span class="ab-rombo"></span><span class="ab-rombo"></span></div>
 
-      <div class="rv-visit" data-hide-wa>
+      <div class="rv-visit" id="visitanos" data-hide-wa>
         <div class="ab-frame rv-map">
           <iframe src="https://www.google.com/maps?q=21.8844856,-102.2714246&z=17&output=embed" loading="lazy" title="Mapa de Los Abolengos, Alameda 810" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
@@ -617,7 +699,7 @@
 
 <footer class="ab-foot" data-dark data-hide-wa>
   <div class="k-wrap">
-    <img class="ab-foot-tree" src="brand/tree-cream.webp" alt="Los Abolengos" width="640" height="640" loading="lazy">
+    <img class="ab-foot-tree" src="brand/tree-cream.webp" alt="Los Abolengos" width="640" height="640" loading="lazy" decoding="async">
     <p class="ab-foot-close ab-d">Te esperamos temprano.<br><b>De 8:00 a la 1:00.</b></p>
     <div class="ab-foot-grid">
       <div>
@@ -651,7 +733,7 @@
 <a class="k-wa" data-wa="Hola, quiero apartar mesa en Los Abolengos." href="https://wa.me/524498050420" aria-label="WhatsApp"></a>
 
 <script src="../_kit/kit.js?v=1789882113" defer></script>
-<script src="site.js?v=1789892183" defer></script>
+<script src="site.js?v=1789915950" defer></script>
 <script src="sections/20-carta.js?v=1789888085" defer></script>
 <script src="sections/50-grupos.js?v=1789887660" defer></script>
 </body>

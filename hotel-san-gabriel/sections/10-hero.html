@@ -4,22 +4,22 @@
         <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/hero-d.webp" width="1920" height="1080">
         <img class="hr-poster" src="img/hero/hero-m.webp" width="1080" height="1920" alt="" fetchpriority="high" decoding="async">
       </picture>
-      <!-- Video del hero: SOLO vistas, para que todo el clip diga lo mismo que el título ("La catedral, a tus pies"):
-           1) catedral al atardecer (recreación), 2) alberca de la azotea con vista (recreación), 3) el atardecer
-           desde el mirador (foto real h18), 4) la catedral iluminada de noche (foto real h20). Montadas con
-           hero_video.py; data-segs marca el corte de cada toma para quien reuse la regla del tiempo. -->
-      <video class="hr-vid" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-poster-m="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9" poster="img/hero/hero-m.webp" muted playsinline loop preload="metadata" disablepictureinpicture disableremoteplayback tabindex="-1"></video>
+      <!-- Video del hero: SOLO vistas reales, para que todo el clip diga lo mismo que el título ("La catedral,
+           a tus pies"): 1) la catedral al atardecer desde el mirador (foto real h19), 2) la alberca de la azotea
+           con la catedral de fondo (foto real h15), 3) la catedral iluminada de noche (foto real h20). Sin
+           imágenes de IA. Montadas con hero_video.py; data-segs marca el corte de cada toma para quien reuse
+           la regla del tiempo. -->
+      <video class="hr-vid" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-poster-m="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" data-segs="0,2.25,4.95,7.65" data-fade="0.9" poster="img/hero/hero-m.webp" muted playsinline loop preload="metadata" disablepictureinpicture disableremoteplayback tabindex="-1"></video>
       <div class="hr-veil"></div><div class="hr-glow"></div>
     </div>
-    <p class="sg-ia hr-ia">Imagen ilustrativa</p>
     <div class="k-wrap hr-in">
       <p class="sg-eyebrow hr-eb">Hotel San Gabriel Justin · Unión de Tula</p>
       <h1 id="hr-t" class="hr-t sg-d sg-h3d"><span class="hr-l"><span>La catedral,</span></span> <span class="hr-l"><span>a tus <em>pies.</em></span></span></h1>
       <p class="hr-lead">Mirador 360 y alberca en la azotea, en pleno centro.</p>
       <form class="hr-book" id="hr-book" action="#reserva" aria-label="Elige tus fechas">
         <div class="hr-dates">
-          <label class="sg-field"><span>Llegada</span><input type="date" name="in"></label>
-          <label class="sg-field"><span>Salida</span><input type="date" name="out"></label>
+          <label class="sg-field"><span>Llegada</span><input type="text" name="in"></label>
+          <label class="sg-field"><span>Salida</span><input type="text" name="out"></label>
         </div>
         <div class="hr-acts">
           <button class="sg-btn sg-btn--go" type="submit">Reservar</button>

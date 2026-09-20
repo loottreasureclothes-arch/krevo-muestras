@@ -47,3 +47,12 @@ Actualizado el 20 sep 2026, después de la ronda de corrección del catálogo.
     las dos páginas de Facebook es la buena (facebook.com/MUEBLESDELALBA o /MueblesDelAlbaMexico).
 21. **Link de cobro o pasarela**, si además de WhatsApp quieren cobrar en línea.
 22. Nombre exacto de la **fuente de su logotipo**.
+
+## Piezas que faltan para llenar los grupos del catálogo (20 sep 2026)
+23. Emanuel pidió **10 piezas por grupo, no 4 ni 8**. Con las 76 piezas publicadas, 9 de las 13
+    categorías sueltas no llegaban a 10 (mesas de centro 2, sillas 3, roperos 3, alacenas 4,
+    bases 5, porta pantallas 5, cajoneras y tocadores 7, esquineras 7, salas 9). Por eso el
+    catálogo quedó en 5 grupos que sí llenan: **Salas y esquineras (16), Complementos (11),
+    Comedores y sillas (13), Recámara (20), Descanso (16)**. Cada uno muestra 10 piezas.
+    Si mandas más fotos con precio de **mesas de centro, sillas, roperos y alacenas**, esas
+    cuatro pueden volver a ser su propio grupo con sus 10 piezas.

@@ -91,6 +91,68 @@
     scan(); setTimeout(scan, 1200);
   }
 
+  /* Barra de categorias pegada al header ("el rodillo"): el header cambia de
+     56/64px a 46/54px al pasar 40px de scroll (site.css, transicion 220ms).
+     --tr-head-h fijaba solo el valor inicial, asi que la barra sticky se
+     quedaba pegada arriba mientras el header encogia debajo: se veia
+     despegada, con un hueco que crecia. Aqui se mide el header real y se
+     escribe --tr-head-h en cada cambio, para que la barra siga exactamente
+     el alto del header en todo el recorrido, sin brincos ni hueco. */
+  function initStickyHead() {
+    var header = document.querySelector(".k-header");
+    if (!header) return;
+    var root = document.documentElement;
+    function sync() {
+      var h = header.getBoundingClientRect().height;
+      if (h > 0) root.style.setProperty("--tr-head-h", h + "px");
+    }
+    if ("ResizeObserver" in window) {
+      new ResizeObserver(sync).observe(header);
+    } else {
+      window.addEventListener("scroll", sync, { passive: true });
+      window.addEventListener("resize", sync);
+    }
+    sync();
+  }
+
+  /* Estado activo del menu (barra superior y panel "Carta"): resalta la
+     seccion que se esta viendo para que se sienta navegacion de verdad. */
+  function initNavSpy() {
+    var links = document.querySelectorAll('.tr-nav a[href^="#"], .tr-nav-list a[href^="#"]');
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var groups = {}, ids = [];
+    Array.prototype.forEach.call(links, function (a) {
+      var id = a.getAttribute("href").slice(1);
+      if (!groups[id]) { groups[id] = []; ids.push(id); }
+      groups[id].push(a);
+    });
+    var sections = [];
+    for (var i = 0; i < ids.length; i++) {
+      var el = document.getElementById(ids[i]);
+      if (el) sections.push({ id: ids[i], el: el });
+    }
+    if (!sections.length) return;
+    var current = "", visible = {};
+    function setCurrent(id) {
+      if (id === current) return;
+      current = id;
+      for (var j = 0; j < ids.length; j++) {
+        var on = ids[j] === id;
+        for (var k = 0; k < groups[ids[j]].length; k++) {
+          if (on) groups[ids[j]][k].setAttribute("aria-current", "true");
+          else groups[ids[j]][k].removeAttribute("aria-current");
+        }
+      }
+    }
+    var io = new IntersectionObserver(function (entries) {
+      for (var e = 0; e < entries.length; e++) visible[entries[e].target.id] = entries[e].isIntersecting;
+      for (var s = 0; s < sections.length; s++) {
+        if (visible[sections[s].id]) { setCurrent(sections[s].id); return; }
+      }
+    }, { rootMargin: "-35% 0% -55% 0%", threshold: 0 });
+    for (var m = 0; m < sections.length; m++) io.observe(sections[m].el);
+  }
+
   function scrollToEl(el, smooth) {
     var head = document.querySelector(".k-header");
     var top = el.getBoundingClientRect().top + window.scrollY - (head ? head.offsetHeight : 0) - 8;
@@ -156,7 +218,7 @@
     }, 1600);
   }
 
-  function init() { initWa(); initNav(); initWaHide(); initAnchors(); initTitleDrop(); }
+  function init() { initWa(); initNav(); initStickyHead(); initNavSpy(); initWaHide(); initAnchors(); initTitleDrop(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

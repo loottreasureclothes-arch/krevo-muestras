@@ -202,6 +202,11 @@ body {
   border-bottom: 1px solid rgba(255,255,227,.14); padding: 8px 0;
 }
 .lc-nav-list a span { font-family: var(--font-body); font-size: .85rem; color: var(--brand); font-weight: 800; }
+/* Estado activo: la seccion que se esta viendo (o la pagina en la que
+   estamos, ej. menu.html) se marca en rojo de marca (L: navegacion de
+   verdad, no puros anclas que no se sienten). */
+.lc-nav-list a.is-active { color: var(--brand); border-bottom-color: var(--brand); }
+.lc-nav-list a.is-active span { color: var(--paper); }
 .lc-nav-foot { margin-top: 24px; display: flex; flex-direction: column; gap: 16px; }
 .lc-nav-acts { display: flex; gap: 10px; flex-wrap: wrap; }
 .lc-nav-foot p { display: flex; gap: 18px; flex-wrap: wrap; }

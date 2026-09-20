@@ -3,7 +3,10 @@
    de 62svh pegada arriba, a escala casi 1:1 en celular, y el titulo cae en la banda --deep
    de abajo. En compu la foto se va de columna a la izquierda (vertical completa, sin
    recorte ni upscale) y el titulo vive a su derecha. Presupuesto celular: ~860px. */
-.pt-hero { position: relative; background: var(--deep); padding-top: var(--pt-head-total, var(--k-header-h)); }
+/* El header va TRANSPARENTE sobre esta foto (FEEDBACK 20 sep): la banda ya NO se
+   empuja con padding-top. El letrero "Petra" de la fachada cae bien abajo del
+   header (ver .pt-hero-media object-position), asi que no hay riesgo de tape. */
+.pt-hero { position: relative; background: var(--deep); }
 .pt-hero-media { position: relative; height: 54svh; min-height: 360px; overflow: hidden; }
 .pt-hero-media picture { display: block; width: 100%; height: 100%; }
 .pt-hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }

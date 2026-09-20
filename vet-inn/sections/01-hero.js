@@ -65,17 +65,32 @@
       requestAnimationFrame(function () { shape.classList.add("is-drawn"); });
     }
     function actualizar() {
-      var completa = !!(state.nombre && state.especie);
-      if (completa) {
+      /* basta el NOMBRE para que la placa mande (la especie es opcional): el campo del
+         nombre ahora también vive dentro de la solicitud de cita (REVISION-2, cambio 5) y
+         desde allá casi nadie vuelve arriba a tocar la silueta. */
+      if (state.nombre) {
         guardar();
         avisar();
         dibujar();
         dibujada = true;
       } else if (dibujada) {
-        // se borro un campo despues de ya haber placa: se sigue viendo pero ya no manda
-        // (no truena nada: solo deja de refrescarse hasta que ambos campos vuelvan a estar completos)
+        // se borro el nombre despues de ya haber placa: se esconde y deja de mandar
+        dibujada = false;
+        render.hidden = true;
+        render.textContent = "";
+        guardar();
+        avisar();
       }
     }
+
+    /* Contrato para 02-servicios: el campo de la cita escribe aquí y la placa se arma sola. */
+    window.vetinnSetNombre = function (n) {
+      var v = String(n == null ? "" : n).trim().slice(0, 24);
+      if (v === state.nombre) return;
+      state.nombre = v;
+      if (input.value.trim() !== v) input.value = v;
+      actualizar();
+    };
 
     input.addEventListener("input", function () {
       state.nombre = input.value.trim().slice(0, 24);
@@ -104,7 +119,7 @@
               if (b.getAttribute("data-especie") === p.especie) b.setAttribute("aria-pressed", "true");
             });
           }
-          if (state.especie) { dibujar(); dibujada = true; }
+          dibujar(); dibujada = true;
         }
       }
     } catch (e) { /* modo privado: arranca vacio, sin tronar */ }

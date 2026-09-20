@@ -163,8 +163,6 @@ html.js [data-vi-reveal-stagger].is-in > * { opacity: 1; transform: none; }
 .vi-btn--wa { background: var(--wa); border-color: var(--wa); color: var(--wa-ink); font-weight: 700; box-shadow: 0 2px 0 rgba(11, 61, 31, 0.3); }
 .vi-btn--wa:active { background: var(--wa-dark); }
 @media (hover: hover) and (pointer: fine) { .vi-btn--wa:hover { background: var(--wa-dark); box-shadow: 0 4px 14px rgba(11, 61, 31, 0.32); } }
-.vi-btn--agregar { background: var(--brand-2); border-color: var(--brand-2); color: var(--deep); font-weight: 700; }
-@media (hover: hover) and (pointer: fine) { .vi-btn--agregar:hover { background: #97b7cf; } }
 .vi-btn--link { min-height: 44px; padding: 0; border: 0; border-radius: 0; background: none; gap: 8px; font-weight: 600; text-transform: none; letter-spacing: normal; font-size: 15px;
   background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 100% 1px; background-position: 0 calc(100% - 6px); }
 .vi-btn--link svg { width: 16px; height: 16px; transition: transform 240ms var(--ease-out); }
@@ -185,7 +183,7 @@ html.js [data-vi-reveal-stagger].is-in > * { opacity: 1; transform: none; }
    gato del hero y no se leen. Se apaga cuando el header ya trae fondo solido (.is-compact). */
 .vi-bar::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: linear-gradient(to bottom, rgba(10,6,3,.55), transparent);
+  background: linear-gradient(to bottom, rgba(10,6,3,.80) 0%, rgba(10,6,3,.52) 55%, transparent 100%);
   transition: opacity 260ms var(--ease-out);
 }
 .vi-header.is-compact .vi-bar::before { opacity: 0; }
@@ -206,7 +204,9 @@ html.js [data-vi-reveal-stagger].is-in > * { opacity: 1; transform: none; }
 .vi-header.is-compact .vi-word-full { display: none; }
 .vi-header.is-compact .vi-word-compact { display: inline-flex; align-items: baseline; }
 .vi-acts { display: flex; align-items: center; gap: 14px; flex: none; }
-.vi-header-cta { min-height: 40px; padding: 0 16px; font-size: 11px; }
+/* REVISION-2, cambio 11: 44 px de alto minimo (medía 80x40 y era el unico toque de toda
+   la pagina que no llegaba). El header no cambia de altura: solo crece el boton dentro. */
+.vi-header-cta { min-height: 44px; padding: 0 16px; font-size: 11px; }
 .vi-menu-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--paper); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
 .vi-burger { position: relative; width: 18px; height: 11px; }
 .vi-burger i { position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor; transition: transform 320ms var(--ease-out), top 320ms var(--ease-out), opacity 200ms; }
@@ -214,9 +214,9 @@ html.js [data-vi-reveal-stagger].is-in > * { opacity: 1; transform: none; }
 .vi-burger i:last-child { top: 9px; }
 body.vi-menu-open .vi-burger i:first-child { top: 4.5px; transform: rotate(45deg); }
 body.vi-menu-open .vi-burger i:last-child { top: 4.5px; transform: rotate(-45deg); }
-/* ESCRIBIR vuelve al header de celular (hoja de direccion §5). Se queda fino pero con
-   40px de alto: abajo de eso krevo-shot lo marca como boton chico y deja de ser tocable. */
-@media (max-width: 899px) { .vi-header-cta { min-height: 40px; padding: 0 12px; font-size: 10px; letter-spacing: 0.12em; } .vi-acts { gap: 12px; } }
+/* ESCRIBIR vuelve al header de celular (hoja de direccion §5). Fino, pero 44px de alto:
+   es el minimo de toque y abajo de 40 krevo-shot ademas lo marca como boton chico. */
+@media (max-width: 899px) { .vi-header-cta { min-height: 44px; padding: 0 13px; font-size: 10px; letter-spacing: 0.12em; } .vi-acts { gap: 12px; } }
 
 /* ============ Menu: panel completo en celular, tablero desde la derecha en compu ============ */
 .vi-menu { position: fixed; inset: 0; z-index: 70; visibility: hidden; transition: visibility 0s linear 460ms; }
@@ -243,7 +243,11 @@ body.vi-menu-open .vi-menu-panel { clip-path: inset(0 0 0 0); }
   opacity: 0; transform: translateY(12px); transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); }
 body.vi-menu-open .vi-menu-nav > a { opacity: 1 !important; transform: none !important; transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out); transition-delay: calc(140ms + var(--i, 0) * 55ms); }
 .vi-menu-nav > a small { font-variant-numeric: tabular-nums; color: var(--brand); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
-.vi-menu-nav > a span { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 8vw, 38px); }
+.vi-menu-nav > a span { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 8vw, 38px); transition: color 200ms var(--ease-out); }
+/* estado activo: la seccion que esta a la vista mientras se hace scroll (NOTA GLOBAL 1) */
+.vi-menu-nav > a.is-active { border-bottom-color: var(--brand-2); }
+.vi-menu-nav > a.is-active span { color: var(--brand); }
+.vi-menu-nav > a.is-active small { color: var(--brand-2); }
 .vi-menu-foot { margin-top: auto; display: grid; gap: 14px; }
 .vi-menu-line { display: block; height: 1px; background-image: repeating-linear-gradient(to right, var(--brand-2) 0 6px, transparent 6px 13px); }
 .vi-menu-foot-acts { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -264,8 +268,6 @@ body.vi-menu-open .vi-menu-nav > a { opacity: 1 !important; transform: none !imp
 @media (hover: hover) and (pointer: fine) { .vi-wa-float:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3); } }
 @keyframes vi-wa-in { from { opacity: 0; transform: translateY(16px) scale(0.9); } to { opacity: 1; transform: none; } }
 body.vi-menu-open .vi-wa-float { visibility: hidden; animation: none; opacity: 0; }
-/* con la barra fija del carrito puesta (56px) el flotante sube: antes tapaba su flecha. */
-body.srv-bar-on .vi-wa-float { bottom: calc(18px + 56px + env(safe-area-inset-bottom)); }
 .vi-wa-float.is-hidden-by-btn { opacity: 0; animation: none; transform: translateY(10px) scale(0.8); pointer-events: none; transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out); }
 @media (prefers-reduced-motion: reduce) { .vi-wa-float { animation: none; transition: none !important; } }
 

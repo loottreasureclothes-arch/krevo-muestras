@@ -1,0 +1,28 @@
+/* menu.html — la carta como landing propia (HOJA-DIRECCION + FEEDBACK-1,
+   nota global punto 2). Mismo header, mismos colores; aqui solo lo que
+   hace falta para que el contenido no quede tapado por el header fijo y
+   para el boton/renglon de regreso. Reusa sections/20-carta.css para toda
+   la carta (misma pieza que ya vivia en el home). */
+
+/* El header es fixed y en el home el hero (oscuro, a sangre) se disena para
+   quedar detras. Aqui el primer bloque es texto: necesita su propio aire. */
+main#menu-top { padding-top: calc(var(--k-header-h) + env(safe-area-inset-top)); }
+.lc-header.is-scrolled ~ main#menu-top { padding-top: calc(var(--k-header-h) + env(safe-area-inset-top)); }
+
+/* Renglon de regreso, arriba de todo el contenido: claro, con flecha. */
+.lc-back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; margin: 14px auto 0;
+  color: rgba(255,255,227,.8); font-size: .8rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.lc-back-link svg { width: 18px; height: 18px; flex: none; }
+@media (hover:hover) and (pointer:fine) { .lc-back-link:hover { color: var(--paper); } }
+
+/* CTA del header en esta pagina: regresar al inicio, con flecha. */
+.lc-cta--back { display: inline-flex; align-items: center; gap: 8px; }
+.lc-cta--back svg { width: 16px; height: 16px; }
+
+/* Segundo boton de regreso, al pie de la carta. */
+.s-menu-foot { padding: 28px 0 40px; display: flex; justify-content: center; }
+.s-menu-foot .lc-btn svg { width: 18px; height: 18px; }

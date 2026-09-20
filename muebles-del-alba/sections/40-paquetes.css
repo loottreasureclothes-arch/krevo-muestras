@@ -2,13 +2,27 @@
    Cada paquete trae una tira con las TRES piezas recortadas de sus propias fichas
    (nunca el cartel de paquetes, que lleva el precio quemado), el precio junto al
    nombre y el ahorro real a la vista. */
-#paquetes.s-paquetes { padding: var(--sec-y-sm) 0 44px; }
+#paquetes.s-paquetes { padding: 40px 0 30px; }
 #paquetes .s-paq-head { margin-bottom: 16px; }
 #paquetes .s-paq-head .cd-h2 { margin-bottom: 10px; }
 #paquetes .s-paq-lead { color: var(--cream-mute); font-size: 15px; line-height: 1.45; max-width: 44ch; margin: 0; }
 
-#paquetes .s-paq-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-#paquetes .s-paq-card { background: var(--deep-2); border-top: 4px solid var(--brand); display: grid; }
+/* En celular los paquetes viven en una repisa que se desliza (sin circulitos): siguen
+   completos, pero no se comen la pagina. Los que mandan son los productos del piso. */
+#paquetes .s-paq-listwrap { position: relative; }
+#paquetes .s-paq-listwrap::after {
+  content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 26px; pointer-events: none;
+  background: linear-gradient(90deg, rgba(30, 37, 43, 0), var(--deep));
+}
+#paquetes .s-paq-list {
+  list-style: none; margin: 0; display: flex; gap: 12px;
+  overflow-x: auto; scrollbar-width: none;
+  scroll-snap-type: x mandatory; scroll-padding-inline: var(--k-gutter);
+  padding: 0 var(--k-gutter) 4px;
+}
+#paquetes .s-paq-list::-webkit-scrollbar { display: none; }
+#paquetes .s-paq-card { flex: none; width: min(78vw, 320px); scroll-snap-align: start; }
+#paquetes .s-paq-card { background: var(--deep-2); border-top: 4px solid var(--brand); display: grid; align-content: start; }
 #paquetes .s-paq-tira { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(244, 241, 238, .14); }
 #paquetes .s-paq-tira img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
 #paquetes .s-paq-body { padding: 10px 13px 13px; display: grid; gap: 4px; }
@@ -19,14 +33,14 @@
 #paquetes .s-paq-ahorro { display: flex; align-items: baseline; gap: 10px; margin: 0; font-size: 12px; }
 #paquetes .s-paq-ahorro s { color: var(--cream-mute); }
 #paquetes .s-paq-ahorro span { color: var(--cream); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; font-size: 11.5px; border-bottom: 1.5px solid var(--brand-on-deep); }
-#paquetes .s-paq-pieces { margin: 2px 0 6px; color: var(--cream-mute); font-size: 12.5px; line-height: 1.38; }
+#paquetes .s-paq-pieces { margin: 2px 0 6px; color: var(--cream-mute); font-size: 12px; line-height: 1.34; }
 #paquetes .s-paq-add { width: 100%; min-height: 44px; }
-#paquetes .s-paq-note { margin: 18px 0 0; color: var(--cream-mute); font-size: 12.5px; }
+#paquetes .s-paq-note { margin: 14px 0 0; color: var(--cream-mute); font-size: 12.5px; }
 
-@media (min-width: 760px) {
-  #paquetes .s-paq-list { grid-template-columns: 1fr 1fr; gap: 18px; }
-}
+@media (min-width: 760px) { #paquetes .s-paq-card { width: min(46vw, 360px); } }
 @media (min-width: 1100px) {
-  #paquetes .s-paq-list { grid-template-columns: repeat(3, 1fr); }
+  #paquetes .s-paq-listwrap::after { display: none; }
+  #paquetes .s-paq-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; overflow: visible; scroll-snap-type: none; padding: 0; }
+  #paquetes .s-paq-card { width: auto; }
   #paquetes .s-paq-add { width: auto; justify-self: start; }
 }

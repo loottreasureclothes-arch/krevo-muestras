@@ -1,29 +1,74 @@
-/* ============ 10 HERO: la entrada · viga roja del porton, foto real, promo real ============
-   Celular: eyebrow+titulo+linea+botones en flujo, la foto va abajo dentro del marco de arco.
-   Compu (>=900): la foto ocupa el hero a sangre 16:9, el texto flota abajo-izquierda sobre el pavimento. */
-#hero.s-hero { padding-top: calc(56px + env(safe-area-inset-top) + 28px); padding-bottom: 0; overflow: hidden; }
-#hero .s-hero-in { display: flex; flex-direction: column; gap: 22px; padding-bottom: 26px; }
-#hero .s-hero-copy { display: grid; gap: 14px; max-width: 420px; }
-#hero .s-hero-title.cd-h2 { font-size: clamp(34px, 10.2vw, 72px); margin-bottom: 0; max-width: none; }
-#hero .s-hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-#hero .s-hero-actions .cd-btn { flex: 1 1 auto; }
+/* ============ 10 HERO: tienda en linea · slider de productos arriba, sin circulitos ============
+   Arriba: eyebrow + titulo, chico. Debajo: el slider a sangre con 2-3 sillones reales,
+   precio y boton (banner de tienda, textual de Emanuel). Fotos completas, SIN marco de
+   arco. Cierra con la linea de la promesa y la cinta de promo real. */
+#hero.s-hero { padding-top: calc(56px + env(safe-area-inset-top) + 16px); padding-bottom: 0; overflow: hidden; }
+#hero .s-hero-top { display: grid; gap: 8px; padding-bottom: 12px; }
+#hero .s-hero-title.cd-h2 { font-size: clamp(30px, 9vw, 58px); margin-bottom: 0; max-width: none; }
 
-#hero .s-hero-media { position: relative; height: 46svh; min-height: 260px; border-radius: 160px 160px 0 0; overflow: hidden; box-shadow: 0 20px 50px rgba(0, 0, 0, .35); }
-#hero .s-hero-media picture, #hero .s-hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 26%; }
-#hero .s-hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30, 37, 43, 0) 55%, rgba(20, 24, 28, .55) 100%); pointer-events: none; }
+#hero .s-hero-bottom { display: grid; gap: 8px; padding: 12px 0 14px; }
+#hero .s-hero-link { justify-self: start; }
 
-#hero .s-hero-promo { margin: 0; padding: 0 84px 0 var(--k-gutter); min-height: 44px; display: flex; align-items: center; gap: 8px; background: var(--deep-2); color: var(--cream); font-size: 13px; line-height: 1.3; }
+/* ---------- Slider (kit _kit/slider.js + slider.css, modo foto sobreescrito a banner) --- */
+#hero .s-hero-slider-wrap { position: relative; }
+#hero .k-slider { --radius: 0px; background: var(--deep-2); color: var(--cream); }
+#hero .k-slider-viewport { height: min(50svh, 430px); min-height: 300px; }
+#hero .k-slide { position: relative; height: 100%; display: flex; flex-direction: column; }
+/* blindaje: sin JS (o si tarda) se ve la 1a foto fija, nunca en blanco */
+#hero .k-slide:first-child { visibility: visible; }
+
+#hero .k-slider[data-mode="photo"] .k-slide-media {
+  position: absolute; inset: 0; height: 100%; margin: 0; border-radius: 0; clip-path: none;
+}
+#hero .k-slider[data-mode="photo"] .k-slide-media img { object-position: 50% 32%; }
+#hero .k-slider[data-mode="photo"] .k-slide-media::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(0deg, rgba(10, 6, 4, .9) 0%, rgba(10, 6, 4, .22) 50%, rgba(10, 6, 4, 0) 72%);
+}
+
+#hero .k-slide-copy { position: relative; z-index: 2; margin-top: auto; padding: 0 var(--k-gutter) 22px; color: #fff; }
+#hero .k-slide-copy h3 {
+  font-family: var(--font-display); font-weight: 900; text-transform: uppercase;
+  font-stretch: 68%; font-variation-settings: "wdth" 68;
+  font-size: clamp(24px, 7.2vw, 38px); line-height: .96; margin: 0 0 8px; letter-spacing: -.01em;
+}
+#hero .s-hero-slide-price { display: flex; align-items: baseline; gap: 9px; margin: 0 0 14px; }
+#hero .s-hero-slide-price s { font-size: 14px; color: rgba(244, 241, 238, .62); }
+#hero .s-hero-slide-price b { font-size: 22px; color: var(--brand-on-deep); }
+#hero .k-slide-copy .cd-btn { display: inline-flex; }
+
+/* El copy va atado a la diapositiva activa y entra COMPLETO (nombre, precio y boton
+   juntos) en 140 ms: en el cruce nunca queda un cuadro sin nombre ni boton, ni dos
+   textos encimados. Lleva !important porque el kit anima esos mismos elementos con
+   Web Animations: su escalonado dejaba el precio y el boton fuera ~400 ms, y probado
+   con un retraso de 180 ms el hueco se hacia MAS grande, porque el kit borra el copy
+   que sale de golpe. Medido cuadro por cuadro con CDP: 0 cuadros sin nombre ni boton.
+   Blindaje: todo cuelga de .k-slider-viewport, que solo existe si el JS del slider
+   corrio; sin JS el copy se ve entero desde el primer momento. */
+#hero .k-slider-viewport .k-slide-copy { opacity: 0 !important; transition: opacity 140ms var(--ease-out); }
+#hero .k-slider-viewport .k-slide.is-active .k-slide-copy { opacity: 1 !important; }
+#hero .k-slider-viewport .k-slide-copy > *, #hero .k-slider-viewport .k-slide-copy .k-wi { opacity: 1 !important; transform: none !important; }
+@media (prefers-reduced-motion: reduce) { #hero .k-slider-viewport .k-slide-copy { transition: none; } }
+
+/* sin circulitos de paginacion (pedido explicito) */
+#hero .k-slider .k-dots { display: none; }
+#hero .k-slider .k-ui { background: var(--deep-2); padding: 8px var(--k-gutter) calc(8px + env(safe-area-inset-bottom, 0px)); }
+#hero .k-slider .k-count { color: var(--cream-mute); }
+#hero .k-slider .k-arrow { background: rgba(244, 241, 238, .14); border-color: rgba(244, 241, 238, .3); color: var(--cream); }
+@media (hover: hover) and (pointer: fine) {
+  #hero .k-slider .k-arrow:hover { background: var(--brand); border-color: var(--brand); color: #fff; }
+}
+
+#hero .s-hero-promo { margin: 0; padding: 4px 84px 4px var(--k-gutter); min-height: 40px; display: flex; align-items: center; gap: 8px; background: var(--deep-2); color: var(--cream); font-size: 13px; line-height: 1.3; border-top: 1px solid var(--line-deep); }
 #hero .s-hero-promo b { color: var(--brand-on-deep); font: 900 15px/1 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; }
 
 @media (min-width: 900px) {
-  #hero.s-hero { padding-top: 0; }
-  #hero .s-hero-in { position: relative; display: block; min-height: 82svh; padding-block: 0; }
-  /* la foto arranca DEBAJO de la viga roja del header: asi el letrero del porton entra completo */
-  #hero .s-hero-media { position: absolute; inset: calc(64px + env(safe-area-inset-top)) 0 0 0; height: auto; border-radius: 0; box-shadow: none; margin-inline: calc(var(--k-gutter) * -1); width: calc(100% + var(--k-gutter) * 2); }
-  @media (min-width: 1360px) { #hero .s-hero-media { margin-inline: calc(50% - 50vw); width: 100vw; } }
-  #hero .s-hero-media img { object-position: 50% 0%; }
-  #hero .s-hero-media::after { background: linear-gradient(0deg, rgba(12, 8, 5, .93) 0%, rgba(12, 8, 5, .58) 26%, rgba(12, 8, 5, 0) 52%), linear-gradient(90deg, rgba(12, 8, 5, .52) 0%, rgba(12, 8, 5, .16) 34%, rgba(12, 8, 5, 0) 62%); }
-  #hero .s-hero-copy { position: relative; z-index: 1; max-width: 620px; padding: 0 0 56px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 82svh; }
-  #hero .s-hero-title.cd-h2 { font-size: clamp(48px, 4.6vw, 84px); }
-  #hero .s-hero-copy, #hero .s-hero-copy .cd-eyebrow, #hero .s-hero-copy .cd-lead { color: var(--cream); }
+  #hero.s-hero { padding-top: calc(64px + env(safe-area-inset-top) + 32px); }
+  #hero .s-hero-top { max-width: 620px; }
+  #hero .s-hero-title.cd-h2 { font-size: clamp(46px, 4.4vw, 78px); }
+  #hero .s-hero-bottom { grid-template-columns: auto auto; align-items: center; justify-content: space-between; padding: 20px 0 24px; }
+  #hero .k-slider-viewport { height: min(64svh, 560px); }
+  #hero .k-slide-copy { padding: 0 48px 40px; max-width: 640px; }
+  #hero .k-slide-copy h3 { font-size: clamp(34px, 3.4vw, 52px); }
+  #hero .k-slider .k-ui { padding-inline: 48px; }
 }

@@ -1,20 +1,33 @@
-.s-hero { background: var(--lienzo); padding-top: calc(var(--header-h) + 14px); padding-bottom: 32px; min-height: 850px; display: flex; align-items: center; }
-.s-hero-grid { display: flex; flex-direction: column; gap: 22px; width: 100%; }
-.s-hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
-.s-hero-line1, .s-hero-line2 { display: block; }
-.s-hero-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 6px; }
+/* 10-hero: el primer pantallazo lo manda la FOTO, no el bloque de texto.
+   Cuatro renglones cortos y explicitos (nada de quiebres ragged), los dos CTA pegados debajo y
+   el marco de la foto arrancando antes de los 400 px para que se vean el mueble y el vapor
+   completos antes del doblez. El renglon de apoyo baja al pie de la foto. */
+.s-hero { background: var(--lienzo); padding-top: calc(var(--header-h) + 10px); padding-bottom: 30px; }
+.s-hero-grid { display: grid; grid-template-columns: 1fr; gap: 16px; width: 100%; }
+.s-hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.s-hero-l { display: block; }
+/* Cada renglon del titular cabe entero: a 44.85 px "los domingos." y "Y el domicilio" se partian
+   y el h1 se comia 264 px (6 renglones) antes de la foto. A 9.4vw los 4 caben de un tiro y el
+   bloque baja a ~145 px, que es lo que le devuelve la primera pantalla a la foto. */
+.s-hero .ec-h1 { font-size: clamp(30px, 9.4vw, 60px); }
+.s-hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 2px; }
 .s-hero-foto { display: flex; justify-content: center; }
 .s-hero-foto .ec-frame { width: 100%; max-width: 370px; }
-/* El vapor saliendo de la boquilla es lo que venden: tiene que entrar completo en la primera
-   pantalla, junto con los dos CTA. Por eso el marco baja a 44svh y la foto sube el encuadre. */
-.s-hero-foto .ec-frame__pic { min-height: 44svh; max-height: 46svh; }
-.s-hero-foto .ec-frame__pic img { height: 100%; object-position: 50% 28%; }
+/* El vapor saliendo de la boquilla es lo que venden: tiene que entrar COMPLETO y GRANDE en la
+   primera pantalla (55svh ~ 464 px a 844), no como tira recortada detras del boton flotante. */
+.s-hero-foto .ec-frame__pic { min-height: 55svh; max-height: 58svh; }
+.s-hero-foto .ec-frame__pic img { height: 100%; object-position: 50% 30%; }
+.s-hero-lead { margin-top: 2px; }
 
 @media (min-width: 900px) {
-  .s-hero { min-height: 92svh; padding-top: calc(var(--header-h) + 40px); }
-  .s-hero-grid { flex-direction: row; align-items: center; justify-content: space-between; gap: 48px; }
-  .s-hero-copy { max-width: 640px; }
-  .s-hero-foto { flex: none; }
+  /* Los mismos 4 renglones limpios en compu: el tamano esta amarrado al ancho de la columna
+     (la foto se lleva 38%) para que ninguno se parta y "TRABAJAMOS" nunca alcance el marco. */
+  .s-hero .ec-h1 { font-size: clamp(40px, 4.3vw, 60px); }
+  .s-hero { min-height: 92svh; padding-top: calc(var(--header-h) + 40px); display: flex; align-items: center; }
+  .s-hero-grid { grid-template-columns: minmax(0, 1fr) clamp(280px, 38%, 520px); grid-template-rows: auto auto; column-gap: 48px; row-gap: 22px; align-items: center; }
+  .s-hero-copy { grid-column: 1; grid-row: 1; max-width: none; align-self: end; }
+  .s-hero-lead { grid-column: 1; grid-row: 2; align-self: start; margin-top: 0; }
+  .s-hero-foto { grid-column: 2; grid-row: 1 / span 2; }
   .s-hero-foto .ec-frame { max-width: 520px; }
   .s-hero-foto .ec-frame__pic { min-height: 60svh; max-height: 68svh; }
 }

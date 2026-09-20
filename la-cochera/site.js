@@ -113,6 +113,36 @@
     });
   }
 
+  /* ---------- Nav: estado activo por seccion visible ----------
+     Navegacion de verdad: el renglon de la seccion que se esta viendo se
+     marca en rojo (L: Emanuel, 20 sep — "no las haces funcionales... no te
+     manda para ninguna pagina"; esto es lo minimo para que SE SIENTA
+     navegacion real). En paginas que no tienen todas las secciones (como
+     menu.html) el link activo ya viene marcado en el HTML. */
+  function initNavActive() {
+    try {
+      var links = document.querySelectorAll(".lc-nav-list a[href^='#']");
+      if (!links.length || !("IntersectionObserver" in window)) return;
+      var byId = {};
+      links.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+      var ids = Object.keys(byId);
+      if (!ids.length) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var link = byId[entry.target.id];
+          if (!link) return;
+          links.forEach(function (a) { a.classList.remove("is-active"); });
+          link.classList.add("is-active");
+        });
+      }, { rootMargin: "-35% 0px -55% 0px", threshold: 0 });
+      ids.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) io.observe(el);
+      });
+    } catch (e) {}
+  }
+
   /* ---------- WhatsApp: mensaje prellenado desde data-wa ---------- */
   function initWaText() {
     try {
@@ -173,6 +203,7 @@
   function init() {
     initHeader();
     initNav();
+    initNavActive();
     initWaText();
     initRevealNet();
     paintHourChips();

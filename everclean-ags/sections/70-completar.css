@@ -2,9 +2,16 @@
    reservada la hoja para la seccion 5 y el carrito) y mide lo que mide su contenido. */
 .s-completar { background: var(--lienzo-2); }
 .s-completar-grid { display: flex; flex-direction: column; gap: 28px; }
-.s-completar-lista ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
-.s-completar-lista li { padding-left: 18px; position: relative; font-size: 15px; color: var(--texto); max-width: 52ch; }
-.s-completar-lista li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 1.5px; background: var(--marca); }
+.s-completar-lista ol { list-style: none; counter-reset: completar; padding: 0; display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+.s-completar-lista li {
+  counter-increment: completar; padding-left: 34px; position: relative; font-size: 14px;
+  color: var(--texto); max-width: 52ch; line-height: 1.45;
+}
+.s-completar-lista li::before {
+  content: counter(completar, decimal-leading-zero); position: absolute; left: 0; top: 0;
+  font-family: var(--font-display); font-variation-settings: "wdth" 122; font-weight: 850;
+  font-size: 13px; color: var(--marca);
+}
 .s-completar-honestidad { margin-top: 18px; font-size: 12px; color: var(--mute); }
 
 @media (min-width: 900px) {

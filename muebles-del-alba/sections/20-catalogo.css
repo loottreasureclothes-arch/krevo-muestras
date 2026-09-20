@@ -1,47 +1,79 @@
-/* ============ 20 CATALOGO: la ficha del Alba, a la vista ============
-   Banda de apertura con el titulo; chips pegados al hacer scroll (44 px de alto);
-   rejilla de 2 columnas en celular. Cada tarjeta es la ficha roja de Muebles del
-   Alba traducida a web: liston rojo arriba, foto sobre --paper, barra --deep-2 con
-   el precio y el "+" cuadrado en rojo de 44x44.
-   La tarjeta es grid con renglones fijos: la fila de cuadritos SIEMPRE ocupa su
-   alto (aunque el modelo tenga una sola foto) y la barra de precio va pegada abajo,
-   asi ninguna barra queda mas abajo que la de al lado. */
-#catalogo.s-catalogo { padding: 0 0 var(--sec-y-sm); background: var(--deep); color: var(--cream); }
+/* ============ 20 CATALOGO: el piso del Alba, partido en 3 bloques ============
+   Emanuel (FEEDBACK-1): "sliders... y luego ya empiezan los productos, todo el piso
+   con su precio... y luego otro banner y otro tipo de producto."
+   Por eso el catalogo baja asi: banda a sangre -> 10 piezas -> banda -> 10 piezas ->
+   banda -> 10 piezas. Cada bloque trae sus propios chips y NINGUN chip tiene menos de
+   10 piezas (salas y esquineras 16, complementos 11, comedores y sillas 13,
+   recamara 20, descanso 16).
+   Cada tarjeta es la ficha roja de Muebles del Alba traducida a web: liston rojo
+   arriba, foto sobre --paper, barra --deep-2 con el "+" y el precio. La fila de
+   cuadritos SIEMPRE ocupa su alto cuando el modelo tiene colores, y desaparece del
+   todo cuando no los tiene (nada de bandas crema vacias). */
+#catalogo.s-catalogo { padding: 0 0 26px; background: var(--deep); color: var(--cream); }
 
-#catalogo .s-cat-band { position: relative; height: 34svh; min-height: 220px; max-height: 420px; overflow: hidden; }
+/* ---------- Banda a sangre (la de arriba manda, las otras dos son cintillo) ---------- */
+#catalogo .s-cat-band { position: relative; height: 29svh; min-height: 196px; max-height: 380px; overflow: hidden; }
+#catalogo .s-cat-block + .s-cat-block .s-cat-band { height: 13svh; min-height: 108px; max-height: 190px; }
 #catalogo .s-cat-band img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
-#catalogo .s-cat-band-veil { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(14, 10, 8, .88) 0%, rgba(14, 10, 8, .30) 48%, rgba(14, 10, 8, 0) 74%); }
-#catalogo .s-cat-band-copy { position: absolute; left: 0; right: 0; bottom: 20px; }
-#catalogo .s-cat-band-copy .cd-h2 { color: #fff; margin: 0; max-width: 11ch; font-size: clamp(32px, 9vw, 70px); }
+#catalogo .s-cat-band-veil { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(14, 10, 8, .9) 0%, rgba(14, 10, 8, .34) 50%, rgba(14, 10, 8, 0) 76%); }
+/* cintillos cortos: la foto es clara, el velo tiene que aguantar el titulo completo */
+#catalogo .s-cat-block + .s-cat-block .s-cat-band-veil { background: linear-gradient(0deg, rgba(14, 10, 8, .9) 0%, rgba(14, 10, 8, .62) 55%, rgba(14, 10, 8, .28) 100%); }
+#catalogo .s-cat-band-copy { position: absolute; left: 0; right: 0; bottom: 16px; }
+#catalogo .s-cat-band-n { margin: 0 0 6px; font: 600 11.5px/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: #fff; display: flex; align-items: center; gap: 9px; }
+#catalogo .s-cat-band-n b { color: var(--brand-on-deep); font-weight: 700; }
+/* los renglones ya vienen partidos a mano (.ln con nowrap): un max-width en ch
+   cortaba palabras a media letra ("LA MESA DOND"). Aqui manda el renglon, no el ch. */
+#catalogo .s-cat-band-copy .cd-h2 { color: #fff; margin: 0; max-width: none; font-size: clamp(28px, 7.8vw, 64px); }
+/* la mascara de linea no se come el rabo de las letras que bajan */
+#catalogo .s-cat-band-copy .cd-h2 .ln { padding-bottom: .14em; margin-bottom: -.14em; }
+#catalogo .s-cat-block + .s-cat-block .s-cat-band-copy .cd-h2 { font-size: clamp(24px, 6.8vw, 52px); }
 
-#catalogo .s-cat-chips {
+/* ---------- Chips: se pegan, se deslizan de a una y avisan que hay mas ---------- */
+#catalogo .s-cat-chips-wrap {
   position: sticky; top: calc(48px + env(safe-area-inset-top)); z-index: 20;
+  background: var(--deep-2); border-bottom: 1px solid var(--line-deep);
+}
+/* degradado de aviso en el borde derecho: hay mas chips de los que caben */
+#catalogo .s-cat-chips-wrap::after {
+  content: ""; position: absolute; right: 0; top: 0; bottom: 1px; width: 24px; pointer-events: none;
+  background: linear-gradient(90deg, rgba(40, 48, 56, 0), var(--deep-2));
+}
+#catalogo .s-cat-chips {
   display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
-  padding: 8px var(--k-gutter); background: var(--deep-2);
-  border-bottom: 1px solid var(--line-deep);
+  padding: 7px var(--k-gutter);
+  scroll-snap-type: x mandatory; scroll-padding-inline: var(--k-gutter);
   contain: paint;   /* la tira de chips se desliza sola: no empuja el ancho de la pagina */
 }
 #catalogo .s-cat-chips::-webkit-scrollbar { display: none; }
 #catalogo .s-chip {
-  flex: none; min-height: 44px; padding: 0 16px; border-radius: 2px; border: 1.5px solid rgba(244, 241, 238, .26);
+  flex: none; scroll-snap-align: start;
+  min-height: 44px; padding: 0 16px; border-radius: 2px; border: 1.5px solid rgba(244, 241, 238, .26);
   background: transparent; color: var(--cream); font: 700 12px/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase;
+  white-space: nowrap;
   transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out);
 }
 #catalogo .s-chip.is-on { background: var(--brand); border-color: var(--brand); color: #fff; }
 
-#catalogo .s-cat-grid { list-style: none; margin: 0; padding: 16px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+/* ---------- Rejilla ---------- */
+#catalogo .s-cat-grid { list-style: none; margin: 0; padding: 10px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 #catalogo .s-cat-card[hidden] { display: none; }
 #catalogo .s-cat-card {
   background: var(--paper); border-top: 4px solid var(--brand);
-  display: grid; grid-template-rows: auto 44px 1fr; min-width: 0;
+  display: grid; grid-template-rows: 1fr 44px auto; min-width: 0;
 }
-#catalogo .s-cat-photo { position: relative; aspect-ratio: 4 / 3; background: var(--paper-2); overflow: hidden; }
+/* sin colores que elegir: el renglon de cuadritos no existe (nada de banda crema vacia) */
+#catalogo .s-cat-card--nofin { grid-template-rows: 1fr 0 auto; }
+#catalogo .s-cat-fin--none { display: none; }
+
+/* el alto minimo de la foto lo pone este separador (16:10); como la foto vive en el
+   renglon 1fr, cuando la fila necesita mas alto lo gana LA FOTO y no queda crema vacia */
+#catalogo .s-cat-photo { position: relative; background: var(--paper-2); overflow: hidden; }
+#catalogo .s-cat-photo::before { content: ""; display: block; padding-top: 62.5%; }
 #catalogo .s-cat-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 #catalogo .s-cat-photo--fin .s-fin-img { opacity: 0; visibility: hidden; transition: opacity 220ms var(--ease-out), visibility 0s linear 220ms; }
 #catalogo .s-cat-photo--fin .s-fin-img.is-on { opacity: 1; visibility: visible; transition: opacity 220ms var(--ease-out), visibility 0s; }
 
-#catalogo .s-cat-fin { display: flex; align-items: center; padding: 0 2px; overflow: hidden; }
-#catalogo .s-cat-fin--none { padding: 0; }
+#catalogo .s-cat-fin { display: flex; align-items: center; padding: 0; overflow: hidden; }
 #catalogo .s-fin-sw { width: 44px; height: 44px; flex: none; display: grid; place-items: center; background: none; border: 0; }
 #catalogo .s-fin-sw::before {
   content: ""; width: 22px; height: 22px; border-radius: 2px;
@@ -52,17 +84,18 @@
 #catalogo .s-fin-sw.is-on::before { border-color: var(--ink); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .5), 0 0 0 2px var(--paper), 0 0 0 3px var(--ink); }
 #catalogo .s-fin-sw:active::before { transform: scale(.9); }
 
-#catalogo .s-cat-bar { margin-top: auto; display: flex; align-items: center; gap: 8px; padding: 8px 9px; background: var(--deep-2); color: var(--cream); }
+#catalogo .s-cat-bar { margin-top: auto; display: flex; align-items: center; gap: 7px; padding: 5px 7px; background: var(--deep-2); color: var(--cream); }
 #catalogo .s-cat-info { flex: 1; min-width: 0; display: grid; gap: 1px; align-content: center; }
-#catalogo .s-cat-name { font: 800 13px/1.2 var(--font-body); display: block; }
+#catalogo .s-cat-name { font: 800 11.5px/1.14 var(--font-body); display: block; }
 #catalogo .s-cat-note { display: block; font-size: 11px; color: var(--cream-mute); }
 #catalogo .s-cat-price { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
 #catalogo .s-cat-price s { color: var(--cream-mute); font-size: 11px; }
-#catalogo .s-cat-price b { font: 900 16px/1 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; color: var(--brand-on-deep); }
+#catalogo .s-cat-price b { font: 900 15px/1 var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68; color: var(--brand-on-deep); }
 #catalogo .s-cat-price small { font-size: 10px; color: var(--cream-mute); text-transform: uppercase; letter-spacing: .06em; }
 #catalogo .s-cat-price--ask { font: 700 12px/1.2 var(--font-body); color: var(--cream-mute); }
+/* El "+" va a la IZQUIERDA del precio: del lado derecho lo tapaba el boton flotante */
 #catalogo .s-cat-add {
-  flex: none; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 2px;
+  order: -1; flex: none; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 2px;
   background: var(--brand); color: #fff;
   transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out);
 }
@@ -71,25 +104,22 @@
 #catalogo .s-cat-add.is-added { background: var(--deep); }
 @media (hover: hover) and (pointer: fine) { #catalogo .s-cat-add:hover { background: var(--brand-ink); } }
 
-#catalogo .s-cat-more {
-  display: inline-flex; align-items: center; gap: 10px; min-height: 48px; margin: 18px 0 0;
-  background: none; color: var(--cream); font: 700 12.5px/1 var(--font-body);
-  letter-spacing: .12em; text-transform: uppercase; border-bottom: 1.5px solid var(--brand-on-deep);
-}
-#catalogo .s-cat-more svg { width: 18px; height: 18px; transition: transform 240ms var(--ease-out); }
-#catalogo .s-cat-more[aria-expanded="true"] svg { transform: rotate(90deg); }
-#catalogo .s-cat-more[hidden] { display: none; }
-
-/* Reserva para que la barra "Mi casa" y el boton flotante no tapen la ultima fila */
-#catalogo .s-cat-fine { margin: 14px 0 0; padding: 12px 76px 88px 0; border-top: 1px solid var(--line-deep); color: var(--cream-mute); font-size: 12.5px; line-height: 1.5; }
+#catalogo .s-cat-fine { margin: 10px 0 0; padding: 9px 76px 14px 0; border-top: 1px solid var(--line-deep); color: var(--cream-mute); font-size: 12.5px; line-height: 1.5; }
 
 @media (min-width: 620px) { #catalogo .s-cat-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
 @media (min-width: 900px) {
-  #catalogo .s-cat-band { height: 44svh; max-height: 480px; }
-  #catalogo .s-cat-chips { top: calc(56px + env(safe-area-inset-top)); padding: 10px 40px; }
-  #catalogo .s-cat-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; padding-top: 32px; }
-  #catalogo .s-cat-card { grid-template-rows: auto 44px 1fr; }
+  #catalogo .s-cat-band { height: 42svh; max-height: 460px; }
+  #catalogo .s-cat-block + .s-cat-block .s-cat-band { height: 30svh; min-height: 230px; max-height: 340px; }
+  #catalogo .s-cat-band-copy { bottom: 26px; }
+  #catalogo .s-cat-chips-wrap { top: calc(56px + env(safe-area-inset-top)); }
+  #catalogo .s-cat-chips { padding: 10px 40px; }
+  #catalogo .s-cat-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; padding-top: 26px; }
   #catalogo .s-cat-name { font-size: 14px; }
   #catalogo .s-cat-price b { font-size: 18px; }
-  #catalogo .s-cat-fine { padding: 14px 0 24px; }
+  #catalogo .s-cat-fine { padding: 14px 0 20px; }
+}
+/* Arriba de 1100 px ya no se deslizan: caben en renglones centrados, sin desbordar */
+@media (min-width: 1100px) {
+  #catalogo .s-cat-chips { flex-wrap: wrap; justify-content: center; overflow: visible; scroll-snap-type: none; }
+  #catalogo .s-cat-chips-wrap::after { display: none; }
 }

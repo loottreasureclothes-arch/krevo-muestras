@@ -7,10 +7,33 @@
 .s-pruebas-principal { max-width: 560px; }
 .s-pruebas-principal .ec-embona-track { aspect-ratio: 124 / 83; }
 
-/* Pares chicos: mitades de 0.73 de proporcion en ventana de 5/4. */
-.s-pruebas-chicas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; max-width: 560px; }
+/* Abajo, dos pruebas chicas y nada mas (R7): el par de la silla y la mancha del colchon, que
+   antes vivia sola en una seccion de 511 px con medio pantallazo de azul vacio. Aqui la mancha
+   cierra el argumento de la seccion y se lleva su propio "Agregar colchon". */
+/* En celular el par de la silla va a ancho COMPLETO: en dos columnas cada mitad medía 74 px y
+   no se leía (R7). La mancha del colchón queda debajo como banda: foto a la izquierda, su frase
+   y su "Agregar colchón" a la derecha. De 640 px para arriba sí caben los dos en columnas. */
+.s-pruebas-chicas { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 28px; max-width: 560px; align-items: start; }
 .s-pruebas-chicas .ec-embona-track { aspect-ratio: 5 / 4; }
-.s-pruebas-chicas .ec-embona-pie { font-size: 11px; }
+.s-pruebas-chicas .ec-embona-pie { font-size: 12px; }
+.s-pruebas-colchon { display: grid; grid-template-columns: 148px minmax(0, 1fr); column-gap: 16px; row-gap: 8px; align-items: center; }
+.s-pruebas-colchon .ec-frame { grid-column: 1; grid-row: 1 / span 2; }
+.s-pruebas-colchon .ec-frame__pic { aspect-ratio: 5 / 4; }
+.s-pruebas-colchon-h {
+  grid-column: 2; grid-row: 1; align-self: end;
+  font-family: var(--font-display); font-variation-settings: "wdth" 118;
+  font-weight: 800; text-transform: uppercase; line-height: 1.04; letter-spacing: -0.005em;
+  font-size: clamp(17px, 5vw, 22px);
+}
+.s-pruebas-colchon-a { grid-column: 2; grid-row: 2; align-self: start; font-size: 14px; }
+
+@media (min-width: 640px) {
+  .s-pruebas-chicas { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .s-pruebas-colchon { grid-template-columns: 1fr; row-gap: 0; align-items: start; }
+  .s-pruebas-colchon .ec-frame { grid-column: 1; grid-row: 1; }
+  .s-pruebas-colchon-h { grid-column: 1; grid-row: 2; margin-top: 12px; max-width: 12ch; }
+  .s-pruebas-colchon-a { grid-column: 1; grid-row: 3; margin-top: 8px; }
+}
 
 /* En compu el titulo se va a su propia columna y los pares a la de al lado: asi la seccion no
    queda como una columna sola con medio monitor vacio al lado. */

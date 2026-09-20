@@ -149,6 +149,22 @@
   else document.addEventListener("DOMContentLoaded", initMatHash);
 })();
 
+/* refreshScrollTrigger: las posiciones de cada ScrollTrigger se calculan con el layout del
+   momento en que cada sección corre su script (justo tras el parseo, muy temprano). Si algo
+   abajo todavía se mueve después (fuente que entra y cambia altura de línea, imagen que carga
+   tarde), esas posiciones quedan desfasadas y una sección puede empezar a animar en el punto
+   equivocado. GSAP no relanza esto solo salvo en 'load' (y ahí ya se perdieron ajustes
+   posteriores); por eso se refresca a mano al terminar de cargar TODO (fuentes incluidas) y
+   otra vez cuando la pestaña vuelve a estar visible (en algunos navegadores el layout se
+   recalcula distinto al volver del segundo plano). */
+(function () {
+  function ref() { if (window.ScrollTrigger) window.ScrollTrigger.refresh(); }
+  var waits = [new Promise(function (res) { window.addEventListener("load", res, { once: true }); })];
+  if (document.fonts && document.fonts.ready) waits.push(document.fonts.ready);
+  Promise.all(waits).then(function () { setTimeout(ref, 60); });
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) setTimeout(ref, 60); });
+})();
+
 /* smoothAnchors: scroll suave a #anclas sin usar scroll-behavior en CSS (compatibilidad con ScrollTrigger) */
 (function () {
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;

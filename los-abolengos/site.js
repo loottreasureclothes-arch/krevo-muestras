@@ -209,6 +209,32 @@
     });
   }
 
+  /* ---------- Estado activo del panel de navegación (nav real, no solo anclas muertas) ---------- */
+  function initNavActive() {
+    var links = document.querySelectorAll(".ab-nav-list > a[data-section]");
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var map = {};
+    links.forEach(function (a) {
+      var id = a.getAttribute("data-section"), el = document.getElementById(id);
+      if (el) map[id] = map[id] || []; if (el) map[id].push(a);
+    });
+    var current = null;
+    function mark(id) {
+      if (id === current) return;
+      current = id;
+      links.forEach(function (a) { a.removeAttribute("aria-current"); });
+      (map[id] || []).forEach(function (a) { a.setAttribute("aria-current", "true"); });
+    }
+    var io = new IntersectionObserver(function (entries) {
+      var best = null, bestRatio = 0;
+      entries.forEach(function (e) {
+        if (e.isIntersecting && e.intersectionRatio > bestRatio) { bestRatio = e.intersectionRatio; best = e.target.id; }
+      });
+      if (best) mark(best);
+    }, { threshold: [0.15, 0.3, 0.5, 0.7] });
+    Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+  }
+
   /* ---------- Hoja: Aparta tu mesa ---------- */
   var sheetPushed = false;
   function closeSheet(fromPop) {
@@ -339,7 +365,7 @@
 
   function init() {
     renderFranja(); setInterval(renderFranja, 60000);
-    initFranjaClicks(); initWa(); initHeaderScroll(); initNav(); initSheet(); initCart();
+    initFranjaClicks(); initWa(); initHeaderScroll(); initNav(); initNavActive(); initSheet(); initCart();
     initWaHide(); initRevealSafety(); initRipple(); initAnchors();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

@@ -1,121 +1,99 @@
-/* 02-servicios — catalogo a la vista (regla 3): foto a sangre con pie numerado, la placa
-   manda el titulo, 4 tarjetas con foto + 8 renglones de carta tipografica, barra fija y
-   hoja del carrito (solo carrito + cierre viven ahi). Sin eyebrow, sin parrafo (regla 7). */
+/* 02-servicios — REHECHA (FEEDBACK-1, 20 sep 2026): los servicios ya no son productos.
+   Vitrina de 3 fotos SIN precio ni botón, lista de lo que atendemos con SU icono de color
+   por servicio, y la SOLICITUD DE CITA que arma el mensaje de WhatsApp.
+
+   REVISION-2:
+   · cambio 4 — cada servicio trae un SVG de línea de 28 px de distinto color ("los carritos
+     de colores"). El color entra por la variable --c de cada <li>; el trazo lo pinta
+     currentColor, así que no hay 11 reglas de CSS.
+   · cambio 7 — en compu la lista se parte en columnas de tarjeta y la raya mide lo que mide
+     su columna, no 1,250 px de vacío.
+   · cambio 6 — la solicitud de cita es de dos columnas desde 900 px y ya no deja hueco.
+   · La foto a sangre que abría la sección se fue al hero (cambio 1): ahí sirve más, y la
+     sección deja de pesar el 30 % de la página.
+   Sin eyebrow, sin párrafo largo (regla 7). Un solo verde en toda la sección. */
 .s-srv { background: var(--paper); position: relative; }
-
-.s-srv-foto { height: 60svh; min-height: 320px; background: var(--deep); }
-.s-srv-foto-velo { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,6,3,.72) 0%, rgba(10,6,3,.18) 45%, transparent 68%); }
-.s-srv-foto-pie {
-  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 16px; z-index: 2;
-  display: flex; align-items: baseline; gap: 8px; color: var(--paper);
-  font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-}
-.s-srv-foto-num { font-family: var(--font-display); font-weight: 800; font-size: 15px; color: var(--brand); letter-spacing: 0; text-transform: none; }
-
-/* el aire extra de 76px es para la barra fija del carrito: solo va cuando la barra esta
-   puesta (body.srv-bar-on). Antes se quedaba siempre y dejaba un hueco de crema muerta. */
 .s-srv-paper { background: var(--paper); color: var(--ink); padding-block: var(--sec-y-sm); }
-body.srv-bar-on .s-srv-paper { padding-bottom: calc(var(--sec-y-sm) + 76px); }
-/* tres renglones propios: "Lo que le podemos / revisar a / tu mascota." El balance
-   automatico dejaba huerfano el primer renglon ("Lo que le / podemos revisar a"). */
+/* tres renglones propios: "Lo que le podemos / revisar a / tu mascota." */
 .s-srv-title { color: var(--ink); max-width: 18ch; text-wrap: initial; }
-/* oliva oscurecido: el --brand claro no aguanta sobre crema, pero el patron de las seis
-   secciones es 'ultima linea en color de marca'. El azul rompia ese patron. */
 .s-srv-title .vi-tono { color: #7E8A34; }
 
-.s-srv-grid { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.s-srv-card { display: grid; grid-template-rows: auto 1fr auto auto; }
-/* las cuatro fotos comparten la MISMA caja 4/5: la chica (352x330, tope 150px) se centra
-   dentro en vez de dejar su tarjeta 75px mas corta, y asi los cuatro "+ AGREGAR" caen en
-   la misma linea en compu. */
-.s-srv-card-foto { padding: 4px; aspect-ratio: 4 / 5; display: grid; place-items: center; background: var(--paper-2); }
-.s-srv-card-foto .vi-marco-foto { width: 100%; height: 100%; aspect-ratio: auto; border-radius: calc(var(--radius-card) - 2px); }
-.s-srv-card-foto .vi-marco-foto img { width: 100%; height: 100%; object-fit: cover; }
-.s-srv-card-foto--chica { padding: 0; }
-/* la foto chica conserva su marco de la hoja: 6px de aire color papel + el hairline azul. */
-.s-srv-card-foto--chica .vi-marco-foto { width: min(150px, 86%); height: auto; aspect-ratio: 352 / 330; box-shadow: 0 0 0 6px var(--paper); }
-.s-srv-card-body { padding: 12px 2px 0; display: grid; grid-template-rows: subgrid; grid-row: span 3; gap: 8px; align-content: start; }
-@supports not (grid-template-rows: subgrid) {
-  .s-srv-card-body { display: flex; flex-direction: column; }
-  .s-srv-card-body h3 { min-height: 2.3em; }
-}
-/* srv-consultas.webp se reproceso (sombras +18, punto negro abajo) para que el doberman
-   se distinga y las cuatro fotos vivan en el mismo tono: no hace falta filtro en CSS. */
-.s-srv-card-body h3 { font-family: var(--font-display); font-weight: 700; font-size: 16px; line-height: 1.15; color: var(--ink); }
-.s-srv-precio { font-size: 12px; font-weight: 600; letter-spacing: 0.03em; color: var(--mute); font-variant-numeric: tabular-nums; }
-.s-srv-add { align-self: end; width: 100%; min-height: 40px; font-size: 11px; }
-.s-srv-add.is-added { background: var(--deep); border-color: var(--deep); color: var(--paper); }
+/* ---------- El icono de color de cada servicio (cambio 4) ---------- */
+.s-srv-ico { flex: none; display: grid; place-items: center; width: 28px; height: 28px; color: var(--c, var(--brand-2)); }
+.s-srv-ico svg { width: 28px; height: 28px; }
 
-.s-srv-carta { margin-top: 34px; border-top: 1px solid var(--line); }
-.s-srv-fila { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 10px 0; border-bottom: 1px solid var(--line); }
-.s-srv-fila-hueco { width: var(--hole); height: var(--hole); border-radius: 50%; border: 1.25px solid var(--brand-2); flex: none; }
-.s-srv-fila-nombre { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); }
-.s-srv-fila-precio { margin-left: auto; font-size: 12px; font-weight: 600; color: var(--mute); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.s-srv-fila-add {
-  flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--brand-2);
-  display: grid; place-items: center; font-size: 17px; font-weight: 700; color: var(--brand-2);
-  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+/* ---------- Vitrina: banda ancha (Pensión) + 2 tarjetas (Consultas, Cachorros) ---------- */
+.s-srv-showcase { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.s-srv-tile--wide { grid-column: 1 / -1; }
+.s-srv-tile-foto { padding: 0; }
+.s-srv-tile--wide .vi-marco-foto { aspect-ratio: 16 / 9; }
+.s-srv-tile:not(.s-srv-tile--wide) .vi-marco-foto { aspect-ratio: 4 / 5; }
+.s-srv-tile figcaption {
+  margin-top: 10px; font-family: var(--font-display); font-weight: 700;
+  font-size: 15px; color: var(--ink); display: flex; align-items: center; gap: 10px;
 }
-.s-srv-fila-add:active { transform: scale(0.9); }
-.s-srv-fila-add.is-added { background: var(--brand-2); color: var(--deep); }
-@media (hover: hover) and (pointer: fine) { .s-srv-fila-add:hover { background: rgba(135,169,196,.15); } }
 
-.s-srv-total { margin-top: 22px; font-size: 13px; font-weight: 700; color: var(--mute); }
-
-/* ---------- Barra fija: "La placa de X - N servicios" en --brand-2, abre la hoja ---------- */
-.s-srv-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; background: var(--brand-2); }
-.s-srv-bar-btn {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%;
-  min-height: 56px; padding: 0 var(--gutter) env(safe-area-inset-bottom); color: var(--deep);
-  font-family: var(--font-display); font-weight: 800; font-size: 15px;
+/* ---------- Lo que atendemos: renglón con icono de color, sin precio ni botón ---------- */
+.s-srv-lista { margin-top: 34px; display: grid; gap: 0 36px; }
+.s-srv-item {
+  display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 12px 0;
+  border-bottom: 1px solid var(--line); font-family: var(--font-display); font-weight: 700;
+  font-size: 16px; line-height: 1.15; color: var(--ink);
 }
-.s-srv-bar-btn svg { width: 20px; height: 20px; flex: none; }
+.s-srv-nota { margin-top: 18px; font-size: 13px; font-weight: 700; color: var(--mute); }
 
-/* ---------- Hoja del carrito: solo carrito + cierre (regla 3). Vive en <body> (L12). ---------- */
-.s-srv-sheet { position: fixed; inset: 0; z-index: 80; visibility: hidden; transition: visibility 0s linear 380ms; }
-.s-srv-sheet[aria-hidden="false"] { visibility: visible; transition: visibility 0s; }
-.s-srv-sheet-scrim { position: absolute; inset: 0; background: rgba(6,10,14,.5); opacity: 0; transition: opacity 280ms var(--ease-out); }
-.s-srv-sheet[aria-hidden="false"] .s-srv-sheet-scrim { opacity: 1; }
-.s-srv-sheet-panel {
-  position: absolute; inset: auto 0 0 0; max-height: 88svh; overflow-y: auto; overscroll-behavior: contain;
-  background: var(--paper); color: var(--ink); border-radius: 18px 18px 0 0;
-  padding: 22px var(--gutter) calc(28px + env(safe-area-inset-bottom));
-  transform: translateY(100%); transition: transform 380ms var(--ease-in-out);
+/* ---------- Solicitud de cita ---------- */
+.s-srv-cita { margin-top: 44px; padding-top: 34px; border-top: 1px solid var(--line); }
+.s-srv-cita-h { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 7vw, 34px); color: var(--ink); }
+.s-srv-cita-h .vi-tono { color: #7E8A34; }
+/* confirmación de la placa: sale sola cuando ya hay nombre. Ya NO hay link "Ponlo arriba":
+   el campo del nombre vive aquí mismo (cambio 5). */
+.s-srv-cita-placa { margin-top: 10px; font-size: 13.5px; font-weight: 600; color: var(--mute); }
+.s-srv-cita-placa:empty { display: none; }
+.s-srv-cita-placa b { font-family: var(--font-display); font-weight: 800; color: var(--ink); }
+
+.s-srv-cita-field { display: block; margin-top: 20px; }
+.s-srv-cita-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); margin-bottom: 8px; }
+
+.s-srv-cita-servicios { display: flex; flex-wrap: wrap; gap: 8px; }
+.s-srv-cita-chip {
+  min-height: 44px; padding: 0 16px; border-radius: var(--radius-btn); border: 1px solid var(--brand-2);
+  background: transparent; color: var(--brand-2); font-family: var(--font-body); font-weight: 700;
+  font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase;
+  transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 160ms var(--ease-out);
 }
-.s-srv-sheet[aria-hidden="false"] .s-srv-sheet-panel { transform: translateY(0); }
-.s-srv-sheet-close { position: absolute; top: 14px; right: 14px; min-width: 40px; min-height: 40px; display: grid; place-items: center; border-radius: 50%; background: rgba(16,24,31,.06); color: var(--ink); }
-.s-srv-sheet-placa { min-height: 20px; margin-bottom: 6px; }
-.s-srv-sheet-placa .s-placa-shape { box-shadow: none; }
-.s-srv-sheet-h { font-family: var(--font-display); font-weight: 800; font-size: 20px; color: var(--ink); margin-top: 6px; }
-.s-srv-sheet-list { margin-top: 12px; display: grid; gap: 8px; }
-.s-srv-sheet-list li { display: flex; align-items: center; gap: 10px; min-height: 36px; font-size: 14px; font-weight: 600; color: var(--ink); }
-.s-srv-sheet-list li::before { content: ""; width: var(--hole); height: var(--hole); border-radius: 50%; border: 1.25px solid var(--brand-2); flex: none; }
-.s-srv-sheet-list-empty { font-size: 13px; color: var(--mute); font-weight: 500; }
-.s-srv-sheet-field { display: block; margin-top: 16px; }
-.s-srv-sheet-field span { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); margin-bottom: 6px; }
-.s-srv-sheet-field input, .s-srv-sheet-field textarea {
+.s-srv-cita-chip:active { transform: scale(0.96); }
+.s-srv-cita-chip[aria-pressed="true"] { background: var(--brand-2); color: var(--deep); }
+@media (hover: hover) and (pointer: fine) { .s-srv-cita-chip:hover { background: rgba(135,169,196,.14); } .s-srv-cita-chip[aria-pressed="true"]:hover { background: #97b7cf; } }
+
+.s-srv-cita-field input, .s-srv-cita-field textarea {
   display: block; width: 100%; border: 1px solid var(--line); border-radius: 8px; background: #fff;
-  padding: 11px 13px; color: var(--ink); resize: vertical;
+  padding: 12px 14px; color: var(--ink); resize: vertical; font-size: 15px;
 }
-.s-srv-sheet-field input:focus, .s-srv-sheet-field textarea:focus { outline: none; border-color: var(--brand-2); }
-.s-srv-sheet-honesto { margin-top: 16px; font-size: 12.5px; color: var(--mute); }
-.s-srv-sheet-send { margin-top: 14px; width: 100%; }
-.s-srv-sheet-fallback { display: block; margin-top: 12px; text-align: center; font-size: 12px; font-weight: 600; color: var(--mute); text-decoration: underline; }
+.s-srv-cita-field input:focus, .s-srv-cita-field textarea:focus { outline: none; border-color: var(--brand-2); }
 
-body.srv-sheet-open { overflow: hidden; }
+.s-srv-cita-honesto { margin-top: 18px; font-size: 12.5px; color: var(--mute); }
+.s-srv-cita-send { margin-top: 14px; width: 100%; }
 
+/* ---------- Compu ---------- */
+@media (min-width: 720px) {
+  .s-srv-lista { grid-template-columns: 1fr 1fr; }
+}
 @media (min-width: 900px) {
-  .s-srv-paper { padding-block: var(--sec-y) calc(var(--sec-y) + 20px); }
-  body.srv-bar-on .s-srv-paper { padding-bottom: calc(var(--sec-y) + 76px); }
-  .s-srv-grid { grid-template-columns: repeat(4, 1fr); gap: 22px; }
-  .s-srv-card-foto--chica .vi-marco-foto { width: min(150px, 78%); }
-  .s-srv-carta { columns: 2; column-gap: 32px; }
-  .s-srv-fila { break-inside: avoid; }
-  .s-srv-bar-btn { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
-  .s-srv-sheet-panel { inset: 0 0 0 auto; max-height: 100svh; width: 420px; border-radius: 0; }
-  .s-srv-sheet[aria-hidden="false"] .s-srv-sheet-panel { transform: translateX(0); }
-  .s-srv-sheet-panel { transform: translateX(100%); }
+  /* el hueco muerto de abajo del botón era este padding de más (REVISION-2, d-05) */
+  .s-srv-paper { padding-block: var(--sec-y); }
+  .s-srv-showcase { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .s-srv-tile--wide { grid-column: span 2; }
+  .s-srv-tile--wide .vi-marco-foto { aspect-ratio: 21 / 9; }
+  .s-srv-tile figcaption { font-size: 17px; }
+  .s-srv-lista { margin-top: 44px; grid-template-columns: repeat(3, 1fr); gap: 0 48px; }
+  .s-srv-item { font-size: 17px; min-height: 62px; }
+
+  .s-srv-cita { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 56px; align-items: start; }
+  /* la columna derecha arranca a la altura del primer campo de la izquierda, no debajo del h3 */
+  .s-srv-cita-col + .s-srv-cita-col { margin-top: 44px; }
+  .s-srv-cita-send { width: auto; min-width: 300px; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .s-srv-sheet-panel, .s-srv-sheet-scrim, .s-srv-fila-add, .s-srv-add { transition: none !important; }
+@media (min-width: 1100px) {
+  .s-srv-cita { column-gap: 88px; }
 }

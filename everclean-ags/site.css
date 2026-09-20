@@ -125,7 +125,7 @@ a, button, [role="button"], label { -webkit-tap-highlight-color: transparent; to
 .ec-btn--glifo svg { width: 17px; height: 17px; }
 .ec-link {
   display: inline-flex; align-items: center; gap: 8px; color: var(--texto); font-weight: 600; font-size: 15px;
-  border-bottom: 1.5px solid var(--linea-fuerte); padding: 7px 0 9px;
+  border-bottom: 1.5px solid var(--linea-fuerte); padding: 9px 0 11px; min-height: 40px; box-sizing: border-box;
 }
 .ec-link svg { width: 16px; height: 16px; color: var(--marca); transition: transform 180ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) { .ec-link:hover svg { transform: translateX(4px); } }
@@ -156,15 +156,22 @@ a, button, [role="button"], label { -webkit-tap-highlight-color: transparent; to
 .ec-header.is-compact .ec-arc { opacity: 0; }
 .ec-header.is-compact .ec-seam { opacity: 1; }
 .ec-bar { position: relative; z-index: 2; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-inline: var(--gutter); max-width: var(--wrap); margin-inline: auto; }
-.ec-brand { display: flex; align-items: center; height: 40px; width: 64px; background: #fff; flex: none; padding: 4px 8px; }
-.ec-brand img { width: 100%; height: 100%; object-fit: contain; }
-.ec-header.is-compact .ec-brand { height: 34px; width: 56px; padding: 3px 6px; transition: height 240ms var(--ease-out), width 240ms var(--ease-out), padding 240ms var(--ease-out); }
-.ec-nav { display: none; gap: 26px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+/* El logotipo llega con su placa blanca pegada (PENDIENTE-DUENO 5: falta el PNG transparente).
+   Mientras llega, la placa NO se deja como rectangulo suelto: se trata como una foto mas, con el
+   mismo marco de la pagina (fondo bandera + costura cian fina por dentro). */
+.ec-brand { display: block; width: 72px; flex: none; padding: 4px; background: var(--bandera); position: relative; }
+.ec-brand-pic { position: relative; display: block; background: #fff; overflow: hidden; }
+.ec-brand-pic::after { content: ""; position: absolute; inset: 1.5px; border: 1px solid var(--marca); pointer-events: none; }
+/* El aire blanco va como borde de la propia imagen: asi la costura cian no le cruza el
+   "UN ESTILO DE VIDA" al logotipo. */
+.ec-brand img { display: block; width: 100%; height: auto; border: 4px solid #fff; }
+.ec-header.is-compact .ec-brand { width: 62px; padding: 3px; transition: width 240ms var(--ease-out), padding 240ms var(--ease-out); }
+.ec-nav { display: none; gap: 26px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; align-items: center; }
 @media (min-width: 980px) { .ec-nav { display: flex; } }
-.ec-nav a { opacity: 0.86; transition: opacity 160ms; }
+.ec-nav a { display: flex; align-items: center; height: 40px; opacity: 0.86; transition: opacity 160ms; }
 .ec-nav a:hover { opacity: 1; color: var(--marca); }
 .ec-acts { display: flex; align-items: center; gap: 10px; flex: none; }
-.ec-cotizar { height: 40px; padding: 0 18px; border: 1px solid var(--marca); color: var(--marca); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; display: inline-flex; align-items: center; }
+.ec-cotizar { height: 42px; padding: 0 18px; border: 1px solid var(--marca); color: var(--marca); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; display: inline-flex; align-items: center; }
 @media (hover: hover) and (pointer: fine) { .ec-cotizar:hover { background: var(--marca); color: var(--marca-ink); } }
 .ec-menu-toggle { display: flex; align-items: center; height: 44px; gap: 8px; color: var(--papel); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
 .ec-burger { position: relative; width: 20px; height: 12px; display: inline-block; }
@@ -185,14 +192,25 @@ a, button, [role="button"], label { -webkit-tap-highlight-color: transparent; to
 }
 .ec-menu-open .ec-menu-scrim { opacity: 1; }
 .ec-menu-open .ec-menu-panel { transform: translateX(0); }
-.ec-menu-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--linea); color: var(--papel); }
+.ec-menu-close { position: absolute; top: 20px; right: 20px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--linea); color: var(--papel); }
 .ec-menu-title { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--marca); }
 .ec-menu-piezas { display: flex; flex-direction: column; }
 .ec-menu-piezas li { border-bottom: 1px solid var(--linea); }
 .ec-menu-piezas button, .ec-menu-piezas a { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 0; font-size: 17px; font-weight: 600; text-align: left; color: var(--texto); }
 .ec-menu-piezas button svg, .ec-menu-piezas a svg { width: 16px; height: 16px; color: var(--marca); flex: none; }
-.ec-menu-nav { display: flex; flex-direction: column; gap: 4px; }
-.ec-menu-nav a { padding: 10px 0; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mute); }
+/* Los renglones de navegar pesan lo MISMO que las piezas (antes iban en gris chico y se leian
+   como etiquetas) y el que corresponde a la seccion en pantalla se marca en cian con su costura
+   a la izquierda (aria-current, scrollspy en site.js). */
+.ec-menu-nav { display: flex; flex-direction: column; }
+.ec-menu-nav a {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 14px 0; font-size: 17px; font-weight: 600; color: var(--texto);
+  border-bottom: 1px solid var(--linea);
+  transition: color 160ms var(--ease-out), padding-left 160ms var(--ease-out);
+}
+.ec-menu-nav a svg { width: 16px; height: 16px; color: var(--marca); flex: none; opacity: 0; transition: opacity 160ms; }
+.ec-menu-nav a[aria-current="true"] { color: var(--marca); padding-left: 14px; box-shadow: inset 2px 0 0 var(--marca); }
+.ec-menu-nav a[aria-current="true"] svg { opacity: 1; }
 .ec-menu-foot { margin-top: auto; display: flex; flex-direction: column; gap: 12px; }
 .ec-menu-foot p { color: var(--mute); font-size: 13px; }
 
@@ -258,6 +276,18 @@ main { padding-top: var(--header-h); }
 .ec-sec--papel h1, .ec-sec--papel h2 { color: var(--tinta); }
 .ec-sec--tinta { background: var(--tinta); }
 
+/* Grano fino en las bandas oscuras: le quita el plano muerto al marino sin tocar el sistema de
+   color. Va ENCIMA del fondo de su propia seccion (z-index 0) y DEBAJO del contenido (z-index 1).
+   Antes llevaba z-index:-1 y quedaba detras de su propio fondo: no pintaba nada (0.000 de
+   desviacion medida). Ahora va al 7% y cubre hero, catalogo, pruebas, cierre y pie. */
+.ec-grano { position: relative; }
+.ec-grano::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.07;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+.ec-grano > .ec-wrap, .ec-grano > .s-hero-grid { position: relative; z-index: 1; }
+
 /* ============ WhatsApp flotante (verde, único junto al botón de mandar visita) ============ */
 .ec-wa-float {
   position: fixed; right: 16px; bottom: 16px; z-index: 70; width: 56px; height: 56px;
@@ -267,14 +297,24 @@ main { padding-top: var(--header-h); }
 .ec-wa-float svg { width: 28px; height: 28px; }
 .ec-wa-float.is-hidden-by-btn { visibility: hidden; animation: none; }
 
-/* ============ Pie ============ */
-.ec-foot { background: var(--tinta); padding-block: 64px 28px; position: relative; }
-.ec-foot-logo { display: block; width: 220px; margin-inline: auto; background: #fff; padding: 12px 16px; }
-@media (min-width: 900px) { .ec-foot-logo { width: 280px; padding: 14px 20px; } }
-.ec-foot-logo img { display: block; width: 100%; height: auto; }
-.ec-foot-arc { display: block; width: 100%; max-width: 360px; margin: 18px auto 0; height: 24px; }
+/* ============ Pie: momento de logotipo (el cierre de la página) ============ */
+.ec-foot { background: var(--tinta); padding-block: 72px 28px; position: relative; }
+.ec-foot-eyebrow { display: block; text-align: center; margin-bottom: 22px; }
+/* El cierre de la pagina ES el logotipo: 308 px en celular (antes 240 y flotaba chiquito),
+   con el mismo marco de las fotos y "Un estilo de vida." pegado debajo con aire. */
+.ec-foot-logo { display: block; width: min(308px, 86%); margin-inline: auto; padding: 10px; background: var(--bandera); }
+@media (min-width: 900px) { .ec-foot-logo { width: 340px; } }
+.ec-foot-logo .ec-frame__pic { background: #fff; }
+.ec-foot-logo img { display: block; width: 100%; height: auto; border: 18px solid #fff; }
+.ec-foot-tagline {
+  font-family: var(--font-display); font-variation-settings: "wdth" 122; font-weight: 850;
+  text-transform: uppercase; letter-spacing: -0.005em; line-height: 1;
+  text-align: center; margin: 26px auto 0; color: var(--marca); font-size: clamp(26px, 8vw, 38px);
+  max-width: 12ch; margin-inline: auto;
+}
+.ec-foot-arc { display: block; width: 100%; max-width: 360px; margin: 26px auto 0; height: 24px; }
 .ec-foot-arc path { fill: none; stroke: var(--marca); stroke-width: 1.5; }
-.ec-foot-mid { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; margin-top: 40px; }
+.ec-foot-mid { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; margin-top: 54px; }
 .ec-foot-tel { font-family: var(--font-display); font-size: clamp(26px, 6vw, 34px); font-weight: 850; text-transform: none; letter-spacing: 0; }
 .ec-foot-acts { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 .ec-foot-mail { color: var(--mute); font-size: 14px; }

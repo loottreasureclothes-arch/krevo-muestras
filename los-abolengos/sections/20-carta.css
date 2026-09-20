@@ -17,6 +17,8 @@
 .mn-title b { color: var(--brand-ink); }
 .mn-lead { margin-top: 12px; color: rgba(27, 21, 18, 0.62); font-size: 15px; max-width: 42ch; line-height: 1.5; }
 
+.mn-full-link { margin-top: 14px; }
+
 .mn-chips { position: sticky; top: var(--k-header-h); z-index: 5; display: flex; gap: 8px; overflow-x: auto; margin: 26px calc(var(--k-gutter) * -1) 0; padding: 12px var(--k-gutter); background: var(--paper); border-bottom: 1px solid var(--line-paper); scrollbar-width: none; }
 .mn-chips::-webkit-scrollbar { display: none; }
 .mn-chip {
@@ -29,50 +31,37 @@
 @media (hover: hover) and (pointer: fine) { .mn-chip:hover { background: var(--brand-ink); color: var(--paper); } }
 
 .mn-cat { margin-top: 32px; scroll-margin-top: calc(var(--k-header-h) + 56px); }
-/* En compu la categoría se lee como carta de mesa: las tarjetas con foto a la izquierda y
-   los renglones con precio a la derecha, para que la banda crema no quede vacía. */
-@media (min-width: 900px) {
-  .mn-cat[hidden] { display: none; }
-  .mn-cat:not([hidden]):has(.mn-grid) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 430px); column-gap: 56px; align-items: start; }
-  .mn-cat:not([hidden]):has(.mn-grid) > .mn-cat-h { grid-column: 1 / -1; }
-  .mn-cat:not([hidden]):has(.mn-grid) > .mn-grid { grid-column: 1; }
-  .mn-cat:not([hidden]):has(.mn-grid) > .mn-list { grid-column: 2; grid-row: 2; margin-top: 0; }
-  .mn-cat:not([hidden]):has(.mn-grid) > .mn-fine { grid-column: 2; }
-}
-.mn-cat-h { font-family: var(--font-display); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand-ink); margin-bottom: 16px; }
+.mn-cat-h { font-family: var(--font-display); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand-ink); margin-bottom: 4px; }
 
-/* auto-fit + tope de ancho por tarjeta: una categoría con UNA sola tarjeta no reserva
-   dos o tres columnas vacías (ni estira la foto a todo lo ancho). */
-.mn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; justify-content: start; }
-.mn-card { max-width: 230px; }
-@media (min-width: 900px) { .mn-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; } .mn-card { max-width: 330px; } }
+/* Carta pareja: TODOS los platillos como renglón tipográfico (nombre, nota, precio, "+"),
+   misma altura, mismo estilo. Nada de mezclar tarjeta con foto y renglón pelón. */
+.mn-list { margin-top: 14px; display: grid; }
+.mn-row { position: relative; display: flex; align-items: center; gap: 10px; padding: 13px 0; border-bottom: 1px solid var(--line-paper); }
+.mn-row:first-child { border-top: 1px solid var(--line-paper); }
+.mn-row-txt { min-width: 0; flex: 1; }
+.mn-row-txt b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 14.5px; color: var(--ink); line-height: 1.25; }
+.mn-row-txt i { display: block; font-style: normal; font-size: 12px; color: rgba(27, 21, 18, 0.58); margin-top: 2px; line-height: 1.35; }
+.mn-row-price { flex: none; font-size: 14px; font-weight: 700; color: var(--brand-ink); }
+.mn-row-ctrl { flex: none; display: flex; justify-content: flex-end; }
 
-.mn-card { display: flex; flex-direction: column; background: #fff; }
-.mn-card-photo { aspect-ratio: 1 / 1; overflow: hidden; }
-.mn-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.mn-card-body { padding: 12px 4px 2px; display: flex; flex-direction: column; flex: 1; }
-.mn-card-name { font-family: var(--font-display); font-weight: 500; font-size: 16px; color: var(--ink); line-height: 1.2; }
-.mn-card-note { margin-top: 4px; font-size: 12px; color: rgba(27, 21, 18, 0.58); line-height: 1.4; flex: 1; }
-.mn-card-row { margin-top: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 40px; }
-.mn-card-price { font-size: 15px; font-weight: 700; color: var(--ink); flex: none; }
-
-.mn-add {
+.mn-row-add {
+  position: relative; width: 44px; height: 44px; display: grid; place-items: center;
   border: 1.5px solid var(--brand-ink); background: transparent; color: var(--brand-ink);
-  height: 44px; padding: 0 12px; font-family: var(--font-display); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; white-space: nowrap;
+  font-size: 17px; line-height: 1; cursor: pointer;
   transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out);
 }
-@media (hover: hover) and (pointer: fine) { .mn-add:hover { background: var(--brand-ink); color: var(--paper); } }
-.mn-card.has-qty .mn-add { display: none; }
-.mn-stepper { display: none; align-items: stretch; border: 1.5px solid var(--brand-ink); height: 44px; }
-.mn-card.has-qty .mn-stepper { display: flex; }
-.mn-stepper button { width: 36px; height: 100%; color: var(--brand-ink); font-size: 16px; background: transparent; }
-.mn-stepper span { width: 28px; display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--ink); border-inline: 1px solid var(--line-paper); }
+@media (hover: hover) and (pointer: fine) { .mn-row-add:hover { background: var(--brand-ink); color: var(--paper); } }
+.mn-row.has-qty .mn-row-add { display: none; }
+.mn-row-stepper { display: none; align-items: stretch; border: 1.5px solid var(--brand-ink); height: 44px; }
+.mn-row.has-qty .mn-row-stepper { display: flex; }
+.mn-row-stepper button { width: 34px; height: 100%; color: var(--brand-ink); font-size: 15px; background: transparent; }
+.mn-row-stepper span { width: 26px; display: grid; place-items: center; font-size: 12.5px; font-weight: 700; color: var(--ink); border-inline: 1px solid var(--line-paper); }
 
-.mn-list { margin-top: 18px; display: grid; }
-.mn-list li { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line-paper); font-size: 14.5px; color: var(--ink); }
-.mn-list li:first-child { border-top: 1px solid var(--line-paper); }
-.mn-list li i { display: block; font-style: normal; font-size: 12px; color: rgba(27, 21, 18, 0.56); margin-top: 2px; }
-.mn-list li > span:first-child { min-width: 0; }
-.mn-list li > .tab-num { flex: none; font-weight: 600; color: var(--brand-ink); }
 .mn-fine { margin-top: 18px; font-size: 12.5px; color: rgba(27, 21, 18, 0.56); }
+
+/* En compu, dos columnas de lectura por categoría: la banda crema no se queda vacía
+   y la carta se lee como carta de mesa, sin volver a mezclar foto y renglón. */
+@media (min-width: 900px) {
+  .mn-list { column-count: 2; column-gap: 56px; }
+  .mn-row { break-inside: avoid-column; }
+}

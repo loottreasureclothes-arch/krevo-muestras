@@ -1,0 +1,28 @@
+/* ===== 30 · Ubicación (reemplaza "El horno"): el mapa grande que la página no tenía ===== */
+.s-visita { background: var(--paper); color: var(--ink); padding-block: var(--sec-y, 72px); }
+.vi-grid { display: grid; gap: 28px; }
+@media (min-width: 960px) {
+  .vi-grid { grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; }
+  .vi-grid > .vi-map { order: 2; }
+  .vi-grid > div { order: 1; }
+}
+.vi-map { margin: 0; }
+.vi-map-in { position: relative; border-radius: 10px; overflow: hidden; border: 2px solid var(--wine); box-shadow: 0 24px 48px -28px rgba(43, 12, 16, .45); }
+.vi-map-in iframe { display: block; width: 100%; height: 300px; border: 0; filter: saturate(.9) sepia(.06); }
+@media (min-width: 640px) { .vi-map-in iframe { height: 380px; } }
+@media (min-width: 960px) { .vi-map-in iframe { height: 460px; } }
+.vi-map-tag {
+  position: absolute; left: 14px; bottom: 14px; z-index: 1; display: inline-flex; align-items: center;
+  padding: 7px 12px; border-radius: 3px; background: var(--wine); color: var(--cream);
+  font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  box-shadow: 0 6px 14px -6px rgba(0, 0, 0, .5); pointer-events: none;
+}
+.vi-dl { margin: 20px 0 26px; display: grid; gap: 14px; }
+.vi-dl div { border-left: 2px solid var(--wine); padding-left: 12px; }
+.vi-dl dt { font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); }
+.vi-dl dd { margin: 2px 0 0; font-size: 1.05rem; line-height: 1.45; overflow-wrap: anywhere; }
+.vi-acts { display: flex; flex-wrap: wrap; gap: 10px; }
+.vi-acts .pf-btn { flex: 1 1 220px; }
+@media (min-width: 640px) { .vi-acts .pf-btn { flex: none; } }
+.vi-links { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 18px; }
+.vi-t { font-size: clamp(2rem, 9vw, 4.2rem); line-height: .98; margin: 0 0 16px; overflow-wrap: anywhere; }

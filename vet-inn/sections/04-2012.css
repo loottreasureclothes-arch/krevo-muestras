@@ -12,7 +12,10 @@
   /* pausa-2012.webp ya viene recortada al pelaje de la pug adulta y desaturada hacia
      --deep-2: la cama rosa mexicano y el cachorro recien nacido quedan fuera de cuadro
      (la hoja pedia que la parte clinica cruda no se viera). Por eso el encuadre es al centro. */
-  background-image: url('../img/fotos/pausa-2012.webp'); background-size: cover; background-position: 50% 45%;
+  /* REVISION-2, cambio 9: adentro del numero ya no va la mancha gris. Va el anaquel de la
+     farmacia (cajas de medicamento): en los huecos de las cifras lo unico que se lee es
+     COLOR, y este si lee, y ademas dice clinica. */
+  background-image: url('../img/fotos/pausa-2012.webp'); background-size: cover; background-position: 50% 50%;
   -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
   font-variant-numeric: tabular-nums;
 }
@@ -37,6 +40,6 @@
 .s-2012-marcador p { font-size: 13.5px; color: var(--mute-on-deep); max-width: none; }
 
 @media (min-width: 900px) {
-  .s-2012 { padding: calc(var(--sec-y) * 1.2) 0; }
+  .s-2012 { padding: var(--sec-y) 0; }
   .s-2012-resenas { grid-template-columns: repeat(3, 1fr); }
 }

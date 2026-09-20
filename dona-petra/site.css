@@ -104,22 +104,32 @@ body { background: var(--deep); color: var(--brand); font-family: var(--font-bod
 @media (hover: hover) and (pointer: fine) { .pt-btn:hover svg { transform: translateX(2px); } }
 
 /* ============ Header propio de Petra ============ */
-.pt-header { position: fixed; inset: 0 0 auto 0; z-index: 50; padding-top: env(safe-area-inset-top); color: var(--brand); transition: background-color 320ms var(--ease-out), border-color 320ms var(--ease-out), -webkit-backdrop-filter 320ms var(--ease-out), backdrop-filter 320ms var(--ease-out); border-bottom: 1px solid transparent; }
+.pt-header { position: fixed; inset: 0 0 auto 0; z-index: 50; padding-top: env(safe-area-inset-top); color: var(--brand); text-shadow: 0 1px 5px rgba(10, 14, 20, 0.55); transition: background-color 320ms var(--ease-out), border-color 320ms var(--ease-out), -webkit-backdrop-filter 320ms var(--ease-out), backdrop-filter 320ms var(--ease-out); border-bottom: 1px solid transparent; }
 .pt-header-in { display: flex; align-items: center; justify-content: center; position: relative; height: var(--k-header-h); }
-.pt-header.is-solid { background: rgba(33, 44, 60, 0.94); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom-color: var(--line-on-dark); }
+.pt-header.is-solid { background: rgba(33, 44, 60, 0.94); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom-color: var(--line-on-dark); text-shadow: none; }
 
-.pt-mark { position: absolute; left: max(var(--k-gutter), env(safe-area-inset-left)); top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
-.pt-mark-img { width: 44px; height: 44px; border-radius: 50%; transition: width 260ms var(--ease-out), height 260ms var(--ease-out); }
-.pt-mark-tx { font-family: var(--font-display); font-size: 19px; font-weight: 300; letter-spacing: 0.03em; opacity: 0; transform: translateX(-6px); transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out); white-space: nowrap; }
+/* Sello: SIEMPRE a la izquierda (FEEDBACK 20 sep: antes solo se movia ahi al
+   pasar el hero, y arriba se veia centrado y desubicado sobre la foto). */
+/* min-width 44px en el LINK (no en el icono): el sello puede verse chico (32-36 px)
+   pero el area de toque nunca baja de 44 px (regla dura del checklist). */
+.pt-mark { position: absolute; left: max(var(--k-gutter), env(safe-area-inset-left)); top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 10px; min-width: 44px; min-height: 44px; }
+.pt-mark-img { width: 36px; height: 36px; border-radius: 50%; transition: width 260ms var(--ease-out), height 260ms var(--ease-out); }
+.pt-mark-tx { font-family: var(--font-display); font-size: 19px; font-weight: 300; letter-spacing: 0.03em; white-space: nowrap; }
 .pt-header.is-solid .pt-mark-img { width: 32px; height: 32px; }
-.pt-header.is-solid .pt-mark-tx { opacity: 1; transform: none; }
+/* En celular la palabra "Petra" del sello se quita: es lo que se encimaba con
+   "JARDIN" del interruptor (FEEDBACK 20 sep, punto 3). Con 320-480px de ancho
+   no caben las dos cosas centradas + el sello a la izquierda sin tocarse; a
+   partir de 640px ya sobra espacio y la palabra vuelve. */
+.pt-mark-tx { display: none; }
+@media (min-width: 640px) { .pt-mark-tx { display: inline; } }
 
-.pt-switch { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.94); display: inline-flex; gap: 18px; opacity: 0; pointer-events: none; transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out); }
-.pt-header.is-solid .pt-switch { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+/* Interruptor JARDIN | MARAVILLAS: visible DESDE EL INICIO, no solo al pasar el
+   header a solido (FEEDBACK 20 sep, punto 5: "tiene que verse desde el inicio"). */
+.pt-switch { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: inline-flex; gap: 18px; }
 .pt-switch-opt { padding: 4px 2px 8px; background: none; border: 0; color: var(--brand-dim); font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; position: relative; min-height: 44px; }
 .pt-switch-opt[aria-pressed="true"] { color: var(--brand); }
 .pt-switch-opt[aria-pressed="true"]::after { content: ""; position: absolute; left: 2px; right: 2px; bottom: 4px; height: 2px; background: var(--flor); }
-@media (max-width: 480px) { .pt-switch { gap: 12px; } .pt-switch-opt { font-size: 11px; } }
+@media (max-width: 480px) { .pt-switch { gap: 10px; } .pt-switch-opt { font-size: 10.5px; padding-inline: 1px; } }
 
 .pt-menu-link { position: absolute; right: max(var(--k-gutter), env(safe-area-inset-right)); top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--brand-dim); color: var(--brand); font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; transition: background-color 200ms var(--ease-out), border-color 200ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) { .pt-menu-link:hover { background: rgba(208, 192, 160, 0.1); border-color: var(--brand); } }

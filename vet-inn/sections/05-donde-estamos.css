@@ -1,31 +1,38 @@
-/* 05-donde-estamos — mapa real + tarjeta-placa encimada + horarios en renglones (regla:
-   texto plano, sin reloj vivo). Foto de la sala de espera en marco al 62% del ancho porque
-   la original es chica (480x640): NO va a sangre. */
+/* 05-donde-estamos — mapa real + tarjeta-placa DENTRO del mapa + horarios en renglones.
+   Foto de la sala de espera en marco (la original es chica: 480x640, NO va a sangre).
+
+   REVISION-2:
+   · cambio 13 — la tarjeta oscura ya no cuelga por abajo del mapa dejando escalón en las dos
+     esquinas: el mapa creció y la tarjeta vive encimada DENTRO de él, con margen.
+   · cambio 14 — en compu la sección es de dos columnas (sala de espera + horarios a la
+     izquierda, título y mapa a la derecha). Antes era una torre con 350 px de aire. */
 .s-donde { background: var(--deep); padding: var(--sec-y) 0; }
 .s-donde-in { display: flex; flex-direction: column; align-items: center; text-align: center; }
 
 .s-donde-foto { width: 62%; max-width: 320px; margin: 0 auto 32px; }
-.s-donde-foto .vi-marco-foto { aspect-ratio: 480 / 640; }
+.s-donde-foto .vi-marco-foto { aspect-ratio: 393 / 524; }
 .s-donde-foto-pie { margin-top: 8px; padding: 0 4px; font-size: 12px; font-weight: 600; color: var(--mute); text-align: left; }
 
 .s-donde-title { color: var(--paper); }
 
 .s-donde-mapa-wrap { margin-top: 30px; width: 100%; max-width: 640px; position: relative; }
 /* el embed mete pin rojo, etiquetas azules y pines naranjas de los vecinos en una pagina
-   de dos colores: se le baja la saturacion y la tarjeta-placa sube a tapar el cuarto bajo,
-   que es donde caen los nombres ajenos. */
-.s-donde-mapa { position: relative; height: 320px; border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--line-deep); filter: saturate(.55) contrast(1.05); }
+   de dos colores: se le baja la saturacion y la tarjeta-placa tapa el cuarto bajo, que es
+   donde caen los nombres ajenos. */
+.s-donde-mapa { position: relative; height: 480px; border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--line-deep); filter: saturate(.55) contrast(1.05); }
 .s-donde-mapa iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .s-donde-tarjeta {
-  position: relative; margin: -112px 14px 0; padding: 18px 18px 20px; text-align: left;
-  background: var(--deep-2); border-radius: var(--radius-card); box-shadow: 0 14px 30px rgba(0,0,0,.32);
+  position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 2;
+  padding: 18px 18px 20px; text-align: left;
+  background: var(--deep-2); border-radius: var(--radius-card); box-shadow: 0 14px 30px rgba(0,0,0,.42);
 }
 .s-donde-tarjeta-nombre { font-family: var(--font-display); font-weight: 800; font-size: 18px; color: var(--paper); letter-spacing: 0.01em; }
 .s-donde-tarjeta-dir { margin-top: 6px; font-size: 13.5px; color: var(--mute-on-deep); max-width: 42ch; }
 .s-donde-tarjeta-plus { margin-top: 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--brand-2); font-variant-numeric: tabular-nums; }
 .s-donde-tarjeta .vi-btn { margin-top: 16px; }
 
-.s-donde-horarios { margin-top: 40px; width: 100%; max-width: 400px; text-align: left; }
+.s-donde-datos { width: 100%; max-width: 400px; display: flex; flex-direction: column; align-items: flex-start; }
+.s-donde-horarios { margin-top: 40px; width: 100%; text-align: left; }
 .s-donde-horarios li { position: relative; padding: 13px 0 13px 22px; border-bottom: 1px solid var(--line-deep); font-size: 15px; font-weight: 600; color: var(--paper); font-variant-numeric: tabular-nums; }
 .s-donde-horarios li::before { content: ""; position: absolute; left: 0; top: 19px; width: var(--hole); height: var(--hole); border-radius: 50%; border: 1.25px solid var(--brand); }
 .s-donde-horarios li:last-child { color: var(--mute-on-deep); font-weight: 500; }
@@ -39,8 +46,16 @@
 .s-donde-marcador p { font-size: 13px; color: var(--mute-on-deep); max-width: none; }
 
 @media (min-width: 900px) {
-  .s-donde-in { text-align: center; }
-  .s-donde-foto { max-width: 360px; }
-  .s-donde-mapa { height: 380px; }
-  .s-donde-tarjeta { margin-top: -124px; }
+  .s-donde-in {
+    display: grid; grid-template-columns: 340px minmax(0, 1fr);
+    column-gap: 56px; align-items: start; text-align: left;
+  }
+  .s-donde-foto { grid-column: 1; grid-row: 1 / span 2; width: 100%; max-width: 340px; margin: 0; }
+  .s-donde-title { grid-column: 2; grid-row: 1; }
+  .s-donde-mapa-wrap { grid-column: 2; grid-row: 2; margin-top: 26px; max-width: none; }
+  .s-donde-mapa { height: 420px; }
+  .s-donde-tarjeta { left: auto; right: 16px; bottom: 16px; width: 380px; }
+  .s-donde-datos { grid-column: 1; grid-row: 3; max-width: 340px; }
+  .s-donde-horarios { margin-top: 34px; }
+  .s-donde-marcador { grid-column: 2; grid-row: 3; margin-top: 34px; max-width: none; align-self: start; }
 }

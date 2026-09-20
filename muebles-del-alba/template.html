@@ -29,9 +29,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero/porton-m.webp" media="not all and (min-aspect-ratio: 1/1)" fetchpriority="high">
-<link rel="preload" as="image" href="img/hero/porton-d.webp" media="(min-aspect-ratio: 1/1)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero/slide-cancun.webp" fetchpriority="high">
 <link rel="stylesheet" href="../_kit/kit.css">
+<link rel="stylesheet" href="../_kit/slider.css">
 <link rel="stylesheet" href="site.css">
 <!--SECTION_CSS-->
 </head>
@@ -56,8 +56,8 @@
 
 <header class="k-header mda-header">
   <a class="k-logo" href="#top" aria-label="Muebles del Alba, inicio">
-    <img class="mda-logo-full" src="img/logo.png" alt="Muebles del Alba" width="220" height="97">
-    <img class="mda-logo-icon" src="img/logo-icono.png" alt="" aria-hidden="true" width="120" height="120">
+    <img class="mda-logo-full" src="img/logo.png" alt="Muebles del Alba" width="220" height="97" fetchpriority="high" decoding="async">
+    <img class="mda-logo-icon" src="img/logo-icono.png" alt="" aria-hidden="true" width="120" height="120" loading="lazy" decoding="async">
   </a>
   <a class="mda-header-link" href="#catalogo">Catálogo</a>
   <button class="cd-menu-btn" type="button" aria-expanded="false" aria-controls="cd-menu"><span class="cd-burger" aria-hidden="true"><i></i><i></i></span><span class="cd-menu-lbl">Menú</span></button>
@@ -74,6 +74,7 @@
       <a href="#contacto"><span>05</span>Contacto</a>
     </nav>
     <div class="cd-menu-foot">
+      <p class="cd-menu-promo"><b class="tab">10%</b><span>de descuento en toda la tienda. Solo de contado en efectivo, hasta el 1 de octubre de 2026.</span></p>
       <dl class="cd-menu-hours">
         <div><dt>Lun a vie</dt><dd>10:00–19:45</dd></div>
         <div><dt>Sábado</dt><dd>10:00–19:00</dd></div>
@@ -96,7 +97,8 @@
     <div class="cd-foot-cols">
       <div class="cd-foot-col">
         <h2 class="cd-foot-h">Visítanos</h2>
-        <address>Blvd. Adolfo Ruiz Cortines km 1<br>Col. Francisco Villa, 20218<br>Aguascalientes, Ags.</address>
+        <address>Av. Adolfo Ruiz Cortines 4-A, sobre López Mateos<br>Rumbo a salida a Calvillo, a un costado del Río San Pedro<br>Aguascalientes, Ags.</address>
+        <p class="cd-foot-maps">En Google Maps aparece como Blvd. Ruiz Cortines km 1, Col. Francisco Villa, 20218.</p>
         <a class="cd-btn cd-btn--link" href="https://maps.app.goo.gl/HFFrFwkFvdcXpCWi9" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="cd-foot-col">
@@ -168,6 +170,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="../_kit/kit.js" defer></script>
+<script src="../_kit/slider.js" defer></script>
 <script src="site.js" defer></script>
 <!--SECTION_JS-->
 </body>

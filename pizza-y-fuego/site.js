@@ -89,6 +89,32 @@
     });
   }
 
+  /* Estado activo del menú (NOTA GLOBAL 20 sep: hamburguesa y nav deben sentirse como navegación de verdad).
+     Marca .is-on en el link de nav cuya sección está en pantalla. Solo observa secciones que existen en ESTA página
+     (en menu.html casi todos los enlaces del header apuntan a index.html#x y no tienen sección local que observar). */
+  function initNavActive() {
+    var links = document.querySelectorAll('.k-nav a[href^="#"], .pf-nav-list a[href^="#"]');
+    if (!links.length || !("IntersectionObserver" in window)) return;
+    var pairs = [];
+    Array.prototype.forEach.call(links, function (a) {
+      var id = a.getAttribute("href").slice(1), sec = id && document.getElementById(id);
+      if (sec) pairs.push({ a: a, sec: sec });
+    });
+    if (!pairs.length) return;
+    function clear() { Array.prototype.forEach.call(links, function (a) { a.classList.remove("is-on"); a.removeAttribute("aria-current"); }); }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        clear();
+        pairs.forEach(function (p) {
+          if (p.sec !== e.target) return;
+          p.a.classList.add("is-on"); p.a.setAttribute("aria-current", "true");
+        });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    pairs.forEach(function (p) { io.observe(p.sec); });
+  }
+
   /* WA flotante: fuera sobre [data-hide-wa], #menu, #reserva y el footer; con una hoja abierta lo esconde site.css (html.pf-mm-lock) */
   function initWaHide() {
     setTimeout(function () { document.body.classList.add("pf-wa-ready"); }, 2000);
@@ -200,11 +226,11 @@
 
   /* Títulos de sección: caen desde -60px y pegan con rebote corto (misma técnica que el 2014 /
      closetdoor-10-msi: resorte muestreado con WAAPI). Una vez por título; blindaje a 1.6 s.
-     Caen los cinco títulos de sección: menú, horno, reunión, quiénes somos y visítanos. El que tiene
+     Caen los cuatro títulos de sección: menú, ubicación, reunión y quiénes somos. El que tiene
      renglones marcados (.ru-l de la reunión) cae renglón por renglón con 70 ms de diferencia.
      El único que no lleva esta caída es el hero: tiene su propia entrada por renglón con máscara. */
   function initTitleDrop() {
-    var els = document.querySelectorAll("#pf-mm-title, #nos-t, #vi-t, #hn-t, #ru-t");
+    var els = document.querySelectorAll("#pf-mm-title, #nos-t, #vi-t, #ru-t");
     if (!els.length || reduce || !("IntersectionObserver" in window) || !els[0].animate) return;
     function spring(n, amp, turns, decay, fmt) {
       var k = [];
@@ -254,7 +280,7 @@
     Array.prototype.forEach.call(els, function (el) { io.observe(el); fio.observe(el); });
   }
 
-  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initRipple(); initAnchors(); initMesa(); initPago(); initBlurIn(); initHeaderH(); initTitleDrop(); }
+  function init() { initWa(); initNav(); initNavActive(); initWaHide(); initRevealSafety(); initRipple(); initAnchors(); initMesa(); initPago(); initBlurIn(); initHeaderH(); initTitleDrop(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
