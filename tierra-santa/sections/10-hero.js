@@ -1,26 +1,10 @@
-/* 10 Hero: video listo (data-src-m / data-src-d) que cae a la foto; accesos con hoja de fotos reales. */
+/* 10 Hero: foto fija (sin video) + accesos con hoja de fotos reales. */
 (function () {
   "use strict";
   var sec = document.getElementById("hero");
   if (!sec) return;
-  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---- Video del hero: solo si ya hay archivos ---- */
-  var v = sec.querySelector(".hr-vid");
-  if (v) {
-    var wide = window.matchMedia && matchMedia("(min-aspect-ratio: 1/1)").matches;
-    var src = v.getAttribute(wide ? "data-src-d" : "data-src-m");
-    var c = navigator.connection;
-    if (!src || reduce || (c && (c.saveData || /(^|-)2g$/.test(c.effectiveType || "")))) { v.remove(); }
-    else {
-      if (wide) v.poster = v.getAttribute("data-poster-d");
-      v.src = src; v.preload = "metadata";
-      var kill = function () { try { v.pause(); } catch (e) {} v.remove(); };
-      v.addEventListener("error", kill, { once: true });
-      v.addEventListener("playing", function () { v.classList.add("is-on"); });
-      var p = v.play(); if (p && p.catch) p.catch(function (e) { if (!e || e.name !== "AbortError") kill(); });
-    }
-  }
+  /* Blindaje: a 1.6 s el título ya quedó en su lugar pase lo que pase */
   setTimeout(function () { sec.getAnimations && sec.getAnimations({ subtree: true }).forEach(function (a) { try { a.finish(); } catch (e) {} }); }, 1600);
 
   /* ---- Hoja de fotos de los accesos ---- */
@@ -36,7 +20,7 @@
       f: [["img/hd/agua-santa-1200.webp", "Agua Santa"], ["img/hd/jamaica-1200.webp", "Smoothie de jamaica"], ["img/hd/maracuya-1200.webp", "Smoothie de maracuyá"]] },
     terraza: { t: "Terraza", d: "Enredadera, focos cálidos y calentador de torre para las noches frías.", go: "Ver la terraza", href: "#terraza",
       wa: "Hola, quiero reservar una mesa en la terraza de Tierra Santa.",
-      f: [["img/hd/terraza-noche-1200.webp", "La terraza de noche"], ["img/hd/terraza-dia-1200.webp", "La terraza de día"], ["img/hd/fachada-letrero-1200.webp", "Nuestra entrada"]] }
+      f: [["img/hd/terraza-noche-1200.webp", "La terraza de noche"], ["img/hd/terraza-dia-1200.webp", "La terraza de día"], ["img/hd/terraza-jardineras-1200.webp", "Las jardineras de la terraza"]] }
   };
   var tiles = document.querySelectorAll("#accesos [data-sheet]");
   if (!tiles.length) return;

@@ -1,20 +1,21 @@
   <section class="s-hero" id="hero" data-dark data-hide-wa aria-labelledby="hr-t">
+    <!-- Foto protagonista: rib eye rehecho con IA a partir de su foto real (img/ia/IMAGENES.md).
+         Deja sombra limpia donde cae el título: abajo en celular (2:3), a la izquierda en compu (3:2).
+         Va con etiqueta visible "Imagen ilustrativa". Sin video: el hero es una sola foto fija. -->
     <div class="hr-media" aria-hidden="true">
       <picture>
-        <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/poster-d.webp" width="1920" height="1080">
-        <img class="hr-poster" src="img/hero/poster-m.webp" sizes="100vw" width="1080" height="1920" alt="Rib eye recién servido en Tierra Santa Parrilla &amp; Bistro" fetchpriority="high">
+        <source media="(min-aspect-ratio: 1/1)" srcset="img/ia/ribeye-d.webp" width="2200" height="1478">
+        <img class="hr-poster" src="img/ia/ribeye-m.webp" width="1400" height="2083" alt="Rib eye a la parrilla en sartén de hierro" fetchpriority="high" decoding="async">
       </picture>
-      <!-- Video de cine hecho con 4 fotos reales (research/FOTOS.md 01/19/03/04, ver tools/hero_video.py). Muted, loop,
-           preload metadata; se salta con saveData/2g y cae a la foto si play() falla (todo en 10-hero.js). -->
-      <video class="hr-vid" muted playsinline loop preload="metadata" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" poster="img/hero/poster-m.webp" data-poster-d="img/hero/poster-d.webp" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9"></video>
       <div class="hr-veil"></div>
     </div>
+    <p class="ts-ill ts-ill--hero">Imagen ilustrativa</p>
     <div class="k-wrap hr-in">
       <p class="ts-eyebrow hr-eb">Parrilla &amp; Bistro · Aguascalientes</p>
       <h1 id="hr-t" class="hr-t ts-d ts-h3d"><span class="hr-l"><span>Cortes al carbón,</span></span> <span class="hr-l"><span>terraza de <em>noche.</em></span></span></h1>
       <p class="hr-lead">Parrilla argentina y cocina italiana en Jardines de la Asunción.</p>
       <div class="hr-acts">
-        <a class="ts-btn ts-btn--wa" href="#reserva"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar mesa</a>
+        <a class="ts-btn ts-btn--go" href="#reserva">Reservar mesa<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <a class="ts-btn ts-btn--line" href="#menu">Ver menú</a>
       </div>
     </div>
@@ -26,7 +27,7 @@
         <li><a href="#m-cortes" data-sheet="cortes" aria-haspopup="dialog"><img src="img/hd/parrillada-close-1200.webp" alt="" width="1200" height="675" loading="lazy" decoding="async"><span class="acc-n">Cortes<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="acc-d">rib eye, T-bone, arrachera</span></a></li>
         <li><a href="#m-bistro" data-sheet="bistro" aria-haspopup="dialog"><img src="img/hd/salmon-1200.webp" alt="" width="1200" height="1200" loading="lazy" decoding="async"><span class="acc-n">Bistro<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="acc-d">pastas, salmón, carpaccio</span></a></li>
         <li><a href="#m-bebidas" data-sheet="bebidas" aria-haspopup="dialog"><img src="img/hd/bebidas-frutales-1200.webp" alt="" width="1200" height="1125" loading="lazy" decoding="async"><span class="acc-n">Bebidas<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="acc-d">Agua Santa y smoothies</span></a></li>
-        <li><a href="#terraza" data-sheet="terraza" aria-haspopup="dialog"><img src="img/hd/terraza-jardineras-1200.webp" alt="" width="1200" height="1200" loading="lazy" decoding="async"><span class="acc-n">Terraza<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="acc-d">enredadera y focos</span></a></li>
+        <li><a href="#terraza" data-sheet="terraza" aria-haspopup="dialog"><img src="img/hd/terraza-dia-1200.webp" alt="" width="1200" height="1200" loading="lazy" decoding="async"><span class="acc-n">Terraza<svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="acc-d">enredadera y focos</span></a></li>
       </ul>
     </div>
   </section>

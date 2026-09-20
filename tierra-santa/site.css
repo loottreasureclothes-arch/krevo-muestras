@@ -9,11 +9,14 @@
      --gold    #e7c27d dorado (detalle sobre oscuro)
      --wa #25d366 con texto --wa-ink #0b3d1f (acciones)
    Tipografía: --font-display Archivo condensada MAYÚSCULAS · --font-body Instrument Sans
-   Botones (radio 3px, nada de píldoras):
-     .ts-btn.ts-btn--wa    verde WhatsApp (acción principal, uno por bloque)
+   Botones (radio 2px en TODO, nada de píldoras). REGLA DE COLOR (19 sep):
+     .ts-btn.ts-btn--wa    verde WhatsApp — SOLO donde de verdad se manda el WhatsApp
+                           (enviar reserva, enviar pedido, cotizar evento) y el botón flotante.
+     .ts-btn.ts-btn--go    dorado de marca con texto verde oscuro — navegación (Ver menú, Reservar
+                           del header, Cómo llegar, abrir pedido, Eventos y grupos).
      .ts-btn.ts-btn--line  contorno (toma currentColor)
      .ts-btn.ts-btn--link  texto con flecha
-     .ts-chip              chip cuadrado 3px
+     .ts-chip              chip cuadrado 2px
    Títulos: .ts-d (display) + .ts-h3d (canto 3D; en bandas oscuras sale solo con [data-dark])
    Legado que sigue funcionando: .k-btn, .ts-btn-wa, .ts-sec, .ts-h2, .ts-lead, .ts-rule, .ts-note
    Blindaje: data-reveal (kit) + rescate a 1.6 s en site.js. Ocultar solo bajo
@@ -38,7 +41,7 @@
   --cream-mute: rgba(243, 237, 226, 0.76);
   --line-dark: rgba(243, 237, 226, 0.18);
   --warm: var(--paper-2);
-  --radius: 3px;
+  --radius: 2px;
   --font-display: "Archivo", "Arial Narrow", sans-serif;
   --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --display: var(--font-display);
@@ -52,13 +55,33 @@
 
 html { scroll-behavior: auto !important; overflow-x: clip; accent-color: var(--wine); scrollbar-color: rgba(23, 22, 22, 0.45) var(--paper); }
 body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; }
+/* Textura de papel sutil sobre el crema (fibra fina, no se ve sobre fondos oscuros) */
+.ts-paper { position: relative; isolation: isolate; }
+.ts-paper::after {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  opacity: .05; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+/* Titulos de seccion que caen y pegan con un rebote corto (pedido de Emanuel, 19 sep):
+   menu, terraza, eventos y reserva. Blindaje ya cubierto por site.js initRevealSafety(). */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-reveal="drop"] { opacity: 0; transform: translateY(-60px); transition: none; }
+  [data-reveal="drop"].is-in { opacity: 1; animation: ts-title-drop 700ms var(--ease-out) both; }
+}
+@keyframes ts-title-drop {
+  0% { transform: translateY(-60px); }
+  50% { transform: translateY(6px); }
+  68% { transform: translateY(-10px); }
+  84% { transform: translateY(3px); }
+  100% { transform: translateY(0); }
+}
 ::selection { background: var(--wine); color: var(--cream); }
-:focus-visible { outline-color: var(--wine); border-radius: 3px; }
+:focus-visible { outline-color: var(--wine); border-radius: 2px; }
 [data-dark] :focus-visible { outline-color: var(--cream); }
 .k-wrap { max-width: 1320px; }
 @media (min-width: 1700px) { .k-wrap { max-width: 1600px; } }
 
-.ts-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; border-radius: 3px; background: var(--deep); color: var(--cream); font-weight: 600; transform: translateY(-180%); transition: transform 200ms var(--ease-out); }
+.ts-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; border-radius: 2px; background: var(--deep); color: var(--cream); font-weight: 600; transform: translateY(-180%); transition: transform 200ms var(--ease-out); }
 .ts-skip:focus { transform: none; }
 
 /* ============ Display ============ */
@@ -99,8 +122,8 @@ em { font-style: normal; color: var(--brand); }
     0 calc(var(--h3d-s) * 3 + 0.04em) 0.08em var(--h3d-amb);
 }
 
-/* ============ Botones (3px, nada de píldoras) ============ */
-.k-btn, .k-cta, .ts-btn, .ts-chip, .k-menu-tabs button, .ts-dot { border-radius: 3px !important; }
+/* ============ Botones (2px en todo, nada de píldoras) ============ */
+.k-btn, .k-cta, .ts-btn, .ts-chip, .k-menu-tabs button, .ts-dot { border-radius: 2px !important; }
 .ts-btn {
   position: relative; overflow: hidden; isolation: isolate;
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
@@ -117,6 +140,13 @@ em { font-style: normal; color: var(--brand); }
   box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35);
 }
 [data-dark] .ts-btn--wa { box-shadow: none; }
+/* Navegación en color de marca: dorado con texto verde oscuro, fino y recto (nada de verde WhatsApp) */
+.ts-btn--go {
+  background: var(--gold); border-color: rgba(20, 29, 15, 0.35); color: var(--wine-2); --sweep: #c8a552;
+  box-shadow: 0 2px 0 rgba(20, 29, 15, 0.3);
+}
+[data-dark] .ts-btn--go { box-shadow: none; }
+.ts-btn--go svg { color: var(--wine-2); }
 .ts-btn--line { background: transparent; border-color: currentColor; color: inherit; --sweep: rgba(127, 127, 127, 0.16); }
 .ts-btn--link { min-height: 44px; padding: 0; border: 0; background: none; gap: 8px; color: inherit;
   background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 100% 1.5px; background-position: 0 calc(100% - 9px); }
@@ -143,32 +173,71 @@ em { font-style: normal; color: var(--brand); }
 .ts-chip:active { transform: scale(0.97); }
 .ts-chip[aria-pressed="true"], .ts-chip.is-on { background: var(--deep); border-color: var(--deep); color: var(--cream); }
 
-/* ============ Header ============ */
-.k-header { gap: 8px; color: var(--cream); }
-body[data-hero-dark] .k-header:not(.is-solid) { color: var(--cream); }
-.k-header::before { content: ""; position: absolute; inset: 0 0 -30px; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(12, 11, 10, 0.6), rgba(12, 11, 10, 0)); transition: opacity 320ms var(--ease-out); }
-.k-header.is-solid::before { opacity: 0; }
-.k-header.is-solid { background: rgba(243, 237, 226, 0.95); border-bottom-color: var(--line); color: var(--ink); }
-.k-logo { position: relative; min-height: 44px; margin-right: auto; }
-.k-logo img { height: 28px; width: auto; max-width: none; transition: opacity 280ms var(--ease-out); }
-@media (min-width: 900px) { .k-logo img { height: 36px; } }
-.k-logo .ts-logo-r { position: absolute; left: 0; top: 50%; transform: translateY(-50%); opacity: 0; }
-.k-header.is-solid .ts-logo-r { opacity: 1; }
-.k-header.is-solid .ts-logo-w { opacity: 0; }
-.k-nav a { font-weight: 600; }
-@media (min-width: 900px) { .k-nav { gap: 24px; margin-right: 10px; } .k-nav a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; } .k-nav a::after { bottom: 10px; } }
-@media (min-width: 900px) and (max-width: 1100px) { .k-nav { gap: 16px; font-size: 0.88rem; } }
-/* "Menú" del header: el más visible después del verde */
-.ts-hmenu {
-  display: inline-flex; align-items: center; gap: 7px; height: 44px; padding: 0 13px;
-  border-radius: 3px; background: var(--cream); color: var(--deep);
-  font-weight: 800; font-size: 15px; letter-spacing: 0.01em; flex: none;
+/* ============ Header propio de bistro: doble filete dorado + logo centrado ============ */
+.ts-header {
+  display: flex; align-items: center; gap: 8px; color: var(--cream);
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(var(--gold), var(--gold)), linear-gradient(var(--gold), var(--gold)),
+    linear-gradient(var(--gold), var(--gold)), linear-gradient(var(--gold), var(--gold));
+  background-size: 100% 1px, 100% 1px, 100% 1px, 100% 1px;
+  background-position: top left, top 3px left, bottom left, bottom 3px left;
+  transition: background-color 320ms var(--ease-out);
+}
+body[data-hero-dark] .ts-header:not(.is-solid) { color: var(--cream); }
+.ts-header::before { content: ""; position: absolute; inset: 0 0 -30px; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(12, 11, 10, 0.55), rgba(12, 11, 10, 0)); transition: opacity 320ms var(--ease-out); }
+.ts-header.is-solid::before { opacity: 0; }
+/* kit.css trae .k-header.is-solid{background:rgba(255,255,255,.85); color:var(--ink)} (headers claros de
+   otras paginas) con la misma especificidad; aqui repetimos las 2 rayas + el color crema para que no se
+   las gane el kit al compactarse. */
+.ts-header.is-solid {
+  background-color: var(--wine-2); color: var(--cream);
+  background-image:
+    linear-gradient(var(--gold), var(--gold)), linear-gradient(var(--gold), var(--gold)),
+    linear-gradient(var(--gold), var(--gold)), linear-gradient(var(--gold), var(--gold));
+  background-repeat: no-repeat;
+  background-size: 100% 1px, 100% 1px, 100% 1px, 100% 1px;
+  background-position: top left, top 3px left, bottom left, bottom 3px left;
+}
+
+/* Logo: centrado y suelto del flujo (asi no importa cuanto pese el nav o el cta) */
+.ts-hlogo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: inline-flex; align-items: center; min-height: 44px; }
+.ts-hlogo img { height: 27px; width: auto; transition: height 240ms var(--ease-out); }
+@media (min-width: 900px) { .ts-hlogo img { height: 38px; } }
+/* Al compactarse (900px+, tras 40px de scroll): el logo se suelta del centro y se hace chico a la izquierda */
+@media (min-width: 900px) {
+  .ts-header.is-solid .ts-hlogo { position: static; transform: none; margin-right: 20px; }
+  .ts-header.is-solid .ts-hlogo img { height: 26px; }
+}
+
+/* Navegacion: versalitas chicas con separador de punto dorado; solo compu */
+.ts-hnav { display: none; }
+@media (min-width: 900px) {
+  .ts-hnav { display: flex; align-items: center; }
+  .ts-hnav a {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 11px;
+    font-variant: small-caps; font-weight: 700; font-size: 15px; letter-spacing: .03em;
+    opacity: .92; transition: opacity 200ms var(--ease-out);
+  }
+  .ts-hnav a + a::before { content: "\00b7"; margin-right: 22px; color: var(--gold); }
+}
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) { .ts-hnav a:hover { opacity: 1; } }
+
+/* CTA: dorado de marca (es navegación al formulario, no manda WhatsApp). 44 px desde celular. */
+.ts-hcta {
+  margin-left: auto; flex: none;
+  display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 14px;
+  border-radius: 2px; background: var(--gold); color: var(--wine-2); font-weight: 800; font-size: 14px;
   transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out);
 }
-.ts-hmenu svg { width: 18px; height: 18px; }
-.k-header.is-solid .ts-hmenu { background: var(--deep); color: var(--cream); }
-.ts-hmenu:active { transform: scale(0.97); }
-.ts-menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 3px; border: 1.5px solid currentColor; color: inherit; flex: none; }
+.ts-hcta:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) { .ts-hcta:hover { background: #c8a552; } }
+@media (min-width: 900px) { .ts-hcta { padding: 0 24px; font-size: 15px; } }
+@media (max-width: 359px) { .ts-hcta { padding: 0 11px; font-size: 13px; } }
+
+/* Hamburguesa: solo celular/tablet, a la izquierda; el logo centrado no se mueve */
+.ts-menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 2px; border: 1.5px solid currentColor; color: inherit; flex: none; }
+@media (min-width: 900px) { .ts-menu-btn { display: none; } }
 .ts-burger { position: relative; width: 18px; height: 12px; }
 .ts-burger i { position: absolute; left: 0; right: 0; height: 1.8px; background: currentColor; transition: transform 300ms var(--ease-out), opacity 200ms; }
 .ts-burger i:nth-child(1) { top: 0; }
@@ -177,20 +246,10 @@ body[data-hero-dark] .k-header:not(.is-solid) { color: var(--cream); }
 body.ts-nav-open .ts-burger i:nth-child(1) { transform: translateY(5px) rotate(45deg); }
 body.ts-nav-open .ts-burger i:nth-child(2) { opacity: 0; }
 body.ts-nav-open .ts-burger i:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
-.k-header .k-cta.ts-hcta, body[data-hero-dark] .k-header:not(.is-solid) .k-cta.ts-hcta {
-  height: 44px; padding: 0 14px; background: var(--wa); color: var(--wa-ink); font-weight: 800; font-size: 15px;
-}
-@media (hover: hover) and (pointer: fine) { .k-header .k-cta.ts-hcta:hover { background: var(--wa-dark); } }
-@media (min-width: 900px) { .k-header .k-cta.ts-hcta { padding: 0 22px; } .ts-hmenu { padding: 0 18px; font-size: 16px; } }
-@media (max-width: 360px) { .ts-hmenu svg { display: none; } .k-header .k-cta.ts-hcta { padding: 0 11px; } }
 
 /* ============ Menú hamburguesa ============ */
 body.ts-nav-open { overflow: hidden; }
-body.ts-nav-open .k-header { color: var(--cream); background: transparent; border-bottom-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
-body.ts-nav-open .k-header .ts-logo-r { opacity: 0; }
-body.ts-nav-open .k-header .ts-logo-w { opacity: 1; }
-body.ts-nav-open .k-nav { opacity: 0; pointer-events: none; }
-body.ts-nav-open .ts-hmenu { background: var(--cream); color: var(--deep); }
+body.ts-nav-open .ts-header { background-color: transparent; background-image: none; }
 .ts-nav { position: fixed; inset: 0; z-index: 45; visibility: hidden; transition: visibility 0s linear 420ms; }
 body.ts-nav-open .ts-nav { visibility: visible; transition: visibility 0s; }
 .ts-nav-scrim { position: absolute; inset: 0; background: rgba(12, 11, 10, 0.62); opacity: 0; transition: opacity 300ms var(--ease-out); }
@@ -228,7 +287,7 @@ body.ts-nav-open .ts-nav-foot { opacity: 1; transition: opacity 420ms var(--ease
 .ts-nav-foot p { color: var(--cream-mute); font-size: 14px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .ts-nav-foot p a { display: inline-flex; align-items: center; min-height: 44px; color: var(--cream); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 @media (min-width: 900px) {
-  .ts-nav-panel { inset: 12px 12px 12px auto; width: min(540px, 42vw); border-radius: 3px; padding: calc(var(--k-header-h) + 16px) 40px 30px; clip-path: none; transform: translateX(calc(100% + 24px)); transition: transform 480ms cubic-bezier(0.32, 0.72, 0, 1); box-shadow: -30px 0 80px rgba(0, 0, 0, 0.35); }
+  .ts-nav-panel { inset: 12px 12px 12px auto; width: min(540px, 42vw); border-radius: 2px; padding: calc(var(--k-header-h) + 16px) 40px 30px; clip-path: none; transform: translateX(calc(100% + 24px)); transition: transform 480ms cubic-bezier(0.32, 0.72, 0, 1); box-shadow: -30px 0 80px rgba(0, 0, 0, 0.35); }
   body.ts-nav-open .ts-nav-panel { transform: none; }
   .ts-nav-list > a { font-size: 42px; }
 }
@@ -255,7 +314,7 @@ body.ts-wa-off .k-wa, body.ts-nav-open .k-wa, html.ts-mm-lock .k-wa { visibility
 .ts-field > span { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
 .ts-field input, .ts-field select, .ts-field textarea {
   width: 100%; min-width: 0; height: 52px; padding: 0 14px; font-size: 16px;
-  border: 1.5px solid var(--line); border-radius: 3px; background: var(--paper); color: var(--ink);
+  border: 1.5px solid var(--line); border-radius: 2px; background: var(--paper); color: var(--ink);
   -webkit-appearance: none; appearance: none;
 }
 .ts-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23171616' stroke-width='1.6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
@@ -273,9 +332,17 @@ body.ts-wa-off .k-wa, body.ts-nav-open .k-wa, html.ts-mm-lock .k-wa { visibility
 .ts-foot-cols > div:last-child { grid-column: 1 / -1; }
 .ts-foot-h { font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
 .ts-foot-cols p { color: var(--cream-mute); font-size: 15px; line-height: 1.5; }
-.ts-foot-list { display: flex; flex-wrap: wrap; gap: 0 22px; }
-.ts-foot-list a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; }
-.ts-foot-list svg { width: 18px; height: 18px; color: var(--wa); }
+/* el teléfono del pie también se toca: 44 px de alto */
+.ts-foot-cols p a { display: inline-flex; align-items: center; min-height: 44px; color: var(--cream); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+/* Redes: iconos oficiales de 44 px en fila (WhatsApp, Instagram, Facebook) */
+.ts-foot-social { display: flex; gap: 10px; margin-top: 2px; }
+.ts-foot-ic {
+  width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1.5px solid var(--line-dark); border-radius: 2px; color: var(--cream);
+  transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), color 180ms var(--ease-out);
+}
+.ts-foot-ic svg { width: 22px; height: 22px; }
+@media (hover: hover) and (pointer: fine) { .ts-foot-ic:hover { background: var(--gold); border-color: var(--gold); color: var(--deep); } }
 .ts-foot-note { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line-dark); color: var(--cream-mute); font-size: 13px; }
 @media (min-width: 900px) {
   .ts-foot { padding: 104px 0 44px; }
@@ -294,9 +361,19 @@ main > #galeria { background-color: var(--deep); }
 main > #resenas { background-color: var(--paper); }
 main > #visita { background-color: var(--paper-2); }
 
+/* La genérica NO debe pisar a [data-reveal="drop"] (misma especificidad, ganaba la de abajo) */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  [data-reveal] { transform: translateY(28px); }
+  [data-reveal]:not([data-reveal="drop"]) { transform: translateY(28px); }
 }
+
+/* Etiqueta "Imagen ilustrativa" (fotos rehechas con IA a partir de sus fotos reales) */
+.ts-ill {
+  position: absolute; z-index: 3; right: var(--k-gutter); top: 14px;
+  padding: 3px 7px; border-radius: 2px; background: rgba(0, 0, 0, 0.55); color: #fff;
+  font: 500 11px/1.2 var(--font-body); letter-spacing: .01em; pointer-events: none;
+}
+.ts-ill--hero { top: calc(var(--k-header-h) + env(safe-area-inset-top) + 10px); }
+@media (min-width: 900px) { .ts-ill { font-size: 12px; top: 18px; } .ts-ill--hero { top: calc(var(--k-header-h) + 14px); } }
 .ts-ripple { position: absolute; z-index: -1; width: 180px; height: 180px; margin: -90px 0 0 -90px; border-radius: 50%; pointer-events: none; background: radial-gradient(closest-side, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0)); animation: ts-ripple 420ms var(--ease-out) forwards; }
 @keyframes ts-ripple { from { opacity: 1; transform: scale(0.3); } to { opacity: 0; transform: scale(1.6); } }
 

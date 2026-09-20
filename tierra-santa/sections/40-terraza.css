@@ -2,12 +2,12 @@
 #terraza { position: relative; background: var(--deep); color: var(--cream); }
 #terraza .cn-stage { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; padding: 0 0 calc(40px + env(safe-area-inset-bottom)); }
 #terraza .cn-frame { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
-#terraza .cn-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; transform: scale(var(--cn-s1, 1.08)); transform-origin: 50% 38%; will-change: transform; }
-#terraza .cn-canopy { position: absolute; inset: 0; background: url("../img/hd/terraza-noche-1200.webp") 50% 40% / cover no-repeat; -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 22%, transparent 40%); mask-image: linear-gradient(180deg, #000 0%, #000 22%, transparent 40%); transform: translateY(var(--cn-y2, 0px)) scale(var(--cn-s2, 1.12)); transform-origin: 50% 0%; will-change: transform; }
+#terraza .cn-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 45% 48%; transform: scale(var(--cn-s1, 1.08)); transform-origin: 50% 38%; will-change: transform; }
+#terraza .cn-canopy { position: absolute; inset: 0; background: url("../img/ia/terraza-noche.webp") 50% 40% / cover no-repeat; -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 22%, transparent 40%); mask-image: linear-gradient(180deg, #000 0%, #000 22%, transparent 40%); transform: translateY(var(--cn-y2, 0px)) scale(var(--cn-s2, 1.12)); transform-origin: 50% 0%; will-change: transform; }
 #terraza .cn-veil { position: absolute; inset: 0; background:
   radial-gradient(110% 80% at 50% 35%, rgba(10, 9, 8, 0) 40%, rgba(10, 9, 8, .5) 100%),
   linear-gradient(180deg, rgba(10, 9, 8, .45) 0%, rgba(10, 9, 8, 0) 20%, rgba(10, 9, 8, 0) 42%, rgba(10, 9, 8, .82) 72%, rgba(10, 9, 8, .95) 100%); }
-#terraza .cn-t { font-size: clamp(56px, 17vw, 190px); line-height: .86; margin: 4px 0 14px; }
+#terraza .cn-t { font-size: clamp(56px, 17vw, 190px); line-height: .92; margin: 4px 0 14px; }
 #terraza .cn-t span { display: block; white-space: nowrap; }
 #terraza .cn-lead { max-width: 34ch; font-size: 17px; line-height: 1.45; color: rgba(243, 237, 226, .9); margin-bottom: 22px; }
 #terraza .cn-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; }
@@ -37,7 +37,7 @@
 #terraza .cn-shots { display: grid; grid-auto-flow: column; grid-auto-columns: 78%; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; margin: 18px calc(var(--k-gutter) * -1) 0; padding: 0 var(--k-gutter); scroll-padding-inline: var(--k-gutter); list-style: none; }
 #terraza .cn-shots::-webkit-scrollbar { display: none; }
 #terraza .cn-shots li { scroll-snap-align: start; min-width: 0; }
-#terraza .cn-shots figure { margin: 0; overflow: hidden; border-radius: 3px; }
+#terraza .cn-shots figure { margin: 0; overflow: hidden; border-radius: 2px; }
 #terraza .cn-shots img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; transition: transform 600ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) { #terraza .cn-shots li:hover img { transform: scale(1.04); } }
 @media (min-width: 900px) {

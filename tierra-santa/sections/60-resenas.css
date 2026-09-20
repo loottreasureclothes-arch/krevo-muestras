@@ -2,63 +2,41 @@
    (nada puede quedar oculto); el 5.0 sí tiene su caidita, con blindaje, en 60-resenas.js. */
 #resenas { background: var(--paper); color: var(--ink); }
 
-/* Banda oscura del "5.0": verde oscuro + dorado del sitio */
-#resenas .res-top-band { position: relative; background: var(--wine-2); color: var(--cream); padding: 48px 0 20px; overflow: hidden; }
-#resenas .res-top { position: relative; }
-#resenas .res-num { line-height: 0; }
-#resenas .res-50 {
-  display: inline-block; font-family: var(--font-display); font-stretch: 62%; font-variation-settings: "wdth" 62;
-  font-weight: 900; font-size: clamp(150px, 46vw, 300px); line-height: .78; letter-spacing: -.03em;
-  color: var(--gold);
-}
-#resenas .res-copy { margin-top: 6px; }
-#resenas .res-copy .ts-lead { margin-top: 10px; }
+/* Banda oscura del "5.0": foto de la terraza oscurecida (nada de cortina de color plana) + grano.
+   Abre directo con el título y las 5 estrellas: sin eyebrow ni párrafo, para no repetir la misma
+   entrada de #terraza y #eventos tres secciones seguidas. */
+#resenas .res-top-band { position: relative; background: var(--wine-2) url("../img/hd/terraza-bugambilia-1200.webp") center 42% / cover no-repeat; color: var(--cream); padding: 48px 0 20px; overflow: hidden; }
+#resenas .res-top-band::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: rgba(15, 20, 11, .84); }
+#resenas .res-top { position: relative; z-index: 1; }
 #resenas .res-t { font-size: clamp(40px, 11vw, 68px); line-height: .92; }
 
-/* Cinta métrica que cae y pega en el 5.0 (adaptada de closetdoor/sections/10-msi.*) */
-#resenas .res-rule { position: relative; margin-top: 30px; display: grid; grid-template-columns: 56px minmax(0, 1fr); align-items: end; }
-#resenas .res-case { grid-column: 1; grid-row: 1; position: relative; z-index: 2; width: 56px; height: 52px; transform-origin: 40% 90%; }
-#resenas .res-case svg { display: block; width: 100%; height: 100%; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .45)); }
-#resenas .res-track { grid-column: 2; grid-row: 1; position: relative; z-index: 1; margin: 0 0 6px -11px; height: 30px; clip-path: inset(-40px -60px -40px 0); }
-#resenas .res-bounce, #resenas .res-blade { position: absolute; inset: 0; }
-#resenas .res-blade {
-  border-radius: 1px 2px 2px 1px;
-  background:
-    repeating-linear-gradient(90deg, rgba(20, 15, 8, .42) 0 1px, transparent 1px calc(100% / 20)) 0 0 / 100% 7px no-repeat,
-    linear-gradient(180deg, #f3ecdf, #e2d6c1);
-  box-shadow: inset 0 -1px 0 rgba(90, 58, 36, .35), 0 4px 10px -4px rgba(0, 0, 0, .5);
-}
-#resenas .res-ticks { position: absolute; inset: 0; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); }
-#resenas .res-ticks li {
-  position: relative; display: flex; align-items: flex-end; justify-content: flex-end; padding: 0 4px 4px 0;
-  font-family: var(--font-display); font-stretch: 70%; font-variation-settings: "wdth" 70;
-  font-weight: 800; font-size: 12px; line-height: 1; color: var(--wine-2); font-variant-numeric: tabular-nums;
-}
-#resenas .res-ticks li::before { content: ""; position: absolute; right: 0; top: 0; width: 1px; height: 13px; background: rgba(20, 15, 8, .7); }
-#resenas .res-ticks .res-end { padding-right: 8px; color: var(--brand); }
-#resenas .res-ticks .res-end::before { display: none; }
-#resenas .res-ticks .res-end b { display: inline-block; font-weight: 900; font-size: 14px; transform-origin: 60% 70%; }
-#resenas .res-hook { position: absolute; right: -3px; top: -6px; bottom: -3px; width: 5px; border-radius: 1px; background: linear-gradient(90deg, #8e8a84, #d8d3cb 45%, #6f6a63); box-shadow: 1px 0 2px rgba(0, 0, 0, .5); }
-#resenas .res-flash { position: absolute; right: -30px; top: 50%; width: 64px; height: 64px; margin-top: -32px; pointer-events: none; border-radius: 50%; opacity: 0; background: radial-gradient(closest-side, rgba(214, 178, 94, .85), rgba(214, 178, 94, .28) 55%, transparent); }
-/* armada: la cinta espera dentro del estuche (solo con JS y movimiento; el JS la suelta) */
-#resenas.res-armed .res-blade { transform: translateX(-100%); }
-/* entrada del 5.0 y el copy (la dispara 60-resenas.js) */
-#resenas.res-js .res-50 { clip-path: inset(100% 0 0 0); transform: translateY(16px); transition: clip-path 900ms var(--ease-out), transform 900ms var(--ease-out); }
-#resenas.res-js .res-copy > * { opacity: 0; transform: translateY(16px); transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out); }
-#resenas.res-js .res-copy > :nth-child(2) { transition-delay: 90ms; }
-#resenas.res-js .res-copy > :nth-child(3) { transition-delay: 180ms; }
-#resenas.res-in .res-50 { clip-path: inset(-40% -10% -10% -10%); transform: none; }
-#resenas.res-in .res-copy > * { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) {
-  #resenas .res-50, #resenas .res-copy > * { clip-path: none !important; transform: none !important; transition-property: opacity !important; }
-  #resenas.res-js .res-50 { opacity: 0; transition: opacity 600ms var(--ease-out); }
-  #resenas.res-in .res-50 { opacity: 1; }
-  #resenas .res-blade { transform: none !important; }
+/* 5 estrellas doradas grandes: mucho mas claro que una cinta metrica en un restaurante.
+   Encienden una por una al asomar (120 ms cada una), con blindaje a 1.6 s en 60-resenas.js. */
+#resenas .res-stars { display: flex; gap: clamp(6px, 1.8vw, 14px); margin-top: 18px; }
+#resenas .res-star { width: clamp(32px, 7vw, 54px); height: clamp(32px, 7vw, 54px); color: var(--gold); flex: none; }
+#resenas .res-stars--sm { gap: 3px; margin: 0 0 10px; }
+#resenas .res-stars--sm .res-star { width: 15px; height: 15px; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  /* el h2 ya cae con [data-reveal="drop"] (site.css); aquí solo los párrafos, si algún día vuelven */
+  .ts-js #resenas .res-copy > p { opacity: 0; transform: translateY(16px); transition: opacity 650ms var(--ease-out), transform 650ms var(--ease-out); }
+  .ts-js #resenas.res-in .res-copy > p { opacity: 1; transform: none; }
+  .ts-js #resenas .res-top-band .res-star { opacity: .18; transform: scale(.55); filter: grayscale(1); }
+  .ts-js #resenas.res-in .res-top-band .res-star { animation: res-star-in 420ms var(--ease-out) both; }
+  .ts-js #resenas.res-in .res-top-band .res-star:nth-child(1) { animation-delay: 0ms; }
+  .ts-js #resenas.res-in .res-top-band .res-star:nth-child(2) { animation-delay: 120ms; }
+  .ts-js #resenas.res-in .res-top-band .res-star:nth-child(3) { animation-delay: 240ms; }
+  .ts-js #resenas.res-in .res-top-band .res-star:nth-child(4) { animation-delay: 360ms; }
+  .ts-js #resenas.res-in .res-top-band .res-star:nth-child(5) { animation-delay: 480ms; }
+  @keyframes res-star-in {
+    0% { opacity: .18; transform: scale(.55); filter: grayscale(1); }
+    65% { opacity: 1; transform: scale(1.16); filter: grayscale(0); }
+    100% { opacity: 1; transform: scale(1); filter: grayscale(0); }
+  }
 }
 
 /* Citas reales */
-#resenas .res-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 40px; list-style: none; padding: 0; }
-#resenas .res-card { margin: 0; padding: 22px 20px; background: var(--paper-2); border-left: 3px solid var(--brand); border-radius: 3px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-width: 0; }
+#resenas .res-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 40px; list-style: none; padding-inline: var(--k-gutter); padding-block: 0; }
+#resenas .res-card { margin: 0; padding: 22px 20px; background: var(--paper-2); border-left: 3px solid var(--brand); border-radius: 2px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-width: 0; }
 #resenas blockquote { margin: 0; font-size: 18px; line-height: 1.4; font-weight: 500; text-wrap: pretty; overflow-wrap: anywhere; }
 #resenas .res-card--big { background: var(--deep); color: var(--cream); border-left-color: var(--gold); }
 #resenas .res-card--big blockquote { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(24px, 6.4vw, 36px); line-height: 1.05; }
@@ -69,7 +47,7 @@
 #resenas .res-more { width: 100%; }
 
 /* Visítanos */
-#resenas .res-visit { margin-top: var(--sec-y); padding: 34px 0 var(--sec-y); border-top: 1px solid var(--line); display: grid; gap: 22px; }
+#resenas .res-visit { margin-top: var(--sec-y); padding: 34px var(--k-gutter) var(--sec-y); border-top: 1px solid var(--line); display: grid; gap: 22px; }
 #resenas .res-addr { font-style: normal; margin-top: 12px; font-size: 17px; line-height: 1.5; }
 #resenas .res-links { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 12px; }
 #resenas .res-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 700; color: var(--wine); text-decoration: underline; text-underline-offset: 3px; }
@@ -78,13 +56,7 @@
 @media (min-width: 900px) {
   #resenas .res-top-band { padding: 72px 0 30px; }
   #resenas .res-t { font-size: clamp(56px, 5vw, 80px); }
-  #resenas .res-rule { grid-column: 1 / -1; margin-top: 40px; grid-template-columns: 70px minmax(0, 1fr); }
-  #resenas .res-case { width: 70px; height: 65px; }
-  #resenas .res-track { height: 38px; margin: 0 0 8px -14px; }
-  #resenas .res-blade { background-size: 100% 9px, auto; }
-  #resenas .res-ticks li { font-size: 15px; padding: 0 6px 5px 0; }
-  #resenas .res-ticks li::before { height: 18px; }
-  #resenas .res-ticks .res-end b { font-size: 19px; }
+  #resenas .res-stars { margin-top: 34px; }
   #resenas .res-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 56px; }
   #resenas .res-card--big { grid-column: span 2; grid-row: span 2; padding: 36px; }
   #resenas .res-card--big blockquote { font-size: clamp(36px, 3vw, 50px); }
