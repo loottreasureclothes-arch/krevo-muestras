@@ -1,0 +1,76 @@
+/* 3 · LO QUE HACEMOS. Carrusel con swipe y snap; el primero mas grande para que NO
+   parezca rejilla de plantilla. Fotos reales grandes en marco de ARCO. Sin precios
+   (no publican ninguno): cada ficha manda a la cita, que pide el precio por WhatsApp. */
+.s-serv { background: var(--paper-2); }
+.s-serv-cab { display: grid; gap: 14px; }
+@media (min-width: 900px) {
+  .s-serv-cab { grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); align-items: end; gap: 40px; }
+  .s-serv-cab .mm-lead { justify-self: end; text-align: right; }
+}
+
+.s-serv-riel {
+  margin-top: 28px;
+  display: grid;
+  grid-auto-flow: column;
+  /* la PRIMERA lleva su propia pista, mas ancha: el Combo Cejas Full manda y la fila
+     deja de verse como rejilla de plantilla */
+  grid-template-columns: 84%;
+  grid-auto-columns: 68%;
+  gap: 14px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  padding-inline: var(--gutter);
+  padding-bottom: 14px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.s-serv-riel > * { scroll-snap-align: start; }
+.s-serv-riel:focus-visible { outline-offset: -3px; }
+@media (min-width: 700px) { .s-serv-riel { grid-template-columns: 50%; grid-auto-columns: 38%; gap: 20px; } }
+@media (min-width: 1100px) { .s-serv-riel { grid-template-columns: 32%; grid-auto-columns: 21%; gap: 22px; } }
+
+.s-tar { display: grid; gap: 12px; align-content: start; }
+.s-tar-foto { width: 100%; aspect-ratio: 4 / 5; }
+.s-tar-foto img { transition: transform 700ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .s-tar:hover .s-tar-foto img { transform: scale(1.035); } }
+.s-tar-txt { display: grid; gap: 7px; justify-items: start; }
+.s-tar h3 { line-height: 1.06; }
+.s-tar p { font-size: 13.5px; line-height: 1.45; color: var(--mute); max-width: 30ch; }
+.s-tar-link {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink); border-bottom: 1px solid var(--brand-deep);
+}
+.s-tar-link svg { width: 15px; height: 15px; transition: transform 240ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .s-tar-link:hover svg { transform: translateX(5px); } }
+
+/* el primero manda: mas grande y con la foto mas alta */
+.s-tar--grande .s-tar-foto { aspect-ratio: 3 / 4.4; }
+.s-tar--grande h3 { font-size: clamp(27px, 7vw, 40px); }
+.s-tar--grande p { font-size: 15px; color: var(--ink); max-width: 26ch; }
+/* en compu, los nombres de dos renglones ("Lash Botox · Lash lifting") dejaban las bases
+   desparejas: se les reserva el alto de dos renglones a todas menos a la grande.
+   Y se alinean AL PIE de la grande: antes su foto (mas baja) dejaba una banda rosa vacia
+   de ~270 px debajo de las cuatro chicas. Ahora la fila cierra pareja abajo. */
+@media (min-width: 700px) {
+  .s-serv-riel > .s-tar:not(.s-tar--grande) h3 { min-height: 2.12em; }
+  .s-serv-riel > .s-tar:not(.s-tar--grande) { align-self: end; }
+}
+
+/* marcado cuando el buscador del hero baja hasta una ficha */
+.s-tar.is-marcado .s-tar-foto { box-shadow: inset 0 0 0 2px var(--brand-deep); }
+.s-serv-mas a.is-marcado { background: var(--brand-deep); color: #fff; }
+
+.s-serv-pie { margin-top: 18px; display: grid; gap: 10px; }
+@media (min-width: 700px) { .s-serv-pie { grid-template-columns: auto auto; justify-content: space-between; align-items: baseline; } }
+/* flex con gap: el hueco separa y NO hay ni un caracter "·" que pueda abrir renglon */
+.s-serv-mas { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 18px; font-size: 14px; color: var(--mute); }
+.s-serv-mas-t { display: inline-flex; align-items: center; min-height: 44px; }
+.s-serv-mas a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  font-family: var(--display); font-size: 19px; color: var(--ink);
+  border-bottom: 1px solid var(--brand-deep);
+}
+@media (hover: hover) and (pointer: fine) { .s-serv-mas a:hover { color: var(--brand-deep); } }

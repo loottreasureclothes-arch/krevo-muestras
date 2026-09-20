@@ -1,0 +1,51 @@
+<section class="mm-sec mm-dark s-hero" id="medida" aria-labelledby="s-hero-t">
+  <div class="s-hero-foto" data-mm-reveal aria-hidden="true">
+    <picture>
+      <!-- Descriptores de ANCHO + sizes: el navegador mira el DPR. La foto va con object-fit
+           cover sobre un lienzo alto, asi que su ancho pintado es ~1.6 veces el del celular:
+           por eso 163vw. Un 390 @2x pide ~1290 px y se lleva la de 1200, no la de 675. -->
+      <img src="img/ig/calibrador.webp"
+           srcset="img/ig/calibrador-m.webp 675w, img/ig/calibrador-1000.webp 1000w, img/ig/calibrador.webp 1200w"
+           sizes="(max-width: 700px) 163vw, 100vw"
+           alt="" width="1200" height="1600" fetchpriority="high" decoding="async">
+    </picture>
+    <span class="s-hero-velo"></span>
+    <span class="mm-regla--v s-hero-regla"></span>
+  </div>
+
+  <div class="mm-wrap s-hero-in">
+    <div class="s-hero-txt">
+      <p class="mm-eyebrow">Aguascalientes Centro</p>
+      <h1 class="mm-h1" id="s-hero-t" data-mm-drop>Cejas a tu <em>medida.</em></h1>
+      <p class="mm-lead" data-mm-reveal>Lash lifting, cejas, keratina japonesa y color. Solo con cita, en el Centro de Aguascalientes.</p>
+
+      <form class="s-buscar" id="s-buscar" role="search" data-mm-reveal autocomplete="off">
+        <label class="mm-sr" for="s-q">¿Qué te quieres hacer?</label>
+        <div class="s-buscar-fila">
+          <input type="search" id="s-q" name="q" placeholder="¿Qué te quieres hacer?" enterkeyhint="search"
+                 aria-describedby="s-buscar-ayuda" aria-autocomplete="list" aria-controls="s-sug" aria-expanded="false">
+          <button class="mm-btn mm-btn--marca s-buscar-btn" type="submit">Buscar</button>
+        </div>
+        <p class="mm-sr" id="s-buscar-ayuda">Escribe un servicio y te llevamos a él. Por ejemplo: keratina.</p>
+        <ul class="s-sug" id="s-sug" role="listbox" aria-label="Servicios" hidden></ul>
+      </form>
+
+      <a class="mm-btn mm-btn--wa s-hero-cta" data-mm-wa-zona
+         data-wa="Hola Mimo Beauty Room, quiero agendar una cita. ¿Me confirman disponibilidad y precio?"
+         href="https://wa.me/524495497770?text=Hola%20Mimo%20Beauty%20Room%2C%20quiero%20agendar%20una%20cita.%20%C2%BFMe%20confirman%20disponibilidad%20y%20precio%3F"
+         target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar mi cita</a>
+    </div>
+
+    <div class="s-hero-pie" data-mm-reveal>
+      <div class="mm-fotitas">
+        <span class="mm-arco mm-fotita">
+          <img src="img/ig/cepillitos-s.webp" alt="Cepillitos de cejas sobre una concha, en su mesa de trabajo" width="360" height="480" loading="lazy" decoding="async">
+        </span>
+        <span class="mm-arco mm-fotita">
+          <img src="img/ig/laminado-s.webp" alt="Producto de laminado aplicado sobre la ceja" width="460" height="480" loading="lazy" decoding="async">
+        </span>
+      </div>
+      <p class="mm-credito">Fotos: @mimobeautyroom_ags</p>
+    </div>
+  </div>
+</section>

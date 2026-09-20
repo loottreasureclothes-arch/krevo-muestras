@@ -1,0 +1,89 @@
+/* 6 · BANDA DEL FEED. UN dato real gigante que cae y pega (5,488 seguidores al 20 sep 2026)
+   y un mosaico vivo que cambia UNA foto a la vez. Nada de fila de contadores. */
+.s-feed { background: var(--ink); overflow: hidden; }
+.s-feed-in { display: grid; gap: 28px; }
+@media (min-width: 1000px) { .s-feed-in { grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: 20px 56px; align-items: center; } }
+
+.s-feed-dato { display: grid; justify-items: start; gap: 2px; }
+.s-feed-num {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(82px, 30vw, 210px); line-height: 0.86; letter-spacing: -0.03em;
+  color: var(--paper);
+}
+.s-feed-sub { font-family: var(--display); font-style: italic; font-size: clamp(21px, 5.4vw, 32px); color: var(--brand); margin-top: 6px; }
+.s-feed-link { margin-top: 12px; }
+
+/* ---- mosaico: collage, nunca rejilla de cuadritos iguales ---- */
+.s-mosaico {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 72px;
+  gap: 8px;
+}
+@media (min-width: 1000px) { .s-mosaico { grid-auto-rows: 98px; gap: 12px; } }
+.s-tile { overflow: hidden; }
+.s-tile img { width: 100%; height: 100%; object-fit: cover; transition: opacity 260ms linear; }
+.s-tile.is-cambiando img { opacity: 0; }
+.s-tile--a { grid-column: 1 / 3; grid-row: 1 / 3; }
+.s-tile--b { grid-column: 3; grid-row: 1; border-radius: var(--r); }
+.s-tile--c { grid-column: 3; grid-row: 2; border-radius: var(--r); }
+.s-tile--d { grid-column: 1; grid-row: 3 / 5; }
+.s-tile--e { grid-column: 2 / 4; grid-row: 3; border-radius: var(--r); }
+.s-tile--f { grid-column: 2 / 4; grid-row: 4; border-radius: var(--r); }
+
+/* ---- pie: horario chico + cierre ---- */
+.s-feed-pie { display: grid; gap: 24px; }
+@media (min-width: 1000px) { .s-feed-pie { grid-column: 1 / -1; grid-template-columns: auto minmax(0, 1fr); gap: 56px; align-items: end; padding-top: 14px; border-top: 1px solid var(--line-ink); } }
+.s-feed-h { font-family: var(--body); font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brand); margin-bottom: 8px; }
+.s-feed-horas { font-size: 13px; min-width: min(100%, 260px); }
+.s-feed-horas div { display: flex; justify-content: space-between; gap: 18px; padding: 4px 0; border-bottom: 1px solid rgba(251, 243, 238, 0.09); color: var(--ink-soft); }
+.s-feed-horas div:last-child { border-bottom: 0; }
+.s-feed-horas b { font-weight: 600; color: var(--paper); }
+.s-feed-horas .is-cerrado, .s-feed-horas .is-cerrado b { color: rgba(251, 243, 238, 0.42); }
+.s-feed-cierre { display: grid; gap: 14px; justify-items: start; }
+.s-feed-donde { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
+.s-feed-cierre .mm-btn { width: 100%; }
+@media (min-width: 620px) { .s-feed-cierre .mm-btn { width: auto; } }
+
+/* ---- lo que falta para que la muestra sea suya ----
+   Banda crema tipo papel (para LEER) encima del cierre en tinta. Renglones con su marquita
+   de calibrador y un arco fino rosa antes del enlace. Cierra con LINK, no con otro verde. */
+.s-falta { margin-top: 34px; }
+@media (min-width: 1000px) { .s-falta { grid-column: 1 / -1; margin-top: 10px; } }
+.s-falta-caja {
+  position: relative; overflow: hidden;
+  background: var(--paper); color: var(--ink);
+  border-radius: var(--r); box-shadow: inset 0 0 0 1px var(--greige);
+  padding: 26px 18px 24px;
+}
+@media (min-width: 900px) { .s-falta-caja { padding: 34px 32px 30px; } }
+.s-falta-regla { position: absolute; left: 0; right: 0; top: 0; opacity: 0.6; }
+.s-falta-t { font-size: clamp(30px, 8.2vw, 46px); margin-bottom: 2px; }
+/* el arco, ya con oficio: subrayado del titulo, pegado a el y a su ancho */
+.s-falta-arco { display: block; margin: 0 0 14px; width: min(230px, 62%); height: 16px; opacity: 0.62; }
+.s-falta-lead { font-size: 15px; color: var(--mute); max-width: 42ch; }
+@media (min-width: 900px) { .s-falta-lead { font-size: 16.5px; } }
+
+.s-falta-lista { display: grid; margin-top: 16px; }
+@media (min-width: 760px) { .s-falta-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 34px; } }
+.s-falta-lista li {
+  display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 12px; align-items: baseline;
+  padding: 12px 0; border-top: 1px solid var(--line);
+  font-size: 15px; line-height: 1.4; color: var(--ink);
+}
+@media (max-width: 759px) { .s-falta-lista li:last-child { border-bottom: 1px solid var(--line); } }
+/* en dos columnas los ultimos de cada columna son el 5 (izquierda) y el 4 (derecha) */
+@media (min-width: 760px) { .s-falta-lista li:nth-child(4), .s-falta-lista li:nth-child(5) { border-bottom: 1px solid var(--line); } }
+/* la marquita: rayita de vernier, una larga y una corta, como en la regla del calibrador */
+.s-falta-lista li::before {
+  content: ""; display: block; width: 1.5px; height: 14px; background: var(--brand-deep);
+  transform: translateY(3px);
+}
+.s-falta-lista li:nth-child(even)::before { height: 9px; background: var(--greige); }
+/* lo que NO se le pide a ella: es funcion de la muestra, por eso va aparte y como promesa */
+.s-falta-promesa {
+  margin-top: 18px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--mute);
+  padding-left: 12px; border-left: 2px solid var(--brand-deep);
+}
+/* como nos lo pasa. NO lleva boton ni wa.me: el WhatsApp de la pagina es el del negocio. */
+.s-falta-como { margin-top: 14px; font-size: 13.5px; font-weight: 600; color: var(--ink); }

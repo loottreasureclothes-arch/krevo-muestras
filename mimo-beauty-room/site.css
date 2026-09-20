@@ -1,0 +1,418 @@
+/* Mimo Beauty Room — hoja base (FUNDACION). Autocontenida: no depende de ../_kit/.
+   =====================================================================
+   LENGUAJE DE FORMAS PROPIO: EL ARCO Y LA MEDIDA
+     · arco de ceja: marcos de foto con la parte de arriba en arco (999px 999px 0 0),
+       subrayados en arco bajo los titulos, divisores con un arco fino rosa.
+     · la medida: marquitas de calibrador (rayitas finas cada 8 px, como regla de vernier).
+       Aqui SI se vale medir: el negocio mide de verdad (su foto real del calibrador).
+   COLOR (muestreado de su logo real y de su feed)
+     --paper  #FBF3EE crema · --paper-2 #F6DDE6 rosa empolvado (nada de blanco plano)
+     --ink    #1D1517 tinta calida casi negra (hero y bandas; su feed es gris, guante negro)
+     --brand  #EF43A5 su rosa, SOLO en detalles · --greige #C9B3A6 filetes
+     --wa     #25D366 con texto --wa-ink oscuro
+   TIPOGRAFIA: Bodoni Moda (titulos, UNA palabra en italica por titulo) · Manrope (cuerpo)
+   ===================================================================== */
+:root {
+  --paper: #fbf3ee;
+  --paper-2: #f7e7ec;
+  --paper-3: #f3e6de;
+  --ink: #1d1517;
+  --ink-2: #2b1f23;
+  --ink-soft: rgba(251, 243, 238, 0.74);
+  --mute: #6d5b60;
+  --brand: #ef43a5;
+  /* su mismo rosa, un punto mas hondo: el unico que pasa AA (4.5:1) sobre las TRES bandas
+     claras — 5.14:1 sobre crema, 4.72:1 sobre el rosa empolvado y 4.61:1 sobre el papel de
+     la cita — y 5.63:1 con texto claro encima. El #ef43a5 se queda para las bandas en tinta. */
+  --brand-deep: #c4147e;
+  --brand-soft: #f9d3e8;
+  --greige: #c9b3a6;
+  --line: rgba(29, 21, 23, 0.16);
+  --line-ink: rgba(251, 243, 238, 0.2);
+  --wa: #25d366;
+  --wa-dark: #1cb757;
+  --wa-ink: #0b3d1f;
+  --display: "Bodoni Moda", "Bodoni 72", Didot, Georgia, serif;
+  --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drop: cubic-bezier(0.3, 0.92, 0.55, 1);
+  --r: 4px;               /* recto, editorial: NADA de pildoras */
+  --arco: 999px 999px var(--r) var(--r);  /* la unica curva grande de la pagina: el arco */
+  --wrap: 1240px;
+  --gutter: 18px;
+  --sec-y: 62px;
+  --header-h: 60px;
+}
+@media (min-width: 900px) {
+  :root { --gutter: 40px; --sec-y: 104px; --header-h: 74px; }
+}
+
+/* ============ Reset ============ */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-padding-top: calc(var(--header-h) + 10px);
+  overflow-x: clip;
+  accent-color: var(--brand);
+  caret-color: var(--ink);
+}
+html { scroll-behavior: auto !important; }   /* el scroll suave lo hace el JS (regla L4) */
+body {
+  min-height: 100svh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+h1 em, h2 em, h3 em { font-style: italic; font-weight: 400; }
+p { text-wrap: pretty; overflow-wrap: break-word; max-width: 56ch; }
+img, picture, svg, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+input, select, textarea { font-size: max(16px, 1em); }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; text-underline-offset: 0.22em; }
+a, button, [role="button"], label, summary { touch-action: manipulation; }
+ul[class], ol[class] { list-style: none; padding: 0; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 3px; }
+::selection { background: var(--brand); color: #fff; }
+
+.mm-wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.mm-skip {
+  position: fixed; left: 10px; top: 10px; z-index: 120; padding: 12px 18px;
+  background: var(--ink); color: var(--paper); font-weight: 600; border-radius: var(--r);
+  transform: translateY(-180%); transition: transform 200ms var(--ease-out);
+}
+.mm-skip:focus { transform: none; }
+.mm-sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ============ Tipografia ============ */
+.mm-eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--mute); margin-bottom: 14px;
+}
+.mm-eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--brand); }
+.mm-dark .mm-eyebrow { color: rgba(251, 243, 238, 0.66); }
+.mm-h1 { font-size: clamp(46px, 15vw, 116px); }
+.mm-h2 { font-size: clamp(36px, 10.5vw, 76px); }
+/* TITULOS A DOS TONOS: la palabra en italica va en su rosa (el mismo golpe del og.jpg).
+   Sobre bandas claras, el rosa hondo; sobre tinta, el rosa de marca. */
+.mm-h1 em, .mm-h2 em { color: var(--brand-deep); }
+.mm-dark .mm-h1 em, .mm-dark .mm-h2 em { color: var(--brand); }
+.mm-h3 { font-size: clamp(23px, 5.4vw, 30px); }
+.mm-lead { color: var(--mute); font-size: 16.5px; line-height: 1.5; max-width: 34ch; }
+.mm-dark .mm-lead { color: var(--ink-soft); }
+@media (min-width: 900px) { .mm-lead { font-size: 18px; max-width: 40ch; } }
+.mm-caps { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
+.mm-nowrap { white-space: nowrap; }
+/* La firma de las fotos tiene que LEERSE tambien sobre crema y sobre el rosa empolvado:
+   el greige daba 1.83:1. Con --mute da 5.73:1 sobre crema y 5.27:1 sobre el rosa. */
+.mm-credito { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); }
+.mm-dark .mm-credito { color: rgba(201, 179, 166, 0.68); }
+
+/* ============ Titulos que CAEN Y PEGAN ============
+   [data-mm-drop] envuelve cada palabra en .mm-w > span (el JS respeta el <em>).
+   Estado final (sin JS) = visible. Con JS: cae ~40 px por palabra, golpe seco de 470 ms. */
+html.js [data-mm-drop] .mm-w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+html.js [data-mm-drop] .mm-w > span {
+  display: inline-block;
+  transform: translateY(-42px);
+  opacity: 0;
+  transition: transform 470ms var(--ease-drop), opacity 200ms linear;
+  transition-delay: calc(var(--i, 0) * 78ms);
+  will-change: transform;
+}
+html.js [data-mm-drop].is-in .mm-w > span { transform: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-mm-drop] .mm-w > span { transition: none !important; transform: none !important; opacity: 1 !important; }
+}
+
+/* ============ Reveal generico (blindaje anti-blanco) ============
+   Sin JS: todo visible. Con JS: el motor lo muestra por sondeo Y por un tope duro de 1.6 s. */
+html.js [data-mm-reveal] { opacity: 0; transform: translateY(20px); transition: opacity 620ms var(--ease-out), transform 620ms var(--ease-out); }
+html.js [data-mm-reveal].is-in { opacity: 1; transform: none; }
+html.js [data-mm-stagger] > * { opacity: 0; transform: translateY(18px); transition: opacity 540ms var(--ease-out), transform 540ms var(--ease-out); transition-delay: calc(var(--i, 0) * 74ms); }
+html.js [data-mm-stagger].is-in > * { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-mm-reveal], html.js [data-mm-stagger] > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* ============ EL ARCO: marcos de foto ============ */
+.mm-arco {
+  position: relative; overflow: hidden; border-radius: var(--arco);
+  background: var(--paper-3);
+  box-shadow: inset 0 0 0 1px var(--greige);
+}
+.mm-arco > img { width: 100%; height: 100%; object-fit: cover; }
+.mm-dark .mm-arco { background: #241b1e; box-shadow: inset 0 0 0 1px rgba(201, 179, 166, 0.46); }
+
+/* fotitas que se asoman (pedido de Emanuel). Nunca tapan texto ni botones: viven en su propia fila. */
+.mm-fotitas { display: flex; gap: 12px; align-items: flex-end; }
+.mm-fotita { flex: 0 0 auto; width: 112px; aspect-ratio: 3 / 4; }
+.mm-fotita:nth-child(2) { width: 88px; margin-bottom: 16px; }
+@media (min-width: 900px) {
+  .mm-fotita { width: 168px; }
+  .mm-fotita:nth-child(2) { width: 132px; margin-bottom: 26px; }
+}
+
+/* ============ LA MEDIDA: marquitas de calibrador ============
+   Rayitas finas cada 8 px, con una mas larga cada 40 (como la escala de un vernier). */
+.mm-regla {
+  height: 11px; width: 100%;
+  background-image:
+    repeating-linear-gradient(to right, var(--greige) 0 1px, transparent 1px 8px),
+    repeating-linear-gradient(to right, var(--brand) 0 1px, transparent 1px 40px);
+  background-size: 100% 6px, 100% 11px;
+  background-repeat: no-repeat;
+  background-position: 0 0, 0 0;
+  opacity: 0.85;
+}
+.mm-dark .mm-regla { background-image: repeating-linear-gradient(to right, rgba(201, 179, 166, 0.62) 0 1px, transparent 1px 8px), repeating-linear-gradient(to right, var(--brand) 0 1px, transparent 1px 40px); }
+.mm-regla--v {
+  width: 11px; height: 100%;
+  background-image:
+    repeating-linear-gradient(to bottom, var(--greige) 0 1px, transparent 1px 8px),
+    repeating-linear-gradient(to bottom, var(--brand) 0 1px, transparent 1px 40px);
+  background-size: 6px 100%, 11px 100%;
+}
+
+/* ============ Aviso de que el carrusel se desliza ============
+   Rayitas finas de calibrador (la forma ya es suya, nada de puntitos) + "Desliza".
+   Son ADORNO: aria-hidden, sin foco y sin eventos, para que nunca cuenten como control. */
+.mm-riel-pie { display: flex; align-items: center; gap: 14px; margin-top: 10px; }
+.mm-riel-marcas { display: flex; align-items: flex-end; gap: 6px; height: 16px; }
+.mm-riel-marcas i {
+  display: block; width: 1.5px; height: 9px; background: var(--greige); opacity: 0.6;
+  transition: height 240ms var(--ease-out), background-color 240ms var(--ease-out), opacity 240ms linear;
+}
+.mm-riel-marcas i.is-on { height: 16px; background: var(--brand-deep); opacity: 1; }
+.mm-dark .mm-riel-marcas i { background: rgba(201, 179, 166, 0.62); }
+.mm-dark .mm-riel-marcas i.is-on { background: var(--brand); }
+.mm-riel-desliza {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--mute);
+}
+.mm-dark .mm-riel-desliza { color: rgba(251, 243, 238, 0.62); }
+.mm-riel-desliza svg { width: 14px; height: 14px; }
+
+/* divisor: un arco fino rosa */
+.mm-arco-div { height: 30px; width: min(240px, 60%); margin: 0 auto; border-top: 1px solid var(--brand); border-radius: 50% 50% 0 0 / 100% 100% 0 0; opacity: 0.5; }
+
+/* ============ Botones ============
+   VERDE = solo lo que de verdad manda WhatsApp (maximo 1 por seccion + el flotante).
+   Navegar y buscar van en TINTA. Radio 4 px: recto, editorial. Cero pildoras. */
+.mm-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 22px; border-radius: var(--r);
+  font-family: var(--body); font-size: 15px; font-weight: 700; letter-spacing: 0.02em;
+  transition: transform 180ms var(--ease-out), background-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+}
+.mm-btn:active { transform: scale(0.975); }
+.mm-btn svg { width: 20px; height: 20px; flex: 0 0 auto; }
+.mm-btn--wa { background: var(--wa); color: var(--wa-ink); box-shadow: 0 2px 0 rgba(11, 61, 31, 0.38), inset 0 0 0 1px rgba(11, 61, 31, 0.22); }
+@media (hover: hover) and (pointer: fine) { .mm-btn--wa:hover { background: var(--wa-dark); } }
+/* 44 px de alto siempre: es el minimo que se puede tocar con el pulgar */
+.mm-btn--sm { min-height: 44px; padding: 0 13px; font-size: 13px; gap: 6px; }
+.mm-btn--sm svg { width: 15px; height: 15px; }
+/* Navegar y buscar (decision del 20 sep): color de marca o tinta, FINOS, rectangulares y en
+   mayusculas espaciadas. El verde no se toca: es solo de WhatsApp. */
+.mm-btn--ink, .mm-btn--marca {
+  font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+}
+.mm-btn--ink { background: var(--ink); color: var(--paper); }
+@media (hover: hover) and (pointer: fine) { .mm-btn--ink:hover { background: var(--ink-2); } }
+.mm-dark .mm-btn--ink { background: var(--paper); color: var(--ink); }
+.mm-btn--marca { background: var(--brand-deep); color: var(--paper); }
+@media (hover: hover) and (pointer: fine) { .mm-btn--marca:hover { background: var(--brand); color: var(--ink); } }
+.mm-btn--line { background: none; box-shadow: inset 0 0 0 1px var(--line); color: var(--ink); }
+.mm-dark .mm-btn--line { box-shadow: inset 0 0 0 1px var(--line-ink); color: var(--paper); }
+
+/* link con flecha (todo lo que NO manda WhatsApp desde una seccion) */
+.mm-link {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  border-bottom: 1px solid var(--brand); padding-bottom: 2px;
+}
+.mm-link svg { width: 17px; height: 17px; transition: transform 240ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .mm-link:hover svg { transform: translateX(5px); } }
+.mm-dark .mm-link { color: var(--paper); }
+
+/* ============ Header editorial con arco ============ */
+/* Por omision la barra va SOLIDA en tinta: asi, sin JS, nunca flota encima de un texto.
+   Solo con JS y estando hasta arriba (sobre el hero oscuro) se pone transparente. */
+.mm-header {
+  position: fixed; inset: 0 0 auto; z-index: 100;
+  /* pointer-events:none en la barra: SOLO sus controles reales lo reactivan, para que el hueco
+     vacio de la barra (mucho en celular) nunca tape lo que pasa por debajo. */
+  pointer-events: none;
+  background: rgba(29, 21, 23, 0.88);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  transition: transform 260ms var(--ease-out), background-color 260ms var(--ease-out);
+}
+html.js .mm-header.is-arriba { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.mm-header.is-hidden { transform: translateY(-104%); }
+.mm-bar {
+  pointer-events: none;
+  height: var(--header-h);
+  display: flex; align-items: center; gap: 12px;
+  width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter);
+  transition: height 240ms var(--ease-out);
+}
+/* Barra COMPACTA (al subir): se queda con lo minimo, el corazon a la izquierda y la accion a la
+   derecha, para que su superficie tocable sea la menor posible y casi nunca caiga encima de un
+   control de la pagina. El fondo de la barra no cuenta: lleva pointer-events:none. */
+.mm-header.is-compact .mm-bar { height: 50px; }
+.mm-header.is-compact .mm-stub-txt,
+.mm-header.is-compact .mm-nav,
+.mm-header.is-compact .mm-solo { display: none; }
+.mm-header.is-compact .mm-stub img { width: 26px; height: 26px; }
+/* en compacta el boton se queda con el puro icono: 44 px, nada mas */
+.mm-header.is-compact .mm-acts .mm-btn { min-height: 44px; width: 44px; padding: 0; gap: 0; font-size: 0; }
+.mm-header.is-compact .mm-acts .mm-btn svg { width: 20px; height: 20px; }
+@media (min-width: 900px) { .mm-header.is-compact .mm-bar { height: 56px; } }
+
+.mm-stub { pointer-events: auto; display: flex; align-items: center; gap: 9px; margin-right: auto; min-height: 44px; }
+.mm-stub img { width: 30px; height: 30px; object-fit: contain; }
+.mm-stub-txt { display: grid; line-height: 1; }
+.mm-stub-a { font-family: var(--display); font-style: italic; font-size: 21px; color: var(--paper); letter-spacing: -0.01em; }
+/* 10 px: era el unico texto de la pagina por debajo del piso que adopto la correccion 1 */
+.mm-stub-b { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; color: rgba(251, 243, 238, 0.7); margin-top: 3px; }
+
+.mm-nav { display: none; }
+@media (min-width: 1000px) {
+  .mm-nav { display: flex; gap: 26px; margin-inline: auto; }
+  .mm-nav a { pointer-events: auto; }
+  .mm-nav a { display: inline-flex; align-items: center; min-height: 42px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(251, 243, 238, 0.82); border-bottom: 1px solid transparent; }
+  .mm-nav a:hover { color: var(--paper); border-bottom-color: var(--brand); }
+}
+.mm-solo { display: none; }
+@media (min-width: 760px) {
+  .mm-solo { display: inline-flex; align-items: center; gap: 8px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(251, 243, 238, 0.68); }
+  .mm-solo::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--brand); }
+}
+.mm-acts { pointer-events: auto; display: flex; align-items: center; gap: 8px; }
+.mm-burger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; align-items: center; }
+.mm-burger i { display: block; width: 20px; height: 1.5px; background: var(--paper); transition: transform 220ms var(--ease-out), opacity 160ms linear; }
+body.mm-menu-open .mm-burger i:first-child { transform: translateY(3.25px) rotate(45deg); }
+body.mm-menu-open .mm-burger i:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+
+/* la linea en forma de ARCO DE CEJA bajo la barra, que se dibuja al cargar */
+.mm-arcline { pointer-events: none; display: block; width: 100%; height: 12px; }
+.mm-arcline path { fill: none; stroke: var(--brand); stroke-width: 1.4; stroke-linecap: round; opacity: 0.85; }
+html.js .mm-arcline path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+html.js .mm-arcline.is-in path { transition: stroke-dashoffset 1100ms var(--ease-out) 200ms; stroke-dashoffset: 0; }
+@media (prefers-reduced-motion: reduce) { html.js .mm-arcline path { stroke-dashoffset: 0 !important; transition: none !important; } }
+
+/* ============ Menu a pantalla completa, en tinta ============ */
+.mm-menu { position: fixed; inset: 0; z-index: 90; visibility: hidden; pointer-events: none; }
+body.mm-menu-open .mm-menu { visibility: visible; pointer-events: auto; }
+.mm-menu-panel {
+  position: absolute; inset: 0; background: var(--ink); color: var(--paper);
+  display: flex; flex-direction: column; justify-content: center; gap: 22px;
+  padding: calc(var(--header-h) + 26px) var(--gutter) 26px;
+  overflow-y: auto;
+  opacity: 0; transform: translateY(-14px);
+  transition: opacity 260ms var(--ease-out), transform 320ms var(--ease-out), visibility 0s linear 320ms;
+}
+body.mm-menu-open .mm-menu-panel { opacity: 1; transform: none; transition-delay: 0s; }
+.mm-menu-nav { display: grid; gap: 2px; }
+.mm-menu-nav > a {
+  display: flex; align-items: baseline; gap: 14px;
+  font-family: var(--display); font-size: clamp(30px, 8.6vw, 52px); line-height: 1.12; padding: 5px 0;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 340ms var(--ease-out), transform 340ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 52ms + 60ms);
+}
+body.mm-menu-open .mm-menu-nav > a { opacity: 1; transform: none; }
+.mm-menu-nav > a span { font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; color: var(--brand); }
+.mm-menu-sub { display: flex; flex-wrap: wrap; gap: 7px; margin: 8px 0 12px; }
+.mm-menu-sub a { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 13px; min-height: 40px; display: inline-flex; align-items: center; border-radius: var(--r); box-shadow: inset 0 0 0 1px var(--line-ink); color: rgba(251, 243, 238, 0.86); }
+.mm-menu-sub a:hover { box-shadow: inset 0 0 0 1px var(--brand); color: var(--paper); }
+.mm-menu-foot { display: grid; gap: 14px; border-top: 1px solid var(--line-ink); padding-top: 18px; }
+.mm-menu-foot .mm-btn { width: 100%; }
+@media (min-width: 620px) { .mm-menu-foot .mm-btn { width: auto; justify-self: start; } }
+.mm-menu-soc { display: flex; gap: 18px; align-items: center; }
+.mm-menu-soc a { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(251, 243, 238, 0.8); min-height: 44px; }
+.mm-menu-soc svg { width: 20px; height: 20px; }
+@media (prefers-reduced-motion: reduce) {
+  .mm-menu-panel, .mm-menu-nav > a { transition: none !important; opacity: 1; transform: none; }
+  .mm-menu-panel { opacity: 0; }
+  body.mm-menu-open .mm-menu-panel { opacity: 1; }
+}
+
+/* ============ WhatsApp flotante ============
+   Se esconde con visibility (regla L11) cuando hay un boton verde de seccion o el pie a la vista. */
+.mm-wa-float {
+  position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 70;
+  width: 54px; height: 54px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--wa); color: var(--wa-ink);
+  box-shadow: 0 6px 20px rgba(29, 21, 23, 0.3), inset 0 0 0 1px rgba(11, 61, 31, 0.24);
+  transition: transform 220ms var(--ease-out), opacity 200ms linear;
+}
+.mm-wa-float svg { width: 27px; height: 27px; }
+.mm-wa-float.is-off { visibility: hidden; opacity: 0; transform: scale(0.82); }
+@media (min-width: 900px) { .mm-wa-float { right: 22px; bottom: 22px; width: 58px; height: 58px; } }
+
+/* ============ Secciones ============ */
+.mm-sec { padding-block: var(--sec-y); position: relative; }
+.mm-dark { background: var(--ink); color: var(--paper); }
+.mm-dark h1, .mm-dark h2, .mm-dark h3 { color: var(--paper); }
+.mm-rosa { background: var(--paper-2); }
+/* ISLA CLARA dentro de una banda en tinta (la carta de "lo que falta"): devuelve los
+   colores de banda clara, porque si no hereda los blancos de .mm-dark y no se lee nada. */
+.mm-dark .mm-claro { color: var(--ink); }
+.mm-dark .mm-claro h1, .mm-dark .mm-claro h2, .mm-dark .mm-claro h3 { color: var(--ink); }
+.mm-dark .mm-claro .mm-eyebrow,
+.mm-dark .mm-claro .mm-lead,
+.mm-dark .mm-claro .mm-credito { color: var(--mute); }
+.mm-dark .mm-claro .mm-h1 em, .mm-dark .mm-claro .mm-h2 em { color: var(--brand-deep); }
+.mm-dark .mm-claro .mm-link { color: var(--ink); }
+.mm-dark .mm-claro .mm-regla {
+  background-image:
+    repeating-linear-gradient(to right, var(--greige) 0 1px, transparent 1px 8px),
+    repeating-linear-gradient(to right, var(--brand-deep) 0 1px, transparent 1px 40px);
+}
+.mm-borde-arriba { border-top: 1px solid var(--line); }
+
+/* ============ Pie ============ */
+.mm-foot { background: var(--ink); color: var(--paper); padding-block: 46px 30px; }
+.mm-foot-grid { display: grid; gap: 30px; }
+@media (min-width: 860px) { .mm-foot-grid { grid-template-columns: 1.2fr 1fr 1fr; gap: 44px; } }
+.mm-foot-brand { display: grid; gap: 14px; justify-items: start; }
+.mm-foot-brand img { width: 64px; height: 64px; object-fit: contain; }
+.mm-foot-motto { font-family: var(--display); font-size: clamp(26px, 7vw, 38px); line-height: 1.05; color: var(--paper); max-width: 14ch; }
+.mm-foot-motto em { font-style: italic; }
+.mm-foot-h { font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brand); margin-bottom: 12px; font-family: var(--body); }
+.mm-foot-list { display: grid; gap: 4px; }
+.mm-foot-list a, .mm-foot-list span { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--ink-soft); font-size: 14.5px; }
+.mm-foot-list a:hover { color: var(--paper); }
+.mm-foot-list svg { width: 20px; height: 20px; flex: 0 0 auto; }
+.mm-foot-soc { display: flex; gap: 12px; margin-top: 12px; }
+.mm-foot-soc a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--r); box-shadow: inset 0 0 0 1px var(--line-ink); color: var(--paper); }
+.mm-foot-soc a:hover { box-shadow: inset 0 0 0 1px var(--brand); color: var(--brand); }
+.mm-foot-soc svg { width: 21px; height: 21px; }
+/* el horario completo vive una sola vez (en el cierre): aqui va el resumen y su enlace */
+.mm-foot-hor { font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; }
+.mm-foot-hor span { color: rgba(251, 243, 238, 0.46); }
+.mm-foot-hor-link { margin-top: 6px; font-size: 11.5px; }
+.mm-foot-bottom { margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--line-ink); display: grid; gap: 6px; font-size: 12.5px; color: rgba(251, 243, 238, 0.56); }

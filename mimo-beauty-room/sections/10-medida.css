@@ -1,0 +1,83 @@
+/* 1 · LA MEDIDA (hero). Su foto REAL del calibrador y las pinzas, a sangre. */
+.s-hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding-block: calc(var(--header-h) + 18px) 26px;
+  overflow: hidden;
+}
+.s-hero-foto { position: absolute; inset: 0; z-index: 0; }
+/* el <picture> necesita alto propio: si no, el height:100% de la <img> no resuelve y la foto
+   se corta a media seccion (se veia un escalon en el hero) */
+.s-hero-foto picture { display: block; width: 100%; height: 100%; }
+.s-hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 54% 30%; }
+/* velo direccional: oscurece SOLO donde va el texto, y una vineta abajo */
+.s-hero-velo {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(103deg, rgba(20, 13, 15, 0.93) 0%, rgba(20, 13, 15, 0.74) 30%, rgba(20, 13, 15, 0.2) 62%, rgba(20, 13, 15, 0.04) 100%),
+    linear-gradient(to top, rgba(20, 13, 15, 0.9) 0%, rgba(20, 13, 15, 0.26) 32%, transparent 58%);
+}
+@media (min-width: 900px) {
+  .s-hero-foto img { object-position: 62% 40%; }
+  .s-hero-velo { background: linear-gradient(94deg, rgba(20, 13, 15, 0.94) 0%, rgba(20, 13, 15, 0.78) 36%, rgba(20, 13, 15, 0.1) 70%, transparent 100%); }
+}
+/* marquitas de calibrador pegadas al borde de la foto */
+.s-hero-regla { position: absolute; right: 0; top: 14%; height: 56%; opacity: 0.55; }
+
+.s-hero-in { position: relative; z-index: 1; width: 100%; display: grid; gap: 26px; }
+.s-hero-txt { display: grid; justify-items: start; }
+.s-hero .mm-h1 { margin-bottom: 14px; }
+.s-hero .mm-lead { margin-bottom: 20px; }
+.s-hero-cta { margin-top: 16px; }
+@media (min-width: 900px) {
+  .s-hero-in { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 40px; }
+  .s-hero .mm-h1 { max-width: 9ch; }
+}
+
+/* ---- buscador: "¿Qué te quieres hacer?" (en tinta, NUNCA verde) ---- */
+.s-buscar { width: min(100%, 460px); position: relative; }
+/* Campo y boton EN LA MISMA LINEA tambien en celular: una barra menos de las tres
+   apiladas que se veian como formulario. Viven abajo del hero, lejos de donde aterriza
+   la barra compacta del header (esquina de arriba a la derecha). */
+.s-buscar-fila { display: flex; gap: 8px; }
+.s-buscar input {
+  flex: 1 1 auto; width: 100%; min-width: 0; min-height: 50px; padding: 0 15px;
+  border: 0; border-radius: var(--r);
+  background: rgba(251, 243, 238, 0.95); color: var(--ink);
+  box-shadow: inset 0 0 0 1px rgba(201, 179, 166, 0.6);
+  -webkit-appearance: none; appearance: none;
+}
+.s-buscar input::placeholder { color: #8b787d; }
+.s-buscar input::-webkit-search-cancel-button { -webkit-appearance: none; }
+/* Buscar NO es verde: el verde es solo de WhatsApp. Va en su rosa de marca (decision del
+   20 sep: navegar y acciones normales en color de marca, finos, rectos y en versalitas). */
+.s-hero .s-buscar-btn { min-height: 50px; flex: 0 0 auto; padding-inline: 16px; }
+.s-sug {
+  position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 6;
+  background: var(--paper); color: var(--ink); border-radius: var(--r);
+  box-shadow: 0 16px 34px rgba(20, 13, 15, 0.34), inset 0 0 0 1px var(--greige);
+  overflow: hidden; max-height: 244px; overflow-y: auto;
+}
+.s-sug li { border-bottom: 1px solid var(--line); }
+.s-sug li:last-child { border-bottom: 0; }
+.s-sug button {
+  display: flex; width: 100%; align-items: center; gap: 10px; min-height: 48px;
+  padding: 10px 14px; text-align: left; font-size: 15px; font-weight: 500;
+}
+.s-sug button b { font-weight: 700; color: var(--brand); }
+.s-sug button:hover, .s-sug button:focus-visible { background: var(--paper-2); }
+
+/* ---- pie del hero: fotitas en arco (nunca encima del texto: viven en su propia fila) ---- */
+.s-hero-pie { display: grid; gap: 10px; justify-items: start; }
+@media (min-width: 900px) { .s-hero-pie { justify-items: end; } }
+
+/* la foto entra desde un desenfoque corto (lujo barato, 1.1 s).
+   Lleva data-mm-reveal solo para engancharse al blindaje de 1.6 s del template: el movimiento
+   generico (opacidad y subida del bloque) se anula aqui, porque el que manda es el de la foto. */
+html.js .s-hero-foto[data-mm-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+html.js .s-hero-foto img { opacity: 0; filter: blur(14px); transform: scale(1.04); transition: opacity 700ms var(--ease-out), filter 1100ms var(--ease-out), transform 1400ms var(--ease-out); }
+html.js .s-hero-foto.is-in img { opacity: 1; filter: none; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.js .s-hero-foto img { opacity: 1 !important; filter: none !important; transform: none !important; transition: none !important; }
+}

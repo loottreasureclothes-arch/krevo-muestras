@@ -1,0 +1,104 @@
+/* 5 · LA CITA. El trabajo de la pagina: que te vas a hacer, que dia, a que hora. Todo a la
+   vista, sin pantallas escondidas. Banda crema tipo papel para leer y elegir. Un solo boton
+   verde, el que de verdad manda el WhatsApp. */
+.s-cita { background: var(--paper); }
+.s-cita-cab { display: grid; gap: 14px; }
+@media (min-width: 900px) {
+  .s-cita-cab { grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); align-items: end; gap: 40px; }
+  .s-cita-cab .mm-lead { justify-self: end; text-align: right; }
+}
+
+.s-cita-caja {
+  position: relative; margin-top: 26px; padding: 22px 16px 20px;
+  background: var(--paper-3); border-radius: var(--r);
+  box-shadow: inset 0 0 0 1px var(--greige);
+  display: grid; gap: 20px;
+}
+@media (min-width: 900px) { .s-cita-caja { padding: 34px 32px 30px; gap: 26px; } }
+.s-cita-regla { position: absolute; left: 0; right: 0; top: 0; opacity: 0.6; }
+
+.s-bloque { border: 0; padding: 0; margin: 0; display: grid; gap: 11px; }
+.s-bloque legend {
+  display: flex; align-items: baseline; gap: 9px; padding: 0; float: left; width: 100%;
+  font-family: var(--display); font-size: clamp(19px, 4.6vw, 25px); line-height: 1.1; color: var(--ink);
+}
+.s-bloque legend b { font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; color: var(--brand-deep); }
+.s-bloque legend + * { clear: both; }
+.s-nota { font-size: 12.5px; color: var(--mute); }
+html.js .s-sinjs { display: none; }
+
+/* ---- chips (nada de pildoras: esquinas rectas, filete greige) ---- */
+.s-chips, .s-dias, .s-horas { display: flex; flex-wrap: wrap; gap: 7px; }
+.s-chip, .s-dia, .s-hora {
+  min-height: 44px; padding: 8px 13px; border-radius: var(--r);
+  background: var(--paper); color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--greige);
+  font-size: 13.5px; font-weight: 500; line-height: 1.2;
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  transition: background-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out), color 180ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .s-chip:hover, .s-dia:hover:not([disabled]), .s-hora:hover { box-shadow: inset 0 0 0 1px var(--ink); }
+}
+.s-chip:active, .s-dia:active, .s-hora:active { transform: scale(0.975); }
+.s-chip[aria-pressed="true"], .s-dia[aria-pressed="true"], .s-hora[aria-pressed="true"] {
+  background: var(--ink); color: var(--paper); box-shadow: inset 0 0 0 1px var(--ink); font-weight: 600;
+}
+.s-chip[aria-pressed="true"]::before {
+  content: ""; width: 13px; height: 8px; flex: 0 0 auto;
+  border-left: 1.6px solid var(--brand); border-bottom: 1.6px solid var(--brand);
+  transform: rotate(-45deg) translate(1px, -2px);
+}
+
+/* dias: dos renglones, con el nombre corto arriba y el numero abajo */
+.s-dia { flex-direction: column; gap: 1px; min-width: 52px; padding: 7px 8px; }
+.s-dia u { text-decoration: none; font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
+.s-dia[aria-pressed="true"] u { color: rgba(251, 243, 238, 0.78); }
+.s-dia s { text-decoration: none; font-size: 16px; font-weight: 600; }
+.s-dia[disabled] { opacity: 0.4; box-shadow: inset 0 0 0 1px var(--line); cursor: not-allowed; }
+.s-dia[disabled] u::after { content: " ·"; }
+.s-dia-hoy { box-shadow: inset 0 0 0 1px var(--brand); }
+
+/* ---- envio ---- */
+.s-envio { display: grid; gap: 14px; border-top: 1px solid var(--line); padding-top: 18px; }
+@media (min-width: 900px) { .s-envio { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 24px; } }
+.s-envio-txt { display: grid; gap: 13px; }
+
+/* ---- el nombre: OPCIONAL, mismo lenguaje que los chips (recto, filete greige, 48 px) ---- */
+.s-nombre { display: grid; gap: 6px; justify-items: start; max-width: 320px; }
+.s-nombre-lab { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); }
+.s-nombre-lab i { font-style: normal; font-weight: 500; letter-spacing: 0.1em; }
+.s-nombre-in {
+  width: 100%; min-height: 48px; padding: 8px 13px; border: 0; border-radius: var(--r);
+  background: var(--paper); color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--greige);
+  font-size: 16px; line-height: 1.2;
+  transition: box-shadow 180ms var(--ease-out);
+}
+.s-nombre-in::placeholder { color: var(--mute); opacity: 0.72; }
+.s-nombre-in:hover { box-shadow: inset 0 0 0 1px var(--ink); }
+.s-nombre-in:focus { outline: 2px solid var(--brand); outline-offset: 2px; box-shadow: inset 0 0 0 1px var(--ink); }
+
+.s-msj {
+  font-size: 13.5px; line-height: 1.5; color: var(--mute); max-width: 62ch;
+  padding-left: 12px; border-left: 2px solid var(--brand-deep);
+}
+.s-msj b { color: var(--ink); font-weight: 600; }
+.s-envio-btn { width: 100%; }
+@media (min-width: 900px) { .s-envio-btn { width: auto; } }
+
+.s-cita-pie { margin-top: 26px; display: grid; gap: 10px; justify-items: start; }
+@media (min-width: 700px) and (max-width: 1099px) { .s-cita-pie { grid-template-columns: auto auto; justify-content: space-between; align-items: end; } }
+/* en compu la caja se topa y las fotitas se van a su costado, en columna */
+@media (min-width: 1100px) {
+  .s-cita .mm-wrap {
+    display: grid; grid-template-columns: minmax(0, 1fr) 190px;
+    grid-template-areas: "cab cab" "caja pie"; gap: 0 46px;
+  }
+  .s-cita-cab { grid-area: cab; }
+  .s-cita-caja { grid-area: caja; }
+  .s-cita-pie { grid-area: pie; margin-top: 26px; align-content: start; }
+  .s-cita-pie .mm-fotitas { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .s-cita-pie .mm-fotita { width: 170px; }
+  .s-cita-pie .mm-fotita:nth-child(2) { width: 132px; margin-bottom: 0; margin-left: 20px; }
+}

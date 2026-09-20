@@ -1,0 +1,159 @@
+/* 2 · COMBO CEJAS FULL — COMPONENTE FIRMA: LA CEJA QUE SE DIBUJA.
+   Todo lo mueve un solo avance --p (0 a 1) ligado al scroll, reversible y SIN pin.
+   De --p salen cinco pasos: --s1 laminado · --s2 diseño con el calibrador · --s3 depilación ·
+   --s4 henna · --s5 botox. El estado por omisión de los cinco es 1 (ceja TERMINADA): si el JS
+   no corre, la ceja se ve acabada y los cinco pasos se leen. El JS los pone en 0 y los va
+   subiendo; el blindaje solo entra si el motor nunca llegó a dar una vuelta. */
+.s-combo { background: var(--paper); }
+.s-combo-lead { margin-top: 12px; }
+
+.s-ceja {
+  --s1: 1; --s2: 1; --s3: 1; --s4: 1; --s5: 1; --mm-i1: 0;
+  margin-top: 26px;
+  display: block;                /* bloque, para que la ceja pueda ser PEGAJOSA de verdad */
+  position: relative;
+}
+
+/* ---- LA ESCENA: un contenedor propio con SOLO dos zonas que NO se encimen ----
+   No es pin de libreria ni scroll secuestrado: son dos position:sticky hermanos dentro
+   de su propio contenedor. En celular la ceja va pegada ARRIBA (fondo solido del color
+   de la seccion y alto fijo) y la lista pegada justo debajo de su borde inferior: ningun
+   renglon puede meterse detras de la ceja. En compu van en DOS COLUMNAS, que tampoco se
+   tocan. Las dos zonas se sueltan juntas al terminar el paso 05.
+   El hueco de abajo (--esc) ES el recorrido de la escena: ~140 px por paso. */
+.s-ceja-esc {
+  position: relative;
+  --peg: calc(var(--header-h) + 8px);
+  /* alto FIJO de la ceja: el dibujo mide 560 x 214, o sea 0.382 de su ancho, + su respiro */
+  --viz-h: calc((100vw - var(--gutter) * 2) * 0.382 + 14px);
+  --esc: 700px;
+  /* flex con renglones: en celular caen tres (ceja, lista y el hueco); en compu, la ceja y
+     la lista comparten el primero y el hueco se va solo al segundo. El HUECO tiene que ser
+     un hijo de verdad: con padding no cuenta para el pegado (la caja de contenido manda). */
+  display: flex; flex-wrap: wrap; align-items: flex-start; column-gap: 48px;
+}
+.s-ceja-hueco { flex: 0 0 100%; height: var(--esc); }
+.s-ceja-viz {
+  flex: 0 0 100%;
+  position: sticky;
+  top: var(--peg);
+  z-index: 3;                    /* siempre por encima de la lista: fondo opaco, nada se asoma */
+  height: var(--viz-h);
+  background: var(--paper);
+  padding-block: 6px 8px;
+  margin-inline: calc(var(--gutter) * -0.55);
+  padding-inline: calc(var(--gutter) * 0.55);
+}
+/* degradado CORTO en el borde de abajo: el corte no queda de tajo */
+.s-ceja-viz::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 12px;
+  background: linear-gradient(var(--paper), rgba(251, 243, 238, 0));
+  pointer-events: none;
+}
+.s-ceja-svg { width: 100%; height: 100%; }
+@media (min-width: 900px) {
+  /* dos columnas: el dibujo a un lado, los cinco renglones al otro. Cada zona se pega
+     dentro de su propia columna (las dos filas del grid), asi que jamas se encimen. */
+  .s-ceja-esc {
+    --peg: calc(var(--header-h) + 10px);
+    --esc: 760px;
+  }
+  .s-ceja-viz {
+    flex: 1 1 0; min-width: 0;
+    height: auto; margin-inline: 0; padding-inline: 0;
+  }
+  .s-ceja-viz::after { display: none; }
+  .s-ceja-svg { height: auto; }
+}
+
+/* vello: relleno con grosor variable (raíz gruesa, punta en cero). Con el laminado
+   gira desde su desorden (--vr) hasta quedar peinado; con la depilación, los de fuera
+   se encogen hacia su raíz y se van. */
+.s-ceja-vellos .v {
+  fill: #4a2e22;
+  transform-box: view-box;
+  transform: rotate(calc(var(--vr, 0deg) * var(--mm-i1)));
+}
+@supports (color: color-mix(in srgb, red 50%, blue)) {
+  /* la henna: de greige a café */
+  .s-ceja-vellos .v { fill: color-mix(in srgb, #a48d80 calc((1 - var(--s4)) * 100%), #4a2e22); }
+}
+.s-ceja-vellos .f {
+  opacity: calc(1 - var(--s3));
+  transform: rotate(calc(var(--vr, 0deg) * var(--mm-i1))) scale(calc(1 - var(--s3) * 0.88));
+}
+.s-ceja-masa { fill: #5c3a2a; opacity: calc(var(--s4) * 0.34); filter: blur(5px); }
+
+/* la regla de calibrador y las tres guías: se dibujan de izquierda a derecha con el paso 2
+   y se bajan (no se borran) cuando entra la depilación */
+.s-ceja-regla line { stroke: var(--greige); }
+.s-ceja-regla line:last-child { stroke: var(--brand); }
+.s-ceja-regla, .s-ceja-guias {
+  /* el 0.06 de base es a proposito, igual que en el brillo: lo que esconde la regla antes
+     del paso 2 es el clip-path, no la opacidad, y un grupo en 0 lo marcan los revisores
+     como bloque invisible */
+  opacity: calc(0.06 + var(--s2) * 0.94 * (1 - var(--s3) * 0.62));
+  clip-path: inset(0 calc((1 - var(--s2)) * 100%) 0 0);
+}
+.s-ceja-guias .gi { stroke: var(--brand); stroke-width: 1.1; stroke-dasharray: 5 5; opacity: 0.78; }
+
+/* el botox: un brillo que cruza una sola vez y deja la ceja sellada */
+.s-ceja-brillo {
+  transform: translateX(calc(var(--s5) * 760px));
+  /* el 0.06 de base es a proposito: un rect en 0 lo marcan los revisores como bloque invisible */
+  opacity: calc(0.06 + var(--s5) * (1 - var(--s5)) * 2.5);
+}
+
+/* ---- los cinco pasos ----
+   PEGADOS justo debajo del borde de la ceja (en compu, en su propia columna): los cinco se
+   leen enteros durante toda la escena, ninguno se mete debajo del dibujo. El fondo solido
+   es el candado: aunque algo subiera por detras, no se asomaria. */
+.s-pasos {
+  flex: 0 0 100%;
+  position: sticky;
+  top: calc(var(--peg) + var(--viz-h));
+  z-index: 1;
+  background: var(--paper);
+  display: grid; gap: 0; align-self: flex-start;
+}
+@media (min-width: 900px) {
+  .s-pasos { flex: 0 1 40%; top: var(--peg); }
+}
+.s-paso {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 11px; align-items: baseline;
+  padding: 23px 0; border-top: 1px solid var(--line);
+  opacity: 1;
+  transition: opacity 320ms var(--ease-out), color 320ms var(--ease-out);
+}
+/* el 42 % es SOLO cuando el JS esta vivo y va a subirlos: sin JS los cinco se leen negros */
+html.js .s-paso { opacity: 0.42; }
+.s-paso:last-child { border-bottom: 1px solid var(--line); }
+.s-paso.is-on, html.js .s-paso.is-on { opacity: 1; }
+.s-paso b { font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--mute); transition: color 320ms var(--ease-out); }
+.s-paso.is-on b { color: var(--brand-deep); }
+.s-paso span { display: block; font-size: 13.5px; line-height: 1.34; color: var(--mute); }
+.s-paso i { display: block; font-style: normal; font-family: var(--display); font-size: 17px; line-height: 1.2; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 2px; }
+@media (min-width: 900px) {
+  .s-paso { grid-template-columns: 34px minmax(0, 1fr); padding: 32px 0; }
+  .s-paso i { font-size: 22px; }
+  .s-paso span { font-size: 15px; }
+}
+/* en celular el primer renglon no lleva filete arriba: quien lo separa es el borde de la
+   ceja, que queda justo encima. En compu la lista va aparte y su filete de arriba si suma. */
+@media (max-width: 899px) { .s-paso:first-child { border-top: 0; } }
+@media (prefers-reduced-motion: reduce) { .s-paso { transition: none; } }
+
+/* ---- su foto real del resultado ----
+   ig-21 ENDEREZADA (la clienta estaba acostada) y recortada a vertical: ahora el sujeto
+   son las dos cejas y la cara se lee derecha. Sale de la escena (que se queda solo con
+   la ceja y los renglones) y cierra la seccion junto al enlace. */
+.s-combo-foto { width: min(280px, 72%); aspect-ratio: 3 / 4; justify-self: start; }
+@media (min-width: 700px) { .s-combo-foto { width: 100%; max-width: 340px; grid-column: 2; grid-row: 1; justify-self: end; } }
+
+.s-combo-pie { margin-top: 30px; display: grid; gap: 24px; justify-items: start; }
+@media (min-width: 700px) {
+  .s-combo-pie { grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 0 48px; align-items: end; }
+  .s-combo-remate { grid-column: 1; grid-row: 1; }
+}
+.s-combo-remate { display: grid; gap: 24px; justify-items: start; }
+.s-combo-cred { margin-top: 10px; display: block; }

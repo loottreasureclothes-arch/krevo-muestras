@@ -1,0 +1,83 @@
+/* 4 · ANTES Y DESPUES. Son SUS dipticos reales de Instagram (una sola foto ya partida a la
+   mitad: izquierda antes, derecha despues). No se arma ningun deslizador falso ni se juntan
+   dos fotos distintas. Al entrar, la mitad "despues" se descubre con un barrido de 1.2 s:
+   lo que se recorta es una TAPA encima, nunca la <img> (regla L8). */
+.s-antes { background: var(--ink); }
+.s-antes-cab { display: grid; gap: 14px; }
+@media (min-width: 900px) {
+  .s-antes-cab { grid-template-columns: minmax(0, 1fr) minmax(0, 0.78fr); align-items: end; gap: 40px; }
+  .s-antes-cab .s-antes-frase { justify-self: end; text-align: right; }
+}
+/* su frase, en Bodoni: esta seccion no repite el ritmo de etiqueta, titulo y parrafo */
+.s-antes-frase {
+  font-family: var(--display); font-style: italic; font-size: clamp(20px, 5.4vw, 30px);
+  line-height: 1.16; color: var(--brand); max-width: 22ch;
+}
+.s-antes-frase span {
+  display: block; margin-top: 10px; font-family: var(--body); font-style: normal;
+  font-size: 14px; line-height: 1.5; color: var(--ink-soft); max-width: 40ch;
+}
+@media (min-width: 900px) { .s-antes-frase span { margin-left: auto; } }
+
+.s-antes-riel {
+  margin-top: 28px;
+  display: grid; grid-auto-flow: column; grid-auto-columns: 86%;
+  gap: 14px; overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter);
+  padding-inline: var(--gutter); padding-bottom: 12px;
+  -webkit-overflow-scrolling: touch;
+}
+.s-antes-riel > * { scroll-snap-align: center; }
+@media (min-width: 760px) { .s-antes-riel { grid-auto-columns: 52%; gap: 22px; } }
+@media (min-width: 1200px) { .s-antes-riel { grid-auto-columns: 38%; } }
+
+.s-dip { margin: 0; display: grid; gap: 10px; }
+.s-dip-caja {
+  position: relative; overflow: hidden; border-radius: var(--r);
+  aspect-ratio: 1 / 1; background: #241b1e;
+  box-shadow: inset 0 0 0 1px rgba(201, 179, 166, 0.34);
+}
+.s-dip-caja img { width: 100%; height: 100%; object-fit: cover; }
+/* la costura del diptico, exactamente a la mitad */
+.s-dip-caja::after {
+  content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
+  background: rgba(251, 243, 238, 0.62); transform: translateX(-0.5px);
+}
+.s-dip-et {
+  position: absolute; bottom: 10px; z-index: 3;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--paper); background: rgba(20, 13, 15, 0.7); padding: 6px 10px; border-radius: var(--r);
+}
+.s-dip-et--a { left: 10px; }
+.s-dip-et--d { right: 10px; }
+.s-dip-regla { position: absolute; left: 0; right: 0; top: 0; z-index: 3; opacity: 0.55; }
+.s-dip figcaption { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--greige); }
+
+/* la TAPA: cubre la mitad de la derecha y se barre de izquierda a derecha en 1.2 s.
+   Lleva las marquitas de calibrador y un arco fino: asi se lee como una tapa PUESTA a
+   proposito y no como una foto que no cargo. */
+.s-dip-tapa {
+  position: absolute; left: 50%; right: 0; top: 0; bottom: 0; z-index: 2;
+  background:
+    repeating-linear-gradient(90deg, rgba(201, 179, 166, 0.11) 0 1px, transparent 1px 9px),
+    linear-gradient(180deg, #33262a 0%, #1d1517 100%);
+  box-shadow: inset 1px 0 0 rgba(201, 179, 166, 0.4);
+  display: grid; place-items: center; gap: 8px; align-content: center;
+}
+.s-dip-tapa::before {
+  content: ""; width: 44%; height: 26px;
+  border-top: 1px solid var(--brand); border-radius: 50% 50% 0 0 / 100% 100% 0 0; opacity: 0.55;
+}
+.s-dip-tapa i {
+  font-family: var(--display); font-style: italic; font-size: clamp(20px, 5vw, 30px);
+  color: rgba(251, 243, 238, 0.62);
+}
+html.js .s-dip-tapa { clip-path: inset(0 0 0 0); transition: clip-path 1200ms var(--ease-in-out); }
+html.js .s-dip.is-abierto .s-dip-tapa { clip-path: inset(0 0 0 100%); }
+html:not(.js) .s-dip-tapa { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.js .s-dip-tapa { transition: none; clip-path: inset(0 0 0 100%); }
+}
+
+.s-antes-pie { margin-top: 22px; display: grid; gap: 12px; justify-items: start; }
+@media (min-width: 700px) { .s-antes-pie { grid-template-columns: auto auto; justify-content: space-between; align-items: center; } }
