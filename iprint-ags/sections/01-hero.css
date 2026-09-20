@@ -138,6 +138,16 @@
   html.ip-anim #hero:not(.is-lit) .s-hero-dot { opacity: 0.22; }
   html.ip-anim #hero:not(.is-lit) .s-hero-ln i { color: transparent; -webkit-text-stroke-color: rgba(244, 240, 234, 0.36); text-shadow: none; }
 
+  /* Rescate sin JS del hero: si 01-hero.js no llega a correr (red mala, archivo bloqueado) pero site.js sí
+     puso "ip-anim", a los 4 s todo prende solo por CSS y se queda prendido. Cuando el JS sí corre, "is-lit"
+     llega mucho antes y estas reglas dejan de aplicar. Regla de Emanuel: nada se queda apagado ni en blanco. */
+  html.ip-anim #hero:not(.is-lit) .s-hero-logo--on,
+  html.ip-anim #hero:not(.is-lit) .s-hero-glow,
+  html.ip-anim #hero:not(.is-lit) .s-hero-ring,
+  html.ip-anim #hero:not(.is-lit) .s-hero-dot { animation: ip-rescate-op 1ms linear 4s both; }
+  html.ip-anim #hero:not(.is-lit) .s-hero-logo:not(.s-hero-logo--on) { animation: ip-rescate-base 1ms linear 4s both; }
+  html.ip-anim #hero:not(.is-lit) .s-hero-ln i { animation: ip-letra 300ms steps(1, end) both; animation-delay: calc(4s + var(--i) * 60ms); }
+
   /* el "trrr": logo, marco y derrame prenden con la misma ráfaga */
   html.ip-anim #hero.is-lit .s-hero-logo--on,
   html.ip-anim #hero.is-lit .s-hero-glow,
@@ -147,6 +157,8 @@
   /* el "brrr": la frase prende letra por letra, de izquierda a derecha */
   html.ip-anim #hero.is-lit .s-hero-ln i { animation: ip-letra 300ms steps(1, end) both; animation-delay: calc(260ms + var(--i) * 60ms); }
 }
+@keyframes ip-rescate-op { to { opacity: 1; } }
+@keyframes ip-rescate-base { to { filter: none; } }
 /* el logo de abajo sube de brillo con la misma ráfaga (así no queda borde oscuro debajo del encendido) */
 @keyframes ip-trrr-base {
   0% { filter: brightness(0.22) saturate(0.25); }
