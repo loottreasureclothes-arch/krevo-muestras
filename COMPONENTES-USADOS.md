@@ -30,4 +30,3 @@
 | los-abolengos | La franja de la mañana (riel de 8:00 a 1:00 que se llena hasta la hora del visitante) | 20 sep 2026 |
 | muebles-del-alba | El interruptor de acabado (cuadritos que cambian la foto del mueble en su lugar) | 20 sep 2026 |
 | tania-reposteria | El platón giratorio del pedido (disco con la foto cenital del pastel que gira en cada paso) | 20 sep 2026 |
-| vet-inn | La placa de Canela (el nombre de tu mascota escrito en la placa del collar) | 20 sep 2026 |
