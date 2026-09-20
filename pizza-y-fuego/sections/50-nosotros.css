@@ -1,0 +1,65 @@
+/* ===== 50 · Diez años + reseñas fusionados (antes 40-nosotros + resenas + galeria) ===== */
+#nosotros { background: var(--deep); color: var(--cream); overflow: clip; }
+#nosotros .nos-dots { --dot: rgba(247, 236, 220, .38); }
+#nosotros .nos-top { display: grid; gap: 40px; align-items: end; }
+#nosotros .nos-t { font-size: clamp(2.4rem, 9vw, 4.4rem); line-height: .95; margin: 0 0 16px; overflow-wrap: anywhere; }
+#nosotros .nos-bio { max-width: 34ch; }
+#nosotros .nos-since { display: flex; align-items: baseline; gap: 10px; margin-top: 26px; }
+#nosotros .nos-y-wrap { display: inline-block; overflow: clip; line-height: .9; }
+#nosotros .nos-y-drop, #nosotros .nos-y-bounce { display: inline-block; }
+#nosotros .nos-y-bounce {
+  font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68;
+  font-weight: 900; font-size: clamp(2.2rem, 8vw, 3.4rem); color: var(--gold);
+}
+#nosotros .nos-since > span:last-child { color: var(--cream-mute); font-size: .92rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
+
+/* El 4.6 gigante */
+#nosotros .nos-score { justify-self: start; }
+#nosotros .nos-score-n {
+  font-family: var(--font-display); font-stretch: 62%; font-variation-settings: "wdth" 62;
+  font-weight: 900; font-size: clamp(140px, 40vw, 300px); line-height: .74; letter-spacing: -.03em;
+  color: var(--gold); margin: 0;
+}
+#nosotros .nos-score-l { margin-top: 4px; font-size: 1.05rem; color: var(--cream-mute); }
+#nosotros .nos-score-l em { color: var(--gold); font-style: normal; font-weight: 700; }
+
+/* Citas (máximo 3) */
+#nosotros .nos-quotes { display: grid; gap: 14px; margin-top: 56px; }
+#nosotros .nos-more { margin-top: 18px; }
+#nosotros .res-card { margin: 0; padding: 22px; border: 1px solid var(--line-dark); border-radius: 3px; display: grid; gap: 16px; align-content: space-between; min-width: 0; background: rgba(247, 236, 220, .03); }
+#nosotros .res-card p { margin: 0; font-size: 1.02rem; line-height: 1.5; }
+#nosotros .res-card footer { font-size: .88rem; color: var(--cream-mute); }
+#nosotros .res-st { color: var(--gold); letter-spacing: 2px; margin-right: 6px; }
+
+/* Collage de 4 fotos reales, anchos desiguales, scroll horizontal en celular */
+#nosotros .nos-collage {
+  margin-top: 56px; display: grid; grid-auto-flow: column; grid-auto-columns: 62%;
+  gap: 10px; overflow-x: auto; scroll-snap-type: x proximity; overscroll-behavior-x: contain;
+  padding-bottom: 4px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+#nosotros .nos-collage figure { margin: 0; scroll-snap-align: start; border-radius: 3px; overflow: hidden; min-width: 0; height: 240px; }
+#nosotros .nos-collage img { width: 100%; height: 100%; object-fit: cover; display: block; }
+#nosotros .nos-c2 { grid-auto-columns: 42%; width: 42%; }
+#nosotros .nos-c4 { grid-auto-columns: 46%; width: 46%; }
+@media (min-width: 700px) {
+  #nosotros .nos-top { grid-template-columns: 1.2fr 1fr; }
+  #nosotros .nos-quotes { grid-template-columns: repeat(3, 1fr); }
+  #nosotros .nos-collage { grid-auto-flow: unset; grid-template-columns: 1.7fr 1fr .85fr 1.2fr; overflow-x: visible; height: 280px; }
+  #nosotros .nos-collage figure, #nosotros .nos-c2, #nosotros .nos-c4 { width: auto; height: 280px; }
+}
+@media (min-width: 960px) {
+  #nosotros .nos-score-n { font-size: clamp(220px, 24vw, 320px); }
+}
+
+/* Blindaje: la cifra queda en su lugar por si el JS no corre; solo se arma con scripting + movimiento */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  #nosotros.nos-armed .nos-y-drop { opacity: 0; transform: translateY(-160%); }
+}
+
+/* Hover en compu de las fotos del collage y de las citas */
+.pf-hover-zoom { display: block; overflow: hidden; }
+.pf-hover-zoom img { transition: transform 600ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .pf-hover-zoom:hover img { transform: scale(1.04); }
+}

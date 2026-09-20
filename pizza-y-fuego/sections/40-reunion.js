@@ -12,6 +12,7 @@
     var t = ["Hola Pizza y Fuego, quiero cotizar un pedido para una reunión.", "", "Personas: " + n, "Se antoja: " + (que.length ? que.join(", ") : "(me recomiendan)")];
     if (s) t.push("Sabores: " + s);
     t.push("Cuándo: " + (fe || "(fecha por definir)") + (h ? " a las " + h : ""), "Entrega: " + val("ru-como"));
+    t.push("Pago: " + (val("ru-pago") || "Efectivo al recibir"));
     if (nom) t.push("Nombre: " + nom);
     return "https://wa.me/" + WA + "?text=" + encodeURIComponent(t.join("\n"));
   }

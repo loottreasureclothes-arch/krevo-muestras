@@ -281,9 +281,8 @@ body.pf-wa-off .k-wa, body.pf-nav-open .k-wa, html.pf-mm-lock .k-wa { visibility
 
 /* ============ Ritmo de fondos (main > #id le gana a cada sección) ============ */
 main > #menu { background-color: var(--paper-2); }
-main > #nosotros { background-color: var(--paper); }
-main > #galeria { background-color: var(--paper-2); }
 main > #visita { background-color: var(--paper); }
+/* #nosotros pone su propio fondo oscuro (fusión con reseñas, 50-nosotros.css) */
 
 /* Reveal: pasos cortos, nunca 20px de adorno */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
@@ -297,3 +296,24 @@ main > #visita { background-color: var(--paper); }
 [data-dark] .pf-dots { --dot: rgba(247, 236, 220, .5); }
 /* Aviso de muestra */
 .pf-demo-note { font-size: 13px; }
+
+/* ============ Capa de cine (Emanuel, 19 sep): botones más elaborados, blur, grano y [hidden] ============ */
+/* [hidden] siempre gana, aunque una clase con la misma especificidad ponga display (gotcha del botón de pago) */
+[hidden] { display: none !important; }
+
+/* Botones más elaborados: borde oscuro al 30% sobre el verde (closetdoor/site.css .cd-btn--primary) */
+.pf-btn--wa { border-color: rgba(11, 61, 31, .3); }
+
+/* Fotos que entran desde blur (receta 14): estado final visible por defecto, solo se esconde con scripting + movimiento */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-blur-in] { filter: blur(16px); transform: scale(1.06); opacity: .6; transition: filter 1.1s var(--ease-out), transform 1.1s var(--ease-out), opacity 1.1s var(--ease-out); }
+  [data-blur-in].is-in { filter: blur(0); transform: none; opacity: 1; }
+}
+
+/* Grano SVG al 5% en bandas oscuras */
+[data-grain] { position: relative; isolation: isolate; }
+[data-grain]::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .05; mix-blend-mode: overlay;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E") repeat;
+  background-size: 180px 180px;
+}

@@ -97,6 +97,17 @@ html.pf-pd-has body { padding-bottom: 86px; }
 }
 .pf-pd-clear { justify-self: center; min-height: 44px; padding: 0 12px; border: 0; background: none; color: #6d5f55; font-size: .9rem; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 
+/* Forma de pago (efectivo o tarjeta con link por WhatsApp) */
+.pf-pd-pago { grid-template-columns: repeat(2, 1fr); margin-top: -4px; }
+.pf-pd-pago-note { margin: -8px 0 0; font-size: .82rem; color: #6d5f55; }
+.pf-pd-pagar {
+  display: flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 16px;
+  border: 2px solid #22150f; border-radius: 3px; color: #22150f;
+  font: 700 1.02rem/1.1 var(--font-body, system-ui, sans-serif); text-decoration: none; cursor: pointer;
+}
+.pf-pd-pagar:active { background: rgba(34, 21, 15, .06); }
+@media (hover: hover) and (pointer: fine) { .pf-pd-pagar:hover { background: rgba(34, 21, 15, .06); } }
+
 /* Pantalla "Mostrar a mi mesero": alto contraste, para leer de un vistazo */
 .pf-ms {
   position: fixed; inset: 0; z-index: 100; overflow-y: auto; overscroll-behavior: contain;

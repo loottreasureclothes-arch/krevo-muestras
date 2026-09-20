@@ -50,7 +50,7 @@
     };
   })();
 
-  var S = { lines: [], note: '', mode: 'llevar', mesa: '', hora: '', nombre: '', dir: '', ts: 0 };
+  var S = { lines: [], note: '', mode: 'llevar', mesa: '', hora: '', nombre: '', dir: '', pago: 'Efectivo al recibir', ts: 0 };
   var MODES = { llevar: 1, domicilio: 1, mesa: 1 };
   var subs = [], checkoutFns = [];
 
@@ -122,6 +122,7 @@
     t += '\n';
     S.lines.forEach(function (l) { t += l.qty + ' x ' + lineLabel(l) + (l.price ? ' (' + money(l.price * l.qty) + ')' : '') + '\n'; });
     if (S.note.trim()) t += '\nNota: ' + S.note.trim();
+    t += '\nPago: ' + (S.pago || 'Efectivo al recibir');
     t += '\n¿Me confirman el total y el tiempo?';
     return t;
   }
@@ -263,6 +264,11 @@
     radios.forEach(function (r) {
       r.checked = r.value === S.mode;
       r.addEventListener('change', function () { if (r.checked) { S.mode = r.value; err.hidden = true; emit(); } });
+    });
+    var pagoRadios = sheet.querySelectorAll('input[name="pf-pd-pago"]');
+    pagoRadios.forEach(function (r) {
+      r.checked = r.value === S.pago;
+      r.addEventListener('change', function () { if (r.checked) { S.pago = r.value; save(); waBtn.href = waUrl(); } });
     });
     function bind(el, k) { el.addEventListener('input', function () { S[k] = el.value; save(); waBtn.href = waUrl(); }); }
     bind(note, 'note'); bind(hora, 'hora'); bind(nombre, 'nombre'); bind(dir, 'dir');

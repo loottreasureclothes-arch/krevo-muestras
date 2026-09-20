@@ -9,8 +9,8 @@
 <link rel="canonical" href="https://loottreasureclothes-arch.github.io/krevo-muestras/pizza-y-fuego/">
 <meta name="format-detection" content="telephone=no">
 <script>document.documentElement.classList.add("k-js","pf-js");</script>
-<link rel="preload" as="image" href="img/hero/hero-m.webp" media="(max-aspect-ratio: 1/1)" fetchpriority="high">
-<link rel="preload" as="image" href="img/hero/hero-d.webp" media="(min-aspect-ratio: 1/1)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero/poster-m.webp" media="(max-aspect-ratio: 1/1)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero/poster-d.webp" media="(min-aspect-ratio: 1/1)" fetchpriority="high">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -32,14 +32,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
-<link rel="stylesheet" href="site.css?v=1789836105">
-<link rel="stylesheet" href="sections/10-hero.css?v=1789836290">
-<link rel="stylesheet" href="sections/20-horno.css?v=1789836354">
-<link rel="stylesheet" href="sections/25-menu.css?v=1789836429">
-<link rel="stylesheet" href="sections/26-pedido.css?v=1789836493">
-<link rel="stylesheet" href="sections/30-reunion.css?v=1789837044">
-<link rel="stylesheet" href="sections/40-nosotros.css?v=1789837044">
-<link rel="stylesheet" href="sections/50-visita.css?v=1789837044">
+<link rel="stylesheet" href="site.css?v=1789868221">
+<link rel="stylesheet" href="sections/10-hero.css?v=1789869552">
+<link rel="stylesheet" href="sections/20-menu.css?v=1789836429">
+<link rel="stylesheet" href="sections/21-pedido.css?v=1789867681">
+<link rel="stylesheet" href="sections/30-horno.css?v=1789868868">
+<link rel="stylesheet" href="sections/40-reunion.css?v=1789867634">
+<link rel="stylesheet" href="sections/50-nosotros.css?v=1789867457">
+<link rel="stylesheet" href="sections/60-visita.css?v=1789867518">
 </head>
 <body data-hero-dark>
 <a class="pf-skip" href="#menu">Saltar al menú</a>
@@ -56,8 +56,8 @@
 <header class="k-header">
   <a class="k-logo" href="#inicio" aria-label="Pizza y Fuego, inicio"><img src="img/brand/logo-176.webp" alt="" width="176" height="176"><span>Pizza y Fuego</span></a>
   <nav class="k-nav" aria-label="Principal">
-    <a href="#reunion">Para tu reunión</a>
     <a href="#horno">El horno</a>
+    <a href="#reunion">Para tu reunión</a>
     <a href="#nosotros">Nosotros</a>
     <a href="#visita">Visítanos</a>
   </nav>
@@ -77,13 +77,9 @@
         <li><a href="#menu" data-cat="m-entradas">Entradas</a></li>
         <li><a href="#menu" data-cat="m-bebidas">Bebidas y vino</a></li>
       </ul>
-      <a href="#reunion"><span>02</span>Para tu reunión</a>
-      <a href="#horno"><span>03</span>El horno</a>
-      <a class="pf-nav-parent" href="#nosotros"><span>04</span>Quiénes somos</a>
-      <ul class="pf-nav-sub" aria-label="Quiénes somos">
-        <li><a href="#resenas">Reseñas</a></li>
-        <li><a href="#galeria">Lo que sale del horno</a></li>
-      </ul>
+      <a href="#horno"><span>02</span>El horno</a>
+      <a href="#reunion"><span>03</span>Para tu reunión</a>
+      <a href="#nosotros"><span>04</span>Quiénes somos</a>
       <a href="#visita"><span>05</span>Visítanos</a>
     </nav>
     <div class="pf-nav-foot">
@@ -98,15 +94,15 @@
 
 <main id="inicio">
   <!-- 10 HERO · paso 1 (ponerlo en alto) + 3 (opciones): la pizza real a sangre, pedido directo en 1 toque y cuadritos que abren una hoja con la carta.
-       VIDEO: listo para el clip de IA hecho desde img/hero/hero-m.webp y hero-d.webp (foto real 07). Llena data-src-m / data-src-d y listo;
-       mientras estén vacíos se queda la foto (poster). -->
+       VIDEO real hecho con tools/hero_video.py a partir de 4 fotos reales (rebanada, carnes frías, el horno, la fachada); nada de IA.
+       Poster = primer cuadro exacto del video (mismo grading). Se salta con ahorro de datos/2g y cae a la foto si play() falla (10-hero.js). -->
   <section class="s-hero" id="hero" data-dark data-hide-wa aria-labelledby="hr-t">
     <div class="hr-media" aria-hidden="true">
       <picture>
-        <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/hero-d.webp" width="1920" height="1080">
-        <img class="hr-poster" src="img/hero/hero-m.webp" width="1080" height="1920" alt="" fetchpriority="high" decoding="async">
+        <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/poster-d.webp" width="1920" height="1080">
+        <img class="hr-poster" src="img/hero/poster-m.webp" width="1080" height="1920" alt="" fetchpriority="high" decoding="async">
       </picture>
-      <video class="hr-vid" data-src-m="" data-src-d="" poster="img/hero/hero-m.webp" data-poster-d="img/hero/hero-d.webp" muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback tabindex="-1" hidden></video>
+      <video class="hr-vid" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9" poster="img/hero/poster-m.webp" data-poster-d="img/hero/poster-d.webp" muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback tabindex="-1" hidden></video>
       <div class="hr-veil"></div>
     </div>
     <div class="k-wrap hr-in">
@@ -144,34 +140,6 @@
           <button type="button" class="pf-btn pf-btn--wa hr-sheet-go"></button>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- 20 EL HORNO · momento de cine (paso 1): la cámara entra al salón real hasta el horno de leña de ladrillo (foto 05, Real-ESRGAN x4).
-       Ligado al scroll y reversible. Compu: pin corto (+80 %) con position: sticky. Celular: sin pin. Termina en CTA verde. -->
-  <section class="s-horno" id="horno" data-dark aria-labelledby="hn-t">
-    <div class="hn-stage">
-      <div class="hn-cam" aria-hidden="true">
-        <picture>
-          <source media="(min-aspect-ratio: 1/1)" srcset="img/cine/salon-d.webp" width="3200" height="1800">
-          <img src="img/cine/salon-m.webp" width="1440" height="2560" alt="" loading="lazy" decoding="async">
-        </picture>
-      </div>
-      <img class="hn-a11y" src="img/cine/salon-m.webp" alt="Salón de Pizza y Fuego con muros guinda, mesas de madera y el horno de leña de ladrillo al fondo" width="1" height="1" loading="lazy">
-      <div class="hn-veil" aria-hidden="true"></div>
-      <p class="hn-tag" aria-hidden="true"><i></i><span>Horno de leña</span></p>
-      <div class="k-wrap hn-top">
-        <p class="pf-eyebrow">El horno</p>
-        <h2 id="hn-t" class="hn-t pf-d pf-h3d"><span class="hn-l">Aquí se</span> <span class="hn-l">prende el <em>fuego.</em></span></h2>
-      </div>
-      <div class="k-wrap hn-bot">
-        <div class="hn-card">
-          <p class="hn-k">Todo al momento</p>
-          <p class="hn-p">Horno de leña de ladrillo al fondo del salón. Todo el menú se prepara al momento.</p>
-          <a class="pf-btn pf-btn--wa" href="#menu"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pide la tuya</a>
-        </div>
-      </div>
-      <div class="hn-bar" aria-hidden="true"><i></i></div>
     </div>
   </section>
 
@@ -568,14 +536,21 @@
           <p><b>¿Le agregas postre?</b><span>Pizza de Nutella, de la carta.</span></p>
           <button type="button" class="pf-pd-up-add" aria-label="Agregar Pizza de Nutella">+</button>
         </div>
+        <fieldset class="pf-pd-modes pf-pd-pago">
+          <legend>¿Cómo pagas?</legend>
+          <label><input type="radio" name="pf-pd-pago" value="Efectivo al recibir" checked><span>Efectivo al recibir</span></label>
+          <label><input type="radio" name="pf-pd-pago" value="Tarjeta en línea"><span>Tarjeta en línea</span></label>
+        </fieldset>
+        <p class="pf-pd-pago-note">Si pagas con tarjeta, te mandamos el link de pago por WhatsApp.</p>
+
         <p class="pf-pd-fine">El precio y el tiempo de entrega te los confirmamos por WhatsApp.</p>
 
         <div class="pf-pd-actions">
-          <!-- PAGO FUTURO: aquí iría el botón "Pagar con tarjeta" (Stripe / Mercado Pago) que usa window.pfPedido.onCheckout. -->
           <a class="pf-pd-wa" id="pf-pd-wa" href="https://wa.me/524498974488" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
             Enviar por WhatsApp
           </a>
+          <a class="pf-pd-pagar" id="pf-pd-pagar" data-pago-btn hidden target="_blank" rel="noopener">Pagar con tarjeta</a>
           <a class="pf-pd-fbk" id="pf-pd-fb" href="https://wa.me/524498974488" target="_blank" rel="noopener" hidden>¿No se abrió WhatsApp? Toca aquí</a>
           <button class="pf-pd-show" id="pf-pd-mesero-btn" type="button">Mostrar a mi mesero</button>
           <button class="pf-pd-clear" id="pf-pd-clear" type="button">Vaciar pedido</button>
@@ -596,6 +571,39 @@
       </div>
     </div>
   </div>
+
+  <!-- 30 EL HORNO · momento de cine (firma): la cámara entra al salón real hasta el horno de leña de ladrillo (foto 05, Real-ESRGAN x4),
+       con 3 palabras a sangre y 2 fotos reales de pizza que entran desde blur (receta 14). Ligado al scroll y reversible.
+       Compu: pin corto (+80 %) con position: sticky. Celular: sin pin. Termina en CTA verde. -->
+  <section class="s-horno" id="horno" data-dark data-grain aria-labelledby="hn-t">
+    <div class="hn-stage">
+      <div class="hn-cam" aria-hidden="true">
+        <picture>
+          <source media="(min-aspect-ratio: 1/1)" srcset="img/cine/salon-d.webp" width="3200" height="1800">
+          <img src="img/cine/salon-m.webp" width="1440" height="2560" alt="" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <img class="hn-a11y" src="img/cine/salon-m.webp" alt="Salón de Pizza y Fuego con muros guinda, mesas de madera y el horno de leña de ladrillo al fondo" width="1" height="1" loading="lazy">
+      <div class="hn-veil" aria-hidden="true"></div>
+      <p class="hn-tag" aria-hidden="true"><i></i><span>Horno de leña</span></p>
+      <div class="k-wrap hn-top">
+        <p class="pf-eyebrow">El horno</p>
+        <h2 id="hn-t" class="hn-t pf-d pf-h3d"><span class="hn-l">Leña. Ladrillo.</span> <span class="hn-l"><em>Fuego.</em></span></h2>
+      </div>
+      <div class="k-wrap hn-bot">
+        <div class="hn-pics" aria-hidden="true">
+          <figure class="hn-pic hn-pic--1"><img src="img/cierre/cierre-m.webp" alt="" width="600" height="600" loading="lazy" decoding="async" data-blur-in></figure>
+          <figure class="hn-pic hn-pic--2"><img src="img/menu/hawaiana.webp" alt="" width="600" height="600" loading="lazy" decoding="async" data-blur-in></figure>
+        </div>
+        <div class="hn-card">
+          <p class="hn-k">Todo al momento</p>
+          <p class="hn-p">Horno de leña de ladrillo al fondo del salón. Todo el menú se prepara al momento.</p>
+          <a class="pf-btn pf-btn--wa" href="#menu"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pide la tuya</a>
+        </div>
+      </div>
+      <div class="hn-bar" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
 
   <!-- 30 PIZZA PARA TU REUNIÓN · paso 4 y 6: cotizador de pedido grande en 3 pasos que arma el mensaje de WhatsApp.
        No promete catering (el dueño dijo que no lo ofrecen): es un pedido grande de su carta para recoger, a domicilio o en el local. -->
@@ -653,6 +661,14 @@
             <label><input type="radio" name="ru-como" value="Comer en el restaurante"><span>En el local</span></label>
           </div>
           <label class="ru-f"><span>Tu nombre</span><input id="ru-nombre" type="text" autocomplete="name" maxlength="50" placeholder="Para saber a quién le escribimos"></label>
+          <fieldset class="ru-pago">
+            <legend>¿Cómo pagas?</legend>
+            <div class="ru-chips ru-chips--2" role="group">
+              <label><input type="radio" name="ru-pago" value="Efectivo al recibir" checked><span>Efectivo al recibir</span></label>
+              <label><input type="radio" name="ru-pago" value="Tarjeta en línea"><span>Tarjeta en línea</span></label>
+            </div>
+            <p class="ru-pago-note">Te mandamos el link de pago por WhatsApp.</p>
+          </fieldset>
         </fieldset>
 
         <div class="ru-nav">
@@ -660,63 +676,48 @@
           <button type="button" class="pf-btn pf-btn--wa ru-next">Siguiente</button>
           <a class="pf-btn pf-btn--wa ru-send" href="https://wa.me/524498974488" target="_blank" rel="noopener" hidden><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir cotización</a>
         </div>
+        <a class="pf-btn pf-btn--line ru-pagar" data-pago-btn hidden target="_blank" rel="noopener">Pagar con tarjeta</a>
         <a class="ru-fb" href="https://wa.me/524498974488" target="_blank" rel="noopener" hidden>¿No se abrió WhatsApp? Toca aquí</a>
         <p class="ru-fine">Te respondemos con cuántas pizzas te recomendamos y el total.</p>
       </form>
     </div>
   </section>
 
-  <!-- 40 NOSOTROS + RESEÑAS + GALERÍA · datos de research/hechos.md y resenas.md (textos tal cual) -->
-  <section class="pf-sec s-nos" id="nosotros" aria-labelledby="nos-t">
-    <div class="k-wrap nos-grid">
+  <!-- 50 DIEZ AÑOS + RESEÑAS fusionados (antes 3 secciones) · datos de research/hechos.md y resenas.md (citas tal cual).
+       Momento firma: el 4.6 gigante y la caidita del 2014 (50-nosotros.js, misma técnica que closetdoor/10-msi:
+       cae con ease-in de gravedad y pega con un rebote muestreado, ~1.1 s, una vez, con blindaje). -->
+  <section class="pf-sec s-nos" id="nosotros" data-dark data-grain aria-labelledby="nos-t">
+    <div class="pf-dots nos-dots" aria-hidden="true"></div>
+    <div class="k-wrap nos-top">
       <div class="nos-copy" data-reveal>
         <p class="pf-eyebrow">Quiénes somos</p>
         <h2 id="nos-t" class="pf-d pf-h3d nos-t">Diez años <em>a la leña.</em></h2>
-        <p class="pf-lead">Desde 2014 hacemos pizza en horno de leña de ladrillo, frente a la Clínica 1 del IMSS. Todo el menú se prepara al momento, y antes de tu pedido llega la focaccia a la mesa.</p>
-        <ul class="nos-facts">
-          <li><b>2014</b><span>desde</span></li>
-          <li><b>4.6</b><span>en Google, 785 reseñas</span></li>
-          <li><b>Propio</b><span>estacionamiento</span></li>
-        </ul>
+        <p class="pf-lead nos-bio">Horno de leña de ladrillo, frente a la Clínica 1 del IMSS.<br>Todo el menú se prepara al momento.<br>Antes de tu pedido llega la focaccia a la mesa.</p>
+        <p class="nos-since"><span class="nos-y-wrap"><span class="nos-y-drop" data-caida><span class="nos-y-bounce">2014</span></span></span><span>desde</span></p>
       </div>
-      <figure class="nos-fig" data-reveal>
-        <img src="img/nos/fachada-noche.webp" alt="Fachada de Pizza y Fuego de noche" width="1600" height="1200" loading="lazy">
-        <img class="nos-fig2" src="img/nos/focaccia.webp" alt="Focaccia de cortesía recién horneada" width="960" height="1200" loading="lazy">
-      </figure>
+      <div class="nos-score" data-reveal>
+        <p class="nos-score-n">4.6</p>
+        <p class="nos-score-l"><em>de 785</em> reseñas en Google</p>
+      </div>
+    </div>
+
+    <div class="k-wrap nos-quotes" data-reveal-stagger>
+      <blockquote class="res-card" data-reveal><p>"Esta muy rico, tiene un sabor muy casero, el lugar, la música y el servicio te hacen sentir en casa. La pasta tiene un sabor exquisito y la masa de la pizza en su punto."</p><footer><span class="res-st" aria-label="5 estrellas">★★★★★</span> Berry Psz · Google</footer></blockquote>
+      <blockquote class="res-card" data-reveal><p>"Mi lugar favorito de pizza, lo encontramos de pura casualidad y vaya sorpresa que me lleve, estan muy ricas, calidad precio excelente."</p><footer><span class="res-st" aria-label="5 estrellas">★★★★★</span> alexa villalobos · Google</footer></blockquote>
+      <blockquote class="res-card" data-reveal><p>"La mejor comida italiana que e probado en Aguascalientes. La lasagna esta muy bueno. Tiene un sabor más auténtico."</p><footer><span class="res-st" aria-label="5 estrellas">★★★★★</span> Guillermo Nieto - Reyes · Google</footer></blockquote>
+    </div>
+    <div class="k-wrap nos-more"><a class="pf-btn pf-btn--line" href="https://www.google.com/maps/place/?q=place_id:ChIJSw4e2NbtKYQRG4S7wCS0Q0g" target="_blank" rel="noopener">Ver todas en Google</a></div>
+
+    <div class="k-wrap nos-collage">
+      <figure class="nos-c1 pf-hover-zoom"><img src="img/nos/fachada-noche.webp" alt="Fachada de Pizza y Fuego de noche, con letrero de neón" width="1600" height="1200" loading="lazy" decoding="async" data-blur-in></figure>
+      <figure class="nos-c2 pf-hover-zoom"><img src="img/gal/mesa-mantel.webp" alt="Mesa con el mantel de lunares, focaccia y una pizza recién horneada" width="1400" height="1050" loading="lazy" decoding="async" data-blur-in></figure>
+      <figure class="nos-c3 pf-hover-zoom"><img src="img/nos/focaccia.webp" alt="Focaccia de cortesía recién horneada" width="960" height="1200" loading="lazy" decoding="async" data-blur-in></figure>
+      <figure class="nos-c4 pf-hover-zoom"><img src="img/gal/salsas.webp" alt="Salsas de la casa" width="1400" height="1050" loading="lazy" decoding="async" data-blur-in></figure>
     </div>
   </section>
 
-  <section class="pf-sec s-res" id="resenas" data-dark aria-labelledby="res-t">
-    <div class="k-wrap">
-      <div class="res-head" data-reveal>
-        <p class="pf-eyebrow">Lo que dicen en Google</p>
-        <h2 id="res-t" class="pf-d pf-h3d res-t"><span class="res-num">4.6</span> <em>de 785 reseñas.</em></h2>
-      </div>
-      <div class="res-list" data-reveal-stagger>
-        <blockquote class="res-card" data-reveal><p>"Esta muy rico, tiene un sabor muy casero, el lugar, la música y el servicio te hacen sentir en casa. La pasta tiene un sabor exquisito y la masa de la pizza en su punto."</p><footer><span class="res-st" aria-label="5 estrellas">★★★★★</span> Berry Psz · Google</footer></blockquote>
-        <blockquote class="res-card" data-reveal><p>"Mi lugar favorito de pizza, lo encontramos de pura casualidad y vaya sorpresa que me lleve, estan muy ricas, calidad precio excelente."</p><footer><span class="res-st" aria-label="5 estrellas">★★★★★</span> alexa villalobos · Google</footer></blockquote>
-        <blockquote class="res-card" data-reveal><p>"Excelente lugar. Estacionamiento propio... Platillos muy bien servidos con ingredientes de calidad. Personal atento y servicial."</p><footer><span class="res-st" aria-label="5 estrellas">★★★★★</span> abraham villalvazo · Google</footer></blockquote>
-        <blockquote class="res-card" data-reveal><p>"La mejor comida italiana que e probado en Aguascalientes. La lasagna esta muy bueno. Tiene un sabor más auténtico."</p><footer><span class="res-st" aria-label="5 estrellas">★★★★★</span> Guillermo Nieto - Reyes · Google</footer></blockquote>
-      </div>
-      <a class="pf-btn pf-btn--line res-more" href="https://www.google.com/maps/place/?q=place_id:ChIJSw4e2NbtKYQRG4S7wCS0Q0g" target="_blank" rel="noopener">Ver todas en Google</a>
-    </div>
-  </section>
-
-  <section class="pf-sec s-gal" id="galeria" aria-labelledby="gal-t">
-    <div class="k-wrap">
-      <p class="pf-eyebrow">Fotos reales</p>
-      <h2 id="gal-t" class="pf-d pf-h3d gal-t">Lo que sale <em>del horno.</em></h2>
-      <div class="gal-grid">
-        <img src="img/gal/rebanada.webp" alt="Rebanada de pizza a la leña" width="1050" height="1400" loading="lazy">
-        <img src="img/gal/carnes-frias.webp" alt="Pizza de carnes frías" width="1400" height="1400" loading="lazy">
-        <img src="img/gal/entrada.webp" alt="Entrada servida en la mesa" width="1400" height="1050" loading="lazy">
-        <img src="img/gal/salsas.webp" alt="Salsas de la casa" width="1400" height="1050" loading="lazy">
-        <img src="img/gal/mesa-mantel.webp" alt="Mesa con el mantel-menú del restaurante" width="1400" height="1050" loading="lazy">
-      </div>
-    </div>
-  </section>
-
-  <!-- 50 VISÍTANOS + CIERRE · dirección, horario y teléfonos de research/hechos.md -->
+  <!-- 60 VISÍTANOS · cierra el recorrido antes del footer (el cierre genérico "¿se antoja una a la leña?" se quitó: el footer ya cierra).
+       Dirección, horario y estacionamiento de research/hechos.md. Cómo llegar y teléfono van como links; 1 solo botón verde. -->
   <section class="pf-sec s-visita" id="visita" aria-labelledby="vi-t">
     <div class="k-wrap vi-grid">
       <div data-reveal>
@@ -729,18 +730,15 @@
         </dl>
         <div class="vi-acts">
           <a class="pf-btn pf-btn--wa" data-wa="Hola Pizza y Fuego, quiero hacer un pedido." href="https://wa.me/524498974488"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir por WhatsApp</a>
-          <a class="pf-btn pf-btn--line" href="https://www.google.com/maps/place/?q=place_id:ChIJSw4e2NbtKYQRG4S7wCS0Q0g" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+        <div class="vi-links">
+          <a class="pf-btn pf-btn--link" href="https://www.google.com/maps/place/?q=place_id:ChIJSw4e2NbtKYQRG4S7wCS0Q0g" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="pf-btn pf-btn--link" href="tel:+524492932383"><svg aria-hidden="true"><use href="#i-phone"/></svg>449 293 23 83</a>
         </div>
       </div>
-      <img class="vi-img" data-reveal src="img/visita/fachada-dia.webp" alt="Fachada de Pizza y Fuego de día" width="1600" height="1000" loading="lazy">
-    </div>
-  </section>
-
-  <section class="s-cierre" data-dark aria-labelledby="ci-t">
-    <picture><source media="(min-aspect-ratio: 1/1)" srcset="img/cierre/cierre-d.webp"><img class="ci-bg" src="img/cierre/cierre-m.webp" alt="" width="1080" height="1920" loading="lazy"></picture>
-    <div class="k-wrap ci-in">
-      <h2 id="ci-t" class="pf-d pf-h3d ci-t">¿Se antoja <em>una a la leña?</em></h2>
-      <a class="pf-btn pf-btn--wa" href="#menu"><svg aria-hidden="true"><use href="#i-wa"/></svg>Arma tu pedido</a>
+      <figure class="vi-fig pf-hover-zoom" data-reveal>
+        <img class="vi-img" data-blur-in src="img/visita/fachada-dia.webp" alt="Fachada de Pizza y Fuego de día" width="1600" height="1000" loading="lazy">
+      </figure>
     </div>
   </section>
 
@@ -774,11 +772,12 @@
 <a class="k-wa" data-wa="Hola Pizza y Fuego, quiero hacer un pedido." href="https://wa.me/524498974488" aria-label="WhatsApp"></a>
 
 <script src="../_kit/kit.js?v=1789789887" defer></script>
-<script src="site.js?v=1789836493" defer></script>
-<script src="sections/10-hero.js?v=1789836325" defer></script>
-<script src="sections/20-horno.js?v=1789836354" defer></script>
-<script src="sections/25-menu.js?v=1789836429" defer></script>
-<script src="sections/26-pedido.js?v=1789836493" defer></script>
-<script src="sections/30-reunion.js?v=1789836648" defer></script>
+<script src="site.js?v=1789868195" defer></script>
+<script src="sections/10-hero.js?v=1789869535" defer></script>
+<script src="sections/20-menu.js?v=1789836429" defer></script>
+<script src="sections/21-pedido.js?v=1789867672" defer></script>
+<script src="sections/30-horno.js?v=1789836354" defer></script>
+<script src="sections/40-reunion.js?v=1789867627" defer></script>
+<script src="sections/50-nosotros.js?v=1789868504" defer></script>
 </body>
 </html>

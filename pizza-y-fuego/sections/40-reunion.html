@@ -54,6 +54,14 @@
             <label><input type="radio" name="ru-como" value="Comer en el restaurante"><span>En el local</span></label>
           </div>
           <label class="ru-f"><span>Tu nombre</span><input id="ru-nombre" type="text" autocomplete="name" maxlength="50" placeholder="Para saber a quién le escribimos"></label>
+          <fieldset class="ru-pago">
+            <legend>¿Cómo pagas?</legend>
+            <div class="ru-chips ru-chips--2" role="group">
+              <label><input type="radio" name="ru-pago" value="Efectivo al recibir" checked><span>Efectivo al recibir</span></label>
+              <label><input type="radio" name="ru-pago" value="Tarjeta en línea"><span>Tarjeta en línea</span></label>
+            </div>
+            <p class="ru-pago-note">Te mandamos el link de pago por WhatsApp.</p>
+          </fieldset>
         </fieldset>
 
         <div class="ru-nav">
@@ -61,6 +69,7 @@
           <button type="button" class="pf-btn pf-btn--wa ru-next">Siguiente</button>
           <a class="pf-btn pf-btn--wa ru-send" href="https://wa.me/524498974488" target="_blank" rel="noopener" hidden><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir cotización</a>
         </div>
+        <a class="pf-btn pf-btn--line ru-pagar" data-pago-btn hidden target="_blank" rel="noopener">Pagar con tarjeta</a>
         <a class="ru-fb" href="https://wa.me/524498974488" target="_blank" rel="noopener" hidden>¿No se abrió WhatsApp? Toca aquí</a>
         <p class="ru-fine">Te respondemos con cuántas pizzas te recomendamos y el total.</p>
       </form>

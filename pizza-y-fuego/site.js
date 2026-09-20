@@ -27,6 +27,19 @@
   try { var m = new URLSearchParams(location.search).get("mesa"); if (m && /^\d{1,3}$/.test(m)) mesa = parseInt(m, 10); } catch (e) {}
   window.PF = { WA: WA, waUrl: waUrl, openWa: openWa, today: today, mesa: mesa };
 
+  /* Pago con tarjeta (PENDIENTE-DUEÑO): mientras no haya link, el botón secundario
+     "Pagar con tarjeta" queda oculto en pedido y reunión. Cuando exista, se llena aquí. */
+  window.PF_PAGO_LINK = window.PF_PAGO_LINK || "";
+  function initPago() {
+    var els = document.querySelectorAll("[data-pago-btn]");
+    if (!els.length) return;
+    var link = window.PF_PAGO_LINK || "";
+    Array.prototype.forEach.call(els, function (a) {
+      if (link) { a.href = link; a.hidden = false; }
+      else { a.hidden = true; a.removeAttribute("href"); }
+    });
+  }
+
   function initWa() {
     var links = document.querySelectorAll("[data-wa]");
     for (var i = 0; i < links.length; i++) {
@@ -106,8 +119,26 @@
         var el = e.target;
         setTimeout(function () { show(el); }, 1600);
       });
-    }, { rootMargin: "0px 0px -25% 0px" });
+    }, { rootMargin: "0px 0px 0px 0px" });
     Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+  }
+
+  /* Fotos que entran desde blur: reveal rápido por IO + red de seguridad a 1.6 s (nunca se quedan borrosas) */
+  function initBlurIn() {
+    var els = document.querySelectorAll("[data-blur-in]");
+    if (!els.length) return;
+    function show(el) { el.classList.add("is-in"); }
+    if (reduce || !("IntersectionObserver" in window)) { Array.prototype.forEach.call(els, show); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); show(e.target); } });
+    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.15 });
+    Array.prototype.forEach.call(els, function (el) {
+      io.observe(el);
+      var fio = new IntersectionObserver(function (es2) {
+        if (es2[0].isIntersecting) { fio.disconnect(); setTimeout(function () { show(el); }, 1600); }
+      }, { rootMargin: "0px 0px 0px 0px" });
+      fio.observe(el);
+    });
   }
 
   /* Brillo al tocar */
@@ -151,7 +182,7 @@
     setTimeout(go, 60);
   }
 
-  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initRipple(); initAnchors(); initMesa(); }
+  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initRipple(); initAnchors(); initMesa(); initPago(); initBlurIn(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
