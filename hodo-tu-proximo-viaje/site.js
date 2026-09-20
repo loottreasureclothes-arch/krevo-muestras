@@ -103,7 +103,9 @@
     function update() {
       ticking = false;
       var y = window.scrollY || window.pageYOffset;
-      header.classList.toggle("is-compact", y > 30);
+      /* 12 px y no 30: la barra tiene que pegarse al borde ANTES de que el titulo del hero
+         empiece a pasar por debajo, si no se ve media letra arriba de la barra. */
+      header.classList.toggle("is-compact", y > 12);
       var max = (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight;
       var pct = max > 0 ? Math.min(100, Math.max(0, (y / max) * 100)) : 0;
       if (fill) fill.style.width = pct + "%";
@@ -247,6 +249,9 @@
     var top = el.getBoundingClientRect().top + window.scrollY - (head ? head.offsetHeight + extra : 0);
     window.scrollTo({ top: Math.max(0, top), behavior: reduce ? "auto" : "smooth" });
   }
+  /* Lo usan el buscador del hero y los planes para bajar a una seccion sin
+     scroll-behavior: smooth en el CSS (regla L4). */
+  window.HodoIr = go;
   function initSmoothAnchors() {
     document.addEventListener("click", function (e) {
       var a = e.target.closest && e.target.closest('a[href^="#"]');

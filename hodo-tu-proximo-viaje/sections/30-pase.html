@@ -1,6 +1,6 @@
   <section id="pase" class="hd-sec hd-pase" aria-labelledby="pase-title">
     <div class="hd-pase-bg" aria-hidden="true">
-      <img class="hd-pase-img is-a is-on" id="hd-pase-img-a" src="img/destinos/cancun-m.webp" srcset="img/destinos/cancun-m.webp 960w, img/destinos/cancun-d.webp 1920w" sizes="100vw" alt="" width="960" height="1200" fetchpriority="high">
+      <img class="hd-pase-img is-a is-on" id="hd-pase-img-a" src="img/destinos/cancun-m.webp" srcset="img/destinos/cancun-m.webp 960w, img/destinos/cancun-d.webp 1920w" sizes="100vw" alt="" width="960" height="1200" loading="lazy">
       <img class="hd-pase-img is-b" id="hd-pase-img-b" alt="" width="960" height="1200">
       <span class="hd-pase-veil"></span>
     </div>
@@ -9,15 +9,16 @@
      <div class="hd-pase-grid">
       <div class="hd-pase-intro">
        <div class="hd-pase-introtop">
-        <h1 class="hd-h2 hd-drop hd-pase-title" id="pase-title" data-hd-reveal>
-          <span class="hd-word">¿A dónde</span> <span class="hd-word">es tu</span> <span class="hd-word">próximo</span> <span class="hd-word">viaje?</span>
-        </h1>
-        <a class="hd-pase-rate" href="#sellos" data-hd-reveal>
-          <span class="hd-stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
-          <span>5.0 en Google · 7 opiniones</span>
-        </a>
+        <h2 class="hd-h2 hd-drop hd-pase-title" id="pase-title" data-hd-reveal>
+          <span class="hd-word">Arma</span> <span class="hd-word">tu pase.</span>
+        </h2>
+        <p class="hd-pase-sub" data-hd-reveal>Destino, fechas y cuántos viajan. El mensaje se arma solo y se manda por WhatsApp al 449 426 2277.</p>
        </div>
-       <p class="hd-pase-strip" data-hd-reveal><span class="hd-pase-strip-rule" aria-hidden="true"></span>Agencia de viajes en Aguascalientes, desde marzo de 2023.</p>
+       <p class="hd-pase-strip" data-hd-reveal><span class="hd-pase-strip-rule" aria-hidden="true"></span>Río Tiber 141 B, Colinas del Río, Aguascalientes.</p>
+       <div class="hd-tira hd-pase-tira" aria-hidden="true">
+         <span class="hd-fotito hd-fotito--cinta hd-pase-tira-f1" data-hd-reveal style="--rot:-5.5deg"><img src="img/fotitos/maleta-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+         <span class="hd-fotito hd-fotito--sello hd-pase-tira-f2" data-hd-reveal style="--rot:4.5deg"><img src="img/fotitos/cenote-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+       </div>
       </div>
 
       <div class="hd-pase-cardcol">
@@ -45,7 +46,7 @@
         <span class="hd-perf-h" id="hd-pase-perf" aria-hidden="true"></span>
 
         <div class="hd-pase-body">
-          <fieldset class="hd-pase-step">
+          <fieldset class="hd-pase-step hd-pase-step--dest">
             <legend class="hd-pase-q">¿A dónde?</legend>
             <div class="hd-pase-dests" id="hd-pase-dests" role="group" aria-label="Elige tu destino">
               <button type="button" class="hd-dest" data-slug="cancun" aria-pressed="false"><img src="img/destinos/cancun-t.webp" alt="" width="480" height="322" loading="lazy"><span>Cancún</span></button>
@@ -60,7 +61,7 @@
             <label class="hd-field hd-pase-otro" id="hd-pase-otro" hidden><span class="hd-field-lbl">¿A dónde?</span><input type="text" id="hd-otro-input" placeholder="Escribe el destino" autocomplete="off" maxlength="40"></label>
           </fieldset>
 
-          <fieldset class="hd-pase-step">
+          <fieldset class="hd-pase-step hd-pase-step--fechas">
             <legend class="hd-pase-q">¿Cuándo?</legend>
             <div class="hd-pase-fechas" id="hd-pase-fechas">
               <label class="hd-field"><span class="hd-field-lbl">Salida</span><input type="date" id="hd-fecha-salida"></label>
@@ -70,7 +71,7 @@
             <label class="hd-field hd-pase-mes" id="hd-pase-mes-wrap" hidden><span class="hd-field-lbl">Mes aproximado</span><input type="month" id="hd-mes-aprox"></label>
           </fieldset>
 
-          <fieldset class="hd-pase-step">
+          <fieldset class="hd-pase-step hd-pase-step--personas">
             <legend class="hd-pase-q">¿Cuántos viajan?</legend>
             <div class="hd-pase-personas">
               <div class="hd-counter">
@@ -90,7 +91,10 @@
                 </div>
               </div>
             </div>
-            <p class="hd-pase-q hd-pase-q--sub">Tipo de viaje <small>(opcional)</small></p>
+          </fieldset>
+
+          <fieldset class="hd-pase-step hd-pase-step--tipo">
+            <legend class="hd-pase-q hd-pase-q--sub">Tipo de viaje <small>(opcional)</small></legend>
             <div class="hd-pase-tipo" id="hd-pase-tipo" role="group" aria-label="Tipo de viaje">
               <button type="button" class="hd-chip" data-tipo="Playa todo incluido" aria-pressed="false">Playa todo incluido</button>
               <button type="button" class="hd-chip" data-tipo="Luna de miel" aria-pressed="false">Luna de miel</button>
@@ -100,7 +104,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="hd-pase-step">
+          <fieldset class="hd-pase-step hd-pase-step--nombre">
             <legend class="hd-pase-q">¿Cómo te llamas?</legend>
             <label class="hd-field"><span class="hd-field-lbl">Tu nombre <small>(opcional)</small></span><input type="text" id="hd-nombre" placeholder="Nombre" autocomplete="given-name" maxlength="60"></label>
           </fieldset>

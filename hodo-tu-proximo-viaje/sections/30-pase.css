@@ -1,17 +1,13 @@
-/* ============ 10 · Pase (hero + pase de abordar vivo) ============ */
-.hd-pase { position: relative; background: var(--deep); color: #fff; overflow: hidden; padding-top: calc(var(--hd-h) + var(--hd-gap) * 2 + 22px); }
-.hd-pase-bg { position: absolute; top: 0; left: 0; right: 0; height: min(680px, 92svh); overflow: hidden; z-index: 0; background: var(--deep); }
+/* ============ 30 · Arma tu pase (el pase de abordar vivo) ============ */
+.hd-pase { position: relative; background: var(--deep); color: #fff; overflow: hidden; }
+.hd-pase-bg { position: absolute; top: 0; left: 0; right: 0; height: min(620px, 78svh); overflow: hidden; z-index: 0; background: var(--deep); }
 .hd-pase-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 650ms var(--ease-out); }
 .hd-pase-img.is-on { opacity: 1; }
-.hd-pase-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(1, 26, 54, 0.34) 0%, rgba(1, 32, 66, 0.58) 55%, var(--deep) 100%); }
+.hd-pase-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(1, 26, 54, 0.52) 0%, rgba(1, 32, 66, 0.66) 55%, var(--deep) 100%); }
 .hd-pase-wrap { position: relative; z-index: 1; }
-.hd-pase-intro { margin-bottom: 22px; }
-.hd-pase-title { color: #fff; margin-bottom: 16px; max-width: 13ch; }
-.hd-pase-rate {
-  display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 4px;
-  color: #fff; font-weight: 600; font-size: 14px; border-radius: 8px;
-}
-@media (hover: hover) and (pointer: fine) { .hd-pase-rate:hover { text-decoration: underline; text-underline-offset: 4px; } }
+.hd-pase-intro { margin-bottom: 20px; }
+.hd-pase-title { color: #fff; margin-bottom: 12px; max-width: 12ch; }
+.hd-pase-sub { color: rgba(255, 255, 255, 0.82); font-size: 15.5px; line-height: 1.45; max-width: 34ch; }
 /* Tira de pie de columna: solo en compu, para que el titulo no deje un hueco muerto abajo */
 .hd-pase-strip { display: none; }
 
@@ -100,6 +96,8 @@
 .hd-dest-otro-ic svg { width: 13px; height: 13px; }
 .hd-dest--otro span { position: static; color: var(--ink); text-align: center; text-shadow: none; }
 .hd-dest--otro[aria-pressed="true"] { box-shadow: 0 0 0 2.5px var(--wa); border-color: var(--wa); }
+/* Con la ficha marcada, el "+" sale y solo queda la palomita (antes se encimaban). */
+.hd-dest--otro[aria-pressed="true"] .hd-dest-otro-ic { display: none; }
 
 .hd-pase-otro { margin-top: 2px; }
 .hd-pase-otro[hidden] { display: none; }
@@ -172,27 +170,51 @@
 
 @media (min-width: 520px) { .hd-pase-card { --talon-h: 140px; } }
 
+/* En celular esta era la seccion mas larga (1,566px) y se quedaba sin ninguna fotito,
+   porque la tira solo existia en compu (P3 de REVISION-3). Va entre el titulo y el
+   boleto (mismo lugar del DOM), chica y girada, dentro de .hd-pase que ya recorta con
+   overflow:hidden, asi que nunca genera scroll horizontal. */
+.hd-pase-tira { display: flex; margin-top: 18px; }
+.hd-pase-tira-f1 { --w: 122px; }
+.hd-pase-tira-f2 { --w: 112px; }
+
 @media (min-width: 900px) {
-  .hd-pase { padding-top: calc(var(--hd-h) + var(--hd-gap) * 2 + 40px); padding-bottom: calc(var(--sec-y) + 10px); }
+  .hd-pase { padding-bottom: calc(var(--sec-y) + 10px); }
   /* La foto cubre TODA la seccion: si se queda corta, la columna del titulo termina en
      un bloque de azul plano (hueco muerto). */
   .hd-pase-bg { height: 100%; }
-  .hd-pase-veil { background: linear-gradient(180deg, rgba(1, 26, 54, 0.4) 0%, rgba(1, 32, 66, 0.6) 42%, rgba(1, 40, 82, 0.8) 88%, rgba(1, 44, 90, 0.88) 100%); }
-  .hd-pase-grid { display: grid; grid-template-columns: minmax(0, 5.4fr) minmax(0, 6.6fr); gap: 48px; align-items: start; }
+  .hd-pase-veil { background: linear-gradient(180deg, rgba(1, 26, 54, 0.52) 0%, rgba(1, 32, 66, 0.66) 42%, rgba(1, 40, 82, 0.84) 88%, rgba(1, 44, 90, 0.9) 100%); }
+  .hd-pase-grid { display: grid; grid-template-columns: minmax(0, 4.6fr) minmax(0, 7.4fr); gap: 44px; align-items: start; }
   .hd-pase-intro { margin-bottom: 0; }
-  .hd-pase-title { max-width: 10ch; font-size: clamp(56px, 6.2vw, 96px); margin-bottom: 18px; }
-  .hd-pase-rate { font-size: 15px; }
-  .hd-pase-strip { display: block; margin-top: 34px; color: rgba(255, 255, 255, 0.8); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; line-height: 1.5; max-width: 34ch; }
-  .hd-pase-strip-rule { display: block; height: 2px; width: 100%; max-width: 260px; margin-bottom: 12px; background-image: radial-gradient(circle at 1.5px 1px, rgba(169, 209, 126, 0.85) 1.1px, transparent 1.3px); background-size: 8px 2px; background-repeat: repeat-x; }
+  .hd-pase-title { max-width: 9ch; font-size: clamp(54px, 5.4vw, 82px); margin-bottom: 16px; }
+  .hd-pase-sub { font-size: 17px; max-width: 26ch; }
+  .hd-pase-strip { display: block; margin-top: 28px; color: rgba(255, 255, 255, 0.8); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; line-height: 1.5; max-width: 34ch; }
+  .hd-pase-strip-rule { display: block; height: 2px; width: 100%; max-width: 230px; margin-bottom: 12px; background-image: radial-gradient(circle at 1.5px 1px, rgba(169, 209, 126, 0.85) 1.1px, transparent 1.3px); background-size: 8px 2px; background-repeat: repeat-x; }
+  .hd-pase-tira { display: flex; margin-top: 30px; }
+  .hd-pase-tira-f1 { --w: 164px; }
+  .hd-pase-tira-f2 { --w: 150px; }
   .hd-pase-card { max-width: none; --talon-h: 152px; }
   .hd-pase-talon { padding: 0 26px; gap: 11px; }
   .hd-pase-data dt { font-size: 10px; }
   .hd-pase-data dd { font-size: 14.5px; }
-  .hd-pase-body { padding: 24px 26px; }
-  .hd-pase-dests { grid-template-columns: repeat(4, 1fr); }
-  .hd-pase-personas { grid-template-columns: repeat(2, minmax(0, 240px)); }
+  /* Dos columnas DENTRO de la tarjeta: asi el boton verde de envio cabe en la ventana
+     (antes la tarjeta medía 1,130 px en una pantalla de 900). */
+  .hd-pase-body { padding: 24px 26px; grid-template-columns: minmax(0, 1.04fr) minmax(0, 1fr); column-gap: 26px; row-gap: 20px; align-items: start; }
+  .hd-pase-step--dest { grid-column: 1; grid-row: 1; }
+  .hd-pase-step--fechas { grid-column: 2; grid-row: 1; }
+  .hd-pase-step--personas { grid-column: 2; grid-row: 2; }
+  .hd-pase-step--tipo { grid-column: 1; grid-row: 2; }
+  .hd-pase-step--nombre { grid-column: 1; grid-row: 3; align-self: start; }
+  .hd-pase-err { grid-column: 1 / -1; grid-row: 4; }
+  .hd-pase-send { grid-column: 2; grid-row: 3; align-self: end; }
+  .hd-pase-foot { grid-column: 1 / -1; grid-row: 5; }
+  .hd-pase-dests { grid-template-columns: repeat(3, 1fr); }
+  /* Un contador por renglon: en la columna derecha de la tarjeta dos no caben (el "+" de
+     Menores se salia). */
+  .hd-pase-personas { grid-template-columns: minmax(0, 1fr); }
 }
 @media (min-width: 1500px) {
-  .hd-pase-title { font-size: 104px; max-width: 9ch; }
-  .hd-pase-grid { gap: 64px; }
+  .hd-pase-title { font-size: 92px; }
+  .hd-pase-grid { gap: 60px; }
+  .hd-pase-dests { grid-template-columns: repeat(4, 1fr); }
 }

@@ -16,9 +16,19 @@
 .hd-stamp--quote cite { display: block; font-style: normal; font-weight: 700; font-size: 14px; color: var(--deep); }
 .hd-stamp--quote cite span { font-weight: 500; color: var(--mute); }
 .hd-bodas-cta { margin-top: 4px; }
+.hd-bodas-fotitos { display: grid; justify-items: start; gap: 8px; margin-top: 10px; }
 @media (min-width: 720px) {
   .hd-bodas-body { grid-template-columns: auto minmax(0, 1fr); align-items: start; column-gap: 26px; row-gap: 22px; max-width: none; }
-  .hd-stamp--fact { grid-column: 1; }
+  .hd-stamp--fact { grid-column: 1; grid-row: 1; }
   .hd-stamp--quote { grid-column: 2; grid-row: 1 / 3; }
-  .hd-bodas-cta { grid-column: 1; }
+  .hd-bodas-cta { grid-column: 1; grid-row: 2; }
+  .hd-bodas-fotitos { grid-column: 1 / -1; grid-row: 3; justify-items: center; }
+}
+/* En compu las fotitos llenan la columna derecha, que antes quedaba en crema vacia. */
+@media (min-width: 1000px) {
+  .hd-bodas-body { grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 34px; }
+  .hd-stamp--quote { margin-top: 8px; }
+  .hd-bodas-fotitos { grid-column: 3; grid-row: 1 / 3; justify-items: start; margin-top: 0; }
+  .hd-bodas-fotitos .hd-fotito { --w: 160px !important; }
+  .hd-bodas-fotitos .hd-fotito + .hd-fotito { margin-left: -26px; }
 }

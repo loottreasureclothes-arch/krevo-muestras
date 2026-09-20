@@ -1,5 +1,13 @@
-/* ============ 60 · Cierre (bookend: el mismo pase, ya con lo que eligio) ============ */
-.hd-cierre { position: relative; overflow: hidden; background: var(--deep); }
+/* ============ 70 · Cierre (bookend: el mismo pase, ya con lo que eligio) ============ */
+.hd-cierre { position: relative; overflow: clip; background: var(--deep); }
+/* Fotitos de vuelta a casa: van DETRAS de la tarjeta (la tarjeta se pinta despues en el
+   DOM), asomandose por los bordes. En compu se separan a los costados. */
+.hd-cierre-f1 { --w: 116px; --l: -36px; --t: 26px; }
+.hd-cierre-f2 { --w: 104px; --r: -32px; --b: 24px; }
+@media (min-width: 900px) {
+  .hd-cierre-f1 { --w: 184px; --l: 8%; --t: 14%; }
+  .hd-cierre-f2 { --w: 168px; --r: 9%; --b: 14%; }
+}
 .hd-cierre-bg { position: absolute; inset: 0; z-index: 0; }
 .hd-cierre-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hd-cierre-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(1, 22, 46, 0.72), rgba(1, 22, 46, 0.88)); }

@@ -26,8 +26,11 @@
       if (code) code.textContent = s.destinoCodigo || "¿?";
       if (s.destinoSlug) {
         ready.hidden = false; empty.hidden = true;
+        /* "Otro destino" sin escribir nada NO puede dejar el renglon vacio: se usa el mismo
+           texto que ya lleva el mensaje de WhatsApp. */
+        var nombre = s.destinoNombre && String(s.destinoNombre).trim() ? s.destinoNombre : "La que me recomienden";
         var rows = [
-          ["Destino", s.destinoNombre],
+          ["Destino", nombre],
           ["Fechas", fmtFechas(s)],
           ["Viajan", fmtPersonas(s)]
         ];

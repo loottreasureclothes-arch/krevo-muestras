@@ -108,6 +108,9 @@
       markDest(d.slug);
       if (d.slug === "otro") {
         otroWrap.hidden = false;
+        /* Si el destino vino de fuera (el buscador del hero: "Ese también te lo cotizamos"),
+           el campo libre tiene que quedar ya escrito. No se toca si la persona esta tecleando. */
+        if (otroInput && document.activeElement !== otroInput && otroInput.value !== (d.nombre || "")) otroInput.value = d.nombre || "";
       } else {
         otroWrap.hidden = true;
         if (HP.DESTINOS[d.slug]) setBg(d.slug);

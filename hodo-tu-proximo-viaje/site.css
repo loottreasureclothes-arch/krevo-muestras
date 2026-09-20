@@ -40,7 +40,7 @@
   --radius-tk: 14px;
   --radius-sm: 10px;
   --hd-h: 60px;
-  --hd-h-solid: 50px;
+  --hd-h-solid: 48px;
   --hd-gap: 10px;
 }
 @media (min-width: 720px) {
@@ -91,6 +91,10 @@ a, button, [role="button"], label { -webkit-tap-highlight-color: transparent; to
 .hd-btn--wa:active { background: var(--wa-dark); border-color: var(--wa-dark); }
 @media (hover: hover) and (pointer: fine) { .hd-btn--wa:hover { background: var(--wa-dark); border-color: var(--wa-dark); } }
 .hd-btn--sm { min-height: 44px; padding: 0 16px; font-size: 14px; border-radius: 8px; }
+/* Azul marino: navegar y buscar. El verde es SOLO WhatsApp. */
+.hd-btn--deep { background: var(--deep); border-color: var(--deep); color: var(--cream); font-size: 14.5px; letter-spacing: 0.08em; text-transform: uppercase; }
+.hd-btn--deep:active { background: var(--deep-2); border-color: var(--deep-2); }
+@media (hover: hover) and (pointer: fine) { .hd-btn--deep:hover { background: var(--deep-2); border-color: var(--deep-2); } }
 .hd-btn--ghost { background: transparent; border-color: currentColor; color: inherit; }
 @media (hover: hover) and (pointer: fine) { .hd-btn--ghost:hover { background: rgba(13, 35, 64, 0.06); } }
 .hd-btn--line {
@@ -106,7 +110,18 @@ a, button, [role="button"], label { -webkit-tap-highlight-color: transparent; to
 /* ============ Header: tira de pase de abordar ============ */
 /* z-index 90: TIENE que quedar arriba del menu (.hd-menu, 70). Si el panel tapa al header,
    en celular no hay forma de cerrar el menu (no hay tecla Escape). Bug 1 de REVISION-1. */
-.hd-header { position: fixed; left: var(--hd-gap); right: var(--hd-gap); top: var(--hd-gap); z-index: 90; }
+.hd-header {
+  position: fixed; left: var(--hd-gap); right: var(--hd-gap); top: var(--hd-gap); z-index: 90;
+  transition: left 240ms var(--ease-out), right 240ms var(--ease-out), top 240ms var(--ease-out);
+}
+/* Al bajar, la barra se PEGA al borde. Con la barra flotando a 10 px del borde se alcanzaba
+   a ver una tira de las letras que iban pasando por arriba (el titulo del hero se veia
+   rebanado). Pegada arriba no puede asomarse nada; el aire de boleto se queda para cuando
+   la pagina esta hasta arriba. */
+.hd-header.is-compact { left: 0; right: 0; top: 0; }
+.hd-header.is-compact .hd-bar { border-radius: 0 0 var(--radius-tk) var(--radius-tk); box-shadow: 0 12px 28px -16px rgba(13, 35, 64, 0.42), 0 1px 0 rgba(13, 35, 64, 0.08); }
+.hd-header.is-compact .hd-bar::before, .hd-header.is-compact .hd-bar::after { display: none; }
+@media (prefers-reduced-motion: reduce) { .hd-header { transition: none; } }
 .hd-bar {
   position: relative; height: var(--hd-h); display: flex; align-items: stretch; gap: 0;
   background: var(--paper); border-radius: var(--radius-tk);
@@ -135,8 +150,17 @@ a, button, [role="button"], label { -webkit-tap-highlight-color: transparent; to
 .hd-route-plane { width: 15px; height: 15px; color: var(--brand); flex: none; transform: rotate(0deg); }
 .hd-route-b[data-empty]:empty::before { content: attr(data-empty); }
 .hd-route-b { color: var(--deep); font-weight: 600; }
-@media (max-width: 519px) { .hd-route { font-size: 12px; gap: 6px; } .hd-route-plane { width: 13px; height: 13px; } }
+/* Celular: la ruta NO puede quedar pegada al boton Cotizar. Se le da aire por los dos
+   lados (margin-inline) y se recorta el resto de la barra: rotulo "Menú" fuera (el de
+   "Cerrar" sigue apareciendo con el menu abierto), wordmark y paddings mas chicos. */
+@media (max-width: 519px) {
+  .hd-route { font-size: 12px; gap: 6px; padding: 0 2px; margin-inline: 12px; }
+  .hd-route-plane { width: 13px; height: 13px; }
+  .hd-stub { padding: 0 9px 0 12px; gap: 7px; }
+  .hd-wordmark { font-size: 16px; }
+}
 .hd-actions { flex: none; display: flex; align-items: center; gap: 8px; padding: 0 10px 0 4px; }
+@media (max-width: 519px) { .hd-actions { gap: 6px; padding: 0 8px 0 2px; } .hd-actions .hd-btn--sm { padding: 0 13px; } }
 .hd-menu-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 7px; height: 44px; min-width: 44px; padding: 0 12px; border-radius: 8px;
   border: 1px solid rgba(13, 35, 64, 0.22); color: var(--ink); font-weight: 600; font-size: 13px;
@@ -153,10 +177,13 @@ body.hd-menu-open .hd-menu-lbl { display: inline; }
 .hd-burger i:first-child { top: 0; } .hd-burger i:last-child { top: 7px; }
 body.hd-menu-open .hd-burger i:first-child { top: 3.5px; transform: rotate(45deg); }
 body.hd-menu-open .hd-burger i:last-child { top: 3.5px; transform: rotate(-45deg); }
-@media (max-width: 380px) { .hd-menu-lbl { display: none; } .hd-menu-btn { padding: 0 10px; } }
+/* Abajo de 420 px el rotulo "Menú" sale (queda la hamburguesa de 44 px): es lo que le da
+   aire de verdad a la ruta AGS/destino. Con el menu abierto el rotulo "Cerrar" SI se ve
+   (regla de body.hd-menu-open), que era el bug 1 de REVISION-1. */
+@media (max-width: 419px) { .hd-menu-lbl { display: none; } .hd-menu-btn { padding: 0 10px; } }
 
 /* Progreso: linea punteada con el avioncito al pie del header */
-.hd-progress { position: relative; height: 5px; margin-top: 6px; }
+.hd-progress { position: relative; height: 5px; margin-top: 4px; }
 .hd-progress::before {
   content: ""; position: absolute; inset: 0; border-radius: 3px;
   background-image: linear-gradient(rgba(13, 35, 64, 0.22) 60%, transparent 0); background-size: 7px 2px; background-repeat: repeat-x; background-position: center;
@@ -186,7 +213,7 @@ body.hd-menu-open .hd-menu-panel { clip-path: inset(0 0 0 0); }
 body.hd-menu-open .hd-menu-nav a { opacity: 1; transform: none; transition: opacity 380ms var(--ease-out), transform 380ms var(--ease-out); transition-delay: calc(120ms + var(--i, 0) * 45ms); }
 .hd-menu-nav a.hd-menu-parent { border-bottom: 0; padding-bottom: 2px; }
 .hd-menu-sub { list-style: none; margin: 0; padding: 0 0 10px calc(2em + 12px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 10px; border-bottom: 1px solid rgba(246, 240, 226, 0.18); }
-.hd-menu-sub a { display: flex; align-items: center; gap: 8px; min-height: 42px; padding: 0; border: 0; font-family: var(--font-body); font-weight: 600; font-size: 15px; color: var(--cream-mute); }
+.hd-menu-sub a { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0; border: 0; font-family: var(--font-body); font-weight: 600; font-size: 15px; color: var(--cream-mute); }
 .hd-menu-sub a::before { content: ""; flex: none; width: 9px; height: 1.4px; background: var(--brand); }
 @media (hover: hover) and (pointer: fine) { .hd-menu-nav a:hover { color: #fff; } .hd-menu-sub a:hover { color: #fff; } }
 .hd-menu-foot { display: grid; gap: 12px; opacity: 0; transition: opacity 200ms var(--ease-out); }
@@ -234,6 +261,22 @@ body.hd-menu-open .hd-menu-foot { opacity: 1; transition: opacity 420ms var(--ea
   -webkit-mask-composite: source-in; mask-composite: intersect;
 }
 .hd-ticket--cut::before, .hd-ticket--cut::after { display: none; }
+/* Mismo troquel pero en VERTICAL: las muescas van arriba y abajo, a la altura de la
+   perforacion que separa el talon derecho (el buscador del hero). */
+.hd-ticket--cutx {
+  box-shadow: none;
+  --notch-r: 10px;
+  -webkit-mask-image:
+    radial-gradient(circle var(--notch-r) at var(--tk-notch-x, 70%) 0, transparent calc(var(--notch-r) - 0.5px), #000 var(--notch-r)),
+    radial-gradient(circle var(--notch-r) at var(--tk-notch-x, 70%) 100%, transparent calc(var(--notch-r) - 0.5px), #000 var(--notch-r));
+  mask-image:
+    radial-gradient(circle var(--notch-r) at var(--tk-notch-x, 70%) 0, transparent calc(var(--notch-r) - 0.5px), #000 var(--notch-r)),
+    radial-gradient(circle var(--notch-r) at var(--tk-notch-x, 70%) 100%, transparent calc(var(--notch-r) - 0.5px), #000 var(--notch-r));
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+}
+.hd-ticket--cutx::before, .hd-ticket--cutx::after { display: none; }
 .hd-paper-shadow { filter: drop-shadow(0 22px 26px rgba(1, 30, 62, 0.34)) drop-shadow(0 2px 2px rgba(1, 30, 62, 0.2)); }
 
 /* Perforacion: puntitos troquelados, no una raya */
@@ -268,8 +311,67 @@ figure.hd-frame { position: relative; margin: 0; border-radius: var(--radius-tk)
   background: rgba(1, 22, 46, 0.62); color: #fff; font-size: 11.5px; font-weight: 600; letter-spacing: 0.02em;
   backdrop-filter: blur(2px);
 }
-/* Arriba a la derecha: para fotos cuyo titulo va abajo a la izquierda (salidas, bodas). */
+/* Arriba a la derecha: para fotos cuyo titulo va abajo a la izquierda (planes, bodas). */
 .hd-illus--tr { left: auto; right: 10px; top: 10px; bottom: auto; }
+
+/* ============ FOTITOS de viaje (recuerdo tipo instantanea) ============
+   Emanuel: "faltan fotitos de viajes por todos lados". Marco blanco, sombra de papel,
+   giro de 3 a 7 grados, cinta adhesiva o esquina de sello, caidita corta al entrar.
+   REGLAS DE USO:
+   - Viven dentro de una capa .hd-fotitos (absoluta, pointer-events:none) cuyo padre
+     recorta (overflow: clip). Asi pueden asomarse por los bordes en celular SIN generar
+     scroll horizontal.
+   - NUNCA encima de texto, botones ni campos: van en los huecos, medido con rectangulos.
+   - Una sola nota "Imágenes ilustrativas" por grupo (.hd-fotitos-note), no una por foto. */
+.hd-fotitos { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.hd-fotito {
+  position: absolute; display: block; width: var(--w, 126px);
+  top: var(--t, auto); right: var(--r, auto); bottom: var(--b, auto); left: var(--l, auto);
+  padding: 6px 6px 19px; background: #fff; border-radius: 2px;
+  box-shadow: 0 14px 24px -12px rgba(1, 26, 54, 0.55), 0 1px 0 rgba(13, 35, 64, 0.14);
+  transform: rotate(var(--rot, -4deg));
+}
+.hd-fotito img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; background: var(--paper-3); }
+/* Cinta adhesiva */
+.hd-fotito--cinta::before {
+  content: ""; position: absolute; top: -8px; left: 50%; width: 52%; min-width: 46px; height: 19px;
+  transform: translateX(-50%) rotate(-2.6deg);
+  background: linear-gradient(180deg, rgba(246, 240, 226, 0.88), rgba(231, 217, 189, 0.8));
+  box-shadow: inset 0 0 0 1px rgba(13, 35, 64, 0.07), 0 1px 2px rgba(13, 35, 64, 0.14);
+}
+.hd-fotito--cinta.hd-fotito--cinta-l::before { left: 16%; transform: rotate(-24deg); width: 44px; min-width: 0; }
+/* Esquina de sello (avioncito de la marca) */
+.hd-fotito--sello::after {
+  content: ""; position: absolute; right: -11px; bottom: 13px; width: 30px; height: 30px; transform: rotate(9deg);
+  border: 1.5px dashed rgba(1, 66, 134, 0.55); border-radius: 3px;
+  background: #fff center/15px 15px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%236ea541' d='M44.6 3.4 3.6 19.8c-1 .4-1 1.8.1 2.1l14.6 4.3 4.3 14.6c.3 1.1 1.7 1.1 2.1.1L41 3.9c.4-1-.6-2-1.6-1.6l1.2-.1Zm-14.9 25L20 37.1l-2.3-7.8 12-11.9-.2 11Z'/%3E%3C/svg%3E");
+  box-shadow: 0 2px 5px rgba(1, 26, 54, 0.22);
+}
+/* Entrada: caidita corta y se acomoda. El reveal generico pone transform:none y les
+   borraria el giro, por eso esta regla es mas especifica (igual que los sellos). */
+@media (scripting: enabled) {
+  .hd-fotito[data-hd-reveal] { opacity: 0; transform: rotate(calc(var(--rot, -4deg) * 2)) translateY(-14px); transition: none; }
+}
+.hd-fotito[data-hd-reveal].is-in { opacity: 1; transform: rotate(var(--rot, -4deg)); animation: hd-fotito-in 520ms cubic-bezier(0.16, 0.84, 0.44, 1) both; }
+@keyframes hd-fotito-in {
+  0% { opacity: 0; transform: rotate(calc(var(--rot, -4deg) * 2)) translateY(-14px) scale(0.97); }
+  62% { opacity: 1; transform: rotate(calc(var(--rot, -4deg) * 0.8)) translateY(2px) scale(1.005); }
+  100% { opacity: 1; transform: rotate(var(--rot, -4deg)) translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hd-fotito[data-hd-reveal], .hd-fotito[data-hd-reveal].is-in { opacity: 1 !important; transform: rotate(var(--rot, -4deg)) !important; animation: none !important; }
+}
+/* Tira de fotitos EN FLUJO (no absoluta): para llenar huecos de composicion sin
+   riesgo de encimar nada. Se traslapan un poco entre ellas, como en la mesa. */
+.hd-tira { display: flex; align-items: flex-start; }
+.hd-tira .hd-fotito { position: relative; top: auto; right: auto; bottom: auto; left: auto; }
+.hd-tira .hd-fotito + .hd-fotito { margin-left: -20px; }
+.hd-tira .hd-fotito:nth-child(2) { z-index: 2; }
+.hd-tira .hd-fotito:nth-child(3) { z-index: 3; }
+.hd-fotitos-note {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--mute);
+}
+.hd-on-deep .hd-fotitos-note, .hd-fotitos-note--claro { color: rgba(255, 255, 255, 0.72); }
 
 /* ============ Titulo que cae y pega ============ */
 .hd-drop { overflow: visible; }
@@ -302,6 +404,8 @@ figure.hd-frame { position: relative; margin: 0; border-radius: var(--radius-tk)
   *, *::before, *::after { animation-duration: 1ms !important; animation-delay: 0ms !important; transition-duration: 1ms !important; }
   [data-hd-reveal], [data-hd-reveal="clip"] { opacity: 1 !important; transform: none !important; clip-path: none !important; }
   .hd-word { opacity: 1 !important; }
+  /* Sin animacion, pero los sellos siguen GIRADOS: sin esto quedaban como cajas rectas. */
+  .hd-stamp[data-hd-reveal], .hd-stamp[data-hd-reveal].is-in { transform: rotate(var(--rot, -3deg)) !important; }
 }
 
 /* ============ Boton flotante WhatsApp ============ */

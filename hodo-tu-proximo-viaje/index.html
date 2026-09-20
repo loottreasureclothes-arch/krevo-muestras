@@ -30,17 +30,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Instrument+Sans:wght@400..600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/destinos/cancun-m.webp" media="(max-width: 640px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/destinos/cancun-d.webp" media="(min-width: 641px)" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1789880781">
-<link rel="stylesheet" href="sections/10-pase.css?v=1789880889">
-<link rel="stylesheet" href="sections/20-salidas.css?v=1789877049">
-<link rel="stylesheet" href="sections/30-bodas.css?v=1789876797">
-<link rel="stylesheet" href="sections/40-sellos.css?v=1789881511">
-<link rel="stylesheet" href="sections/50-oficina.css?v=1789880621">
-<link rel="stylesheet" href="sections/60-cierre.css?v=1789880686">
+<link rel="stylesheet" href="site.css?v=1789892156">
+<link rel="stylesheet" href="sections/10-hero.css?v=1789892868">
+<link rel="stylesheet" href="sections/20-planes.css?v=1789892230">
+<link rel="stylesheet" href="sections/30-pase.css?v=1789892311">
+<link rel="stylesheet" href="sections/40-bodas.css?v=1789885674">
+<link rel="stylesheet" href="sections/50-sellos.css?v=1789892243">
+<link rel="stylesheet" href="sections/60-oficina.css?v=1789892264">
+<link rel="stylesheet" href="sections/70-cierre.css?v=1789885846">
 <noscript><style>[data-hd-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}.hd-word{opacity:1!important}</style></noscript>
 </head>
 <body>
-<a class="hd-skip" href="#salidas">Saltar al contenido</a>
+<a class="hd-skip" href="#planes">Saltar al contenido</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></symbol>
@@ -78,7 +79,8 @@
   <div class="hd-menu-scrim" aria-hidden="true"></div>
   <div class="hd-menu-panel">
     <nav class="hd-menu-nav" aria-label="Secciones">
-      <a class="hd-menu-parent" href="#pase"><span>01</span>Cotizar</a>
+      <a href="#planes"><span>01</span>Planes</a>
+      <a class="hd-menu-parent" href="#pase"><span>02</span>Cotizar</a>
       <ul class="hd-menu-sub" aria-label="Destinos">
         <li><a href="#pase" data-hd-destino="cancun">Cancún</a></li>
         <li><a href="#pase" data-hd-destino="riviera-maya">Riviera Maya</a></li>
@@ -88,13 +90,11 @@
         <li><a href="#pase" data-hd-destino="ixtapa">Ixtapa</a></li>
         <li><a href="#pase" data-hd-destino="cdmx">Ciudad de México</a></li>
       </ul>
-      <a href="#salidas"><span>02</span>Salidas</a>
       <a href="#bodas"><span>03</span>Bodas y lunas de miel</a>
       <a href="#sellos"><span>04</span>Opiniones</a>
       <a href="#oficina"><span>05</span>Visítanos</a>
     </nav>
     <div class="hd-menu-foot">
-      <span class="hd-menu-ruler" aria-hidden="true"></span>
       <div class="hd-menu-acts">
         <a class="hd-btn hd-btn--wa" data-wa="Hola HODO, quiero información." href="https://wa.me/524494262277?text=Hola%20HODO%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
         <a class="hd-btn hd-btn--ghost" href="tel:+524494262277">Llamar</a>
@@ -109,9 +109,186 @@
 </div>
 
 <main id="top">
+  <section id="hero" class="hd-hero" aria-labelledby="hero-title">
+    <div class="hd-hero-bg" aria-hidden="true">
+      <img class="hd-hero-img is-on" id="hd-hero-img-a" src="img/destinos/cancun-m.webp" srcset="img/destinos/cancun-m.webp 960w, img/destinos/cancun-d.webp 1920w" sizes="100vw" alt="" width="960" height="1200" fetchpriority="high">
+      <img class="hd-hero-img" id="hd-hero-img-b" alt="" width="960" height="1200">
+      <span class="hd-hero-veil"></span>
+    </div>
+
+    <div class="hd-fotitos hd-hero-fotitos" aria-hidden="true">
+      <span class="hd-fotito hd-fotito--cinta hd-hero-f1" data-hd-reveal style="--rot:-6deg"><img src="img/fotitos/pareja-playa-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+      <span class="hd-fotito hd-fotito--sello hd-hero-f2" data-hd-reveal style="--rot:5deg"><img src="img/fotitos/ventanilla-avion-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+      <span class="hd-fotito hd-fotito--cinta hd-fotito--cinta-l hd-hero-f3" data-hd-reveal style="--rot:4deg"><img src="img/fotitos/alberca-resort-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+      <span class="hd-fotito hd-hero-f4" data-hd-reveal style="--rot:-4.5deg"><img src="img/fotitos/snorkel-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+    </div>
+
+    <div class="hd-wrap hd-hero-wrap">
+      <h1 class="hd-hero-title hd-drop" id="hero-title" data-hd-reveal>
+        <span class="hd-word">¿A dónde</span> <span class="hd-word">es tu</span> <span class="hd-word">próximo</span> <span class="hd-word hd-hero-title-b">viaje?</span>
+      </h1>
+
+      <a class="hd-hero-rate" href="#sellos" data-hd-reveal>
+        <span class="hd-stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+        <span>5.0 en Google · 7 opiniones</span>
+      </a>
+
+      <form class="hd-buscador" id="hd-buscador" role="search" autocomplete="off" novalidate>
+        <div class="hd-ticket hd-ticket--cutx hd-buscador-tk">
+          <label class="hd-buscador-campo" for="hd-q">
+            <span class="hd-buscador-lbl">¿A dónde quieres ir?</span>
+            <input class="hd-buscador-input" id="hd-q" name="q" type="text" role="combobox" aria-expanded="false" aria-controls="hd-sug" aria-autocomplete="list" aria-describedby="hd-buscador-pista" placeholder="Cancún, Punta Cana, boda..." maxlength="40" enterkeyhint="search">
+          </label>
+          <span class="hd-buscador-perf" aria-hidden="true"></span>
+          <button class="hd-btn hd-btn--deep hd-buscador-btn" type="submit">Buscar</button>
+        </div>
+        <ul class="hd-sug" id="hd-sug" role="listbox" aria-label="Sugerencias de destino" hidden></ul>
+        <p class="hd-buscador-pista" id="hd-buscador-pista">7 destinos que HODO ya publicó, y el tuyo también.</p>
+        <p class="hd-buscador-msg" id="hd-buscador-msg" role="status" hidden></p>
+      </form>
+
+      <div class="hd-hero-fichas" id="hd-hero-fichas" role="group" aria-label="Destinos rápidos">
+        <button class="hd-ficha" type="button" aria-pressed="false" data-slug="cancun"><span class="hd-ficha-code hd-code">CUN</span><span class="hd-ficha-name">Cancún</span></button>
+        <button class="hd-ficha" type="button" aria-pressed="false" data-slug="riviera-maya"><span class="hd-ficha-code hd-code">CUN</span><span class="hd-ficha-name">Riviera Maya</span></button>
+        <button class="hd-ficha" type="button" aria-pressed="false" data-slug="punta-cana"><span class="hd-ficha-code hd-code">PUJ</span><span class="hd-ficha-name">Punta Cana</span></button>
+        <button class="hd-ficha" type="button" aria-pressed="false" data-slug="puerto-vallarta"><span class="hd-ficha-code hd-code">PVR</span><span class="hd-ficha-name">Puerto Vallarta</span></button>
+        <button class="hd-ficha" type="button" aria-pressed="false" data-slug="punta-mita"><span class="hd-ficha-code hd-code">PVR</span><span class="hd-ficha-name">Punta Mita</span></button>
+        <button class="hd-ficha" type="button" aria-pressed="false" data-slug="ixtapa"><span class="hd-ficha-code hd-code">ZIH</span><span class="hd-ficha-name">Ixtapa</span></button>
+        <button class="hd-ficha" type="button" aria-pressed="false" data-slug="cdmx"><span class="hd-ficha-code hd-code">MEX</span><span class="hd-ficha-name">Ciudad de México</span></button>
+      </div>
+
+      <p class="hd-hero-strip">
+        <span class="hd-hero-strip-rule" aria-hidden="true"></span>
+        <span>Agencia de viajes en Aguascalientes</span>
+        <span class="hd-fotitos-note">Desde marzo de 2023 · Imágenes ilustrativas</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="planes" class="hd-sec hd-sec--sm hd-planes" aria-labelledby="planes-title">
+    <div class="hd-wrap hd-planes-head">
+      <h2 class="hd-h2 hd-drop" id="planes-title" data-hd-reveal><span class="hd-word">Planes</span> <span class="hd-word">desde</span> <span class="hd-word hd-planes-title-b">Aguascalientes.</span></h2>
+      <div class="hd-planes-filtros" id="hd-planes-filtros" role="group" aria-label="Filtrar planes">
+        <button class="hd-filtro" type="button" data-filtro="todos" aria-pressed="true">Todos</button>
+        <button class="hd-filtro" type="button" data-filtro="playa" aria-pressed="false">Playa</button>
+        <button class="hd-filtro" type="button" data-filtro="bodas" aria-pressed="false">Luna de miel y bodas</button>
+        <button class="hd-filtro" type="button" data-filtro="ciudad" aria-pressed="false">Ciudad</button>
+      </div>
+      <p class="hd-planes-estado" id="hd-planes-estado" role="status" hidden></p>
+    </div>
+
+    <div class="hd-planes-carril" id="hd-planes-carril" tabindex="0" role="group" aria-label="Planes publicados por HODO">
+      <article class="hd-ticket hd-plan hd-plan--xl" data-slug="cancun" data-grupo="playa">
+        <figure class="hd-plan-foto">
+          <img src="img/destinos/cancun-m.webp" alt="" width="960" height="1200" loading="lazy">
+          <span class="hd-plan-code hd-code" aria-hidden="true">CUN</span>
+        </figure>
+        <span class="hd-perf-h" aria-hidden="true"></span>
+        <div class="hd-plan-body">
+          <h3 class="hd-plan-name">Cancún</h3>
+          <p class="hd-plan-real">Riu Palace Península, publicado en su Facebook.</p>
+          <p class="hd-plan-incluye hd-code"><svg aria-hidden="true"><use href="#i-plane"/></svg>Vuelo, hotel y traslados</p>
+          <a class="hd-btn hd-btn--line hd-plan-cta" href="#pase" data-hd-destino="cancun">Pregunta el precio<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="hd-ticket hd-plan" data-slug="riviera-maya" data-grupo="playa">
+        <figure class="hd-plan-foto">
+          <img src="img/destinos/riviera-maya-m.webp" alt="" width="960" height="1200" loading="lazy">
+          <span class="hd-plan-code hd-code" aria-hidden="true">CUN</span>
+        </figure>
+        <span class="hd-perf-h" aria-hidden="true"></span>
+        <div class="hd-plan-body">
+          <h3 class="hd-plan-name">Riviera Maya</h3>
+          <p class="hd-plan-real">Viaje de familiarización, publicado en agosto.</p>
+          <p class="hd-plan-incluye hd-code"><svg aria-hidden="true"><use href="#i-plane"/></svg>Vuelo, hotel y traslados</p>
+          <a class="hd-btn hd-btn--line hd-plan-cta" href="#pase" data-hd-destino="riviera-maya">Pregunta el precio<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="hd-ticket hd-plan" data-slug="punta-cana" data-grupo="playa">
+        <figure class="hd-plan-foto">
+          <img src="img/destinos/punta-cana-m.webp" alt="" width="960" height="1200" loading="lazy">
+          <span class="hd-plan-code hd-code" aria-hidden="true">PUJ</span>
+        </figure>
+        <span class="hd-perf-h" aria-hidden="true"></span>
+        <div class="hd-plan-body">
+          <h3 class="hd-plan-name">Punta Cana</h3>
+          <p class="hd-plan-real">Con Aeroméxico, publicado el 10 de septiembre.</p>
+          <p class="hd-plan-incluye hd-code"><svg aria-hidden="true"><use href="#i-plane"/></svg>Vuelo, hotel y traslados</p>
+          <a class="hd-btn hd-btn--line hd-plan-cta" href="#pase" data-hd-destino="punta-cana">Pregunta el precio<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="hd-ticket hd-plan hd-plan--l" data-slug="punta-mita" data-grupo="bodas">
+        <figure class="hd-plan-foto">
+          <img src="img/destinos/punta-mita-m.webp" alt="" width="960" height="1200" loading="lazy">
+          <span class="hd-plan-code hd-code" aria-hidden="true">PVR</span>
+        </figure>
+        <span class="hd-perf-h" aria-hidden="true"></span>
+        <div class="hd-plan-body">
+          <h3 class="hd-plan-name">Punta Mita</h3>
+          <p class="hd-plan-real">Boda de destino en el Grand Palladium.</p>
+          <p class="hd-plan-incluye hd-code"><svg aria-hidden="true"><use href="#i-plane"/></svg>Vuelo, hotel y traslados</p>
+          <a class="hd-btn hd-btn--line hd-plan-cta" href="#pase" data-hd-destino="punta-mita">Pregunta el precio<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="hd-ticket hd-plan" data-slug="puerto-vallarta" data-grupo="playa">
+        <figure class="hd-plan-foto">
+          <img src="img/destinos/puerto-vallarta-m.webp" alt="" width="960" height="1200" loading="lazy">
+          <span class="hd-plan-code hd-code" aria-hidden="true">PVR</span>
+        </figure>
+        <span class="hd-perf-h" aria-hidden="true"></span>
+        <div class="hd-plan-body">
+          <h3 class="hd-plan-name">Puerto Vallarta</h3>
+          <p class="hd-plan-real">Banner en su oficina y destacado de Instagram.</p>
+          <p class="hd-plan-incluye hd-code"><svg aria-hidden="true"><use href="#i-plane"/></svg>Vuelo, hotel y traslados</p>
+          <a class="hd-btn hd-btn--line hd-plan-cta" href="#pase" data-hd-destino="puerto-vallarta">Pregunta el precio<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="hd-ticket hd-plan" data-slug="ixtapa" data-grupo="playa">
+        <figure class="hd-plan-foto">
+          <img src="img/destinos/ixtapa-m.webp" alt="" width="960" height="1200" loading="lazy">
+          <span class="hd-plan-code hd-code" aria-hidden="true">ZIH</span>
+        </figure>
+        <span class="hd-perf-h" aria-hidden="true"></span>
+        <div class="hd-plan-body">
+          <h3 class="hd-plan-name">Ixtapa</h3>
+          <p class="hd-plan-real">En sus destacados de Instagram.</p>
+          <p class="hd-plan-incluye hd-code"><svg aria-hidden="true"><use href="#i-plane"/></svg>Vuelo, hotel y traslados</p>
+          <a class="hd-btn hd-btn--line hd-plan-cta" href="#pase" data-hd-destino="ixtapa">Pregunta el precio<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="hd-ticket hd-plan hd-plan--l" data-slug="cdmx" data-grupo="ciudad">
+        <figure class="hd-plan-foto">
+          <img src="img/destinos/cdmx-m.webp" alt="" width="960" height="1200" loading="lazy">
+          <span class="hd-plan-code hd-code" aria-hidden="true">MEX</span>
+        </figure>
+        <span class="hd-perf-h" aria-hidden="true"></span>
+        <div class="hd-plan-body">
+          <h3 class="hd-plan-name">Ciudad de México</h3>
+          <p class="hd-plan-real">También en sus destacados de Instagram.</p>
+          <p class="hd-plan-incluye hd-code"><svg aria-hidden="true"><use href="#i-plane"/></svg>Vuelo, hotel y traslados</p>
+          <a class="hd-btn hd-btn--line hd-plan-cta" href="#pase" data-hd-destino="cdmx">Pregunta el precio<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+    </div>
+
+    <div class="hd-wrap hd-planes-pie">
+      <div class="hd-planes-ind" aria-hidden="true">
+        <span class="hd-planes-perf"><span class="hd-planes-perf-fill" id="hd-planes-fill"></span></span>
+        <span class="hd-planes-num hd-code"><b id="hd-planes-n">01</b> / <span id="hd-planes-tot">07</span></span>
+      </div>
+      <p class="hd-fotitos-note">Imágenes ilustrativas. Los precios se cotizan por WhatsApp.</p>
+    </div>
+  </section>
+
   <section id="pase" class="hd-sec hd-pase" aria-labelledby="pase-title">
     <div class="hd-pase-bg" aria-hidden="true">
-      <img class="hd-pase-img is-a is-on" id="hd-pase-img-a" src="img/destinos/cancun-m.webp" srcset="img/destinos/cancun-m.webp 960w, img/destinos/cancun-d.webp 1920w" sizes="100vw" alt="" width="960" height="1200" fetchpriority="high">
+      <img class="hd-pase-img is-a is-on" id="hd-pase-img-a" src="img/destinos/cancun-m.webp" srcset="img/destinos/cancun-m.webp 960w, img/destinos/cancun-d.webp 1920w" sizes="100vw" alt="" width="960" height="1200" loading="lazy">
       <img class="hd-pase-img is-b" id="hd-pase-img-b" alt="" width="960" height="1200">
       <span class="hd-pase-veil"></span>
     </div>
@@ -120,15 +297,16 @@
      <div class="hd-pase-grid">
       <div class="hd-pase-intro">
        <div class="hd-pase-introtop">
-        <h1 class="hd-h2 hd-drop hd-pase-title" id="pase-title" data-hd-reveal>
-          <span class="hd-word">¿A dónde</span> <span class="hd-word">es tu</span> <span class="hd-word">próximo</span> <span class="hd-word">viaje?</span>
-        </h1>
-        <a class="hd-pase-rate" href="#sellos" data-hd-reveal>
-          <span class="hd-stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
-          <span>5.0 en Google · 7 opiniones</span>
-        </a>
+        <h2 class="hd-h2 hd-drop hd-pase-title" id="pase-title" data-hd-reveal>
+          <span class="hd-word">Arma</span> <span class="hd-word">tu pase.</span>
+        </h2>
+        <p class="hd-pase-sub" data-hd-reveal>Destino, fechas y cuántos viajan. El mensaje se arma solo y se manda por WhatsApp al 449 426 2277.</p>
        </div>
-       <p class="hd-pase-strip" data-hd-reveal><span class="hd-pase-strip-rule" aria-hidden="true"></span>Agencia de viajes en Aguascalientes, desde marzo de 2023.</p>
+       <p class="hd-pase-strip" data-hd-reveal><span class="hd-pase-strip-rule" aria-hidden="true"></span>Río Tiber 141 B, Colinas del Río, Aguascalientes.</p>
+       <div class="hd-tira hd-pase-tira" aria-hidden="true">
+         <span class="hd-fotito hd-fotito--cinta hd-pase-tira-f1" data-hd-reveal style="--rot:-5.5deg"><img src="img/fotitos/maleta-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+         <span class="hd-fotito hd-fotito--sello hd-pase-tira-f2" data-hd-reveal style="--rot:4.5deg"><img src="img/fotitos/cenote-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+       </div>
       </div>
 
       <div class="hd-pase-cardcol">
@@ -156,7 +334,7 @@
         <span class="hd-perf-h" id="hd-pase-perf" aria-hidden="true"></span>
 
         <div class="hd-pase-body">
-          <fieldset class="hd-pase-step">
+          <fieldset class="hd-pase-step hd-pase-step--dest">
             <legend class="hd-pase-q">¿A dónde?</legend>
             <div class="hd-pase-dests" id="hd-pase-dests" role="group" aria-label="Elige tu destino">
               <button type="button" class="hd-dest" data-slug="cancun" aria-pressed="false"><img src="img/destinos/cancun-t.webp" alt="" width="480" height="322" loading="lazy"><span>Cancún</span></button>
@@ -171,7 +349,7 @@
             <label class="hd-field hd-pase-otro" id="hd-pase-otro" hidden><span class="hd-field-lbl">¿A dónde?</span><input type="text" id="hd-otro-input" placeholder="Escribe el destino" autocomplete="off" maxlength="40"></label>
           </fieldset>
 
-          <fieldset class="hd-pase-step">
+          <fieldset class="hd-pase-step hd-pase-step--fechas">
             <legend class="hd-pase-q">¿Cuándo?</legend>
             <div class="hd-pase-fechas" id="hd-pase-fechas">
               <label class="hd-field"><span class="hd-field-lbl">Salida</span><input type="date" id="hd-fecha-salida"></label>
@@ -181,7 +359,7 @@
             <label class="hd-field hd-pase-mes" id="hd-pase-mes-wrap" hidden><span class="hd-field-lbl">Mes aproximado</span><input type="month" id="hd-mes-aprox"></label>
           </fieldset>
 
-          <fieldset class="hd-pase-step">
+          <fieldset class="hd-pase-step hd-pase-step--personas">
             <legend class="hd-pase-q">¿Cuántos viajan?</legend>
             <div class="hd-pase-personas">
               <div class="hd-counter">
@@ -201,7 +379,10 @@
                 </div>
               </div>
             </div>
-            <p class="hd-pase-q hd-pase-q--sub">Tipo de viaje <small>(opcional)</small></p>
+          </fieldset>
+
+          <fieldset class="hd-pase-step hd-pase-step--tipo">
+            <legend class="hd-pase-q hd-pase-q--sub">Tipo de viaje <small>(opcional)</small></legend>
             <div class="hd-pase-tipo" id="hd-pase-tipo" role="group" aria-label="Tipo de viaje">
               <button type="button" class="hd-chip" data-tipo="Playa todo incluido" aria-pressed="false">Playa todo incluido</button>
               <button type="button" class="hd-chip" data-tipo="Luna de miel" aria-pressed="false">Luna de miel</button>
@@ -211,7 +392,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="hd-pase-step">
+          <fieldset class="hd-pase-step hd-pase-step--nombre">
             <legend class="hd-pase-q">¿Cómo te llamas?</legend>
             <label class="hd-field"><span class="hd-field-lbl">Tu nombre <small>(opcional)</small></span><input type="text" id="hd-nombre" placeholder="Nombre" autocomplete="given-name" maxlength="60"></label>
           </fieldset>
@@ -226,71 +407,6 @@
        </form>
       </div>
      </div>
-    </div>
-  </section>
-
-  <section id="salidas" class="hd-sec hd-sec--sm hd-salidas" aria-labelledby="salidas-title">
-    <figure class="hd-frame hd-salidas-photo" data-hd-reveal="clip">
-      <picture>
-        <source media="(min-width: 900px)" srcset="img/destinos/riviera-maya-d.webp">
-        <img src="img/destinos/riviera-maya-m.webp" alt="" width="960" height="1200" loading="lazy">
-      </picture>
-      <span class="hd-illus hd-illus--tr">Imagen ilustrativa</span>
-      <figcaption class="hd-salidas-cap">Vuelo, hotel y traslados.</figcaption>
-    </figure>
-
-    <div class="hd-wrap hd-salidas-wrap">
-      <h2 class="hd-h2 hd-drop" data-hd-reveal><span class="hd-word">Salidas</span> <span class="hd-word">desde</span> <span class="hd-word">Aguascalientes.</span></h2>
-
-      <div class="hd-board">
-        <div class="hd-board-head" aria-hidden="true">
-          <span>Código</span><span>Destino</span><span class="hd-board-note-h">Novedad</span>
-        </div>
-        <div class="hd-board-rows" data-hd-reveal>
-          <a class="hd-board-row" href="#pase" data-hd-destino="cancun" style="--ri:0">
-            <span class="hd-board-code" aria-hidden="true"><b>C</b><b>U</b><b>N</b></span>
-            <span class="hd-board-city">Cancún</span>
-            <span class="hd-board-note">Riu Palace Península, publicado en su Facebook.</span>
-            <svg class="hd-board-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
-          <a class="hd-board-row" href="#pase" data-hd-destino="riviera-maya" style="--ri:1">
-            <span class="hd-board-code" aria-hidden="true"><b>C</b><b>U</b><b>N</b></span>
-            <span class="hd-board-city">Riviera Maya</span>
-            <span class="hd-board-note">Viaje de familiarización, publicado en agosto.</span>
-            <svg class="hd-board-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
-          <a class="hd-board-row" href="#pase" data-hd-destino="punta-cana" style="--ri:2">
-            <span class="hd-board-code" aria-hidden="true"><b>P</b><b>U</b><b>J</b></span>
-            <span class="hd-board-city">Punta Cana</span>
-            <span class="hd-board-note">Con Aeroméxico, publicado el 10 de septiembre.</span>
-            <svg class="hd-board-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
-          <a class="hd-board-row" href="#pase" data-hd-destino="puerto-vallarta" style="--ri:3">
-            <span class="hd-board-code" aria-hidden="true"><b>P</b><b>V</b><b>R</b></span>
-            <span class="hd-board-city">Puerto Vallarta</span>
-            <span class="hd-board-note">Banner en su oficina y destacado de Instagram.</span>
-            <svg class="hd-board-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
-          <a class="hd-board-row" href="#pase" data-hd-destino="punta-mita" style="--ri:4">
-            <span class="hd-board-code" aria-hidden="true"><b>P</b><b>V</b><b>R</b></span>
-            <span class="hd-board-city">Punta Mita</span>
-            <span class="hd-board-note">Boda de destino en el Grand Palladium.</span>
-            <svg class="hd-board-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
-          <a class="hd-board-row" href="#pase" data-hd-destino="ixtapa" style="--ri:5">
-            <span class="hd-board-code" aria-hidden="true"><b>Z</b><b>I</b><b>H</b></span>
-            <span class="hd-board-city">Ixtapa</span>
-            <span class="hd-board-note">En sus destacados de Instagram.</span>
-            <svg class="hd-board-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
-          <a class="hd-board-row" href="#pase" data-hd-destino="cdmx" style="--ri:6">
-            <span class="hd-board-code" aria-hidden="true"><b>M</b><b>E</b><b>X</b></span>
-            <span class="hd-board-city">Ciudad de México</span>
-            <span class="hd-board-note">También en sus destacados de Instagram.</span>
-            <svg class="hd-board-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -320,10 +436,23 @@
       </blockquote>
 
       <a class="hd-btn hd-btn--line hd-bodas-cta" href="#pase" data-hd-tipo="Luna de miel" data-hd-reveal>Cotizar mi luna de miel<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+
+      <div class="hd-bodas-fotitos">
+        <div class="hd-tira" aria-hidden="true">
+          <span class="hd-fotito hd-fotito--cinta" data-hd-reveal style="--rot:-5deg; --w:120px"><img src="img/fotitos/pareja-playa-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+          <span class="hd-fotito hd-fotito--sello" data-hd-reveal style="--rot:4.5deg; --w:128px"><img src="img/fotitos/cena-playa-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+          <span class="hd-fotito hd-fotito--cinta hd-fotito--cinta-l" data-hd-reveal style="--rot:-3deg; --w:114px"><img src="img/fotitos/brindis-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+        </div>
+        <p class="hd-fotitos-note">Imágenes ilustrativas</p>
+      </div>
     </div>
   </section>
 
   <section id="sellos" class="hd-sec hd-sellos hd-on-deep" aria-labelledby="sellos-title">
+    <div class="hd-fotitos hd-sellos-fotitos" aria-hidden="true">
+      <span class="hd-fotito hd-fotito--cinta hd-sellos-f1" data-hd-reveal style="--rot:-6deg"><img src="img/fotitos/familia-playa-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+      <span class="hd-fotito hd-fotito--sello hd-sellos-f2" data-hd-reveal style="--rot:5.5deg"><img src="img/fotitos/catamaran-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+    </div>
     <div class="hd-wrap">
       <div class="hd-sellos-head">
         <span class="hd-h2 hd-drop hd-sellos-rating" id="sellos-title" data-hd-reveal aria-label="Calificación 5.0"><span class="hd-word">5.0</span></span>
@@ -363,6 +492,7 @@
           <span class="hd-sellos-perf"><span class="hd-sellos-perf-fill" id="hd-sellos-fill"></span></span>
           <span class="hd-sellos-num hd-code"><b id="hd-sellos-n">01</b> / 06</span>
         </div>
+        <p class="hd-fotitos-note hd-sellos-nota">Imágenes ilustrativas</p>
       </div>
     </div>
   </section>
@@ -371,27 +501,30 @@
     <div class="hd-wrap">
       <div class="hd-oficina-top">
         <div class="hd-oficina-copy">
-          <h2 class="hd-h2 hd-drop" id="oficina-title" data-hd-reveal><span class="hd-word">Hodophile:</span> <span class="hd-word">persona</span> <span class="hd-word">que ama</span> <span class="hd-word">viajar.</span></h2>
+          <h2 class="hd-h2 hd-drop" id="oficina-title" data-hd-reveal><span class="hd-word">Hodophile:</span> <span class="hd-word">persona</span> <span class="hd-word">que ama</span> <span class="hd-word hd-oficina-title-b">viajar.</span></h2>
           <blockquote class="hd-oficina-lema" data-hd-reveal>“Amamos viajar, y que nos hagas parte de TU PRÓXIMO VIAJE nos emociona.”</blockquote>
           <p class="hd-lead" data-hd-reveal>Su oficina en Aguascalientes, desde marzo de 2023.</p>
         </div>
-        <div class="hd-oficina-photos" data-hd-reveal>
-          <figure class="hd-frame hd-oficina-fachada">
-            <img src="img/real/fachada.webp" alt="Fachada de HODO Tu próximo viaje, con su letrero iluminado, en Río Tiber 141 B, Aguascalientes." width="960" height="1280" loading="lazy">
-            <span class="hd-illus hd-illus--real">Foto real</span>
-          </figure>
-          <figure class="hd-frame hd-oficina-interior">
-            <img src="img/real/interior.webp" alt="Interior de la oficina de HODO celebrando su segundo aniversario, con globos y el letrero de la marca." width="900" height="1600" loading="lazy">
-            <span class="hd-illus hd-illus--real">Foto real</span>
-          </figure>
-        </div>
+        <figure class="hd-frame hd-oficina-fachada" data-hd-reveal>
+          <img src="img/real/fachada.webp" alt="Fachada de HODO Tu próximo viaje, con su letrero iluminado, en Río Tiber 141 B, Aguascalientes." width="960" height="1280" loading="lazy">
+          <span class="hd-illus hd-illus--real">Foto real</span>
+        </figure>
       </div>
 
       <div class="hd-oficina-bottom">
         <div class="hd-oficina-info" data-hd-reveal>
-          <address>Río Tiber 141 B<br>Colinas del Río, C.P. 20010<br>Aguascalientes, Ags.</address>
-          <p class="hd-oficina-fact">Aceptan tarjeta de crédito y débito.</p>
-          <a class="hd-btn hd-btn--line" href="https://www.google.com/maps/dir/?api=1&amp;destination=R%C3%ADo+Tiber+141+B%2C+Colinas+del+R%C3%ADo%2C+Aguascalientes" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <figure class="hd-frame hd-oficina-interior">
+            <img src="img/real/interior.webp" alt="Interior de la oficina de HODO celebrando su segundo aniversario, con globos y el letrero de la marca." width="900" height="1600" loading="lazy">
+            <span class="hd-illus hd-illus--real">Foto real</span>
+          </figure>
+          <div class="hd-oficina-datos">
+            <address>Río Tiber 141 B<br>Colinas del Río, C.P. 20010<br>Aguascalientes, Ags.</address>
+            <p class="hd-oficina-fact">Aceptan tarjeta de crédito y débito.</p>
+            <div class="hd-oficina-datos-acciones">
+              <a class="hd-btn hd-btn--line" href="https://www.google.com/maps/dir/?api=1&amp;destination=R%C3%ADo+Tiber+141+B%2C+Colinas+del+R%C3%ADo%2C+Aguascalientes" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="hd-btn hd-btn--line" href="tel:+524494262277">Llamar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
         </div>
         <figure class="hd-ticket hd-oficina-map" data-hd-reveal>
           <iframe title="Mapa: HODO Tu próximo viaje, Río Tiber 141 B, Colinas del Río, Aguascalientes" src="https://www.google.com/maps?q=HODO+Tu+pr%C3%B3ximo+viaje+R%C3%ADo+Tiber+141+Aguascalientes&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="420"></iframe>
@@ -404,7 +537,11 @@
     <div class="hd-cierre-bg" aria-hidden="true">
       <img class="hd-cierre-img" id="hd-cierre-img" src="img/destinos/cancun-m.webp" srcset="img/destinos/cancun-m.webp 960w, img/destinos/cancun-d.webp 1920w" sizes="100vw" alt="" width="960" height="1200" loading="lazy">
       <span class="hd-cierre-veil"></span>
-      <span class="hd-illus">Imagen ilustrativa</span>
+      <span class="hd-illus hd-illus--tr">Imágenes ilustrativas</span>
+    </div>
+    <div class="hd-fotitos hd-cierre-fotitos" aria-hidden="true">
+      <span class="hd-fotito hd-fotito--cinta hd-cierre-f1" data-hd-reveal style="--rot:-6.5deg"><img src="img/fotitos/ventanilla-avion-s.webp" alt="" width="450" height="563" loading="lazy"></span>
+      <span class="hd-fotito hd-fotito--sello hd-cierre-f2" data-hd-reveal style="--rot:5deg"><img src="img/fotitos/maleta-s.webp" alt="" width="450" height="563" loading="lazy"></span>
     </div>
     <div class="hd-wrap hd-cierre-wrap">
       <div class="hd-ticket hd-ticket--cut hd-cierre-card" data-hd-reveal>
@@ -458,8 +595,8 @@
     <div class="hd-foot-col">
       <h2 class="hd-foot-h">Mapa del sitio</h2>
       <ul class="hd-foot-map">
+        <li><a href="#planes">Planes</a></li>
         <li><a href="#pase">Cotizar</a></li>
-        <li><a href="#salidas">Salidas</a></li>
         <li><a href="#bodas">Bodas</a></li>
         <li><a href="#sellos">Opiniones</a></li>
         <li><a href="#oficina">Visítanos</a></li>
@@ -519,9 +656,11 @@
   else run();
 })();
 </script>
-<script src="site.js?v=1789880308" defer></script>
-<script src="sections/10-pase.js?v=1789880520" defer></script>
-<script src="sections/40-sellos.js?v=1789880618" defer></script>
-<script src="sections/60-cierre.js?v=1789880693" defer></script>
+<script src="site.js?v=1789885895" defer></script>
+<script src="sections/10-hero.js?v=1789885355" defer></script>
+<script src="sections/20-planes.js?v=1789885489" defer></script>
+<script src="sections/30-pase.js?v=1789885638" defer></script>
+<script src="sections/50-sellos.js?v=1789880618" defer></script>
+<script src="sections/70-cierre.js?v=1789885642" defer></script>
 </body>
 </html>

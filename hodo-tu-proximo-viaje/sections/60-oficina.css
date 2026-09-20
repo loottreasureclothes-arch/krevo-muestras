@@ -1,0 +1,31 @@
+/* ============ 60 · Oficina (confianza: fotos reales + mapa) ============
+   La FACHADA es la foto grande de la sección (prueba de que el negocio existe): va a todo
+   el ancho de su columna y COMPLETA, sin recortar el letrero. El interior la acompaña. */
+.hd-oficina { background: var(--paper-2); }
+.hd-oficina-top { display: grid; gap: 24px; margin-bottom: var(--sec-y-sm); }
+.hd-oficina-copy h2 { margin-bottom: 16px; }
+.hd-oficina-title-b { color: var(--deep); }
+.hd-oficina-lema { font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, 4.6vw, 24px); line-height: 1.32; color: var(--deep); max-width: 22ch; margin: 0 0 14px; font-style: normal; }
+.hd-oficina-fachada { aspect-ratio: 3 / 4; width: 100%; box-shadow: 0 26px 46px -28px rgba(1, 44, 92, 0.6); }
+.hd-illus--real { background: rgba(1, 66, 134, 0.72); }
+
+.hd-oficina-bottom { display: grid; gap: 22px; }
+.hd-oficina-info { display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr); gap: 16px; align-items: center; }
+.hd-oficina-interior { aspect-ratio: 9 / 13; }
+.hd-oficina-datos address { font-style: normal; font-size: 19px; font-weight: 600; line-height: 1.35; color: var(--ink); margin-bottom: 8px; }
+.hd-oficina-fact { color: var(--mute); font-size: 14.5px; margin-bottom: 8px; }
+.hd-oficina-map { --tk-bg: var(--paper-2); background: var(--deep); padding: 10px; }
+.hd-oficina-map iframe { display: block; width: 100%; height: 270px; border: 0; border-radius: 8px; filter: saturate(0.9); }
+
+@media (min-width: 900px) {
+  /* align-items:center dejaba ~98px de crema vacia arriba del titulo (a la izquierda de
+     donde arranca la fachada) porque el texto es mas corto que la foto: con align-items:
+     start el texto arranca a la misma altura que la fachada (P2 de REVISION-3). */
+  .hd-oficina-top { grid-template-columns: minmax(0, 1fr) minmax(0, 0.78fr); align-items: start; gap: 48px; }
+  .hd-oficina-fachada { max-width: 430px; justify-self: end; }
+  .hd-oficina-bottom { grid-template-columns: minmax(0, 1fr) 1.15fr; align-items: start; gap: 48px; }
+  .hd-oficina-info { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+  .hd-oficina-datos address { font-size: 21px; }
+  .hd-oficina-datos-acciones { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+  .hd-oficina-map iframe { height: 340px; }
+}

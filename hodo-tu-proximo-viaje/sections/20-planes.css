@@ -1,0 +1,99 @@
+/* ============ 20 · Planes desde Aguascalientes (carrusel de boletos con foto grande) ============
+   Nada de rejilla de tarjetas iguales: los boletos tienen tres tamaños (el primero manda),
+   el código de aeropuerto va gigante encima de la foto y la muesca del boleto parte la
+   tarjeta justo donde termina la foto. Sin precios: "Pregunta el precio". */
+.hd-planes { background: var(--paper); overflow: clip; }
+.hd-planes-head h2 { margin-bottom: 16px; }
+.hd-planes-title-b { color: var(--deep); }
+
+/* Filtros con forma de boleto (esquina de talón cortada, nunca píldora) */
+.hd-planes-filtros { display: flex; flex-wrap: wrap; gap: 8px; }
+.hd-filtro {
+  min-height: 44px; padding: 0 15px; color: var(--ink);
+  border: 1.5px solid var(--line); border-radius: 0 9px 9px 9px;
+  clip-path: polygon(11px 0, 100% 0, 100% 100%, 0 100%, 0 11px);
+  background: var(--paper-2); font-weight: 700; font-size: 13.5px; text-align: left;
+  transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+.hd-filtro[aria-pressed="true"] { background: var(--deep); border-color: var(--deep); color: #fff; }
+@media (hover: hover) and (pointer: fine) { .hd-filtro:not([aria-pressed="true"]):hover { background: #fff; border-color: var(--deep); } }
+
+.hd-planes-estado { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin-top: 13px; font-size: 14.5px; font-weight: 600; color: var(--ink); }
+.hd-planes-estado[hidden] { display: none; }
+.hd-planes-limpia { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; color: var(--deep); font-weight: 700; font-size: 14px; background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 100% 1.5px; background-position: 0 calc(100% - 11px); }
+
+/* --- Carril: swipe con snap en celular, fila en compu --- */
+.hd-planes-carril {
+  display: flex; align-items: flex-start; gap: 14px; margin-top: 20px;
+  overflow-x: auto; overflow-y: visible; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; padding: 12px var(--gutter) 20px;
+  /* Sin esto el snap obligatorio pega la primera tarjeta al borde y se come el margen. */
+  scroll-padding-left: var(--gutter);
+  /* El asomo del ultimo boleto es a proposito (carrusel), pero el corte seco de la
+     ultima palabra se leia como error (P6 de REVISION-3): un degradado en el borde
+     derecho lo hace ver intencional. */
+  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 46px), transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 46px), transparent 100%);
+}
+.hd-planes-carril::-webkit-scrollbar { display: none; }
+.hd-planes-carril:focus-visible { outline: 2px solid var(--deep); outline-offset: -4px; border-radius: 10px; }
+.hd-planes-carril::after { content: ""; flex: 0 0 2px; }
+
+.hd-plan {
+  flex: none; scroll-snap-align: start; width: var(--cw, 250px);
+  --ph: 232px; --tk-notch-y: var(--ph); --tk-bg: var(--paper);
+  background: #fffdf7;
+  box-shadow: 0 22px 40px -26px rgba(1, 44, 92, 0.55), 0 1px 0 rgba(13, 35, 64, 0.08);
+}
+.hd-plan[hidden] { display: none; }
+.hd-plan--xl { --cw: 298px; --ph: 306px; }
+.hd-plan--l { --cw: 272px; --ph: 266px; }
+@media (min-width: 420px) { .hd-plan { --cw: 268px; } .hd-plan--xl { --cw: 330px; } .hd-plan--l { --cw: 292px; } }
+
+.hd-plan-foto { position: relative; height: var(--ph); margin: 0; border-radius: var(--radius-tk) var(--radius-tk) 0 0; overflow: hidden; background: var(--deep); }
+.hd-plan-foto img { width: 100%; height: 100%; object-fit: cover; }
+.hd-plan-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(1, 20, 42, 0) 42%, rgba(1, 20, 42, 0.62)); }
+.hd-plan-code {
+  position: absolute; z-index: 1; left: 11px; bottom: 2px; line-height: 0.86;
+  font-size: clamp(50px, 17vw, 66px); font-weight: 500; color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 3px 14px rgba(1, 22, 46, 0.55);
+}
+.hd-plan--xl .hd-plan-code { font-size: 78px; }
+.hd-plan .hd-perf-h { margin: 0 12px; }
+
+.hd-plan-body { padding: 14px 15px 16px; display: grid; gap: 7px; }
+.hd-plan-name { font-family: var(--font-display); font-weight: 800; font-size: 21px; line-height: 1.04; color: var(--ink); }
+.hd-plan--xl .hd-plan-name { font-size: 25px; }
+.hd-plan-real { font-size: 13.5px; line-height: 1.42; color: var(--mute); }
+.hd-plan-incluye {
+  display: flex; align-items: center; gap: 7px; margin-top: 3px; padding-top: 9px;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-dark);
+  background-image: radial-gradient(circle at 1.5px 1px, rgba(13, 35, 64, 0.3) 1.1px, transparent 1.3px);
+  background-size: 7px 2px; background-repeat: repeat-x; background-position: 0 0;
+}
+.hd-plan-incluye svg { width: 13px; height: 13px; flex: none; color: var(--brand); transform: rotate(90deg); }
+.hd-plan-cta { justify-self: start; margin-top: 2px; }
+
+/* --- Indicador de avance con forma de perforación --- */
+.hd-planes-pie { display: grid; gap: 10px; }
+.hd-planes-ind { display: flex; flex-direction: row-reverse; align-items: center; gap: 14px; }
+.hd-planes-perf { position: relative; flex: 1; height: 6px; border-radius: 3px; background-image: radial-gradient(circle at 2px 3px, rgba(13, 35, 64, 0.26) 1.5px, transparent 1.7px); background-size: 11px 6px; background-repeat: repeat-x; }
+.hd-planes-perf-fill { position: absolute; left: 0; top: 0; height: 6px; width: 15%; border-radius: 3px; background-image: radial-gradient(circle at 2px 3px, var(--brand) 1.9px, transparent 2.1px); background-size: 11px 6px; background-repeat: repeat-x; transition: width 180ms var(--ease-out); }
+.hd-planes-num { font-size: 12px; letter-spacing: 0.1em; color: var(--mute); flex: none; }
+.hd-planes-num b { font-weight: 500; color: var(--deep); }
+
+@media (min-width: 720px) {
+  .hd-planes-head h2 { margin-bottom: 20px; }
+  .hd-plan { --cw: 286px; --ph: 262px; }
+  .hd-plan--xl { --cw: 392px; --ph: 372px; }
+  .hd-plan--l { --cw: 320px; --ph: 300px; }
+  .hd-plan--xl .hd-plan-code { font-size: 96px; }
+  .hd-plan-body { padding: 16px 18px 18px; }
+  .hd-planes-carril { gap: 18px; padding-inline: max(var(--gutter), calc((100% - 1240px) / 2 + var(--gutter))); scroll-padding-left: max(var(--gutter), calc((100% - 1240px) / 2 + var(--gutter))); }
+  .hd-planes-pie { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 20px; }
+  /* El riel se estiraba casi 1,000px y se leia como relleno (P7 de REVISION-3): ancho
+     fijo pegado al contador, igual que el de 50-sellos. */
+  .hd-planes-ind { justify-self: start; }
+  .hd-planes-perf { flex: none; width: 200px; }
+}
+@media (min-width: 1280px) { .hd-plan--xl { --cw: 430px; --ph: 410px; } }
