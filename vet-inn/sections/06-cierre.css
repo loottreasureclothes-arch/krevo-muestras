@@ -1,0 +1,37 @@
+/* 06-cierre — "Todo listo para completar" (banda papel) + cierre de logo grande + pie. */
+.s-cierre { background: var(--deep); }
+/* padding-block, NO el atajo 'padding: X 0': este div tambien es .vi-wrap y el atajo
+   le borraba el padding-inline (el titulo arrancaba en x=0 en celular). */
+.s-cierre-completar { background: var(--paper); color: var(--ink); padding-block: var(--sec-y-sm); }
+.s-cierre-titulo { color: var(--ink); }
+/* la ultima linea es acento con SUBRAYADO de marca (no relleno de color): sobre --paper el
+   oliva pierde contraste como texto; como raya si se lee perfecto y sigue siendo "dos tonos" */
+.s-cierre-titulo-2 { display: inline-block; padding-bottom: 4px; border-bottom: 4px solid var(--brand); }
+.s-cierre-lista { margin-top: 26px; display: grid; gap: 12px; max-width: 46ch; }
+.s-cierre-lista li { position: relative; padding-left: 22px; font-size: 15px; color: var(--ink); }
+.s-cierre-lista li::before { content: ""; position: absolute; left: 0; top: 7px; width: var(--hole); height: var(--hole); border-radius: 50%; border: 1.25px solid var(--brand-2); }
+.s-cierre-tarjeta { margin-top: 20px; font-size: 13px; font-weight: 700; color: var(--mute); }
+
+.s-cierre-cta-banda { padding: calc(var(--sec-y) * 1.1) 0 var(--sec-y); text-align: center; }
+.s-cierre-cta-in { display: flex; flex-direction: column; align-items: center; }
+.s-cierre-word { font-family: var(--font-display); font-weight: 800; font-variation-settings: "SOFT" 100, "WONK" 1; font-size: clamp(56px, 19vw, 168px); line-height: 0.9; width: 100%; }
+.s-cierre-word b { color: var(--brand-2); }
+.s-cierre-word i { font-style: normal; color: var(--brand); }
+.s-cierre-word .vi-dot { display: inline-block; width: 0.14em; height: 0.14em; border-radius: 50%; background: var(--brand); vertical-align: top; margin-left: 2px; }
+.s-cierre-frase { margin-top: 26px; font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: clamp(17px, 3.4vw, 22px); max-width: 34ch; color: var(--paper); }
+.s-cierre-frase footer { margin-top: 8px; font-family: var(--font-body); font-style: normal; font-size: 12px; color: var(--mute-on-deep); }
+.s-cierre-canela { margin-top: 16px; font-family: var(--font-display); font-weight: 700; font-size: 18px; color: var(--brand); }
+.s-cierre-btn { margin-top: 30px; }
+
+.s-cierre-foot { padding: 40px 0 calc(96px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line-deep); }
+.s-cierre-redes { display: flex; flex-wrap: wrap; gap: 14px 22px; }
+.s-cierre-red { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 600; font-size: 14px; color: var(--paper); }
+.s-cierre-red svg { width: 44px; height: 44px; padding: 10px; border-radius: 50%; border: 1px solid var(--line-deep); flex: none; }
+@media (hover: hover) and (pointer: fine) { .s-cierre-red:hover svg { border-color: var(--brand-2); } }
+.s-cierre-direccion { margin-top: 22px; font-size: 13px; color: var(--mute-on-deep); }
+.s-cierre-credit { margin-top: 8px; font-size: 12px; color: var(--mute-on-deep); opacity: .75; }
+
+@media (min-width: 900px) {
+  .s-cierre-completar { padding-block: var(--sec-y); }
+  .s-cierre-lista { grid-template-columns: 1fr 1fr; max-width: none; column-gap: 32px; }
+}

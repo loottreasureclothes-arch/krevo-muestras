@@ -1,0 +1,50 @@
+/* 03-momento — "La luz de las doce": el velo se retira con el scroll (reversible, sin GSAP).
+   Compu: pin real con position:sticky (wrapper alto = runway de +=90%). Celular: SIN pin,
+   solo scrub mientras la seccion cruza la pantalla (site.js/03-momento.js calculan --vi-p).
+   Blindaje: estos valores por defecto YA son el estado final (velo en .12, todo visible);
+   el JS solo los mueve mientras hay scroll, y a los 1.6s fuerza este mismo final si algo falla. */
+.s-momento { position: relative; background: var(--deep-3); }
+.s-momento-pin { position: relative; }
+.s-momento-scene {
+  position: relative; height: 100svh; overflow: hidden;
+  --vi-p: 1; /* estado final por defecto: luz ya encendida */
+}
+.s-momento-scene picture, .s-momento-scene img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+
+.s-momento-velo {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: rgba(10, 6, 3, calc(.78 - var(--vi-p) * .48)); /* .78 -> .30, nunca menos */
+  clip-path: inset(calc(var(--vi-p) * 55%) 0 0 0); /* se retira de arriba hacia abajo */
+}
+.s-momento-progress { position: absolute; top: var(--header-h); left: 0; right: 0; height: 2px; background: rgba(255,255,255,.14); z-index: 5; display: none; }
+.s-momento-progress span { display: block; height: 100%; width: calc(var(--vi-p, 1) * 100%); background: var(--brand); }
+
+.s-momento-copy { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 44px; }
+/* velo de lectura fijo: no depende del scroll ni de --vi-p, asi la cita de Stephanie
+   se lee desde el primer cuadro aunque el velo animado ya se haya retirado. */
+.s-momento-copy::before {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 92%; z-index: -1; pointer-events: none;
+  background: linear-gradient(to top, rgba(10,6,3,.94) 0%, rgba(10,6,3,.86) 30%, rgba(10,6,3,.72) 52%, rgba(10,6,3,.55) 72%, rgba(10,6,3,.20) 90%, transparent 100%);
+}
+.s-momento-title { color: var(--paper); margin-bottom: 18px; }
+.s-momento-cita { font-family: var(--font-display); font-weight: 600; font-style: italic; font-size: clamp(19px, 4.6vw, 26px); line-height: 1.35; color: var(--paper); max-width: 30ch; }
+.s-momento-autor { margin-top: 12px; font-size: 14px; font-weight: 700; color: var(--mute-on-deep); }
+.s-momento-estrellas { color: var(--brand); letter-spacing: 0.05em; }
+.s-momento-honesto { margin-top: 16px; font-size: 12.5px; color: var(--mute-on-deep); max-width: 42ch; }
+.s-momento-cta { margin-top: 22px; }
+
+@media (min-width: 900px) {
+  .s-momento-pin { height: 190svh; }
+  .s-momento-scene { position: sticky; top: 0; }
+  .s-momento-progress { display: block; }
+  .s-momento-scene img { object-position: 50% 24%; }
+  .s-momento-copy { max-width: 640px; padding-bottom: 88px; }
+  /* en compu la columna de copy mide 640px: si el velo de lectura se queda en esa caja
+     deja un rectangulo con canto vertical (parece cortina). Se saca de pantalla por los
+     dos lados para que solo se vea el degradado de abajo hacia arriba. */
+  .s-momento-copy::before { left: -50vw; right: -50vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .s-momento-scene { --vi-p: 1 !important; }
+  .s-momento-velo { transition: none !important; }
+}

@@ -1,0 +1,45 @@
+<section id="hero" class="s-hero" aria-label="Inicio">
+  <div class="s-hero-scene" id="hero-scene">
+    <picture>
+      <source media="(min-width: 720px)" srcset="img/fotos/hero-d.webp">
+      <img src="img/fotos/hero-m.webp" alt="Gato exótico blanco sobre la mesa de exploración de Vet Inn, foto real de la clínica." width="1200" height="2467" fetchpriority="high">
+    </picture>
+    <div class="s-hero-velo" aria-hidden="true"></div>
+  </div>
+
+  <div class="s-hero-content vi-wrap">
+    <h1 class="vi-h1 s-hero-title">
+      <span class="s-hero-line" data-vi-drop>No preguntan por la clínica.</span>
+      <span class="s-hero-line" data-vi-drop>Preguntan por Alicia</span>
+      <span class="s-hero-line vi-tono" data-vi-drop>y por Luis.</span>
+    </h1>
+    <p class="vi-lead s-hero-sub" data-vi-reveal>Clínica, acuario y pet shop en Olivares Santana 311, El Dorado. Abierta desde el 16 de febrero de 2012.</p>
+
+    <div class="s-hero-ctas" data-vi-reveal>
+      <a class="vi-btn vi-btn--brand" href="#servicios">Ver servicios</a>
+      <a class="vi-btn vi-btn--link" href="https://www.google.com/maps/place/VET+INN/@21.8603452,-102.3074491,17z" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+
+    <!-- LA PLACA DE CANELA — componente firma. Al llenar nombre + especie se dibuja la placa
+         y manda en toda la página (ver site.js: window.vetinnPlaca / evento vetinn:placa). -->
+    <div class="s-hero-placa" data-vi-reveal>
+      <label class="s-hero-campo" for="placa-nombre">
+        <span class="s-hero-campo-label">¿Cómo se llama?</span>
+        <input type="text" id="placa-nombre" name="placa-nombre" placeholder="El nombre de tu mascota" autocomplete="off" maxlength="24" inputmode="text">
+      </label>
+      <div class="s-hero-especies">
+        <span class="s-hero-campo-label">¿Quién viene?</span>
+        <div class="s-hero-especies-fila" role="group" aria-label="Qué mascota viene">
+          <button type="button" class="s-hero-especie" data-especie="perro" data-nombre-especie="perro" aria-pressed="false"><svg class="vi-especie-icon" aria-hidden="true"><use href="#i-perro"/></svg><span class="sr-only">Perro</span></button>
+          <button type="button" class="s-hero-especie" data-especie="gato" data-nombre-especie="gato" aria-pressed="false"><svg class="vi-especie-icon" aria-hidden="true"><use href="#i-gato"/></svg><span class="sr-only">Gato</span></button>
+          <button type="button" class="s-hero-especie" data-especie="pez" data-nombre-especie="pez" aria-pressed="false"><svg class="vi-especie-icon" aria-hidden="true"><use href="#i-pez"/></svg><span class="sr-only">Pez</span></button>
+          <button type="button" class="s-hero-especie" data-especie="ave" data-nombre-especie="ave" aria-pressed="false"><svg class="vi-especie-icon" aria-hidden="true"><use href="#i-ave"/></svg><span class="sr-only">Ave</span></button>
+          <button type="button" class="s-hero-especie" data-especie="reptil" data-nombre-especie="reptil" aria-pressed="false"><svg class="vi-especie-icon" aria-hidden="true"><use href="#i-reptil"/></svg><span class="sr-only">Reptil</span></button>
+          <button type="button" class="s-hero-especie" data-especie="roedor" data-nombre-especie="roedor" aria-pressed="false"><svg class="vi-especie-icon" aria-hidden="true"><use href="#i-roedor"/></svg><span class="sr-only">Roedor</span></button>
+        </div>
+        <p class="s-hero-especies-nota">Preguntar no es prometer: confirmamos por WhatsApp si la atendemos.</p>
+      </div>
+      <div class="s-hero-placa-render" id="placa-render" hidden aria-live="polite"></div>
+    </div>
+  </div>
+</section>
