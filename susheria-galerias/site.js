@@ -114,6 +114,44 @@ window.SG_PAGO_LINK = window.SG_PAGO_LINK || "";
     Array.prototype.forEach.call(els, function (el) { io.observe(el); });
   }
 
+  /* Caída de los títulos de sección (.sg-drop, REVISION-10 #1): el h2 cae desde -60px y PEGA con un
+     rebote corto (~700 ms), una sola vez, cuando la sección asoma (IntersectionObserver). El rebote es
+     un resorte amortiguado muestreado en keyframes, la misma receta de la cinta de closetdoor/10-msi.js
+     y del "2x1" del hero. Blindaje: el CSS base ya es el estado final, la clase que esconde (.sg-armed)
+     la pone solo este script, y a los 1.6 s de asomarse se fuerza el aterrizaje pase lo que pase. */
+  function initDrop() {
+    var els = document.querySelectorAll(".sg-drop");
+    if (!els.length) return;
+    if (reduce || !("IntersectionObserver" in window)) return; /* el CSS base ya es el estado final */
+    var FALL = 0.6, DUR = 700, kf = [], i, t, v;
+    for (i = 0; i <= 10; i++) { /* caída con aceleración de gravedad: -60 px → 0 */
+      t = i / 10;
+      kf.push({ offset: +(t * FALL).toFixed(4), opacity: Math.min(1, t * 3), transform: "translateY(" + (-60 * (1 - t * t)).toFixed(2) + "px)" });
+    }
+    for (i = 1; i <= 12; i++) { /* golpe: resorte amortiguado e^(-z t) sin(w t), como la cinta de closetdoor */
+      t = i / 12;
+      v = i === 12 ? 0 : 9 * Math.exp(-4.4 * t) * Math.sin(1.55 * Math.PI * 2 * t);
+      kf.push({ offset: +(FALL + t * (1 - FALL)).toFixed(4), opacity: 1, transform: "translateY(" + v.toFixed(2) + "px)" });
+    }
+    function land(el) {
+      if (!el.classList.contains("sg-armed")) return;
+      if (el.animate) { try { el.animate(kf, { duration: DUR, easing: "linear", fill: "none" }); } catch (e) {} }
+      el.classList.remove("sg-armed");
+    }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); land(e.target); } });
+    }, { threshold: 0.2, rootMargin: "0px 0px -6% 0px" });
+    var sio = new IntersectionObserver(function (es) { /* red de seguridad a los 1.6 s */
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        sio.unobserve(e.target);
+        var el = e.target;
+        setTimeout(function () { el.classList.remove("sg-armed"); }, 1600);
+      });
+    });
+    Array.prototype.forEach.call(els, function (el) { el.classList.add("sg-armed"); io.observe(el); sio.observe(el); });
+  }
+
   /* Brillo al tocar */
   function initRipple() {
     if (reduce) return;
@@ -155,7 +193,7 @@ window.SG_PAGO_LINK = window.SG_PAGO_LINK || "";
     setTimeout(go, 60);
   }
 
-  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initRipple(); initAnchors(); initMesa(); }
+  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initDrop(); initRipple(); initAnchors(); initMesa(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

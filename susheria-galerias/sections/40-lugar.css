@@ -5,7 +5,12 @@
 #lugar .lu-grain { position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay; background-image: var(--k-grain); background-repeat: repeat; background-size: 140px 140px; }
 #lugar .lu-grid { display: grid; gap: 34px; }
 #lugar .lu-t { max-width: 10ch; }
-#lugar .lu-q { margin-top: 22px; padding-left: 16px; border-left: 3px solid var(--brand); }
+/* Reseñas con calificación real (REVISION-10 #3): estrellas en SVG + nombre. Hasta 3; hoy hay una sola
+   porque es la única de research/resenas.md con estrellas verificadas y positiva. */
+#lugar .lu-revs { display: grid; gap: 16px; margin-top: 22px; }
+#lugar .lu-stars { display: flex; gap: 3px; margin-bottom: 6px; color: var(--gold); }
+#lugar .lu-stars svg { width: 17px; height: 17px; }
+#lugar .lu-q { padding-left: 16px; border-left: 3px solid var(--brand); }
 #lugar .lu-q p { font-size: 18px; line-height: 1.4; font-weight: 500; }
 #lugar .lu-q footer { margin-top: 6px; font-size: 13px; color: var(--cream-mute); }
 #lugar .lu-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 26px; }

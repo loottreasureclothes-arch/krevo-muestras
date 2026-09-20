@@ -161,20 +161,8 @@ body[data-hero-dark] .k-header:not(.is-solid) { color: var(--cream); }
 .k-nav a { font-weight: 600; }
 @media (min-width: 900px) { .k-nav { gap: 24px; margin-right: 10px; } .k-nav a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; } .k-nav a::after { bottom: 10px; } }
 @media (min-width: 900px) and (max-width: 1100px) { .k-nav { gap: 16px; font-size: 0.88rem; } }
-/* "Menú" del header: el más visible después del verde */
-.lm-hmenu {
-  display: inline-flex; align-items: center; gap: 7px; height: 44px; padding: 0 13px;
-  border-radius: 3px; background: var(--cream); color: var(--deep);
-  font-weight: 800; font-size: 15px; letter-spacing: 0.01em; flex: none;
-  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out);
-}
-.lm-hmenu svg { width: 18px; height: 18px; }
-/* REV1 #3: en celular solo hamburguesa + "Pedir" (el menú vive dentro de la hamburguesa, 01) */
-@media (max-width: 899px) { .lm-hmenu { display: none; } }
-/* REV1 #3: sobre el hero el botón "Menú" va de contorno, no bloque crema; sólido solo al bajar */
-.k-header:not(.is-solid) .lm-hmenu { background: transparent; color: var(--cream); box-shadow: inset 0 0 0 1.5px rgba(244, 238, 228, 0.7); }
-.k-header.is-solid .lm-hmenu { background: var(--deep); color: var(--cream); }
-.lm-hmenu:active { transform: scale(0.97); }
+/* REVISION-10 #4: se quitó el botón "Menú" del header (.lm-hmenu): repetía el link "MENÚ" del nav
+   (mismo href="#menu"). En compu manda el nav; en celular, el menú vive dentro de la hamburguesa (01). */
 .lm-menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 3px; border: 1.5px solid currentColor; color: inherit; flex: none; }
 .lm-burger { position: relative; width: 18px; height: 12px; }
 .lm-burger i { position: absolute; left: 0; right: 0; height: 1.8px; background: currentColor; transition: transform 300ms var(--ease-out), opacity 200ms; }
@@ -188,8 +176,8 @@ body.lm-nav-open .lm-burger i:nth-child(3) { transform: translateY(-5px) rotate(
   height: 44px; padding: 0 14px; background: var(--wa); color: var(--wa-ink); font-weight: 800; font-size: 15px;
 }
 @media (hover: hover) and (pointer: fine) { .k-header .k-cta.lm-hcta:hover { background: var(--wa-dark); } }
-@media (min-width: 900px) { .k-header .k-cta.lm-hcta { padding: 0 22px; } .lm-hmenu { padding: 0 18px; font-size: 16px; } }
-@media (max-width: 360px) { .lm-hmenu svg { display: none; } .k-header .k-cta.lm-hcta { padding: 0 11px; } }
+@media (min-width: 900px) { .k-header .k-cta.lm-hcta { padding: 0 22px; } }
+@media (max-width: 360px) { .k-header .k-cta.lm-hcta { padding: 0 11px; } }
 
 /* ============ Menú hamburguesa ============ */
 body.lm-nav-open { overflow: hidden; }
@@ -197,7 +185,6 @@ body.lm-nav-open .k-header { color: var(--cream); background: transparent; borde
 body.lm-nav-open .k-header .lm-logo-r { opacity: 0; }
 body.lm-nav-open .k-header .lm-logo-w { opacity: 1; }
 body.lm-nav-open .k-nav { opacity: 0; pointer-events: none; }
-body.lm-nav-open .lm-hmenu { background: var(--cream); color: var(--deep); }
 .lm-nav { position: fixed; inset: 0; z-index: 45; visibility: hidden; transition: visibility 0s linear 420ms; }
 body.lm-nav-open .lm-nav { visibility: visible; transition: visibility 0s; }
 .lm-nav-scrim { position: absolute; inset: 0; background: rgba(10, 8, 8, 0.6); opacity: 0; transition: opacity 300ms var(--ease-out); }
@@ -304,5 +291,51 @@ main > #sucursales { background-color: var(--paper-2); }
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
   [data-reveal] { transform: translateY(28px); }
 }
+
+/* ============ .sg-drop · caída de los títulos de sección (REVISION-10 #1) ============
+   Cada h2 cae desde arriba (-60px) y PEGA con un rebote corto (~700 ms, una sola vez al asomar).
+   Mecanismo igual al "2x1" del hero y a la cinta de closetdoor/sections/10-msi.js: resorte amortiguado
+   muestreado en keyframes, lo dispara site.js con IntersectionObserver.
+   BLINDAJE: el estado base de .sg-drop es el FINAL (sin transform, opacidad 1). Lo único que lo
+   esconde es la clase .sg-armed, que solo pone el JS y solo dentro de este @media; además site.js
+   fuerza el aterrizaje a los 1.6 s de asomarse. Sin JS, con scripting off o con reduced-motion,
+   el título nace en su sitio. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .lm-js .sg-drop.sg-armed { transform: translateY(-60px); opacity: 0; }
+}
 .lm-ripple { position: absolute; z-index: -1; width: 180px; height: 180px; margin: -90px 0 0 -90px; border-radius: 50%; pointer-events: none; background: radial-gradient(closest-side, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0)); animation: lm-ripple 420ms var(--ease-out) forwards; }
 @keyframes lm-ripple { from { opacity: 1; transform: scale(0.3); } to { opacity: 0; transform: scale(1.6); } }
+
+/* ============ IDENTIDAD PROPIA: header de sushi bar + lenguaje de formas redondas (rollos) ============
+   Header propio: barra negra con línea roja de 3px (siempre, transparente o sólida); kit.js ya pone
+   .is-solid al bajar 40px. Botón "Pedir" circular: permitido SOLO aquí por Emanuel (el resto del kit
+   usa 3px). Resto del sitio sigue con esquinas de 3px; aquí va la excepción redonda. */
+.k-header { border-bottom: 3px solid var(--brand); }
+.k-header.is-solid {
+  background: rgba(20, 18, 18, 0.96);
+  -webkit-backdrop-filter: saturate(1.3) blur(14px); backdrop-filter: saturate(1.3) blur(14px);
+  border-bottom-color: var(--brand); color: var(--cream);
+}
+/* REVISION-10 #5: área de clic de cada link del nav ≥ 44x44 px en compu (antes "2X1" medía 32px de ancho) */
+.k-header .k-nav a { text-transform: uppercase; font-size: 12.5px; font-weight: 800; letter-spacing: 0.1em; padding-inline: 10px; min-width: 44px; justify-content: center; }
+@media (min-width: 900px) and (max-width: 1100px) { .k-header .k-nav a { font-size: 11px; letter-spacing: 0.08em; padding-inline: 8px; } }
+.k-header .k-cta.lm-hcta { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px !important; }
+.k-header .k-cta.lm-hcta svg { width: 16px; height: 16px; }
+@media (max-width: 360px) { .k-header .k-cta.lm-hcta svg { display: none; } }
+.lm-menu-btn { border-radius: 50%; }
+
+/* Viñetas circulares: el guion de los eyebrows y del submenú se vuelven puntos redondos */
+.lm-eyebrow::before { width: 7px; height: 7px; border-radius: 50%; }
+.lm-nav-sub a::before { width: 7px; height: 7px; border-radius: 50%; }
+
+/* Botones verdes de acción: redondeados 14px (no la píldora del resto, ni el 3px del kit) */
+.lm-btn--wa, .k-btn.lm-btn-wa, .lm-submit { border-radius: 14px !important; }
+
+/* Footer: teléfono aparte + iconos de redes reales en círculo, 44px */
+.lm-foot-tel { margin-top: 4px; font-size: 15px; }
+.lm-foot-tel a { font-weight: 700; color: var(--cream); }
+.lm-foot-social { display: flex; gap: 10px; margin-top: 14px; }
+.lm-foot-social a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(244, 238, 228, 0.1); color: var(--cream); transition: background-color 180ms var(--ease-out), transform 160ms var(--ease-out); }
+.lm-foot-social svg { width: 20px; height: 20px; }
+.lm-foot-social a:active { transform: scale(0.94); }
+@media (hover: hover) and (pointer: fine) { .lm-foot-social a:hover { background: var(--wine); } }

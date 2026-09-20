@@ -9,8 +9,14 @@
   --mm-green: #25d366;
   --mm-green-2: #1ebe5b;
   --mm-on-green: #0b2515;
-  --mm-r: 3px;
+  --mm-r: 24px;
 }
+/* Identidad redonda del menú: chips y controles de "+" en círculo/píldora; el resto queda con
+   esquinas muy redondeadas (--mm-r, 24px) en vez de las de 3px del kit. */
+.lm-mm-chip, .lm-mm-opt span { border-radius: 999px; }
+.lm-mm-add, .lm-mm-step button, .lm-mm-count, .lm-mm-search-x, .lm-mm-dlg-x { border-radius: 50%; }
+.lm-mm-step { border-radius: 999px; }
+.lm-mm-dlg-add { border-radius: 14px; }
 .lm-mm {
   background: var(--mm-cream);
   color: var(--mm-ink);
@@ -63,6 +69,9 @@
 .lm-mm-hit:focus-visible { outline: 2px solid var(--mm-wine); outline-offset: 2px; }
 .lm-mm-ph { margin: 0; width: 96px; aspect-ratio: 1; border-radius: var(--mm-r); overflow: hidden; background: #e9dfd2; }
 .lm-mm-ph img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 500ms cubic-bezier(.23, 1, .32, 1); }
+/* Fotos de platillo redondas (círculo) en la fila de mesa; en la tarjeta de escritorio (1024px+,
+   imagen a sangre) se resetea a esquinas rectas más abajo */
+.lm-mm-ph, .lm-mm-hit { border-radius: 50%; }
 .lm-mm-tx { min-width: 0; }
 .lm-mm-name { display: flex; align-items: baseline; gap: 8px; font-family: var(--font-display, Georgia, serif); font-weight: 600; font-size: 1.1rem; line-height: 1.2; letter-spacing: -.01em; }
 .lm-mm-name span { min-width: 0; }
@@ -226,6 +235,7 @@ html.lm-mm-lock { overflow: hidden; }
   }
   .lm-mm-card--tx { padding-top: 16px; }
   .lm-mm-ph, .lm-mm-card:not(.lm-mm-card--tx) .lm-mm-ph { grid-column: 1 / -1; width: 100%; height: 190px; aspect-ratio: auto; border-radius: 0; }
+  .lm-mm-hit { border-radius: 0; }
   .lm-mm-tx { padding-left: 16px; }
   .lm-mm-ctl { padding-right: 14px; align-self: end; }
   .lm-mm-name { font-size: 1.14rem; flex-wrap: wrap; }

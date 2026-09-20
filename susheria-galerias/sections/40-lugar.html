@@ -8,12 +8,22 @@
     <div class="k-wrap lu-grid">
       <div class="lu-copy">
         <p class="lm-eyebrow">El lugar</p>
-        <h2 class="lm-h2 lm-h2--xl lu-t" id="lu-t">Sushi &amp; Beer <em>en Galerías.</em></h2>
+        <h2 class="lm-h2 lm-h2--xl lu-t sg-drop" id="lu-t">Sushi &amp; Beer <em>en Galerías.</em></h2>
         <p class="lm-lead">Rollos, ramen, teppanyaki y cerveza fría, con 2x1 en rollos todos los días.<br>Cuatro sucursales en Aguascalientes.</p>
-        <blockquote class="lu-q">
-          <p>"Excelente productos, excelente trato y precios muy accesibles."</p>
-          <footer>Rubén Ávila, reseña en Restaurant Guru</footer>
-        </blockquote>
+        <!-- REVISION-10 #3: reseña con calificación real. research/resenas.md fila 1 (y resenas-google-raw.json):
+             Juan Francisco Camacho Arevalo, 5 estrellas en Google, SUC. Arqueros. Se quitó la de Rubén Ávila
+             porque su fuente (Restaurant Guru) no trae estrellas, y ponérselas sería inventar el dato.
+             Es la ÚNICA reseña con calificación verificada y positiva que hay en research/. No se muestra
+             el promedio de Google. -->
+        <ul class="lu-revs">
+          <li class="lu-rev">
+            <p class="lu-stars" role="img" aria-label="5 de 5 estrellas"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></p>
+            <blockquote class="lu-q">
+              <p>"Excelente lugar… Ampliamente recomendado y un bonito y agradable lugar para pasar a comer."</p>
+              <footer>Juan Francisco Camacho Arevalo · reseña en Google, sucursal Arqueros</footer>
+            </blockquote>
+          </li>
+        </ul>
         <div class="lu-acts">
           <a class="lm-btn lm-btn--wa" data-wa="Hola, quiero hacer un pedido en Sushería Galerías." href="https://wa.me/524491204319"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir por WhatsApp</a>
         </div>
@@ -29,7 +39,7 @@
     <div class="k-wrap lu-suc">
       <div class="lu-suc-head" id="sucursales">
         <p class="lm-eyebrow">Sucursales</p>
-        <h2 class="lm-h2 lu-suc-t" id="su-t">Hay una <em>cerca.</em></h2>
+        <h2 class="lm-h2 lu-suc-t sg-drop" id="su-t">Hay una <em>cerca.</em></h2>
       </div>
       <ul class="su-list">
         <li class="su-card" id="suc-galerias">
