@@ -33,7 +33,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
 <link rel="stylesheet" href="site.css?v=1789874520">
-<link rel="stylesheet" href="sections/10-hero.css?v=1789867593">
+<link rel="stylesheet" href="sections/10-hero.css?v=1789875151">
 <link rel="stylesheet" href="sections/20-arma2x1.css?v=1789872361">
 <link rel="stylesheet" href="sections/25-menu.css?v=1789872315">
 <link rel="stylesheet" href="sections/26-pedido.css?v=1789867227">
@@ -102,14 +102,15 @@
   <section class="s-hero" id="hero" data-dark data-hide-wa aria-labelledby="hr-t">
     <div class="hr-media" aria-hidden="true">
       <picture>
-        <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/hero-d.webp" type="image/webp" width="1920" height="1080">
-        <source srcset="img/hero/hero-m.webp" type="image/webp" width="900" height="1600">
-        <img class="hr-poster" src="img/hero/hero-m.jpg" width="900" height="1600" alt="" fetchpriority="high">
+        <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/hero-d.webp" type="image/webp" width="2200" height="1478">
+        <source srcset="img/hero/hero-m.webp" type="image/webp" width="1400" height="2083">
+        <img class="hr-poster" src="img/hero/hero-m.jpg" width="1400" height="2083" alt="" fetchpriority="high">
       </picture>
       <!-- Video hecho solo con fotos reales de rollos del local (ffmpeg: research/hero_video.py). 9:16 celular y 16:9 compu, loop sin corte.
            Se salta con ahorro de datos, 2g o reduced-motion y cae a la foto de arriba si play() falla (10-hero.js). -->
-      <video class="hr-vid" muted playsinline loop preload="metadata" poster="img/hero/poster-m.webp" data-poster-d="img/hero/poster-d.webp" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9"></video>
+      <video class="hr-vid" muted playsinline loop preload="metadata" poster="img/hero/poster-m.webp" data-poster-d="img/hero/poster-d.webp" data-src-m="" data-src-d="" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9"></video>
       <div class="hr-veil"></div>
+      <span class="hr-ia">Imagen ilustrativa</span>
       <div class="hr-grain" aria-hidden="true"></div>
     </div>
     <div class="k-wrap hr-in">
