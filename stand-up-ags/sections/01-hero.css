@@ -56,13 +56,6 @@
 /* Blindaje: visible por defecto; el JS solo anima el ingreso si hay scripting
    y no hay prefers-reduced-motion (mismo patron que el kit, ver kit.css). */
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  .s-hero-obj[data-su-reveal] {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
-  }
-  .s-hero-obj[data-su-reveal].is-in { opacity: 1; transform: none; }
-
   /* Titulo por mascara POR LINEA: el JS envuelve el contenido de cada .ln en
      un .ln-i sin tocar el HTML interno, asi los <em> (y con ellos el segundo
      tono, --brand) siguen vivos. Antes el JS hacia ln.textContent y los
