@@ -1,0 +1,14 @@
+/* 70-completar: lo que falta del lado del dueno. Va en --lienzo-2 (la banda --papel la tiene
+   reservada la hoja para la seccion 5 y el carrito) y mide lo que mide su contenido. */
+.s-completar { background: var(--lienzo-2); }
+.s-completar-grid { display: flex; flex-direction: column; gap: 28px; }
+.s-completar-lista ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+.s-completar-lista li { padding-left: 18px; position: relative; font-size: 15px; color: var(--texto); max-width: 52ch; }
+.s-completar-lista li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 1.5px; background: var(--marca); }
+.s-completar-honestidad { margin-top: 18px; font-size: 12px; color: var(--mute); }
+
+@media (min-width: 900px) {
+  .s-completar-grid { flex-direction: row; justify-content: space-between; gap: 60px; }
+  .s-completar-grid > div:first-child { max-width: 420px; }
+  .s-completar-lista { max-width: 480px; }
+}

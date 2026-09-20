@@ -1,0 +1,286 @@
+/* Everclean Ags — hoja base (FUNDACIÓN, turno 1). Autocontenida.
+   Lenguaje de formas propio: ARCO Y COSTURA. Componente firma: EL PAR QUE EMBONA.
+   Radios: 0 en todo. El único curvo de la página es el arco de la ola (header, divisor, pie).
+   Tokens de colores.md / HOJA-DIRECCION.md sección 5. Una sola temperatura: fría. */
+:root {
+  --tinta: #00002d;
+  --lienzo: #041233;
+  --lienzo-2: #071a44;
+  --marca: #1e96c3;
+  --marca-ink: #00121c;
+  --bandera: #37648f;
+  --papel: #eef3f7;
+  --papel-2: #e2eaf1;
+  --wa: #25d366;
+  --wa-ink: #0b3d1f;
+  --texto: #eef3f7;
+  --mute: rgba(238, 243, 247, 0.66);
+  --linea: rgba(238, 243, 247, 0.18);
+  --linea-fuerte: rgba(238, 243, 247, 0.3);
+  --font-display: "Archivo", "Arial Narrow", sans-serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --wrap: 1240px;
+  --gutter: 20px;
+  --header-h: 56px;
+  --sec-y: 56px;
+}
+@media (min-width: 900px) {
+  :root { --gutter: 40px; --header-h: 64px; --sec-y: 92px; }
+}
+
+/* ============ Reset ============ */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+  overflow-x: clip;
+  accent-color: var(--marca);
+  caret-color: var(--marca);
+}
+html { scroll-behavior: auto !important; }
+body {
+  min-height: 100svh;
+  background: var(--lienzo);
+  color: var(--texto);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 122;
+  font-weight: 850;
+  text-transform: uppercase;
+  line-height: 0.98;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+p { text-wrap: pretty; overflow-wrap: break-word; max-width: 58ch; }
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+img, video { height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+input, textarea, select { font-size: max(16px, 1em); }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+a, button, [role="button"], label { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+:where(ul[class], ol[class]) { list-style: none; padding: 0; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--marca); outline-offset: 3px; }
+::selection { background: var(--marca); color: var(--tinta); }
+
+.ec-wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.ec-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; background: var(--papel); color: var(--tinta); font-weight: 700; transform: translateY(-160%); transition: transform 200ms var(--ease-out); }
+.ec-skip:focus { transform: none; }
+
+/* ============ Tipografía ============ */
+.ec-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--marca); margin-bottom: 14px; }
+.ec-eyebrow::before { content: ""; width: 18px; height: 1.5px; background: var(--marca); display: block; }
+.ec-h1 { font-size: clamp(40px, 11.5vw, 60px); }
+.ec-h2 { font-size: clamp(32px, 8.6vw, 52px); }
+@media (min-width: 900px) {
+  .ec-h1 { font-size: clamp(64px, 6vw, 108px); }
+  .ec-h2 { font-size: clamp(44px, 4.4vw, 72px); }
+}
+.ec-tono2 { color: var(--marca); }
+.ec-lead { font-size: 17px; color: var(--mute); max-width: 46ch; }
+@media (min-width: 900px) { .ec-lead { font-size: 19px; } }
+
+/* Títulos que caen y pegan: una palabra por span, cae 40px y pega */
+.ec-drop-w { display: inline-block; overflow: hidden; vertical-align: top; }
+.ec-drop-w > span { display: inline-block; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .js .ec-drop-w > span { transform: translateY(-115%); opacity: 0; transition: transform 820ms var(--ease-out), opacity 620ms var(--ease-out); transition-delay: calc(var(--i, 0) * 70ms); }
+  .js [data-ec-drop].is-in .ec-drop-w > span { transform: translateY(0); opacity: 1; }
+}
+
+/* ============ Botones ============
+   Navegar y acciones normales: color de MARCA, finos, rectangulares, mayúsculas espaciadas.
+   VERDE solo lo que de verdad manda WhatsApp + el flotante. Máx 1 verde por sección + flotante. */
+.ec-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 44px; padding: 0 22px; border: 1px solid var(--marca); color: var(--marca);
+  font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  background: transparent; white-space: nowrap; transition: background 180ms var(--ease-out), color 180ms var(--ease-out);
+}
+.ec-btn--solid { background: var(--marca); color: var(--marca-ink); }
+@media (hover: hover) and (pointer: fine) {
+  .ec-btn:hover { background: var(--marca); color: var(--marca-ink); }
+  .ec-btn--solid:hover { background: transparent; color: var(--marca); }
+}
+.ec-btn:active { transform: scale(0.98); }
+.ec-btn--wa { height: 52px; padding: 0 26px; border-color: var(--wa); background: var(--wa); color: var(--wa-ink); font-weight: 700; }
+@media (hover: hover) and (pointer: fine) { .ec-btn--wa:hover { background: #1ebe5b; } }
+.ec-btn--wa svg { width: 20px; height: 20px; }
+/* Boton de contorno cian con el glifo de WhatsApp adentro: manda al mismo numero, pero el
+   VERDE queda reservado para los dos unicos usos de la hoja (enviar visita y flotante). */
+.ec-btn--glifo svg { width: 17px; height: 17px; }
+.ec-link {
+  display: inline-flex; align-items: center; gap: 8px; color: var(--texto); font-weight: 600; font-size: 15px;
+  border-bottom: 1.5px solid var(--linea-fuerte); padding: 7px 0 9px;
+}
+.ec-link svg { width: 16px; height: 16px; color: var(--marca); transition: transform 180ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .ec-link:hover svg { transform: translateX(4px); } }
+
+/* ============ Marco de foto (así se ven TODAS las fotos) ============ */
+.ec-frame { position: relative; padding: 10px; background: var(--bandera); }
+.ec-frame__pic { position: relative; overflow: hidden; }
+.ec-frame__pic::after {
+  content: ""; position: absolute; inset: 6px; border: 1px solid var(--marca); pointer-events: none;
+}
+.ec-frame__pic img { width: 100%; height: 100%; object-fit: cover; }
+.ec-frame__tag {
+  position: absolute; left: 10px; bottom: 10px; z-index: 2;
+  background: var(--tinta); color: var(--papel); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 6px 10px;
+}
+
+/* ============ Header: LA OLA QUE SE PLANCHA ============ */
+.ec-header { position: fixed; inset: 0 0 auto 0; z-index: 60; height: var(--header-h); transition: height 240ms var(--ease-out); }
+.ec-header-bg { position: absolute; inset: 0; background: var(--tinta); }
+.ec-header-arc-wrap { position: absolute; left: 0; right: 0; top: 100%; height: 16px; pointer-events: none; }
+.ec-header-arc-wrap svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; transition: opacity 240ms var(--ease-out); }
+.ec-arc { opacity: 1; }
+.ec-arc path { fill: var(--tinta); }
+.ec-seam { opacity: 0; }
+.ec-seam rect { fill: var(--marca); }
+.ec-header.is-compact { height: 48px; }
+.ec-header.is-compact .ec-arc { opacity: 0; }
+.ec-header.is-compact .ec-seam { opacity: 1; }
+.ec-bar { position: relative; z-index: 2; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-inline: var(--gutter); max-width: var(--wrap); margin-inline: auto; }
+.ec-brand { display: flex; align-items: center; height: 40px; width: 64px; background: #fff; flex: none; padding: 4px 8px; }
+.ec-brand img { width: 100%; height: 100%; object-fit: contain; }
+.ec-header.is-compact .ec-brand { height: 34px; width: 56px; padding: 3px 6px; transition: height 240ms var(--ease-out), width 240ms var(--ease-out), padding 240ms var(--ease-out); }
+.ec-nav { display: none; gap: 26px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+@media (min-width: 980px) { .ec-nav { display: flex; } }
+.ec-nav a { opacity: 0.86; transition: opacity 160ms; }
+.ec-nav a:hover { opacity: 1; color: var(--marca); }
+.ec-acts { display: flex; align-items: center; gap: 10px; flex: none; }
+.ec-cotizar { height: 40px; padding: 0 18px; border: 1px solid var(--marca); color: var(--marca); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; display: inline-flex; align-items: center; }
+@media (hover: hover) and (pointer: fine) { .ec-cotizar:hover { background: var(--marca); color: var(--marca-ink); } }
+.ec-menu-toggle { display: flex; align-items: center; height: 44px; gap: 8px; color: var(--papel); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.ec-burger { position: relative; width: 20px; height: 12px; display: inline-block; }
+.ec-burger i { position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor; transition: transform 200ms var(--ease-out), opacity 200ms; }
+.ec-burger i:nth-child(1) { top: 0; }
+.ec-burger i:nth-child(2) { bottom: 0; }
+.ec-menu-open .ec-burger i:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.ec-menu-open .ec-burger i:nth-child(2) { transform: translateY(-5.5px) rotate(-45deg); }
+
+/* ============ Menú pantalla completa ============ */
+.ec-menu { position: fixed; inset: 0; z-index: 90; visibility: hidden; }
+.ec-menu-open .ec-menu { visibility: visible; }
+.ec-menu-scrim { position: absolute; inset: 0; background: rgba(0, 0, 45, 0.6); opacity: 0; transition: opacity 260ms var(--ease-out); }
+.ec-menu-panel {
+  position: absolute; inset: 0 0 0 auto; width: min(420px, 100%); height: 100%; background: var(--tinta);
+  padding: 96px 28px 28px; display: flex; flex-direction: column; gap: 26px; overflow-y: auto;
+  transform: translateX(100%); transition: transform 320ms var(--ease-out);
+}
+.ec-menu-open .ec-menu-scrim { opacity: 1; }
+.ec-menu-open .ec-menu-panel { transform: translateX(0); }
+.ec-menu-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--linea); color: var(--papel); }
+.ec-menu-title { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--marca); }
+.ec-menu-piezas { display: flex; flex-direction: column; }
+.ec-menu-piezas li { border-bottom: 1px solid var(--linea); }
+.ec-menu-piezas button, .ec-menu-piezas a { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 0; font-size: 17px; font-weight: 600; text-align: left; color: var(--texto); }
+.ec-menu-piezas button svg, .ec-menu-piezas a svg { width: 16px; height: 16px; color: var(--marca); flex: none; }
+.ec-menu-nav { display: flex; flex-direction: column; gap: 4px; }
+.ec-menu-nav a { padding: 10px 0; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mute); }
+.ec-menu-foot { margin-top: auto; display: flex; flex-direction: column; gap: 12px; }
+.ec-menu-foot p { color: var(--mute); font-size: 13px; }
+
+/* ============ Reveal genérico + blindaje (nada se queda en blanco) ============ */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .js [data-ec-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 620ms var(--ease-out), transform 620ms var(--ease-out); }
+  .js [data-ec-reveal].is-in { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ EL PAR QUE EMBONA (componente firma) ============
+   Dos fotos reales (mitad antes / mitad después de un díptico real) se despegan y se vuelven
+   a juntar en el mismo marco. Blindaje: el CSS base YA las muestra juntas y con la costura fina
+   puesta (estado final). Solo con JS + motion se separan primero (.ec-embona-pre por media
+   query) para que el motor de site.js las vuelva a juntar con IntersectionObserver.
+   Regla dura: no se arrastra, no tiene manija, no tiene barra. */
+.ec-embona { position: relative; }
+.ec-embona-frame { position: relative; padding: 10px; background: var(--bandera); }
+.ec-embona-track { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
+.ec-embona-half { position: absolute; inset: 0; width: 50%; overflow: hidden; }
+.ec-embona-half--antes { left: 0; }
+.ec-embona-half--despues { left: 50%; }
+.ec-embona-half img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.ec-embona-seam {
+  position: absolute; left: 50%; top: 0; bottom: 0; width: 1.5px; background: var(--marca);
+  transform: translateX(-50%); opacity: 0.55; z-index: 3;
+}
+.ec-embona-pie { margin-top: 10px; font-size: 12px; color: var(--mute); }
+.ec-embona-pie strong { color: var(--texto); font-weight: 600; }
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .js .ec-embona-half { transition: transform 900ms var(--ease-out), opacity 900ms var(--ease-out); transition-delay: var(--stagger, 0ms); }
+  .js .ec-embona-half--antes { transform: translateX(-14%); opacity: 0; }
+  .js .ec-embona-half--despues { transform: translateX(14%); opacity: 0; }
+  .js .ec-embona-seam { opacity: 0; }
+  .js .ec-embona.is-in .ec-embona-half { transform: translateX(0); opacity: 1; }
+  /* al terminar de embonar (900ms), la costura prende y a los 400ms se apaga a su brillo
+     permanente y fino (0.55, igual al estado base sin JS): reversible al salir de pantalla. */
+  .js .ec-embona.is-in .ec-embona-seam { animation: ec-seam-flash 400ms linear forwards; animation-delay: calc(var(--stagger, 0ms) + 900ms); }
+}
+@keyframes ec-seam-flash { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0.55; } }
+
+/* Los 3 destellos de 4 puntas del logotipo. Se usan UNA SOLA VEZ en toda la pagina: en el
+   instante en que embona el primer par. Decorativos: si no hay JS, no se ven y no falta nada. */
+.ec-embona-destellos { position: absolute; left: 50%; top: 10px; bottom: 10px; width: 0; z-index: 4; opacity: 0; pointer-events: none; }
+.ec-embona-destellos svg { position: absolute; fill: var(--marca); max-width: none; }
+.ec-embona-destellos svg:nth-child(1) { width: 18px; height: 18px; left: -9px; top: 16%; }
+.ec-embona-destellos svg:nth-child(2) { width: 11px; height: 11px; left: -5.5px; top: 47%; }
+.ec-embona-destellos svg:nth-child(3) { width: 14px; height: 14px; left: -7px; top: 74%; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .js .ec-embona.is-in .ec-embona-destellos { animation: ec-spark-flash 400ms linear forwards; animation-delay: calc(var(--stagger, 0ms) + 900ms); }
+}
+@keyframes ec-spark-flash { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0; } }
+
+/* ============ Divisor: arco de la ola (solo entre 4 y 5) ============ */
+.ec-divisor { display: block; width: 100%; height: 40px; }
+.ec-divisor path { fill: none; stroke: var(--marca); stroke-width: 1.5; }
+
+/* ============ Secciones ============ */
+main { padding-top: var(--header-h); }
+.ec-sec { padding-block: var(--sec-y); position: relative; }
+.ec-sec--papel { background: var(--papel); color: var(--tinta); }
+.ec-sec--papel .ec-eyebrow { color: var(--bandera); }
+.ec-sec--papel h1, .ec-sec--papel h2 { color: var(--tinta); }
+.ec-sec--tinta { background: var(--tinta); }
+
+/* ============ WhatsApp flotante (verde, único junto al botón de mandar visita) ============ */
+.ec-wa-float {
+  position: fixed; right: 16px; bottom: 16px; z-index: 70; width: 56px; height: 56px;
+  display: flex; align-items: center; justify-content: center; background: var(--wa); color: var(--wa-ink);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+.ec-wa-float svg { width: 28px; height: 28px; }
+.ec-wa-float.is-hidden-by-btn { visibility: hidden; animation: none; }
+
+/* ============ Pie ============ */
+.ec-foot { background: var(--tinta); padding-block: 64px 28px; position: relative; }
+.ec-foot-logo { display: block; width: 220px; margin-inline: auto; background: #fff; padding: 12px 16px; }
+@media (min-width: 900px) { .ec-foot-logo { width: 280px; padding: 14px 20px; } }
+.ec-foot-logo img { display: block; width: 100%; height: auto; }
+.ec-foot-arc { display: block; width: 100%; max-width: 360px; margin: 18px auto 0; height: 24px; }
+.ec-foot-arc path { fill: none; stroke: var(--marca); stroke-width: 1.5; }
+.ec-foot-mid { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; margin-top: 40px; }
+.ec-foot-tel { font-family: var(--font-display); font-size: clamp(26px, 6vw, 34px); font-weight: 850; text-transform: none; letter-spacing: 0; }
+.ec-foot-acts { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.ec-foot-mail { color: var(--mute); font-size: 14px; }
+.ec-foot-social { display: flex; gap: 18px; margin-top: 6px; }
+.ec-foot-social a { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--linea); color: var(--papel); }
+.ec-foot-social svg { width: 22px; height: 22px; }
+.ec-foot-city { color: var(--mute); font-size: 13px; }
+.ec-foot-line { display: block; height: 1px; background: var(--linea); margin: 32px 0 18px; }
+.ec-foot-bottom { display: flex; flex-direction: column; gap: 6px; text-align: center; color: var(--mute); font-size: 12px; }

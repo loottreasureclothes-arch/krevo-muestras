@@ -1,0 +1,12 @@
+/* 40-colchon: pausa tipográfica. Sin eyebrow, sin párrafo, sin botón. Foto chica (tope 180px) +
+   título gigante + 1 link con flecha. */
+.s-colchon { padding-block: 44px; }
+.s-colchon-grid { display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
+.s-colchon-foto { width: 148px; flex: none; }
+@media (min-width: 640px) {
+  .s-colchon-grid { flex-direction: row; align-items: center; gap: 40px; }
+  .s-colchon-foto { width: 180px; }
+}
+.s-colchon-h { max-width: 11ch; margin-bottom: 18px; }
+.s-colchon-line1 { display: block; }
+.s-colchon-copy { min-width: 0; }

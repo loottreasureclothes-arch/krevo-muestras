@@ -1,0 +1,52 @@
+/* 50-visita: LA HERRAMIENTA. Banda --papel, única de la página para leer/escribir. Foto arriba en
+   celular, al lado en compu. El único verde de la sección (+ el flotante) es el botón de enviar. */
+.s-visita { padding-block: 48px; }
+.s-visita-grid { display: flex; flex-direction: column; gap: 26px; }
+@media (min-width: 900px) { .s-visita-grid { flex-direction: row; align-items: flex-start; gap: 48px; } }
+.s-visita-foto { width: 100%; max-width: 300px; margin-inline: auto; }
+@media (min-width: 900px) { .s-visita-foto { width: 320px; flex: none; margin-inline: 0; } }
+.s-visita-copy { min-width: 0; flex: 1; }
+.s-visita h2 { max-width: 12ch; }
+.s-visita-line1 { display: block; }
+.s-visita-lead { color: var(--bandera); font-weight: 600; font-size: 15px; margin: 10px 0 22px; }
+
+.s-visita-box { background: var(--papel-2); border: 1px solid var(--bandera); padding: 22px; }
+
+.s-visita-resumen { margin-bottom: 18px; }
+.s-visita-empty { font-size: 14px; color: var(--tinta); opacity: 0.65; }
+.s-visita-empty a { color: var(--bandera); font-weight: 600; border-bottom: 1.5px solid var(--bandera); }
+.s-visita-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid rgba(0, 0, 45, 0.12); color: var(--tinta);
+}
+.s-visita-item:first-child { border-top: 1px solid rgba(0, 0, 45, 0.12); }
+.s-visita-item-nombre { font-size: 14px; font-weight: 600; }
+.s-visita-qty { display: flex; align-items: center; gap: 8px; flex: none; }
+.s-visita-qty button {
+  width: 30px; height: 30px; border: 1px solid var(--marca); color: var(--marca); background: transparent;
+  display: flex; align-items: center; justify-content: center; font-size: 16px; line-height: 1;
+}
+.s-visita-qty button:active { transform: scale(0.94); }
+.s-visita-qty span { min-width: 18px; text-align: center; font-weight: 700; color: var(--tinta); font-size: 14px; }
+
+.s-visita-field { display: block; margin-bottom: 18px; }
+.s-visita-field span { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bandera); margin-bottom: 8px; }
+.s-visita-field input {
+  width: 100%; height: 46px; padding: 0 14px; border: 1px solid var(--bandera); background: #fff; color: var(--tinta);
+}
+.s-visita-field input:focus-visible { outline: 2px solid var(--marca); outline-offset: 1px; }
+
+.s-visita-dia { margin-bottom: 20px; }
+.s-visita-dia-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bandera); margin-bottom: 10px; }
+.s-visita-dia-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.s-visita-dia-btn {
+  height: 40px; padding: 0 16px; border: 1px solid var(--marca); color: var(--marca); background: transparent;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.s-visita-dia-btn.is-active { background: var(--marca); color: var(--marca-ink); box-shadow: inset 0 -3px 0 var(--tinta); }
+.s-visita-dia-btn:active { transform: scale(0.97); }
+
+.s-visita-total { font-size: 14px; color: var(--tinta); margin-bottom: 18px; }
+.s-visita-total strong { color: var(--bandera); }
+
+.s-visita-send { width: 100%; }

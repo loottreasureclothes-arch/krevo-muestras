@@ -1,0 +1,20 @@
+.s-hero { background: var(--lienzo); padding-top: calc(var(--header-h) + 14px); padding-bottom: 32px; min-height: 850px; display: flex; align-items: center; }
+.s-hero-grid { display: flex; flex-direction: column; gap: 22px; width: 100%; }
+.s-hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
+.s-hero-line1, .s-hero-line2 { display: block; }
+.s-hero-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 6px; }
+.s-hero-foto { display: flex; justify-content: center; }
+.s-hero-foto .ec-frame { width: 100%; max-width: 370px; }
+/* El vapor saliendo de la boquilla es lo que venden: tiene que entrar completo en la primera
+   pantalla, junto con los dos CTA. Por eso el marco baja a 44svh y la foto sube el encuadre. */
+.s-hero-foto .ec-frame__pic { min-height: 44svh; max-height: 46svh; }
+.s-hero-foto .ec-frame__pic img { height: 100%; object-position: 50% 28%; }
+
+@media (min-width: 900px) {
+  .s-hero { min-height: 92svh; padding-top: calc(var(--header-h) + 40px); }
+  .s-hero-grid { flex-direction: row; align-items: center; justify-content: space-between; gap: 48px; }
+  .s-hero-copy { max-width: 640px; }
+  .s-hero-foto { flex: none; }
+  .s-hero-foto .ec-frame { max-width: 520px; }
+  .s-hero-foto .ec-frame__pic { min-height: 60svh; max-height: 68svh; }
+}
