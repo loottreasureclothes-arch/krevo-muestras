@@ -6,6 +6,8 @@
    EQ.money(n)  $2,500 */
 window.EQ = (function () {
   var WA = "523312670824";
+  /* Link de cobro con tarjeta (Mercado Pago o Stripe) del negocio. Vacío = el pedido pide el link por WhatsApp. */
+  window.EQ_PAGO_LINK = window.EQ_PAGO_LINK || "";
   function waUrl(msg) { return "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg); }
   function send(msg, near) {
     var url = waUrl(msg), w = null;
@@ -172,7 +174,7 @@ window.EQ = (function () {
         var el = e.target;
         setTimeout(function () { show(el); }, 1600);
       });
-    }, { rootMargin: "0px 0px -25% 0px" });
+    }, { rootMargin: "0px 0px 0px 0px" });
     Array.prototype.forEach.call(els, function (el) { io.observe(el); });
   }
 

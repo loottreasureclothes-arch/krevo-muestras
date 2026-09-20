@@ -32,6 +32,8 @@
     if (!NAMES[f]) return;
     filt = f; shown = PAGE;
     chips.forEach(function (c) { c.setAttribute("aria-pressed", c.getAttribute("data-f") === f ? "true" : "false"); });
+    var cta = sec.querySelector(".s-cat-cta");
+    if (cta) { cta.querySelector("span").textContent = f === "top" ? "Cotizar por WhatsApp" : "Cotizar " + NAMES[f]; cta.href = EQ.waUrl("Hola Equipales Imperial, quiero cotizar " + (f === "top" ? "piezas de su catálogo" : NAMES[f]) + "."); }
     render(true);
     if (scroll) {
       var h = document.querySelector(".k-header");
@@ -65,6 +67,17 @@
   var ul = sheetEl.querySelector(".s-ped-list"), empty = sheetEl.querySelector(".s-ped-empty"), sum = sheetEl.querySelector(".s-ped-sum");
   var cpI = sheetEl.querySelector('[name="cp"]'), nmI = sheetEl.querySelector('[name="nombre"]');
   cpI.value = P.cp || ""; nmI.value = P.nombre || "";
+  /* pago: transferencia (como en su web), PayPal o tarjeta en línea. El link de cobro (Mercado Pago) va en EQ_PAGO_LINK;
+     mientras esté vacío, el pedido pide el link por WhatsApp. */
+  var pagos = sheetEl.querySelectorAll('[name="pago"]'), cardA = sheetEl.querySelector(".s-ped-card");
+  P.pago = P.pago || "Transferencia o depósito";
+  function paintPago() {
+    Array.prototype.forEach.call(pagos, function (r) { r.checked = r.value === P.pago; });
+    var link = window.EQ_PAGO_LINK || "";
+    cardA.hidden = !(link && P.pago === "Tarjeta en línea"); cardA.href = link || "#";
+  }
+  Array.prototype.forEach.call(pagos, function (r) { r.addEventListener("change", function () { P.pago = r.value; save(); paintPago(); }); });
+  paintPago();
   function save() { EQ.store.set(KEY, P); }
   function find(i) { for (var k = 0; k < P.lines.length; k++) if (P.lines[k].i === i) return k; return -1; }
   function toggle(i) {
@@ -123,6 +136,7 @@
     var t = "Hola Equipales Imperial, quiero cotizar este pedido:\n";
     P.lines.forEach(function (l) { var x = DATA[l.i]; t += "- " + l.q + " x " + x.n + (x.m ? " (" + x.m + ")" : "") + (l.cal ? ", " + (x.c === "complementos" ? "tamaño " : "calidad ") + l.cal : "") + "\n"; });
     t += "Total desde " + EQ.money(desde()) + " + IVA.\n";
+    t += "Pago: " + (P.pago || "Transferencia o depósito") + (P.pago === "Tarjeta en línea" ? " (mándenme el link de pago)" : "") + ".\n";
     if (P.cp) t += "Envío a: " + P.cp + "\n";
     if (P.nombre) t += "Soy " + P.nombre + ".";
     return t.trim();

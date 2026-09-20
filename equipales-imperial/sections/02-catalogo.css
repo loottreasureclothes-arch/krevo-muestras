@@ -25,7 +25,7 @@
 #catalogo .s-cat-pr { font-weight: 700; font-size: 18px; margin: 0; }
 #catalogo .s-cat-pr small { font-weight: 500; font-size: 13px; color: var(--mute); }
 #catalogo .s-cat-meta { font-size: 13px; line-height: 1.4; color: var(--mute); margin: 0; min-height: 1.4em; }
-#catalogo .s-cat-acts { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--line); }
+#catalogo .s-cat-acts { display: flex; align-items: center; justify-content: flex-start; gap: 10px; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--line); }
 #catalogo .s-cat-add { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 3px; border: 1.5px solid var(--brand-logo); color: var(--brand-logo); font-weight: 700; font-size: 15px; transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 160ms var(--ease-out); }
 #catalogo .s-cat-add svg { width: 18px; height: 18px; }
 #catalogo .s-cat-add[aria-pressed="true"] { background: var(--brand-logo); color: var(--cream); }
@@ -72,3 +72,15 @@ body.eq-ped-on .k-wa { bottom: calc(84px + env(safe-area-inset-bottom)); }
 .s-ped-sheet .s-ped-sum { font-size: 14px; color: var(--mute); margin: 0 0 12px; }
 .s-ped-sheet .s-ped-send { width: 100%; border-color: rgba(11, 61, 31, 0.3); box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35); }
 .s-ped-sheet .s-ped-empty { color: var(--mute); margin: 0 0 14px; }
+
+/* un solo CTA verde por línea (19 sep: antes había 125 "Preguntar" por WhatsApp) */
+#catalogo .s-cat-cta-wrap { display: flex; justify-content: center; margin-top: 18px; }
+#catalogo .s-cat-cta { min-width: min(100%, 320px); }
+/* ¿Cómo pagas? en Mi pedido */
+.s-ped-sheet .s-ped-pago { border: 1px solid rgba(80, 45, 24, 0.25); border-radius: 3px; padding: 10px 12px 6px; margin: 0 0 12px; display: grid; gap: 4px; }
+.s-ped-sheet .s-ped-pago legend { font-weight: 700; font-size: 14px; padding: 0 4px; }
+.s-ped-sheet .s-ped-pago label { display: flex; gap: 10px; align-items: flex-start; min-height: 44px; cursor: pointer; }
+.s-ped-sheet .s-ped-pago input { margin-top: 5px; accent-color: var(--brand-logo); width: 18px; height: 18px; }
+.s-ped-sheet .s-ped-pago span { display: grid; font-weight: 600; }
+.s-ped-sheet .s-ped-pago small { font-size: 12px; font-weight: 400; color: var(--mute); }
+.s-ped-sheet .s-ped-card { width: 100%; margin-bottom: 10px; }

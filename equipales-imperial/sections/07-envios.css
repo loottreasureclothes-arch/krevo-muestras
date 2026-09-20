@@ -1,6 +1,17 @@
-/* ============ 07 ENVÍOS ============ */
-#envios .s-env-list { list-style: none; margin: var(--head-gap) 0 28px; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line-wood); }
+/* ============ 07 ENVÍOS + VISÍTANOS: una sola banda en madera ============ */
+#envios .s-env-grid { display: grid; gap: 40px; }
+#envios .s-env-list { list-style: none; margin: var(--head-gap) 0 0; padding: 0; display: grid; border-top: 1px solid var(--line-wood); }
 #envios .s-env-list li { display: grid; gap: 4px; padding: 16px 0; border-bottom: 1px solid var(--line-wood); }
 #envios .s-env-list b { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .04em; font-size: 18px; color: var(--brand-on-wood); }
 #envios .s-env-list span { color: var(--cream-mute); line-height: 1.45; }
-@media (min-width: 900px) { #envios .s-env-list { grid-template-columns: repeat(4, 1fr); gap: 0 32px; } }
+#envios .s-env-h3 { font-family: var(--font-display); text-transform: uppercase; font-weight: 900; font-size: clamp(26px, 7vw, 34px); line-height: 0.95; margin: 6px 0 16px; color: var(--cream); }
+#envios .s-env-foto { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 3px; display: block; margin-bottom: 16px; }
+#envios .s-env-places { display: grid; gap: 12px; margin-bottom: 18px; }
+#envios .s-env-places p { margin: 0; display: grid; gap: 2px; padding: 12px 0; border-top: 1px solid var(--line-wood); }
+#envios .s-env-places b { font-family: var(--font-display); text-transform: uppercase; font-size: 17px; color: var(--cream); }
+#envios .s-env-places span { color: var(--cream-mute); line-height: 1.4; }
+#envios .s-env-places .cd-btn--link { color: var(--brand-on-wood); justify-self: start; }
+#envios .s-env-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+#envios .s-env-tel { color: var(--cream); }
+#envios .s-env-note { margin: 12px 0 0; font-size: 13px; color: var(--cream-mute); }
+@media (min-width: 900px) { #envios .s-env-grid { grid-template-columns: 5fr 7fr; gap: 72px; align-items: start; } #envios .s-env-list { grid-template-columns: 1fr 1fr; gap: 0 28px; } }
