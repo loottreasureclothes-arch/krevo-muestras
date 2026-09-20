@@ -32,18 +32,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
-<link rel="stylesheet" href="site.css?v=1789838311">
-<link rel="stylesheet" href="sections/10-hero.css?v=1789839821">
-<link rel="stylesheet" href="sections/12-accesos.css?v=1789839842">
-<link rel="stylesheet" href="sections/15-hoy.css?v=1789839902">
-<link rel="stylesheet" href="sections/18-dosuno.css?v=1789839789">
+<link rel="stylesheet" href="site.css?v=1789868212">
+<link rel="stylesheet" href="sections/10-hero.css?v=1789867593">
 <link rel="stylesheet" href="sections/20-arma2x1.css?v=1789835665">
 <link rel="stylesheet" href="sections/25-menu.css?v=1789835420">
-<link rel="stylesheet" href="sections/26-pedido.css?v=1789835458">
-<link rel="stylesheet" href="sections/30-lugar.css?v=1789838543">
-<link rel="stylesheet" href="sections/40-galeria.css?v=1789838459">
-<link rel="stylesheet" href="sections/50-sucursales.css?v=1789835750">
-<link rel="stylesheet" href="sections/60-cierre.css?v=1789838358">
+<link rel="stylesheet" href="sections/26-pedido.css?v=1789867227">
+<link rel="stylesheet" href="sections/30-hoy.css?v=1789867757">
+<link rel="stylesheet" href="sections/35-dosuno.css?v=1789839789">
+<link rel="stylesheet" href="sections/40-lugar.css?v=1789867673">
 </head>
 <body data-hero-dark>
 <a class="lm-skip" href="#menu">Saltar al menú</a>
@@ -59,10 +55,10 @@
 <header class="k-header">
   <a class="k-logo" href="#inicio" aria-label="Sushería Galerías, inicio"><img class="lm-logo-w" src="brand/mark-cream.webp" alt="Sushería Galerías" width="570" height="120"><img class="lm-logo-r" src="brand/mark-ink.webp" alt="" width="570" height="120" aria-hidden="true"></a>
   <nav class="k-nav" aria-label="Principal">
-    <a href="#hoy">Promos</a>
     <a href="#arma2x1">Arma tu 2x1</a>
+    <a href="#menu">Menú</a>
+    <a href="#hoy">Promos</a>
     <a href="#lugar">El lugar</a>
-    <a href="#sucursales">Sucursales</a>
   </nav>
   <a class="lm-hmenu" href="#menu"><svg aria-hidden="true"><use href="#i-menu"/></svg>Menú</a>
   <button class="lm-menu-btn" type="button" aria-expanded="false" aria-controls="lm-nav" aria-label="Abrir navegación"><span class="lm-burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
@@ -73,26 +69,22 @@
   <div class="lm-nav-scrim" aria-hidden="true"></div>
   <div class="lm-nav-panel">
     <nav class="lm-nav-list" aria-label="Secciones">
-      <a class="lm-nav-parent" href="#menu"><span>01</span>Menú y pedido</a>
+      <a href="#arma2x1"><span>01</span>Arma tu 2x1</a>
+      <a class="lm-nav-parent" href="#menu"><span>02</span>Menú y pedido</a>
       <ul class="lm-nav-sub" aria-label="Menú">
         <li><a href="#m-clasicos">Rollos clásicos</a></li>
         <li><a href="#m-empanizados">Empanizados</a></li>
         <li><a href="#m-horneados">Horneados</a></li>
         <li><a href="#m-ramen">Ramen y sopas</a></li>
       </ul>
-      <a href="#arma2x1"><span>02</span>Arma tu 2x1</a>
       <a href="#hoy"><span>03</span>Hoy en Susheria</a>
       <a class="lm-nav-parent" href="#lugar"><span>04</span>El lugar</a>
-      <ul class="lm-nav-sub" aria-label="El lugar">
+      <ul class="lm-nav-sub" aria-label="El lugar y sucursales">
         <li><a href="#lugar">Quiénes somos</a></li>
-        <li><a href="#galeria">Lo que servimos</a></li>
-      </ul>
-      <a class="lm-nav-parent" href="#sucursales"><span>05</span>Sucursales</a>
-      <ul class="lm-nav-sub" aria-label="Sucursales">
-        <li><a href="#suc-galerias">Galerías</a></li>
-        <li><a href="#suc-arqueros">Arqueros</a></li>
-        <li><a href="#suc-presidentes">Presidentes</a></li>
-        <li><a href="#suc-haciendas">Haciendas</a></li>
+        <li><a href="#suc-galerias">Sucursal Galerías</a></li>
+        <li><a href="#suc-arqueros">Sucursal Arqueros</a></li>
+        <li><a href="#suc-presidentes">Sucursal Presidentes</a></li>
+        <li><a href="#suc-haciendas">Sucursal Haciendas</a></li>
       </ul>
     </nav>
     <div class="lm-nav-foot">
@@ -113,71 +105,19 @@
         <source srcset="img/hero/hero-m.webp" type="image/webp" width="900" height="1600">
         <img class="hr-poster" src="img/hero/hero-m.jpg" width="900" height="1600" alt="" fetchpriority="high">
       </picture>
-      <!-- VIDEO DE IA (orquestador): poner las rutas en data-src-m (9:16) y data-src-d (16:9). Vacíos = se queda la foto. -->
-      <video class="hr-vid" muted playsinline loop preload="none" poster="img/hero/hero-m.jpg" data-poster-d="img/hero/hero-d.jpg" data-src-m="" data-src-d=""></video>
+      <!-- Video hecho solo con fotos reales de rollos del local (ffmpeg: research/hero_video.py). 9:16 celular y 16:9 compu, loop sin corte.
+           Se salta con ahorro de datos, 2g o reduced-motion y cae a la foto de arriba si play() falla (10-hero.js). -->
+      <video class="hr-vid" muted playsinline loop preload="metadata" poster="img/hero/poster-m.webp" data-poster-d="img/hero/poster-d.webp" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9"></video>
       <div class="hr-veil"></div>
+      <div class="hr-grain" aria-hidden="true"></div>
     </div>
     <div class="k-wrap hr-in">
       <p class="lm-eyebrow hr-eb">Sushi &amp; Beer · Galerías, Aguascalientes</p>
-      <h1 id="hr-t" class="hr-t lm-d"><span class="hr-l hr-l--big"><span class="hr-dos">2x1</span></span><span class="hr-l"><span>en rollos.</span></span><span class="hr-l"><span><em>Diario.</em></span></span></h1>
+      <h1 id="hr-t" class="hr-t lm-d"><span class="hr-l hr-l--big"><span class="hr-drop"><span class="hr-dos">2x1</span></span></span><span class="hr-l"><span>en rollos.</span></span><span class="hr-l"><span><em>Diario.</em></span></span></h1>
       <p class="hr-lead">Rollos desde $100. Eliges dos, lo mandas por WhatsApp y listo.</p>
       <div class="hr-acts">
         <a class="lm-btn lm-btn--wa" href="#arma2x1"><svg aria-hidden="true"><use href="#i-wa"/></svg>Arma tu 2x1</a>
         <a class="lm-btn lm-btn--line" href="#menu">Ver menú</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 12 Accesos: cuadritos por categoría con dato real (precio del menú) que abren esa pestaña del menú -->
-  <section class="s-accesos" id="accesos" data-dark aria-label="Categorías del menú">
-    <div class="k-wrap">
-      <ul class="ac-grid">
-        <li><a class="ac-tile" href="#m-clasicos"><img src="img/sec/tile-clasicos-s.webp" srcset="img/sec/tile-clasicos-s.webp 400w, img/sec/tile-clasicos.webp 800w" sizes="(min-width: 900px) 24vw, 46vw" width="400" height="500" alt="Rollos en plato, Sushería Galerías" loading="lazy" decoding="async"><span class="ac-tx"><b>Clásicos</b><span>$100 a $109</span></span></a></li>
-        <li><a class="ac-tile" href="#m-empanizados"><img src="img/sec/tile-empanizados-s.webp" srcset="img/sec/tile-empanizados-s.webp 400w, img/sec/tile-empanizados.webp 800w" sizes="(min-width: 900px) 24vw, 46vw" width="400" height="500" alt="Rollo empanizado en plato rojo" loading="lazy" decoding="async"><span class="ac-tx"><b>Empanizados</b><span>$129 a $165</span></span></a></li>
-        <li><a class="ac-tile" href="#m-especiales"><img src="img/sec/tile-especiales-s.webp" srcset="img/sec/tile-especiales-s.webp 400w, img/sec/tile-especiales.webp 800w" sizes="(min-width: 900px) 24vw, 46vw" width="400" height="500" alt="Rollo con aguacate y ajonjolí" loading="lazy" decoding="async"><span class="ac-tx"><b>Especiales</b><span>$160 a $165</span></span></a></li>
-        <li><a class="ac-tile" href="#m-ramen"><img src="img/sec/tile-ramen-s.webp" srcset="img/sec/tile-ramen-s.webp 400w, img/sec/tile-ramen.webp 800w" sizes="(min-width: 900px) 24vw, 46vw" width="400" height="500" alt="Ramen y rollos en la mesa" loading="lazy" decoding="async"><span class="ac-tx"><b>Ramen y sopas</b><span>$79 a $149</span></span></a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 15 Hoy en Susheria: promos reales por día. Fuentes: pizarrón del local (fotos/15), bio de Facebook "2X1 TODOS LOS DIAS EN ROLLOS Y CERVEZA", flyer Mochis 2x1 miércoles y viernes (fotos/25). -->
-  <section class="s-hoy" id="hoy" data-dark aria-labelledby="hoy-t">
-    <div class="k-wrap hoy-grid">
-      <div class="hoy-main">
-        <p class="lm-eyebrow">Promos de la semana</p>
-        <h2 class="lm-h2 lm-h2--xl hoy-t" id="hoy-t">Hoy en <span class="hoy-day" data-hoy-day>Susheria</span>.</h2>
-        <ul class="hoy-now" data-hoy-now>
-          <li><b>2x1</b><span>en rollos</span></li>
-          <li><b>2x1</b><span>en cerveza nacional</span></li>
-          <li class="hoy-mochi" data-hoy-mochi><b>2x1</b><span>en mochis gourmet <small>miércoles y viernes</small></span></li>
-        </ul>
-        <div class="hoy-acts">
-          <a class="lm-btn lm-btn--wa" data-hoy-wa href="https://wa.me/524491204319?text=Hola%2C%20quiero%20pedir%20con%20la%20promo%202x1%20de%20hoy%20en%20Susher%C3%ADa%20Galer%C3%ADas." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir con la promo</a>
-          <a class="lm-btn lm-btn--link" href="#arma2x1">Arma tu 2x1<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-      </div>
-      <figure class="hoy-ph hoy-ph--a" data-reveal>
-        <img src="img/sec/hoy-pizarron-s.webp" srcset="img/sec/hoy-pizarron-s.webp 400w, img/sec/hoy-pizarron.webp 800w" sizes="(min-width: 900px) 22vw, 44vw" width="400" height="500" alt="Pizarrón del local: todos los días 2x1 en rollos" loading="lazy" decoding="async">
-        <figcaption>El pizarrón del local</figcaption>
-      </figure>
-      <figure class="hoy-ph hoy-ph--b" data-reveal>
-        <img src="img/sec/hoy-mochis-s.webp" srcset="img/sec/hoy-mochis-s.webp 450w, img/sec/hoy-mochis.webp 900w" sizes="(min-width: 900px) 22vw, 54vw" width="450" height="273" alt="Flyer del local: Mochis Gourmet 2x1" loading="lazy" decoding="async">
-        <figcaption>Mochis 2x1 miércoles y viernes</figcaption>
-      </figure>
-    </div>
-    <p class="k-wrap hoy-fine">El 2x1 aplica según la sucursal. Te lo confirmamos al pedir por WhatsApp.</p>
-  </section>
-
-  <!-- 18 Momento firma: dos rollos reales (f19, f23) chocan al hacer scroll y cae el sello 2x1. Ligado al scroll y reversible. Blindaje: sin JS o con reduced-motion se ve el estado final. -->
-  <section class="s-dosuno" id="dosuno" data-dark aria-labelledby="du-t">
-    <div class="du-stage">
-      <p class="du-kick" aria-hidden="true">1 + 1</p>
-      <figure class="du-r du-r--a"><img src="img/sec/dos-a-s.webp" srcset="img/sec/dos-a-s.webp 560w, img/sec/dos-a.webp 1000w" sizes="(min-width: 900px) 30vw, 52vw" width="560" height="560" alt="Rollo empanizado con salsa en plato rojo" loading="lazy" decoding="async"></figure>
-      <figure class="du-r du-r--b"><img src="img/sec/dos-b-s.webp" srcset="img/sec/dos-b-s.webp 560w, img/sec/dos-b.webp 1000w" sizes="(min-width: 900px) 30vw, 52vw" width="560" height="560" alt="Rollo con queso y totopos en plato rojo" loading="lazy" decoding="async"></figure>
-      <p class="du-sello" aria-hidden="true">2x1</p>
-      <div class="du-copy">
-        <h2 class="du-t lm-d" id="du-t">Pides dos. <em>Pagas uno.</em></h2>
-        <a class="lm-btn lm-btn--wa" href="#arma2x1"><svg aria-hidden="true"><use href="#i-wa"/></svg>Arma tu 2x1</a>
       </div>
     </div>
   </section>
@@ -1033,15 +973,22 @@
         </label>
         <p class="lm-pd-err" id="lm-pd-err" hidden>Escribe tu dirección para mandarte el pedido.</p>
 
+        <fieldset class="lm-pd-modes lm-pd-pago">
+          <legend>¿Cómo pagas?</legend>
+          <label><input type="radio" name="lm-pd-pago" value="efectivo" checked><span>Efectivo al recibir</span></label>
+          <label><input type="radio" name="lm-pd-pago" value="tarjeta"><span>Tarjeta en línea<small>Te mandamos el link de pago por WhatsApp.</small></span></label>
+        </fieldset>
+
         <p class="lm-pd-total"><span>Total estimado</span><b>$0</b></p>
         <p class="lm-pd-fine">Precios de sucursal Galerías, sujetos a cambio. El 2x1 y el costo de envío te los confirmamos por WhatsApp.</p>
 
         <div class="lm-pd-actions">
-          <!-- PAGO FUTURO: aquí iría el botón "Pagar con tarjeta" (Stripe / Mercado Pago) que usa window.lmPedido.onCheckout. -->
+          <!-- PAGO FUTURO (Stripe / Mercado Pago): mientras window.SG_PAGO_LINK esté vacío este botón se queda oculto (26-pedido.js). -->
           <a class="lm-pd-wa" id="lm-pd-wa" href="https://wa.me/524491204319" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
             Enviar por WhatsApp
           </a>
+          <a class="lm-pd-card" id="lm-pd-card" href="" target="_blank" rel="noopener" hidden>Pagar con tarjeta</a>
           <button class="lm-pd-show" id="lm-pd-mesero-btn" type="button">Mostrar a mi mesero</button>
           <button class="lm-pd-clear" id="lm-pd-clear" type="button">Vaciar pedido</button>
         </div>
@@ -1062,58 +1009,81 @@
     </div>
   </div>
 
-  <!-- 30 El lugar / Quiénes somos: fotos reales de Google Maps (terraza Galerías con su letrero SUSHI, mural, salón y barra de Arqueros). REV1: sin logo flotando; el logo real va en la foto del letrero. -->
+  <!-- 15 Hoy en Susheria: promos reales por día. Fuentes: pizarrón del local (fotos/15), bio de Facebook "2X1 TODOS LOS DIAS EN ROLLOS Y CERVEZA", flyer Mochis 2x1 miércoles y viernes (fotos/25). -->
+  <section class="s-hoy" id="hoy" data-dark aria-labelledby="hoy-t">
+    <div class="hoy-grain" aria-hidden="true"></div>
+    <div class="k-wrap hoy-grid">
+      <div class="hoy-main">
+        <p class="lm-eyebrow">Promos de la semana</p>
+        <h2 class="lm-h2 lm-h2--xl hoy-t" id="hoy-t">Hoy en <span class="hoy-day" data-hoy-day>Susheria</span>.</h2>
+        <ul class="hoy-now" data-hoy-now>
+          <li><b>2x1</b><span>en rollos</span></li>
+          <li><b>2x1</b><span>en cerveza nacional</span></li>
+          <li class="hoy-mochi" data-hoy-mochi><b>2x1</b><span>en mochis gourmet <small>miércoles y viernes</small></span></li>
+        </ul>
+        <div class="hoy-acts">
+          <a class="lm-btn lm-btn--wa" data-hoy-wa href="https://wa.me/524491204319?text=Hola%2C%20quiero%20pedir%20con%20la%20promo%202x1%20de%20hoy%20en%20Susher%C3%ADa%20Galer%C3%ADas." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir con la promo</a>
+          <a class="lm-btn lm-btn--link" href="#arma2x1">Arma tu 2x1<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <figure class="hoy-ph hoy-ph--a" data-reveal>
+        <img src="img/sec/hoy-pizarron-s.webp" srcset="img/sec/hoy-pizarron-s.webp 400w, img/sec/hoy-pizarron.webp 800w" sizes="(min-width: 900px) 22vw, 44vw" width="400" height="500" alt="Pizarrón del local: todos los días 2x1 en rollos" loading="lazy" decoding="async">
+        <figcaption>El pizarrón del local</figcaption>
+      </figure>
+      <figure class="hoy-ph hoy-ph--b" data-reveal>
+        <img src="img/sec/hoy-mochis-s.webp" srcset="img/sec/hoy-mochis-s.webp 450w, img/sec/hoy-mochis.webp 900w" sizes="(min-width: 900px) 22vw, 54vw" width="450" height="273" alt="Flyer del local: Mochis Gourmet 2x1" loading="lazy" decoding="async">
+        <figcaption>Mochis 2x1 miércoles y viernes</figcaption>
+      </figure>
+    </div>
+    <p class="k-wrap hoy-fine">El 2x1 aplica según la sucursal. Te lo confirmamos al pedir por WhatsApp.</p>
+  </section>
+
+  <!-- 18 Momento firma: dos rollos reales (f19, f23) chocan al hacer scroll y cae el sello 2x1. Ligado al scroll y reversible. Blindaje: sin JS o con reduced-motion se ve el estado final. -->
+  <section class="s-dosuno" id="dosuno" data-dark aria-labelledby="du-t">
+    <div class="du-stage">
+      <p class="du-kick" aria-hidden="true">1 + 1</p>
+      <figure class="du-r du-r--a"><img src="img/sec/dos-a-s.webp" srcset="img/sec/dos-a-s.webp 560w, img/sec/dos-a.webp 1000w" sizes="(min-width: 900px) 30vw, 52vw" width="560" height="560" alt="Rollo empanizado con salsa en plato rojo" loading="lazy" decoding="async"></figure>
+      <figure class="du-r du-r--b"><img src="img/sec/dos-b-s.webp" srcset="img/sec/dos-b-s.webp 560w, img/sec/dos-b.webp 1000w" sizes="(min-width: 900px) 30vw, 52vw" width="560" height="560" alt="Rollo con queso y totopos en plato rojo" loading="lazy" decoding="async"></figure>
+      <p class="du-sello" aria-hidden="true">2x1</p>
+      <div class="du-copy">
+        <h2 class="du-t lm-d" id="du-t">Pides dos. <em>Pagas uno.</em></h2>
+        <a class="lm-btn lm-btn--wa" href="#arma2x1"><svg aria-hidden="true"><use href="#i-wa"/></svg>Arma tu 2x1</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 40 El lugar y sucursales (fusionados). Fotos reales, nítidas y sin repetir: terraza con su letrero y
+       el 2x1 real en la lona (research/fotos/01), mural, rollos para llevar y el pizarrón del local con el
+       2x1 escrito a mano. "Lo que hemos servido" y el rating de Google se quitaron (research/FOTOS.md,
+       research/resenas.md: no se muestra la calificación). Un solo botón verde para todo el bloque.
+       Fotos con blur-load (40-lugar.js, receta 14). -->
   <section class="s-lugar" id="lugar" data-dark aria-labelledby="lu-t">
+    <div class="lu-grain" aria-hidden="true"></div>
     <div class="k-wrap lu-grid">
       <div class="lu-copy">
-        <p class="lm-eyebrow">Quiénes somos</p>
+        <p class="lm-eyebrow">El lugar</p>
         <h2 class="lm-h2 lm-h2--xl lu-t" id="lu-t">Sushi &amp; Beer <em>en Galerías.</em></h2>
-        <p class="lm-lead">Rollos, ramen, teppanyaki y cerveza fría. Con 2x1 en rollos todos los días.</p>
+        <p class="lm-lead">Rollos, ramen, teppanyaki y cerveza fría, con 2x1 en rollos todos los días.<br>Cuatro sucursales en Aguascalientes.</p>
         <blockquote class="lu-q">
           <p>"Excelente productos, excelente trato y precios muy accesibles."</p>
           <footer>Rubén Ávila, reseña en Restaurant Guru</footer>
         </blockquote>
         <div class="lu-acts">
-          <a class="lm-btn lm-btn--wa" data-wa="Hola, quiero hacer un pedido en Sushería Galerías." href="https://wa.me/524491204319"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir ahora</a>
-          <a class="lm-btn lm-btn--link" href="#sucursales">Ver sucursales<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="lm-btn lm-btn--wa" data-wa="Hola, quiero hacer un pedido en Sushería Galerías." href="https://wa.me/524491204319"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir por WhatsApp</a>
         </div>
       </div>
       <div class="lu-collage">
-        <figure class="lu-f lu-f--big"><div class="lu-cam"><img src="img/sec/lugar-terraza-s.webp" srcset="img/sec/lugar-terraza-s.webp 600w, img/sec/lugar-terraza.webp 1200w" sizes="(min-width: 900px) 34vw, 100vw" width="600" height="900" alt="Terraza de Sushería Galerías bajo su letrero rojo SUSHI" loading="lazy" decoding="async"></div><figcaption>La terraza en Galerías</figcaption></figure>
-        <figure class="lu-f lu-f--a" data-reveal><img src="img/sec/lugar-mural-s.webp" srcset="img/sec/lugar-mural-s.webp 450w, img/sec/lugar-mural.webp 900w" sizes="(min-width: 900px) 20vw, 60vw" width="450" height="600" alt="Mural de árbol de cerezo sobre pared roja y lámparas de papel" loading="lazy" decoding="async"><figcaption>El cerezo</figcaption></figure>
-        <figure class="lu-f lu-f--b" data-reveal><img src="img/sec/lugar-barra-s.webp" srcset="img/sec/lugar-barra-s.webp 450w, img/sec/lugar-barra.webp 900w" sizes="(min-width: 900px) 16vw, 46vw" width="450" height="600" alt="Barra de madera de la caja" loading="lazy" decoding="async"><figcaption>La barra</figcaption></figure>
-        <figure class="lu-f lu-f--c" data-reveal><img src="img/sec/lugar-salon-s.webp" srcset="img/sec/lugar-salon-s.webp 450w, img/sec/lugar-salon.webp 900w" sizes="(min-width: 900px) 16vw, 46vw" width="450" height="600" alt="Salón con lámparas rojas y ventanal" loading="lazy" decoding="async"><figcaption>El salón</figcaption></figure>
+        <figure class="lu-f lu-f--big"><div class="lu-cam"><img class="lu-blur" src="img/sec/lugar-terraza-s.webp" srcset="img/sec/lugar-terraza-s.webp 600w, img/sec/lugar-terraza.webp 1200w" sizes="(min-width: 900px) 34vw, 100vw" width="600" height="900" alt="Letrero rojo SUSHI y lona del 2x1 en rollos y cervezas, en la terraza de Sushería Galerías" loading="lazy" decoding="async"></div><figcaption>La terraza en Galerías</figcaption></figure>
+        <figure class="lu-f lu-f--a" data-reveal><img class="lu-blur" src="img/sec/lugar-mural-s.webp" srcset="img/sec/lugar-mural-s.webp 450w, img/sec/lugar-mural.webp 900w" sizes="(min-width: 900px) 20vw, 60vw" width="450" height="600" alt="Mural de árbol de cerezo sobre pared roja, con lámparas de papel" loading="lazy" decoding="async"><figcaption>El salón</figcaption></figure>
+        <figure class="lu-f lu-f--b" data-reveal><img class="lu-blur" src="img/sec/gal-domicilio-s.webp" srcset="img/sec/gal-domicilio-s.webp 450w, img/sec/gal-domicilio.webp 900w" sizes="(min-width: 900px) 16vw, 46vw" width="450" height="600" alt="Rollos empanizados con aguacate listos en su caja para llevar" loading="lazy" decoding="async"><figcaption>Para llevar</figcaption></figure>
+        <figure class="lu-f lu-f--c" data-reveal><img class="lu-blur" src="img/sec/gal-salon-s.webp" srcset="img/sec/gal-salon-s.webp 600w, img/sec/gal-salon.webp 1200w" sizes="(min-width: 900px) 16vw, 46vw" width="600" height="337" alt="Pizarrón del local con el 2x1 en rollos escrito a mano, entre las mesas" loading="lazy" decoding="async"><figcaption>El pizarrón real</figcaption></figure>
       </div>
     </div>
-  </section>
 
-  <!-- 40 Lo que hemos servido: fotos reales de clientes (Google Maps) con lightbox. REV1: collage desigual y encimado; fuera Norteño (marca iA, borroso) y mariachi (letrero CARNICERÍA, confirmar con dueño). -->
-  <section class="s-galeria" id="galeria" aria-labelledby="ga-t">
-    <div class="k-wrap">
-      <div class="ga-head">
-        <p class="lm-eyebrow">Fotos reales de clientes</p>
-        <h2 class="lm-h2 lm-h2--xl" id="ga-t">Lo que hemos <em>servido.</em></h2>
-      </div>
-      <ul class="ga-grid">
-        <li class="ga-i ga-i--big"><button type="button" class="ga-b" data-full="img/sec/gal-domicilio.webp"><img src="img/sec/gal-domicilio-s.webp" srcset="img/sec/gal-domicilio-s.webp 450w, img/sec/gal-domicilio.webp 900w" sizes="(min-width: 900px) 40vw, 66vw" width="450" height="600" alt="Rollos empanizados con aguacate en caja para llevar" loading="lazy" decoding="async"></button><span class="ga-cap">Para llevar</span></li>
-        <li class="ga-i ga-i--sm"><button type="button" class="ga-b" data-full="img/sec/gal-empanizados.webp"><img src="img/sec/gal-empanizados-s.webp" srcset="img/sec/gal-empanizados-s.webp 450w, img/sec/gal-empanizados.webp 900w" sizes="(min-width: 900px) 22vw, 34vw" width="450" height="600" alt="Tres piezas de rollo empanizado" loading="lazy" decoding="async"></button></li>
-        <li class="ga-i ga-i--mesa"><button type="button" class="ga-b" data-full="img/sec/gal-mesa.webp"><img src="img/sec/gal-mesa-s.webp" srcset="img/sec/gal-mesa-s.webp 600w, img/sec/gal-mesa.webp 1200w" sizes="(min-width: 900px) 55vw, 100vw" width="600" height="450" alt="Rollo cubierto en plato alargado con soya en la mesa" loading="lazy" decoding="async"></button><span class="ga-cap">En la mesa</span></li>
-        <li class="ga-i ga-i--salon"><button type="button" class="ga-b" data-full="img/sec/gal-salon.webp"><img src="img/sec/gal-salon-s.webp" srcset="img/sec/gal-salon-s.webp 600w, img/sec/gal-salon.webp 1200w" sizes="(min-width: 900px) 36vw, 84vw" width="600" height="338" alt="Salón con pizarrón de promos y mesas de madera" loading="lazy" decoding="async"></button></li>
-      </ul>
-      <div class="ga-acts">
-        <a class="lm-btn lm-btn--wa" href="#arma2x1"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quiero mi 2x1</a>
-        <a class="lm-btn lm-btn--link" href="#menu">Ver el menú completo<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 50 Sucursales: datos de Google Maps y Rappi (research/hechos.md). Felipe Serrano no va (marcada cerrada). -->
-  <section class="s-sucursales" id="sucursales" aria-labelledby="su-t">
-    <div class="k-wrap su-grid">
-      <div class="su-head">
+    <div class="k-wrap lu-suc">
+      <div class="lu-suc-head" id="sucursales">
         <p class="lm-eyebrow">Sucursales</p>
-        <h2 class="lm-h2 lm-h2--xl" id="su-t">Hay una <em>cerca.</em></h2>
-        <p class="lm-lead">Pide por WhatsApp a la que te quede más cerca, o pasa a comer.</p>
+        <h2 class="lm-h2 lu-suc-t" id="su-t">Hay una <em>cerca.</em></h2>
       </div>
       <ul class="su-list">
         <li class="su-card" id="suc-galerias">
@@ -1121,9 +1091,8 @@
           <p class="su-a"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Av. Independencia 2351, Local 50<br><small>Dentro del Centro Comercial Galerías</small></span></p>
           <p class="su-h">Diario de 1 a 10 pm</p>
           <div class="su-acts">
-            <a class="lm-btn lm-btn--wa" data-wa="Hola, quiero hacer un pedido en Sushería Galerías, sucursal Galerías." href="https://wa.me/524491204319"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir aquí</a>
-            <a class="lm-btn lm-btn--line" href="tel:+524492515535"><svg aria-hidden="true"><use href="#i-phone"/></svg>449 251 5535</a>
-            <a class="lm-btn lm-btn--link" href="https://www.google.com/maps/search/?api=1&query=Susheria+Galerias+Av+Independencia+2351+Aguascalientes" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="su-tel" href="tel:+524492515535"><svg aria-hidden="true"><use href="#i-phone"/></svg>449 251 5535</a>
+            <a class="su-link" href="https://www.google.com/maps/search/?api=1&query=Susheria+Galerias+Av+Independencia+2351+Aguascalientes" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="su-card" id="suc-arqueros">
@@ -1131,9 +1100,8 @@
           <p class="su-a"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Av. Arqueros, Vista del Sol I<br><small>C.P. 20266</small></span></p>
           <p class="su-h">Lunes a sábado de 1 a 10 pm · domingo de 1 a 9 pm</p>
           <div class="su-acts">
-            <a class="lm-btn lm-btn--wa" data-wa="Hola, quiero hacer un pedido en Sushería Galerías, sucursal Arqueros." href="https://wa.me/524491204319"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir aquí</a>
-            <a class="lm-btn lm-btn--line" href="tel:+524499705857"><svg aria-hidden="true"><use href="#i-phone"/></svg>449 970 5857</a>
-            <a class="lm-btn lm-btn--link" href="https://www.google.com/maps/search/?api=1&query=Susheria+Galerias+Suc+Arqueros+Aguascalientes" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="su-tel" href="tel:+524499705857"><svg aria-hidden="true"><use href="#i-phone"/></svg>449 970 5857</a>
+            <a class="su-link" href="https://www.google.com/maps/search/?api=1&query=Susheria+Galerias+Suc+Arqueros+Aguascalientes" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="su-card" id="suc-presidentes">
@@ -1141,9 +1109,8 @@
           <p class="su-a"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Presidentes 969, Municipio Libre<br><small>C.P. 20196</small></span></p>
           <p class="su-h">Lunes y de miércoles a domingo, de 1 a 9 pm (horario de Rappi)</p>
           <div class="su-acts">
-            <a class="lm-btn lm-btn--wa" data-wa="Hola, quiero hacer un pedido en Sushería Galerías, sucursal Presidentes." href="https://wa.me/524491204319"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir aquí</a>
-            <a class="lm-btn lm-btn--line" href="tel:+524493921286"><svg aria-hidden="true"><use href="#i-phone"/></svg>449 392 1286</a>
-            <a class="lm-btn lm-btn--link" href="https://www.google.com/maps/search/?api=1&query=Susheria+Galerias+Presidentes+969+Municipio+Libre+Aguascalientes" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="su-tel" href="tel:+524493921286"><svg aria-hidden="true"><use href="#i-phone"/></svg>449 392 1286</a>
+            <a class="su-link" href="https://www.google.com/maps/search/?api=1&query=Susheria+Galerias+Presidentes+969+Municipio+Libre+Aguascalientes" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="su-card" id="suc-haciendas">
@@ -1151,24 +1118,10 @@
           <p class="su-a"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Av. Hacienda de Ojocaliente 216<br><small>Haciendas de Aguascalientes</small></span></p>
           <p class="su-h">Diario de 1 a 9:30 pm (horario de Rappi)</p>
           <div class="su-acts">
-            <a class="lm-btn lm-btn--wa" data-wa="Hola, quiero hacer un pedido en Sushería Galerías, sucursal Haciendas." href="https://wa.me/524491204319"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir aquí</a>
-            
-            <a class="lm-btn lm-btn--link" href="https://www.google.com/maps/search/?api=1&query=Av+Hacienda+de+Ojocaliente+216+Haciendas+de+Aguascalientes" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="su-link" href="https://www.google.com/maps/search/?api=1&query=Av+Hacienda+de+Ojocaliente+216+Haciendas+de+Aguascalientes" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
       </ul>
-    </div>
-  </section>
-
-  <!-- 60 Cierre único (REV1 #6): rollo real a sangre + frase + un solo CTA verde. Bookend cruzado: en celular el rollo del hero de compu (f06) y en compu el del hero de celular (f09), así ninguna foto se repite en la misma pantalla. -->
-  <section class="s-cierre" id="cierre" data-dark data-hide-wa aria-labelledby="ci-t">
-    <div class="ci-media" aria-hidden="true"><picture><source media="(min-aspect-ratio: 1/1)" srcset="img/sec/cierre-d.webp" width="1536" height="1152"><img src="img/sec/cierre-m.webp" width="800" height="1000" alt="" loading="lazy" decoding="async"></picture></div>
-    <div class="k-wrap ci-in" data-reveal>
-      <h2 class="lm-h2 lm-h2--xl ci-t" id="ci-t">Tu 2x1 <em>te espera.</em></h2>
-      <p class="lm-lead">Pídelo ahora y te confirmamos por WhatsApp.</p>
-      <div class="ci-acts">
-        <a class="lm-btn lm-btn--wa" href="#arma2x1"><svg aria-hidden="true"><use href="#i-wa"/></svg>Arma tu 2x1</a>
-      </div>
     </div>
   </section>
 
@@ -1199,14 +1152,13 @@
 <script src="../_kit/kit.js?v=1789789887" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-<script src="site.js?v=1789835475" defer></script>
-<script src="sections/10-hero.js?v=1789835554" defer></script>
-<script src="sections/15-hoy.js?v=1789838387" defer></script>
-<script src="sections/18-dosuno.js?v=1789839945" defer></script>
+<script src="site.js?v=1789868222" defer></script>
+<script src="sections/10-hero.js?v=1789867141" defer></script>
 <script src="sections/20-arma2x1.js?v=1789835884" defer></script>
 <script src="sections/25-menu.js?v=1789835404" defer></script>
-<script src="sections/26-pedido.js?v=1789838387" defer></script>
-<script src="sections/30-lugar.js?v=1789838324" defer></script>
-<script src="sections/40-galeria.js?v=1789835725" defer></script>
+<script src="sections/26-pedido.js?v=1789867268" defer></script>
+<script src="sections/30-hoy.js?v=1789838387" defer></script>
+<script src="sections/35-dosuno.js?v=1789839945" defer></script>
+<script src="sections/40-lugar.js?v=1789867499" defer></script>
 </body>
 </html>

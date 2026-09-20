@@ -6,6 +6,10 @@
      window.LM.today()       0-6 (domingo = 0) en hora de Aguascalientes
      window.LM.mesa          número de mesa si la URL trae ?mesa=N (o null)
    [data-wa="mensaje"] en cualquier <a> arma su link solo. [data-hide-wa] esconde el WA flotante. */
+/* Link de pago con tarjeta (Stripe / Mercado Pago). Vacío = el botón "Pagar con tarjeta" del
+   pedido (26-pedido.*) se queda oculto y solo se manda "Pago: Efectivo al recibir" o "Tarjeta en
+   línea" por WhatsApp. Cuando el dueño tenga el link, se pega aquí (o antes de este script). */
+window.SG_PAGO_LINK = window.SG_PAGO_LINK || "";
 (function () {
   "use strict";
   var WA = "524491204319";
@@ -106,7 +110,7 @@
         var el = e.target;
         setTimeout(function () { show(el); }, 1600);
       });
-    }, { rootMargin: "0px 0px -25% 0px" });
+    }, { rootMargin: "0px 0px 0px 0px" });
     Array.prototype.forEach.call(els, function (el) { io.observe(el); });
   }
 

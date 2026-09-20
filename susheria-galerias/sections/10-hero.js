@@ -28,3 +28,37 @@
   }
   setTimeout(function () { sec.getAnimations && sec.getAnimations({ subtree: true }).forEach(function (a) { try { a.finish(); } catch (e) {} }); }, 1600);
 })();
+
+/* Caída del 2x1: cae desde arriba y pega, como la cinta métrica de closetdoor/10-msi (~1.1 s, una vez).
+   El envoltorio .hr-drop cae con transición (easing de gravedad); al llegar, .hr-dos rebota con un
+   resorte muestreado (WAAPI) en su propio transform, sin pelear con el de .hr-drop.
+   Blindaje: la clase que esconde el 2x1 (hr-armed) solo la pone este script; si algo se atora, se fuerza
+   el aterrizaje a los 1.6 s (misma red que el resto del sitio). */
+(function () {
+  "use strict";
+  var sec = document.getElementById("hero");
+  if (!sec) return;
+  var drop = sec.querySelector(".hr-drop");
+  var dos = sec.querySelector(".hr-dos");
+  if (!drop || !dos) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  sec.classList.add("hr-armed");
+  var done = false;
+  function land() {
+    if (!dos.animate) return;
+    var n = 22, amp = 9, decay = 4.4, turns = 1.55, kf = [];
+    for (var i = 0; i <= n; i++) {
+      var t = i / n, v2 = i === n ? 0 : amp * Math.exp(-decay * t) * Math.sin(turns * Math.PI * 2 * t);
+      kf.push({ transform: "translateY(" + v2.toFixed(2) + "px)" });
+    }
+    dos.animate(kf, { duration: 560, easing: "linear" });
+  }
+  function play() {
+    if (done) return; done = true;
+    sec.classList.remove("hr-armed");
+    sec.classList.add("hr-in");
+    setTimeout(land, 520);
+  }
+  setTimeout(play, 240);
+  setTimeout(play, 1600); // red de seguridad: si el primer disparo no corrió (pestaña en 2o plano, etc.), cae de todos modos
+})();

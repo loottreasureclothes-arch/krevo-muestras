@@ -157,3 +157,18 @@ html.lm-pd-far.lm-pd-hero .lm-pd-mini { display: none !important; }
 .lm-pd-suc--4 { grid-template-columns: 1fr 1fr; }
 @media (min-width: 480px) { .lm-pd-suc--4 { grid-template-columns: repeat(4, 1fr); } }
 .lm-pd-retry { display: flex; align-items: center; justify-content: center; min-height: 44px; color: #0b3d1f; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Forma de pago: mismo look que los otros modos (2 opciones en vez de 3) */
+.lm-pd-pago { grid-template-columns: 1fr 1fr; }
+.lm-pd-pago span { line-height: 1.2; }
+.lm-pd-pago small { display: block; margin-top: 3px; font-size: 11px; font-weight: 500; letter-spacing: 0; text-transform: none; opacity: .8; }
+.lm-pd-pago input:checked + span small { opacity: .85; }
+/* Botón secundario "Pagar con tarjeta": oculto mientras no haya SG_PAGO_LINK (26-pedido.js);
+   [hidden] ya gana por la regla ".lm-pd [hidden]{display:none!important}" de arriba. */
+.lm-pd-card {
+  display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 16px;
+  border-radius: 3px; border: 2px solid #8e1d1f; background: #fffdf9; color: #8e1d1f;
+  font: 700 1.02rem/1.1 var(--font-body, system-ui, sans-serif); text-decoration: none; cursor: pointer;
+}
+.lm-pd-card:active { background: #fbeef0; }
+@media (hover: hover) and (pointer: fine) { .lm-pd-card:hover { background: #fbeef0; } }

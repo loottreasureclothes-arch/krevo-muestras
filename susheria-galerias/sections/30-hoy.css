@@ -1,6 +1,7 @@
 /* 15 Hoy en Susheria: banda roja profunda (el pizarrón y el rojo de sus paredes) */
-#hoy { position: relative; overflow: clip; background: var(--wine); color: var(--cream); padding: var(--sec-y) 0 44px;
+#hoy { position: relative; isolation: isolate; overflow: clip; background: var(--wine); color: var(--cream); padding: var(--sec-y) 0 44px;
   background-image: radial-gradient(90% 70% at 100% 0%, rgba(218, 52, 50, 0.45), rgba(218, 52, 50, 0) 60%), linear-gradient(180deg, rgba(20, 18, 18, 0.35), rgba(20, 18, 18, 0) 90px); }
+#hoy .hoy-grain { position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay; background-image: var(--k-grain); background-repeat: repeat; background-size: 140px 140px; }
 #hoy .lm-eyebrow { color: var(--gold); }
 #hoy .hoy-grid { display: grid; gap: 28px; }
 #hoy .hoy-t { max-width: 11ch; }
@@ -16,6 +17,10 @@
 #hoy .hoy-acts .lm-btn--wa { flex: 1 1 220px; }
 #hoy .hoy-ph { margin: 0; }
 #hoy .hoy-ph img { width: 100%; height: auto; border-radius: 3px; box-shadow: 0 18px 40px -18px rgba(6, 4, 4, 0.7); }
+@media (hover: hover) and (pointer: fine) {
+  #hoy .hoy-ph img { transition: transform 600ms var(--ease-out); }
+  #hoy .hoy-ph:hover img { transform: scale(1.04); }
+}
 #hoy .hoy-ph figcaption { margin-top: 8px; font-size: 13px; color: var(--cream-mute); }
 #hoy .hoy-ph--a { width: 62%; transform: rotate(-2deg); }
 #hoy .hoy-ph--b { width: 54%; justify-self: end; margin-top: -34%; margin-right: 8px; transform: rotate(2deg); }

@@ -52,7 +52,7 @@
     };
   })();
 
-  var S = { lines: [], note: '', mode: 'domicilio', mesa: '', suc: 'galerias', hora: '', dir: '', nombre: '', ts: 0 };
+  var S = { lines: [], note: '', mode: 'domicilio', mesa: '', suc: 'galerias', hora: '', dir: '', nombre: '', pago: 'efectivo', ts: 0 };
   var SUC = { galerias: 'Galerías', arqueros: 'Arqueros', presidentes: 'Presidentes', haciendas: 'Haciendas' };
   function sucName() { return SUC[S.suc] || 'Galerías'; }
   var subs = [], checkoutFns = [];
@@ -67,6 +67,7 @@
       if (!Array.isArray(S.lines)) S.lines = [];
       if (!SUC[S.suc]) S.suc = 'galerias';
       if (['domicilio', 'recoger', 'mesa'].indexOf(S.mode) < 0) S.mode = 'domicilio';
+      if (['efectivo', 'tarjeta'].indexOf(S.pago) < 0) S.pago = 'efectivo';
     } catch (e) {}
   }
   function save() {
@@ -114,7 +115,7 @@
 
   /* ---------- DOM ---------- */
   var $ = function (s, r) { return (r || document).querySelector(s); };
-  var bar, mini, sheet, list, totalEl, waBtn, meseroBtn, err, mesero, lastFocus, sucFixed = false;
+  var bar, mini, sheet, list, totalEl, waBtn, cardBtn, meseroBtn, err, mesero, lastFocus, sucFixed = false;
 
   function lineLabel(l) { return l.name + (l.opt ? ' (' + l.opt + ')' : ''); }
   function hhmm(d) { d = d || new Date(); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
@@ -129,6 +130,7 @@
     S.lines.forEach(function (l) { t += l.qty + ' x ' + lineLabel(l) + ' (' + money(l.price * l.qty) + ')\n'; });
     t += '\nTotal estimado: ' + money(total());
     if (S.mode === 'domicilio') t += ' + envío';
+    t += '\nPago: ' + (S.pago === 'tarjeta' ? 'Tarjeta en línea (me mandan el link)' : 'Efectivo al recibir');
     if (S.note.trim()) t += '\nNota: ' + S.note.trim();
     t += '\n¿Me confirman el total' + (S.mode === 'domicilio' ? ', el envío' : '') + ' y el tiempo?';
     return t;
@@ -175,8 +177,11 @@
     });
     totalEl.textContent = money(tot);
     waBtn.href = waUrl();
+    sheet.querySelectorAll('input[name="lm-pd-pago"]').forEach(function (r) { r.checked = r.value === S.pago; });
     sheet.querySelectorAll('[data-mode-f]').forEach(function (f) { f.hidden = f.dataset.modeF !== S.mode; });
     meseroBtn.hidden = S.mode !== 'mesa';
+    var link = window.SG_PAGO_LINK || '';
+    if (cardBtn) { cardBtn.hidden = !link || S.pago !== 'tarjeta'; if (link) cardBtn.href = link; }
     var dis = !S.lines.length;
     waBtn.classList.toggle('is-off', dis);
     waBtn.setAttribute('aria-disabled', dis ? 'true' : 'false');
@@ -251,7 +256,7 @@
     bar = $('#lm-pd-bar'); mini = $('#lm-pd-mini'); sheet = $('#lm-pd-sheet'); mesero = $('#lm-pd-mesero');
     if (!bar || !mini || !sheet || !mesero) return;
     list = $('.lm-pd-list', sheet); totalEl = $('.lm-pd-total b', sheet);
-    waBtn = $('#lm-pd-wa'); meseroBtn = $('#lm-pd-mesero-btn'); err = $('#lm-pd-err');
+    waBtn = $('#lm-pd-wa'); cardBtn = $('#lm-pd-card'); meseroBtn = $('#lm-pd-mesero-btn'); err = $('#lm-pd-err');
     load();
 
     // ?suc=galerias|arqueros|presidentes|haciendas fija la sucursal (el QR de cada mesa la trae); si no viene, se elige en la hoja
@@ -286,6 +291,10 @@
     radios.forEach(function (r) {
       r.checked = r.value === S.mode;
       r.addEventListener('change', function () { if (r.checked) { S.mode = r.value; err.hidden = true; emit(); } });
+    });
+    sheet.querySelectorAll('input[name="lm-pd-pago"]').forEach(function (r) {
+      r.checked = r.value === S.pago;
+      r.addEventListener('change', function () { if (r.checked) { S.pago = r.value; emit(); } });
     });
     function bind(el, k, fn) { el.addEventListener('input', function () { S[k] = fn ? fn() : el.value; save(); waBtn.href = waUrl(); }); }
     bind(note, 'note'); bind(hora, 'hora'); bind(nombre, 'nombre');

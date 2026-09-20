@@ -1,0 +1,60 @@
+/* 40 El lugar y sucursales (fusionados): banda oscura, collage de fotos reales (blur-load, 40-lugar.js)
+   y las 4 sucursales debajo, mismo tema oscuro. Un solo botón verde para todo el bloque. */
+#lugar { position: relative; isolation: isolate; overflow: clip; padding: var(--sec-y) 0 56px; background: var(--deep); color: var(--cream);
+  background-image: radial-gradient(70% 50% at 0% 100%, rgba(142, 29, 31, 0.35), rgba(142, 29, 31, 0) 70%); }
+#lugar .lu-grain { position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay; background-image: var(--k-grain); background-repeat: repeat; background-size: 140px 140px; }
+#lugar .lu-grid { display: grid; gap: 34px; }
+#lugar .lu-t { max-width: 10ch; }
+#lugar .lu-q { margin-top: 22px; padding-left: 16px; border-left: 3px solid var(--brand); }
+#lugar .lu-q p { font-size: 18px; line-height: 1.4; font-weight: 500; }
+#lugar .lu-q footer { margin-top: 6px; font-size: 13px; color: var(--cream-mute); }
+#lugar .lu-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 26px; }
+#lugar .lu-collage { display: grid; grid-template-columns: repeat(12, 1fr); gap: 10px; }
+#lugar .lu-f { margin: 0; position: relative; }
+#lugar .lu-f img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 3px; background: var(--wine-2); }
+#lugar .lu-f figcaption { position: absolute; left: 10px; bottom: 10px; padding: 4px 8px; border-radius: 3px; background: rgba(14, 11, 11, 0.62); font-size: 12px; font-weight: 600; }
+#lugar .lu-f--big { grid-column: 1 / -1; }
+#lugar .lu-cam { overflow: hidden; border-radius: 3px; aspect-ratio: 4 / 5; background: var(--wine-2); }
+#lugar .lu-cam img { object-position: 50% 0; transform-origin: 50% 0; will-change: transform; }
+#lugar .lu-f--a { grid-column: 1 / span 8; aspect-ratio: 3 / 4; margin-top: -18%; z-index: 1; box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.8); }
+#lugar .lu-f--b { grid-column: 9 / span 4; aspect-ratio: 3 / 4; align-self: end; }
+#lugar .lu-f--c { grid-column: 5 / span 8; aspect-ratio: 4 / 3; margin-top: -8%; }
+/* Cambio de ángulo al pasar el mouse: solo en las 3 fotos chicas (la grande ya se mueve con el scroll) */
+@media (hover: hover) and (pointer: fine) {
+  #lugar .lu-f--a img, #lugar .lu-f--b img, #lugar .lu-f--c img { transition: transform 600ms var(--ease-out); }
+  #lugar .lu-f--a:hover img, #lugar .lu-f--b:hover img, #lugar .lu-f--c:hover img { transform: scale(1.04); }
+}
+@media (min-width: 900px) {
+  #lugar { padding-bottom: 96px; }
+  #lugar .lu-grid { grid-template-columns: 5fr 7fr; gap: 64px; align-items: center; }
+  #lugar .lu-f--big { grid-column: 1 / span 7; grid-row: 1 / span 2; align-self: start; }
+  #lugar .lu-cam { aspect-ratio: 2 / 3; }
+  #lugar .lu-f--big figcaption { top: 12px; bottom: auto; left: 12px; }
+  #lugar .lu-f--a { grid-column: 8 / span 5; grid-row: 1; margin-top: 6svh; margin-bottom: 0; }
+  #lugar .lu-f--b { grid-column: 8 / span 4; grid-row: 2; align-self: start; }
+  #lugar .lu-f--c { grid-column: 2 / span 6; grid-row: 2; align-self: end; margin: 0 0 -10%; z-index: 2; aspect-ratio: 16 / 10; box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.85); }
+}
+/* 40 El lugar: la cámara entra a la terraza con el scroll (scrub corto, sin pin, reversible). Sin GSAP o con reduced-motion la foto queda quieta. */
+
+/* ---------- Sucursales, fusionadas debajo, mismo tema oscuro ---------- */
+#lugar .lu-suc { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--line-dark); }
+#lugar .lu-suc-head { max-width: 40ch; }
+#lugar .lu-suc-t { margin-top: 4px; }
+#lugar .su-list { display: grid; gap: 12px; margin-top: 26px; }
+#lugar .su-card { padding: 20px 18px; border-radius: 3px; background: rgba(244, 238, 228, 0.06); border: 1px solid var(--line-dark); border-top: 4px solid var(--brand); scroll-margin-top: calc(var(--k-header-h) + 16px); }
+#lugar .su-n { font-size: clamp(34px, 10vw, 50px); }
+#lugar .su-a { display: flex; gap: 10px; margin-top: 10px; font-size: 16px; font-weight: 600; line-height: 1.35; }
+#lugar .su-a svg { flex: none; width: 20px; height: 20px; margin-top: 1px; color: var(--gold); }
+#lugar .su-a small { font-size: 14px; font-weight: 500; color: var(--cream-mute); }
+#lugar .su-h { margin: 8px 0 0 30px; font-size: 14px; color: var(--cream-mute); }
+#lugar .su-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 22px; margin-top: 14px; }
+#lugar .su-tel, #lugar .su-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+#lugar .su-tel { font-weight: 700; color: var(--cream); }
+#lugar .su-tel svg { width: 18px; height: 18px; color: var(--gold); }
+#lugar .su-link { font-weight: 600; color: var(--cream-mute); text-decoration: underline; text-underline-offset: 3px; }
+#lugar .su-link svg { width: 16px; height: 16px; color: var(--gold); }
+@media (hover: hover) and (pointer: fine) { #lugar .su-tel:hover, #lugar .su-link:hover { color: #fff; } }
+@media (min-width: 900px) {
+  #lugar .su-list { grid-template-columns: 1fr 1fr; gap: 16px; }
+  #lugar .su-card { padding: 26px 24px; }
+}
