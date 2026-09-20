@@ -139,7 +139,7 @@
 
   /* WA flotante: se esconde donde ya hay botones de contacto */
   function initWaHide() {
-    var zones = document.querySelectorAll("#cotizar, #trabajos, #visitanos, .s-vis-info, .cd-foot, #comparar-cta"); /* #trabajos: el flotante tapaba las tarjetas */
+    var zones = document.querySelectorAll("#hero, #catalogo, #cotizar, #trabajos, #visitanos, .s-vis-info, .cd-foot, #comparar-cta"); /* #trabajos: el flotante tapaba las tarjetas */
     if (!zones.length || !("IntersectionObserver" in window)) return;
     var on = new Set();
     var io = new IntersectionObserver(function (es) {
@@ -193,17 +193,17 @@
         '<header class="ip-sheet-head"><div><h2 class="ip-sheet-t" id="ip-sheet-t"></h2><p class="ip-sheet-d"></p></div>' +
         '<button type="button" class="ip-sheet-x" data-close aria-label="Cerrar"><svg aria-hidden="true"><use href="#i-x"/></svg></button></header>' +
         '<div class="ip-sheet-car" role="region" aria-label="Fotos de trabajos reales" tabindex="0"></div>' +
-        '<div class="ip-sheet-foot"><button type="button" class="cd-btn cd-btn--primary ip-sheet-go"><svg aria-hidden="true"><use href="#i-wa"/></svg><span></span></button>' +
-        '<a class="ip-wa-fallback" href="#" target="_blank" rel="noopener">¿No se abrió WhatsApp? Toca aquí</a></div>' +
+        '<div class="ip-sheet-foot"><a class="cd-btn cd-btn--primary ip-sheet-go" href="#cotizar"><svg aria-hidden="true"><use href="#i-wa"/></svg><span></span></a></div>' +
       '</div>';
     document.body.appendChild(sheet);
     sBox = sheet.querySelector(".ip-sheet-box"); sT = sheet.querySelector(".ip-sheet-t"); sD = sheet.querySelector(".ip-sheet-d");
-    sCar = sheet.querySelector(".ip-sheet-car"); sGo = sheet.querySelector(".ip-sheet-go"); sFb = sheet.querySelector(".ip-wa-fallback");
+    sCar = sheet.querySelector(".ip-sheet-car"); sGo = sheet.querySelector(".ip-sheet-go"); sFb = null;
     sheet.addEventListener("click", function (e) { if (e.target.closest("[data-close]")) closeSheet(); });
-    sGo.addEventListener("click", function () {
-      if (!sCta) return;
-      if (sCta.tipo != null) { closeSheet(); setTimeout(function () { IP.cotizar(sCta.tipo); }, 60); }
-      else IP.openWa(sCta.wa, sFb);
+    /* Es un <a> REAL: si manda WhatsApp, el href ya es wa.me?text= y el click sigue su curso (nada de
+       window.open: Instagram lo bloquea). Si solo navega al cotizador, se intercepta para preseleccionar el tipo. */
+    sGo.addEventListener("click", function (e) {
+      if (!sCta) { e.preventDefault(); return; }
+      if (sCta.tipo != null) { e.preventDefault(); closeSheet(); setTimeout(function () { IP.cotizar(sCta.tipo); }, 60); }
     });
     document.addEventListener("keydown", function (e) {
       if (!sOpen) return;
@@ -249,7 +249,8 @@
     sGo.classList.toggle("cd-btn--primary", !navega);
     sGo.querySelector("svg use").setAttribute("href", navega ? "#i-arrow" : "#i-wa");
     sGo.hidden = !sCta; sGo.querySelector("span").textContent = sCta ? sCta.txt : "";
-    sFb.classList.remove("is-on");
+    if (sCta && sCta.tipo == null && sCta.wa) { sGo.href = IP.waUrl(sCta.wa); sGo.target = "_blank"; sGo.rel = "noopener"; }
+    else { sGo.href = "#cotizar"; sGo.removeAttribute("target"); }
     sheet.hidden = false;
     document.body.classList.add("ip-modal-open");
     document.documentElement.style.overflow = "hidden";

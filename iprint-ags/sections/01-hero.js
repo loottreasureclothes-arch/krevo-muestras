@@ -21,7 +21,7 @@
     b.addEventListener("click", function () {
       var d = DATA[b.getAttribute("data-sheet")];
       if (!d || !window.IP || !IP.sheet) return;
-      IP.sheet({ t: d.t, d: d.d, fotos: d.fotos, cta: { txt: "Cotizar " + d.t.toLowerCase(), tipo: d.tipo } });
+      IP.sheet({ t: d.t, d: d.d, fotos: d.fotos, cta: { txt: "Cotizar " + d.t.charAt(0).toLowerCase() + d.t.slice(1), tipo: d.tipo } });
     });
   });
 

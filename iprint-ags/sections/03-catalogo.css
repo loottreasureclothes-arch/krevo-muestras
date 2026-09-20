@@ -10,7 +10,7 @@
 #catalogo .s-cat-list { display: flex; gap: 14px; padding: 0 var(--k-gutter) 8px; width: max-content; }
 #catalogo .s-cat-item { width: min(82vw, 380px); scroll-snap-align: start; display: flex; flex-direction: column; }
 #catalogo .s-cat-item[hidden] { display: none; }
-#catalogo .s-cat-fig { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; background: var(--paper); }
+#catalogo .s-cat-fig { aspect-ratio: 3 / 2; /* apaisado: en 4/5 los letreros de sus clientes salian cortados ("ambiente", "Com") */ overflow: hidden; border-radius: 3px; background: var(--paper); }
 #catalogo .s-cat-fig img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease-out); }
 #catalogo .s-cat-n { font-size: clamp(24px, 6.8vw, 40px); line-height: 0.95; margin-top: 16px; overflow-wrap: normal; hyphens: none; }
 #catalogo .s-cat-d { color: var(--mute); margin-top: 8px; min-height: 3em; max-width: 34ch; }
