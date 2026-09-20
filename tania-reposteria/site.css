@@ -86,7 +86,7 @@ em { font-style: normal; color: var(--brand); }
 /* ============ Marco de foto: filete 1px + nudo de listón ============ */
 .tr-frame { position: relative; padding: 8px; }
 .tr-frame::before { content: ""; position: absolute; inset: 0; border: 1px solid var(--brand-2); pointer-events: none; }
-.tr-frame img { display: block; width: 100%; height: auto; }
+.tr-frame img { display: block; width: 100%; height: auto; background: var(--paper-2); } /* relleno: el hueco nunca se ve vacio mientras pinta la foto */
 .tr-frame .tr-knot { position: absolute; top: -7px; left: 10px; width: 14px; height: 14px; z-index: 2; }
 .tr-frame .tr-knot path { fill: none; stroke: var(--brand-2); stroke-width: 1.5; }
 .tr-frame figcaption { margin-top: 8px; font-size: 12px; letter-spacing: 0.04em; color: var(--mute); }
@@ -131,9 +131,9 @@ em { font-style: normal; color: var(--brand); }
   display: flex; align-items: center; gap: 0; background: transparent; border-bottom: 0; color: var(--brand);
   transition: height 220ms var(--ease-out), background-color 220ms var(--ease-out);
 }
-.k-header.tr-header.is-solid { height: 46px; background: var(--deep); }
+.k-header.tr-header.is-solid { height: 50px; background: var(--deep); }
 @media (min-width: 900px) { .k-header.tr-header.is-solid { height: 54px; } }
-.tr-logo { flex: none; min-height: 0; margin-right: 14px; }
+.tr-logo { flex: none; min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px; } /* 44 de area tocable aunque el circulo mida 30 */
 .tr-logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; transition: width 220ms var(--ease-out), height 220ms var(--ease-out); }
 .k-header.tr-header.is-solid .tr-logo img { width: 30px; height: 30px; }
 .tr-bar { flex: 1 1 auto; height: 3px; border-radius: 999px; background: var(--brand); min-width: 24px; transition: height 220ms var(--ease-out), opacity 220ms var(--ease-out); }
@@ -141,14 +141,14 @@ em { font-style: normal; color: var(--brand); }
 .tr-nav { display: none; }
 @media (min-width: 900px) {
   .tr-nav { display: flex; align-items: stretch; gap: 22px; margin-inline: 22px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
-  .tr-nav a { display: inline-flex; align-items: center; min-height: 40px; opacity: .88; transition: opacity 200ms var(--ease-out); }
+  .tr-nav a { display: inline-flex; align-items: center; min-height: 44px; opacity: .88; transition: opacity 200ms var(--ease-out); }
 }
 @media (min-width: 900px) and (hover: hover) and (pointer: fine) { .tr-nav a:hover { opacity: 1; } }
 .tr-nav a[aria-current="true"] { opacity: 1; }
 .tr-nav a[aria-current="true"]::after { transform: scaleX(1); transform-origin: left; }
-.tr-encargar { flex: none; margin-left: 14px; height: 40px; min-height: 40px; padding: 0 16px; font-size: 11px; }
+.tr-encargar { flex: none; margin-left: 14px; height: 44px; min-height: 44px; padding: 0 16px; font-size: 11px; }
 @media (min-width: 900px) { .tr-encargar { height: 44px; min-height: 44px; padding: 0 20px; } }
-.tr-menu-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; margin-left: 10px; padding: 8px; color: inherit; }
+.tr-menu-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; margin-left: 10px; padding: 8px; color: inherit; }
 .tr-menu-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 .tr-burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 4px; width: 20px; height: 16px; }
 .tr-burger i { display: block; height: 1.5px; background: currentColor; border-radius: 1px; transition: transform 220ms var(--ease-out), opacity 220ms var(--ease-out); }
@@ -197,3 +197,6 @@ body.tr-wa-off .k-wa { visibility: hidden; animation: none; }
 /* ============ Layout base ============ */
 .tr-wrap-tight { max-width: 640px; }
 @media (min-width: 1024px) { .tr-grid-2 { display: grid; grid-template-columns: 3fr 2fr; gap: 40px; align-items: start; } }
+
+/* De 1024 para arriba la barra ya ensena las mismas secciones: el boton CARTA sobraba (revision externa). */
+@media (min-width: 1024px) { .tr-menu-btn { display: none; } }

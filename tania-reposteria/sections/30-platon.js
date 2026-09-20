@@ -35,9 +35,17 @@
     return d + " de " + m;
   }
 
+  /* "30" solo no dice de que: si escribio puro numero se arma "Para 30 personas"; si escribio otra cosa
+     ("unas 25", "chico") se respeta tal cual. */
+  function tamanoTexto() {
+    var v = choice.tamano;
+    if (!v || v === "Sin especificar") return v || "";
+    return /^\d+$/.test(v) ? "Para " + v + " personas" : v;
+  }
+
   function updateArc() {
     var parts = [];
-    if (choice.tamano) parts.push(choice.tamano.toUpperCase());
+    if (choice.tamano) parts.push(tamanoTexto().toUpperCase());
     if (choice.sabor) parts.push(choice.sabor.toUpperCase());
     if (choice.fecha) parts.push(fechaBonita(choice.fecha).toUpperCase());
     var label = parts.join(" · ");
@@ -64,7 +72,8 @@
   function renderSend() {
     if (!send) return;
     function campo(v) { return v ? v + "." : "__ ."; }
-    var msg = "Hola Tania, quiero encargar un pastel. Tamaño: " + campo(choice.tamano) +
+    var t = tamanoTexto();
+    var msg = "Hola Tania, quiero encargar un pastel. " + (/^Para \d+ personas$/.test(t) ? t + "." : "Tamaño: " + campo(t)) +
       " Sabor: " + campo(choice.sabor) +
       " Fecha: " + campo(choice.fecha ? fechaBonita(choice.fecha) : "") +
       " ¿Me confirmas precio?";
@@ -74,6 +83,8 @@
 
   function checkDone() {
     renderSend();
+    var pedido = document.getElementById("platonPedido");
+    if (pedido) pedido.textContent = [tamanoTexto(), choice.sabor, choice.fecha ? fechaBonita(choice.fecha) : ""].filter(Boolean).join(" · ");
     if (summary && choice.tamano && choice.sabor && choice.fecha) summary.hidden = false;
   }
 
