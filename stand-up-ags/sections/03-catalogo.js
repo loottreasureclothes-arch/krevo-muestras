@@ -23,10 +23,21 @@
         var cotas = box.querySelectorAll(".su-cota");
         Array.prototype.forEach.call(cotas, function (c) { c.style.display = "none"; });
       }
+      /* Cada tarjeta nace con su stand DE PIE (antes las 15 eran el mismo cuadro verde): cajon = 3 paredes,
+         esquina = 2, cabecera = 1, isla = 0. Tocar el dibujo lo acuesta en planta y lo vuelve a levantar. */
+      var scene0 = box.querySelector(".su-plan-3d");
+      if (scene0) scene0.classList.add("is-vol");
       box.addEventListener("click", function () {
         var scene = box.querySelector(".su-plan-3d");
         if (scene) scene.classList.toggle("is-vol");
       });
+      /* Dato tecnico que se calcula de la propia medida (nada inventado): area y cuantas paredes lleva. */
+      var PAREDES = { cajon: 3, esquina: 2, cabecera: 1, isla: 0, especiales: 0 };
+      var dato = card.querySelector(".s-cat-dato");
+      if (dato && w && d && PAREDES[tipo] != null) {
+        var n = PAREDES[tipo];
+        dato.textContent = (w * d) + " m² · " + (n === 0 ? "sin paredes, 4 lados abiertos" : n + (n === 1 ? " pared" : " paredes") + ", " + (4 - n) + (4 - n === 1 ? " lado abierto" : " lados abiertos"));
+      }
     });
   }
 
@@ -172,8 +183,10 @@
         renderSheet(); updateBar();
       }
     });
-    if (send) send.addEventListener("click", function () {
-      if (!cart.length) return;
+    /* <a href="wa.me"> REAL: el click sigue su curso y aqui solo se reescribe el href con la cotizacion
+       (nada de window.open: el navegador de Instagram lo bloquea). */
+    if (send) send.addEventListener("click", function (e) {
+      if (!cart.length) { e.preventDefault(); return; }
       var fecha = (document.getElementById("s-cat-fecha") || {}).value || "";
       var feria = (document.getElementById("s-cat-feria") || {}).value || "";
       var lines = cart.map(function (it) { return "- " + it.qty + "x " + it.name; });
@@ -181,9 +194,7 @@
       if (feria) msg += "\nFeria: " + feria;
       if (fecha) msg += "\nFecha de montaje: " + SU.fechaLarga(fecha);
       msg += "\nMe confirman el total por aquí, porfa.";
-      var url = SU.openWa(msg);
-      // eslint-disable-next-line no-console
-      console.log("WA_URL_CATALOGO:", url);
+      send.href = SU.waUrl(msg);
     });
   }
 

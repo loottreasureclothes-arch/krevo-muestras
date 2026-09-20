@@ -27,16 +27,15 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/hero/hero-m.webp" imagesrcset="img/hero/hero-m.webp 560w, img/hero/hero-d.webp 1120w" imagesizes="(min-width: 900px) 46vw, 78vw" fetchpriority="high">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
-<link rel="stylesheet" href="site.css?v=1789927434">
+<link rel="stylesheet" href="site.css?v=1789931144">
 <link rel="stylesheet" href="sections/01-hero.css?v=1789927434">
 <link rel="stylesheet" href="sections/02-ebesa.css?v=1789927178">
-<link rel="stylesheet" href="sections/03-catalogo.css?v=1789927434">
+<link rel="stylesheet" href="sections/03-catalogo.css?v=1789930967">
 <link rel="stylesheet" href="sections/04-firma.css?v=1789927071">
-<link rel="stylesheet" href="sections/05-fecha.css?v=1789890841">
+<link rel="stylesheet" href="sections/05-fecha.css?v=1789930967">
 <link rel="stylesheet" href="sections/06-visitanos.css?v=1789890791">
 </head>
 <body data-hero-dark>
@@ -99,7 +98,7 @@
         <span>Lun a vie, 9:00 a 18:00 h</span>
       </div>
       <div class="cd-menu-acts">
-        <a class="cd-btn cd-btn--primary" data-wa="Hola Stand Up, quiero cotizar un stand." href="https://wa.me/524494579759" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+        <a class="cd-btn cd-btn--primary" data-wa="Hola Stand Up, quiero cotizar un stand." href="https://wa.me/524494579759?text=Hola%20Stand%20Up%2C%20quiero%20cotizar%20un%20stand." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
         <a class="cd-btn cd-btn--secondary" href="tel:+524494579759"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar</a>
       </div>
       <p><span>Av. Tecnológico 401, Aguascalientes</span></p>
@@ -148,7 +147,7 @@
 
   <div class="s-ebesa-split">
     <figure class="su-frame s-ebesa-grande">
-      <img src="img/ebesa/fajas-colombianas-600.webp" srcset="img/ebesa/fajas-colombianas-600.webp 600w, img/ebesa/fajas-colombianas-1200.webp 970w" sizes="(min-width: 900px) 520px, 92vw" width="600" height="588" loading="lazy" decoding="async" alt="Stand de Fajas Colombianas montado por Stand Up en EBESA 2025.">
+      <img src="img/ebesa/fajas-colombianas-600.webp" srcset="img/ebesa/fajas-colombianas-600.webp 600w, img/ebesa/fajas-colombianas-1200.webp 970w" sizes="(min-width: 900px) 520px, 92vw" width="600" height="588" fetchpriority="high" decoding="async" alt="Stand de Fajas Colombianas montado por Stand Up en EBESA 2025.">
       <figcaption>Fajas Colombianas · montaje real, EBESA 2025</figcaption>
     </figure>
 
@@ -211,7 +210,7 @@
   </div>
 </section>
 
-<section id="catalogo" class="s-cat su-dark su-grid" aria-label="Las 15 medidas que arman">
+<section id="catalogo" class="s-cat su-dark su-grid" aria-label="Las 15 medidas que arman" data-hide-wa>
   <div class="k-wrap">
     <h2 class="su-h2 s-cat-h2">
       <span class="ln">NO VENDEMOS</span>
@@ -231,6 +230,7 @@
       <li class="s-cat-card" data-size="3x2" data-name="3×2 Cajón Octanorm" data-sello="OCTANORM" data-w="3" data-d="2" data-tipo="cajon" hidden>
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">3×2 Cajón Octanorm</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>OCTANORM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -238,6 +238,7 @@
       <li class="s-cat-card" data-size="3x2" data-name="3×2 Esquina Octanorm" data-sello="OCTANORM" data-w="3" data-d="2" data-tipo="esquina" hidden>
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">3×2 Esquina Octanorm</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>OCTANORM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -245,6 +246,7 @@
       <li class="s-cat-card" data-size="3x3" data-name="3×3 Cabecera Custom" data-sello="CUSTOM" data-w="3" data-d="3" data-tipo="cabecera">
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">3×3 Cabecera Custom</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>CUSTOM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -252,6 +254,7 @@
       <li class="s-cat-card" data-size="3x3" data-name="3×3 Cabecera Octanorm" data-sello="OCTANORM" data-w="3" data-d="3" data-tipo="cabecera">
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">3×3 Cabecera Octanorm</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>OCTANORM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -259,6 +262,7 @@
       <li class="s-cat-card" data-size="3x3" data-name="3×3 Cajón Custom" data-sello="CUSTOM" data-w="3" data-d="3" data-tipo="cajon">
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">3×3 Cajón Custom</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>CUSTOM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -266,6 +270,7 @@
       <li class="s-cat-card" data-size="3x3" data-name="3×3 Cajón Octanorm" data-sello="OCTANORM" data-w="3" data-d="3" data-tipo="cajon">
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">3×3 Cajón Octanorm</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>OCTANORM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -273,6 +278,7 @@
       <li class="s-cat-card" data-size="3x3" data-name="3×3 Esquina Custom" data-sello="CUSTOM" data-w="3" data-d="3" data-tipo="esquina">
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">3×3 Esquina Custom</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>CUSTOM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -280,6 +286,7 @@
       <li class="s-cat-card" data-size="3x3" data-name="3×3 Esquina Octanorm" data-sello="OCTANORM" data-w="3" data-d="3" data-tipo="esquina">
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">3×3 Esquina Octanorm</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>OCTANORM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -287,6 +294,7 @@
       <li class="s-cat-card" data-size="6x3" data-name="6×3 Cabecera Custom" data-sello="CUSTOM" data-w="6" data-d="3" data-tipo="cabecera" hidden>
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">6×3 Cabecera Custom</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>CUSTOM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -294,6 +302,7 @@
       <li class="s-cat-card" data-size="6x3" data-name="6×3 Cabecera Octanorm" data-sello="OCTANORM" data-w="6" data-d="3" data-tipo="cabecera" hidden>
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">6×3 Cabecera Octanorm</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>OCTANORM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -301,6 +310,7 @@
       <li class="s-cat-card" data-size="6x3" data-name="6×3 Cajón Custom" data-sello="CUSTOM" data-w="6" data-d="3" data-tipo="cajon" hidden>
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">6×3 Cajón Custom</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>CUSTOM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -308,6 +318,7 @@
       <li class="s-cat-card" data-size="6x3" data-name="6×3 Cajón Octanorm" data-sello="OCTANORM" data-w="6" data-d="3" data-tipo="cajon" hidden>
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">6×3 Cajón Octanorm</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>OCTANORM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -315,6 +326,7 @@
       <li class="s-cat-card" data-size="6x3" data-name="6×3 Esquina Custom" data-sello="CUSTOM" data-w="6" data-d="3" data-tipo="esquina" hidden>
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">6×3 Esquina Custom</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>CUSTOM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -322,6 +334,7 @@
       <li class="s-cat-card" data-size="6x3" data-name="6×3 Esquina Octanorm" data-sello="OCTANORM" data-w="6" data-d="3" data-tipo="esquina" hidden>
         <div class="s-cat-plan" data-plan></div>
         <p class="s-cat-name">6×3 Esquina Octanorm</p>
+        <p class="s-cat-dato"></p>
         <p class="s-cat-sello"><span>OCTANORM</span></p>
         <p class="s-cat-price">Pregunta el precio</p>
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
@@ -351,7 +364,7 @@
         <label>Nombre de la feria o del evento<input type="text" id="s-cat-feria" placeholder="Ej. EBESA 2026" autocomplete="off"></label>
       </div>
       <p class="s-cat-total">Total <b>te lo confirmamos por WhatsApp</b></p>
-      <button class="cd-btn cd-btn--primary s-cat-send" type="button" id="s-cat-send"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Enviar mi cotización</span></button>
+      <a class="cd-btn cd-btn--primary s-cat-send" id="s-cat-send" href="https://wa.me/524494579759?text=Hola%20Stand%20Up%2C%20quiero%20cotizar%20un%20stand." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Enviar mi cotización</span></a>
     </div>
   </div>
 </section>
@@ -381,7 +394,7 @@
   </div>
 </section>
 
-<section id="fecha" class="s-fecha su-paper" aria-label="Tu feria tiene fecha">
+<section id="fecha" class="s-fecha su-paper" aria-label="Tu feria tiene fecha" data-hide-wa>
   <div class="k-wrap s-fecha-wrap">
     <h2 class="su-h2 s-fecha-h2">
       <span class="ln">TU FERIA TIENE</span>
@@ -472,7 +485,7 @@
       <div class="cd-foot-col">
         <h2 class="cd-foot-h">Contacto</h2>
         <ul class="cd-foot-list">
-          <li><a data-wa="Hola Stand Up, quiero información de sus stands." href="https://wa.me/524494579759" target="_blank" rel="noopener" aria-label="WhatsApp 449 457 9759"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="cd-nowrap">449 457 9759</span></a></li>
+          <li><a data-wa="Hola Stand Up, quiero información de sus stands." href="https://wa.me/524494579759?text=Hola%20Stand%20Up%2C%20quiero%20informaci%C3%B3n%20de%20sus%20stands." target="_blank" rel="noopener" aria-label="WhatsApp 449 457 9759"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="cd-nowrap">449 457 9759</span></a></li>
           <li><a href="tel:+524494579759"><svg aria-hidden="true"><use href="#i-tel"/></svg><span class="cd-nowrap">Llamar al mismo número</span></a></li>
           <li><a href="mailto:impresos@standupdiseno.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>impresos@standupdiseno.com</a></li>
           <li><a href="https://standupdiseno.com" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-web"/></svg>standupdiseno.com</a></li>
@@ -487,7 +500,7 @@
         <div class="su-social-row">
           <a class="su-social" href="https://www.facebook.com/StandUpAguascalientes" target="_blank" rel="noopener" aria-label="Facebook de Stand Up"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
           <a class="su-social" href="https://www.instagram.com/standupdiseno" target="_blank" rel="noopener" aria-label="Instagram de Stand Up"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
-          <a class="su-social su-social--wa" data-wa="Hola Stand Up, quiero cotizar un stand." href="https://wa.me/524494579759" target="_blank" rel="noopener" aria-label="WhatsApp de Stand Up, 449 457 9759"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+          <a class="su-social su-social--wa" data-wa="Hola Stand Up, quiero cotizar un stand." href="https://wa.me/524494579759?text=Hola%20Stand%20Up%2C%20quiero%20cotizar%20un%20stand." target="_blank" rel="noopener" aria-label="WhatsApp de Stand Up, 449 457 9759"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
         </div>
         <p class="su-social-pie">@standupdiseno · 449 457 9759</p>
       </div>
@@ -499,12 +512,12 @@
   </div>
 </footer>
 
-<a class="k-wa" data-wa="Hola Stand Up, vi su página y quiero cotizar un stand." href="https://wa.me/524494579759" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg></a>
+<a class="k-wa" data-wa="Hola Stand Up, vi su página y quiero cotizar un stand." href="https://wa.me/524494579759?text=Hola%20Stand%20Up%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20cotizar%20un%20stand." aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg></a>
 
 <script src="../_kit/kit.js?v=1789882113" defer></script>
-<script src="site.js?v=1789891770" defer></script>
+<script src="site.js?v=1789930998" defer></script>
 <script src="sections/01-hero.js?v=1789890576" defer></script>
-<script src="sections/03-catalogo.js?v=1789927401" defer></script>
+<script src="sections/03-catalogo.js?v=1789930967" defer></script>
 <script src="sections/04-firma.js?v=1789927249" defer></script>
 <script src="sections/05-fecha.js?v=1789927401" defer></script>
 </body>

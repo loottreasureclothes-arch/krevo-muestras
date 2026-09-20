@@ -5,7 +5,7 @@
 /* Compu: split 5/7, titulo a la izquierda y los tres campos a la derecha.
    Antes el bloque de 460px se quedaba pegado a la izquierda y la mitad
    derecha de la banda salia vacia (d-08.png). */
-@media (min-width: 900px) {
+@media (min-width: 760px) {
   .s-fecha-wrap { max-width: none; display: grid; grid-template-columns: 5fr 7fr; column-gap: 48px; align-items: start; }
   .s-fecha-h2 { margin-bottom: 0; }
   .s-fecha-form { max-width: 520px; }
@@ -20,3 +20,7 @@
 }
 .s-fecha-send { margin-top: 4px; width: 100%; }
 .s-fecha-horario { text-align: center; font-size: 13px; color: var(--mute-deep); margin-top: -6px; }
+
+/* A 760-1023 px el titular media 68 px dentro de una columna de 460: "TU FERIA TIENE" se cortaba y metia
+   18 px de scroll horizontal. */
+@media (max-width: 1023px) { .s-fecha-h2 { font-size: clamp(30px, 7.6vw, 46px); } }

@@ -152,7 +152,7 @@ em { font-style: normal; color: var(--brand); }
   display: inline-block;
   max-width: 100%;
 }
-.su-frame img { display: block; width: 100%; height: auto; }
+.su-frame img { display: block; width: 100%; height: auto; background: #1a2b3a; } /* relleno: mientras pinta la foto no se ve un hueco crema */
 .su-frame figcaption {
   margin-top: 8px; font-family: var(--font-body); font-size: 11px; font-weight: 700;
   letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute-deep);
@@ -337,3 +337,7 @@ section[id] { padding-block: var(--sec-y-sm); }
    pie en celular (revision externa, 20 sep): aire abajo para que nada quede
    debajo de la burbuja. */
 @media (max-width: 899px) { .su-foot { padding-bottom: 84px; } }
+
+/* El flotante se quita sobre el catalogo: ahi ya esta la barra "Mi cotizacion" y tapaba "+ Agregar". */
+/* visibility y no opacity: la animacion de entrada del kit (k-wa-in, fill both) pisa opacity y transform. */
+body.su-wa-off .k-wa { visibility: hidden; pointer-events: none; }

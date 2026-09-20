@@ -268,11 +268,25 @@
     );
   };
 
+  /* ---------- WhatsApp flotante: se esconde sobre [data-hide-wa] (el catalogo: tapaba "+ Agregar") ---------- */
+  function initWaHide() {
+    var wa = document.querySelector(".k-wa");
+    var zonas = document.querySelectorAll("[data-hide-wa]");
+    if (!wa || !zonas.length || !("IntersectionObserver" in window)) return;
+    var dentro = new Set();
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) dentro.add(e.target); else dentro.delete(e.target); });
+      document.body.classList.toggle("su-wa-off", dentro.size > 0);
+    }, { rootMargin: "-30% 0px -12% 0px" });
+    Array.prototype.forEach.call(zonas, function (z) { io.observe(z); });
+  }
+
   function init() {
     initWa();
     initHeader();
     initMenu();
     initReveal();
+    initWaHide();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
