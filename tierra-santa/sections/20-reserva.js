@@ -4,6 +4,7 @@
   var sec = document.getElementById("reserva");
   if (!sec) return;
   var f = sec.querySelector(".rsv-form"), err = sec.querySelector(".rsv-err"), fb = sec.querySelector(".rsv-fb");
+  if (window.TS) TS.reveal(sec.querySelector(".rsv-ph img[data-blur]"), "is-blur-in");
   var DIAS = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
   var MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
   function hoy() { var d = new Date(); return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }

@@ -3,8 +3,9 @@
 #reserva .rsv-grid { display: grid; gap: 28px; }
 #reserva .rsv-t { font-size: clamp(54px, 16vw, 132px); line-height: .88; }
 #reserva .rsv-t span { display: block; white-space: nowrap; }
-#reserva .rsv-ph { position: relative; margin: 22px calc(var(--k-gutter) * -1) 0 0; }
-#reserva .rsv-ph img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px 0 0 3px; display: block; }
+#reserva .rsv-ph { position: relative; overflow: hidden; margin: 22px calc(var(--k-gutter) * -1) 0 0; border-radius: 3px 0 0 3px; }
+#reserva .rsv-ph img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px 0 0 3px; display: block; transition: transform 600ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { #reserva .rsv-ph:hover img { transform: scale(1.04); } }
 #reserva .rsv-ph figcaption { position: absolute; left: 12px; bottom: 12px; padding: 6px 10px; border-radius: 2px; background: rgba(23, 22, 22, .78); color: var(--cream); font-size: 13px; font-weight: 600; }
 #reserva .rsv-form { position: relative; display: grid; gap: 14px; padding: 22px 18px 20px; margin-top: -64px; border-radius: 3px; background: var(--deep); color: var(--cream); box-shadow: 0 30px 60px -30px rgba(23, 22, 22, .6); }
 #reserva .rsv-form::before { content: ""; position: absolute; left: 18px; right: 18px; top: 8px; border-top: 1.5px dashed rgba(214, 178, 94, .5); }
@@ -29,7 +30,7 @@
 #reserva .rsv-alt a { display: inline-flex; align-items: center; min-height: 44px; color: var(--cream); font-weight: 700; }
 @media (min-width: 900px) {
   #reserva .rsv-grid { grid-template-columns: 5fr 6fr; gap: 0; align-items: center; }
-  #reserva .rsv-ph { margin: 30px 0 0; }
+  #reserva .rsv-ph { margin: 30px 0 0; border-radius: 3px; }
   #reserva .rsv-ph img { border-radius: 3px; aspect-ratio: 5 / 4; }
   #reserva .rsv-form { margin: 0 0 0 -56px; padding: 34px 32px 28px; }
   #reserva .rsv-form::before { left: 32px; right: 32px; top: 12px; }

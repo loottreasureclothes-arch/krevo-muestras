@@ -98,6 +98,25 @@
 
 .ts-mm-legal { margin-top: 30px; padding: 14px 16px; border-left: 3px solid var(--mm-wine); background: var(--mm-paper); color: var(--mm-ink); font-size: .92rem; font-weight: 500; }
 
+/* Banda "Del mes" (el chile en nogada ya no es sección aparte: vive aquí, dentro del menú) */
+#m-temporada {
+  margin: 30px calc(var(--k-gutter) * -1) 0; padding: 26px var(--k-gutter) 30px;
+  background: var(--mm-wine); color: #fbf3ea; border-radius: var(--mm-r);
+}
+#m-temporada .ts-mm-chead { border-bottom-color: rgba(251, 243, 234, .3); }
+#m-temporada .ts-mm-cnote { color: rgba(251, 243, 234, .75); }
+#m-temporada .ts-mm-card { border-bottom: 0; }
+#m-temporada .ts-mm-card:not(.ts-mm-card--tx) { grid-template-columns: 122px 1fr auto; }
+#m-temporada .ts-mm-ph { width: 122px; }
+#m-temporada .ts-mm-name { color: #fbf3ea; }
+#m-temporada .ts-mm-desc { color: rgba(251, 243, 234, .8); }
+#m-temporada .ts-mm-tag { background: var(--mm-green); color: var(--mm-on-green); }
+@media (min-width: 900px) {
+  #m-temporada { margin-top: 46px; padding: 34px 40px 38px; }
+  #m-temporada .ts-mm-ph, #m-temporada .ts-mm-card:not(.ts-mm-card--tx) { width: 152px; }
+  #m-temporada .ts-mm-card:not(.ts-mm-card--tx) { grid-template-columns: 152px 1fr auto; }
+}
+
 /* Escritorio: rejilla de 2 y 3 columnas */
 @media (min-width: 900px) {
   .ts-mm-head { display: grid; grid-template-columns: 1fr auto; align-items: end; column-gap: 40px; }

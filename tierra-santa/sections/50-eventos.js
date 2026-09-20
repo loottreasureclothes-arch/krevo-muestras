@@ -4,6 +4,7 @@
   var sec = document.getElementById("eventos");
   if (!sec) return;
   var f = sec.querySelector(".evt-form"), err = sec.querySelector(".evt-err"), fb = sec.querySelector(".evt-fb");
+  if (window.TS) TS.reveal(sec.querySelector(".evt-media img[data-blur]"), "is-blur-in");
   try { var d = new Date(); f.fecha.min = d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); } catch (e) {}
   f.addEventListener("submit", function (e) {
     e.preventDefault();

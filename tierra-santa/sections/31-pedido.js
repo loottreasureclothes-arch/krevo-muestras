@@ -27,7 +27,7 @@
    * window.tsLayer.open(nombre, cerrar) / .close(nombre). Lo usan también el diálogo del platillo (25-menu.js). */
   var layer = window.tsLayer;
 
-  var S = { lines: [], note: '', mode: 'mesa', mesa: '', hora: '', fecha: '', personas: '', ts: 0 };
+  var S = { lines: [], note: '', mode: 'mesa', mesa: '', hora: '', fecha: '', personas: '', pago: 'En el restaurante', ts: 0 };
   function sucName() { return ''; }
   var subs = [], checkoutFns = [];
 
@@ -99,6 +99,7 @@
     t += '\n';
     S.lines.forEach(function (l) { t += l.qty + ' x ' + lineLabel(l) + '\n'; });
     if (S.note.trim()) t += '\nNota: ' + S.note.trim();
+    t += '\nPago: ' + (S.pago || 'En el restaurante');
     t += '\n¿Cuánto sería?';
     return t;
   }
@@ -237,6 +238,19 @@
       r.checked = r.value === S.mode;
       r.addEventListener('change', function () { if (r.checked) { S.mode = r.value; S.hora = r.value === 'llevar' ? hora.value : hora2.value; emit(); } });
     });
+    // ¿Cómo pagas?: el valor va en el mensaje de WhatsApp como "Pago: ..."
+    var pagoRadios = sheet.querySelectorAll('input[name="ts-pd-pago"]');
+    pagoRadios.forEach(function (r) {
+      r.checked = r.value === S.pago;
+      r.addEventListener('change', function () { if (r.checked) { S.pago = r.value; save(); waBtn.href = waUrl(); } });
+    });
+    // "Pagar con tarjeta": solo aparece si ya hay window.TS_PAGO_LINK (site.js). El [hidden] gana a cualquier clase.
+    var pagar = $('#ts-pd-pagar');
+    if (pagar) {
+      var link = window.TS_PAGO_LINK || '';
+      pagar.hidden = !link;
+      if (link) pagar.href = link;
+    }
     note.addEventListener('input', function () { S.note = note.value; save(); waBtn.href = waUrl(); });
     mesa.addEventListener('input', function () { S.mesa = mesa.value.replace(/[^0-9]/g, '').slice(0, 3); if (mesa.value !== S.mesa) mesa.value = S.mesa; err.hidden = true; emit(); });
     hora.addEventListener('input', function () { S.hora = hora.value; save(); waBtn.href = waUrl(); });

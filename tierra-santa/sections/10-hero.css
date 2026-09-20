@@ -1,4 +1,4 @@
-/* 10 Hero: foto real del rib eye (lista para video 9:16 / 16:9) + accesos con hoja de fotos */
+/* 10 Hero: foto real del rib eye (con video de cine hecho de sus fotos) + accesos con hoja de fotos */
 #hero {
   position: relative; isolation: isolate; overflow: hidden;
   min-height: 100svh; display: flex; align-items: flex-end;
@@ -17,19 +17,14 @@
 }
 #hero .hr-in { position: relative; }
 #hero .hr-eb { margin-bottom: 12px; }
-#hero .hr-t { font-size: clamp(48px, 14.6vw, 140px); line-height: 0.86; margin-bottom: 14px; }
+#hero .hr-t { font-size: clamp(32px, 10.3vw, 132px); line-height: 0.86; margin-bottom: 14px; }
 #hero .hr-l { display: block; overflow: clip; padding: 0.14em 0 0.1em; margin: -0.14em 0 -0.1em; }
-#hero .hr-l > span { display: block; white-space: nowrap; }
+/* sin nowrap forzado: si algún día no cabe (fuente distinta, zoom), envuelve en vez de cortarse */
+#hero .hr-l > span { display: block; }
 #hero .hr-lead { font-size: 17px; line-height: 1.4; font-weight: 500; color: rgba(243, 237, 226, 0.92); max-width: 30ch; margin-bottom: 20px; }
 #hero .hr-acts { display: grid; grid-template-columns: 1.25fr 1fr; gap: 10px; }
 #hero .hr-acts .ts-btn { width: 100%; padding: 0 14px; }
-#hero .hr-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 22px; border-top: 1px solid rgba(243, 237, 226, 0.24); }
-#hero .hr-facts li { padding: 12px 8px 0 0; min-width: 0; }
-#hero .hr-facts li + li { padding-left: 10px; border-left: 1px solid rgba(243, 237, 226, 0.24); }
-#hero .hr-facts b { display: block; font-family: var(--font-display); font-stretch: 75%; font-variation-settings: "wdth" 75; font-weight: 800; font-size: 19px; white-space: nowrap; text-transform: uppercase; }
-#hero .hr-star { color: var(--gold); }
-#hero .hr-facts li > span { display: block; margin-top: 2px; font-size: 13px; color: var(--cream-mute); }
-@media (max-height: 700px) and (max-width: 899px) { #hero .hr-t { font-size: clamp(44px, 12.5vw, 60px); } #hero .hr-facts { margin-top: 14px; } }
+@media (max-height: 700px) and (max-width: 899px) { #hero .hr-t { font-size: clamp(30px, 9.6vw, 56px); } }
 @media (min-width: 900px) {
   #hero { align-items: center; padding-bottom: 64px; }
   #hero .hr-media img, #hero .hr-vid { object-position: 50% 50%; }
@@ -39,17 +34,12 @@
       linear-gradient(90deg, rgba(14, 12, 10, 0.86) 0%, rgba(14, 12, 10, 0.56) 36%, rgba(14, 12, 10, 0.06) 62%, rgba(14, 12, 10, 0) 100%),
       linear-gradient(180deg, rgba(10, 9, 8, 0.4) 0%, rgba(10, 9, 8, 0) 20%, rgba(10, 9, 8, 0) 72%, rgba(10, 9, 8, 0.6) 100%);
   }
-  #hero .hr-t { font-size: clamp(88px, 8.2vw, 156px); }
+  #hero .hr-t { font-size: clamp(76px, 6.6vw, 132px); }
   #hero .hr-lead { font-size: 21px; max-width: 34ch; }
   #hero .hr-acts { display: flex; gap: 12px; }
   #hero .hr-acts .ts-btn { width: auto; padding: 0 30px; min-height: 56px; }
-  #hero .hr-facts { max-width: 640px; margin-top: 44px; }
-  #hero .hr-facts b { font-size: 28px; }
-  #hero .hr-facts li > span { font-size: 15px; }
-  #hero .hr-facts li { padding-right: 18px; }
-  #hero .hr-facts li + li { padding-left: 22px; }
 }
-/* entrada: el video primero, luego título por renglón, línea, botones y datos (≤1.2 s) */
+/* entrada: el video primero, luego título por renglón, línea y botones (≤1.2 s) */
 @keyframes hr-up { from { transform: translateY(105%); } to { transform: none; } }
 @keyframes hr-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
@@ -60,11 +50,7 @@
   .ts-js #hero .hr-eb { animation: hr-in 600ms var(--ease-out) 60ms both; }
   .ts-js #hero .hr-lead { animation: hr-in 600ms var(--ease-out) 420ms both; }
   .ts-js #hero .hr-acts { animation: hr-in 600ms var(--ease-out) 520ms both; }
-  .ts-js #hero .hr-facts { animation: hr-in 600ms var(--ease-out) 620ms both; }
 }
-#hero .hr-media img { object-position: 58% 50%; }
-#hero .hr-t { font-size: clamp(44px, 12.4vw, 132px); }
-@media (min-width: 900px) { #hero .hr-t { font-size: clamp(76px, 6.6vw, 132px); } #hero .hr-media img { object-position: 50% 50%; } }
 #hero .hr-vid:not([src]) { display: none; }
 
 /* ===== Accesos (cuadritos con dato + hoja de fotos) ===== */

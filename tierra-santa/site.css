@@ -113,7 +113,7 @@ em { font-style: normal; color: var(--brand); }
 .ts-btn:active { transform: scale(0.97); }
 .ts-btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--sweep, rgba(0, 0, 0, 0.1)); clip-path: inset(0 100% 0 0); transition: clip-path 280ms var(--ease-out); }
 .ts-btn--wa, .k-btn.ts-btn-wa, .ts-submit {
-  background: var(--wa); border-color: var(--wa); color: var(--wa-ink); --sweep: var(--wa-dark);
+  background: var(--wa); border-color: rgba(11, 61, 31, 0.3); color: var(--wa-ink); --sweep: var(--wa-dark);
   box-shadow: 0 2px 0 rgba(11, 61, 31, 0.35);
 }
 [data-dark] .ts-btn--wa { box-shadow: none; }
@@ -302,7 +302,14 @@ main > #visita { background-color: var(--paper-2); }
 
 /* Grano sutil en bandas oscuras (nunca sobre fotos de comida) */
 .ts-grain { position: relative; isolation: isolate; }
-.ts-grain::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .06; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.ts-grain::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .05; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* Foto que entra desde blur (detalle, receta 14 del catálogo de motion): base SIEMPRE visible;
+   solo se esconde con scripting + movimiento permitido, y site.js la revela con TS.reveal(img,'is-blur-in'). */
+[data-blur] { transition: filter 1100ms var(--ease-out), transform 1100ms var(--ease-out), opacity 1100ms var(--ease-out); }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .ts-js [data-blur]:not(.is-blur-in) { filter: blur(16px); transform: scale(1.06); opacity: .6; }
+}
 /* Motivo gráfico único: línea de comanda punteada (1.5 px) */
 .ts-ticket { height: 0; border-top: 1.5px dashed currentColor; opacity: .35; }
 /* Transición entre bandas: degradado de 80 px */

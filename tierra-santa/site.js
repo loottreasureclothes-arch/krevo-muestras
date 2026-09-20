@@ -51,7 +51,29 @@
       }
     };
   })();
-  window.TS = { WA: WA, waUrl: waUrl, openWa: openWa, today: today, mesa: mesa };
+  /* Pago en línea (aún sin activar): en cuanto haya link real, ponerlo aquí y aparece solo el botón "Pagar con tarjeta". */
+  window.TS_PAGO_LINK = window.TS_PAGO_LINK || "";
+
+  /* Revela "el" al asomarse (clase cls, por defecto is-in): dispara al instante y, aparte, se vuelve a
+     asegurar solo a 1.6 s por si el primer disparo se atora (patrón de closetdoor/10-msi.js). Lo usan
+     20-reserva.js, 40-terraza.js y 50-eventos.js para sus fotos "desde blur". */
+  function revealOnView(el, cls, rootMargin) {
+    if (!el) return;
+    cls = cls || "is-in";
+    if (reduce || !("IntersectionObserver" in window)) { el.classList.add(cls); return; }
+    var done = false;
+    function show() { if (done) return; done = true; el.classList.add(cls); }
+    var io = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { show(); io.disconnect(); }
+    }, { rootMargin: rootMargin || "0px 0px -10% 0px", threshold: 0.15 });
+    io.observe(el);
+    var fio = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { fio.disconnect(); setTimeout(show, 1600); }
+    }, { rootMargin: "0px 0px -25% 0px" });
+    fio.observe(el);
+  }
+
+  window.TS = { WA: WA, waUrl: waUrl, openWa: openWa, today: today, mesa: mesa, reveal: revealOnView };
 
   function initWa() {
     var links = document.querySelectorAll("[data-wa]");
@@ -132,9 +154,10 @@
         var el = e.target;
         setTimeout(function () { show(el); }, 1600);
       });
-    }, { rootMargin: "0px 0px -25% 0px" });
+    }, { rootMargin: "0px 0px 0px 0px" });
     Array.prototype.forEach.call(els, function (el) { io.observe(el); });
   }
+
 
   /* Brillo al tocar */
   function initRipple() {
