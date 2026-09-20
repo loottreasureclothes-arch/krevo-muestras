@@ -150,9 +150,13 @@
     setTimeout(function () { document.body.classList.add("cd-wa-ready"); }, 2000);
   }
 
-  /* Reveal con blindaje: IO (-25 %) + rescate a los 1.6 s; sin JS o con reduced-motion todo se ve */
+  /* Reveal con blindaje: IO (-25 %) + rescate a los 1.6 s; sin JS o con reduced-motion todo se ve.
+     NOTA GLOBAL 2 (20 sep 2026): se quitaron [data-ip-reveal] y [data-blur-in] del selector (ya no
+     hay ningún elemento con esos atributos, ver site.css); [data-reveal]/[data-reveal-stagger] nunca
+     se usaron en este sitio (quedaron del clonado de closetdoor/site.js). Queda .ip-mask, el título
+     que cae, que sí es la firma de cada sección. */
   function initReveal() {
-    var els = document.querySelectorAll("[data-ip-reveal], .ip-mask, [data-reveal], [data-reveal-stagger], [data-blur-in]");
+    var els = document.querySelectorAll(".ip-mask");
     Array.prototype.forEach.call(document.querySelectorAll(".ip-mask"), function (m) {
       Array.prototype.forEach.call(m.querySelectorAll(".ln"), function (l, i) { l.style.setProperty("--l", i); });
     });

@@ -1,8 +1,10 @@
-/* 01 hero: fondo ciruela con grano + el LOGO real de iPrint montado como letrero luminoso sobre un muro
-   oscuro, dentro de una CAJA DE LUZ (marco oscuro con brillo lima). Nace APAGADO y se enciende con el
-   primer scroll hacia abajo (o solo a los 2.5 s) con un parpadeo de tubo "trrr" de 900 ms; ya no se apaga.
-   Compu: titular 5 / caja de luz 7 (máx. 900 px). Celular: titular, caja al ancho y cuadritos deslizables.
-   Blindaje: sin JS o con reduced-motion la caja y el titular ya salen ENCENDIDOS y fijos. */
+/* 01 hero: fondo ciruela con grano + UNA SOLA CAJA DE LUZ (marco oscuro con brillo lima) que trae todo
+   lo que prende: arriba el LOGO real de iPrint montado como letrero y debajo la frase "ENCIENDE TU MARCA."
+   como neón sobre el mismo muro. Todo cabe en la primera pantalla (Emanuel, 20 sep).
+   Nace APAGADO y prende al cargar: el logo con el parpadeo de tubo "trrr" (900 ms) y la frase letra por
+   letra de izquierda a derecha ("brrr"). Ya no se apaga.
+   Celular: frase en dos renglones. De 700 px en adelante: un solo renglón.
+   Blindaje: sin JS o con reduced-motion la caja y la frase ya salen ENCENDIDAS y fijas. */
 #hero {
   position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
   overflow: hidden; isolation: isolate;
@@ -13,65 +15,15 @@
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 #hero .s-hero-in {
-  padding-top: calc(var(--k-header-h) + 22px); padding-bottom: 24px;
-  display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; align-content: center;
+  padding-top: calc(var(--k-header-h) + 14px); padding-bottom: 16px;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-content: center;
 }
-/* Celular: logo arriba (mas grande), "Enciende tu marca" debajo, botones lado a lado; mas compacto
-   (Emanuel, FEEDBACK-1.md #1). El orden visual en compu ya lo fija grid-template-areas mas abajo,
-   sin tocarlo. */
-@media (max-width: 1023px) {
-  #hero { min-height: 0; }
-  #hero .s-hero-in { padding-top: calc(var(--k-header-h) + 14px); padding-bottom: 16px; gap: 14px; }
-  #hero .s-hero-box { padding: 8px 8px 6px; }
-  #hero .s-hero-muro { aspect-ratio: 3 / 2; }
-  #hero .s-hero-sign { width: 88%; }
-  #hero .s-hero-cap { margin-top: 6px; }
-  #hero .s-hero-eb { margin-bottom: 8px; }
-  #hero .s-hero-sub { margin-top: 8px; }
-  #hero .s-hero-actions { margin-top: 14px; }
-}
+@media (max-width: 1023px) { #hero { min-height: 0; } }
 
-/* ---------- Titular ---------- */
-#hero .s-hero-copy { position: relative; min-width: 0; container-type: inline-size; }
-/* marca de corte de imprenta arriba a la izquierda del titular */
-#hero .s-hero-copy::before { content: ""; position: absolute; left: -14px; top: 26px; width: 22px; height: 22px; border-left: 2px solid var(--lime); border-top: 2px solid var(--lime); opacity: 0.9; }
-#hero .s-hero-eb { color: var(--cream); margin-bottom: 12px; }
-#hero .s-hero-tag { font-weight: 800; letter-spacing: 0.04em; text-transform: none; color: var(--deep); background: var(--lime); padding: 5px 8px; border-radius: 2px; margin-right: 4px; text-shadow: none; }
-#hero .s-hero-title {
-  text-transform: uppercase; font-stretch: 125%; font-variation-settings: "wdth" 125; letter-spacing: -0.01em;
-  color: var(--cream); max-width: none; margin-bottom: 0.3em;
-  font-size: clamp(29px, 9.2vw, 96px); line-height: 1;
-  --x: 0.012em;
-  text-shadow:
-    0 var(--x) 0 #6d3f7e, 0 calc(var(--x) * 2) 0 #5f3570, 0 calc(var(--x) * 3) 0 #522c61, 0 calc(var(--x) * 4) 0 #452453,
-    0 calc(var(--x) * 5) 0 #381c44, 0 calc(var(--x) * 6) 0 #2c1536, 0 calc(var(--x) * 7) 0 #200e28,
-    0 calc(var(--x) * 7 + 0.05em) 0.12em rgba(0, 0, 0, 0.55);
-}
-#hero .s-hero-title .ln { display: block; white-space: nowrap; overflow: hidden; line-height: 1; padding: 0.02em 0.04em 0.06em 0; margin-bottom: 0; }
-#hero .s-hero-title .s-hero-big { font-size: 1.38em; line-height: 1; }
-#hero .s-hero-title em { color: var(--lime); }
-/* "ENCIENDE": prende al mismo tiempo que el letrero, con el mismo parpadeo.
-   Base (sin JS / reduced-motion) = ya encendida, lima con halo; el JS solo agrega "is-lit" para el parpadeo. */
-#hero .s-hero-ignite { position: relative; display: block; }
-#hero .s-hero-off { display: none; }
-#hero .s-hero-lit {
-  display: block; color: var(--lime);
-  text-shadow:
-    0 0 0.05em rgba(213, 243, 122, 0.95), 0 0 0.2em rgba(166, 200, 73, 0.8), 0 0 0.55em rgba(166, 200, 73, 0.45),
-    0 0.02em 0 #6f8a2a, 0 0.04em 0 #4d6219, 0 0.06em 0 #2e3b0e, 0 0.07em 0.1em rgba(0, 0, 0, 0.5);
-}
-#hero .s-hero-sub { margin-top: 14px; font-size: 17px; line-height: 1.4; color: var(--cream); font-weight: 500; max-width: 34ch; }
-/* Dos botones SIEMPRE lado a lado (Emanuel: "izquierda y derecha"), incluso en celular chico:
-   se reparten el ancho a la mitad y el texto puede bajar a 2 lineas en vez de desbordar. */
-#hero .s-hero-actions { display: flex; gap: 10px; margin-top: 22px; }
-#hero .s-hero-actions .cd-btn { flex: 1 1 0; white-space: normal; text-align: center; }
-#hero .s-hero-actions .cd-btn--secondary { color: var(--cream); }
-@media (max-width: 420px) { #hero .s-hero-actions .cd-btn { padding: 0 10px; font-size: 14.5px; gap: 6px; } #hero .s-hero-actions .cd-btn svg { width: 17px; height: 17px; } }
-
-/* ---------- Caja de luz: el LOGO real montado en un muro oscuro ---------- */
+/* ---------- Caja de luz: logo + frase sobre el mismo muro ---------- */
 #hero .s-hero-box {
-  position: relative; margin: 0; width: 100%; max-width: 1330px;
-  padding: 10px 10px 8px; border-radius: 4px;
+  position: relative; margin: 0 auto; width: 100%; max-width: 1330px; container-type: inline-size;
+  padding: 8px 8px 6px; border-radius: 4px;
   background: linear-gradient(180deg, #26152f, #150c1c);
   border: 1px solid rgba(244, 240, 234, 0.12);
   box-shadow: 0 26px 60px -28px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -85,27 +37,27 @@
     0 0 46px -6px rgba(166, 200, 73, 0.42),
     inset 0 0 26px -10px rgba(166, 200, 73, 0.5);
 }
-/* el muro: ciruela muy oscuro con grano, sin fotos */
+/* el muro: ciruela muy oscuro con grano, sin fotos. El alto lo da el contenido (logo arriba, frase abajo) */
 #hero .s-hero-muro {
-  position: relative; display: grid; place-items: center; overflow: hidden;
-  aspect-ratio: 4 / 3; border-radius: 2px;
+  position: relative; display: grid; justify-items: center; align-content: center; overflow: hidden;
+  gap: 5.2cqi; padding: 7cqi 0 6.4cqi; border-radius: 2px;
   background-color: #140b1a;
   background-image:
     radial-gradient(118% 88% at 50% 40%, rgba(94, 52, 112, 0.5), rgba(45, 24, 55, 0.35) 45%, rgba(13, 7, 17, 0.8) 78%, rgba(8, 4, 11, 0.95) 100%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 38%, transparent 62%, rgba(0, 0, 0, 0.5)),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
 }
-/* el derrame de luz del letrero sobre el muro */
+/* el derrame de luz sobre el muro: lima y magenta detrás del logo, y otro detrás de la frase */
 #hero .s-hero-glow {
   position: absolute; inset: 0; pointer-events: none;
   background:
-    radial-gradient(56% 38% at 50% 47%, rgba(186, 220, 96, 0.3), rgba(166, 200, 73, 0) 72%),
-    radial-gradient(44% 32% at 63% 50%, rgba(214, 82, 160, 0.2), rgba(214, 82, 160, 0) 74%),
-    radial-gradient(78% 30% at 50% 76%, rgba(166, 200, 73, 0.16), rgba(166, 200, 73, 0) 78%),
-    radial-gradient(80% 34% at 50% 20%, rgba(166, 200, 73, 0.1), rgba(166, 200, 73, 0) 80%);
+    radial-gradient(54% 40% at 50% 32%, rgba(186, 220, 96, 0.3), rgba(166, 200, 73, 0) 72%),
+    radial-gradient(40% 32% at 62% 34%, rgba(214, 82, 160, 0.2), rgba(214, 82, 160, 0) 74%),
+    radial-gradient(70% 30% at 38% 80%, rgba(166, 200, 73, 0.2), rgba(166, 200, 73, 0) 78%),
+    radial-gradient(60% 30% at 72% 82%, rgba(214, 82, 160, 0.16), rgba(214, 82, 160, 0) 78%);
 }
 /* el letrero: el logo real + su sombra de contacto contra el muro */
-#hero .s-hero-sign { position: relative; display: block; width: 80%; filter: drop-shadow(0 13px 11px rgba(0, 0, 0, 0.58)); }
+#hero .s-hero-sign { position: relative; display: block; width: 74%; filter: drop-shadow(0 13px 11px rgba(0, 0, 0, 0.58)); }
 #hero .s-hero-logo { display: block; width: 100%; height: auto; }
 #hero .s-hero-logo--on {
   position: absolute; left: 0; top: 0;
@@ -114,12 +66,40 @@
     drop-shadow(0 0 15px rgba(166, 200, 73, 0.65))
     drop-shadow(0 0 36px rgba(214, 82, 160, 0.5));
 }
-#hero .s-hero-cap { position: relative; z-index: 2; display: flex; align-items: center; gap: 8px; margin-top: 9px; font-size: 13px; line-height: 1.3; color: var(--cream-mute); }
+#hero .s-hero-cap { position: relative; z-index: 2; display: flex; align-items: center; gap: 8px; margin: 6px 0 0; font-size: 13px; line-height: 1.3; color: var(--cream-mute); }
 #hero .s-hero-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 8px rgba(166, 200, 73, 0.9); }
 
-/* ---------- Encendido tipo neón ----------
-   Apagado: el logo queda oscuro y desaturado, sin halo, y el marco sin lima.
-   "trrr": 7 destellos irregulares en 900 ms con steps (saltos bruscos, nada de fades) y se queda fijo.
+/* ---------- La frase: neón sobre el muro ----------
+   Cada letra es un tubo. Base (sin JS / reduced-motion) = ya encendida. */
+#hero .s-hero-title {
+  position: relative; margin: 0; max-width: none; text-align: center;
+  text-transform: uppercase; font-stretch: 125%; font-variation-settings: "wdth" 125; letter-spacing: 0.01em;
+  font-size: 11.6cqi; line-height: 1; text-shadow: none;
+}
+#hero .s-hero-ln { display: block; white-space: nowrap; }
+#hero .s-hero-ln--a { --nc: #ecffb4; --ng: rgba(166, 200, 73, 0.95); --ng2: rgba(166, 200, 73, 0.5); }
+#hero .s-hero-ln--b { --nc: #fff0f8; --ng: rgba(226, 84, 168, 0.95); --ng2: rgba(214, 82, 160, 0.5); font-size: 0.74em; margin-top: 0.2em; }
+#hero .s-hero-ln i {
+  font-style: normal; color: var(--nc); -webkit-text-stroke: 1.5px transparent;
+  --nglow: 0 0 0.03em #fff, 0 0 0.14em var(--ng), 0 0 0.36em var(--ng), 0 0 0.8em var(--ng2);
+  text-shadow: var(--nglow);
+}
+
+/* ---------- Debajo de la caja: renglón de texto + dos botones ---------- */
+#hero .s-hero-copy { position: relative; min-width: 0; display: grid; gap: 12px; }
+#hero .s-hero-eb { color: var(--cream); margin-bottom: 6px; }
+#hero .s-hero-tag { font-weight: 800; letter-spacing: 0.04em; text-transform: none; color: var(--deep); background: var(--lime); padding: 5px 8px; border-radius: 2px; margin-right: 4px; text-shadow: none; }
+#hero .s-hero-sub { margin: 0; font-size: 17px; line-height: 1.4; color: var(--cream); font-weight: 500; max-width: 40ch; }
+/* Dos botones SIEMPRE lado a lado (Emanuel: "izquierda y derecha"), incluso en celular chico:
+   se reparten el ancho a la mitad y el texto puede bajar a 2 lineas en vez de desbordar. */
+#hero .s-hero-actions { display: flex; gap: 10px; }
+#hero .s-hero-actions .cd-btn { flex: 1 1 0; white-space: normal; text-align: center; }
+@media (max-width: 420px) { #hero .s-hero-actions .cd-btn { padding: 0 10px; font-size: 14.5px; gap: 6px; } #hero .s-hero-actions .cd-btn svg { width: 17px; height: 17px; } }
+
+/* ---------- Encendido ----------
+   Apagado: el logo queda oscuro y desaturado, sin halo; el marco sin lima; la frase son tubos vacíos (contorno).
+   Logo, marco y derrame: "trrr", 7 destellos irregulares en 900 ms con steps (saltos bruscos, nada de fades).
+   Frase: cada letra prende con un chispazo de 300 ms, escalonadas 60 ms de izquierda a derecha.
    Blindaje: esto solo existe con JS y sin reduced-motion; si no, el CSS de arriba ya está encendido. */
 @keyframes ip-trrr {
   0% { opacity: 0; }
@@ -143,24 +123,29 @@
   80% { opacity: 1; }
   100% { opacity: 1; }
 }
+@keyframes ip-letra {
+  0% { color: transparent; -webkit-text-stroke-color: rgba(244, 240, 234, 0.36); text-shadow: none; }
+  24% { color: var(--nc); -webkit-text-stroke-color: transparent; text-shadow: var(--nglow); }
+  40% { color: transparent; -webkit-text-stroke-color: rgba(244, 240, 234, 0.36); text-shadow: none; }
+  56%, 100% { color: var(--nc); -webkit-text-stroke-color: transparent; text-shadow: var(--nglow); }
+}
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
   /* apagado */
   html.ip-anim #hero:not(.is-lit) .s-hero-logo:not(.s-hero-logo--on) { filter: brightness(0.22) saturate(0.25); }
   html.ip-anim #hero:not(.is-lit) .s-hero-logo--on,
   html.ip-anim #hero:not(.is-lit) .s-hero-glow,
-  html.ip-anim #hero:not(.is-lit) .s-hero-ring,
-  html.ip-anim #hero:not(.is-lit) .s-hero-lit { opacity: 0; }
+  html.ip-anim #hero:not(.is-lit) .s-hero-ring { opacity: 0; }
   html.ip-anim #hero:not(.is-lit) .s-hero-dot { opacity: 0.22; }
-  html.ip-anim #hero .s-hero-off { display: block; color: transparent; -webkit-text-stroke: 1.5px rgba(244, 240, 234, 0.42); text-shadow: none; }
-  html.ip-anim #hero .s-hero-lit { position: absolute; left: 0; top: 0; width: 100%; }
+  html.ip-anim #hero:not(.is-lit) .s-hero-ln i { color: transparent; -webkit-text-stroke-color: rgba(244, 240, 234, 0.36); text-shadow: none; }
 
-  /* el "trrr": todo prende con la misma ráfaga */
+  /* el "trrr": logo, marco y derrame prenden con la misma ráfaga */
   html.ip-anim #hero.is-lit .s-hero-logo--on,
   html.ip-anim #hero.is-lit .s-hero-glow,
   html.ip-anim #hero.is-lit .s-hero-ring,
-  html.ip-anim #hero.is-lit .s-hero-dot,
-  html.ip-anim #hero.is-lit .s-hero-lit { animation: ip-trrr 900ms steps(1, end) both; }
+  html.ip-anim #hero.is-lit .s-hero-dot { animation: ip-trrr 900ms steps(1, end) both; }
   html.ip-anim #hero.is-lit .s-hero-logo:not(.s-hero-logo--on) { animation: ip-trrr-base 900ms steps(1, end) both; }
+  /* el "brrr": la frase prende letra por letra, de izquierda a derecha */
+  html.ip-anim #hero.is-lit .s-hero-ln i { animation: ip-letra 300ms steps(1, end) both; animation-delay: calc(260ms + var(--i) * 60ms); }
 }
 /* el logo de abajo sube de brillo con la misma ráfaga (así no queda borde oscuro debajo del encendido) */
 @keyframes ip-trrr-base {
@@ -200,19 +185,26 @@
   #hero .s-hero-chips img { height: 92px; }
 }
 
-/* ---------- Compu: titular 5 / caja de luz 7 ---------- */
+/* ---------- De 700 px en adelante: la frase en un solo renglón, logo más chico y más arriba ---------- */
+@media (min-width: 700px) and (max-width: 899px) { #hero .s-hero-chips li { flex: 0 0 31%; } }
+@media (min-width: 700px) {
+  #hero .s-hero-box { padding: 10px 10px 8px; }
+  #hero .s-hero-muro { gap: 3.4cqi; padding: 4.4cqi 0 4.2cqi; }
+  #hero .s-hero-sign { width: 44%; filter: drop-shadow(0 20px 16px rgba(0, 0, 0, 0.58)); }
+  #hero .s-hero-title { font-size: 5.7cqi; }
+  #hero .s-hero-ln { display: inline; }
+  #hero .s-hero-ln--b { font-size: 1em; margin: 0; }
+  #hero .s-hero-cap { margin-top: 9px; font-size: 14px; }
+}
+@media (min-width: 900px) {
+  #hero .s-hero-in { padding-top: calc(var(--k-header-h) + 22px); gap: 22px; }
+  #hero .s-hero-copy { grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 40px; width: 100%; max-width: 1330px; margin-inline: auto; }
+  #hero .s-hero-chips { width: 100%; max-width: 1330px; margin-inline: auto; }
+  #hero .s-hero-actions .cd-btn { flex: 0 0 auto; min-width: 220px; }
+}
 @media (min-width: 1024px) {
-  #hero .s-hero-in {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    grid-template-areas: "copy caja" "chips chips";
-    column-gap: 48px; row-gap: 44px; align-items: center;
-  }
-  #hero .s-hero-copy { grid-area: copy; }
-  #hero .s-hero-box { grid-area: caja; justify-self: end; max-width: 900px; }
-  #hero .s-hero-chips { grid-area: chips; }
-  #hero .s-hero-copy::before { left: -28px; top: 34px; width: 34px; height: 34px; }
-  /* el letrero es más grande, así que el halo también */
-  #hero .s-hero-sign { filter: drop-shadow(0 20px 16px rgba(0, 0, 0, 0.58)); }
+  #hero .s-hero-muro { gap: 2.8cqi; padding: 3.6cqi 0 3.6cqi; }
+  #hero .s-hero-sign { width: 40%; }
   #hero .s-hero-logo--on {
     filter:
       drop-shadow(0 0 7px rgba(224, 248, 150, 0.75))
@@ -220,9 +212,4 @@
       drop-shadow(0 0 64px rgba(214, 82, 160, 0.48));
   }
   #hero .s-hero-ring { box-shadow: 0 0 0 1px rgba(166, 200, 73, 0.55), 0 0 0 3px rgba(166, 200, 73, 0.12), 0 0 64px -8px rgba(166, 200, 73, 0.5), inset 0 0 34px -12px rgba(166, 200, 73, 0.55); }
-  /* el renglón grande siempre cabe en su columna: 100cqi = ancho del bloque de texto */
-  #hero .s-hero-title { font-size: min(58px, 8.3cqi); }
-  #hero .s-hero-title .s-hero-big { font-size: 1.62em; }
-  #hero .s-hero-cap { font-size: 14px; }
 }
-@media (min-width: 1800px) { #hero .s-hero-title { font-size: min(74px, 8.3cqi); } }
