@@ -336,6 +336,74 @@
   else init();
 })();
 
+/* Buscador del catálogo (header + arriba del catálogo, y en catalogo.html).
+   Genérico: cualquier página que registre bloques en MDA.catalogBlocks (cards +
+   restore, que vuelve a pintar lo que había antes de buscar) queda buscable.
+   Mientras se escribe: filtra por nombre y tipo, sin recargar, sin límite de 10.
+   Si no hay resultados, avisa y ofrece preguntar por WhatsApp. */
+(function () {
+  "use strict";
+  var MDA = window.MDA = window.MDA || {};
+  MDA.catalogBlocks = MDA.catalogBlocks || [];
+  var reduceQ = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function norm(s) {
+    return (s || "").toString().toLowerCase()
+      .normalize("NFD").replace(/[̀-ͯ]/g, "");
+  }
+
+  function run() {
+    var inputs = Array.prototype.slice.call(document.querySelectorAll("[data-search-input]"));
+    var empties = Array.prototype.slice.call(document.querySelectorAll("[data-search-empty]"));
+    if (!inputs.length || !MDA.catalogBlocks.length) return;
+
+    function apply(q) {
+      q = norm(q).trim();
+      var searching = q.length > 0;
+      var total = 0;
+      MDA.catalogBlocks.forEach(function (b) {
+        if (b.chipsWrap) b.chipsWrap.hidden = searching;
+        if (!searching) { b.restore(); return; }
+        var shown = 0;
+        b.cards.forEach(function (li) {
+          var hay = norm(li.getAttribute("data-search") || li.textContent);
+          var ok = hay.indexOf(q) !== -1;
+          li.hidden = !ok;
+          if (ok) shown++;
+        });
+        total += shown;
+      });
+      empties.forEach(function (el) { el.hidden = !(searching && total === 0); });
+    }
+
+    inputs.forEach(function (inp) {
+      inp.addEventListener("input", function () {
+        inputs.forEach(function (o) { if (o !== inp) o.value = inp.value; });
+        apply(inp.value);
+      });
+      inp.addEventListener("search", function () { apply(inp.value); });
+      var form = inp.closest("form");
+      if (form) form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        apply(inp.value);
+        var grid = document.querySelector("[data-grid]") || document.getElementById("catalogo");
+        if (grid && grid.scrollIntoView) grid.scrollIntoView({ block: "start", behavior: reduceQ ? "auto" : "smooth" });
+      });
+    });
+
+    /* llega con ?q= desde el header de otra página (por ejemplo, del inicio a catalogo.html) */
+    try {
+      var q0 = new URLSearchParams(location.search).get("q");
+      if (q0) { inputs.forEach(function (i) { i.value = q0; }); apply(q0); }
+    } catch (e) {}
+  }
+
+  /* site.js corre antes que los scripts de sección (orden del documento), así que
+     los bloques todavía no existen aquí: SIEMPRE se espera a DOMContentLoaded, que
+     con scripts defer dispara hasta que el último de sección ya se ejecutó. */
+  document.addEventListener("DOMContentLoaded", run);
+})();
+
 /* Anclas con scroll suave por JS (sin scroll-behavior en CSS, L4) + data-cat abre la pestaña del catálogo */
 (function () {
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;

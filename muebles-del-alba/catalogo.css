@@ -1,0 +1,41 @@
+/* catalogo.html: página propia con las 76 piezas (Emanuel, FEEDBACK-2: "es como una
+   tienda en línea... dónde está la otra página de catálogo?"). Reusa las clases
+   .s-cat-* de sections/20-catalogo.css (mismo #catalogo, mismos colores); aquí solo
+   lo que es propio de esta página: la banda de entrada y las cuentas en los chips. */
+
+.s-catp-hero { padding: calc(76px + env(safe-area-inset-top)) 0 30px; }
+.s-catp-hero-in { display: grid; gap: 10px; max-width: 640px; }
+.s-catp-back {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin: -12px 0 -6px -2px; padding: 12px 2px;
+  font: 700 12px/1 var(--font-body); text-transform: uppercase; letter-spacing: .1em; color: var(--brand-on-deep);
+}
+.s-catp-back svg { width: 16px; height: 16px; transform: rotate(180deg); }
+.s-catp-hero .cd-lead { color: var(--cream-mute); max-width: 52ch; }
+
+/* Sin la banda de foto de la principal: el buscador va en una tarjeta propia
+   (en la principal vive encima de la banda; aquí no hay banda, así que necesita
+   su propio fondo y no depende de las reglas de sections/20-catalogo.css). */
+.s-catp-catalogo { padding-top: 0; }
+.s-catp-catalogo .s-cat-search-wrap { padding: 6px 0 4px; }
+.s-catp-catalogo .s-cat-search { position: relative; display: flex; align-items: center; max-width: 420px; }
+.s-catp-catalogo .s-cat-search-ic { position: absolute; left: 14px; width: 18px; height: 18px; color: var(--cream-mute); pointer-events: none; }
+.s-catp-catalogo .s-cat-search input {
+  width: 100%; min-height: 46px; padding: 0 14px 0 42px; border-radius: 2px;
+  border: 1.5px solid var(--line-deep); background: var(--deep-2); color: var(--cream);
+  font: 600 14px/1 var(--font-body);
+}
+.s-catp-catalogo .s-cat-search input::placeholder { color: var(--cream-mute); }
+.s-catp-catalogo .s-cat-search input:focus-visible { outline: 2px solid var(--brand-on-deep); outline-offset: 1px; }
+.s-catp-catalogo .s-cat-search input::-webkit-search-cancel-button { filter: invert(1) brightness(1.6); }
+.s-catp-chips-wrap { position: sticky; top: calc(56px + env(safe-area-inset-top)); }
+@media (min-width: 900px) { .s-catp-chips-wrap { top: calc(64px + env(safe-area-inset-top)); } }
+.s-catp-grid { padding-top: 14px; }
+
+/* Cuenta por categoría dentro del chip */
+#catalogo .s-chip b { margin-left: 5px; font-weight: 900; opacity: .72; }
+#catalogo .s-shim { display: none; }
+
+@media (min-width: 900px) {
+  .s-catp-hero { padding: calc(96px + env(safe-area-inset-top)) 0 40px; }
+  .s-catp-hero-in { max-width: 760px; }
+}

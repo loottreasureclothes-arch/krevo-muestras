@@ -52,6 +52,7 @@
   <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></g></symbol>
   <symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M23.5 6.9a3 3 0 0 0-2.1-2.1C19.5 4.3 12 4.3 12 4.3s-7.5 0-9.4.5A3 3 0 0 0 .5 6.9C0 8.8 0 12 0 12s0 3.2.5 5.1a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.1.5-5.1s0-3.2-.5-5.1ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></symbol>
   <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 2h-3.2v13.9a3 3 0 1 1-2.4-2.94v-3.28a6.3 6.3 0 1 0 5.6 6.26V9.1a7.9 7.9 0 0 0 4.6 1.48V7.36A4.7 4.7 0 0 1 16.6 2Z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-4.3-4.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
 </svg>
 
 <header class="k-header mda-header">
@@ -59,7 +60,11 @@
     <img class="mda-logo-full" src="img/logo.png" alt="Muebles del Alba" width="220" height="97" fetchpriority="high" decoding="async">
     <img class="mda-logo-icon" src="img/logo-icono.png" alt="" aria-hidden="true" width="120" height="120" loading="lazy" decoding="async">
   </a>
-  <a class="mda-header-link" href="#catalogo">Catálogo</a>
+  <form class="mda-h-search" action="catalogo.html" role="search" aria-label="Buscar mueble">
+    <svg class="mda-h-search-ic" aria-hidden="true"><use href="#i-search"/></svg>
+    <input type="search" name="q" placeholder="Buscar mueble…" aria-label="Buscar mueble por nombre o tipo" data-search-input>
+  </form>
+  <a class="mda-header-link" href="catalogo.html">Catálogo</a>
   <button class="cd-menu-btn" type="button" aria-expanded="false" aria-controls="cd-menu"><span class="cd-burger" aria-hidden="true"><i></i><i></i></span><span class="cd-menu-lbl">Menú</span></button>
 </header>
 
@@ -67,7 +72,7 @@
   <div class="cd-menu-scrim" aria-hidden="true"></div>
   <div class="cd-menu-panel">
     <nav class="cd-menu-nav" aria-label="Secciones">
-      <a href="#catalogo"><span>01</span>Catálogo</a>
+      <a href="catalogo.html"><span>01</span>Catálogo</a>
       <a href="#paquetes"><span>02</span>Paquetes</a>
       <a href="#exhibicion"><span>03</span>Exhibición</a>
       <a href="https://maps.app.goo.gl/HFFrFwkFvdcXpCWi9" target="_blank" rel="noopener"><span>04</span>Cómo llegar</a>

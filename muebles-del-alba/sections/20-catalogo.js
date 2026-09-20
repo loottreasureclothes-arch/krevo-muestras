@@ -27,6 +27,11 @@
     }
     b.pinta = pinta;
 
+    /* se registra para el buscador del header y de arriba del catálogo (site.js) */
+    window.MDA = window.MDA || {};
+    window.MDA.catalogBlocks = window.MDA.catalogBlocks || [];
+    window.MDA.catalogBlocks.push({ cards: b.cards, chipsWrap: chips, restore: pinta });
+
     if (chips) {
       chips.addEventListener("click", function (ev) {
         var bt = ev.target.closest(".s-chip");

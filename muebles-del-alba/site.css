@@ -170,6 +170,19 @@ em { font-style: normal; color: var(--brand); }
 @media (min-width: 900px) { .k-logo .mda-logo-full { height: 30px; } .k-logo .mda-logo-icon { height: 38px; width: 38px; } }
 .mda-header-link { margin-left: auto; display: none; align-items: center; min-height: 44px; font: 700 12px/1 var(--font-body); color: #fff; text-transform: uppercase; letter-spacing: .14em; }
 @media (min-width: 560px) { .mda-header-link { display: inline-flex; } }
+
+/* Buscador del header (Emanuel, FEEDBACK-2: "no tiene buscador, qué onda con eso, padrino") */
+.mda-h-search { position: relative; flex: 1 1 64px; min-width: 0; max-width: 230px; margin-left: 2px; display: flex; align-items: center; }
+.mda-h-search-ic { position: absolute; left: 10px; width: 15px; height: 15px; color: rgba(255, 255, 255, .8); pointer-events: none; }
+.mda-h-search input {
+  width: 100%; min-height: 34px; padding: 0 10px 0 30px; border-radius: 2px;
+  border: 1.5px solid rgba(255, 255, 255, .4); background: rgba(0, 0, 0, .16); color: #fff;
+  font: 600 12.5px/1 var(--font-body);
+}
+.mda-h-search input::placeholder { color: rgba(255, 255, 255, .78); }
+.mda-h-search input:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
+.mda-h-search input::-webkit-search-cancel-button { filter: invert(1); }
+@media (min-width: 900px) { .mda-h-search { max-width: 260px; } .mda-h-search input { min-height: 38px; } }
 .mda-header .cd-menu-btn { border: 0; padding: 0; height: 44px; gap: 9px; color: #fff; }
 .mda-header .cd-burger i { background: #fff; }
 .cd-burger { position: relative; width: 16px; height: 10px; }

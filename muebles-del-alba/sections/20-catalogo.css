@@ -53,6 +53,14 @@
   transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out);
 }
 #catalogo .s-chip.is-on { background: var(--brand); border-color: var(--brand); color: #fff; }
+/* Enlace a catalogo.html metido al final de cada tira de chips: cero alto extra
+   (Emanuel: "dónde está la otra página de catálogo?"). No es un chip de filtro:
+   sin data-chip, el JS de los chips lo ignora y el link navega normal. */
+#catalogo .s-cat-chiplink {
+  flex: none; scroll-snap-align: start; display: inline-flex; align-items: center;
+  min-height: 44px; padding: 0 14px; border-radius: 2px; white-space: nowrap;
+  color: var(--brand-on-deep); font: 700 12px/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase;
+}
 
 /* ---------- Rejilla ---------- */
 #catalogo .s-cat-grid { list-style: none; margin: 0; padding: 10px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -123,3 +131,24 @@
   #catalogo .s-cat-chips { flex-wrap: wrap; justify-content: center; overflow: visible; scroll-snap-type: none; }
   #catalogo .s-cat-chips-wrap::after { display: none; }
 }
+
+/* ---------- Buscador arriba del catálogo (Emanuel, FEEDBACK-2: "pues no tiene buscador") ----------
+   Vive DENTRO de la banda del piso (position:absolute igual que su título): no le suma
+   ni un pixel de alto a la página, que ya tocaba el tope de 9,000 px. */
+#catalogo .s-cat-band-copy .s-cat-search { position: relative; display: flex; align-items: center; margin-top: 12px; max-width: 360px; }
+#catalogo .s-cat-search-ic { position: absolute; left: 13px; width: 16px; height: 16px; color: rgba(255, 255, 255, .85); pointer-events: none; }
+#catalogo .s-cat-search input {
+  width: 100%; min-height: 42px; padding: 0 14px 0 38px; border-radius: 2px;
+  border: 1.5px solid rgba(255, 255, 255, .4); background: rgba(14, 10, 8, .55); color: #fff;
+  font: 600 13.5px/1 var(--font-body); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+}
+#catalogo .s-cat-search input::placeholder { color: rgba(255, 255, 255, .8); }
+#catalogo .s-cat-search input:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
+#catalogo .s-cat-search input::-webkit-search-cancel-button { filter: invert(1); }
+
+.s-cat-empty[hidden] { display: none; }
+.s-cat-empty { margin: 10px 0 0; padding: 14px 16px; border: 1px dashed var(--line-deep); border-radius: 2px; color: var(--cream-mute); font: 600 13px/1.5 var(--font-body); display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.s-cat-empty a { display: inline-flex; align-items: center; gap: 6px; color: var(--brand-on-deep); font-weight: 700; }
+.s-cat-empty a svg { width: 16px; height: 16px; }
+
+@media (min-width: 900px) { #catalogo .s-cat-band-copy .s-cat-search { margin-top: 18px; max-width: 420px; } }
