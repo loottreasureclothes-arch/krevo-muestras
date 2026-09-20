@@ -252,3 +252,37 @@ html.pf-mm-lock { overflow: hidden; }
 .pf-mm-card--tx::before { content: ""; position: absolute; left: 0; top: 18px; width: 5px; height: 5px; border-radius: 50%; background: var(--basil); }
 @media (min-width: 1024px) { .pf-mm-card--tx { padding-left: 0; border-left: 1px solid var(--mm-line); } .pf-mm-card--tx::before { left: 16px; top: 16px; } .pf-mm-card.pf-mm-card--tx .pf-mm-tx { padding-top: 14px; } }
 .pf-mm-dlg-price:empty { display: none; }
+
+/* ===== Lenguaje de formas redondas (pizzas): chips píldora, fotos de pizza en círculo,
+   tarjetas a 18 px y el "+" de agregar en círculo. Verdes siempre redondeados (14 px). ===== */
+.pf-mm-chip { border-radius: 999px; }
+.pf-mm-add, .pf-mm-step button { border-radius: 50%; }
+.pf-mm-step { border-radius: 999px; }
+.pf-mm-count { border-radius: 999px; }
+.pf-mm-dlg-add { border-radius: 14px; }
+#m-pizzas .pf-mm-ph { border-radius: 50%; }
+@media (min-width: 1024px) {
+  #m-pizzas .pf-mm-ph,
+  #m-pizzas .pf-mm-card:not(.pf-mm-card--tx) .pf-mm-ph {
+    aspect-ratio: 1; height: auto; border-radius: 50%;
+  }
+}
+@media (min-width: 1024px) {
+  .pf-mm-card, .pf-mm-card:not(.pf-mm-card--tx) { border-radius: 18px; }
+  .pf-mm-ph, .pf-mm-card:not(.pf-mm-card--tx) .pf-mm-ph { border-radius: 18px 18px 0 0; }
+  #m-pizzas .pf-mm-ph, #m-pizzas .pf-mm-card:not(.pf-mm-card--tx) .pf-mm-ph { border-radius: 50%; }
+}
+.pf-mm-dlg-box { border-radius: 18px 18px 0 0; }
+@media (min-width: 700px) { .pf-mm-dlg-box { border-radius: 18px; } }
+
+/* ===== REVISIÓN 10: el hueco del precio nunca va vacío ni en $0 =====
+   Mientras el dueño no dé los precios de mostrador 2026, cada platillo enseña sus tamaños
+   (Chica 25 · Mediana 32 · Grande 36) y, en el lugar exacto donde iría el precio, "Pregunta el precio".
+   Cuando lleguen los números, data-price deja de ser 0, este span se quita del generador y el precio
+   real ocupa el mismo lugar sin mover nada más. */
+/* Va en el hueco natural del precio (a la derecha del nombre, como en una carta de verdad) y
+   solo baja de renglón cuando el nombre es muy largo. Así no le suma alto a la página. */
+.pf-mm-name .pf-mm-ask { margin-left: auto; flex: none; font-weight: 500; font-size: .78rem; line-height: 1.2; white-space: nowrap; color: var(--mm-mute); letter-spacing: .01em; }
+.pf-mm-name { flex-wrap: wrap; column-gap: 10px; row-gap: 2px; }
+.pf-mm-legal b { font-weight: 700; }
+.pf-mm-dlg-price--ask { font-size: .88rem; font-weight: 500; color: var(--mm-mute); white-space: normal; text-align: right; }

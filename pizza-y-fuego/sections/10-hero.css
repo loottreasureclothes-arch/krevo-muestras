@@ -9,11 +9,15 @@
 #hero .hr-media img, #hero .hr-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
 #hero .hr-vid { opacity: 0; transition: opacity 700ms var(--ease-out); }
 #hero .hr-vid.is-on { opacity: 1; }
+/* Velo direccional: oscurece SOLO la mitad de abajo, que es donde va el titular y todo el texto.
+   REVISIÓN 10: el tramo de 30-70 % subió de .25 a .70/.92 porque ahí caen "PIZZA A LA LEÑA / DESDE 2014"
+   y cualquier cuadro claro del video (plato blanco, mantel) se comía el titular. Arriba se deja abierto
+   para que la foto respire. */
 #hero .hr-veil {
   position: absolute; inset: 0;
   background:
     radial-gradient(120% 80% at 50% 40%, rgba(22, 6, 8, 0) 40%, rgba(22, 6, 8, 0.55) 100%),
-    linear-gradient(180deg, rgba(22, 6, 8, 0.35) 0%, rgba(22, 6, 8, 0) 22%, rgba(34, 9, 12, 0.25) 42%, rgba(34, 9, 12, 0.86) 70%, rgba(34, 9, 12, 0.97) 100%);
+    linear-gradient(180deg, rgba(22, 6, 8, 0.4) 0%, rgba(22, 6, 8, 0) 18%, rgba(34, 9, 12, 0.2) 30%, rgba(34, 9, 12, 0.7) 48%, rgba(34, 9, 12, 0.92) 66%, rgba(34, 9, 12, 0.97) 100%);
 }
 #hero .hr-in { position: relative; }
 #hero .hr-eb { margin-bottom: 12px; }
@@ -33,10 +37,11 @@
 @media (min-width: 900px) {
   #hero { align-items: center; padding-bottom: 64px; }
   #hero .hr-media img, #hero .hr-vid { object-position: 50% 50%; }
+  /* En compu el texto vive en la columna izquierda: el velo se carga a la izquierda y suelta la foto a la derecha */
   #hero .hr-veil {
     background:
       radial-gradient(120% 90% at 60% 50%, rgba(22, 6, 8, 0) 45%, rgba(22, 6, 8, 0.5) 100%),
-      linear-gradient(90deg, rgba(34, 9, 12, 0.86) 0%, rgba(34, 9, 12, 0.56) 36%, rgba(34, 9, 12, 0.06) 62%, rgba(34, 9, 12, 0) 100%),
+      linear-gradient(90deg, rgba(34, 9, 12, 0.92) 0%, rgba(34, 9, 12, 0.66) 38%, rgba(34, 9, 12, 0.08) 64%, rgba(34, 9, 12, 0) 100%),
       linear-gradient(180deg, rgba(22, 6, 8, 0.4) 0%, rgba(22, 6, 8, 0) 20%, rgba(22, 6, 8, 0) 72%, rgba(22, 6, 8, 0.6) 100%);
   }
   #hero .hr-t { font-size: clamp(88px, 8.2vw, 156px); }

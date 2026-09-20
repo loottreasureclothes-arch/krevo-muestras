@@ -180,3 +180,10 @@ html.pf-pd-far.pf-pd-hero .pf-pd-mini { display: none !important; }
 .pf-pd-bar-t { font-size: 1rem; }
 .pf-ms-suc { font-family: var(--font-display); font-stretch: 75%; font-variation-settings: "wdth" 75; text-transform: uppercase; }
 .pf-ms { background: #1a0709; }
+
+/* Renglón del total (REVISIÓN 10): sin precios del dueño enseña la promesa, nunca un $0. */
+.pf-pd-total { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-top: 14px; padding-top: 12px; border-top: 2px solid var(--ink, #22150f); }
+.pf-pd-total > span { font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #6d5f55; }
+.pf-pd-total > b { font-weight: 700; font-size: 1.05rem; text-align: right; }
+.pf-pd-total--ask > b { font-weight: 600; font-size: .9rem; line-height: 1.3; color: #6d5f55; }
+.pf-pd-total[hidden] { display: none !important; }

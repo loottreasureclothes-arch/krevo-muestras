@@ -109,7 +109,10 @@ for slug, (n, cx, cy, z) in MENU.items():
     save(fin(im, (320, 320)), 'menu/t/%s.webp' % slug, 76)
 
 # ---------- Quiénes somos ----------
-save(fin(crop_ar(openrgb(src('01')), 4 / 3, .5, .5), (1600, 1200)), 'nos/fachada-noche.webp', 80)
+# Fachada de noche: recorte a 3:2 pegado al letrero (el 4:3 completo dejaba el letrero chiquito y
+# obligaba a "contain" con bandas negras en el collage). Caja medida sobre la foto original 2048x1536:
+# el letrero "Pizza y Fuego" va de x 466 a 1720 y de y 471 a 763; se deja fuera la "TEL. 449..." del muro.
+save(fin(openrgb(src('01')).crop((368, 157, 1748, 1077)), (1500, 1000)), 'nos/fachada-noche.webp', 80)
 save(fin(crop_ar(openrgb(src('12')), 4 / 5, .5, .5), (960, 1200)), 'nos/focaccia.webp', 80)
 save(fin(crop_ar(openrgb(src('11')), 16 / 9, .5, .62, 1.3), (1600, 900)), 'nos/num.webp', 70)
 

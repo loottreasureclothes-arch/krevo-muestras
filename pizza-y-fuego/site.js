@@ -182,7 +182,79 @@
     setTimeout(go, 60);
   }
 
-  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initRipple(); initAnchors(); initMesa(); initPago(); initBlurIn(); }
+  /* Header propio de 2 pisos (franja + barra): --k-header-h se mide del alto real, porque
+     al compactarse (.is-solid, la alterna _kit/kit.js a los 40 px de scroll) el header cambia
+     de alto. Todo lo que ya usaba --k-header-h (menú pegajoso, hoja de la carta, anclas) sigue
+     leyendo la variable en el momento, no hace falta tocar nada más. */
+  function initHeaderH() {
+    var header = document.querySelector(".k-header");
+    if (!header) return;
+    var root = document.documentElement, raf = null;
+    function set() { raf = null; root.style.setProperty("--k-header-h", header.offsetHeight + "px"); }
+    function queue() { if (!raf) raf = requestAnimationFrame(set); }
+    set();
+    window.addEventListener("resize", queue);
+    window.addEventListener("scroll", queue, { passive: true });
+    header.addEventListener("transitionend", set);
+  }
+
+  /* Títulos de sección: caen desde -60px y pegan con rebote corto (misma técnica que el 2014 /
+     closetdoor-10-msi: resorte muestreado con WAAPI). Una vez por título; blindaje a 1.6 s.
+     Caen los cinco títulos de sección: menú, horno, reunión, quiénes somos y visítanos. El que tiene
+     renglones marcados (.ru-l de la reunión) cae renglón por renglón con 70 ms de diferencia.
+     El único que no lleva esta caída es el hero: tiene su propia entrada por renglón con máscara. */
+  function initTitleDrop() {
+    var els = document.querySelectorAll("#pf-mm-title, #nos-t, #vi-t, #hn-t, #ru-t");
+    if (!els.length || reduce || !("IntersectionObserver" in window) || !els[0].animate) return;
+    function spring(n, amp, turns, decay, fmt) {
+      var k = [];
+      for (var i = 0; i <= n; i++) {
+        var t = i / n, v = i === n ? 0 : amp * Math.exp(-decay * t) * Math.sin(turns * Math.PI * 2 * t);
+        k.push({ transform: fmt(v) });
+      }
+      return k;
+    }
+    var played = new WeakSet();
+    /* Si el título trae renglones marcados (.ru-l), caen ellos, escalonados; si no, cae el título entero. */
+    function parts(el) {
+      var ls = el.querySelectorAll(".ru-l");
+      return ls.length ? Array.prototype.slice.call(ls) : [el];
+    }
+    function play(el) {
+      if (played.has(el)) return;
+      played.add(el);
+      parts(el).forEach(function (p, i) {
+        var d = i * 70;
+        p.animate(
+          [{ transform: "translateY(-60px)", opacity: 0 }, { transform: "translateY(0)", opacity: 1 }],
+          { duration: 430, delay: d, easing: "cubic-bezier(.32,0,.67,0)", fill: "forwards" }
+        );
+        p.animate(
+          spring(18, 9, 1.4, 4.4, function (v) { return "translateY(" + v.toFixed(2) + "px)"; }),
+          { duration: 320, delay: 420 + d, easing: "linear", composite: "add" }
+        );
+      });
+    }
+    function safe(el) {
+      if (played.has(el)) return;
+      played.add(el);
+      parts(el).forEach(function (p) { p.style.opacity = "1"; p.style.transform = "none"; });
+    }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); play(e.target); } });
+    }, { threshold: 0.4, rootMargin: "0px 0px -10% 0px" });
+    var fio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        fio.unobserve(e.target);
+        var el = e.target;
+        setTimeout(function () { safe(el); }, 1600);
+      });
+    });
+    Array.prototype.forEach.call(els, function (el) { io.observe(el); fio.observe(el); });
+  }
+
+  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initRipple(); initAnchors(); initMesa(); initPago(); initBlurIn(); initHeaderH(); initTitleDrop(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

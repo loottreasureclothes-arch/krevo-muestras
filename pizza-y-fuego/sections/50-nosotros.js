@@ -54,4 +54,17 @@
     }
   }, { rootMargin: "0px 0px 0px 0px" });
   fio.observe(wrap);
+
+  /* 5 estrellas grandes del 4.6: se encienden una por una (mismo blindaje a 1.6 s) */
+  var stars = s.querySelector(".nos-stars");
+  if (stars) {
+    var sio = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { stars.classList.add("is-in"); sio.disconnect(); }
+    }, { threshold: 0.4 });
+    sio.observe(stars);
+    var sfio = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { sfio.disconnect(); setTimeout(function () { stars.classList.add("is-in"); }, 1600); }
+    });
+    sfio.observe(stars);
+  }
 })();

@@ -1,12 +1,22 @@
 #!/usr/bin/env python3
 """Genera sections/25-menu.html (menú de mesa) desde la carta real de research/menu-precios.md.
 Nombres e ingredientes: DiDi (vigente) + mantel-menú del local (2024). SIN precios: los de DiDi son de app y los del mantel
-ya son viejos (PENDIENTE-DUEÑO). Cada platillo lleva data-price="0" y el pedido pide el total por WhatsApp.
+ya son viejos (PENDIENTE-DUEÑO). Cada platillo lleva data-price="0", enseña los tamaños y dice "Pregunta el precio";
+el pedido pide el total por WhatsApp. Regla: nunca se pinta un $0 ni un total en cero.
 Para poner precios: llena el tercer campo (número) y vuelve a correr este script y build.py."""
 import html, json, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TAM = [["Chica 25 cm", 0], ["Mediana 32 cm", 0], ["Grande 36 cm", 0]]
+
+
+def corto(opts):
+    """Etiquetas cortas SOLO para el renglón visible de tamaños (el pedido y el WhatsApp
+    siguen usando la etiqueta completa: "Grande 36 cm")."""
+    ls = [o[0] for o in opts]
+    if len(ls) > 1 and all(l.endswith(" cm") for l in ls):
+        return [ls[0]] + [l[:-3] for l in ls[1:]]
+    return ls
 
 # (id, nombre, descripción, foto, opciones)
 CARTA = [
@@ -88,7 +98,8 @@ CHIP = {'m-pizzas': 'Pizzas', 'm-entradas': 'Entradas', 'm-ensaladas': 'Ensalada
 e = lambda s: html.escape(s, quote=True)
 out = []
 out.append('''  <!-- 25 MENÚ DE MESA · paso 3 (opciones) y 4 (personalizar). Generado por gen/menu.py (no editar a mano).
-       Carta real (DiDi + mantel del local). Sin precios: el pedido pide el total por WhatsApp (PENDIENTE-DUEÑO: precios de mostrador 2026). -->
+       Carta real (DiDi + mantel del local). Sin precios: cada platillo dice "Pregunta el precio" y el pedido pide el total por WhatsApp.
+       Nunca se pinta un $0 (PENDIENTE-DUEÑO: precios de mostrador 2026). En cuanto lleguen, data-price deja de ser 0 y el total se arma solo. -->
   <section class="pf-mm" id="menu" data-hide-wa aria-labelledby="pf-mm-title">
     <div class="k-wrap pf-mm-head">
       <p class="pf-mm-eyebrow"><span class="pf-mm-mesa" id="pf-mm-mesa" hidden></span><span>Menú de la casa</span></p>
@@ -110,17 +121,17 @@ for cid, ctitle, cnote, items in CARTA:
             attrs += ' data-img="img/menu/%s.webp"' % foto
         if opts:
             attrs += " data-opts='%s'" % e(json.dumps(opts, ensure_ascii=False))
-        sizes = ('<span class="pf-mm-sizes">%s</span>' % ' · '.join(e(o[0]) for o in opts)) if opts else ''
+        sizes = ('<span class="pf-mm-sizes">%s</span>' % ' · '.join(e(o) for o in corto(opts))) if opts else ''
         ph = ('\n          <figure class="pf-mm-ph"><img src="img/menu/t/%s.webp" alt="%s de Pizza y Fuego" width="320" height="320" loading="lazy" decoding="async"></figure>' % (foto, e(name))) if foto else ''
         out.append('''        <article class="%s" %s>
           <button class="pf-mm-hit" type="button" aria-label="Ver %s"></button>%s
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>%s</span></h4>%s%s</div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>%s</span><span class="pf-mm-ask">Pregunta el precio</span></h4>%s%s</div>
           <div class="pf-mm-ctl"></div>
         </article>''' % (cls, attrs, e(name), ph, e(name), ('<p class="pf-mm-desc">%s</p>' % e(desc)) if desc else '', sizes))
     out.append('      </div>')
     out.append('    </section>')
-out.append('    <p class="pf-mm-legal">Carta de referencia. Precio, disponibilidad y tiempo de entrega te los confirmamos por WhatsApp.</p>')
+out.append('    <p class="pf-mm-legal">Carta de referencia. <b>Pregunta el precio por WhatsApp</b>: te confirmamos el total, la disponibilidad y el tiempo antes de que pagues.</p>')
 out.append('    </div>')
 out.append('  </section>')
-open(os.path.join(ROOT, 'sections', '25-menu.html'), 'w').write('\n'.join(out) + '\n')
-print('25-menu.html:', sum(len(c[3]) for c in CARTA), 'platillos')
+open(os.path.join(ROOT, 'sections', '20-menu.html'), 'w').write('\n'.join(out) + '\n')
+print('20-menu.html:', sum(len(c[3]) for c in CARTA), 'platillos')

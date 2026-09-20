@@ -1,5 +1,6 @@
 /* 26 · Pedido: carrito, hoja de resumen, WhatsApp directo (recoger, domicilio o en el local) y "Mostrar a mi mesero".
- * Sin precios por ahora (price 0): el mensaje pide el total. Si un día llegan precios reales, el total vuelve solo en cada renglón.
+ * Sin precios por ahora (price 0): el renglón del total dice "Te confirmamos el total por WhatsApp" y el mensaje pide el total.
+ * REGLA: nunca se pinta un $0 ni un total en cero. Si un día llegan precios reales, el monto vuelve solo en cada renglón y en el total.
  *
  * API pública (la usa 25-menu.js y, a futuro, el pago):
  *   window.pfPedido = {
@@ -109,7 +110,7 @@
 
   /* ---------- DOM ---------- */
   var $ = function (s, r) { return (r || document).querySelector(s); };
-  var bar, mini, sheet, list, waBtn, meseroBtn, err, mesero, lastFocus, up;
+  var bar, mini, sheet, list, waBtn, meseroBtn, err, mesero, lastFocus, up, totalEl;
 
   function lineLabel(l) { return l.name + (l.opt ? ' (' + l.opt + ')' : ''); }
   function hhmm(d) { d = d || new Date(); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
@@ -166,6 +167,13 @@
       list.appendChild(li);
     });
     if (up) up.hidden = !S.lines.length || S.lines.some(function (l) { return l.id === 'pizza-nutella'; });
+    // El renglón del total: con precios reales enseña el monto; sin precios NUNCA enseña "$0",
+    // enseña la promesa ("Te confirmamos el total por WhatsApp"). Con el pedido vacío se esconde.
+    if (totalEl) {
+      totalEl.hidden = !S.lines.length;
+      totalEl.querySelector('b').textContent = tot ? money(tot) : 'Te confirmamos el total por WhatsApp';
+      totalEl.classList.toggle('pf-pd-total--ask', !tot);
+    }
     waBtn.href = waUrl();
     sheet.querySelectorAll('[data-mode-f]').forEach(function (f) { f.hidden = f.dataset.modeF !== S.mode; });
     meseroBtn.hidden = S.mode !== 'mesa';
@@ -237,7 +245,7 @@
   function init() {
     bar = $('#pf-pd-bar'); mini = $('#pf-pd-mini'); sheet = $('#pf-pd-sheet'); mesero = $('#pf-pd-mesero');
     if (!bar || !mini || !sheet || !mesero) return;
-    list = $('.pf-pd-list', sheet); up = $('#pf-pd-up');
+    list = $('.pf-pd-list', sheet); up = $('#pf-pd-up'); totalEl = $('#pf-pd-total', sheet);
     waBtn = $('#pf-pd-wa'); meseroBtn = $('#pf-pd-mesero-btn'); err = $('#pf-pd-err');
     load();
 

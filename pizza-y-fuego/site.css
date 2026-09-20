@@ -140,30 +140,75 @@ em { font-style: normal; color: var(--brand); }
 .pf-chip:active { transform: scale(0.97); }
 .pf-chip[aria-pressed="true"], .pf-chip.is-on { background: var(--deep); border-color: var(--deep); color: var(--cream); }
 
-/* ============ Header ============ */
-.k-header { gap: 8px; color: var(--cream); }
-body[data-hero-dark] .k-header:not(.is-solid) { color: var(--cream); }
-.k-header::before { content: ""; position: absolute; inset: 0 0 -30px; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(20, 5, 7, 0.55), rgba(20, 5, 7, 0)); transition: opacity 320ms var(--ease-out); }
-.k-header.is-solid::before { opacity: 0; }
-.k-header.is-solid { background: rgba(250, 246, 240, 0.94); border-bottom-color: var(--line); color: var(--ink); }
-.k-logo { position: relative; min-height: 44px; margin-right: auto; display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-stretch: 75%; font-variation-settings: "wdth" 75; font-weight: 850; text-transform: uppercase; font-size: 17px; letter-spacing: .01em; line-height: 1; white-space: nowrap; }
-.k-logo img { width: 40px; height: 40px; border-radius: 50%; box-shadow: 0 0 0 1.5px rgba(247, 236, 220, .55); flex: none; }
-.k-header.is-solid .k-logo img { box-shadow: 0 0 0 1.5px var(--line); }
-@media (max-width: 400px) { .k-logo span { display: none; } }
-@media (min-width: 900px) { .k-logo img { width: 46px; height: 46px; } .k-logo { font-size: 19px; } }
-.k-nav a { font-weight: 600; }
-@media (min-width: 900px) { .k-nav { gap: 24px; margin-right: 10px; } .k-nav a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; } .k-nav a::after { bottom: 10px; } }
-@media (min-width: 900px) and (max-width: 1100px) { .k-nav { gap: 16px; font-size: 0.88rem; } }
-/* "Menú" del header: el más visible después del verde */
-.pf-hmenu {
-  display: inline-flex; align-items: center; gap: 7px; height: 44px; padding: 0 13px;
-  border-radius: 3px; background: var(--cream); color: var(--deep);
-  font-weight: 800; font-size: 15px; letter-spacing: 0.01em; flex: none;
-  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out);
+/* ============ Header propio: franja de horario + barra rojo oscuro con logo redondo grande ============
+   Identidad distinta al resto de KREVO: no es transparente-sobre-hero, es una barra sólida de dos pisos
+   que se compacta (se esconde la franja, encoge la barra y el logo) al pasar los 40 px de scroll
+   (misma clase .is-solid que ya alterna _kit/kit.js). --k-header-h se recalcula en vivo desde site.js
+   (initHeaderH) para que el resto del sitio (menú pegajoso, hoja de la carta, anclas) siga cuadrando. */
+:root { --pf-top-h: 30px; --pf-bar-h: 62px; --pf-bar-h-c: 54px; --k-header-h: calc(var(--pf-top-h) + var(--pf-bar-h)); }
+@media (min-width: 900px) { :root { --pf-top-h: 36px; --pf-bar-h: 92px; --pf-bar-h-c: 70px; } }
+.k-header {
+  display: flex; flex-direction: column; align-items: stretch; gap: 0; height: auto;
+  padding: env(safe-area-inset-top) 0 0; background: transparent; border-bottom: 0; color: var(--cream);
+  transition: none;
 }
-.pf-hmenu svg { width: 18px; height: 18px; }
-.k-header.is-solid .pf-hmenu { background: var(--deep); color: var(--cream); }
-.pf-hmenu:active { transform: scale(0.97); }
+.k-header::before { content: none; }
+.k-header.is-solid { background: transparent; border-bottom-color: transparent; color: var(--cream); }
+
+.pf-topbar {
+  /* clip + clip-margin (en vez de hidden) para que quepa el área tocable invisible del teléfono
+     sin que la franja crezca; navegadores viejos caen a hidden y solo pierden ese sobrante. */
+  overflow: hidden; overflow: clip; overflow-clip-margin: 8px;
+  max-height: var(--pf-top-h);
+  background: var(--paper); color: var(--ink); border-bottom: 1px solid var(--line);
+  transition: max-height 260ms var(--ease-out), opacity 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.pf-topbar-in {
+  max-width: 1320px; margin-inline: auto; height: var(--pf-top-h);
+  padding-inline: max(var(--k-gutter), env(safe-area-inset-right)) max(var(--k-gutter), env(safe-area-inset-left));
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.01em;
+}
+.pf-topbar-hrs { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* El teléfono es el único control que se quedaba abajo de 44 px (medía 91×30). Crece SOLO el área
+   tocable: min-height de 44 px con márgenes negativos que se comen el sobrante, así la franja
+   se sigue viendo de 30 px y el enlace mide 44 px de alto y ~12 px más de ancho. */
+.pf-topbar-tel {
+  flex: none; align-self: center; display: inline-flex; align-items: center; justify-content: flex-end; gap: 5px;
+  min-height: 44px; margin-block: calc((var(--pf-top-h) - 44px) / 2); padding-inline: 6px; margin-right: -6px;
+  color: var(--wine); font-weight: 800;
+}
+.pf-topbar-tel svg { width: 12px; height: 12px; }
+.k-header.is-solid .pf-topbar { max-height: 0; opacity: 0; border-color: transparent; }
+@media (min-width: 900px) { .pf-topbar-in { font-size: 13px; } .pf-topbar-tel svg { width: 14px; height: 14px; } }
+
+.pf-headbar {
+  position: relative; height: var(--pf-bar-h);
+  padding-inline: max(var(--k-gutter), env(safe-area-inset-right)) max(var(--k-gutter), env(safe-area-inset-left));
+  display: flex; align-items: center; gap: 10px;
+  background: var(--wine-2);
+  box-shadow: 0 12px 26px -16px rgba(10, 2, 3, 0.6);
+  transition: height 260ms var(--ease-out);
+}
+.k-header.is-solid .pf-headbar { height: var(--pf-bar-h-c); }
+.pf-logo { min-height: 0; }
+.pf-logo img {
+  width: 44px; height: 44px; border-radius: 50%; box-shadow: 0 0 0 2.5px rgba(247, 236, 220, 0.8), 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: width 240ms var(--ease-out), height 240ms var(--ease-out);
+}
+.k-header.is-solid .pf-logo img { width: 36px; height: 36px; }
+@media (min-width: 900px) {
+  .pf-logo img { width: 66px; height: 66px; }
+  .k-header.is-solid .pf-logo img { width: 50px; height: 50px; }
+}
+.pf-headbar .k-nav a { color: var(--cream); font-weight: 600; }
+.pf-headbar .k-nav a::after { background: var(--gold); }
+@media (min-width: 900px) {
+  .pf-headbar .k-nav { gap: 24px; }
+  .pf-headbar .k-nav a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; }
+  .pf-headbar .k-nav a::after { bottom: 10px; }
+}
+@media (min-width: 900px) and (max-width: 1100px) { .pf-headbar .k-nav { gap: 16px; font-size: 0.88rem; } }
 .pf-menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 3px; border: 1.5px solid currentColor; color: inherit; flex: none; }
 .pf-burger { position: relative; width: 18px; height: 12px; }
 .pf-burger i { position: absolute; left: 0; right: 0; height: 1.8px; background: currentColor; transition: transform 300ms var(--ease-out), opacity 200ms; }
@@ -173,18 +218,24 @@ body[data-hero-dark] .k-header:not(.is-solid) { color: var(--cream); }
 body.pf-nav-open .pf-burger i:nth-child(1) { transform: translateY(5px) rotate(45deg); }
 body.pf-nav-open .pf-burger i:nth-child(2) { opacity: 0; }
 body.pf-nav-open .pf-burger i:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
-.k-header .k-cta.pf-hcta, body[data-hero-dark] .k-header:not(.is-solid) .k-cta.pf-hcta {
-  height: 44px; padding: 0 14px; background: var(--wa); color: var(--wa-ink); font-weight: 800; font-size: 15px;
+/* Pedir: verde, muy redondeado (única excepción al radio de 3px del sitio) */
+.pf-pedir {
+  flex: none; display: inline-flex; align-items: center; gap: 7px; height: 44px; padding: 0 16px;
+  border-radius: 999px !important; border: 1.5px solid rgba(11, 61, 31, 0.3);
+  background: var(--wa); color: var(--wa-ink); font-weight: 800; font-size: 15px;
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out);
 }
-@media (hover: hover) and (pointer: fine) { .k-header .k-cta.pf-hcta:hover { background: var(--wa-dark); } }
-@media (min-width: 900px) { .k-header .k-cta.pf-hcta { padding: 0 22px; } .pf-hmenu { padding: 0 18px; font-size: 16px; } }
-@media (max-width: 360px) { .pf-hmenu svg { display: none; } .k-header .k-cta.pf-hcta { padding: 0 11px; } }
+.pf-pedir svg { width: 19px; height: 19px; flex: none; }
+.pf-pedir:active { transform: scale(0.96); }
+@media (hover: hover) and (pointer: fine) { .pf-pedir:hover { background: var(--wa-dark); } }
+@media (min-width: 900px) { .pf-pedir { height: 48px; padding: 0 22px; font-size: 16px; } }
+@media (max-width: 359px) { .pf-pedir span { display: none; } .pf-pedir { width: 44px; height: 44px; padding: 0; justify-content: center; } }
 
 /* ============ Menú hamburguesa ============ */
 body.pf-nav-open { overflow: hidden; }
-body.pf-nav-open .k-header { color: var(--cream); background: transparent; border-bottom-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+body.pf-nav-open .pf-topbar { max-height: 0; opacity: 0; }
+body.pf-nav-open .pf-headbar { background: transparent; box-shadow: none; }
 body.pf-nav-open .k-nav { opacity: 0; pointer-events: none; }
-body.pf-nav-open .pf-hmenu { background: var(--cream); color: var(--deep); }
 .pf-nav { position: fixed; inset: 0; z-index: 45; visibility: hidden; transition: visibility 0s linear 420ms; }
 body.pf-nav-open .pf-nav { visibility: visible; transition: visibility 0s; }
 .pf-nav-scrim { position: absolute; inset: 0; background: rgba(20, 5, 7, 0.6); opacity: 0; transition: opacity 300ms var(--ease-out); }
@@ -316,4 +367,49 @@ main > #visita { background-color: var(--paper); }
   content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .05; mix-blend-mode: overlay;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E") repeat;
   background-size: 180px 180px;
+}
+
+/* ============ Identidad propia de Pizza y Fuego (19 sep): header, formas redondas, fondos ============ */
+/* Fondos: crema con textura de papel fina (sitewide, detrás de todo lo que use --paper) */
+body {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.05  0 0 0 0 0.06  0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  background-repeat: repeat; background-size: 220px 220px; background-blend-mode: multiply;
+}
+/* Fondos: rojo oscuro con grano fino también en el footer (mismo blindaje que #horno/#nosotros) */
+.pf-foot[data-grain]::after { opacity: .045; }
+
+/* Madera sutil detrás de la tarjeta del horno (vetas cálidas, muy baja opacidad) */
+#horno .hn-card { position: relative; isolation: isolate; }
+#horno .hn-card::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; opacity: .16; mix-blend-mode: overlay;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.012 0.11' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.63  0 0 0 0 0.45  0 0 0 0 0.28  0 0 0 0.8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E") repeat;
+  background-size: 260px 260px;
+}
+
+/* Botones verdes: siempre redondeados (14 px), aunque el resto del sitio use 3 px.
+   REVISIÓN 10: el cotizador de reunión ya NO es la excepción; "Siguiente" y "Pedir cotización"
+   heredan los mismos 14 px que todos los demás verdes (antes volvían a 3 px y se veían como ladrillo). */
+.pf-btn--wa, .k-btn.pf-btn-wa, .pf-submit { border-radius: 14px !important; }
+
+/* Tarjetas del sitio a 18 px (reseñas y hoja de detalle ya tienen su propio 18 px en 20-menu.css/30-horno.css) */
+#nosotros .res-card { border-radius: 18px; }
+
+/* Footer: fila de iconos sociales oficiales, 44 px */
+.pf-foot-social { display: flex; gap: 12px; margin-top: 14px; }
+.pf-foot-social a {
+  width: 44px; height: 44px; flex: none; display: inline-grid; place-items: center;
+  border-radius: 50%; background: rgba(247, 236, 220, .1); border: 1px solid var(--line-dark); color: var(--cream);
+  transition: background-color 180ms var(--ease-out), transform 160ms var(--ease-out);
+}
+.pf-foot-social svg { width: 22px; height: 22px; }
+.pf-foot-social a:active { transform: scale(.94); }
+@media (hover: hover) and (pointer: fine) { .pf-foot-social a:hover { background: rgba(247, 236, 220, .2); } }
+
+/* Títulos de sección: caen desde arriba y pegan con rebote corto (site.js initTitleDrop, misma técnica
+   que el 2014/closetdoor-10-msi). REVISIÓN 10: caen TODOS los títulos de sección, incluidos el horno
+   (#hn-t, se le quitó el transform ligado al scroll y se pasó a sus renglones .hn-l) y la reunión
+   (#ru-t, cae renglón por renglón con los spans .ru-l que ya estaban en el HTML y no animaba nadie).
+   El hero se queda fuera a propósito: tiene su propia entrada por renglón con máscara (hr-up). */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  #pf-mm-title, #nos-t, #vi-t, #hn-t, #ru-t .ru-l { opacity: 0; transform: translateY(-60px); }
 }

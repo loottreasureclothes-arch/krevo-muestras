@@ -1,5 +1,7 @@
   <!-- 10 HERO · paso 1 (ponerlo en alto) + 3 (opciones): la pizza real a sangre, pedido directo en 1 toque y cuadritos que abren una hoja con la carta.
-       VIDEO real hecho con tools/hero_video.py a partir de 4 fotos reales (rebanada, carnes frías, el horno, la fachada); nada de IA.
+       VIDEO real hecho con tools/hero_video.py a partir de 3 fotos reales de PIZZA (07 pizza con pala, 08 primer plano, 10 pizza en el mantel de lunares); nada de IA.
+       REVISIÓN 10: disolvencias de 250 ms (antes 900 ms: media vuelta se veía como doble exposición) y fuera el cuadro del letrero de neón,
+       que se encimaba con el titular (ese letrero ya vive en #visita y en el collage de #nosotros). Loop de 8.85 s: 1.34 MB celular / 2.05 MB compu.
        Poster = primer cuadro exacto del video (mismo grading). Se salta con ahorro de datos/2g y cae a la foto si play() falla (10-hero.js). -->
   <section class="s-hero" id="hero" data-dark data-hide-wa aria-labelledby="hr-t">
     <div class="hr-media" aria-hidden="true">
@@ -7,7 +9,7 @@
         <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/poster-d.webp" width="1920" height="1080">
         <img class="hr-poster" src="img/hero/poster-m.webp" width="1080" height="1920" alt="" fetchpriority="high" decoding="async">
       </picture>
-      <video class="hr-vid" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9" poster="img/hero/poster-m.webp" data-poster-d="img/hero/poster-d.webp" muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback tabindex="-1" hidden></video>
+      <video class="hr-vid" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-segs="0,2.825,5.775,8.725" data-fade="0.25" poster="img/hero/poster-m.webp" data-poster-d="img/hero/poster-d.webp" muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback tabindex="-1" hidden></video>
       <div class="hr-veil"></div>
     </div>
     <div class="k-wrap hr-in">

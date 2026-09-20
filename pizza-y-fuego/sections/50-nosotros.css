@@ -4,12 +4,16 @@
 #nosotros .nos-top { display: grid; gap: 40px; align-items: end; }
 #nosotros .nos-t { font-size: clamp(2.4rem, 9vw, 4.4rem); line-height: .95; margin: 0 0 16px; overflow-wrap: anywhere; }
 #nosotros .nos-bio { max-width: 34ch; }
-#nosotros .nos-since { display: flex; align-items: baseline; gap: 10px; margin-top: 26px; }
-#nosotros .nos-y-wrap { display: inline-block; overflow: clip; line-height: .9; }
+#nosotros .nos-since { display: flex; align-items: center; gap: 14px; margin-top: 26px; }
+#nosotros .nos-y-wrap { display: inline-block; overflow: clip; line-height: 1; }
 #nosotros .nos-y-drop, #nosotros .nos-y-bounce { display: inline-block; }
+/* El "2014" como sello circular rojo (misma caidita, solo cambia la forma) */
 #nosotros .nos-y-bounce {
+  display: grid; place-items: center; width: clamp(76px, 15vw, 108px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(120% 120% at 32% 26%, var(--wine-2), var(--wine) 70%);
+  box-shadow: 0 0 0 3px rgba(247, 236, 220, .5), inset 0 0 0 1.5px rgba(247, 236, 220, .35), 0 10px 22px -10px rgba(0, 0, 0, .6);
   font-family: var(--font-display); font-stretch: 68%; font-variation-settings: "wdth" 68;
-  font-weight: 900; font-size: clamp(2.2rem, 8vw, 3.4rem); color: var(--gold);
+  font-weight: 900; font-size: clamp(1.15rem, 4.2vw, 1.6rem); color: var(--cream); line-height: 1;
 }
 #nosotros .nos-since > span:last-child { color: var(--cream-mute); font-size: .92rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
 
@@ -22,6 +26,23 @@
 }
 #nosotros .nos-score-l { margin-top: 4px; font-size: 1.05rem; color: var(--cream-mute); }
 #nosotros .nos-score-l em { color: var(--gold); font-style: normal; font-weight: 700; }
+
+/* 5 estrellas grandes del 4.6 (la quinta al 60 %, medida real): sin JS ya se ven así, completas */
+#nosotros .nos-stars { display: flex; gap: 6px; margin-top: 10px; }
+#nosotros .nos-star { position: relative; width: clamp(26px, 6vw, 40px); aspect-ratio: 1; flex: none; }
+#nosotros .nos-star svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+#nosotros .nos-star-bg { color: rgba(247, 236, 220, .22); }
+#nosotros .nos-star-fg { color: var(--gold); clip-path: inset(0 calc(100% - var(--fill, 100%)) 0 0); }
+@media (min-width: 960px) { #nosotros .nos-stars { gap: 8px; margin-top: 16px; } }
+/* Se encienden una por una: solo con scripting + movimiento (si no, ya están completas arriba) */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  #nosotros .nos-star-fg {
+    opacity: 0; transform: scale(.4); transform-origin: 50% 60%;
+    transition: opacity 260ms var(--ease-out), transform 420ms cubic-bezier(.34, 1.56, .64, 1);
+    transition-delay: calc(var(--i, 0) * 110ms);
+  }
+  #nosotros .nos-stars.is-in .nos-star-fg { opacity: 1; transform: none; }
+}
 
 /* Citas (máximo 3) */
 #nosotros .nos-quotes { display: grid; gap: 14px; margin-top: 56px; }
@@ -42,11 +63,18 @@
 #nosotros .nos-collage img { width: 100%; height: 100%; object-fit: cover; display: block; }
 #nosotros .nos-c2 { grid-auto-columns: 42%; width: 42%; }
 #nosotros .nos-c4 { grid-auto-columns: 46%; width: 46%; }
+/* La fachada de noche: el marco toma la proporción de la foto (3:2, recortada pegada al letrero en
+   gen/imagenes.py) y vuelve a "cover". Así el letrero sale completo Y llena la tarjeta, sin el
+   object-fit: contain sobre fondo negro que dejaba 31 % de la tarjeta en negro y parecía imagen rota. */
+#nosotros .nos-collage { grid-template-columns: 360px; }        /* la fachada es la 1a columna: 360 x 240 = 3:2 */
+#nosotros .nos-c1 { width: auto; }
 @media (min-width: 700px) {
   #nosotros .nos-top { grid-template-columns: 1.2fr 1fr; }
   #nosotros .nos-quotes { grid-template-columns: repeat(3, 1fr); }
-  #nosotros .nos-collage { grid-auto-flow: unset; grid-template-columns: 1.7fr 1fr .85fr 1.2fr; overflow-x: visible; height: 280px; }
-  #nosotros .nos-collage figure, #nosotros .nos-c2, #nosotros .nos-c4 { width: auto; height: 280px; }
+}
+@media (min-width: 900px) {
+  #nosotros .nos-collage { grid-auto-flow: unset; grid-template-columns: 420px minmax(0, 1fr) minmax(0, .85fr) minmax(0, 1.2fr); overflow-x: visible; height: 280px; }
+  #nosotros .nos-collage figure, #nosotros .nos-c1, #nosotros .nos-c2, #nosotros .nos-c4 { width: auto; height: 280px; }  /* la c1 queda 420x280 = 3:2 */
 }
 @media (min-width: 960px) {
   #nosotros .nos-score-n { font-size: clamp(220px, 24vw, 320px); }

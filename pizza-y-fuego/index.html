@@ -32,13 +32,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
-<link rel="stylesheet" href="site.css?v=1789868221">
-<link rel="stylesheet" href="sections/10-hero.css?v=1789869552">
-<link rel="stylesheet" href="sections/20-menu.css?v=1789836429">
-<link rel="stylesheet" href="sections/21-pedido.css?v=1789867681">
-<link rel="stylesheet" href="sections/30-horno.css?v=1789868868">
-<link rel="stylesheet" href="sections/40-reunion.css?v=1789867634">
-<link rel="stylesheet" href="sections/50-nosotros.css?v=1789867457">
+<link rel="stylesheet" href="site.css?v=1789875287">
+<link rel="stylesheet" href="sections/10-hero.css?v=1789875256">
+<link rel="stylesheet" href="sections/20-menu.css?v=1789875821">
+<link rel="stylesheet" href="sections/21-pedido.css?v=1789875554">
+<link rel="stylesheet" href="sections/30-horno.css?v=1789875312">
+<link rel="stylesheet" href="sections/40-reunion.css?v=1789875569">
+<link rel="stylesheet" href="sections/50-nosotros.css?v=1789875983">
 <link rel="stylesheet" href="sections/60-visita.css?v=1789867518">
 </head>
 <body data-hero-dark>
@@ -51,19 +51,29 @@
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z M9 9h7M9 13h7M9 17h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
   <symbol id="i-fire" viewBox="0 0 24 24"><path d="M12 21c-3.6 0-6-2.4-6-5.6 0-3 2.2-4.6 3.3-7.1.4 1.6 1.3 2.5 2.1 2.9C11 7.6 12.6 4.8 15 3c-.4 2.6.6 4.6 1.9 6.4 1 1.4 1.1 2.8 1.1 4.1C18 18.3 15.6 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.77l-.44 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></symbol>
+  <symbol id="i-maps" viewBox="0 0 24 24"><path d="M12 22s-7.5-6.6-7.5-12.2A7.5 7.5 0 0 1 19.5 9.8C19.5 15.4 12 22 12 22Z" fill="currentColor"/><circle cx="12" cy="9.7" r="3" fill="#fff"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.6l2.9 6 6.6.8-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5-4.8-4.6 6.6-.8Z"/></symbol>
 </svg>
 
 <header class="k-header">
-  <a class="k-logo" href="#inicio" aria-label="Pizza y Fuego, inicio"><img src="img/brand/logo-176.webp" alt="" width="176" height="176"><span>Pizza y Fuego</span></a>
-  <nav class="k-nav" aria-label="Principal">
-    <a href="#horno">El horno</a>
-    <a href="#reunion">Para tu reunión</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#visita">Visítanos</a>
-  </nav>
-  <a class="pf-hmenu" href="#menu"><svg aria-hidden="true"><use href="#i-menu"/></svg>Menú</a>
-  <button class="pf-menu-btn" type="button" aria-expanded="false" aria-controls="pf-nav" aria-label="Abrir navegación"><span class="pf-burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
-  <a class="k-cta pf-hcta" href="#menu">Pedir</a>
+  <div class="pf-topbar">
+    <div class="pf-topbar-in">
+      <span class="pf-topbar-hrs">Martes a sábado 1:30 a 11 pm · Domingo 1:30 a 7:30</span>
+      <a class="pf-topbar-tel" href="tel:+524492932383"><svg aria-hidden="true"><use href="#i-phone"/></svg>449 293 23 83</a>
+    </div>
+  </div>
+  <div class="pf-headbar">
+    <a class="k-logo pf-logo" href="#inicio" aria-label="Pizza y Fuego, inicio"><img src="img/brand/logo-176.webp" alt="" width="176" height="176"></a>
+    <nav class="k-nav" aria-label="Principal">
+      <a href="#menu">Menú</a>
+      <a href="#horno">Horno</a>
+      <a href="#reunion">Reunión</a>
+      <a href="#visita">Visítanos</a>
+    </nav>
+    <button class="pf-menu-btn" type="button" aria-expanded="false" aria-controls="pf-nav" aria-label="Abrir navegación"><span class="pf-burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
+    <a class="pf-pedir" href="#menu"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Pedir</span></a>
+  </div>
 </header>
 
 <div class="pf-nav" id="pf-nav" role="dialog" aria-modal="true" aria-label="Navegación" aria-hidden="true">
@@ -94,7 +104,9 @@
 
 <main id="inicio">
   <!-- 10 HERO · paso 1 (ponerlo en alto) + 3 (opciones): la pizza real a sangre, pedido directo en 1 toque y cuadritos que abren una hoja con la carta.
-       VIDEO real hecho con tools/hero_video.py a partir de 4 fotos reales (rebanada, carnes frías, el horno, la fachada); nada de IA.
+       VIDEO real hecho con tools/hero_video.py a partir de 3 fotos reales de PIZZA (07 pizza con pala, 08 primer plano, 10 pizza en el mantel de lunares); nada de IA.
+       REVISIÓN 10: disolvencias de 250 ms (antes 900 ms: media vuelta se veía como doble exposición) y fuera el cuadro del letrero de neón,
+       que se encimaba con el titular (ese letrero ya vive en #visita y en el collage de #nosotros). Loop de 8.85 s: 1.34 MB celular / 2.05 MB compu.
        Poster = primer cuadro exacto del video (mismo grading). Se salta con ahorro de datos/2g y cae a la foto si play() falla (10-hero.js). -->
   <section class="s-hero" id="hero" data-dark data-hide-wa aria-labelledby="hr-t">
     <div class="hr-media" aria-hidden="true">
@@ -102,7 +114,7 @@
         <source media="(min-aspect-ratio: 1/1)" srcset="img/hero/poster-d.webp" width="1920" height="1080">
         <img class="hr-poster" src="img/hero/poster-m.webp" width="1080" height="1920" alt="" fetchpriority="high" decoding="async">
       </picture>
-      <video class="hr-vid" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-segs="0,2.25,4.95,7.65,10.35" data-fade="0.9" poster="img/hero/poster-m.webp" data-poster-d="img/hero/poster-d.webp" muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback tabindex="-1" hidden></video>
+      <video class="hr-vid" data-src-m="img/hero/hero-m.mp4" data-src-d="img/hero/hero-d.mp4" data-segs="0,2.825,5.775,8.725" data-fade="0.25" poster="img/hero/poster-m.webp" data-poster-d="img/hero/poster-d.webp" muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback tabindex="-1" hidden></video>
       <div class="hr-veil"></div>
     </div>
     <div class="k-wrap hr-in">
@@ -144,7 +156,8 @@
   </section>
 
   <!-- 25 MENÚ DE MESA · paso 3 (opciones) y 4 (personalizar). Generado por gen/menu.py (no editar a mano).
-       Carta real (DiDi + mantel del local). Sin precios: el pedido pide el total por WhatsApp (PENDIENTE-DUEÑO: precios de mostrador 2026). -->
+       Carta real (DiDi + mantel del local). Sin precios: cada platillo dice "Pregunta el precio" y el pedido pide el total por WhatsApp.
+       Nunca se pinta un $0 (PENDIENTE-DUEÑO: precios de mostrador 2026). En cuanto lleguen, data-price deja de ser 0 y el total se arma solo. -->
   <section class="pf-mm" id="menu" data-hide-wa aria-labelledby="pf-mm-title">
     <div class="k-wrap pf-mm-head">
       <p class="pf-mm-eyebrow"><span class="pf-mm-mesa" id="pf-mm-mesa" hidden></span><span>Menú de la casa</span></p>
@@ -159,90 +172,90 @@
       <div class="pf-mm-list">
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="margherita" data-name="Margherita" data-price="0" data-desc="Mozzarella y albahaca." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Margherita"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Margherita</span></h4><p class="pf-mm-desc">Mozzarella y albahaca.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Margherita</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Mozzarella y albahaca.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="fuego" data-name="Fuego" data-price="0" data-desc="Pepperoni y chile." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Fuego"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Fuego</span></h4><p class="pf-mm-desc">Pepperoni y chile.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Fuego</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Pepperoni y chile.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--multi" data-id="hawaiana" data-name="Hawaiana" data-price="0" data-desc="Jamón y piña." data-img="img/menu/hawaiana.webp" data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Hawaiana"></button>
           <figure class="pf-mm-ph"><img src="img/menu/t/hawaiana.webp" alt="Hawaiana de Pizza y Fuego" width="320" height="320" loading="lazy" decoding="async"></figure>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Hawaiana</span></h4><p class="pf-mm-desc">Jamón y piña.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Hawaiana</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Jamón y piña.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--multi" data-id="mexicana" data-name="Mexicana" data-price="0" data-desc="Chorizo, cebolla, chile y granos de elote." data-img="img/menu/mexicana.webp" data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Mexicana"></button>
           <figure class="pf-mm-ph"><img src="img/menu/t/mexicana.webp" alt="Mexicana de Pizza y Fuego" width="320" height="320" loading="lazy" decoding="async"></figure>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Mexicana</span></h4><p class="pf-mm-desc">Chorizo, cebolla, chile y granos de elote.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Mexicana</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Chorizo, cebolla, chile y granos de elote.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--multi" data-id="quattro-stagioni" data-name="4 Stagioni" data-price="0" data-desc="Jamón, champiñones, aceitunas negras y alcachofas." data-img="img/menu/quattro-stagioni.webp" data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver 4 Stagioni"></button>
           <figure class="pf-mm-ph"><img src="img/menu/t/quattro-stagioni.webp" alt="4 Stagioni de Pizza y Fuego" width="320" height="320" loading="lazy" decoding="async"></figure>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>4 Stagioni</span></h4><p class="pf-mm-desc">Jamón, champiñones, aceitunas negras y alcachofas.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>4 Stagioni</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Jamón, champiñones, aceitunas negras y alcachofas.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="prosciutto-funghi" data-name="Prosciutto e Funghi" data-price="0" data-desc="Jamón y champiñones." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Prosciutto e Funghi"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Prosciutto e Funghi</span></h4><p class="pf-mm-desc">Jamón y champiñones.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Prosciutto e Funghi</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Jamón y champiñones.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="tonno-cipolla" data-name="Tonno e Cipolla" data-price="0" data-desc="Atún y cebolla." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Tonno e Cipolla"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Tonno e Cipolla</span></h4><p class="pf-mm-desc">Atún y cebolla.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Tonno e Cipolla</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Atún y cebolla.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="vegetariana" data-name="Vegetariana" data-price="0" data-desc="Calabaza, champiñones, morrón y cebolla." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Vegetariana"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Vegetariana</span></h4><p class="pf-mm-desc">Calabaza, champiñones, morrón y cebolla.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Vegetariana</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Calabaza, champiñones, morrón y cebolla.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="tedesca" data-name="Tedesca" data-price="0" data-desc="Salchicha y jamón." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Tedesca"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Tedesca</span></h4><p class="pf-mm-desc">Salchicha y jamón.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Tedesca</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Salchicha y jamón.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="picante" data-name="Picante" data-price="0" data-desc="Salami, aceitunas negras y chile." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Picante"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Picante</span></h4><p class="pf-mm-desc">Salami, aceitunas negras y chile.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Picante</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Salami, aceitunas negras y chile.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="capricciosa" data-name="Capricciosa" data-price="0" data-desc="Jamón, aceitunas y champiñones." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Capricciosa"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Capricciosa</span></h4><p class="pf-mm-desc">Jamón, aceitunas y champiñones.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Capricciosa</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Jamón, aceitunas y champiñones.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="napoletana" data-name="Napoletana" data-price="0" data-desc="Anchoas, alcaparras y aceitunas." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Napoletana"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Napoletana</span></h4><p class="pf-mm-desc">Anchoas, alcaparras y aceitunas.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Napoletana</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Anchoas, alcaparras y aceitunas.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="4-quesos" data-name="4 Quesos" data-price="0" data-desc="Cuatro quesos." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver 4 Quesos"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>4 Quesos</span></h4><p class="pf-mm-desc">Cuatro quesos.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>4 Quesos</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Cuatro quesos.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="mare-monti" data-name="Mare e Monti" data-price="0" data-desc="Camaroncitos y champiñones." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Mare e Monti"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Mare e Monti</span></h4><p class="pf-mm-desc">Camaroncitos y champiñones.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Mare e Monti</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Camaroncitos y champiñones.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="ferrarese" data-name="Ferrarese" data-price="0" data-desc="Pepperoni, jamón y salami." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Ferrarese"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Ferrarese</span></h4><p class="pf-mm-desc">Pepperoni, jamón y salami.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Ferrarese</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Pepperoni, jamón y salami.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="salmon" data-name="Salmón" data-price="0" data-desc="Salmón ahumado y alcaparras." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Salmón"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Salmón</span></h4><p class="pf-mm-desc">Salmón ahumado y alcaparras.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Salmón</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Salmón ahumado y alcaparras.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="iberica" data-name="Ibérica" data-price="0" data-desc="Jamón serrano." data-opts='[[&quot;Chica 25 cm&quot;, 0], [&quot;Mediana 32 cm&quot;, 0], [&quot;Grande 36 cm&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Ibérica"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Ibérica</span></h4><p class="pf-mm-desc">Jamón serrano.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 cm · Grande 36 cm</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Ibérica</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Jamón serrano.</p><span class="pf-mm-sizes">Chica 25 cm · Mediana 32 · Grande 36</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
       </div>
@@ -253,28 +266,28 @@
         <article class="pf-mm-card" data-id="brusquetas-miste" data-name="Brusquetas Miste" data-price="0" data-desc="Surtido de 4: 2 pomodoro, 1 tonnata y 1 de salmón." data-img="img/menu/brusquetas-miste.webp">
           <button class="pf-mm-hit" type="button" aria-label="Ver Brusquetas Miste"></button>
           <figure class="pf-mm-ph"><img src="img/menu/t/brusquetas-miste.webp" alt="Brusquetas Miste de Pizza y Fuego" width="320" height="320" loading="lazy" decoding="async"></figure>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Brusquetas Miste</span></h4><p class="pf-mm-desc">Surtido de 4: 2 pomodoro, 1 tonnata y 1 de salmón.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Brusquetas Miste</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Surtido de 4: 2 pomodoro, 1 tonnata y 1 de salmón.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card" data-id="brusqueta-pomodoro" data-name="Brusqueta Pomodoro" data-price="0" data-desc="4 piezas. Pan artesanal con jitomate, aceite de olivo y albahaca." data-img="img/menu/brusqueta-pomodoro.webp">
           <button class="pf-mm-hit" type="button" aria-label="Ver Brusqueta Pomodoro"></button>
           <figure class="pf-mm-ph"><img src="img/menu/t/brusqueta-pomodoro.webp" alt="Brusqueta Pomodoro de Pizza y Fuego" width="320" height="320" loading="lazy" decoding="async"></figure>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Brusqueta Pomodoro</span></h4><p class="pf-mm-desc">4 piezas. Pan artesanal con jitomate, aceite de olivo y albahaca.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Brusqueta Pomodoro</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">4 piezas. Pan artesanal con jitomate, aceite de olivo y albahaca.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="brusqueta-tonnata" data-name="Brusqueta Tonnata" data-price="0" data-desc="4 piezas. Salsa de atún con alcaparras y mayonesa.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Brusqueta Tonnata"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Brusqueta Tonnata</span></h4><p class="pf-mm-desc">4 piezas. Salsa de atún con alcaparras y mayonesa.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Brusqueta Tonnata</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">4 piezas. Salsa de atún con alcaparras y mayonesa.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="brusqueta-salmon" data-name="Brusqueta de Salmón" data-price="0" data-desc="4 piezas. Queso crema y salmón ahumado.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Brusqueta de Salmón"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Brusqueta de Salmón</span></h4><p class="pf-mm-desc">4 piezas. Queso crema y salmón ahumado.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Brusqueta de Salmón</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">4 piezas. Queso crema y salmón ahumado.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="provoleta" data-name="Queso Provoleta" data-price="0" data-desc="Rueda de queso horneada.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Queso Provoleta"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Queso Provoleta</span></h4><p class="pf-mm-desc">Rueda de queso horneada.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Queso Provoleta</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Rueda de queso horneada.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
       </div>
@@ -285,27 +298,27 @@
         <article class="pf-mm-card" data-id="caprese" data-name="Insalata Caprese" data-price="0" data-desc="Jitomate, mozzarella y albahaca." data-img="img/menu/caprese.webp">
           <button class="pf-mm-hit" type="button" aria-label="Ver Insalata Caprese"></button>
           <figure class="pf-mm-ph"><img src="img/menu/t/caprese.webp" alt="Insalata Caprese de Pizza y Fuego" width="320" height="320" loading="lazy" decoding="async"></figure>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Insalata Caprese</span></h4><p class="pf-mm-desc">Jitomate, mozzarella y albahaca.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Insalata Caprese</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Jitomate, mozzarella y albahaca.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="nostra" data-name="Insalata Nostra" data-price="0" data-desc="Lechuga, jitomate, pepino, morrón, aceitunas negras, champiñones y parmesano.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Insalata Nostra"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Insalata Nostra</span></h4><p class="pf-mm-desc">Lechuga, jitomate, pepino, morrón, aceitunas negras, champiñones y parmesano.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Insalata Nostra</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Lechuga, jitomate, pepino, morrón, aceitunas negras, champiñones y parmesano.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="mista" data-name="Insalata Mista" data-price="0" data-desc="Lechuga, pepino, jitomate y aceitunas.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Insalata Mista"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Insalata Mista</span></h4><p class="pf-mm-desc">Lechuga, pepino, jitomate y aceitunas.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Insalata Mista</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Lechuga, pepino, jitomate y aceitunas.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="caesar" data-name="Insalata Caesar" data-price="0" data-desc="Con o sin pechuga de pollo." data-opts='[[&quot;Sin pollo&quot;, 0], [&quot;Con pollo&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Insalata Caesar"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Insalata Caesar</span></h4><p class="pf-mm-desc">Con o sin pechuga de pollo.</p><span class="pf-mm-sizes">Sin pollo · Con pollo</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Insalata Caesar</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Con o sin pechuga de pollo.</p><span class="pf-mm-sizes">Sin pollo · Con pollo</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="verduras-vapor" data-name="Verduras al Vapor" data-price="0" data-desc="Chayote, brócoli y zanahoria.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Verduras al Vapor"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Verduras al Vapor</span></h4><p class="pf-mm-desc">Chayote, brócoli y zanahoria.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Verduras al Vapor</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Chayote, brócoli y zanahoria.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
       </div>
@@ -316,71 +329,71 @@
         <article class="pf-mm-card" data-id="lasagna" data-name="Lasagna Bolognese" data-price="0" data-desc="Carne molida, mozzarella, parmesano y jitomate, gratinada en cazuela." data-img="img/menu/lasagna.webp">
           <button class="pf-mm-hit" type="button" aria-label="Ver Lasagna Bolognese"></button>
           <figure class="pf-mm-ph"><img src="img/menu/t/lasagna.webp" alt="Lasagna Bolognese de Pizza y Fuego" width="320" height="320" loading="lazy" decoding="async"></figure>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Lasagna Bolognese</span></h4><p class="pf-mm-desc">Carne molida, mozzarella, parmesano y jitomate, gratinada en cazuela.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Lasagna Bolognese</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Carne molida, mozzarella, parmesano y jitomate, gratinada en cazuela.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card" data-id="spaghetti-bolognese" data-name="Spaghetti Bolognese" data-price="0" data-desc="Con salsa bolognesa." data-img="img/menu/spaghetti-bolognese.webp">
           <button class="pf-mm-hit" type="button" aria-label="Ver Spaghetti Bolognese"></button>
           <figure class="pf-mm-ph"><img src="img/menu/t/spaghetti-bolognese.webp" alt="Spaghetti Bolognese de Pizza y Fuego" width="320" height="320" loading="lazy" decoding="async"></figure>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Spaghetti Bolognese</span></h4><p class="pf-mm-desc">Con salsa bolognesa.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Spaghetti Bolognese</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Con salsa bolognesa.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card" data-id="fusilli-amatriciana" data-name="Fusilli Amatriciana" data-price="0" data-desc="Salsa de jitomate, tocino y cebolla." data-img="img/menu/fusilli-amatriciana.webp">
           <button class="pf-mm-hit" type="button" aria-label="Ver Fusilli Amatriciana"></button>
           <figure class="pf-mm-ph"><img src="img/menu/t/fusilli-amatriciana.webp" alt="Fusilli Amatriciana de Pizza y Fuego" width="320" height="320" loading="lazy" decoding="async"></figure>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Fusilli Amatriciana</span></h4><p class="pf-mm-desc">Salsa de jitomate, tocino y cebolla.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Fusilli Amatriciana</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Salsa de jitomate, tocino y cebolla.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card" data-id="spaghetti-frutti-di-mare" data-name="Spaghetti Frutti di Mare" data-price="0" data-desc="Camarón, calamar, surimi, mejillón y pulpo con chile guajillo y ajo." data-img="img/menu/spaghetti-frutti-di-mare.webp">
           <button class="pf-mm-hit" type="button" aria-label="Ver Spaghetti Frutti di Mare"></button>
           <figure class="pf-mm-ph"><img src="img/menu/t/spaghetti-frutti-di-mare.webp" alt="Spaghetti Frutti di Mare de Pizza y Fuego" width="320" height="320" loading="lazy" decoding="async"></figure>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Spaghetti Frutti di Mare</span></h4><p class="pf-mm-desc">Camarón, calamar, surimi, mejillón y pulpo con chile guajillo y ajo.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Spaghetti Frutti di Mare</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Camarón, calamar, surimi, mejillón y pulpo con chile guajillo y ajo.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card" data-id="spaghetti-zucchini" data-name="Spaghetti Zucchini" data-price="0" data-desc="Calabacitas, ajo, aceite de oliva, chile en polvo y parmesano." data-img="img/menu/spaghetti-zucchini.webp">
           <button class="pf-mm-hit" type="button" aria-label="Ver Spaghetti Zucchini"></button>
           <figure class="pf-mm-ph"><img src="img/menu/t/spaghetti-zucchini.webp" alt="Spaghetti Zucchini de Pizza y Fuego" width="320" height="320" loading="lazy" decoding="async"></figure>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Spaghetti Zucchini</span></h4><p class="pf-mm-desc">Calabacitas, ajo, aceite de oliva, chile en polvo y parmesano.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Spaghetti Zucchini</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Calabacitas, ajo, aceite de oliva, chile en polvo y parmesano.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="spaghetti-carbonara" data-name="Spaghetti Carbonara" data-price="0" data-desc="Crema, huevo, tocino y cebolla.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Spaghetti Carbonara"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Spaghetti Carbonara</span></h4><p class="pf-mm-desc">Crema, huevo, tocino y cebolla.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Spaghetti Carbonara</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Crema, huevo, tocino y cebolla.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="spaghetti-mozzarella" data-name="Spaghetti Mozzarella" data-price="0" data-desc="Salsa de jitomate, mozzarella, chile en polvo y pimienta.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Spaghetti Mozzarella"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Spaghetti Mozzarella</span></h4><p class="pf-mm-desc">Salsa de jitomate, mozzarella, chile en polvo y pimienta.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Spaghetti Mozzarella</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Salsa de jitomate, mozzarella, chile en polvo y pimienta.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="spaghetti-puttanesca" data-name="Spaghetti Puttanesca" data-price="0" data-desc="">
           <button class="pf-mm-hit" type="button" aria-label="Ver Spaghetti Puttanesca"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Spaghetti Puttanesca</span></h4></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Spaghetti Puttanesca</span><span class="pf-mm-ask">Pregunta el precio</span></h4></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="fusilli-4-quesos" data-name="Fusilli Cuatro Quesos" data-price="0" data-desc="Gorgonzola, parmesano, añejo y mozzarella.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Fusilli Cuatro Quesos"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Fusilli Cuatro Quesos</span></h4><p class="pf-mm-desc">Gorgonzola, parmesano, añejo y mozzarella.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Fusilli Cuatro Quesos</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Gorgonzola, parmesano, añejo y mozzarella.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="fusilli-salmon" data-name="Fusilli de Salmón" data-price="0" data-desc="Crema, salmón ahumado, cebolla y perejil.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Fusilli de Salmón"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Fusilli de Salmón</span></h4><p class="pf-mm-desc">Crema, salmón ahumado, cebolla y perejil.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Fusilli de Salmón</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Crema, salmón ahumado, cebolla y perejil.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="fusilli-mare-monti" data-name="Fusilli Mare e Monti" data-price="0" data-desc="Camarones, champiñones, salsa de jitomate y crema.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Fusilli Mare e Monti"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Fusilli Mare e Monti</span></h4><p class="pf-mm-desc">Camarones, champiñones, salsa de jitomate y crema.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Fusilli Mare e Monti</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Camarones, champiñones, salsa de jitomate y crema.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="fusilli-gamberetti" data-name="Fusilli ai Gamberetti" data-price="0" data-desc="Camarones, ajo, chile y orégano." data-opts='[[&quot;Con crema&quot;, 0], [&quot;Sin crema&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Fusilli ai Gamberetti"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Fusilli ai Gamberetti</span></h4><p class="pf-mm-desc">Camarones, ajo, chile y orégano.</p><span class="pf-mm-sizes">Con crema · Sin crema</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Fusilli ai Gamberetti</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Camarones, ajo, chile y orégano.</p><span class="pf-mm-sizes">Con crema · Sin crema</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="ravioli" data-name="Ravioli di Carne" data-price="0" data-desc="En salsa pomodoro.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Ravioli di Carne"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Ravioli di Carne</span></h4><p class="pf-mm-desc">En salsa pomodoro.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Ravioli di Carne</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">En salsa pomodoro.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
       </div>
@@ -390,17 +403,17 @@
       <div class="pf-mm-list">
         <article class="pf-mm-card pf-mm-card--tx" data-id="arrachera" data-name="Arrachera" data-price="0" data-desc="250 g.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Arrachera"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Arrachera</span></h4><p class="pf-mm-desc">250 g.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Arrachera</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">250 g.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="pollo-rosmarino" data-name="Pollo al Rosmarino" data-price="0" data-desc="250 g.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Pollo al Rosmarino"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Pollo al Rosmarino</span></h4><p class="pf-mm-desc">250 g.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Pollo al Rosmarino</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">250 g.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="pollo-mozzarella" data-name="Pollo alla Mozzarella" data-price="0" data-desc="">
           <button class="pf-mm-hit" type="button" aria-label="Ver Pollo alla Mozzarella"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Pollo alla Mozzarella</span></h4></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Pollo alla Mozzarella</span><span class="pf-mm-ask">Pregunta el precio</span></h4></div>
           <div class="pf-mm-ctl"></div>
         </article>
       </div>
@@ -410,27 +423,27 @@
       <div class="pf-mm-list">
         <article class="pf-mm-card pf-mm-card--tx" data-id="pizza-nutella" data-name="Pizza de Nutella" data-price="0" data-desc="">
           <button class="pf-mm-hit" type="button" aria-label="Ver Pizza de Nutella"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Pizza de Nutella</span></h4></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Pizza de Nutella</span><span class="pf-mm-ask">Pregunta el precio</span></h4></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="helado-amaretto" data-name="Helado de Amaretto" data-price="0" data-desc="">
           <button class="pf-mm-hit" type="button" aria-label="Ver Helado de Amaretto"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Helado de Amaretto</span></h4></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Helado de Amaretto</span><span class="pf-mm-ask">Pregunta el precio</span></h4></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="pasteles" data-name="Pasteles de la casa" data-price="0" data-desc="Selección de pasteles de la casa.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Pasteles de la casa"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Pasteles de la casa</span></h4><p class="pf-mm-desc">Selección de pasteles de la casa.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Pasteles de la casa</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Selección de pasteles de la casa.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="cafe" data-name="Café" data-price="0" data-desc="Americano o espresso." data-opts='[[&quot;Americano&quot;, 0], [&quot;Espresso&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Café"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Café</span></h4><p class="pf-mm-desc">Americano o espresso.</p><span class="pf-mm-sizes">Americano · Espresso</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Café</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Americano o espresso.</p><span class="pf-mm-sizes">Americano · Espresso</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="cappuccino" data-name="Cappuccino" data-price="0" data-desc="">
           <button class="pf-mm-hit" type="button" aria-label="Ver Cappuccino"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Cappuccino</span></h4></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Cappuccino</span><span class="pf-mm-ask">Pregunta el precio</span></h4></div>
           <div class="pf-mm-ctl"></div>
         </article>
       </div>
@@ -440,47 +453,47 @@
       <div class="pf-mm-list">
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="limonada" data-name="Limonada natural" data-price="0" data-desc="Vaso o jarra." data-opts='[[&quot;Vaso&quot;, 0], [&quot;Jarra 1 L&quot;, 0], [&quot;Jarra 2 L&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Limonada natural"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Limonada natural</span></h4><p class="pf-mm-desc">Vaso o jarra.</p><span class="pf-mm-sizes">Vaso · Jarra 1 L · Jarra 2 L</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Limonada natural</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Vaso o jarra.</p><span class="pf-mm-sizes">Vaso · Jarra 1 L · Jarra 2 L</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="limonada-mineral" data-name="Limonada mineral" data-price="0" data-desc="Vaso o jarra." data-opts='[[&quot;Vaso&quot;, 0], [&quot;Jarra 1 L&quot;, 0], [&quot;Jarra 2 L&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Limonada mineral"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Limonada mineral</span></h4><p class="pf-mm-desc">Vaso o jarra.</p><span class="pf-mm-sizes">Vaso · Jarra 1 L · Jarra 2 L</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Limonada mineral</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Vaso o jarra.</p><span class="pf-mm-sizes">Vaso · Jarra 1 L · Jarra 2 L</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="naranjada" data-name="Naranjada" data-price="0" data-desc="De temporada." data-opts='[[&quot;Vaso&quot;, 0], [&quot;Jarra 1 L&quot;, 0], [&quot;Jarra 2 L&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Naranjada"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Naranjada</span></h4><p class="pf-mm-desc">De temporada.</p><span class="pf-mm-sizes">Vaso · Jarra 1 L · Jarra 2 L</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Naranjada</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">De temporada.</p><span class="pf-mm-sizes">Vaso · Jarra 1 L · Jarra 2 L</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx" data-id="te-jazmin" data-name="Té de jazmín" data-price="0" data-desc="500 ml, con oolong y limón natural.">
           <button class="pf-mm-hit" type="button" aria-label="Ver Té de jazmín"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Té de jazmín</span></h4><p class="pf-mm-desc">500 ml, con oolong y limón natural.</p></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Té de jazmín</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">500 ml, con oolong y limón natural.</p></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="refresco" data-name="Refresco" data-price="0" data-desc="Coca-Cola o Sprite, 355 ml." data-opts='[[&quot;Coca-Cola&quot;, 0], [&quot;Sprite&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Refresco"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Refresco</span></h4><p class="pf-mm-desc">Coca-Cola o Sprite, 355 ml.</p><span class="pf-mm-sizes">Coca-Cola · Sprite</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Refresco</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Coca-Cola o Sprite, 355 ml.</p><span class="pf-mm-sizes">Coca-Cola · Sprite</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="agua" data-name="Agua" data-price="0" data-desc="Natural o mineral." data-opts='[[&quot;Natural&quot;, 0], [&quot;Mineral&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Agua"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Agua</span></h4><p class="pf-mm-desc">Natural o mineral.</p><span class="pf-mm-sizes">Natural · Mineral</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Agua</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Natural o mineral.</p><span class="pf-mm-sizes">Natural · Mineral</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="cerveza" data-name="Cerveza" data-price="0" data-desc="Corona, Victoria, Modelo Especial o Negra Modelo." data-opts='[[&quot;Corona&quot;, 0], [&quot;Victoria&quot;, 0], [&quot;Modelo Especial&quot;, 0], [&quot;Negra Modelo&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Cerveza"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Cerveza</span></h4><p class="pf-mm-desc">Corona, Victoria, Modelo Especial o Negra Modelo.</p><span class="pf-mm-sizes">Corona · Victoria · Modelo Especial · Negra Modelo</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Cerveza</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Corona, Victoria, Modelo Especial o Negra Modelo.</p><span class="pf-mm-sizes">Corona · Victoria · Modelo Especial · Negra Modelo</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
         <article class="pf-mm-card pf-mm-card--tx pf-mm-card--multi" data-id="vino-casa" data-name="Vino de la casa" data-price="0" data-desc="Tinto o blanco." data-opts='[[&quot;Copa&quot;, 0], [&quot;Garrafa ½ L&quot;, 0], [&quot;Botella&quot;, 0]]'>
           <button class="pf-mm-hit" type="button" aria-label="Ver Vino de la casa"></button>
-          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Vino de la casa</span></h4><p class="pf-mm-desc">Tinto o blanco.</p><span class="pf-mm-sizes">Copa · Garrafa ½ L · Botella</span></div>
+          <div class="pf-mm-tx"><h4 class="pf-mm-name"><span>Vino de la casa</span><span class="pf-mm-ask">Pregunta el precio</span></h4><p class="pf-mm-desc">Tinto o blanco.</p><span class="pf-mm-sizes">Copa · Garrafa ½ L · Botella</span></div>
           <div class="pf-mm-ctl"></div>
         </article>
       </div>
     </section>
-    <p class="pf-mm-legal">Carta de referencia. Precio, disponibilidad y tiempo de entrega te los confirmamos por WhatsApp.</p>
+    <p class="pf-mm-legal">Carta de referencia. <b>Pregunta el precio por WhatsApp</b>: te confirmamos el total, la disponibilidad y el tiempo antes de que pagues.</p>
     </div>
   </section>
 
@@ -506,6 +519,9 @@
           <button class="pf-pd-x" type="button" data-pd-close aria-label="Cerrar pedido">&times;</button>
         </header>
         <ul class="pf-pd-list" aria-live="polite"></ul>
+
+        <!-- Sin precios del dueño el total NUNCA se pinta en $0: en su lugar va la promesa concreta. -->
+        <p class="pf-pd-total" id="pf-pd-total" hidden><span>Total</span><b>Te confirmamos el total por WhatsApp</b></p>
 
         <label class="pf-pd-f">
           <span>Nota para la cocina</span>
@@ -543,7 +559,7 @@
         </fieldset>
         <p class="pf-pd-pago-note">Si pagas con tarjeta, te mandamos el link de pago por WhatsApp.</p>
 
-        <p class="pf-pd-fine">El precio y el tiempo de entrega te los confirmamos por WhatsApp.</p>
+        <p class="pf-pd-fine">El tiempo de entrega te lo confirmamos en el mismo WhatsApp, antes de que pagues.</p>
 
         <div class="pf-pd-actions">
           <a class="pf-pd-wa" id="pf-pd-wa" href="https://wa.me/524498974488" target="_blank" rel="noopener">
@@ -678,7 +694,8 @@
         </div>
         <a class="pf-btn pf-btn--line ru-pagar" data-pago-btn hidden target="_blank" rel="noopener">Pagar con tarjeta</a>
         <a class="ru-fb" href="https://wa.me/524498974488" target="_blank" rel="noopener" hidden>¿No se abrió WhatsApp? Toca aquí</a>
-        <p class="ru-fine">Te respondemos con cuántas pizzas te recomendamos y el total.</p>
+        <!-- Sin precios del dueño no se pinta ningún total: en su lugar va la promesa concreta. -->
+        <p class="ru-total"><span>Total</span><b>Te confirmamos el total por WhatsApp</b></p>
       </form>
     </div>
   </section>
@@ -697,6 +714,13 @@
       </div>
       <div class="nos-score" data-reveal>
         <p class="nos-score-n">4.6</p>
+        <div class="nos-stars" aria-hidden="true">
+          <span class="nos-star" style="--i:0"><svg class="nos-star-bg"><use href="#i-star"/></svg><svg class="nos-star-fg" style="--fill:100%"><use href="#i-star"/></svg></span>
+          <span class="nos-star" style="--i:1"><svg class="nos-star-bg"><use href="#i-star"/></svg><svg class="nos-star-fg" style="--fill:100%"><use href="#i-star"/></svg></span>
+          <span class="nos-star" style="--i:2"><svg class="nos-star-bg"><use href="#i-star"/></svg><svg class="nos-star-fg" style="--fill:100%"><use href="#i-star"/></svg></span>
+          <span class="nos-star" style="--i:3"><svg class="nos-star-bg"><use href="#i-star"/></svg><svg class="nos-star-fg" style="--fill:100%"><use href="#i-star"/></svg></span>
+          <span class="nos-star" style="--i:4"><svg class="nos-star-bg"><use href="#i-star"/></svg><svg class="nos-star-fg" style="--fill:60%"><use href="#i-star"/></svg></span>
+        </div>
         <p class="nos-score-l"><em>de 785</em> reseñas en Google</p>
       </div>
     </div>
@@ -709,7 +733,7 @@
     <div class="k-wrap nos-more"><a class="pf-btn pf-btn--line" href="https://www.google.com/maps/place/?q=place_id:ChIJSw4e2NbtKYQRG4S7wCS0Q0g" target="_blank" rel="noopener">Ver todas en Google</a></div>
 
     <div class="k-wrap nos-collage">
-      <figure class="nos-c1 pf-hover-zoom"><img src="img/nos/fachada-noche.webp" alt="Fachada de Pizza y Fuego de noche, con letrero de neón" width="1600" height="1200" loading="lazy" decoding="async" data-blur-in></figure>
+      <figure class="nos-c1 pf-hover-zoom"><img src="img/nos/fachada-noche.webp" alt="Letrero de neón de Pizza y Fuego encendido de noche, sobre la entrada del local" width="1500" height="1000" loading="lazy" decoding="async" data-blur-in></figure>
       <figure class="nos-c2 pf-hover-zoom"><img src="img/gal/mesa-mantel.webp" alt="Mesa con el mantel de lunares, focaccia y una pizza recién horneada" width="1400" height="1050" loading="lazy" decoding="async" data-blur-in></figure>
       <figure class="nos-c3 pf-hover-zoom"><img src="img/nos/focaccia.webp" alt="Focaccia de cortesía recién horneada" width="960" height="1200" loading="lazy" decoding="async" data-blur-in></figure>
       <figure class="nos-c4 pf-hover-zoom"><img src="img/gal/salsas.webp" alt="Salsas de la casa" width="1400" height="1050" loading="lazy" decoding="async" data-blur-in></figure>
@@ -744,7 +768,7 @@
 
 </main>
 
-<footer class="pf-foot" data-dark data-hide-wa>
+<footer class="pf-foot" data-dark data-hide-wa data-grain>
   <div class="k-wrap">
     <div class="pf-foot-top">
       <img class="pf-foot-logo" src="img/brand/logo-560.webp" alt="Pizza y Fuego, comida italiana desde 2014" width="560" height="560" loading="lazy">
@@ -758,11 +782,11 @@
       <div><h2 class="pf-foot-h">Dónde</h2><p>Av. de la Convención de 1914 Sur 1108, Locales E y F<br>Jardines de la Asunción, Aguascalientes<br>Frente a la Clínica 1 del IMSS</p></div>
       <div><h2 class="pf-foot-h">Horario</h2><p>Martes a sábado 1:30 a 11 pm<br>Domingo 1:30 a 7:30 pm<br>Lunes feriados abierto</p></div>
       <div><h2 class="pf-foot-h">Contacto</h2>
-        <ul class="pf-foot-list">
-          <li><a data-wa="Hola Pizza y Fuego, quiero hacer un pedido." href="https://wa.me/524498974488"><svg aria-hidden="true"><use href="#i-wa"/></svg>449 897 4488</a></li>
-          <li><a href="https://www.facebook.com/pizzayfuego/" target="_blank" rel="noopener">Facebook</a></li>
-          <li><a href="https://www.google.com/maps/place/?q=place_id:ChIJSw4e2NbtKYQRG4S7wCS0Q0g" target="_blank" rel="noopener">Google Maps</a></li>
-        </ul>
+        <div class="pf-foot-social" aria-label="Síguenos en redes">
+          <a href="https://www.facebook.com/pizzayfuego/" target="_blank" rel="noopener" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
+          <a href="https://www.google.com/maps/place/?q=place_id:ChIJSw4e2NbtKYQRG4S7wCS0Q0g" target="_blank" rel="noopener" aria-label="Google Maps"><svg aria-hidden="true"><use href="#i-maps"/></svg></a>
+          <a data-wa="Hola Pizza y Fuego, quiero hacer un pedido." href="https://wa.me/524498974488" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+        </div>
       </div>
     </div>
     <p class="pf-foot-note">Muestra de diseño hecha por KREVO para Pizza y Fuego. Fotos reales del restaurante y de sus clientes.</p>
@@ -772,12 +796,12 @@
 <a class="k-wa" data-wa="Hola Pizza y Fuego, quiero hacer un pedido." href="https://wa.me/524498974488" aria-label="WhatsApp"></a>
 
 <script src="../_kit/kit.js?v=1789789887" defer></script>
-<script src="site.js?v=1789868195" defer></script>
+<script src="site.js?v=1789875303" defer></script>
 <script src="sections/10-hero.js?v=1789869535" defer></script>
-<script src="sections/20-menu.js?v=1789836429" defer></script>
-<script src="sections/21-pedido.js?v=1789867672" defer></script>
+<script src="sections/20-menu.js?v=1789875514" defer></script>
+<script src="sections/21-pedido.js?v=1789875554" defer></script>
 <script src="sections/30-horno.js?v=1789836354" defer></script>
 <script src="sections/40-reunion.js?v=1789867627" defer></script>
-<script src="sections/50-nosotros.js?v=1789868504" defer></script>
+<script src="sections/50-nosotros.js?v=1789873553" defer></script>
 </body>
 </html>

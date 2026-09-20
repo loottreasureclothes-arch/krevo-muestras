@@ -45,19 +45,29 @@
   <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z M9 9h7M9 13h7M9 17h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
   <symbol id="i-fire" viewBox="0 0 24 24"><path d="M12 21c-3.6 0-6-2.4-6-5.6 0-3 2.2-4.6 3.3-7.1.4 1.6 1.3 2.5 2.1 2.9C11 7.6 12.6 4.8 15 3c-.4 2.6.6 4.6 1.9 6.4 1 1.4 1.1 2.8 1.1 4.1C18 18.3 15.6 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.77l-.44 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></symbol>
+  <symbol id="i-maps" viewBox="0 0 24 24"><path d="M12 22s-7.5-6.6-7.5-12.2A7.5 7.5 0 0 1 19.5 9.8C19.5 15.4 12 22 12 22Z" fill="currentColor"/><circle cx="12" cy="9.7" r="3" fill="#fff"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.6l2.9 6 6.6.8-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5-4.8-4.6 6.6-.8Z"/></symbol>
 </svg>
 
 <header class="k-header">
-  <a class="k-logo" href="#inicio" aria-label="Pizza y Fuego, inicio"><img src="img/brand/logo-176.webp" alt="" width="176" height="176"><span>Pizza y Fuego</span></a>
-  <nav class="k-nav" aria-label="Principal">
-    <a href="#horno">El horno</a>
-    <a href="#reunion">Para tu reunión</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#visita">Visítanos</a>
-  </nav>
-  <a class="pf-hmenu" href="#menu"><svg aria-hidden="true"><use href="#i-menu"/></svg>Menú</a>
-  <button class="pf-menu-btn" type="button" aria-expanded="false" aria-controls="pf-nav" aria-label="Abrir navegación"><span class="pf-burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
-  <a class="k-cta pf-hcta" href="#menu">Pedir</a>
+  <div class="pf-topbar">
+    <div class="pf-topbar-in">
+      <span class="pf-topbar-hrs">Martes a sábado 1:30 a 11 pm · Domingo 1:30 a 7:30</span>
+      <a class="pf-topbar-tel" href="tel:+524492932383"><svg aria-hidden="true"><use href="#i-phone"/></svg>449 293 23 83</a>
+    </div>
+  </div>
+  <div class="pf-headbar">
+    <a class="k-logo pf-logo" href="#inicio" aria-label="Pizza y Fuego, inicio"><img src="img/brand/logo-176.webp" alt="" width="176" height="176"></a>
+    <nav class="k-nav" aria-label="Principal">
+      <a href="#menu">Menú</a>
+      <a href="#horno">Horno</a>
+      <a href="#reunion">Reunión</a>
+      <a href="#visita">Visítanos</a>
+    </nav>
+    <button class="pf-menu-btn" type="button" aria-expanded="false" aria-controls="pf-nav" aria-label="Abrir navegación"><span class="pf-burger" aria-hidden="true"><i></i><i></i><i></i></span></button>
+    <a class="pf-pedir" href="#menu"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Pedir</span></a>
+  </div>
 </header>
 
 <div class="pf-nav" id="pf-nav" role="dialog" aria-modal="true" aria-label="Navegación" aria-hidden="true">
@@ -90,7 +100,7 @@
 <!--SECTIONS-->
 </main>
 
-<footer class="pf-foot" data-dark data-hide-wa>
+<footer class="pf-foot" data-dark data-hide-wa data-grain>
   <div class="k-wrap">
     <div class="pf-foot-top">
       <img class="pf-foot-logo" src="img/brand/logo-560.webp" alt="Pizza y Fuego, comida italiana desde 2014" width="560" height="560" loading="lazy">
@@ -104,11 +114,11 @@
       <div><h2 class="pf-foot-h">Dónde</h2><p>Av. de la Convención de 1914 Sur 1108, Locales E y F<br>Jardines de la Asunción, Aguascalientes<br>Frente a la Clínica 1 del IMSS</p></div>
       <div><h2 class="pf-foot-h">Horario</h2><p>Martes a sábado 1:30 a 11 pm<br>Domingo 1:30 a 7:30 pm<br>Lunes feriados abierto</p></div>
       <div><h2 class="pf-foot-h">Contacto</h2>
-        <ul class="pf-foot-list">
-          <li><a data-wa="Hola Pizza y Fuego, quiero hacer un pedido." href="https://wa.me/524498974488"><svg aria-hidden="true"><use href="#i-wa"/></svg>449 897 4488</a></li>
-          <li><a href="https://www.facebook.com/pizzayfuego/" target="_blank" rel="noopener">Facebook</a></li>
-          <li><a href="https://www.google.com/maps/place/?q=place_id:ChIJSw4e2NbtKYQRG4S7wCS0Q0g" target="_blank" rel="noopener">Google Maps</a></li>
-        </ul>
+        <div class="pf-foot-social" aria-label="Síguenos en redes">
+          <a href="https://www.facebook.com/pizzayfuego/" target="_blank" rel="noopener" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
+          <a href="https://www.google.com/maps/place/?q=place_id:ChIJSw4e2NbtKYQRG4S7wCS0Q0g" target="_blank" rel="noopener" aria-label="Google Maps"><svg aria-hidden="true"><use href="#i-maps"/></svg></a>
+          <a data-wa="Hola Pizza y Fuego, quiero hacer un pedido." href="https://wa.me/524498974488" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+        </div>
       </div>
     </div>
     <p class="pf-foot-note">Muestra de diseño hecha por KREVO para Pizza y Fuego. Fotos reales del restaurante y de sus clientes.</p>

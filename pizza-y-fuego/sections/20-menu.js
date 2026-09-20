@@ -74,7 +74,10 @@
     function paint() {
       $d('.pf-mm-dlg-step output, .pf-mm-step output').textContent = qty;
       var pr = price();
-      $d('.pf-mm-dlg-price').textContent = pr ? money(pr) : '';
+      // Sin precio del dueño nunca se pinta "$0": en el hueco del precio va "Pregunta el precio".
+      var p = $d('.pf-mm-dlg-price');
+      p.textContent = pr ? money(pr) : 'Pregunta el precio';
+      p.classList.toggle('pf-mm-dlg-price--ask', !pr);
       $d('.pf-mm-dlg-add').textContent = 'Agregar ' + qty + (pr ? ' · ' + money(pr * qty) : ' a mi pedido');
     }
     function openDlg(card) {
