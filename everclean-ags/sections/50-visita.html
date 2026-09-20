@@ -1,45 +1,69 @@
-<section class="s-visita ec-sec ec-sec--papel" id="50-visita" aria-label="Apartar visita">
-  <div class="ec-wrap s-visita-grid">
-    <div class="ec-frame s-visita-foto">
-      <div class="ec-frame__pic">
-        <picture>
-          <source srcset="img/visita/exterior-d.webp" media="(min-width: 720px)">
-          <img src="img/visita/exterior-m.webp" alt="Sillón recién lavado a vapor en el patio de un cliente, foto real de Everclean." width="720" height="1280" loading="lazy" decoding="async">
-        </picture>
-      </div>
-      <span class="ec-frame__tag">Vamos a tu casa</span>
-    </div>
+  <section class="s-vis ec-sec ec-sec--papel" id="50-visita" aria-labelledby="vis-title">
+    <div class="ec-wrap s-vis-grid">
+      <div class="s-vis-lado" data-ec-hide-wa>
+        <p class="ec-eyebrow">Junta todo en una sola vuelta</p>
+        <h2 class="ec-h2" id="vis-title">
+          <span>Arma tu visita.</span>
+          <span class="ec-tono2">Nosotros llegamos.</span>
+        </h2>
+        <p class="ec-lead">Elige las piezas, dinos tu colonia y el día que te queda. Te lo dejamos escrito para que solo lo mandes.</p>
 
-    <div class="s-visita-copy">
-      <h2 class="ec-h2" data-ec-drop>
-        <span class="s-visita-line1">Junta todo</span>
-        <span class="ec-tono2">en una sola visita.</span>
-      </h2>
-      <p class="s-visita-lead">El domicilio no se cobra.</p>
-
-      <div class="s-visita-box">
-        <div class="s-visita-resumen" id="s-visita-resumen"></div>
-
-        <label class="s-visita-field">
-          <span>¿En qué colonia o zona?</span>
-          <input type="text" id="s-visita-zona" name="zona" autocomplete="address-level3" placeholder="Ej. Bosques del Prado">
-        </label>
-
-        <div class="s-visita-dia">
-          <span class="s-visita-dia-label">¿Qué día?</span>
-          <div class="s-visita-dia-btns" role="group" aria-label="Qué día prefieres">
-            <button type="button" class="s-visita-dia-btn" data-dia="Entre semana" aria-pressed="false">Entre semana</button>
-            <button type="button" class="s-visita-dia-btn" data-dia="Sábado" aria-pressed="false">Sábado</button>
-            <button type="button" class="s-visita-dia-btn is-active" data-dia="Domingo" aria-pressed="true">Domingo</button>
+        <div class="ec-frame s-vis-foto">
+          <div class="ec-frame__pic">
+            <img src="img/cotiza/casa.webp" alt="Sillón de un cliente recién lavado, afuera de su casa, con la manguera del equipo de vapor." width="700" height="933" loading="lazy" decoding="async">
           </div>
+          <span class="ec-frame__tag">A domicilio en Aguascalientes</span>
         </div>
 
-        <p class="s-visita-total">Total: <strong>te lo confirmamos por WhatsApp</strong></p>
+        <ul class="s-vis-hechos">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Trabajan los domingos</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Servicio a domicilio gratis</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Van hasta tu casa, en Aguascalientes</li>
+        </ul>
 
-        <button type="button" class="ec-btn ec-btn--wa s-visita-send" id="s-visita-send">
+        <figure class="s-vis-resena">
+          <p class="s-vis-resena-top">Seis opiniones en Facebook. <span>Las seis recomiendan.</span></p>
+          <blockquote>&ldquo;Muy buen servicio, puntualidad, amabilidad y sobre todo calidad en el servicio.&rdquo;</blockquote>
+          <figcaption>Ccy Lop · Facebook · 14 de octubre de 2024</figcaption>
+        </figure>
+      </div>
+
+      <div class="s-vis-card" data-ec-reveal>
+        <p class="s-vis-q">¿Qué te lavamos?</p>
+        <div class="s-vis-carrito" id="s-vis-carrito" aria-live="polite"></div>
+
+        <div class="s-vis-atajos" id="s-vis-atajos">
+          <button type="button" data-ec-add="Salas y sillones">+ Sala</button>
+          <button type="button" data-ec-add="Colchones">+ Colchón</button>
+          <button type="button" data-ec-add="Sillas">+ Sillas</button>
+          <button type="button" data-ec-add="Interiores de auto">+ Auto</button>
+        </div>
+
+        <label class="s-vis-campo" for="s-vis-zona">
+          <span>¿En qué colonia o zona?</span>
+          <input type="text" id="s-vis-zona" name="zona" autocomplete="address-level3" placeholder="Ej. Bosques del Prado">
+        </label>
+
+        <p class="s-vis-q s-vis-q--sub">¿Qué día te queda?</p>
+        <div class="s-vis-tres" role="group" aria-label="Qué día te queda">
+          <button type="button" class="s-vis-opt is-on" data-dia="Entre semana" aria-pressed="true">L a V</button>
+          <button type="button" class="s-vis-opt" data-dia="Sábado" aria-pressed="false">Sábado</button>
+          <button type="button" class="s-vis-opt" data-dia="Domingo" aria-pressed="false">Domingo</button>
+        </div>
+
+        <p class="s-vis-q s-vis-q--sub">¿Cada cuándo?</p>
+        <div class="s-vis-tres" role="group" aria-label="Cada cuándo lo necesitas">
+          <button type="button" class="s-vis-opt is-on" data-freq="Una sola vez" aria-pressed="true">Una vez</button>
+          <button type="button" class="s-vis-opt" data-freq="Cada 3 meses" aria-pressed="false">Cada 3 meses</button>
+          <button type="button" class="s-vis-opt" data-freq="Cada mes" aria-pressed="false">Cada mes</button>
+        </div>
+        <p class="s-vis-nota">Lo confirmamos contigo por WhatsApp.</p>
+
+        <p class="s-vis-total">Total: <strong>te lo confirmamos por WhatsApp</strong></p>
+        <a class="ec-btn ec-btn--wa s-vis-send" id="s-vis-send" href="https://wa.me/524491925369?text=Hola%20Everclean%2C%20quiero%20apartar%20una%20visita." target="_blank" rel="noopener">
           <svg aria-hidden="true"><use href="#i-wa"/></svg>Mandar mi visita por WhatsApp
-        </button>
+        </a>
+        <p class="s-vis-nota s-vis-nota--pie">Se abre tu WhatsApp con el mensaje ya escrito. Tú decides si lo mandas.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>

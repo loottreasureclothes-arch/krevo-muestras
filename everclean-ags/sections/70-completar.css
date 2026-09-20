@@ -1,21 +1,18 @@
-/* 70-completar: lo que falta del lado del dueno. Va en --lienzo-2 (la banda --papel la tiene
-   reservada la hoja para la seccion 5 y el carrito) y mide lo que mide su contenido. */
-.s-completar { background: var(--lienzo-2); }
-.s-completar-grid { display: flex; flex-direction: column; gap: 28px; }
-.s-completar-lista ol { list-style: none; counter-reset: completar; padding: 0; display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
-.s-completar-lista li {
-  counter-increment: completar; padding-left: 34px; position: relative; font-size: 14px;
-  color: var(--texto); max-width: 52ch; line-height: 1.45;
+/* Lo que falta para abrirla. Banda marino, lista numerada, sin botones. */
+section[id="70-completar"].s-com{background:var(--marino2);box-shadow:inset 0 1px 0 var(--linea)}
+.s-com-grid{display:grid;gap:clamp(22px,5vw,38px)}
+.s-com-copy{display:grid;gap:14px;align-content:start}
+.s-com-lista{display:grid;gap:0;border-top:1px solid var(--linea)}
+.s-com-lista li{
+  display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
+  padding:14px 0;border-bottom:1px solid var(--linea);
+  font-size:14.5px;line-height:1.5;color:#c6d6e8;
 }
-.s-completar-lista li::before {
-  content: counter(completar, decimal-leading-zero); position: absolute; left: 0; top: 0;
-  font-family: var(--font-display); font-variation-settings: "wdth" 122; font-weight: 850;
-  font-size: 13px; color: var(--marca);
-}
-.s-completar-honestidad { margin-top: 18px; font-size: 12px; color: var(--mute); }
-
-@media (min-width: 900px) {
-  .s-completar-grid { flex-direction: row; justify-content: space-between; gap: 60px; }
-  .s-completar-grid > div:first-child { max-width: 420px; }
-  .s-completar-lista { max-width: 480px; }
+.s-com-n{font-family:var(--titulo);font-size:13px;font-weight:800;color:var(--cian);letter-spacing:.06em;padding-top:2px}
+.s-com-chat{font-size:13.5px;color:#93aac6;padding-right:76px}
+@media (min-width:860px){
+  .s-com-grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);column-gap:52px}
+  .s-com-copy{grid-row:1}
+  .s-com-lista{grid-column:2;grid-row:1}
+  .s-com-chat{grid-column:2;padding-right:0}
 }

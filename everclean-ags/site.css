@@ -1,326 +1,264 @@
-/* Everclean Ags — hoja base (FUNDACIÓN, turno 1). Autocontenida.
-   Lenguaje de formas propio: ARCO Y COSTURA. Componente firma: EL PAR QUE EMBONA.
-   Radios: 0 en todo. El único curvo de la página es el arco de la ola (header, divisor, pie).
-   Tokens de colores.md / HOJA-DIRECCION.md sección 5. Una sola temperatura: fría. */
-:root {
-  --tinta: #00002d;
-  --lienzo: #041233;
-  --lienzo-2: #071a44;
-  --marca: #1e96c3;
-  --marca-ink: #00121c;
-  --bandera: #37648f;
-  --papel: #eef3f7;
-  --papel-2: #e2eaf1;
-  --wa: #25d366;
-  --wa-ink: #0b3d1f;
-  --texto: #eef3f7;
-  --mute: rgba(238, 243, 247, 0.66);
-  --linea: rgba(238, 243, 247, 0.18);
-  --linea-fuerte: rgba(238, 243, 247, 0.3);
-  --font-display: "Archivo", "Arial Narrow", sans-serif;
-  --font-body: "Instrument Sans", system-ui, sans-serif;
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  --wrap: 1240px;
-  --gutter: 20px;
-  --header-h: 56px;
-  --sec-y: 56px;
-}
-@media (min-width: 900px) {
-  :root { --gutter: 40px; --header-h: 64px; --sec-y: 92px; }
+/* ===========================================================================
+   Everclean Ags — base. Lienzo marino, acento cian, formas rectas.
+   Lenguaje de formas PROPIO (R11): rectangulos de radio 2px, reglas finas cian,
+   etiquetas en caja oscura sobre la foto, el arco de ola bajo el header.
+   Nada de discos, ni burbujas, ni tarjetas de radio grande (eso es de otra muestra).
+   =========================================================================== */
+
+:root{
+  --marino:#00062e;
+  --marino2:#020b3c;
+  --panel:#061046;
+  --cian:#31a9de;
+  --cian-claro:#8ad6f4;
+  --papel:#eaf1f7;
+  --papel2:#dce7f1;
+  --tinta:#00062e;
+  --verde:#25d366;
+  --verde-dark:#128c4b;
+  --crudo:#f4f8fb;
+  --linea:rgba(138,214,244,.26);
+  --linea-fuerte:rgba(138,214,244,.5);
+  --wrap:1180px;
+  --header-h:62px;
+  --radio:2px;
+  --sombra:0 18px 44px rgba(0,3,20,.44);
+  --titulo:"Archivo",system-ui,sans-serif;
+  --texto:"Instrument Sans",system-ui,sans-serif;
 }
 
-/* ============ Reset ============ */
-*, *::before, *::after { box-sizing: border-box; }
-* { margin: 0; }
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-  scroll-padding-top: calc(var(--header-h) + 12px);
-  overflow-x: clip;
-  accent-color: var(--marca);
-  caret-color: var(--marca);
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+body{
+  margin:0;background:var(--marino);color:#eaf1f9;
+  font-family:var(--texto);font-size:16px;line-height:1.55;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
-html { scroll-behavior: auto !important; }
-body {
-  min-height: 100svh;
-  background: var(--lienzo);
-  color: var(--texto);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: clip;
-}
-h1, h2, h3 {
-  font-family: var(--font-display);
-  font-variation-settings: "wdth" 122;
-  font-weight: 850;
-  text-transform: uppercase;
-  line-height: 0.98;
-  letter-spacing: -0.005em;
-  text-wrap: balance;
-  overflow-wrap: break-word;
-}
-p { text-wrap: pretty; overflow-wrap: break-word; max-width: 58ch; }
-img, picture, video, canvas, svg { display: block; max-width: 100%; }
-img, video { height: auto; }
-input, button, textarea, select { font: inherit; color: inherit; }
-input, textarea, select { font-size: max(16px, 1em); }
-button { background: none; border: 0; padding: 0; cursor: pointer; }
-a { color: inherit; text-decoration: none; }
-a, button, [role="button"], label { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-:where(ul[class], ol[class]) { list-style: none; padding: 0; }
-[hidden] { display: none !important; }
-:focus-visible { outline: 2px solid var(--marca); outline-offset: 3px; }
-::selection { background: var(--marca); color: var(--tinta); }
+body.ec-menu-open{overflow:hidden}
+img,svg,video{max-width:100%;display:block}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+h1,h2,h3,p,ul,ol,figure,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
 
-.ec-wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
-.ec-skip { position: fixed; left: 12px; top: 12px; z-index: 100; padding: 12px 18px; background: var(--papel); color: var(--tinta); font-weight: 700; transform: translateY(-160%); transition: transform 200ms var(--ease-out); }
-.ec-skip:focus { transform: none; }
+.ec-skip{position:absolute;left:-999px;top:0;z-index:99;background:var(--cian);color:#00122a;padding:10px 16px;font-weight:700}
+.ec-skip:focus{left:8px;top:8px}
+:focus-visible{outline:2px solid var(--cian-claro);outline-offset:3px}
 
-/* ============ Tipografía ============ */
-.ec-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--marca); margin-bottom: 14px; }
-.ec-eyebrow::before { content: ""; width: 18px; height: 1.5px; background: var(--marca); display: block; }
-.ec-h1 { font-size: clamp(40px, 11.5vw, 60px); }
-.ec-h2 { font-size: clamp(32px, 8.6vw, 52px); }
-@media (min-width: 900px) {
-  .ec-h1 { font-size: clamp(64px, 6vw, 108px); }
-  .ec-h2 { font-size: clamp(44px, 4.4vw, 72px); }
-}
-.ec-tono2 { color: var(--marca); }
-.ec-lead { font-size: 17px; color: var(--mute); max-width: 46ch; }
-@media (min-width: 900px) { .ec-lead { font-size: 19px; } }
+.ec-wrap{width:min(100% - 32px,var(--wrap));margin-inline:auto}
+main section[id]{position:relative}
 
-/* Títulos que caen y pegan: una palabra por span, cae 40px y pega */
-.ec-drop-w { display: inline-block; overflow: hidden; vertical-align: top; }
-.ec-drop-w > span { display: inline-block; }
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  .js .ec-drop-w > span { transform: translateY(-115%); opacity: 0; transition: transform 820ms var(--ease-out), opacity 620ms var(--ease-out); transition-delay: calc(var(--i, 0) * 70ms); }
-  .js [data-ec-drop].is-in .ec-drop-w > span { transform: translateY(0); opacity: 1; }
+/* ---------- Tipografia: titulos que caen, ultima linea en cian ---------- */
+.ec-h1,.ec-h2{
+  font-family:var(--titulo);font-weight:900;text-transform:uppercase;
+  line-height:.94;letter-spacing:-.018em;margin:0;color:#fff;
 }
+.ec-h1{font-size:clamp(33px,9.2vw,68px)}
+.ec-h2{font-size:clamp(27px,7vw,50px)}
+.ec-h1 span,.ec-h2 span{display:block}
+.ec-tono2{color:var(--cian-claro)}
+.ec-eyebrow{
+  font-family:var(--texto);font-size:11px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--cian);display:flex;align-items:center;gap:9px;margin:0;
+}
+.ec-eyebrow::before{content:"";width:22px;height:2px;background:var(--cian);flex:none}
+.ec-lead{font-size:clamp(15px,3.6vw,18px);line-height:1.5;color:#c6d6e8;max-width:46ch}
+.ec-nota{font-size:12.5px;color:#93aac6;letter-spacing:.01em}
 
-/* ============ Botones ============
-   Navegar y acciones normales: color de MARCA, finos, rectangulares, mayúsculas espaciadas.
-   VERDE solo lo que de verdad manda WhatsApp + el flotante. Máx 1 verde por sección + flotante. */
-.ec-btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  height: 44px; padding: 0 22px; border: 1px solid var(--marca); color: var(--marca);
-  font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
-  background: transparent; white-space: nowrap; transition: background 180ms var(--ease-out), color 180ms var(--ease-out);
-}
-.ec-btn--solid { background: var(--marca); color: var(--marca-ink); }
-@media (hover: hover) and (pointer: fine) {
-  .ec-btn:hover { background: var(--marca); color: var(--marca-ink); }
-  .ec-btn--solid:hover { background: transparent; color: var(--marca); }
-}
-.ec-btn:active { transform: scale(0.98); }
-.ec-btn--wa { height: 52px; padding: 0 26px; border-color: var(--wa); background: var(--wa); color: var(--wa-ink); font-weight: 700; }
-@media (hover: hover) and (pointer: fine) { .ec-btn--wa:hover { background: #1ebe5b; } }
-.ec-btn--wa svg { width: 20px; height: 20px; }
-/* Boton de contorno cian con el glifo de WhatsApp adentro: manda al mismo numero, pero el
-   VERDE queda reservado para los dos unicos usos de la hoja (enviar visita y flotante). */
-.ec-btn--glifo svg { width: 17px; height: 17px; }
-.ec-link {
-  display: inline-flex; align-items: center; gap: 8px; color: var(--texto); font-weight: 600; font-size: 15px;
-  border-bottom: 1.5px solid var(--linea-fuerte); padding: 9px 0 11px; min-height: 40px; box-sizing: border-box;
-}
-.ec-link svg { width: 16px; height: 16px; color: var(--marca); transition: transform 180ms var(--ease-out); }
-@media (hover: hover) and (pointer: fine) { .ec-link:hover svg { transform: translateX(4px); } }
+/* ---------- Secciones ---------- */
+.ec-sec{padding-block:clamp(52px,11vw,96px)}
+.ec-sec--papel{background:var(--papel);color:var(--tinta)}
+.ec-sec--papel .ec-h2{color:var(--tinta)}
+.ec-sec--papel .ec-tono2{color:#0f6da0}
+.ec-sec--papel .ec-eyebrow{color:#0f6da0}
+.ec-sec--papel .ec-eyebrow::before{background:#0f6da0}
+.ec-sec--papel .ec-lead{color:#3b4d66}
 
-/* ============ Marco de foto (así se ven TODAS las fotos) ============ */
-.ec-frame { position: relative; padding: 10px; background: var(--bandera); }
-.ec-frame__pic { position: relative; overflow: hidden; }
-.ec-frame__pic::after {
-  content: ""; position: absolute; inset: 6px; border: 1px solid var(--marca); pointer-events: none;
+/* ---------- Botones ---------- */
+.ec-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  min-height:48px;padding:0 20px;border:0;border-radius:var(--radio);cursor:pointer;
+  font-family:var(--texto);font-size:12.5px;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;text-decoration:none;transition:transform .16s ease,background .16s ease,color .16s ease;
 }
-.ec-frame__pic img { width: 100%; height: 100%; object-fit: cover; }
-.ec-frame__tag {
-  position: absolute; left: 10px; bottom: 10px; z-index: 2;
-  background: var(--tinta); color: var(--papel); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 6px 10px;
+.ec-btn svg{width:19px;height:19px;flex:none}       /* nunca pierde el glifo (celular) */
+.ec-btn:active{transform:translateY(1px)}
+.ec-btn--marca{background:var(--cian);color:#00122a}
+.ec-btn--marca:hover{background:var(--cian-claro)}
+.ec-btn--linea{background:transparent;color:#eaf1f9;box-shadow:inset 0 0 0 1px var(--linea-fuerte)}
+.ec-btn--linea:hover{background:rgba(138,214,244,.12)}
+.ec-sec--papel .ec-btn--linea{color:var(--tinta);box-shadow:inset 0 0 0 1px rgba(0,6,46,.28)}
+.ec-sec--papel .ec-btn--linea:hover{background:rgba(0,6,46,.06)}
+.ec-btn--wa{background:var(--verde);color:#04301a}
+.ec-btn--wa:hover{background:#3ae07a}
+.ec-link{
+  display:inline-flex;align-items:center;gap:8px;min-height:44px;
+  font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;color:#fff;border-bottom:1px solid var(--linea-fuerte);
+}
+.ec-link svg{width:17px;height:17px;transition:transform .18s ease}
+.ec-link:hover svg{transform:translateX(4px)}
+.ec-sec--papel .ec-link{color:var(--tinta);border-bottom-color:rgba(0,6,46,.3)}
+
+/* ---------- Marco de foto: etiqueta en caja oscura, regla cian fina ---------- */
+.ec-frame{position:relative;display:block}
+.ec-frame__pic{
+  position:relative;display:block;overflow:hidden;border-radius:var(--radio);
+  background:#0a1550;box-shadow:inset 0 0 0 1px var(--linea);
+}
+.ec-frame__pic img{width:100%;height:100%;object-fit:cover;display:block}
+.ec-frame__tag{
+  position:absolute;left:0;bottom:0;z-index:2;
+  background:rgba(0,6,46,.88);color:#dceaf7;
+  font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:7px 12px;
+}
+.ec-ilustrativa{
+  position:absolute;right:8px;bottom:8px;z-index:2;
+  background:rgba(0,6,46,.78);color:#cfe0ef;
+  font-size:9.5px;font-weight:600;letter-spacing:.09em;padding:4px 8px;border-radius:var(--radio);
 }
 
-/* ============ Header: LA OLA QUE SE PLANCHA ============ */
-.ec-header { position: fixed; inset: 0 0 auto 0; z-index: 60; height: var(--header-h); transition: height 240ms var(--ease-out); }
-.ec-header-bg { position: absolute; inset: 0; background: var(--tinta); }
-.ec-header-arc-wrap { position: absolute; left: 0; right: 0; top: 100%; height: 16px; pointer-events: none; }
-.ec-header-arc-wrap svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; transition: opacity 240ms var(--ease-out); }
-.ec-arc { opacity: 1; }
-.ec-arc path { fill: var(--tinta); }
-.ec-seam { opacity: 0; }
-.ec-seam rect { fill: var(--marca); }
-.ec-header.is-compact { height: 48px; }
-.ec-header.is-compact .ec-arc { opacity: 0; }
-.ec-header.is-compact .ec-seam { opacity: 1; }
-.ec-bar { position: relative; z-index: 2; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-inline: var(--gutter); max-width: var(--wrap); margin-inline: auto; }
-/* El logotipo llega con su placa blanca pegada (PENDIENTE-DUENO 5: falta el PNG transparente).
-   Mientras llega, la placa NO se deja como rectangulo suelto: se trata como una foto mas, con el
-   mismo marco de la pagina (fondo bandera + costura cian fina por dentro). */
-.ec-brand { display: block; width: 72px; flex: none; padding: 4px; background: var(--bandera); position: relative; }
-.ec-brand-pic { position: relative; display: block; background: #fff; overflow: hidden; }
-.ec-brand-pic::after { content: ""; position: absolute; inset: 1.5px; border: 1px solid var(--marca); pointer-events: none; }
-/* El aire blanco va como borde de la propia imagen: asi la costura cian no le cruza el
-   "UN ESTILO DE VIDA" al logotipo. */
-.ec-brand img { display: block; width: 100%; height: auto; border: 4px solid #fff; }
-.ec-header.is-compact .ec-brand { width: 62px; padding: 3px; transition: width 240ms var(--ease-out), padding 240ms var(--ease-out); }
-.ec-nav { display: none; gap: 26px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; align-items: center; }
-@media (min-width: 980px) { .ec-nav { display: flex; } }
-.ec-nav a { display: flex; align-items: center; height: 40px; opacity: 0.86; transition: opacity 160ms; }
-.ec-nav a:hover { opacity: 1; color: var(--marca); }
-.ec-acts { display: flex; align-items: center; gap: 10px; flex: none; }
-.ec-cotizar { height: 42px; padding: 0 18px; border: 1px solid var(--marca); color: var(--marca); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; display: inline-flex; align-items: center; }
-@media (hover: hover) and (pointer: fine) { .ec-cotizar:hover { background: var(--marca); color: var(--marca-ink); } }
-.ec-menu-toggle { display: flex; align-items: center; height: 44px; gap: 8px; color: var(--papel); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-.ec-burger { position: relative; width: 20px; height: 12px; display: inline-block; }
-.ec-burger i { position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor; transition: transform 200ms var(--ease-out), opacity 200ms; }
-.ec-burger i:nth-child(1) { top: 0; }
-.ec-burger i:nth-child(2) { bottom: 0; }
-.ec-menu-open .ec-burger i:nth-child(1) { transform: translateY(5px) rotate(45deg); }
-.ec-menu-open .ec-burger i:nth-child(2) { transform: translateY(-5.5px) rotate(-45deg); }
-
-/* ============ Menú pantalla completa ============ */
-.ec-menu { position: fixed; inset: 0; z-index: 90; visibility: hidden; }
-.ec-menu-open .ec-menu { visibility: visible; }
-.ec-menu-scrim { position: absolute; inset: 0; background: rgba(0, 0, 45, 0.6); opacity: 0; transition: opacity 260ms var(--ease-out); }
-.ec-menu-panel {
-  position: absolute; inset: 0 0 0 auto; width: min(420px, 100%); height: 100%; background: var(--tinta);
-  padding: 96px 28px 28px; display: flex; flex-direction: column; gap: 26px; overflow-y: auto;
-  transform: translateX(100%); transition: transform 320ms var(--ease-out);
+/* ---------- Header: barra marino, arco de ola que se plancha al bajar ---------- */
+.ec-header{
+  position:sticky;top:0;z-index:40;
+  background:linear-gradient(180deg,var(--marino) 0%,var(--marino) 72%,rgba(0,6,46,.96) 100%);
 }
-.ec-menu-open .ec-menu-scrim { opacity: 1; }
-.ec-menu-open .ec-menu-panel { transform: translateX(0); }
-.ec-menu-close { position: absolute; top: 20px; right: 20px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--linea); color: var(--papel); }
-.ec-menu-title { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--marca); }
-.ec-menu-piezas { display: flex; flex-direction: column; }
-.ec-menu-piezas li { border-bottom: 1px solid var(--linea); }
-.ec-menu-piezas button, .ec-menu-piezas a { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 0; font-size: 17px; font-weight: 600; text-align: left; color: var(--texto); }
-.ec-menu-piezas button svg, .ec-menu-piezas a svg { width: 16px; height: 16px; color: var(--marca); flex: none; }
-/* Los renglones de navegar pesan lo MISMO que las piezas (antes iban en gris chico y se leian
-   como etiquetas) y el que corresponde a la seccion en pantalla se marca en cian con su costura
-   a la izquierda (aria-current, scrollspy en site.js). */
-.ec-menu-nav { display: flex; flex-direction: column; }
-.ec-menu-nav a {
-  display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  padding: 14px 0; font-size: 17px; font-weight: 600; color: var(--texto);
-  border-bottom: 1px solid var(--linea);
-  transition: color 160ms var(--ease-out), padding-left 160ms var(--ease-out);
+.ec-bar{
+  width:min(100% - 24px,var(--wrap));margin-inline:auto;
+  height:var(--header-h);display:flex;align-items:center;gap:14px;
+  transition:height .22s ease;
 }
-.ec-menu-nav a svg { width: 16px; height: 16px; color: var(--marca); flex: none; opacity: 0; transition: opacity 160ms; }
-.ec-menu-nav a[aria-current="true"] { color: var(--marca); padding-left: 14px; box-shadow: inset 2px 0 0 var(--marca); }
-.ec-menu-nav a[aria-current="true"] svg { opacity: 1; }
-.ec-menu-foot { margin-top: auto; display: flex; flex-direction: column; gap: 12px; }
-.ec-menu-foot p { color: var(--mute); font-size: 13px; }
-
-/* ============ Reveal genérico + blindaje (nada se queda en blanco) ============ */
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  .js [data-ec-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 620ms var(--ease-out), transform 620ms var(--ease-out); }
-  .js [data-ec-reveal].is-in { opacity: 1; transform: translateY(0); }
+.ec-header.is-compact .ec-bar{height:52px}
+.ec-brand{flex:none;display:block;line-height:0}
+.ec-brand img{width:auto;height:40px;transition:height .22s ease}
+@media (min-width:900px){.ec-brand img{height:46px}
+  .ec-header.is-compact .ec-brand img{height:38px}}
+.ec-header.is-compact .ec-brand img{height:33px}
+.ec-nav{display:none}
+.ec-acts{margin-left:auto;display:flex;align-items:center;gap:8px}
+.ec-cotizar{
+  display:none;align-items:center;min-height:40px;padding:0 15px;text-decoration:none;
+  font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--cian-claro);box-shadow:inset 0 0 0 1px var(--linea-fuerte);border-radius:var(--radio);
+}
+.ec-cotizar:hover{background:rgba(138,214,244,.13)}
+.ec-menu-toggle{
+  display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 12px;
+  background:transparent;border:0;cursor:pointer;color:#fff;
+  font-size:11px;font-weight:700;letter-spacing:.16em;
+}
+.ec-burger{display:block;width:20px}
+.ec-burger i{display:block;height:2px;background:var(--cian-claro);margin:4px 0;transition:transform .2s ease}
+.ec-menu-toggle:hover .ec-burger i:first-child{transform:translateX(3px)}
+.ec-arc{display:block;width:100%;height:11px;fill:var(--marino);transition:transform .26s ease}
+.ec-header.is-compact .ec-arc{transform:scaleY(.12)}
+@media (min-width:900px){
+  .ec-nav{display:flex;gap:26px;margin-left:26px}
+  .ec-nav a{
+    display:inline-flex;align-items:center;min-height:40px;
+    text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;color:#c3d6ea;border-bottom:1px solid transparent;
+  }
+  .ec-nav a:hover{color:#fff;border-bottom-color:var(--cian)}
+  .ec-cotizar{display:inline-flex}
+  .ec-menu-word{display:none}
 }
 
-/* ============ EL PAR QUE EMBONA (componente firma) ============
-   Dos fotos reales (mitad antes / mitad después de un díptico real) se despegan y se vuelven
-   a juntar en el mismo marco. Blindaje: el CSS base YA las muestra juntas y con la costura fina
-   puesta (estado final). Solo con JS + motion se separan primero (.ec-embona-pre por media
-   query) para que el motor de site.js las vuelva a juntar con IntersectionObserver.
-   Regla dura: no se arrastra, no tiene manija, no tiene barra. */
-.ec-embona { position: relative; }
-.ec-embona-frame { position: relative; padding: 10px; background: var(--bandera); }
-.ec-embona-track { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
-.ec-embona-half { position: absolute; inset: 0; width: 50%; overflow: hidden; }
-.ec-embona-half--antes { left: 0; }
-.ec-embona-half--despues { left: 50%; }
-.ec-embona-half img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-.ec-embona-seam {
-  position: absolute; left: 50%; top: 0; bottom: 0; width: 1.5px; background: var(--marca);
-  transform: translateX(-50%); opacity: 0.55; z-index: 3;
+/* ---------- Menu ---------- */
+.ec-menu{position:fixed;inset:0;z-index:60;visibility:hidden;pointer-events:none}
+body.ec-menu-open .ec-menu{visibility:visible;pointer-events:auto}
+.ec-menu-scrim{position:absolute;inset:0;background:rgba(0,3,22,.6);opacity:0;transition:opacity .22s ease}
+body.ec-menu-open .ec-menu-scrim{opacity:1}
+.ec-menu-panel{
+  position:absolute;inset:0 0 0 auto;width:min(100%,420px);
+  background:var(--panel);padding:20px 22px 30px;overflow-y:auto;
+  transform:translateX(100%);transition:transform .26s ease;
+  box-shadow:-1px 0 0 var(--linea);
 }
-.ec-embona-pie { margin-top: 10px; font-size: 12px; color: var(--mute); }
-.ec-embona-pie strong { color: var(--texto); font-weight: 600; }
-
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  .js .ec-embona-half { transition: transform 900ms var(--ease-out), opacity 900ms var(--ease-out); transition-delay: var(--stagger, 0ms); }
-  .js .ec-embona-half--antes { transform: translateX(-14%); opacity: 0; }
-  .js .ec-embona-half--despues { transform: translateX(14%); opacity: 0; }
-  .js .ec-embona-seam { opacity: 0; }
-  .js .ec-embona.is-in .ec-embona-half { transform: translateX(0); opacity: 1; }
-  /* al terminar de embonar (900ms), la costura prende y a los 400ms se apaga a su brillo
-     permanente y fino (0.55, igual al estado base sin JS): reversible al salir de pantalla. */
-  .js .ec-embona.is-in .ec-embona-seam { animation: ec-seam-flash 400ms linear forwards; animation-delay: calc(var(--stagger, 0ms) + 900ms); }
+body.ec-menu-open .ec-menu-panel{transform:none}
+.ec-menu-close{
+  position:absolute;right:16px;top:14px;width:42px;height:42px;display:grid;place-items:center;
+  background:transparent;border:0;cursor:pointer;color:var(--cian-claro);
+  box-shadow:inset 0 0 0 1px var(--linea-fuerte);border-radius:var(--radio);
 }
-@keyframes ec-seam-flash { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0.55; } }
-
-/* Los 3 destellos de 4 puntas del logotipo. Se usan UNA SOLA VEZ en toda la pagina: en el
-   instante en que embona el primer par. Decorativos: si no hay JS, no se ven y no falta nada. */
-.ec-embona-destellos { position: absolute; left: 50%; top: 10px; bottom: 10px; width: 0; z-index: 4; opacity: 0; pointer-events: none; }
-.ec-embona-destellos svg { position: absolute; fill: var(--marca); max-width: none; }
-.ec-embona-destellos svg:nth-child(1) { width: 18px; height: 18px; left: -9px; top: 16%; }
-.ec-embona-destellos svg:nth-child(2) { width: 11px; height: 11px; left: -5.5px; top: 47%; }
-.ec-embona-destellos svg:nth-child(3) { width: 14px; height: 14px; left: -7px; top: 74%; }
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  .js .ec-embona.is-in .ec-embona-destellos { animation: ec-spark-flash 400ms linear forwards; animation-delay: calc(var(--stagger, 0ms) + 900ms); }
+.ec-menu-title{
+  font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cian);margin:14px 0 8px;
 }
-@keyframes ec-spark-flash { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0; } }
-
-/* ============ Divisor: arco de la ola (solo entre 4 y 5) ============ */
-.ec-divisor { display: block; width: 100%; height: 40px; }
-.ec-divisor path { fill: none; stroke: var(--marca); stroke-width: 1.5; }
-
-/* ============ Secciones ============ */
-main { padding-top: var(--header-h); }
-.ec-sec { padding-block: var(--sec-y); position: relative; }
-.ec-sec--papel { background: var(--papel); color: var(--tinta); }
-.ec-sec--papel .ec-eyebrow { color: var(--bandera); }
-.ec-sec--papel h1, .ec-sec--papel h2 { color: var(--tinta); }
-.ec-sec--tinta { background: var(--tinta); }
-
-/* Grano fino en las bandas oscuras: le quita el plano muerto al marino sin tocar el sistema de
-   color. Va ENCIMA del fondo de su propia seccion (z-index 0) y DEBAJO del contenido (z-index 1).
-   Antes llevaba z-index:-1 y quedaba detras de su propio fondo: no pintaba nada (0.000 de
-   desviacion medida). Ahora va al 7% y cubre hero, catalogo, pruebas, cierre y pie. */
-.ec-grano { position: relative; }
-.ec-grano::before {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.07;
-  mix-blend-mode: screen;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+.ec-menu-nav{display:block;margin-bottom:6px}
+.ec-menu-nav a{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  min-height:52px;text-decoration:none;color:#fff;
+  font-family:var(--titulo);font-size:20px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;
+  border-bottom:1px solid var(--linea);
 }
-.ec-grano > .ec-wrap, .ec-grano > .s-hero-grid { position: relative; z-index: 1; }
-
-/* ============ WhatsApp flotante (verde, único junto al botón de mandar visita) ============ */
-.ec-wa-float {
-  position: fixed; right: 16px; bottom: 16px; z-index: 70; width: 56px; height: 56px;
-  display: flex; align-items: center; justify-content: center; background: var(--wa); color: var(--wa-ink);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+.ec-menu-nav a svg{width:18px;height:18px;color:var(--cian);opacity:.65}
+.ec-menu-nav a:hover,.ec-menu-nav a[aria-current="true"]{color:var(--cian-claro)}
+.ec-menu-nav a[aria-current="true"]{border-bottom-color:var(--cian)}
+.ec-menu-piezas li button{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  min-height:46px;background:transparent;border:0;cursor:pointer;text-align:left;
+  color:#c9dcee;font-size:14.5px;border-bottom:1px solid var(--linea);
 }
-.ec-wa-float svg { width: 28px; height: 28px; }
-.ec-wa-float.is-hidden-by-btn { visibility: hidden; animation: none; }
+.ec-menu-piezas li button span{color:var(--cian);font-weight:700;font-size:17px}
+.ec-menu-piezas li button:hover{color:#fff}
+.ec-menu-foot{margin-top:22px;display:grid;gap:10px}
+.ec-menu-foot .ec-btn{width:100%}
+.ec-menu-foot p{font-size:12.5px;color:#93aac6}
 
-/* ============ Pie: momento de logotipo (el cierre de la página) ============ */
-.ec-foot { background: var(--tinta); padding-block: 72px 28px; position: relative; }
-.ec-foot-eyebrow { display: block; text-align: center; margin-bottom: 22px; }
-/* El cierre de la pagina ES el logotipo: 308 px en celular (antes 240 y flotaba chiquito),
-   con el mismo marco de las fotos y "Un estilo de vida." pegado debajo con aire. */
-.ec-foot-logo { display: block; width: min(308px, 86%); margin-inline: auto; padding: 10px; background: var(--bandera); }
-@media (min-width: 900px) { .ec-foot-logo { width: 340px; } }
-.ec-foot-logo .ec-frame__pic { background: #fff; }
-.ec-foot-logo img { display: block; width: 100%; height: auto; border: 18px solid #fff; }
-.ec-foot-tagline {
-  font-family: var(--font-display); font-variation-settings: "wdth" 122; font-weight: 850;
-  text-transform: uppercase; letter-spacing: -0.005em; line-height: 1;
-  text-align: center; margin: 26px auto 0; color: var(--marca); font-size: clamp(26px, 8vw, 38px);
-  max-width: 12ch; margin-inline: auto;
+/* ---------- WhatsApp flotante ---------- */
+.ec-wa-float{
+  position:fixed;right:14px;bottom:16px;z-index:45;
+  width:54px;height:54px;display:grid;place-items:center;border-radius:50%;
+  background:var(--verde);color:#04301a;box-shadow:0 10px 26px rgba(0,0,0,.4);
+  transition:opacity .2s ease,visibility .2s ease;
 }
-.ec-foot-arc { display: block; width: 100%; max-width: 360px; margin: 26px auto 0; height: 24px; }
-.ec-foot-arc path { fill: none; stroke: var(--marca); stroke-width: 1.5; }
-.ec-foot-mid { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; margin-top: 54px; }
-.ec-foot-tel { font-family: var(--font-display); font-size: clamp(26px, 6vw, 34px); font-weight: 850; text-transform: none; letter-spacing: 0; }
-.ec-foot-acts { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-.ec-foot-mail { color: var(--mute); font-size: 14px; }
-.ec-foot-social { display: flex; gap: 18px; margin-top: 6px; }
-.ec-foot-social a { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--linea); color: var(--papel); }
-.ec-foot-social svg { width: 22px; height: 22px; }
-.ec-foot-city { color: var(--mute); font-size: 13px; }
-.ec-foot-line { display: block; height: 1px; background: var(--linea); margin: 32px 0 18px; }
-.ec-foot-bottom { display: flex; flex-direction: column; gap: 6px; text-align: center; color: var(--mute); font-size: 12px; }
+.ec-wa-float svg{width:27px;height:27px}
+.ec-wa-float.is-hidden-by-btn{opacity:0;visibility:hidden}
+@media (min-width:900px){.ec-wa-float{right:22px;bottom:22px}}
+
+/* ---------- Pie ---------- */
+.ec-foot{background:var(--marino2);padding:clamp(40px,9vw,72px) 0 calc(28px + env(safe-area-inset-bottom));
+  box-shadow:inset 0 1px 0 var(--linea)}
+.ec-foot-in{display:grid;gap:26px}
+.ec-foot-logo{width:min(230px,62%);height:auto}
+.ec-foot-datos{display:grid;gap:9px}
+.ec-foot-tel{font-family:var(--titulo);font-size:clamp(26px,7vw,38px);font-weight:900;letter-spacing:-.015em}
+.ec-foot-tel a{text-decoration:none;color:#fff}
+.ec-foot-tel a:hover{color:var(--cian-claro)}
+.ec-foot-mail a{color:#b9cde2;font-size:14px;text-decoration:none;word-break:break-word}
+.ec-foot-mail a:hover{color:#fff}
+.ec-foot-city{font-size:13.5px;color:#93aac6}
+.ec-foot-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.ec-foot-social{display:flex;gap:10px;margin-top:4px}
+.ec-foot-social a{
+  width:44px;height:44px;display:grid;place-items:center;border-radius:var(--radio);
+  color:var(--cian-claro);box-shadow:inset 0 0 0 1px var(--linea-fuerte);
+}
+.ec-foot-social a:hover{background:rgba(138,214,244,.13);color:#fff}
+.ec-foot-social svg{width:22px;height:22px}
+.ec-foot-lista{
+  display:flex;flex-wrap:wrap;gap:6px 18px;
+  font-size:13px;color:#93aac6;padding-top:20px;border-top:1px solid var(--linea);
+}
+.ec-foot-bottom{display:grid;gap:5px;padding-top:18px;border-top:1px solid var(--linea)}
+.ec-foot-bottom p{font-size:12px;color:#7d94b3;line-height:1.5;padding-right:74px}
+@media (min-width:860px){
+  .ec-foot-in{grid-template-columns:1fr 1fr;align-items:start;column-gap:48px}
+  .ec-foot-logo{grid-column:1;width:min(250px,100%)}
+  .ec-foot-datos{grid-column:2;grid-row:1 / span 2}
+  .ec-foot-lista{grid-column:1;align-self:end}
+  .ec-foot-bottom{grid-column:1 / -1}
+  .ec-foot-bottom p{padding-right:0}
+}
+
+/* ---------- Reveal discreto (una sola animacion en toda la pagina) ----------
+   Base = visible. La clase .js solo la usa para entrar; si el JS no corre, se ve igual. */
+.js [data-ec-reveal]{opacity:0;transform:translateY(14px)}
+.js [data-ec-reveal].is-in{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease}
+@media (prefers-reduced-motion:reduce){
+  .js [data-ec-reveal]{opacity:1;transform:none}
+}

@@ -1,0 +1,23 @@
+/* Cierre: banda de foto a sangre y el boton que cierra la venta. */
+section[id="60-cierre"].s-cie{
+  position:relative;isolation:isolate;overflow:hidden;background:var(--marino);
+  padding-block:0 clamp(44px,11vw,80px);
+}
+/* En celular la foto es un bloque 16:9 de verdad: a sangre se veria una rebanada. */
+.s-cie-foto{position:relative;z-index:0;aspect-ratio:16/9;margin-bottom:clamp(26px,7vw,40px)}
+.s-cie-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 54%}
+.s-cie-velo{
+  position:absolute;left:0;right:0;top:0;height:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,6,46,.62) 0%,rgba(0,6,46,0) 26%,rgba(0,6,46,.28) 62%,rgba(0,6,46,.9) 88%,var(--marino) 100%);
+}
+.s-cie-in{position:relative;z-index:2;display:grid;gap:16px;justify-items:start}
+.s-cie-resumen{font-size:14px;color:#c0d3e8;letter-spacing:.04em}
+.s-cie-tel{font-size:14px;color:#a7bdd6}
+.s-cie-tel a{color:#fff;font-weight:600}
+section[id="60-cierre"] .ec-h2{text-shadow:0 2px 18px rgba(0,6,46,.6)}
+@media (min-width:720px){
+  section[id="60-cierre"].s-cie{padding-block:clamp(86px,15vw,136px)}
+  .s-cie-foto{position:absolute;inset:0;aspect-ratio:auto;margin:0}
+  .s-cie-velo{inset:0;height:auto}
+  .s-cie-in{gap:20px}
+}

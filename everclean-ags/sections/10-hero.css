@@ -1,33 +1,43 @@
-/* 10-hero: el primer pantallazo lo manda la FOTO, no el bloque de texto.
-   Cuatro renglones cortos y explicitos (nada de quiebres ragged), los dos CTA pegados debajo y
-   el marco de la foto arrancando antes de los 400 px para que se vean el mueble y el vapor
-   completos antes del doblez. El renglon de apoyo baja al pie de la foto. */
-.s-hero { background: var(--lienzo); padding-top: calc(var(--header-h) + 10px); padding-bottom: 30px; }
-.s-hero-grid { display: grid; grid-template-columns: 1fr; gap: 16px; width: 100%; }
-.s-hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
-.s-hero-l { display: block; }
-/* Cada renglon del titular cabe entero: a 44.85 px "los domingos." y "Y el domicilio" se partian
-   y el h1 se comia 264 px (6 renglones) antes de la foto. A 9.4vw los 4 caben de un tiro y el
-   bloque baja a ~145 px, que es lo que le devuelve la primera pantalla a la foto. */
-.s-hero .ec-h1 { font-size: clamp(30px, 9.4vw, 60px); }
-.s-hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 2px; }
-.s-hero-foto { display: flex; justify-content: center; }
-.s-hero-foto .ec-frame { width: 100%; max-width: 370px; }
-/* El vapor saliendo de la boquilla es lo que venden: tiene que entrar COMPLETO y GRANDE en la
-   primera pantalla (55svh ~ 464 px a 844), no como tira recortada detras del boton flotante. */
-.s-hero-foto .ec-frame__pic { min-height: 55svh; max-height: 58svh; }
-.s-hero-foto .ec-frame__pic img { height: 100%; object-position: 50% 30%; }
-.s-hero-lead { margin-top: 2px; }
-
-@media (min-width: 900px) {
-  /* Los mismos 4 renglones limpios en compu: el tamano esta amarrado al ancho de la columna
-     (la foto se lleva 38%) para que ninguno se parta y "TRABAJAMOS" nunca alcance el marco. */
-  .s-hero .ec-h1 { font-size: clamp(40px, 4.3vw, 60px); }
-  .s-hero { min-height: 92svh; padding-top: calc(var(--header-h) + 40px); display: flex; align-items: center; }
-  .s-hero-grid { grid-template-columns: minmax(0, 1fr) clamp(280px, 38%, 520px); grid-template-rows: auto auto; column-gap: 48px; row-gap: 22px; align-items: center; }
-  .s-hero-copy { grid-column: 1; grid-row: 1; max-width: none; align-self: end; }
-  .s-hero-lead { grid-column: 1; grid-row: 2; align-self: start; margin-top: 0; }
-  .s-hero-foto { grid-column: 2; grid-row: 1 / span 2; }
-  .s-hero-foto .ec-frame { max-width: 520px; }
-  .s-hero-foto .ec-frame__pic { min-height: 60svh; max-height: 68svh; }
+/* Hero: foto a sangre que SE VE. El velo solo trabaja abajo, donde cae el titular.
+   Ojo: "section[id]{padding-block}" le gana a ".s-hero{padding-top}" — por eso va section[id="10-hero"].s-hero (y OJO: #10-hero es selector INVALIDO, los id que empiezan con digito van por [id=".."]). */
+section[id="10-hero"].s-hero{
+  position:relative;isolation:isolate;
+  min-height:660px;               /* respaldo si el navegador no entiende svh */
+  min-height:min(100svh,780px);
+  display:flex;align-items:flex-end;
+  /* el aire de abajo deja libre el flotante de WhatsApp aunque el JS no corra */
+  padding:calc(var(--header-h) + 18px) 0 82px;
+  overflow:hidden;background:var(--marino);
 }
+.s-hero-foto{position:absolute;inset:0;z-index:0}
+.s-hero-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.s-hero-velo{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(180deg,
+      rgba(0,6,46,.5) 0%,
+      rgba(0,6,46,.08) 16%,
+      rgba(0,6,46,.06) 38%,
+      rgba(0,6,46,.5) 54%,
+      rgba(0,6,46,.88) 72%,
+      var(--marino) 96%);
+}
+.s-hero-copy{position:relative;z-index:2;display:grid;gap:15px;justify-items:start}
+.s-hero-lead{text-shadow:0 1px 12px rgba(0,6,46,.85)}
+.s-hero-acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:4px}
+section[id="10-hero"] .ec-h1{font-size:clamp(31px,8.5vw,66px);text-shadow:0 3px 24px rgba(0,6,46,.8)}
+section[id="10-hero"] .ec-eyebrow{color:#bfe6fa;text-shadow:0 1px 3px rgba(0,6,46,.95),0 2px 14px rgba(0,6,46,.9)}
+.s-hero-ilustrativa{z-index:3;bottom:auto;top:calc(var(--header-h) + 8px);right:16px}
+
+@media (min-width:720px){
+  section[id="10-hero"].s-hero{min-height:620px;min-height:min(92svh,760px);padding-bottom:clamp(40px,6vw,68px)}
+  .s-hero-foto img{object-position:58% 40%}
+  .s-hero-velo{
+    background:
+      linear-gradient(90deg,rgba(0,6,46,.94) 0%,rgba(0,6,46,.76) 38%,rgba(0,6,46,.12) 72%,rgba(0,6,46,.3) 100%),
+      linear-gradient(180deg,rgba(0,6,46,.5) 0%,rgba(0,6,46,0) 24%,rgba(0,6,46,.3) 72%,rgba(0,6,46,.8) 100%);
+  }
+  .s-hero-copy{max-width:640px;gap:19px}
+  .s-hero-ilustrativa{top:auto;bottom:14px;right:18px}
+}
+@media (min-width:1100px){.s-hero-copy{max-width:700px}}

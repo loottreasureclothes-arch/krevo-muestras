@@ -1,45 +1,35 @@
-/* 30-pruebas: MOMENTO FIRMA, "el par que embona". Sin eyebrow, sin parrafo, sin boton.
-   Nada de min-height con flex center: la seccion mide lo que mide su contenido. */
-.s-pruebas { background: var(--lienzo-2); padding-block: var(--sec-y); }
-.s-pruebas .ec-h2 { max-width: 14ch; margin-bottom: 30px; }
+/* Antes y despues: DOS paneles separados por un canal, cada uno con su etiqueta.
+   Nada de costura invisible: el ojo tiene que leer dos fotos, no un mueble imposible. */
+section[id="30-pruebas"].s-pru{background:var(--marino2);box-shadow:inset 0 1px 0 var(--linea)}
 
-/* Par grande: las dos mitades del diptico real, cada una 124x166 (misma proporcion exacta). */
-.s-pruebas-principal { max-width: 560px; }
-.s-pruebas-principal .ec-embona-track { aspect-ratio: 124 / 83; }
-
-/* Abajo, dos pruebas chicas y nada mas (R7): el par de la silla y la mancha del colchon, que
-   antes vivia sola en una seccion de 511 px con medio pantallazo de azul vacio. Aqui la mancha
-   cierra el argumento de la seccion y se lleva su propio "Agregar colchon". */
-/* En celular el par de la silla va a ancho COMPLETO: en dos columnas cada mitad medía 74 px y
-   no se leía (R7). La mancha del colchón queda debajo como banda: foto a la izquierda, su frase
-   y su "Agregar colchón" a la derecha. De 640 px para arriba sí caben los dos en columnas. */
-.s-pruebas-chicas { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 28px; max-width: 560px; align-items: start; }
-.s-pruebas-chicas .ec-embona-track { aspect-ratio: 5 / 4; }
-.s-pruebas-chicas .ec-embona-pie { font-size: 12px; }
-.s-pruebas-colchon { display: grid; grid-template-columns: 148px minmax(0, 1fr); column-gap: 16px; row-gap: 8px; align-items: center; }
-.s-pruebas-colchon .ec-frame { grid-column: 1; grid-row: 1 / span 2; }
-.s-pruebas-colchon .ec-frame__pic { aspect-ratio: 5 / 4; }
-.s-pruebas-colchon-h {
-  grid-column: 2; grid-row: 1; align-self: end;
-  font-family: var(--font-display); font-variation-settings: "wdth" 118;
-  font-weight: 800; text-transform: uppercase; line-height: 1.04; letter-spacing: -0.005em;
-  font-size: clamp(17px, 5vw, 22px);
+.s-pru-par{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  margin-top:clamp(26px,6vw,40px);
 }
-.s-pruebas-colchon-a { grid-column: 2; grid-row: 2; align-self: start; font-size: 14px; }
-
-@media (min-width: 640px) {
-  .s-pruebas-chicas { grid-template-columns: 1fr 1fr; gap: 20px; }
-  .s-pruebas-colchon { grid-template-columns: 1fr; row-gap: 0; align-items: start; }
-  .s-pruebas-colchon .ec-frame { grid-column: 1; grid-row: 1; }
-  .s-pruebas-colchon-h { grid-column: 1; grid-row: 2; margin-top: 12px; max-width: 12ch; }
-  .s-pruebas-colchon-a { grid-column: 1; grid-row: 3; margin-top: 8px; }
+.s-pru-panel{margin:0;display:grid;gap:0}
+.s-pru-etiqueta{
+  font-family:var(--titulo);font-size:11px;font-weight:800;letter-spacing:.22em;
+  text-transform:uppercase;padding:9px 12px;color:#dceaf7;background:#0a1550;
+  border-radius:var(--radio) var(--radio) 0 0;
 }
+.s-pru-etiqueta--despues{background:var(--cian);color:#00122a}
+.s-pru-pic{
+  overflow:hidden;border-radius:0 0 var(--radio) var(--radio);
+  background:#0a1550;box-shadow:inset 0 0 0 1px var(--linea);
+  aspect-ratio:31/30;
+}
+.s-pru-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.s-pru-pie{margin-top:14px;font-size:13.5px;color:#a7bdd6;max-width:54ch}
 
-/* En compu el titulo se va a su propia columna y los pares a la de al lado: asi la seccion no
-   queda como una columna sola con medio monitor vacio al lado. */
-@media (min-width: 900px) {
-  .s-pruebas .ec-wrap { display: grid; grid-template-columns: minmax(260px, 1fr) minmax(0, 700px); column-gap: 56px; align-items: start; }
-  .s-pruebas .ec-h2 { grid-column: 1; grid-row: 1 / span 2; max-width: 11ch; margin-bottom: 0; }
-  .s-pruebas-principal { grid-column: 2; grid-row: 1; max-width: none; }
-  .s-pruebas-chicas { grid-column: 2; grid-row: 2; max-width: none; gap: 20px; margin-top: 24px; }
+.s-pru-colchon{display:grid;gap:22px;margin-top:clamp(42px,9vw,72px)}
+.s-pru-colchon-foto .ec-frame__pic{aspect-ratio:5/6}
+.s-pru-colchon-copy{display:grid;gap:14px;align-content:start}
+.s-pru-colchon-h{font-size:clamp(24px,6.2vw,40px)}
+.s-pru-colchon-acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:4px}
+
+@media (min-width:720px){
+  .s-pru-par{gap:12px}
+  .s-pru-etiqueta{font-size:12px;padding:11px 15px}
+  .s-pru-colchon{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:center}
+  .s-pru-colchon-foto .ec-frame__pic{aspect-ratio:4/5}
 }
