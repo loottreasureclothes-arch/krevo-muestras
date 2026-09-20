@@ -46,18 +46,34 @@
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z M9 9h7M9 13h7M9 17h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
   <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18v-7h18v7M3 14h18M6 11V8h5v3M3 18v2M21 18v2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
   <symbol id="i-cal" viewBox="0 0 24 24"><path d="M4 6h16v14H4zM4 10h16M8 3v5M16 3v5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M6.5 2.75h11a3.75 3.75 0 0 1 3.75 3.75v11a3.75 3.75 0 0 1-3.75 3.75h-11A3.75 3.75 0 0 1 2.75 17.5v-11A3.75 3.75 0 0 1 6.5 2.75Z"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M16.6 2h-3.3v13.9a2.9 2.9 0 1 1-2.05-2.77v-3.4a6.3 6.3 0 1 0 5.35 6.23V9.03a7.7 7.7 0 0 0 4.5 1.44V7.16A4.4 4.4 0 0 1 16.6 2Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.6l2.95 6.28 6.85.77-5.1 4.72 1.4 6.78L12 17.9l-6.1 3.25 1.4-6.78-5.1-4.72 6.85-.77Z"/></symbol>
 </svg>
 
-<header class="k-header">
-  <a class="k-logo sg-logo" href="#inicio" aria-label="Hotel San Gabriel Justin, inicio"><span class="sg-logo-a">San Gabriel</span><span class="sg-logo-b">Justin</span></a>
-  <nav class="k-nav" aria-label="Principal">
-    <a href="#habitaciones">Habitaciones</a>
-    <a href="#recorrido">Recorrido</a>
-    <a href="#romantica">Extras</a>
-    <a href="#visita">Cómo llegar</a>
-  </nav>
-  <button class="sg-menu-btn" type="button" aria-expanded="false" aria-controls="sg-nav"><span class="sg-burger" aria-hidden="true"><i></i><i></i><i></i></span><span class="sg-menu-t">Menú</span></button>
-  <a class="k-cta sg-hcta" href="#reserva">Reservar</a>
+<header class="k-header sg-head2">
+  <div class="sg-head2-bar">
+    <a class="sg-head2-wa" data-wa="Hola, quiero información para hospedarme en Hotel San Gabriel Justin." href="https://wa.me/523173892964"><svg aria-hidden="true"><use href="#i-wa"/></svg>317 389 2964</a>
+    <a class="sg-head2-resv" href="#reserva">Reservar directo</a>
+  </div>
+  <div class="sg-head2-main">
+    <nav class="sg-head2-nav sg-head2-nav--l" aria-label="Principal">
+      <a href="#habitaciones">Habitaciones</a>
+      <a href="#recorrido">Recorrido</a>
+    </nav>
+    <a class="sg-head2-name" href="#inicio" aria-label="Hotel San Gabriel Justin, inicio">
+      <span class="sg-head2-n1">San Gabriel</span><span class="sg-head2-n2">Justin</span>
+    </a>
+    <div class="sg-head2-right">
+      <nav class="sg-head2-nav sg-head2-nav--r" aria-label="Secundaria">
+        <a href="#romantica">Extras</a>
+        <a href="#visita">Cómo llegar</a>
+      </nav>
+      <button class="sg-menu-btn" type="button" aria-expanded="false" aria-controls="sg-nav"><span class="sg-burger" aria-hidden="true"><i></i><i></i><i></i></span><span class="sg-menu-t">Menú</span></button>
+      <a class="k-cta sg-hcta" href="#reserva">Reservar</a>
+    </div>
+  </div>
 </header>
 
 <div class="sg-nav" id="sg-nav" role="dialog" aria-modal="true" aria-label="Navegación" aria-hidden="true">
@@ -68,6 +84,7 @@
       <ul class="sg-nav-sub" aria-label="Habitaciones">
         <li><a href="#hb-sencilla">Sencilla</a></li>
         <li><a href="#hb-suite">Suite con jacuzzi</a></li>
+        <li><a href="#hb-romantica">Suite romántica</a></li>
         <li><a href="#hb-familiar">Familiar</a></li>
       </ul>
       <a href="#reserva"><span>02</span>Reservar</a>
@@ -86,7 +103,7 @@
     </nav>
     <div class="sg-nav-foot">
       <div class="sg-nav-acts">
-        <a class="sg-btn sg-btn--wa" data-wa="Hola, quiero información para hospedarme en Hotel San Gabriel Justin." href="https://wa.me/523173892964"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+        <a class="sg-btn sg-btn--wa" href="#reserva"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar</a>
         <a class="sg-btn sg-btn--line" href="tel:+523173892964"><svg aria-hidden="true"><use href="#i-phone"/></svg>Llamar</a>
       </div>
       <p>Veracruz Ote. 66, Centro, Unión de Tula</p>
@@ -98,7 +115,7 @@
 <!--SECTIONS-->
 </main>
 
-<footer class="sg-foot" data-dark data-hide-wa>
+<footer class="sg-foot sg-grain" data-dark data-hide-wa>
   <div class="k-wrap">
     <div class="sg-foot-top">
       <p class="sg-foot-name"><span>Hotel</span> San Gabriel <em>Justin</em></p>
@@ -117,9 +134,14 @@
           <li><a href="https://www.instagram.com/hotel_san_gabriel_justin/" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="https://www.tiktok.com/@hotelsangabrieljustin" target="_blank" rel="noopener">TikTok</a></li>
         </ul>
+        <div class="sg-foot-social">
+          <a href="https://www.facebook.com/hotelsgj/" target="_blank" rel="noopener" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
+          <a href="https://www.instagram.com/hotel_san_gabriel_justin/" target="_blank" rel="noopener" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
+          <a href="https://www.tiktok.com/@hotelsangabrieljustin" target="_blank" rel="noopener" aria-label="TikTok"><svg aria-hidden="true"><use href="#i-tiktok"/></svg></a>
+        </div>
       </div>
     </div>
-    <p class="sg-foot-note">Muestra de diseño hecha por KREVO con fotos reales del hotel, mejoradas en resolución.</p>
+    <p class="sg-foot-note">Muestra de diseño hecha por KREVO. Fotos del hotel y algunas imágenes ilustrativas a partir de sus fotos.</p>
   </div>
 </footer>
 

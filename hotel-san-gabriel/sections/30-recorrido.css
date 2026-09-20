@@ -1,12 +1,15 @@
-/* 20 Momento firma: "Una tarde en San Gabriel". De la ventana a la catedral iluminada, ligado al scroll y reversible.
-   Base (sin JS o reduced-motion): 4 paradas apiladas, todo visible. html.rc-on (lo pone el JS): pin de 260svh,
-   las fotos se funden en su lugar y la banda de color pasa de madera a dorado, a atardecer y a noche. */
-#recorrido { --rc-bg: #4a3423; position: relative; background: var(--rc-bg); color: var(--cream); transition: background-color 700ms var(--ease-out); }
-#recorrido[data-step="1"] { --rc-bg: #6e5022; }
-#recorrido[data-step="2"] { --rc-bg: #3d2420; }
-#recorrido[data-step="3"] { --rc-bg: #141a26; }
-#recorrido .rc-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 56px; padding-bottom: 20px; }
-#recorrido .rc-eb { margin: 0; font-size: 12px; }
+/* 20 Momento firma: "Una tarde en San Gabriel". De la alberca a la catedral iluminada, ligado al scroll y reversible.
+   Base (sin JS o reduced-motion): 3 paradas apiladas, todo visible. html.rc-on (lo pone el JS): pin de 220svh,
+   las fotos se funden en su lugar y la banda de color pasa de dorado (tarde), a atardecer y a noche. Una sola
+   temperatura cálida que se enfría solo al final, con la noche. */
+#recorrido { --rc-bg: #6e5022; position: relative; background: var(--rc-bg); color: var(--cream); transition: background-color 700ms var(--ease-out); }
+#recorrido[data-step="1"] { --rc-bg: #3d2420; }
+#recorrido[data-step="2"] { --rc-bg: #141a26; }
+#recorrido .rc-stage { position: relative; }
+#recorrido .rc-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 44px; padding-bottom: 18px; }
+/* El eyebrow cae sobre la parte más clara de la foto: se le pone sombra propia para que siempre se lea */
+#recorrido .rc-eb { margin: 0; font-size: 12px; text-shadow: 0 1px 3px rgba(10, 7, 5, 0.8), 0 0 14px rgba(10, 7, 5, 0.65); }
+#recorrido .rc-eb::before { box-shadow: 0 1px 3px rgba(10, 7, 5, 0.8); }
 #recorrido .rc-ticks { display: none; }
 #recorrido .rc-steps { display: grid; gap: 40px; }
 #recorrido .rc-fig { position: relative; margin: 0; height: 72svh; min-height: 420px; overflow: hidden; }
@@ -16,30 +19,30 @@
 #recorrido .rc-big { font-size: clamp(50px, 14vw, 84px); line-height: 0.92; letter-spacing: -0.02em; margin-bottom: 12px; }
 #recorrido .rc-big em { display: block; }
 #recorrido .rc-txt { color: var(--cream-mute); font-size: 17px; line-height: 1.4; max-width: 30ch; }
-#recorrido .rc-foot { padding-top: 32px; padding-bottom: 64px; }
+#recorrido .rc-foot { padding-top: 28px; padding-bottom: 44px; }
 #recorrido .rc-foot .sg-btn { width: 100%; }
 
 /* Pin (celular): foto a sangre, texto abajo sobre velo */
-html.rc-on #recorrido .rc-track { height: 260svh; }
+html.rc-on #recorrido .rc-track { height: 194svh; }
 html.rc-on #recorrido .rc-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
 html.rc-on #recorrido .rc-head { position: absolute; z-index: 3; left: 0; right: 0; top: calc(var(--k-header-h) + env(safe-area-inset-top)); padding: 10px var(--k-gutter); }
-html.rc-on #recorrido .rc-ticks { display: grid; grid-template-columns: repeat(4, 22px); gap: 5px; margin: 0; padding: 0; list-style: none; }
+html.rc-on #recorrido .rc-ticks { display: grid; grid-template-columns: repeat(3, 22px); gap: 5px; margin: 0; padding: 0; list-style: none; }
 html.rc-on #recorrido .rc-ticks li { height: 3px; background: rgba(246, 239, 228, 0.3); transition: background-color 300ms var(--ease-out); }
 html.rc-on #recorrido[data-step="0"] .rc-ticks li:nth-child(-n+1), html.rc-on #recorrido[data-step="1"] .rc-ticks li:nth-child(-n+2),
-html.rc-on #recorrido[data-step="2"] .rc-ticks li:nth-child(-n+3), html.rc-on #recorrido[data-step="3"] .rc-ticks li { background: var(--gold-l); }
+html.rc-on #recorrido[data-step="2"] .rc-ticks li { background: var(--gold-l); }
 html.rc-on #recorrido .rc-steps { position: absolute; inset: 0; display: block; }
 html.rc-on #recorrido .rc-st { position: absolute; inset: 0; }
 html.rc-on #recorrido .rc-fig { position: absolute; inset: 0; height: auto; min-height: 0; opacity: var(--o, 0); }
 html.rc-on #recorrido .rc-st[data-i="0"] .rc-fig { opacity: 1; }
-html.rc-on #recorrido .rc-fig::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14, 10, 8, 0.45) 0%, rgba(14, 10, 8, 0) 22%, rgba(14, 10, 8, 0) 42%, rgba(14, 10, 8, 0.86) 78%, rgba(14, 10, 8, 0.94) 100%); }
+html.rc-on #recorrido .rc-fig::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14, 10, 8, 0.62) 0%, rgba(14, 10, 8, 0.28) 16%, rgba(14, 10, 8, 0) 34%, rgba(14, 10, 8, 0) 44%, rgba(14, 10, 8, 0.86) 78%, rgba(14, 10, 8, 0.94) 100%); }
 html.rc-on #recorrido .rc-cap { position: absolute; left: 0; right: 0; bottom: calc(96px + env(safe-area-inset-bottom)); z-index: 2; opacity: 0; transform: translateY(18px); transition: opacity 420ms var(--ease-out), transform 520ms var(--ease-out); pointer-events: none; }
 #recorrido[data-step="0"] .rc-st[data-i="0"] .rc-cap, #recorrido[data-step="1"] .rc-st[data-i="1"] .rc-cap,
-#recorrido[data-step="2"] .rc-st[data-i="2"] .rc-cap, #recorrido[data-step="3"] .rc-st[data-i="3"] .rc-cap { opacity: 1; transform: none; }
+#recorrido[data-step="2"] .rc-st[data-i="2"] .rc-cap { opacity: 1; transform: none; }
 html.rc-on #recorrido .rc-foot { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; padding: 0 var(--k-gutter) calc(20px + env(safe-area-inset-bottom)); }
 
 /* Compu: banda de color que cambia + ventana vertical a la derecha, palabras enormes a la izquierda */
 @media (min-width: 900px) {
-  #recorrido .rc-steps { grid-template-columns: 1fr 1fr; gap: 72px 48px; padding-inline: var(--k-gutter); max-width: 1320px; margin-inline: auto; }
+  #recorrido .rc-steps { grid-template-columns: 1fr; gap: 72px; padding-inline: var(--k-gutter); max-width: 900px; margin-inline: auto; }
   #recorrido .rc-st { display: contents; }
   #recorrido .rc-fig { height: 80svh; }
   #recorrido .rc-big { font-size: clamp(84px, 8.4vw, 168px); }
@@ -51,7 +54,7 @@ html.rc-on #recorrido .rc-foot { position: absolute; z-index: 3; left: 0; right:
   html.rc-on #recorrido .rc-fig::after { background: linear-gradient(180deg, rgba(14, 10, 8, 0) 60%, rgba(14, 10, 8, 0.35) 100%); }
   html.rc-on #recorrido .rc-cap { left: max(var(--k-gutter), calc((100vw - 1320px) / 2 + var(--k-gutter))); right: auto; width: min(52vw, 760px); top: 50%; bottom: auto; padding: 0; transform: translate(-24px, -50%); }
   #recorrido[data-step="0"] .rc-st[data-i="0"] .rc-cap, #recorrido[data-step="1"] .rc-st[data-i="1"] .rc-cap,
-  #recorrido[data-step="2"] .rc-st[data-i="2"] .rc-cap, #recorrido[data-step="3"] .rc-st[data-i="3"] .rc-cap { transform: translate(0, -50%); }
+  #recorrido[data-step="2"] .rc-st[data-i="2"] .rc-cap { transform: translate(0, -50%); }
   html.rc-on #recorrido .rc-head { left: max(var(--k-gutter), calc((100vw - 1320px) / 2 + var(--k-gutter))); right: auto; top: calc(var(--k-header-h) + 5svh); padding: 0; gap: 24px; justify-content: flex-start; }
   html.rc-on #recorrido .rc-foot { left: max(var(--k-gutter), calc((100vw - 1320px) / 2 + var(--k-gutter))); right: auto; bottom: 7svh; padding: 0; }
 }

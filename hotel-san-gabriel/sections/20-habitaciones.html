@@ -1,62 +1,109 @@
-  <section class="s-hb sg-sec" id="habitaciones" aria-labelledby="hb-t">
+  <section class="s-hb sg-sec sg-grain" id="habitaciones" aria-labelledby="hb-t">
     <div class="k-wrap">
       <header class="hb-head">
         <p class="sg-eyebrow">Habitaciones</p>
-        <h2 id="hb-t" class="sg-d sg-h2 sg-h3d"><span class="sg-l">Elige dónde</span> <span class="sg-l"><em>despertar.</em></span></h2>
+        <h2 id="hb-t" class="sg-d sg-h2 sg-h3d" data-drop><span class="sg-l">Elige dónde</span> <span class="sg-l"><em>despertar.</em></span></h2>
         <p class="hb-run"><span>Alberca en la azotea</span><i></i><span>Mirador 360</span><i></i><span>Gimnasio 24 h</span><i></i><span>Top Pool &amp; Bar</span><i></i><span>Minibar</span></p>
       </header>
 
-      <article class="hb-room" id="hb-sencilla" aria-labelledby="hb-n1">
-        <div class="hb-gal">
-          <div class="hb-track" tabindex="0" aria-label="Fotos de la habitación sencilla">
-            <figure><img data-blur src="img/hd/h08-1200.webp" srcset="img/hd/h08-1200.webp 900w, img/hd/h08-2400.webp 1728w" sizes="(min-width: 900px) 34vw, 100vw" width="900" height="1600" alt="Habitación sencilla: cama king blanca con cojines negros y luz cálida" loading="eager" decoding="async"></figure>
-            <figure><img data-blur src="img/hd/h09-1200.webp" srcset="img/hd/h09-1200.webp 900w, img/hd/h09-2400.webp 1728w" sizes="(min-width: 900px) 34vw, 100vw" width="900" height="1600" alt="Habitación sencilla completa: banca, TV en muro, escritorio y cortinas" loading="lazy" decoding="async"></figure>
-            <figure><img data-blur src="img/hd/h10-1200.webp" srcset="img/hd/h10-1200.webp 900w, img/hd/h10-2400.webp 1728w" sizes="(min-width: 900px) 34vw, 100vw" width="900" height="1600" alt="Minibar y escritorio de la habitación sencilla" loading="lazy" decoding="async"></figure>
+      <div class="hb-grid">
+        <article class="hb-card" id="hb-sencilla">
+          <button class="hb-card-open" type="button" data-open aria-haspopup="dialog" aria-label="Ver detalle: Habitación sencilla">
+            <figure class="hb-card-fig"><img src="img/ia/sencilla-1200.webp" srcset="img/ia/sencilla-2000.webp 1024w, img/ia/sencilla-1200.webp 1200w" sizes="(min-width: 900px) 23vw, 46vw" width="1200" height="806" alt="Habitación sencilla, imagen ilustrativa" loading="lazy" decoding="async"><figcaption class="sg-ia">Imagen ilustrativa</figcaption></figure>
+            <span class="hb-card-n">Habitación sencilla</span>
+            <span class="hb-card-cap">Cama king o queen</span>
+          </button>
+          <ul class="hb-card-inc"><li>Escritorio y TV en muro</li><li>Minibar con snacks</li><li>Piso de madera</li></ul>
+          <div class="hb-card-acts">
+            <a class="sg-btn sg-btn--link" data-wa="Hola, ¿cuál es la tarifa de la habitación sencilla en Hotel San Gabriel Justin?" href="https://wa.me/523173892964">Pregunta la tarifa<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="sg-btn sg-btn--line" href="#reserva" data-room="Habitación sencilla">Reservar esta</a>
           </div>
-          <p class="hb-count" aria-hidden="true"><b>1</b> / 3 · desliza</p>
-        </div>
-        <div class="hb-info">
-          <p class="hb-n">01</p>
-          <h3 id="hb-n1" class="hb-name sg-d">Habitación sencilla</h3>
-          <ul class="hb-feat">
-            <li>Cama king o queen</li><li>Escritorio y TV en muro</li><li>Minibar</li><li>Piso de madera</li>
-          </ul>
-          <div class="hb-acts">
-            <a class="sg-btn sg-btn--wa" href="#reserva" data-room="Habitación sencilla"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar esta</a>
-            <a class="sg-btn sg-btn--link" data-wa="Hola, ¿cuál es la tarifa de la habitación sencilla en Hotel San Gabriel Justin?" href="https://wa.me/523173892964">Preguntar tarifa<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
-        </div>
-      </article>
+          <template data-tpl data-room="Habitación sencilla">
+            <h3 class="hb-md-n sg-d">Habitación sencilla</h3>
+            <p class="hb-md-cap">Cama king o queen</p>
+            <figure class="hb-md-fig"><img src="img/ia/sencilla-1200.webp" srcset="img/ia/sencilla-2000.webp 1024w, img/ia/sencilla-1200.webp 1200w" sizes="(min-width: 640px) 640px, 100vw" width="1200" height="806" alt="Habitación sencilla, imagen ilustrativa"><figcaption class="sg-ia">Imagen ilustrativa</figcaption></figure>
+            <div class="hb-md-th">
+              <img src="img/hd/h08-1200.webp" srcset="img/hd/h08-1200.webp 900w, img/hd/h08-2400.webp 1728w" width="900" height="1600" alt="Cama king de la habitación sencilla, con cojines negros">
+              <img src="img/hd/h10-1200.webp" srcset="img/hd/h10-1200.webp 900w, img/hd/h10-2400.webp 1728w" width="900" height="1600" alt="Minibar y escritorio de la habitación sencilla">
+            </div>
+            <ul class="hb-md-inc"><li>Escritorio y TV en muro</li><li>Minibar con snacks</li><li>Piso de madera</li></ul>
+            <p class="hb-md-note">¿Cuántas personas entran? Pregunta por WhatsApp.</p>
+          </template>
+        </article>
 
-      <article class="hb-room hb-room--r" id="hb-suite" aria-labelledby="hb-n2">
-        <div class="hb-gal">
-          <div class="hb-track" tabindex="0" aria-label="Fotos de la suite con jacuzzi">
-            <figure class="hb-wide"><img data-blur src="img/hd/h11-1200.webp" srcset="img/hd/h11-1200.webp 1200w, img/hd/h11-2400.webp 2400w" sizes="(min-width: 900px) 34vw, 100vw" width="1200" height="493" alt="Suite: sala blanca, muro 3D y jacuzzi con luz LED azul al fondo" loading="eager" decoding="async"></figure>
-            <figure><img data-blur src="img/hd/h05-1200.webp" srcset="img/hd/h05-1200.webp 900w, img/hd/h05-2400.webp 2400w" sizes="(min-width: 900px) 34vw, 100vw" width="900" height="1600" alt="Sala blanca de la suite con muro 3D y piso de madera" loading="lazy" decoding="async"></figure>
+        <article class="hb-card" id="hb-suite">
+          <button class="hb-card-open" type="button" data-open aria-haspopup="dialog" aria-label="Ver detalle: Suite con jacuzzi">
+            <figure class="hb-card-fig"><img src="img/hd/h32-1200.webp" srcset="img/hd/h32-1200.webp 1200w, img/hd/h32-2400.webp 2400w" sizes="(min-width: 900px) 23vw, 46vw" width="1200" height="797" alt="Suite con jacuzzi y luz LED azul" loading="lazy" decoding="async"></figure>
+            <span class="hb-card-n">Suite con jacuzzi</span>
+            <span class="hb-card-cap">Para parejas</span>
+          </button>
+          <ul class="hb-card-inc"><li>Jacuzzi con luz LED</li><li>Sala</li><li>TV en muro</li></ul>
+          <div class="hb-card-acts">
+            <a class="sg-btn sg-btn--link" data-wa="Hola, ¿cuál es la tarifa de la suite con jacuzzi en Hotel San Gabriel Justin?" href="https://wa.me/523173892964">Pregunta la tarifa<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="sg-btn sg-btn--line" href="#reserva" data-room="Suite con jacuzzi">Reservar esta</a>
           </div>
-          <p class="hb-count" aria-hidden="true"><b>1</b> / 2 · desliza</p>
-        </div>
-        <div class="hb-info">
-          <p class="hb-n">02</p>
-          <h3 id="hb-n2" class="hb-name sg-d">Suite con jacuzzi</h3>
-          <ul class="hb-feat">
-            <li>Jacuzzi con luz LED</li><li>Sala</li><li>TV en muro</li><li>Muro 3D</li>
-          </ul>
-          <div class="hb-acts">
-            <a class="sg-btn sg-btn--wa" href="#reserva" data-room="Suite con jacuzzi"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar esta</a>
-            <a class="sg-btn sg-btn--link" data-wa="Hola, ¿cuál es la tarifa de la suite con jacuzzi en Hotel San Gabriel Justin?" href="https://wa.me/523173892964">Preguntar tarifa<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
-        </div>
-      </article>
+          <template data-tpl data-room="Suite con jacuzzi">
+            <h3 class="hb-md-n sg-d">Suite con jacuzzi</h3>
+            <p class="hb-md-cap">Para parejas</p>
+            <figure class="hb-md-fig"><img src="img/hd/h32-1200.webp" srcset="img/hd/h32-1200.webp 1200w, img/hd/h32-2400.webp 2400w" sizes="(min-width: 640px) 640px, 100vw" width="1200" height="797" alt="Suite con jacuzzi y luz LED azul"></figure>
+            <div class="hb-md-th">
+              <img src="img/hd/h05-1200.webp" srcset="img/hd/h05-1200.webp 900w, img/hd/h05-2400.webp 2400w" width="900" height="1600" alt="Sala blanca de la suite, con muro 3D y piso de madera">
+            </div>
+            <ul class="hb-md-inc"><li>Jacuzzi con luz LED</li><li>Sala</li><li>TV en muro</li></ul>
+          </template>
+        </article>
 
-      <article class="hb-fam" id="hb-familiar" aria-labelledby="hb-n3" data-reveal>
-        <p class="hb-n">03</p>
-        <h3 id="hb-n3" class="hb-name sg-d">Habitación familiar</h3>
-        <blockquote class="hb-q"><p>“Muy amplia y de costo muy accesible.”</p><cite>Cesar Benitez Acero, reseña en Google</cite></blockquote>
-        <div class="hb-acts">
-          <a class="sg-btn sg-btn--wa" href="#reserva" data-room="Habitación familiar"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar esta</a>
-          <a class="sg-btn sg-btn--link" data-wa="Hola, ¿para cuántas personas es la habitación familiar y cuál es su tarifa?" href="https://wa.me/523173892964">¿Para cuántos es?<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        </div>
-      </article>
+        <article class="hb-card" id="hb-romantica">
+          <button class="hb-card-open" type="button" data-open aria-haspopup="dialog" aria-label="Ver detalle: Suite romántica">
+            <figure class="hb-card-fig"><img src="img/ia/romantica-1200.webp" srcset="img/ia/romantica-2000.webp 1024w, img/ia/romantica-1200.webp 1200w" sizes="(min-width: 900px) 23vw, 46vw" width="1200" height="806" alt="Suite romántica decorada con pétalos, imagen ilustrativa" loading="lazy" decoding="async"><figcaption class="sg-ia">Imagen ilustrativa</figcaption></figure>
+            <span class="hb-card-n">Suite romántica</span>
+            <span class="hb-card-cap">Para parejas</span>
+          </button>
+          <ul class="hb-card-inc"><li>Decoración con pétalos</li><li>Ventanal con vista a la catedral</li><li>TV en muro</li></ul>
+          <div class="hb-card-acts">
+            <a class="sg-btn sg-btn--link" data-wa="Hola, ¿cuál es la tarifa de la suite romántica en Hotel San Gabriel Justin?" href="https://wa.me/523173892964">Pregunta la tarifa<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="sg-btn sg-btn--line" href="#reserva" data-room="Suite romántica">Reservar esta</a>
+          </div>
+          <template data-tpl data-room="Suite romántica">
+            <h3 class="hb-md-n sg-d">Suite romántica</h3>
+            <p class="hb-md-cap">Para parejas</p>
+            <figure class="hb-md-fig"><img src="img/ia/romantica-1200.webp" srcset="img/ia/romantica-2000.webp 1024w, img/ia/romantica-1200.webp 1200w" sizes="(min-width: 640px) 640px, 100vw" width="1200" height="806" alt="Suite romántica decorada con pétalos, imagen ilustrativa"><figcaption class="sg-ia">Imagen ilustrativa</figcaption></figure>
+            <div class="hb-md-th">
+              <img src="img/hd/h14-1200.webp" srcset="img/hd/h14-1200.webp 900w, img/hd/h14-2400.webp 2160w" width="900" height="1600" alt="Sala de la suite romántica, con pétalos en el piso y en la mesa">
+            </div>
+            <ul class="hb-md-inc"><li>Decoración con pétalos</li><li>Ventanal con vista a la catedral</li><li>TV en muro</li></ul>
+          </template>
+        </article>
+
+        <article class="hb-card" id="hb-familiar">
+          <button class="hb-card-open" type="button" data-open aria-haspopup="dialog" aria-label="Ver detalle: Habitación familiar">
+            <figure class="hb-card-fig"><img src="img/hd/h09-1200.webp" srcset="img/hd/h09-1200.webp 900w, img/hd/h09-2400.webp 1728w" sizes="(min-width: 900px) 23vw, 46vw" width="900" height="1600" alt="Habitación familiar, amplia, con TV en muro" loading="lazy" decoding="async"></figure>
+            <span class="hb-card-n">Habitación familiar</span>
+            <span class="hb-card-cap">Para familias</span>
+          </button>
+          <ul class="hb-card-inc"><li>Espacio amplio</li><li>Escritorio y TV en muro</li><li>Minibar</li></ul>
+          <div class="hb-card-acts">
+            <a class="sg-btn sg-btn--link" data-wa="Hola, ¿para cuántas personas es la habitación familiar y cuál es su tarifa?" href="https://wa.me/523173892964">¿Para cuántos es?<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="sg-btn sg-btn--line" href="#reserva" data-room="Habitación familiar">Reservar esta</a>
+          </div>
+          <template data-tpl data-room="Habitación familiar">
+            <h3 class="hb-md-n sg-d">Habitación familiar</h3>
+            <p class="hb-md-cap">Para familias</p>
+            <figure class="hb-md-fig"><img src="img/hd/h09-1200.webp" srcset="img/hd/h09-1200.webp 900w, img/hd/h09-2400.webp 1728w" sizes="(min-width: 640px) 640px, 100vw" width="900" height="1600" alt="Habitación familiar, amplia, con TV en muro"></figure>
+            <ul class="hb-md-inc"><li>Espacio amplio</li><li>Escritorio y TV en muro</li><li>Minibar</li></ul>
+            <p class="hb-md-note">¿Cuántas personas entran? Pregunta por WhatsApp.</p>
+            <blockquote class="hb-md-q"><p>"Muy amplia y de costo muy accesible."</p><cite>Cesar Benitez Acero, reseña en Google</cite></blockquote>
+          </template>
+        </article>
+      </div>
+    </div>
+
+    <div class="hb-modal" id="hb-modal" hidden role="dialog" aria-modal="true" aria-label="Detalle de la habitación">
+      <div class="hb-modal-scrim" data-close></div>
+      <div class="hb-modal-panel">
+        <button class="hb-modal-close" type="button" data-close>Cerrar</button>
+        <div class="hb-modal-body"></div>
+        <a class="sg-btn sg-btn--wa hb-modal-cta" href="#reserva"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar esta</a>
+      </div>
     </div>
   </section>

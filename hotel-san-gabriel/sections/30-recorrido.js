@@ -1,4 +1,4 @@
-/* 20 Momento firma: pin corto (260svh) y reversible. Solo con JS y sin reduced-motion; si no, se queda apilado y visible.
+/* 20 Momento firma: pin corto (220svh) y reversible. Solo con JS y sin reduced-motion; si no, se queda apilado y visible.
    La foto 0 siempre está a opacidad 1 y data-step="0" viene en el HTML: nunca queda en blanco. */
 (function () {
   "use strict";
@@ -8,7 +8,7 @@
   if (reduce) return;
   var track = sec.querySelector(".rc-track"), figs = sec.querySelectorAll(".rc-fig");
   document.documentElement.classList.add("rc-on");
-  var T = [0.22, 0.47, 0.72], W = 0.14, ticking = false;
+  var T = [0.32, 0.66], W = 0.18, ticking = false;
   function cl(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
   function upd() {
     ticking = false;

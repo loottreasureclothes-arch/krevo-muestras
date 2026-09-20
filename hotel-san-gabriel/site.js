@@ -108,6 +108,30 @@
   }
 
 
+  /* Títulos de sección: caen desde arriba y pegan con rebote corto (resorte muestreado, WAAPI, como el
+     4.7 de closetdoor/10-msi.js pero más ligero). Una vez al asomar; red de seguridad a 1.6 s. */
+  function initTitleDrop() {
+    var els = document.querySelectorAll("[data-drop]");
+    if (!els.length) return;
+    function spring(n, amp, turns, decay, fmt) {
+      var k = [];
+      for (var i = 0; i <= n; i++) { var t = i / n, v = i === n ? 0 : amp * Math.exp(-decay * t) * Math.sin(turns * Math.PI * 2 * t); k.push({ transform: fmt(v) }); }
+      return k;
+    }
+    function play(el) {
+      if (el.classList.contains("dd-done")) return;
+      el.classList.add("dd-done");
+      var DROP = 420, BOUNCE = 280;
+      el.animate([{ transform: "translateY(-60px)", opacity: 0 }, { transform: "translateY(0)", opacity: 1 }], { duration: DROP, easing: "cubic-bezier(0.55, 0.06, 0.68, 0.19)", fill: "backwards" });
+      el.animate(spring(12, 7, 1.4, 4.6, function (v) { return "translateY(" + v.toFixed(2) + "px)"; }), { duration: BOUNCE, delay: DROP, easing: "linear" });
+    }
+    if (reduce || !("IntersectionObserver" in window) || !els[0].animate) { Array.prototype.forEach.call(els, function (el) { el.classList.add("dd-done"); }); return; }
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); play(e.target); } }); }, { threshold: 0.3 });
+    Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+    var sio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return; sio.unobserve(e.target); var el = e.target; setTimeout(function () { play(el); }, 1600); }); });
+    Array.prototype.forEach.call(els, function (el) { sio.observe(el); });
+  }
+
   function initAnchors() {
     document.addEventListener("click", function (e) {
       var a = e.target.closest && e.target.closest('a[href^="#"]');
@@ -161,7 +185,7 @@
     window.addEventListener("popstate", function () { shut(true); });
   }
 
-  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initAnchors(); initLightbox(); }
+  function init() { initWa(); initNav(); initWaHide(); initRevealSafety(); initTitleDrop(); initAnchors(); initLightbox(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

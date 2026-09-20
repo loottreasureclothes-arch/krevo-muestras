@@ -4,17 +4,18 @@
 #visita .vi-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 #visita .vi-photos figure { margin: 0; overflow: hidden; border-radius: 2px; }
 #visita .vi-photos img { width: 100%; height: 100%; object-fit: cover; }
-#visita .vi-a { grid-column: 1 / -1; height: 46svh; min-height: 280px; }
-#visita .vi-b, #visita .vi-c { height: 24svh; min-height: 170px; }
-#visita .vi-addr { font-style: normal; font-size: 18px; line-height: 1.5; margin: 20px 0 12px; }
+#visita .vi-a { grid-column: 1 / -1; height: 40svh; min-height: 260px; }
+#visita .vi-b, #visita .vi-c { height: 21svh; min-height: 152px; }
+#visita .vi-addr { font-style: normal; font-size: 18px; line-height: 1.5; margin: 18px 0 10px; }
 #visita .vi-links { display: flex; flex-wrap: wrap; gap: 6px 30px; margin-bottom: 6px; }
-#visita .vi-mz { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); }
+#visita .vi-mz { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
 #visita .vi-mz h3 { font-family: var(--font-body); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7a5a1c; margin-bottom: 8px; }
 #visita .vi-mz p { font-size: 15px; color: var(--mute); line-height: 1.5; max-width: 42ch; margin-bottom: 10px; }
-#visita .vi-cta { margin-top: 28px; width: 100%; }
+#visita .vi-cta { margin-top: 20px; width: 100%; }
 @media (min-width: 900px) {
   #visita .vi-grid { grid-template-columns: 6fr 6fr; gap: 72px; align-items: center; }
-  #visita .vi-a { height: 46svh; max-height: 480px; }
-  #visita .vi-b, #visita .vi-c { height: 24svh; max-height: 250px; }
+  #visita .vi-a { height: 46svh; min-height: 280px; max-height: 480px; }
+  #visita .vi-b, #visita .vi-c { height: 24svh; min-height: 170px; max-height: 250px; }
+  #visita .vi-cta { margin-top: 28px; }
   #visita .vi-cta { width: auto; padding: 0 30px; min-height: 56px; }
 }

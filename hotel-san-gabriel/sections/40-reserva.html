@@ -2,27 +2,31 @@
     <div class="k-wrap rs-grid">
       <div class="rs-side">
         <p class="sg-eyebrow">Reserva directo</p>
-        <h2 id="rs-t" class="sg-d sg-h2 sg-h3d"><span class="sg-l">Elige fechas.</span> <span class="sg-l"><em>Te confirmamos.</em></span></h2>
+        <h2 id="rs-t" class="sg-d sg-h2 sg-h3d" data-drop><span class="sg-l">Elige fechas.</span> <span class="sg-l"><em>Te confirmamos.</em></span></h2>
         <p class="sg-lead">Tu reserva llega directo al hotel por WhatsApp, con fechas y habitación ya escritas.</p>
         <figure class="rs-fig" data-reveal>
           <img src="img/hd/h03-1200.webp" srcset="img/hd/h03-1200.webp 900w, img/hd/h03-2400.webp 2400w" sizes="(min-width: 900px) 36vw, 100vw" width="900" height="1600" alt="Pasillo con ventanal de piso a techo y vista a la catedral" loading="lazy" decoding="async">
         </figure>
       </div>
       <form class="rs-form" id="rs-form" novalidate>
+        <p class="rs-step-lbl"><b>1</b>¿Cuál habitación?</p>
         <label class="sg-field rs-room"><span>Habitación</span>
           <select name="room">
             <option value="">Aún no sé, recomiéndenme</option>
             <option>Habitación sencilla</option>
             <option>Suite con jacuzzi</option>
+            <option>Suite romántica</option>
             <option>Habitación familiar</option>
             <option>Noche romántica (suite decorada)</option>
           </select>
         </label>
+        <p class="rs-step-lbl"><b>2</b>Fechas</p>
         <div class="rs-dates">
           <label class="sg-field"><span>Llegada</span><input type="date" name="in" required></label>
           <label class="sg-field"><span>Salida</span><input type="date" name="out" required></label>
         </div>
         <p class="rs-nights" aria-live="polite"></p>
+        <p class="rs-step-lbl"><b>3</b>¿Cuántas personas?</p>
         <div class="rs-people">
           <div class="sg-field rs-step"><span id="rs-ad">Adultos</span>
             <div class="rs-step-in"><button type="button" data-f="ad" data-s="-1" aria-label="Menos adultos">&minus;</button><output name="ad" aria-labelledby="rs-ad">2</output><button type="button" data-f="ad" data-s="1" aria-label="Más adultos">+</button></div>

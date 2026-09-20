@@ -1,15 +1,47 @@
-/* 40 Habitaciones: contador de la galería al deslizar; en compu, clic en la foto avanza */
+/* 20 Habitaciones: al tocar una tarjeta (foto o nombre) se abre el detalle en un modal compartido,
+   clonado de la <template> de esa tarjeta. El botón "Reservar esta" del modal usa el mecanismo global
+   de SG.reservar (site.js initAnchors ya intercepta cualquier a[data-room]); aquí solo le ponemos
+   la habitación correcta antes de que el clic llegue a document. "Atrás" cierra el modal (como el lightbox). */
 (function () {
   "use strict";
-  var sec = document.getElementById("habitaciones");
-  if (!sec) return;
-  Array.prototype.forEach.call(sec.querySelectorAll(".hb-gal"), function (g) {
-    var tr = g.querySelector(".hb-track"), b = g.querySelector(".hb-count b"), figs = tr.querySelectorAll("figure"), t = 0;
-    function idx() { var best = 0, bd = 1e9, L = tr.getBoundingClientRect().left; for (var i = 0; i < figs.length; i++) { var d = Math.abs(figs[i].getBoundingClientRect().left - L); if (d < bd) { bd = d; best = i; } } return best; }
-    tr.addEventListener("scroll", function () { cancelAnimationFrame(t); t = requestAnimationFrame(function () { if (b) b.textContent = idx() + 1; }); }, { passive: true });
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      tr.style.cursor = "pointer";
-      tr.addEventListener("click", function () { var i = (idx() + 1) % figs.length; tr.scrollTo({ left: figs[i].offsetLeft - figs[0].offsetLeft, behavior: "smooth" }); });
-    }
+  var sec = document.getElementById("habitaciones"), modal = document.getElementById("hb-modal");
+  if (!sec || !modal) return;
+  var body = modal.querySelector(".hb-modal-body"), cta = modal.querySelector(".hb-modal-cta"), close = modal.querySelector(".hb-modal-close");
+  var pushed = false, last = null;
+
+  function open(tpl, from) {
+    last = from;
+    body.innerHTML = "";
+    body.appendChild(tpl.content.cloneNode(true));
+    cta.setAttribute("data-room", tpl.getAttribute("data-room") || "");
+    modal.hidden = false;
+    requestAnimationFrame(function () { modal.classList.add("is-open"); });
+    document.documentElement.classList.add("sg-lock");
+    try { history.pushState({ sgHb: 1 }, ""); pushed = true; } catch (e) {}
+    close.focus({ preventScroll: true });
+  }
+  function shut(fromPop, keepHistory) {
+    if (!modal.classList.contains("is-open")) return;
+    modal.classList.remove("is-open");
+    document.documentElement.classList.remove("sg-lock");
+    setTimeout(function () { modal.hidden = true; }, 320);
+    if (pushed && !fromPop && !keepHistory) { try { history.back(); } catch (e) {} }
+    pushed = false;
+    if (last && !keepHistory) { try { last.focus({ preventScroll: true }); } catch (e) {} }
+  }
+
+  sec.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-open]");
+    if (!b) return;
+    var tpl = b.closest(".hb-card").querySelector("[data-tpl]");
+    if (tpl) open(tpl, b);
   });
+  modal.addEventListener("click", function (e) {
+    if (e.target.closest("[data-close]")) shut();
+    /* "Reservar esta" ya va a #reserva y hace scroll (SG.goTo, en site.js): cerramos sin history.back()
+       para no pelear ese scroll con la restauración automática de posición que hace el navegador al volver. */
+    if (e.target.closest(".hb-modal-cta")) shut(false, true);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && modal.classList.contains("is-open")) shut(); });
+  window.addEventListener("popstate", function () { shut(true); });
 })();

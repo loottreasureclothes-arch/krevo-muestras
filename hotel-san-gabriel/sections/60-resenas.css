@@ -1,32 +1,43 @@
-/* 60 Reseñas: UN número gigante real (4.7) con la vista del hotel dentro + reseñas reales de Google.
-   Caidita (adaptada de closetdoor/sections/10-msi.*): el 4.7 cae desde arriba y pega con un rebote muestreado, una vez. */
-#resenas { background: var(--paper-2); overflow: clip; }
+/* 60 Reseñas: 5 estrellas doradas grandes (4.7 de 5, la quinta al 70%) que se encienden una por una,
+   + reseñas reales de Google con su estrellita chica. Banda verde profundo con textura de grano y un
+   halo dorado: antes iba la foto de la fachada detrás y se alcanzaba a leer su anuncio a medias
+   ("HOTEL SAN GA…") justo debajo del texto grande. Fondo limpio, sin letreros a medio leer. */
+#resenas {
+  position: relative; overflow: clip; background-color: #10251c;
+  background-image:
+    radial-gradient(90% 70% at 88% 6%, rgba(184, 137, 46, 0.2), transparent 62%),
+    radial-gradient(70% 60% at 6% 96%, rgba(9, 24, 18, 0.9), transparent 70%);
+}
+#resenas .re-list li { border-bottom-color: var(--line-dark); }
+#resenas .re-list { border-top-color: var(--line-dark); }
 #resenas .re-grid { display: grid; gap: 32px; }
-#resenas .re-bigwrap { position: relative; }
-#resenas .re-big {
-  font-family: var(--font-display); font-weight: 700; font-size: clamp(170px, 56vw, 420px); line-height: 0.8; letter-spacing: -0.05em;
-  color: var(--deep); transform-origin: 50% 100%;
-  background: url("../img/hd/h25-1200.webp") 50% 55% / cover no-repeat; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 3px 0 rgba(122, 90, 28, 0.55)) drop-shadow(0 14px 18px rgba(35, 29, 27, 0.25));
-  margin: 4px 0 14px -0.04em;
-}
-@supports not ((-webkit-background-clip: text) or (background-clip: text)) { #resenas .re-big { -webkit-text-fill-color: var(--deep); background: none; } }
-#resenas .re-flash { position: absolute; left: 50%; top: 32%; width: 44%; aspect-ratio: 1; margin: -22% 0 0 -22%; pointer-events: none; border-radius: 50%; opacity: 0;
-  background: radial-gradient(closest-side, rgba(217, 178, 90, 0.85), rgba(217, 178, 90, 0.22) 55%, transparent); }
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  .sg-js #resenas:not(.re-done) .re-big { transform: translateY(-0.55em); }
-}
+
+#resenas .re-stars { display: flex; gap: 6px; margin: 6px 0 16px; }
+#resenas .re-star, #resenas .re-star-bg, #resenas .re-star-fg { width: clamp(30px, 8vw, 44px); height: clamp(30px, 8vw, 44px); }
+#resenas svg.re-star { color: var(--gold-l); filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)); }
+#resenas .re-star--part { position: relative; display: inline-block; }
+#resenas .re-star-bg { position: absolute; inset: 0; color: rgba(217, 178, 90, 0.28); }
+#resenas .re-star-fg { position: absolute; inset: 0; color: var(--gold-l); filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)); clip-path: inset(0 calc(100% - var(--p, 70%)) 0 0); }
 #resenas .re-cap { font-family: var(--font-body); font-weight: 500; font-size: 18px; line-height: 1.4; max-width: 28ch; margin-bottom: 6px; }
 #resenas .re-cap b { font-weight: 700; }
+
+#resenas .re-q-stars { display: flex; gap: 3px; margin-bottom: 8px; }
+#resenas .re-q-stars svg { width: 14px; height: 14px; color: var(--gold-l); }
 #resenas .re-q p { font-family: var(--font-display); font-weight: 400; font-style: italic; font-size: 22px; line-height: 1.2; }
-#resenas .re-q cite { display: block; margin-top: 8px; font-style: normal; font-size: 13px; color: var(--mute); }
+#resenas .re-q cite { display: block; margin-top: 8px; font-style: normal; font-size: 13px; color: var(--cream-mute); }
 #resenas .re-q--big { padding-left: 16px; border-left: 2px solid var(--brand); margin-bottom: 26px; }
 #resenas .re-q--big p { font-size: clamp(28px, 7.6vw, 48px); line-height: 1.08; }
+#resenas .re-q--big .re-q-stars svg { width: 18px; height: 18px; }
 #resenas .re-list { border-top: 1px solid var(--line); margin-bottom: 26px; }
 #resenas .re-list li { padding: 16px 0; border-bottom: 1px solid var(--line); }
 #resenas .re-cta { width: 100%; }
+
+/* Blindaje: encendido de estrellas solo con scripting + sin reduced-motion; si no, quedan encendidas */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .sg-js #resenas .re-stars:not(.rs-done) > * { opacity: 0.15; transform: scale(0.4); }
+}
+
 @media (min-width: 900px) {
   #resenas .re-grid { grid-template-columns: 6fr 6fr; gap: 72px; align-items: center; }
-  #resenas .re-big { font-size: clamp(260px, 24vw, 440px); }
   #resenas .re-cta { width: auto; padding: 0 30px; min-height: 56px; }
 }
