@@ -1,0 +1,293 @@
+/* ALDO ADAME — base del sitio.
+   Lenguaje de formas: el PASSEPARTOUT. Radio 0 en todo, un solo grosor de linea
+   (1 px) y toda foto montada sobre una lamina con su filete metido. Sin verde:
+   este negocio NO tiene WhatsApp publico (research/hechos.md), el cierre es por
+   correo y los botones van en color de marca. */
+
+:root {
+  --paper:  #FAF7F2;   /* lino y carpas blancas */
+  --paper-2:#F1E9DE;   /* crema de las flores */
+  --deep:   #0E1A2B;   /* azul marino del monograma AA */
+  --ink:    #0E1A2B;
+  --brand:  #0E1A2B;
+  --mute:   #6E6558;
+  --mute-d: #A79B8C;   /* texto secundario sobre banda oscura */
+  --accent: #B5622E;   /* amaranto seco / oxido — solo titulos grandes y filetes */
+  --accent-ink: #8E4820;   /* el mismo, oscurecido para texto chico (6.4:1 sobre papel) */
+  --accent-lt:  #D98C56;   /* el mismo, aclarado para texto chico sobre lo oscuro (6.5:1) */
+  --line:   rgba(14, 26, 43, 0.20);
+  --line-2: rgba(14, 26, 43, 0.10);
+  --line-d: rgba(243, 237, 230, 0.22);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --radius: 0px;
+  --font-display: "Cormorant Garamond", Didot, "Times New Roman", serif;
+  --font-body: "Jost", "Optima", "Avenir Next", system-ui, sans-serif;
+  --k-header-h: 56px;
+  --k-gutter: 18px;
+  --aa-max: 1240px;
+  /* alto de la tira de anclas que vive debajo del header hasta 999 px */
+  --aa-nav-h: 45px;
+}
+@media (min-width: 820px) {
+  :root { --k-header-h: 68px; --k-gutter: 40px; }
+}
+@media (min-width: 1000px) {
+  :root { --aa-nav-h: 0px; }
+}
+
+html { scroll-padding-top: calc(var(--k-header-h) + var(--aa-nav-h) + 12px); }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.005em;
+}
+::selection { background: var(--accent); color: #fff; }
+:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; border-radius: 0; }
+
+.aa-skip {
+  position: absolute; left: -9999px; top: 0; z-index: 90;
+  background: var(--deep); color: var(--paper); padding: 12px 18px; font-size: 14px;
+}
+.aa-skip:focus { left: 8px; top: 8px; }
+
+.aa-wrap {
+  width: 100%; max-width: var(--aa-max);
+  margin-inline: auto; padding-inline: var(--k-gutter);
+}
+
+/* ---------- Ritmo de secciones ---------- */
+main > section { padding-block: 46px; position: relative; }
+@media (min-width: 820px) { main > section { padding-block: 104px; } }
+main > section[data-dark] { background: var(--deep); color: #F3EDE6; }
+main > section[data-crema] { background: var(--paper-2); }
+
+/* ---------- Tipografia ---------- */
+.aa-eyebrow {
+  font-size: 11px; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--accent-ink); margin-bottom: 18px;
+}
+[data-dark] .aa-eyebrow { color: var(--accent-lt); }
+.aa-h {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(2.3rem, 9.6vw, 3.6rem);
+  line-height: 1.02; letter-spacing: -0.012em; max-width: 14ch;
+}
+@media (min-width: 820px) { .aa-h { font-size: clamp(3.4rem, 4.4vw, 5rem); } }
+.aa-h--xl { font-size: clamp(2.6rem, 11.5vw, 3.9rem); }
+@media (min-width: 820px) { .aa-h--xl { font-size: clamp(4rem, 5.6vw, 6.6rem); } }
+.aa-h .l { display: block; overflow: hidden; padding-bottom: 0.04em; }
+.aa-h .l i { display: block; font-style: normal; }
+.aa-h .l--acc i { color: var(--accent); }
+[data-dark] .aa-h .l--acc i { color: var(--accent-lt); }
+
+.aa-lead {
+  max-width: 44ch; margin-top: 18px; color: var(--mute);
+  font-size: 1rem; line-height: 1.65;
+}
+[data-dark] .aa-lead { color: var(--mute-d); }
+.aa-nota { font-size: 12.5px; color: var(--mute); line-height: 1.55; }
+[data-dark] .aa-nota { color: var(--mute-d); }
+
+.aa-cita {
+  font-family: var(--font-display); font-weight: 300; font-style: italic;
+  font-size: clamp(1.35rem, 5.6vw, 1.75rem); line-height: 1.28; letter-spacing: -0.005em;
+  max-width: 26ch;
+}
+@media (min-width: 820px) { .aa-cita { font-size: 1.9rem; max-width: 30ch; } }
+.aa-cita__quien {
+  display: block; margin-top: 14px; font-family: var(--font-body); font-style: normal;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute);
+}
+
+/* ---------- Botones: navegar y accion en color de MARCA, rectangulares ---------- */
+.aa-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 22px; border: 1px solid var(--brand); border-radius: 0;
+  background: var(--brand); color: var(--paper);
+  font-family: var(--font-body); font-size: 12px; font-weight: 400;
+  letter-spacing: 0.17em; text-transform: uppercase; line-height: 1;
+  text-align: center; cursor: pointer;
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out), transform 140ms var(--ease-out);
+}
+.aa-btn:active { transform: scale(0.98); }
+.aa-btn--line { background: transparent; color: var(--brand); }
+.aa-btn--paper { background: var(--paper); border-color: var(--paper); color: var(--deep); }
+.aa-btn--line-lt { background: transparent; border-color: rgba(243,237,230,.55); color: #F3EDE6; }
+.aa-btn svg { width: 17px; height: 17px; flex: none; }
+@media (hover: hover) and (pointer: fine) {
+  .aa-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .aa-btn--line:hover { background: var(--brand); color: var(--paper); border-color: var(--brand); }
+  .aa-btn--paper:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .aa-btn--line-lt:hover { background: #F3EDE6; border-color: #F3EDE6; color: var(--deep); }
+}
+.aa-link {
+  display: inline-flex; align-items: center; gap: 9px; min-height: 44px;
+  font-size: 12px; letter-spacing: 0.17em; text-transform: uppercase;
+  color: var(--accent-ink); border-bottom: 1px solid transparent;
+}
+[data-dark] .aa-link { color: var(--accent-lt); }
+.aa-link svg { width: 17px; height: 17px; transition: transform 240ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .aa-link:hover svg { transform: translateX(5px); }
+}
+
+/* ---------- El passepartout: toda foto va montada ---------- */
+.aa-marco {
+  margin: 0; padding: 10px; background: var(--paper-2);
+  box-shadow: inset 0 0 0 1px var(--line-2);
+}
+[data-dark] .aa-marco { background: rgba(243,237,230,.07); box-shadow: inset 0 0 0 1px var(--line-d); }
+.aa-marco > picture, .aa-marco > img, .aa-marco__img {
+  display: block; width: 100%; background: #E4DACE;
+}
+.aa-marco img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.aa-marco figcaption {
+  margin-top: 10px; font-size: 11px; line-height: 1.45; letter-spacing: 0.05em; color: var(--mute);
+}
+[data-dark] .aa-marco figcaption { color: var(--mute-d); }
+.aa-marco figcaption b { font-weight: 400; color: var(--ink); letter-spacing: 0.14em; text-transform: uppercase; font-size: 10.5px; }
+[data-dark] .aa-marco figcaption b { color: #F3EDE6; }
+
+.aa-rule { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+/* ---------- Header propio: tres columnas y una linea de avance ---------- */
+.aa-header {
+  gap: 14px; background: transparent; border-bottom: 0;
+  color: var(--ink);
+  transition: background-color 300ms var(--ease-out), -webkit-backdrop-filter 300ms var(--ease-out), backdrop-filter 300ms var(--ease-out);
+}
+.aa-header.is-solid {
+  background: rgba(250, 247, 242, 0.92);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border-bottom: 0; color: var(--ink);
+}
+.aa-mark { display: inline-flex; align-items: baseline; gap: 10px; margin-right: auto; min-width: 0; min-height: 44px; padding-block: 11px; }
+.aa-mark__aa {
+  font-family: var(--font-display); font-weight: 400; font-size: 21px; line-height: 1;
+  letter-spacing: 0.02em; color: var(--accent);
+}
+.aa-mark__n {
+  font-family: var(--font-body); font-weight: 400; font-size: 12px;
+  letter-spacing: 0.3em; text-transform: uppercase; white-space: nowrap;
+}
+@media (max-width: 400px) { .aa-mark__n { letter-spacing: 0.2em; font-size: 11px; } }
+/* Hasta 999 px la nav NO desaparece: se vuelve una tira horizontal de anclas con
+   scroll que cuelga debajo de la linea de 1 px del header (hoja de direccion §5).
+   Sin panel y sin hamburguesa. */
+@media (max-width: 999px) {
+  .aa-nav {
+    display: flex;
+    /* El bloque que la contiene es la CAJA DE RELLENO del header: left/right 0
+       ya son los bordes de la pantalla, el relleno lo pone ella misma. */
+    position: absolute; top: 100%; left: 0; right: 0;
+    height: var(--aa-nav-h);
+    padding-inline: max(var(--k-gutter), env(safe-area-inset-left)) max(var(--k-gutter), env(safe-area-inset-right));
+    gap: 0;
+    overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none; -ms-overflow-style: none;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background-color 300ms var(--ease-out), border-color 300ms var(--ease-out);
+  }
+  /* Arriba del todo la tira va limpia sobre el velo del hero; en cuanto se baja
+     se vuelve hueso SOLIDO, para que nada se transparente por detras. */
+  .aa-header.is-solid .aa-nav {
+    background: var(--paper);
+    border-bottom-color: var(--line-2);
+  }
+  .aa-nav::-webkit-scrollbar { width: 0; height: 0; }
+  .aa-nav a {
+    display: inline-flex; align-items: center; flex: none;
+    min-height: 44px; padding-inline: 13px; white-space: nowrap;
+    scroll-snap-align: start;
+    font-size: 10.5px; letter-spacing: 0.19em; text-transform: uppercase;
+    color: var(--ink); border-bottom: 1px solid transparent;
+  }
+  .aa-nav a:first-child { padding-left: 0; }
+  .aa-nav a:last-child { padding-right: 0; }
+  .aa-nav a[aria-current="page"] { color: var(--accent-ink); }
+}
+@media (min-width: 1000px) {
+  .aa-nav { display: flex; gap: 30px; }
+  .aa-nav a {
+    display: inline-flex; align-items: center; min-height: 44px;
+    font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink);
+    border-bottom: 1px solid transparent; transition: border-color 220ms var(--ease-out);
+  }
+  .aa-nav a:hover { border-bottom-color: var(--accent); }
+}
+.aa-header__cta { min-height: 44px; padding: 0 14px; font-size: 10px; letter-spacing: 0.14em; flex: none; }
+@media (min-width: 820px) { .aa-header__cta { min-height: 44px; padding: 0 22px; font-size: 11.5px; } }
+.aa-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-2); }
+.aa-progress i {
+  display: block; height: 100%; background: var(--accent);
+  transform: scaleX(var(--p, 0)); transform-origin: left;
+}
+
+/* ---------- Pie ---------- */
+.aa-foot { background: var(--deep); color: #F3EDE6; padding-block: 34px 24px; }
+.aa-foot__in { display: block; }
+.aa-foot__mark {
+  font-family: var(--font-display); font-weight: 300; font-size: clamp(3.2rem, 15vw, 8rem);
+  line-height: 0.8; color: rgba(243,237,230,.16); letter-spacing: 0.02em; margin-bottom: 22px;
+}
+.aa-foot__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 18px; }
+.aa-foot__cols > :first-child { grid-column: 1 / -1; }
+@media (min-width: 760px) { .aa-foot__cols > :first-child { grid-column: auto; } }
+@media (min-width: 760px) { .aa-foot__cols { grid-template-columns: 1.2fr 1fr 1fr; gap: 40px; } }
+.aa-foot__h {
+  font-family: var(--font-body); font-weight: 400; font-size: 10.5px;
+  letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent-lt); margin-bottom: 12px;
+}
+.aa-foot p { font-size: 14px; color: #E7DFD6; line-height: 1.7; }
+.aa-foot__mailto { border-bottom: 1px solid var(--line-d); word-break: break-word; }
+.aa-foot__mailto:hover { border-bottom-color: var(--accent-lt); }
+.aa-foot__nav { display: flex; flex-wrap: wrap; column-gap: 16px; }
+.aa-foot__nav a { display: inline-flex; align-items: center; min-height: 44px; min-width: 46px; font-size: 14px; color: #E7DFD6; }
+.aa-foot__nav a:hover { color: var(--accent-lt); }
+.aa-foot__redes { display: flex; gap: 8px; margin-top: 14px; }
+.aa-foot__redes a {
+  width: 44px; height: 44px; display: grid; place-items: center;
+  box-shadow: inset 0 0 0 1px var(--line-d); color: #F3EDE6;
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.aa-foot__redes a:hover { background: #F3EDE6; color: var(--deep); }
+.aa-foot__redes svg { width: 21px; height: 21px; }
+.aa-foot__nota {
+  margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line-d);
+  font-size: 11.5px; color: var(--mute-d); line-height: 1.6; max-width: 62ch;
+}
+
+/* ---------- Titulos que caen ---------- */
+/* El estado base es el FINAL: sin JS, con JS lento o con movimiento reducido
+   el titulo se ve completo. Solo se esconde cuando de verdad hay animacion. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .aa-js [data-caer] .l i {
+    transform: translateY(104%);
+    transition: transform 760ms var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 95ms);
+  }
+  .aa-js [data-caer].is-in .l i { transform: none; }
+}
+
+/* ---------- Listas con filete ---------- */
+.aa-lista { border-top: 1px solid var(--line); }
+.aa-lista > li {
+  display: flex; align-items: baseline; gap: 14px; justify-content: space-between;
+  padding-block: 16px; border-bottom: 1px solid var(--line);
+}
+[data-dark] .aa-lista, [data-dark] .aa-lista > li { border-color: var(--line-d); }
+.aa-lista__n {
+  font-family: var(--font-display); font-size: 1.35rem; font-weight: 300; line-height: 1.2;
+}
+.aa-lista__d { font-size: 12px; letter-spacing: 0.1em; color: var(--mute); text-align: right; flex: none; }
+[data-dark] .aa-lista__d { color: var(--mute-d); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aa-js [data-caer] .l i { transform: none !important; }
+}

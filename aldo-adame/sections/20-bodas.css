@@ -1,0 +1,130 @@
+/* COMPONENTE FIRMA — el tablero de cada boda.
+   Los chips no son botones: son la salida. El visitante abre un evento y su
+   paleta (medida con img/paleta.py de esas mismas fotos) se derrama y repinta
+   la banda. El fondo siempre queda claro, se calcula en JS mezclando el chip
+   mas claro con el papel, para que el texto azul marino no pierda contraste. */
+
+.s-bod {
+  background: var(--fondo, var(--paper));
+  transition: background-color 420ms var(--ease-out);
+}
+.s-bod .aa-lead { margin-bottom: 24px; }
+
+/* ---------- Pestañas: en celular una tira vertical con la paleta a la vista ---------- */
+.s-bod__tabs { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.s-bod__tabs [role="tab"] {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "n c" "d c";
+  align-items: center;
+  column-gap: 14px;
+  width: 100%;
+  min-height: 62px;
+  padding-block: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  position: relative;
+  transition: opacity 240ms var(--ease-out);
+  opacity: 0.55;
+}
+.s-bod__tabs [role="tab"][aria-selected="true"] { opacity: 1; }
+.s-bod__tabs [role="tab"]::before {
+  content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 100%;
+  background: var(--acento, var(--accent));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 380ms var(--ease-out);
+}
+.s-bod__tabs [role="tab"][aria-selected="true"]::before { transform: scaleX(1); }
+@media (hover: hover) and (pointer: fine) {
+  .s-bod__tabs [role="tab"]:hover { opacity: 1; }
+}
+.s-bod__tn {
+  grid-area: n; font-family: var(--font-display); font-weight: 400;
+  font-size: 1.28rem; line-height: 1.15; letter-spacing: -0.005em;
+}
+.s-bod__td {
+  grid-area: d; font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase;
+  color: var(--mute); margin-top: 3px;
+}
+.s-bod__tc { grid-area: c; display: flex; gap: 3px; }
+.s-bod__tc i { display: block; width: 16px; height: 26px; }
+@media (min-width: 820px) {
+  .s-bod__tabs { grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+  .s-bod__tabs [role="tab"] {
+    grid-template-columns: 1fr; grid-template-areas: "n" "d" "c";
+    align-items: start; align-content: start; min-height: 128px; padding: 20px 22px 18px 0;
+  }
+  .s-bod__tn { font-size: 1.5rem; }
+  .s-bod__tc { margin-top: 14px; }
+  .s-bod__tc i { width: 26px; height: 20px; }
+}
+
+/* ---------- Paneles ---------- */
+.s-bod__paneles { margin-top: 26px; }
+.s-bod__panel[hidden] { display: none; }
+.s-bod__panel:focus { outline: none; }
+.s-bod__grid { display: grid; gap: 26px; }
+@media (min-width: 820px) {
+  .s-bod__grid { grid-template-columns: 4.6fr 7.4fr; gap: 46px; align-items: start; }
+  /* La ficha mide ~520 px y la columna de fotos ~1,060: sin esto queda media
+     pantalla de crema muerta a la izquierda. Pegada, la paleta y el enlace se
+     quedan a la vista mientras se baja por las fotos. */
+  .s-bod__ficha { position: sticky; top: calc(var(--k-header-h) + var(--aa-nav-h) + 22px); }
+}
+
+.s-bod__h3 {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(2rem, 8.6vw, 2.8rem); line-height: 1.02; letter-spacing: -0.015em;
+}
+@media (min-width: 820px) {
+  .s-bod__h3 { font-size: clamp(2.6rem, 3.2vw, 3.4rem); }
+  .s-bod__dl > div { grid-template-columns: 8rem 1fr; }
+}
+
+.s-bod__dl { margin-top: 20px; border-top: 1px solid var(--line-2); }
+.s-bod__dl > div {
+  display: grid; grid-template-columns: 6.4rem 1fr; gap: 12px;
+  padding-block: 10px; border-bottom: 1px solid var(--line-2);
+}
+.s-bod__dl dt { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute); padding-top: 3px; }
+.s-bod__dl dd { font-size: 14.5px; line-height: 1.45; }
+.s-bod__txt { margin-top: 18px; font-size: 14.5px; line-height: 1.62; color: var(--mute); max-width: 40ch; }
+
+/* ---------- Los chips: entran uno por uno, 70 ms aparte ---------- */
+.s-bod__chips { margin-top: 24px; display: grid; gap: 0; border-top: 1px solid var(--line-2); }
+.s-bod__chips li {
+  display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 12px;
+  padding-block: 9px; border-bottom: 1px solid var(--line-2);
+}
+.s-bod__chips i { display: block; width: 34px; height: 22px; background: var(--c); }
+.s-bod__chips span { font-size: 13.5px; letter-spacing: 0.02em; }
+.s-bod__chips b {
+  font-weight: 300; font-size: 10.5px; letter-spacing: 0.12em; color: var(--mute);
+  font-variant-numeric: tabular-nums;
+}
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .aa-js .s-bod__chips li { opacity: 0; transform: translateY(9px); }
+  .aa-js .s-bod__chips.is-in li {
+    opacity: 1; transform: none;
+    transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 70ms);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aa-js .s-bod__chips li { opacity: 1 !important; transform: none !important; }
+}
+.s-bod__ficha .aa-link { margin-top: 12px; }
+
+/* ---------- Las fotos del tablero ---------- */
+.s-bod__fotos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.s-bod__f1 { grid-column: 1 / -1; }
+.s-bod__f1 img { aspect-ratio: 4 / 5; }
+.s-bod__f2--ancha { grid-column: 1 / -1; }
+.s-bod__f2--ancha img { aspect-ratio: 3 / 2; }
+.s-bod__f2 img, .s-bod__f3 img { aspect-ratio: 4 / 5; }
+@media (min-width: 820px) {
+  .s-bod__fotos { gap: 16px; }
+  .s-bod__f1 img { aspect-ratio: 4 / 5; }
+  .s-bod__f2--ancha img { aspect-ratio: 16 / 9; }
+}

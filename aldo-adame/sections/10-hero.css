@@ -1,0 +1,50 @@
+/* Hero. OJO: `main > section { padding-block }` de site.css le gana a `.s-hero`,
+   por eso el selector lleva el id: `#hero.s-hero`. */
+#hero.s-hero {
+  padding: 0;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  position: relative;
+  isolation: isolate;
+  background: #DCD3C8;
+}
+.s-hero__pic { position: absolute; inset: 0; z-index: -2; }
+.s-hero__pic img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+@media (min-aspect-ratio: 3/4) { .s-hero__pic img { object-position: 50% 32%; } }
+
+/* Velo MUY suave desde arriba: no es un velo negro parejo, solo levanta el cielo
+   pálido lo suficiente para que el titular azul marino se lea. */
+.s-hero__foto {
+  position: absolute; inset: 0 0 auto 0; height: 62%; z-index: -1;
+  background: linear-gradient(180deg, rgba(250,247,242,.86) 0%, rgba(250,247,242,.62) 42%, rgba(250,247,242,.18) 78%, rgba(250,247,242,0) 100%);
+}
+
+.s-hero__txt { padding-top: calc(var(--k-header-h) + var(--aa-nav-h) + 26px); }
+.s-hero__txt .aa-h { max-width: 11ch; }
+/* La segunda linea va en el terracota OSCURO: sobre la cantera pálida de la foto
+   el terracota claro se pierde (4.2:1); este da 5.5:1 o mejor en los tres anchos. */
+#hero .aa-h .l--acc i { color: var(--accent-ink); }
+@media (min-width: 820px) {
+  .s-hero__txt { padding-top: calc(var(--k-header-h) + var(--aa-nav-h) + 60px); }
+  .s-hero__txt .aa-h { max-width: 13ch; }
+}
+
+.s-hero__pie { background: var(--paper); border-top: 1px solid var(--ink); }
+.s-hero__pie-in { padding-block: 16px; display: grid; gap: 14px; }
+@media (min-width: 760px) {
+  .s-hero__pie-in {
+    grid-template-columns: 1fr auto; align-items: center; gap: 24px; padding-block: 20px;
+  }
+}
+.s-hero__cred { font-size: 11.5px; line-height: 1.55; color: var(--mute); letter-spacing: 0.04em; }
+.s-hero__cred b {
+  display: block; font-weight: 400; color: var(--ink);
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 3px;
+}
+.s-hero__cta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.s-hero__cta .aa-btn { font-size: 11px; letter-spacing: 0.12em; padding: 0 10px; }
+@media (min-width: 760px) {
+  .s-hero__cta { display: flex; gap: 10px; }
+  .s-hero__cta .aa-btn { font-size: 12px; letter-spacing: 0.17em; padding: 0 22px; }
+}

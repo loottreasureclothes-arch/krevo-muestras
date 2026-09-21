@@ -1,0 +1,52 @@
+/* Dónde ha montado: foto grande, lista con filete, dos citas reales y quién es. */
+.s-ven__top { margin-top: 26px; display: grid; gap: 22px; }
+@media (min-width: 820px) {
+  .s-ven__top { grid-template-columns: 6fr 6fr; gap: 46px; align-items: start; }
+}
+.s-ven__foto img { aspect-ratio: 4 / 5; }
+@media (min-width: 820px) { .s-ven__foto img { aspect-ratio: 4 / 5; } }
+.s-ven__lista > li { padding-block: 15px; }
+.s-ven__nota { margin-top: 18px; max-width: 44ch; }
+
+.s-ven__citas { margin-top: 30px; display: grid; gap: 24px; padding-top: 22px; border-top: 1px solid var(--line); }
+@media (min-width: 820px) { .s-ven__citas { margin-top: 34px; gap: 30px; padding-top: 26px; } }
+.s-ven__cita { margin: 0; }
+.s-ven__quien .aa-marco { padding: 7px; }
+.s-ven__cita .aa-cita { text-indent: -0.42em; }
+
+.s-ven__quien {
+  margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: 126px 1fr; gap: 18px; align-items: start;
+}
+@media (min-width: 620px) {
+  .s-ven__quien { grid-template-columns: 220px 1fr; gap: 34px; }
+}
+@media (min-width: 820px) {
+  /* El retrato es alto (entra la silla completa) y la bio es corta: centrada,
+     el aire queda repartido arriba y abajo y no como un hueco debajo. */
+  .s-ven__quien { grid-template-columns: 250px 1fr; gap: 48px; align-items: center; }
+}
+.s-ven__retrato { max-width: 260px; }
+/* El archivo es 800x1798: con 5/8 el recorte se comia la silla Thonet y los
+   zapatos, que son el gesto de la foto. Con 1/2 entran enteros. */
+.s-ven__retrato img { aspect-ratio: 1 / 2; object-position: 50% 30%; }
+.s-ven__h3 {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(1.9rem, 7.6vw, 2.4rem); line-height: 1.05; letter-spacing: -0.015em;
+}
+.s-ven__rol {
+  margin-top: 6px; margin-bottom: 16px;
+  font-size: 10.5px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent-ink);
+}
+.s-ven__bio p { font-size: 15px; line-height: 1.66; color: var(--mute); max-width: 52ch; }
+/* A 1100 px para arriba la biografia se parte en dos columnas: con una sola
+   quedaban ~410 px de crema muerta a la derecha. */
+@media (min-width: 1100px) {
+  .s-ven__bio { columns: 2; column-gap: 48px; }
+  .s-ven__h3, .s-ven__rol { column-span: all; }
+  .s-ven__bio p { max-width: none; break-inside: avoid; }
+  .s-ven__revista { margin-top: 0; }
+}
+.s-ven__revista { margin-top: 16px; }
+.s-ven__revista b { font-weight: 400; color: var(--ink); }
+.s-ven__revista i { font-style: italic; }

@@ -1,0 +1,55 @@
+/* El cierre. Sin WhatsApp: no hay numero publico (research/hechos.md), asi que
+   el boton manda un correo de verdad y el segundo lleva a su Instagram. */
+.s-age__grid { display: grid; gap: 34px; }
+@media (min-width: 820px) {
+  .s-age__grid { grid-template-columns: 5fr 7fr; gap: 64px; align-items: center; }
+}
+.s-age__intro .aa-lead i { font-style: italic; }
+.s-age__aviso { margin-top: 20px; max-width: 40ch; }
+
+.s-age__form {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  padding: 22px 18px; background: rgba(243, 237, 230, 0.05);
+  box-shadow: inset 0 0 0 1px var(--line-d);
+}
+@media (min-width: 560px) { .s-age__form { padding: 28px 26px; gap: 18px; } }
+.s-age__campo { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.s-age__campo--ancho, .s-age__previa, .s-age__acciones, .s-age__correo { grid-column: 1 / -1; }
+.s-age__campo label {
+  font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute-d);
+}
+.s-age__form input, .s-age__form select {
+  width: 100%; min-height: 48px; padding: 0 12px;
+  background: rgba(250, 247, 242, 0.06); color: #F6F1EA;
+  border: 1px solid var(--line-d); border-radius: 0;
+  font-family: var(--font-body); font-weight: 300; font-size: 16px;
+  transition: border-color 200ms var(--ease-out), background-color 200ms var(--ease-out);
+}
+.s-age__form select {
+  -webkit-appearance: none; appearance: none; padding-right: 34px;
+  background-image: linear-gradient(45deg, transparent 50%, #D8CEC2 50%), linear-gradient(135deg, #D8CEC2 50%, transparent 50%);
+  background-position: calc(100% - 17px) 22px, calc(100% - 12px) 22px;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+.s-age__form option { color: #0E1A2B; background: #FAF7F2; }
+.s-age__form input::placeholder { color: rgba(243, 237, 230, 0.34); }
+.s-age__form input:focus, .s-age__form select:focus {
+  outline: none; border-color: var(--accent-lt); background: rgba(250, 247, 242, 0.1);
+}
+.s-age__form input::-webkit-calendar-picker-indicator { filter: invert(1) opacity(0.6); }
+
+.s-age__previa { margin-top: 4px; padding: 14px 15px; background: rgba(14, 26, 43, 0.4); box-shadow: inset 0 0 0 1px var(--line-d); }
+.s-age__previa-t {
+  font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent-lt); margin-bottom: 10px;
+}
+.s-age__previa-s { font-size: 13px; color: #E7DFD6; line-height: 1.5; word-break: break-word; }
+.s-age__previa-s b { font-weight: 400; color: var(--mute-d); }
+.s-age__previa-c {
+  margin-top: 8px; font-family: var(--font-body); font-weight: 300; font-size: 13px;
+  line-height: 1.6; color: #E7DFD6; white-space: pre-wrap; word-break: break-word;
+}
+
+.s-age__acciones { display: grid; gap: 10px; margin-top: 6px; }
+@media (min-width: 560px) { .s-age__acciones { grid-template-columns: auto auto; justify-content: start; } }
+.s-age__correo { margin-top: 2px; letter-spacing: 0.06em; }

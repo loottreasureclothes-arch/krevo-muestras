@@ -1,0 +1,61 @@
+/* Qué diseña. Tres piezas de anchos y alturas DESIGUALES (nada de rejilla de
+   tarjetas iguales): la primera manda, las otras dos bajan y se angostan. */
+.s-dis .aa-lead { margin-bottom: 30px; }
+/* A 1100 px para arriba la bajada se sube al lado derecho del titular: si no,
+   queda un rectangulo de azul vacio de ~840x330 arriba a la derecha. */
+@media (min-width: 1100px) {
+  .s-dis .aa-wrap { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; row-gap: 0; }
+  .s-dis .aa-eyebrow { grid-column: 1 / -1; }
+  .s-dis .aa-h { grid-column: 1; }
+  .s-dis .aa-lead {
+    grid-column: 2; align-self: end; justify-self: start;
+    margin-top: 0; margin-bottom: 10px; max-width: 42ch;
+  }
+  .s-dis__tres { grid-column: 1 / -1; margin-top: 34px; }
+}
+/* Collage de anchos desiguales: la primera manda a todo lo ancho, las otras dos
+   van abajo en dos columnas. Nada de tres tarjetas iguales una tras otra. */
+.s-dis__tres { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 12px; }
+.s-dis__it--a { grid-column: 1 / -1; }
+@media (min-width: 820px) {
+  /* Las tres piezas comparten rejilla: las fotos en la fila 1 (escalonadas y de
+     alturas distintas) y los tres titulos en la fila 2, con la MISMA linea base.
+     Antes caian con 16 px de diferencia y se leia como desalineacion. */
+  .s-dis__tres {
+    grid-template-columns: 4.4fr 3.8fr 3.2fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 26px; row-gap: 0; align-items: start;
+  }
+  .s-dis__it { display: contents; }
+  .s-dis__it > figure { grid-row: 1; }
+  .s-dis__it > .s-dis__h3 { grid-row: 2; }
+  .s-dis__it > p { grid-row: 3; }
+  .s-dis__it--a > * { grid-column: 1; }
+  .s-dis__it--b > * { grid-column: 2; }
+  .s-dis__it--c > * { grid-column: 3; }
+  .s-dis__it--b > figure { margin-top: 40px; }
+  .s-dis__it--c > figure { margin-top: 80px; }
+}
+.s-dis__it figure img { aspect-ratio: 4 / 5; }
+.s-dis__it--a figure img { aspect-ratio: 3 / 4; }
+/* La foto de Events se sirve ya recortada en 5/9 (el arco de globos, el pedestal
+   y las dos raquetas completos): se muestra entera, sin recorte del CSS. */
+.s-dis__it--c figure img { aspect-ratio: 5 / 9; }
+@media (min-width: 820px) {
+  .s-dis__it figure img { aspect-ratio: 3 / 4; }
+  .s-dis__it--c figure img { aspect-ratio: 5 / 9; }
+}
+.s-dis__it--b .s-dis__h3, .s-dis__it--c .s-dis__h3 { font-size: clamp(1.25rem, 5.4vw, 1.5rem); }
+.s-dis__it--b p, .s-dis__it--c p { font-size: 13.5px; }
+@media (min-width: 820px) {
+  .s-dis__it--b .s-dis__h3, .s-dis__it--c .s-dis__h3 { font-size: 1.85rem; }
+  .s-dis__it--b p, .s-dis__it--c p { font-size: 14.5px; }
+}
+.s-dis__h3 {
+  margin-top: 16px; font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(1.6rem, 6.6vw, 2rem); line-height: 1.1; letter-spacing: -0.01em;
+}
+@media (min-width: 820px) { .s-dis__h3 { font-size: 1.85rem; } }
+.s-dis__it p {
+  margin-top: 10px; font-size: 14.5px; line-height: 1.62; color: var(--mute-d); max-width: 38ch;
+}

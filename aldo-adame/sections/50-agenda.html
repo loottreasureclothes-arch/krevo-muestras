@@ -1,0 +1,64 @@
+<section id="agenda" class="s-age" data-dark aria-labelledby="age-t">
+  <div class="aa-wrap s-age__grid">
+    <div class="s-age__intro">
+      <p class="aa-eyebrow">04 · Agenda</p>
+      <h2 id="age-t" class="aa-h" data-caer>
+        <span class="l"><i>Ya está reservando</i></span>
+        <span class="l l--acc"><i>2027.</i></span>
+      </h2>
+      <p class="aa-lead">Lo dice él en su perfil: <i>now booking 2027</i>. Dile qué fecha traes en la cabeza y te contesta al correo.</p>
+      <p class="aa-nota s-age__aviso">Aldo no tiene un WhatsApp público. El correo de abajo es el que él mismo pone en su perfil de Instagram.</p>
+    </div>
+
+    <form class="s-age__form" id="aa-form" novalidate>
+      <div class="s-age__campo">
+        <label for="f-tipo">Tipo de evento</label>
+        <select id="f-tipo" name="tipo">
+          <option value="Boda">Boda</option>
+          <option value="Ramo de novia">Ramo de novia</option>
+          <option value="Evento social">Evento social</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <div class="s-age__campo">
+        <label for="f-fecha">Fecha tentativa</label>
+        <input type="date" id="f-fecha" name="fecha" max="2028-12-31">
+      </div>
+      <div class="s-age__campo">
+        <label for="f-lugar">Ciudad o venue</label>
+        <input type="text" id="f-lugar" name="lugar" list="aa-venues" autocomplete="off" placeholder="Aguascalientes">
+        <datalist id="aa-venues">
+          <option value="Hacienda El Saucillo"></option>
+          <option value="Viñedo Tierra Tinta"></option>
+          <option value="Los Olivos Restaurant"></option>
+          <option value="Kalamata Jardín"></option>
+        </datalist>
+      </div>
+      <div class="s-age__campo">
+        <label for="f-inv">Número de invitados</label>
+        <input type="number" id="f-inv" name="invitados" min="1" max="2000" inputmode="numeric" placeholder="180">
+      </div>
+      <div class="s-age__campo s-age__campo--ancho">
+        <label for="f-nombre">Tu nombre</label>
+        <input type="text" id="f-nombre" name="nombre" autocomplete="name" placeholder="Jacqueline">
+      </div>
+
+      <div class="s-age__previa" aria-live="polite">
+        <p class="s-age__previa-t">Esto es lo que se va a mandar</p>
+        <p class="s-age__previa-s"><b>Asunto:</b> <span id="aa-asunto">Agenda 2027 - Aldo Adame</span></p>
+        <pre class="s-age__previa-c" id="aa-cuerpo">Hola Aldo, vi tu página y quiero platicar una fecha.</pre>
+      </div>
+
+      <div class="s-age__acciones">
+        <a class="aa-btn aa-btn--paper" id="aa-mail"
+           href="mailto:aldoadame@aldoadame.com?subject=Agenda%202027%20-%20Aldo%20Adame&amp;body=Hola%20Aldo%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20platicar%20una%20fecha.">
+          <svg aria-hidden="true"><use href="#i-mail"/></svg><span>Mandar mi fecha</span>
+        </a>
+        <a class="aa-btn aa-btn--line-lt" href="https://www.instagram.com/aldoadameg/" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-ig"/></svg><span>Escribirle por Instagram</span>
+        </a>
+      </div>
+      <p class="aa-nota s-age__correo">aldoadame@aldoadame.com</p>
+    </form>
+  </div>
+</section>
