@@ -1,9 +1,11 @@
-/* Sección 2: La carta. Banda de foto a sangre (62 svh) + rejilla de tienda.
+/* Sección 2: La carta. Banda de foto + rejilla de tienda.
    Lenguaje de formas de la hoja: radio 2 px, paspartú crema de 8 px con borde verde al 60 %,
-   nada redondeado salvo el medallón y los platos. */
+   nada redondeado salvo el medallón y los platos.
+   Celular (< 700 px): un platillo por renglón, foto cuadrada a la izquierda. Nunca media
+   celda vacía. De 700 px para arriba: rejilla de 3 y la foto grande en paspartú topado. */
 .s-carta { background: var(--deep); padding-bottom: 44px; }
 
-/* --- foto grande a sangre con el título encima --- */
+/* --- foto grande con el título encima (a sangre solo en celular) --- */
 .s-carta-shotband { position: relative; height: 62svh; min-height: 340px; overflow: hidden; }
 .s-carta-shotband picture, .s-carta-shotband img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; }
 .s-carta-shotband-copy {
@@ -19,19 +21,19 @@
 }
 .s-carta-h2 em { display: block; font-style: normal; color: var(--brand-lit); }
 
-/* --- rejilla de tienda: 2 columnas en celular, 3 en compu --- */
+/* --- rejilla de tienda: un renglón por platillo en celular, 3 columnas en compu --- */
 .s-carta-in { padding-top: 24px; }
-.s-carta-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.s-carta-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 .s-carta-card {
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: row; align-items: center; gap: 14px;
   background: rgba(244,239,228,.05);
   border: 1px solid var(--line-brand);
   border-radius: var(--radius);
-  padding: 8px 8px 10px;
+  padding: 10px;
 }
-.s-carta-card--wide { grid-column: 1 / -1; align-items: center; padding-top: 18px; }
+.s-carta-card--wide { grid-column: 1 / -1; }
 
-.s-carta-shot { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; display: grid; }
+.s-carta-shot { width: min(40%, 240px); flex: none; aspect-ratio: 1 / 1; overflow: hidden; display: grid; }
 .s-carta-shot img { width: 100%; height: 100%; object-fit: cover; }
 .s-carta-shot--falta {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
@@ -49,16 +51,30 @@
   letter-spacing: .04em; text-transform: uppercase; color: rgba(244,239,228,.55);
 }
 
-.s-carta-body { margin-top: 10px; width: 100%; }
-.s-carta-row { margin-top: 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; }
+.s-carta-body { flex: 1 1 auto; min-width: 0; }
+.s-carta-row { margin-top: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; }
 .s-carta-name {
   font-family: var(--font-display); font-weight: 850; text-transform: uppercase;
   font-size: 15px; line-height: 1.06; color: var(--paper);
 }
+/* Dato real de la ficha de Google (research/menu-precios.md: "Menú y platos destacados"
+   marca Pozole Rojo como Popular). No es relleno: es la razón de que esta tarjeta mande. */
+.s-carta-nota {
+  margin-top: 8px; max-width: 30ch;
+  font-size: 12.5px; line-height: 1.45; color: rgba(244,239,228,.62);
+}
 .s-carta-price {
   /* el rojo de marca se reserva para el cuadrito de "hoy" del reloj; aquí, texto normal */
+  flex: none;
   font-family: var(--font-alt); font-weight: 600; font-size: 10.5px;
   letter-spacing: .03em; text-transform: uppercase; color: rgba(244,239,228,.55);
+}
+/* La misma línea punteada de los renglones de la carta: une el precio con su "+" en las dos
+   tarjetas con foto, para que la sección hable una sola gramática. En celular no cabe (daría
+   un rabito de 20 px), así que ahí no se pinta. */
+.s-carta-fill { display: none; }
+@media (min-width: 700px) {
+  .s-carta-fill { display: block; flex: 1 1 auto; min-width: 40px; align-self: center; border-bottom: 1px dotted rgba(244,239,228,.3); }
 }
 .s-carta-add {
   flex: none; width: 44px; height: 44px;
@@ -75,27 +91,32 @@
 .s-carta-add.is-added { background: var(--brand); border-color: var(--brand); color: var(--paper); }
 @media (hover: hover) and (pointer: fine) { .s-carta-add:hover { background: rgba(87,201,138,.14); border-color: var(--brand-lit); } }
 
-/* --- carta tipográfica: los antojitos sin foto digna, como renglones de menú --- */
+/* --- carta tipográfica: los antojitos sin foto digna, como renglones de menú ---
+   En celular el renglón va a dos líneas (nombre + punteada larga + "+", y debajo el precio):
+   así la punteada nunca queda de rabito. De 700 px para arriba cabe todo en una línea. */
 .s-carta-list { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--line-brand); }
 .s-carta-list-row {
-  display: flex; align-items: baseline; gap: 10px;
-  padding: 13px 0; border-bottom: 1px solid var(--line-brand);
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(30px, 1fr) 44px;
+  grid-template-areas: "name fill add" "price price add";
+  align-items: center; column-gap: 10px; row-gap: 3px;
+  padding: 11px 0; border-bottom: 1px solid var(--line-brand);
 }
 .s-carta-list-name {
-  flex: none; max-width: 62%;
+  grid-area: name; min-width: 0;
   font-family: var(--font-display); font-weight: 850; text-transform: uppercase;
   font-size: 14px; line-height: 1.15; color: var(--paper);
 }
 .s-carta-list-fill {
-  flex: 1 1 auto; min-width: 14px; align-self: center;
+  grid-area: fill; align-self: center;
   border-bottom: 1px dotted rgba(244,239,228,.3);
 }
 .s-carta-list-price {
-  flex: none;
+  grid-area: price;
   font-family: var(--font-alt); font-weight: 600; font-size: 10.5px;
   letter-spacing: .03em; text-transform: uppercase; color: rgba(244,239,228,.55);
 }
-.s-carta-list-row .s-carta-add { flex: none; }
+.s-carta-list-row .s-carta-add { grid-area: add; align-self: center; }
 .s-carta-list-note {
   padding: 14px 2px 0; list-style: none;
   font-family: var(--font-alt); font-size: 11px; line-height: 1.4; letter-spacing: .03em;
@@ -107,8 +128,11 @@
   font-size: 13px; line-height: 1.5; color: rgba(244,239,228,.72);
 }
 
-/* --- momento firma "El medallón se sirve": 200 px fijos, foto real de 414 px, no se estira --- */
-.s-carta-medal { position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; flex: none; }
+/* --- momento firma "El medallón se sirve": foto real de 414 px, no se estira --- */
+.s-carta-medal {
+  position: relative; width: min(40%, 240px); aspect-ratio: 1 / 1;
+  border-radius: 50%; overflow: hidden; flex: none; align-self: center;
+}
 .s-carta-medal-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .s-carta-medal-disc,
 .s-carta-medal-ring {
@@ -126,22 +150,16 @@
   mask-image: radial-gradient(circle closest-side at 50% 50%, transparent 0 68%, #000 71% 100%);
   transform-origin: 50% 50%; transform: rotate(0deg); will-change: transform;
 }
-.s-carta-card--wide .s-carta-body { margin-top: 16px; max-width: 320px; text-align: left; }
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  html.chata-js [data-momento-text] {
-    opacity: 0; transform: translateY(14px);
-    transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out);
-  }
-  html.chata-js [data-momento-text].is-in { opacity: 1; transform: none; }
-}
+/* Nombre y precio del platillo estrella: SIEMPRE visibles, en cualquier ancho. Nada que se
+   lea depende del scrub ni de un temporizador; lo único que se mueve es el medallón. */
 @media (prefers-reduced-motion: reduce) {
-  .s-carta-medal-disc { transform: scale(.02) !important; }
+  .s-carta-medal-disc { transform: scale(0) !important; opacity: 0 !important; }
   .s-carta-medal-ring { transform: rotate(10deg) !important; }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 700px) {
   .s-carta { padding-top: 56px; padding-bottom: 72px; }
-  /* En compu la foto NO va a sangre: el original es chico y estirado a 1440 se ve borroso.
+  /* En compu y tableta la foto NO va a sangre: el original es chico y estirado se ve borroso.
      Va en el mismo paspartú crema que el resto, topada a 1100 px (se reduce, no se amplía). */
   .s-carta-shotband {
     height: auto; min-height: 0;
@@ -159,12 +177,31 @@
   .s-carta-h2 { max-width: 22ch; }
   .s-carta-in { padding-top: 34px; }
   .s-carta-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-  .s-carta-card--wide { grid-column: span 2; flex-direction: row; align-items: center; gap: 28px; padding: 16px; }
-  .s-carta-card--wide .s-carta-medal { width: 264px; height: 264px; }
-  .s-carta-card--wide .s-carta-body { margin-top: 0; flex: 1 1 auto; max-width: none; }
-  /* El platillo estrella no puede salir sin nombre ni precio: en compu se leen de entrada
-     y el scrub del medallón sigue siendo lo único que se mueve. */
-  html.chata-js [data-momento-text] { opacity: 1; transform: none; }
+  .s-carta-card { flex-direction: column; align-items: stretch; padding: 8px 8px 10px; }
+  /* La foto de la tarjeta normal CRECE hasta emparejar el alto de la tarjeta firma: así
+     ninguna de las dos se queda con una franja negra abajo. */
+  .s-carta-shot { width: 100%; flex: 1 1 auto; aspect-ratio: 3 / 2; min-height: 150px; }
+  .s-carta-body { margin-top: 10px; flex: none; }
+  /* La tarjeta firma llena su alto: medallón grande a la izquierda y, a la derecha, nombre
+     arriba, el dato de Google en medio y el precio con su punteada hasta el "+". */
+  .s-carta-card--wide { grid-column: span 2; flex-direction: row; align-items: stretch; gap: 26px; padding: 16px; }
+  .s-carta-card--wide .s-carta-medal { align-self: center; width: min(46%, 340px); }
+  .s-carta-card--wide .s-carta-body {
+    margin-top: 0; flex: 1 1 auto;
+    display: flex; flex-direction: column; justify-content: center; gap: 12px;
+    padding-block: 4px;
+  }
+  /* el platillo estrella manda: su nombre en grande, el dato de Google y el precio con su
+     punteada, todo como un solo bloque junto al medallón (sin franjas negras sueltas) */
+  .s-carta-card--wide .s-carta-name { font-size: clamp(22px, 2.3vw, 30px); }
+  .s-carta-card--wide .s-carta-nota { margin-top: 0; max-width: 30ch; font-size: 13.5px; }
+  .s-carta-card--wide .s-carta-row { margin-top: 0; }
+  /* Renglones de la carta: en una sola línea, con la punteada corriendo hasta el precio. */
+  .s-carta-list-row { display: flex; align-items: baseline; gap: 10px; padding: 13px 0; }
+  .s-carta-list-name { flex: 0 1 auto; max-width: 62%; }
+  .s-carta-list-fill { flex: 1 1 auto; min-width: 14px; align-self: center; }
+  .s-carta-list-price { flex: none; }
+  .s-carta-list-row .s-carta-add { flex: none; }
   .s-carta-name { font-size: 17px; }
   .s-carta-rango { font-size: 14px; }
 }

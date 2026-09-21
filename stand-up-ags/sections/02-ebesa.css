@@ -4,8 +4,11 @@
    20 sep 2026 (tarde), por voz de Emanuel: "esta pinche foto hay que quitarla
    porque esta fatalisima" -> se fue la foto GRANDE de Fajas Colombianas y NO
    entro ninguna otra en grande. Las fotos originales son de Instagram a 414 px
-   y solo aguantan chicas: ninguna pasa de ~240 px de ancho. Fajas Colombianas
-   se queda como una mas de la tira, para que sigan siendo diez.
+   y solo aguantan chicas: ninguna pasa de ~240 px de ancho.
+   20 sep 2026 (ronda 2): Emanuel decidio que la foto de Fajas Colombianas sale
+   TAMBIEN de la tira y sus archivos se borraron de img/ebesa/. Quedan NUEVE
+   fotos (3x3 en compu, sin renglon cojo) y el nombre se conserva en el renglon
+   "Tambien armamos: Fajas Colombianas.", asi "DIEZ STANDS" sigue siendo cierto.
    La tira es scroll nativo con snap en celular y rejilla en pantalla ancha:
    cero JavaScript. */
 .s-ebesa-h2 { margin-bottom: 28px; }
@@ -28,9 +31,14 @@
 .s-ebesa-tira img { aspect-ratio: 4 / 5; object-fit: cover; }
 .s-ebesa-tira figcaption { font-size: 10px; letter-spacing: 0.06em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .s-ebesa-pista {
-  margin: 10px 0 30px; font-family: var(--font-body); font-size: 11px; font-weight: 700;
+  margin: 10px 0 8px; font-family: var(--font-body); font-size: 11px; font-weight: 700;
   letter-spacing: 0.1em; text-transform: uppercase; color: var(--brand);
 }
+/* 20 sep 2026 (ronda 2), decision de Emanuel: la foto de Fajas Colombianas se
+   quita de la tira ("fatalisima") pero el trabajo existio, asi que el nombre
+   se queda en un renglon de texto chico. Asi la tira lleva nueve fotos (3x3
+   cuadrado en compu, sin renglon cojo) y "DIEZ STANDS" sigue siendo cierto. */
+.s-ebesa-tambien { margin: 0 0 30px; font-size: 13px; color: var(--mute); }
 
 .s-ebesa-resenas { padding: 24px 20px; }
 .s-ebesa-rotulo {
@@ -46,21 +54,43 @@
 .s-ebesa-cita p:not(.s-ebesa-stars) { font-size: 15px; line-height: 1.4; color: var(--ink-deep); margin-bottom: 6px; }
 .s-ebesa-cita cite { font-style: normal; font-weight: 700; font-size: 13px; color: var(--mute-deep); }
 
-/* Compu: los diez en una rejilla de 5 x 2 a todo lo ancho (ahi estaba el hueco
-   que dejaba la foto grande). Diez fotos solo cuadran en 1, 2, 5 o 10 columnas:
-   con 3 o 4 el ultimo renglon queda cojo, por eso no hay paso intermedio y
-   abajo de 900 se queda la tira que se desliza. max-width para que ni en
-   1800 px pase de ~240 px por foto: son fotos de 414 px de origen. */
+/* Compu: las NUEVE en una rejilla de 3 x 3, cuadrada y sin renglon cojo (antes
+   eran diez en 5 x 2). max-width de 756px para que ni en 1800px una foto pase
+   de ~240px: son fotos de Instagram de 414px de origen y mas grandes se ven
+   sucias. */
 @media (min-width: 900px) {
   .s-ebesa-tira {
-    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px;
-    max-width: 1240px; margin: 0 0 40px; padding: 0; overflow: visible;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    max-width: 756px; margin: 0 0 14px; padding: 0; overflow: visible;
   }
   .s-ebesa-tira li { width: auto; }
   .s-ebesa-tira img { aspect-ratio: 1 / 1; }
   .s-ebesa-tira figcaption { font-size: 11px; }
   .s-ebesa-pista { display: none; }
+  .s-ebesa-tambien { margin-bottom: 40px; }
   .s-ebesa-resenas { padding: 28px 26px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
   .s-ebesa-rotulo { grid-column: 1 / -1; }
   .s-ebesa-cita { margin: 0; }
+}
+
+/* Desde 1200px el titular se va a la izquierda y la rejilla de 3x3 a la
+   derecha: a 1440 el titular ocupaba 495px de 1200 y dejaba la mitad derecha
+   en blanco (revision de la tarde, punto 5).
+   OJO: la columna izquierda NO puede ir con max-content. Ahi tambien viven las
+   resenas y su max-content es la cita entera en un solo renglon (~760px), que
+   se comia la columna de las fotos y las dejaba en 118px. Va con un clamp
+   atado al mismo vw que --fs-h2 (14ch de Archivo ~= 10.7 veces el cuerpo), asi
+   crece con la letra en pantallas de 1800px y ninguna linea con nowrap se sale. */
+@media (min-width: 1200px) {
+  .s-ebesa-top {
+    display: grid; grid-template-columns: clamp(430px, 34.5vw, 740px) minmax(0, 1fr);
+    grid-template-rows: auto 1fr; column-gap: 56px; row-gap: 40px;
+  }
+  .s-ebesa-intro { grid-column: 1; grid-row: 1; }
+  /* Las fotos ocupan la columna derecha completa; las resenas suben a la
+     columna izquierda, pegadas abajo, para que no quede medio lienzo vacio
+     debajo del titular. */
+  .s-ebesa-fotos { grid-column: 2; grid-row: 1 / span 2; }
+  .s-ebesa-resenas { grid-column: 1; grid-row: 2; align-self: start; grid-template-columns: 1fr; row-gap: 18px; }
+  .s-ebesa-h2 { margin-bottom: 0; }
 }

@@ -46,7 +46,7 @@
   --font-display: "Playfair Display", "Times New Roman", serif;
   --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --fs-h2: clamp(38px, 10.5vw, 80px);
-  --sec-y: 50px;
+  --sec-y: 46px; /* 20 sep, ronda 2: la principal en celular tenia que bajar del tope de 9,000 px */
   --k-gutter: 16px;
   --k-header-h: 84px;
   --os-head-h: 84px;
@@ -157,25 +157,40 @@ body { background: var(--canvas); color: var(--ink); font-family: var(--font-bod
 .os-head-part { flex: none; margin-inline: -1px; transition: height 240ms var(--ease-out); }
 .k-header.os-header.is-solid .os-head-part { height: 20px; }
 
-.os-sm { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 4px; }
-.os-sm-t { display: block; max-width: 160px; overflow: hidden; font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 15px; letter-spacing: 0.06em; line-height: 1; color: var(--ink); white-space: nowrap; transition: max-width 240ms var(--ease-out), opacity 200ms var(--ease-out); }
-.k-header.os-header.is-solid .os-sm-t { max-width: 0; opacity: 0; }
+/* El letrero "secret mode" y su neon son UNA sola pieza: o se ven los tres (parteaguas, letrero y
+   subrayado) o no se ve ninguno. Antes, al compactar, se apagaba solo el texto y quedaban el
+   parteaguas y el guioncito flotando junto al logo, que se leia como error de render. */
+.os-sm { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 4px; min-width: 0; }
+.os-sm-t { display: block; max-width: 160px; overflow: hidden; font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 15px; letter-spacing: 0.06em; line-height: 1; color: var(--ink); white-space: nowrap; }
 .os-sm-u { display: block; width: 28px; height: 2px; background: linear-gradient(90deg, var(--brand-deep), var(--brand)); }
 
-.os-head-sp { flex: 1 1 auto; }
+.os-head-sp { flex: 1 1 auto; min-width: 0; }
 .os-menu-word { display: none; }
-@media (min-width: 560px) { .os-menu-word { display: inline; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin-right: 4px; } }
-.os-apartar { flex: none; height: 44px; min-height: 44px; padding: 0 18px; font-size: 11px; }
+@media (min-width: 720px) { .os-menu-word { display: inline; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin-right: 4px; } }
+.os-apartar { flex: 0 1 auto; min-width: 0; height: 44px; min-height: 44px; padding: 0 18px; font-size: 11px; overflow: hidden; }
 
 .os-menu-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: inherit; margin-left: 2px; }
+
+/* --------- El header tiene que caber a 390 en los CUATRO estados ---------
+   Medido con CDP el 20 sep: con piezas en el carrito, "Ver la tienda" (134 px) + la chapa (94) +
+   el letrero (86) + la hamburguesa (44) se pasaban de 390 y se salian de pantalla los dos
+   ultimos. Abajo de 560 se va el letrero completo; y en cuanto hay algo en el encargo se va
+   tambien "Ver la tienda", que con el encargo empezado ya no sirve de nada: su lugar lo toma la
+   chapa, que es la que abre la hoja. */
+@media (max-width: 559px) {
+  .os-sm, .os-head-part { display: none; }
+  body[data-cart-n]:not([data-cart-n="0"]) .os-apartar { display: none; }
+}
 .os-burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 20px; height: 16px; }
 .os-burger i { display: block; height: 1px; background: currentColor; transition: transform 220ms var(--ease-out), opacity 220ms var(--ease-out); }
 html.os-nav-open .os-burger i:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 html.os-nav-open .os-burger i:nth-child(2) { opacity: 0; }
 html.os-nav-open .os-burger i:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-/* ---------------- carrito compacto (lo llena el turno 2; la barra ya existe) ---------------- */
-.os-cart-bar { display: none; align-items: center; gap: 8px; height: 28px; padding: 0 10px; margin-left: 4px; background: var(--brand); color: #1b0e14; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+/* ---------------- La chapa del encargo: es el boton que abre la hoja ----------------
+   44 px de alto (es tocable, regla dura) y en UN solo renglon: a 390 "Mi encargo · 3" se partia
+   en dos dentro de una caja de 28 px y salia un "MI" colgado arriba, cortado. */
+.os-cart-bar { display: none; align-items: center; gap: 6px; height: 44px; min-height: 44px; padding: 0 12px; margin-left: 4px; background: var(--brand); color: #1b0e14; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; cursor: pointer; }
 body[data-cart-n]:not([data-cart-n="0"]) .os-cart-bar { display: inline-flex; }
 
 /* ============ Panel de menu: "Carta" en hoja completa ============ */

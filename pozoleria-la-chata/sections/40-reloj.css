@@ -10,18 +10,19 @@
   align-items: stretch;
   gap: 6px; width: 100%; max-width: 520px;
 }
+/* Los días cerrados se leen: crema al 72 % sobre el verde carbón, no un gris apagado. */
 .s-reloj-day {
   position: relative;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 4px;
   min-height: 64px;
-  padding: 8px 2px;
+  padding: 20px 2px 8px;
   border-radius: var(--radius);
-  background: rgba(244,239,228,.06);
-  color: rgba(244,239,228,.42);
+  background: rgba(244,239,228,.09);
+  color: rgba(244,239,228,.72);
 }
 .s-reloj-day::before {
-  content: ""; position: absolute; left: 26%; right: 26%; top: 52%; height: 1px; background: rgba(244,239,228,.42);
+  content: ""; position: absolute; left: 26%; right: 26%; top: 58%; height: 1px; background: rgba(244,239,228,.62);
 }
 .s-reloj-d { font-family: var(--font-alt); font-weight: 700; font-size: 14px; text-transform: uppercase; line-height: 1; }
 .s-reloj-day--on { background: var(--brand); color: var(--paper); }
@@ -32,10 +33,18 @@
   font-size: 11px; line-height: 1.25; letter-spacing: .02em;
   color: var(--paper);
 }
-.s-reloj-day[data-today]::after {
-  content: ""; position: absolute; top: 5px; left: 5px;
-  width: 6px; height: 6px; background: var(--accent); border-radius: 1px;
+/* "Hoy" se dice con la palabra, no con un cuadrito de 6 px que nadie entiende: el borde
+   completo de la ficha en rojo de marca y HOY arriba de la letra. */
+.s-reloj-day[data-today] {
+  box-shadow: inset 0 0 0 1.5px var(--accent);
 }
+.s-reloj-day[data-today]::after {
+  content: "HOY"; position: absolute; top: 6px; left: 0; right: 0;
+  font-family: var(--font-alt); font-weight: 700; font-size: 9px;
+  letter-spacing: .12em; line-height: 1; text-align: center;
+  color: var(--accent);
+}
+.s-reloj-day--on[data-today]::after { color: var(--paper); }
 
 .s-reloj-title {
   font-size: clamp(26px, 7.5vw, 42px);

@@ -237,6 +237,30 @@
     }, 1600);
   }
 
+  /* El flotante de WhatsApp no puede tapar botones, texto ni el crédito del pie (regla del
+     20 sep). Se esconde con VISIBILITY —no con opacity, que la animación de entrada pisa—
+     mientras su propio rectángulo se encima con un bloque [data-hide-wa]. */
+  function initHideWa() {
+    var wa = document.querySelector(".chata-wa-float");
+    var zonas = document.querySelectorAll("[data-hide-wa]");
+    if (!wa || !zonas.length) return;
+    var ticking = false;
+    function check() {
+      ticking = false;
+      var r = wa.getBoundingClientRect(); // fixed: su caja no cambia aunque esté oculto
+      var hit = false;
+      for (var i = 0; i < zonas.length && !hit; i++) {
+        var z = zonas[i].getBoundingClientRect();
+        hit = z.bottom > r.top - 10 && z.top < r.bottom + 10 && z.right > r.left - 10 && z.left < r.right + 10;
+      }
+      wa.classList.toggle("is-tapando", hit);
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(check); } }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    check();
+  }
+
   function scrollToEl(el) {
     var head = document.querySelector(".chata-header");
     var top = el.getBoundingClientRect().top + window.scrollY - (head ? head.offsetHeight - 8 : 0);
@@ -256,7 +280,7 @@
     });
   }
 
-  function init() { initWa(); initHeader(); initNav(); initSheet(); initCart(); initRevealSafety(); initAnchors(); }
+  function init() { initWa(); initHeader(); initNav(); initSheet(); initCart(); initRevealSafety(); initAnchors(); initHideWa(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

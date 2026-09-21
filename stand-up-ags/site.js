@@ -86,6 +86,8 @@
     if (!btn || !menu) return;
     var body = document.body;
     var links = menu.querySelectorAll("a");
+    var cerrar = menu.querySelector("[data-cd-close]");
+    var header = document.getElementById("su-header");
     function set(open) {
       var was = body.classList.contains("cd-menu-open");
       if (open === was) return;
@@ -94,21 +96,29 @@
       menu.setAttribute("aria-hidden", open ? "false" : "true");
       if (open) {
         history.pushState({ suMenu: true }, "");
-        setTimeout(function () { links[0].focus({ preventScroll: true }); }, 80);
+        setTimeout(function () { (cerrar || links[0]).focus({ preventScroll: true }); }, 80);
       } else {
         btn.focus({ preventScroll: true });
       }
     }
     btn.addEventListener("click", function () { set(!body.classList.contains("cd-menu-open")); });
+    /* Tres salidas, todas probadas: el boton "Cerrar" del panel, la hamburguesa
+       (que ahora queda encima) y la banda de velo de abajo. El velo se toca
+       porque el panel ya no llega al borde inferior de la pantalla. */
     menu.addEventListener("click", function (e) {
       var a = e.target.closest("a");
-      if (a || e.target.classList.contains("cd-menu-scrim")) set(false);
+      if (a || e.target.closest("[data-cd-close]") || !e.target.closest(".cd-menu-panel")) set(false);
+    });
+    /* Con el menu abierto el header queda arriba: si tocan el logo, se cierra
+       en vez de dejar el panel colgado sobre la pagina. */
+    if (header) header.addEventListener("click", function (e) {
+      if (e.target.closest("a") && body.classList.contains("cd-menu-open")) set(false);
     });
     document.addEventListener("keydown", function (e) {
       if (!body.classList.contains("cd-menu-open")) return;
       if (e.key === "Escape") { e.preventDefault(); set(false); return; }
       if (e.key === "Tab") {
-        var items = [btn].concat(Array.prototype.slice.call(links));
+        var items = [btn].concat(cerrar ? [cerrar] : [], Array.prototype.slice.call(links));
         var i = items.indexOf(document.activeElement);
         e.preventDefault();
         if (i < 0) i = e.shiftKey ? 0 : -1;

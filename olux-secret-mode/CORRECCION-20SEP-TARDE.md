@@ -132,3 +132,138 @@ python3 build.py          # index.html desde template.html + sections/
 
 `sections/20-tienda.html` y `catalogo.html` **se generan**: no se editan a mano, se cambia
 `build_tienda.py`. `build_img.py` regenera los derivados de `img/` desde `research/fotos/`.
+
+---
+
+# RONDA 2 — sobre `revisiones-externas/olux-secret-mode-tarde.md` (20 sep 2026, 17:40)
+
+El inspector externo la calificó **7.4 / 10 — no se puede mandar**. Su lista, punto por punto.
+
+## Bloqueantes
+
+### 1. A 390 px el header se salía de pantalla — **HECHO**
+Medido otra vez con CDP en los cuatro estados. Ahora, con ventana de 390 px, **nada pasa de 374**:
+
+| Estado | Logo | Chapa | Ver la tienda | Hamburguesa |
+|---|---|---|---|---|
+| Arriba, carrito vacío | 6–87 | oculta | 182–316 | 330–374 |
+| Arriba, con 3 piezas | 6–87 | 196–316 | oculta | 330–374 |
+| Scrolleado, con 3 piezas | 6–73 | 196–316 | oculta | 330–374 |
+
+Qué se cambió en `site.css`: `.os-apartar` pasa a `flex: 0 1 auto; min-width: 0`, y abajo de 560 px
+se esconde el letrero completo (`.os-sm` **y** `.os-head-part`). Y en cuanto hay algo en el encargo,
+abajo de 560 se esconde **"Ver la tienda"**: con el encargo empezado ese botón ya no sirve, y su
+lugar lo toma la chapa, que es la que abre la hoja. Es la salida "buena" que proponía el inspector.
+
+### 2. La chapa "Mi encargo" medía 28 px y partía su texto — **HECHO**
+`.os-cart-bar`: `height: 44px; min-height: 44px; padding: 0 12px; white-space: nowrap`. Medido:
+44 px de alto, "Mi encargo · 3" en un solo renglón.
+
+### 3. "02 · Calzado" eran 36 pares sin una sola foto — **HECHO**
+Primero se volvió a buscar, sin dar por buena la pasada de la mañana (queda anotado en
+`research/FOTOS-PRODUCTO.md`): índice CDX de **todas** las imágenes del dominio → 24 URLs, las
+mismas; índice de **todo** `wp-content/uploads/*` → 25 registros, ni un `IMG_` de calzado; ficha
+archivada de `tenis-michael-kors` → su `og:image` existe y apunta a `IMG_8698.jpg`, pero la foto da
+**404** en tamaño completo, en 277×300 y en 100×100. **No hay foto de calzado y no la va a haber
+por ese camino.**
+
+Lo que sí es suyo y sí existe: **su exhibidor real de tenis** (foto de Google Maps). De ahí salen
+tres recortes cerrados a pares concretos, fuera de las dos franjas con el sticker de Instagram
+quemado, subidos x4 con **Real-ESRGAN local** (`img/calzado/par-1|2|3-380|760.webp`). Cero IA, cero
+créditos.
+
+La sección quedó con el orden que pidió el encargo: **primero los tenis de verdad** (tres fotos),
+luego el renglón honesto **"Sin foto todavía: pregúntanos y te la mandamos por WhatsApp"**, y hasta
+abajo la rejilla igual que las otras tres secciones, con cuatro pares de cuatro marcas distintas y
+su precio real (Tommy $2,190 · Michael Kors $4,200 · Calvin Klein $1,890 · Guess $1,890) y el enlace
+a los 36. Ya no es una lista de texto. Los recortes **no se pegan a ninguna ficha**: decir "este es
+el Tenis Guess de $1,890" sobre un recorte del anaquel sería inventar.
+
+### 4. El flotante verde tapaba texto en "Todo listo para completar" — **HECHO**
+`data-hide-wa` en `#completar`. Y se encontró **otro** que el inspector no vio: a 6,000 px de scroll
+el flotante se comía el renglón *"Es el mismo local."* del título de `#nombres`; esa sección también
+lleva ya `data-hide-wa`. Reverificado barriendo la página entera de 600 en 600 px a 390 y a 893, y
+también el catálogo: **cero solapes** del flotante con texto, botones o el crédito del pie.
+
+### 5. "secret mode" dejaba basura en el header al bajar — **HECHO**
+Se quitó la regla `.is-solid .os-sm-t { max-width: 0; opacity: 0 }`. El letrero ya no se apaga: o se
+ven los tres (parteaguas, "secret mode" y el subrayado de neón) o no se ve ninguno — abajo de 560 px
+se van los tres juntos. Ya no quedan el "+" y el guioncito flotando solos.
+
+### 6. El slider arrancaba pegado al filo — **HECHO**
+`scroll-padding-inline: var(--k-gutter)` en `.os-t-slider`. Medido: la primera tarjeta arranca en
+**L16** a 390, **L24** a 893 y **L40** a 1440, igual que el resto de la página.
+
+## Lo que pedía para llegar a 10
+
+### 7. El slider no tenía puntos ni flechas — **HECHO**
+Seis puntos siempre visibles y dos flechas de 44×44 que solo aparecen donde hay mouse de verdad
+(`hover: hover and pointer: fine`). Los puntos van **por avance**, no por "cuál es la primera
+tarjeta": en compu caben 4 de las 6 en pantalla, así que el riel nunca llega a la tarjeta 6 y los
+últimos puntos no se prendían nunca. Probado con CDP a 1440: dos clicks seguidos avanzan dos
+tarjetas (destino propio, no `scrollBy`, que se come el segundo click), al llegar al tope se prende
+el sexto punto y la flecha de siguiente se deshabilita. A 390, llevando el riel al final, también
+se prende el sexto.
+
+### 8. Guion largo en el mensaje del carrito — **HECHO**
+`x1 — $1,690` pasó a `x1: $1,690`. Mensaje verificado con 3 piezas:
+`Hola, vi la tienda en la página y te encargo: • … x1: $1,690 … Total: $7,870`.
+
+### 9. La reseña de Dey Luevano se cortaba a media frase — **HECHO**
+Ahora cierra donde ella cierra la idea y con puntos suspensivos, textual de
+`research/resenas.md`: *"…me encantaron los productos, el que compre está hermosa la mochila…"*.
+
+### 10. Los dos "Cómo llegar" a distinta altura — **HECHO**
+`.os-nom-local` es columna flex y el último párrafo empuja. Medido a 1440: los dos botones arrancan
+en el mismo pixel (top 8,683).
+
+### 11. 769 KB de imágenes que no usaba nadie — **HECHO**
+Borradas `img/aparador/` (4 archivos) y `img/hero/tienda-m.webp` + `tienda-d.webp`. `build_img.py`
+ya no las genera y dice por qué. Primera carga en celular: **209 KB**.
+
+### 12. La principal estaba a 22 px del tope de 9,000 en celular — **HECHO**
+Bajó a **8,860 px**, con 140 px de margen, y eso ya incluye la sección de calzado nueva (que pesa
+más que la lista vieja). Se recortó aire, no contenido: `--sec-y` 50 → 46, `.os-t-block` padding-top
+20 → 12, las dos bandas de 4:2.9 a 4:2, los tres banners de categoría de 3:4.6 a 3:3.6, y las
+tarjetas del slider de 70vw a 60vw.
+
+## De pilón (no estaba en la lista, salió al medir)
+
+- Los botones **−/+** de cada pieza dentro de la hoja del encargo medían 40×44. Ahora 44×44.
+  A 390, 893 y 1440 ya **no queda ni un tocable por debajo de 44 px** en las dos páginas.
+
+## NO SE PUDO
+
+- **Las fotos pieza por pieza de las 160 fichas** (las 36 de calzado incluidas). No existen: el
+  archivo de internet guardó el HTML de las fichas pero no sus imágenes, y hoy se reverificó por
+  tres caminos distintos (ver punto 3 y `research/FOTOS-PRODUCTO.md`). Por eso la meta de
+  "24 piezas con foto real" se queda en 12. Tienen que salir del dueño: es el punto 2 de
+  `PENDIENTE-DUENO.md`.
+- **Confirmar los 3 precios leídos del nombre del archivo** (vestido Tommy rojo $1,690, camisero
+  $1,590, cartera Michael Kors $2,590). Es dato del dueño, no código.
+
+## ALERTA para el orquestador (no la toqué a propósito)
+
+`img/hero/banner-m.webp` y `banner-d.webp` se reemplazaron a las 17:20 por la portada definitiva
+(interior de boutique). **`sections/10-hero.html` sigue con la clase `is-real` en la sección**, que
+es la que esconde la etiqueta **"Imagen ilustrativa"**. `IMAGEN-HERO.md` lo deja escrito como regla
+dura: *si la que se mete es hecha con IA, hay que quitar `is-real` y volver a correr
+`python3 build.py`*. No me consta cómo se hizo esa foto y no invento datos, así que la dejé como
+estaba: **si es de IA, hay que quitar `is-real`** (una línea, `sections/10-hero.html:11`).
+
+## Cómo se verificó esta ronda
+
+`krevo-shot` en **390 (celular real, dpr 2), 893 y 1440**, sobre `index.html` y `catalogo.html`, y
+todas las capturas miradas en hojas de contacto. Además, pruebas con CDP de lo que se tocó: los
+cuatro estados del header, la chapa, la hoja del encargo con 3 piezas y su mensaje, el menú, el
+slider (puntos, flechas y topes), el barrido del flotante contra todo el texto, y el rastreo de
+tocables menores a 44 px.
+
+| Página | 390 px | 893 px | 1440 px |
+|---|---|---|---|
+| `index.html` | 8,860 px · **0 alertas** | 8,520 px · **0 alertas** | 10,179 px · **0 alertas** |
+| `catalogo.html` | 28,602 px · **0 alertas** | 16,558 px · **0 alertas** | 20,666 px · **0 alertas** |
+
+Sin scroll horizontal, sin errores de consola, sin 404, sin bloques invisibles, sin Inter, sin
+guiones largos a la vista, sin emojis. 26 enlaces de WhatsApp en la principal, **todos** al mismo
+número real `524491371706`. Verdes: 3 en la principal más el flotante, 1 en el catálogo.

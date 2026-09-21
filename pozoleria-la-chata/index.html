@@ -31,12 +31,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,500..900&family=Oswald:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=1789889521">
-<link rel="stylesheet" href="sections/10-hero.css?v=1789941642">
-<link rel="stylesheet" href="sections/20-carta.css?v=1789941935">
-<link rel="stylesheet" href="sections/30-mesa.css?v=1789941165">
-<link rel="stylesheet" href="sections/40-reloj.css?v=1789889433">
-<link rel="stylesheet" href="sections/60-visitanos.css?v=1789942161">
+<link rel="stylesheet" href="site.css?v=1789947655">
+<link rel="stylesheet" href="sections/10-hero.css?v=1789942606">
+<link rel="stylesheet" href="sections/20-carta.css?v=1789948463">
+<link rel="stylesheet" href="sections/30-mesa.css?v=1789947602">
+<link rel="stylesheet" href="sections/40-reloj.css?v=1789947708">
+<link rel="stylesheet" href="sections/60-visitanos.css?v=1789949091">
 <link rel="stylesheet" href="sections/90-cierre.css?v=1789889107">
 </head>
 <body data-hero-dark>
@@ -106,7 +106,7 @@
 <section class="s-carta" id="carta" data-band="deep">
   <div class="s-carta-shotband">
     <picture>
-      <source srcset="img/carta/carta-d.webp" media="(min-width: 900px)">
+      <source srcset="img/carta/carta-d.webp" media="(min-width: 700px)">
       <img src="img/carta/carta-m.webp" width="820" height="843" alt="Dos pozoles en cazuela de barro con tostadas en una mesa de La Chata Pozolería" loading="lazy" decoding="async">
     </picture>
     <div class="s-carta-shotband-copy">
@@ -116,7 +116,9 @@
     </div>
   </div>
 
-  <div class="k-wrap s-carta-in">
+  <!-- data-hide-wa: mientras se ve la carta, el flotante de WhatsApp se esconde para no
+       tapar ningún "+" del lado derecho (regla del 20 sep). -->
+  <div class="k-wrap s-carta-in" data-hide-wa>
     <ol class="s-carta-grid">
       <li class="s-carta-card s-carta-card--wide" id="momento">
         <div class="s-carta-medal" id="momento-medal" aria-hidden="true">
@@ -125,9 +127,11 @@
           <div class="s-carta-medal-ring"></div>
         </div>
         <div class="s-carta-body">
-          <h3 class="s-carta-name" data-momento-text>Pozole rojo</h3>
+          <h3 class="s-carta-name">Pozole rojo</h3>
+          <p class="s-carta-nota">En Google, su menú lo marca como popular.</p>
           <div class="s-carta-row">
-            <p class="s-carta-price" data-momento-text>Pregunta el precio</p>
+            <p class="s-carta-price">Pregunta el precio</p>
+            <span class="s-carta-fill" aria-hidden="true"></span>
             <button class="s-carta-add" type="button" data-add="Pozole rojo" aria-label="Agregar pozole rojo a mi pedido"><span aria-hidden="true">+</span></button>
           </div>
         </div>
@@ -141,6 +145,7 @@
           <h3 class="s-carta-name">Pozole verde</h3>
           <div class="s-carta-row">
             <p class="s-carta-price">Pregunta el precio</p>
+            <span class="s-carta-fill" aria-hidden="true"></span>
             <button class="s-carta-add" type="button" data-add="Pozole verde" aria-label="Agregar pozole verde a mi pedido"><span aria-hidden="true">+</span></button>
           </div>
         </div>
@@ -220,7 +225,7 @@
 <section class="s-mesa" id="mesa" data-band="deep">
   <div class="s-mesa-shotband">
     <picture>
-      <source srcset="img/mesa/mesa-d.webp" media="(min-width: 900px)">
+      <source srcset="img/mesa/mesa-d.webp" media="(min-width: 700px)">
       <img src="img/mesa/mesa-m.webp" width="900" height="675" alt="Plato de barro servido en La Chata Pozolería, con tostada, lechuga, queso y crema" loading="lazy" decoding="async">
     </picture>
     <p class="s-mesa-pie">Servido en su mesa, en plato de barro.</p>
@@ -265,7 +270,9 @@
 <!-- Sección 4: El reloj de la esquina (COMPONENTE FIRMA, HOJA §4). Herramienta pura: sin
      eyebrow, sin párrafo largo. Corrige de frente que Google publica 3:00 pm y ellos abren 3:30. -->
 <section class="s-reloj" id="reloj" data-band="deep">
-  <div class="k-wrap s-reloj-in">
+  <!-- data-hide-wa: aquí viven la tira de días y el botón "Apartar mi pedido"; el flotante
+       no puede taparlos (regla del 20 sep). -->
+  <div class="k-wrap s-reloj-in" data-hide-wa>
     <ol class="s-reloj-strip" aria-label="Días que abre La Chata Pozolería">
       <li class="s-reloj-day" data-wd="1"><span class="s-reloj-d">L</span></li>
       <li class="s-reloj-day" data-wd="2"><span class="s-reloj-d">M</span></li>
@@ -283,7 +290,7 @@
     <p class="s-reloj-live" data-reloj-live>Sábado y domingo, de 3:30 a 10:00 pm.</p>
 
     <a class="chata-btn s-reloj-cta" id="reloj-cta" href="#chata-sheet-wrap" data-wa-day="Hola, quiero apartar mi pedido para el sábado.">Apartar mi pedido</a>
-    <p class="s-reloj-note">Solo efectivo en el local.</p>
+    <p class="s-reloj-note">Solo efectivo, según lo que reportan sus clientes en Google.</p>
   </div>
 </section>
 
@@ -291,7 +298,8 @@
      horario, un solo mapa. UN botón verde (el que de verdad manda WhatsApp) y dos de contorno. -->
 <section class="s-llegar" id="llegar" data-band="deep">
   <div class="k-wrap s-llegar-in">
-    <div class="s-llegar-copy" data-reveal>
+    <!-- data-hide-wa: aquí están el teléfono tocable y los tres botones; el flotante no los tapa. -->
+    <div class="s-llegar-copy" data-reveal data-hide-wa>
       <p class="chata-eyebrow">Col. Gremial / Aguascalientes</p>
       <h2 class="s-llegar-h2">Jesús R. Macías 602.<em>Esquina con 20 de Noviembre.</em></h2>
       <dl class="s-llegar-datos">
@@ -314,7 +322,9 @@
            nunca se vea un rectángulo vacío color papel mientras tanto. -->
       <div class="s-llegar-mapa-box">
         <p class="s-llegar-mapa-espera" aria-hidden="true"><svg aria-hidden="true"><use href="#i-pin"/></svg>Jesús R. Macías y 20 de Noviembre<span>Col. Gremial, Aguascalientes</span></p>
-        <iframe src="https://www.google.com/maps?q=21.8926738,-102.2865058&amp;z=17&amp;output=embed" loading="lazy" title="Mapa de La Chata Pozolería, Jesús R. Macías 602" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <!-- Sin loading="lazy" y con opacidad hasta su propio load: así Maps nunca enseña su
+             hoja en blanco encima del relleno mientras baja los mosaicos. -->
+        <iframe src="https://www.google.com/maps?q=21.8926738,-102.2865058&amp;z=17&amp;output=embed" title="Mapa de La Chata Pozolería, Jesús R. Macías 602" referrerpolicy="no-referrer-when-downgrade" onload="this.classList.add('is-listo')"></iframe>
       </div>
     </div>
   </div>
@@ -350,7 +360,7 @@
       <li><a data-wa="Hola, quiero apartar mi pedido en La Chata Pozolería." href="https://wa.me/524492563283" aria-label="WhatsApp de La Chata Pozolería"><svg width="44" height="44" aria-hidden="true"><use href="#i-wa"/></svg></a></li>
       <li><a href="https://maps.google.com/?q=La+Chata+Pozoler%C3%ADa,+Jes%C3%BAs+R.+Mac%C3%ADas+602,+Aguascalientes" target="_blank" rel="noopener" aria-label="La Chata Pozolería en Google Maps"><svg width="44" height="44" aria-hidden="true"><use href="#i-pin"/></svg></a></li>
     </ul>
-    <p class="chata-foot-note">Muestra de diseño hecha por KREVO con fotos reales del negocio (Facebook y Google Maps). Datos verificados con sus fuentes públicas; lo que falta se lo pedimos al dueño.</p>
+    <p class="chata-foot-note" data-hide-wa>Muestra de diseño hecha por KREVO con fotos reales del negocio (Facebook y Google Maps). Datos verificados con sus fuentes públicas; lo que falta se lo pedimos al dueño.</p>
   </div>
 </footer>
 
@@ -369,7 +379,7 @@
     <a class="chata-btn chata-btn--wa" id="chata-sheet-send" data-wa="" href="https://wa.me/524492563283">
       <svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar mi pedido
     </a>
-    <p class="chata-sheet-note">Solo efectivo en el local.</p>
+    <p class="chata-sheet-note">Solo efectivo, según lo que reportan sus clientes en Google.</p>
   </div>
 </div>
 
@@ -377,8 +387,8 @@
 
 <a class="chata-wa-float" data-wa="Hola, quiero apartar mi pedido en La Chata Pozolería." href="https://wa.me/524492563283" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
 
-<script src="site.js?v=1789941112" defer></script>
-<script src="sections/20-carta.js?v=1789888799" defer></script>
+<script src="site.js?v=1789947646" defer></script>
+<script src="sections/20-carta.js?v=1789948364" defer></script>
 <script src="sections/40-reloj.js?v=1789888957" defer></script>
 </body>
 </html>

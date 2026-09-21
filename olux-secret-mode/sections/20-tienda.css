@@ -20,14 +20,32 @@
 .os-t-h .os-fall { display: block; }
 .os-t-honest { margin-top: 13px; font-size: 13.5px; line-height: 1.5; color: var(--ink-2); max-width: 54ch; }
 
-/* ================= slider de destacados ================= */
+/* ================= slider de destacados =================
+   scroll-padding-inline es obligatorio: con scroll-snap x mandatory el navegador se auto-coloca
+   en scrollLeft 16 al cargar y la PRIMERA tarjeta quedaba pegada al filo (L0) mientras toda la
+   pagina respeta el margen. */
 .os-t-slider {
   display: flex; gap: 12px; margin-top: 24px; padding: 0 var(--k-gutter) 6px;
   overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--k-gutter);
   -webkit-overflow-scrolling: touch; scrollbar-width: none;
 }
 .os-t-slider::-webkit-scrollbar { display: none; }
-.os-t-slide { flex: none; width: min(70vw, 300px); scroll-snap-align: start; }
+
+/* Indicio de que el riel se mueve: a 1440 mide 1730 px y con mouse no habia de donde agarrarlo.
+   Los puntos se ven siempre; las flechas solo donde hay mouse de verdad. */
+.os-t-slider-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 10px; padding-inline: var(--k-gutter); }
+.os-t-dots { display: inline-flex; align-items: center; gap: 6px; }
+.os-t-dots i { display: block; width: 16px; height: 2px; background: rgba(244,241,234,.22); transition: background-color 220ms var(--ease-out); }
+.os-t-dots i.is-on { background: var(--brand); }
+.os-t-arrow { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .os-t-arrow { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; transition: border-color 200ms var(--ease-out), color 200ms var(--ease-out); }
+  .os-t-arrow svg { width: 18px; height: 18px; }
+  .os-t-arrow:hover { border-color: var(--brand); color: var(--brand); }
+  .os-t-arrow[disabled] { opacity: .3; pointer-events: none; }
+}
+.os-t-slide { flex: none; width: min(60vw, 300px); scroll-snap-align: start; }
 .os-t-slide-foto { position: relative; background: var(--canvas-2); aspect-ratio: 1 / 1; overflow: hidden; }
 .os-t-slide-foto::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(244,241,234,.14); pointer-events: none; }
 .os-t-slide-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -39,9 +57,9 @@
 
 /* ================= bloques y rejilla ================= */
 .os-t-blocks { }
-.os-t-block { padding-top: 20px; }
+.os-t-block { padding-top: 12px; }
 .os-t-eyebrow { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--stone); }
-.os-t-grid { list-style: none; margin: 0; padding: 14px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 12px; align-items: stretch; }
+.os-t-grid { list-style: none; margin: 0; padding: 12px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 12px; align-items: stretch; }
 
 .os-p { display: flex; flex-direction: column; min-width: 0; }
 .os-p-foto { position: relative; background: var(--canvas-2); aspect-ratio: 1 / 1; overflow: hidden; }
@@ -85,8 +103,8 @@
 .os-t-todo { margin-top: 18px; width: 100%; }
 
 /* ================= bandas (fotos reales suyas, a sangre) ================= */
-.os-t-banda { position: relative; margin: 26px 0 0; }
-.os-t-banda img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 2.9; object-fit: cover; object-position: center 45%; }
+.os-t-banda { position: relative; margin: 20px 0 0; }
+.os-t-banda img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 2; object-fit: cover; object-position: center 45%; }
 .os-t-banda figcaption {
   position: absolute; left: 0; right: 0; bottom: 0; padding: 20px var(--k-gutter);
   background: linear-gradient(180deg, transparent, rgba(17,16,23,.86) 58%);
@@ -96,9 +114,9 @@
 .os-t-banda figcaption span { display: block; margin-top: 6px; font-size: 12.5px; color: var(--ink-2); }
 
 /* ================= los tres banners de categoria (suyos) ================= */
-.os-t-cats { list-style: none; margin: 26px 0 0; padding: 0 var(--k-gutter); display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.os-t-cats { list-style: none; margin: 20px 0 0; padding: 0 var(--k-gutter); display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .os-t-cats a { position: relative; display: block; overflow: hidden; background: var(--canvas-2); align-self: start; }
-.os-t-cats img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4.6; object-fit: cover; object-position: center 22%; }
+.os-t-cats img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 3.6; object-fit: cover; object-position: center 22%; }
 .os-t-cats span {
   position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 8px 10px; text-align: center;
   background: linear-gradient(180deg, transparent, rgba(17,16,23,.82) 62%);
@@ -165,8 +183,8 @@ html.os-cart-has .os-cart-total { display: flex; }
 .os-cart-item-name { font-family: var(--font-display); font-size: 14.5px; line-height: 1.3; }
 .os-cart-item-price { margin-top: 2px; font-size: 12px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .os-cart-item-qty { flex: none; display: inline-flex; align-items: center; gap: 0; }
-/* Igual que el "+": 40x44 tocables, cuadrito visible de 26x26. */
-.os-cart-item-qty button { position: relative; isolation: isolate; width: 40px; height: 44px; display: grid; place-items: center; border: 0; color: var(--ink); background: transparent; font-size: 14px; }
+/* Igual que el "+": 44x44 tocables (la regla es 44, no 40), cuadrito visible de 26x26. */
+.os-cart-item-qty button { position: relative; isolation: isolate; width: 44px; height: 44px; display: grid; place-items: center; border: 0; color: var(--ink); background: transparent; font-size: 14px; }
 .os-cart-item-qty button::before { content: ""; position: absolute; left: 50%; top: 50%; width: 26px; height: 26px; z-index: -1; transform: translate(-50%, -50%); border: 1px solid var(--line); }
 .os-cart-item-qty b { min-width: 16px; text-align: center; font-variant-numeric: tabular-nums; font-size: 13px; }
 
@@ -192,26 +210,24 @@ html.os-cart-has .os-cart-total { display: flex; }
 .os-p--panel p { font-size: 13px; line-height: 1.45; color: var(--ink-2); }
 .os-p--panel .os-t-vermas { margin-top: 2px; }
 
-/* ============ Lista de precios (Calzado) ============
-   Calzado es el unico bloque del que NO se rescato ni una foto de pieza: son 60 pares con precio y
-   talla reales. Cuatro recuadros de "Foto pendiente" en fila se ven rotos; una lista de precios se
-   ve intencional, cabe mas y da el mismo dato. Tambien rompe el ritmo de rejillas iguales. */
-.os-t-lista { list-style: none; margin: 0; padding: 14px 0 0; display: grid; gap: 0; }
-.os-t-fila { display: flex; align-items: center; gap: 12px; padding-block: 10px; border-top: 1px solid var(--line-2); }
-.os-t-fila:first-child { border-top: 0; }
-.os-t-fila-t { flex: 1 1 auto; min-width: 0; }
-.os-t-fila-n { font-family: var(--font-display); font-size: 15px; line-height: 1.25; }
-.os-t-fila-m { margin-top: 2px; font-size: 11.5px; color: var(--mute); }
-.os-t-fila-p { flex: none; font-size: 15px; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; }
-.os-t-fila .os-p-btn { flex: none; margin-top: 0; min-height: 44px; padding: 0 12px; font-size: 10px; }
-.os-t-fila .os-p-add { position: static; width: 44px; height: 44px; flex: none; }
-.os-t-fila .os-p-add span { width: 28px; height: 28px; }
-@media (max-width: 519px) {
-  .os-t-fila { flex-wrap: wrap; gap: 8px 10px; }
-  .os-t-fila-t { flex: 1 1 100%; }
-  .os-t-fila-p { margin-right: auto; }
+/* ============ Calzado: el exhibidor real ============
+   Calzado es el unico bloque del que el archivo de internet no conservo ni una foto de pieza
+   (reverificado el 20 sep por la tarde). Antes iba como lista de texto y eso es justo lo que
+   Emanuel rechazo. Ahora arranca con sus tenis DE VERDAD — tres recortes de su exhibidor real,
+   subidos x4 con Real-ESRGAN — y solo despues viene el renglon honesto de que la foto pieza por
+   pieza se pide por WhatsApp, y la rejilla con marca, talla y precio, igual que las otras tres
+   secciones. El renglon de "sin foto" nunca va arriba. */
+.os-t-exhib { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.os-t-exhib li { position: relative; background: var(--canvas-2); overflow: hidden; }
+.os-t-exhib li::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(244,241,234,.14); pointer-events: none; }
+.os-t-exhib img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+.os-t-exhib-pie { margin-top: 9px; font-size: 12px; line-height: 1.45; color: var(--mute); }
+.os-t-sinfoto {
+  margin-top: 14px; padding: 11px 13px; border: 1px solid var(--line-2); border-left: 2px solid var(--brand);
+  font-size: 12.5px; line-height: 1.45; color: var(--ink-2);
 }
 @media (min-width: 760px) {
-  .os-t-lista { grid-template-columns: 1fr 1fr; column-gap: 40px; }
-  .os-t-fila:nth-child(2) { border-top: 0; }
+  .os-t-exhib { gap: 16px; max-width: 840px; }
+  .os-t-exhib-pie { font-size: 12.5px; }
+  .os-t-sinfoto { max-width: 62ch; font-size: 13px; }
 }

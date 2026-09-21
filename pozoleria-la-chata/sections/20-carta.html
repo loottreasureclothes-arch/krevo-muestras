@@ -5,7 +5,7 @@
 <section class="s-carta" id="carta" data-band="deep">
   <div class="s-carta-shotband">
     <picture>
-      <source srcset="img/carta/carta-d.webp" media="(min-width: 900px)">
+      <source srcset="img/carta/carta-d.webp" media="(min-width: 700px)">
       <img src="img/carta/carta-m.webp" width="820" height="843" alt="Dos pozoles en cazuela de barro con tostadas en una mesa de La Chata Pozolería" loading="lazy" decoding="async">
     </picture>
     <div class="s-carta-shotband-copy">
@@ -15,7 +15,9 @@
     </div>
   </div>
 
-  <div class="k-wrap s-carta-in">
+  <!-- data-hide-wa: mientras se ve la carta, el flotante de WhatsApp se esconde para no
+       tapar ningún "+" del lado derecho (regla del 20 sep). -->
+  <div class="k-wrap s-carta-in" data-hide-wa>
     <ol class="s-carta-grid">
       <li class="s-carta-card s-carta-card--wide" id="momento">
         <div class="s-carta-medal" id="momento-medal" aria-hidden="true">
@@ -24,9 +26,11 @@
           <div class="s-carta-medal-ring"></div>
         </div>
         <div class="s-carta-body">
-          <h3 class="s-carta-name" data-momento-text>Pozole rojo</h3>
+          <h3 class="s-carta-name">Pozole rojo</h3>
+          <p class="s-carta-nota">En Google, su menú lo marca como popular.</p>
           <div class="s-carta-row">
-            <p class="s-carta-price" data-momento-text>Pregunta el precio</p>
+            <p class="s-carta-price">Pregunta el precio</p>
+            <span class="s-carta-fill" aria-hidden="true"></span>
             <button class="s-carta-add" type="button" data-add="Pozole rojo" aria-label="Agregar pozole rojo a mi pedido"><span aria-hidden="true">+</span></button>
           </div>
         </div>
@@ -40,6 +44,7 @@
           <h3 class="s-carta-name">Pozole verde</h3>
           <div class="s-carta-row">
             <p class="s-carta-price">Pregunta el precio</p>
+            <span class="s-carta-fill" aria-hidden="true"></span>
             <button class="s-carta-add" type="button" data-add="Pozole verde" aria-label="Agregar pozole verde a mi pedido"><span aria-hidden="true">+</span></button>
           </div>
         </div>

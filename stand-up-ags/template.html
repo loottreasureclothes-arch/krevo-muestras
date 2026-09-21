@@ -28,8 +28,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero/banner-m.webp" media="(max-width: 899px)" fetchpriority="high">
-<link rel="preload" as="image" href="img/hero/banner-d.webp" media="(min-width: 900px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero/banner-m.webp" media="(max-width: 759px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero/banner-d.webp" media="(min-width: 760px)" fetchpriority="high">
 <link rel="stylesheet" href="../_kit/kit.css">
 <link rel="stylesheet" href="site.css">
 <!--SECTION_CSS-->
@@ -63,6 +63,7 @@
 <div class="cd-menu su-menu" id="cd-menu" role="dialog" aria-modal="true" aria-label="Menú" aria-hidden="true">
   <div class="cd-menu-scrim" aria-hidden="true"></div>
   <div class="cd-menu-panel">
+    <button class="su-menu-cerrar" type="button" data-cd-close><svg aria-hidden="true"><use href="#i-x"/></svg>Cerrar</button>
     <nav class="cd-menu-nav su-menu-nav" aria-label="Secciones">
       <a href="#top"><span>01</span>Inicio</a>
       <a href="#ebesa"><span>02</span>EBESA 2025</a>
@@ -106,7 +107,9 @@
 <!--SECTIONS-->
 </main>
 
-<footer class="cd-foot su-foot" aria-label="Pie de página">
+<!-- data-hide-wa: el flotante tapaba el final de "ESPACIOS QUE HABLAN POR TU MARCA"
+     y no debe pisar nunca el credito del pie (regla del kit). -->
+<footer class="cd-foot su-foot" aria-label="Pie de página" data-hide-wa>
   <div class="k-wrap su-foot-close">
     <img class="su-foot-logo" src="img/logo-cierre.webp" alt="Stand up. Proyección de Marcas, Diseñando Espacios." width="1043" height="642" loading="lazy" decoding="async">
     <p class="su-foot-motto">Espacios que hablan por tu marca.</p>

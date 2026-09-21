@@ -58,20 +58,44 @@ def logo_alfa(ancho, dest, banda=None):
     print(dest, out.size, "recorte de tinta", caja)
 
 
+def tenis_x4():
+    """Sube x4 con Real-ESRGAN local (gratis, sin IA generativa) el exhibidor real de tenis y
+    devuelve la imagen de 2304 x 4096. Se cachea en /tmp para no repetir los 40 s."""
+    import subprocess, tempfile
+    cache = os.path.join(tempfile.gettempdir(), "olux-tenis-x4.png")
+    if not os.path.exists(cache):
+        tool = os.path.abspath("../../tools/realesrgan")
+        subprocess.run([os.path.join(tool, "realesrgan-ncnn-vulkan"),
+                        "-i", os.path.abspath(FOTOS + "interior-exhibidor-tenis-google.jpg"),
+                        "-o", cache, "-n", "realesrgan-x4plus", "-s", "4", "-m", "models"],
+                       cwd=tool, check=True, capture_output=True)
+    return Image.open(cache).convert("RGB")
+
+
+def recorte_tenis(im4, box, dest, anchos=(760, 380)):
+    """box va en coordenadas del ORIGINAL de 576 x 1024; se recorta sobre el x4."""
+    c = im4.crop(tuple(v * 4 for v in box))
+    for a in anchos:
+        d = dest.replace("{a}", str(a))
+        c.resize((a, round(c.height * a / c.width)), Image.LANCZOS).save(sal(d), quality=84, method=6)
+        print(d, a)
+
+
 if __name__ == "__main__":
-    # --- El aparador: las tres ventanas -------------------------------------------------
-    # Celular: recorte mas alto (390/212 en vez de 390/130) para que el componente firma no quede
-    # de liston. Incluye azulejo arriba y banqueta abajo, con margen a los lados para que NINGUNA
-    # ventana toque el borde. Las zonas de CSS estan medidas sobre ESTE recorte.
-    recorte("fachada-tanyveth-secret-mode-google.jpg", (135, 565, 1405, 1257), 1270,
-            "img/aparador/ventanas-m2.webp")
-    # YA HECHOS Y APROBADOS en la ronda 1, este script NO los vuelve a escribir (re-encodear de
-    # balde solo cambia bytes y rompe el cache del celular de Emanuel). Recortes, de memoria:
-    #   img/aparador/ventanas-d.webp  x130-1500, y800-1257 -> 2200 px de ancho (el liston ancho,
-    #                                 en compu si funciona; el inspector verifico que alinea)
-    #   img/aparador/calzado.webp     interior-exhibidor-tenis, y290-830 (sin el texto quemado)
-    #   img/hero/fachada-m.webp       ~x252-902, alto completo -> 900 x 1740
-    #   img/hero/fachada-d.webp       original completo -> 2000 x 1581
+    # --- Calzado: tres recortes REALES de su exhibidor de tenis (ronda 2 del 20 sep, tarde) ----
+    # El inspector tumbo la seccion "02 Calzado" por ser lista de texto sin una sola foto. Se
+    # volvio a barrer el archivo de internet (CDX de imagenes de secretmodelegante.com): siguen
+    # siendo 24 imagenes en total, 14 de producto, NINGUNA de calzado, y las fotos de las fichas
+    # dan 404 una por una (reverificado hoy con IMG_8698.jpg y sus miniaturas). Asi que la unica
+    # foto real de calzado que existe es SU exhibidor, el de Google Maps. De ahi salen tres
+    # recortes cerrados a pares concretos, subidos x4 con Real-ESRGAN local.
+    # Cajas medidas sobre el ORIGINAL 576 x 1024. Texto quemado del sticker de Instagram:
+    # "Visitando tu Boutique" y=130-180, "Ubicados en Aguascalientes" y=205-240,
+    # "Envios a toda la Republica" y=845-880. Zona limpia: y 250-835. Las tres cajas caen dentro.
+    _im4 = tenis_x4()
+    recorte_tenis(_im4, (60, 420, 250, 610), "img/calzado/par-1-{a}.webp")   # blanco y negro
+    recorte_tenis(_im4, (40, 640, 230, 830), "img/calzado/par-2-{a}.webp")   # azul marino con franja
+    recorte_tenis(_im4, (350, 250, 540, 440), "img/calzado/par-3-{a}.webp")  # rosa y crema
 
     # --- Dos nombres: la fachada firmada Olux (foto chica, enmarcada) -------------------
     # y 18-478: se van los coches, la banqueta, los postes y los edificios vecinos de abajo.
@@ -84,26 +108,13 @@ if __name__ == "__main__":
     logo_alfa(300, "img/brand/logo-alfa-olux-300.webp", banda=(240, 620))  # header: solo "Olux"
     logo_alfa(1200, "img/brand/logo-alfa-1200.webp")                        # cierre: el lockup entero
 
-    # --- Ronda 2 (FEEDBACK-2, 20 sep 2026): "no me gusta la foto de portada" -------------
-    # Portada nueva, celular Y compu: ya no la fachada con el letrero (esa se queda abajo, en el
-    # aparador y en la seccion de los dos nombres — ahi si le gusto). Se usa el mismo exhibidor
-    # real de tenis (interior-exhibidor-tenis-google.jpg) que ya daba calzado.webp, con un recorte
-    # MAS ALTO (y280-800, se van los dos overlays de Instagram: "Visitando tu Boutique" arriba y
-    # "Envios a toda la Republica" abajo). La fuente mide solo 576 px de ancho: se reescala con
-    # LANCZOS (mismo metodo que recorte(), no es IA, es el mismo resize que ya hacia este script)
-    # a 900 px para celular y 1440 para compu — se ve un poco mas suave que una foto nativa de ese
-    # ancho, pero limpia, sin texto y sin el coche/cables de las otras dos fotos reales que
-    # quedaban. img/hero/fachada-m.webp y fachada-d.webp (el hero viejo) YA NO SE USAN: se borraron.
-    recorte("interior-exhibidor-tenis-google.jpg", (0, 280, 576, 800), 900, "img/hero/tienda-m.webp")
-    recorte("interior-exhibidor-tenis-google.jpg", (0, 280, 576, 800), 1440, "img/hero/tienda-d.webp")
-
-    # --- Ronda 2: fotos reales por aparador para los tres bloques (ya no detras de tabs) -------
-    # ROPA: recorte de la ventana derecha de la fachada, mas cerrado que el de la ronda 1 para
-    # perder el coche reflejado y quedarse con la ropa colgada (real, aunque es principalmente
-    # ropa de nina: es lo que el escaparate real trae hoy).
-    recorte("fachada-tanyveth-secret-mode-google.jpg", (1050, 850, 1329, 1195), 560, "img/aparador/ropa.webp")
-    # CARTERAS y MOCHILAS: la ventana que le toca (izquierda) es la puerta de vidrio de la entrada
-    # y con este angulo solo refleja un coche y la calle, cero producto visible (visto en
-    # storefront_wide.jpg). NO se usa: sale un coche en vidrio, igual que la navidena que ya se
-    # rechazo. Se deja SIN foto (marcador honesto en el HTML) hasta que el dueno mande una.
-    # calzado.webp NO se toca: ya esta bien (aprobado en REVISION-1).
+    # --- El banner del hero: NO lo genera este script ------------------------------------
+    # img/hero/banner-m.webp (900 x 812) y banner-d.webp (1440 x 1300) los pone el ORQUESTADOR
+    # a mano, con el encargo de IMAGEN-HERO.md. Este script no los toca.
+    #
+    # BORRADOS en la ronda 2 del 20 sep (tarde) porque no los referenciaba ningun HTML ni CSS y
+    # se iban a publicar de a gratis (769 KB): img/aparador/ (ventanas-m2, ventanas-d, calzado,
+    # ropa — el aparador detras de tabs ya no existe) y img/hero/tienda-m.webp / tienda-d.webp
+    # (la portada provisional, que el orquestador ya reemplazo por banner-*.webp).
+    # CARTERAS y MOCHILAS: la ventana que les tocaba en la fachada es la puerta de vidrio de la
+    # entrada y con ese angulo solo refleja un coche y la calle, cero producto visible. No se usa.

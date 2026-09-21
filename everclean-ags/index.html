@@ -30,11 +30,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/hero/hero-m.webp" media="(max-width: 719px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero/hero-d.webp" media="(min-width: 720px)" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1789945288">
+<link rel="stylesheet" href="site.css?v=1789949701">
 <link rel="stylesheet" href="sections/10-hero.css?v=1789945288">
-<link rel="stylesheet" href="sections/20-lavamos.css?v=1789943438">
-<link rel="stylesheet" href="sections/30-pruebas.css?v=1789945288">
-<link rel="stylesheet" href="sections/50-visita.css?v=1789945288">
+<link rel="stylesheet" href="sections/20-lavamos.css?v=1789949701">
+<link rel="stylesheet" href="sections/30-pruebas.css?v=1789949701">
+<link rel="stylesheet" href="sections/50-visita.css?v=1789949987">
 <link rel="stylesheet" href="sections/60-cierre.css?v=1789943157">
 <link rel="stylesheet" href="sections/70-completar.css?v=1789945288">
 <script>document.documentElement.classList.add('js');</script>
@@ -54,7 +54,7 @@
 <header class="ec-header" id="ec-header">
   <div class="ec-bar">
     <a class="ec-brand" href="#top" aria-label="Everclean, inicio">
-      <img src="img/logo/logo-header.webp" alt="Everclean, un estilo de vida" width="306" height="210" loading="eager" decoding="async">
+      <img src="img/logo/logo-header.webp" alt="Everclean, un estilo de vida" width="120" height="82" loading="eager" decoding="async">
     </a>
     <nav class="ec-nav" aria-label="Principal">
       <a href="#20-lavamos">Qué lavamos</a>
@@ -156,7 +156,7 @@
         <li class="s-lav-ficha" data-ec-reveal>
           <div class="ec-frame">
             <div class="ec-frame__pic s-lav-pic">
-              <img src="img/lavamos/colchones.webp" alt="Colchón matrimonial después de la limpieza profunda de Everclean." width="1000" height="570" loading="lazy" decoding="async">
+              <img src="img/lavamos/colchones.webp" alt="Colchón matrimonial en su recámara, después de la limpieza profunda de Everclean." width="1000" height="565" loading="lazy" decoding="async">
             </div>
             <span class="ec-frame__tag">Trabajo suyo</span>
           </div>
@@ -174,7 +174,7 @@
         <li class="s-lav-ficha" data-ec-reveal>
           <div class="ec-frame">
             <div class="ec-frame__pic s-lav-pic">
-              <img src="img/lavamos/sillas.webp" alt="Silla de comedor con asiento de tela, ya lavada por Everclean." width="760" height="1000" loading="lazy" decoding="async">
+              <img src="img/lavamos/sillas.webp" alt="Silla de metal con asiento de tela, ya lavado por Everclean." width="760" height="760" loading="lazy" decoding="async">
             </div>
             <span class="ec-frame__tag">Trabajo suyo</span>
           </div>
@@ -236,21 +236,26 @@
         <span class="ec-tono2">Se lavó.</span>
       </h2>
 
-      <div class="s-pru-par" data-ec-reveal>
-        <figure class="s-pru-panel">
+      <!-- COMPONENTE FIRMA: "el par que embona". Las dos mitades entran desde los
+           lados (o desde arriba y abajo en celular), se juntan y dejan la costura
+           cian al centro. Recortadas al MISMO encuadre: el rincón, el piso de
+           loseta y la esquina del seccional caen en el mismo punto en las dos. -->
+      <div class="s-pru-par" data-ec-par>
+        <figure class="s-pru-panel s-pru-panel--a">
           <p class="s-pru-etiqueta s-pru-etiqueta--antes">Antes</p>
           <div class="s-pru-pic">
-            <img src="img/pruebas/antes.webp" alt="La sala seccional antes de lavarla: manchas grandes en los asientos y en el descanso." width="620" height="604" loading="lazy" decoding="async">
+            <img src="img/pruebas/antes.webp" alt="La esquina del seccional antes de lavarlo: manchas grandes y oscuras en los dos asientos." width="900" height="675" decoding="async">
           </div>
         </figure>
-        <figure class="s-pru-panel">
+        <span class="s-pru-costura" aria-hidden="true"></span>
+        <figure class="s-pru-panel s-pru-panel--b">
           <p class="s-pru-etiqueta s-pru-etiqueta--despues">Después</p>
           <div class="s-pru-pic">
-            <img src="img/pruebas/despues.webp" alt="La misma sala seccional después del lavado a vapor: la tela quedó pareja y sin manchas." width="620" height="604" loading="lazy" decoding="async">
+            <img src="img/pruebas/despues.webp" alt="La misma esquina del seccional después del lavado a vapor: la tela quedó pareja y sin manchas." width="900" height="675" decoding="async">
           </div>
         </figure>
       </div>
-      <p class="s-pru-pie">La misma sala, el mismo piso, el mismo rincón. Lo único que cambió fue el vapor.</p>
+      <p class="s-pru-pie">Las dos fotos son suyas, del mismo seccional y el mismo rincón de loseta. Las recortamos al mismo encuadre para que las compares parejas. Lo único que cambió fue el vapor.</p>
 
       <div class="s-pru-colchon" data-ec-hide-wa>
         <div class="s-pru-colchon-foto">
@@ -288,7 +293,7 @@
 
         <div class="ec-frame s-vis-foto">
           <div class="ec-frame__pic">
-            <img src="img/cotiza/casa.webp" alt="Sillón de un cliente recién lavado, afuera de su casa, con la manguera del equipo de vapor." width="700" height="933" loading="lazy" decoding="async">
+            <img src="img/cotiza/domicilio.webp" alt="Sillón blanco de un cliente recién lavado sobre el pasto, con la manguera del equipo de vapor a un lado." width="900" height="675" loading="lazy" decoding="async">
           </div>
           <span class="ec-frame__tag">A domicilio en Aguascalientes</span>
         </div>
@@ -311,11 +316,20 @@
         <div class="s-vis-carrito" id="s-vis-carrito" aria-live="polite"></div>
 
         <div class="s-vis-atajos" id="s-vis-atajos">
-          <button type="button" data-ec-add="Salas y sillones">+ Sala</button>
-          <button type="button" data-ec-add="Colchones">+ Colchón</button>
-          <button type="button" data-ec-add="Sillas">+ Sillas</button>
-          <button type="button" data-ec-add="Interiores de auto">+ Auto</button>
+          <button type="button" class="s-vis-chip" data-ec-add="Salas y sillones">
+            <img src="img/cotiza/chip-sala.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+            <span>Sala</span><em aria-hidden="true">+</em>
+          </button>
+          <button type="button" class="s-vis-chip" data-ec-add="Colchones">
+            <img src="img/cotiza/chip-colchon.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+            <span>Colchón</span><em aria-hidden="true">+</em>
+          </button>
+          <button type="button" class="s-vis-chip" data-ec-add="Sillas">
+            <img src="img/cotiza/chip-sillas.webp" alt="" width="200" height="200" loading="lazy" decoding="async">
+            <span>Sillas</span><em aria-hidden="true">+</em>
+          </button>
         </div>
+        <p class="s-vis-nota s-vis-nota--mas"><a class="s-vis-mas" href="#20-lavamos">Ver las nueve piezas que lavan</a></p>
 
         <label class="s-vis-campo" for="s-vis-zona">
           <span>¿En qué colonia o zona?</span>
@@ -348,7 +362,7 @@
 
   <section class="s-cie" id="60-cierre" aria-labelledby="cie-title">
     <div class="s-cie-foto">
-      <img src="img/cierre/final.webp" alt="Sala seccional de un cliente, entregada ya lavada a vapor por Everclean." width="1400" height="660" loading="lazy" decoding="async">
+      <img src="img/cierre/final.webp" alt="Love seat de otro cliente, entregado ya lavado a vapor por Everclean." width="1400" height="690" loading="lazy" decoding="async">
     </div>
     <div class="s-cie-velo" aria-hidden="true"></div>
     <div class="ec-wrap s-cie-in">
@@ -409,15 +423,15 @@
     </ul>
     <div class="ec-foot-bottom">
       <p>Everclean · Aguascalientes, Ags.</p>
-      <p>Muestra de diseño hecha por KREVO. Las fotos son de Everclean, mejoradas en resolución.</p>
+      <p>Muestra de diseño hecha por KREVO. Las fotos de los trabajos son de Everclean, mejoradas en resolución. La del banner es ilustrativa y va marcada.</p>
     </div>
   </div>
 </footer>
 
 <a class="ec-wa-float" data-ec-wa="Hola Everclean, vi su página y quiero armar una visita." href="https://wa.me/524491925369?text=Hola%20Everclean%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20armar%20una%20visita." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
 
-<script src="site.js?v=1789945288" defer></script>
+<script src="site.js?v=1789949701" defer></script>
 <script src="sections/20-lavamos.js?v=1789942015" defer></script>
-<script src="sections/50-visita.js?v=1789945288" defer></script>
+<script src="sections/50-visita.js?v=1789949701" defer></script>
 </body>
 </html>

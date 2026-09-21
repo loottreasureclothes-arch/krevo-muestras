@@ -2,7 +2,8 @@
      horario, un solo mapa. UN botón verde (el que de verdad manda WhatsApp) y dos de contorno. -->
 <section class="s-llegar" id="llegar" data-band="deep">
   <div class="k-wrap s-llegar-in">
-    <div class="s-llegar-copy" data-reveal>
+    <!-- data-hide-wa: aquí están el teléfono tocable y los tres botones; el flotante no los tapa. -->
+    <div class="s-llegar-copy" data-reveal data-hide-wa>
       <p class="chata-eyebrow">Col. Gremial / Aguascalientes</p>
       <h2 class="s-llegar-h2">Jesús R. Macías 602.<em>Esquina con 20 de Noviembre.</em></h2>
       <dl class="s-llegar-datos">
@@ -25,7 +26,9 @@
            nunca se vea un rectángulo vacío color papel mientras tanto. -->
       <div class="s-llegar-mapa-box">
         <p class="s-llegar-mapa-espera" aria-hidden="true"><svg aria-hidden="true"><use href="#i-pin"/></svg>Jesús R. Macías y 20 de Noviembre<span>Col. Gremial, Aguascalientes</span></p>
-        <iframe src="https://www.google.com/maps?q=21.8926738,-102.2865058&amp;z=17&amp;output=embed" loading="lazy" title="Mapa de La Chata Pozolería, Jesús R. Macías 602" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <!-- Sin loading="lazy" y con opacidad hasta su propio load: así Maps nunca enseña su
+             hoja en blanco encima del relleno mientras baja los mosaicos. -->
+        <iframe src="https://www.google.com/maps?q=21.8926738,-102.2865058&amp;z=17&amp;output=embed" title="Mapa de La Chata Pozolería, Jesús R. Macías 602" referrerpolicy="no-referrer-when-downgrade" onload="this.classList.add('is-listo')"></iframe>
       </div>
     </div>
   </div>

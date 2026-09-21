@@ -188,6 +188,31 @@
     });
   }
 
+  /* ---------- Componente firma: "el par que embona" ----------
+     Solo se ARMA (se esconde para entrar) si al cargar todavia viene abajo de la
+     pantalla. Si ya esta a la vista, o si no hay IntersectionObserver, o si el
+     usuario pidio menos movimiento, entra derecho: nunca se queda en blanco y no
+     depende de un temporizador para verse. El tope de 8 s es red de seguridad. */
+  function initPar() {
+    var els = Array.prototype.slice.call(document.querySelectorAll("[data-ec-par]"));
+    if (!els.length) return;
+    els.forEach(function (el) {
+      var arriba = el.getBoundingClientRect().top;
+      if (reduce || !("IntersectionObserver" in window) || arriba < window.innerHeight * 0.92) {
+        el.classList.add("is-in");
+        return;
+      }
+      el.classList.add("is-armed");
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+        });
+      }, { rootMargin: "0px 0px -12% 0px", threshold: 0.01 });
+      io.observe(el);
+      setTimeout(function () { el.classList.add("is-in"); }, 8000);
+    });
+  }
+
   function init() {
     document.documentElement.classList.add("js");
     initWa();
@@ -197,6 +222,7 @@
     initSmoothAnchors();
     initAdd();
     initReveal();
+    initPar();
     avisa();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

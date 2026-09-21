@@ -91,7 +91,8 @@
     var send = document.getElementById("os-cart-send");
     if (send) {
       var lines = CART.map(function (i) {
-        return "• " + i.name + " x" + i.qty + (i.price == null ? " (pregunta el precio)" : " — " + money(i.price * i.qty));
+        /* sin guion largo: la regla del checklist aplica tambien al texto que llega por WhatsApp */
+        return "• " + i.name + " x" + i.qty + (i.price == null ? " (pregunta el precio)" : ": " + money(i.price * i.qty));
       });
       var msg;
       if (!CART.length) {
@@ -155,7 +156,59 @@
     });
   }
 
-  function init() { initAddButtons(); initSheet(); renderCart(); actualizarFlotante(); }
+  /* ---------------- Slider: puntos y flechas ----------------
+     A 1440 el riel mide 1730 px y con mouse no habia ni un indicio de que se pudiera mover: el
+     cliente veia 4 piezas y creia que eran todas. Los puntos se ven siempre; las flechas solo
+     donde hay mouse (el CSS las esconde en tactil). */
+  function initSlider() {
+    var riel = document.getElementById("os-slider");
+    var caja = document.getElementById("os-slider-dots");
+    if (!riel) return;
+    var slides = riel.querySelectorAll(".os-t-slide");
+    var dots = caja ? caja.querySelectorAll("i") : [];
+    var flechas = document.querySelectorAll(".os-t-arrow");
+
+    function paso() {
+      if (slides.length < 2) return riel.clientWidth;
+      return slides[1].offsetLeft - slides[0].offsetLeft;
+    }
+    function tope() { return Math.max(0, riel.scrollWidth - riel.clientWidth); }
+    /* Los puntos van por AVANCE, no por "cual es la primera tarjeta": en compu caben 4 de las 6
+       en pantalla, asi que el riel nunca llega a la tarjeta 6 y los ultimos puntos no se
+       prendian nunca. Con el avance, el primero y el ultimo siempre se alcanzan. */
+    function pinta() {
+      var max = tope();
+      var av = max ? riel.scrollLeft / max : 0;
+      var i = Math.round(av * (dots.length - 1));
+      for (var k = 0; k < dots.length; k++) dots[k].classList.toggle("is-on", k === i);
+      flechas.forEach(function (b) {
+        b.disabled = Number(b.getAttribute("data-slide")) < 0 ? riel.scrollLeft <= 2 : riel.scrollLeft >= max - 2;
+      });
+    }
+    /* Destino propio: dos clicks seguidos en la flecha tienen que avanzar dos tarjetas. Si se
+       usara scrollBy, el segundo click cae a media animacion y el navegador se los come. */
+    var destino = null;
+    flechas.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var base = destino == null ? riel.scrollLeft : destino;
+        var d = base + Number(b.getAttribute("data-slide")) * (paso() || riel.clientWidth);
+        destino = Math.max(0, Math.min(tope(), d));
+        riel.scrollTo({ left: destino, behavior: "smooth" });
+        window.clearTimeout(b._t);
+        b._t = window.setTimeout(function () { destino = null; }, 700);
+      });
+    });
+    var esperando = false;
+    riel.addEventListener("scroll", function () {
+      if (esperando) return;
+      esperando = true;
+      window.requestAnimationFrame(function () { esperando = false; pinta(); });
+    }, { passive: true });
+    window.addEventListener("resize", pinta);
+    pinta();
+  }
+
+  function init() { initAddButtons(); initSheet(); renderCart(); actualizarFlotante(); initSlider(); }
   window.OSCart = { add: addItem };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

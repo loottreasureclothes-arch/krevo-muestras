@@ -5,7 +5,12 @@
 /* Compu: split 5/7, titulo a la izquierda y los tres campos a la derecha.
    Antes el bloque de 460px se quedaba pegado a la izquierda y la mitad
    derecha de la banda salia vacia (d-08.png). */
-@media (min-width: 760px) {
+/* 20 sep 2026 (ronda 2): el split arrancaba en 760px y a 768 (iPad de pie) la
+   pagina se iba 35px de lado. Las dos columnas no caben: el titular no parte
+   renglon (nowrap) y pide 457px de min-content, y el boton "MANDAR POR
+   WHATSAPP" tampoco, 278px mas. 457 + 48 de canal + 278 = 783 contra 728 de
+   caja. Desde 900px ya caben, asi que el split empieza ahi. */
+@media (min-width: 900px) {
   .s-fecha-wrap { max-width: none; display: grid; grid-template-columns: 5fr 7fr; column-gap: 48px; align-items: start; }
   .s-fecha-h2 { margin-bottom: 0; }
   .s-fecha-form { max-width: 520px; }

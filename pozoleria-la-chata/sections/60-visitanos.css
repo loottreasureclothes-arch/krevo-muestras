@@ -18,7 +18,16 @@
   letter-spacing: .1em; text-transform: uppercase; color: rgba(244,239,228,.5);
 }
 .s-llegar-datos dd { margin: 0; font-size: 15px; line-height: 1.4; color: var(--paper); }
-.s-llegar-datos dd a { border-bottom: 1px solid var(--brand-lit); color: var(--paper); }
+/* El teléfono es lo único tocable de este bloque: 44 px de alto de verdad (el margen negativo
+   deja el renglón con el mismo aire de siempre, pero el área de toque sí mide). */
+.s-llegar-datos dd a {
+  display: inline-block;
+  padding-block: 12px; margin-block: -10px;
+  color: var(--paper);
+  /* subrayado pegado al texto (un border-bottom se iría hasta abajo del relleno) */
+  text-decoration: underline; text-decoration-color: var(--brand-lit);
+  text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
 .s-llegar-ctas { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; }
 .s-llegar-mapa { padding: 8px; }
 .s-llegar-mapa-box { position: relative; width: 100%; height: 280px; background: var(--deep); overflow: hidden; }
@@ -31,7 +40,13 @@
 }
 .s-llegar-mapa-espera svg { width: 26px; height: 26px; fill: currentColor; opacity: .55; margin-bottom: 2px; }
 .s-llegar-mapa-espera span { display: block; font-size: 11px; color: rgba(244,239,228,.42); letter-spacing: .08em; }
-.s-llegar-mapa iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; background: transparent; }
+.s-llegar-mapa iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block;
+  background: transparent;
+  opacity: 0; transition: opacity 450ms var(--ease-out);
+}
+.s-llegar-mapa iframe.is-listo,
+html:not(.chata-js) .s-llegar-mapa iframe { opacity: 1; }
 @media (min-width: 900px) {
   .s-llegar { padding: 88px 0; }
   .s-llegar-in { flex-direction: row; align-items: stretch; gap: 48px; }

@@ -27,8 +27,11 @@
 
 .os-nom-body { margin-top: 40px; padding-bottom: 44px; }
 
-.os-nom-locales { display: grid; gap: 26px; }
-.os-nom-local { padding-top: 16px; border-top: 1px solid var(--line-2); }
+/* Las dos sucursales son columnas de la misma altura y el boton se va hasta abajo: Tanyveth trae
+   un renglon extra (el 4.5 estrellas) y a 893 y 1440 los dos "Como llegar" quedaban a distinta
+   altura, como si uno estuviera mal puesto. */
+.os-nom-locales { display: grid; gap: 26px; align-items: stretch; }
+.os-nom-local { display: flex; flex-direction: column; padding-top: 16px; border-top: 1px solid var(--line-2); }
 .os-nom-local-h { font-family: var(--font-display); font-size: 21px; color: var(--ink); }
 .os-nom-local-p { margin-top: 6px; font-size: 14px; color: var(--ink-2); line-height: 1.5; }
 .os-nom-local-p a {
@@ -38,7 +41,9 @@
 }
 .os-nom-local-stars { margin-top: 4px; font-size: 13px; color: var(--brand); font-weight: 600; }
 .os-nom-local-honest { margin-top: 4px; font-size: 12.5px; color: var(--mute); font-style: italic; }
-.os-nom-local .os-btn { margin-top: 14px; }
+/* el ultimo parrafo empuja: el boton se va al piso de la columna, con su aire de 14 px */
+.os-nom-local p:last-of-type { margin-bottom: auto; }
+.os-nom-local .os-btn { align-self: flex-start; margin-top: 14px; }
 
 .os-nom-horario { margin-top: 30px; display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line-2); padding-top: 20px; }
 

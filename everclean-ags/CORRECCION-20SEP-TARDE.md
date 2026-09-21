@@ -152,3 +152,75 @@ Hojas de contacto:
    (449 192 5369) en los 8 enlaces, y los tres se listan en el punto 02.
 7. **No se hizo git** (lo publica el orquestador) y no se tocó ninguna otra carpeta de
    `krevo-muestras/`, ni `_kit/`, ni el servidor del puerto 8770.
+
+---
+
+# RONDA 2 — corrección sobre la revisión externa de la tarde
+
+Lista de trabajo: `~/Prospeccion-Web-Ags/revisiones-externas/everclean-ags-tarde.md` (7.8/10, "publicable hoy: NO").
+Se repasó punto por punto el apartado "3. Lo que falta para el 10". Capturas y pruebas de esta ronda:
+`…/scratchpad/corr2/everclean-ags/` (`HOJA-OK-M.jpg`, `-T.jpg` 893 px, `-D.jpg`, `func.mjs`, `nojs.mjs`, `reduce.mjs`,
+`fn3-m/m-carrito.png`, `fn-*/{preset}-par-mitad.png` y `-par-final.png`).
+
+## Punto por punto
+
+| # del inspector | Estado | Qué se hizo |
+|---|---|---|
+| 1. La foto del banner | **YA VENÍA HECHA · NO SE TOCÓ** | `img/hero/hero-m.webp` y `hero-d.webp` ya son la foto definitiva del orquestador (técnico lavando a vapor un sillón dentro de una casa). Por orden expresa no se tocaron, y la etiqueta "Imagen ilustrativa" se queda. |
+| 2. Que el antes/después embone + el componente firma | **HECHO** | Las dos se recortaron de nuevo del mismo collage (`research/fotos/catalogo_sofa-seccional-antes-despues_fb.jpg`) **ancladas en el mismo punto**: la esquina del seccional, el zoclo y la línea de loseta caen en el mismo lugar en las dos (ANTES `x 179–326 / y 71–181`, DESPUÉS `x 170–327 / y 265–383`, la segunda a escala 1.076 porque la cámara estaba más lejos). Se fueron la franja blanca del collage, el rótulo "DESPUÉS" quemado y el escudo de EVERCLEAN. Subidas con Real-ESRGAN local dos pasadas y bajadas a 900×675 cada una. **Y se construyó el componente firma que registra `COMPONENTES-USADOS.md`:** las dos mitades entran desde arriba y abajo (celular) o desde los lados (720 px arriba), embonan y dejan una **costura cian de 3 px** al centro. 580 ms, IntersectionObserver, respeta `prefers-reduced-motion`. |
+| 3. Agrandar el antes/después en celular | **HECHO** | Apilado a ancho completo: cada panel pasó de **175 × 169 px a 358 × 269 px** a 390. A 893 y 1440 siguen lado a lado (427×320 y 587×440). Las etiquetas ANTES/DESPUÉS ahora van **encima de la foto** para que la costura quede entre foto y foto, no entre foto y rótulo. |
+| 4. Los 44 px | **HECHO** | `.s-vis-item-btn` 40→44, los atajos 40→44, `.ec-brand` con `min-height:44px`, y de paso `.ec-nav a` y `.ec-cotizar` (estaban en 40 a 1440). Medido con CDP: **0 elementos tocables por debajo de 44 px en 390, 893 y 1440**. |
+| 5. Cambiar `img/cotiza/casa.webp` | **HECHO** | Se borró. En su lugar `img/cotiza/domicilio.webp` (900×675): el sillón blanco sobre el pasto con la manguera gris del equipo y el técnico a un lado, del mismo `hero-candidato_limpieza-exterior-sofa_ig.jpg`. El `alt` ya no habla de una casa que no aparece. |
+| 6. Cambiar `img/lavamos/sillas.webp` | **HECHO** | Recorte nuevo al asiento de tela (`catalogo_silla-metal-antes-despues_ig.jpg`, panel "Después", `x 330–620 / y 130–420`), 760×760. **De 98 KB a 36 KB.** |
+| 7. Subir el cotizador al nivel de Limpio Suprime | **HECHO (en su propio idioma)** | Los cuatro botones planos se volvieron **tres fichas con foto real** (Sala, Colchón, Sillas) de 102×135 con su "+" cian, más el enlace "Ver las nueve piezas que lavan". Y entró la **elección de tamaño**: al agregar sala aparece *¿De cuántas plazas?* (2 / 3 / Seccional) y al agregar colchón *¿De qué medida?* (Individual / Matrimonial / King size). No es un precio ni un dato del negocio: es una pregunta que viaja en el mensaje — `· Salas y sillones (Seccional) x2`. Si no se elige, no se escribe nada. NO se copiaron los discos, el deslizador de m² ni la retícula de Limpio (R11). |
+| 8. Quitar "Imagen ilustrativa" del hero | **NO — a propósito** | La foto del banner **sí es de IA** (la definitiva del orquestador), así que la etiqueta es la verdad y se queda. Lo que se arregló fue la contradicción: el pie decía *"Las fotos son de Everclean, mejoradas en resolución"* y ahora dice *"Las fotos de los trabajos son de Everclean, mejoradas en resolución. La del banner es ilustrativa y va marcada."* |
+| 9. Romper la repetición del sofá beige | **HECHO** | `img/cierre/final.webp` ya no es el seccional: es el **love seat de otro cliente**, recortado limpio del `catalogo_collage-sala-loveseat-antes-despues_ig.jpg` (sin el escudo, sin el rótulo quemado, sin la franja verde), 1400×690 y 10 KB. Ya son **seis trabajos distintos** a la vista (seccional, colchón limpio, silla, colchón manchado, sillón sobre el pasto, love seat) contra los tres de antes. De paso `img/lavamos/colchones.webp` se rehizo incluyendo la cabecera de la cama: antes era un rectángulo blanco que no se leía. |
+| 10. `img/logo/logo-header.webp` | **HECHO** | De 306×210 px y 25 KB a **120×82 px y 7 KB**, con `width`/`height` corregidos en `template.html`. |
+
+## Un detalle de CSS que vale anotar
+
+El atributo `height="200"` del HTML es una **pista de presentación** que le gana a `aspect-ratio`: las fichas
+con foto del cotizador salían de 200 px de alto aunque el CSS pedía 1/1. Se arregla con `height:auto` en la
+imagen. Queda anotado dentro de `sections/50-visita.css`.
+
+## Sobre `COMPONENTES-USADOS.md`
+
+**No se tocó** (no es carpeta mía). Y ya no hace falta corregirlo: el renglón de everclean-ags
+("El par que embona — las dos mitades de su foto real se juntan y dejan costura") **ahora sí existe en la
+página**, con la costura cian visible al centro. El registro quedó verdadero.
+
+## Verificación de esta ronda
+
+| Prueba | m (390) | t (893) | d (1440) |
+|---|---|---|---|
+| `krevo-shot` alertas | **[]** | **[]** | **[]** |
+| Alto | 7,934 px | 5,988 px | 6,359 px |
+| Tocables menores a 44 px | **0** | **0** | **0** |
+| Flotante tapando algo (10 alturas, con piezas en el carrito) | **0** | **0** | **0** |
+| Consola / 404 / scroll horizontal | 0 / 0 / no | 0 / 0 / no | 0 / 0 / no |
+| El par a media animación (200 ms) | entrando, opacidad 0.99, costura al 9% | entrando | entrando |
+| El par ya embonado | 358×269 + 358×269, hueco 3 px | 427×320, costura 3×320 | 587×440, costura 3×440 |
+
+- **Carrito:** suma, resta, borra al llegar a 0, los tamaños se prenden y se apagan, y el mensaje sale
+  *"· Salas y sillones (Seccional) x2 · Colchones (King size) x1 / Zona: Bosques del Prado / Día que me queda:
+  Domingo / Cada cuándo: Cada 3 meses"*, sin renglones vacíos. Con el carrito vacío el mensaje no trae la lista.
+- **WhatsApp:** los 5 `<a href="wa.me/...?text=">` salen del servidor ya escritos, **0 `window.open`**, los 3 `tel:` al 449 192 5369.
+- **Menú:** abre, manda el foco al botón de cerrar y cierra con el botón y con Esc.
+- **Sin JavaScript:** página completa, 7,988 px, **0 bloques invisibles**, el par ya embonado y los `wa.me` con mensaje.
+- **`prefers-reduced-motion: reduce`:** el par entra derecho (`is-in` sin armar), 0 bloques invisibles.
+- **Peso de imágenes:** 536 KB en total (antes 508 KB, con el banner nuevo que pesa 198 KB de los dos archivos).
+
+## Lo que NO se pudo (y por qué)
+
+1. **La foto del banner no se juzga ni se cambia:** es la definitiva del orquestador y la orden fue no tocarla.
+   Si algún día entra una foto real de ellos trabajando, hay que quitar la etiqueta "Imagen ilustrativa"
+   (`sections/10-hero.html`, `.s-hero-ilustrativa`) y ajustar de vuelta el pie de `template.html`.
+2. **No hay foto propia de tapete, carriola, cama de perro, sofá cama ni interior de auto.** La única del
+   interior de auto vive en un collage donde otra celda trae marca de agua de **PixVerse.ai**, así que no se usó.
+   Por eso las fichas con foto del cotizador son tres y no cinco. Sigue pedido como punto 03 de `#70-completar`.
+3. **El colchón sigue sin par antes/después de verdad** (el manchado y el limpio son dos colchones distintos).
+   El manchado va solo y etiquetado, como en la ronda 1.
+4. **Las fotos nacen de collages de Instagram de 360–640 px.** Real-ESRGAN las salva para el tamaño en que se
+   muestran, pero en pantalla grande el par y el love seat se ven suaves. Con fotos originales del dueño esto sube solo.
+5. **No se hizo git** (lo publica el orquestador), no se tocó ninguna otra carpeta de `krevo-muestras/`,
+   ni `_kit/`, ni `COMPONENTES-USADOS.md`, ni el servidor del 8770.

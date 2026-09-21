@@ -32,12 +32,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
-<link rel="stylesheet" href="site.css?v=1789946140">
+<link rel="stylesheet" href="site.css?v=1789948337">
 <link rel="stylesheet" href="sections/10-hero.css?v=1789946140">
-<link rel="stylesheet" href="sections/20-tienda.css?v=1789944828">
+<link rel="stylesheet" href="sections/20-tienda.css?v=1789948410">
 <link rel="stylesheet" href="sections/30-pago.css?v=1789946140">
 <link rel="stylesheet" href="sections/40-resenas.css?v=1789946140">
-<link rel="stylesheet" href="sections/50-nombres.css?v=1789946140">
+<link rel="stylesheet" href="sections/50-nombres.css?v=1789948006">
 <link rel="stylesheet" href="sections/60-completar.css?v=1789946140">
 <link rel="stylesheet" href="sections/70-cierre.css?v=1789919553">
 </head>
@@ -137,7 +137,8 @@
     <p class="os-t-honest">Los precios son los que ustedes publicaron en su tienda en línea (catálogo de enero de 2026). Los de hoy te los confirmamos por WhatsApp.</p>
   </div>
 
-  <ul class="os-t-slider" aria-label="Piezas destacadas">
+  <div class="os-t-slider-wrap">
+    <ul class="os-t-slider" id="os-slider" aria-label="Piezas destacadas">
       <li class="os-t-slide">
         <div class="os-t-slide-foto"><img src="img/prod/vestido-tommy-rojo-760.webp" width="760" height="760" alt="Vestido Tommy Hilfiger corte cintura baja" decoding="async"></div>
         <p class="os-t-slide-name">Vestido Tommy Hilfiger corte cintura baja</p>
@@ -198,7 +199,13 @@
           <button class="os-p-add os-p-add--inline" type="button" data-add data-name="Crema Victoria&#x27;s Secret Vanilla Sparkle" data-price="290" aria-label="Agregar Crema Victoria&#x27;s Secret Vanilla Sparkle a mi encargo"><span aria-hidden="true">+</span></button>
         </div>
       </li>
-  </ul>
+    </ul>
+    <div class="os-t-slider-nav">
+      <button class="os-t-arrow" type="button" data-slide="-1" aria-controls="os-slider" aria-label="Ver la pieza anterior"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="os-t-dots" id="os-slider-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <button class="os-t-arrow" type="button" data-slide="1" aria-controls="os-slider" aria-label="Ver la siguiente pieza"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </div>
+  </div>
 
   <div class="k-wrap os-t-blocks">
   <div class="os-t-block" id="t-carteras">
@@ -253,43 +260,50 @@
   </figure>
 
   <div class="os-t-block" id="t-calzado">
-    <p class="os-t-eyebrow"><span class="os-parteluz os-parteluz--sm" aria-hidden="true"></span>02 · Calzado</p>
-    <ul class="os-t-lista">
-      <li class="os-t-fila">
-        <div class="os-t-fila-t"><p class="os-t-fila-n">Botas de lluvia Tommy Hilfiger</p><p class="os-t-fila-m">Tallas 25, 27</p></div>
-        <p class="os-t-fila-p">$2,190</p>
-        <button class="os-p-add" type="button" data-add data-name="Botas de lluvia Tommy Hilfiger" data-price="2190" aria-label="Agregar Botas de lluvia Tommy Hilfiger a mi encargo"><span aria-hidden="true">+</span></button>
+    <p class="os-t-eyebrow"><span class="os-parteluz os-parteluz--sm" aria-hidden="true"></span>02 · Calzado · 36 pares</p>
+    <ul class="os-t-exhib" aria-label="El exhibidor de tenis de su local">
+      <li><img src="img/calzado/par-1-380.webp" srcset="img/calzado/par-1-380.webp 380w, img/calzado/par-1-760.webp 760w" sizes="(min-width:760px) 260px, 30vw" width="380" height="380" alt="Tenis blancos y negros en su exhibidor" loading="lazy" decoding="async"></li>
+      <li><img src="img/calzado/par-2-380.webp" srcset="img/calzado/par-2-380.webp 380w, img/calzado/par-2-760.webp 760w" sizes="(min-width:760px) 260px, 30vw" width="380" height="380" alt="Tenis azul marino con franja en su exhibidor" loading="lazy" decoding="async"></li>
+      <li><img src="img/calzado/par-3-380.webp" srcset="img/calzado/par-3-380.webp 380w, img/calzado/par-3-760.webp 760w" sizes="(min-width:760px) 260px, 30vw" width="380" height="380" alt="Tenis rosa y crema en su exhibidor" loading="lazy" decoding="async"></li>
+    </ul>
+    <p class="os-t-exhib-pie">Fotos de su exhibidor real, en el local de Tanyveth.</p>
+    <p class="os-t-sinfoto">Sin foto todavía: pregúntanos y te la mandamos por WhatsApp.</p>
+    <ul class="os-t-grid">
+      <li class="os-p">
+        <div class="os-p-foto"><span class="os-p-sin" aria-hidden="true"><b>Tommy Hilfiger</b><i>Foto pendiente</i></span>
+          <button class="os-p-add" type="button" data-add data-name="Botas de lluvia Tommy Hilfiger" data-price="2190" aria-label="Agregar Botas de lluvia Tommy Hilfiger a mi encargo"><span aria-hidden="true">+</span></button>
+        </div>
+        <p class="os-p-name">Botas de lluvia Tommy Hilfiger</p>
+        <p class="os-p-meta">Tallas 25, 27</p>
+        <p class="os-p-price">$2,190</p>
         <a class="os-p-btn" href="https://wa.me/524491371706?text=Hola%2C%20te%20encargo%20las%20Botas%20de%20lluvia%20Tommy%20Hilfiger%20de%20%242%2C190." target="_blank" rel="noopener" data-wa-pieza>Encargar</a>
       </li>
-      <li class="os-t-fila">
-        <div class="os-t-fila-t"><p class="os-t-fila-n">Botas niña DKNY</p><p class="os-t-fila-m">Tallas 18, 22.5</p></div>
-        <p class="os-t-fila-p">$2,100</p>
-        <button class="os-p-add" type="button" data-add data-name="Botas niña DKNY" data-price="2100" aria-label="Agregar Botas niña DKNY a mi encargo"><span aria-hidden="true">+</span></button>
-        <a class="os-p-btn" href="https://wa.me/524491371706?text=Hola%2C%20te%20encargo%20las%20Botas%20ni%C3%B1a%20DKNY%20de%20%242%2C100." target="_blank" rel="noopener" data-wa-pieza>Encargar</a>
+      <li class="os-p">
+        <div class="os-p-foto"><span class="os-p-sin" aria-hidden="true"><b>Michael Kors</b><i>Foto pendiente</i></span>
+          <button class="os-p-add" type="button" data-add data-name="Tenis Michael Kors" data-price="4200" aria-label="Agregar Tenis Michael Kors a mi encargo"><span aria-hidden="true">+</span></button>
+        </div>
+        <p class="os-p-name">Tenis Michael Kors</p>
+        <p class="os-p-meta">Talla 26</p>
+        <p class="os-p-price">$4,200</p>
+        <a class="os-p-btn" href="https://wa.me/524491371706?text=Hola%2C%20te%20encargo%20los%20Tenis%20Michael%20Kors%20de%20%244%2C200." target="_blank" rel="noopener" data-wa-pieza>Encargar</a>
       </li>
-      <li class="os-t-fila">
-        <div class="os-t-fila-t"><p class="os-t-fila-n">Botas niña DKNY</p><p class="os-t-fila-m">Tallas 21, 23</p></div>
-        <p class="os-t-fila-p">$2,100</p>
-        <button class="os-p-add" type="button" data-add data-name="Botas niña DKNY" data-price="2100" aria-label="Agregar Botas niña DKNY a mi encargo"><span aria-hidden="true">+</span></button>
-        <a class="os-p-btn" href="https://wa.me/524491371706?text=Hola%2C%20te%20encargo%20las%20Botas%20ni%C3%B1a%20DKNY%20de%20%242%2C100." target="_blank" rel="noopener" data-wa-pieza>Encargar</a>
-      </li>
-      <li class="os-t-fila">
-        <div class="os-t-fila-t"><p class="os-t-fila-n">Tenis Calvin Klein</p><p class="os-t-fila-m">Talla 28</p></div>
-        <p class="os-t-fila-p">$2,190</p>
-        <button class="os-p-add" type="button" data-add data-name="Tenis Calvin Klein" data-price="2190" aria-label="Agregar Tenis Calvin Klein a mi encargo"><span aria-hidden="true">+</span></button>
-        <a class="os-p-btn" href="https://wa.me/524491371706?text=Hola%2C%20te%20encargo%20los%20Tenis%20Calvin%20Klein%20de%20%242%2C190." target="_blank" rel="noopener" data-wa-pieza>Encargar</a>
-      </li>
-      <li class="os-t-fila">
-        <div class="os-t-fila-t"><p class="os-t-fila-n">Tenis Calvin Klein</p><p class="os-t-fila-m">Talla 26</p></div>
-        <p class="os-t-fila-p">$1,890</p>
-        <button class="os-p-add" type="button" data-add data-name="Tenis Calvin Klein" data-price="1890" aria-label="Agregar Tenis Calvin Klein a mi encargo"><span aria-hidden="true">+</span></button>
+      <li class="os-p">
+        <div class="os-p-foto"><span class="os-p-sin" aria-hidden="true"><b>Calvin Klein</b><i>Foto pendiente</i></span>
+          <button class="os-p-add" type="button" data-add data-name="Tenis Calvin Klein" data-price="1890" aria-label="Agregar Tenis Calvin Klein a mi encargo"><span aria-hidden="true">+</span></button>
+        </div>
+        <p class="os-p-name">Tenis Calvin Klein</p>
+        <p class="os-p-meta">Talla 26</p>
+        <p class="os-p-price">$1,890</p>
         <a class="os-p-btn" href="https://wa.me/524491371706?text=Hola%2C%20te%20encargo%20los%20Tenis%20Calvin%20Klein%20de%20%241%2C890." target="_blank" rel="noopener" data-wa-pieza>Encargar</a>
       </li>
-      <li class="os-t-fila">
-        <div class="os-t-fila-t"><p class="os-t-fila-n">Tenis DKNY</p><p class="os-t-fila-m">Talla 24 · Negro</p></div>
-        <p class="os-t-fila-p">$2,100</p>
-        <button class="os-p-add" type="button" data-add data-name="Tenis DKNY" data-price="2100" aria-label="Agregar Tenis DKNY a mi encargo"><span aria-hidden="true">+</span></button>
-        <a class="os-p-btn" href="https://wa.me/524491371706?text=Hola%2C%20te%20encargo%20los%20Tenis%20DKNY%20de%20%242%2C100." target="_blank" rel="noopener" data-wa-pieza>Encargar</a>
+      <li class="os-p">
+        <div class="os-p-foto"><span class="os-p-sin" aria-hidden="true"><b>GUESS</b><i>Foto pendiente</i></span>
+          <button class="os-p-add" type="button" data-add data-name="Tenis Guess" data-price="1890" aria-label="Agregar Tenis Guess a mi encargo"><span aria-hidden="true">+</span></button>
+        </div>
+        <p class="os-p-name">Tenis Guess</p>
+        <p class="os-p-meta">Talla 25.5</p>
+        <p class="os-p-price">$1,890</p>
+        <a class="os-p-btn" href="https://wa.me/524491371706?text=Hola%2C%20te%20encargo%20los%20Tenis%20Guess%20de%20%241%2C890." target="_blank" rel="noopener" data-wa-pieza>Encargar</a>
       </li>
     </ul>
     <a class="os-t-vermas" href="catalogo.html#c-calzado">Ver los 36 pares, con talla y precio<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -482,7 +496,7 @@
       </li>
       <li class="os-res-item">
         <span class="os-res-stars os-res-stars--fb">Recomienda</span>
-        <p class="os-res-quote">&ldquo;Me encantó el trato son muy amables y me encantaron los productos&rdquo;</p>
+        <p class="os-res-quote">&ldquo;Me encantó el trato son muy amables y me encantaron los productos, el que compre está hermosa la mochila&hellip;&rdquo;</p>
         <p class="os-res-name">Dey Luevano <span>· recomendación de Facebook</span></p>
       </li>
     </ul>
@@ -494,7 +508,7 @@
      grande — nunca por interruptor (esa unidad es la sucursal en dona-petra; aquí la unidad es el
      nombre). Header y formas propios de este sitio, no del interruptor JARDÍN|MARAVILLAS.
      Presupuesto ~1,500 px. -->
-<section class="os-nom" id="nombres" aria-label="Dos nombres, dos locales: es la misma tienda">
+<section class="os-nom" id="nombres" data-hide-wa aria-label="Dos nombres, dos locales: es la misma tienda">
   <div class="k-wrap">
     <h2 class="os-d os-nom-h">
       <span class="os-fall" data-fall data-reveal-delay="0">Ólux en Google.</span>
@@ -538,7 +552,7 @@
 
 <!-- 60-completar: TODO LISTO PARA COMPLETAR — lo que necesitamos del dueño, tono de siguiente paso
      de la venta. Única banda clara de la página (--paper). Presupuesto ~800 px. -->
-<section class="os-comp" id="completar" data-paper aria-label="Todo listo para completar">
+<section class="os-comp" id="completar" data-paper data-hide-wa aria-label="Todo listo para completar">
   <div class="k-wrap">
     <h2 class="os-d os-comp-h">
       <span class="os-fall" data-fall data-reveal-delay="0">Falta poco.</span>
@@ -593,6 +607,6 @@
 
 <script src="../_kit/kit.js?v=1789882113" defer></script>
 <script src="site.js?v=1789915121" defer></script>
-<script src="sections/20-tienda.js?v=1789942134" defer></script>
+<script src="sections/20-tienda.js?v=1789948881" defer></script>
 </body>
 </html>

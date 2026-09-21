@@ -312,7 +312,10 @@ body.chata-nav-open .chata-nav-panel { transform: translateX(0); }
 }
 .chata-wa-float svg { width: 30px; height: 30px; fill: currentColor; }
 .chata-wa-float:active { transform: scale(.94); }
+/* Se esconde con VISIBILITY (la animación de entrada lleva fill both y pisaría opacity)
+   cuando se encima con un bloque [data-hide-wa]: la carta llena de "+" y el pie. */
 html.chata-sheet-open .chata-wa-float,
+.chata-wa-float.is-tapando,
 .chata-wa-float[hidden] { visibility: hidden; animation: none; }
 @keyframes chata-wa-in { from { opacity: 0; transform: translateY(16px) scale(.9); } to { opacity: 1; transform: none; } }
 
@@ -355,7 +358,10 @@ html.chata-sheet-open .chata-sheet,
 .chata-sheet-note { font-size: 12px; color: #4a5a4f; }
 
 /* ============ Pie ============ */
-.chata-foot { background: var(--deep); border-top: 1px solid var(--line-brand); padding: 44px 0 calc(28px + env(safe-area-inset-bottom)); }
+/* Aire abajo suficiente para que ni el flotante de WhatsApp (56 px + 16) ni la barra del
+   pedido (48 px + 16) alcancen el crédito. Regla del 20 sep. */
+.chata-foot { background: var(--deep); border-top: 1px solid var(--line-brand); padding: 44px 0 calc(104px + env(safe-area-inset-bottom)); }
+@media (min-width: 700px) { .chata-foot { padding-bottom: calc(112px + env(safe-area-inset-bottom)); } }
 .chata-foot-in { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
 .chata-foot-social { display: flex; align-items: center; gap: 22px; }
 .chata-foot-social a {

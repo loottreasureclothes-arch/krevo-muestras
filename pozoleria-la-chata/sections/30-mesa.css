@@ -34,9 +34,10 @@
   font-family: var(--font-alt); font-weight: 600; font-size: 11px;
   letter-spacing: .1em; text-transform: uppercase; color: rgba(244,239,228,.6);
 }
-@media (min-width: 900px) {
+@media (min-width: 700px) {
   .s-mesa { padding-top: 56px; padding-bottom: 72px; }
-  /* Igual que la carta: en compu la foto va en paspartú topado a 1100 px, no a sangre. */
+  /* Igual que la carta: de 700 px para arriba (tableta incluida) la foto va en paspartú
+     topado a 1100 px, no a sangre: así nunca se amplía ni se ve fuera de foco. */
   .s-mesa-shotband {
     height: auto; min-height: 0;
     width: min(1100px, 100% - 2 * var(--k-gutter));

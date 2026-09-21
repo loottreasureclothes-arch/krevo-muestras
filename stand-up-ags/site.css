@@ -52,7 +52,9 @@
   --brand-on-wood: var(--brand);
 }
 @media (min-width: 900px) {
-  :root { --fs-h2: clamp(42px, 3.2vw, 68px); --fs-lead: 19px; --sec-y: 116px; --sec-y-sm: 84px; --su-header-h: 72px; }
+  /* --sec-y bajo de 116 a 82: entre las resenas de EBESA y el titular del
+     catalogo quedaban 232px de nada a 1440 (116 abajo + 116 arriba). */
+  :root { --fs-h2: clamp(42px, 3.2vw, 68px); --fs-lead: 19px; --sec-y: 82px; --sec-y-sm: 84px; --su-header-h: 72px; }
 }
 html, body { background: var(--deep); }
 body { color: var(--ink); }
@@ -223,13 +225,35 @@ body.cd-menu-open .su-burger-bars i:nth-child(3) { transform: translateY(-7px) r
 body.cd-menu-open .cd-menu { visibility: visible; transition: visibility 0s; }
 .cd-menu-scrim { position: absolute; inset: 0; background: rgba(9, 17, 24, 0.74); opacity: 0; transition: opacity 320ms var(--ease-out); }
 body.cd-menu-open .cd-menu-scrim { opacity: 1; }
+/* 20 sep 2026 (ronda 2): el panel ya NO cubre los 844px de alto. Antes iba con
+   inset:0 y tapaba el velo entero, asi que tocar fuera del panel no cerraba
+   nada: el menu solo se podia dejar eligiendo una seccion. Ahora baja desde
+   arriba, deja una banda de velo abajo (--su-menu-velo) que SI se puede tocar,
+   y trae su propio boton "Cerrar" de 44px. Ademas el header sube por encima
+   del menu (mas abajo) para que la hamburguesa lo cierre. */
+:root { --su-menu-velo: 96px; }
 .cd-menu-panel {
-  position: absolute; inset: 0; overflow-y: auto;
-  padding: calc(var(--su-header-h) + 24px) 20px 24px;
-  display: flex; flex-direction: column; min-height: 100%;
+  position: absolute; top: 0; left: 0; right: 0; bottom: auto;
+  max-height: calc(100svh - var(--su-menu-velo)); overflow-y: auto;
+  padding: calc(var(--su-header-h) + 16px) 20px 24px;
+  display: flex; flex-direction: column;
   transform: translateY(-14px); opacity: 0;
   transition: transform 320ms var(--ease-out), opacity 240ms var(--ease-out);
 }
+/* El header vive encima del menu abierto: la hamburguesa (ya en forma de X)
+   queda tocable y cierra. "MEDIDAS" se apaga mientras el menu esta abierto,
+   porque el menu ya trae su propio "Las 15 medidas". */
+body.cd-menu-open .su-header { z-index: 80; }
+body.cd-menu-open .su-header-medidas { opacity: 0; pointer-events: none; }
+.su-menu-cerrar {
+  align-self: flex-end; display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; min-width: 44px; padding: 0 14px; margin-bottom: 12px;
+  border: 1.5px solid var(--line-brand-strong); background: transparent; color: var(--ink);
+  font-family: var(--font-body); font-weight: 700; font-size: 12.5px;
+  text-transform: uppercase; letter-spacing: 0.12em; cursor: pointer;
+}
+.su-menu-cerrar svg { width: 16px; height: 16px; flex: none; }
+@media (hover: hover) and (pointer: fine) { .su-menu-cerrar:hover { border-color: var(--brand); color: var(--brand); } }
 body.cd-menu-open .cd-menu-panel { transform: none; opacity: 1; }
 body.cd-menu-open { overflow: hidden; }
 .cd-menu-nav { display: flex; flex-direction: column; }
@@ -340,7 +364,9 @@ section[id] { padding-block: var(--sec-y-sm); }
 
 /* El flotante se quita sobre el catalogo: ahi ya esta la barra "Mi cotizacion" y tapaba "+ Agregar". */
 /* visibility y no opacity: la animacion de entrada del kit (k-wa-in, fill both) pisa opacity y transform. */
-body.su-wa-off .k-wa { visibility: hidden; pointer-events: none; }
+/* Con el menu abierto el flotante asomaba en la banda de velo de abajo: se ve
+   tocable pero el toque cae en el velo y cierra el menu. Mejor esconderlo. */
+body.su-wa-off .k-wa, body.cd-menu-open .k-wa { visibility: hidden; pointer-events: none; }
 
 /* ===== Tercera vuelta: paredes del volumen =====
    Los retornos laterales ya no llevan filete claro arriba (cruzaba la pared del fondo como una muesca blanca)

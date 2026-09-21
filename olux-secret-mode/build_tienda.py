@@ -187,30 +187,37 @@ def panel_html(titulo, texto, href, cta):
             '      </li>')
 
 
-def fila(p):
-    """Renglon de precio: para el bloque sin foto de pieza (Calzado)."""
-    nombre, precio = p["name"], p["price"]
-    mt = tallas(p)
-    msg = wa_pieza(nombre, precio)
-    precio_html = (f'<p class="os-t-fila-p">{money(precio)}</p>' if precio
-                   else '<p class="os-t-fila-p os-p-price--ask">Pregunta el precio</p>')
-    return f'''      <li class="os-t-fila">
-        <div class="os-t-fila-t"><p class="os-t-fila-n">{esc(nombre)}</p>{f'<p class="os-t-fila-m">{esc(mt)}</p>' if mt else ''}</div>
-        {precio_html}
-        <button class="os-p-add" type="button" data-add data-name="{esc(nombre)}" data-price="{precio or ''}" aria-label="Agregar {esc(nombre)} a mi encargo"><span aria-hidden="true">+</span></button>
-        <a class="os-p-btn" href="{wa_href(msg)}" target="_blank" rel="noopener" data-wa-pieza>Encargar</a>
-      </li>'''
+# Los tres recortes REALES de su exhibidor de tenis (Google Maps), subidos x4 con Real-ESRGAN
+# local por build_img.py. No se le pega ninguno a una ficha concreta: es el aparador, no la pieza.
+EXHIB = [("par-1", "Tenis blancos y negros en su exhibidor"),
+         ("par-2", "Tenis azul marino con franja en su exhibidor"),
+         ("par-3", "Tenis rosa y crema en su exhibidor")]
 
 
-def bloque_lista(titulo, num, items, ancla, ver_mas=None):
-    vm = (f'    <a class="os-t-vermas" href="{ver_mas[0]}">{esc(ver_mas[1])}<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>\n'
-          if ver_mas else '')
+def bloque_calzado(num, items, ancla, n_total_pares, ver_mas):
+    """Calzado: el UNICO bloque del que el archivo de internet no conservo ni una foto de pieza
+    (reverificado el 20 sep por la tarde: 24 imagenes del dominio, 14 de producto, cero de
+    calzado, y las fotos de las fichas dan 404 una por una). Asi que NO va como lista de texto
+    —que es lo que Emanuel rechazo— sino como el resto de la tienda: primero sus tenis de
+    verdad, en tres recortes de su exhibidor real; luego el renglon honesto de que la foto
+    pieza por pieza se pide por WhatsApp; y hasta abajo la rejilla con marca, talla y precio.
+    El renglon de "sin foto" NUNCA va arriba: primero se ven los tenis."""
+    fotos = "\n".join(
+        f'''      <li><img src="img/calzado/{s}-380.webp" srcset="img/calzado/{s}-380.webp 380w, img/calzado/{s}-760.webp 760w" sizes="(min-width:760px) 260px, 30vw" width="380" height="380" alt="{esc(a)}" loading="lazy" decoding="async"></li>'''
+        for s, a in EXHIB)
+    cards = "\n".join(tarjeta(p) for p in items)
     return f'''  <div class="os-t-block" id="{ancla}">
-    <p class="os-t-eyebrow"><span class="os-parteluz os-parteluz--sm" aria-hidden="true"></span>{num} · {esc(titulo)}</p>
-    <ul class="os-t-lista">
-{chr(10).join(fila(x) for x in items)}
+    <p class="os-t-eyebrow"><span class="os-parteluz os-parteluz--sm" aria-hidden="true"></span>{num} · Calzado · {n_total_pares} pares</p>
+    <ul class="os-t-exhib" aria-label="El exhibidor de tenis de su local">
+{fotos}
     </ul>
-{vm}  </div>
+    <p class="os-t-exhib-pie">Fotos de su exhibidor real, en el local de Tanyveth.</p>
+    <p class="os-t-sinfoto">Sin foto todavía: pregúntanos y te la mandamos por WhatsApp.</p>
+    <ul class="os-t-grid">
+{cards}
+    </ul>
+    <a class="os-t-vermas" href="{ver_mas[0]}">{esc(ver_mas[1])}<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
 '''
 
 
@@ -295,7 +302,14 @@ for i, s in enumerate(DEST):
 b_cart = [con_foto("cartera-michael-kors"), con_foto("lentes-guess-carey"), con_foto("lentes-guess-gris")]
 b_cart += buscar(lambda p: "Backpack" in p["cats"] or "Cross Body" in p["cats"], 1, USADOS)
 
-b_calz = buscar(lambda p: p["name"].lower().startswith(("tenis", "botas")), 6, USADOS)
+# Calzado: cuatro pares elegidos a mano para que se vean las cuatro marcas y el rango de precio
+# real (de $1,890 a $4,200). Los datos salen tal cual de su catalogo; aqui solo se escoge cuales.
+CALZ_SLUGS = ["botas-de-lluvia-tommy-hilfiger", "tenis-michael-kors",
+              "tenis-calvin-klein", "tenis-guess-2"]
+_por_slug = {p["slug"]: p for p in CAT}
+b_calz = [_por_slug[s] for s in CALZ_SLUGS if s in _por_slug]
+assert len(b_calz) == len(CALZ_SLUGS), "slug de calzado que ya no existe en el catalogo"
+USADOS.update(id(p) for p in b_calz)
 
 b_ropa = [con_foto("vestido-tommy-rojo"), con_foto("vestido-negro"),
           con_foto("vestido-lentejuela"), con_foto("vestido-ondas")]
@@ -323,9 +337,16 @@ TIENDA = f'''<!-- 20-tienda: LA TIENDA. Reescrita el 20 sep 2026 (tarde) sobre F
     <p class="os-t-honest">Los precios son los que ustedes publicaron en su tienda en línea (catálogo de enero de 2026). Los de hoy te los confirmamos por WhatsApp.</p>
   </div>
 
-  <ul class="os-t-slider" aria-label="Piezas destacadas">
+  <div class="os-t-slider-wrap">
+    <ul class="os-t-slider" id="os-slider" aria-label="Piezas destacadas">
 {chr(10).join(slides)}
-  </ul>
+    </ul>
+    <div class="os-t-slider-nav">
+      <button class="os-t-arrow" type="button" data-slide="-1" aria-controls="os-slider" aria-label="Ver la pieza anterior"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <span class="os-t-dots" id="os-slider-dots" aria-hidden="true">{''.join('<i></i>' for _ in slides)}</span>
+      <button class="os-t-arrow" type="button" data-slide="1" aria-controls="os-slider" aria-label="Ver la siguiente pieza"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </div>
+  </div>
 
   <div class="k-wrap os-t-blocks">
 {bloque("Carteras, mochilas y lentes", "01", b_cart, "t-carteras",
@@ -334,7 +355,7 @@ TIENDA = f'''<!-- 20-tienda: LA TIENDA. Reescrita el 20 sep 2026 (tarde) sobre F
        "Tejido real de un suéter Tommy Hilfiger de su tienda",
        "Tommy, DKNY, Michael Kors, Calvin Klein, Guess.",
        "Originales. Foto suya, de su propia mercancía.")}
-{bloque_lista("Calzado", "02", b_calz, "t-calzado",
+{bloque_calzado("02", b_calz, "t-calzado", N['c-calzado'],
         ver_mas=("catalogo.html#c-calzado", f"Ver los {N['c-calzado']} pares, con talla y precio"))}
   </div>
 

@@ -3,10 +3,17 @@
    + "Pregunta el precio" + Agregar (color de marca). Hoja: solo carrito y
    cierre. NUNCA "$0"; el total dice "te lo confirmamos por WhatsApp". */
 .s-cat-h2 { margin-bottom: 24px; }
+/* 20 sep 2026 (ronda 2): a 1440 el titular ocupaba 495px de 1200 y dejaba la
+   mitad derecha vacia (revision de la tarde, punto 5). Desde 1200px los chips
+   y el renglon de "15 medidas en total" se van a la derecha del titular, al
+   ras de abajo. El renglon subio de debajo de la rejilla a aqui: explica el
+   filtro justo donde se usa (por eso ya no dice "el tamaño arriba"). */
+.s-cat-tally { max-width: 52ch; }
 
 .s-cat-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+/* 44px de alto, la medida minima de la hoja para todo lo tocable (venian 40). */
 .s-cat-chip {
-  min-height: 40px; padding: 0 16px; border: 1.5px solid var(--line-brand-strong);
+  min-height: 44px; padding: 0 16px; border: 1.5px solid var(--line-brand-strong);
   background: transparent; color: var(--ink); font-family: var(--font-body);
   font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.1em;
   border-radius: 0; cursor: pointer;
@@ -20,7 +27,14 @@
    cambian de "hidden" mientras esta a 0 de opacidad, asi no se ve el salto. */
 .s-cat-grid { transition: opacity 140ms var(--ease-out); opacity: 1; }
 .s-cat-grid.is-switching { opacity: 0; }
-.s-cat-tally { font-size: 12.5px; color: var(--mute); margin: 14px 0 0; }
+.s-cat-tally { font-size: 12.5px; color: var(--mute); margin: 0 0 20px; }
+@media (min-width: 1200px) {
+  .s-cat-top { display: grid; grid-template-columns: clamp(430px, 34.5vw, 740px) minmax(0, 1fr); column-gap: 56px; align-items: end; }
+  .s-cat-h2 { margin-bottom: 0; }
+  .s-cat-chips { margin-bottom: 14px; }
+  .s-cat-tally { margin-bottom: 0; }
+  .s-cat-aside { padding-bottom: 4px; }
+}
 .s-cat-tally b { color: var(--ink); font-family: var(--font-display); font-variation-settings: "wdth" 110; }
 .s-cat-card {
   background: var(--deep-2);
@@ -101,7 +115,9 @@
   border-top: 1px solid var(--line-brand-strong);
 }
 @media (min-width: 700px) { .s-cat-sheet-panel { left: 50%; right: auto; bottom: auto; top: 50%; transform: translate(-50%, -50%); width: min(460px, 90vw); max-height: 84vh; border: 1px solid var(--line-brand-strong); } }
-.s-cat-sheet-x { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; display: grid; place-items: center; background: none; border: 0; color: var(--ink-deep); cursor: pointer; }
+/* 44px: todo lo tocable. La X de la hoja media 40 y los +/- median 28; el
+   inspector no los vio porque su revision corrio con la hoja cerrada. */
+.s-cat-sheet-x { position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; display: grid; place-items: center; background: none; border: 0; color: var(--ink-deep); cursor: pointer; }
 .s-cat-sheet-x svg { width: 18px; height: 18px; }
 .s-cat-sheet-h {
   font-family: var(--font-display); font-stretch: 122%; font-variation-settings: "wdth" 122;
@@ -111,7 +127,7 @@
 .s-cat-sheet-list li { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line-brand); font-size: 14px; }
 .s-cat-sheet-list b { flex: 1; font-weight: 700; }
 .s-cat-qty { display: flex; align-items: center; gap: 8px; }
-.s-cat-qty button { width: 28px; height: 28px; border: 1px solid var(--line-brand-strong); background: none; color: var(--ink-deep); font-size: 16px; line-height: 1; cursor: pointer; }
+.s-cat-qty button { width: 44px; height: 44px; border: 1px solid var(--line-brand-strong); background: none; color: var(--ink-deep); font-size: 17px; line-height: 1; cursor: pointer; }
 .s-cat-qty span { min-width: 16px; text-align: center; font-variant-numeric: tabular-nums; }
 .s-cat-sheet-fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
 .s-cat-sheet-fields label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mute-deep); }

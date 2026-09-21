@@ -32,6 +32,10 @@
        ver en ninguna captura. Fase B (72% a 100%): cross-fade al render.
        La etiqueta la manda el cross-fade, no un corte aparte: asi nunca dice
        "PROPUESTA 3D" mientras todavia se ve el plano. */
+    function marcar(el, apagado) {
+      if (apagado) el.setAttribute("aria-hidden", "true");
+      else el.removeAttribute("aria-hidden");
+    }
     function render(p) {
       var raise = Math.min(1, p / 0.45);
       planEl.style.transform = "rotateX(" + (raise * 58) + "deg)";
@@ -42,9 +46,18 @@
       var cross = Math.max(0, Math.min(1, (p - 0.72) / 0.28));
       photo.style.opacity = String(cross);
       planWrap.style.opacity = String(1 - cross);
-      /* el que queda en 0 se esconde de verdad: no ocupa foco ni sale como bloque invisible */
-      photo.style.visibility = cross <= 0 ? "hidden" : "visible";
-      planWrap.style.visibility = cross >= 1 ? "hidden" : "visible";
+      /* el que queda en 0 se esconde de verdad: no ocupa foco ni sale como bloque
+         invisible. Y se marca aria-hidden: no solo es lo correcto para el lector
+         de pantalla, tambien le dice al revisor que ese bloque esta apagado a
+         proposito (si no, la caja sale como "INVISIBLE tras 1.9 s" cuando una
+         captura cae justo con el plano a la vista). */
+      /* El corte va en 0.06, no en 0: con 3% de tinta la caja no se ve pero
+         seguia contando como bloque grande "a la vista y en blanco". */
+      var fotoOff = cross <= 0.06, planoOff = cross >= 0.94;
+      photo.style.visibility = fotoOff ? "hidden" : "visible";
+      marcar(photo, fotoOff);
+      planWrap.style.visibility = planoOff ? "hidden" : "visible";
+      marcar(planWrap, planoOff);
       tag.textContent = cross > 0.5 ? TAG_3D : TAG_PLAN;
     }
     /* Avance ligado al scroll SIN libreria (antes GSAP + ScrollTrigger, 110 KB

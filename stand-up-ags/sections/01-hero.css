@@ -32,6 +32,10 @@
    propio de la seccion no se los coma en Safari. */
 .s-hero-foto { position: absolute; inset: 0; z-index: 0; display: block; }
 .s-hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; display: block; }
+/* Desde 760px entra el banner apaisado (ver el <source> de 01-hero.html): en
+   una caja de 893x497 la vertical de 780x1000 se comia media foto. Entre 760 y
+   899 el encuadre se carga a la derecha, que es donde esta la gente. */
+@media (min-width: 760px) { .s-hero-foto img { object-position: 62% 50%; } }
 @media (min-width: 900px) { .s-hero-foto img { object-position: 46% 50%; } }
 
 .s-hero-velo {
@@ -86,11 +90,13 @@
   position: absolute; z-index: 3;
   top: calc(var(--su-header-h) + 10px); right: 14px;
   margin: 0; padding: 3px 7px;
-  background: rgba(12, 24, 34, 0.42);
-  font-family: var(--font-body); font-size: 9px; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase; color: rgba(238, 241, 238, 0.6);
+  background: rgba(12, 24, 34, 0.62);
+  font-family: var(--font-body); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: rgba(238, 241, 238, 0.86);
 }
 @media (min-width: 900px) { .s-hero-ilus { right: 40px; } }
+/* A 9px y 0.6 de opacidad casi se perdia sobre la foto a 1440 (revision de la
+   tarde, punto 7): ahora 10.5px, 0.86 de tinta y el fondo mas cerrado. */
 
 /* Blindaje: visible por defecto; el JS solo anima el ingreso si hay scripting
    y no hay prefers-reduced-motion (mismo patron que el kit, ver kit.css). */

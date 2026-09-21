@@ -28,15 +28,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400..700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero/banner-m.webp" media="(max-width: 899px)" fetchpriority="high">
-<link rel="preload" as="image" href="img/hero/banner-d.webp" media="(min-width: 900px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero/banner-m.webp" media="(max-width: 759px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero/banner-d.webp" media="(min-width: 760px)" fetchpriority="high">
 <link rel="stylesheet" href="../_kit/kit.css?v=1789789808">
-<link rel="stylesheet" href="site.css?v=1789933190">
-<link rel="stylesheet" href="sections/01-hero.css?v=1789942606">
-<link rel="stylesheet" href="sections/02-ebesa.css?v=1789942606">
-<link rel="stylesheet" href="sections/03-catalogo.css?v=1789933190">
+<link rel="stylesheet" href="site.css?v=1789948111">
+<link rel="stylesheet" href="sections/01-hero.css?v=1789947732">
+<link rel="stylesheet" href="sections/02-ebesa.css?v=1789948003">
+<link rel="stylesheet" href="sections/03-catalogo.css?v=1789949132">
 <link rel="stylesheet" href="sections/04-firma.css?v=1789927071">
-<link rel="stylesheet" href="sections/05-fecha.css?v=1789930967">
+<link rel="stylesheet" href="sections/05-fecha.css?v=1789948827">
 <link rel="stylesheet" href="sections/06-visitanos.css?v=1789890791">
 </head>
 <body data-hero-dark>
@@ -68,6 +68,7 @@
 <div class="cd-menu su-menu" id="cd-menu" role="dialog" aria-modal="true" aria-label="Menú" aria-hidden="true">
   <div class="cd-menu-scrim" aria-hidden="true"></div>
   <div class="cd-menu-panel">
+    <button class="su-menu-cerrar" type="button" data-cd-close><svg aria-hidden="true"><use href="#i-x"/></svg>Cerrar</button>
     <nav class="cd-menu-nav su-menu-nav" aria-label="Secciones">
       <a href="#top"><span>01</span>Inicio</a>
       <a href="#ebesa"><span>02</span>EBESA 2025</a>
@@ -110,9 +111,9 @@
 <main id="top">
 <section id="hero" class="s-hero su-dark" aria-label="Stand Up Diseño">
   <picture class="s-hero-foto">
-    <source media="(min-width: 900px)" srcset="img/hero/banner-d.webp" width="1920" height="820">
+    <source media="(min-width: 760px)" srcset="img/hero/banner-d.webp" width="1920" height="820">
     <img src="img/hero/banner-m.webp" width="780" height="1000" fetchpriority="high" decoding="async"
-      alt="Piso de un pabellón de exposiciones con un stand ya armado.">
+      alt="Stand de feria armado con su mostrador iluminado y dos personas atendiendo a dos visitantes en el pabellón.">
   </picture>
   <span class="s-hero-velo" aria-hidden="true"></span>
 
@@ -136,6 +137,8 @@
 
 <section id="ebesa" class="s-ebesa su-dark" aria-label="Quién abrió con nosotros">
   <div class="k-wrap">
+    <div class="s-ebesa-top">
+    <div class="s-ebesa-intro">
     <p class="su-eyebrow">Salón de Locomotoras · 4 y 5 de oct. 2025</p>
     <h2 class="su-h2 s-ebesa-h2">
       <span class="ln">DIEZ STANDS</span>
@@ -143,8 +146,10 @@
       <span class="ln"><em>SALIERON</em></span>
       <span class="ln"><em>DE AQUÍ.</em></span>
     </h2>
+    </div>
 
-    <ul class="s-ebesa-tira" aria-label="Los diez stands de EBESA 2025">
+    <div class="s-ebesa-fotos">
+    <ul class="s-ebesa-tira" aria-label="Nueve de los diez stands de EBESA 2025">
       <li><figure class="su-frame su-frame--tight">
         <img src="img/ebesa/elixderm-600.webp" srcset="img/ebesa/elixderm-600.webp 600w, img/ebesa/elixderm-1200.webp 867w" sizes="232px" width="600" height="692" fetchpriority="high" decoding="async" alt="Stand de Elixderm montado por Stand Up en EBESA 2025.">
         <figcaption>Elixderm</figcaption>
@@ -166,10 +171,6 @@
         <figcaption>Xel-Há Hair Care</figcaption>
       </figure></li>
       <li><figure class="su-frame su-frame--tight">
-        <img src="img/ebesa/fajas-colombianas-600.webp" srcset="img/ebesa/fajas-colombianas-600.webp 600w, img/ebesa/fajas-colombianas-1200.webp 970w" sizes="232px" width="600" height="588" loading="lazy" decoding="async" alt="Stand de Fajas Colombianas montado por Stand Up en EBESA 2025.">
-        <figcaption>Fajas Colombianas</figcaption>
-      </figure></li>
-      <li><figure class="su-frame su-frame--tight">
         <img src="img/ebesa/natural-slim-600.webp" srcset="img/ebesa/natural-slim-600.webp 600w, img/ebesa/natural-slim-1200.webp 977w" sizes="232px" width="600" height="537" loading="lazy" decoding="async" alt="Stand de Natural Slim montado por Stand Up en EBESA 2025.">
         <figcaption>Natural Slim</figcaption>
       </figure></li>
@@ -186,7 +187,9 @@
         <figcaption>Papas Barber</figcaption>
       </figure></li>
     </ul>
-    <p class="s-ebesa-pista" aria-hidden="true">Desliza: son 10 montajes reales</p>
+    <p class="s-ebesa-pista" aria-hidden="true">Desliza: nueve fotos de EBESA 2025</p>
+    <p class="s-ebesa-tambien">También armamos: Fajas Colombianas.</p>
+    </div>
 
     <div class="s-ebesa-resenas su-paper">
       <p class="s-ebesa-rotulo">4.8 en Google <span class="cd-nowrap">· 6 opiniones</span></p>
@@ -201,23 +204,29 @@
         <cite>eunis</cite>
       </blockquote>
     </div>
+    </div>
   </div>
 </section>
 
 <section id="catalogo" class="s-cat su-dark su-grid" aria-label="Las 15 medidas que arman" data-hide-wa>
   <div class="k-wrap">
-    <h2 class="su-h2 s-cat-h2">
-      <span class="ln">NO VENDEMOS</span>
-      <span class="ln">METROS.</span>
-      <span class="ln"><em>VENDEMOS</em></span>
-      <span class="ln"><em>PAREDES.</em></span>
-    </h2>
+    <div class="s-cat-top">
+      <h2 class="su-h2 s-cat-h2">
+        <span class="ln">NO VENDEMOS</span>
+        <span class="ln">METROS.</span>
+        <span class="ln"><em>VENDEMOS</em></span>
+        <span class="ln"><em>PAREDES.</em></span>
+      </h2>
 
-    <div class="s-cat-chips" role="group" aria-label="Filtrar por medida">
-      <button class="s-cat-chip" type="button" data-filter="3x2" aria-pressed="false">3×2</button>
-      <button class="s-cat-chip is-active" type="button" data-filter="3x3" aria-pressed="true">3×3</button>
-      <button class="s-cat-chip" type="button" data-filter="6x3" aria-pressed="false">6×3</button>
-      <button class="s-cat-chip" type="button" data-filter="especiales" aria-pressed="false">Especiales</button>
+      <div class="s-cat-aside">
+        <div class="s-cat-chips" role="group" aria-label="Filtrar por medida">
+          <button class="s-cat-chip" type="button" data-filter="3x2" aria-pressed="false">3×2</button>
+          <button class="s-cat-chip is-active" type="button" data-filter="3x3" aria-pressed="true">3×3</button>
+          <button class="s-cat-chip" type="button" data-filter="6x3" aria-pressed="false">6×3</button>
+          <button class="s-cat-chip" type="button" data-filter="especiales" aria-pressed="false">Especiales</button>
+        </div>
+        <p class="s-cat-tally" id="s-cat-tally"><b>15</b> medidas en total. Elige el tamaño para ver las demás. Los dibujos van a escala; la foto real de cada medida se la pedimos al dueño.</p>
+      </div>
     </div>
 
     <ul class="s-cat-grid" id="s-cat-grid">
@@ -340,7 +349,6 @@
         <button class="s-cat-add" type="button" data-add>+ Agregar</button>
       </li>
     </ul>
-    <p class="s-cat-tally" id="s-cat-tally"><b>15</b> medidas en total. Elige el tamaño arriba para ver las demás. Los dibujos van a escala; la foto real de cada medida se la pedimos al dueño.</p>
   </div>
 
   <button class="s-cat-bar" id="s-cat-bar" type="button" hidden>
@@ -469,7 +477,9 @@
 
 </main>
 
-<footer class="cd-foot su-foot" aria-label="Pie de página">
+<!-- data-hide-wa: el flotante tapaba el final de "ESPACIOS QUE HABLAN POR TU MARCA"
+     y no debe pisar nunca el credito del pie (regla del kit). -->
+<footer class="cd-foot su-foot" aria-label="Pie de página" data-hide-wa>
   <div class="k-wrap su-foot-close">
     <img class="su-foot-logo" src="img/logo-cierre.webp" alt="Stand up. Proyección de Marcas, Diseñando Espacios." width="1043" height="642" loading="lazy" decoding="async">
     <p class="su-foot-motto">Espacios que hablan por tu marca.</p>
@@ -509,10 +519,10 @@
 <a class="k-wa" data-wa="Hola Stand Up, vi su página y quiero cotizar un stand." href="https://wa.me/524494579759?text=Hola%20Stand%20Up%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20cotizar%20un%20stand." aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg></a>
 
 <script src="../_kit/kit.js?v=1789882113" defer></script>
-<script src="site.js?v=1789930998" defer></script>
+<script src="site.js?v=1789947661" defer></script>
 <script src="sections/01-hero.js?v=1789890576" defer></script>
 <script src="sections/03-catalogo.js?v=1789930967" defer></script>
-<script src="sections/04-firma.js?v=1789927249" defer></script>
+<script src="sections/04-firma.js?v=1789949538" defer></script>
 <script src="sections/05-fecha.js?v=1789927401" defer></script>
 </body>
 </html>
