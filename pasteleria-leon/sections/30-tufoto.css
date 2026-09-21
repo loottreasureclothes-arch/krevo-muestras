@@ -121,3 +121,8 @@
   from { clip-path: inset(0 100% -20% 0); }
   to { clip-path: inset(0 -6% -20% 0); }
 }
+
+/* _kit/kit.css trae `img { display: block }` y esa regla de autor le gana al
+   `[hidden] { display:none }` del navegador: sin esto, el <img> vacío del disco
+   se pinta y el navegador dibuja su texto alternativo encima del pastel. */
+.s-tf-disc img[hidden] { display: none; }

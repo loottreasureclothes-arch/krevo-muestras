@@ -2,9 +2,11 @@
    la reseña textual completa de Google. Nada de fila de contadores. */
 
 .s-cf { display: grid; gap: 28px; }
-@media (min-width: 900px) {
+/* Desde 760: si se espera a 900, a 893 px la foto se queda pegada a la izquierda
+   y toda la mitad derecha queda en negro por más de 1,000 px de alto. */
+@media (min-width: 760px) {
   .s-cf {
-    grid-template-columns: 1fr 420px;
+    grid-template-columns: 1fr minmax(320px, 420px);
     grid-template-areas: "dato foto" "res foto" "agg agg";
     column-gap: 54px; row-gap: 26px; align-items: start;
   }
@@ -30,8 +32,9 @@
   max-width: 16ch;
 }
 
-.s-cf-foto { aspect-ratio: 4 / 5; overflow: hidden; max-width: 420px; }
-@media (min-width: 900px) { .s-cf-foto { aspect-ratio: 4 / 5; } }
+/* La foto ya viene cuadrada y completa: el marco no vuelve a recortarla. */
+.s-cf-foto { aspect-ratio: 1 / 1; overflow: hidden; max-width: 420px; }
+
 
 .s-cf-res {
   padding: 18px 20px;

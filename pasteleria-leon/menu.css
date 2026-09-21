@@ -58,3 +58,8 @@ body.pl-scrolled .m-chips { top: calc(52px + env(safe-area-inset-top)); }
 .m-nota p { font-size: 14.5px; max-width: 60ch; color: var(--mute-ink); }
 .m-nota b { color: var(--deep); }
 .m-nota .pl-btn { margin-top: 16px; }
+
+/* Categoría de una sola pieza: en la rejilla de dos columnas dejaba media fila
+   vacía. Va sola, con su ancho, y se lee como una pieza suelta a propósito. */
+.s-cat-grid--solo { grid-template-columns: minmax(0, 300px); }
+@media (min-width: 700px) { .s-cat-grid--solo { grid-template-columns: minmax(0, 330px); } }

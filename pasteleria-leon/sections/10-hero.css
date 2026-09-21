@@ -9,14 +9,14 @@
   min-height: 100svh;
   padding: calc(var(--k-header-h) + env(safe-area-inset-top)) 0 0;
   display: grid;
-  grid-template-rows: 44svh 1fr;
+  grid-template-rows: 50svh 1fr;
   background: var(--deep);
   overflow: hidden;
 }
 
 #hero .s-hero-ph { position: relative; overflow: hidden; }
 #hero .s-hero-ph picture { display: block; height: 100%; }
-#hero .s-hero-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 57%; }
+#hero .s-hero-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 48%; }
 #hero .s-hero-veil {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(28, 8, 6, 0.55) 0%, rgba(28, 8, 6, 0) 34%);
@@ -31,15 +31,24 @@
   align-self: center;
   width: 100%;
   padding-top: 26px;
-  padding-bottom: clamp(30px, 7vw, 54px);
+  padding-bottom: clamp(20px, 5vw, 36px);
 }
 #hero .s-hero-cta { display: grid; gap: 10px; margin-top: 24px; }
 @media (min-width: 560px) {
   #hero .s-hero-cta { grid-template-columns: auto auto; justify-content: start; gap: 12px; }
 }
 
-/* ---------- Compu: a sangre, texto en el hueco de la izquierda ---------- */
-@media (min-width: 900px) {
+/* Tramo intermedio (tablet, 560 a 899): con 11.2vw el titular se iba a 76 px y
+   empujaba el botón fuera de la primera pantalla. */
+@media (min-width: 560px) and (max-width: 899px) {
+  .pl-h1 { font-size: clamp(38px, 9.4vw, 56px); }
+}
+
+/* ---------- Compu: a sangre, texto en el hueco de la izquierda ----------
+   Entra desde 760 px: arriba de ese ancho ya cabe el titular en el hueco de la
+   izquierda con la foto a sangre, y así el ancho intermedio (700-899) deja de
+   quedarse en una tira panorámica sin pastel y sin botón a la vista. */
+@media (min-width: 760px) {
   #hero.s-hero { display: flex; align-items: center; padding: 0; }
   #hero .s-hero-ph { position: absolute; inset: 0; }
   #hero .s-hero-ph img { object-position: 66% 50%; }
@@ -50,7 +59,7 @@
   }
   #hero .s-hero-fest { background: radial-gradient(circle at 50% 100%, var(--deep) 10.5px, transparent 11px) repeat-x 0 0 / 22px 100%; }
   #hero .s-hero-in { max-width: 1180px; padding-block: 0; }
-  #hero .pl-h1 { max-width: 11ch; }
+  #hero .pl-h1 { max-width: 15ch; }
   #hero .pl-lede { max-width: 40ch; }
 }
 

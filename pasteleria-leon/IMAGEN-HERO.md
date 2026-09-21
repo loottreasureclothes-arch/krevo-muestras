@@ -46,12 +46,21 @@ usan como referencia, recórtalo antes.
 ## Encuadre
 
 **Celular — `img/hero/hero-m.webp`, 780 × 1000 (vertical).**
+
+> **Ventana real (medida en la página, 20 sep):** la franja de la foto en celular
+> mide 50svh y el recorte es `object-position: 50% 48%`, así que **solo se ve del
+> 10 % al 84 % del alto del archivo**. El pastel COMPLETO (de la punta a la base
+> del platón) tiene que caber dentro de esa banda; lo que quede arriba del 10 % o
+> abajo del 84 % no se ve nunca.
+
 El pastel completo, centrado, ocupando del 55 % al 70 % del alto. Cabeza del pastel a la
 altura del tercio superior. Aire arriba (la pared con las luces) porque ahí no va texto: el
 titular vive en la banda de chocolate que va DEBAJO de la foto, no encima. El borde de abajo
 se recorta con un festón, así que los últimos 20 px del alto no deben llevar nada importante.
 
-**Compu — `img/hero/hero-d.webp`, 1600 × 900 (apaisado).**
+**Compu — `img/hero/hero-d.webp`, 1600 × 900 (apaisado).** OJO: el hero de compu
+ya entra desde **760 px** de ancho (antes 900), así que esta imagen también es la
+que se ve en tablet.
 El pastel a la DERECHA (centrado alrededor del 66 % del ancho) y el tercio izquierdo con
 fondo tranquilo y oscuro (pared, penumbra, bokeh de luces) porque ahí va el titular
 "Tu pastel lleva su nombre. / Escrito a mano desde 1993." a dos tonos. Nada de detalle fino

@@ -5,11 +5,11 @@
    al ancho del contenido con el recorte panorámico. */
 .s-vi-foto {
   margin: 24px calc(var(--k-gutter) * -1) 26px;
-  aspect-ratio: 1176 / 486;
+  aspect-ratio: 1200 / 546;
   overflow: hidden;
 }
-.s-vi-foto picture, .s-vi-foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
-@media (min-width: 760px) { .s-vi-foto { margin-inline: 0; aspect-ratio: 1176 / 450; } }
+.s-vi-foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 760px) { .s-vi-foto { margin-inline: 0; } }
 
 .s-vi-grid { display: grid; gap: 18px; }
 @media (min-width: 760px) { .s-vi-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
