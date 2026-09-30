@@ -1,0 +1,78 @@
+<section class="sec med" id="medida" aria-labelledby="h-med" data-hide-wa>
+  <div class="wrap">
+    <div class="cota" aria-hidden="true"><i></i><b>Tu medida · en cm</b><i></i></div>
+    <h2 class="t drop med-t" id="h-med"><span class="ln">Dinos las medidas.</span><span class="ln ln2">Nosotros el resto.</span></h2>
+
+    <form class="med-grid" id="med-form" autocomplete="off" onsubmit="return false">
+      <fieldset class="med-step med-s1">
+        <legend><span class="step-n">01</span>¿Qué necesitas?</legend>
+        <div class="med-tags" role="radiogroup" aria-label="Tipo de mueble">
+          <label class="tag"><input type="radio" name="tipo" value="mesa" checked><span>Mesa de trabajo</span></label>
+          <label class="tag"><input type="radio" name="tipo" value="tarja"><span>Mesa con tarja</span></label>
+          <label class="tag"><input type="radio" name="tipo" value="carrito"><span>Carrito</span></label>
+          <label class="tag"><input type="radio" name="tipo" value="campana"><span>Campana</span></label>
+          <label class="tag"><input type="radio" name="tipo" value="rack"><span>Estante o rack</span></label>
+          <label class="tag"><input type="radio" name="tipo" value="otro"><span>Otro</span></label>
+        </div>
+        <label class="fld fld--otro" id="fld-otro" hidden><span>¿Qué necesitas?</span><input id="f-otro" type="text" maxlength="70" placeholder="redilas, barandal, lockers, tanque…" enterkeyhint="done"></label>
+      </fieldset>
+
+      <div class="med-fig-wrap">
+      <figure class="med-fig plate" style="--fill:#16181b">
+        <svg class="med-svg" id="med-svg" viewBox="0 0 420 300" role="img" aria-label="Dibujo a escala de tu mueble con cotas" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="gtop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eceef0"/><stop offset="1" stop-color="#a9adb4"/></linearGradient>
+            <linearGradient id="gl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a4a9b1"/><stop offset=".55" stop-color="#777c84"/><stop offset="1" stop-color="#8b9098"/></linearGradient>
+            <linearGradient id="gr" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5c6169"/><stop offset="1" stop-color="#40444b"/></linearGradient>
+          </defs>
+          <g id="med-g"></g>
+        </svg>
+        <figcaption class="fig" id="med-cap">FIG. 03 · Mesa de trabajo a escala</figcaption>
+      </figure>
+      </div>
+
+      <fieldset class="med-step med-s2">
+        <legend><span class="step-n">02</span>Medidas</legend>
+        <div class="rng">
+          <label for="r-l"><span class="rng-k">Largo</span><output id="o-l" for="r-l">180 cm</output></label>
+          <input id="r-l" type="range" min="60" max="300" step="5" value="180">
+          <div class="rng-e" aria-hidden="true"><span>60</span><span>300</span></div>
+        </div>
+        <div class="rng">
+          <label for="r-w"><span class="rng-k">Ancho</span><output id="o-w" for="r-w">70 cm</output></label>
+          <input id="r-w" type="range" min="40" max="120" step="5" value="70">
+          <div class="rng-e" aria-hidden="true"><span>40</span><span>120</span></div>
+        </div>
+        <div class="rng">
+          <label for="r-h"><span class="rng-k">Alto</span><output id="o-h" for="r-h">90 cm</output></label>
+          <input id="r-h" type="range" min="70" max="110" step="5" value="90">
+          <div class="rng-e" aria-hidden="true"><span id="h-min">70</span><span id="h-max">110</span></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="med-step med-s3">
+        <legend><span class="step-n">03</span>Opciones</legend>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" id="c-entrepano" data-opt="entrepano"><span>Entrepaño inferior</span></label>
+          <label class="opt"><input type="checkbox" id="c-respaldo" data-opt="respaldo"><span>Respaldo</span></label>
+          <label class="opt"><input type="checkbox" id="c-rodajas" data-opt="rodajas"><span>Rodajas</span></label>
+          <label class="opt"><input type="checkbox" id="c-tarja" data-opt="tarja"><span>Tarja</span></label>
+        </div>
+        <p class="opt-note" id="opt-note" hidden>Este tipo no lleva opciones. Cuéntanos los detalles por WhatsApp.</p>
+      </fieldset>
+
+      <fieldset class="med-step med-s4">
+        <legend><span class="step-n">04</span>Para quién es</legend>
+        <label class="fld"><span>Negocio o uso (opcional)</span><input id="f-uso" type="text" maxlength="60" placeholder="restaurante, taquería, cocina industrial"></label>
+        <label class="fld"><span>Ciudad (opcional)</span><input id="f-ciudad" type="text" maxlength="40" placeholder="Aguascalientes" autocomplete="address-level2"></label>
+        <label class="fld"><span>Tu nombre (opcional)</span><input id="f-nombre" type="text" maxlength="40" autocomplete="name"></label>
+      </fieldset>
+
+      <div class="med-out plate" style="--fill:var(--c2)">
+        <p class="med-sum" id="med-sum" aria-live="polite">Mesa de trabajo · 180 × 70 × 90 cm</p>
+        <a class="btn btn--wa" id="wa-cotiza" data-wa="Hola JAS INOX, quiero cotizar: Mesa de trabajo de 180 x 70 x 90 cm (largo, ancho y alto)." href="https://wa.me/524494415822?text=Hola%20JAS%20INOX%2C%20quiero%20cotizar%3A%20Mesa%20de%20trabajo%20de%20180%20x%2070%20x%2090%20cm%20(largo%2C%20ancho%20y%20alto)." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar por WhatsApp</a>
+        <p class="med-note">Te confirmamos precio y tiempo de entrega por WhatsApp.</p>
+      </div>
+    </form>
+  </div>
+</section>

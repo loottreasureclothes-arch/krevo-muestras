@@ -1,0 +1,33 @@
+/* 40-ruta: DE AGUASCALIENTES A TIJUANA. Mapa grande; la linea y el contador 0 -> 1,900 km avanzan con el scroll
+   (reversible, sin pin). Etiquetas con fondo carbon, fuera de las lineas. */
+.ruta-t { margin-top: 26px; }
+.ruta-grid { display: grid; gap: 14px; margin-top: 30px; grid-template-columns: minmax(0, 1fr); }
+.ruta-map { --cut: 12px; position: relative; margin: 0; aspect-ratio: 3 / 4; width: min(100%, 48svh); margin-inline: auto; }
+.ruta-map svg { overflow: hidden; }
+.ruta-map::before { background-image: linear-gradient(rgba(201, 204, 209, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 204, 209, 0.05) 1px, transparent 1px); background-size: 30px 30px; background-color: #16181b; }
+.ruta-map svg { position: absolute; inset: 1px; width: calc(100% - 2px); height: calc(100% - 2px); }
+.mx { fill: rgba(201, 204, 209, 0.07); stroke: var(--steel-2); stroke-width: 1.6; stroke-linejoin: round; }
+.mx-h { fill: url(#hatch); stroke: none; }
+.ruta-base { fill: none; stroke: rgba(201, 204, 209, 0.28); stroke-width: 2; stroke-dasharray: 2 7; }
+.ruta-line { fill: none; stroke: var(--steel); stroke-width: 3; stroke-linecap: square; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.ruta-pt { fill: var(--steel); }
+.ruta-pt--tj { fill: var(--c); stroke: var(--steel); stroke-width: 2; }
+.ruta-tag rect { fill: #16181b; stroke: var(--edge); stroke-width: 1; }
+.ruta-lb { font: 500 22px var(--f-m); letter-spacing: 0.12em; fill: var(--steel); }
+.ruta-k { font: 500 19px var(--f-m); letter-spacing: 0.1em; text-transform: uppercase; fill: var(--steel-2); }
+.ruta-km { font: 500 76px var(--f-m); fill: var(--weld); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.ruta-head { fill: var(--weld); filter: drop-shadow(0 0 6px rgba(79, 179, 255, 0.85)); opacity: 0; }
+.ruta.is-live .ruta-head { opacity: 1; }
+.ruta.is-live .ruta-line { stroke-dashoffset: 1; }
+.ruta-f { --cut: 10px; position: relative; margin: 0; }
+.ruta-f1 { height: min(52svh, 520px); }
+.ruta-side { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr); gap: 16px; align-items: end; }
+.ruta-f2 { aspect-ratio: 4 / 5; }
+.ruta-foot { display: grid; gap: 8px; justify-items: start; padding-bottom: 2px; }
+.ruta-note { font: 500 11.5px/1.5 var(--f-m); letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel-2); }
+@media (min-width: 900px) {
+  .ruta-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, 0.72fr); gap: clamp(18px, 2.4vw, 32px); align-items: stretch; }
+  .ruta-map { width: 100%; }
+  .ruta-f1 { height: auto; }
+  .ruta-side { grid-template-columns: minmax(0, 1fr); align-content: end; gap: 22px; }
+}

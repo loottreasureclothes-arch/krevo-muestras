@@ -1,0 +1,25 @@
+/* 10-hero: foto real grande + titulo que cae. Celular: foto a sangre; compu: marco con corte. */
+.hero { position: relative; padding-top: var(--bar); }
+.hero-fig { position: relative; height: min(66svh, 580px); margin: 0; --cut: 0px; clip-path: none; padding: 0; background: none; }
+.hero-fig::before { display: none; }
+.hero-fig img { clip-path: none; object-position: 50% 42%; filter: saturate(0.92) contrast(1.04); }
+.hero-fig::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(20, 21, 23, 0.4) 0, rgba(20, 21, 23, 0) 20%, rgba(20, 21, 23, 0) 52%, rgba(20, 21, 23, 0.72) 80%, var(--c) 100%);
+}
+.hero-fig .fig { top: 12px; bottom: auto; left: var(--gutter); background: rgba(20, 21, 23, 0.7); }
+.hero-copy { position: relative; z-index: 2; margin-top: -132px; padding: 0 var(--gutter) 8px; display: grid; gap: 16px; justify-items: start; }
+.hero-kick { color: var(--steel); }
+.hero .lead { margin-top: 2px; }
+.hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; margin-top: 8px; }
+@media (min-width: 960px) {
+  .hero { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); align-items: center; gap: clamp(32px, 5vw, 80px); min-height: 92svh; max-width: 1440px; margin-inline: auto; padding: calc(var(--bar) + 36px) var(--gutter) 56px; }
+  .hero-fig { order: 2; height: min(76svh, 780px); --cut: 14px; padding: 1px; background: var(--edge); clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%); }
+  .hero-fig::before { display: block; }
+  .hero-fig img { clip-path: polygon(0 0, calc(100% - var(--cut) + 0.6px) 0, 100% calc(var(--cut) - 0.6px), 100% 100%, 0 100%); }
+  .hero-fig::after { inset: 1px; background: linear-gradient(180deg, rgba(20, 21, 23, 0) 60%, rgba(20, 21, 23, 0.55) 100%); }
+  .hero-fig .fig { top: auto; bottom: 1px; left: 1px; background: rgba(20, 21, 23, 0.86); }
+  .hero-copy { order: 1; margin-top: 0; padding: 0; gap: 22px; }
+  .hero .lead { font-size: 1.2rem; max-width: 36ch; }
+  .t--hero { font-size: clamp(3.4rem, 6.2vw, 6.6rem); }
+}
