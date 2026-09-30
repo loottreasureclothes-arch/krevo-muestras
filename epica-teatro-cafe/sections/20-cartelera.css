@@ -1,0 +1,38 @@
+/* ===== 20 · CARTELERA: posters reales como tarjetas grandes, riel con swipe ===== */
+.ep-cart { padding-bottom: calc(var(--sec-y) - 10px); background: var(--ink); }
+.ep-cart-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 30px; }
+.ep-cart-ctl { display: none; gap: 8px; }
+.ep-ctl { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--red); border-radius: 2px; color: var(--cream); transition: background 160ms; }
+.ep-ctl svg { width: 20px; height: 20px; }
+.ep-ctl[data-dir="-1"] svg { transform: scaleX(-1); }
+.ep-ctl:active { transform: scale(0.96); }
+@media (hover: hover) and (pointer: fine) { .ep-ctl:hover { background: var(--red); } }
+.ep-cart-rail { --w: clamp(250px, 78vw, 320px); display: flex; gap: 22px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  padding: 10px var(--gut) 26px; scroll-padding-inline: var(--gut); scrollbar-width: none; }
+.ep-cart-rail::-webkit-scrollbar { display: none; }
+.ep-card { flex: 0 0 var(--w); width: var(--w); scroll-snap-align: start; display: flex; flex-direction: column; gap: 16px; }
+.ep-slot { position: relative; display: grid; place-items: end center; height: calc(var(--w) * 1.25 + 14px); }
+.ep-slot .ep-marco { max-width: 100%; max-height: 100%; }
+.ep-slot .ep-marco-in { max-height: 100%; }
+.ep-slot img { width: auto; height: auto; max-width: 100%; max-height: calc(var(--w) * 1.25 - 12px); margin-inline: auto; }
+.ep-card-info { display: grid; gap: 8px; justify-items: start; }
+.ep-card-t { font-size: 30px; line-height: 1; letter-spacing: -0.01em; }
+.ep-card-sub { font-size: 14px; color: var(--cream-mute); line-height: 1.35; }
+.ep-card-fechas { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 2px 0 2px; }
+.ep-card-precio { font-family: var(--f-mono); font-size: 15px; color: var(--cream); }
+.ep-cart-nota { font-size: 13px; color: var(--cream-mute); max-width: 52ch; }
+.ep-cart-pie { display: grid; gap: 10px; }
+.ep-cart-pos { font-family: var(--f-mono); font-weight: 700; font-size: 14px; letter-spacing: 0.08em; color: var(--cream); }
+/* sello de goma sobre el poster: la función ya pasó (lo pone 20-cartelera.js comparando con hoy) */
+.ep-pasada { position: absolute; z-index: 2; top: 16px; right: -8px; padding: 6px 10px 5px; border: 2px solid var(--red-hi); background: rgba(11, 10, 10, 0.82);
+  color: var(--cream); font-family: var(--f-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1;
+  transform: rotate(-7deg); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6); pointer-events: none; }
+.ep-pasada[hidden] { display: none; }
+.ep-sello.is-pasado { opacity: 0.45; text-decoration: line-through; }
+@media (min-width: 720px) {
+  .ep-cart-ctl { display: flex; }
+  .ep-cart-pos { display: none; }
+  .ep-cart-rail { --w: min(29vw, 430px); gap: 34px; padding-inline: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); scroll-padding-inline: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); }
+  .ep-card-t { font-size: 34px; }
+  .ep-cart-head { margin-bottom: 40px; }
+}

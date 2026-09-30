@@ -1,0 +1,24 @@
+/* ===== 50 · ALLENDE: cartel de taquilla con la programación por día + mapa en marco de poster ===== */
+.ep-allende { background: var(--ink); padding-top: calc(var(--sec-y) - 14px); }
+.ep-allende-grid { display: grid; gap: 40px; }
+.ep-allende-l { display: grid; gap: 28px; align-content: start; }
+.ep-cartel { display: grid; gap: 14px; }
+.ep-dias { display: grid; }
+.ep-dias li { display: grid; grid-template-columns: 76px 1fr; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px dashed var(--cream-faint); }
+.ep-dias li:last-child { border-bottom: 0; }
+.ep-dia { font-family: var(--f-mono); font-weight: 700; font-size: 26px; letter-spacing: 0.04em; color: var(--red-hi); line-height: 1; }
+.ep-dia-t { font-family: var(--f-display); font-weight: 800; font-size: 22px; line-height: 1.12; color: var(--cream); font-variation-settings: "opsz" 48; }
+.ep-horario { font-family: var(--f-mono); font-weight: 700; font-size: 16px; color: var(--cream); }
+.ep-allende-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 26px; }
+.ep-allende-meta { display: grid; gap: 14px; justify-items: start; }
+.ep-mail { display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; color: var(--cream-mute); overflow-wrap: anywhere; border-bottom: 1px dotted var(--cream-faint); }
+.ep-allende-r .ep-marco-in { padding: 6px; }
+.ep-mapa { width: 100%; height: 320px; border: 0; background: #2a2523; }
+.ep-mapa-pie { margin-top: 14px; font-size: 13px; color: var(--cream-mute); }
+@media (min-width: 900px) {
+  .ep-allende-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 72px; align-items: start; }
+  .ep-mapa { height: 480px; }
+  .ep-dia-t { font-size: 26px; }
+  .ep-dias li { grid-template-columns: 92px 1fr; }
+  .ep-dia { font-size: 30px; }
+}

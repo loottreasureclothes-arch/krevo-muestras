@@ -1,0 +1,62 @@
+/* ===== 10 · EL TELÓN (hero): muro de posters reales + telón que se abre UNA vez ===== */
+.ep-hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; background: var(--ink); padding: calc(var(--bar) + 24px) 0 34px; isolation: isolate; }
+.ep-muro { position: absolute; inset: 0; z-index: 0; display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 10px; padding: 8px; }
+.ep-muro img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: brightness(0.55) saturate(0.95); border: 4px solid rgba(241, 231, 210, 0.55); }
+.ep-muro img:nth-child(1) { transform: rotate(-2.4deg) scale(1.04); }
+.ep-muro img:nth-child(2) { transform: rotate(2deg) translateY(10px) scale(1.04); }
+.ep-muro img:nth-child(3) { transform: rotate(1.6deg) scale(1.03); }
+.ep-muro img:nth-child(4) { transform: rotate(-2deg) translateY(-8px) scale(1.04); }
+.ep-muro img:nth-child(5) { transform: rotate(-1.4deg) scale(1.03); }
+.ep-muro img:nth-child(6) { transform: rotate(2.6deg) translateY(6px) scale(1.04); }
+.ep-muro-x { display: none; }
+.ep-hero-veil { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(11, 10, 10, 0.55) 0%, rgba(11, 10, 10, 0.1) 26%, rgba(11, 10, 10, 0.72) 58%, var(--ink) 92%); }
+
+/* el telón: dos mitades con pliegues dibujados en CSS, sin imagen */
+.ep-telon { position: absolute; inset: 0; z-index: 5; pointer-events: none; display: none; overflow: hidden; }
+html.ep-js .ep-telon { display: block; }
+html.ep-ready .ep-telon { display: none; }
+.ep-telon i { position: absolute; top: 0; bottom: 0; width: 50.6%; will-change: transform;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.0) 70%, rgba(0, 0, 0, 0.5) 100%),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.46) 0, rgba(0, 0, 0, 0.0) 13px, rgba(255, 255, 255, 0.12) 22px, rgba(0, 0, 0, 0.34) 38px, rgba(0, 0, 0, 0.46) 44px),
+    #a8101c; }
+.ep-telon-l { left: 0; box-shadow: inset -28px 0 34px rgba(0, 0, 0, 0.5); animation: ep-telon-l 1100ms var(--ease-in-out) 250ms both; }
+.ep-telon-r { right: 0; box-shadow: inset 28px 0 34px rgba(0, 0, 0, 0.5); animation: ep-telon-r 1100ms var(--ease-in-out) 250ms both; }
+/* bambalina fija arriba (mismo rojo, pliegues horizontales y borde festoneado) y luz cálida en la abertura */
+.ep-telon::before { content: ""; position: absolute; z-index: 2; left: 0; right: 0; top: 0; height: calc(var(--bar) + 7svh + 18px);
+  background:
+    radial-gradient(ellipse 34px 16px at 34px 100%, rgba(0, 0, 0, 0.55) 60%, transparent 62%) 0 100% / 68px 18px repeat-x,
+    repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.36) 0, rgba(255, 255, 255, 0.1) 9px, rgba(0, 0, 0, 0.3) 17px, rgba(0, 0, 0, 0.36) 20px),
+    #960d18;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.55); }
+.ep-telon::after { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse 22% 70% at 50% 58%, rgba(241, 231, 210, 0.18), rgba(241, 231, 210, 0.06) 55%, transparent 75%);
+  animation: ep-telon-luz 1100ms ease-out 250ms both; }
+@keyframes ep-telon-luz { 0% { opacity: 0; } 35% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes ep-telon-l { from { transform: translateX(0); } to { transform: translateX(-102%); } }
+@keyframes ep-telon-r { from { transform: translateX(0); } to { transform: translateX(102%); } }
+
+.ep-hero-in { position: relative; z-index: 2; display: grid; gap: 18px; justify-items: start; }
+.ep-hero-title { font-size: clamp(54px, 16.5vw, 150px); line-height: 0.92; letter-spacing: -0.02em; color: var(--cream); text-shadow: 0 4px 24px rgba(0, 0, 0, 0.55); }
+.ep-hero-title .ep-line { display: block; }
+.ep-hero-title .ep-b { color: var(--red-hi); font-style: italic; font-weight: 800; }
+.ep-hw { display: inline-block; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  html.ep-js .ep-hw { animation: ep-fall 520ms cubic-bezier(0.16, 0.84, 0.44, 1) both; animation-delay: calc(1050ms + var(--i, 0) * 110ms); }
+}
+.ep-hoy-linea { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; font-family: var(--f-mono); font-size: 15px; line-height: 1.35; color: var(--cream); text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8); }
+.ep-hoy-k { padding: 3px 8px 2px; background: var(--paper); color: var(--paper-ink); font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; text-shadow: none; transform: rotate(-2deg); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.5); }
+.ep-hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 22px; }
+@media (min-width: 720px) {
+  .ep-hero { padding-bottom: 56px; }
+  .ep-muro { grid-template-columns: repeat(5, 1fr); gap: 14px; padding: 12px; }
+  .ep-muro-x { display: block; }
+  .ep-muro img:nth-child(odd) { transform: rotate(-1.8deg) scale(1.03); }
+  .ep-muro img:nth-child(even) { transform: rotate(1.6deg) translateY(10px) scale(1.03); }
+  .ep-hero-title { font-size: clamp(84px, 9.4vw, 168px); }
+  .ep-hero-title .ep-line { white-space: nowrap; }
+  .ep-hero-in { gap: 24px; }
+  .ep-hoy-linea { font-size: 17px; }
+  .ep-hero-veil { background: linear-gradient(180deg, rgba(11, 10, 10, 0.6) 0%, rgba(11, 10, 10, 0.2) 25%, rgba(11, 10, 10, 0.78) 62%, var(--ink) 94%); }
+}
