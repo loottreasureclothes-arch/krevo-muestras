@@ -1,0 +1,16 @@
+.bi-cierre .bi-title{margin-bottom:14px}
+.bi-cierre-doc{font-size:17px;max-width:38ch;margin-bottom:20px;color:rgba(251,243,223,.92);font-weight:700}
+.bi-cierre-wa{margin-bottom:40px;max-width:420px}
+.bi-todo{padding:24px 18px 22px 46px;--rot:-.6deg;transform:rotate(var(--rot))}
+.bi-todo h3{font:700 23px/1.15 var(--f-title);color:var(--blue);margin-bottom:12px}
+.bi-todo-who{font:700 15px/1.35 var(--f-body)!important;color:var(--ink-2)!important;margin:0 0 8px!important}
+.bi-todo ol{display:grid;gap:0;margin:0 0 10px;padding:0;list-style:none;counter-reset:todo}
+.bi-todo li{counter-increment:todo;font:700 16px/1.3 var(--f-body);padding:9px 0 9px 36px;position:relative;color:var(--ink);border-bottom:2px dotted rgba(27,47,122,.3)}
+.bi-todo li::before{content:counter(todo);position:absolute;left:0;top:50%;width:24px;height:24px;margin-top:-12px;border-radius:50%;background:var(--blue);color:var(--cream);display:grid;place-items:center;font:700 13px/1 var(--f-title)}
+.bi-todo p{font-size:16px;line-height:1.4;color:var(--ink);margin-top:10px}
+.bi-todo-send{font-weight:800;color:var(--blue)!important}
+@media (min-width:860px){
+  .bi-cierre .bi-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0 70px;align-items:start}
+  .bi-cierre .bi-title,.bi-cierre-doc,.bi-cierre-wa{grid-column:1}
+  .bi-todo{grid-column:2;grid-row:1/5}
+}
