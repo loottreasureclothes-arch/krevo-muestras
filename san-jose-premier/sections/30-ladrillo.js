@@ -1,4 +1,5 @@
-/* 30-ladrillo: hiladas ligadas al scroll (rAF, reversible, sin pin). Sin JS o con reduced-motion la casa ya está terminada. */
+/* 30-ladrillo: plano en línea, hiladas ligadas al scroll (rAF, reversible, sin pin) y cruce de 400 ms a la foto real de la casa.
+   Sin JS o con reduced-motion se ve la foto de la casa terminada. */
 (function () {
   "use strict";
   var NS = "http://www.w3.org/2000/svg";
@@ -8,7 +9,7 @@
   var title = document.getElementById("sj-h-lad");
   if (!house || !group || !fin) return;
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce) { if (title) title.classList.add("is-in"); return; }
+  if (reduce) { house.classList.add("is-done"); if (title) title.classList.add("is-in"); return; }
 
   var X0 = 40, X1 = 320, Y0 = 274, ROWH = 8, BW = 28, ROWS = 24;
   var cols = Math.ceil((X1 - X0) / BW) + 1;
@@ -51,22 +52,15 @@
         b.el.setAttribute("y", (b.y - (1 - k) * 10).toFixed(1));
       }
     }
-    var f = clamp((p - 0.74) / 0.12);
-    f = Math.round(f * 50) / 50;
-    if (f !== lastFinal) {
-      lastFinal = f;
-      fin.style.opacity = f.toFixed(2);
-      fin.style.visibility = f < 0.02 ? "hidden" : "visible";
-      group.style.opacity = (1 - f).toFixed(2);
-      group.style.visibility = f > 0.98 ? "hidden" : "visible";
-    }
+    /* muro completo: cruce de 400 ms a la foto de su casa (con histéresis para que no parpadee) */
+    var done = lastFinal === 1 ? p >= 0.8 : p >= 0.84;
+    if ((done ? 1 : 0) !== lastFinal) { lastFinal = done ? 1 : 0; house.classList.toggle("is-done", done); }
     if (title) {
       var on = lastTitle ? p >= 0.84 : p >= 0.88;
       if (on !== lastTitle) { lastTitle = on; title.classList.toggle("is-in", on); }
     }
   }
   function schedule() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
-  fin.style.opacity = "0"; fin.style.visibility = "hidden";
   window.addEventListener("scroll", schedule, { passive: true });
   window.addEventListener("resize", schedule);
   update();

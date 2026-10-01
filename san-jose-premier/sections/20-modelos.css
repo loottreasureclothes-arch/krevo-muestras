@@ -14,12 +14,13 @@
 
 /* ficha principal: foto + medidas + silueta */
 .sj-ficha { padding: 0; }
-.sj-ficha-photo { position: relative; aspect-ratio: 5 / 5.3; background: var(--navy-3); overflow: hidden; }
+.sj-ficha-photo { position: relative; aspect-ratio: 5 / 4; background: var(--navy-3); overflow: hidden; }
 .sj-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; visibility: hidden; transition: opacity 250ms ease-out, visibility 0s linear 250ms; }
 .sj-ficha[data-p="1"] .sj-ph--1, .sj-ficha[data-p="2"] .sj-ph--2 { opacity: 1; visibility: visible; transition: opacity 250ms ease-out, visibility 0s; }
-.sj-ph--1 { object-position: 66% 28%; }
-.sj-ph--2 { object-position: 42% 50%; }
-.sj-ph-cap { position: absolute; left: 12px; bottom: 12px; z-index: 2; max-width: calc(100% - 24px); font-size: 11px; letter-spacing: 0.06em; color: var(--cal); background: rgba(12, 28, 46, 0.62); padding: 4px 8px; transition: opacity 250ms; }
+.sj-ph--1 { object-position: 72% 60%; }
+.sj-ph--2 { object-position: 45% 40%; }
+.sj-ph-cap { position: absolute; left: 14px; bottom: 12px; z-index: 2; max-width: calc(100% - 28px); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--cal); text-shadow: 0 1px 8px rgba(6, 14, 24, 0.85), 0 0 2px rgba(6, 14, 24, 0.6); transition: opacity 250ms; }
+.sj-ficha-photo::after { content: ""; position: absolute; inset: auto 0 0 0; height: 34%; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(12, 28, 46, 0.6), rgba(12, 28, 46, 0)); }
 .sj-ph-cap--2 { opacity: 0; }
 .sj-ficha[data-p="2"] .sj-ph-cap--1 { opacity: 0; }
 .sj-ficha[data-p="2"] .sj-ph-cap--2 { opacity: 1; }
@@ -54,7 +55,7 @@
 /* dos fichas fijas */
 .sj-minis { display: grid; gap: 18px; margin-top: 18px; }
 .sj-mini { padding: 0; }
-.sj-mini-photo { aspect-ratio: 16 / 10; }
+.sj-mini-photo { aspect-ratio: 2 / 1; }
 .sj-mini[data-mini="excedente"] img { object-position: 50% 50%; }
 .sj-mini[data-mini="terrenos"] img { object-position: 50% 50%; }
 .sj-mini-photo::after { display: none; }
@@ -73,7 +74,7 @@
   .sj-minis { grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
   .sj-mini-photo { aspect-ratio: 16 / 10; }
   .sj-mini-body { padding: 24px 28px 28px 26px; }
-  .sj-ph--1 { object-position: 60% 30%; }
+  .sj-ph--1 { object-position: 70% 50%; }
   .sj-ph--2 { object-position: 50% 45%; }
 }
 /* tableta (600 a 899 px) */
@@ -82,3 +83,12 @@
   .sj-minis { grid-template-columns: 1fr 1fr; }
   .sj-mini-photo { aspect-ratio: 16 / 11; }
 }
+
+/* ficha guardada: se marca entera (franja dorada y esquina más gruesa) */
+.sj-card.is-saved { border-left-color: var(--gold); }
+.sj-card.is-saved::after { border-width: 3px; width: 40px; height: 40px; }
+.sj-card { transition: border-color 200ms; }
+.sj-btn--line:active { background: rgba(10, 85, 156, 0.12); }
+.sj-btn--line.is-on:active { background: var(--brand); }
+/* celular: el flotante no tapa "Pregunta precio y disponibilidad" */
+@media (max-width: 599px) { .sj-mini-ask { padding-right: 64px; } }

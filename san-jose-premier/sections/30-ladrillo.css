@@ -1,5 +1,6 @@
-/* 30-ladrillo: MOMENTO FIRMA. La fachada se levanta hilada por hilada ligada al scroll y se aplana en blanco cal. */
-.sj-ladrillo { background: var(--navy); padding-block: 56px 60px; }
+/* 30-ladrillo: MOMENTO FIRMA. Plano en línea → hiladas de ladrillo ligadas al scroll → cruce a la foto real de su casa. */
+.sj-ladrillo { background: var(--navy); padding-block: 22px 56px; }
+.sj-ladrillo .sj-kicker { margin-bottom: -4px; }
 .sj-lad-grid { display: grid; gap: 30px; }
 .sj-lad-main { display: grid; gap: 10px; }
 .sj-house { max-width: 520px; width: 100%; margin-inline: auto; }
@@ -8,25 +9,43 @@
 .sj-lad-side { display: grid; gap: 14px; justify-items: start; }
 .sj-lad-photo { position: relative; width: 100%; aspect-ratio: 5 / 4; background: var(--navy-3); }
 .sj-lad-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
-.sj-lad-photo figcaption { position: absolute; left: 12px; bottom: 12px; font-size: 11px; letter-spacing: 0.06em; background: rgba(12, 28, 46, 0.62); padding: 4px 8px; }
+.sj-lad-photo::after { content: ""; position: absolute; inset: auto 0 0 0; height: 32%; pointer-events: none; background: linear-gradient(to top, rgba(12, 28, 46, 0.6), rgba(12, 28, 46, 0)); }
+.sj-lad-photo figcaption { position: absolute; z-index: 2; left: 14px; bottom: 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--cal); text-shadow: 0 1px 8px rgba(6, 14, 24, 0.85), 0 0 2px rgba(6, 14, 24, 0.6); }
 .sj-lad-photo::before { content: ""; position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); z-index: 2; }
 .sj-lad-dato { font-size: 18px; line-height: 1.45; max-width: 30ch; color: var(--cal); }
-#sj-final { transition: none; }
+#sj-plan * { vector-effect: non-scaling-stroke; }
+#sj-plan, #sj-bricks { transition: opacity 400ms ease-out; }
+html.sj-js #sj-final { opacity: 0; visibility: hidden; transition: opacity 400ms ease-out, visibility 0s linear 400ms; }
+html.sj-js .sj-house.is-done #sj-final { opacity: 1; visibility: visible; transition: opacity 400ms ease-out, visibility 0s; }
+.sj-house.is-done #sj-bricks, .sj-house.is-done #sj-plan { opacity: 0; visibility: hidden; transition: opacity 400ms ease-out, visibility 0s linear 400ms; }
 @media (min-width: 900px) {
-  .sj-ladrillo { padding-block: 100px 110px; }
+  .sj-ladrillo { padding-block: 56px 104px; }
   .sj-lad-grid { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
   .sj-house { max-width: 600px; margin-inline: 0; }
   .sj-ladrillo .sj-h { font-size: clamp(56px, 5.4vw, 84px); }
 }
 
-/* galería chica de interiores: tres ventanales */
-.sj-gal { width: 100%; display: grid; gap: 10px; margin-top: 6px; }
-.sj-gal-t { font-size: 15px; font-weight: 600; color: var(--cal); }
-.sj-gal-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.sj-gal-i { aspect-ratio: 4 / 5; }
-.sj-gal-cap { font-size: 12px; letter-spacing: 0.06em; color: var(--mute-w); }
+/* interiores: tira deslizable de fotos grandes (72vw en celular, 260 px en compu) */
+.sj-gal { margin-top: 40px; display: grid; gap: 14px; }
+.sj-gal-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.sj-gal-t { font-family: var(--serif); font-size: 28px; line-height: 1.1; color: var(--cal); }
+.sj-gal-hint { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-hi); }
+.sj-gal-hint svg { width: 16px; height: 16px; }
+.sj-strip { display: flex; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); margin-inline: calc(var(--gutter) * -1); padding: 0 var(--gutter) 6px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.sj-strip::-webkit-scrollbar { display: none; }
+.sj-strip:focus-visible { outline: 2px solid var(--gold-hi); outline-offset: 4px; }
+.sj-strip-i { flex: 0 0 72vw; max-width: 340px; scroll-snap-align: start; display: grid; gap: 10px; }
+.sj-strip-ph { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--navy-3); border-bottom: 2px solid var(--gold); }
+.sj-strip-ph img { width: 100%; height: 100%; object-fit: cover; }
+.sj-strip-i figcaption { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cal); }
+@media (min-width: 900px) {
+  .sj-gal { margin-top: 72px; }
+  .sj-gal-t { font-size: 36px; }
+  .sj-gal-hint { display: none; }
+  .sj-strip { gap: 14px; margin-inline: 0; padding-inline: 0; scroll-padding-inline: 0; }
+  .sj-strip-i { flex-basis: 260px; }
+}
 /* foto de obra: en tableta y compu va en marco más chico (es un cuadro de video) */
 @media (min-width: 600px) {
   .sj-lad-photo { max-width: 520px; aspect-ratio: 5 / 4; }
-  .sj-gal { max-width: 520px; }
 }

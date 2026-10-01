@@ -26,3 +26,25 @@ Videos bajados pero sin cuadro usado: 7686707209354349845 (interiores con mano y
 Interiores reales limpios que SÍ existen en los videos y no se usaron para respetar el tope de fotos: v01 cuadros 21, 28, 34; v03 cuadro 8 (escalera) y 49 (baño); v02 cuadros 9, 24, 35.
 
 Corrección 1 (30 sep): `terreno-excedente-*` y `terrenos-aerea-*` quedaron sin usar en `img/` (se cambiaron por `excedente-patio` y `terreno-sur`). Los recortes y los x4 de la corrección están en el scratchpad `sanjose-fix/src/`.
+
+## Corrección 2 (30 sep 2026)
+Recortes, x4 y webp hechos con `scratchpad/r2fix-san-jose-premier/crops.py` y `export.py` (fuentes en `src/`). Sin IA generativa ni stock. Real-ESRGAN x4 solo en `int-lavado` (cuadro de 720 px) y `pie-dron` (va a sangre en compu). Ningún recorte lleva letras ni caras.
+
+| Archivo en `img/` | Video (ID TikTok) | Cuadro | Recorte | Dónde va |
+|---|---|---|---|---|
+| hero-tt21-{480,960,1233} | portada `research/fotos/tt-21.jpg` | | x 0 a 1233, y 0 a 850 (arriba de "Casa en Venta"); sin x4 | Hero (celular 5:4, compu columna derecha) y og.jpg |
+| una-planta-tt30-{480,960,1236} | portada `research/fotos/tt-30.jpg` = 7611720873267203348 ("la Casa más Barata", 276.7K) | | x 0 a 1236, y 0 a 786 (arriba de la letra); sin x4 | Ficha "Una planta" y cierre (elección Una planta) |
+| int-cocina-{480,960} | 7672935418857360661 (v03) | seg. 12 (013) | y 170 a 1520, 1080x1350; sin x4 | Tira de interiores "Cocina" |
+| int-sala2-{480,960} | 7686707209354349845 (v01) | seg. 20 (021) | y 300 a 1650; sin x4 | Tira "Sala" |
+| int-recamara-{480,960} | 7672935418857360661 (v03) | seg. 53 (054) | y 200 a 1550; sin x4 | Tira "Recámara" |
+| int-lavado-{480,960} | 7640330900823198996 (v02) | seg. 19 (020) | y 250 a 1150, 720x900; x4 | Tira "Patio de lavado" |
+| int-escalera, int-bano | (corrección 1) | | | Tira "Escalera" y "Baño" |
+| bosques-casas-{480,960,1080} | 7651457616782167316 (v05, "Esto es lo nuevo en Bosques Providencia") | seg. 14 (015) | y 470 a 1920 (debajo del título en letras); sin x4. Se ve el parque y la fila de casas blancas de dos plantas | Foto grande de Bosques |
+| bos-cancha-480 | mismo v05 | seg. 8 (009) | y 470 a 1820 (con el tablero) | "Ya tiene: Cancha" |
+| bos-ejercicio-480 | mismo v05 | seg. 10 (011) | x 110 a 970, y 470 a 1545 (sin la sombra del que vuela el dron) | "Ya tiene: Aparatos de ejercicio" |
+| bos-andador-480 | mismo v05 | seg. 13 (014) | y 470 a 1820 | "Ya tiene: Andador" |
+| pie-dron-{480,960,1600} | 7658892646030511380 (v09, "¿Tienes un crédito...?") | seg. 13 (014) | y 0 a 1190 (arriba de "Si deseas más información"); x4 | Banda del pie con el lema |
+| lad-final-960 | sale de `hero-fachada-1600` (v03, seg. 0) | | y 230 a 1397, 1600x1167 (mismo 1.37:1 del muro del SVG) | Remate del momento firma (cruce a la foto real) |
+| og.jpg | hero-tt21 + logo + texto con PIL (DM Serif Display / DM Sans) | | 1200x630 | og:image |
+
+Ya no se usan en la página: `hero-fachada-*` (solo como fuente de `lad-final`), `casa-una-planta-*`, `bosques-aerea-*`, `int-sala-*`, `casa-dos-plantas-*`, `terreno-excedente-*`, `terrenos-aerea-*` (no se borraron). La nota de origen de las fotos queda una sola vez, en el pie: "Fotos tomadas de los videos públicos de la constructora."

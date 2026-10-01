@@ -29,6 +29,7 @@
       b.classList.toggle("is-on", on);
       b.setAttribute("aria-pressed", on ? "true" : "false");
       b.querySelector(".sj-interesa-t").textContent = on ? "Guardada" : "Me interesa";
+      var card = b.closest(".sj-card"); if (card) card.classList.toggle("is-saved", on);
     });
     if (saved) saved.hidden = !any;
   }

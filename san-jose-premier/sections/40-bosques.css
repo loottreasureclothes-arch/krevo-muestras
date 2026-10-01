@@ -1,17 +1,30 @@
-/* 40-bosques: foto aérea a sangre (70 svh) con el nombre del fraccionamiento */
-.sj-bosques { position: relative; background: var(--navy-2); min-height: 76svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; isolation: isolate; }
+/* 40-bosques: foto aérea a sangre con el nombre del fraccionamiento + tira chica de lo que ya tiene (cuadros de su video) */
+.sj-bosques { position: relative; background: var(--navy-2); }
+.sj-bos-hero { position: relative; min-height: 62svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; isolation: isolate; }
 .sj-bos-photo { position: absolute; inset: 0; z-index: -1; }
-.sj-bos-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; filter: brightness(1.12) contrast(1.04); }
-.sj-bos-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(12, 28, 46, 0.18) 0, rgba(12, 28, 46, 0) 22%, rgba(12, 28, 46, 0) 42%, rgba(12, 28, 46, 0.78) 72%, rgba(12, 28, 46, 0.95) 100%); }
-.sj-bos-cap { position: absolute; right: var(--gutter); top: 16px; font-size: 11px; letter-spacing: 0.06em; background: rgba(12, 28, 46, 0.62); padding: 4px 8px; }
-.sj-bos-body { position: relative; padding-top: 220px; padding-bottom: 40px; display: grid; gap: 14px; justify-items: start; }
+.sj-bos-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 20%; }
+/* velo solo en el 40 % de abajo */
+.sj-bos-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(12, 28, 46, 0) 0, rgba(12, 28, 46, 0) 58%, rgba(12, 28, 46, 0.8) 80%, var(--navy-2) 100%); }
+.sj-bos-cap { position: absolute; right: var(--gutter); top: 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--cal); text-shadow: 0 1px 8px rgba(6, 14, 24, 0.9), 0 0 2px rgba(6, 14, 24, 0.7); }
+.sj-bos-body { position: relative; padding-top: 200px; padding-bottom: 8px; display: grid; gap: 14px; justify-items: start; }
 .sj-bos-dato { font-size: 16px; line-height: 1.5; max-width: 34ch; color: var(--cal); }
 .sj-bos-body .sj-h { text-shadow: 0 2px 22px rgba(6, 14, 24, 0.7); }
+.sj-bos-ya { padding-top: 26px; padding-bottom: 48px; display: grid; gap: 12px; }
+.sj-bos-ya-t { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-hi); }
+.sj-bos-ya-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.sj-bos-ya-i { display: grid; gap: 8px; align-content: start; }
+.sj-bos-ya-ph { aspect-ratio: 4 / 5; overflow: hidden; background: var(--navy-3); border-bottom: 2px solid var(--gold); }
+.sj-bos-ya-ph img { width: 100%; height: 100%; object-fit: cover; }
+.sj-bos-ya-i figcaption { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.3; color: var(--cal); }
 @media (min-width: 900px) {
-  .sj-bosques { min-height: 70svh; }
-  .sj-bos-photo img { object-position: 50% 36%; }
-  .sj-bos-body { padding-top: 320px; padding-bottom: 64px; grid-template-columns: 1fr 1fr; align-items: end; gap: 18px 60px; }
+  .sj-bos-hero { min-height: 74svh; }
+  .sj-bos-photo img { object-position: 50% 30%; }
+  .sj-bos-body { padding-top: 320px; padding-bottom: 24px; grid-template-columns: 1fr 1fr; align-items: end; gap: 18px 60px; }
   .sj-bos-body .sj-h { grid-row: 1 / span 2; }
   .sj-bos-dato { font-size: 18px; align-self: end; }
   .sj-bos-body .sj-link { align-self: start; }
+  .sj-bos-ya { grid-template-columns: 1fr 3fr; align-items: start; gap: 60px; padding-top: 40px; padding-bottom: 96px; }
+  .sj-bos-ya-t { padding-top: 6px; }
+  .sj-bos-ya-row { gap: 18px; max-width: 760px; }
+  .sj-bos-ya-i figcaption { font-size: 13px; letter-spacing: 0.14em; }
 }

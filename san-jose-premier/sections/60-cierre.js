@@ -5,6 +5,7 @@
   var box = document.getElementById("sj-choice");
   if (!h || !box || !window.SJ) return;
   var cM = document.getElementById("sj-c-modelo"), cD = document.getElementById("sj-c-medidas"), cC = document.getElementById("sj-c-credito");
+  var ph = document.getElementById("sj-choice-ph"), pick = document.getElementById("sj-choice-pick");
   var last = null;
   function setLines(a, b) {
     var lines = h.querySelectorAll(".sj-ln");
@@ -23,6 +24,8 @@
     cM.textContent = m ? m.etiqueta : (st.modelo === "nose" ? "Todavía no sé" : "Falta elegir");
     cD.textContent = m ? m.medida : "Las ves en Modelos";
     cC.textContent = st.credito || "Falta elegir";
+    if (ph) ph.setAttribute("data-show", m ? st.modelo : "none");
+    if (pick) pick.textContent = m ? "Cambiar modelo" : "Elegir modelo";
     var key = m ? "1" : "0";
     if (key !== last) { last = key; if (m) setLines("Tu casa", "ya tiene plano."); else setLines("Falta elegir", "modelo."); }
   }
