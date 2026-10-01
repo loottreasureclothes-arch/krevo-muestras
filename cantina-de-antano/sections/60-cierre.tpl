@@ -1,7 +1,7 @@
 <section class="cierre" id="mesa" data-hide-wa aria-labelledby="mesa-t">
   <div class="tira" aria-hidden="true"></div>
   <div class="wrap cierre-in">
-    <h2 class="tt" id="mesa-t" data-drop><span class="ln">Tu mesa</span><span class="ln">ya casi está.</span></h2>
+    <h2 class="tt" id="mesa-t" data-drop><span class="ln">Tu mesa,</span><span class="ln">en primera fila.</span></h2>
 
     <form class="ficha lobby on-crema" id="ficha" novalidate>
       <fieldset class="modo">
@@ -42,23 +42,23 @@
         <input id="f-nombre" name="nombre" type="text" autocomplete="given-name" maxlength="40" placeholder="Para quién apartamos">
       </label>
 
-      <p class="f-hint mq" id="f-hint" aria-live="polite"></p>
+      <p class="f-hint" id="f-hint" aria-live="polite"></p>
 
       <div class="f-mesa">
         <h3 class="f-l">Lo que pensamos pedir</h3>
         <ul class="f-lines" id="f-lines"></ul>
-        <p class="f-vacio mq" id="f-vacio">Aún no agregas nada. Es opcional. <a href="#carta">Ver la carta</a></p>
+        <p class="f-vacio" id="f-vacio">Aún no agregas nada. Es opcional. <a href="#carta">Ver&nbsp;la&nbsp;carta</a></p>
         <p class="f-tot mq" id="f-tot" hidden><span>Total aproximado</span><b id="f-total">$0</b></p>
-        <p class="f-note mq" id="f-tnote" hidden>Se confirma en la cantina.</p>
+        <p class="f-note" id="f-tnote" hidden>Se confirma en la cantina.</p>
       </div>
 
       <a class="btn btn--wa" id="mesa-wa" href="https://wa.me/524491721073?text=Hola%20La%20Cantina%20de%20Anta%C3%B1o%2C%20quiero%20apartar%20mesa." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span id="mesa-wa-t">Apartar mesa por WhatsApp</span></a>
-      <p class="f-note mq">Se abre tu WhatsApp con el mensaje ya escrito. Tú lo mandas.</p>
+      <p class="f-note">Se abre tu WhatsApp con el mensaje ya escrito. Tú lo mandas.</p>
     </form>
 
     <div class="listo" id="listo" data-reveal>
       <h3 class="tt tt--s" data-drop><span class="ln">Todo listo</span><span class="ln">para completar.</span></h3>
-      <ul class="check mq">
+      <ul class="check">
         <li>WhatsApp de atención confirmado</li>
         <li>Carta vigente con fecha</li>
         <li>Fotos profesionales de platillos, cocteles y música en vivo</li>
@@ -67,8 +67,8 @@
         <li>Link de cobro para anticipos de eventos</li>
         <li>Dominio propio (hoy solo tienen un Google Sites de imágenes)</li>
       </ul>
-      <p class="listo-n mq">Tarjeta en línea: te mandamos el link.</p>
-      <p class="listo-n mq">Pásanoslo por el mismo chat donde te llegó esta muestra.</p>
+      <p class="listo-n">Tarjeta en línea: te mandamos el link.</p>
+      <p class="listo-n">Pásanoslo por el mismo chat donde te llegó esta muestra.</p>
     </div>
   </div>
 </section>

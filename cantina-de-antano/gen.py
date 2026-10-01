@@ -45,8 +45,15 @@ CERV_355 = [("Corona","",74,None),("Victoria","",74,None),("Pacífico","",74,Non
 CERV_VASO = [("Vaso chelado","",20,None),("Vaso michelado","",24,None),("Vaso gringa","",32,None)]
 REFRESCOS = [("Agua sabor","",45,None),("Refresco","",51,None),("Limonada o naranjada","500 ml",67,None),
  ("Jarra de limonada o naranjada","2 L",187,None),("Red Bull","",77,None),("Café americano o espresso","",48,None)]
-REPARTO = [("Pedro Infante",152),("Cantinflas",152),("Jorge Negrete",152),("Miroslava",152),("María Félix",152),
-           ("Mezcalada La Cantina",152),("Sangría de cantina",127)]
+# papel = ingredientes transcritos de su carta (research/fotos/sitio-carta-especialidades.jpg; ver hechos.md)
+REPARTO = [("Pedro Infante",152,"Vodka, ron blanco, tequila blanco, ginebra y cola"),
+           ("Cantinflas",152,"Bacardí blanco, agua quina, curazao azul"),
+           ("Jorge Negrete",152,"Vodka, rompope, zarzamora y leche Clavel"),
+           ("Miroslava",152,"Leche Clavel, menta verde y chocolate"),
+           ("María Félix",152,"Vodka, amaretto y crema de coco"),
+           ("Mezcalada La Cantina",152,"Mezcal, Squirt, limón, jugo de naranja"),
+           ("Sangría de cantina",127,"")]
+DESC = {"Sara García": "ginebra, Baileys, Kahlúa y leche"}  # solo se muestra; no cambia el id
 COCT_SUELTOS = [("Cubanito","",115,None),("Margarita","",132,None),("Sexo en la playa","",138,None),
  ("Pedo de gorila","",155,None),("Orgasmo","",178,None),
  ("Piporro","cerveza, clamato, camarón, apio, pepino",198,None),("Sara García","",198,None)]
@@ -57,37 +64,58 @@ DESTILADOS = [("Mezcal La Cantina Reserva 1 L","copa",124,"Mezcal La Cantina Res
  ("Torres 10","copa",136,"Torres 10 (copa)"),("Torres 10","botella",1549,"Torres 10 (botella)")]
 
 carta_json = {}
+def pfig(k, alt, cap, pos='50% 50%', long=False):
+    cl = 'mini' + (' mini--l' if long else '')
+    return (f'<figure class="{cl}"><picture><source media="(min-width:860px)" srcset="img/p-{k}-v.webp" width="680" height="850">'
+            f'<img src="img/p-{k}-960.webp" srcset="img/p-{k}-480.webp 480w, img/p-{k}-960.webp 960w" sizes="calc(100vw - 40px)" alt="{alt}" width="960" height="480" loading="lazy" style="object-position:{pos}"></picture>'
+            f'<figcaption>{cap}</figcaption></figure>')
 def fig(name, alt, cap, w, h, pos='50% 50%'):
     return (f'<figure class="mini"><img src="img/{name}-960.webp" srcset="img/{name}-480.webp 480w, img/{name}-960.webp 960w" sizes="(min-width:860px) 560px, calc(100vw - 40px)" alt="{alt}" width="{w}" height="{h}" loading="lazy" style="object-position:{pos}">'
             f'<figcaption class="mq">{cap}</figcaption></figure>')
-F_MESA = '<figure class="mini"><img src="img/p-mesa-960.webp" srcset="img/p-mesa-480.webp 480w, img/p-mesa-960.webp 960w" sizes="(min-width:860px) 560px, calc(100vw - 40px)" alt="Mesa con totopos en su canasta de La Cantina, salsa roja, limones, chicharrón y botanas" width="960" height="384" loading="lazy" style="object-position:50% 50%"><figcaption class="mq">Botanas en la mesa, sucursal Colosio</figcaption></figure>'
-F_TABLA = '<figure class="mini"><img src="img/p-tabla-960.webp" srcset="img/p-tabla-480.webp 480w, img/p-tabla-960.webp 960w" sizes="(min-width:860px) 560px, calc(100vw - 40px)" alt="Tabla de madera con carne asada, chiles toreados y chiles de árbol en su plancha de fierro" width="960" height="640" loading="lazy" style="object-position:50% 45%"><figcaption class="mq">De la parrilla</figcaption></figure>'
-F_TARRO = '<figure class="mini"><img src="img/p-tarro-960.webp" srcset="img/p-tarro-480.webp 480w, img/p-tarro-960.webp 960w" sizes="(min-width:860px) 560px, calc(100vw - 40px)" alt="Tarro de cerveza helada junto a un vaso preparado con sal en el borde" width="960" height="922" loading="lazy" style="object-position:50% 40%"><figcaption class="mq">Para acompañar</figcaption></figure>'
-F_BOT = '<figure class="mini"><img src="img/p-botellas-960.webp" srcset="img/p-botellas-480.webp 480w, img/p-botellas-960.webp 960w" sizes="(min-width:860px) 560px, calc(100vw - 40px)" alt="Botellero de La Cantina de Antaño con tequilas, licores y un radio antiguo" width="960" height="526" loading="lazy" style="object-position:40% 50%"><figcaption class="mq">El botellero</figcaption></figure>'
+F_MESA = pfig('mesa','Mesa con totopos en su canasta de La Cantina, salsa roja, limones, aros de calamar y botanas','Botanas en la mesa, sucursal Colosio',long=True)
+F_TABLA = pfig('tabla','Tabla de madera con carne asada, chiles toreados y chiles de árbol en su plancha de fierro','De la parrilla','50% 45%')
+F_TARRO = pfig('tarro','Tarro de cerveza helada junto a un vaso preparado con sal en el borde','Para acompañar','50% 40%')
+F_BOT = pfig('botellas','Botellero de La Cantina de Antaño con tequilas, licores y un radio antiguo','El botellero','40% 50%')
 def row(it, dark=False):
     name, det, price, label = it
     iid = slug(name + ' ' + det) if det else slug(name)
     lab = label or name
     carta_json[iid] = {"name": name, "detail": det, "price": price, "label": lab}
-    small = f'<small>{E(det)}</small>' if det else ''
+    shown = det or DESC.get(name, '')
+    small = f'<small>{E(shown)}</small>' if shown else ''
     return (f'<li class="row" data-id="{iid}" data-name="{E(name)}" data-label="{E(lab)}" data-price="{price}">'
             f'<span class="nm">{E(name)}{small}</span><i class="ld" aria-hidden="true"></i><span class="pr">{peso(price)}</span>'
             f'<button class="plus" type="button" aria-label="Agregar {E(lab)} a mi mesa"><span aria-hidden="true">+</span><b class="bdg" hidden>0</b></button></li>')
+
+def pan(figure, body):
+    return f'<div class="pan-g">{figure}<div class="pan-l">{body}</div></div>'
+
+def casa():
+    """La botella de la casa: su mezcal de marca propia (hechos.md). Mismos ids que antes."""
+    def ln(it, shown):
+        name, det, price, label = it
+        iid = slug(name + ' ' + det); carta_json[iid] = {"name": name, "detail": det, "price": price, "label": label}
+        return (f'<li class="row" data-id="{iid}" data-name="{E(name)}" data-label="{E(label)}" data-price="{price}"><span class="nm">{shown}</span><i class="ld" aria-hidden="true"></i><span class="pr">{peso(price)}</span>'
+                f'<button class="plus" type="button" aria-label="Agregar {E(label)} a mi mesa"><span aria-hidden="true">+</span><b class="bdg" hidden>0</b></button></li>')
+    return ('<div class="lobby casa"><p class="casa-k mq">La botella de la casa</p><h3 class="casa-n">Mezcal La Cantina Reserva</h3>'
+            '<p class="casa-d"><span>100&nbsp;% agave espadín, Oaxaca.</span> <span>Su marca propia.</span></p><ul class="rows">'
+            + ln(DESTILADOS[0], 'Copa') + ln(DESTILADOS[1], 'Botella 1 L') + '</ul></div>')
 
 def rows(items, title=None):
     t = f'<h3 class="sub">{E(title)}</h3>' if title else ''
     return t + '<ul class="rows">' + ''.join(row(i) for i in items) + '</ul>'
 
-def cred(n, p):
+def cred(n, p, papel=''):
     iid = slug(n); carta_json[iid] = {"name": n, "detail": "", "price": p, "label": n}
-    return (f'<li class="cred" data-id="{iid}" data-name="{E(n)}" data-label="{E(n)}" data-price="{p}"><span class="nm">{E(n)}</span><i class="ld" aria-hidden="true"></i><span class="pr">{peso(p)}</span>'
-            f'<button class="plus" type="button" aria-label="Agregar {E(n)} a mi mesa"><span aria-hidden="true">+</span><b class="bdg" hidden>0</b></button></li>')
+    pp = f'<span class="papel">{E(papel)}</span>' if papel else ''
+    return (f'<li class="cred" data-id="{iid}" data-name="{E(n)}" data-label="{E(n)}" data-price="{p}"><span class="cred-l"><span class="nm">{E(n)}</span><i class="ld" aria-hidden="true"></i><span class="pr">{peso(p)}</span></span>'
+            f'<button class="plus" type="button" aria-label="Agregar {E(n)} a mi mesa"><span aria-hidden="true">+</span><b class="bdg" hidden>0</b></button>{pp}</li>')
 
 def reparto():
-    estrellas = ''.join(cred(n, p) for n, p in REPARTO[:-1])
+    estrellas = ''.join(cred(*r) for r in REPARTO[:-1])
     esp = cred(*REPARTO[-1])
     return ('<div class="reparto" data-reparto><p class="rep-pre mq">La Cantina de Antaño presenta</p><h3 class="rep-t">El reparto</h3><p class="rep-s mq">Coctelería de especialidad</p>'
-            '<ul class="creds">' + estrellas + '</ul><p class="rep-esp mq">y la participación especial de</p><ul class="creds">' + esp + '</ul></div>')
+            '<ul class="creds">' + estrellas + '</ul><p class="rep-esp">y la participación especial de</p><ul class="creds">' + esp + '</ul></div>')
 
 def clasicos():
     btns = []
@@ -98,19 +126,19 @@ def clasicos():
 
 PANELS = [
  ("botanas","Botanas",
-  F_MESA + rows(BOTANAS)),
- ("carnes","Carnes", F_TABLA + rows(CARNES)),
+  pan(F_MESA, rows(BOTANAS))),
+ ("carnes","Carnes", pan(F_TABLA, rows(CARNES))),
  ("tacos","Tacos", '<p class="lead mq">Lo nuevo</p>' + rows(TACOS)),
  ("sopas","Sopas", rows(SOPAS)),
- ("infantil","Infantil", rows(INFANTIL) + '<p class="nota mq">Pregunta por nuestros postres del día. Áreas infantiles en Colosio, Nacozari y Sta. Anita.</p>'),
+ ("infantil","Infantil", rows(INFANTIL) + '<p class="nota">Pregunta por nuestros postres del día. Áreas infantiles en Colosio, Nacozari y Sta. Anita.</p>'),
  ("cervezas","Cervezas",
-  F_TARRO + rows(CERV_COMP,"Para compartir") + rows(CERV_355,"Cerveza 355 ml") + rows(CERV_VASO,"Vasos")
-  + '<p class="nota mq">Cubetas y vasos no aplican al 2x1.</p>'),
- ("cocteles","Cocteles", reparto() + clasicos() + rows(COCT_SUELTOS,"Y más") + '<p class="nota mq">Todos los cocteles son de 300 ml. En toda la coctelería no aplica el 2x1.</p>'),
+  pan(F_TARRO, rows(CERV_COMP,"Para compartir") + rows(CERV_355,"Cerveza 355 ml") + rows(CERV_VASO,"Vasos")
+  + '<p class="nota">Cubetas y vasos no aplican al 2x1.</p>')),
+ ("cocteles","Cocteles", reparto() + clasicos() + rows(COCT_SUELTOS,"Y más") + '<p class="nota">Todos los cocteles son de 300 ml. En toda la coctelería no aplica el 2x1.</p>'),
  ("destilados","Destilados",
-  F_BOT + rows(DESTILADOS,"Copa y botella") +
-  '<p class="nota mq">Tequilas desde $111 hasta $299 la copa: Don Ramón, Centenario, Maestro Tequilero, 1800, 30-30, Don Julio, Herradura y más. Todos los servicios se sirven con 6 refrescos. Carta completa de destilados en la cantina.</p>'),
- ("sinalcohol","Sin alcohol", rows(REFRESCOS) + '<p class="nota mq">Refrescos y jugos no aplican al 2x1.</p>'),
+  casa() + pan(F_BOT, rows(DESTILADOS[2:],"Copa y botella") +
+  '<p class="nota">Tequilas desde $111 hasta $299 la copa: Don Ramón, Centenario, Maestro Tequilero, 1800, 30-30, Don Julio, Herradura y más. Todos los servicios se sirven con 6 refrescos. Carta completa de destilados en la cantina.</p>')),
+ ("sinalcohol","Sin alcohol", rows(REFRESCOS) + '<p class="nota">Refrescos y jugos no aplican al 2x1.</p>'),
 ]
 
 chips = ''.join(
@@ -137,14 +165,14 @@ carta_html = f'''<section class="carta on-crema" id="carta" data-hide-wa aria-la
   <div class="wrap carta-in">
     <h2 class="tt" id="carta-t" data-drop><span class="ln">La carta,</span><span class="ln">completa.</span></h2>
     <figure class="carta-foto" data-reveal>
-      <img src="img/fajitas-960.webp" srcset="img/fajitas-480.webp 480w, img/fajitas-960.webp 960w, img/fajitas-1600.webp 1600w" sizes="(min-width:860px) 560px, 100vw" alt="Parrillada norteña caliente sobre su plancha de fierro, con chiles toreados y chorizo" width="1600" height="1200">
-      <figcaption class="mq">Parrillada norteña · 2 personas $588 · 4 personas $1,026</figcaption>
+      <img src="img/fajitas-960.webp" srcset="img/fajitas-480.webp 480w, img/fajitas-960.webp 960w, img/fajitas-1600.webp 1600w" sizes="(min-width:700px) 50vw, 100vw" alt="Parrillada norteña caliente sobre su plancha de fierro, con chiles toreados y chorizo" width="1600" height="1200">
+      <figcaption><b>Parrillada norteña</b><span class="mq">2 personas $588 · 4 personas $1,026</span></figcaption>
     </figure>
   </div>
   <div class="chips-wrap"><div class="wrap"><div class="chips" role="tablist" aria-label="Categorías de la carta">{chips}</div></div></div>
   <div class="wrap carta-in">
     <div class="panels">{panels}</div>
-    <p class="nota mq carta-nota">Precios de su carta publicada; pueden cambiar. Toca el + para sumar a tu mesa.</p>
+    <p class="nota carta-nota">Precios de su carta publicada; pueden cambiar. Toca el + para sumar a tu mesa.</p>
   </div>
 </section>
 '''
@@ -172,12 +200,18 @@ n1 = pt(119, 45); n1b = pt(141, 45); n2 = pt(119, 270); n2b = pt(141, 270)
 clock = f'''<svg class="clock" id="clock" viewBox="0 0 320 320" role="img" aria-label="Reloj de pared con el tramo del 2x1, de la 1:30 p.m. a las 9:00 p.m., pintado en rojo">
   <defs>
     <radialGradient id="cl-face" cx="50%" cy="44%" r="62%"><stop offset="0" stop-color="#f8e2af"/><stop offset="1" stop-color="#e9c483"/></radialGradient>
-    <linearGradient id="cl-wood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7a4a2d"/><stop offset=".5" stop-color="#4a2716"/><stop offset="1" stop-color="#2b150b"/></linearGradient>
+    <linearGradient id="cl-wood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a5532"/><stop offset=".45" stop-color="#4f2a17"/><stop offset="1" stop-color="#25120a"/></linearGradient>
+    <radialGradient id="cl-wood2" cx="50%" cy="50%" r="50%"><stop offset=".88" stop-color="#6b3d22" stop-opacity="0"/><stop offset=".93" stop-color="#3a1d0f" stop-opacity=".55"/><stop offset="1" stop-color="#1a0b05" stop-opacity=".8"/></radialGradient>
+    <linearGradient id="cl-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2c992"/><stop offset=".5" stop-color="#a08c6e"/><stop offset="1" stop-color="#6e5a3c"/></linearGradient>
+    <radialGradient id="cl-pin" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#f3dca0"/><stop offset=".45" stop-color="#b8924f"/><stop offset="1" stop-color="#5c4220"/></radialGradient>
+    <linearGradient id="cl-glass" x1="0" y1="0" x2=".7" y2=".8"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".55" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
     <filter id="cl-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="2.4" flood-color="#000" flood-opacity=".45"/></filter>
   </defs>
   <circle cx="160" cy="160" r="156" fill="url(#cl-wood)"/>
-  <circle cx="160" cy="160" r="150" fill="none" stroke="#a08c6e" stroke-width="1" opacity=".7"/>
-  <circle cx="160" cy="160" r="144" fill="#2b150b"/>
+  <circle cx="160" cy="160" r="156" fill="url(#cl-wood2)"/>
+  <g fill="none" stroke="#f5d99c" opacity=".15"><circle cx="160" cy="160" r="153" stroke-width=".8"/><circle cx="160" cy="160" r="150.5" stroke-width=".6"/><circle cx="160" cy="160" r="147.6" stroke-width=".8"/></g>
+  <circle cx="160" cy="160" r="144.5" fill="none" stroke="url(#cl-gold)" stroke-width="2.2"/>
+  <circle cx="160" cy="160" r="143" fill="#2b150b"/>
   <circle cx="160" cy="160" r="141" fill="url(#cl-face)"/>
   <circle cx="160" cy="160" r="130" fill="none" stroke="#c22d23" stroke-width="20" stroke-dasharray="{dash:.1f} {circ:.1f}" transform="rotate(-45 160 160)" class="cl-band"/>
   <line x1="{n1[0]:.1f}" y1="{n1[1]:.1f}" x2="{n1b[0]:.1f}" y2="{n1b[1]:.1f}" stroke="#2a140c" stroke-width="2"/>
@@ -186,18 +220,20 @@ clock = f'''<svg class="clock" id="clock" viewBox="0 0 320 320" role="img" aria-
   <g filter="url(#cl-sh)">
     <g id="cl-h" transform="rotate(270 160 160)"><path d="M156.6 176 L155.4 160 L160 96 L164.6 160 L163.4 176 Z" fill="#1c0e08"/></g>
     <g id="cl-m" transform="rotate(0 160 160)"><path d="M158.2 182 L157.4 160 L160 58 L162.6 160 L161.8 182 Z" fill="#1c0e08"/></g>
-    <circle cx="160" cy="160" r="6.5" fill="#1c0e08"/><circle cx="160" cy="160" r="2.2" fill="#c22d23"/>
+    <circle cx="160" cy="160" r="8" fill="url(#cl-pin)" stroke="#3a2510" stroke-width=".8"/><circle cx="160" cy="160" r="2.4" fill="#5c4220"/>
   </g>
+  <path d="M 40.6 118 A 128 128 0 0 1 118 40.6 L 124 52 A 116 116 0 0 0 52 124 Z" fill="url(#cl-glass)" opacity=".55" pointer-events="none"/>
+  <circle cx="160" cy="160" r="141" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="3"/>
 </svg>'''
 
 dos = f'''<section class="dos" id="dosxuno" aria-labelledby="dos-t">
   <div class="tira" aria-hidden="true"></div>
   <div class="wrap dos-in">
     <h2 class="tt dos-tt" id="dos-t" data-drop><span class="ln">2x1 en bebidas.</span><span class="ln">Hasta las 9.</span></h2>
-    <figure class="dos-clock" data-reveal>{clock}<figcaption class="mq">Lo rojo es el 2x1: de 1:30 p.m. a 9:00 p.m.</figcaption></figure>
+    <figure class="dos-clock" data-reveal>{clock}<figcaption>Lo rojo es el 2x1: de 1:30 p.m. a 9:00 p.m.</figcaption></figure>
     <div class="dos-txt">
-      <p class="dos-live mq" id="dos-live" aria-live="polite">Todos los días de 1:30 p.m. a 9:00 p.m.</p>
-      <p class="dos-small mq">No aplica en coctelería ni en vasos, refrescos, jugos, cubetas y cigarros.</p>
+      <div class="placa"><p class="dos-live mq" id="dos-live" aria-live="polite">Todos los días de 1:30 p.m. a 9:00 p.m.</p></div>
+      <p class="dos-small">No aplica en coctelería ni en vasos, refrescos, jugos, cubetas y cigarros.</p>
       <div class="dos-carro" data-reveal>
         <p>Carrito con 20 cervezas y parrillada para 4: <b class="mq">$1,535.</b></p>
         <button class="lnk" type="button" id="dos-add" data-id="carrito-con-20-cervezas-incluye-parrillada-para-4-personas" data-name="Carrito con 20 cervezas" data-label="Carrito con 20 cervezas con parrillada para 4 personas" data-price="1535"><span class="lnk-t">Agregar a mi mesa</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
@@ -211,7 +247,7 @@ print(len(carta_json),'items; carta y reloj generados')
 
 # ---------- 40 · las 4 cantinas ----------
 cards = [
- dict(k='colosio', nom='Colosio', tag='La original, 2001', img='f-colosio', w=(480,960), iw=(960,720), alt='Fachada de La Cantina de Antaño Colosio de noche, con su letrero y luces',
+ dict(k='colosio', nom='Colosio', tag='La original, 2001', img='f-colosio', w=(480,960), iw=(960,640), alt='Fachada de La Cantina de Antaño Colosio de noche, con su letrero y luces',
       dir='Blvd. Luis Donaldo Colosio Murrieta 117, Jardines de la Concepción I', tel='449 912 8121', tel2='+524499128121',
       hor=['Lunes a domingo','1:30 p.m. a 2:00 a.m.'], rating='4.4 · 2,029 opiniones en Google', extra='Área infantil · valet parking', ll='21.9240532,-102.3116074'),
  dict(k='anita', nom='Sta. Anita', tag='', img='f-anita', w=(480,960), iw=(960,917), alt='Letrero de La Cantina de Antaño Santa Anita visto desde arriba',
@@ -242,7 +278,7 @@ for c in cards:
           <a class="btn btn--red btn--sm" href="tel:{c["tel2"]}">Llamar</a>
           <a class="btn btn--line btn--sm" href="https://www.google.com/maps/dir/?api=1&amp;destination={c["ll"]}" target="_blank" rel="noopener">Cómo llegar</a>
         </div>
-        <button class="lnk cc-pick" type="button" data-pick="{c["k"]}" aria-pressed="false"><span class="lnk-t">Elegir esta</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <button class="btn btn--line btn--sm cc-pick" type="button" data-pick="{c["k"]}" aria-pressed="false"><span class="lnk-t">Elegir esta</span></button>
       </article>''')
 cant = f'''<section class="cants" id="cantinas" aria-labelledby="cants-t">
   <div class="wrap cants-head">
@@ -255,7 +291,7 @@ cant = f'''<section class="cants" id="cantinas" aria-labelledby="cants-t">
     </div>
     <div class="strip-band" aria-hidden="true"></div>
   </div>
-  <p class="wrap cants-nota mq">Horarios y calificaciones de su ficha de Google Maps; pueden cambiar. Estacionamiento, acceso para silla de ruedas y Wi-Fi en todas las sucursales.</p>
+  <p class="wrap cants-nota">Horarios y calificaciones de su ficha de Google Maps; pueden cambiar. Estacionamiento, acceso para silla de ruedas y Wi-Fi en todas las sucursales.</p>
 </section>
 '''
 open('sections/40-cantinas.html','w').write(cant)

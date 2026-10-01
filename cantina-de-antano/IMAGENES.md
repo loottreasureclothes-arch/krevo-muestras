@@ -21,3 +21,11 @@ Grado (se bajó el sepia por decisión del orquestador): fachadas de noche a col
 
 Ya no se usan (movidas al scratchpad del corrector): ventana-*, torre-* (borrosa), salon-*.
 Pendiente: fotos profesionales de platillos, cocteles y música en vivo.
+
+## Corrección 2 (script `scratchpad/r2fix-cantina-de-antano/imgs2.py`)
+| Archivo | Origen | Uso | Tratamiento |
+|---|---|---|---|
+| epoca-c-640/1280/1840 | maps-interior-barra-02.jpg (x 975-1548, y 625-950: pared de retratos y caballito, sin soga, techo, mesera ni cabezas) | Lobby card de Época de Oro | Real-ESRGAN x4, grado interior |
+| hero-m, hero-d (rehechas) | maps-interior-salon.jpg, mismos recortes | Hero | Sin parches; desenfoque parejo de la franja del fondo después de subir x4 |
+| p-mesa-v, p-tabla-v, p-tarro-v, p-botellas-v (680x850) | botanas-mesa, parrillada-tabla, tarro (ig-02) y botellero (barra-02) | Columna fija de la carta a ≥860 | Mismo grado por tipo |
+| f-colosio (rehecha) | sitio-fachada-colosio-noche.jpg recortada a 3:2 sin cielo negro | Tarjeta Colosio | Grado noche |
