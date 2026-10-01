@@ -1,6 +1,7 @@
 /* ===== 30 · LA SALA: el plano de 38 lugares + el boleto (componente firma) ===== */
 .ep-sala { background: var(--ink); }
-.ep-sala-grid { display: grid; gap: 44px; margin-top: 30px; }
+.ep-sala-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 44px; margin-top: 30px; }
+.ep-paso { min-width: 0; }
 .ep-paso-t { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-family: var(--f-mono); font-weight: 700; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); }
 .ep-paso-t b { display: grid; place-items: center; width: 24px; height: 24px; background: var(--red); color: var(--cream); font-size: 13px; }
 
@@ -20,6 +21,21 @@
 .ep-fechas[hidden] { display: none; }
 .ep-fecha { min-height: 44px; padding: 0 12px; font-family: var(--f-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.03em; border: 1px solid rgba(241, 231, 210, 0.4); border-radius: 2px; color: var(--cream); }
 .ep-fecha[aria-checked="true"] { background: var(--paper); border-color: var(--paper); color: var(--paper-ink); }
+
+.ep-fichas-hoytxt { margin-top: 10px; font-family: var(--f-mono); font-size: 13px; color: var(--cream); }
+.ep-fichas-hoytxt[hidden] { display: none; }
+/* Corrección 3, celular: las 5 fichas en una sola tira de talones de boleto (scroll-snap, ~92 px de alto),
+   para que el plano aparezca en la primera pantalla de la sección */
+@media (max-width: 719px) {
+  .ep-fichas { display: flex; gap: 8px; margin-inline: calc(-1 * var(--gut)); padding: 2px var(--gut) 6px; overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-inline: var(--gut); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .ep-fichas::-webkit-scrollbar { display: none; }
+  .ep-ficha, .ep-ficha:last-child { flex: 0 0 auto; grid-column: auto; min-width: 128px; max-width: 204px; min-height: 92px; padding: 10px 12px 11px; gap: 5px; scroll-snap-align: start; }
+  .ep-ficha-n { font-size: 18px; line-height: 1.06; }
+  .ep-ficha .ep-ficha-hoy { display: none; }
+  .ep-fichas-nota { margin-top: 8px; }
+}
+@media (min-width: 720px) { .ep-fichas-hoytxt { display: none; } }
 
 /* cuenta */
 .ep-cuenta { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 8px; }
@@ -88,3 +104,5 @@
   .ep-paso-1 { grid-area: p1; } .ep-paso-2 { grid-area: p2; position: sticky; top: 84px; } .ep-paso-3 { grid-area: p3; }
   .ep-plano { max-width: none; }
 }
+/* Corrección 3: pasos más juntos en celular */
+@media (max-width: 719px) { .ep-sala-grid { gap: 32px; margin-top: 24px; } .ep-sala { padding-bottom: 40px; } }

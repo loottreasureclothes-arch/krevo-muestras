@@ -85,11 +85,35 @@
       var b = el.parentNode; b.setAttribute("data-iso", proximas(k, 1)[0]);
       var h = b.querySelector(".ep-ficha-hoy"); if (h) h.hidden = iso !== todayIso();
     });
+    var hayHoy = false;
+    Array.prototype.forEach.call(document.querySelectorAll(".ep-ficha"), function (b) { if (b.getAttribute("data-iso") === todayIso()) hayHoy = true; });
+    var ht = $("ep-fichas-hoytxt"); if (ht) ht.hidden = !hayHoy;
+    /* Corrección 3: renglones de "Esta semana en Épica" (primera tarjeta de la cartelera), misma fecha real y mismo orden */
+    var sem = document.querySelector(".ep-sem");
+    if (sem) {
+      Array.prototype.forEach.call(sem.querySelectorAll("[data-sem-dia]"), function (a) {
+        var k = a.getAttribute("data-sem-dia"); if (!DIAS[k]) return;
+        var iso = proximas(k, 1)[0], d = a.querySelector(".ep-sem-d");
+        a.setAttribute("data-ep-iso", iso); a.parentNode.setAttribute("data-iso", iso);
+        if (d) d.textContent = etiqueta(iso, k).replace(/ (ENE|FEB|MAR|ABR|MAY|JUN|JUL|AGO|SEP|OCT|NOV|DIC)$/, "");
+        a.setAttribute("aria-label", "Apartar " + DIAS[k].nombre + ", " + etiqueta(iso, k).toLowerCase());
+      });
+      if (!sem.getAttribute("data-orden")) {
+        var li = Array.prototype.slice.call(sem.children);
+        li.sort(function (a, b) { return a.getAttribute("data-iso") < b.getAttribute("data-iso") ? -1 : 1; });
+        li.forEach(function (x) { sem.appendChild(x); });
+        sem.setAttribute("data-orden", "1");
+      }
+    }
     if (box && !box.getAttribute("data-orden")) {
       var list = Array.prototype.slice.call(box.querySelectorAll(".ep-ficha"));
       list.sort(function (a, b) { return a.getAttribute("data-iso") < b.getAttribute("data-iso") ? -1 : 1; });
+      /* en celular la tira tiene scroll-snap: sin esto el navegador se queda "pegado" a la ficha que estaba primero */
+      box.style.scrollSnapType = "none";
       list.forEach(function (b) { box.appendChild(b); });
+      box.scrollLeft = 0;
       box.setAttribute("data-orden", "1");
+      requestAnimationFrame(function () { box.scrollLeft = 0; box.style.scrollSnapType = ""; });
     }
   }
 
@@ -106,6 +130,12 @@
     var pista = $("ep-pista"); if (pista) pista.classList.toggle("is-done", n > 0);
     Array.prototype.forEach.call(document.querySelectorAll(".ep-ficha"), function (b) { b.setAttribute("aria-checked", b.getAttribute("data-dia") === state.dia ? "true" : "false"); });
     pintaFichas();
+    /* Corrección 3: en la tira de talones (celular) la ficha elegida queda a la vista, sin mover la página */
+    var fb = document.querySelector(".ep-fichas"), on = fb && fb.querySelector('.ep-ficha[aria-checked="true"]');
+    if (fromUser && on && fb.scrollWidth > fb.clientWidth + 2) {
+      var x = on.offsetLeft - fb.firstElementChild.offsetLeft;
+      if (x < fb.scrollLeft || x + on.offsetWidth > fb.scrollLeft + fb.clientWidth) fb.scrollLeft = x;
+    }
     /* fechas: las 2 próximas de ese día (y la que llegó de la cartelera, si es otra) */
     var fe = $("ep-fechas");
     if (fe) {

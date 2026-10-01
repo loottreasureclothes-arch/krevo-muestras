@@ -4,6 +4,8 @@ y las fichas de la PROGRAMACIÓN SEMANAL real (research/hechos.md). La fecha de 
 sections/30-sala.js con el día real del visitante (la próxima de ese día de la semana).
 Corre: python3 gen/sala.py  (luego python3 build.py)
 
+Corrección 3 (30 sep 2026): en celular las fichas van en una tira horizontal de talones (30-sala.css);
+el aviso de HOY sale como renglón aparte (#ep-fichas-hoytxt) para que los talones no crezcan.
 Corrección 2 (30 sep 2026): filas en arcos concéntricos, sillas de teatro (asiento + respaldo curvo),
 luz cálida del escenario sobre las 2 primeras filas, mesa con anillo rojo al elegir (30-sala.js).
 Corrección 1 (30 sep 2026): cada silla tiene área de toque de 44 px a 390 (r=22.5 en un viewBox de 360
@@ -91,6 +93,7 @@ html = f'''  <section id="sala" class="ep-sec ep-sala" data-hide-wa aria-labelle
         <div class="ep-paso ep-paso-1">
           <p class="ep-paso-t"><b>1</b>Elige la función</p>
           <div class="ep-fichas" role="radiogroup" aria-label="Función de la semana">{fichas}</div>
+          <p class="ep-fichas-hoytxt" id="ep-fichas-hoytxt" hidden>Hoy: pregúntanos si aún quedan lugares.</p>
           <p class="ep-fichas-nota">Precio y hora de cada función: te los confirmamos por WhatsApp.</p>
           <div class="ep-fechas" id="ep-fechas" role="radiogroup" aria-label="Fecha" hidden></div>
         </div>

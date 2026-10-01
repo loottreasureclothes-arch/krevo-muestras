@@ -1,21 +1,24 @@
-/* ===== 40 · FÉNIX: foto a sangre (collage oscuro de 3 posters + velo rojo) y críticas de programa de mano ===== */
+/* ===== 40 · FÉNIX: la escena real en marco de poster pegado y críticas de programa de mano ===== */
 .ep-fenix { background: var(--ink); }
-/* Corrección 2: "Volvimos." con la luz del escenario (recorte real de Jean de Blues: cenital azul y foco rojo),
-   sin velo rojo plano. Celular: foto a sangre arriba y el título cae sobre el negro de abajo. Compu: foto a la derecha (60 %). */
-.ep-fenix-band { position: relative; isolation: isolate; padding: 0 0 34px; }
-.ep-foco { position: relative; z-index: 0; margin: 0; height: 78vw; max-height: 560px; overflow: hidden; }
-.ep-foco img { width: 100%; height: 100%; object-fit: cover; object-position: 64% 50%; filter: brightness(0.8) saturate(1.05); }
-.ep-foco::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, rgba(11, 10, 10, 0.5) 0%, rgba(11, 10, 10, 0) 20%, rgba(11, 10, 10, 0) 55%, rgba(11, 10, 10, 0.85) 88%, var(--ink) 100%); }
-.ep-fenix-txt { position: relative; z-index: 2; margin-top: -84px; }
-.ep-fenix-h { font-size: clamp(30px, 8.4vw, 46px); line-height: 1.04; letter-spacing: -0.01em; text-shadow: 0 3px 20px rgba(0, 0, 0, 0.7); }
+/* Corrección 3: la escena de Jean de Blues sale de ~380 px reales de un poster de 512; ya no va a sangre.
+   Va dentro del marco de la casa (crema 6 px, esquina cortada, giro -1.5°): 300 px en celular, 440 en 720,
+   520 a la derecha en compu. El título cae DEBAJO, sobre negro, sin montarse en el músico. */
+.ep-fenix-band { padding-top: calc(var(--sec-y) - 12px); padding-bottom: 6px; }
+.ep-foco { width: 100%; max-width: 300px; margin: 0 auto; transform: rotate(-1.5deg); }
+.ep-foco .ep-marco { display: block; }
+.ep-foco .ep-marco-in { padding: 6px; }
+.ep-foco img { display: block; width: 100%; height: auto; aspect-ratio: 1536 / 711; filter: brightness(0.92) saturate(1.05); }
+.ep-foco-pie { margin-top: 10px; text-align: right; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; color: rgba(241, 231, 210, 0.6); }
+.ep-fenix-txt { margin-top: 26px; }
+.ep-fenix-h { font-size: clamp(30px, 8.4vw, 46px); line-height: 1.04; letter-spacing: -0.01em; }
 .ep-fenix-h .ep-line { display: block; }
 .ep-fenix-h .ep-line:first-child { font-variation-settings: "opsz" 60, "WONK" 0; }
 .ep-fenix-h .ep-b { margin-top: 6px; font-size: clamp(58px, 19vw, 132px); line-height: 0.95; color: var(--red-hi); font-style: italic; font-weight: 800; }
-.ep-fenix-body { padding-top: 28px; padding-bottom: var(--sec-y); }
-.ep-fenix-copy { display: grid; gap: 10px; max-width: 54ch; margin-bottom: 34px; font-size: 17px; color: var(--cream-mute); }
-.ep-lead { font-family: var(--f-display); font-style: italic; font-weight: 700; font-size: clamp(22px, 6vw, 30px); line-height: 1.15; color: var(--cream); font-variation-settings: "opsz" 36, "WONK" 0; }
-.ep-criticas { display: grid; gap: 0; margin-top: 30px; }
+.ep-fenix-body { padding-top: 22px; padding-bottom: var(--sec-y); }
+/* Corrección 3: la bio es UN párrafo; la primera frase manda */
+.ep-fenix-copy { max-width: 54ch; margin-bottom: 26px; font-size: 16px; line-height: 1.5; color: var(--cream-mute); }
+.ep-lead { color: var(--cream); font-weight: 600; }
+.ep-criticas { display: grid; gap: 0; margin-top: 26px; }
 .ep-critica { position: relative; padding: 22px 0 20px 54px; border-bottom: 1px solid var(--cream-faint); }
 .ep-critica:first-child { border-top: 1px solid var(--cream-faint); }
 .ep-q { position: absolute; left: 0; top: 10px; font-family: var(--f-display); font-weight: 900; font-size: 84px; line-height: 1; color: var(--red-hi); }
@@ -23,21 +26,33 @@
 .ep-autor { display: flex; align-items: center; gap: 10px; margin-top: 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-mute); }
 .ep-estrellas { display: inline-flex; gap: 2px; color: var(--gold); }
 .ep-estrellas svg { width: 15px; height: 15px; }
-.ep-google { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 18px; font-family: var(--f-mono); font-size: 14px; color: var(--cream-mute); border-bottom: 1px dotted var(--cream-faint); }
+.ep-google { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 14px; font-family: var(--f-mono); font-size: 14px; color: var(--cream-mute); border-bottom: 1px dotted var(--cream-faint); }
 .ep-google svg { width: 16px; height: 16px; color: var(--red-hi); }
 @media (hover: hover) and (pointer: fine) { .ep-google:hover { color: var(--cream); } }
-@media (min-width: 720px) and (max-width: 899px) { .ep-foco { height: 62vw; } .ep-fenix-txt { margin-top: -120px; } }
+/* Corrección 3, celular: las 3 críticas en riel de programa de mano (86 % del ancho, asoma la siguiente) */
+@media (max-width: 719px) {
+  .ep-criticas { display: flex; gap: 12px; margin: 22px calc(-1 * var(--gut)) 0; padding: 4px var(--gut) 8px; overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-inline: var(--gut); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .ep-criticas::-webkit-scrollbar { display: none; }
+  .ep-critica { flex: 0 0 86%; scroll-snap-align: start; display: flex; flex-direction: column; padding: 20px 18px 16px 52px; border: 1px solid var(--cream-faint); border-top: 2px solid var(--red); }
+  .ep-critica:first-child { border-top: 2px solid var(--red); }
+  .ep-q { left: 12px; top: 8px; font-size: 72px; }
+  .ep-critica blockquote { font-size: 19px; }
+  .ep-autor { margin-top: auto; padding-top: 12px; }
+}
+@media (min-width: 720px) and (max-width: 899px) { .ep-foco { max-width: 440px; } }
 @media (min-width: 900px) {
-  .ep-fenix-band { min-height: 64svh; display: flex; align-items: center; padding: 64px 0; overflow: hidden; }
-  .ep-foco { position: absolute; top: 0; right: 0; bottom: 0; width: 62%; height: auto; max-height: none; }
-  .ep-foco img { object-position: 40% 50%; }
-  .ep-foco::after { background: linear-gradient(90deg, var(--ink) 0%, rgba(11, 10, 10, 0.55) 22%, rgba(11, 10, 10, 0) 48%), linear-gradient(180deg, rgba(11, 10, 10, 0.4) 0%, rgba(11, 10, 10, 0) 20%, rgba(11, 10, 10, 0) 70%, var(--ink) 100%); }
-  .ep-fenix-txt { margin-top: 0; }
+  .ep-fenix-band { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); align-items: center; gap: 64px; padding-top: calc(var(--sec-y) - 8px); padding-bottom: 8px; }
+  .ep-foco { grid-column: 2; grid-row: 1; max-width: 520px; }
+  .ep-fenix-txt { grid-column: 1; grid-row: 1; margin-top: 0; }
   .ep-fenix-h { max-width: 12ch; font-size: clamp(40px, 4vw, 64px); }
   .ep-fenix-h .ep-b { font-size: clamp(90px, 9vw, 150px); }
   .ep-fenix-body { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr); column-gap: 72px; padding-top: 56px; align-items: start; }
-  .ep-fenix-copy { margin-bottom: 0; grid-column: 1; grid-row: 1 / span 3; position: sticky; top: 100px; font-size: 19px; }
+  .ep-fenix-copy { margin-bottom: 0; grid-column: 1; grid-row: 1 / span 3; position: sticky; top: 100px; font-size: 18px; }
+  .ep-fenix-copy .ep-lead { display: block; margin-bottom: 12px; font-family: var(--f-display); font-style: italic; font-weight: 700; font-size: clamp(24px, 2.2vw, 30px); line-height: 1.15; font-variation-settings: "opsz" 36, "WONK" 0; }
   .ep-fenix-body .ep-luces { display: none; }
   .ep-criticas { grid-column: 2; margin-top: 0; }
   .ep-google { grid-column: 2; justify-self: start; }
 }
+/* Corrección 3: "297 opiniones" → "Allende 333" más junto en celular */
+@media (max-width: 719px) { .ep-fenix-body { padding-bottom: 38px; } }

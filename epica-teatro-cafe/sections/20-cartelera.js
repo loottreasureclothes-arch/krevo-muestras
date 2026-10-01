@@ -1,5 +1,5 @@
 /* 20 · Cartelera: sello "YA SE PRESENTÓ" calculado con la fecha real del visitante, link "Apartar" solo
-   si la función sigue vigente, indicador "1 / 8" en celular y flechas del riel en compu (swipe nativo). */
+   si la función sigue vigente, indicador "1 / 9" (empieza en la tarjeta viva "Esta semana") en celular y flechas del riel en compu (swipe nativo). */
 (function () {
   "use strict";
   var WD = { 0: "dom", 3: "mie", 4: "jue", 5: "vie", 6: "sab" };
@@ -39,8 +39,10 @@
     function pos() {
       raf = null;
       if (!num) return;
-      var max = rail.scrollWidth - rail.clientWidth;
-      var i = rail.scrollLeft >= max - 4 ? cards.length : Math.round(rail.scrollLeft / paso()) + 1;
+      var max = rail.scrollWidth - rail.clientWidth, x0 = cards[0] ? cards[0].offsetLeft : 0, i = 1, best = 1e9;
+      /* la tarjeta más cercana al borde de entrada (la etiqueta de septiembre no cuenta) */
+      Array.prototype.forEach.call(cards, function (c, k) { var dd = Math.abs(c.offsetLeft - x0 - rail.scrollLeft); if (dd < best) { best = dd; i = k + 1; } });
+      if (rail.scrollLeft >= max - 4) i = cards.length;
       num.textContent = Math.min(cards.length, Math.max(1, i));
     }
     rail.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(pos); }, { passive: true });

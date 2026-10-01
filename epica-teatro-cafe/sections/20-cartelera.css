@@ -27,16 +27,36 @@
 .ep-pasada { display: inline-block; padding: 4px 8px 3px; border: 1.5px solid var(--red-hi); color: var(--red-hi); font-family: var(--f-mono); font-weight: 700; font-size: 12px;
   letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.15; transform: rotate(-3deg); white-space: nowrap; }
 .ep-pasada[hidden] { display: none; }
-/* novena tarjeta: el riel termina en acción */
+/* Corrección 3: el riel ABRE con la tarjeta viva "Esta semana en Épica" (papel crema, 5 renglones Courier con
+   la fecha real; cada renglón aparta esa función en la sala). Septiembre va después, como archivo. */
 .ep-oct { display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; width: 100%; height: calc(var(--w) * 1.25 - 6px); padding: 26px 22px 22px;
   background: var(--paper); color: var(--paper-ink); clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%); transform: rotate(-1deg); }
 .ep-oct-k { margin-bottom: auto; font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(27, 20, 18, 0.62); }
-.ep-oct-h { font-family: var(--f-display); font-weight: 900; font-size: clamp(38px, 11vw, 52px); line-height: 0.98; letter-spacing: -0.01em; font-variation-settings: "opsz" 144, "WONK" 0; }
+.ep-oct-h { font-family: var(--f-display); font-weight: 900; font-size: clamp(38px, 11vw, 52px); line-height: 0.98; letter-spacing: -0.01em; font-variation-settings: "opsz" 72, "WONK" 0; }
 .ep-oct-h .ep-line { display: block; }
 .ep-oct-h .ep-b { color: var(--red); font-style: italic; font-weight: 800; }
-.ep-oct-dias { font-family: var(--f-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; }
-.ep-oct-a { align-self: flex-start; color: var(--paper-ink); border-bottom: 1.5px solid var(--red); }
-.ep-oct-a svg { color: var(--red); }
+/* la tarjeta viva ocupa todo el alto de la tarjeta (poster + datos) para no dejar negro debajo */
+.ep-card--semana .ep-slot { flex: 1; height: auto; min-height: calc(var(--w) * 1.25 + 14px); display: flex; align-items: stretch; padding: 6px 0 4px; }
+.ep-semana { justify-content: flex-start; gap: 0; height: auto; padding: 22px 18px 12px; }
+.ep-semana .ep-oct-k { margin-bottom: 10px; }
+.ep-semana .ep-oct-h { font-size: clamp(34px, 9.6vw, 46px); margin-bottom: 16px; }
+.ep-sem { flex: 1; display: grid; grid-auto-rows: minmax(54px, 1fr); margin-bottom: 14px; border-top: 1.5px solid var(--paper-ink); }
+.ep-sem-pie { display: flex; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 12px; border-top: 1.5px dashed rgba(27, 20, 18, 0.45);
+  font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(27, 20, 18, 0.62); }
+.ep-sem li { display: grid; }
+.ep-sem li + li { border-top: 1px dashed rgba(27, 20, 18, 0.32); }
+.ep-sem-r { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "d a" "n a"; align-items: center; align-content: center; gap: 2px 10px; min-height: 54px; padding: 6px 0; font-family: var(--f-mono); font-weight: 700; font-size: 14px; line-height: 1.2; color: var(--paper-ink); }
+.ep-sem-d { grid-area: d; font-size: 12px; color: var(--red); letter-spacing: 0.02em; white-space: nowrap; }
+.ep-sem-n { grid-area: n; }
+.ep-sem-a { grid-area: a; display: inline-flex; align-items: center; gap: 4px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1.5px solid var(--red); padding-bottom: 1px; }
+.ep-sem-a svg { width: 13px; height: 13px; color: var(--red); }
+.ep-sem-r:active { background: rgba(179, 18, 31, 0.08); }
+@media (hover: hover) and (pointer: fine) { .ep-sem-r:hover .ep-sem-n { color: var(--red); } }
+/* etiqueta de archivo entre la tarjeta viva y el primer poster pasado */
+.ep-cart-sep { flex: 0 0 26px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 14px; margin-inline: -6px; }
+.ep-cart-sep span { display: inline-flex; align-items: center; gap: 8px; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
+  font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red-hi); }
+.ep-cart-sep svg { width: 14px; height: 14px; transform: rotate(180deg); }
 .ep-sello.is-pasado { opacity: 0.45; text-decoration: line-through; }
 @media (min-width: 720px) {
   .ep-cart-ctl { display: flex; }
@@ -44,7 +64,12 @@
   .ep-cart-rail { --w: calc((100vw - 2 * var(--gut) - 34px) / 2.4); gap: 34px; padding-inline: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); scroll-padding-inline: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); }
   .ep-card-t { font-size: 34px; }
   .ep-oct-h { font-size: clamp(44px, 4vw, 60px); }
+  .ep-semana .ep-oct-h { font-size: clamp(40px, 3.4vw, 52px); }
+  .ep-sem-r { font-size: 15px; }
+  .ep-sem-d { font-size: 13px; }
   .ep-cart-head { margin-bottom: 40px; }
 }
 /* 1024+: 3 tarjetas completas dentro de la retícula; la cuarta asoma después del borde (no se ve mordida) */
 @media (min-width: 1024px) { .ep-cart-rail { --w: calc((min(100vw, 1240px) - 2 * var(--gut) - 68px) / 3); } }
+/* Corrección 3: menos negro muerto en celular (hero → título y "1 / 9" → "Aparta tu lugar.") */
+@media (max-width: 719px) { .ep-cart { padding-top: calc(var(--sec-y) - 12px); padding-bottom: 26px; } .ep-cart-head { margin-bottom: 22px; } .ep-cart-rail { padding-bottom: 18px; } }
