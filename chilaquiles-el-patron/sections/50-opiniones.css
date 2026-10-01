@@ -1,0 +1,28 @@
+/* 50-opiniones: 4.7 fijo en grande + reseñas literales (sin estrellas por reseña). */
+.ep-opin .ep-title { margin-bottom: 18px; }
+.ep-opin-grid { display: grid; gap: 18px; }
+.ep-score { display: flex; align-items: center; gap: 14px 18px; flex-wrap: wrap; }
+.ep-score-n { font: 900 clamp(64px, 17vw, 70px)/.8 var(--f-title); color: var(--red); letter-spacing: -.01em; }
+.ep-score-t { display: flex; align-items: center; gap: 8px; font: 500 15px/1.25 var(--f-body); max-width: 16ch; }
+.ep-score-t svg { width: 34px; height: 34px; color: var(--blk); flex: none; }
+.ep-score-t b { font-weight: 700; }
+.ep-quotes { display: grid; gap: 12px; }
+.ep-q { background: var(--paper); padding: 13px calc(var(--bite) + 8px) 12px 16px; color: var(--blk); }
+.ep-q p { font: 500 16px/1.38 var(--f-body); }
+.ep-q-aviso { margin-top: 8px; font-size: 14.5px !important; color: var(--mute); }
+.ep-q cite { display: flex; align-items: baseline; gap: 8px; margin-top: 10px; font: 700 13.5px/1.2 var(--f-body); font-style: normal; letter-spacing: .02em; }
+.ep-q cite small { font: 500 12.5px/1 var(--f-body); color: var(--mute); }
+.ep-opin-pic { width: calc(100% - 20px); margin: 8px 14px 8px 6px; }
+.ep-opin-pic img { aspect-ratio: 1.8; object-position: 50% 55%; }
+.ep-opin-link { margin-top: 12px; }
+@media (min-width: 1020px) {
+  .ep-opin-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 520px); grid-template-areas: "score pic" "quotes pic"; gap: 22px 64px; align-items: start; }
+  .ep-score { grid-area: score; } .ep-quotes { grid-area: quotes; grid-template-columns: 1fr 1fr; align-items: start; } .ep-opin-pic { grid-area: pic; grid-row: 1 / 3; align-self: center; margin: 0 14px 0 6px; width: auto; }
+  .ep-score-n { font-size: clamp(112px, 9vw, 140px); }
+}
+@media (min-width: 700px) and (max-width: 1019px) {
+  .ep-opin-grid { grid-template-columns: minmax(0, 1fr) 340px; grid-template-areas: "score pic" "quotes quotes"; gap: 24px 36px; align-items: center; }
+  .ep-score { grid-area: score; } .ep-opin-pic { grid-area: pic; margin: 0 14px 0 6px; }
+  .ep-quotes { grid-area: quotes; grid-template-columns: 1fr 1fr; align-items: start; }
+  .ep-score-n { font-size: 130px; }
+}

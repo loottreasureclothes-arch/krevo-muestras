@@ -1,0 +1,90 @@
+/* 20-cuanto: ¿CUÁNTO TRAES? Se dice el presupuesto y la página enseña qué alcanza, con la carta real. */
+.ep-cuanto .ep-title { margin-bottom: 20px; }
+.ep-panel { position: relative; color: var(--paper-hi); background: var(--red); padding: 20px 14px 18px; border-radius: 34px 42px 30px 46px / 42px 30px 46px 34px; box-shadow: 0 5px 0 var(--blk); }
+.ep-panel-top { display: grid; gap: 22px; }
+/* foto que acompaña */
+.ep-pic { position: relative; margin: 0 auto; width: min(100%, 340px); aspect-ratio: 1.3; border: 3px solid var(--blk); background: var(--blk); transform: rotate(-1.5deg); }
+.ep-pic-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; visibility: hidden; transition: opacity 300ms var(--ease), visibility 0s linear 300ms; }
+.ep-pic-img.is-on { opacity: 1; visibility: visible; transition: opacity 300ms var(--ease), visibility 0s; }
+.ep-pic .ep-label { position: absolute; left: 8px; bottom: 8px; z-index: 2; }
+.ep-pic-img[data-fam="rojo"] { object-position: 50% 62%; }
+/* moneda y vía */
+.ep-lbl { display: block; font: 700 12px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--paper-hi); }
+.ep-money { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; margin-top: 6px; }
+.ep-money output { font: 900 clamp(58px, 17vw, 68px)/.95 var(--f-title); color: var(--paper-hi); }
+.ep-money span { font: 500 14px/1.2 var(--f-body); }
+.ep-slider { position: relative; height: 48px; margin-top: 10px; }
+.ep-track { position: absolute; left: 0; right: 0; top: 50%; height: 16px; margin-top: -8px; background: var(--blk); border-radius: 8px; overflow: hidden; }
+.ep-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 50%; background: var(--sun); border-radius: 8px 0 0 8px; }
+.ep-coin { position: absolute; top: 2px; left: 0; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--sun); color: var(--blk); border: 3px solid var(--blk); font: 900 27px/1 var(--f-title); box-shadow: 0 3px 0 var(--blk); pointer-events: none; transition: left 120ms var(--ease); }
+.ep-slider input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: .06; cursor: pointer; -webkit-appearance: none; appearance: none; background: transparent; touch-action: pan-y; }
+.ep-slider input::-webkit-slider-thumb { -webkit-appearance: none; width: 44px; height: 48px; }
+.ep-slider input::-moz-range-thumb { width: 44px; height: 48px; border: 0; }
+.ep-slider input:focus-visible ~ .ep-coin { outline: 3px solid var(--paper-hi); outline-offset: 3px; }
+.ep-ends { display: flex; justify-content: space-between; margin-top: 2px; font: 700 12.5px/1 var(--f-body); letter-spacing: .06em; }
+.ep-sub { margin: 16px 0 10px; font: 700 12px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; }
+/* tarjetas de combo: papel con esquina mordida y borde propio (el negro se ve al elegir) */
+.ep-cards { display: grid; gap: 10px; transition: opacity 90ms linear; }
+.ep-cards.is-swap { opacity: 0; }
+.ep-card { --bite: 14px; background: var(--paper); clip-path: polygon(0 0, calc(100% - var(--bite)) 0, 100% var(--bite), 100% 100%, 0 100%); padding: 3px; color: var(--blk); }
+.ep-card.is-picked { background: var(--blk); }
+.ep-card-in { background: var(--paper); padding: 11px calc(var(--bite) + 4px) 10px 14px; clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 0 100%); display: grid; gap: 6px; }
+.ep-card-name { font: 900 22px/.98 var(--f-title); }
+.ep-lines { display: grid; gap: 2px; font: 400 14px/1.25 var(--f-body); }
+.ep-lines li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dotted rgba(17,17,17,.4); padding-bottom: 2px; }
+.ep-lines b { font-weight: 700; }
+.ep-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ep-total { font: 900 36px/1 var(--f-title); color: var(--red); }
+.ep-total small { font: 500 12px/1 var(--f-body); color: var(--mute); margin-left: 6px; }
+.ep-card .ep-btn { min-height: 44px; font-size: 12.5px; }
+.ep-card.is-picked .ep-btn { background: var(--blk); color: var(--sun); }
+/* sin JS: tabla tipográfica de papel */
+ul.ep-table { display: grid; gap: 0; background: var(--paper); color: var(--blk); padding: 8px 14px; font-size: 14.5px; }
+.ep-table li { display: grid; grid-template-columns: 1fr auto; gap: 0 12px; padding: 8px 0; border-bottom: 1px dotted rgba(17,17,17,.4); }
+.ep-table li:last-child { border-bottom: 0; }
+.ep-table b { font-weight: 700; } .ep-table span { grid-column: 1; color: var(--mute); font-size: 13.5px; } .ep-table i { grid-column: 2; grid-row: 1 / 3; align-self: center; font: 900 28px/1 var(--f-title); color: var(--red); font-style: normal; }
+html.ep-js .ep-static { display: none; }
+html:not(.ep-js) .ep-slider, html:not(.ep-js) .ep-ends, html:not(.ep-js) .ep-opts, html:not(.ep-js) .ep-cards, html:not(.ep-js) .ep-amount, html:not(.ep-js) .ep-note, html:not(.ep-js) .ep-sub { display: none; }
+/* decisiones chicas */
+.ep-opts { display: grid; gap: 12px; margin-top: 18px; padding-top: 16px; border-top: 2px dashed rgba(255,248,225,.5); }
+.ep-fs { border: 0; padding: 0; margin: 0; min-width: 0; }
+.ep-fs legend small { display: block; margin-top: 5px; font: 500 13px/1.2 var(--f-body); letter-spacing: 0; text-transform: none; color: rgba(255,248,225,.9); }
+.ep-fs legend { padding: 0; margin-bottom: 7px; font: 700 12px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; }
+.ep-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.ep-chip { position: relative; display: inline-flex; cursor: pointer; --bite: 11px; }
+.ep-chip input { position: absolute; opacity: 0; width: 100%; height: 100%; inset: 0; margin: 0; cursor: pointer; }
+.ep-chip span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 calc(var(--bite) + 3px) 0 11px; background: var(--paper-hi); color: var(--blk); font: 700 14px/1 var(--f-body); clip-path: polygon(0 0, calc(100% - var(--bite)) 0, 100% var(--bite), 100% 100%, 0 100%); transition: background-color 140ms var(--ease), color 140ms var(--ease); }
+.ep-chip input:checked + span { background: var(--blk); color: var(--sun); }
+.ep-chip input:focus-visible + span { background: var(--sun); color: var(--blk); }
+.ep-chip input:checked:focus-visible + span { background: var(--blk); color: var(--sun); box-shadow: inset 0 -4px 0 var(--sun); }
+@media (hover: hover) and (pointer: fine) { .ep-chip:hover span { background: var(--sun); } .ep-chip input:checked + span { background: var(--blk); } }
+.ep-hint { margin-top: 6px; font: 500 13px/1.3 var(--f-body); }
+.ep-fs--name input { display: block; width: 100%; max-width: 320px; min-height: 48px; margin-top: 8px; padding: 0 14px; font-size: 16px; background: var(--paper-hi); color: var(--blk); border: 3px solid var(--blk); border-radius: 0; }
+.ep-fs--name input::placeholder { color: rgba(17,17,17,.5); }
+.ep-out { display: grid; gap: 12px; margin-top: 16px; }
+.ep-note { font: 500 15.5px/1.4 var(--f-body); min-height: 2.8em; }
+.ep-note b { font-weight: 700; color: var(--sun); letter-spacing: .06em; }
+.ep-out .ep-wa { width: 100%; }
+.ep-fine { margin-top: 10px; font: 400 13px/1.4 var(--f-body); color: rgba(255,248,225,.86); }
+@media (min-width: 1020px) {
+  .ep-cuanto .ep-title { margin-bottom: 26px; }
+  .ep-panel { padding: 36px 40px 30px; }
+  .ep-panel-top { grid-template-columns: 340px minmax(0, 1fr); gap: 44px; align-items: start; }
+  .ep-pic { margin: 6px 0 0; width: 340px; aspect-ratio: 1; position: sticky; top: calc(var(--hh) + 28px); }
+  .ep-card-in { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "n f" "l f"; column-gap: 24px; align-items: center; }
+  .ep-card-name { grid-area: n; } .ep-lines { grid-area: l; }
+  .ep-card-foot { grid-area: f; flex-direction: column; align-items: flex-end; gap: 8px; }
+  .ep-opts { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px 44px; }
+  .ep-out { grid-template-columns: minmax(0, 1fr) 280px; align-items: center; gap: 28px; }
+}
+/* tableta (700 a 1019): la foto va chica a la izquierda del número; tarjetas a todo el ancho */
+@media (min-width: 700px) and (max-width: 1019px) {
+  .ep-panel { padding: 32px 36px 28px; }
+  .ep-panel-top { grid-template-columns: 1fr; gap: 20px; }
+  .ep-pic { width: 300px; aspect-ratio: 1.15; margin: 6px 0 0; }
+  .ep-card-in { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "n f" "l f"; column-gap: 24px; align-items: center; }
+  .ep-card-name { grid-area: n; } .ep-lines { grid-area: l; }
+  .ep-card-foot { grid-area: f; flex-direction: column; align-items: flex-end; gap: 8px; }
+  .ep-opts { grid-template-columns: repeat(2, minmax(0, auto)); justify-content: start; gap: 18px 40px; }
+  .ep-out { grid-template-columns: minmax(0, 1fr) 280px; align-items: center; gap: 28px; }
+}

@@ -1,0 +1,187 @@
+/* Chilaquiles El Patrón: fundación (prefijo ep-). Lenguaje de formas: EL TOTOPO.
+   Fuentes locales (sin internet): Passion One 900 (títulos) · Rubik 400/500/700 (cuerpo) · Sedgwick Ave 400 (frases literales). */
+@font-face { font-family: "Passion One"; font-weight: 900; font-style: normal; font-display: swap; src: url("fonts/passion-one-900.woff2") format("woff2"); }
+@font-face { font-family: "Rubik"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/rubik-400.woff2") format("woff2"); }
+@font-face { font-family: "Rubik"; font-weight: 500; font-style: normal; font-display: swap; src: url("fonts/rubik-500.woff2") format("woff2"); }
+@font-face { font-family: "Rubik"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/rubik-700.woff2") format("woff2"); }
+@font-face { font-family: "Sedgwick Ave"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/sedgwick-ave-400.woff2") format("woff2"); }
+
+:root {
+  --yel: #EBCB6B;      /* menú de cartón */
+  --pink: #D6246E;     /* paredes */
+  --blk: #111111;      /* mural */
+  --paper: #FBF0CF;    /* papel de carta: solo para leer */
+  --paper-hi: #FFF8E1; /* texto chico sobre rojo y rosa */
+  --red: #D61F26;      /* mantel y logo */
+  --sun: #F2B320;      /* sombrero */
+  --sun-hi: #FFD84D;   /* amarillo de títulos sobre rosa (contraste) */
+  --chile: #2E8B3F;    /* vía verde de su menú; no es el verde de WhatsApp */
+  --wa: #25D366; --wa-ink: #0b3d1f;
+  --ink: #111111;
+  --mute: rgba(17,17,17,.74);
+  --f-title: "Passion One", "Arial Black", Impact, sans-serif;
+  --f-body: "Rubik", system-ui, -apple-system, sans-serif;
+  --f-hand: "Sedgwick Ave", "Brush Script MT", cursive;
+  --ease: cubic-bezier(.23,1,.32,1);
+  --g: 18px;               /* gutter */
+  --sy: 42px;              /* padding vertical de sección */
+  --hh: 56px;              /* alto del header */
+  --bite: 14px;
+}
+@media (min-width: 720px) { :root { --g: 32px; --sy: 48px; } }
+@media (min-width: 1200px) { :root { --g: 48px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; scroll-behavior: auto !important; scroll-padding-top: calc(var(--hh) + 14px); -webkit-tap-highlight-color: transparent; }
+body { min-height: 100svh; background: var(--yel); color: var(--ink); font: 400 16px/1.5 var(--f-body); -webkit-font-smoothing: antialiased; overflow-x: clip; text-rendering: optimizeLegibility; }
+body.ep-menu-open { overflow: hidden; }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+button, input { font: inherit; color: inherit; }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+a, button, label { touch-action: manipulation; }
+ul[class], ol[class] { list-style: none; padding: 0; }
+p { text-wrap: pretty; overflow-wrap: break-word; }
+:focus-visible { outline: 3px solid var(--blk); outline-offset: 3px; }
+::selection { background: var(--blk); color: var(--sun); }
+.ep-wrap { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: var(--g); }
+.ep-sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.ep-skip { position: fixed; left: 10px; top: 10px; z-index: 120; padding: 12px 16px; background: var(--blk); color: var(--paper); font-weight: 700; transform: translateY(-160%); }
+.ep-skip:focus { transform: none; }
+.ep-nw { white-space: nowrap; }
+.ep-num { font-variant-numeric: tabular-nums; }
+
+/* ---------- Títulos: Passion One, un span por renglón ---------- */
+.ep-title { font-family: var(--f-title); font-weight: 900; line-height: .92; letter-spacing: .004em; text-wrap: balance; color: var(--blk); }
+.ep-title .ep-ln { display: block; white-space: nowrap; }
+.ep-title--hero { font-size: clamp(58px, 19vw, 80px); }
+.ep-title--lg { font-size: clamp(40px, 12.6vw, 58px); }
+.ep-red { color: var(--red); }
+.ep-on-pink .ep-title, .ep-on-blk .ep-title { color: var(--paper-hi); }
+.ep-on-pink .ep-red, .ep-on-blk .ep-red { color: var(--sun-hi); }
+.ep-on-blk .ep-red { color: var(--sun); }
+@media (min-width: 720px) {
+  .ep-title--hero { font-size: clamp(84px, 8.4vw, 130px); }
+  .ep-title--lg { font-size: clamp(56px, 5.4vw, 88px); }
+}
+.ep-hand { font-family: var(--f-hand); font-weight: 400; letter-spacing: 0; }
+.ep-link.ep-hand { font-family: var(--f-hand); font-weight: 400; letter-spacing: 0; line-height: 1.15; }
+
+/* entrada por palabra (una vez): se esconde solo con JS y sin reduced-motion; el temporizador del template lo fuerza */
+@media (prefers-reduced-motion: no-preference) {
+  html.ep-js [data-words] .ep-w { display: inline-block; opacity: 0; transform: translateY(-14px); }
+  html.ep-js [data-words].is-in .ep-w { opacity: 1; transform: none; transition: opacity 420ms var(--ease), transform 420ms var(--ease); transition-delay: calc(var(--i, 0) * 70ms); }
+  html.ep-js [data-reveal]:not(.is-in) { opacity: 0; transform: translateY(14px); }
+  html.ep-js [data-reveal].is-in { opacity: 1; transform: none; transition: opacity 500ms var(--ease), transform 500ms var(--ease); }
+}
+.ep-w { display: inline-block; }
+
+/* ---------- El totopo ---------- */
+.ep-teeth { height: 22px; color: var(--blk); background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 22'%3E%3Cpath d='M3 1H23Q26.2 1 24.4 3.8L14.7 19.9Q13 22.2 11.3 19.9L1.6 3.8Q-.2 1 3 1Z'/%3E%3C/svg%3E") repeat-x 0 0 / 26px 22px; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 22'%3E%3Cpath d='M3 1H23Q26.2 1 24.4 3.8L14.7 19.9Q13 22.2 11.3 19.9L1.6 3.8Q-.2 1 3 1Z'/%3E%3C/svg%3E") repeat-x 0 0 / 26px 22px; }
+@media (prefers-reduced-motion: no-preference) {
+  html.ep-js .ep-teeth.is-in { animation: ep-slide 500ms var(--ease) 1 both; }
+}
+@keyframes ep-slide { from { -webkit-mask-position: -6px 0; mask-position: -6px 0; } to { -webkit-mask-position: 0 0; mask-position: 0 0; } }
+.ep-teeth--yel { color: var(--yel); } .ep-teeth--sun { color: var(--sun); } .ep-teeth--paper { color: var(--paper); } .ep-teeth--pink { color: var(--pink); }
+/* pieza con una esquina mordida (totopo quebrado) */
+.ep-bite { clip-path: polygon(0 0, calc(100% - var(--bite)) 0, 100% var(--bite), 100% 100%, 0 100%); }
+.ep-label { display: inline-block; padding: 7px calc(var(--bite) + 10px) 7px 12px; background: var(--paper); color: var(--blk); font: 700 12px/1.1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 0 100%); }
+
+/* foto de platillo sobre su mantel: placa roja de forma suave girada -3deg */
+.ep-plate { position: relative; isolation: isolate; margin: 0; }
+.ep-plate::before { content: ""; position: absolute; z-index: -1; inset: -10px -14px -12px -6px; background: var(--red); border-radius: 38% 62% 55% 45% / 50% 45% 55% 50%; transform: rotate(-3deg); }
+.ep-plate > img, .ep-plate .ep-frame { border: 3px solid var(--blk); background: var(--blk); width: 100%; object-fit: cover; }
+.ep-plate .ep-label { position: absolute; left: 10px; bottom: 10px; z-index: 2; }
+
+/* ---------- Botones ---------- */
+/* LA FICHA DE TOTOPO: borde izquierdo recto, derecho en punta */
+.ep-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 36px 0 22px; background: var(--red); color: var(--paper-hi); font: 700 13.5px/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; cursor: pointer; user-select: none; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%); transition: background-color 160ms var(--ease), color 160ms var(--ease), transform 120ms var(--ease); }
+.ep-btn:active { transform: scale(.97); }
+.ep-btn--ink { background: var(--blk); color: var(--sun); }
+@media (hover: hover) and (pointer: fine) { .ep-btn:hover { background: var(--blk); color: var(--sun); } .ep-btn--ink:hover { background: var(--paper); color: var(--blk); } }
+.ep-btn:focus-visible { outline: 0; background: var(--blk); color: var(--sun); box-shadow: inset 0 -4px 0 var(--sun); }
+/* secundario: texto negro con subrayado de dientes de totopo */
+.ep-link { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-bottom: 9px; font: 700 14px/1.2 var(--f-body); letter-spacing: .02em; color: inherit; cursor: pointer; }
+.ep-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 3px; height: 6px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 6'%3E%3Cpath d='M0 0H6L3 5.2ZM6 0H12L9 5.2ZM12 0H18L15 5.2Z' fill='%23000'/%3E%3C/svg%3E") repeat-x 0 0 / 18px 6px; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 6'%3E%3Cpath d='M0 0H6L3 5.2ZM6 0H12L9 5.2ZM12 0H18L15 5.2Z' fill='%23000'/%3E%3C/svg%3E") repeat-x 0 0 / 18px 6px; }
+.ep-link svg { width: 18px; height: 18px; flex: none; transition: transform 160ms var(--ease); }
+@media (hover: hover) and (pointer: fine) { .ep-link:hover svg { transform: translateX(4px); } }
+/* WhatsApp: recto (radio 4), para no confundirlo con los de navegar */
+.ep-wa { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 4px; background: var(--wa); color: var(--wa-ink); font: 700 16px/1 var(--f-body); box-shadow: 0 3px 0 rgba(11,61,31,.55); text-align: center; transition: transform 120ms var(--ease), background-color 160ms var(--ease); }
+.ep-wa svg { width: 22px; height: 22px; flex: none; }
+.ep-wa:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(11,61,31,.55); }
+@media (hover: hover) and (pointer: fine) { .ep-wa:hover { background: #1ebe5b; } }
+
+/* ---------- Header: LA FICHA DE PRECIO ---------- */
+.ep-header { position: fixed; left: 0; right: 0; top: 0; z-index: 90; --hdr: 56px; height: var(--hdr); display: flex; align-items: center; gap: 8px; padding: 0 10px 0 12px; background: var(--red); border-bottom: 2px solid var(--blk); transition: height 220ms var(--ease); }
+.ep-header.is-compact { --hdr: 48px; }
+.ep-brand { display: flex; align-items: center; gap: 7px; min-height: 44px; flex: 0 1 auto; color: var(--paper-hi); }
+.ep-brand-logo { height: 44px; width: auto; transition: height 220ms var(--ease); filter: drop-shadow(0 1px 0 rgba(17,17,17,.5)); }
+.ep-header.is-compact .ep-brand-logo { height: 38px; }
+.ep-brand-name { font: 900 21px/1 var(--f-title); letter-spacing: .01em; white-space: nowrap; }
+.ep-brand-name .ep-long { display: none; }
+.ep-hsp { flex: 1 1 0; min-width: 0; }
+.ep-ficha { flex: none; display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px 0 22px; background: var(--paper); color: var(--blk); clip-path: polygon(14px 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 14px 100%, 0 50%); transition: background-color 160ms var(--ease); }
+.ep-ficha-t { display: flex; flex-direction: column; font: 700 10.5px/1.15 var(--f-body); letter-spacing: .08em; text-transform: uppercase; }
+.ep-ficha-t small { font-size: 10.5px; font-weight: 500; opacity: .85; }
+.ep-ficha-t .ep-long { display: none; }
+.ep-ficha-p { font: 900 27px/1 var(--f-title); color: var(--red); font-variant-numeric: tabular-nums; }
+@media (hover: hover) and (pointer: fine) { .ep-ficha:hover { background: var(--sun); } }
+.ep-ficha:focus-visible { outline: 0; background: var(--sun); }
+.ep-burger { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; width: 46px; height: 46px; color: var(--paper-hi); }
+.ep-burger-ic { display: grid; gap: 4px; width: 22px; }
+.ep-burger-ic i { display: block; height: 3px; background: currentColor; border-radius: 1px; transition: transform 200ms var(--ease), opacity 160ms; }
+.ep-burger-lbl { font: 700 10px/1 var(--f-body); letter-spacing: .1em; text-transform: uppercase; }
+body.ep-menu-open .ep-burger-ic i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+body.ep-menu-open .ep-burger-ic i:nth-child(2) { opacity: 0; }
+body.ep-menu-open .ep-burger-ic i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.ep-burger:focus-visible { outline-color: var(--paper-hi); }
+@media (min-width: 640px) {
+  .ep-brand-name .ep-long { display: inline; } .ep-brand-name .ep-short { display: none; }
+  .ep-ficha-t .ep-long { display: inline; } .ep-ficha-t .ep-short { display: none; }
+  .ep-header { padding: 0 var(--g); gap: 14px; }
+  .ep-brand-name { font-size: 25px; }
+}
+@media (max-width: 380px) { .ep-brand-name { font-size: 19px; } .ep-ficha { padding-left: 20px; gap: 6px; } .ep-ficha-p { font-size: 25px; } }
+
+/* menú a pantalla completa */
+.ep-menu { position: fixed; inset: 0; z-index: 80; background: var(--blk); color: var(--paper-hi); display: none; overflow-y: auto; padding: calc(var(--hh) + 22px) var(--g) 28px; }
+body.ep-menu-open .ep-menu { display: block; }
+.ep-menu-in { max-width: 560px; margin-inline: auto; }
+.ep-menu nav a { display: flex; align-items: center; min-height: 52px; font: 900 clamp(34px, 9.5vw, 46px)/1 var(--f-title); color: var(--paper-hi); }
+.ep-menu nav a:hover, .ep-menu nav a:focus-visible { color: var(--sun); outline: 0; }
+.ep-menu nav .ep-teeth { height: 14px; background-size: auto; -webkit-mask-size: 17px 14px; mask-size: 17px 14px; margin: 4px 0; color: rgba(255,248,225,.28); }
+.ep-menu-foot { margin-top: 26px; display: grid; gap: 14px; }
+.ep-menu-foot .ep-wa { width: 100%; }
+.ep-menu-foot .ep-btn { width: 100%; }
+.ep-menu-foot p { font-size: 14px; color: rgba(255,248,225,.8); }
+
+/* ---------- Secciones ---------- */
+.ep-sec { position: relative; padding-block: var(--sy); }
+main { padding-top: var(--hh); }
+
+/* ---------- Footer ---------- */
+.ep-foot { background: var(--blk); color: var(--paper-hi); padding: 26px 0 24px; }
+.ep-foot-grid { display: grid; gap: 14px; }
+.ep-foot-brand { display: flex; align-items: center; gap: 18px; }
+.ep-foot-brand img { width: 104px; height: auto; flex: none; }
+.ep-foot-brand p { font: 900 26px/1 var(--f-title); }
+.ep-foot-brand p small { display: block; margin-top: 8px; font: 500 14px/1.4 var(--f-body); color: rgba(255,248,225,.8); }
+.ep-foot-col { display: grid; gap: 4px; align-content: start; font-size: 15px; }
+.ep-foot-col a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; }
+.ep-foot-col a:hover { color: var(--sun); }
+.ep-soc { width: 44px; height: 44px; flex: none; display: grid; place-items: center; background: var(--paper); color: var(--blk); clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 0 100%); transition: background-color 160ms var(--ease); }
+a:hover .ep-soc { background: var(--sun); }
+.ep-soc svg { width: 24px; height: 24px; }
+.ep-foot-credit { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,248,225,.2); font-size: 13px; color: rgba(255,248,225,.78); }
+.ep-foot-col { grid-auto-flow: column; justify-content: start; align-items: center; gap: 22px; }
+.ep-foot-soc { display: flex; gap: 10px; }
+.ep-foot-tel { font: 700 18px/1 var(--f-body); }
+@media (min-width: 700px) { .ep-foot-grid { grid-template-columns: 1.4fr 1fr; align-items: center; } }
+
+/* WhatsApp flotante */
+.ep-fab { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 70; width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; background: var(--wa); color: var(--wa-ink); border: 2px solid var(--blk); box-shadow: 0 4px 0 var(--blk); }
+.ep-fab svg { width: 30px; height: 30px; }
+body.ep-wa-off .ep-fab { visibility: hidden; animation: none; }
+@media (prefers-reduced-motion: no-preference) { .ep-fab { transition: transform 120ms var(--ease); } .ep-fab:active { transform: translateY(2px); } }

@@ -1,0 +1,29 @@
+/* 30-salsas: LA ESCALA DEL CHILE. Tres perillas corren sobre la escala dibujada en su menú. */
+.ep-salsas { background: var(--pink); color: var(--paper-hi); --p: 1; }
+.ep-salsas .ep-title { margin-bottom: 18px; }
+.ep-salsas-grid { display: grid; gap: 30px; }
+.ep-salsas-rows { display: grid; gap: 22px; }
+.ep-salsa { --k: calc(var(--to) * var(--p)); }
+.ep-salsa-foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0 14px; margin-top: 4px; }
+.ep-salsa-name { font: 900 clamp(46px, 14.4vw, 64px)/.9 var(--f-title); text-transform: uppercase; color: var(--paper-hi); letter-spacing: .005em; }
+.ep-anotar { color: var(--paper-hi); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; flex: none; }
+.ep-anotar.is-on { color: var(--sun-hi); }
+.ep-scale { position: relative; height: 36px; margin-top: 10px; }
+.ep-scale::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 16px; margin-top: -8px; background: rgba(255,248,225,.38); border: 2px solid var(--blk); border-radius: 8px; }
+.ep-scale-fill { position: absolute; left: 0; right: 0; top: 50%; height: 16px; margin-top: -8px; border-radius: 8px; border: 2px solid var(--blk); }
+.ep-scale-fill--green { background: var(--chile); }
+.ep-scale-fill--hot { background: linear-gradient(90deg, var(--chile) 0%, #C7B326 38%, var(--sun) 58%, var(--red) 88%); clip-path: inset(-2px calc(100% - (18px + (100% - 36px) * var(--k))) -2px -2px); }
+.ep-knob { position: absolute; top: 0; left: calc((100% - 36px) * var(--k)); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: var(--paper-hi); border: 2.5px solid var(--blk); box-shadow: 0 2px 0 var(--blk); }
+.ep-knob svg { width: 20px; height: 20px; }
+.ep-salsa-note { margin: 4px 0 0; font: 500 15px/1.35 var(--f-body); }
+.ep-salsa-quote { margin-top: 6px; font: 400 14px/1.4 var(--f-body); color: var(--paper-hi); }
+.ep-salsa-quote small { display: block; margin-top: 2px; font-size: 12.5px; opacity: .92; }
+.ep-salsas-pic { width: min(calc(100% - 22px), 440px); margin: 6px 14px 6px 6px; justify-self: start; }
+.ep-salsas-pic img { aspect-ratio: 1.8; }
+@media (min-width: 700px) {
+  .ep-salsas-grid { grid-template-columns: minmax(0, 1fr) 440px; gap: 64px; align-items: center; }
+  .ep-salsa-name { font-size: clamp(64px, 6.4vw, 104px); }
+  .ep-salsas-rows { gap: 26px; }
+  .ep-salsas-grid { align-items: start; }
+  .ep-salsas-pic { margin: 14px 14px 0 6px; position: sticky; top: calc(var(--hh) + 40px); }
+}

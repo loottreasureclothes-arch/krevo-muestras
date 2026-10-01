@@ -1,0 +1,27 @@
+/* 10-hero: cartel. Título (el más grande de la página) + plato sobre su mantel + precio. */
+.ep-hero { padding-block: 16px 0; overflow-x: clip; }
+.ep-hero-grid { display: grid; gap: 14px; align-items: start; }
+.ep-hero-h { margin-bottom: 2px; }
+.ep-hero-pic { margin: 6px 14px 8px 6px; }
+.ep-hero-pic img { aspect-ratio: 1.22; object-position: 50% 45%; display: block; }
+.ep-hero-lead { font: 500 clamp(17px, 4.6vw, 20px)/1.35 var(--f-body); max-width: 30ch; }
+.ep-hero-lead b { font-weight: 700; }
+.ep-hero-rate { display: flex; align-items: center; gap: 8px; font: 500 15px/1.2 var(--f-body); }
+.ep-hero-rate svg { width: 22px; height: 22px; color: var(--red); flex: none; }
+.ep-hero-rate b { font-weight: 700; }
+.ep-hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; margin-top: 4px; }
+.ep-hero-cta .ep-hand { font-size: clamp(17px, 4.9vw, 22px); white-space: nowrap; padding-right: 2px; }
+.ep-hero-cta .ep-hand svg { width: 16px; height: 16px; }
+.ep-hero-teeth { margin-top: 26px; }
+@media (min-width: 700px) {
+  .ep-hero { padding-block: 40px 0; }
+  .ep-hero-grid { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); grid-template-areas: "h pic" "lead pic" "rate pic" "cta pic"; column-gap: 56px; row-gap: 14px; align-content: center; min-height: min(calc(100svh - var(--hh) - 130px), 720px); }
+  .ep-hero-h { grid-area: h; align-self: end; }
+  .ep-hero-pic { grid-area: pic; align-self: center; margin: 0 14px 0 6px; }
+  .ep-hero-pic img { aspect-ratio: 1.05; }
+  .ep-hero-lead { grid-area: lead; }
+  .ep-hero-rate { grid-area: rate; }
+  .ep-hero-cta { grid-area: cta; }
+  .ep-hero-teeth { margin-top: 34px; }
+}
+@media (min-width: 700px) and (max-width: 1019px) { .ep-hero-grid { min-height: 0; } }

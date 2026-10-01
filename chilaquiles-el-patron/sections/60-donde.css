@@ -1,0 +1,52 @@
+/* 60-donde: negro del mural. Dirección, horario, mapa, la nota ya llena, lo pendiente y el mural de remate. */
+.ep-donde { background: var(--blk); color: var(--paper-hi); padding-bottom: 0; }
+.ep-donde .ep-title--addr { font-size: clamp(30px, 10.4vw, 40px); }
+@media (min-width: 720px) { .ep-donde .ep-title--addr { font-size: clamp(48px, 5vw, 80px); } }
+.ep-donde .ep-title--md { font-size: clamp(36px, 11vw, 48px); color: var(--paper-hi); }
+.ep-donde .ep-title--md .ep-red { color: var(--sun); }
+.ep-donde .ep-title { margin-bottom: 18px; }
+.ep-donde .ep-title--addr { font-size: clamp(30px, 10.4vw, 40px); }
+@media (min-width: 720px) { .ep-donde .ep-title--addr { font-size: clamp(48px, 5vw, 80px); } }
+.ep-donde .ep-title--md { margin-bottom: 8px; }
+.ep-donde-grid { display: grid; gap: 22px; }
+.ep-addr { font: 500 17px/1.4 var(--f-body); font-style: normal; }
+.ep-addr span { display: block; margin-top: 2px; font-size: 14px; opacity: .9; }
+.ep-hours { margin-top: 14px; display: grid; gap: 0; border-top: 1px solid rgba(255,248,225,.28); }
+.ep-hours li { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 9px 0; border-bottom: 1px solid rgba(255,248,225,.28); font: 400 15px/1.3 var(--f-body); }
+.ep-hours b { font-weight: 700; white-space: nowrap; color: var(--sun); }
+.ep-hours .ep-off span { text-decoration: line-through; text-decoration-thickness: 2px; color: #FF6FA5; }
+.ep-hours .ep-off b { color: #FF6FA5; }
+.ep-donde-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.ep-offers { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 3px 16px; font: 400 14.5px/1.35 var(--f-body); }
+.ep-offers li { position: relative; padding-left: 22px; }
+.ep-offers li::before { content: ""; position: absolute; left: 0; top: .42em; width: 12px; height: 10px; background: var(--sun); clip-path: polygon(0 0, 100% 0, 50% 100%); border-radius: 2px; }
+.ep-map { width: 100%; aspect-ratio: 1.85; max-height: 360px; background: #2a2a2a; border: 3px solid var(--paper-hi); }
+.ep-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+.ep-resumen { margin-top: 26px; padding: 18px 18px 20px; background: var(--pink); color: var(--paper-hi); display: grid; gap: 10px; justify-items: start; border-radius: 30px 40px 28px 44px / 40px 28px 44px 30px; }
+.ep-resumen .ep-title { color: var(--paper-hi); }
+.ep-resumen .ep-title .ep-red { color: var(--sun-hi); }
+.ep-res-p { font: 500 16px/1.4 var(--f-body); }
+.ep-res-p b { font-weight: 700; }
+.ep-resumen .ep-link { color: var(--paper-hi); }
+.ep-resumen .ep-wa { width: 100%; max-width: 360px; margin-top: 6px; }
+.ep-listo { margin-top: 22px; padding: 16px 20px 16px 18px; background: var(--paper); color: var(--blk); }
+.ep-listo-h { font: 900 28px/1 var(--f-title); }
+.ep-listo-p { margin-top: 8px; font: 500 15px/1.4 var(--f-body); }
+.ep-listo-l { margin-top: 8px; display: grid; gap: 0; font: 400 13.5px/1.2 var(--f-body); }
+.ep-listo-l li { position: relative; padding: 3px 0 3px 24px; border-bottom: 1px dotted rgba(17,17,17,.35); }
+.ep-listo-l li::before { content: ""; position: absolute; left: 0; top: 7px; width: 13px; height: 13px; border: 2px solid var(--blk); }
+.ep-mural { margin: 28px 0 0; position: relative; }
+.ep-mural img { width: 100%; height: auto; aspect-ratio: 1.6; object-fit: cover; object-position: 50% 40%; display: block; }
+.ep-mural-cap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 22px; padding-block: 14px 20px; }
+.ep-hash { font-size: clamp(26px, 8vw, 34px); color: var(--sun); line-height: 1.1; }
+.ep-soc-row { display: flex; flex-wrap: wrap; gap: 2px 18px; }
+.ep-soc-row a { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; font: 500 14px/1.2 var(--f-body); }
+.ep-soc-row a:hover { color: var(--sun); }
+@media (min-width: 700px) {
+  .ep-donde-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 56px; align-items: start; }
+  .ep-resumen { grid-template-columns: 1fr auto; grid-template-areas: "t w" "p w"; align-items: center; column-gap: 40px; padding: 28px 40px; }
+  .ep-resumen .ep-title { grid-area: t; } .ep-res-p { grid-area: p; } .ep-resumen .ep-wa { grid-area: w; width: 320px; margin: 0; }
+  .ep-listo { padding: 24px 32px; } .ep-listo-l { grid-template-columns: 1fr 1fr; column-gap: 36px; }
+  .ep-mural { width: 70%; margin-inline: auto; }
+  .ep-mural img { aspect-ratio: 1.5; }
+}

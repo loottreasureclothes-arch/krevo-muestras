@@ -1,0 +1,68 @@
+<section class="ep-sec ep-cuanto" id="cuanto" aria-labelledby="ep-h-cuanto">
+  <div class="ep-wrap">
+    <h2 class="ep-title ep-title--lg" id="ep-h-cuanto" data-words><span class="ep-ln">¿Cuánto traes?</span><span class="ep-ln ep-red">Esto te alcanza.</span></h2>
+    <div class="ep-panel" data-reveal>
+      <div class="ep-panel-top">
+        <figure class="ep-pic" id="ep-pic">
+          <img class="ep-pic-img is-on" data-fam="verde" src="img/c-verde-720.webp" srcset="img/c-verde-360.webp 360w, img/c-verde-720.webp 720w" sizes="340px" width="720" height="936" alt="Chilaquiles verdes con huevo, frijol, queso y crema en plato blanco" data-cap="Verdes con huevo">
+          <img class="ep-pic-img" data-fam="rojo" src="img/c-rojo-720.webp" srcset="img/c-rojo-360.webp 360w, img/c-rojo-720.webp 720w" sizes="340px" width="720" height="1280" alt="Chilaquiles rojos con crema y queso sobre frijol, con dos salsas de la mesa" data-cap="Chilaquiles rojos">
+          <img class="ep-pic-img" data-fam="ench" src="img/c-enchiladas-720.webp" srcset="img/c-enchiladas-360.webp 360w, img/c-enchiladas-720.webp 720w" sizes="340px" width="720" height="600" alt="Plato de la carta con enchiladas rojas, huevo a la mexicana y frijol" data-cap="Plato de la carta">
+          <img class="ep-pic-img" data-fam="huevos" src="img/c-huevos-720.webp" srcset="img/c-huevos-360.webp 360w, img/c-huevos-720.webp 720w" sizes="340px" width="720" height="400" alt="Dos huevos estrellados con molletes de frijol y chorizo, y un pocillo de pico de gallo" data-cap="Huevos con frijol">
+          <figcaption class="ep-label" id="ep-pic-cap">Verdes con huevo</figcaption>
+        </figure>
+        <div class="ep-ctl">
+          <div class="ep-amount">
+            <label class="ep-lbl" for="ep-budget">Traigo</label>
+            <div class="ep-money"><output id="ep-amount" for="ep-budget" class="ep-num">$100</output><span>pesos, sin IVA</span></div>
+          </div>
+          <div class="ep-slider" id="ep-slider">
+            <span class="ep-track" aria-hidden="true"><span class="ep-fill" id="ep-fill"></span></span>
+            <input id="ep-budget" type="range" min="60" max="150" step="10" value="100" aria-valuetext="100 pesos">
+            <span class="ep-coin" id="ep-coin" aria-hidden="true">$</span>
+          </div>
+          <div class="ep-ends" aria-hidden="true"><span class="ep-num">$60</span><span class="ep-num">$150</span></div>
+          <h3 class="ep-sub">Te alcanza para</h3>
+          <ol class="ep-cards" id="ep-cards" aria-live="polite"></ol>
+          <ul class="ep-static ep-table" aria-label="Combos de su carta con precio">
+            <li><b>Media orden Sencillos</b><span>1/2 Chilaquiles Sencillos $53</span><i class="ep-num">$53</i></li>
+            <li><b>Media orden Patrón</b><span>1/2 Chilaquiles Patrón $56</span><i class="ep-num">$56</i></li>
+            <li><b>Orden Sencillos con huevo</b><span>Sencillos $66 + 1 pz de huevo $13</span><i class="ep-num">$79</i></li>
+            <li><b>Media Sencillos con jugo</b><span>1/2 Sencillos $53 + jugo natural $29</span><i class="ep-num">$82</i></li>
+            <li><b>Media Patrón con agua</b><span>1/2 Patrón $56 + agua de sabor $29</span><i class="ep-num">$85</i></li>
+            <li><b>Orden Sencillos con bistec</b><span>Sencillos $66 + bistec $27</span><i class="ep-num">$93</i></li>
+            <li><b>Orden Patrón con jugo</b><span>Patrón $75 + jugo natural $29</span><i class="ep-num">$104</i></li>
+            <li><b>Enchiladas con jugo</b><span>Enchiladas, orden (4 pzas) $84 + jugo natural $29</span><i class="ep-num">$113</i></li>
+            <li><b>Huevos revueltos con chilaquiles</b><span>Revueltos con porción de chilaquiles $97 + jugo natural $29</span><i class="ep-num">$126</i></li>
+            <li><b>Patrón con bistec y choco</b><span>Patrón $75 + bistec $27 + choco $39</span><i class="ep-num">$141</i></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ep-opts" id="ep-opts">
+        <fieldset class="ep-fs"><legend>Salsa</legend>
+          <div class="ep-chips">
+            <label class="ep-chip"><input type="radio" name="ep-salsa" value="Verde"><span>Verde</span></label>
+            <label class="ep-chip"><input type="radio" name="ep-salsa" value="Roja"><span>Roja</span></label>
+            <label class="ep-chip"><input type="radio" name="ep-salsa" value="Molcajete"><span>Molcajete</span></label>
+            <label class="ep-chip"><input type="radio" name="ep-salsa" value="Sin salsa"><span>Sin salsa</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="ep-fs"><legend>¿Cómo lo quieres? <small>A domicilio, con costo extra</small></legend>
+          <div class="ep-chips">
+            <label class="ep-chip"><input type="radio" name="ep-modo" value="aqui"><span>Aquí</span></label>
+            <label class="ep-chip"><input type="radio" name="ep-modo" value="paso"><span>Paso por él</span></label>
+            <label class="ep-chip"><input type="radio" name="ep-modo" value="dom"><span>A domicilio</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="ep-fs"><legend>Café de olla <small>precio por confirmar</small></legend>
+          <div class="ep-chips"><label class="ep-chip"><input type="checkbox" id="ep-cafe"><span>+ Café de olla con refil</span></label></div>
+        </fieldset>
+        <div class="ep-fs ep-fs--name"><label class="ep-lbl" for="ep-nombre">Tu nombre (opcional)</label><input id="ep-nombre" type="text" maxlength="40" autocomplete="given-name" placeholder="Ana"></div>
+      </div>
+      <div class="ep-out">
+        <p class="ep-note" id="ep-note" aria-live="polite">Mueve la moneda y elige una.</p>
+        <a class="ep-wa" id="ep-send" data-hide-wa href="https://wa.me/524492644264?text=Hola%20Chilaquiles%20El%20Patr%C3%B3n%2C%20quiero%20preguntar%20por%20el%20men%C3%BA." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir por WhatsApp</a>
+      </div>
+      <p class="ep-fine">Precios de su menú impreso, sin IVA. Te confirmamos el vigente por WhatsApp.</p>
+    </div>
+  </div>
+</section>
