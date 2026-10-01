@@ -1,0 +1,143 @@
+/* Manu Ruiz · Hair & Style. Base: tokens, tipografia, botones, mechon (la unidad visual), header, menu, pie, flotante. */
+:root{
+  --crema:#F4EDE3; --lino:#E9DFD1; --papel:#FBF7F0; --esp:#2A1B14; --cast:#4A2C1F;
+  --miel:#C59A5E; --cob:#9A4A2F; --soft:#5B463A; --wa:#25D366; --wa-ink:#0B3D1F;
+  --ease:cubic-bezier(.23,1,.32,1);
+  --hdr:58px; --gut:16px; --pad:44px;
+  --serif:"Instrument Serif","Iowan Old Style","Georgia",serif;
+  --sans:"Albert Sans","Helvetica Neue",Arial,sans-serif;
+  --h1:clamp(40px,15.8vw,66px);
+  --h2:clamp(36px,10.2vw,58px);
+}
+@media (min-width:760px){:root{--hdr:62px;--gut:32px;--h1:clamp(60px,8.1vw,122px);--h2:clamp(46px,5.4vw,78px)}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;scroll-behavior:auto!important}
+body{margin:0;background:var(--crema);color:var(--esp);font:400 16.5px/1.55 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+h1,h2,h3,p,figure,ul,address{margin:0;padding:0}
+ul{list-style:none}
+address{font-style:normal}
+em{font-style:italic}
+:focus-visible{outline:2px solid var(--cob);outline-offset:3px}
+.mr-skip{position:fixed;left:8px;top:-60px;z-index:200;background:var(--cast);color:var(--crema);padding:12px 16px;font-weight:600}
+.mr-skip:focus{top:8px}
+.mr-wrap{width:100%;max-width:1280px;margin:0 auto;padding-inline:var(--gut)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- titulos a dos tonos (segunda linea en italica cobriza) ---------- */
+.mr-h1,.mr-h2,.mr-h3{font-family:var(--serif);font-weight:400;line-height:.98;letter-spacing:-.012em;color:var(--esp)}
+.mr-h1{font-size:var(--h1)}
+.mr-h2{font-size:var(--h2)}
+.mr-h1 em,.mr-h2 em,.mr-h3 em{color:var(--cob)}
+.ln{display:block}
+.mr-h1,.mr-h2,.mr-h3{text-wrap:balance}
+html.mr-js .ln[data-reveal]{clip-path:inset(-8% 100% -14% -2%);transition:clip-path 500ms var(--ease) calc(var(--l,0) * 90ms)}
+html.mr-js .ln[data-reveal].is-in{clip-path:inset(-8% -8% -14% -2%)}
+.mr-eyebrow{font:600 11.5px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+
+/* ---------- botones: castano para navegar, verde SOLO para WhatsApp ---------- */
+.mr-btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;background:var(--cast);color:var(--crema);border:0;border-radius:2px;font:600 12.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background-color 160ms,transform 160ms var(--ease)}
+.mr-btn:active{transform:scale(.97)}
+.mr-btn--sm{min-height:44px;padding:0 14px;font-size:11.5px}
+.mr-btn--block{display:flex;width:100%}
+.mr-btn--wa{background:var(--wa);color:var(--wa-ink);border:1px solid rgba(11,61,31,.3);box-shadow:0 2px 0 rgba(11,61,31,.35);min-height:52px}
+.mr-btn--wa svg{width:20px;height:20px;flex:none}
+.mr-lnk{display:inline-flex;align-items:center;min-height:44px;font:600 12.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--esp);background:linear-gradient(var(--miel),var(--miel)) left calc(50% + 13px)/100% 2px no-repeat;padding-bottom:0}
+.mr-lnk--lt{color:var(--crema)}
+@media (hover:hover) and (pointer:fine){.mr-btn:hover{background:var(--esp)}.mr-btn--wa:hover{background:#1fbd5a}.mr-lnk:hover{background-size:100% 4px}}
+.mr-ic{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1.5px solid currentColor;border-radius:2px;color:var(--cast);text-decoration:none;flex:none}
+.mr-ic svg{width:20px;height:20px}
+
+/* ---------- el mechon (unidad visual): grapa arriba, hebras pintadas raiz-medio-punta, puntas suaves ---------- */
+.mr-strand,.mr-tile{position:relative;display:block;flex:none;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mr-clip{position:absolute;left:0;right:0;top:0;height:10px;background:var(--esp);border-radius:1px;z-index:2}
+.mr-clip::before,.mr-clip::after{content:"";position:absolute;top:3px;width:4px;height:4px;border-radius:50%;background:var(--miel)}
+.mr-clip::before{left:18%}.mr-clip::after{right:18%}
+.mr-hair{position:absolute;left:3px;right:3px;top:8px;bottom:0;
+  background:
+    linear-gradient(90deg,transparent 0,rgba(255,255,255,.16) 34%,transparent 58%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.10) 0 1px,transparent 1px 3px,rgba(0,0,0,.07) 3px 4px,transparent 4px 7px),
+    linear-gradient(180deg,var(--r) 0%,var(--m) 52%,var(--t) 100%);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 320' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100V298Q95 322 87 303Q79 314 71 298Q62 324 51 305Q41 317 31 297Q21 322 12 304Q6 313 0 296Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 320' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100V298Q95 322 87 303Q79 314 71 298Q62 324 51 305Q41 317 31 297Q21 322 12 304Q6 313 0 296Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.mr-hebras{height:26px;background:url("img/hebras.svg") repeat-x left top/600px 26px}
+
+/* ---------- header: TU TONO ---------- */
+.mr-hdr{position:fixed;left:0;right:0;top:0;z-index:90;background:var(--crema);border-bottom:1px solid var(--miel);transition:transform 300ms var(--ease)}
+.mr-hdr-in{height:var(--hdr);display:flex;align-items:center;gap:8px;padding-inline:var(--gut);max-width:1440px;margin:0 auto;transition:height 260ms var(--ease)}
+.mr-hdr.is-compact .mr-hdr-in{height:48px}
+.mr-brand{display:flex;flex-direction:column;justify-content:center;text-decoration:none;margin-right:auto;line-height:1;min-height:44px}
+.mr-brand-n{font:400 23px/1 var(--serif);letter-spacing:-.01em}
+.mr-brand-s{font:600 8.5px/1 var(--sans);letter-spacing:.24em;margin-top:5px;color:var(--cast)}
+.mr-tono{display:flex;align-items:center;gap:7px;text-decoration:none;min-height:44px;padding:0 2px}
+.mr-mini{position:relative;display:block;width:14px;height:34px;flex:none;overflow:visible}
+.mr-mini-clip{position:absolute;left:0;right:0;top:0;height:4px;background:var(--esp);z-index:2;border-radius:1px}
+.mr-mini-base,.mr-mini-next{position:absolute;left:1px;right:1px;top:3px;bottom:0;
+  background:linear-gradient(180deg,var(--r,#4A2C1F) 0%,var(--m,#8E6A48) 52%,var(--t,#D9B27A) 100%);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 320' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100V298Q95 322 87 303Q79 314 71 298Q62 324 51 305Q41 317 31 297Q21 322 12 304Q6 313 0 296Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 320' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100V298Q95 322 87 303Q79 314 71 298Q62 324 51 305Q41 317 31 297Q21 322 12 304Q6 313 0 296Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.mr-mini-next{transform:scaleY(0);transform-origin:50% 0}
+.mr-mini-next.is-sweep{transform:scaleY(1);transition:transform 300ms var(--ease)}
+.mr-tono-t{display:flex;flex-direction:column;justify-content:center;line-height:1.1;max-width:72px}
+.mr-tono-t small{display:none;font:600 9px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-bottom:3px}
+.mr-tono-t b{font:500 11.5px/1.15 var(--sans);color:var(--esp);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mr-burger{width:44px;height:44px;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;background:none;border:0;cursor:pointer;margin-right:-8px;-webkit-tap-highlight-color:transparent}
+.mr-burger i{display:block;width:24px;height:2px;background:var(--esp);transition:transform 260ms var(--ease)}
+body.mr-menu-open .mr-burger i:first-child{transform:translateY(4.5px) rotate(45deg)}
+body.mr-menu-open .mr-burger i:last-child{transform:translateY(-4.5px) rotate(-45deg)}
+@media (min-width:760px){
+  .mr-hdr-in{gap:18px}
+  .mr-brand-n{font-size:27px}
+  .mr-tono{gap:10px;padding:0 8px}
+  .mr-tono-t{max-width:150px}
+  .mr-tono-t small{display:block}
+  .mr-tono-t b{font-size:13.5px;-webkit-line-clamp:1}
+}
+
+/* ---------- menu a pantalla completa ---------- */
+.mr-menu{position:fixed;inset:0;z-index:80;background:var(--crema);display:flex;flex-direction:column;justify-content:space-between;padding:calc(var(--hdr) + 28px) var(--gut) 28px;visibility:hidden;opacity:0;transition:opacity 260ms var(--ease),visibility 0s linear 260ms;overflow-y:auto}
+body.mr-menu-open .mr-menu{visibility:visible;opacity:1;transition-delay:0s}
+body.mr-menu-open{overflow:hidden}
+.mr-menu-nav{display:flex;flex-direction:column;align-items:flex-start;gap:2px;max-width:720px;width:100%;margin:0 auto}
+.mr-menu-nav>a:not(.mr-btn){font:400 clamp(42px,12vw,76px)/1.05 var(--serif);text-decoration:none;min-height:60px;display:flex;align-items:center;letter-spacing:-.01em}
+.mr-menu-nav>a:not(.mr-btn):active{color:var(--cob)}
+.mr-menu-nav .mr-btn{margin-top:22px}
+.mr-menu-foot{display:flex;align-items:center;gap:10px;max-width:720px;width:100%;margin:28px auto 0;font-size:13px;color:var(--soft)}
+.mr-menu-foot span{margin-left:8px}
+
+/* ---------- secciones ---------- */
+section{position:relative}
+.mr-sec{padding-block:var(--pad)}
+
+/* ---------- pie ---------- */
+.mr-foot{background:var(--lino);padding-top:0;position:relative}
+.mr-foot .mr-hebras{margin-bottom:34px}
+.mr-foot-grid{display:grid;gap:30px}
+.mr-foot-n{font:400 40px/1 var(--serif)}
+.mr-foot-s{font:600 11px/1 var(--sans);letter-spacing:.24em;margin-top:8px;color:var(--cast)}
+.mr-foot-at{margin-top:14px;font-size:15px;color:var(--soft)}
+.mr-foot-h{font:600 11.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:12px}
+.mr-foot address,.mr-foot-hr,.mr-foot-wa{font-size:15px;line-height:1.6}
+.mr-foot-hr{color:var(--soft);margin-top:10px}
+.mr-foot-wa a{font-weight:600;text-decoration:none;border-bottom:2px solid var(--miel);padding-block:12px 4px}
+.mr-foot-soc{display:flex;gap:10px;margin-top:14px}
+.mr-credit{font-size:13px;color:var(--soft);margin-top:30px;padding-bottom:26px;max-width:640px;margin-left:0}
+.mr-foot-strip{height:132px;position:relative;overflow:hidden;background:var(--cast)}
+.mr-foot-strip img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.mr-foot-strip::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(233,223,209,.0),rgba(42,27,20,.16))}
+@media (min-width:760px){
+  .mr-foot-grid{grid-template-columns:1.2fr 1fr 1fr;gap:48px}
+  .mr-foot-strip{height:190px}
+  .mr-foot-strip img{max-width:none}
+}
+
+/* ---------- WhatsApp flotante ---------- */
+.mr-wa{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:70;width:56px;height:56px;border-radius:50%;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(42,27,20,.3);animation:mr-wa-in 640ms var(--ease) 1s both;-webkit-tap-highlight-color:transparent}
+.mr-wa svg{width:30px;height:30px}
+.mr-wa:active{transform:scale(.94)}
+body.mr-menu-open .mr-wa{visibility:hidden;animation:none}
+body.mr-wa-off .mr-wa{visibility:hidden;opacity:0;animation:none}
+@keyframes mr-wa-in{from{opacity:0;transform:translateY(14px) scale(.9)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.mr-wa{animation:none}*{transition-duration:.01ms!important}}

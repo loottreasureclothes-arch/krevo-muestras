@@ -1,0 +1,33 @@
+.pc-cred { padding: var(--sec-y) 0; background: var(--band); position: relative; }
+.pc-cred-grid { display: grid; gap: 18px; }
+.pc-cred-who { display: grid; gap: 18px; }
+.pc-retrato { width: 216px; max-width: 264px; margin: 0; overflow: hidden; background: var(--paper); }
+.pc-retrato img { width: 100%; height: auto; aspect-ratio: 1 / 1.1; object-fit: cover; object-position: 50% 24%; }
+.pc-cita { font-weight: 300; font-size: 19px; line-height: 1.4; max-width: 34ch; padding-top: 14px; position: relative; }
+.pc-cita::before { content: ""; position: absolute; left: 0; top: 0; width: 120px; height: 1.5px; background: var(--salmon); }
+.pc-cita cite { display: block; margin-top: 8px; font-style: normal; font-weight: 500; font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute); }
+.pc-ren { display: grid; gap: 14px; }
+.pc-ren li { padding: 14px 16px 14px 18px; background: var(--paper); border-radius: 22px 4px 22px 4px; }
+.pc-ren li:nth-child(even) { border-radius: 4px 22px 4px 22px; }
+.pc-tag { font-weight: 500; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
+.pc-tag::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--salmon); margin-right: 9px; vertical-align: 1px; }
+.pc-tag b { display: block; margin-top: 4px; font-size: 30px; letter-spacing: 0.02em; font-weight: 500; line-height: 1.1; padding-left: 16px; }
+.pc-ren li p:last-child { margin-top: 6px; padding-left: 16px; font-size: 16px; color: var(--ink); }
+.pc-cred-list .pc-link { margin-top: 12px; }
+.pc-mini { margin-top: 8px; display: grid; gap: 6px; }
+.pc-mini li { font-size: 15px; padding-left: 16px; position: relative; }
+.pc-mini li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--salmon); }
+@media (min-width: 768px) {
+  .pc-cred-grid { grid-template-columns: 264px 1fr; gap: 20px 56px; align-items: start; }
+  .pc-cred-head { grid-column: 2; grid-row: 1; align-self: end; }
+  .pc-cred-who { grid-column: 1; grid-row: 1 / span 2; position: sticky; top: calc(var(--hh) + 24px); }
+  .pc-cred-list { grid-column: 2; grid-row: 2; }
+  .pc-retrato { width: 264px; }
+  .pc-ren li { padding: 18px 24px 18px 24px; }
+  .pc-tag b { font-size: 40px; }
+}
+@media (min-width: 1100px) {
+  .pc-cred-grid { grid-template-columns: 264px 1fr; }
+  .pc-ren { grid-template-columns: 1fr 1fr; }
+  .pc-ren li:nth-child(3) { grid-column: 1 / -1; }
+}

@@ -1,0 +1,42 @@
+/* Manu: retrato mediano + bio literal + lo que hace como lista tipografica con fotos reales. */
+.mr-manu{background:var(--crema);padding-block:var(--pad)}
+.mr-manu-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.mr-manu-head{margin-bottom:22px}
+.mr-manu-id{display:block}
+.mr-ret{position:relative}
+.mr-ret img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 24%;filter:saturate(.96)}
+.mr-bio{display:flex;flex-direction:column;gap:0;margin-top:14px}
+.mr-bio li{font:400 clamp(25px,7.2vw,34px)/1.12 var(--serif);padding:11px 0;border-top:1px solid var(--miel)}
+.mr-bio li:last-child{font-style:italic;color:var(--cob);border-bottom:1px solid var(--miel)}
+.mr-manu-soc{margin-top:24px;padding-top:2px}
+.mr-manu-dato{font-size:16.5px;line-height:1.4;max-width:30ch}
+.mr-manu-dato b{font:400 30px/1 var(--serif);letter-spacing:-.01em;color:var(--cast)}
+.mr-manu-links{margin-top:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.mr-manu-links .mr-lnk{margin-left:10px}
+.mr-hace{margin-top:34px}
+.mr-hace-list{margin-top:6px}
+.mr-srv{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-top:1px solid rgba(74,44,31,.22)}
+.mr-srv:last-child{border-bottom:1px solid rgba(74,44,31,.22)}
+.mr-srv-t{min-width:0;flex:1}
+.mr-h3{font-size:clamp(28px,7.6vw,38px);line-height:1}
+.mr-srv-t p{margin-top:8px;font-size:15px;line-height:1.45;color:var(--soft);max-width:38ch}
+.mr-srv-t .mr-srv-pie{font:600 11.5px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--cast)}
+.mr-srv-t .mr-srv-pie--q{font:italic 400 19px/1.25 var(--serif);letter-spacing:0;text-transform:none;color:var(--cob)}
+.mr-srv-t .mr-srv-q{font:italic 400 19px/1.3 var(--serif);color:var(--cast)}
+.mr-srv img{width:104px;height:138px;object-fit:cover;flex:none}
+.mr-precio{margin-top:16px;font-size:14.5px;color:var(--soft)}
+
+@media (min-width:760px){
+  .mr-manu-grid{grid-template-columns:minmax(0,clamp(260px,34vw,440px)) minmax(0,1fr);grid-template-areas:"id head" "id hace" "soc hace";column-gap:clamp(32px,8vw,128px);align-items:start;grid-template-rows:auto 1fr auto}
+  .mr-manu-head{grid-area:head;margin:6px 0 10px}
+  .mr-manu-id{grid-area:id;display:block;position:relative}
+  .mr-ret img{max-width:440px;aspect-ratio:5/6;object-position:50% 50%}
+  .mr-bio{margin-top:18px}
+  .mr-bio li{font-size:30px}
+  .mr-manu-soc{grid-area:soc;margin-top:26px}
+  .mr-hace{grid-area:hace;margin-top:30px}
+  .mr-srv{padding:24px 0;gap:30px}
+  .mr-h3{font-size:clamp(34px,3.2vw,46px)}
+  .mr-srv-t p{font-size:16px}
+  .mr-srv img{width:128px;height:171px}
+}

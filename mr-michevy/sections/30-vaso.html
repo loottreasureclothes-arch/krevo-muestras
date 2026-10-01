@@ -1,0 +1,93 @@
+<section class="vaso" id="vaso" aria-labelledby="vaso-h" data-hide-wa>
+  <i class="m-frostline" aria-hidden="true"></i>
+  <div class="vaso-grid m-wrap">
+    <h2 class="m-title vaso-h" id="vaso-h" data-words><span class="ln">Llena el vaso.</span><span class="ln ln--g">Cotiza tu fiesta.</span></h2>
+
+    <div class="vaso-stage" id="vaso-stage">
+      <svg class="glass" id="glass" viewBox="24 -34 192 474" role="img" aria-label="Vaso de michelada que se llena con cada dato que contestas" style="overflow:visible">
+        <defs>
+          <clipPath id="g-clip"><path d="M36 58 L204 58 L186 402 Q185 414 172 414 L68 414 Q55 414 54 402 Z"/></clipPath>
+          <clipPath id="g-logo"><circle cx="120" cy="246" r="44"/></clipPath>
+          <linearGradient id="g-liq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B8402A"/><stop offset=".45" stop-color="#8C2717"/><stop offset="1" stop-color="#561510"/></linearGradient>
+          <linearGradient id="g-shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+        </defs>
+        <ellipse cx="120" cy="58" rx="84" ry="11" fill="rgba(219,214,196,.05)" stroke="rgba(219,214,196,.35)" stroke-width="2"/>
+        <g clip-path="url(#g-clip)">
+          <rect x="0" y="40" width="240" height="390" fill="rgba(219,214,196,.06)"/>
+          <g class="liq" id="liq" style="--y:444">
+            <g class="wave wave-b"><path d="M-120 0 q30 -9 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 V420 H-120Z" fill="#C24A31" fill-opacity=".55"/></g>
+            <g class="wave wave-a"><path d="M-120 3 q30 8 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 V420 H-120Z" fill="url(#g-liq)"/></g>
+          </g>
+          <g id="ice"></g>
+        </g>
+        <path d="M36 58 L204 58 L186 402 Q185 414 172 414 L68 414 Q55 414 54 402 Z" fill="none" stroke="rgba(219,214,196,.6)" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M46 70 L60 70 L72 396 L66 396 Z" fill="url(#g-shine)"/>
+        <g class="straw" id="straw"><g class="straw-in"><g transform="rotate(13 150 60)"><rect x="143" y="-62" width="14" height="318" rx="3" fill="#A22A1E"/><path d="M143 -50 l14 -8 M143 -34 l14 -8 M143 -18 l14 -8 M143 -2 l14 -8 M143 14 l14 -8 M143 30 l14 -8" stroke="#C93A2C" stroke-width="3" fill="none" opacity=".8"/><rect x="143" y="-62" width="14" height="9" rx="3" fill="#DBD6C4"/></g></g></g>
+        <ellipse class="rim-frost" cx="120" cy="58" rx="84" ry="11" fill="none" stroke="#B3261E" stroke-width="6"/>
+        <ellipse cx="120" cy="58" rx="84" ry="11" fill="none" stroke="rgba(219,214,196,.75)" stroke-width="2"/>
+        <g id="frost"></g>
+        <circle cx="120" cy="246" r="46" fill="#C09D1A"/>
+        <image href="img/logo-256.webp" x="76" y="202" width="88" height="88" clip-path="url(#g-logo)"/>
+      </svg>
+
+      <dl class="resumen" id="resumen" aria-label="Resumen de tu evento">
+        <div><dt>Evento</dt><dd data-r="evento" data-ph="sin elegir" class="is-empty">sin elegir</dd></div>
+        <div><dt>Invitados</dt><dd data-r="invitados" data-ph="sin elegir" class="is-empty">sin elegir</dd></div>
+        <div><dt>Fecha</dt><dd data-r="fecha" data-ph="sin elegir" class="is-empty">sin elegir</dd></div>
+        <div><dt>Lugar</dt><dd data-r="lugar" data-ph="sin elegir" class="is-empty">sin elegir</dd></div>
+        <div><dt>Nombre</dt><dd data-r="nombre" data-ph="opcional" class="is-empty">opcional</dd></div>
+      </dl>
+    </div>
+
+    <form class="vaso-form" id="vaso-form" action="#" onsubmit="return false" novalidate>
+      <div class="step" data-step="evento" role="group" aria-labelledby="q-evento">
+        <div class="step-head"><span class="step-n" aria-hidden="true">1</span><span class="step-q" id="q-evento">¿Qué evento es?</span><button type="button" class="step-clear" hidden>Quitar</button></div>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="evento" value="boda"><span>Boda</span></label>
+          <label class="chip"><input type="radio" name="evento" value="XV años"><span>XV años</span></label>
+          <label class="chip"><input type="radio" name="evento" value="cumpleaños"><span>Cumpleaños</span></label>
+          <label class="chip"><input type="radio" name="evento" value="posada"><span>Posada</span></label>
+          <label class="chip"><input type="radio" name="evento" value="bautizo"><span>Bautizo</span></label>
+          <label class="chip"><input type="radio" name="evento" value="evento de empresa"><span>Empresa</span></label>
+          <label class="chip"><input type="radio" name="evento" value="otro"><span>Otro</span></label>
+        </div>
+        <input class="field field--otro" type="text" id="evento-otro" name="evento-otro" placeholder="¿Qué evento?" autocomplete="off" maxlength="40" hidden aria-label="¿Qué evento?">
+      </div>
+
+      <div class="step" data-step="invitados" role="group" aria-labelledby="q-inv">
+        <div class="step-head"><span class="step-n" aria-hidden="true">2</span><span class="step-q" id="q-inv">¿Cuántos invitados?</span><button type="button" class="step-clear" hidden>Quitar</button></div>
+        <div class="inv">
+          <p class="inv-num" aria-live="off"><b id="inv-num">120</b><span id="inv-lbl">mueve el deslizador</span></p>
+          <input class="range" type="range" id="inv" name="invitados" min="30" max="300" step="10" value="120" aria-label="Número de invitados, de 30 a 300">
+          <p class="inv-scale" aria-hidden="true"><span>30</span><span>300 o más</span></p>
+        </div>
+      </div>
+
+      <div class="step" data-step="fecha" role="group" aria-labelledby="q-fecha">
+        <div class="step-head"><span class="step-n" aria-hidden="true">3</span><span class="step-q" id="q-fecha">¿Qué día?</span><button type="button" class="step-clear" hidden>Quitar</button></div>
+        <input class="field" type="date" id="fecha" name="fecha" aria-label="Fecha del evento">
+      </div>
+
+      <div class="step" data-step="lugar" role="group" aria-labelledby="q-lugar">
+        <div class="step-head"><span class="step-n" aria-hidden="true">4</span><span class="step-q" id="q-lugar">¿Dónde?</span><button type="button" class="step-clear" hidden>Quitar</button></div>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="lugar" value="salón"><span>Salón</span></label>
+          <label class="chip"><input type="radio" name="lugar" value="jardín"><span>Jardín</span></label>
+          <label class="chip"><input type="radio" name="lugar" value="rancho"><span>Rancho</span></label>
+          <label class="chip"><input type="radio" name="lugar" value="casa"><span>Casa</span></label>
+          <label class="chip"><input type="radio" name="lugar" value="otro"><span>Otro</span></label>
+        </div>
+        <input class="field" type="text" id="colonia" name="colonia" placeholder="Colonia o municipio (opcional)" autocomplete="off" maxlength="50" aria-label="Colonia o municipio, opcional">
+      </div>
+
+      <div class="step" data-step="nombre">
+        <div class="step-head"><span class="step-n step-n--o" aria-hidden="true">+</span><label class="step-q" for="nombre">Tu nombre (opcional)</label></div>
+        <input class="field" type="text" id="nombre" name="nombre" placeholder="Cómo te llamas" autocomplete="given-name" maxlength="40">
+      </div>
+
+      <p class="vaso-status" id="vaso-status" role="status" aria-live="polite">Contesta lo que quieras: con cada dato el vaso se llena.</p>
+      <a class="m-btn m-btn--wa vaso-btn" id="vaso-wa" data-wa="Hola Mr. MICHEvy, quiero cotizar la barra de micheladas para un evento." data-wa-fn="vasoMsg" href="https://wa.me/524495520336?text=Hola%20Mr.%20MICHEvy%2C%20quiero%20cotizar%20la%20barra%20de%20micheladas%20para%20un%20evento." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar por WhatsApp</a>
+      <p class="vaso-nota">Tú traes la cerveza. Él pone la barra, el hielo, los vasos, los ingredientes y el servicio. <span class="m-hand">«puedes cotizar por tu presupuesto y necesidad»</span></p>
+    </form>
+  </div>
+</section>

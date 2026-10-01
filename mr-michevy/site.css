@@ -1,0 +1,157 @@
+/* Mr. MICHEvy · base: tokens, header "La frase del día", menú, botones, aro y escarchado, pie. */
+:root{
+  --ink:#140E0E; --band:#1E1614; --gold:#C09D1A; --chile:#B3261E; --cream:#DBD6C4; --cream-d:rgba(219,214,196,.74);
+  --wa:#25D366; --wa-ink:#0b3d1f;
+  --hbar:60px; --hfrase:26px; --gut:20px; --rad:3px;
+  --ease:cubic-bezier(.23,1,.32,1);
+  --f:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif; --hand:'Caveat','Bricolage Grotesque',cursive;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:auto!important;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--cream);font:400 17px/1.5 var(--f);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3,p,ul,dl,dd,figure{margin:0;padding:0}
+ul{list-style:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.m-skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--gold);color:var(--ink);padding:10px 14px;font-weight:700}
+.m-skip:focus{left:8px}
+.m-nowrap{white-space:nowrap}
+main{padding-top:calc(var(--hbar) + var(--hfrase))}
+.m-wrap{width:100%;max-width:1280px;margin-inline:auto;padding-inline:var(--gut)}
+
+/* ---------- títulos ---------- */
+.m-title{font-weight:800;font-stretch:85%;text-transform:uppercase;line-height:.92;letter-spacing:-.004em;text-wrap:balance;color:var(--cream)}
+.m-title .ln{display:block}
+.m-title .g,.m-title .ln--g{color:var(--gold)}
+.m-title .w{display:inline-block}
+.m-hand{font-family:var(--hand);font-weight:700;line-height:1.05;color:var(--cream)}
+.m-eyebrow{font-weight:700;font-stretch:85%;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+
+/* ---------- botones ---------- */
+.m-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border:0;border-radius:var(--rad);cursor:pointer;
+  font-weight:800;font-stretch:85%;font-size:16px;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;line-height:1;overflow:hidden;
+  transition:transform .18s var(--ease),filter .18s var(--ease)}
+.m-btn:active{transform:scale(.97)}
+.m-btn svg{width:20px;height:20px;flex:none}
+.m-btn--gold{background:var(--gold);color:#000}
+.m-btn--gold::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:url(img/escarchado-s.svg) repeat-x 0 0/200px 5px;pointer-events:none}
+.m-btn--line{background:transparent;color:var(--gold);box-shadow:inset 0 0 0 2px var(--gold)}
+.m-btn--wa{background:var(--wa);color:var(--wa-ink)}
+.m-btn--wa svg{width:22px;height:22px}
+.m-btn--sm{min-height:44px;padding:0 16px;font-size:14px}
+.m-btn--sm::before{height:4px}
+@media (hover:hover) and (pointer:fine){.m-btn:hover{filter:brightness(1.08)}}
+.m-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:800;font-stretch:85%;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:2px solid transparent}
+.m-link svg{width:18px;height:18px;transition:transform .2s var(--ease)}
+@media (hover:hover) and (pointer:fine){.m-link:hover svg{transform:translateX(4px)}}
+
+/* ---------- escarchado y aro ---------- */
+.m-frostline{display:block;height:14px;background:url(img/escarchado.svg) repeat-x 0 0/420px 14px}
+.m-frost{position:absolute;left:0;right:0;bottom:-14px;height:14px;background:url(img/escarchado.svg) repeat-x 0 0/420px 14px;pointer-events:none}
+.m-frostrim{position:relative}
+.m-frostrim::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;background:url(img/escarchado.svg) repeat-x 0 0/420px 14px;pointer-events:none}
+.m-aro{position:relative;display:grid;place-items:center;align-content:center;text-align:center;border:2px solid var(--gold);border-radius:50%;aspect-ratio:1;background:rgba(20,14,14,.72);color:var(--cream)}
+.m-aro::after{content:"";position:absolute;inset:5px;border:1px solid rgba(192,157,26,.45);border-radius:50%}
+.m-aro b{display:block;font-weight:800;font-stretch:85%;font-variant-numeric:tabular-nums;line-height:.9;color:var(--gold)}
+.m-aro span{display:block;font-weight:600;line-height:1.1;text-transform:uppercase;letter-spacing:.06em}
+
+/* marco de foto: una esquina mordida por un cuarto de aro dorado */
+.m-ph{position:relative}
+.m-ph-in{position:relative;overflow:hidden;background:var(--band)}
+.m-ph-in img{width:100%;height:100%;object-fit:cover}
+.m-ph--tr .m-ph-in{-webkit-mask:radial-gradient(circle 30px at 100% 0,transparent 29.5px,#000 30px);mask:radial-gradient(circle 30px at 100% 0,transparent 29.5px,#000 30px)}
+.m-ph--bl .m-ph-in{-webkit-mask:radial-gradient(circle 30px at 0 100%,transparent 29.5px,#000 30px);mask:radial-gradient(circle 30px at 0 100%,transparent 29.5px,#000 30px)}
+.m-ph--tl .m-ph-in{-webkit-mask:radial-gradient(circle 30px at 0 0,transparent 29.5px,#000 30px);mask:radial-gradient(circle 30px at 0 0,transparent 29.5px,#000 30px)}
+.m-ph--br .m-ph-in{-webkit-mask:radial-gradient(circle 30px at 100% 100%,transparent 29.5px,#000 30px);mask:radial-gradient(circle 30px at 100% 100%,transparent 29.5px,#000 30px)}
+.m-ring{position:absolute;width:64px;height:64px;border:2px solid var(--gold);border-radius:50%;pointer-events:none;z-index:2}
+.m-ph--tr .m-ring{top:-32px;right:-32px;clip-path:inset(50% 50% 0 0)}
+.m-ph--bl .m-ring{bottom:-32px;left:-32px;clip-path:inset(0 0 50% 50%)}
+.m-ph--tl .m-ring{top:-32px;left:-32px;clip-path:inset(50% 0 0 50%)}
+.m-ph--br .m-ring{bottom:-32px;right:-32px;clip-path:inset(0 50% 50% 0)}
+
+/* calcomanía redonda */
+.m-sticker{position:absolute;z-index:3;display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--cream);color:var(--ink);text-align:center;
+  font-weight:800;font-stretch:85%;font-size:11.5px;line-height:1.08;letter-spacing:.05em;text-transform:uppercase;transform:rotate(-8deg);box-shadow:0 3px 10px rgba(0,0,0,.45)}
+.m-sticker::before{content:"";position:absolute;inset:4px;border-radius:50%;border:1.5px solid rgba(20,14,14,.55)}
+.m-sticker span{display:block;padding:0 8px;position:relative}
+.m-js .m-sticker:not(.is-in){transform:rotate(-14deg) scale(.92);opacity:0}
+.m-js .m-sticker{transition:transform .5s var(--ease),opacity .3s}
+
+/* ---------- reveal ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .m-js [data-reveal]:not(.is-in){opacity:0;transform:translateY(14px)}
+  .m-js [data-reveal]{transition:opacity .42s var(--ease),transform .42s var(--ease)}
+  .m-js [data-words]:not(.m-split){visibility:hidden}
+  .m-js [data-words] .w{opacity:0;transform:translateY(14px);transition:opacity .42s var(--ease),transform .42s var(--ease);transition-delay:calc(var(--i,0) * 55ms)}
+  .m-js [data-words].is-in .w{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){.m-sticker{transition:none!important}}
+
+/* ---------- header: LA FRASE DEL DÍA ---------- */
+.m-header{position:fixed;left:0;right:0;top:0;z-index:90;background:var(--ink);transition:box-shadow .25s}
+.m-bar{display:grid;grid-template-columns:1fr auto;grid-template-areas:"brand actions" "frase frase";align-items:center;max-width:1400px;margin-inline:auto;padding:0 14px 0 var(--gut);
+  height:calc(var(--hbar) + var(--hfrase));transition:height .25s var(--ease)}
+.m-brand{grid-area:brand;display:flex;align-items:center;gap:10px;text-decoration:none;height:var(--hbar)}
+.m-logo{display:block;width:44px;height:44px;border-radius:50%;overflow:hidden;flex:none;transition:width .25s var(--ease),height .25s var(--ease)}
+.m-logo img{width:100%;height:100%}
+.m-word{font-weight:800;font-stretch:85%;font-size:21px;letter-spacing:.01em;line-height:1;white-space:nowrap}
+.m-word b{font-weight:800;color:var(--gold)}
+.m-frase{grid-area:frase;position:relative;height:var(--hfrase);overflow:hidden;font-family:var(--hand);font-weight:700;font-size:21px;line-height:var(--hfrase);color:var(--cream);transition:opacity .2s,height .25s var(--ease)}
+.m-frase span{position:absolute;left:0;top:0;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s}
+.m-frase span.is-on{opacity:1;visibility:visible;transition:opacity .3s,visibility 0s}
+.m-actions{grid-area:actions;display:flex;align-items:center;gap:6px;height:var(--hbar)}
+.m-burger{width:48px;height:48px;border:0;background:transparent;display:grid;place-content:center;gap:6px;cursor:pointer}
+.m-burger i{display:block;width:26px;height:3px;background:var(--cream);border-radius:2px;transition:transform .25s var(--ease),opacity .2s}
+.m-header.is-compact{--hbar:50px}
+.m-header.is-compact .m-logo{width:38px;height:38px}
+.m-header.is-compact .m-bar{height:var(--hbar)}
+.m-header.is-compact .m-frase{height:0;opacity:0}
+body.m-menu-open .m-burger i:nth-child(1){transform:translateY(9px) rotate(45deg)}
+body.m-menu-open .m-burger i:nth-child(2){opacity:0}
+body.m-menu-open .m-burger i:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+@media (min-width:760px){
+  :root{--hbar:64px;--hfrase:0px;--gut:32px}
+  .m-bar{grid-template-columns:auto 1fr auto;grid-template-areas:"brand frase actions";gap:24px;padding:0 24px 0 32px}
+  .m-frase{height:var(--hbar);line-height:var(--hbar);font-size:25px;text-align:center}
+  .m-frase span{text-align:center}
+  .m-header.is-compact{--hbar:54px}
+  .m-header.is-compact .m-frase{height:var(--hbar);opacity:1}
+  .m-word{font-size:23px}
+}
+
+/* ---------- menú a pantalla completa ---------- */
+.m-menu{position:fixed;inset:0;z-index:80;background:var(--ink);display:flex;align-items:center;padding:calc(var(--hbar) + var(--hfrase) + 20px) var(--gut) 40px;
+  visibility:hidden;opacity:0;transition:opacity .25s var(--ease),visibility 0s .25s}
+body.m-menu-open .m-menu{visibility:visible;opacity:1;transition:opacity .25s var(--ease)}
+body.m-menu-open{overflow:hidden}
+.m-menu-nav{display:grid;gap:4px;width:100%;max-width:560px;margin-inline:auto}
+.m-menu-nav a:not(.m-btn){display:block;padding:8px 0;font-weight:800;font-stretch:85%;font-size:clamp(44px,13vw,84px);line-height:1;text-transform:uppercase;text-decoration:none;color:var(--cream);border-bottom:1px solid rgba(192,157,26,.28)}
+.m-menu-nav a:not(.m-btn):active{color:var(--gold)}
+.m-menu-wa{margin-top:22px;justify-self:start;min-height:56px;font-size:17px}
+.m-menu-nav a{opacity:0;transform:translateY(12px);transition:opacity .35s var(--ease),transform .35s var(--ease)}
+body.m-menu-open .m-menu-nav a{opacity:1;transform:none}
+body.m-menu-open .m-menu-nav a:nth-child(2){transition-delay:.04s}body.m-menu-open .m-menu-nav a:nth-child(3){transition-delay:.08s}
+body.m-menu-open .m-menu-nav a:nth-child(4){transition-delay:.12s}body.m-menu-open .m-menu-nav a:nth-child(5){transition-delay:.16s}
+
+/* ---------- WhatsApp flotante ---------- */
+.m-wa{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:70;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.5);text-decoration:none}
+.m-wa svg{width:32px;height:32px}
+body.m-wa-off .m-wa{visibility:hidden;animation:none}
+body.m-menu-open .m-wa{visibility:hidden}
+
+/* ---------- pie ---------- */
+.m-foot{background:#000;color:var(--cream);padding-bottom:34px;position:relative}
+.m-foot-in{display:grid;justify-items:center;text-align:center;gap:14px;padding-top:42px}
+.m-foot-logo{display:block;width:120px;height:120px;border-radius:50%;box-shadow:0 0 0 3px #000,0 0 0 5px var(--gold)}
+.m-foot-logo img{width:100%;height:100%;border-radius:50%}
+.m-foot-frase{font-family:var(--hand);font-weight:700;font-size:clamp(28px,7.6vw,44px);line-height:1.05;max-width:16ch;margin-top:6px}
+.m-foot-line{font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--gold)}
+.m-foot-list{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 22px}
+.m-foot-list a{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;font-weight:600;font-size:16px}
+.m-foot-list svg{width:24px;height:24px;color:var(--gold)}
+.m-credit{font-size:13px;color:var(--cream-d);max-width:44ch;margin-top:6px}
+
+main>section{overflow-x:clip}

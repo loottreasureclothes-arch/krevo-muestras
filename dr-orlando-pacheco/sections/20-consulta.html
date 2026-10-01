@@ -1,0 +1,69 @@
+<section class="pc-consulta" id="consulta" data-hide-wa aria-labelledby="consulta-h">
+  <div class="pc-wrap">
+    <header class="pc-head" data-reveal>
+      <p class="pc-label">Consulta sin escribir</p>
+      <h2 id="consulta-h"><span>Dilo sin escribirlo.</span><span class="pc-t2">Toca tu motivo.</span></h2>
+    </header>
+
+    <form class="dm" id="dm" autocomplete="off" onsubmit="return false">
+      <p class="dm-cue" aria-hidden="true"><svg viewBox="0 0 70 54" width="70" height="54"><path d="M6 6 C 8 28, 30 24, 38 40 M26 38 L38 42 L40 29" fill="none" stroke="#C4785C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="pc-label">Toca tu motivo</span></p>
+
+      <div class="dm-leaves">
+        <fieldset class="dm-leaf leaf" data-group="a">
+          <legend class="dm-legend">Urología ginecológica</legend>
+          <div class="dm-chips">
+            <button type="button" class="dm-chip" aria-pressed="false" data-motivo="infecciones crónicas" data-pn="Primera visita de uroginecología" data-pm="$800">Infecciones crónicas</button>
+            <button type="button" class="dm-chip" aria-pressed="false" data-motivo="incontinencia urinaria" data-pn="Primera visita de uroginecología" data-pm="$800">Incontinencia urinaria</button>
+            <button type="button" class="dm-chip" aria-pressed="false" data-motivo="rehabilitación de piso pélvico" data-pn="Primera visita de uroginecología" data-pm="$800">Rehabilitación de piso pélvico</button>
+            <button type="button" class="dm-chip" aria-pressed="false" data-motivo="prolapsos de vejiga, recto y útero" data-pn="Primera visita de uroginecología" data-pm="$800">Prolapsos de vejiga, recto y útero</button>
+          </div>
+          <div class="dm-price" hidden aria-live="polite"></div>
+        </fieldset>
+
+        <fieldset class="dm-leaf dm-leaf--b leaf-r" data-group="b">
+          <legend class="dm-legend">Ginecología y obstetricia</legend>
+          <div class="dm-chips">
+            <button type="button" class="dm-chip" aria-pressed="false" data-motivo="control de embarazo" data-pn="Seguimiento del embarazo" data-pm="$500">Control de embarazo</button>
+            <button type="button" class="dm-chip" aria-pressed="false" data-motivo="ultrasonido del embarazo" data-pn="Ultrasonido transvaginal" data-pm="desde $500">Ultrasonido del embarazo</button>
+            <button type="button" class="dm-chip" aria-pressed="false" data-motivo="parto en agua" data-pn="Parto en agua" data-pm="">Parto en agua</button>
+            <button type="button" class="dm-chip" aria-pressed="false" data-motivo="cesárea" data-pn="Cesárea" data-pm="">Cesárea</button>
+            <button type="button" class="dm-chip" aria-pressed="false" data-motivo="histerectomía sin cicatriz" data-pn="Histerectomía sin cicatriz" data-pm="">Histerectomía sin cicatriz</button>
+            <button type="button" class="dm-chip" aria-pressed="false" data-motivo="Papanicolaou" data-pn="Prueba de Papanicolaou" data-pm="desde $350">Papanicolaou</button>
+          </div>
+          <div class="dm-price" hidden aria-live="polite"></div>
+        </fieldset>
+      </div>
+
+      <button type="button" class="dm-chip dm-chip--libre leaf" aria-pressed="false" data-libre="1">Prefiero decírselo en consulta</button>
+      <div class="dm-price dm-price--libre" hidden aria-live="polite"><p class="dm-price-line">No mandamos ningún motivo. Lo platicas con él en consulta.</p></div>
+
+      <p class="dm-notes">Precios publicados por él en Doctoralia para pacientes sin aseguradora. Confirma el vigente al agendar.<br>Solo pacientes privados: no acepta aseguradoras.</p>
+
+      <div class="dm-steps">
+        <fieldset class="dm-step">
+          <legend class="dm-legend">¿En cuál consultorio?</legend>
+          <div class="dm-opts">
+            <label class="dm-opt"><input type="radio" name="consultorio" value="Corporativo Médico del Valle"><span class="dm-opt-box"><img src="img/t-cmv.webp" alt="" width="192" height="192" loading="lazy"><span><b>Corporativo Médico del Valle</b><small>Veracruz 321</small></span></span></label>
+            <label class="dm-opt"><input type="radio" name="consultorio" value="Unidad Médica de Especialidades DNC"><span class="dm-opt-box"><img src="img/t-dnc.webp" alt="" width="192" height="192" loading="lazy"><span><b>Unidad Médica de Especialidades DNC</b><small>Fracc. Loretta</small></span></span></label>
+            <label class="dm-opt dm-opt--any"><input type="radio" name="consultorio" value="el que tenga cita antes"><span class="dm-opt-box"><span><b>El que tenga cita antes</b></span></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="dm-step">
+          <legend class="dm-legend">¿Cuándo?</legend>
+          <div class="dm-when">
+            <label class="dm-opt"><input type="radio" name="cuando" value="esta semana"><span class="dm-opt-box"><span><b>Esta semana</b></span></span></label>
+            <label class="dm-opt"><input type="radio" name="cuando" value="la próxima semana"><span class="dm-opt-box"><span><b>La próxima</b></span></span></label>
+            <label class="dm-opt"><input type="radio" name="cuando" value="es urgente"><span class="dm-opt-box"><span><b>Es urgente</b></span></span></label>
+          </div>
+        </fieldset>
+        <div class="dm-step dm-final">
+          <label class="dm-field"><span class="dm-legend">Tu nombre (opcional)</span><input type="text" name="nombre" maxlength="40" autocomplete="off" autocapitalize="words" placeholder="Como quieres que te llame"></label>
+          <label class="dm-check"><input type="checkbox" name="ingles"><span class="dm-check-box" aria-hidden="true"></span><span>Consultation in English</span></label>
+          <a class="pc-btn pc-btn--wa" data-wa-dm href="https://wa.me/524491070751?text=Hola%20Dr.%20Pacheco%2C%20quiero%20agendar%20una%20consulta." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir consulta por WhatsApp</a>
+          <p class="dm-preview" aria-live="polite"><span class="dm-preview-lbl">Tu mensaje</span><span class="dm-preview-txt" id="dm-preview">Hola Dr. Pacheco, quiero agendar una consulta.</span></p>
+          <p class="dm-privacy">Tu mensaje se abre en tu WhatsApp. Esta página no guarda nada.</p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

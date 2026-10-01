@@ -1,0 +1,26 @@
+.tienda { background: var(--cal); }
+.tienda-grid { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); }
+.ti-big { aspect-ratio: 1 / 1.08; }
+.ti-par { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 10px; align-items: stretch; }
+.ti-a { grid-row: 1 / span 2; }
+.ti-par .marco img { position: absolute; inset: 0; }
+.ti-a { min-height: 330px; } .ti-b { aspect-ratio: 754 / 668; } .ti-c { aspect-ratio: 750 / 1318; }
+.ti-par .placa { font-size: 9.5px; padding: 6px 8px 5px; letter-spacing: 0.06em; bottom: 10px; }
+.lona { background: var(--verde); color: var(--cal); padding: 26px 20px 22px; display: grid; gap: 10px; --e: 10px; }
+.lona-l { font: 900 clamp(22px, 6.4vw, 30px)/1.1 var(--f-d); letter-spacing: -0.01em; }
+.lona-r { font: 900 clamp(18px, 5vw, 24px)/1.1 var(--f-d); letter-spacing: 0.02em; color: var(--oro); }
+.lona-n { font-size: 12px; line-height: 1.5; color: rgba(251, 248, 241, 0.92); }
+@media (min-width: 820px) {
+  .ti-par .placa { font-size: 10.5px; }
+}
+@media (min-width: 820px) {
+  .tienda-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "tit tit" "big par" "lona lona"; gap: 28px 32px; }
+  .ti-tit { grid-area: tit; max-width: 16ch; }
+  .ti-big { grid-area: big; aspect-ratio: auto; min-height: 640px; }
+  .ti-par { grid-area: par; gap: 14px; grid-template-rows: 1fr 2fr; }
+  .ti-a { grid-row: 1 / span 2; min-height: 0; }
+  .lona { grid-area: lona; grid-template-columns: 1fr auto; align-items: end; padding: 34px 36px 30px; gap: 8px 40px; }
+  .lona-l { grid-column: 1; font-size: clamp(30px, 3.3vw, 46px); }
+  .lona-r { grid-column: 2; grid-row: 1; font-size: clamp(22px, 2vw, 30px); text-align: right; }
+  .lona-n { grid-column: 1 / -1; }
+}

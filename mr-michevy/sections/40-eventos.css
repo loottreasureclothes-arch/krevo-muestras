@@ -1,0 +1,35 @@
+/* 4 · Prueba real: lo que muestran sus videos, en renglones grandes. */
+.eventos{position:relative;padding:0 0 52px}
+.ev-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"title" "rows" "fotos" "dato";row-gap:20px;padding-top:36px}
+.ev-h{grid-area:title;font-size:clamp(36px,10.4vw,58px)}
+.ev-rows{grid-area:rows}
+.ev-rows li{padding:11px 0 10px;border-bottom:1px solid rgba(192,157,26,.3);font-weight:800;font-stretch:85%;font-size:clamp(25px,7.3vw,38px);line-height:1.02;text-transform:uppercase;color:var(--cream);text-wrap:balance}
+.ev-rows li:first-child{border-top:1px solid rgba(192,157,26,.3)}
+.ev-rows b{font-weight:800;color:var(--gold)}
+.ev-fotos{grid-area:fotos;display:grid;grid-template-columns:repeat(12,1fr);gap:10px;margin-top:8px}
+.ev-main{grid-column:1/-1}
+.ev-main .m-ph-in{aspect-ratio:4/5}
+.ev-st1{right:-6px;bottom:-14px;transform:rotate(-8deg)}
+.ev-b{position:relative;grid-column:1/8;margin-top:22px}
+.ev-b .m-ph-in{aspect-ratio:5/4}
+.ev-st2{left:-8px;top:-24px;width:92px;height:92px;font-size:9.5px}
+.ev-c{grid-column:8/13;align-self:end}
+.ev-c .m-ph-in{aspect-ratio:5/4}
+.ev-dato{grid-area:dato;display:flex;align-items:center;gap:18px;margin-top:6px}
+.ev-aro{width:124px;flex:none;padding:8px}
+.ev-aro b{font-size:30px}.ev-aro span{font-size:10px;margin-top:5px}
+.ev-tt{gap:10px}
+.ev-ttlogo{width:24px;height:24px}
+
+@media (min-width:760px){
+  .eventos{padding-bottom:84px}
+  .ev-grid{grid-template-columns:minmax(0,1fr) clamp(300px,42%,520px);grid-template-areas:"title fotos" "rows fotos" "dato fotos";column-gap:clamp(28px,5vw,80px);padding-top:60px;row-gap:26px;grid-template-rows:auto auto 1fr;align-items:start}
+  .ev-h{font-size:clamp(44px,5.4vw,84px)}
+  .ev-rows li{font-size:clamp(26px,2.9vw,46px);padding:13px 0 12px}
+  .ev-fotos{margin-top:0;grid-template-columns:repeat(12,1fr)}
+  .ev-main{grid-column:1/12}
+  .ev-st1{right:-14px;bottom:30px}
+  .ev-b{grid-column:1/8;margin-top:-52px;z-index:2}
+  .ev-c{grid-column:8/13}
+  .ev-dato{align-self:end}
+}

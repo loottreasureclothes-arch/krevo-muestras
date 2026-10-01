@@ -1,0 +1,31 @@
+.hero { position: relative; background: var(--noche); color: var(--cal); padding: var(--hh) 0 0; overflow: hidden; }
+.hero-in { display: block; }
+.hero-foto { position: relative; height: 64svh; min-height: 400px; max-height: 660px; background: var(--noche); clip-path: none; }
+.hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.hero-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(18, 38, 28, 0.05) 0%, rgba(18, 38, 28, 0.3) 32%, rgba(18, 38, 28, 0.86) 74%, var(--noche) 100%); }
+.hero-placa { display: none; }
+.hero-txt { position: relative; z-index: 2; margin-top: min(-32svh, -230px); padding: 0 var(--gut) 56px; }
+.hero-logo { display: none; }
+.hero-h1 { font: 900 clamp(50px, 14.6vw, 66px)/0.93 var(--f-d); letter-spacing: -0.03em; text-shadow: 0 2px 18px rgba(18, 38, 28, 0.55); }
+.hero-h1 .ac { color: var(--rosa); }
+.hero-sub { margin-top: 16px; max-width: 30ch; font: 600 17px/1.4 var(--f-d); color: rgba(251, 248, 241, 0.94); }
+.hero-dato { margin-top: 14px; font-size: 12.5px; line-height: 1.6; letter-spacing: 0.04em; text-transform: uppercase; color: var(--oro); }
+.hero-cta { margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; }
+.hero-greca { position: absolute; left: 0; right: 0; bottom: 0; height: 22px; background: var(--greca-c) repeat-x left center / 44px 22px; }
+@media (min-width: 820px) {
+  .hero { background: var(--cal); color: var(--noche); padding-top: var(--hh); }
+  .hero-in { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; max-width: 1380px; margin-inline: auto; padding: 36px var(--gut) 76px; min-height: min(86svh, 780px); }
+  .hero-foto { order: 2; height: min(74svh, 700px); max-height: none; min-height: 440px; --e: 16px; }
+  .hero-foto::after { display: none; }
+  .hero-foto img { object-position: 52% 42%; }
+  .hero-placa { display: block; bottom: 22px; }
+  .hero-txt { order: 1; margin-top: 0; padding: 0; }
+  .hero-logo { display: block; width: 160px; height: auto; margin-bottom: 26px; --e: 8px; clip-path: polygon(0 0, calc(100% - 16px) 0, calc(100% - 16px) 8px, calc(100% - 8px) 8px, calc(100% - 8px) 16px, 100% 16px, 100% 100%, 0 100%); }
+  .hero-h1 { font-size: clamp(60px, 6.3vw, 104px); text-shadow: none; }
+  .hero-h1 .ac { color: var(--rosa); }
+  .hero-sub { font-size: 20px; max-width: 32ch; color: var(--noche); }
+  .hero-dato { color: var(--verde); font-size: 13.5px; }
+  .hero-cta .lnk--c { color: var(--noche); background-image: var(--greca-v); }
+  .hero-greca { background-image: var(--greca-v); }
+}
+@media (min-width: 1100px) { .hero-in { gap: 64px; } }

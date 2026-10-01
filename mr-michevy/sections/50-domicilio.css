@@ -1,0 +1,34 @@
+/* 5 · Banda crema: el segundo producto. Tinta negra, rojo chile en el segundo tono. */
+.dom{position:relative;background:var(--cream);color:var(--ink);padding:48px 0 54px;overflow:hidden}
+.dom::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;background:url(../img/escarchado.svg) repeat-x 0 0/420px 14px;pointer-events:none}
+.dom-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"title" "sub" "fotos" "info";row-gap:18px}
+.dom-h{grid-area:title;font-size:clamp(34px,9.8vw,56px);color:var(--ink)}
+.dom .m-title .ln--c{color:var(--chile)}
+.dom-sub{grid-area:sub;font-size:20px;font-weight:600;line-height:1.3;max-width:20em}
+.dom-fotos{grid-area:fotos;position:relative;padding-bottom:70px;margin-top:6px}
+.dom-main{width:84%}
+.dom-main .m-ph-in{aspect-ratio:4/5;background:#c9c3ae}
+.dom .m-ring{border-color:var(--ink)}
+.dom-caja{position:absolute;right:0;bottom:0;width:50%;border:4px solid var(--cream);background:var(--cream);box-shadow:0 8px 24px rgba(20,14,14,.25)}
+.dom-caja .m-ph-in{aspect-ratio:4/5}
+.dom-st{left:-34px;top:-30px}
+.dom-info{grid-area:info;display:grid;gap:16px;justify-items:start}
+.dom-lleva{display:flex;flex-wrap:wrap;gap:0}
+.dom-lleva li{font-weight:800;font-stretch:85%;font-size:clamp(20px,5.4vw,26px);line-height:1.1;text-transform:uppercase;padding-right:14px;margin-right:14px;border-right:2px solid var(--chile)}
+.dom-lleva li:last-child{border:0;margin:0;padding:0}
+.dom-pre{font-size:19px}
+.dom-pre b{font-weight:800}
+.dom .m-btn--wa{box-shadow:inset 0 0 0 2px rgba(11,61,31,.4),0 3px 0 rgba(11,61,31,.4);min-height:58px;font-size:17px;width:100%}
+.dom .m-btn--wa:active{box-shadow:inset 0 0 0 2px rgba(11,61,31,.4)}
+
+@media (min-width:760px){
+  .dom{padding:76px 0 84px}
+  .dom-grid{grid-template-columns:clamp(300px,40%,460px) minmax(0,1fr);grid-template-areas:"fotos title" "fotos sub" "fotos info";column-gap:clamp(36px,6vw,96px);align-items:start;grid-template-rows:auto auto 1fr}
+  .dom-h{font-size:clamp(42px,5.4vw,84px);align-self:end}
+  .dom-sub{font-size:clamp(20px,1.9vw,26px)}
+  .dom-fotos{padding-bottom:90px}
+  .dom-main{width:88%}
+  .dom-caja{width:48%}
+  .dom .m-btn--wa{width:auto;min-width:300px}
+  .dom-lleva li{font-size:clamp(22px,2.1vw,30px)}
+}

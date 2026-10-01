@@ -1,0 +1,29 @@
+.peces { background: var(--verde); color: var(--cal); padding-top: 66px; }
+.peces-greca { position: absolute; left: 0; right: 0; top: 0; }
+.peces .hz-h2 { color: var(--cal); }
+.peces .hz-h2 .ac { color: var(--noche); }
+.peces-grid { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); }
+.cita { margin: 20px 0 14px; padding: 0 0 0 16px; border-left: 4px solid var(--oro); }
+.cita p { font: 600 20px/1.3 var(--f-d); text-wrap: balance; }
+.cita footer { margin-top: 10px; font-size: 12px; line-height: 1.5; letter-spacing: 0.04em; color: rgba(251, 248, 241, 0.92); }
+.pe-a { aspect-ratio: 1 / 1.1; }
+.pe-par { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: calc(var(--gut) * -1); padding-inline: var(--gut); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.pe-par::-webkit-scrollbar { display: none; }
+.pe-par .marco { flex: 0 0 76%; aspect-ratio: 4 / 3; scroll-snap-align: start; }
+.pe-pas { aspect-ratio: 1 / 0.92; }
+@media (min-width: 820px) {
+  .peces { padding-top: 94px; }
+  .peces-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "txt a" "pas a" "par par"; gap: 22px 28px; align-items: stretch; }
+  .pe-txt { grid-area: txt; align-self: start; }
+  .pe-a { grid-area: a; aspect-ratio: auto; min-height: 560px; }
+  .pe-par { grid-area: par; overflow: visible; margin-inline: 0; padding-inline: 0; }
+  .pe-par .marco { flex: 1 1 0; aspect-ratio: 4 / 3; }
+  .pe-pas { grid-area: pas; aspect-ratio: auto; min-height: 300px; }
+  .cita p { font-size: 24px; }
+}
+@media (min-width: 1100px) {
+  .peces-grid { grid-template-columns: 0.95fr 1fr 0.8fr; grid-template-areas: "txt a par" "pas a par"; gap: 28px 40px; }
+  .pe-par { flex-direction: column; }
+  .pe-par .marco { aspect-ratio: auto; min-height: 220px; }
+  .pe-a { min-height: 640px; }
+}
