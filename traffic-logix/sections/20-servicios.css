@@ -2,9 +2,9 @@
 .sv-grid{margin-top:28px;display:grid;gap:18px}
 /* tarjeta: la foto llega a la orilla de la señal (sin marco dentro de marco); un solo llamado: COTIZAR */
 .sv-card{display:flex;flex-direction:column;padding:0;transition:transform .12s var(--out),box-shadow .12s}
-.sv-card::after{z-index:2}
+/* el filete enmarca la foto como la ventana de una señal: la foto entra 6 px y el filete (3 a 5 px) la rodea sin cruzarla, con 1 px de asfalto entre los dos */
 .sv-card:active{transform:scale(.985);box-shadow:0 0 0 2px var(--am)}
-.sv-ph{position:relative;border-radius:var(--r) var(--r) 0 0;overflow:hidden;aspect-ratio:16/11;background:var(--as3)}
+.sv-ph{position:relative;margin:6px 6px 0;border-radius:3px 3px 0 0;overflow:hidden;aspect-ratio:16/11;background:var(--as3)}
 .sv-ph img{width:100%;height:100%;object-fit:cover}
 .sv-ph::after{content:"";position:absolute;inset:auto 0 0 0;height:48%;background:linear-gradient(to top,rgba(20,21,23,.62),rgba(20,21,23,0));pointer-events:none}
 .sv-ph .plc{position:absolute;z-index:1;left:12px;bottom:12px;font-size:11px}
@@ -13,7 +13,21 @@
 .sv-h{font-weight:900;font-size:clamp(24px,7vw,30px);line-height:1;text-transform:uppercase;letter-spacing:.005em}
 .sv-bd p{color:var(--mut);font-size:16px;line-height:1.45;flex:1;text-wrap:pretty}
 .sv-bd .bt{align-self:flex-start;margin-top:4px}
+/* celular: carrusel de señales con swipe; se asoma la siguiente y abajo el contador 01 / 04 con guiones de carril */
+.sv-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:16px}
+.sv-count{font-size:14px;font-weight:700;letter-spacing:.12em;color:var(--mut);font-variant-numeric:tabular-nums}
+.sv-count b{color:var(--am);font-weight:700}
+.sv-dash{display:flex;gap:8px}
+.sv-dash i{display:block;width:28px;height:4px;border-radius:1px;background:rgba(245,245,240,.28);transition:background .2s,width .2s var(--out)}
+.sv-dash i.is-on{background:var(--am);width:40px}
+@media (max-width:819.98px){
+  .sv-grid{grid-auto-flow:column;grid-auto-columns:min(84vw,460px);gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;margin-inline:calc(var(--pad)*-1);padding-inline:var(--pad);scroll-padding-inline:var(--pad);scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+  .sv-grid::-webkit-scrollbar{display:none}
+  .sv-card{scroll-snap-align:start}
+  .sv-card:active{transform:none}
+}
 @media (min-width:820px){
+  .sv-nav{display:none}
   .sv{padding:96px 0 72px}
   .sv-grid{grid-template-columns:1fr 1fr;gap:26px;margin-top:40px}
   .sv-bd{padding:20px 24px 24px}

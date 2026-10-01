@@ -80,6 +80,21 @@
   }
   if (hiders.length) { window.addEventListener("scroll", chkWa, { passive: true }); window.addEventListener("resize", chkWa); chkWa(); }
 
+  /* ---------- Servicios en celular: carrusel de señales, contador 01 / 04 y guiones de carril ---------- */
+  var svg = $("#sv-grid"), svn = $(".js-svn"), svd = $$(".sv-dash i"), svLast = 0, svPend = false;
+  function svPaint() {
+    svPend = false;
+    if (!svg) return;
+    var cards = $$(".sv-card", svg), x0 = svg.getBoundingClientRect().left + (parseFloat(getComputedStyle(svg).paddingLeft) || 0), best = 0, bd = 1e9;
+    cards.forEach(function (c, i) { var dx = Math.abs(c.getBoundingClientRect().left - x0); if (dx < bd) { bd = dx; best = i; } });
+    if (svg.scrollLeft + svg.clientWidth >= svg.scrollWidth - 4) best = cards.length - 1;
+    if (best === svLast && svn && svn.textContent) return;
+    svLast = best;
+    if (svn) svn.textContent = ("0" + (best + 1)).slice(-2);
+    svd.forEach(function (el, i) { el.classList.toggle("is-on", i === best); });
+  }
+  if (svg) { svg.addEventListener("scroll", function () { if (!svPend) { svPend = true; requestAnimationFrame(svPaint); } }, { passive: true }); window.addEventListener("resize", svPaint); svPaint(); }
+
   /* ====================================================================
      LA SEÑAL DE TU RUTA
      ==================================================================== */
@@ -179,7 +194,6 @@
     } else { el.hidden = true; el.textContent = ""; el.classList.remove("is-ghost"); }
     lastRows[key] = txt;
   }
-  var EJ = { serv: "PERSONAL EMPRESARIAL", pax: "45 PASAJEROS", when: "L A V", route: "" };
   var FOTO = {
     "": ["fila", "SUS UNIDADES EN FILA, CON GPS 24 H"],
     personal: ["personal", "FILA DE HIACE Y URVAN"],
@@ -203,15 +217,16 @@
   function renderSign() {
     var r = signRows(), has = !!S.servicio;
     var g = !has ? GHOST[""] : S.servicio === "personal" ? GHOST.personal : GHOST.otro;
-    var main = $("#senal .pt"); if (main) paintSign(main, r, 0, g);
-    var cr = $(".pt--cr");
-    if (cr) { cr.classList.toggle("is-ej", !has); paintSign(cr, has ? r : EJ, 1); }
-    var t = $(".js-cr-t"), empty = $(".js-empty"), want = has ? "on" : "off";
+    var main = $("#senal .pt"); if (main) { main.classList.toggle("is-empty", !has); paintSign(main, r, 0, g); }
+    /* cierre: sin elección no se repite la señal (ya se vio arriba); con elección, la señal rotulada va arriba de la banda de la 126 */
+    var crBox = $(".js-cr-ruta"), cr = $(".pt--cr");
+    if (crBox) crBox.hidden = !has;
+    if (cr && has) paintSign(cr, r, 1);
+    var t = $(".js-cr-t"), want = has ? "on" : "off";
     if (t && t.getAttribute("data-st") !== want) {
       t.setAttribute("data-st", want);
-      t.innerHTML = has ? 'Tu ruta <span class="y">ya está rotulada.</span>' : '¿A dónde <span class="y">vamos?</span>';
+      t.innerHTML = has ? '¿Nos <span class="y">vamos?</span>' : '¿A dónde <span class="y">vamos?</span>';
     }
-    if (empty) empty.hidden = has;
     var ph = $(".js-ptph"), cap = $(".js-ptcap"), fo = FOTO[S.servicio] || FOTO[""];
     if (ph && ph.getAttribute("data-k") !== fo[0]) {
       ph.setAttribute("data-k", fo[0]);

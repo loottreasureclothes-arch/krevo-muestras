@@ -40,6 +40,12 @@
   .fl-who{font-size:17px}
   .fl-rows{grid-template-columns:1fr 1fr;column-gap:48px;margin-top:24px}
 }
+/* compu ancha: placas de 260 px con desfase vertical alterno (±14 px), para que se lea como convoy en el carril */
+@media (min-width:1280px){
+  .cv-in{width:min(100% - 2*var(--pad),1360px);gap:16px;align-items:flex-start}
+  .cv-u{width:calc((100% - 64px)/5);max-width:260px;margin-top:0}
+  .cv-u:nth-child(even){margin-top:28px}
+}
 /* sin JS o con movimiento reducido, la fila se recorre con el dedo */
 html:not(.js) .cv{overflow-x:auto}
 @media (prefers-reduced-motion:reduce){.cv{overflow-x:auto;scroll-snap-type:x mandatory}.cv-u{scroll-snap-align:start}}
