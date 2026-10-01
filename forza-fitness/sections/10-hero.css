@@ -1,0 +1,26 @@
+/* 10-hero: foto real del piso de pesas con su lona; el titulo cae y pega; casillero #605 con el estado en vivo */
+.fz-hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; background: var(--ink); overflow: hidden; }
+.fz-hero-photo { position: absolute; left: 0; right: 0; top: 0; height: 78svh; clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%); }
+.fz-hero-photo picture, .fz-hero-photo img { width: 100%; height: 100%; }
+.fz-hero-photo img { object-fit: cover; object-position: 0% 30%; }
+.fz-hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18, 19, 19, 0.5) 0, rgba(18, 19, 19, 0.04) 14%, rgba(18, 19, 19, 0.08) 50%, rgba(18, 19, 19, 0.72) 68%, rgba(18, 19, 19, 0.94) 84%, #121313 100%); }
+.fz-h--hero { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55); }
+.fz-hero-in { position: relative; display: grid; gap: 18px; justify-items: start; padding-top: calc(var(--hdr) + 40px); padding-bottom: 30px; }
+.fz-hero-lk { width: min(100%, 330px); padding: 36px 18px 14px; background: rgba(18, 19, 19, 0.82); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.fz-hero-st { font: italic 800 30px / 1 var(--f-h); text-transform: uppercase; letter-spacing: 0.03em; }
+.fz-hero-hr { margin-top: 4px; font: 600 15px / 1.3 var(--f-n); letter-spacing: 0.04em; color: var(--mute); }
+.fz-live { display: flex; align-items: center; gap: 9px; margin-top: 10px; min-height: 22px; font: 600 14px / 1.2 var(--f-n); letter-spacing: 0.1em; text-transform: uppercase; }
+.fz-live:empty { display: none; }
+.fz-dot { flex: none; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--dim); }
+.fz-live.is-open .fz-dot { background: #fff; border-color: #fff; box-shadow: 0 0 0 3px rgba(226, 10, 20, 0.55), 0 0 10px 2px rgba(226, 10, 20, 0.7); animation: fzPulse 1.2s ease-in-out infinite alternate; }
+.fz-hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; padding-left: 3px; }
+@keyframes fzPulse { from { opacity: 1; } to { opacity: 0.6; } }
+@media (prefers-reduced-motion: reduce) { .fz-live.is-open .fz-dot, .fz-cell.is-next { animation: none !important; } }
+@media (min-width: 1024px) {
+  .fz-hero-photo { left: 30%; height: 84svh; clip-path: polygon(17% 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%); }
+  .fz-hero-photo img { object-position: 52% 30%; }
+  .fz-h--hero .fz-red { text-shadow: 0 0 2px rgba(0, 0, 0, 0.6), 0 2px 22px rgba(0, 0, 0, 0.85); }
+  .fz-hero-photo::after { background: linear-gradient(180deg, rgba(18, 19, 19, 0.5) 0, rgba(18, 19, 19, 0) 26%, rgba(18, 19, 19, 0.3) 62%, rgba(18, 19, 19, 0.85) 100%); }
+  .fz-h--hero { font-size: clamp(60px, 8.6vw, 132px); }
+  .fz-hero-in { padding-bottom: 54px; }
+}

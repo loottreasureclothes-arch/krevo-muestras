@@ -1,0 +1,162 @@
+/* ======================================================================
+   FORZA FITNESS CLUB · fundación (prefijo fz-)
+   Lenguaje de formas: RAYO Y CASILLERO. Todo corta a 8 grados como el logo.
+   TOKENS  --ink #121313 (lienzo) · --graf #2D2F30 (bandas) · --red #E20A14 (marca)
+           blanco para texto · --wa #25d366 SOLO en lo que abre wa.me
+   ====================================================================== */
+:root {
+  --ink: #121313;
+  --ink-2: #1b1c1d;
+  --graf: #2d2f30;
+  --graf-2: #3a3d3f;
+  --red: #e20a14;
+  --red-dk: #b1241a;
+  --wh: #fff;
+  --mute: rgba(255, 255, 255, 0.72);
+  --dim: rgba(255, 255, 255, 0.5);
+  --line: rgba(255, 255, 255, 0.16);
+  --wa: #25d366;
+  --wa-dk: #1ebe5b;
+  --wa-ink: #0b3d1f;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-stick: cubic-bezier(0.2, 0.9, 0.3, 1.25);
+  --f-h: "Barlow Condensed", "Arial Narrow", "Avenir Next Condensed", Impact, sans-serif;
+  --f-b: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-n: "Barlow Semi Condensed", "Arial Narrow", "Avenir Next Condensed", sans-serif;
+  --gut: 18px;
+  --hdr: 58px;
+  --hdr-c: 50px;
+  --cut: min(10vw, 84px);
+  --skew: -8deg;
+}
+@media (min-width: 720px) { :root { --gut: 32px; --cut: min(6vw, 84px); } }
+@media (min-width: 1200px) { :root { --gut: 48px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; overflow-x: clip; scroll-padding-top: calc(var(--hdr) + 12px); scroll-behavior: auto !important; }
+body { min-height: 100svh; background: var(--ink); color: var(--wh); font: 400 16px/1.5 var(--f-b); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip; }
+h1, h2, h3 { font-family: var(--f-h); text-wrap: balance; overflow-wrap: break-word; }
+p { text-wrap: pretty; overflow-wrap: break-word; }
+img, picture, svg, iframe { display: block; max-width: 100%; }
+img { height: auto; }
+button, input { font: inherit; color: inherit; }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+a, button { touch-action: manipulation; }
+:where(ul[class], ol[class]) { list-style: none; padding: 0; }
+:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+::selection { background: var(--red); color: #fff; }
+.fz-wrap { width: 100%; max-width: 1180px; margin-inline: auto; padding-inline: var(--gut); }
+.fz-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.fz-skip { position: fixed; left: 10px; top: 10px; z-index: 120; padding: 12px 16px; background: #fff; color: #000; font-weight: 600; transform: translateY(-160%); transition: transform 200ms var(--ease-out); }
+.fz-skip:focus { transform: none; }
+
+/* ============ Titulares: condensada itálica, a dos tonos, caen y pegan ============ */
+.fz-h { font: italic 800 clamp(46px, 12.6vw, 104px) / 0.9 var(--f-h); text-transform: uppercase; letter-spacing: 0.004em; color: var(--wh); }
+.fz-l { display: block; }
+.fz-l.fz-red, .fz-red { color: var(--red); }
+.fz-w { display: inline-block; }
+.fz-h--hero { font-size: clamp(46px, 12.6vw, 150px); }
+.fz-w { transition: opacity 300ms var(--ease-out), transform 500ms var(--ease-stick); transition-delay: calc(var(--i, 0) * 70ms); }
+html.fz-js:not(.fz-rm) [data-drop]:not(.is-in) .fz-w { opacity: 0; transform: translateY(-0.55em); }
+html.fz-js:not(.fz-rm) [data-reveal] { opacity: 0; transform: translateY(12px); transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); }
+html.fz-js:not(.fz-rm) [data-reveal].is-in { opacity: 1; transform: none; }
+.fz-lead { max-width: 34em; margin-top: 16px; color: var(--mute); }
+.fz-k { font: 600 12px / 1 var(--f-n); letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); }
+
+/* ============ Botones: inclinados 8 grados, texto derecho ============ */
+.fz-btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 0 28px; border: 1.5px solid var(--red); background: var(--red); color: #fff;
+  font: 600 14.5px / 1 var(--f-n); letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap;
+  transform: skewX(var(--skew)); transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.fz-btn > span { display: inline-flex; align-items: center; gap: 10px; transform: skewX(8deg); }
+.fz-btn svg { width: 20px; height: 20px; flex: none; }
+.fz-btn:active { transform: skewX(var(--skew)) scale(0.97); }
+.fz-btn--sm { min-height: 44px; padding: 0 18px; font-size: 13px; }
+.fz-btn--line { background: transparent; color: #fff; }
+.fz-btn--wa { background: var(--wa); border-color: var(--wa); color: var(--wa-ink); font-size: 15px; letter-spacing: 0.1em; }
+@media (hover: hover) and (pointer: fine) {
+  .fz-btn:hover { background: #ff1a25; border-color: #ff1a25; }
+  .fz-btn--line:hover { background: rgba(226, 10, 20, 0.22); border-color: var(--red); }
+  .fz-btn--wa:hover { background: var(--wa-dk); border-color: var(--wa-dk); }
+}
+.fz-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 600 14px / 1 var(--f-n); letter-spacing: 0.12em; text-transform: uppercase; color: #fff; border-bottom: 1.5px solid var(--red); padding-bottom: 2px; }
+.fz-link svg { width: 18px; height: 18px; color: var(--red); transition: transform 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .fz-link:hover svg { transform: translateX(3px); } }
+
+/* ============ Casillero ============ */
+.fz-locker { position: relative; background: linear-gradient(180deg, #1e1f20, #171818); border: 1px solid var(--line); padding: 38px 18px 20px; }
+.fz-vent { position: absolute; top: 12px; right: 14px; width: 34px; height: 12px; background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0 2px, transparent 2px 5px); transform: skewX(var(--skew)); }
+.fz-num { position: absolute; top: 10px; left: 16px; font: 600 12px / 1 var(--f-n); letter-spacing: 0.16em; color: var(--dim); }
+
+/* Bandas de grafito: paralelogramo a 8 grados (no cortinas: siempre fondo de la seccion) */
+.fz-band { position: relative; isolation: isolate; padding-block: calc(var(--cut) + 14px) calc(var(--cut) * 0.5 + 22px); }
+.fz-band::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--graf); clip-path: polygon(0 var(--cut), 100% 0, 100% calc(100% - var(--cut)), 0 100%); }
+
+/* Divisor: linea roja fina con rayo chico al centro */
+.fz-div { display: flex; align-items: center; gap: 14px; padding-inline: var(--gut); max-width: 1180px; margin: 0 auto; color: var(--red); }
+.fz-div::before, .fz-div::after { content: ""; flex: 1; height: 1px; background: var(--red); opacity: 0.7; }
+.fz-div svg { width: 22px; height: 22px; flex: none; }
+
+/* ============ Header: LA BARRA DE CARGA ============ */
+.fz-header { position: fixed; inset: 0 0 auto 0; z-index: 90; background: rgba(18, 19, 19, 0.96); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.fz-bar { height: var(--hdr); display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 8px 0 var(--gut); transition: height 260ms var(--ease-out); }
+.fz-header.is-compact .fz-bar { height: var(--hdr-c); }
+.fz-brand { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; }
+.fz-mark { width: 34px; height: 34px; color: var(--red); flex: none; transition: width 260ms var(--ease-out), height 260ms var(--ease-out); }
+.fz-header.is-compact .fz-mark { width: 30px; height: 30px; }
+.fz-mark--lg { width: 46px; height: 46px; }
+.fz-word { font: italic 800 26px / 1 var(--f-h); letter-spacing: 0.05em; color: #fff; }
+.fz-acts { display: flex; align-items: center; gap: 10px; padding-right: 4px; }
+.fz-burger { position: relative; width: 44px; height: 44px; display: grid; place-content: center; gap: 6px; }
+.fz-burger i { display: block; width: 24px; height: 2px; background: #fff; transition: transform 320ms var(--ease-out), width 320ms var(--ease-out); }
+.fz-burger i:last-child { width: 16px; margin-left: auto; background: var(--red); }
+body.fz-menu-open .fz-burger i:first-child { transform: translateY(4px) rotate(45deg); }
+body.fz-menu-open .fz-burger i:last-child { width: 24px; transform: translateY(-4px) rotate(-45deg); }
+body.fz-menu-open .fz-acts .fz-btn { display: none; }
+.fz-load { position: relative; height: 3px; background: rgba(255, 255, 255, 0.12); }
+.fz-load-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--red); }
+.fz-load-fill::after { content: ""; position: absolute; right: 0; top: -1px; width: 44px; height: 5px; background: linear-gradient(90deg, transparent, #fff); opacity: 0.95; }
+
+/* ============ Menu: pantalla completa negra, raya roja inclinada ============ */
+body.fz-menu-open { overflow: hidden; }
+.fz-menu { position: fixed; inset: 0; z-index: 70; visibility: hidden; transition: visibility 0s linear 400ms; }
+body.fz-menu-open .fz-menu { visibility: visible; transition: visibility 0s; }
+.fz-menu-panel { position: absolute; inset: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: center; gap: 26px; padding: calc(var(--hdr) + 18px) var(--gut) 28px; background: #0b0c0c; clip-path: inset(0 0 100% 0); transition: clip-path 420ms cubic-bezier(0.77, 0, 0.175, 1); }
+body.fz-menu-open .fz-menu-panel { clip-path: inset(0 0 0 0); }
+.fz-menu-slash { position: absolute; top: -10%; bottom: -10%; right: 5%; width: 12px; background: var(--red); transform: skewX(var(--skew)); box-shadow: -26px 0 0 -10px rgba(255, 255, 255, 0.85); }
+.fz-menu-nav { position: relative; display: grid; gap: 4px; width: min(520px, calc(100% - 92px)); }
+.fz-menu-nav a { display: flex; align-items: baseline; gap: 14px; min-height: 56px; padding: 6px 0; font: italic 800 clamp(40px, 11vw, 64px) / 1 var(--f-h); text-transform: uppercase; color: #fff; border-bottom: 1px solid rgba(255, 255, 255, 0.14); opacity: 0; transform: translateX(-14px); transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out); }
+.fz-menu-nav a b { flex: none; width: 1.7em; font: 600 12px / 1 var(--f-n); letter-spacing: 0.14em; color: var(--red); transform: translateY(-1.3em); }
+body.fz-menu-open .fz-menu-nav a { opacity: 1; transform: none; transition: opacity 380ms var(--ease-out), transform 380ms var(--ease-out); }
+body.fz-menu-open .fz-menu-nav a:nth-child(1) { transition-delay: 120ms; }
+body.fz-menu-open .fz-menu-nav a:nth-child(2) { transition-delay: 170ms; }
+body.fz-menu-open .fz-menu-nav a:nth-child(3) { transition-delay: 220ms; }
+body.fz-menu-open .fz-menu-nav a:nth-child(4) { transition-delay: 270ms; }
+body.fz-menu-open .fz-menu-nav a:nth-child(5) { transition-delay: 320ms; }
+.fz-menu-nav a.fz-menu-wa { margin-top: 18px; border: 0; justify-content: center; width: min(100%, 300px); min-height: 56px; background: var(--wa); color: var(--wa-ink); font-size: 26px; letter-spacing: 0.06em; gap: 10px; align-items: center; transform: skewX(var(--skew)) translateX(-14px); }
+body.fz-menu-open .fz-menu-nav a.fz-menu-wa { transform: skewX(var(--skew)); }
+.fz-menu-wa svg { width: 26px; height: 26px; transform: skewX(8deg); }
+.fz-menu-foot { position: relative; max-width: calc(100% - 110px); font: 600 13px / 1.3 var(--f-n); letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
+@media (prefers-reduced-motion: reduce) { .fz-menu-panel, .fz-menu-nav a { transition: none !important; } }
+
+/* ============ WhatsApp flotante ============ */
+.fz-wa { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 60; width: 58px; height: 54px; display: grid; place-items: center; background: var(--wa); color: #fff; transform: skewX(var(--skew)); box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.7); transition: transform 160ms var(--ease-out); }
+.fz-wa svg { width: 30px; height: 30px; transform: skewX(8deg); }
+.fz-wa:active { transform: skewX(var(--skew)) scale(0.95); }
+body.fz-wa-off .fz-wa, body.fz-menu-open .fz-wa { visibility: hidden; opacity: 0; pointer-events: none; }
+
+/* ============ Footer ============ */
+.fz-foot { padding: 44px 0 calc(34px + env(safe-area-inset-bottom)); background: #0b0c0c; border-top: 1px solid var(--line); }
+.fz-foot-in { display: grid; gap: 22px; }
+.fz-foot-brand { display: flex; align-items: center; gap: 12px; }
+.fz-foot-addr { font-style: normal; color: var(--mute); }
+.fz-foot-tel { display: inline-flex; align-items: center; min-height: 44px; color: #fff; font-weight: 600; border-bottom: 1px solid var(--red); }
+.fz-social { display: flex; gap: 12px; }
+.fz-social a { display: grid; place-items: center; width: 48px; height: 48px; border: 1.5px solid var(--red); color: #fff; transform: skewX(var(--skew)); }
+.fz-social svg { width: 30px; height: 30px; transform: skewX(8deg); }
+.fz-credit { margin-top: 26px; font-size: 13px; color: var(--dim); }
+@media (min-width: 900px) { .fz-foot-in { grid-template-columns: 1fr 1fr auto; align-items: center; } }

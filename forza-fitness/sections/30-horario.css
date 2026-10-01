@@ -1,0 +1,66 @@
+/* 30-horario: EL HORARIO QUE SABE QUE HORA ES. Tablero de casilleros con el horario real de CrossFit */
+.fz-horario .fz-h { padding-top: 6px; font-size: clamp(46px, 12.6vw, 88px); }
+.fz-next { margin-top: 20px; max-width: 40em; font: 600 17px / 1.35 var(--f-n); letter-spacing: 0.02em; color: var(--mute); }
+.fz-next-k { color: var(--dim); text-transform: uppercase; letter-spacing: 0.12em; font-size: 13px; }
+.fz-next-v { color: #fff; }
+.fz-next.is-live { padding: 12px 14px; background: #121313; border-left: 4px solid var(--red); color: #fff; }
+.fz-next.is-live .fz-next-k { display: block; color: var(--mute); }
+.fz-next.is-live .fz-next-v { display: block; margin-top: 3px; font-size: 21px; line-height: 1.2; }
+.fz-next .fz-next-t { display: inline-block; margin-top: 6px; padding: 3px 10px; background: var(--red); color: #fff; font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase; transform: skewX(var(--skew)); }
+.fz-next .fz-next-t span { display: inline-block; transform: skewX(8deg); }
+.fz-next .fz-next-d { display: none; }
+
+.fz-board-wrap { margin-top: 26px; }
+.fz-board { margin-inline: -10px; padding: 40px 6px 12px; background: #121313; }
+.fz-tbl-sc { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.fz-tbl { width: 100%; border-collapse: separate; border-spacing: 2px; table-layout: fixed; }
+.fz-tbl col { width: auto; }
+.fz-dh { padding: 4px 0 7px; font: 600 12px / 1 var(--f-n); letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); text-align: center; box-shadow: inset 0 -3px 0 rgba(255, 255, 255, 0.1); }
+.fz-dh.is-today { color: #fff; box-shadow: inset 0 -3px 0 var(--red); }
+.fz-hr { width: 28px; text-align: center; vertical-align: middle; line-height: 1; }
+.fz-hr b { display: block; font: 600 19px / 1 var(--f-n); }
+.fz-hr i { display: block; margin-top: 2px; font: 600 12px / 1 var(--f-n); font-style: normal; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+.fz-pm-first > * { padding-top: 8px; }
+.fz-tbl td { padding: 0; height: 46px; }
+.fz-cell { width: 100%; height: 100%; min-height: 46px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; padding: 3px 1px; background: var(--graf); border-left: 3px solid var(--red); color: #fff; font: 600 12px / 1.08 var(--f-n); letter-spacing: 0; text-transform: none; transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out); }
+.fz-cell:active { transform: scale(0.96); }
+.fz-cell.is-next { background: var(--red); border-left-color: #fff; animation: fzPulse 1.2s ease-in-out infinite alternate; }
+.fz-cell.is-sel { outline: 2px solid #fff; outline-offset: 1px; background: var(--graf-2); }
+.fz-cell.is-next.is-sel { background: var(--red); }
+td.fz-off { background: repeating-linear-gradient(-8deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 7px); }
+@media (hover: hover) and (pointer: fine) { .fz-cell:hover { background: var(--graf-2); } .fz-cell.is-next:hover { background: #ff1a25; } }
+.fz-board-n { margin: 10px 4px 0; font-size: 13px; color: var(--dim); }
+
+.fz-sendrow { display: grid; gap: 12px; justify-items: start; margin-top: 24px; }
+.fz-sel { font: 600 16px / 1.3 var(--f-n); letter-spacing: 0.03em; color: #fff; min-height: 21px; }
+.fz-sel b { font-weight: 600; color: var(--red); }
+.fz-sendrow .fz-btn { max-width: 100%; white-space: normal; text-align: center; padding: 12px 22px; font-size: 14px; }
+
+.fz-split { display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); gap: 20px; align-items: center; margin-top: 44px; }
+.fz-fig { margin: 0; }
+.fz-fig-c { clip-path: polygon(19% 0, 100% 0, 81% 100%, 0 100%); aspect-ratio: 3 / 4; overflow: hidden; background: #121313; }
+.fz-fig-c img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 35%; }
+.fz-fig figcaption { margin-top: 8px; }
+.fz-otras-l { margin-top: 12px; }
+.fz-otras-l li { padding: 7px 0; border-bottom: 1px solid var(--line); font: italic 800 24px / 1 var(--f-h); text-transform: uppercase; }
+.fz-otras-n { margin-top: 12px; font: 600 14px / 1.2 var(--f-n); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
+
+@media (min-width: 720px) {
+  .fz-board { margin-inline: 0; padding: 46px 16px 16px; }
+  .fz-tbl { border-spacing: 4px; }
+  .fz-cell { font-size: 14px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .fz-split { grid-template-columns: 240px 1fr; gap: 40px; }
+}
+@media (min-width: 900px) {
+  .fz-horario .fz-wrap:first-child { display: grid; grid-template-columns: 1.5fr 1fr; align-items: end; gap: 0 48px; }
+  .fz-next { margin-top: 0; }
+  .fz-board { margin-inline: 0; padding: 46px 22px 18px; }
+  .fz-tbl { border-spacing: 5px; }
+  .fz-tbl td { height: 56px; }
+  .fz-cell { font-size: 14px; min-height: 56px; letter-spacing: 0.05em; flex-direction: row; gap: 5px; flex-wrap: wrap; }
+  .fz-hr { width: 54px; } .fz-hr b { font-size: 26px; }
+  .fz-dh { font-size: 15px; }
+  .fz-sendrow { grid-template-columns: 1fr auto; align-items: center; margin-top: 28px; }
+  .fz-split { grid-template-columns: 260px 1fr; gap: 56px; margin-top: 64px; }
+  .fz-otras-l { columns: 2; column-gap: 40px; }
+}

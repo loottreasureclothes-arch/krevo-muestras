@@ -1,0 +1,48 @@
+/* 40-club: EL RAYO CARGA. Foto real del rack a sangre; el rayo del logo se llena de rojo con el scroll */
+.fz-club { position: relative; padding-bottom: 26px; }
+.fz-div { margin-top: 0; margin-bottom: 6px; }
+.fz-club-stage { position: relative; min-height: 78svh; display: grid; place-items: center; overflow: hidden; background: #121313; clip-path: polygon(0 var(--cut), 100% 0, 100% calc(100% - var(--cut)), 0 100%); }
+.fz-club-ph, .fz-club-ph img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.fz-club-ph img { object-fit: cover; object-position: 38% 50%; }
+/* Velo en degradado: claro arriba (se ven discos y columnas rojas), oscuro solo detras del titular */
+.fz-club-stage::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18, 19, 19, 0.35) 0, rgba(18, 19, 19, 0.22) 30%, rgba(18, 19, 19, 0.5) 52%, rgba(18, 19, 19, 0.8) 70%, rgba(18, 19, 19, 0.82) 100%); }
+.fz-club-in { position: relative; z-index: 2; display: grid; justify-items: center; gap: 14px; padding: calc(var(--cut) + 20px) var(--gut); text-align: center; }
+.fz-bolt { position: relative; width: min(54vw, 240px); aspect-ratio: 650 / 640; filter: drop-shadow(0 0 16px rgba(226, 10, 20, 0.42)) drop-shadow(0 2px 10px rgba(0, 0, 0, 0.6)); }
+.fz-bolt svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.fz-bolt-base { color: rgba(18, 19, 19, 0.55); stroke: rgba(255, 255, 255, 0.55); stroke-width: 4px; }
+.fz-bolt-fill { color: var(--red); clip-path: inset(calc((1 - var(--p, 1)) * 100%) 0 0 0); }
+.fz-club-h { font-size: clamp(46px, 12vw, 108px); text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6); }
+html.fz-js:not(.fz-rm) .fz-club:not(.is-full) .fz-club-h { opacity: 0.22; transform: translateY(10px); }
+.fz-club-h { transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); }
+.fz-gg { font: 600 16px / 1.2 var(--f-n); letter-spacing: 0.06em; text-transform: uppercase; }
+.fz-gg a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; border-bottom: 1.5px solid var(--red); color: #fff; }
+.fz-gg b { font: italic 800 26px / 1 var(--f-h); }
+.fz-gg svg { width: 18px; height: 18px; color: var(--red); }
+
+.fz-tags-k { margin-top: 26px; }
+.fz-tags { display: grid; gap: 22px; margin-top: 16px; }
+.fz-door { padding: 42px 14px 22px; }
+.fz-door--b { margin-left: 18px; }
+.fz-door--c { margin-right: 18px; }
+.fz-label { position: relative; margin: 0; padding: 18px 16px 14px; background: #ecebe8; color: #121313; box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5); transform: rotate(-1.2deg); }
+.fz-door--b .fz-label { transform: rotate(0.9deg); }
+.fz-door--c .fz-label { transform: rotate(-0.6deg); }
+.fz-label::before { content: ""; position: absolute; top: -9px; left: 50%; width: 58px; height: 16px; background: rgba(255, 255, 255, 0.42); transform: translateX(-50%) rotate(2deg); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25); }
+.fz-stars { display: flex; gap: 3px; color: var(--red); }
+.fz-stars svg { width: 18px; height: 18px; }
+.fz-label blockquote { margin: 8px 0 10px; font: 600 18px / 1.3 var(--f-b); }
+.fz-label figcaption { font: 600 13px / 1.3 var(--f-n); letter-spacing: 0.04em; color: #3a3d3f; }
+.fz-label figcaption span { white-space: nowrap; }
+.fz-label figcaption b { font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #121313; }
+@media (min-width: 720px) {
+  /* tableta: etiquetas en 2 columnas desfasadas */
+  .fz-tags { grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: start; }
+  .fz-door--b { margin: 40px 0 0; }
+  .fz-door--c { margin: -20px 0 0; }
+}
+@media (min-width: 1024px) {
+  .fz-club-stage { min-height: 86svh; }
+  .fz-tags { grid-template-columns: repeat(3, 1fr); }
+  .fz-door--b { margin: 36px 0 0; }
+  .fz-door--c { margin: 0; }
+}

@@ -1,0 +1,41 @@
+/* 20-planes: tres casilleros con precio real; debajo, lo que trae el club en tipografia */
+.fz-planes { position: relative; isolation: isolate; padding: 40px 0 34px; }
+/* Arte Reloaded completo (RELOADED entero), en flujo: no pasa de 55svh y el titulo se le monta abajo */
+.fz-planes-art { position: relative; z-index: -1; width: 100%; aspect-ratio: 2048 / 1367; max-height: 55svh; opacity: 0.8; -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 66%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 66%, transparent 100%); }
+.fz-planes-art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.fz-planes .fz-h { margin-top: -54px; }
+.fz-plans { display: grid; gap: 16px; margin-top: 28px; }
+.fz-plan { display: grid; grid-template-columns: 1fr auto; align-items: end; column-gap: 14px; padding-top: 40px; }
+.fz-plan > * { grid-column: 1; }
+.fz-plan-n { font: italic 800 34px / 0.95 var(--f-h); text-transform: uppercase; }
+.fz-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 8px; margin-top: 8px; font-family: var(--f-n); font-weight: 600; }
+.fz-price > small:first-child { flex-basis: 100%; margin-bottom: -4px; }
+.fz-price b { font: 600 36px / 1 var(--f-n); letter-spacing: 0.01em; font-variant-numeric: tabular-nums; }
+.fz-price small { font-size: 15px; color: var(--mute); letter-spacing: 0.04em; }
+.fz-price--ask b { font-size: 26px; }
+.fz-plan-x { margin-top: 6px; font: 600 17px / 1.2 var(--f-n); color: #fff; }
+.fz-plan-s { margin-top: 2px; font-size: 14px; color: var(--mute); }
+.fz-plan .fz-pick { grid-column: 2; grid-row: 2 / span 4; align-self: end; }
+.fz-pick[aria-pressed="true"] { background: var(--red); }
+.fz-pick[aria-pressed="true"] > span::before { content: ""; width: 7px; height: 12px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg) translate(-2px, -2px); }
+.fz-plan.is-picked { border-color: var(--red); box-shadow: inset 0 0 0 1px var(--red); }
+.fz-incl { margin-top: 52px; }
+.fz-incl-l { margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+.fz-incl-l li { position: relative; padding: 13px 0 13px 22px; border-bottom: 1px solid var(--line); font: 600 20px / 1.1 var(--f-h); text-transform: uppercase; letter-spacing: 0.03em; }
+.fz-incl-l li::before { content: ""; position: absolute; left: 2px; top: 50%; width: 9px; height: 3px; background: var(--red); transform: translateY(-50%) skewX(var(--skew)); }
+.fz-incl-l li:last-child { grid-column: 1 / -1; }
+@media (min-width: 720px) {
+  .fz-planes { padding-top: 56px; }
+  .fz-plans { grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+  .fz-plan { grid-template-columns: 1fr; align-content: start; min-height: 290px; padding-top: 52px; }
+  .fz-plan .fz-pick { grid-column: 1; grid-row: auto; margin-top: auto; align-self: end; justify-self: start; }
+  .fz-plan { grid-template-rows: auto auto auto auto 1fr; }
+  .fz-plan-n { font-size: 44px; }
+  .fz-plan .fz-pick { margin-top: 22px; }
+  .fz-incl-l { grid-template-columns: repeat(3, 1fr); column-gap: 28px; }
+  .fz-incl-l li:last-child { grid-column: auto; }
+  /* compu y tableta: el arte va a la derecha del titulo, no ocupa una pantalla antes de los precios */
+  .fz-planes-art { position: absolute; top: 0; right: 0; width: 58%; max-height: none; opacity: 0.6; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 30%), linear-gradient(180deg, #000 60%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0, #000 30%), linear-gradient(180deg, #000 60%, transparent 100%); mask-composite: intersect; }
+  .fz-planes .fz-h { margin-top: 0; padding-top: 40px; }
+  .fz-plans { margin-top: 44px; }
+}
