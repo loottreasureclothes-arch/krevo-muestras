@@ -1,6 +1,11 @@
 /* 50-taller: quienes son y donde. Ficha de plano + mapa en marco. */
-.taller-t { margin-top: 26px; }
-.taller-q { margin-top: 26px; padding-left: 16px; border-left: 2px solid var(--steel); display: grid; gap: 12px; max-width: 62ch; }
+.taller-top { display: grid; gap: 22px; }
+/* foto real del frente en recuadro con marco (origen chico); el titulo va como pie grande sobre la foto */
+.taller-foto { --cut: 12px; position: relative; margin: 0; aspect-ratio: 1112 / 932; }
+.taller-foto::after { content: ""; position: absolute; inset: 1px; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(20, 21, 23, 0) 52%, rgba(20, 21, 23, 0.86) 100%); }
+.taller-foto .fig { top: 1px; bottom: auto; }
+.taller-t { position: absolute; z-index: 2; left: 14px; right: 14px; bottom: 10px; font-size: clamp(2rem, 9vw, 3.2rem); }
+.taller-q { margin-top: 0; padding-left: 16px; border-left: 2px solid var(--steel); display: grid; gap: 12px; max-width: 62ch; }
 .taller-q p { font-size: 1.02rem; line-height: 1.55; color: var(--text); }
 .taller-q cite { font: 500 11px/1.4 var(--f-m); font-style: normal; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel-2); }
 .taller-grid { display: grid; gap: 18px; margin-top: 30px; grid-template-columns: minmax(0, 1fr); }
@@ -13,12 +18,24 @@
 .ficha > div:last-child { border-bottom: 0; }
 .ficha dt { font: 500 10.5px/1.6 var(--f-m); letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel-2); padding-top: 2px; }
 .ficha dd { margin: 0; font: 500 14px/1.6 var(--f-m); color: var(--white); overflow-wrap: anywhere; }
+.ficha dd.dd-name { font: 500 15px/1.45 var(--f-b); overflow-wrap: normal; }
 .flink { display: inline-block; padding-block: 10px; margin-block: -10px; color: var(--white); text-decoration: none; border-bottom: 1px solid var(--edge); }
 @media (hover: hover) and (pointer: fine) { .flink:hover { border-color: var(--steel); } }
-.taller-map { --cut: 12px; position: relative; margin: 0; min-height: 230px; }
-.taller-map iframe { position: absolute; inset: 1px; width: calc(100% - 2px); height: calc(100% - 2px); border: 0; filter: grayscale(1) invert(0.92) contrast(0.85) brightness(0.92); clip-path: polygon(0 0, calc(100% - var(--cut) + 0.6px) 0, 100% calc(var(--cut) - 0.6px), 100% 100%, 0 100%); }
+.taller-map { --cut: 12px; position: relative; margin: 0; min-height: 230px; overflow: hidden; }
+/* el iframe sube 110 px dentro de su marco: queda fuera la tarjeta de Google con otra colonia (pin por confirmar) */
+.taller-map iframe { position: absolute; left: 1px; top: -110px; width: calc(100% - 2px); height: calc(100% + 109px); border: 0; filter: grayscale(1) invert(0.92) contrast(0.85) brightness(0.92); }
 .taller-act { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: 26px; }
+@media (min-width: 640px) {
+  .taller-top { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(22px, 4vw, 64px); align-items: end; }
+  .taller-foto { order: 2; }
+  .taller-q { order: 1; }
+}
 @media (min-width: 900px) {
+  .taller-top { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(28px, 4vw, 64px); align-items: end; }
+  .taller-foto { order: 2; }
+  .taller-q { order: 1; padding-left: 22px; padding-bottom: 6px; }
+  .taller-q p { font-size: 1.32rem; line-height: 1.5; }
+  .taller-t { left: 22px; bottom: 16px; font-size: clamp(2.8rem, 4.4vw, 4.4rem); }
   .taller-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(24px, 3vw, 44px); align-items: stretch; }
   .taller-card { padding: 28px 26px 14px; }
   .taller-map { min-height: 420px; }

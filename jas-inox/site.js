@@ -118,7 +118,7 @@
     if (!els.length) return;
     function show(el) { el.classList.add("is-in"); }
     if (reduce) { Array.prototype.forEach.call(els, show); return; }
-    watchVisible(els, 0.92, show);
+    watchVisible(els, 1, show);
   }
 
   /* ---------- WhatsApp flotante: fuera donde ya hay un CTA grande ---------- */

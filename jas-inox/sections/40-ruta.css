@@ -1,7 +1,9 @@
 /* 40-ruta: DE AGUASCALIENTES A TIJUANA. Mapa grande; la linea y el contador 0 -> 1,900 km avanzan con el scroll
    (reversible, sin pin). Etiquetas con fondo carbon, fuera de las lineas. */
-.ruta-t { margin-top: 26px; }
-.ruta-grid { display: grid; gap: 14px; margin-top: 30px; grid-template-columns: minmax(0, 1fr); }
+.ruta-grid { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
+/* el titulo va DENTRO del mapa, como cajetin de plano arriba a la derecha (sin cota encima) */
+.ruta-t { position: absolute; z-index: 3; top: 10px; right: 10px; max-width: 60%; padding: 8px 10px 9px; text-align: right;
+  font-size: clamp(1.18rem, 5.4vw, 1.5rem); line-height: 1.04; background: rgba(22, 24, 27, 0.9); border: 1px solid var(--edge-soft); }
 .ruta-map { --cut: 12px; position: relative; margin: 0; aspect-ratio: 3 / 4; width: min(100%, 48svh); margin-inline: auto; }
 .ruta-map svg { overflow: hidden; }
 .ruta-map::before { background-image: linear-gradient(rgba(201, 204, 209, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 204, 209, 0.05) 1px, transparent 1px); background-size: 30px 30px; background-color: #16181b; }
@@ -19,15 +21,26 @@
 .ruta-head { fill: var(--weld); filter: drop-shadow(0 0 6px rgba(79, 179, 255, 0.85)); opacity: 0; }
 .ruta.is-live .ruta-head { opacity: 1; }
 .ruta.is-live .ruta-line { stroke-dashoffset: 1; }
-.ruta-f { --cut: 10px; position: relative; margin: 0; }
-.ruta-f1 { height: min(52svh, 520px); }
-.ruta-side { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr); gap: 16px; align-items: end; }
-.ruta-f2 { aspect-ratio: 4 / 5; }
-.ruta-foot { display: grid; gap: 8px; justify-items: start; padding-bottom: 2px; }
+.ruta-f { --cut: 10px; position: relative; margin: 0; aspect-ratio: 4 / 5; }
+/* pareja de fotos chicas y nitidas (las de origen son paneles de Instagram de ~200 px) */
+.ruta-side { display: grid; gap: 14px; }
+.ruta-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.ruta-foot { display: grid; gap: 6px; justify-items: start; padding-right: 72px; }
 .ruta-note { font: 500 11.5px/1.5 var(--f-m); letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel-2); }
 @media (min-width: 900px) {
-  .ruta-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, 0.72fr); gap: clamp(18px, 2.4vw, 32px); align-items: stretch; }
+  /* compu: el mapa manda (7 de 12 columnas); la pareja va apilada y escalonada en las otras 5 */
+  .ruta-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(18px, 2.4vw, 32px); align-items: stretch; }
+  .ruta-map { grid-column: span 7; width: min(100%, 66svh); margin-inline: 0; }
+  .ruta-side { grid-column: span 5; align-content: space-between; gap: 22px; }
+  .ruta-pair { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .ruta-pair .ruta-f { width: min(64%, 300px); }
+  .ruta-pair .ruta-f:nth-child(2) { justify-self: end; }
+  .ruta-foot { padding-right: 0; }
+  .ruta-t { top: 18px; right: 18px; max-width: 64%; padding: 12px 16px 14px; font-size: clamp(1.8rem, 2.6vw, 2.6rem); }
+}
+/* tableta: mapa y pareja lado a lado (fotos chicas, no estiradas) */
+@media (min-width: 640px) and (max-width: 899px) {
+  .ruta-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 22px; align-items: end; }
   .ruta-map { width: 100%; }
-  .ruta-f1 { height: auto; }
-  .ruta-side { grid-template-columns: minmax(0, 1fr); align-content: end; gap: 22px; }
+  .ruta-foot { padding-right: 0; }
 }

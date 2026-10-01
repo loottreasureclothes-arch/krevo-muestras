@@ -1,8 +1,13 @@
 /* 60-cierre: lo que la persona armo + "Todo listo para completar". */
-.cierre-t { margin-top: 26px; }
-.cierre-ficha { --cut: 12px; margin-top: 30px; padding: 24px 18px 20px; display: grid; gap: 14px; }
-.cierre-k { font: 500 11px/1 var(--f-m); letter-spacing: 0.18em; text-transform: uppercase; color: var(--steel-2); }
-.cierre-sum { font-family: var(--f-d); font-size: clamp(1.5rem, 6.4vw, 2.2rem); line-height: 1.12; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); text-wrap: balance; }
+.cierre-t { margin-top: 0; }
+/* el titulo arranca pegado a la ficha (sin cota) */
+.cierre-ficha { --cut: 12px; margin-top: 18px; padding: 14px 16px 18px; display: grid; gap: 12px; }
+.cierre-fig { position: relative; margin: 0 -4px; aspect-ratio: 420 / 300; max-height: 236px; border: 1px solid var(--edge-soft);
+  background-color: #16181b; background-image: linear-gradient(rgba(79, 179, 255, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(79, 179, 255, 0.07) 1px, transparent 1px); background-size: 21px 21px; }
+.cierre-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cierre-fig .fig { left: 0; bottom: 0; }
+.cierre-sum { font-family: var(--f-d); font-size: clamp(1.3rem, 5.6vw, 2rem); line-height: 1.12; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); text-wrap: balance; }
+.cierre-dims { margin-top: -6px; font: 500 12.5px/1.5 var(--f-m); letter-spacing: 0.08em; text-transform: uppercase; color: var(--steel); }
 .cierre-act { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; margin-top: 4px; }
 .cierre-act .btn { flex: 1 1 260px; }
 .cierre-act .arrow[hidden], .cierre-act .btn[hidden] { display: none; }
@@ -17,7 +22,8 @@
 .listo-p + .listo-p { margin-top: 6px; color: var(--steel); }
 @media (min-width: 900px) {
   .cierre-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: start; margin-top: 34px; }
-  .cierre-grid .cierre-ficha { margin-top: 0; padding: 34px 32px 28px; }
+  .cierre-grid .cierre-ficha { margin-top: 26px; padding: 22px 26px 26px; }
+  .cierre-fig { max-height: none; margin: 0; }
   .cierre-grid .listo { margin-top: 0; }
   .listo-list li { font-size: 1.02rem; }
 }

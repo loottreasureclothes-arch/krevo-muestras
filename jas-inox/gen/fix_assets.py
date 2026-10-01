@@ -65,11 +65,18 @@ JOBS = {
     'banda':      ('ig-06.jpg', (0, 2, 232, 318), []),
     # Hero (igual que antes: ig-07 panel inferior) para og.jpg
     'hero':       ('ig-07.jpg', (45, 285, 328, 627), []),
+    # Correccion 2: FIG. 05 sin gente. Mismo panel de ig-05 hasta y=222 (fuera la nuca del trabajador y las manos
+    # del montacargas) y hasta x=210 (fuera la gorra del de la derecha). Queda emplaye + caja del trailer + cielo.
+    'carga2':     ('ig-05.jpg', (3, 4, 210, 222), [('wm', (74, 66, 112, 106), 7), ('rect', (131, 182, 142, 218))]),
+    # Correccion 2: frente del taller (ig-07, panel de arriba): la barra frente al letrero JAS INOX, sin usar hasta hoy
+    'frente':     ('ig-07.jpg', (48, 14, 326, 247), []),
 }
+R2 = ['carga2', 'frente']
 
-def prep():
+def prep(names=None):
     os.makedirs(FIX, exist_ok=True)
     for name, (src, crop, zones) in JOBS.items():
+        if names and name not in names: continue
         img = np.asarray(Image.open(F + src).convert('RGB')).copy()
         mask = np.zeros(img.shape[:2], np.uint8)
         sky = np.zeros(img.shape[:2], np.uint8)
@@ -87,9 +94,9 @@ def prep():
         Image.fromarray(mask[y0:y1, x0:x1]).save(FIX + name + '-mask.png')
         print('prep', name, x1 - x0, y1 - y0, 'mask px', int((mask[y0:y1, x0:x1] > 0).sum()))
 
-def up():
+def up(names=None):
     os.makedirs(UP, exist_ok=True)
-    for name in JOBS:
+    for name in names or JOBS:
         src = os.path.abspath(FIX + name + '.png'); dst = os.path.abspath(UP + name + '.png')
         subprocess.run(['./realesrgan-ncnn-vulkan', '-i', src, '-o', dst, '-n', 'realesrgan-x4plus', '-s', '4'], cwd=ESR, check=True, capture_output=True)
         print('x4', name, Image.open(dst).size)
@@ -158,6 +165,24 @@ def emit():
     emit_one('banda', detex('banda'), [480, 960])
     og()
 
+def thumbs():
+    """Correccion 2: miniaturas 4:5 (144x180) para la tira del pie, sacadas de las webp ya publicadas."""
+    T = [('carrito', 'carrito-a-960', (0.5, 0.55)), ('remolque', 'carrito-c-960', (0.5, 0.6)), ('redilas', 'redilas-b-960', (0.5, 0.45)),
+         ('trailer', 'truck-tj-820', (0.6, 0.6)), ('campana', 'campana-960', (0.5, 0.25)), ('barra', 'frente-1112', (0.5, 0.6)),
+         ('vitrina', 'hero-1132', (0.5, 0.5))]
+    for name, src, (fx, fy) in T:
+        im = Image.open(OUT + src + '.webp').convert('RGB')
+        tw = min(im.width, round(im.height * 4 / 5)); th = round(tw * 5 / 4)
+        x = round((im.width - tw) * fx); y = round((im.height - th) * fy)
+        im.crop((x, y, x + tw, y + th)).resize((144, 180), Image.LANCZOS).save(f'{OUT}th-{name}.webp', 'WEBP', quality=82, method=6)
+        print('thumb', name)
+
+def r2():
+    prep(R2); up(R2)
+    emit_one('carga2', detex('carga2'), [480, 960])
+    emit_one('frente', detex('frente'), [480, 960, 1600])
+    thumbs()
+
 if __name__ == '__main__':
     for step in sys.argv[1:] or ['prep']:
-        {'prep': prep, 'up': up, 'emit': emit, 'og': og}[step]()
+        {'prep': prep, 'up': up, 'emit': emit, 'og': og, 'r2': r2, 'thumbs': thumbs}[step]()

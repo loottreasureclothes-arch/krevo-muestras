@@ -23,3 +23,9 @@ Descartadas: ig-01 (mapa con texto quemado, se redibujó como SVG), ig-02 (tarje
 Racks, barandales y lockers ya no llevan marcador: van en un renglón de texto "También fabricamos: ..." dentro de la rejilla.
 Script de la corrección 1: `gen/fix_assets.py prep up emit` (recortes + cv2.inpaint -> Real-ESRGAN x4 -> webp y og). Borradas las versiones viejas con marca de agua (mesa-larga, truck-ags, tarja-748, cajones-960, truck-tj-960).
 Las fotos a 390 @2x: hero y tarjetas salen de x4 (nativos 1024 a 1372 px); algo suaves por ser de origen 640 px, se pide foto en alta al dueño.
+
+Corrección 2 (`gen/fix_assets.py r2`):
+| carga2-480/828 | ig-05, panel superior izquierdo, recortado a (3,4)-(210,222): fuera la nuca del trabajador, las manos del montacargas y la gorra; mismo inpaint de la marca del emplaye y "CLARK" | Ruta, FIG. 05 (pareja chica 4:5) |
+| frente-480/960/1112 | ig-07, panel de arriba (48,14)-(326,247): la barra frente al letrero JAS INOX con la Virgen en la pared; sin inpaint | Taller, FIG. 07 |
+| th-*.webp 144x180 | miniaturas 4:5 de carrito-a, carrito-c, redilas-b, truck-tj, campana y frente | Tira del pie |
+Ya no se usan (se quedan en img/ por si se regresa): carga-480/868 y tarja-gab-456.

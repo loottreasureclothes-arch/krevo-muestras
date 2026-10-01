@@ -1,22 +1,25 @@
-/* 60-cierre: refleja lo que la persona armo en el cotizador (o "Falta elegir el tipo"). */
+/* 60-cierre: el remate del cotizador. Titulo con la pieza elegida, resumen, el mismo mensaje de WhatsApp
+   y una copia viva del dibujo isometrico (se copia el <g> que 30-medida.js redibuja en cada render). */
 (function () {
   "use strict";
+  /* palabra corta de cada tipo para el titulo ("Tu carrito, a un mensaje.") */
+  var PAL = { "Mesa de trabajo": "mesa", "Mesa con tarja": "mesa", "Carrito": "carrito", "Campana": "campana", "Estante o rack": "estante" };
   function init() {
     var sum = document.getElementById("cierre-sum");
     var wa = document.getElementById("wa-cierre");
-    var elegir = document.getElementById("cierre-elegir");
+    var h = document.getElementById("h-cierre");
+    var dims = document.getElementById("cierre-dims");
     if (!sum || !wa || !window.JasCotiza) return;
-    var h = document.getElementById("h-cierre"), cur = null;
-    var TXT = { off: ["Falta elegir", "el tipo."], on: ["Tu cotización", "ya tiene medidas."] };
-    var GEN = "Hola JAS INOX, quiero cotizar un mueble en acero inoxidable.";
-    /* el titulo dice la verdad: cambia con el estado del cotizador (palabras que caen, como los demas) */
-    function title(key) {
+    var cur = "";
+    /* el titulo dice la verdad y nunca regaña: la mesa de arranque cuenta como pieza */
+    function title(lines) {
+      var key = lines.join("|");
       if (!h || key === cur) return;
       cur = key;
       var n = 0;
       Array.prototype.forEach.call(h.querySelectorAll(".ln"), function (ln, i) {
         ln.textContent = "";
-        TXT[key][i].split(" ").forEach(function (w, j, all) {
+        lines[i].split(" ").forEach(function (w, j, all) {
           var s = document.createElement("span");
           s.className = "w"; s.style.setProperty("--i", n++); s.textContent = w;
           ln.appendChild(s);
@@ -25,13 +28,20 @@
       });
     }
     window.JasCotiza.on(function (g) {
-      title(g.armed ? "on" : "off");
-      sum.textContent = g.armed ? g.summary : "Dinos qué necesitas y sus medidas.";
-      var m = g.armed ? g.message : GEN;
-      wa.setAttribute("data-wa", m);
-      wa.href = window.JAS && window.JAS.waUrl ? window.JAS.waUrl(m) : wa.href;
-      if (elegir) elegir.hidden = g.armed;
+      var p = PAL[g.name] || "pieza";
+      title(g.armed ? ["Tu " + p, "ya tiene medidas."] : ["Tu " + p + ",", "a un mensaje."]);
+      sum.textContent = g.name;
+      if (dims) dims.textContent = [g.dims].concat(g.opts).join(" · ") + (g.armed ? "" : " · ajústala arriba");
+      wa.setAttribute("data-wa", g.message);
+      wa.href = window.JAS && window.JAS.waUrl ? window.JAS.waUrl(g.message) : wa.href;
     });
+    /* FIG. 08: copia viva del dibujo del cotizador */
+    var src = document.getElementById("med-g"), dst = document.getElementById("cierre-g");
+    if (src && dst) {
+      var copy = function () { dst.innerHTML = src.innerHTML; };
+      copy();
+      if (window.MutationObserver) new MutationObserver(copy).observe(src, { childList: true });
+    }
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();

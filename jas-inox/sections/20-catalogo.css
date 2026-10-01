@@ -23,16 +23,22 @@
 .card-price { margin-top: 6px; font: 500 10.5px/1.3 var(--f-m); letter-spacing: 0.08em; text-transform: uppercase; color: var(--steel-2); }
 .card-cta { margin-top: auto; padding-top: 8px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 600 12px/1 var(--f-b); letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); text-decoration: none; }
 .card-cta svg { width: 16px; height: 16px; transition: transform 200ms var(--ease); }
+/* estado al tocar (celular): igual que el hover */
+.card { transition: background-color 160ms; }
+.card:active { background: var(--steel); }
+.card:active .card-cta svg { transform: translateX(4px); }
+.card:active .card-cta { color: var(--white); }
 @media (hover: hover) and (pointer: fine) { .card-cta:hover svg { transform: translateX(4px); } .card-cta:hover { color: var(--white); } .card-ph img { transition: transform 600ms var(--ease); } .card:hover .card-ph img { transform: scale(1.03); } }
 /* renglon tipografico: lo que se fabrica pero aun no tiene foto (sin iconos ni "foto pendiente") */
-.cat-more { display: flex; align-items: flex-end; padding: 16px 4px 10px 14px; border-left: 2px solid var(--steel); }
-.cat-more p { font: 400 1.02rem/1.32 var(--f-d); letter-spacing: 0.03em; text-transform: uppercase; color: var(--steel-2); }
-.cat-more-k { display: block; margin-bottom: 8px; font: 500 10.5px/1.3 var(--f-m); letter-spacing: 0.12em; color: var(--dim); }
+.cat-more { grid-column: 1 / -1; padding: 16px 2px 14px; border-block: 1px solid var(--steel); }
+.cat-more p { font: 400 1.3rem/1.3 var(--f-d); letter-spacing: 0.03em; text-transform: uppercase; color: var(--steel-2); }
+.cat-more-k { display: block; margin-bottom: 6px; font: 500 10.5px/1.3 var(--f-m); letter-spacing: 0.12em; color: var(--dim); }
 .cat-more a { color: var(--white); text-decoration: underline; text-decoration-color: var(--edge); text-underline-offset: 4px; text-decoration-thickness: 1px; }
-.cat-more-p { display: block; margin-top: 10px; font: 500 10.5px/1.3 var(--f-m); letter-spacing: 0.08em; color: var(--steel-2); }
+.cat-more-p { display: block; margin-top: 8px; font: 500 10.5px/1.3 var(--f-m); letter-spacing: 0.08em; color: var(--steel-2); }
 @media (hover: hover) and (pointer: fine) { .cat-more a:hover { text-decoration-color: var(--steel); } }
 .cat-end { margin-top: 30px; display: flex; }
 @media (max-width: 559px) { .cat-end .btn { width: 100%; font-size: 12px; letter-spacing: 0.08em; padding-inline: 14px; } }
 @media (min-width: 560px) { .cat-grid { gap: 16px; } }
-@media (min-width: 1000px) { .cat-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 20px; } .cat-more p { font-size: 1.5rem; } .cat-more { padding: 20px 8px 16px 22px; } .cat-tags { flex-wrap: wrap; overflow: visible; } .cat-bar { position: static; border: 0; background: none; padding-block: 0; } }
-@media (min-width: 760px) and (max-width: 999px) { .cat-grid { max-width: 780px; } }
+@media (min-width: 1000px) { .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 20px; } .cat-more p { font-size: 1.5rem; } .cat-more { padding: 18px 2px 16px; } .cat-tags { flex-wrap: wrap; overflow: visible; } .cat-bar { position: static; border: 0; background: none; padding-block: 0; } }
+@media (min-width: 700px) and (max-width: 999px) { .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .cat-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } .card-name { font-size: 1.12rem; } }

@@ -187,7 +187,7 @@ button.tag { background-color: transparent; }
 @media (hover: hover) and (pointer: fine) { .bar-mid a:hover { color: var(--steel); background-size: calc(100% - 20px) 1px; } }
 .bar-act { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 @media (min-width: 900px) { .bar-mid { display: flex; } .bar-act { margin-left: 0; } }
-.weld { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--edge); }
+.weld { position: absolute; left: calc(max(0px, (100vw - 1440px) / 2) + var(--gutter) + 62px); right: 0; bottom: 0; height: 2px; background: var(--edge); }
 .weld-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; background: var(--steel); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
 .weld-dot {
   position: absolute; top: 50%; left: calc(var(--p, 0) * 100%); width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
@@ -242,12 +242,21 @@ body.menu-open .wa-float, body.wa-off .wa-float { visibility: hidden; animation:
 .foot-brand, .foot-col:nth-child(2) { grid-column: 1 / -1; }
 @media (min-width: 760px) { .foot-col:nth-child(2) { grid-column: auto; } }
 .foot-brand img { width: 92px; height: auto; }
-.foot-tag { margin-top: 18px; font-family: var(--f-d); font-size: 1.5rem; line-height: 1.12; text-transform: uppercase; letter-spacing: 0.02em; color: var(--steel); }
+.foot-tag { margin-top: 14px; font: 500 11.5px/1.4 var(--f-m); text-transform: uppercase; letter-spacing: 0.16em; color: var(--steel); }
+/* tira de miniaturas reales: el pie remata con producto (fotos chicas = nitidas) */
+.foot-strip { margin-bottom: 34px; }
+.foot-strip-k { margin-bottom: 12px; font: 500 11px/1 var(--f-m); letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
+.foot-strip ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.foot-strip a { position: relative; display: block; aspect-ratio: 4 / 5; padding: 1px; background: var(--edge); text-decoration: none; transition: background-color 160ms; }
+.foot-strip img { width: 100%; height: 100%; object-fit: cover; }
+.foot-strip span { position: absolute; left: 1px; bottom: 1px; padding: 3px 5px; font: 500 10px/1 var(--f-m); letter-spacing: 0.08em; color: var(--steel); background: rgba(20, 21, 23, 0.86); }
+.foot-strip a:active { background: var(--steel); }
+@media (hover: hover) and (pointer: fine) { .foot-strip a:hover { background: var(--steel); } }
+@media (min-width: 760px) { .foot-strip { display: flex; align-items: end; gap: 28px; } .foot-strip-k { margin: 0 0 6px; white-space: nowrap; } .foot-strip ul { flex: 1; max-width: 640px; gap: 12px; } }
 .foot-h { font: 500 11px/1 var(--f-m); letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); margin-bottom: 14px; }
 .foot-list { list-style: none; padding: 0; display: grid; gap: 2px; }
 .foot-link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; text-decoration: none; color: var(--text); font: 500 15px var(--f-m); }
-.foot-link svg { width: 20px; height: 20px; color: var(--steel); }
-.foot-ph { width: 20px; font: 500 11px var(--f-m); color: var(--steel); text-align: center; }
+.foot-link svg { flex: none; width: 22px; height: 22px; color: var(--steel); }
 .foot address { font-style: normal; line-height: 1.7; color: var(--text); }
 .foot-hrs { margin-top: 10px; font: 500 12.5px/1.7 var(--f-m); letter-spacing: 0.06em; color: var(--steel-2); white-space: nowrap; }
 .socials { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
