@@ -1,0 +1,39 @@
+/* Hero: cartel de la fachada. Celular: foto a 2/3 de pantalla y el titulo encima, sin raya de corte. */
+.cp-hero{position:relative;min-height:calc(100svh - var(--hh));display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--pz)}
+.cp-hero-ph{position:absolute;left:0;right:0;top:0;height:68svh;margin:0}
+.cp-hero-ph img{width:100%;height:100%;object-fit:cover;object-position:58% 42%}
+.cp-hero-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(22,56,44,.35) 0,rgba(22,56,44,0) 20%,rgba(22,56,44,0) 34%,rgba(22,56,44,.72) 62%,rgba(22,56,44,.97) 88%,#16382c 100%)}
+.cp-hero-tag{position:absolute;z-index:2;left:14px;top:14px;padding:8px 12px 9px;background:rgba(15,42,32,.86);border:2px solid var(--mad);border-radius:6px;display:grid;gap:5px}
+.cp-hero-tag-t{font:italic 700 1rem/1 var(--slab);color:var(--gis)}
+.cp-hero-tag-s{display:grid;gap:2px}
+.cp-hero-tag-s i{display:block;height:3px;border-radius:2px}
+.cp-hero-tag-s i:nth-child(1){background:var(--am)}.cp-hero-tag-s i:nth-child(2){background:var(--azul)}.cp-hero-tag-s i:nth-child(3){background:var(--gis)}
+.cp-hero-in{position:relative;z-index:2;padding:0 20px 34px;max-width:640px}
+.cp-h1{font:800 clamp(3.1rem,15.2vw,4.4rem)/.98 var(--slab);letter-spacing:-.018em;color:var(--gis);text-shadow:0 2px 18px rgba(15,42,32,.6)}
+.cp-h1 .cp-ln{display:block}
+.cp-h1 .cp-ln--2{color:var(--am)}
+.cp-hero-sub{margin-top:14px;font-size:1.05rem;line-height:1.45;max-width:30ch;color:rgba(246,243,234,.92)}
+.cp-hero-acts{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:20px}
+@media (min-width:760px){
+  .cp-hero{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(28px,4vw,64px);min-height:0;padding:40px max(40px,calc((100vw - 1360px)/2)) 62px;overflow:visible}
+  .cp-hero-ph{position:relative;order:2;height:auto;aspect-ratio:1/.9;border:5px solid var(--mad);border-radius:8px;box-shadow:0 22px 40px -22px rgba(0,0,0,.7),inset 0 0 0 2px rgba(0,0,0,.3)}
+  .cp-hero-ph img{border-radius:3px}
+  .cp-hero-ph::after{background:linear-gradient(to right,rgba(22,56,44,.25),rgba(22,56,44,0) 30%)}
+  .cp-hero-ph::before{content:"";position:absolute;left:-9px;right:-9px;bottom:-21px;height:12px;background:linear-gradient(#b08e61,var(--mad));border-radius:0 0 4px 4px;box-shadow:0 6px 10px -4px rgba(0,0,0,.5)}
+  .cp-hero-in{order:1;padding:0;max-width:none}
+  .cp-h1{font-size:clamp(3.2rem,6.3vw,6.4rem)}
+  .cp-hero-sub{font-size:1.2rem;max-width:34ch;margin-top:22px}
+  .cp-hero-acts{margin-top:28px;flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px 24px}
+  .cp-hero-tag{left:auto;right:16px;top:16px}
+}
+/* Compu: la fachada a 57 % del ancho y a todo el alto del primer pantallazo, en su marco; titular grande; linea de cancha por debajo */
+@media (min-width:1000px){
+  .cp-hero{grid-template-columns:minmax(0,43fr) minmax(0,57fr);gap:clamp(32px,3vw,48px);min-height:calc(100svh - var(--hh));padding:26px max(40px,calc((100vw - 1440px)/2 + 40px)) 70px;align-items:stretch}
+  .cp-hero-in{align-self:center;padding-bottom:10px}
+  .cp-hero-ph{aspect-ratio:auto;height:auto;min-height:min(640px,calc(100svh - var(--hh) - 110px));max-height:860px}
+  .cp-h1{font-size:clamp(4.6rem,7.8vw,7rem);line-height:.94;letter-spacing:-.022em}
+  .cp-hero-sub{font-size:1.3rem;max-width:30ch;margin-top:26px}
+  .cp-hero-court{display:block}
+}
+.cp-hero-court{display:none;position:absolute;left:0;right:0;bottom:8px;width:100%;height:52px;pointer-events:none;z-index:1;overflow:visible}
+

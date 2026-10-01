@@ -1,0 +1,84 @@
+/* Momento firma: la marca en la pared. Un marco de puerta de madera con cuatro rayitas a lapiz;
+   una marca viva (trazo grueso de lapiz) sube con el scroll y, si ya calcularon el grado, deja pintado el de su hijo. */
+.cp-niv-wrap{width:100%;max-width:1320px;margin-inline:auto}
+.cp-niv-head{padding:0 20px 26px 58px}
+.cp-niv-lead{margin-top:14px;max-width:34ch;font-size:1.08rem;color:rgba(246,243,234,.9)}
+.cp-marca{position:relative;padding-left:58px;display:grid;gap:30px}
+
+/* El marco de la puerta: madera con veta vertical muy sutil y canto en sombra (nada de renglones). */
+.cp-rail{position:absolute;left:0;top:-10px;bottom:-10px;width:42px;border-radius:0 5px 5px 0;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.18) 0,rgba(0,0,0,0) 22%,rgba(255,255,255,.07) 58%,rgba(0,0,0,.22) 100%),
+    repeating-linear-gradient(90deg,rgba(60,38,16,.0) 0 5px,rgba(60,38,16,.13) 5px 6px,rgba(60,38,16,0) 6px 11px,rgba(255,236,200,.06) 11px 12px,rgba(60,38,16,0) 12px 17px),
+    linear-gradient(var(--mad-hi),var(--mad) 70%,#7c5e3c);
+  box-shadow:inset -3px 0 0 rgba(40,24,8,.28),5px 0 14px -6px rgba(0,0,0,.55)}
+.cp-rail::after{content:"";position:absolute;right:-6px;top:0;bottom:0;width:6px;background:linear-gradient(90deg,#6d5233,#5a4329);border-radius:0 3px 3px 0}
+
+/* Rayitas a lapiz de cada nivel, con su nombre escrito a lapiz sobre la madera */
+.cp-tick{position:absolute;left:-58px;top:16px;width:42px;display:flex;flex-direction:column;align-items:center;gap:9px;pointer-events:none}
+.cp-tick i{display:block;width:30px;height:3px;border-radius:2px;background:#2b2621;opacity:.85;transform:rotate(-2deg);box-shadow:0 1px 0 rgba(255,236,200,.12)}
+.cp-tick em{writing-mode:vertical-rl;transform:rotate(180deg);font:italic 700 .74rem/1 var(--slab);letter-spacing:.14em;text-transform:uppercase;color:#241d16;opacity:.82}
+
+/* La marca viva: trazo de lapiz grueso que cruza el marco y sale sobre la foto, con su etiqueta de gis */
+.cp-live{position:absolute;left:-4px;top:0;z-index:3;display:flex;align-items:center;height:0;pointer-events:none;will-change:transform;transition:transform .6s var(--ease)}
+.cp-live-s{display:block;width:86px;height:17px;margin-top:-1px;fill:#2f2b27;filter:drop-shadow(0 1px 0 rgba(255,236,200,.18)) drop-shadow(0 2px 3px rgba(0,0,0,.45))}
+.cp-live-l{margin-left:6px;padding:6px 10px 7px;background:rgba(15,42,32,.92);border:2px solid var(--mad);border-radius:6px;font:italic 700 1rem/1 var(--slab);color:var(--gis);white-space:nowrap;text-shadow:0 0 1px rgba(246,243,234,.5);box-shadow:0 6px 14px -6px rgba(0,0,0,.6);transform:translateY(-1px)}
+.cp-live-s path,.cp-kidmark path{stroke:rgba(236,230,218,.42);stroke-width:1px;vector-effect:non-scaling-stroke}
+.cp-live.is-kid .cp-live-l{color:var(--am);text-shadow:0 0 1px rgba(242,201,76,.5)}
+/* Marcas que se quedan pintadas en el nivel de su hijo */
+.cp-kidmark{position:absolute;left:-4px;z-index:2;display:flex;align-items:center;height:0;pointer-events:none;opacity:0;transition:opacity .45s var(--ease)}
+.cp-kidmark.is-on{opacity:1}
+.cp-kidmark svg{display:block;width:72px;height:13px;fill:#3a342d;opacity:.9}
+.cp-kidmark b{margin-left:6px;font:italic 700 .95rem/1 var(--slab);color:var(--am);white-space:nowrap;padding:5px 9px 6px;background:rgba(15,42,32,.85);border-radius:6px;border:1px dashed rgba(242,201,76,.6)}
+.cp-live.is-hide-l .cp-live-l{opacity:0}
+
+.cp-nv{position:relative;display:grid;gap:14px;padding-right:0}
+.cp-nv .cp-ph{aspect-ratio:4/3;border-radius:10px 0 0 10px;box-shadow:0 18px 30px -20px rgba(0,0,0,.7)}
+.cp-nv .cp-ph img{object-position:50% 50%}
+.cp-nv-t{padding-right:20px;display:grid;gap:6px;align-content:start}
+.cp-nv-h{font:800 clamp(1.9rem,8vw,2.4rem)/1 var(--slab);color:var(--lv)}
+.cp-nv-age{font:italic 700 1.08rem/1.3 var(--slab);color:var(--gis)}
+.cp-nv-t p:last-child{max-width:36ch;color:rgba(246,243,234,.92)}
+.cp-niv-all{margin:28px 20px 0 58px;padding:14px 16px;border:2px dashed rgba(246,243,234,.4);border-radius:10px;font:italic 700 1.05rem/1.4 var(--slab)}
+.cp-niv-all b{color:var(--am)}
+/* Niveles que la marca todavia no alcanza: solo bajan de opacidad sobre el verde pizarron (sin desaturar) */
+.cp-niv-live .cp-nv{transition:opacity .5s var(--ease)}
+.cp-niv-live .cp-nv:not(.is-on){opacity:.62}
+
+@media (min-width:760px){
+  .cp-niv-wrap{padding:0 28px}
+  .cp-niv-head{padding:0 0 36px 100px}
+  .cp-niv-head .cp-h2{font-size:clamp(2.8rem,4.6vw,4.4rem)}
+  .cp-niv-head .cp-ln{white-space:nowrap}
+  .cp-niv-lead{margin:14px 0 0}
+  .cp-marca{padding-left:100px;gap:44px}
+  .cp-rail{width:62px;top:-12px;bottom:-12px}
+  .cp-tick{left:-100px;width:62px}
+  .cp-tick i{width:44px;height:3.5px}
+  .cp-tick em{font-size:.8rem}
+  .cp-live-s{width:132px;height:19px}
+  .cp-kidmark svg{width:112px;height:15px}
+  .cp-live-l{font-size:1.15rem;padding:7px 12px 8px}
+  .cp-nv{grid-template-columns:minmax(0,58fr) minmax(0,42fr);gap:clamp(30px,3.6vw,56px);align-items:center}
+  .cp-nv .cp-ph{border-radius:10px}
+  .cp-nv-t{padding:0;gap:10px}
+  .cp-nv-h{font-size:clamp(2.8rem,4.6vw,4.6rem)}
+  .cp-nv-age{font-size:1.45rem}
+  .cp-nv-t p:last-child{font-size:1.25rem}
+  .cp-niv-all{margin:36px 0 0 100px;font-size:1.2rem}
+}
+@media (min-width:1000px){
+  .cp-niv-wrap{max-width:1440px;padding:0 40px}
+  .cp-niv-head{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end;padding-left:96px}
+  .cp-niv-lead{margin:0 0 8px;font-size:1.25rem;max-width:30ch}
+  .cp-marca{gap:56px;padding-left:96px}
+  .cp-tick{left:-96px}
+  .cp-niv-all{margin-left:96px}
+  /* foto de cada nivel a ~58 % del ancho de la pantalla, pegada al marco de la puerta */
+  .cp-nv{grid-template-columns:minmax(0,68fr) minmax(0,32fr);gap:44px}
+  .cp-nv-h{font-size:clamp(2.8rem,4.2vw,4rem)}
+  /* el texto alterna arriba y abajo de la foto para dar ritmo sin alejar la foto del marco */
+  .cp-nv:nth-of-type(even) .cp-nv-t{align-self:end;padding-bottom:18px}
+  .cp-nv:nth-of-type(odd) .cp-nv-t{align-self:start;padding-top:18px}
+}
+.cp-niv:not(.cp-niv-live) .cp-live{display:none}
