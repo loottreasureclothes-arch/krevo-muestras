@@ -1,0 +1,23 @@
+.epoca{background:var(--cafe);position:relative}
+.epoca-foto{position:relative;min-height:60svh;display:flex;align-items:flex-end;overflow:hidden;background:#1a0d07}
+.epoca-foto>picture{position:absolute;inset:0}
+.epoca-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.epoca-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(36,16,10,1) 0%,rgba(36,16,10,.78) 26%,rgba(36,16,10,0) 55%,rgba(36,16,10,0) 80%,rgba(36,16,10,.45) 100%),radial-gradient(110% 80% at 50% 45%,transparent 55%,rgba(20,8,4,.55) 100%)}
+.epoca-tt{position:relative;padding-bottom:22px;padding-top:70px}
+.epoca .tt{font-size:clamp(33px,9.4vw,96px)}
+.epoca-body{padding-block:16px 46px;display:grid;gap:24px}
+.revs{display:grid;gap:16px;padding:0}
+.rev{display:flex;flex-direction:column;gap:8px;padding:18px 18px 14px}
+.rev>*{position:relative}
+.rev blockquote{margin:0;font:400 16px/1.45 var(--f-txt);font-style:italic;color:var(--tinta)}
+.rev-by{font-size:13px;line-height:1.4;color:var(--tinta2)}
+.rev-by b{font-weight:400;color:var(--tinta);letter-spacing:.02em}
+.evt{border-top:1px solid rgba(160,140,110,.5);padding-top:24px;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.evt-t{font:400 clamp(24px,6.6vw,34px)/1.1 var(--f-tit);color:var(--crema)}
+.evt-s{font-size:16px;color:var(--crema);opacity:.9;margin-bottom:6px}
+@media (min-width:860px){
+  .epoca-foto{min-height:78svh}.epoca-foto img{object-position:50% 92%}.epoca-tt{padding-bottom:70px}
+  .epoca-body{display:block;padding-block:70px 90px}
+  .revs{grid-template-columns:repeat(3,1fr);gap:22px}
+  .evt{margin-top:48px;padding-top:28px}
+}
