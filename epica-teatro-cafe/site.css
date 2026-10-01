@@ -44,7 +44,7 @@ body {
   font-family: var(--f-body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility; overflow-x: clip;
 }
-h1, h2, h3 { font-family: var(--f-display); font-weight: 900; font-variation-settings: "opsz" 144; line-height: 0.98; text-wrap: balance; overflow-wrap: break-word; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 900; font-variation-settings: "opsz" 144, "WONK" 0; font-variant-ligatures: no-common-ligatures no-discretionary-ligatures no-historical-ligatures; font-feature-settings: "liga" 0, "dlig" 0, "hlig" 0, "swsh" 0, "salt" 0; line-height: 0.98; text-wrap: balance; overflow-wrap: break-word; }
 p { text-wrap: pretty; overflow-wrap: break-word; }
 img, picture, svg, iframe { display: block; max-width: 100%; }
 img { height: auto; }
@@ -111,6 +111,7 @@ body.ep-menu-open .ep-bar-r .ep-btn { display: none; }
 .ep-bulbs i.is-lit { background: var(--gold); box-shadow: 0 0 6px 1px rgba(201, 162, 74, 0.55); }
 .ep-bulbs i.is-off { background: var(--gold-dim); box-shadow: none; }
 .ep-bulbs i.is-blink { opacity: 0.35; }
+.ep-bulbs.is-full i.is-lit { box-shadow: 0 0 9px 2px rgba(201, 162, 74, 0.75); }
 .ep-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: 3px; height: 1px; background: rgba(201, 162, 74, 0.22); pointer-events: none; }
 
 /* ============ Menú: pantalla completa en rojo telón ============ */
@@ -162,6 +163,8 @@ body.ep-menu-open .ep-menu-foot { opacity: 1; transition: opacity 420ms var(--ea
 }
 
 /* ============ Títulos a dos tonos ============ */
+/* Corrección 2: la itálica de las segundas líneas va SIN el eje WONK (sin la "l" que parecía "ſ" ni la v rara) y sin ligados. */
+h1 .ep-b, h2 .ep-b, h3 .ep-b, .ep-b { font-variation-settings: "opsz" 144, "WONK" 0; font-variant-ligatures: no-common-ligatures no-discretionary-ligatures; font-feature-settings: "liga" 0, "dlig" 0, "swsh" 0, "salt" 0; }
 .ep-h { font-size: clamp(40px, 11.6vw, 66px); letter-spacing: -0.015em; color: var(--cream); }
 .ep-h .ep-line { display: block; }
 .ep-h .ep-b { color: var(--red-hi); font-style: italic; font-weight: 800; }
@@ -196,22 +199,30 @@ body.ep-wa-off .ep-wa { visibility: hidden; opacity: 0; animation: none; }
 @keyframes ep-wa-in { from { opacity: 0; transform: translateY(14px) scale(0.9); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .ep-wa { animation: none; } }
 
-/* ============ Pie ============ */
-.ep-foot { padding: 56px 0 calc(28px + env(safe-area-inset-bottom)); border-top: 1px solid var(--cream-faint); background: var(--ink); }
-.ep-foot-grid { display: grid; gap: 34px; }
-.ep-foot-brand img { width: 120px; height: auto; }
-.ep-foot-sub { margin-top: 10px; font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-mute); }
-.ep-foot-h { font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red-hi); margin-bottom: 12px; }
+/* ============ Pie: el proscenio que enmarca el final (bambalina fija, logo al centro, una línea de taquilla) ============ */
+.ep-foot { padding: 0 0 calc(28px + env(safe-area-inset-bottom)); background: var(--ink); }
+.ep-foot-bamb { height: 48px; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.6));
+  background:
+    radial-gradient(ellipse 34px 15px at 34px 0, #960d18 97%, transparent 100%) 0 100% / 68px 15px repeat-x,
+    repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.36) 0, rgba(255, 255, 255, 0.1) 9px, rgba(0, 0, 0, 0.3) 17px, rgba(0, 0, 0, 0.36) 20px) 0 0 / 100% calc(100% - 15px) no-repeat,
+    linear-gradient(#960d18, #960d18) 0 0 / 100% calc(100% - 15px) no-repeat; }
+.ep-foot-top { display: grid; justify-items: center; gap: 8px; padding-top: 44px; padding-bottom: 36px; text-align: center; }
+.ep-foot-logo { width: 150px; height: auto; }
+.ep-foot-sub { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-mute); }
+.ep-foot-linea { margin-top: 10px; padding: 7px 12px 6px; border-top: 1px solid var(--cream-faint); border-bottom: 1px solid var(--cream-faint); font-family: var(--f-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.1em; color: var(--cream); }
+.ep-foot-grid { display: grid; gap: 30px; padding-top: 30px; border-top: 1px solid var(--cream-faint); }
+.ep-foot-h { font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red-hi); margin-bottom: 10px; }
 .ep-foot-list { display: grid; gap: 4px; font-size: 15px; color: var(--cream-mute); }
 .ep-foot-list a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--cream); overflow-wrap: anywhere; }
 .ep-foot-wa svg { width: 20px; height: 20px; color: var(--wa); flex: none; }
-.ep-foot-tel svg { width: 18px; height: 18px; color: var(--red-hi); flex: none; }
-.ep-foot-addr { padding-top: 6px; line-height: 1.6; }
+.ep-foot-tel svg, .ep-foot-map svg { width: 18px; height: 18px; color: var(--red-hi); flex: none; }
+.ep-foot-addr { line-height: 1.6; }
 .ep-foot-social { display: flex; gap: 12px; }
 .ep-foot-social a { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--cream-faint); border-radius: 2px; color: var(--cream); transition: background 160ms, border-color 160ms; }
 .ep-foot-social svg { width: 22px; height: 22px; }
 @media (hover: hover) and (pointer: fine) { .ep-foot-social a:hover { background: var(--red); border-color: var(--red); } }
-.ep-credit { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--cream-faint); font-size: 12px; color: var(--cream-mute); }
-@media (min-width: 820px) { .ep-foot-grid { grid-template-columns: 1.1fr 1.4fr 1fr; align-items: start; } }
+.ep-credit { margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--cream-faint); font-size: 12px; color: var(--cream-mute); }
+@media (max-width: 719px) { .ep-foot-linea { font-size: 12px; letter-spacing: 0.04em; } .ep-foot-grid { grid-template-columns: 1.45fr 1fr; gap: 26px 18px; } .ep-foot-grid .ep-foot-col:first-child { grid-column: 1 / -1; } }
+@media (min-width: 720px) { .ep-foot-bamb { height: 56px; } .ep-foot-logo { width: 180px; } .ep-foot-linea { font-size: 14px; } .ep-foot-grid { grid-template-columns: 1.3fr 1fr 0.8fr; align-items: start; } }
 
 [hidden] { display: none !important; }

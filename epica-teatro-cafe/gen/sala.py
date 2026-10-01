@@ -4,6 +4,8 @@ y las fichas de la PROGRAMACIÓN SEMANAL real (research/hechos.md). La fecha de 
 sections/30-sala.js con el día real del visitante (la próxima de ese día de la semana).
 Corre: python3 gen/sala.py  (luego python3 build.py)
 
+Corrección 2 (30 sep 2026): filas en arcos concéntricos, sillas de teatro (asiento + respaldo curvo),
+luz cálida del escenario sobre las 2 primeras filas, mesa con anillo rojo al elegir (30-sala.js).
 Corrección 1 (30 sep 2026): cada silla tiene área de toque de 44 px a 390 (r=22.5 en un viewBox de 360
 que se pinta a ~354 px) y ninguna área se encima con la de otra silla (paso mínimo 45); sillas con forma
 de silla (asiento + respaldo curvo) que miran a su mesa; mesas con borde dorado sólido."""
@@ -11,37 +13,40 @@ import os, math
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 HIT = 22.5   # radio del área de toque (44 px a 390 de ancho)
-# filas: (letra, y central, separación entre mesas, [sillas por mesa])
+# Corrección 2: las 5 filas van en ARCOS CONCÉNTRICOS con centro arriba del escenario (abren hacia él).
+# filas: (letra, radio del arco, separación entre mesas medida sobre el arco, [sillas por mesa])
+CX, CY = 180, -250
 ROWS = [
-    ('A', 112, 100, [2, 2, 2]),
-    ('B', 167, 90, [2, 2, 2, 2]),
-    ('C', 216, 110, [2, 2, 2]),
-    ('D', 290, 115, [4, 2, 4]),
-    ('E', 363, 90, [2, 2, 2, 2]),
+    ('A', 362, 100, [2, 2, 2]),
+    ('B', 418, 92, [2, 2, 2, 2]),
+    ('C', 470, 112, [2, 2, 2]),
+    ('D', 546, 122, [4, 2, 4]),
+    ('E', 620, 91, [2, 2, 2, 2]),
 ]
-R = 430  # curvatura: los extremos de cada fila bajan (fila concéntrica al escenario)
-CX = 180
-P2 = [(-22.5, 0), (22.5, 0)]
+P2 = [(-22.5, 0), (22.5, 0)]          # a los lados de la mesa, sobre la tangente del arco
 P4 = [(0, -32), (32, 0), (0, 32), (-32, 0)]
-# silla dibujada mirando hacia -y (la mesa queda "arriba"); se gira para que mire a su mesa
+# silla de teatro vista desde arriba, mirando hacia -y (la mesa queda "arriba"): asiento redondeado
+# y respaldo curvo, más chica que la mesa; se gira para que mire al centro de su mesa
 SILLA = ('<g class="ep-silla" transform="rotate({rot:.0f})">'
-         '<rect x="-9" y="-8" width="18" height="12" rx="3"/>'
-         '<rect x="-10.5" y="5.5" width="21" height="5" rx="2.5"/></g>')
+         '<rect x="-6.2" y="-7" width="12.4" height="12.5" rx="3"/>'
+         '<path d="M-10 -6 V5.5 Q-10 12 0 12 Q10 12 10 5.5 V-6 H7.2 V5 Q7.2 8.8 0 8.8 Q-7.2 8.8 -7.2 5 V-6 Z"/></g>')
 out = []; seats = []
-for letra, y0, gap, mesas in ROWS:
+for letra, R, gap, mesas in ROWS:
     n = len(mesas); k = 0
     for i, sillas in enumerate(mesas):
-        dx = (i - (n - 1) / 2) * gap
-        x = CX + dx
-        y = y0 + (dx * dx) / (2 * R)
+        th = (i - (n - 1) / 2) * gap / R            # ángulo desde la vertical
+        x = CX + R * math.sin(th); y = CY + R * math.cos(th)
+        rot_t = -math.degrees(th)                   # la mesa se alinea con el arco
+        ct, st = math.cos(-th), math.sin(-th)
         pos = P2 if sillas == 2 else P4
-        g = [f'<g transform="translate({x:.1f} {y:.1f})"><circle class="ep-mesa" r="{10 if sillas == 2 else 14}"/>']
-        for (sx, sy) in pos:
+        g = [f'<g class="ep-mesa-g" transform="translate({x:.1f} {y:.1f})"><circle class="ep-mesa" r="{10 if sillas == 2 else 14}"/>']
+        for (px, py) in pos:
+            sx = px * ct - py * st; sy = px * st + py * ct   # silla girada con el arco
             k += 1
             sid = f'{letra}{k}'
             rot = math.degrees(math.atan2(-sx, sy))  # dir a la mesa = (-sx,-sy); rot = atan2(dir.x, -dir.y)
             seats.append((sid, x + sx, y + sy))
-            g.append(f'<g class="ep-seat" data-seat="{sid}" data-x="{x+sx:.1f}" data-y="{y+sy:.1f}" role="checkbox" aria-checked="false" aria-label="Lugar {sid}" tabindex="0" transform="translate({sx} {sy})"><circle class="ep-hit" r="{HIT}"/>{SILLA.format(rot=rot)}</g>')
+            g.append(f'<g class="ep-seat" data-seat="{sid}" data-x="{x+sx:.1f}" data-y="{y+sy:.1f}" role="checkbox" aria-checked="false" aria-label="Lugar {sid}" tabindex="0" transform="translate({sx:.1f} {sy:.1f})"><circle class="ep-hit" r="{HIT}"/>{SILLA.format(rot=rot)}</g>')
         g.append('</g>')
         out.append(''.join(g))
 assert len(seats) == 38, len(seats)
@@ -52,8 +57,11 @@ for a in range(len(seats)):
         assert d >= 2 * HIT - 0.5, (seats[a], seats[b], round(d, 1))
 xs = [s[1] for s in seats]; ys = [s[2] for s in seats]
 assert min(xs) - HIT >= 0 and max(xs) + HIT <= 360, (min(xs), max(xs))
+assert min(ys) - HIT >= 52, ('choca con el escenario', min(ys))
 VB_H = int(math.ceil(max(ys) + HIT + 4))
 plano = (f'<svg class="ep-plano-svg" viewBox="0 0 360 {VB_H}" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Plano de la sala, 38 lugares en mesitas">'
+         '<defs><filter id="ep-luz-f" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="9"/></filter><radialGradient id="ep-luz" cx="50%" cy="0%" r="100%"><stop offset="0" stop-color="#f1e7d2" stop-opacity="0.1"/><stop offset="0.6" stop-color="#f1e7d2" stop-opacity="0.04"/><stop offset="1" stop-color="#f1e7d2" stop-opacity="0"/></radialGradient></defs>'
+         '<path class="ep-luz" d="M40 56 L320 56 L360 205 Q180 236 0 205 Z" fill="url(#ep-luz)" filter="url(#ep-luz-f)"/>'
          '<path class="ep-escenario" d="M26 6 H334 L350 50 Q180 84 10 50 Z"/>'
          '<path class="ep-escenario-l" d="M40 14 H320 L332 44 Q180 70 28 44 Z"/>'
          '<text class="ep-esc-t" x="180" y="40" text-anchor="middle">ESCENARIO</text>'
@@ -70,11 +78,11 @@ DIAS = [
 fichas = ''.join(
     f'<button type="button" class="ep-ficha" role="radio" aria-checked="false" data-dia="{k}">'
     f'<span class="ep-ficha-d" data-dia-fecha="{k}">{d}</span><span class="ep-ficha-n">{n}</span>'
-    f'<span class="ep-ficha-p">Pregunta el precio</span></button>'
+    f'<span class="ep-ficha-hoy" hidden>Pregúntanos si aún quedan lugares.</span></button>'
     for k, d, n in DIAS)
 
-ICO = ('<svg class="ep-ley-i" viewBox="-12 -10 24 22" aria-hidden="true"><rect x="-9" y="-8" width="18" height="12" rx="3"/>'
-       '<rect x="-10.5" y="5.5" width="21" height="5" rx="2.5"/></svg>')
+ICO = ('<svg class="ep-ley-i" viewBox="-12 -10 24 24" aria-hidden="true"><rect x="-6.2" y="-7" width="12.4" height="12.5" rx="3"/>'
+       '<path d="M-10 -6 V5.5 Q-10 12 0 12 Q10 12 10 5.5 V-6 H7.2 V5 Q7.2 8.8 0 8.8 Q-7.2 8.8 -7.2 5 V-6 Z"/></svg>')
 
 html = f'''  <section id="sala" class="ep-sec ep-sala" data-hide-wa aria-labelledby="sala-title">
     <div class="ep-wrap">
@@ -83,6 +91,7 @@ html = f'''  <section id="sala" class="ep-sec ep-sala" data-hide-wa aria-labelle
         <div class="ep-paso ep-paso-1">
           <p class="ep-paso-t"><b>1</b>Elige la función</p>
           <div class="ep-fichas" role="radiogroup" aria-label="Función de la semana">{fichas}</div>
+          <p class="ep-fichas-nota">Precio y hora de cada función: te los confirmamos por WhatsApp.</p>
           <div class="ep-fechas" id="ep-fechas" role="radiogroup" aria-label="Fecha" hidden></div>
         </div>
         <div class="ep-paso ep-paso-2" id="plano">

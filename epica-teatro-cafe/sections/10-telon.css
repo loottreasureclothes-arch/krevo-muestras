@@ -1,16 +1,17 @@
 /* ===== 10 · EL TELÓN (hero): muro de posters reales + telón que se abre UNA vez ===== */
 .ep-hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; background: var(--ink); padding: calc(var(--bar) + 24px) 0 34px; isolation: isolate; }
-.ep-muro { position: absolute; inset: 0; z-index: 0; display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 10px; padding: 8px; }
-.ep-muro img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: brightness(0.55) saturate(0.95); border: 4px solid rgba(241, 231, 210, 0.55); }
-.ep-muro img:nth-child(1) { transform: rotate(-2.4deg) scale(1.04); }
-.ep-muro img:nth-child(2) { transform: rotate(2deg) translateY(10px) scale(1.04); }
-.ep-muro img:nth-child(3) { transform: rotate(1.6deg) scale(1.03); }
-.ep-muro img:nth-child(4) { transform: rotate(-2deg) translateY(-8px) scale(1.04); }
-.ep-muro img:nth-child(5) { transform: rotate(-1.4deg) scale(1.03); }
-.ep-muro img:nth-child(6) { transform: rotate(2.6deg) translateY(6px) scale(1.04); }
-.ep-muro-x { display: none; }
-.ep-hero-veil { position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(180deg, rgba(11, 10, 10, 0.55) 0%, rgba(11, 10, 10, 0.1) 26%, rgba(11, 10, 10, 0.72) 58%, var(--ink) 92%); }
+/* Corrección 2: la protagonista es una ESCENA REAL (Off Shakespeare, recortada sin texto del poster).
+   Celular: la escena llena el 60 % superior y se funde a negro abajo, donde cae el título.
+   Compu (900+): la escena a la derecha en marco crema con esquina cortada, girada 1.5°; detrás asoman
+   3 posters chicos al 25 % (solo su parte de arriba: ningún teléfono de poster se lee en el hero). */
+.ep-muro { display: none; }
+.ep-escena { position: absolute; z-index: 0; left: 0; right: 0; top: var(--bar); height: 60svh; margin: 0; }
+.ep-escena-in { display: block; height: 100%; }
+.ep-escena img { width: 100%; height: 100%; object-fit: cover; object-position: 52% 30%; filter: saturate(1.05) contrast(1.04); }
+.ep-escena::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(11, 10, 10, 0.35) 0%, rgba(11, 10, 10, 0) 18%, rgba(11, 10, 10, 0) 52%, rgba(11, 10, 10, 0.78) 84%, var(--ink) 100%); }
+.ep-escena-pie { position: absolute; z-index: 1; left: var(--gut); top: 12px; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; color: rgba(241, 231, 210, 0.6); text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9); }
+.ep-hero-veil { display: none; }
 
 /* el telón: dos mitades con pliegues dibujados en CSS, sin imagen */
 .ep-telon { position: absolute; inset: 0; z-index: 5; pointer-events: none; display: none; overflow: hidden; }
@@ -45,18 +46,35 @@ html.ep-ready .ep-telon { display: none; }
 @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
   html.ep-js .ep-hw { animation: ep-fall 520ms cubic-bezier(0.16, 0.84, 0.44, 1) both; animation-delay: calc(1050ms + var(--i, 0) * 110ms); }
 }
-.ep-hoy-linea { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; font-family: var(--f-mono); font-size: 15px; line-height: 1.35; color: var(--cream); text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8); }
+.ep-hoy-linea { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; font-family: var(--f-mono); font-size: 15px; line-height: 1.35; color: var(--cream); text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8); }
 .ep-hoy-k { padding: 3px 8px 2px; background: var(--paper); color: var(--paper-ink); font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; text-shadow: none; transform: rotate(-2deg); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.5); }
 .ep-hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 22px; }
 @media (min-width: 720px) {
   .ep-hero { padding-bottom: 56px; }
-  .ep-muro { grid-template-columns: repeat(5, 1fr); gap: 14px; padding: 12px; }
-  .ep-muro-x { display: block; }
-  .ep-muro img:nth-child(odd) { transform: rotate(-1.8deg) scale(1.03); }
-  .ep-muro img:nth-child(even) { transform: rotate(1.6deg) translateY(10px) scale(1.03); }
-  .ep-hero-title { font-size: clamp(84px, 9.4vw, 168px); }
+  .ep-escena { height: 58svh; }
+  .ep-escena-pie { font-size: 12px; }
+  .ep-hero-title { font-size: clamp(84px, 11vw, 120px); }
   .ep-hero-title .ep-line { white-space: nowrap; }
   .ep-hero-in { gap: 24px; }
   .ep-hoy-linea { font-size: 17px; }
-  .ep-hero-veil { background: linear-gradient(180deg, rgba(11, 10, 10, 0.6) 0%, rgba(11, 10, 10, 0.2) 25%, rgba(11, 10, 10, 0.78) 62%, var(--ink) 94%); }
+}
+@media (min-width: 900px) {
+  .ep-hero { align-items: center; padding: calc(var(--bar) + 48px) 0 64px; }
+  .ep-escena { left: auto; right: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); top: 50%; width: 50%; max-width: 700px; height: auto;
+    transform: translateY(-46%) rotate(1.5deg); filter: drop-shadow(0 22px 34px rgba(0, 0, 0, 0.7)); }
+  .ep-escena-in { height: auto; background: var(--paper); padding: 6px; clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%); }
+  .ep-escena img { height: auto; aspect-ratio: 1750 / 1278; }
+  .ep-escena::after { display: none; }
+  .ep-escena-pie { position: static; margin-top: 12px; text-align: right; text-shadow: none; transform: rotate(-1.5deg); }
+  .ep-muro { display: block; position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .ep-muro-p { position: absolute; display: block; width: 13vw; max-width: 190px; aspect-ratio: 4 / 3; overflow: hidden; padding: 4px; background: rgba(241, 231, 210, 0.5); filter: brightness(0.25) saturate(0.8); }
+  .ep-muro-p img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+  .ep-muro-p:nth-child(1) { right: 47%; top: 15%; transform: rotate(-5deg); }
+  .ep-muro-p:nth-child(2) { right: 1.5%; top: 11%; transform: rotate(4deg); }
+  .ep-muro-p:nth-child(3) { right: 34%; bottom: 4%; transform: rotate(-2.5deg); }
+  .ep-hero-in { width: 100%; }
+  .ep-hero-title { font-size: clamp(72px, 7vw, 116px); }
+  .ep-hero-title .ep-line { white-space: normal; }
+  .ep-hero-title .ep-line:first-child .ep-hw { display: block; }
+  .ep-hoy-linea, .ep-hero-cta { max-width: 42%; }
 }

@@ -16,23 +16,35 @@
 .ep-slot .ep-marco-in { max-height: 100%; }
 .ep-slot img { width: auto; height: auto; max-width: 100%; max-height: calc(var(--w) * 1.25 - 12px); margin-inline: auto; }
 .ep-card-info { display: grid; gap: 8px; justify-items: start; }
-.ep-card-t { font-size: 30px; line-height: 1; letter-spacing: -0.01em; }
+.ep-card-t { font-size: 30px; line-height: 1; letter-spacing: -0.01em; font-variation-settings: "opsz" 72, "WONK" 0; } /* a 144 la f de "Off" se pega y se lee "Ofi" */
 .ep-card-sub { font-size: 14px; color: var(--cream-mute); line-height: 1.35; }
 .ep-card-fechas { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 2px 0 2px; }
 .ep-card-precio { font-family: var(--f-mono); font-size: 15px; color: var(--cream); }
 .ep-cart-nota { font-size: 13px; color: var(--cream-mute); max-width: 52ch; }
 .ep-cart-pie { display: grid; gap: 10px; }
 .ep-cart-pos { font-family: var(--f-mono); font-weight: 700; font-size: 14px; letter-spacing: 0.08em; color: var(--cream); }
-/* sello de goma sobre el poster: la función ya pasó (lo pone 20-cartelera.js comparando con hoy) */
-.ep-pasada { position: absolute; z-index: 2; top: 16px; right: -8px; padding: 6px 10px 5px; border: 2px solid var(--red-hi); background: rgba(11, 10, 10, 0.82);
-  color: var(--cream); font-family: var(--f-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1;
-  transform: rotate(-7deg); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6); pointer-events: none; }
+/* Corrección 2: el sello "YA SE PRESENTÓ" ya no tapa el arte; va chico junto a las fechas tachadas */
+.ep-pasada { display: inline-block; padding: 4px 8px 3px; border: 1.5px solid var(--red-hi); color: var(--red-hi); font-family: var(--f-mono); font-weight: 700; font-size: 12px;
+  letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.15; transform: rotate(-3deg); white-space: nowrap; }
 .ep-pasada[hidden] { display: none; }
+/* novena tarjeta: el riel termina en acción */
+.ep-oct { display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; width: 100%; height: calc(var(--w) * 1.25 - 6px); padding: 26px 22px 22px;
+  background: var(--paper); color: var(--paper-ink); clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%); transform: rotate(-1deg); }
+.ep-oct-k { margin-bottom: auto; font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(27, 20, 18, 0.62); }
+.ep-oct-h { font-family: var(--f-display); font-weight: 900; font-size: clamp(38px, 11vw, 52px); line-height: 0.98; letter-spacing: -0.01em; font-variation-settings: "opsz" 144, "WONK" 0; }
+.ep-oct-h .ep-line { display: block; }
+.ep-oct-h .ep-b { color: var(--red); font-style: italic; font-weight: 800; }
+.ep-oct-dias { font-family: var(--f-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; }
+.ep-oct-a { align-self: flex-start; color: var(--paper-ink); border-bottom: 1.5px solid var(--red); }
+.ep-oct-a svg { color: var(--red); }
 .ep-sello.is-pasado { opacity: 0.45; text-decoration: line-through; }
 @media (min-width: 720px) {
   .ep-cart-ctl { display: flex; }
   .ep-cart-pos { display: none; }
-  .ep-cart-rail { --w: min(29vw, 430px); gap: 34px; padding-inline: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); scroll-padding-inline: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); }
+  .ep-cart-rail { --w: calc((100vw - 2 * var(--gut) - 34px) / 2.4); gap: 34px; padding-inline: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); scroll-padding-inline: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); }
   .ep-card-t { font-size: 34px; }
+  .ep-oct-h { font-size: clamp(44px, 4vw, 60px); }
   .ep-cart-head { margin-bottom: 40px; }
 }
+/* 1024+: 3 tarjetas completas dentro de la retícula; la cuarta asoma después del borde (no se ve mordida) */
+@media (min-width: 1024px) { .ep-cart-rail { --w: calc((min(100vw, 1240px) - 2 * var(--gut) - 68px) / 3); } }

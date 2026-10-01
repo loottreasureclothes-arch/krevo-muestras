@@ -12,8 +12,8 @@
       var pasada = !vigentes.length;
       card.classList.toggle("is-pasada", pasada);
       var sello = card.querySelector(".ep-pasada"); if (sello) sello.hidden = !pasada;
-      /* fechas sueltas que ya pasaron dentro de una función que sigue */
-      Array.prototype.forEach.call(card.querySelectorAll(".ep-card-fechas .ep-sello"), function (s, i) { s.classList.toggle("is-pasado", !pasada && fechas[i] && fechas[i] < t); });
+      /* fechas que ya pasaron: tachadas (el sello "Ya se presentó" va junto a ellas, fuera del arte del poster) */
+      Array.prototype.forEach.call(card.querySelectorAll(".ep-card-fechas .ep-sello"), function (s, i) { s.classList.toggle("is-pasado", !!(fechas[i] && fechas[i] < t)); });
       var a = card.querySelector(".ep-apartar");
       if (!a) return;
       a.hidden = pasada;

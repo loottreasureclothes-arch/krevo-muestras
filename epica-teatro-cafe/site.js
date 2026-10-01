@@ -37,9 +37,13 @@
       bulbs.forEach(function (b, i) { setTimeout(function () { b.classList.add("is-lit"); }, 80 + (1100 * i) / n); });
       setTimeout(function () { bulbs.forEach(function (b) { b.classList.add("is-lit"); }); }, 1600); /* blindaje */
     }
+    /* Corrección 2: los foquitos se van PRENDIENDO conforme bajas (de izquierda a derecha) y llegan completos al pie.
+       Arriba del todo quedan todos prendidos (la secuencia de entrada). Al llegar al final brillan una vez (aplauso). */
     function paintOff(pct) {
-      var n = bulbs.length, on = Math.round(n * (1 - pct));
+      var n = bulbs.length, y = window.scrollY || window.pageYOffset;
+      var on = y <= 12 || pct >= 0.985 ? n : Math.max(1, Math.round(n * pct));
       for (var i = 0; i < n; i++) bulbs[i].classList.toggle("is-off", i >= on);
+      box.classList.toggle("is-full", y > 12 && pct >= 0.985);
     }
     build();
     sequence();

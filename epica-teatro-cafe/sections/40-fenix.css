@@ -1,18 +1,16 @@
 /* ===== 40 · FÉNIX: foto a sangre (collage oscuro de 3 posters + velo rojo) y críticas de programa de mano ===== */
 .ep-fenix { background: var(--ink); }
-.ep-fenix-band { position: relative; min-height: 70svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; padding: 40px 0 38px; }
-.ep-collage { position: absolute; inset: 0; z-index: 0; }
-.ep-col { position: absolute; display: block; padding: 5px; background: var(--paper); filter: brightness(0.5) saturate(0.9); box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6); }
-.ep-col img { width: 100%; height: auto; }
-.ep-col-a { width: 46%; top: 6%; left: -3%; transform: rotate(-5deg); }
-.ep-col-b { width: 64%; top: 4%; right: -6%; transform: rotate(4deg); }
-.ep-col-c { width: 58%; top: 34%; left: 12%; transform: rotate(-2.5deg); }
-.ep-fenix-veil { position: absolute; inset: 0; z-index: 1; pointer-events: none; background:
-  linear-gradient(180deg, rgba(11, 10, 10, 0.45) 0%, rgba(11, 10, 10, 0.05) 22%, rgba(11, 10, 10, 0.78) 62%, var(--ink) 100%),
-  rgba(179, 18, 31, 0.3); }
-.ep-fenix-txt { position: relative; z-index: 2; }
+/* Corrección 2: "Volvimos." con la luz del escenario (recorte real de Jean de Blues: cenital azul y foco rojo),
+   sin velo rojo plano. Celular: foto a sangre arriba y el título cae sobre el negro de abajo. Compu: foto a la derecha (60 %). */
+.ep-fenix-band { position: relative; isolation: isolate; padding: 0 0 34px; }
+.ep-foco { position: relative; z-index: 0; margin: 0; height: 78vw; max-height: 560px; overflow: hidden; }
+.ep-foco img { width: 100%; height: 100%; object-fit: cover; object-position: 64% 50%; filter: brightness(0.8) saturate(1.05); }
+.ep-foco::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(11, 10, 10, 0.5) 0%, rgba(11, 10, 10, 0) 20%, rgba(11, 10, 10, 0) 55%, rgba(11, 10, 10, 0.85) 88%, var(--ink) 100%); }
+.ep-fenix-txt { position: relative; z-index: 2; margin-top: -84px; }
 .ep-fenix-h { font-size: clamp(30px, 8.4vw, 46px); line-height: 1.04; letter-spacing: -0.01em; text-shadow: 0 3px 20px rgba(0, 0, 0, 0.7); }
 .ep-fenix-h .ep-line { display: block; }
+.ep-fenix-h .ep-line:first-child { font-variation-settings: "opsz" 60, "WONK" 0; }
 .ep-fenix-h .ep-b { margin-top: 6px; font-size: clamp(58px, 19vw, 132px); line-height: 0.95; color: var(--red-hi); font-style: italic; font-weight: 800; }
 .ep-fenix-body { padding-top: 28px; padding-bottom: var(--sec-y); }
 .ep-fenix-copy { display: grid; gap: 10px; max-width: 54ch; margin-bottom: 34px; font-size: 17px; color: var(--cream-mute); }
@@ -28,12 +26,13 @@
 .ep-google { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 18px; font-family: var(--f-mono); font-size: 14px; color: var(--cream-mute); border-bottom: 1px dotted var(--cream-faint); }
 .ep-google svg { width: 16px; height: 16px; color: var(--red-hi); }
 @media (hover: hover) and (pointer: fine) { .ep-google:hover { color: var(--cream); } }
+@media (min-width: 720px) and (max-width: 899px) { .ep-foco { height: 62vw; } .ep-fenix-txt { margin-top: -120px; } }
 @media (min-width: 900px) {
-  .ep-fenix-band { min-height: 66svh; padding: 64px 0; align-items: center; }
-  .ep-col-a { width: 19%; top: 8%; left: auto; right: 31%; transform: rotate(-4deg); }
-  .ep-col-b { width: 30%; top: 6%; right: 2%; transform: rotate(3deg); }
-  .ep-col-c { width: 26%; top: 44%; left: auto; right: 14%; transform: rotate(-2deg); }
-  .ep-fenix-veil { background: linear-gradient(90deg, rgba(11, 10, 10, 0.92) 0%, rgba(11, 10, 10, 0.5) 50%, rgba(11, 10, 10, 0.1) 100%), linear-gradient(180deg, rgba(11, 10, 10, 0.3) 0%, rgba(11, 10, 10, 0.6) 80%, var(--ink) 100%), rgba(179, 18, 31, 0.3); }
+  .ep-fenix-band { min-height: 64svh; display: flex; align-items: center; padding: 64px 0; overflow: hidden; }
+  .ep-foco { position: absolute; top: 0; right: 0; bottom: 0; width: 62%; height: auto; max-height: none; }
+  .ep-foco img { object-position: 40% 50%; }
+  .ep-foco::after { background: linear-gradient(90deg, var(--ink) 0%, rgba(11, 10, 10, 0.55) 22%, rgba(11, 10, 10, 0) 48%), linear-gradient(180deg, rgba(11, 10, 10, 0.4) 0%, rgba(11, 10, 10, 0) 20%, rgba(11, 10, 10, 0) 70%, var(--ink) 100%); }
+  .ep-fenix-txt { margin-top: 0; }
   .ep-fenix-h { max-width: 12ch; font-size: clamp(40px, 4vw, 64px); }
   .ep-fenix-h .ep-b { font-size: clamp(90px, 9vw, 150px); }
   .ep-fenix-body { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr); column-gap: 72px; padding-top: 56px; align-items: start; }

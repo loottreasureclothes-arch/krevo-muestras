@@ -12,5 +12,7 @@ Script: gen/imagenes.py (las PNG x4 viven en el scratchpad de la sesión).
 | p-jean-20 (ig-07) | poster | cartelera, muro | x4, webp |
 | p-jean-27-poesia (ig-01) | poster | cartelera (Noche de poesía), muro | x4, webp |
 | p-mariquita (ig-08), p-pau-duran (ig-09), p-poesia-eviterna (ig-11) | posters | cartelera, muro | x4, webp |
+| escena-off-shakespeare-{800,1280,1750}.webp | recorte de la escena real de ig-10 (Off Shakespeare 19 sep): actores, mesita y maleta roja, sin texto. El "19 de Sep" que asomaba arriba a la derecha se borró con cv2.inpaint (relleno local, sin IA) | hero (protagonista) | gen/escenas.py desde la PNG x4 |
+| escena-jean-{800,1280,1536}.webp | recorte del escenario real de ig-07 (Jean de Blues): cenital azul y foco rojo, sin las letras | franja "Volvimos." | gen/escenas.py desde la PNG x4 |
 | og.jpg | muro de 6 posters oscurecido + logo + texto (Georgia y Courier del sistema) | og:image 1200x630 | PIL |
 Posters en cartelera: completos con marco crema de 6 px y esquina cortada. En el hero y la franja Fénix van oscurecidos como muro/collage (nunca solos a sangre). Ninguna foto lleva loading="lazy" salvo 4 del muro que solo se ven en compu.

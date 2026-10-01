@@ -12,7 +12,9 @@
     dom: { wd: 0, corto: "DOM", nombre: "Teatro infantil y música", msg: "el teatro infantil y música" }
   };
   var MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
-  var ABRE = 16; /* abren a las 16:00 */
+  /* Corrección 2: la función de HOY se puede apartar mientras no empiece: mié a dom antes de las 20:30
+     (corte solo de la interfaz; el equipo confirma por WhatsApp si aún quedan lugares). */
+  var CORTE = 20 * 60 + 30;
   var KEY = "ep_boleto";
 
   function pad(n) { return ("0" + n).slice(-2); }
@@ -23,7 +25,7 @@
   function proximas(dia, cuantas) {
     var D = DIAS[dia], now = new Date(), d = new Date(now.getFullYear(), now.getMonth(), now.getDate()), out = [];
     var add = (D.wd - d.getDay() + 7) % 7;
-    if (add === 0 && now.getHours() >= ABRE) add = 7;
+    if (add === 0 && now.getHours() * 60 + now.getMinutes() >= CORTE) add = 7;
     d.setDate(d.getDate() + add);
     for (var i = 0; i < cuantas; i++) { out.push(isoOf(d)); d.setDate(d.getDate() + 7); }
     return out;
@@ -32,8 +34,8 @@
     if (!DIAS[dia] || !/^\d{4}-\d{2}-\d{2}$/.test(iso || "")) return false;
     return fromIso(iso).getDay() === DIAS[dia].wd && iso >= proximas(dia, 1)[0];
   }
-  function etiqueta(iso, dia) { var d = fromIso(iso); return DIAS[dia].corto + " " + d.getDate() + " " + MES[d.getMonth()].toUpperCase(); }
-  function enMsg(iso, dia) { var d = fromIso(iso); return DIAS[dia].corto.toLowerCase() + " " + d.getDate() + " " + MES[d.getMonth()]; }
+  function etiqueta(iso, dia) { var d = fromIso(iso); return (iso === todayIso() ? "HOY · " : "") + DIAS[dia].corto + " " + d.getDate() + " " + MES[d.getMonth()].toUpperCase(); }
+  function enMsg(iso, dia) { var d = fromIso(iso); return (iso === todayIso() ? "hoy " : "") + DIAS[dia].corto.toLowerCase() + " " + d.getDate() + " " + MES[d.getMonth()]; }
 
   var state = { dia: "", iso: "", seats: [], name: "" };
   try {
@@ -59,7 +61,7 @@
   function message() {
     var n = state.seats.length, c = cur();
     var m = "Hola Épica, quiero apartar " + (n ? n + (n === 1 ? " lugar" : " lugares") : "lugares");
-    if (c) m += " para " + DIAS[c.dia].msg + " del " + c.f.msg;
+    if (c) m += " para " + DIAS[c.dia].msg + (c.f.iso === todayIso() ? " de " : " del ") + c.f.msg;
     m += ".";
     if (n) m += " Lugares de referencia: " + state.seats.join(", ") + ".";
     if (state.name.trim()) m += " Nombre: " + state.name.trim();
@@ -72,11 +74,23 @@
   var seatEls = {};
   function seatList() { return Array.prototype.slice.call(document.querySelectorAll(".ep-seat")); }
 
+  /* fichas en orden cronológico real desde hoy (la próxima función primero) */
   function pintaFichas() {
+    var box = document.querySelector(".ep-fichas");
     Array.prototype.forEach.call(document.querySelectorAll("[data-dia-fecha]"), function (el) {
       var k = el.getAttribute("data-dia-fecha");
-      if (DIAS[k]) el.textContent = etiqueta(state.dia === k && state.iso ? state.iso : proximas(k, 1)[0], k);
+      if (!DIAS[k]) return;
+      var iso = state.dia === k && state.iso ? state.iso : proximas(k, 1)[0];
+      el.textContent = etiqueta(iso, k);
+      var b = el.parentNode; b.setAttribute("data-iso", proximas(k, 1)[0]);
+      var h = b.querySelector(".ep-ficha-hoy"); if (h) h.hidden = iso !== todayIso();
     });
+    if (box && !box.getAttribute("data-orden")) {
+      var list = Array.prototype.slice.call(box.querySelectorAll(".ep-ficha"));
+      list.sort(function (a, b) { return a.getAttribute("data-iso") < b.getAttribute("data-iso") ? -1 : 1; });
+      list.forEach(function (b) { box.appendChild(b); });
+      box.setAttribute("data-orden", "1");
+    }
   }
 
   function paint(fromUser) {
@@ -86,6 +100,8 @@
       seatEls[id].classList.toggle("is-on", on);
       seatEls[id].setAttribute("aria-checked", on ? "true" : "false");
     });
+    /* la mesa toma anillo rojo si tiene alguna silla elegida */
+    Array.prototype.forEach.call(document.querySelectorAll(".ep-mesa-g"), function (g) { g.classList.toggle("is-on", !!g.querySelector(".ep-seat.is-on")); });
     var out = $("ep-cuenta-n"); if (out) { out.textContent = n ? n + (n === 1 ? " lugar" : " lugares") : "Elige cuántos"; out.classList.toggle("is-empty", !n); }
     var pista = $("ep-pista"); if (pista) pista.classList.toggle("is-done", n > 0);
     Array.prototype.forEach.call(document.querySelectorAll(".ep-ficha"), function (b) { b.setAttribute("aria-checked", b.getAttribute("data-dia") === state.dia ? "true" : "false"); });
@@ -111,7 +127,7 @@
       } else { fe.hidden = true; fe.removeAttribute("data-sig"); }
     }
     function set(id, val) { var el = $(id); if (!el) return; el.textContent = val || el.getAttribute("data-empty") || ""; el.classList.toggle("is-empty", !val); }
-    set("b-fn", c ? c.sh.nombre : ""); set("b-fecha", c ? c.f.l : ""); set("b-lug", n ? state.seats.join(" · ") : ""); set("b-precio", c ? "Pregunta el precio" : "");
+    set("b-fn", c ? c.sh.nombre : ""); set("b-fecha", c ? c.f.l : ""); set("b-lug", n ? state.seats.join(" · ") : ""); set("b-precio", "");
     var bn = $("b-n"); if (bn) bn.textContent = n ? n : "___";
     var falta = $("b-falta");
     if (falta) {
