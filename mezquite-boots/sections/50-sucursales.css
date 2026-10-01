@@ -1,0 +1,132 @@
+/* SUCURSALES: cuatro notas cosidas, unidas por un hilo rojo. */
+.sc { position: relative; background: var(--piedra); }
+.sc .mz-zz { margin: 0; }
+.sc-in { padding: 22px var(--gut) 36px; }
+.sc-list { position: relative; display: grid; gap: 14px; margin-top: 28px; padding-left: 24px; }
+.sc-list::before { content: ""; position: absolute; left: 7px; top: 34px; bottom: 30px; width: 3px; background: repeating-linear-gradient(0deg, var(--rojo) 0 9px, transparent 9px 14px); }
+.sc-card { position: relative; padding: 16px; background: var(--manta); border-radius: 2px; --sc: var(--tinta); --st-in: 6px; --st-o: .38; box-shadow: 0 12px 22px -14px rgba(36, 22, 15, .55); }
+.sc-knot { position: absolute; left: -24px; top: 24px; width: 15px; height: 15px; border-radius: 50%; background: var(--manta); border: 3px solid var(--rojo); z-index: 4; }
+.sc-name { font: 400 27px/1 var(--f-t); color: var(--tinta); }
+.sc-addr { margin-top: 8px; font: 600 18px/1.28 var(--f-b); }
+.sc-tel { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 0 18px; }
+.sc-src { margin-top: 6px; font: 700 11px/1.2 var(--f-b); letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-2); }
+.sc-tel a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 700 23px/1 var(--f-b); font-variant-numeric: tabular-nums; text-decoration: none; letter-spacing: .01em; border-bottom: 2px solid rgba(36, 22, 15, .25); }
+.sc-tel svg, .sc-tel1 svg { width: 20px; height: 20px; color: var(--rojo-t); flex: none; }
+.sc-hours { margin-top: 8px; font: 600 17px/1.35 var(--f-b); font-variant-numeric: tabular-nums; color: var(--tinta-2); }
+.sc-live { margin-top: 10px; display: inline-flex; align-items: center; gap: 9px; padding: 7px 12px 7px 10px; border: 1.5px dashed rgba(36, 22, 15, .5); border-radius: 3px; font: 700 15px/1.2 var(--f-b); font-variant-numeric: tabular-nums; }
+.sc-live[hidden] { display: none; }
+.sc-live i { width: 10px; height: 10px; border-radius: 50%; background: #7a6a58; flex: none; }
+.sc-live.is-open i { background: #2f8f4e; box-shadow: 0 0 0 3px rgba(47, 143, 78, .25); }
+.sc-live.is-closed i { background: var(--rojo); }
+.sc-acts { margin-top: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; }
+.mz-btn--sm { min-height: 44px; padding: 0 15px; font-size: 12.5px; letter-spacing: .12em; }
+
+/* tira del letrero: la línea de la sucursal resaltada con pespunte; lo demás en penumbra */
+.sc-sign { position: relative; margin: 0; overflow: hidden; border-radius: 2px; background: var(--cuero-d); }
+.sc-sign img { display: block; width: 100%; height: auto; }
+.sc-hl { position: absolute; border: 2px dashed var(--hilo); border-radius: 3px; box-shadow: 0 0 0 2px rgba(36, 22, 15, .7), inset 0 0 0 1px rgba(36, 22, 15, .35); pointer-events: none; }
+.sc-sign--dim .sc-hl { box-shadow: 0 0 0 2px rgba(36, 22, 15, .7), 0 0 0 900px rgba(30, 17, 9, .5); }
+.sc-sign--main { margin: -16px -16px 24px; overflow: visible; }
+.sc-sign--main img { border-radius: 2px 2px 0 0; }
+.sc-sign--main .sc-hl { box-shadow: 0 0 0 2px rgba(36, 22, 15, .7), 0 6px 14px rgba(0, 0, 0, .35); }
+.sc-tag { left: 14px; bottom: -14px; top: auto; transform-origin: 11px 100%; z-index: 6; }
+.sc-tag::after { display: none; }
+.sc-card--main .sc-body { padding-top: 10px; }
+.sc-map { margin-top: 16px; height: 170px; background: repeating-linear-gradient(45deg, var(--piedra) 0 8px, #d9cbb3 8px 16px); border: 1.5px solid rgba(36, 22, 15, .35); position: relative; }
+.sc-map::before { content: "Mapa"; position: absolute; inset: 0; display: grid; place-items: center; font: 700 14px/1 var(--f-b); letter-spacing: .2em; text-transform: uppercase; color: var(--tinta-2); }
+.sc-map iframe { position: relative; width: 100%; height: 100%; border: 0; display: block; filter: sepia(.28) saturate(.85) contrast(.98); }
+
+/* las otras tres: compactas (dirección en 2 renglones, tira del letrero, teléfono + Cómo llegar en una fila) */
+.sc-others { position: relative; margin: 10px 0 -2px; display: grid; gap: 3px; }
+.sc-others b { font: 400 22px/1 var(--f-t); color: var(--tinta); font-weight: 400; }
+.sc-others span { font: 600 16px/1.3 var(--f-b); font-variant-numeric: tabular-nums; color: var(--tinta-2); }
+.sc-three { display: grid; gap: 14px; }
+.sc-card--s { padding: 15px 16px 12px; }
+.sc-card--s .sc-name { font-size: 24px; }
+.sc-card--s .sc-addr { margin-top: 5px; font-size: 17px; line-height: 1.25; }
+.sc-card--s .sc-addr span { display: block; }
+.sc-near { font: 400 16px/1.3 var(--f-b); font-style: italic; color: var(--tinta-2); }
+.sc-card--s .sc-sign { margin-top: 11px; }
+.sc-row { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; }
+.sc-tel1 { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font: 700 19px/1 var(--f-b); font-variant-numeric: tabular-nums; text-decoration: none; letter-spacing: .01em; color: var(--tinta); }
+.sc-tel1 svg { width: 18px; height: 18px; }
+.sc-pick { display: none; }
+
+.sc-quote { margin: 34px 0 0; padding-left: 18px; border-left: 3px solid var(--rojo); }
+.sc-quote p { font: 600 19px/1.32 var(--f-b); font-style: italic; }
+.sc-quote footer { margin-top: 6px; font: 700 13px/1.2 var(--f-b); letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-2); }
+
+.sc-pair { display: grid; grid-template-columns: 1.15fr .85fr; gap: 14px; margin-top: 34px; align-items: start; }
+.sc-fig { position: relative; margin: 0; }
+.sc-fig-in { --sc: var(--rojo); --st-in: 4px; --st-o: .8; padding: 10px; background: var(--manta); border-radius: 2px; box-shadow: 0 10px 20px -12px rgba(36, 22, 15, .55); }
+.sc-fig-in img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+.sc-fig--b { margin-top: 26px; }
+.sc-fig--b .sc-fig-in img { aspect-ratio: 5 / 6; }
+.sc-fig-tag { left: 10px; bottom: -14px; top: auto; font-size: 10.5px; padding: 7px 10px 7px 24px; max-width: 94%; transform-origin: 11px 100%; }
+.sc-fig-tag::after { display: none; }
+
+.sc-fb { display: flex; align-items: center; gap: 14px; margin-top: 32px; text-decoration: none; }
+.sc-fb-ic { background: var(--cuero); color: var(--hilo); flex: none; }
+.sc-fb-t b { display: block; font: 700 17px/1.2 var(--f-b); letter-spacing: .04em; text-transform: uppercase; }
+.sc-fb-t small { display: block; font: 400 16px/1.3 var(--f-b); color: var(--tinta-2); }
+
+@media (min-width: 700px) {
+  .sc-in { padding: 40px 32px 52px; }
+  .sc-list { padding-left: 0; gap: 0; margin-top: 40px; }
+  .sc-list::before { display: none; }
+  .sc-knot { display: none; }
+  .sc-card--main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "sign sign" "body map"; gap: 0 26px; padding: 18px; }
+  .sc-card--main .sc-sign { grid-area: sign; margin: 0 0 32px; }
+  .sc-card--main .sc-sign img { border-radius: 2px; }
+  .sc-card--main .sc-body { grid-area: body; padding-top: 6px; }
+  .sc-card--main .sc-map { grid-area: map; margin-top: 0; height: auto; min-height: 280px; }
+  .sc-name { font-size: 34px; }
+  .sc-others { margin: 40px 0 18px; grid-auto-flow: column; justify-content: start; align-items: baseline; gap: 16px; }
+  .sc-others b { font-size: 26px; }
+  .sc-others span { font-size: 18px; }
+  .sc-three { gap: 18px; }
+  .sc-card--s { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); grid-template-areas: "txt sign" "row sign"; gap: 0 22px; align-items: start; padding: 18px 18px 16px; }
+  .sc-card--s .sc-s-txt { grid-area: txt; }
+  .sc-card--s .sc-sign { grid-area: sign; margin: 0; align-self: center; }
+  .sc-card--s .sc-row { grid-area: row; justify-content: start; gap: 6px 18px; margin-top: 12px; align-self: end; }
+  .sc-card--s .sc-name { font-size: 28px; }
+  .sc-card--s .sc-addr { font-size: 18px; }
+  .sc-pick { display: inline-flex; }
+  .sc-quote { margin-top: 56px; max-width: 640px; } .sc-quote p { font-size: 24px; }
+  .sc-pair { grid-template-columns: repeat(2, minmax(0, 300px)); gap: 30px; justify-content: start; margin-top: 48px; }
+}
+@media (min-width: 1100px) {
+  .sc-card--main { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); grid-template-areas: "sign map" "body map"; gap: 0 30px; padding: 22px; align-items: start; }
+  .sc-card--main .sc-sign { margin: 0 0 30px; }
+  .sc-card--main .sc-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 26px; align-items: start; padding-top: 4px; }
+  .sc-card--main .sc-body > * { grid-column: 1; }
+  .sc-card--main .sc-hours, .sc-card--main .sc-live, .sc-card--main .sc-acts { grid-column: 2; }
+  .sc-card--main .sc-hours { grid-row: 1 / span 2; margin-top: 4px; }
+  .sc-card--main .sc-live { grid-row: 3; justify-self: start; margin-top: 0; }
+  .sc-card--main .sc-acts { grid-row: 4; }
+  .sc-card--main .sc-tel { grid-row: 3 / span 2; }
+  .sc-card--main .sc-map { align-self: stretch; min-height: 0; }
+  .sc-others { margin: 46px 0 20px; }
+  .sc-three { position: relative; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .sc-card--s { display: flex; flex-direction: column; padding: 18px 18px 14px; }
+  .sc-card--s .sc-sign { margin-top: 14px; align-self: stretch; }
+  .sc-card--s .sc-row { margin-top: auto; padding-top: 12px; justify-content: space-between; gap: 6px 12px; align-self: stretch; }
+  .sc-card--s .sc-pick { display: none; }
+  .sc-card--s .sc-addr { font-size: 17px; }
+  .sc-three .sc-card:nth-child(1) { transform: rotate(-.5deg); } .sc-three .sc-card:nth-child(2) { transform: translateY(10px) rotate(.35deg); } .sc-three .sc-card:nth-child(3) { transform: rotate(-.3deg); }
+}
+@media (min-width: 900px) {
+  .sc-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(36px, 5vw, 90px); align-content: start; }
+  .sc-head, .sc-list { grid-column: 1 / -1; }
+  .sc-quote { grid-column: 1; grid-row: 3; align-self: end; margin-top: 56px; }
+  .sc-fb { grid-column: 1; grid-row: 4; margin-top: 36px; align-self: start; }
+  .sc-pair { grid-column: 2; grid-row: 3 / span 2; margin-top: 48px; justify-content: end; grid-template-columns: repeat(2, minmax(0, 260px)); }
+}
+/* 360: teléfono y "Cómo llegar" siguen en una sola fila */
+@media (max-width: 379px) {
+  .sc-card--s { padding: 14px 13px 11px; }
+  .sc-tel1 { font-size: 17px; gap: 6px; letter-spacing: 0; }
+  .sc-tel1 svg { width: 16px; height: 16px; }
+  .sc-card--s .mz-btn--sm { padding: 0 11px; font-size: 11.5px; letter-spacing: .08em; }
+  .sc-row { gap: 6px 8px; }
+}
