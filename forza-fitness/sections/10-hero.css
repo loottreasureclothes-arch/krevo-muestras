@@ -1,26 +1,37 @@
-/* 10-hero: foto real del piso de pesas con su lona; el titulo cae y pega; casillero #605 con el estado en vivo */
-.fz-hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; background: var(--ink); overflow: hidden; }
-.fz-hero-photo { position: absolute; left: 0; right: 0; top: 0; height: 78svh; clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%); }
+/* 10-hero: foto real (serie B/N con el rojo de sus mancuernas); el titulo cae y pega; tira de un renglon con el estado en vivo */
+.fz-hero { position: relative; background: var(--ink); overflow: hidden; }
+/* celular y tableta: la foto va en flujo bajo el header, FORZA arriba y las mancuernas sin velo; el titulo se le monta al final */
+.fz-hero-photo { position: relative; margin-top: var(--hdr); aspect-ratio: 996 / 1083; max-height: 64svh; width: 100%; clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%); }
 .fz-hero-photo picture, .fz-hero-photo img { width: 100%; height: 100%; }
-.fz-hero-photo img { object-fit: cover; object-position: 0% 30%; }
-.fz-hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18, 19, 19, 0.5) 0, rgba(18, 19, 19, 0.04) 14%, rgba(18, 19, 19, 0.08) 50%, rgba(18, 19, 19, 0.72) 68%, rgba(18, 19, 19, 0.94) 84%, #121313 100%); }
+.fz-hero-photo img { object-fit: cover; object-position: 30% 60%; }
+.fz-hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18, 19, 19, 0) 0, rgba(18, 19, 19, 0) 70%, rgba(18, 19, 19, 0.72) 88%, #121313 100%); }
 .fz-h--hero { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55); }
-.fz-hero-in { position: relative; display: grid; gap: 18px; justify-items: start; padding-top: calc(var(--hdr) + 40px); padding-bottom: 30px; }
-.fz-hero-lk { width: min(100%, 330px); padding: 36px 18px 14px; background: rgba(18, 19, 19, 0.82); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.fz-hero-st { font: italic 800 30px / 1 var(--f-h); text-transform: uppercase; letter-spacing: 0.03em; }
-.fz-hero-hr { margin-top: 4px; font: 600 15px / 1.3 var(--f-n); letter-spacing: 0.04em; color: var(--mute); }
+.fz-hero-in { position: relative; display: grid; gap: 16px; justify-items: start; margin-top: -58px; padding-bottom: 30px; }
+.fz-hero-lk { display: inline-flex; align-items: center; gap: 10px; max-width: 100%; padding: 10px 14px 10px 12px; background: rgba(30, 31, 32, 0.92); border: 1px solid var(--line); border-left: 3px solid var(--red); font: 600 15px / 1.2 var(--f-n); letter-spacing: 0.03em; color: var(--mute); }
+.fz-hero-lk b { font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; }
+.fz-nw { white-space: nowrap; }
 .fz-live { display: flex; align-items: center; gap: 9px; margin-top: 10px; min-height: 22px; font: 600 14px / 1.2 var(--f-n); letter-spacing: 0.1em; text-transform: uppercase; }
 .fz-live:empty { display: none; }
+.fz-live--dot { flex: none; margin: 0; min-height: 0; }
 .fz-dot { flex: none; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--dim); }
 .fz-live.is-open .fz-dot { background: #fff; border-color: #fff; box-shadow: 0 0 0 3px rgba(226, 10, 20, 0.55), 0 0 10px 2px rgba(226, 10, 20, 0.7); animation: fzPulse 1.2s ease-in-out infinite alternate; }
 .fz-hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; padding-left: 3px; }
 @keyframes fzPulse { from { opacity: 1; } to { opacity: 0.6; } }
 @media (prefers-reduced-motion: reduce) { .fz-live.is-open .fz-dot, .fz-cell.is-next { animation: none !important; } }
+@media (min-width: 720px) and (max-width: 1023px) {
+  .fz-hero-photo { aspect-ratio: auto; height: 62svh; max-height: none; }
+  .fz-hero-photo img { object-position: 30% 62%; }
+  .fz-hero-in { margin-top: -80px; }
+}
 @media (min-width: 1024px) {
-  .fz-hero-photo { left: 30%; height: 84svh; clip-path: polygon(17% 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%); }
-  .fz-hero-photo img { object-position: 52% 30%; }
+  .fz-hero { min-height: 100svh; display: flex; align-items: flex-end; }
+  .fz-hero-photo { position: absolute; left: 30%; right: 0; top: 0; width: auto; margin: 0; aspect-ratio: auto; max-height: none; height: 84svh; clip-path: polygon(17% 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%); }
+  /* la foto sube 80 px: las letras FORZA de la pared quedan arriba del titulo, no debajo */
+  .fz-hero-photo img { height: calc(100% + 80px); transform: translateY(-80px); object-position: 30% 50%; }
   .fz-h--hero .fz-red { text-shadow: 0 0 2px rgba(0, 0, 0, 0.6), 0 2px 22px rgba(0, 0, 0, 0.85); }
-  .fz-hero-photo::after { background: linear-gradient(180deg, rgba(18, 19, 19, 0.5) 0, rgba(18, 19, 19, 0) 26%, rgba(18, 19, 19, 0.3) 62%, rgba(18, 19, 19, 0.85) 100%); }
+  /* la lona queda de fondo: velo .6 en el primer 40 % */
+  .fz-hero-photo::after { background: linear-gradient(180deg, rgba(18, 19, 19, 0.62) 0, rgba(18, 19, 19, 0.55) 40%, rgba(18, 19, 19, 0.2) 58%, rgba(18, 19, 19, 0.3) 72%, rgba(18, 19, 19, 0.88) 100%); }
   .fz-h--hero { font-size: clamp(60px, 8.6vw, 132px); }
-  .fz-hero-in { padding-bottom: 54px; }
+  .fz-hero-in { margin-top: 0; padding-top: calc(var(--hdr) + 40px); padding-bottom: 54px; gap: 20px; }
+  .fz-hero-lk { font-size: 17px; padding: 12px 18px 12px 14px; }
 }

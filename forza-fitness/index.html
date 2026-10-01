@@ -30,13 +30,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;1,800&amp;family=Barlow+Semi+Condensed:wght@600&amp;family=Barlow:wght@400;600&amp;display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/hero-m-960.webp" media="(max-width: 1023px)" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero-1600.webp" media="(min-width: 1024px)" type="image/webp" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1790814465">
-<link rel="stylesheet" href="sections/10-hero.css?v=1790814449">
-<link rel="stylesheet" href="sections/20-planes.css?v=1790814486">
-<link rel="stylesheet" href="sections/30-horario.css?v=1790817432">
-<link rel="stylesheet" href="sections/40-club.css?v=1790814522">
-<link rel="stylesheet" href="sections/50-colosio.css?v=1790814551">
-<link rel="stylesheet" href="sections/60-cierre.css?v=1790814551">
+<link rel="stylesheet" href="site.css?v=1790820920">
+<link rel="stylesheet" href="sections/10-hero.css?v=1790820618">
+<link rel="stylesheet" href="sections/20-planes.css?v=1790820713">
+<link rel="stylesheet" href="sections/30-horario.css?v=1790820744">
+<link rel="stylesheet" href="sections/40-club.css?v=1790820713">
+<link rel="stylesheet" href="sections/50-colosio.css?v=1790820814">
+<link rel="stylesheet" href="sections/60-cierre.css?v=1790820920">
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
@@ -83,18 +83,13 @@
 <section class="fz-hero" id="inicio" aria-labelledby="h-hero">
   <div class="fz-hero-photo">
     <picture>
-      <source media="(max-width: 1023px)" type="image/webp" srcset="img/hero-m-480.webp 480w, img/hero-m-960.webp 960w, img/hero-m-1600.webp 1600w" sizes="100vw" width="1600" height="2383">
-      <img src="img/hero-1600.webp" srcset="img/hero-960.webp 960w, img/hero-1600.webp 1600w, img/hero-2048.webp 2048w" sizes="(min-width: 1024px) 70vw, 100vw" width="2048" height="1536" alt="Pared con las letras FORZA junto al piso de pesas de Forza Fitness Club, visto desde arriba" fetchpriority="high" decoding="async">
+      <source media="(max-width: 1023px)" type="image/webp" srcset="img/hero-m-480.webp 480w, img/hero-m-960.webp 960w, img/hero-m-1600.webp 1600w" sizes="100vw" width="1600" height="1740">
+      <img src="img/hero-1600.webp" srcset="img/hero-960.webp 960w, img/hero-1600.webp 1600w, img/hero-2048.webp 2048w" sizes="(min-width: 1024px) 70vw, 100vw" width="2048" height="1536" alt="Pared con las letras FORZA junto a las hileras de mancuernas de Forza Fitness Club, vistas desde arriba" fetchpriority="high" decoding="async">
     </picture>
   </div>
   <div class="fz-wrap fz-hero-in">
     <h1 class="fz-h fz-h--hero" id="h-hero" data-drop><span class="fz-l">Sin excusas.</span><span class="fz-l fz-red">Solo resultados.</span></h1>
-    <div class="fz-locker fz-hero-lk">
-      <span class="fz-vent" aria-hidden="true"></span><span class="fz-num">#605</span>
-      <p class="fz-hero-st">Colosio 605</p>
-      <p class="fz-hero-hr">Lun a vie de 5:00 am a 10:00 pm</p>
-      <p class="fz-live" data-open-status="short"></p>
-    </div>
+    <p class="fz-hero-lk"><span class="fz-live fz-live--dot" data-open-status="dot"></span><span><b>Colosio 605</b> · <span class="fz-nw">Lun a vie 5:00 am a 10:00 pm</span></span></p>
     <div class="fz-hero-cta">
       <a class="fz-btn" href="#planes"><span>Ver planes</span></a>
       <a class="fz-link" href="#horario">Ver horario de CrossFit<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -107,7 +102,7 @@
     <img src="img/reloaded-960.webp" srcset="img/reloaded-480.webp 480w, img/reloaded-960.webp 960w, img/reloaded-1600.webp 1600w" sizes="(min-width: 900px) 60vw, 100vw" width="2048" height="1367" alt="" decoding="async">
   </div>
   <div class="fz-wrap">
-    <h2 class="fz-h" id="h-planes" data-drop><span class="fz-l">Elige tu</span><span class="fz-l fz-red">plan.</span></h2>
+    <h2 class="fz-h" id="h-planes" data-drop><span class="fz-l">Elige tu</span><span class="fz-l fz-red">casillero.</span></h2>
     <p class="fz-lead">Precios de su Instagram y de Wellhub. Te confirmamos el vigente al inscribirte.</p>
 
     <ol class="fz-plans" role="list">
@@ -122,7 +117,7 @@
         <h3 class="fz-plan-n">High School</h3>
         <p class="fz-price"><b>$650</b><small>al mes</small></p>
         <p class="fz-plan-x">+ $200 de inscripción</p>
-        <p class="fz-plan-s">Con credencial de estudiante · 3x4 meses</p>
+        <p class="fz-plan-s"><span>Con credencial de estudiante</span><span>3x4 meses</span></p>
         <button class="fz-btn fz-btn--line fz-btn--sm fz-pick" type="button" data-pick="High School" data-price="$650 al mes + $200 de inscripción" aria-pressed="false"><span>Elegir</span></button>
       </li>
       <li class="fz-locker fz-plan" data-reveal data-plan="Otros paquetes">
@@ -172,11 +167,13 @@
 <tr><th class="fz-hr" scope="row"><b>8</b><i>pm</i></th><td><button class="fz-cell" type="button" data-dow="1" data-h="20" data-coach="Luis Fer" aria-pressed="false" aria-label="CrossFit lunes 8:00 pm con Luis Fer"><span>Luis</span><span>Fer</span></button></td><td><button class="fz-cell" type="button" data-dow="2" data-h="20" data-coach="Diego Sánchez" aria-pressed="false" aria-label="CrossFit martes 8:00 pm con Diego Sánchez"><span>Diego</span><span>Sánchez</span></button></td><td><button class="fz-cell" type="button" data-dow="3" data-h="20" data-coach="Diego Sánchez" aria-pressed="false" aria-label="CrossFit miércoles 8:00 pm con Diego Sánchez"><span>Diego</span><span>Sánchez</span></button></td><td><button class="fz-cell" type="button" data-dow="4" data-h="20" data-coach="Diego Sánchez" aria-pressed="false" aria-label="CrossFit jueves 8:00 pm con Diego Sánchez"><span>Diego</span><span>Sánchez</span></button></td><td><button class="fz-cell" type="button" data-dow="5" data-h="20" data-coach="Diego Sánchez" aria-pressed="false" aria-label="CrossFit viernes 8:00 pm con Diego Sánchez"><span>Diego</span><span>Sánchez</span></button></td><td class="fz-off" data-dow="6"><span class="fz-sr">Sin clase</span></td></tr>
         </tbody>
       </table>
-      <p class="fz-board-n">Toca una clase para agregarla a tu mensaje.</p>
+      <div class="fz-board-foot">
+        <p class="fz-board-n">Toca una clase para agregarla a tu mensaje.</p>
+        <p class="fz-sel" id="fz-sel" aria-live="polite">Clase: <b>sin elegir</b></p>
+      </div>
     </div>
 
     <div class="fz-sendrow">
-      <p class="fz-sel" id="fz-sel" aria-live="polite">Aún no eliges clase.</p>
       <a class="fz-btn fz-btn--wa" id="fz-send" data-wa-dyn href="https://wa.me/524491538877?text=Hola%20Forza%20Fitness%20Club%2C%20quiero%20pedir%20mi%20inscripci%C3%B3n." target="_blank" rel="noopener"><span><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir mi inscripción por WhatsApp</span></a>
     </div>
 
@@ -215,15 +212,15 @@
     <div class="fz-club-in">
       <div class="fz-bolt" id="fz-bolt" aria-hidden="true">
         <svg class="fz-bolt-base"><use href="#fz-mark"/></svg>
-        <svg class="fz-bolt-fill"><use href="#fz-mark"/></svg>
+        <svg class="fz-bolt-fill" viewBox="215 225 650 640"><defs><linearGradient id="fz-bolt-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff2b2b"/><stop offset=".55" stop-color="#e20a14"/><stop offset="1" stop-color="#b1241a"/></linearGradient></defs><path fill="url(#fz-bolt-g)" d="M377 258 337 281 289 324 261 367 241 416 234 443 229 481 229 516 235 563 254 625 282 681 312 723 325 737 331 738 348 710 314 665 291 620 275 568 269 525 270 487 278 443 287 417 307 379 331 348 351 329 382 307 401 297 438 283 464 277 496 274 529 275 534 280 391 544 393 550 478 559 483 564 426 710 414 734 406 762 398 774 393 793 430 815 479 834 512 843 526 843 530 846 546 845 553 848 576 850 617 847 647 841 677 831 717 811 754 784 780 757 803 725 819 694 831 660 839 623 842 587 841 550 837 522 825 477 812 444 794 409 759 358 724 325 720 325 702 355 730 384 743 401 771 448 791 501 800 553 799 602 792 639 777 679 758 712 724 750 694 773 658 792 607 807 556 809 511 804 469 791 435 777 427 770 426 765 452 743 724 483 725 479 617 467 607 460 703 287 708 283 815 297 829 297 851 269 854 261 831 256 687 239 681 240 677 244 646 299 526 489 531 489 538 495 621 504 626 509 625 513 561 580 493 656 488 656 486 649 548 533 543 528 523 526 514 522 502 524 466 521 460 514 597 261 600 250 589 245 552 236 511 232 481 232 440 237 413 244Z"/></svg>
       </div>
-      <h2 class="fz-h fz-club-h" id="h-club"><span class="fz-l">Come to</span><span class="fz-l fz-red">beat yourself.</span></h2>
+      <h2 class="fz-h fz-club-h" id="h-club" data-words><span class="fz-l">Come to</span><span class="fz-l fz-red">beat yourself.</span></h2>
       <p class="fz-gg"><a href="https://www.google.com/maps/place/FORZA/@21.9247082,-102.3008411,17z" target="_blank" rel="noopener"><b>4.3</b> en Google · 323 opiniones<svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
     </div>
   </div>
   <div class="fz-wrap">
     <h3 class="fz-k fz-tags-k">Lo que dicen en Google</h3>
-    <ul class="fz-tags" role="list">
+    <ul class="fz-tags" role="list" data-hide-wa>
       <li class="fz-locker fz-door fz-door--a" data-reveal>
         <span class="fz-vent" aria-hidden="true"></span><span class="fz-num">#008</span>
         <figure class="fz-label">
@@ -258,10 +255,13 @@
 
     <div class="fz-col-grid">
       <figure class="fz-col-ph" data-reveal>
-        <div class="fz-col-ph-c"><img src="img/pasillo-960.webp" srcset="img/pasillo-480.webp 480w, img/pasillo-960.webp 960w" sizes="(min-width: 720px) 40vw, 100vw" width="1400" height="1703" alt="Pasillo de Forza con las letras FORZA rojas pintadas en la pared de block negro" decoding="async"></div>
-        <figcaption class="fz-k">Colosio 605 · adentro</figcaption>
+        <div class="fz-locker fz-col-ph-lk">
+          <span class="fz-vent" aria-hidden="true"></span><span class="fz-num">#605 · Adentro</span>
+          <div class="fz-col-ph-c"><img src="img/pasillo-960.webp" srcset="img/pasillo-480.webp 480w, img/pasillo-960.webp 960w" sizes="(min-width: 720px) 34vw, 66vw" width="960" height="1200" alt="Pasillo de Forza con las letras FORZA rojas y blancas en la pared de block y la barra de dominadas" decoding="async"></div>
+        </div>
+        <figcaption class="fz-col-ph-cap" aria-hidden="true">Always Forza</figcaption>
       </figure>
-      <div class="fz-locker fz-hours" data-reveal>
+      <div class="fz-locker fz-hours" data-reveal data-hide-wa>
         <span class="fz-vent" aria-hidden="true"></span><span class="fz-num">#605 · Horario</span>
         <p class="fz-live fz-live--lg" data-open-status="long"></p>
         <dl class="fz-days">
@@ -291,6 +291,9 @@
 </section>
 
 <section class="fz-cierre" id="cierre" data-hide-wa aria-labelledby="h-cierre">
+  <div class="fz-fierro">
+    <img src="img/fierro-1400.webp" srcset="img/fierro-800.webp 800w, img/fierro-1400.webp 1400w, img/fierro-2000.webp 2000w" sizes="100vw" width="2000" height="634" alt="Hileras de mancuernas de Forza con su detalle rojo" decoding="async">
+  </div>
   <div class="fz-wrap">
     <div class="fz-locker fz-ready" data-reveal>
       <span class="fz-vent" aria-hidden="true"></span><span class="fz-num">#001 · Tu casillero</span>
@@ -300,7 +303,7 @@
         <div><dt>Clase</dt><dd id="fz-sum-clase">Sin elegir</dd></div>
       </dl>
       <div class="fz-ready-act">
-        <a class="fz-btn fz-btn--wa" id="fz-send2" data-wa-dyn href="https://wa.me/524491538877?text=Hola%20Forza%20Fitness%20Club%2C%20quiero%20pedir%20mi%20inscripci%C3%B3n." target="_blank" rel="noopener"><span><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir mi inscripción por WhatsApp</span></a>
+        <a class="fz-btn fz-btn--wa" id="fz-send2" aria-label="Pedir mi inscripción por WhatsApp" data-wa-dyn href="https://wa.me/524491538877?text=Hola%20Forza%20Fitness%20Club%2C%20quiero%20pedir%20mi%20inscripci%C3%B3n." target="_blank" rel="noopener"><span><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="fz-wa-lg" aria-hidden="true">Pedir mi inscripción por WhatsApp</span><span class="fz-wa-sm" aria-hidden="true">Pedir por WhatsApp</span></span></a>
         <a class="fz-link" id="fz-pick-link" href="#planes">Elegir plan<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
@@ -325,6 +328,7 @@
 </main>
 
 <footer class="fz-foot" aria-label="Pie de página">
+  <p class="fz-foot-big" aria-hidden="true">A<span class="fz-kl">l</span>ways Forza</p>
   <div class="fz-wrap fz-foot-in">
     <div class="fz-foot-brand">
       <svg class="fz-mark fz-mark--lg" aria-hidden="true"><use href="#fz-mark"/></svg>
@@ -379,9 +383,9 @@
 </script>
 <script src="site.js?v=1790814551" defer></script>
 <script src="sections/20-planes.js?v=1790810756" defer></script>
-<script src="sections/30-horario.js?v=1790810802" defer></script>
-<script src="sections/40-club.js?v=1790814522" defer></script>
-<script src="sections/50-colosio.js?v=1790810842" defer></script>
+<script src="sections/30-horario.js?v=1790820732" defer></script>
+<script src="sections/40-club.js?v=1790821043" defer></script>
+<script src="sections/50-colosio.js?v=1790820814" defer></script>
 <script src="sections/60-cierre.js?v=1790810857" defer></script>
 </body>
 </html>

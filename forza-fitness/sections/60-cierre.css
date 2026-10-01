@@ -1,15 +1,20 @@
 /* 60-cierre: el casillero con tu plan y tu clase + todo lo que falta del dueno */
 .fz-cierre { padding: 22px 0 60px; }
+/* remate en fierro: tira inclinada con las hileras de mancuernas (misma serie B/N con su rojo) */
+.fz-fierro { height: 180px; margin-bottom: 26px; overflow: hidden; background: #121313; clip-path: polygon(0 22%, 100% 0, 100% 78%, 0 100%); }
+.fz-fierro img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
 .fz-ready { padding: 44px 18px 22px; border-color: var(--red); box-shadow: inset 0 0 0 1px var(--red); }
 .fz-ready .fz-h { font-size: clamp(46px, 12.6vw, 96px); }
 .fz-sum { margin: 20px 0 0; }
 .fz-sum > div { display: flex; justify-content: space-between; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line); font: 600 18px / 1.15 var(--f-n); }
 .fz-sum dt { color: var(--mute); text-transform: uppercase; letter-spacing: 0.1em; font-size: 14px; align-self: center; }
-.fz-sum dd { margin: 0; text-align: right; }
+.fz-sum dd { margin: 0; text-align: right; text-wrap: balance; }
 .fz-sum dd.is-set { color: #fff; }
 .fz-sum dd:not(.is-set) { color: var(--dim); }
 .fz-ready-act { display: grid; gap: 10px; justify-items: start; margin-top: 22px; }
-.fz-ready-act .fz-btn { max-width: 100%; white-space: normal; text-align: center; padding: 12px 22px; font-size: 14px; }
+.fz-ready-act .fz-btn { max-width: 100%; white-space: nowrap; justify-content: flex-start; text-align: left; padding: 0 22px; font-size: 14px; }
+.fz-wa-lg { display: none; }
+@media (min-width: 400px) { .fz-wa-lg { display: inline; } .fz-wa-sm { display: none; } }
 .fz-ready-act .fz-link[hidden] { display: none; }
 .fz-todo { margin-top: 56px; }
 .fz-todo-h { font-size: clamp(38px, 10.4vw, 76px); }
@@ -20,6 +25,7 @@
 .fz-todo-n--b { margin-top: 6px; color: #fff; }
 @media (min-width: 720px) {
   .fz-cierre { padding-top: 40px; }
+  .fz-fierro { height: 210px; margin-bottom: 40px; }
   .fz-ready { display: grid; grid-template-columns: 1.1fr 1fr; gap: 10px 48px; align-items: center; padding: 52px 40px 34px; }
   .fz-ready .fz-h { grid-row: 1 / span 2; }
   .fz-todo { display: grid; grid-template-columns: 5fr 7fr; gap: 0 48px; align-items: start; }

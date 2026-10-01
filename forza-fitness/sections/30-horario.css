@@ -28,20 +28,24 @@
 .fz-cell.is-sel { outline: 2px solid #fff; outline-offset: 1px; background: var(--graf-2); }
 .fz-cell.is-next.is-sel { background: var(--red); }
 td.fz-off { background: repeating-linear-gradient(-8deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 7px); }
-@media (hover: hover) and (pointer: fine) { .fz-cell:hover { background: var(--graf-2); } .fz-cell.is-next:hover { background: #ff1a25; } }
-.fz-board-n { margin: 10px 4px 0; font-size: 13px; color: var(--dim); }
+@media (hover: hover) and (pointer: fine) { .fz-cell:hover { background: #4a4d50; } .fz-cell.is-next:hover { background: #ff1a25; } }
+.fz-board-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 14px; margin: 12px 4px 0; }
+.fz-board-n { font-size: 13px; color: var(--dim); }
+.fz-sel { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); background: var(--graf); font: 600 13px / 1.2 var(--f-n); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
+.fz-sel b { font-weight: 600; color: var(--dim); }
+.fz-sel.is-set { border-color: var(--red); color: #fff; }
+.fz-sel.is-set b { color: #fff; }
 
 .fz-sendrow { display: grid; gap: 12px; justify-items: start; margin-top: 24px; }
-.fz-sel { font: 600 16px / 1.3 var(--f-n); letter-spacing: 0.03em; color: #fff; min-height: 21px; }
-.fz-sel b { font-weight: 600; color: var(--red); }
 .fz-sendrow .fz-btn { max-width: 100%; white-space: normal; text-align: center; padding: 12px 22px; font-size: 14px; }
 
-.fz-split { display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); gap: 20px; align-items: center; margin-top: 44px; }
-.fz-fig { margin: 0; }
-.fz-fig-c { clip-path: polygon(19% 0, 100% 0, 81% 100%, 0 100%); aspect-ratio: 3 / 4; overflow: hidden; background: #121313; }
-.fz-fig-c img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 35%; }
+.fz-split { display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); gap: 20px; align-items: stretch; margin-top: 44px; }
+.fz-fig { margin: 0; display: flex; flex-direction: column; }
+.fz-fig-c { position: relative; flex: 1 1 0; min-height: 240px; clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%); overflow: hidden; background: #121313; }
+.fz-fig-c img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 35%; }
 .fz-fig figcaption { margin-top: 8px; }
 .fz-otras-l { margin-top: 12px; }
+.fz-otras { align-self: start; }
 .fz-otras-l li { padding: 7px 0; border-bottom: 1px solid var(--line); font: italic 800 24px / 1 var(--f-h); text-transform: uppercase; }
 .fz-otras-n { margin-top: 12px; font: 600 14px / 1.2 var(--f-n); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
 
@@ -49,7 +53,7 @@ td.fz-off { background: repeating-linear-gradient(-8deg, rgba(255, 255, 255, 0.0
   .fz-board { margin-inline: 0; padding: 46px 16px 16px; }
   .fz-tbl { border-spacing: 4px; }
   .fz-cell { font-size: 14px; text-transform: uppercase; letter-spacing: 0.04em; }
-  .fz-split { grid-template-columns: 240px 1fr; gap: 40px; }
+  .fz-split { grid-template-columns: 280px 1fr; gap: 40px; }
 }
 @media (min-width: 900px) {
   .fz-horario .fz-wrap:first-child { display: grid; grid-template-columns: 1.5fr 1fr; align-items: end; gap: 0 48px; }
@@ -57,10 +61,20 @@ td.fz-off { background: repeating-linear-gradient(-8deg, rgba(255, 255, 255, 0.0
   .fz-board { margin-inline: 0; padding: 46px 22px 18px; }
   .fz-tbl { border-spacing: 5px; }
   .fz-tbl td { height: 56px; }
-  .fz-cell { font-size: 14px; min-height: 56px; letter-spacing: 0.05em; flex-direction: row; gap: 5px; flex-wrap: wrap; }
+  .fz-cell { font-size: 14px; min-height: 56px; letter-spacing: 0.05em; }
   .fz-hr { width: 54px; } .fz-hr b { font-size: 26px; }
   .fz-dh { font-size: 15px; }
   .fz-sendrow { grid-template-columns: 1fr auto; align-items: center; margin-top: 28px; }
-  .fz-split { grid-template-columns: 260px 1fr; gap: 56px; margin-top: 64px; }
+  .fz-split { grid-template-columns: minmax(300px, 340px) 1fr; gap: 56px; margin-top: 64px; }
   .fz-otras-l { columns: 2; column-gap: 40px; }
+}
+@media (min-width: 1024px) {
+  .fz-next { font-size: 18px; }
+  .fz-next-k { font-size: 14px; }
+  .fz-tbl td { height: 64px; }
+  .fz-cell { font-size: 15px; min-height: 64px; line-height: 1.12; gap: 2px; }
+  .fz-board-n { font-size: 15px; }
+  .fz-sel { font-size: 14px; }
+  .fz-otras-n { font-size: 16px; }
+  .fz-otras .fz-k, .fz-fig figcaption { font-size: 14px; }
 }

@@ -79,11 +79,12 @@
     });
     if (!selBox) return;
     selBox.textContent = "";
-    if (FZ.clase) {
-      selBox.appendChild(document.createTextNode("Me interesa: "));
-      var b = document.createElement("b"); b.textContent = "CrossFit " + FZ.clase.label;
-      selBox.appendChild(b);
-    } else selBox.textContent = "Aún no eliges clase.";
+    /* chip de estado en el pie del tablero */
+    selBox.appendChild(document.createTextNode("Clase: "));
+    var b = document.createElement("b");
+    b.textContent = FZ.clase ? "CrossFit " + FZ.clase.label : "sin elegir";
+    selBox.appendChild(b);
+    selBox.classList.toggle("is-set", !!FZ.clase);
   }
 
   cells.forEach(function (c) {

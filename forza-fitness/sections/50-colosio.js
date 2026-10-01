@@ -18,12 +18,25 @@
   function render() {
     var s = state(), t = FZ.mx();
     els.forEach(function (el) {
-      var txt = el.getAttribute("data-open-status") === "short" ? s.short : s.long;
+      var mode = el.getAttribute("data-open-status");
+      var txt = mode === "long" ? s.long : s.short;
       if (el.getAttribute("data-k") === txt) { return; }
       el.setAttribute("data-k", txt);
       el.textContent = "";
       var d = document.createElement("i"); d.className = "fz-dot"; d.setAttribute("aria-hidden", "true");
-      var sp = document.createElement("span"); sp.textContent = txt;
+      var sp = document.createElement("span");
+      if (mode === "dot") { sp.className = "fz-sr"; sp.textContent = txt; }
+      else {
+        /* la hora nunca queda sola en otro renglon: "cierra a las 10:00 pm" va junto */
+        var cut = txt.indexOf(" · ");
+        if (cut > 0) {
+          /* dos renglones limpios: estado arriba, la hora completa abajo (sin punto colgado) */
+          sp.appendChild(document.createTextNode(txt.slice(0, cut)));
+          var sep = document.createElement("span"); sep.className = "fz-live-sep"; sep.textContent = " · "; sp.appendChild(sep);
+          var nw = document.createElement("span"); nw.className = "fz-nw fz-live-2"; nw.textContent = txt.slice(cut + 3); sp.appendChild(nw);
+        }
+        else { var nw2 = document.createElement("span"); nw2.className = "fz-nw"; nw2.textContent = txt; sp.appendChild(nw2); }
+      }
       el.appendChild(d); el.appendChild(sp);
       el.classList.toggle("is-open", s.open);
     });
