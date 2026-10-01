@@ -1,0 +1,187 @@
+/* ======================================================================
+   FOOD PARTY. Mantelería y acero. Lenguaje de formas: CHAROLA DE BUFFET (ceja de acero, asas)
+   y LETRERO DE CARTÓN en caballete. Prefijo fp-.
+   TOKENS: --crema #F6F1E7 · --arena #E7DCC9 · --tinta #141414 (negro del logo) · --acero #C9C6BF
+           --caramelo #8A6440 (acento único) · --wa #25D366 / --wa-ink #0b3d1f
+   Tipografía: Gloock (títulos) + Hanken Grotesk (todo lo demás)
+   ====================================================================== */
+:root {
+  --crema: #F6F1E7;
+  --arena: #E7DCC9;
+  --tinta: #141414;
+  --acero: #C9C6BF;
+  --acero-osc: #8f8c85;
+  --caramelo: #8A6440;
+  --caramelo-cl: #C9A27A;
+  --letrero: #FBF8F1;
+  --letrero-b: #D8CFC0;
+  --madera: #A07A50;
+  --mute: #4d4740;
+  --wa: #25D366;
+  --wa-ink: #0b3d1f;
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --f-t: "Gloock", "Georgia", serif;
+  --f-b: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --gutter: 20px;
+  --sec-y: 44px;
+  --hd: 60px;
+}
+@media (min-width: 760px) { :root { --gutter: 36px; } }
+@media (min-width: 1200px) { :root { --gutter: 48px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; overflow-x: clip; scroll-padding-top: 80px; scroll-behavior: auto !important; }
+body { min-height: 100svh; background: var(--crema); color: var(--tinta); font-family: var(--f-b); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip; }
+body.fp-menu-open { overflow: hidden; }
+h1, h2, h3 { font-family: var(--f-t); font-weight: 400; line-height: .95; text-wrap: balance; overflow-wrap: break-word; }
+p { text-wrap: pretty; overflow-wrap: break-word; }
+img, picture, svg { display: block; max-width: 100%; }
+img { height: auto; }
+input, button { font: inherit; color: inherit; }
+input { font-size: max(16px, 1em); }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+a, button, label, [role="button"], [role="radio"] { touch-action: manipulation; }
+:where(ul[class], ol[class]) { list-style: none; padding: 0; }
+:focus-visible { outline: 3px solid var(--caramelo); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--tinta); color: var(--crema); }
+.fp-wrap { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: var(--gutter); }
+.fp-sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.fp-nowrap { white-space: nowrap; }
+.fp-skip { position: fixed; left: 12px; top: 12px; z-index: 200; padding: 12px 18px; border-radius: 6px; background: var(--tinta); color: var(--crema); font-weight: 700; transform: translateY(-160%); transition: transform 200ms var(--ease); }
+.fp-skip:focus { transform: none; }
+.fp-sec { padding-block: var(--sec-y); position: relative; }
+
+/* ---------- Títulos ---------- */
+.fp-h { font-size: clamp(32px, 9.2vw, 56px); letter-spacing: -.005em; }
+.fp-ln { display: block; }
+.fp-ln--c { color: var(--caramelo); }
+.fp-sub { font-size: 17px; color: var(--mute); max-width: 46ch; margin-top: 14px; }
+.fp-eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--caramelo); margin-bottom: 10px; }
+
+/* ---------- Charola: marco de foto o contenedor ---------- */
+.fp-fr { position: relative; display: block; }
+.fp-charola { display: block; position: relative; border: 6px solid var(--acero); border-radius: 14px; box-shadow: inset 0 0 0 1px rgba(20, 20, 20, .28); background: var(--letrero); }
+.fp-charola--foto { overflow: hidden; background: #2a2724; }
+.fp-charola--foto > img, .fp-charola--foto > picture, .fp-charola--foto > picture > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fp-asas::before, .fp-asas::after { content: ""; position: absolute; top: 50%; width: 10px; height: 34px; margin-top: -17px; background: var(--acero); border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(20, 20, 20, .25); }
+.fp-asas::before { left: -15px; }
+.fp-asas::after { right: -15px; }
+
+/* ---------- Letrero de cartón en caballete ---------- */
+.fp-let { position: relative; display: inline-block; background: var(--letrero); border: 1px solid var(--letrero-b); padding: 6px 11px; font-size: 11px; line-height: 1.25; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; color: var(--tinta); transform-origin: 50% 100%; }
+.fp-let::before, .fp-let::after { content: ""; position: absolute; top: 100%; width: 2px; height: 10px; background: var(--madera); transform-origin: 50% 0; }
+.fp-let::before { left: 28%; transform: rotate(16deg); }
+.fp-let::after { right: 28%; transform: rotate(-16deg); }
+.fp-let--pie { position: absolute; left: 50%; bottom: -14px; transform: translateX(-50%); white-space: nowrap; max-width: calc(100% - 12px); text-align: center; z-index: 2; }
+
+/* ---------- Divisor: la fila del buffet ---------- */
+.fp-div { display: flex; justify-content: center; gap: 8px; padding: 0; margin-bottom: 26px; }
+.fp-div i { width: 34px; height: 18px; border: 1.5px solid var(--tinta); border-radius: 4px; flex: 0 0 auto; }
+.fp-div i:nth-child(4) { background: var(--caramelo); border-color: var(--caramelo); }
+@media (max-width: 420px) { .fp-div i { width: 30px; } .fp-div { gap: 6px; } }
+
+/* ---------- Botones ---------- */
+.fp-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 28px; background: var(--tinta); color: var(--crema); border-radius: 6px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .14em; line-height: 1; white-space: nowrap; transition: transform 160ms var(--ease), background-color 160ms; }
+.fp-btn::before, .fp-btn::after { content: ""; position: absolute; top: 50%; width: 5px; height: 16px; margin-top: -8px; background: var(--acero); border-radius: 3px; }
+.fp-btn::before { left: -4px; }
+.fp-btn::after { right: -4px; }
+.fp-btn:active { transform: scale(.97); }
+.fp-btn--claro { background: var(--crema); color: var(--tinta); }
+.fp-btn svg { width: 16px; height: 16px; }
+.fp-wa { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px; background: var(--wa); color: var(--wa-ink); border-radius: 4px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; line-height: 1.15; text-align: center; box-shadow: 0 2px 0 rgba(11, 61, 31, .38); border: 1px solid rgba(11, 61, 31, .3); transition: transform 160ms var(--ease), filter 160ms; }
+.fp-wa svg { width: 22px; height: 22px; flex: 0 0 auto; }
+.fp-wa:active { transform: scale(.97); }
+.fp-lnk { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; border-bottom: 2px solid var(--caramelo); padding-block: 2px; }
+.fp-lnk svg { width: 16px; height: 16px; }
+.fp-lnk--claro { color: var(--crema); border-bottom-color: var(--caramelo-cl); }
+@media (hover: hover) and (pointer: fine) {
+  .fp-btn:hover { background: #2b2825; }
+  .fp-btn--claro:hover { background: #fff; }
+  .fp-wa:hover { filter: brightness(1.05); }
+  .fp-lnk:hover { border-bottom-color: var(--tinta); }
+}
+
+/* ---------- Header: la fecha en la mesa ---------- */
+.fp-header { position: fixed; inset: 0 0 auto 0; z-index: 100; background: var(--tinta); color: var(--crema); border-bottom: 1px solid var(--acero); }
+.fp-bar { height: var(--hd); display: flex; align-items: center; gap: 12px; padding-inline: var(--gutter); max-width: 1440px; margin-inline: auto; transition: height 220ms var(--ease); }
+.fp-header.is-compact .fp-bar { height: 50px; }
+.fp-brand { display: inline-flex; align-items: center; gap: 14px; margin-right: auto; }
+.fp-brand-logo { width: 42px; height: 42px; border-radius: 50%; box-shadow: 0 0 0 2px var(--crema); transition: width 220ms var(--ease), height 220ms var(--ease); }
+.fp-header.is-compact .fp-brand-logo { width: 36px; height: 36px; }
+.fp-brand-lema { display: none; font-family: var(--f-t); font-size: 18px; line-height: 1; }
+@media (min-width: 820px) { .fp-brand-lema { display: inline; } }
+.fp-fechaw { position: relative; flex: 0 1 auto; }
+.fp-fecha { position: relative; display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border: 1px solid var(--crema); border-radius: 6px; font-size: 11.5px; font-weight: 700; letter-spacing: .1em; line-height: 1; white-space: nowrap; }
+.fp-fecha::before, .fp-fecha::after { content: ""; position: absolute; top: 50%; width: 4px; height: 12px; margin-top: -6px; background: var(--acero); border-radius: 2px; }
+.fp-fecha::before { left: -5px; }
+.fp-fecha::after { right: -5px; }
+.fp-fecha-t { display: inline-block; transition: opacity 100ms linear; }
+.fp-fecha-t.is-swap { opacity: 0; }
+.fp-fecha .fp-l { display: none; }
+@media (min-width: 720px) { .fp-fecha .fp-l { display: inline; } .fp-fecha .fp-s { display: none; } .fp-fecha { padding: 0 18px; font-size: 12px; } }
+.fp-fecha-in { position: absolute; left: 0; top: 100%; width: 1px; height: 1px; opacity: 0; pointer-events: none; border: 0; padding: 0; }
+@media (hover: hover) and (pointer: fine) { .fp-fecha:hover { background: rgba(246, 241, 231, .1); } }
+.fp-menu-btn { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 0 2px 0 8px; font-weight: 700; font-size: 12px; letter-spacing: .14em; margin-left: 8px; }
+.fp-burger { position: relative; width: 22px; height: 12px; display: inline-block; }
+.fp-burger i { position: absolute; left: 0; right: 0; height: 2px; background: var(--crema); transition: transform 220ms var(--ease), top 220ms var(--ease); }
+.fp-burger i:nth-child(1) { top: 0; }
+.fp-burger i:nth-child(2) { top: 10px; }
+.fp-menu-open .fp-burger i:nth-child(1) { top: 5px; transform: rotate(45deg); }
+.fp-menu-open .fp-burger i:nth-child(2) { top: 5px; transform: rotate(-45deg); }
+
+/* ---------- Menú a pantalla completa ---------- */
+.fp-menu { position: fixed; inset: 0; z-index: 90; background: var(--crema); padding: calc(var(--hd) + 28px) var(--gutter) 32px; display: flex; flex-direction: column; justify-content: center; visibility: hidden; opacity: 0; transition: opacity 200ms linear, visibility 0s linear 200ms; overflow-y: auto; }
+.fp-menu-open .fp-menu { visibility: visible; opacity: 1; transition: opacity 200ms linear; }
+.fp-menu-nav { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; max-width: 700px; width: 100%; margin-inline: auto; }
+.fp-menu-nav a:not(.fp-wa) { font-family: var(--f-t); font-size: 40px; line-height: 1.12; display: inline-flex; align-items: baseline; gap: 14px; min-height: 52px; }
+.fp-menu-nav a span { font-family: var(--f-b); font-size: 12px; font-weight: 700; letter-spacing: .14em; color: var(--caramelo); min-width: 24px; }
+.fp-menu-wa { margin-top: 22px; }
+@media (min-width: 820px) { .fp-menu-nav a:not(.fp-wa) { font-size: 56px; } }
+
+/* ---------- Reveal (el CSS base ES el estado final) ---------- */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .fp-ln { transition: opacity 500ms var(--ease), transform 500ms var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
+  .fp-js [data-reveal="t"]:not(.is-in) .fp-ln { opacity: 0; transform: translateY(12px); }
+  .fp-js [data-reveal="u"] { transition: opacity 500ms var(--ease), transform 500ms var(--ease); }
+  .fp-js [data-reveal="u"]:not(.is-in) { opacity: 0; transform: translateY(12px); }
+  .fp-js [data-reveal="l"] { transition: opacity 300ms linear, transform 420ms var(--ease); transition-delay: var(--d, 0ms); }
+  .fp-js [data-reveal="l"]:not(.is-in) { opacity: 0; transform: perspective(500px) rotateX(90deg); }
+  .fp-js [data-reveal="l"].fp-let--pie:not(.is-in) { transform: translateX(-50%) perspective(500px) rotateX(90deg); }
+  .fp-js [data-reveal="l"].fp-let--pie { transition-property: opacity, transform; }
+}
+
+/* ---------- Pie ---------- */
+.fp-foot { background: var(--tinta); color: var(--crema); position: relative; padding: 48px 0 28px; }
+.fp-foot::before { content: ""; position: absolute; inset: 0; opacity: .045; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.fp-foot-grid { position: relative; display: grid; gap: 28px; }
+.fp-foot-brand { display: flex; align-items: center; gap: 20px; }
+.fp-foot-disc { flex: 0 0 auto; width: 120px; height: 120px; border-radius: 50%; background: var(--crema); display: grid; place-items: center; }
+.fp-foot-disc img { width: 92%; height: auto; }
+.fp-foot-t { font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
+.fp-foot-lema { font-family: var(--f-t); font-size: 30px; line-height: 1; margin-top: 8px; color: var(--caramelo-cl); }
+.fp-foot-list { display: grid; gap: 4px; }
+.fp-foot-list a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 17px; border-bottom: 1px solid transparent; }
+.fp-foot-wa { font-weight: 700; }
+.fp-foot-wa svg { width: 22px; height: 22px; }
+.fp-foot-soc { display: flex; gap: 12px; }
+.fp-foot-soc a { width: 44px; height: 44px; border: 1.5px solid var(--acero); border-radius: 6px; display: grid; place-items: center; }
+.fp-foot-soc svg { width: 24px; height: 24px; }
+.fp-credit { position: relative; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(201, 198, 191, .3); font-size: 13px; color: rgba(246, 241, 231, .72); }
+@media (min-width: 820px) {
+  .fp-foot { padding-top: 56px; }
+  .fp-foot-grid { grid-template-columns: 1.4fr 1fr auto; align-items: center; gap: 48px; }
+}
+@media (hover: hover) and (pointer: fine) { .fp-foot-list a:hover { border-bottom-color: var(--caramelo-cl); } .fp-foot-soc a:hover { background: rgba(246, 241, 231, .12); } }
+
+/* ---------- WhatsApp flotante ---------- */
+.fp-wa-float { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 80; width: 56px; height: 56px; border-radius: 8px; background: var(--wa); color: var(--wa-ink); display: grid; place-items: center; box-shadow: 0 6px 18px rgba(0, 0, 0, .28), 0 2px 0 rgba(11, 61, 31, .4); }
+.fp-wa-float svg { width: 32px; height: 32px; }
+.fp-wa-off .fp-wa-float, .fp-menu-open .fp-wa-float { visibility: hidden; animation: none; }
+@media (hover: hover) and (pointer: fine) { .fp-wa-float:hover { filter: brightness(1.06); } }
+
+/* ---------- Con y sin JS ---------- */
+html:not(.fp-js) .fp-js-only { display: none !important; }
+.fp-js .fp-nojs-only { display: none !important; }
+[hidden] { display: none !important; }

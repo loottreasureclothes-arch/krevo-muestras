@@ -1,0 +1,40 @@
+.pr-det{ background:var(--noche); color:var(--marfil); padding-block:26px 40px; overflow:clip; }
+/* ----- El escudo que se arma ----- */
+.pr-stage{ --c:.44; --k:1.8133; --Fmax:230px; --F:min(calc((100vw - 24px) / var(--k)),var(--Fmax)); --X0:calc(1.1515 * var(--c) - .1); --D:calc(var(--F) * .21);
+  --pc:1; --pl:1; --kd:0; --pb:1;
+  --sh:.3; position:relative; width:calc(var(--F) * var(--k)); height:calc(var(--F) * 2.34); margin-inline:auto; margin-top:calc(var(--F) * var(--sh) * -1); margin-bottom:calc(var(--F) * -.06); }
+@media (min-width:640px){ .pr-stage{ --c:.7; --k:2.4121; --Fmax:300px; --F:min(calc((100vw - 48px) / var(--k)),var(--Fmax)); --sh:.2; } }
+@media (min-width:1100px){ .pr-stage{ --c:1; --k:3.103; --Fmax:330px; --F:min(calc((100vw - 64px) / var(--k)),var(--Fmax)); --sh:.14; } }
+.pr-stage > *{ position:absolute; max-width:none; }
+.pr-st-sh{ left:calc(var(--F) * var(--X0)); top:calc(var(--F) * .9379); width:var(--F); height:calc(var(--F) * 1.25); aspect-ratio:auto; }
+.pr-st-sh img{ filter:brightness(calc(.82 + .18 * var(--pb))); }
+.pr-st-laurel{ left:calc(var(--F) * (var(--X0) - .2667)); top:calc(var(--F) * 1.3076); width:calc(var(--F) * 1.5364); height:auto; clip-path:inset(calc((1 - var(--pl)) * 100%) 0 0 0); }
+.pr-st-ch{ will-change:transform; }
+.pr-st-chl{ left:0; top:calc(var(--F) * (.9779 - .4127 * var(--c))); width:calc(var(--F) * 1.1667 * var(--c)); height:auto; transform-origin:92% 8%; transform:translateX(calc(var(--F) * var(--k) * -.46 * (1 - var(--pc)))) rotate(calc(-8deg * (1 - var(--pc)))); opacity:calc(.2 + .8 * var(--pc)); }
+.pr-st-chr{ left:calc(var(--F) * (var(--X0) + .9 - .0121 * var(--c))); top:calc(var(--F) * (.9779 - .4158 * var(--c))); width:calc(var(--F) * 1.1636 * var(--c)); height:auto; transform-origin:8% 8%; transform:translateX(calc(var(--F) * var(--k) * .46 * (1 - var(--pc)))) rotate(calc(8deg * (1 - var(--pc)))); opacity:calc(.2 + .8 * var(--pc)); }
+.pr-st-crown{ --cw:calc(.9545 * (.55 + .45 * var(--c))); left:calc(var(--F) * (var(--X0) + .5 - var(--cw) / 2)); top:calc(var(--F) * (.9649 - .7492 * var(--cw))); width:calc(var(--F) * var(--cw)); height:auto; transform:translateY(calc(var(--D) * var(--kd) * -1)); filter:drop-shadow(0 6px 6px rgba(0,0,0,.35)); }
+.pr-on-dark .pr-sh-fr .a{ stroke:var(--oro); }
+/* ----- Texto de cierre del momento ----- */
+.pr-det-txt{ margin-top:6px; display:grid; gap:26px; }
+.pr-det-t{ display:grid; gap:14px; }
+.pr-det .pr-h{ color:var(--marfil); max-width:none; }
+.pr-det .pr-h .l2{ max-width:12ch; }
+.pr-det .pr-h .l2{ color:var(--oro-l); }
+.pr-det .pr-quote{ color:var(--marfil); font-size:19px; }
+.pr-det-src{ display:block; margin-top:8px; font:400 12px/1.4 var(--f-t); letter-spacing:.18em; text-transform:uppercase; font-style:normal; color:#CDBA95; }
+.pr-meds{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; max-width:420px; }
+.pr-med{ display:grid; gap:8px; grid-template-rows:auto 1fr; }
+.pr-med .pr-cart{ font-size:10.5px; letter-spacing:.08em; padding:7px 7px 6px; line-height:1.4; }
+.pr-det-go{ margin:0; }
+@media (min-width:640px){ .pr-meds{ gap:18px; max-width:520px; } .pr-med .pr-cart{ font-size:11px; } }
+@media (min-width:1100px){
+  .pr-det{ padding-block:40px 44px; }
+  .pr-det-txt{ grid-template-columns:minmax(0,1fr) auto; align-items:end; column-gap:60px; margin-top:10px; }
+  .pr-det-t{ grid-column:1; } .pr-meds{ grid-column:2; grid-row:1 / span 2; grid-template-columns:repeat(3,120px); } .pr-det-go{ grid-column:1; }
+  .pr-det .pr-h{ font-size:clamp(50px,4.4vw,64px); max-width:none; }
+  .pr-det .pr-h .l2{ max-width:none; }
+}
+.pr-js .pr-det-txt > *{ opacity:0; transform:translateY(12px); }
+.pr-js .pr-det-txt.is-in > *{ opacity:1; transform:none; transition:opacity 520ms var(--ease), transform 520ms var(--ease); }
+.pr-js .pr-det-txt.is-in > *:nth-child(2){ transition-delay:120ms; } .pr-js .pr-det-txt.is-in > *:nth-child(3){ transition-delay:220ms; }
+@media (prefers-reduced-motion:reduce){ .pr-js .pr-det-txt > *{ opacity:1; transform:none; transition:none; } }

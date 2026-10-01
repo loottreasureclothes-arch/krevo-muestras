@@ -1,0 +1,30 @@
+/* ===== 40 · La tienda: entrada grande, pared de la marca, dos voces ===== */
+.bx-tienda { background: var(--ink); }
+.bx-tienda::before { content: ""; position: absolute; top: 0; left: var(--g); right: var(--g); height: 3px; background: var(--brand); max-width: 1208px; margin: 0 auto; }
+.bx-tienda-grid { margin-top: 22px; display: grid; grid-template-columns: 46fr 54fr; grid-template-areas: "big big" "q1 q1" "pared q2" "frase frase"; column-gap: 16px; align-items: end; }
+.bx-tienda-big { grid-area: big; } .bx-q1 { grid-area: q1; } .bx-pared { grid-area: pared; } .bx-q2 { grid-area: q2; } .bx-frase { grid-area: frase; }
+.bx-tienda-big { position: relative; margin: 0 calc(var(--g) * -1) 0 0; aspect-ratio: 1 / 1.08; border-radius: var(--tail-l); }
+.bx-tienda-big { margin-right: 0; margin-left: calc(var(--g) * -1); }
+.bx-tienda-big img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 45%; }
+.bx-tienda-big .bx-plate { position: absolute; left: var(--g); bottom: 16px; }
+.bx-q1, .bx-q2 { margin: 0; }
+.bx-q1 { margin-top: 22px; }
+.bx-q1 p { font-family: var(--font-display); font-size: 19.5px; line-height: 1.27; }
+.bx-q2 p { font-family: var(--font-display); font-size: 24px; line-height: 1.15; }
+.bx-q1 cite, .bx-q2 cite { display: block; margin-top: 12px; font-style: normal; font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); }
+.bx-pared { position: relative; width: 100%; margin: 24px 0 0 0; aspect-ratio: 3 / 4.2; }
+.bx-pared img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 20%; }
+.bx-pared .bx-plate { position: absolute; left: 0; bottom: 14px; max-width: 80%; }
+.bx-q2 { margin-top: 24px; position: relative; align-self: center; }
+.bx-frase { margin-top: 26px; padding-top: 18px; border-top: 3px solid var(--brand); font-family: var(--font-display); font-size: 23px; line-height: 1.22; max-width: 26ch; color: var(--brand-lite); }
+
+@media (min-width: 820px) {
+  .bx-tienda-grid { grid-template-columns: minmax(0, min(520px, 46%)) minmax(0, 1fr); grid-template-areas: "big q1" "big pared" "big q2" "big frase"; column-gap: clamp(32px, 6vw, 110px); margin-top: 52px; align-items: start; }
+  .bx-tienda-big { grid-area: big; margin: 0; aspect-ratio: 1 / 1.7; }
+  .bx-q1 { grid-area: q1; margin-top: 0; }
+  .bx-q1 p { font-size: 30px; }
+  .bx-pared { grid-area: pared; width: 300px; margin: 36px 0 0 clamp(0px, 8vw, 140px); aspect-ratio: 3 / 4.4; }
+  .bx-q2 { grid-area: q2; margin-top: 36px; max-width: 24ch; align-self: start; }
+  .bx-q2 p { font-size: 36px; }
+  .bx-frase { grid-area: frase; font-size: 30px; margin-top: 48px; }
+}

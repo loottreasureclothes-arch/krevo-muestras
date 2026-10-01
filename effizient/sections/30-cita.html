@@ -1,0 +1,75 @@
+<section class="sec cita" id="cita" data-hide-wa aria-label="Agenda tu cita">
+  <div class="wrap">
+    <div class="estela" data-reveal aria-hidden="true"></div>
+    <h2 class="t" style="--k:8.4" data-reveal><span class="ln"><span class="cap">D</span>inos dónde.</span><span class="ln sk">Muévelo hasta</span><span class="ln sk">cuánto.</span></h2>
+    <div class="cita-grid">
+      <form class="cita-card on-ice" id="ficha" action="#" aria-label="Arma tu cita" autocomplete="off">
+        <div class="c-left">
+          <fieldset class="q q-zona">
+            <legend><span class="num">1</span>¿Dónde lo sientes?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="zona" value="cuello y espalda"><span>Cuello y espalda</span></label>
+              <label class="chip"><input type="radio" name="zona" value="hombro"><span>Hombro</span></label>
+              <label class="chip"><input type="radio" name="zona" value="codo y muñeca"><span>Codo y muñeca</span></label>
+              <label class="chip"><input type="radio" name="zona" value="cadera"><span>Cadera</span></label>
+              <label class="chip"><input type="radio" name="zona" value="rodilla"><span>Rodilla</span></label>
+              <label class="chip"><input type="radio" name="zona" value="tobillo y pie"><span>Tobillo y pie</span></label>
+              <label class="chip"><input type="radio" name="zona" value="otra zona"><span>Otra zona</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q q-hoy">
+            <legend><span class="num">2</span>¿Cuánto te molesta hoy?</legend>
+            <div class="gon-wrap is-unset" id="gon-wrap">
+<!--DIAL--><svg class="gon" id="gon" viewBox="0 26 360 206" aria-hidden="true" focusable="false"><path class="gon-body" d="M16 196 A164 164 0 0 1 344 196 L344 216 Q344 226 334 226 L26 226 Q16 226 16 216 Z"/><path class="gon-ring" d="M76 196 A104 104 0 0 1 284 196"/><path class="tk-a" d="M32.0 196.0L19.0 196.0"/><path class="tk-c" d="M23.1 191.1L19.1 190.9"/><path class="tk-c" d="M23.3 186.1L19.3 185.9"/><path class="tk-c" d="M23.7 181.2L19.7 180.8"/><path class="tk-c" d="M24.2 176.3L20.3 175.8"/><path class="tk-b" d="M28.9 172.1L21.0 170.8"/><path class="tk-c" d="M25.8 166.6L21.9 165.8"/><path class="tk-c" d="M26.8 161.8L22.9 160.9"/><path class="tk-c" d="M27.9 157.0L24.1 156.0"/><path class="tk-c" d="M29.2 152.2L25.4 151.1"/><path class="tk-a" d="M39.2 150.3L26.9 146.2"/><path class="tk-c" d="M32.3 142.8L28.5 141.5"/><path class="tk-c" d="M34.0 138.2L30.3 136.7"/><path class="tk-c" d="M35.9 133.6L32.2 132.1"/><path class="tk-c" d="M37.9 129.2L34.3 127.4"/><path class="tk-b" d="M43.7 126.5L36.5 122.9"/><path class="tk-c" d="M42.4 120.4L38.9 118.4"/><path class="tk-c" d="M44.9 116.1L41.4 114.0"/><path class="tk-c" d="M47.4 111.9L44.1 109.7"/><path class="tk-c" d="M50.1 107.8L46.8 105.5"/><path class="tk-a" d="M60.3 109.0L49.7 101.4"/><path class="tk-c" d="M55.9 99.8L52.8 97.3"/><path class="tk-c" d="M59.0 95.9L55.9 93.4"/><path class="tk-c" d="M62.2 92.2L59.2 89.5"/><path class="tk-c" d="M65.6 88.5L62.6 85.8"/><path class="tk-b" d="M71.8 87.8L66.2 82.2"/><path class="tk-c" d="M72.5 81.6L69.8 78.6"/><path class="tk-c" d="M76.2 78.2L73.5 75.2"/><path class="tk-c" d="M79.9 75.0L77.4 71.9"/><path class="tk-c" d="M83.8 71.9L81.3 68.8"/><path class="tk-a" d="M93.0 76.3L85.4 65.7"/><path class="tk-c" d="M91.8 66.1L89.5 62.8"/><path class="tk-c" d="M95.9 63.4L93.7 60.1"/><path class="tk-c" d="M100.1 60.9L98.0 57.4"/><path class="tk-c" d="M104.4 58.4L102.4 54.9"/><path class="tk-b" d="M110.5 59.7L106.9 52.5"/><path class="tk-c" d="M113.2 53.9L111.4 50.3"/><path class="tk-c" d="M117.6 51.9L116.1 48.2"/><path class="tk-c" d="M122.2 50.0L120.7 46.3"/><path class="tk-c" d="M126.8 48.3L125.5 44.5"/><path class="tk-a" d="M134.3 55.2L130.2 42.9"/><path class="tk-c" d="M136.2 45.2L135.1 41.4"/><path class="tk-c" d="M141.0 43.9L140.0 40.1"/><path class="tk-c" d="M145.8 42.8L144.9 38.9"/><path class="tk-c" d="M150.6 41.8L149.8 37.9"/><path class="tk-b" d="M156.1 44.9L154.8 37.0"/><path class="tk-c" d="M160.3 40.2L159.8 36.3"/><path class="tk-c" d="M165.2 39.7L164.8 35.7"/><path class="tk-c" d="M170.1 39.3L169.9 35.3"/><path class="tk-c" d="M175.1 39.1L174.9 35.1"/><path class="tk-a" d="M180.0 48.0L180.0 35.0"/><path class="tk-c" d="M184.9 39.1L185.1 35.1"/><path class="tk-c" d="M189.9 39.3L190.1 35.3"/><path class="tk-c" d="M194.8 39.7L195.2 35.7"/><path class="tk-c" d="M199.7 40.2L200.2 36.3"/><path class="tk-b" d="M203.9 44.9L205.2 37.0"/><path class="tk-c" d="M209.4 41.8L210.2 37.9"/><path class="tk-c" d="M214.2 42.8L215.1 38.9"/><path class="tk-c" d="M219.0 43.9L220.0 40.1"/><path class="tk-c" d="M223.8 45.2L224.9 41.4"/><path class="tk-a" d="M225.7 55.2L229.8 42.9"/><path class="tk-c" d="M233.2 48.3L234.5 44.5"/><path class="tk-c" d="M237.8 50.0L239.3 46.3"/><path class="tk-c" d="M242.4 51.9L243.9 48.2"/><path class="tk-c" d="M246.8 53.9L248.6 50.3"/><path class="tk-b" d="M249.5 59.7L253.1 52.5"/><path class="tk-c" d="M255.6 58.4L257.6 54.9"/><path class="tk-c" d="M259.9 60.9L262.0 57.4"/><path class="tk-c" d="M264.1 63.4L266.3 60.1"/><path class="tk-c" d="M268.2 66.1L270.5 62.8"/><path class="tk-a" d="M267.0 76.3L274.6 65.7"/><path class="tk-c" d="M276.2 71.9L278.7 68.8"/><path class="tk-c" d="M280.1 75.0L282.6 71.9"/><path class="tk-c" d="M283.8 78.2L286.5 75.2"/><path class="tk-c" d="M287.5 81.6L290.2 78.6"/><path class="tk-b" d="M288.2 87.8L293.8 82.2"/><path class="tk-c" d="M294.4 88.5L297.4 85.8"/><path class="tk-c" d="M297.8 92.2L300.8 89.5"/><path class="tk-c" d="M301.0 95.9L304.1 93.4"/><path class="tk-c" d="M304.1 99.8L307.2 97.3"/><path class="tk-a" d="M299.7 109.0L310.3 101.4"/><path class="tk-c" d="M309.9 107.8L313.2 105.5"/><path class="tk-c" d="M312.6 111.9L315.9 109.7"/><path class="tk-c" d="M315.1 116.1L318.6 114.0"/><path class="tk-c" d="M317.6 120.4L321.1 118.4"/><path class="tk-b" d="M316.3 126.5L323.5 122.9"/><path class="tk-c" d="M322.1 129.2L325.7 127.4"/><path class="tk-c" d="M324.1 133.6L327.8 132.1"/><path class="tk-c" d="M326.0 138.2L329.7 136.7"/><path class="tk-c" d="M327.7 142.8L331.5 141.5"/><path class="tk-a" d="M320.8 150.3L333.1 146.2"/><path class="tk-c" d="M330.8 152.2L334.6 151.1"/><path class="tk-c" d="M332.1 157.0L335.9 156.0"/><path class="tk-c" d="M333.2 161.8L337.1 160.9"/><path class="tk-c" d="M334.2 166.6L338.1 165.8"/><path class="tk-b" d="M331.1 172.1L339.0 170.8"/><path class="tk-c" d="M335.8 176.3L339.7 175.8"/><path class="tk-c" d="M336.3 181.2L340.3 180.8"/><path class="tk-c" d="M336.7 186.1L340.7 185.9"/><path class="tk-c" d="M336.9 191.1L340.9 190.9"/><path class="tk-a" d="M328.0 196.0L341.0 196.0"/><path id="gon-sector" class="gon-sector" d="M180 196Z"/><g class="gon-fixed"><rect x="74" y="192.5" width="106" height="7" rx="3.5"/></g><g class="nm" data-v="0"><circle cx="47.0" cy="196.0" r="14"/><text x="47.0" y="196.5">0</text></g><g class="nm" data-v="1"><circle cx="53.5" cy="154.9" r="14"/><text x="53.5" y="155.4">1</text></g><g class="nm" data-v="2"><circle cx="72.4" cy="117.8" r="14"/><text x="72.4" y="118.3">2</text></g><g class="nm" data-v="3"><circle cx="101.8" cy="88.4" r="14"/><text x="101.8" y="88.9">3</text></g><g class="nm" data-v="4"><circle cx="138.9" cy="69.5" r="14"/><text x="138.9" y="70.0">4</text></g><g class="nm" data-v="5"><circle cx="180.0" cy="63.0" r="14"/><text x="180.0" y="63.5">5</text></g><g class="nm" data-v="6"><circle cx="221.1" cy="69.5" r="14"/><text x="221.1" y="70.0">6</text></g><g class="nm" data-v="7"><circle cx="258.2" cy="88.4" r="14"/><text x="258.2" y="88.9">7</text></g><g class="nm" data-v="8"><circle cx="287.6" cy="117.8" r="14"/><text x="287.6" y="118.3">8</text></g><g class="nm" data-v="9"><circle cx="306.5" cy="154.9" r="14"/><text x="306.5" y="155.4">9</text></g><g class="nm" data-v="10"><circle cx="313.0" cy="196.0" r="14"/><text x="313.0" y="196.5">10</text></g><g class="gon-hint"><path class="h-arc" d="M107.2 143.1A90 90 0 0 1 143.4 113.8"/><path class="h-head" d="M148.6 111.6L136.8 110.4L141.2 121.0Z"/></g><g id="gon-arm" class="gon-arm" transform="rotate(22 180 196)"><rect x="74" y="192.5" width="106" height="7" rx="3.5"/><path class="arm-line" d="M96 196H170"/><g class="grip"><circle cx="90" cy="196" r="16"/><path d="M84 190V202M90 188V204M96 190V202"/></g></g><g class="gon-pivot"><circle cx="180" cy="196" r="11"/><path d="M174 196H186"/></g></svg><!--/DIAL-->
+              <div class="gon-read" aria-live="off"><span class="gon-n num" id="gon-n"><i class="gon-dash" aria-hidden="true"></i></span><span class="gon-of num">/ 10</span><span class="gon-phrase" id="gon-phrase">Arrastra el brazo o toca un número</span></div>
+              <input class="gon-range" id="hoy" type="range" min="0" max="10" step="1" value="0" aria-label="Cuánto te molesta hoy, de 0 a 10" aria-valuetext="Sin marcar">
+              <div class="gon-scale num" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+            </div>
+          </fieldset>
+          <fieldset class="q q-ent">
+            <legend><span class="num">3</span>¿Qué entrenas o a qué te dedicas?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="ent" value="Entreno: corro"><span>Corro</span></label>
+              <label class="chip"><input type="radio" name="ent" value="Entreno: futbol"><span>Futbol</span></label>
+              <label class="chip"><input type="radio" name="ent" value="Entreno: box"><span>Box</span></label>
+              <label class="chip"><input type="radio" name="ent" value="Entreno: gimnasio"><span>Gimnasio</span></label>
+              <label class="chip"><input type="radio" name="ent" value="Actividad: trabajo sentado"><span>Trabajo sentado</span></label>
+              <label class="chip"><input type="radio" name="ent" value="Es para: un adulto mayor"><span>Es para un adulto mayor</span></label>
+              <label class="chip"><input type="radio" name="ent" value="Actividad: otra"><span>Otro</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="q q-tb">
+            <legend><span class="num">4</span>También me interesa</legend>
+            <div class="checks">
+              <label class="chk"><input type="checkbox" name="tb" value="estudio de pedigrafía y plantillas"><span>Estudio de pedigrafía y plantillas</span></label>
+              <label class="chk"><input type="checkbox" name="tb" value="inmersión en frío"><span>Inmersión en frío</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="c-right">
+          <div class="q q-nom">
+            <label class="q-lbl" for="nom"><span class="num">5</span>Tu nombre <small>(opcional)</small></label>
+            <input class="nom" id="nom" name="nom" type="text" maxlength="40" autocomplete="given-name" enterkeyhint="done" placeholder="Como te llamamos">
+          </div>
+        <aside class="slip" aria-label="Tu mensaje, así se va a escribir">
+          <dl class="slip-l">
+            <div><dt class="mk">Zona</dt><dd id="s-zona" class="is-empty">Falta elegir</dd></div>
+            <div><dt class="mk">Hoy</dt><dd id="s-hoy" class="is-empty">Falta mover el goniómetro</dd></div>
+            <div><dt class="mk">Entreno</dt><dd id="s-ent" class="is-empty">Falta elegir</dd></div>
+            <div><dt class="mk">También</dt><dd id="s-tb" class="is-empty">Nada marcado</dd></div>
+            <div><dt class="mk">Nombre</dt><dd id="s-nom" class="is-empty">Sin nombre</dd></div>
+          </dl>
+          <div class="slip-cta">
+            <a class="btn btn--wa" id="cita-wa" data-wa="Hola Effizient, quiero agendar una cita de terapia física." href="https://wa.me/524494137277?text=Hola%20Effizient%2C%20quiero%20agendar%20una%20cita%20de%20terapia%20f%C3%ADsica." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar por WhatsApp</a>
+          </div>
+          <p class="slip-n">Esto no es un diagnóstico: solo le dice al fisioterapeuta a qué vienes. Lo que elijas viaja solo en tu mensaje; esta página no lo guarda.</p>
+        </aside>
+        <figure class="fr cita-photo rv" data-reveal>
+          <img src="img/gonio-400.webp" srcset="img/gonio-300.webp 300w, img/gonio-400.webp 400w" sizes="(min-width: 1060px) 300px, 50vw" width="400" height="420" alt="Escritorio de la clínica con un goniómetro dentro del portalápices con la letra E." decoding="async">
+          <figcaption>El goniómetro de la clínica</figcaption>
+        </figure>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

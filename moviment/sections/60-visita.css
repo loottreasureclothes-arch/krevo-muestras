@@ -1,0 +1,55 @@
+.mv-visita{background:var(--ink);position:relative;padding:54px 0 0}
+.mv-visita>.mv-vn{position:absolute;left:0;right:0;top:0}
+.mv-visita-top{display:grid;gap:26px}
+.mv-visita-info{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.mv-visita .mv-h-sec .l1{font-size:.82em}
+.mv-datos{display:grid;gap:12px;width:100%}
+.mv-datos li{display:flex;align-items:flex-start;font-size:1.02rem;line-height:1.4;color:var(--txt)}
+.mv-datos .mv-sq{margin-top:.38em}
+.mv-datos a{color:var(--txt);text-decoration-color:var(--v2);text-underline-offset:3px}
+.mv-horario{border-collapse:collapse;font-size:1.02rem}
+.mv-horario th{text-align:left;font-weight:500;padding:0 22px 2px 0;color:var(--txt)}
+.mv-horario td{font-weight:600;color:var(--txt)}
+.mv-visita-mapa{display:grid;gap:18px}
+.mv-mapa{position:relative;border-radius:0 0 var(--r) var(--r);overflow:hidden;background:var(--band);padding-top:8px;aspect-ratio:4/3}
+.mv-mapa>.mv-vn{position:absolute;left:0;right:0;top:0;z-index:2}
+.mv-mapa iframe{width:100%;height:100%;border:0;display:block;filter:saturate(.8)}
+.mv-letrero{position:relative;width:min(80%,420px)}
+.mv-letrero img{width:100%;height:auto;border-radius:var(--r)}
+.mv-letrero figcaption{margin-top:8px}
+.mv-como{margin-top:2px}
+/* todo listo */
+.mv-listo{position:relative;margin-top:44px;background:var(--esp);border-radius:0 0 var(--r) var(--r);color:var(--ink)}
+.mv-listo>.mv-vn{position:absolute;left:0;right:0;top:0}
+.mv-listo-in{padding:30px 18px 24px;display:grid;gap:12px}
+.mv-listo-h{font-weight:700;font-size:1.3rem;letter-spacing:-.005em;line-height:1.15;color:var(--ink)}
+.mv-listo-l{display:grid;gap:4px 28px}
+.mv-listo-l li{display:flex;align-items:flex-start;font-size:.94rem;line-height:1.35;color:var(--ink)}
+.mv-listo-l .mv-sq{margin-top:.34em}
+.mv-listo-n{font-size:.92rem;color:#3d3b5c}
+.mv-listo-n b{color:var(--ink);font-weight:700}
+/* remate */
+.mv-remate{margin-top:44px;background:var(--deep);padding:36px 0 44px}
+.mv-remate-grid{display:grid;gap:22px;align-items:center}
+.mv-remate-foto{position:relative;margin:0;aspect-ratio:1/1;overflow:hidden;border-radius:var(--r) var(--r) 0 0}
+.mv-remate-foto img{width:100%;height:100%;object-fit:cover;object-position:60% 40%;border-radius:var(--r) var(--r) 0 0}
+.mv-remate-foto .mv-vn2{position:absolute;left:0;right:0;bottom:0}
+.mv-remate-txt{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.mv-h-lema{font-size:clamp(2.4rem,11vw,4.2rem)}
+.mv-remate-res{display:grid;gap:6px;border-left:3px solid var(--brand);padding:2px 0 2px 12px;width:100%}
+.mv-remate-res[hidden]{display:none}
+.mv-rr{font-size:.92rem;color:var(--txt);line-height:1.4}
+.mv-rr-a{font-weight:700;font-size:.68rem;letter-spacing:.16em;color:var(--lav);margin-right:.4em}
+@media (min-width:760px){
+  .mv-visita{padding-top:84px}
+  .mv-visita-top{grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:56px;align-items:start}
+  .mv-visita .mv-h-sec{font-size:clamp(2.4rem,4vw,3.8rem)}
+  .mv-visita-mapa{gap:22px}
+  .mv-listo{margin-top:64px}
+  .mv-listo-in{padding:40px 36px 34px}
+  .mv-listo-l{grid-template-columns:1fr 1fr}
+  .mv-remate{margin-top:64px;padding:70px 0 80px}
+  .mv-remate-grid{grid-template-columns:420px minmax(0,1fr);gap:70px}
+  .mv-remate-foto{aspect-ratio:4/5}
+  .mv-h-lema{font-size:clamp(3rem,5.4vw,5.2rem)}
+}

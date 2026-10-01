@@ -1,0 +1,69 @@
+.qc-cal { padding-top: calc(var(--sec-y) + 6px); }
+.qc-cal .qc-wrap { display: grid; gap: 18px; }
+.qc-cal-grid { display: none; }
+html.qc-js .qc-cal-grid { display: grid; gap: 14px; }
+.qc-cal-lista { display: grid; gap: 1px; margin: 0; padding: 0; list-style: none; max-width: 640px; }
+html.qc-js .qc-cal-lista { display: none; }
+.qc-cal-lista li { display: grid; gap: 2px; padding: 12px 0; border-bottom: 1.5px dashed var(--rosa); }
+.qc-cal-lista b { font-family: var(--serif); font-weight: 400; font-size: 20px; color: var(--cafe-2); }
+.qc-cal-lista q { font-size: 14px; color: var(--mute); }
+
+/* ---------- La concha de 12 gajos ---------- */
+.qc-cal-concha { width: min(100%, 392px); margin-inline: auto; position: relative; }
+.qc-cal-concha svg { width: 100%; height: auto; overflow: visible; touch-action: manipulation; }
+.qc-cal-concha .gajo { cursor: pointer; outline: none; }
+.qc-cal-concha .gajo path { transition: fill 200ms var(--ease-out), stroke 200ms var(--ease-out); }
+.qc-cal-concha .gajo.has path.sh { fill: #DFAAA9; }
+.qc-cal-concha .gajo.no path.sh { fill: #F6E6E6; }
+.qc-cal-concha .gajo.sel.has path.sh { fill: #E9BCBB; }
+.qc-cal-concha .gajo.hoy.has path.sh, .qc-cal-concha .gajo.hoy.no path.sh, .qc-cal-concha .gajo.hoy.sel.has path.sh { fill: var(--cafe); }
+.qc-cal-concha .gajo text { font-family: var(--serif); font-size: 21px; fill: var(--tinta); pointer-events: none; text-anchor: middle; dominant-baseline: central; }
+.qc-cal-concha .gajo.no text { fill: #7a615a; }
+.qc-cal-concha .gajo.hoy text { fill: var(--crema); }
+.qc-cal-concha .gajo:focus-visible path.sh { stroke: var(--tinta); stroke-width: 5; }
+.qc-cal-concha .selring { fill: none; stroke: var(--cafe); stroke-width: 5; stroke-linejoin: round; pointer-events: none; transition: opacity 160ms; }
+.qc-cal-concha .ring { fill: none; stroke: var(--cafe); stroke-width: 3; pointer-events: none; }
+@media (hover: hover) and (pointer: fine) { .qc-cal-concha .gajo:not(.hoy):hover path.sh { fill: #E9BCBB; } .qc-cal-concha .gajo.no:not(.hoy):hover path.sh { fill: #fff3f1; } }
+.qc-cal-concha .tag text { font-family: var(--sans); font-weight: 700; font-size: 13.5px; letter-spacing: 0.1em; fill: var(--tinta); dominant-baseline: central; }
+.qc-cal-concha .tag { pointer-events: none; }
+html.qc-js .qc-cal-concha .tag { animation: qc-clavar 420ms var(--ease-out) 300ms backwards; }
+
+/* ---------- Tira de meses (celular) ---------- */
+.qc-cal-strip { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; padding: 4px 2px 10px; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.qc-cal-strip::-webkit-scrollbar { display: none; }
+.qc-mes { flex: none; scroll-snap-align: center; position: relative; min-width: 84px; min-height: 48px; padding: 0 14px; border-radius: var(--media-concha); background: var(--crema); color: var(--tinta); border: 1.5px solid var(--rosa); font-weight: 700; font-size: 13.5px; letter-spacing: 0.04em; display: inline-flex; align-items: center; justify-content: center; transition: background-color 200ms, color 200ms, border-color 200ms; }
+.qc-mes.no { color: #7a615a; font-weight: 500; }
+.qc-mes[aria-pressed="true"] { background: var(--cafe); color: var(--crema); border-color: var(--cafe); }
+.qc-mes.hoy::after { content: ""; position: absolute; top: 5px; right: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--cafe); }
+.qc-mes.hoy[aria-pressed="true"]::after { background: var(--crema); }
+
+/* ---------- Ficha ---------- */
+.qc-ficha { position: relative; margin-top: 24px; padding: 22px 18px 20px; background: var(--crema); border: 1.5px solid var(--rosa); border-radius: 0 0 12px 12px; display: grid; gap: 14px; transition: opacity 120ms ease; }
+.qc-ficha::before { content: ""; position: absolute; left: -1.5px; right: -1.5px; bottom: 100%; height: 24px; background: var(--g-up-crema) repeat-x left bottom / 48px 24px; margin-bottom: 1.5px; pointer-events: none; }
+.qc-ficha.is-swap { opacity: 0; }
+.qc-ficha-ph { position: relative; width: min(212px, 62vw); aspect-ratio: 1; border-radius: 50%; border: 2px solid var(--cafe); background: var(--rosa-claro); box-shadow: 0 4px 0 var(--rosa); }
+.qc-ficha-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.qc-ficha-ph img.is-cut { object-fit: contain; padding: 7%; filter: drop-shadow(0 8px 6px rgba(59, 42, 36, .28)); }
+.qc-ficha-ph .qc-band { left: 56%; top: auto; bottom: -6px; transform: translateX(-30%); max-width: 78vw; white-space: nowrap; font-size: 10.5px; }
+.qc-ficha-mes { font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cafe-2); display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.qc-ficha-mes em { font-style: normal; background: var(--cafe); color: var(--crema); padding: 3px 9px 2px; border-radius: 2px; }
+.qc-ficha h3 { font-size: clamp(25px, 7vw, 30px); line-height: 1.08; color: var(--tinta); }
+.qc-ficha blockquote { margin: 0; font-size: 16px; line-height: 1.45; color: var(--tinta); }
+.qc-ficha .extra { font-size: 14.5px; color: var(--mute); }
+.qc-ficha .aviso { font-size: 14.5px; font-weight: 700; color: var(--cafe-2); }
+.qc-ficha-act { display: flex; flex-wrap: wrap; gap: 4px 22px; align-items: center; }
+@media (min-width: 820px) {
+  .qc-cal .qc-wrap { gap: 28px; }
+  html.qc-js .qc-cal-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  .qc-cal-concha { width: min(100%, 560px); margin: 0; }
+  .qc-cal-concha .gajo text { font-size: 20px; }
+  .qc-cal-strip { display: none; }
+  .qc-ficha { margin-top: 0; padding: 28px 28px 26px; gap: 18px; align-items: start; border-radius: 0 0 14px 14px; }
+  .qc-ficha::before { left: -1.5px; right: -1.5px; }
+  .qc-ficha-ph { width: 210px; margin-top: 4px; margin-bottom: 8px; }
+  .qc-ficha-tx { display: grid; gap: 12px; }
+  .qc-ficha h3 { font-size: clamp(28px, 2.5vw, 36px); }
+  .qc-ficha blockquote { font-size: 17px; }
+}
+@media (min-width: 1100px) { html.qc-js .qc-cal-grid { grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); } .qc-ficha { grid-template-columns: auto 1fr; gap: 6px 30px; align-items: center; padding: 34px 32px 32px; } .qc-ficha-ph { width: 250px; grid-row: 1 / span 3; margin-bottom: 0; } .qc-ficha h3 { font-size: clamp(30px, 2.4vw, 36px); text-wrap: pretty; } }
+@media (max-width: 819px) { .qc-ficha-tx { display: grid; gap: 12px; } }

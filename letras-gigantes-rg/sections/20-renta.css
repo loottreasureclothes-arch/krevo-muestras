@@ -1,0 +1,63 @@
+.lg-renta { padding-bottom: calc(var(--sec-y) - 8px); }
+.lg-renta-head { display: grid; gap: 12px; margin-bottom: 22px; }
+.lg-renta-lead { font-weight: 300; font-size: 17px; max-width: 36ch; }
+/* Tarjetas: carrusel en celular con asomo de la siguiente */
+.lg-renta-cards-wrap { position: relative; }
+.lg-cards { display: flex; gap: 20px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; padding: 4px var(--gutter) 24px; scroll-padding-inline: var(--gutter); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.lg-cards::-webkit-scrollbar { display: none; }
+.lg-card { flex: 0 0 min(70vw, 270px); scroll-snap-align: start; display: flex; flex-direction: column; min-width: 0; }
+.lg-card-photo { margin: 0 10px 0 0; aspect-ratio: 5 / 6; flex: none; overflow: visible; }
+.lg-card-photo img { position: absolute; inset: 0; }
+.lg-card-tag { left: 10px; bottom: 10px; max-width: calc(100% - 20px); }
+.lg-card-name { margin-top: 22px; font-size: 19px; line-height: 1.02; }
+.lg-card-meta { margin-top: 8px; font-weight: 300; font-size: 14.5px; line-height: 1.4; color: var(--mute); }
+.lg-card-price { margin-top: auto; padding-top: 12px; font-weight: 600; font-size: 16px; font-variant-numeric: tabular-nums; color: var(--blanco); }
+.lg-card .lg-btn { margin-top: 10px; align-self: flex-start; }
+/* Agregar: estado "en tu lista" */
+.lg-add { gap: 7px; }
+.lg-add.is-on { background: var(--lav); color: var(--noche); box-shadow: 4px 4px 0 var(--canto-btn); }
+.lg-add.is-on::before { content: ""; flex: none; width: 15px; height: 15px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.5 12.5l5 5L19.5 7' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.5 12.5l5 5L19.5 7' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+/* Letrero neón: sin foto; el diseño elegido se escribe en Sacramento */
+.lg-neonbox { background: #0E0B1E; display: flex; flex-direction: column; justify-content: space-between; padding: 14px 8px 10px; }
+.lg-neonbox::after { box-shadow: inset 0 0 0 1px rgba(169, 155, 255, .35); }
+.lg-neon-text { flex: 1; display: grid; place-items: center; text-align: center; font-size: clamp(46px, 14vw, 62px); padding: 0 4px; text-wrap: balance; overflow-wrap: anywhere; }
+.lg-neon-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+.lg-neon-chip { display: inline-flex; align-items: center; min-height: 40px; min-width: 40px; padding: 0 7px; border-radius: 4px; border: 1px solid rgba(169, 155, 255, .38); white-space: nowrap; font-weight: 600; font-size: 11px; line-height: 1.1; letter-spacing: 0; text-align: center; color: var(--blanco); transition: background-color 140ms, border-color 140ms, color 140ms; }
+.lg-neon-chip.is-on { background: var(--blanco); border-color: var(--blanco); color: var(--noche); }
+@media (hover: hover) and (pointer: fine) { .lg-neon-chip:not(.is-on):hover { border-color: var(--lav); } }
+/* Lista de precios tipográfica */
+.lg-lista { margin-top: 10px; display: grid; gap: 18px; }
+.lg-lista-head { display: grid; gap: 10px; align-content: start; }
+.lg-lista-h { font-size: clamp(26px, 7.4vw, 34px); }
+.lg-also { font-weight: 300; font-size: 15px; line-height: 1.4; color: var(--mute); max-width: 52ch; }
+.lg-price-list { display: grid; }
+.lg-price-row { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; gap: 10px; padding: 12px 0 14px; }
+.lg-price-name { font-size: 17px; line-height: 1.05; }
+.lg-price-meta { margin-top: 5px; font-weight: 300; font-size: 14px; line-height: 1.4; color: var(--mute); }
+.lg-price-pack { margin-top: 8px; font-weight: 400; font-size: 14px; line-height: 1.4; color: var(--blanco); padding-left: 12px; border-left: 2px solid var(--foco); }
+.lg-price-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-right: 4px; }
+.lg-price-btns .lg-btn { width: 100%; min-width: 0; padding-inline: 6px; font-size: 12.5px; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+.lg-price-btns .lg-add:not(.is-on) { background: rgba(106, 82, 232, .14); color: var(--blanco); box-shadow: inset 0 0 0 1.5px var(--violeta), 3px 3px 0 var(--canto-foto); }
+.lg-price-btns .lg-add:not(.is-on):active { box-shadow: inset 0 0 0 1.5px var(--violeta), 1px 1px 0 var(--canto-foto); }
+@media (hover: hover) and (pointer: fine) { .lg-price-btns .lg-add:not(.is-on):hover { background: rgba(106, 82, 232, .34); } }
+.lg-fine { font-size: 13px; color: var(--mute); padding-top: 4px; }
+@media (min-width: 720px) {
+  .lg-renta-head { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; margin-bottom: 36px; }
+  .lg-renta-lead { font-size: 19px; justify-self: end; }
+  .lg-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 28px; overflow: visible; padding: 4px var(--gutter) 16px; max-width: 1240px; margin-inline: auto; scroll-snap-type: none; }
+  .lg-card { flex: none; }
+  .lg-card-photo { margin-right: 10px; }
+  .lg-lista { margin-top: 56px; gap: 24px; }
+  .lg-lista-h { font-size: clamp(30px, 4.4vw, 48px); }
+  .lg-price-row { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 18px; padding: 18px 0 20px; }
+  .lg-price-btns { grid-template-columns: auto auto; gap: 12px; }
+  .lg-price-btns .lg-btn { width: auto; min-width: 148px; font-size: 13px; letter-spacing: .1em; }
+}
+@media (min-width: 1000px) { .lg-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); } .lg-neon-text { font-size: clamp(46px, 4vw, 58px); } }
+
+@media (min-width: 1000px) {
+  .lg-lista { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 20px 56px; }
+  .lg-lista-head { position: sticky; top: calc(var(--hdr) + 24px); align-self: start; }
+  .lg-lista-h { font-size: clamp(30px, 3.2vw, 48px); }
+  .lg-lista .lg-fine, .lg-lista .lg-also { grid-column: 2; }
+}

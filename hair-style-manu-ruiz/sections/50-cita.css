@@ -17,15 +17,20 @@
 .mr-mini2 .mr-clip::before,.mr-mini2 .mr-clip::after{display:none}
 .mr-mini2 .mr-hair{top:3px;left:1px;right:1px}
 .mr-tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
-.mr-tile{height:84px;width:100%;--sw:30px;border:1.5px solid transparent;background:rgba(233,223,209,.55);border-radius:2px;transition:background-color 160ms,border-color 160ms,transform 220ms var(--ease)}
-.mr-tile .mr-clip{left:50%;right:auto;width:22px;margin-left:-11px;top:8px;height:5px}
+/* correccion 2: cada mechoncito con su textura y su nombre abajo; el elegido con marco castano */
+.mr-tile{height:112px;width:100%;border:2px solid transparent;background:rgba(233,223,209,.55);border-radius:2px;transition:background-color 160ms,border-color 160ms,box-shadow 160ms}
+.mr-tile .mr-clip{left:50%;right:auto;width:26px;margin-left:-13px;top:7px;height:5px}
 .mr-tile .mr-clip::before,.mr-tile .mr-clip::after{display:none}
-.mr-tile .mr-hair{left:50%;right:auto;width:20px;margin-left:-10px;top:11px;bottom:8px}
-.mr-tile[aria-pressed="true"]{border-color:var(--cast);background:var(--lino);transform:translateY(2px)}
+.mr-tile .mr-hair{left:50%;right:auto;width:24px;margin-left:-12px;top:10px;bottom:auto;height:54px}
+.mr-tile-n{position:absolute;left:2px;right:2px;bottom:6px;font:600 10px/1.2 var(--sans);letter-spacing:0;color:var(--soft);text-align:center;pointer-events:none}
+.mr-tile[aria-pressed="true"]{border-color:var(--cast);background:var(--papel);box-shadow:inset 0 0 0 1px var(--cast)}
+.mr-tile[aria-pressed="true"] .mr-tile-n{color:var(--cast)}
 .mr-tile--none{display:flex;align-items:center;justify-content:center;font:600 11px/1.1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--cast);text-align:center}
 .mr-fichas{display:flex;flex-wrap:wrap;gap:8px}
 .mr-ficha-b{position:relative;min-height:44px;padding:0 15px;background:transparent;border:1.5px solid var(--cast);border-radius:2px;color:var(--cast);font:500 14.5px/1 var(--sans);cursor:pointer;transition:background-color 160ms,color 160ms;-webkit-tap-highlight-color:transparent}
-.mr-ficha-b::before{content:"";position:absolute;left:8px;top:-1.5px;width:16px;height:3px;background:var(--miel)}
+.mr-ficha-b{padding-top:3px}
+.mr-ficha-b::before{content:"";position:absolute;left:-1.5px;right:-1.5px;top:-1.5px;height:5px;background:var(--esp);background:linear-gradient(90deg,var(--miel) 0 3px,var(--esp) 3px calc(100% - 3px),var(--miel) calc(100% - 3px))}
+.mr-ficha-b[aria-pressed="true"]::before{background:linear-gradient(90deg,var(--miel) 0 3px,var(--miel) 3px calc(100% - 3px),var(--miel) calc(100% - 3px))}
 .mr-ficha-b[aria-pressed="true"]{background:var(--cast);color:var(--crema)}
 .mr-fecha{display:flex;flex-direction:column;gap:6px;margin-top:12px}
 .mr-fecha[hidden]{display:none}
@@ -33,7 +38,10 @@
 .mr-input,.mr-fecha input{width:100%;min-height:48px;padding:0 14px;background:var(--crema);border:1.5px solid rgba(74,44,31,.45);border-radius:2px;font:400 16px/1 var(--sans);color:var(--esp)}
 .mr-input{margin-top:8px}
 .mr-input:focus,.mr-fecha input:focus{outline:2px solid var(--cob);outline-offset:1px}
-.mr-preview{font:italic 400 18px/1.3 var(--serif);color:var(--cast);border-left:2px solid var(--miel);padding-left:12px}
+/* vista previa del mensaje = etiqueta de muestra con grapa (mismo lenguaje que la carta) */
+.mr-preview{position:relative;font:italic 400 18px/1.32 var(--serif);color:var(--cast);background:var(--crema);padding:22px 14px 12px;box-shadow:0 1px 0 rgba(74,44,31,.14)}
+.mr-preview::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:var(--esp)}
+.mr-preview::after{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:radial-gradient(circle at 12px 3.5px,var(--miel) 1.8px,transparent 2.3px),radial-gradient(circle at calc(100% - 12px) 3.5px,var(--miel) 1.8px,transparent 2.3px)}
 .mr-ficha-nota{font-size:13.5px;color:var(--soft);text-align:center;margin-top:-6px}
 .mr-ficha .mr-btn--wa{margin-top:2px}
 
@@ -50,18 +58,20 @@
 .mr-estado.is-open i{background:#2E7D4F;box-shadow:0 0 0 4px rgba(46,125,79,.18)}
 .mr-map{margin-top:16px;height:230px;background:var(--lino);border:1px solid rgba(74,44,31,.2)}
 .mr-map iframe{width:100%;height:100%;border:0;display:block;filter:sepia(.18) saturate(.9)}
-.mr-donde-row{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:16px}
-.mr-salon{width:150px;flex:none}
-.mr-salon img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}
+.mr-donde-row{display:flex;align-items:center;gap:16px;margin-top:16px}
+.mr-salon{position:relative;margin:16px 0 4px}
+.mr-salon img{width:100%;height:auto;aspect-ratio:6/5;object-fit:cover;object-position:50% 40%}
+.mr-salon .mr-tag{bottom:14px}
 
 @media (min-width:760px){
   .mr-cita-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-areas:"head head" "ficha donde";column-gap:clamp(28px,6vw,96px);align-items:start}
   .mr-cita-head{grid-area:head;margin-bottom:34px}
   .mr-ficha{grid-area:ficha;padding:40px clamp(16px,2.4vw,30px) 28px}
   .mr-donde{grid-area:donde;margin-top:0}
-  .mr-tile{height:92px}
+  .mr-tile{height:118px}
+  .mr-tile .mr-hair{height:64px}
+  .mr-tile-n{font-size:10.5px}
   .mr-map{height:260px}
-  .mr-salon{width:min(220px,100%)}
   .mr-horas li{flex-wrap:wrap}
   .mr-donde-row{flex-wrap:wrap}
 }

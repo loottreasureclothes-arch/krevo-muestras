@@ -56,8 +56,28 @@
   /* si eligen otro tono desde la ficha, la carta lo refleja en silencio */
   MR.onTono(function (d) { if (d.i >= 0 && d.i !== cur) show(d.i, false); });
 
-  /* arranque: el tono guardado, o el Rubio dorado ya "sacado" */
-  var start = MR.sel >= 0 ? MR.sel : 1;
+  /* en la tira con swipe, el nombre que no cabe completo se esconde: el asomo corta el mechon, nunca el texto */
+  var labels = strands.map(function (s) { return s.querySelector(".mr-sn"); });
+  var cutRaf = 0;
+  function cutLabels() {
+    cutRaf = 0;
+    var scrolls = fan.scrollWidth > fan.clientWidth + 2, fr = fan.getBoundingClientRect();
+    labels.forEach(function (l) {
+      if (!l) return;
+      var r = l.getBoundingClientRect();
+      l.classList.toggle("is-cut", scrolls && (r.left < fr.left + 1 || r.right > fr.right - 1));
+    });
+  }
+  function queueCut() { if (!cutRaf) cutRaf = requestAnimationFrame(cutLabels); }
+  fan.addEventListener("scroll", queueCut, { passive: true });
+  window.addEventListener("resize", queueCut);
+
+  /* arranque: el tono guardado, o el Caramelo ya "sacado" (el hero ya muestra el Rubio dorado) */
+  var start = MR.sel >= 0 ? MR.sel : 5;
   show(start, false);
   strands[cur].tabIndex = 0;
+  /* en celular la tira arranca con ese mechon al centro (solo mueve la tira, no la pagina) */
+  if (fan.scrollWidth > fan.clientWidth + 2) fan.scrollLeft = strands[cur].offsetLeft - (fan.clientWidth - strands[cur].offsetWidth) / 2;
+  cutLabels();
+  setTimeout(cutLabels, 400);
 })();

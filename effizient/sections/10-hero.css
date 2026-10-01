@@ -1,0 +1,52 @@
+/* 10 hero: el letrero encendido. Celular y tableta = cartel (foto con el título montado sobre su base, sin raya de corte).
+   Compu (1100 px o más) = split 5/7 con la estela cruzando por debajo del título. */
+.hero { padding-top: calc(var(--head) + 14px); --hw: min(calc(100vw - 2 * var(--gut)), 520px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; }
+.hero-eyebrow { width: var(--hw); margin-bottom: 12px; justify-self: center; }
+.hero-photo { width: var(--hw); }
+.hero-photo.tail::after { display: none; }
+.hero-photo img { aspect-ratio: 4 / 5; object-fit: cover; }
+.hero-photo::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; border-radius: 4px var(--r-big) 4px 4px; background: linear-gradient(to bottom, rgba(12, 60, 132, 0) 50%, rgba(12, 60, 132, 0.82) 74%, var(--royal) 98%); }
+.hero-tq { position: relative; z-index: 2; width: var(--hw); margin-top: calc(var(--hw) * -0.47); }
+.hero-t { --t: clamp(40px, 12.2vw, 58px); position: relative; z-index: 2; padding-top: 2px; text-shadow: 0 2px 18px rgba(12, 36, 84, 0.55); }
+.hero-rest { width: var(--hw); margin-top: 16px; }
+.hero-sub { font-size: 17px; line-height: 1.45; color: var(--tx-m); max-width: 32ch; }
+.hero-rate { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 8px; font-size: 14.5px; color: var(--tx); }
+.hero-rate .num { font-size: 15.5px; }
+.stars { display: inline-flex; gap: 2px; color: var(--sky); }
+.stars svg { width: 15px; height: 15px; }
+.hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; margin-top: 10px; }
+.hero-cta .lnk .num { font-size: 15px; }
+/* tableta: cartel ancho */
+@media (min-width: 780px) and (max-width: 1099px) {
+  .hero { --hw: min(calc(100vw - 2 * var(--gut)), 780px); padding-top: calc(var(--head) + 28px); padding-bottom: 8px; }
+  .hero-photo img { aspect-ratio: 1600 / 1201; }
+  .hero-photo::before { background: linear-gradient(to top, var(--royal) 0%, rgba(12, 60, 132, 0.86) 24%, rgba(12, 60, 132, 0) 54%), linear-gradient(to right, rgba(12, 60, 132, 0.5), rgba(12, 60, 132, 0) 52%); }
+  .hero-tq { margin-top: calc(var(--hw) * -0.3); }
+  .hero-t { --t: clamp(52px, 7.2vw, 78px); }
+  .hero-rest { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 28px; align-items: end; margin-top: 20px; }
+  .hero-sub { grid-column: 1; font-size: 19px; max-width: 34ch; }
+  .hero-rate { grid-column: 1; }
+  .hero-cta { grid-column: 2; grid-row: 1 / span 2; flex-direction: column; align-items: flex-start; margin-top: 0; }
+}
+@media (min-width: 1100px) {
+  .hero { padding-top: calc(var(--head) + 40px); min-height: min(84svh, 720px); display: flex; align-items: center; padding-bottom: 20px; }
+  .hero-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-areas: "eyebrow photo" "title photo" "rest photo"; align-content: center; column-gap: 40px; justify-items: stretch; width: 100%; }
+  .hero-eyebrow { grid-area: eyebrow; width: auto; justify-self: start; align-self: end; margin-bottom: 26px; }
+  .hero-photo { grid-area: photo; width: 100%; align-self: center; }
+  .hero-photo img { aspect-ratio: auto; }
+  .hero-photo::before { display: none; }
+  .hero-photo.tail::after { display: block; left: -260px; width: 260px; bottom: 33%; }
+  .hero-tq { grid-area: title; width: auto; margin-top: 0; align-self: start; }
+  .hero-t { --t: clamp(52px, 5.6vw, 86px); text-shadow: none; }
+  .hero-rest { grid-area: rest; width: auto; margin-top: 22px; align-self: start; display: block; }
+  .hero-sub { font-size: 19px; }
+  .hero-cta { margin-top: 14px; flex-direction: row; align-items: center; }
+}
+/* foto desde blur (1.1 s tras decode) */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .js .hero-photo { transition: opacity 400ms var(--ease); }
+  .js .hero-photo:not(.is-in) { opacity: 0; }
+  .js .hero-photo img { transition: filter 1100ms cubic-bezier(0.215, 0.61, 0.355, 1), transform 1100ms cubic-bezier(0.215, 0.61, 0.355, 1); }
+  .js .hero-photo:not(.is-in) img { filter: blur(16px); transform: scale(1.05); }
+}

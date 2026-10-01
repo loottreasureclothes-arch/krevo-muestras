@@ -14,7 +14,7 @@
     Array.prototype.forEach.call(els, function (b) {
       var i = parseInt(b.getAttribute("data-i"), 10);
       if (seen[i]) return; seen[i] = 1;
-      MR.tones[i] = { i: i, slug: b.getAttribute("data-slug"), name: b.getAttribute("data-name"), r: b.getAttribute("data-r"), m: b.getAttribute("data-m"), t: b.getAttribute("data-t") };
+      MR.tones[i] = { i: i, slug: b.getAttribute("data-slug"), name: b.getAttribute("data-name"), r: b.getAttribute("data-r"), m: b.getAttribute("data-m"), t: b.getAttribute("data-t"), l: b.getAttribute("data-l") || b.getAttribute("data-t") };
     });
   }
   function save(i) { try { sessionStorage.setItem(KEY, MR.tones[i] ? MR.tones[i].slug : ""); } catch (e) {} }

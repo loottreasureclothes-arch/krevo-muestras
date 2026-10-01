@@ -1,0 +1,38 @@
+.lg-donde { padding-top: calc(var(--sec-y) - 8px); padding-bottom: calc(var(--sec-y) - 12px); }
+.lg-donde-grid { display: grid; gap: 24px; }
+.lg-donde-info { display: grid; gap: 14px; align-content: start; justify-items: start; }
+.lg-addr { font-style: normal; font-weight: 300; font-size: 17px; line-height: 1.45; max-width: 36ch; }
+.lg-hours { width: 100%; max-width: 420px; display: grid; }
+.lg-hr { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0 8px; font-size: 16px; font-variant-numeric: tabular-nums; }
+.lg-hr-t { font-weight: 600; }
+.lg-hr.is-today { color: var(--foco); }
+.lg-hr.is-today .lg-hr-t::after { content: " · hoy"; font-weight: 400; }
+.lg-hoy { margin-top: 10px; font-weight: 600; font-size: 16px; color: var(--foco); }
+.lg-hoy:empty { display: none; }
+.lg-hours .lg-fine { margin-top: 4px; }
+.lg-envio { font-weight: 300; font-size: 16px; max-width: 38ch; }
+.lg-donde-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; align-items: center; }
+.lg-donde-btns .lg-btn { width: 100%; padding-inline: 8px; font-size: 12.5px; letter-spacing: .08em; gap: 7px; }
+.lg-donde-btns .lg-btn--wa svg { width: 20px; height: 20px; }
+.lg-donde-btns .lg-link { grid-column: 1 / -1; }
+.lg-map { margin: 0 10px 10px 0; height: 210px; background: var(--suelo); overflow: visible; }
+.lg-map iframe { width: 100%; height: 100%; border: 0; border-radius: 6px; filter: saturate(.85) contrast(.95); }
+.lg-quotes { display: grid; gap: 24px; margin-top: 28px; }
+.lg-quote { margin: 0 10px 0 0; padding: 18px 18px 16px; display: grid; gap: 10px; align-content: start; }
+.lg-quote p { font-weight: 300; font-size: 16.5px; line-height: 1.45; text-wrap: balance; }
+.lg-quote footer { font-weight: 600; font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--lav); line-height: 1.4; }
+.lg-quote::after { display: none; }
+.lg-quote { box-shadow: 10px 10px 0 var(--canto-foto), inset 0 0 0 1px var(--filo); background: var(--noche); }
+.lg-mr { margin: 0 10px 0 auto; width: 62%; }
+.lg-mr img { aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 55%; }
+.lg-mr .lg-plaque { left: 10px; bottom: 10px; }
+@media (min-width: 720px) {
+  .lg-donde-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: stretch; }
+  .lg-donde-btns { grid-template-columns: auto auto; justify-content: start; align-items: center; gap: 14px 18px; }
+  .lg-donde-btns .lg-btn { width: auto; padding-inline: 20px; font-size: 14px; letter-spacing: .1em; }
+  .lg-map { height: auto; min-height: 420px; margin-right: 10px; }
+  .lg-quotes { grid-template-columns: minmax(0, 5fr) minmax(0, 5fr) minmax(0, 4fr); gap: 36px; margin-top: 64px; align-items: start; }
+  .lg-mr { width: 100%; margin: 0 10px 0 0; max-width: 420px; }
+  .lg-mr img { aspect-ratio: 4 / 5; }
+  .lg-quote { margin-right: 10px; }
+}

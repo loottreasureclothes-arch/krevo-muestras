@@ -1,0 +1,186 @@
+<section class="ti-pieza ti-paper" id="pieza" data-hide-wa aria-labelledby="ti-h-pieza">
+  <div class="ti-wrap">
+    <header class="ti-pz-head">
+      <h2 class="ti-h2" id="ti-h-pieza" data-reveal>De barra <span class="ti-t2">a pieza.</span></h2>
+      <p class="ti-pz-sub">Toca lo que necesitas. La hoja de proceso se arma sola y se manda por WhatsApp.</p>
+    </header>
+
+    <div class="ti-pz" id="ti-pz" data-shape="barra" data-ops="tornear fresar barrenar" data-mat="" data-mode="pieza">
+      <div class="ti-pz-stage">
+        <div class="ti-bench ti-panel ti-panel--deep" id="ti-bench" role="img" aria-label="Bancada: la pieza cambia de forma con cada operación que eliges">
+          <!-- BANCADA: vista lateral de la barra en el chuck y vista de arriba de la lámina -->
+          <svg class="ti-bench-svg" viewBox="0 0 600 250" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="g-cyl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".34"/><stop offset=".34" stop-color="#fff" stop-opacity=".05"/><stop offset=".72" stop-color="#000" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".42"/></linearGradient>
+              <linearGradient id="g-plate" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".28"/></linearGradient>
+              <radialGradient id="g-flash"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#cfe9ff" stop-opacity=".9"/><stop offset="1" stop-color="#7fb8ff" stop-opacity="0"/></radialGradient>
+              <pattern id="p-turn" width="8" height="5" patternUnits="userSpaceOnUse"><rect width="8" height="5" fill="none"/><rect y="0" width="8" height="1" fill="#fff" fill-opacity=".34"/></pattern>
+            </defs>
+
+            <!-- ===== ESCENA BARRA (vista lateral) ===== -->
+            <g id="s-bar">
+              <!-- mesa con ranuras en T -->
+              <rect x="0" y="206" width="600" height="44" fill="#B7C0C5"/>
+              <rect x="0" y="206" width="600" height="3" fill="#fff" fill-opacity=".45"/>
+              <rect x="0" y="244" width="600" height="6" fill="#000" fill-opacity=".18"/>
+              <path d="M93 206h14v7h9v10H84v-10h9zM293 206h14v7h9v10h-32v-10h9zM493 206h14v7h9v10h-32v-10h9z" fill="#0F3651"/>
+              <!-- chuck de tres mordazas -->
+              <rect x="18" y="98" width="74" height="108" fill="#79848A"/>
+              <rect x="18" y="98" width="74" height="108" fill="url(#g-cyl)"/>
+              <rect x="92" y="112" width="20" height="16" fill="#3a444a"/><rect x="92" y="136" width="20" height="16" fill="#3a444a"/><rect x="92" y="160" width="20" height="16" fill="#3a444a"/>
+              <circle cx="40" cy="152" r="7" fill="#2e373c"/><circle cx="40" cy="152" r="3" fill="#8d979d"/>
+              <!-- la barra -->
+              <g id="bar">
+                <g id="barL"><rect x="112" y="118" width="228" height="68" class="mat"/><rect x="112" y="118" width="228" height="68" fill="url(#g-cyl)"/></g>
+                <g id="barR"><rect x="340" y="118" width="228" height="68" class="mat"/><rect id="turned-tint" x="340" y="118" width="228" height="68" fill="#fff" fill-opacity=".2"/><rect id="turned-lines" x="340" y="118" width="228" height="68" fill="url(#p-turn)"/><rect x="340" y="118" width="228" height="68" fill="url(#g-cyl)"/></g>
+                <rect id="shoulder" x="338" y="118" width="3" height="68" fill="#000" fill-opacity=".35"/>
+              </g>
+              <!-- cuñero (fresar) -->
+              <g id="op-fresar-b"><rect id="keyway" x="150" y="122" width="116" height="13" rx="1.5" fill="#222a2f"/><rect x="150" y="122" width="116" height="3" fill="#000" fill-opacity=".5"/><rect x="150" y="134" width="116" height="1.5" fill="#fff" fill-opacity=".4"/></g>
+              <!-- barreno pasado (barrenar) -->
+              <g id="op-barrenar-b"><ellipse cx="304" cy="152" rx="10" ry="19" fill="#1c2327"/><ellipse cx="304" cy="152" rx="10" ry="19" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2"/><path d="M299 143c3-4 7-4 10 0" stroke="#fff" stroke-opacity=".35" stroke-width="2" fill="none"/></g>
+              <!-- brida + cordón (soldar y armar) -->
+              <g id="op-soldar-b"><rect id="flange" x="568" y="92" width="16" height="120" fill="#8F9AA0"/><rect x="568" y="92" width="16" height="120" fill="url(#g-cyl)"/><circle cx="576" cy="108" r="3.2" fill="#2e373c"/><circle cx="576" cy="196" r="3.2" fill="#2e373c"/>
+                <path id="bead" d="M563 120a4 4 0 0 1 8 0a4 4 0 0 1 8 0M563 130a4 4 0 0 1 8 0a4 4 0 0 1 8 0M563 140a4 4 0 0 1 8 0a4 4 0 0 1 8 0M563 150a4 4 0 0 1 8 0a4 4 0 0 1 8 0M563 160a4 4 0 0 1 8 0a4 4 0 0 1 8 0M563 170a4 4 0 0 1 8 0a4 4 0 0 1 8 0M563 180a4 4 0 0 1 8 0a4 4 0 0 1 8 0" fill="none" stroke="#2f3a41" stroke-width="3.2" transform="translate(-6 -2)"/>
+                <circle id="flash-b" cx="566" cy="152" r="36" fill="url(#g-flash)"/>
+              </g>
+              <!-- buril + virutas -->
+              <g id="tool"><path d="M556 118l16-30h26v34z" fill="#9aa4aa"/><path d="M556 118l10-4 0 4z" fill="#d7dde0"/><rect x="584" y="56" width="30" height="34" fill="#6f7a80"/></g>
+              <path id="chipT" class="chip" d="" fill="none" stroke="#C9D2D7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path id="chipF" class="chip" d="" fill="none" stroke="#C9D2D7" stroke-width="2.4" stroke-linecap="round"/>
+              <path id="chipB" class="chip" d="" fill="none" stroke="#C9D2D7" stroke-width="2.4" stroke-linecap="round"/>
+            </g>
+
+            <!-- ===== ESCENA LÁMINA (vista de arriba) ===== -->
+            <g id="s-sheet">
+              <rect width="600" height="250" fill="#1d3a4e"/>
+              <g fill="#0b2536"><rect x="0" y="56" width="600" height="9"/><rect x="0" y="122" width="600" height="9"/><rect x="0" y="188" width="600" height="9"/></g>
+              <g fill="#CED6DA" fill-opacity=".14"><rect x="0" y="52" width="600" height="2"/><rect x="0" y="118" width="600" height="2"/><rect x="0" y="184" width="600" height="2"/></g>
+              <g id="sheet"><rect x="96" y="30" width="408" height="176" class="mat"/><rect x="96" y="30" width="408" height="176" fill="url(#g-plate)"/><rect x="96" y="30" width="408" height="176" fill="none" stroke="#000" stroke-opacity=".3" stroke-width="2"/></g>
+              <g id="clamps" fill="#B7C0C5"><rect x="76" y="46" width="42" height="11" rx="1"/><rect x="76" y="178" width="42" height="11" rx="1"/><rect x="482" y="46" width="42" height="11" rx="1"/><rect x="482" y="178" width="42" height="11" rx="1"/></g>
+              <g fill="#58656c"><circle cx="84" cy="51.5" r="3.6"/><circle cx="84" cy="183.5" r="3.6"/><circle cx="516" cy="51.5" r="3.6"/><circle cx="516" cy="183.5" r="3.6"/></g>
+              <!-- plasma: círculo con corona de barrenos -->
+              <g id="op-plasma-s"><g class="cut"><circle cx="300" cy="118" r="62" fill="#14303f"/><circle cx="300" cy="118" r="14" fill="#08202f"/><g fill="#08202f"><circle cx="300" cy="74" r="4.6"/><circle cx="338" cy="85" r="4.6"/><circle cx="347" cy="118" r="4.6"/><circle cx="338" cy="151" r="4.6"/><circle cx="300" cy="162" r="4.6"/><circle cx="262" cy="151" r="4.6"/><circle cx="253" cy="118" r="4.6"/><circle cx="262" cy="85" r="4.6"/></g></g><circle id="plasma-kerf" cx="300" cy="118" r="62" pathLength="1"/><circle cx="300" cy="118" r="62" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1.5"/><g id="flash-orbit"><circle id="flash-s" cx="300" cy="56" r="34" fill="url(#g-flash)"/></g></g>
+              <g id="op-fresar-s"><rect x="130" y="62" width="104" height="15" rx="7.5" fill="#1c2327"/><rect x="130" y="62" width="104" height="3" rx="1.5" fill="#fff" fill-opacity=".28"/></g>
+              <g id="op-barrenar-s"><circle cx="426" cy="70" r="9" fill="#1c2327"/><circle cx="426" cy="70" r="9" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="2"/><circle cx="426" cy="166" r="9" fill="#1c2327"/><circle cx="426" cy="166" r="9" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="2"/></g>
+              <g id="op-soldar-s"><rect id="rib" x="130" y="206" width="340" height="16" fill="#8F9AA0"/><rect x="130" y="206" width="340" height="16" fill="url(#g-plate)"/><path id="bead-s" d="M134 205a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0a5 5 0 0 1 10 0" fill="none" stroke="#2f3a41" stroke-width="3.4"/><circle id="flash-s2" cx="130" cy="207" r="30" fill="url(#g-flash)"/></g>
+            </g>
+          </svg>
+          <!-- camino de mantenimiento: la miniatura real del tablero sujeta con bridas -->
+          <div class="ti-bench-mant" id="ti-bench-mant" hidden>
+            <figure class="ti-mesa ti-mant-fig">
+              <span class="ti-brida ti-brida--l" aria-hidden="true"></span><span class="ti-brida ti-brida--r" aria-hidden="true"></span>
+              <div class="ti-mesa-ph"><img src="img/th-tablero.webp" width="420" height="236" alt="Tablero eléctrico industrial del taller" loading="lazy" decoding="async"></div>
+              <div class="ti-mesa-bar" aria-hidden="true"></div>
+            </figure>
+          </div>
+          <p class="ti-bench-cap ti-mono" id="ti-bench-cap" aria-live="polite">Barra redonda, sin tocar</p>
+        </div>
+
+        <aside class="ti-plate ti-panel ti-panel--paper" id="ti-plate" aria-label="Placa de la pieza">
+          <p class="ti-plate-h ti-mono">Placa de la pieza</p>
+          <ul class="ti-plate-rows ti-mono" id="ti-plate-rows"></ul>
+        </aside>
+        <div class="ti-pz-cta">
+        <a class="ti-btn ti-btn--wa" id="ti-pz-wa" data-wa-visible href="https://wa.me/524493207238?text=Hola%20Taller%20Industrial%20Independencia%2C%20quiero%20cotizar%20un%20trabajo%20de%20maquinado." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span id="ti-pz-wa-t">Cotizar mi pieza por WhatsApp</span></a>
+        <p class="ti-pz-note">Les llega tu hoja de proceso. Las fotos las mandas ahí mismo.</p>
+        </div>
+
+      </div>
+
+      <div class="ti-pz-steps" id="ti-pz-steps">
+        <!-- 1 -->
+        <fieldset class="ti-step" data-step="1">
+          <legend><span class="ti-n ti-mono">01</span> ¿De qué sale tu pieza?</legend>
+          <div class="ti-fichas ti-fichas--shape" role="group">
+            <button type="button" class="ti-ficha ti-ficha--shape" data-set="shape" data-v="barra" aria-pressed="true"><svg viewBox="0 0 40 24" aria-hidden="true"><rect x="2" y="5" width="36" height="14" fill="#6E7880"/><rect x="2" y="5" width="36" height="14" fill="#fff" fill-opacity=".18"/><ellipse cx="2" cy="12" rx="2.4" ry="7" fill="#8d979d"/></svg><span>Barra redonda</span></button>
+            <button type="button" class="ti-ficha ti-ficha--shape" data-set="shape" data-v="lamina" aria-pressed="false"><svg viewBox="0 0 40 24" aria-hidden="true"><path d="M6 6h30l-4 13H2z" fill="#6E7880"/><path d="M6 6h30l-.9 3H5z" fill="#fff" fill-opacity=".3"/></svg><span>Lámina o placa</span></button>
+            <button type="button" class="ti-ficha ti-ficha--shape" data-set="shape" data-v="maquina" aria-pressed="false"><svg viewBox="0 0 40 24" aria-hidden="true"><rect x="5" y="3" width="30" height="18" fill="none" stroke="#0A2233" stroke-width="2"/><rect x="11" y="7" width="6" height="10" fill="#0A2233"/><rect x="23" y="7" width="6" height="10" fill="#0A2233"/></svg><span>Es una máquina que reparar</span></button>
+          </div>
+        </fieldset>
+
+        <div class="ti-steps-pieza" id="ti-steps-pieza">
+          <!-- 2 -->
+          <fieldset class="ti-step" data-step="2">
+            <legend><span class="ti-n ti-mono">02</span> ¿Qué le hacemos? <span class="ti-hint">Toca varias, en orden.</span></legend>
+            <div class="ti-fichas ti-fichas--ops" role="group">
+              <button type="button" class="ti-ficha ti-ficha--op" data-set="op" data-v="tornear" aria-pressed="false"><img src="img/th-torno.webp" width="64" height="64" alt="" loading="lazy" decoding="async"><span class="ti-ficha-t">Tornear<small class="ti-ficha-s">solo barra</small></span><b class="ti-op ti-mono" aria-hidden="true"></b></button>
+              <button type="button" class="ti-ficha ti-ficha--op" data-set="op" data-v="fresar" aria-pressed="false"><img src="img/th-fresa.webp" width="64" height="64" alt="" loading="lazy" decoding="async"><span class="ti-ficha-t">Fresar</span><b class="ti-op ti-mono" aria-hidden="true"></b></button>
+              <button type="button" class="ti-ficha ti-ficha--op" data-set="op" data-v="barrenar" aria-pressed="false"><img src="img/th-radial.webp" width="64" height="64" alt="" loading="lazy" decoding="async"><span class="ti-ficha-t">Barrenar</span><b class="ti-op ti-mono" aria-hidden="true"></b></button>
+              <button type="button" class="ti-ficha ti-ficha--op" data-set="op" data-v="plasma" aria-pressed="false"><img src="img/th-plasma.webp" width="64" height="64" alt="" loading="lazy" decoding="async"><span class="ti-ficha-t">Cortar con plasma<small class="ti-ficha-s">solo lámina</small></span><b class="ti-op ti-mono" aria-hidden="true"></b></button>
+              <button type="button" class="ti-ficha ti-ficha--op" data-set="op" data-v="soldar" aria-pressed="false"><svg class="ti-weld" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#0F3651"/><rect x="8" y="34" width="48" height="10" fill="#8F9AA0"/><path d="M10 33a4 4 0 0 1 8 0a4 4 0 0 1 8 0a4 4 0 0 1 8 0a4 4 0 0 1 8 0a4 4 0 0 1 8 0a4 4 0 0 1 8 0" fill="none" stroke="#CED6DA" stroke-width="3"/><circle cx="32" cy="24" r="7" fill="#cfe9ff" fill-opacity=".85"/></svg><span class="ti-ficha-t">Soldar y armar</span><b class="ti-op ti-mono" aria-hidden="true"></b></button>
+            </div>
+          </fieldset>
+          <!-- 3 -->
+          <fieldset class="ti-step" data-step="3">
+            <legend><span class="ti-n ti-mono">03</span> Material</legend>
+            <div class="ti-fichas ti-fichas--chips" role="group">
+              <button type="button" class="ti-ficha ti-ficha--chip" data-set="mat" data-v="acero" aria-pressed="false"><i style="background:#6E7880"></i>Acero</button>
+              <button type="button" class="ti-ficha ti-ficha--chip" data-set="mat" data-v="inox" aria-pressed="false"><i style="background:#AEB7BD"></i>Acero inoxidable</button>
+              <button type="button" class="ti-ficha ti-ficha--chip" data-set="mat" data-v="aluminio" aria-pressed="false"><i style="background:#C9CED1"></i>Aluminio</button>
+              <button type="button" class="ti-ficha ti-ficha--chip" data-set="mat" data-v="bronce" aria-pressed="false"><i style="background:#8C6E4A"></i>Bronce</button>
+              <button type="button" class="ti-ficha ti-ficha--chip" data-set="mat" data-v="nose" aria-pressed="false"><i class="q"></i>No sé</button>
+            </div>
+          </fieldset>
+          <!-- 4 -->
+          <fieldset class="ti-step" data-step="4">
+            <legend><span class="ti-n ti-mono">04</span> ¿Cuántas piezas?</legend>
+            <div class="ti-fichas ti-fichas--qty" role="group">
+              <button type="button" class="ti-ficha ti-ficha--qty" data-set="qty" data-v="1" aria-pressed="false"><span class="ti-mono">1</span></button>
+              <button type="button" class="ti-ficha ti-ficha--qty" data-set="qty" data-v="2 a 10" aria-pressed="false"><span class="ti-mono">2 a 10</span></button>
+              <button type="button" class="ti-ficha ti-ficha--qty" data-set="qty" data-v="11 a 100" aria-pressed="false"><span class="ti-mono">11 a 100</span></button>
+              <button type="button" class="ti-ficha ti-ficha--qty" data-set="qty" data-v="Más de 100" aria-pressed="false"><span class="ti-mono">Más de 100</span></button>
+            </div>
+          </fieldset>
+          <!-- 5 -->
+          <fieldset class="ti-step" data-step="5">
+            <legend><span class="ti-n ti-mono">05</span> ¿Qué traes?</legend>
+            <div class="ti-fichas ti-fichas--trae" role="group">
+              <button type="button" class="ti-ficha ti-ficha--chip" data-set="trae" data-v="Plano" aria-pressed="false">Plano</button>
+              <button type="button" class="ti-ficha ti-ficha--chip" data-set="trae" data-v="La pieza de muestra" aria-pressed="false">La pieza de muestra</button>
+              <button type="button" class="ti-ficha ti-ficha--chip" data-set="trae" data-v="Una pieza rota para reponer" aria-pressed="false">Una pieza rota para reponer</button>
+              <button type="button" class="ti-ficha ti-ficha--chip" data-set="trae" data-v="Solo la idea" aria-pressed="false">Solo la idea</button>
+            </div>
+            <label class="ti-check"><input type="checkbox" id="ti-ajusta"><span class="ti-check-box" aria-hidden="true"></span><span>Tiene que ajustar con otra pieza</span></label>
+          </fieldset>
+        </div>
+
+        <!-- camino de mantenimiento -->
+        <div class="ti-steps-mant" id="ti-steps-mant" hidden>
+          <fieldset class="ti-step" data-step="m2">
+            <legend><span class="ti-n ti-mono">02</span> ¿Qué mantenimiento?</legend>
+            <div class="ti-fichas ti-fichas--chips" role="group">
+              <button type="button" class="ti-ficha ti-ficha--chip" data-set="mtipo" data-v="preventivo" aria-pressed="false">Preventivo</button>
+              <button type="button" class="ti-ficha ti-ficha--chip" data-set="mtipo" data-v="correctivo" aria-pressed="false">Correctivo</button>
+              <button type="button" class="ti-ficha ti-ficha--chip" data-set="mtipo" data-v="No sé" aria-pressed="false">No sé</button>
+            </div>
+          </fieldset>
+          <fieldset class="ti-step" data-step="m3">
+            <legend><span class="ti-n ti-mono">03</span> ¿Qué hace o qué no hace?</legend>
+            <label class="ti-sr" for="ti-falla">¿Qué hace o qué no hace?</label>
+            <textarea id="ti-falla" class="ti-input ti-textarea" rows="3" maxlength="240" placeholder="Opcional. Por ejemplo: no arranca el motor de la banda."></textarea>
+          </fieldset>
+        </div>
+
+        <!-- 6 -->
+        <fieldset class="ti-step" data-step="6">
+          <legend><span class="ti-n ti-mono" id="ti-n6">06</span> ¿Para cuándo?</legend>
+          <div class="ti-fichas ti-fichas--when" role="group">
+            <button type="button" class="ti-ficha ti-ficha--chip ti-ficha--paro" data-set="when" data-v="parada" aria-pressed="false"><i class="ti-dot" aria-hidden="true"></i>Tengo una línea parada</button>
+            <button type="button" class="ti-ficha ti-ficha--chip" data-set="when" data-v="semana" aria-pressed="false">Esta semana</button>
+            <button type="button" class="ti-ficha ti-ficha--chip" data-set="when" data-v="sinprisa" aria-pressed="false">Sin prisa</button>
+          </div>
+          <label class="ti-field" for="ti-nombre"><span class="ti-mono">Tu nombre (opcional)</span>
+            <input id="ti-nombre" class="ti-input" type="text" autocomplete="given-name" maxlength="40" placeholder="Luis">
+          </label>
+        </fieldset>
+      </div>
+
+      <!-- sin JS: los tres oficios del letrero y el botón con el mensaje genérico -->
+      <div class="ti-pz-nojs">
+        <ul class="ti-nojs-list ti-mono"><li>Maquinado</li><li>Soldadura y pailería</li><li>Mantenimiento industrial</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="ti-perfil ti-perfil--m" aria-hidden="true"></div>

@@ -1,0 +1,42 @@
+.ks-lemasec { background: var(--g3); padding-top: 72px; padding-bottom: 56px; }
+.ks-area { scroll-margin-top: calc(var(--hdr) + 14px); }
+.ks-area + .ks-area { margin-top: 46px; }
+
+/* El momento firma: la palabra se estira como un musculo que se suelta. El CSS base es el estado SUELTO. */
+.ks-word { position: relative; margin: 0 0 16px; font-size: var(--fs, 44px); line-height: .9; padding-right: .6em; }
+.ks-word[data-word="movimiento"] { --fs: calc((100vw - 2 * var(--gut)) / 8.6); }
+.ks-word[data-word="salud"] { --fs: calc((100vw - 2 * var(--gut)) / 4.3); }
+.ks-word[data-word="belleza"] { --fs: calc((100vw - 2 * var(--gut)) / 6.2); }
+.ks-word-t { display: inline-block; white-space: nowrap; text-transform: uppercase; font-family: var(--sans); font-stretch: 125%; font-weight: 250; font-variation-settings: "wdth" 125, "wght" 250; letter-spacing: .005em; color: var(--min); line-height: .9; padding-bottom: .04em; }
+/* La pareja banda + filete a 60 grados que la espera en el borde derecho */
+.ks-stripe { position: absolute; right: .06em; top: .08em; height: .66em; width: max(9px, .055em); background: var(--tq); transform-origin: 50% 0; transform: skewX(-30deg); }
+.ks-stripe::before { content: ""; position: absolute; left: max(-14px, -.12em); top: 0; bottom: 0; width: 1.5px; background: var(--tf); }
+
+.ks-area-body { display: grid; gap: 16px; }
+.ks-area-ph { width: 64%; --cx: 26px; }
+.ks-area--r .ks-area-ph { margin-left: auto; }
+.ks-area-lead { font: 300 clamp(22px, 6vw, 30px)/1.22 var(--sans); font-stretch: 112%; letter-spacing: -.005em; max-width: 24ch; }
+.ks-tag--list { margin-top: 14px; }
+.ks-list { margin-top: 10px; display: grid; gap: 2px; }
+.ks-list li { position: relative; padding: 5px 0 5px 26px; font: 400 17px/1.4 var(--sans); }
+.ks-list li::before { content: ""; position: absolute; left: 0; top: 11px; width: 14px; height: 12px; background: linear-gradient(120deg, transparent 0 2px, var(--tq) 2px 5px, transparent 5px 8px, var(--tf) 8px 9px, transparent 9px); }
+.ks-quote { margin-top: 16px; font: italic 300 20px/1.4 var(--serif); color: var(--min); max-width: 34ch; }
+.ks-quote--big { margin-top: 18px; font-size: 22px; }
+.ks-area-note { margin-top: 14px; font: 500 15px/1.4 var(--sans); color: var(--mut); }
+.ks-area-txt .ks-link { margin-top: 10px; }
+@media (min-width: 760px) {
+  .ks-lemasec { padding-top: 120px; }
+  .ks-area + .ks-area { margin-top: 64px; }
+  .ks-word { margin-bottom: 32px; }
+  .ks-word[data-word="movimiento"] { --fs: calc(min(100vw - 2 * var(--gut), 1200px) / 8.6); }
+  .ks-word[data-word="salud"] { --fs: calc(min(100vw - 2 * var(--gut), 1200px) / 4.3); }
+  .ks-word[data-word="belleza"] { --fs: calc(min(100vw - 2 * var(--gut), 1200px) / 6.2); }
+  .ks-area-body { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 64px; align-items: center; }
+  .ks-area--r .ks-area-body { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+  .ks-area--r .ks-area-ph { order: 2; margin-left: 0; justify-self: end; }
+  .ks-area-ph { width: 100%; max-width: 420px; --cx: 40px; }
+  .ks-area-lead { font-size: 34px; max-width: 20ch; }
+  .ks-list li { font-size: 19px; }
+  .ks-quote { font-size: 24px; }
+  .ks-quote--big { font-size: 28px; }
+}

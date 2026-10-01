@@ -1,0 +1,44 @@
+/* ===== 40 GRÚA: la grúa baja la placa con el 4.9 (momento firma) ===== */
+.ti-grua { background: var(--night); padding-block: 52px 56px; }
+.ti-grua-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; }
+.ti-grua-txt { display: contents; }
+.ti-grua-txt .ti-h2 { order: 0; }
+.ti-grua-fig { order: 1; }
+.ti-tags { order: 2; }
+.ti-grua-txt .ti-link { order: 3; }
+.ti-grua-txt .ti-h2 { font-size: min(10vw, 44px); }
+.ti-grua-fig { width: 100%; }
+.ti-grua-ph { aspect-ratio: 724 / 1600; }
+.ti-grua-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
+.ti-grua-plate { left: 14px; top: 14px; }
+.gr-big { font-family: var(--f-disp); font-weight: 900; font-size: 214px; fill: #0A2233; }
+.gr-small { font-family: var(--f-mono); font-weight: 500; font-stretch: 80%; font-size: 27px; letter-spacing: .06em; fill: #0A2233; }
+#gr-sway { transform-origin: 190px 9px; }
+.ti-tags { display: grid; gap: 18px; }
+.ti-tag { position: relative; margin: 0; padding: 26px 18px 14px 56px; background: var(--paper); color: var(--ink); border-radius: 2px; box-shadow: 0 2px 0 rgba(0, 0, 0, .45); max-width: 520px; transform-origin: 28px 0; transition: transform 700ms var(--ease-out), opacity 400ms var(--ease-out); }
+.ti-tag::before { content: ""; position: absolute; left: 24px; top: -14px; width: 2px; height: 22px; background: #8d979d; }
+.ti-tag-hole { position: absolute; left: 20px; top: 12px; width: 10px; height: 10px; border-radius: 50%; background: var(--night); box-shadow: inset 0 0 0 2px #8d979d; }
+.ti-tag p { font-weight: 700; font-size: 19px; line-height: 1.25; text-wrap: balance; }
+.ti-tag footer { margin-top: 10px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-mute); }
+.ti-tag--2 { margin-left: 18px; }
+.ti-grua .ti-link { color: var(--brand-light); }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  html.ti-js .ti-grua:not(.is-landed) .ti-tag { opacity: 0; transform: translateY(-18px) rotate(-5deg); }
+  html.ti-js .ti-grua:not(.is-landed) .ti-tag--2 { transform: translateY(-18px) rotate(4deg); transition-delay: 120ms; }
+  .ti-grua.is-landed .ti-tag--2 { transition-delay: 140ms; }
+  .ti-grua.is-swaying #gr-sway { animation: ti-sway 800ms var(--ease-out) both; }
+}
+@keyframes ti-sway { 0% { transform: rotate(2.4deg); } 30% { transform: rotate(-1.6deg); } 60% { transform: rotate(.8deg); } 100% { transform: rotate(0); } }
+@media (min-width: 780px) {
+  .ti-grua { padding-block: 88px 96px; }
+  .ti-grua-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6.4fr); column-gap: 40px; align-items: stretch; }
+  .ti-grua-txt { display: grid; gap: 22px; align-content: space-between; grid-template-rows: auto 1fr; }
+  .ti-grua-txt .ti-h2, .ti-grua-fig, .ti-tags, .ti-grua-txt .ti-link { order: 0; }
+  .ti-grua-txt .ti-h2 { font-size: clamp(54px, 5.8vw, 84px); }
+  .ti-grua-fig { max-width: 520px; }
+  .ti-tags { align-self: end; margin-bottom: 8px; }
+  .ti-grua-txt .ti-link { align-self: end; }
+  .ti-grua-txt { grid-template-rows: auto 1fr auto; }
+  .ti-tag p { font-size: 22px; }
+  .ti-tag { max-width: 560px; }
+}

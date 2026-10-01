@@ -57,11 +57,15 @@ html.mr-js .ln[data-reveal].is-in{clip-path:inset(-8% -8% -14% -2%)}
 .mr-clip::before{left:18%}.mr-clip::after{right:18%}
 .mr-hair{position:absolute;left:3px;right:3px;top:8px;bottom:0;
   background:
-    linear-gradient(90deg,transparent 0,rgba(255,255,255,.16) 34%,transparent 58%),
+    linear-gradient(168deg,transparent 0 21%,rgba(255,247,230,.26) 29%,rgba(255,247,230,.06) 34%,transparent 40%),
+    linear-gradient(90deg,transparent 0,rgba(255,255,255,.14) 34%,transparent 58%),
     repeating-linear-gradient(90deg,rgba(255,255,255,.10) 0 1px,transparent 1px 3px,rgba(0,0,0,.07) 3px 4px,transparent 4px 7px),
-    linear-gradient(180deg,var(--r) 0%,var(--m) 52%,var(--t) 100%);
+    linear-gradient(180deg,var(--r) 0%,var(--m) 46%,var(--t) 76%,var(--l,var(--t)) 100%);
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 320' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100V298Q95 322 87 303Q79 314 71 298Q62 324 51 305Q41 317 31 297Q21 322 12 304Q6 313 0 296Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
           mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 320' preserveAspectRatio='none'%3E%3Cpath d='M0 0H100V298Q95 322 87 303Q79 314 71 298Q62 324 51 305Q41 317 31 297Q21 322 12 304Q6 313 0 296Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+/* correccion 2: el mechon de la carta y de la ficha es una textura de hebras (img/mechon-*.webp, PIL, colores medidos
+   y corregidos): raiz oscura, punta clara y calida, brillo propio y puntas desiguales con alfa. Sin mascara ni rayas. */
+.mr-hair.mr-hair--tx{background-color:transparent;background-size:100% 100%;background-repeat:no-repeat;background-position:50% 0;-webkit-mask:none;mask:none}
 .mr-hebras{height:26px;background:url("img/hebras.svg") repeat-x left top/600px 26px}
 
 /* ---------- header: TU TONO ---------- */
@@ -123,14 +127,12 @@ section{position:relative}
 .mr-foot-hr{color:var(--soft);margin-top:10px}
 .mr-foot-wa a{font-weight:600;text-decoration:none;border-bottom:2px solid var(--miel);padding-block:12px 4px}
 .mr-foot-soc{display:flex;gap:10px;margin-top:14px}
-.mr-credit{font-size:13px;color:var(--soft);margin-top:30px;padding-bottom:26px;max-width:640px;margin-left:0}
-.mr-foot-strip{height:132px;position:relative;overflow:hidden;background:var(--cast)}
-.mr-foot-strip img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.mr-foot-strip::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(233,223,209,.0),rgba(42,27,20,.16))}
+.mr-credit{font-size:13px;color:var(--soft);margin-top:30px;padding-bottom:26px}
+/* remate del pie: fila de hebras SVG (raiz espresso, puntas miel) colgando de la linea del pie */
+.mr-foot-strip{height:140px;margin-top:6px;border-top:2px solid var(--esp);background:url("img/hebras-pie.svg") repeat-x left top/600px 140px}
 @media (min-width:760px){
   .mr-foot-grid{grid-template-columns:1.2fr 1fr 1fr;gap:48px}
-  .mr-foot-strip{height:190px}
-  .mr-foot-strip img{max-width:none}
+  .mr-foot-strip{margin-top:20px}
 }
 
 /* ---------- WhatsApp flotante ---------- */

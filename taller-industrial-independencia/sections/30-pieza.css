@@ -1,0 +1,152 @@
+/* ===== 30 PIEZA: componente firma DE BARRA A PIEZA (la pieza cambia con cada operación y suelta viruta) ===== */
+.ti-pieza { background: var(--paper); color: var(--ink); padding-block: 48px 56px; --plate: #E7ECEE; }
+.ti-pieza .ti-h2 { color: var(--ink); }
+.ti-pz-head { display: grid; gap: 10px; margin-bottom: 22px; }
+.ti-pz-sub { max-width: 44ch; font-size: 17px; color: var(--ink-mute); }
+
+.ti-pz { --mat-now: #5E5659; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+.ti-pz[data-mat="acero"] { --mat-now: #6E7880; }
+.ti-pz[data-mat="inox"] { --mat-now: #AEB7BD; }
+.ti-pz[data-mat="aluminio"] { --mat-now: #C9CED1; }
+.ti-pz[data-mat="bronce"] { --mat-now: #8C6E4A; }
+.ti-pz .mat { fill: var(--mat-now); transition: fill 400ms var(--ease-out); }
+.ti-pz-stage { display: contents; }
+
+/* --- bancada --- */
+.ti-bench { order: 1; position: sticky; top: 60px; z-index: 6; padding: 28px 10px 8px; margin-inline: -4px; }
+.ti-bench { box-shadow: 0 14px 0 var(--paper), 0 16px 0 rgba(10, 34, 51, .16); clip-path: polygon(0 0, 32px 0, 32px 5px, 24px 5px, 24px 12px, 54px 12px, 54px 5px, 46px 5px, 46px 0, 100% 0, 100% calc(100% + 18px), 0 calc(100% + 18px)); }
+.ti-bench-svg { width: 100%; height: auto; }
+.ti-bench-cap { margin-top: 6px; padding: 0 4px; font-size: 11px; line-height: 1.35; letter-spacing: .05em; text-transform: uppercase; color: var(--tx-mute); min-height: 15px; }
+.ti-bench-mant { padding: 8px 0 2px; }
+.ti-bench-mant[hidden] { display: none; }
+.ti-mant-fig { width: min(260px, 70%); margin: 4px auto 6px; }
+.ti-mant-fig .ti-mesa-ph { aspect-ratio: 420 / 236; }
+.ti-pz[data-mode="maquina"] .ti-bench-svg { display: none; }
+.ti-pz[data-shape="barra"] #s-sheet, .ti-pz[data-shape="lamina"] #s-bar { display: none; }
+
+/* operaciones: estado y animaciones (todo reversible) */
+.ti-pz #op-fresar-b, .ti-pz #op-barrenar-b, .ti-pz #op-soldar-b, .ti-pz #op-plasma-s, .ti-pz #op-fresar-s, .ti-pz #op-barrenar-s, .ti-pz #op-soldar-s, .ti-pz .chip, .ti-pz #tool, .ti-pz #flash-b, .ti-pz #flash-s, .ti-pz #flash-s2 { opacity: 0; }
+.ti-pz #op-fresar-b, .ti-pz #op-fresar-s { transform-box: fill-box; transform-origin: 0 50%; transform: scaleX(.02); transition: transform 500ms var(--ease-out), opacity 200ms; }
+.ti-pz #op-barrenar-b, .ti-pz #op-barrenar-s { transform-box: fill-box; transform-origin: 50% 50%; transform: scale(.2); transition: transform 500ms var(--ease-out), opacity 250ms; }
+.ti-pz #op-plasma-s { transition: opacity 250ms; }
+.ti-pz #op-soldar-b { transform: translateX(28px); transition: transform 500ms var(--ease-out), opacity 250ms; }
+.ti-pz #op-soldar-s { transform: translateY(14px); transition: transform 500ms var(--ease-out), opacity 250ms; }
+.ti-pz #barR { transform-box: fill-box; transform-origin: 50% 50%; transition: transform 600ms var(--ease-out); }
+.ti-pz #turned-tint, .ti-pz #turned-lines, .ti-pz #shoulder { opacity: 0; transition: opacity 400ms; }
+.ti-pz[data-ops~="tornear"] #barR { transform: scaleY(.66); }
+.ti-pz[data-ops~="tornear"] #turned-tint, .ti-pz[data-ops~="tornear"] #turned-lines, .ti-pz[data-ops~="tornear"] #shoulder { opacity: 1; }
+.ti-pz[data-ops~="tornear"] #chipT { opacity: 1; }
+.ti-pz[data-ops~="fresar"] #op-fresar-b, .ti-pz[data-ops~="fresar"] #op-fresar-s, .ti-pz[data-ops~="fresar"] #chipF { opacity: 1; transform: none; }
+.ti-pz[data-ops~="barrenar"] #op-barrenar-b, .ti-pz[data-ops~="barrenar"] #op-barrenar-s, .ti-pz[data-ops~="barrenar"] #chipB { opacity: 1; transform: none; }
+.ti-pz[data-ops~="soldar"] #op-soldar-b, .ti-pz[data-ops~="soldar"] #op-soldar-s { opacity: 1; transform: none; }
+.ti-pz[data-ops~="plasma"] #op-plasma-s { opacity: 1; transform: none; }
+#plasma-kerf { fill: none; stroke: #08202f; stroke-width: 3; transform: rotate(-90deg); transform-origin: 300px 118px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ti-pz.go-tornear #tool { animation: ti-tool 700ms var(--ease-out) both; }
+  .ti-pz.go-tornear #chipT { animation: ti-chip 800ms var(--ease-out) both; }
+  .ti-pz.go-fresar #chipF { animation: ti-chip 700ms var(--ease-out) both; }
+  .ti-pz.go-barrenar #chipB { animation: ti-chip 650ms var(--ease-out) both; }
+  .ti-pz.go-soldar #flash-b, .ti-pz.go-soldar #flash-s2 { animation: ti-flash 500ms ease-out both; }
+  .ti-pz.go-soldar #flash-s2 { animation-name: ti-sweep; animation-duration: 650ms; }
+  .ti-pz.go-plasma #flash-orbit { animation: ti-orbit 700ms linear both; }
+  .ti-pz.go-plasma #plasma-kerf { animation: ti-kerf 700ms linear both; }
+  .ti-pz.go-plasma #flash-s { opacity: 1; }
+  .ti-pz.go-plasma #op-plasma-s .cut { animation: ti-cutin 300ms ease-out 560ms both; }
+}
+@keyframes ti-tool { 0% { opacity: 0; transform: translate(34px, -8px); } 12% { opacity: 1; transform: translate(0, 0); } 86% { opacity: 1; transform: translate(-220px, 11px); } 100% { opacity: 0; transform: translate(-220px, -26px); } }
+@keyframes ti-chip { 0% { opacity: 0; transform: translate(46px, -76px) scale(.4); } 30% { opacity: 1; } 70% { transform: translate(0, 4px) scale(1); } 100% { opacity: 1; transform: translate(0, 0) scale(1); } }
+@keyframes ti-flash { 0% { opacity: 0; transform: scale(.4); } 25% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1.3); } }
+@keyframes ti-sweep { 0% { opacity: 1; transform: translateX(0); } 90% { opacity: 1; transform: translateX(340px); } 100% { opacity: 0; transform: translateX(340px); } }
+@keyframes ti-orbit { 0% { opacity: 1; transform: rotate(0deg); } 92% { opacity: 1; transform: rotate(360deg); } 100% { opacity: 0; transform: rotate(360deg); } }
+@keyframes ti-kerf { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes ti-cutin { from { opacity: 0; } to { opacity: 1; } }
+#flash-orbit { transform-origin: 300px 118px; }
+#plasma-kerf { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.ti-pz #flash-b, .ti-pz #flash-s2 { transform-box: fill-box; transform-origin: 50% 50%; }
+
+/* --- pasos --- */
+.ti-pz-steps { order: 2; padding-top: 10px; }
+.ti-step { border: 0; padding: 22px 0 22px; margin: 0; min-width: 0; border-top: 1px solid rgba(10, 34, 51, .22); }
+.ti-step:first-child { border-top: 0; }
+.ti-step legend { float: left; width: 100%; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 0 0 14px; padding: 0; font-family: var(--f-disp); font-weight: 800; font-size: 28px; line-height: 1; letter-spacing: .01em; text-transform: uppercase; color: var(--ink); }
+.ti-step legend + * { clear: both; }
+.ti-n { display: inline-block; padding: 3px 6px 2px; background: var(--ink); color: var(--paper); font-size: 12px; letter-spacing: .06em; line-height: 1.2; border-radius: 1px; transform: translateY(-3px); }
+.ti-hint { font-family: var(--f-body); font-weight: 400; text-transform: none; font-size: 14px; letter-spacing: 0; color: var(--ink-mute); }
+.ti-fichas { display: grid; gap: 8px; }
+.ti-ficha { position: relative; display: flex; align-items: center; gap: 12px; min-height: 52px; width: 100%; padding: 8px 14px; text-align: left; border-radius: 2px; background: var(--plate); color: var(--ink); font-weight: 700; font-size: 16px; line-height: 1.15; box-shadow: inset 0 0 0 1.5px rgba(10, 34, 51, .4), 0 2px 0 rgba(10, 34, 51, .28); transition: transform 120ms var(--ease-out), box-shadow 120ms var(--ease-out), background-color 160ms, color 160ms; }
+.ti-ficha:active { transform: translateY(2px); box-shadow: inset 0 0 0 1.5px rgba(10, 34, 51, .4), 0 0 0 rgba(0, 0, 0, 0); }
+.ti-ficha[aria-pressed="true"] { background: var(--brand); color: var(--btn-tx); box-shadow: inset 0 3px 0 rgba(0, 0, 0, .28), inset 0 0 0 1.5px #1d5282; transform: translateY(2px); }
+.ti-ficha[aria-disabled="true"] { opacity: .5; box-shadow: inset 0 0 0 1.5px rgba(10, 34, 51, .25); cursor: not-allowed; }
+@media (hover: hover) and (pointer: fine) { .ti-ficha:not([aria-pressed="true"]):not([aria-disabled="true"]):hover { background: #F2F5F6; } }
+.ti-fichas--shape { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.ti-ficha--shape svg { width: 40px; height: 24px; flex: none; }
+.ti-ficha--shape[aria-pressed="true"] svg rect[stroke], .ti-ficha--shape[aria-pressed="true"] svg path[fill="#0A2233"] { stroke: #EEF2F3; }
+.ti-ficha--shape[aria-pressed="true"] svg rect[fill="#0A2233"] { fill: #EEF2F3; }
+.ti-fichas--ops { grid-template-columns: minmax(0, 1fr); }
+.ti-ficha--op { padding: 0 12px 0 0; min-height: 66px; overflow: hidden; }
+.ti-ficha--op img, .ti-ficha--op .ti-weld { flex: none; width: 64px; height: 64px; object-fit: cover; border-radius: 0; margin: 1px 0 1px 1px; }
+.ti-ficha-t { display: grid; gap: 2px; text-transform: uppercase; font-family: var(--f-disp); font-weight: 800; font-size: 21px; letter-spacing: .04em; line-height: 1; }
+.ti-ficha-s { display: none; font-family: var(--f-body); font-weight: 500; font-size: 12px; text-transform: none; letter-spacing: 0; opacity: .9; }
+.ti-ficha[aria-disabled="true"] .ti-ficha-s { display: block; }
+.ti-op { position: absolute; right: 8px; top: 7px; padding: 2px 5px; background: var(--ink); color: var(--paper); font-size: 11px; line-height: 1.2; border-radius: 1px; opacity: 0; transform: translateY(-4px); transition: opacity 160ms, transform 160ms var(--ease-out); }
+.ti-ficha[aria-pressed="true"] .ti-op { opacity: 1; transform: none; }
+.ti-fichas--chips, .ti-fichas--trae, .ti-fichas--when { display: flex; flex-wrap: wrap; gap: 8px; }
+.ti-ficha--chip { width: auto; min-height: 48px; padding: 0 16px; }
+.ti-ficha--chip i { flex: none; width: 14px; height: 14px; border: 1px solid rgba(10, 34, 51, .6); }
+.ti-ficha--chip i.q { background: repeating-linear-gradient(45deg, #fff 0 3px, #cfd6d9 3px 6px); }
+.ti-ficha--paro .ti-dot { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--paro); box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px #8e1b1b; }
+.ti-ficha--paro[aria-pressed="true"] { background: #fff; color: var(--ink); box-shadow: inset 0 3px 0 rgba(0, 0, 0, .14), inset 0 0 0 2px var(--paro); }
+.ti-fichas--qty { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ti-ficha--qty { justify-content: center; font-size: 17px; min-height: 52px; }
+.ti-check { display: flex; align-items: center; gap: 12px; min-height: 48px; margin-top: 12px; cursor: pointer; font-weight: 500; font-size: 16px; }
+.ti-check input { position: absolute; opacity: 0; width: 24px; height: 24px; }
+.ti-check-box { flex: none; width: 24px; height: 24px; border-radius: 2px; background: var(--plate); box-shadow: inset 0 0 0 1.5px rgba(10, 34, 51, .55); display: grid; place-items: center; }
+.ti-check input:checked + .ti-check-box { background: var(--brand); box-shadow: inset 0 0 0 1.5px #1d5282; }
+.ti-check input:checked + .ti-check-box::after { content: ""; width: 12px; height: 6px; border-left: 2.5px solid #EEF2F3; border-bottom: 2.5px solid #EEF2F3; transform: rotate(-45deg) translate(1px, -1px); }
+.ti-check input:focus-visible + .ti-check-box { outline: 2px solid var(--brand); outline-offset: 3px; }
+.ti-field { display: grid; gap: 6px; margin-top: 18px; max-width: 360px; }
+.ti-field > span { font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-mute); }
+.ti-input { width: 100%; min-height: 50px; padding: 10px 14px; border-radius: 2px; border: 0; background: var(--plate); color: var(--ink); box-shadow: inset 0 0 0 1.5px rgba(10, 34, 51, .4); font-size: 16px; }
+.ti-input::placeholder { color: rgba(10, 34, 51, .5); }
+.ti-input:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.ti-textarea { min-height: 96px; resize: vertical; line-height: 1.4; }
+.ti-steps-pieza[hidden], .ti-steps-mant[hidden] { display: none; }
+
+/* --- placa de la pieza --- */
+.ti-plate { order: 3; margin-top: 8px; padding: 30px 16px 16px; background: var(--plate); color: var(--ink); box-shadow: 0 2px 0 rgba(10, 34, 51, .3); }
+.ti-plate::before, .ti-plate::after { content: ""; position: absolute; bottom: 8px; width: 7px; height: 7px; border-radius: 50%; background: #8d979d; box-shadow: inset 0 0 0 1.5px rgba(10, 34, 51, .45); }
+.ti-plate::before { left: 8px; } .ti-plate::after { right: 8px; }
+.ti-plate-h { position: absolute; top: 8px; left: 66px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-mute); }
+.ti-plate-rows { list-style: none; margin: 0; padding: 0 6px 14px; display: grid; gap: 3px; }
+.ti-plate-rows li { display: grid; grid-template-columns: 11ch minmax(0, 1fr); gap: 8px; font-size: 12.5px; line-height: 1.45; letter-spacing: .03em; text-transform: uppercase; border-bottom: 1px dashed rgba(10, 34, 51, .22); padding: 3px 0; }
+.ti-plate-rows .k { color: var(--ink-mute); }
+.ti-plate-rows .v { font-weight: 500; overflow-wrap: anywhere; }
+.ti-plate-rows .is-empty .v { opacity: .45; }
+.ti-plate-rows .is-paro .v { color: var(--paro); }
+.ti-pz-cta { order: 4; display: grid; gap: 10px; margin-top: 14px; justify-items: start; }
+.ti-pz-cta .ti-btn { width: 100%; }
+.ti-pz-note { font-size: 14px; color: var(--ink-mute); }
+.ti-pz-nojs { display: none; order: 5; margin-top: 16px; }
+.ti-nojs-list { display: grid; gap: 4px; list-style: none; padding: 0; text-transform: uppercase; font-size: 13px; }
+html.ti-js .ti-pz-nojs { display: none !important; }
+
+@media (min-width: 480px) { .ti-fichas--ops { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ti-fichas--qty { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 780px) {
+  .ti-pieza { padding-block: 84px 96px; }
+  .ti-pz-head { grid-template-columns: auto 1fr; align-items: end; gap: 12px 44px; margin-bottom: 34px; }
+  .ti-pieza .ti-h2 { font-size: clamp(56px, 6vw, 88px); }
+  .ti-pz { grid-template-columns: minmax(0, 1.06fr) minmax(0, 1fr); column-gap: 64px; align-items: start; }
+  .ti-pz-steps { grid-column: 1; grid-row: 1; order: 0; padding-top: 0; }
+  .ti-pz-stage { display: block; grid-column: 2; grid-row: 1; position: sticky; top: 92px; order: 0; }
+  .ti-bench { position: relative; top: auto; margin-inline: 0; padding: 32px 18px 12px; }
+  .ti-bench { box-shadow: none; clip-path: polygon(0 0, 32px 0, 32px 5px, 24px 5px, 24px 12px, 54px 12px, 54px 5px, 46px 5px, 46px 0, 100% 0, 100% 100%, 0 100%); }
+  .ti-bench-cap { font-size: 12px; }
+  .ti-plate { margin-top: 14px; }
+  .ti-plate-rows li { font-size: 13.5px; }
+  .ti-pz-cta { margin-top: 16px; }
+  .ti-pz-cta .ti-btn { width: auto; min-width: 100%; }
+}
+@media (min-width: 1200px) { .ti-pz { column-gap: 88px; } }
+
+@media (min-width: 780px) and (max-width: 1099px) { .ti-fichas--qty { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

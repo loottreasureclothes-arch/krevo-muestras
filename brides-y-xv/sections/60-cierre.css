@@ -1,0 +1,47 @@
+/* ===== 60 · Cierre: "Todo listo para completar" (marfil) y el remate con la novia a sangre ===== */
+.bx-cierre { background: var(--ink); }
+.bx-listo { background: var(--ivory); color: var(--ivory-ink); padding: 48px 0 40px; }
+.bx-listo .bx-eyebrow { color: var(--ivory-mute); }
+.bx-h--ivory .bx-l2 { color: var(--brand); }
+.bx-listo-list { margin-top: 20px; display: grid; gap: 0; }
+.bx-listo-list li { position: relative; padding: 9px 0 9px 42px; font-size: 16px; font-weight: 400; line-height: 1.3; border-bottom: 1px solid rgba(28, 23, 25, 0.12); }
+.bx-listo-list li::before { content: ""; position: absolute; left: 0; top: 20px; width: 28px; height: 3px; background: var(--brand); }
+.bx-listo-n { margin-top: 20px; font-family: var(--font-display); font-size: 21px; line-height: 1.25; max-width: 30ch; }
+.bx-listo-n--b { margin-top: 10px; font-family: var(--font-body); font-weight: 500; font-size: 16px; color: var(--ivory-mute); max-width: 34ch; }
+
+.bx-remate { position: relative; background: var(--ink); }
+.bx-remate-ph { margin: 0; position: relative; height: 520px; overflow: hidden; }
+.bx-remate-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 24%; }
+.bx-remate-ph::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 66%; background: linear-gradient(to bottom, rgba(16, 13, 15, 0), rgba(16, 13, 15, 0.78) 30%, rgba(16, 13, 15, 0.94) 52%, var(--ink) 80%); }
+.bx-js .bx-remate-ph:not(.is-in) img { filter: blur(8px); }
+.bx-remate-ph img { transition: filter 900ms var(--ease-out); }
+.bx-remate-in { position: relative; z-index: 2; margin-top: -190px; padding-bottom: 28px; }
+.bx-ficha2 { background: transparent; }
+.bx-ficha2 .bx-h { margin-top: 0; max-width: 14ch; }
+.bx-remate-discs { margin-top: 18px; display: flex; gap: 14px; flex-wrap: wrap; }
+.bx-remate-discs[hidden], .bx-remate-fecha[hidden] { display: none; }
+.bx-remate-discs li { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.bx-rd { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; border: 2px solid var(--paper); position: relative; background: var(--band); }
+.bx-rd img { width: 100%; height: 100%; object-fit: cover; }
+.bx-rd-c { font-weight: 500; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); }
+.bx-remate-fecha { margin-top: 14px; font-weight: 500; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--paper); font-variant-numeric: tabular-nums; }
+.bx-remate-go { margin-top: 24px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.bx-remate-go .bx-wa { width: 100%; }
+
+@media (min-width: 820px) {
+  .bx-listo { padding: 64px 0 56px; }
+  .bx-listo-in { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-areas: "head list" "n1 list" "n2 list"; column-gap: clamp(32px, 6vw, 110px); align-content: start; }
+  .bx-listo-in > .bx-head { grid-area: head; }
+  .bx-listo-list { grid-area: list; margin-top: 0; }
+  .bx-listo-n { grid-area: n1; }
+  .bx-listo-n--b { grid-area: n2; }
+  .bx-remate { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 700px; align-items: center; padding: 56px 0; }
+  .bx-remate-ph { height: 640px; width: min(520px, 100%); justify-self: end; margin-right: clamp(24px, 4vw, 64px); border-radius: 0 0 clamp(56px, 16vw, 140px) 0 / 0 0 clamp(22px, 6vw, 52px) 0; }
+  .bx-remate-ph img { position: absolute; inset: 0; object-position: 50% 8%; }
+  .bx-remate-ph::after { display: none; }
+  .bx-remate-in { margin-top: 0; display: flex; align-items: center; padding: 64px var(--g) 64px clamp(24px, 4vw, 64px); max-width: none; }
+  .bx-ficha2 { width: 100%; max-width: 560px; }
+  .bx-ficha2 .bx-h { font-size: clamp(54px, 5vw, 80px); }
+  .bx-remate-go { flex-direction: row; align-items: center; gap: 28px; }
+  .bx-remate-go .bx-wa { width: auto; }
+}

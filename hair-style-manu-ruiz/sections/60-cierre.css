@@ -23,13 +23,24 @@
 .mr-cierre-tono .mr-mini2{width:12px;height:30px}
 .mr-remate-txt .mr-btn--wa{margin-top:4px}
 .mr-remate-txt .mr-lnk[hidden]{display:none}
+.mr-remate-tag{display:none}
 @media (min-width:760px){
+  /* compu: "Todo listo" en su propia banda y DESPUES el remate */
   .mr-cierre{padding-bottom:0}
-  .mr-cierre-grid{grid-template-columns:minmax(0,1fr) clamp(300px,40vw,520px);column-gap:clamp(28px,7vw,120px);align-items:stretch}
-  .mr-listo{align-self:start;padding:40px 30px 28px}
-  .mr-remate{margin:0;display:flex;flex-direction:column;gap:22px}
-  .mr-remate-txt{order:-1;position:static;margin:0;padding:0;max-width:none}
-  .mr-remate-txt .mr-h2{font-size:clamp(52px,5.6vw,84px)}
-  .mr-remate-photo{height:auto;aspect-ratio:3/4;max-width:520px;width:100%}
+  .mr-cierre-grid{display:block}
+  .mr-listo{padding:44px clamp(24px,3vw,44px) 30px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);column-gap:clamp(28px,5vw,80px);align-items:start}
+  .mr-listo .mr-h2{grid-column:1;grid-row:1 / span 3}
+  .mr-listo-ul{grid-column:2;margin-top:0;columns:2;column-gap:34px}
+  .mr-listo-ul li{break-inside:avoid}
+  .mr-listo-ul li:last-child{border-bottom:0}
+  .mr-listo-tarj,.mr-listo-pie{grid-column:2}
+  /* correccion 2: remate en dos columnas, sin encimar: titulo y botones a la izquierda, foto 3:4 (max 520) a la derecha con su etiqueta */
+  .mr-remate{margin:clamp(56px,7vw,96px) 0 0;padding-bottom:clamp(56px,6vw,88px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,min(520px,46%));column-gap:clamp(36px,6vw,96px);align-items:center}
+  .mr-remate-photo{grid-column:2;grid-row:1;height:auto;aspect-ratio:3/4;width:100%;max-width:520px;justify-self:end}
   .mr-remate-photo::after{display:none}
+  .mr-remate-photo img{object-position:50% 50%}
+  .mr-remate-tag{display:block;margin:0;bottom:22px}
+  .mr-remate-txt{grid-column:1;grid-row:1;align-self:center;position:relative;margin:0;padding:0;gap:18px}
+  .mr-remate-txt .mr-h2{font-size:clamp(60px,7.6vw,118px);line-height:.92;max-width:none}
+  .mr-remate-txt .mr-lnk{margin-top:8px}
 }

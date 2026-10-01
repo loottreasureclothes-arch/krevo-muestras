@@ -1,0 +1,46 @@
+/* ===== 30 · Momento firma: brillo en cada detalle (luz de aparador que barre la pedrería con el scroll) ===== */
+.bx-brillo { background: var(--band); padding-top: 0; }
+.bx-brillo-grid { display: grid; gap: 0; }
+.bx-brillo-fig { margin-inline: calc(var(--g) * -1); position: relative; }
+.bx-brillo-photo { position: relative; --p: 0.6; --x: calc(-20% + var(--p) * 140%); aspect-ratio: 4 / 5; overflow: hidden; background: var(--ink); border-radius: var(--tail); }
+.bx-brillo-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 38% 30%; filter: brightness(0.97) contrast(1.04); }
+/* banda de luz cálida diagonal, 22 % del ancho, soft-light */
+.bx-brillo-sheen { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
+  background: linear-gradient(105deg, transparent calc(var(--x) - 11%), rgba(255, 236, 208, 0.42) calc(var(--x) - 3%), rgba(255, 244, 226, 0.55) var(--x), rgba(255, 236, 208, 0.42) calc(var(--x) + 3%), transparent calc(var(--x) + 11%)); }
+/* las lentejuelas reales de la MISMA foto (3 % más luminoso), solo encendidas dentro de la banda */
+.bx-brillo-spark { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
+  background: url("../img/brillo-mask.png") 38% 30% / cover no-repeat;
+  filter: brightness(1.6) drop-shadow(0 0 3px rgba(255, 248, 235, 1));
+  -webkit-mask-image: linear-gradient(105deg, transparent calc(var(--x) - 11%), #000 var(--x), transparent calc(var(--x) + 11%));
+  mask-image: linear-gradient(105deg, transparent calc(var(--x) - 11%), #000 var(--x), transparent calc(var(--x) + 11%)); }
+@media (scripting: none), (prefers-reduced-motion: reduce) {
+  .bx-brillo-spark { -webkit-mask-image: none; mask-image: none; opacity: 0.5; }
+}
+.bx-brillo-fig .bx-plate { position: absolute; left: var(--g); bottom: 18px; }
+.bx-brillo-copy { padding-top: 34px; }
+.bx-quote { margin-top: 22px; max-width: 28ch; }
+.bx-quote p { font-family: var(--font-display); font-size: 22px; line-height: 1.25; }
+.bx-quote cite { display: block; margin-top: 10px; font-style: normal; font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); }
+
+/* collage desigual 7/12 + 5/12, la chica 10 svh más abajo y con la cola hacia el otro lado */
+.bx-collage { display: grid; grid-template-columns: 7fr 5fr; gap: 14px; align-items: start; margin-top: 36px; }
+.bx-col-a, .bx-col-b { position: relative; margin: 0; }
+.bx-col-a img, .bx-col-b img { width: 100%; height: auto; }
+.bx-col-a { border-radius: var(--tail); }
+.bx-col-b { margin-top: 10svh; border-radius: var(--tail-l); }
+.bx-col-a .bx-plate { position: absolute; left: 0; bottom: 14px; }
+.bx-cortes { margin-top: 34px; font-family: var(--font-display); font-size: clamp(26px, 7.4vw, 34px); line-height: 1.15; display: flex; flex-wrap: wrap; gap: 4px 0; }
+.bx-cortes span { display: inline-block; }
+.bx-cortes span:not(:last-child)::after { content: ""; display: inline-block; width: 18px; height: 3px; background: var(--brand); margin: 0 12px; vertical-align: 0.28em; }
+
+@media (min-width: 820px) {
+  .bx-brillo { padding-top: var(--sec-t); }
+  .bx-brillo-grid { grid-template-columns: minmax(0, min(560px, 50%)) minmax(0, 1fr); column-gap: clamp(32px, 6vw, 120px); align-items: center; }
+  .bx-brillo-fig { margin-inline: 0; }
+  .bx-brillo-photo { aspect-ratio: 4 / 5; }
+  .bx-brillo-fig .bx-plate { left: 0; }
+  .bx-brillo-copy { padding-top: 0; }
+  .bx-quote p { font-size: 28px; }
+  .bx-collage { grid-template-columns: 400px 300px; justify-content: center; gap: clamp(24px, 4vw, 56px); margin-top: 96px; }
+  .bx-cortes { font-size: clamp(34px, 3.6vw, 52px); margin-top: 80px; justify-content: center; text-align: center; }
+}

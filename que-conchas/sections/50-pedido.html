@@ -1,0 +1,62 @@
+<section class="qc-sec qc-sec--rosa qc-pedido" id="pedido" aria-labelledby="h-ped">
+  <div class="qc-wrap qc-ped-grid">
+    <div class="qc-ped-head">
+      <h2 class="qc-t" id="h-ped" data-reveal><span class="l1">Haz tu pedido.</span> <span class="l2">En un mensaje.</span></h2>
+    </div>
+    <form class="qc-nota qc-gajos qc-gajos--crema" id="qc-nota" novalidate data-hide-wa>
+      <p class="qc-nota-top"><svg aria-hidden="true"><use href="#i-concha"/></svg>Nota de pedido · Que Conchas!</p>
+
+      <fieldset class="qc-f">
+        <legend id="qc-lg-que">Qué quieres</legend>
+        <div class="qc-opts" role="radiogroup" aria-labelledby="qc-lg-que" id="qc-opts">
+          <button type="button" class="qc-opt" role="radio" aria-checked="false" data-q="conchas"><span>Conchas rellenas</span></button>
+          <button type="button" class="qc-opt" role="radio" aria-checked="false" data-q="especial" id="qc-opt-esp"><span>El especial del mes</span><small id="qc-opt-esp-n">Pan de muerto relleno</small></button>
+          <button type="button" class="qc-opt" role="radio" aria-checked="false" data-q="desayuno"><span>Desayuno sorpresa</span></button>
+          <button type="button" class="qc-opt" role="radio" aria-checked="false" data-q="ramo"><span>Ramo de pan</span></button>
+        </div>
+        <div class="qc-detalle" id="qc-detalle" aria-live="polite"></div>
+      </fieldset>
+
+      <div class="qc-f">
+        <label for="qc-fecha">Para cuándo</label>
+        <input type="date" id="qc-fecha" autocomplete="off">
+      </div>
+
+      <fieldset class="qc-f">
+        <legend id="qc-lg-modo">Recoger o entrega</legend>
+        <div class="qc-opts qc-opts--2" role="radiogroup" aria-labelledby="qc-lg-modo" id="qc-modos">
+          <button type="button" class="qc-opt" role="radio" aria-checked="false" data-m="recoger"><span>Paso a recoger</span></button>
+          <button type="button" class="qc-opt" role="radio" aria-checked="false" data-m="entrega"><span>Entrega a domicilio</span></button>
+        </div>
+      </fieldset>
+
+      <div class="qc-f" id="qc-f-ded" hidden>
+        <label for="qc-ded">Dedicatoria <small>(opcional)</small></label>
+        <input type="text" id="qc-ded" maxlength="90" placeholder="Feliz cumpleaños, Ana" autocomplete="off">
+      </div>
+
+      <div class="qc-f">
+        <label for="qc-nombre">Tu nombre</label>
+        <input type="text" id="qc-nombre" maxlength="60" placeholder="Luis" autocomplete="given-name">
+      </div>
+
+      <p class="qc-vista"><span>Así va tu mensaje</span><q id="qc-vista">Hola Que Conchas, quiero hacer un pedido.</q></p>
+      <a class="qc-btn qc-btn--wa qc-nota-wa" id="qc-enviar" data-wa-pedido data-hide-wa href="https://wa.me/524492063798?text=Hola%20Que%20Conchas%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir por WhatsApp</a>
+    </form>
+
+    <aside class="qc-ped-info" aria-label="Horario y contacto">
+      <h3>Horario</h3>
+      <p class="qc-estado" id="qc-estado"><span class="pt" aria-hidden="true"></span><b id="qc-estado-t">Atendiendo ahora</b></p>
+      <dl class="qc-horas">
+        <div><dt>Lunes a viernes</dt><dd>9:45 a 12:45 y 4:30 a 8:30</dd></div>
+        <div><dt>Sábado y domingo</dt><dd>10:00 a 12:00 y 4:30 a 8:30</dd></div>
+      </dl>
+      <p class="qc-sin-local">Sin local: cocina con recoger y entrega. La dirección para recoger te la damos al confirmar.</p>
+      <div class="qc-redes">
+        <a class="qc-red" href="https://www.instagram.com/que_conchas/" target="_blank" rel="noopener"><span class="ic"><svg aria-hidden="true"><use href="#i-ig"/></svg></span>Instagram</a>
+        <a class="qc-red" href="https://www.facebook.com/people/QUE-CONCHAS/100063797160855/" target="_blank" rel="noopener"><span class="ic"><svg aria-hidden="true"><use href="#i-fb"/></svg></span>Facebook</a>
+        <a class="qc-red" href="https://www.tiktok.com/@que_conchas" target="_blank" rel="noopener"><span class="ic"><svg aria-hidden="true"><use href="#i-tt"/></svg></span>TikTok</a>
+      </div>
+    </aside>
+  </div>
+</section>

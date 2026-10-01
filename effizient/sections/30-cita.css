@@ -1,0 +1,97 @@
+/* 30 cita: EL GONIOMETRO DE TU CITA. Ficha de papel hielo con la esquina de estela, instrumento que se gira con el dedo. */
+.cita { padding: 30px 0 6px; }
+.cita .estela { margin-bottom: 30px; }
+.cita-grid { margin-top: 22px; }
+.cita { --pw: min(calc((100vw - 2 * var(--gut)) * 0.5), 210px); }
+.cita-photo { position: absolute; left: 16px; top: calc(var(--pw) * -1.05 + 40px); width: var(--pw); margin: 0; z-index: 3; }
+.cita-photo img { aspect-ratio: 20 / 21; object-fit: cover; }
+.cita-photo figcaption { font-size: 9.5px; padding-right: 14px; }
+.cita-card { grid-template-columns: minmax(0, 1fr); position: relative; margin-top: calc(var(--pw) * 1.05 - 40px); background: var(--ice); color: var(--ink); border-radius: 2px var(--r-big) 2px 2px; padding: 56px 16px 20px; display: grid; gap: 16px; box-shadow: 0 14px 40px rgba(4, 12, 32, 0.28); }
+.c-left, .c-right { display: grid; gap: 16px; align-content: start; min-width: 0; }
+.q { border: 0; padding: 0; margin: 0; min-width: 0; }
+.q legend, .q-lbl { display: flex; align-items: baseline; gap: 10px; padding: 0; margin-bottom: 8px; font: 600 16.5px/1.25 var(--f-b); color: var(--ink); }
+.q legend .num, .q-lbl .num { color: var(--royal); font-size: 15px; min-width: 14px; }
+.q-lbl small { font-weight: 400; color: var(--ink-m); font-size: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; display: inline-flex; cursor: pointer; }
+.chip input, .chk input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.chip span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px 0 15px; border: 1.5px solid var(--slate); border-radius: 2px 22px 22px 2px; font: 500 15px/1.1 var(--f-b); color: var(--ink); background: transparent; transition: background-color 160ms var(--ease), color 160ms var(--ease), border-color 160ms var(--ease), transform 160ms var(--ease); }
+.chip:active span { transform: scale(0.97); }
+.chip input:checked + span { background: var(--navy); border-color: var(--navy); color: var(--tx); }
+.chip input:focus-visible + span, .chk input:focus-visible + span::before { outline: 2px solid var(--royal); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) { .chip:hover span { border-color: var(--navy); background: rgba(12, 60, 132, 0.08); } .chip input:checked + span:hover { background: var(--navy); } }
+.checks { display: grid; gap: 4px; }
+.chk { position: relative; display: flex; align-items: center; min-height: 44px; cursor: pointer; }
+.chk span { display: flex; align-items: center; gap: 12px; font: 500 15.5px/1.25 var(--f-b); }
+.chk span::before { content: ""; flex: none; width: 24px; height: 24px; border: 1.5px solid var(--slate); border-radius: 2px 8px 2px 2px; background: transparent center / 16px no-repeat; transition: background-color 160ms var(--ease), border-color 160ms var(--ease); }
+.chk input:checked + span::before { background-color: var(--navy); border-color: var(--navy); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.4 3.2L13 4.6' fill='none' stroke='%2378C8F8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.nom { width: 100%; height: 48px; padding: 0 14px; border: 1.5px solid var(--slate); border-radius: 2px 14px 2px 2px; background: #F4F8FB; color: var(--ink); font-size: 16px; }
+.nom::placeholder { color: rgba(12, 36, 84, 0.64); }
+.nom:focus { outline: 2px solid var(--royal); outline-offset: 2px; border-color: var(--royal); }
+
+/* el instrumento */
+.gon-wrap { display: grid; justify-items: center; }
+.gon { width: min(100%, 330px); height: auto; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; }
+.gon:active { cursor: grabbing; }
+.gon-body { fill: rgba(120, 200, 248, 0.2); stroke: var(--slate); stroke-width: 1.5; }
+.gon-ring { fill: none; stroke: var(--slate); stroke-width: 0.8; stroke-dasharray: 2 3; opacity: 0.7; }
+.tk-a { stroke: var(--navy); stroke-width: 1.7; } .tk-b { stroke: var(--slate); stroke-width: 1.2; } .tk-c { stroke: var(--slate); stroke-width: 0.8; opacity: 0.75; }
+.gon-sector { fill: rgba(120, 200, 248, 0.5); stroke: none; transition: opacity 160ms; }
+.gon-fixed rect { fill: var(--slate); }
+.gon-arm rect { fill: var(--navy); }
+.arm-line { stroke: var(--sky); stroke-width: 1.4; stroke-linecap: round; opacity: 0.8; }
+.grip circle { fill: var(--sky); stroke: var(--navy); stroke-width: 3; }
+.grip path { stroke: var(--navy); stroke-width: 1.6; stroke-linecap: round; fill: none; }
+.gon-pivot circle { fill: var(--ice); stroke: var(--navy); stroke-width: 3; }
+.gon-pivot path { stroke: var(--navy); stroke-width: 2; stroke-linecap: round; }
+.nm circle { fill: var(--navy); opacity: 0; transition: opacity 160ms var(--ease); }
+.nm text { font: italic 700 17px var(--f-b); font-stretch: 87.5%; fill: var(--ink); text-anchor: middle; dominant-baseline: central; pointer-events: none; transition: fill 160ms var(--ease); }
+.nm.on circle { opacity: 1; } .nm.on text { fill: var(--tx); }
+.gon-read { display: flex; align-items: baseline; justify-content: center; flex-wrap: wrap; gap: 0 10px; margin-top: 0; line-height: 1; color: var(--ink); min-height: 48px; }
+.gon-n { font-size: 44px; min-width: 26px; }
+.gon-hint { pointer-events: none; transition: opacity 200ms var(--ease); }
+.h-arc { fill: none; stroke: var(--royal); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 5 5; }
+.h-head { fill: var(--royal); }
+.gon-wrap:not(.is-unset) .gon-hint { opacity: 0; }
+.gon-wrap.is-unset .gon-n, .gon-wrap.is-unset .gon-of { display: none; }
+.gon-wrap.is-unset .gon-phrase { font-weight: 600; color: var(--royal); padding: 12px 0 0; }
+.gon-dash { display: inline-block; width: 30px; height: 8px; background: var(--royal); border-radius: 0 4px 4px 0; clip-path: polygon(0 50%, 100% 0, 100% 100%); vertical-align: middle; opacity: 0.55; }
+.gon-of { font-size: 22px; color: var(--ink-m); }
+.gon-phrase { font: 500 16.5px/1.3 var(--f-b); color: var(--ink); }
+.gon-range { -webkit-appearance: none; appearance: none; width: min(100%, 360px); height: 44px; margin: 8px 0 0; background: transparent; cursor: pointer; }
+.gon-range::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--ice-d), var(--slate)); }
+.gon-range::-moz-range-track { height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--ice-d), var(--slate)); }
+.gon-range::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; margin-top: -11px; border-radius: 2px 14px 14px 2px; background: var(--navy); border: 3px solid var(--sky); }
+.gon-range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 2px 14px 14px 2px; background: var(--navy); border: 3px solid var(--sky); }
+.gon-range:focus-visible { outline: 2px solid var(--royal); outline-offset: 2px; }
+.gon-scale { display: flex; justify-content: space-between; width: min(100%, 360px); padding: 0 11px; margin-top: -4px; font-size: 13px; color: var(--ink-m); }
+
+/* la ficha que se escribe sola */
+.slip { background: #D6E5F1; border-radius: 2px 34px 2px 2px; padding: 8px 16px 16px; align-self: start; }
+.slip-l { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+.slip-l > div { display: grid; align-content: start; gap: 2px; padding: 8px 0; border-bottom: 1px solid rgba(12, 36, 84, 0.16); }
+.slip-l dt { display: flex; align-items: center; font: 700 11px/1.2 var(--f-b); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-m); }
+.slip-l dt.mk::before { margin-right: 7px; width: 16px; height: 6px; background: var(--royal); }
+.slip-l dd { font: 500 16px/1.3 var(--f-b); color: var(--ink); overflow-wrap: anywhere; }
+.slip-l dd.is-empty { color: rgba(12, 36, 84, 0.72); font-weight: 400; }
+.slip-cta { margin-top: 14px; }
+.slip-cta .btn { width: 100%; white-space: normal; text-align: center; line-height: 1.15; padding: 10px 14px; }
+.slip-n { margin-top: 10px; font-size: 13px; line-height: 1.4; color: var(--ink-m); }
+@media (min-width: 780px) {
+  .cita { padding: 56px 0 24px; }
+  .cita .estela { margin-bottom: 40px; }
+  .cita-grid { margin-top: 34px; }
+  .cita-card { margin-top: 0; padding: 38px 34px 38px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 34px; align-items: start; }
+  .c-left, .c-right { gap: 22px; }
+  .cita-photo { position: relative; left: auto; top: auto; width: min(100%, 300px); margin-top: 4px; }
+  .cita-photo figcaption { font-size: 10px; }
+  .slip-l { grid-template-columns: 1fr; } .slip-l > div { grid-template-columns: 86px 1fr; gap: 8px; align-items: baseline; }
+}
+@media (min-width: 780px) {
+  .gon { width: min(100%, 400px); }
+  .gon-range, .gon-scale { width: min(100%, 420px); }
+}
+@media (min-width: 1060px) {
+  .gon { width: min(100%, 440px); }
+  .cita-card { padding: 44px 44px 44px; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 48px; }
+}

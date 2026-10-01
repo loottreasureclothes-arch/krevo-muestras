@@ -1,0 +1,175 @@
+/* ======================================================================
+   Taller Industrial Independencia · fundación (prefijo ti-)
+   Lenguaje de formas: LA MESA DE LA FRESADORA (ranura en T, brida, placa de golpe).
+   TOKENS (medidos con PIL sobre taller-06 y taller-09)
+     --deep #0A2C42 lienzo · --deep-2 #0F3651 bandas · --night #061B29 la grúa
+     --paper #CED6DA gris fresadora (brazo de la fresadora, medido #ced8e0) · --paper-2 #B7C0C5
+     --brand #2B70A9 (letras TII del letrero, medido #2b70a9) · --brand-light #6FA3CF
+     --paro #C62828 hongo de paro (solo hongo y ficha de línea parada)
+   Tipografía: Big Shoulders Display (títulos) · Schibsted Grotesk (cuerpo) · Martian Mono (golpe, datos)
+   ====================================================================== */
+:root {
+  --deep: #0A2C42; --deep-2: #0F3651; --night: #061B29;
+  --paper: #CED6DA; --paper-2: #B7C0C5;
+  --brand: #2B70A9; --brand-light: #6FA3CF;
+  --ink: #0A2233; --tx: #E9EEF0; --tx-mute: rgba(233, 238, 240, .74); --ink-mute: rgba(10, 34, 51, .74);
+  --paro: #C62828; --wa: #25D366; --wa-ink: #0b3d1f;
+  --btn-tx: #EEF2F3;
+  --f-disp: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Schibsted Grotesk", system-ui, -apple-system, sans-serif;
+  --f-mono: "Martian Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --ease-out: cubic-bezier(.23, 1, .32, 1);
+  --gutter: 18px; --h: 58px; --sec-y: 56px;
+}
+@media (min-width: 760px) { :root { --gutter: 32px; --h: 64px; --sec-y: 88px; } }
+@media (min-width: 1200px) { :root { --gutter: 48px; --sec-y: 104px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; overflow-x: clip; scroll-padding-top: calc(var(--h) + 20px); }
+html { scroll-behavior: auto !important; }
+body { min-height: 100svh; background: var(--deep); color: var(--tx); font-family: var(--f-body); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip; padding-top: calc(var(--h) + 6px); }
+h1, h2, h3 { font-family: var(--f-disp); font-weight: 900; text-transform: uppercase; line-height: .92; letter-spacing: .005em; text-wrap: balance; overflow-wrap: break-word; }
+p { text-wrap: pretty; overflow-wrap: break-word; }
+img, svg, picture { display: block; max-width: 100%; }
+img { height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+input, textarea, select { font-size: max(16px, 1em); }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+a, button, label, [role="button"] { touch-action: manipulation; }
+ul[class], ol[class] { list-style: none; padding: 0; }
+:focus-visible { outline: 2px solid var(--brand-light); outline-offset: 3px; border-radius: 2px; }
+::selection { background: var(--brand); color: var(--btn-tx); }
+.ti-wrap { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: var(--gutter); }
+.ti-nowrap { white-space: nowrap; }
+.ti-sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ti-skip { position: fixed; left: 12px; top: 12px; z-index: 200; padding: 12px 18px; border-radius: 2px; background: var(--paper); color: var(--ink); font-weight: 700; transform: translateY(-200%); }
+.ti-skip:focus { transform: none; }
+.ti-mono { font-family: var(--f-mono); font-stretch: 82%; font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+
+/* ---------- Dos tonos ---------- */
+.ti-t2 { color: var(--brand-light); }
+.on-paper .ti-t2, .ti-paper .ti-t2 { color: var(--brand); }
+
+/* ---------- Botones: PLACA DE CONTROL (azul TII, radio 2, dos tornillos) ---------- */
+.ti-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 30px; border-radius: 2px; background: var(--brand); color: var(--btn-tx); font-family: var(--f-disp); font-weight: 700; font-size: 20px; line-height: 1; letter-spacing: .08em; text-transform: uppercase; text-align: center; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 2px 0 rgba(0, 0, 0, .38); transition: transform 120ms var(--ease-out), box-shadow 120ms var(--ease-out), background-color 160ms; }
+.ti-btn::before, .ti-btn::after { content: ""; position: absolute; top: 50%; width: 5px; height: 5px; margin-top: -2.5px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 1px rgba(10, 34, 51, .35); }
+.ti-btn::before { left: 10px; } .ti-btn::after { right: 10px; }
+.ti-btn:active { transform: translateY(2px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 0 0 rgba(0, 0, 0, 0); }
+.ti-btn svg { width: 22px; height: 22px; flex: none; }
+.ti-btn--line { background: transparent; color: var(--tx); box-shadow: inset 0 0 0 1.5px var(--paper); }
+.ti-btn--line:active { box-shadow: inset 0 0 0 1.5px var(--paper); }
+.ti-btn--wa { background: var(--wa); color: var(--wa-ink); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 2px 0 rgba(11, 61, 31, .55); }
+.ti-btn--wa::before, .ti-btn--wa::after { display: none; }
+.ti-btn--wa svg { width: 24px; height: 24px; }
+@media (hover: hover) and (pointer: fine) {
+  .ti-btn:hover { background: #3380bd; }
+  .ti-btn--line:hover { background: rgba(206, 214, 218, .12); }
+  .ti-btn--wa:hover { background: #33e07a; }
+}
+.ti-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-family: var(--f-disp); font-weight: 700; font-size: 19px; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-light); }
+.ti-link svg { width: 20px; height: 20px; transition: transform 180ms var(--ease-out); }
+.ti-paper .ti-link, .on-paper .ti-link { color: var(--brand); }
+@media (hover: hover) and (pointer: fine) { .ti-link:hover svg { transform: translateX(4px); } .ti-link:hover { text-decoration: underline; text-underline-offset: 5px; } }
+
+/* ---------- Perfil de la mesa (divisor): barra de 18 px con ranuras en T cada 120 px ---------- */
+.ti-perfil { height: 18px; background-repeat: repeat-x; background-size: 120px 18px; }
+.ti-perfil--g { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='18'%3E%3Crect width='120' height='18' fill='%23CED6DA'/%3E%3Crect y='15' width='120' height='3' fill='%23B7C0C5'/%3E%3Cpath d='M53 0h14v6h8v8H45V6h8z' fill='%230A2C42'/%3E%3C/svg%3E"); }
+.ti-perfil--m { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='18'%3E%3Crect width='120' height='18' fill='%230A2C42'/%3E%3Crect y='15' width='120' height='3' fill='%23061B29'/%3E%3Cpath d='M53 0h14v6h8v8H45V6h8z' fill='%23CED6DA'/%3E%3C/svg%3E"); }
+.ti-perfil--m2 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='18'%3E%3Crect width='120' height='18' fill='%230F3651'/%3E%3Crect y='15' width='120' height='3' fill='%230A2C42'/%3E%3Cpath d='M53 0h14v6h8v8H45V6h8z' fill='%23CED6DA'/%3E%3C/svg%3E"); }
+
+/* ---------- Foto montada en la mesa: barra con 3 ranuras en T + 2 bridas ---------- */
+.ti-mesa { position: relative; margin: 0; }
+.ti-mesa-ph { position: relative; overflow: hidden; background: var(--deep-2); box-shadow: 0 2px 0 rgba(0, 0, 0, .45); }
+.ti-mesa-ph img { width: 100%; height: 100%; object-fit: cover; }
+.ti-mesa-bar { height: 12px; background-color: var(--paper-2); box-shadow: inset 0 2px 0 rgba(255, 255, 255, .35), 0 2px 0 rgba(0, 0, 0, .4);
+  background-image: var(--slot), var(--slot), var(--slot); background-size: 44px 12px; background-repeat: no-repeat; background-position: 12% 0, 50% 0, 88% 0;
+  --slot: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='12'%3E%3Cpath d='M16 0h12v4h6v6H10V4h6z' fill='%230A2C42'/%3E%3C/svg%3E"); }
+.ti-brida { position: absolute; top: -3px; z-index: 3; width: 36px; height: 9px; background: var(--paper-2); border-radius: 1px; box-shadow: 0 2px 0 rgba(0, 0, 0, .4), inset 0 1px 0 rgba(255, 255, 255, .4); transition: transform 220ms var(--ease-out); }
+.ti-brida::after { content: ""; position: absolute; top: 0; width: 9px; height: 9px; border-radius: 50%; background: #8d979d; box-shadow: inset 0 0 0 1.5px rgba(10, 34, 51, .45), inset 0 -2px 0 rgba(255, 255, 255, .25); }
+.ti-brida--l { left: 14px; } .ti-brida--l::after { right: 4px; }
+.ti-brida--r { right: 14px; } .ti-brida--r::after { left: 4px; }
+/* ---------- Placa de golpe (etiqueta de foto) ---------- */
+.ti-placa { position: absolute; z-index: 4; display: inline-block; padding: 6px 14px; background: var(--paper); color: var(--ink); font-family: var(--f-mono); font-stretch: 80%; font-weight: 500; font-size: 11px; line-height: 1.2; letter-spacing: .06em; text-transform: uppercase; border-radius: 1px; box-shadow: 0 2px 0 rgba(0, 0, 0, .4); }
+.ti-placa::before, .ti-placa::after { content: ""; position: absolute; top: 50%; width: 4px; height: 4px; margin-top: -2px; border-radius: 50%; background: #8d979d; box-shadow: inset 0 0 0 1px rgba(10, 34, 51, .4); }
+.ti-placa::before { left: 4px; } .ti-placa::after { right: 4px; }
+.ti-pun > span { display: inline-block; transform: translate(var(--dx, 0), var(--dy, 0)) rotate(var(--r, 0)); }
+/* ---------- Panel con ranura en T recortada en el borde de arriba ---------- */
+.ti-panel { position: relative; padding: 30px 18px 22px; border-radius: 2px; clip-path: polygon(0 0, 32px 0, 32px 5px, 24px 5px, 24px 12px, 54px 12px, 54px 5px, 46px 5px, 46px 0, 100% 0, 100% 100%, 0 100%); }
+.ti-panel--paper { background: var(--paper); color: var(--ink); }
+.ti-panel--deep { background: var(--deep-2); color: var(--tx); }
+.ti-panel--night { background: var(--night); color: var(--tx); }
+
+/* ---------- Reveal (el CSS base es el estado FINAL; solo se esconde con JS y sin reduced-motion) ---------- */
+[data-reveal] { transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out); }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  html.ti-js [data-reveal]:not(.is-in) { opacity: 0; transform: translateY(14px); }
+  html.ti-js .ti-mesa[data-reveal]:not(.is-in) .ti-brida { transform: translateY(-6px); }
+}
+
+/* ======================= HEADER: EL PARO DE EMERGENCIA ======================= */
+.ti-header { position: fixed; inset: 0 0 auto 0; z-index: 90; }
+.ti-bar { height: var(--h); display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 8px 0 12px; background: var(--deep); transition: height 200ms var(--ease-out); }
+.ti-header.is-compact .ti-bar { height: 50px; }
+@media (min-width: 760px) { .ti-bar { padding: 0 20px 0 28px; } .ti-header.is-compact .ti-bar { height: 56px; } }
+.ti-profile { height: 6px; background: var(--paper); background-image: linear-gradient(90deg, transparent 0 calc(50% - 5px), var(--deep) calc(50% - 5px) calc(50% + 5px), transparent calc(50% + 5px)); background-size: 60px 3px; background-repeat: repeat-x; box-shadow: 0 2px 0 rgba(0, 0, 0, .4); }
+.ti-profile--top { height: 18px; background: none; box-shadow: none; }
+.ti-brand { display: flex; align-items: center; gap: 8px; min-width: 0; min-height: 44px; }
+.ti-brand-plate { flex: none; display: grid; place-items: center; height: 36px; padding: 0 5px; background: #d3dde0; border-radius: 1px; box-shadow: 0 2px 0 rgba(0, 0, 0, .4); }
+.ti-brand-plate img { height: 28px; width: auto; }
+.ti-header.is-compact .ti-brand-plate { height: 32px; } .ti-header.is-compact .ti-brand-plate img { height: 24px; }
+.ti-brand-plate--lg { width: fit-content; height: 46px; padding: 0 7px; } .ti-brand-plate--lg img { height: 36px; }
+.ti-brand-name { font-family: var(--f-disp); font-weight: 800; font-size: 16px; line-height: .95; letter-spacing: .02em; text-transform: uppercase; color: var(--tx); white-space: nowrap; }
+@media (min-width: 760px) { .ti-brand-plate { height: 44px; padding: 0 8px; } .ti-brand-plate img { height: 34px; } .ti-header.is-compact .ti-brand-plate { height: 38px; } .ti-header.is-compact .ti-brand-plate img { height: 29px; } .ti-brand-name { font-size: 21px; } .ti-brand { gap: 12px; } }
+.ti-bar-r { display: flex; align-items: center; gap: 2px; flex: none; }
+/* el hongo */
+.ti-paro { position: relative; display: flex; align-items: center; gap: 7px; height: 48px; padding: 0 4px 0 2px; color: var(--tx); }
+.ti-paro-neck { position: relative; flex: none; width: 40px; height: 40px; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #d9e0e3, var(--paper-2) 70%); box-shadow: inset 0 -3px 0 rgba(10, 34, 51, .25), 0 2px 0 rgba(0, 0, 0, .35); }
+.ti-paro-cap { position: absolute; left: 3px; top: 50%; width: 34px; height: 34px; margin-top: -19px; border-radius: 50%; background: radial-gradient(circle at 36% 30%, #ec6a6a 0, var(--paro) 46%, #8e1b1b 100%); box-shadow: 0 0 0 2.5px #8e1b1b, 0 4px 0 2.5px #6e1212; transition: transform 120ms var(--ease-out), box-shadow 120ms var(--ease-out); }
+.ti-paro-cap::after { content: ""; position: absolute; left: 50%; top: 5px; width: 2px; height: 8px; margin-left: -1px; background: rgba(255, 255, 255, .55); border-radius: 1px; }
+.ti-paro:active .ti-paro-cap, .ti-paro[aria-expanded="true"] .ti-paro-cap { transform: translateY(3px); box-shadow: 0 0 0 2.5px #8e1b1b, 0 1px 0 2.5px #6e1212; }
+.ti-paro.is-twist .ti-paro-cap { animation: ti-twist 260ms var(--ease-out); }
+@keyframes ti-twist { 0% { transform: translateY(3px); } 40% { transform: translateY(3px) rotate(30deg); } 100% { transform: translateY(0) rotate(0); } }
+.ti-paro-txt { font-family: var(--f-mono); font-stretch: 78%; font-weight: 500; font-size: 10px; line-height: 1.15; letter-spacing: .04em; text-transform: uppercase; text-align: left; }
+@media (min-width: 760px) { .ti-paro-txt { font-size: 11px; } }
+.ti-menu-btn { width: 46px; height: 46px; display: grid; place-items: center; }
+.ti-burger { display: grid; gap: 5px; width: 24px; }
+.ti-burger i { display: block; height: 2px; background: var(--paper); transition: transform 200ms var(--ease-out), opacity 150ms; }
+body.ti-menu-open .ti-burger i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+body.ti-menu-open .ti-burger i:nth-child(2) { opacity: 0; }
+body.ti-menu-open .ti-burger i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* tira del paro */
+.ti-tray { position: absolute; left: 0; right: 0; top: 100%; z-index: -1; background: var(--deep-2); border-bottom: 6px solid var(--paper); transform: translateY(-110%); visibility: hidden; transition: transform 220ms var(--ease-out), visibility 0s linear 220ms; box-shadow: 0 6px 0 rgba(0, 0, 0, .35); }
+.ti-tray.is-open { transform: none; visibility: visible; transition: transform 220ms var(--ease-out); }
+.ti-tray-in { max-width: 1240px; margin: 0 auto; padding: 16px var(--gutter) 18px; display: grid; gap: 12px; }
+.ti-tray-t { font-family: var(--f-mono); font-stretch: 82%; font-weight: 500; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--tx-mute); }
+.ti-tray-acts { display: grid; gap: 10px; }
+@media (min-width: 640px) { .ti-tray-in { grid-template-columns: auto 1fr; align-items: center; gap: 22px; } .ti-tray-acts { grid-auto-flow: column; justify-content: end; } }
+/* menú */
+.ti-menu { position: fixed; inset: 0; z-index: 80; background: var(--deep); padding: calc(var(--h) + 36px) var(--gutter) 28px; display: flex; flex-direction: column; justify-content: space-between; opacity: 0; visibility: hidden; transition: opacity 200ms, visibility 0s linear 200ms; overflow-y: auto; }
+body.ti-menu-open .ti-menu { opacity: 1; visibility: visible; transition: opacity 200ms; }
+body.ti-menu-open { overflow: hidden; }
+.ti-menu-nav { display: grid; gap: 4px; justify-items: start; }
+.ti-menu-nav a:not(.ti-btn) { font-family: var(--f-disp); font-weight: 900; text-transform: uppercase; font-size: clamp(2.6rem, 12vw, 4.6rem); line-height: 1.02; color: var(--paper); padding: 2px 0; transform: translateX(30px); opacity: 0; transition: transform 320ms var(--ease-out), opacity 320ms var(--ease-out); transition-delay: calc(var(--i, 0) * 50ms); }
+body.ti-menu-open .ti-menu-nav a:not(.ti-btn) { transform: none; opacity: 1; }
+.ti-menu-nav a:not(.ti-btn):active { color: var(--brand-light); }
+.ti-menu-wa { margin-top: 18px; }
+.ti-menu-foot { font-family: var(--f-mono); font-stretch: 82%; font-size: 12px; letter-spacing: .04em; color: var(--tx-mute); text-transform: uppercase; }
+/* WhatsApp flotante: placa cuadrada con dos tornillos */
+.ti-wa { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 70; width: 56px; height: 56px; display: grid; place-items: center; border-radius: 3px; background: var(--wa); color: var(--wa-ink); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 3px 0 rgba(11, 61, 31, .6), 0 6px 14px rgba(0, 0, 0, .35); }
+.ti-wa svg { width: 32px; height: 32px; }
+.ti-wa::before, .ti-wa::after { content: ""; position: absolute; top: 5px; width: 4px; height: 4px; border-radius: 50%; background: rgba(11, 61, 31, .55); }
+.ti-wa::before { left: 5px; } .ti-wa::after { right: 5px; }
+.ti-wa:active { transform: translateY(2px); }
+body.ti-wa-off .ti-wa { visibility: hidden; animation: none; }
+
+/* ======================= PIE ======================= */
+.ti-foot { background: var(--night); color: var(--tx); }
+.ti-foot-in { display: grid; gap: 22px; padding-block: 36px 40px; }
+.ti-foot-name { font-family: var(--f-disp); font-weight: 900; text-transform: uppercase; font-size: 30px; line-height: .95; margin-top: 14px; }
+.ti-foot-trades { margin-top: 10px; font-family: var(--f-mono); font-stretch: 80%; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--tx-mute); max-width: 36ch; }
+.ti-foot-data { display: grid; gap: 4px; font-style: normal; font-family: var(--f-mono); font-stretch: 82%; font-size: 13px; letter-spacing: .03em; color: var(--tx); }
+.ti-foot-data a { display: inline-flex; align-items: center; min-height: 44px; color: var(--paper); font-weight: 500; font-size: 15px; }
+.ti-credit { font-size: 13px; color: var(--tx-mute); max-width: 52ch; }
+@media (min-width: 900px) { .ti-foot-in { grid-template-columns: 1.3fr 1fr; align-items: start; gap: 28px 64px; } .ti-credit { grid-column: 1 / -1; } }

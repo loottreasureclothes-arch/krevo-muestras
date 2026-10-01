@@ -1,0 +1,50 @@
+/* ===== 50 · Visítanos: horario como título, placas de rótulo, mapa en marco de cola ===== */
+.bx-visit { background: var(--band); }
+.bx-visit-grid { margin-top: 28px; display: grid; gap: 0; }
+.bx-visit-info { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.bx-contact { margin: 14px 0 12px; display: flex; flex-direction: column; gap: 2px; }
+.bx-contact a { display: flex; flex-direction: column; justify-content: center; min-height: 52px; font-size: 22px; font-weight: 400; letter-spacing: 0.01em; word-break: break-word; }
+.bx-contact a span { font-weight: 500; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand-lite); }
+.bx-visit-photo { position: relative; margin: 24px calc(var(--g) * -1) 0; border-radius: var(--tail); }
+.bx-visit-photo img { width: 100%; height: auto; aspect-ratio: 16 / 11; object-fit: cover; object-position: 42% 50%; }
+.bx-visit-photo .bx-plate { position: absolute; left: var(--g); bottom: 16px; }
+.bx-map { margin: 14px calc(var(--g) * -1) 0 0; height: 200px; background: #2a2428; border-radius: var(--tail-l); overflow: hidden; margin-left: calc(var(--g) * -1); margin-right: 0; }
+.bx-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: grayscale(0.85) contrast(1.05) brightness(0.92); }
+.bx-also { margin-top: 30px; padding-top: 18px; border-top: 3px solid var(--brand); }
+.bx-also-h { font-family: var(--font-display); font-size: 26px; }
+.bx-also-list { margin-top: 10px; display: grid; gap: 4px; }
+.bx-also-list li { display: grid; grid-template-columns: 1fr auto; column-gap: 14px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.bx-also-list li b { grid-column: 1; } .bx-also-list li span { grid-column: 1; } .bx-also-list li a { grid-column: 2; grid-row: 1 / span 2; }
+.bx-also-list b { font-weight: 600; font-size: 17px; letter-spacing: 0.06em; }
+.bx-also-list span { color: var(--mute); font-size: 15px; line-height: 1.35; }
+.bx-also-list a { display: inline-flex; align-items: center; min-height: 44px; font-size: 17px; width: fit-content; }
+.bx-also-n { margin-top: 12px; font-size: 15px; color: var(--mute); }
+.bx-nets { margin-top: 22px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.bx-nets a { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-height: 56px; }
+.bx-net-i { display: grid; place-items: center; width: 44px; height: 44px; border: 1.5px solid var(--line); flex: none; transition: border-color 200ms, background-color 200ms; }
+.bx-net-i svg { width: 24px; height: 24px; }
+.bx-net-t { display: flex; flex-direction: column; line-height: 1.2; }
+.bx-net-t b { font-weight: 600; font-size: 15px; letter-spacing: 0.06em; }
+.bx-net-t small { font-size: 13px; color: var(--mute); }
+@media (hover: hover) and (pointer: fine) { .bx-nets a:hover .bx-net-i { border-color: var(--brand-lite); background: rgba(195, 27, 123, 0.2); } }
+
+@media (min-width: 820px) {
+  .bx-visit > .bx-wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-areas: "head photo" "info map" "also also" "nets nets"; column-gap: clamp(32px, 5vw, 90px); row-gap: 28px; align-items: start; }
+  .bx-visit > .bx-wrap > .bx-head { grid-area: head; align-self: center; }
+  .bx-visit-grid { display: contents; }
+  .bx-also { grid-area: also; } .bx-nets { grid-area: nets; }
+  .bx-visit-info { grid-area: info; }
+  .bx-visit-photo { grid-area: photo; margin: 0; max-width: 620px; }
+  .bx-visit-photo .bx-plate { left: 0; }
+  .bx-map { grid-area: map; margin: 0; height: 300px; max-width: 620px; }
+  .bx-contact a { font-size: 30px; }
+  .bx-also { display: grid; grid-template-columns: 1fr 2fr; column-gap: clamp(32px, 5vw, 90px); align-items: start; margin-top: 72px; }
+  .bx-also-n { grid-column: 2; margin-top: 4px; }
+  .bx-also-h { grid-row: 1 / span 2; }
+  .bx-also-list { grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 0; }
+  .bx-also-list li { border-bottom: 0; border-top: 1px solid var(--line); padding: 12px 0; }
+  .bx-nets { grid-template-columns: repeat(3, auto); justify-content: start; gap: 12px 56px; margin-top: 56px; }
+  .bx-nets a { flex-direction: row; align-items: center; gap: 14px; }
+  .bx-also-list li { grid-template-columns: 1fr; }
+  .bx-also-list li a { grid-column: 1; grid-row: auto; }
+}

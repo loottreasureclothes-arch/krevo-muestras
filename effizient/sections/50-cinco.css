@@ -1,0 +1,35 @@
+/* 50 cinco: gente real, opiniones reales y permisos. Banda marino. */
+.cinco { background: var(--navy); padding: 32px 0 34px; margin-top: 0; }
+.cinco .estela { margin-bottom: 26px; }
+.cinco-grid { display: grid; gap: 22px; margin-top: 22px; }
+.cinco-photos { display: grid; grid-template-columns: 1.5fr 1fr; gap: 12px; align-items: end; padding-bottom: 8px; }
+.cinco-a img { aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; }
+.cinco-b { margin-bottom: 0; }
+.cinco-b img { aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 18%; border-radius: 4px 34px 4px 4px; }
+.cinco-quotes { display: grid; gap: 12px; align-content: start; }
+.quote { margin: 0; padding: 16px 18px 12px; border: 1px solid rgba(120, 200, 248, 0.28); border-radius: 2px 36px 2px 2px; background: rgba(238, 243, 249, 0.05); }
+.quote blockquote { margin: 0; font: 500 16.5px/1.42 var(--f-b); color: var(--tx); }
+.quote--big blockquote { font-size: 17.5px; }
+.quote figcaption { margin-top: 12px; display: grid; gap: 4px; }
+.q-name { font: 600 14.5px/1.2 var(--f-b); color: var(--tx); }
+.q-meta { display: inline-flex; align-items: center; gap: 10px; font: 600 11px/1 var(--f-b); letter-spacing: 0.16em; text-transform: uppercase; color: var(--sky); }
+.q-meta .stars svg { width: 13px; height: 13px; }
+.cinco-quotes .lnk { margin-top: 2px; }
+.permisos { margin-top: 14px; padding-top: 20px; border-top: 1px solid rgba(238, 243, 249, 0.16); display: grid; gap: 4px; }
+.perm-l { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 14px; font-size: 18px; color: var(--tx); }
+.perm-dot { display: none; width: 6px; height: 6px; border-radius: 50%; background: var(--sky); }
+@media (min-width: 780px) {
+  .cinco { padding: 76px 0 76px; }
+  .cinco .estela { margin-bottom: 40px; }
+  .cinco-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; margin-top: 34px; align-items: center; }
+  .cinco-photos { display: block; position: relative; padding: 0 0 56px; margin-right: 26px; }
+  .cinco-a img { aspect-ratio: 4 / 5; }
+  .cinco-b { width: 42%; margin: 0; position: absolute; right: -26px; bottom: 0; z-index: 2; }
+  .cinco-b img { border: 4px solid var(--navy); aspect-ratio: 4 / 5; }
+  .cinco-quotes { gap: 16px; }
+  .quote { padding: 24px 28px 20px; border-radius: 2px 48px 2px 2px; }
+  .quote blockquote { font-size: 19px; }
+  .quote--big blockquote { font-size: 24px; line-height: 1.4; }
+  .permisos { margin-top: 22px; padding-top: 22px; }
+  .perm-l { font-size: 22px; }
+}

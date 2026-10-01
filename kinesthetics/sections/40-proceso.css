@@ -1,0 +1,40 @@
+.ks-proceso { background: var(--g); padding-bottom: 56px; padding-top: 56px; }
+.ks-proc-grid { display: grid; gap: 34px; }
+.ks-steps { margin-top: 20px; display: grid; gap: 0; }
+.ks-step { display: grid; grid-template-columns: 62px 14px minmax(0, 1fr); align-items: center; column-gap: 12px; min-height: 76px; padding: 8px 0; }
+.ks-num { font: 200 44px/1 var(--sans); font-stretch: 125%; color: var(--tq); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.ks-step .ks-rayas { display: inline-flex; gap: 4px; height: 36px; }
+.ks-step .ks-rayas i { display: block; width: 3px; height: 100%; background: var(--tq); transform: skewX(-30deg); }
+.ks-step .ks-rayas i + i { width: 1px; background: var(--tf); }
+.ks-step-t { font: 300 clamp(21px, 5.8vw, 30px)/1.18 var(--sans); font-stretch: 112%; letter-spacing: -.005em; }
+/* Cada renglon se suelta de 75 % a 112 % de ancho (eco del momento firma), una vez */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  html.ks-js .ks-step .ks-step-t { transition: font-stretch 500ms var(--ease), letter-spacing 500ms var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
+  html.ks-js .ks-step:not(.is-in) .ks-step-t { font-stretch: 75%; font-weight: 500; }
+  html.ks-js .ks-step .ks-step-t { transition-property: font-stretch, font-weight; }
+}
+.ks-proc-cab img { width: 100%; aspect-ratio: 800 / 460; object-fit: cover; }
+.ks-who { margin-top: 20px; display: grid; grid-template-columns: 34% minmax(0, 1fr); gap: 20px; align-items: end; }
+.ks-who-ph { --cx: 24px; }
+.ks-who-line { font: 400 16px/1.45 var(--sans); color: var(--min); margin-bottom: 16px; }
+.ks-who-txt .ks-btn { width: 100%; padding-inline: 14px 38px; font-size: 11.5px; }
+@media (min-width: 760px) {
+  .ks-proceso { padding-bottom: 110px; }
+  .ks-steps { margin-top: 40px; }
+  .ks-num { font-size: 64px; }
+  .ks-step { grid-template-columns: 96px 14px minmax(0, 1fr); column-gap: 18px; min-height: 104px; }
+  .ks-proc-cab img { aspect-ratio: 1280 / 490; }
+  .ks-who { grid-template-columns: 220px minmax(0, 1fr); gap: 32px; }
+  .ks-who-txt .ks-btn { width: auto; padding-inline: 24px 44px; font-size: 12.5px; }
+  .ks-who-line { font-size: 18px; max-width: 32ch; }
+}
+@media (min-width: 1000px) {
+  .ks-proc-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 72px; align-items: start; }
+  .ks-proc-main { padding-top: 14px; }
+  .ks-proc-cab { --cx: 48px; }
+}
+
+/* La frase de quien atiende va con el proceso, lejos de cualquier foto (no sabemos quién es quién en los videos) */
+.ks-proc-who { margin-top: 26px; padding-top: 18px; border-top: 1px solid rgba(86,164,156,.35); font: italic 300 21px/1.4 var(--serif); color: var(--min); max-width: 30ch; }
+.ks-who-line span { display: block; margin-top: 4px; font: 600 11px/1.3 var(--sans); font-stretch: 118%; letter-spacing: .18em; text-transform: uppercase; color: var(--mut); }
+@media (min-width: 760px) { .ks-proc-who { font-size: 25px; margin-top: 34px; } }

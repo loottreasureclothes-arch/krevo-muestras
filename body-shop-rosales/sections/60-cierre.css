@@ -1,0 +1,32 @@
+.bs-cierre{padding-bottom:calc(var(--sec) + 14px)}
+.bs-ci-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:34px}
+.bs-ci-grid>*{min-width:0}
+.bs-hoja{position:relative;margin:0 4px;padding:30px 18px 20px;background-color:var(--paper-hi);background-image:var(--grain);border-radius:2px 18px 2px 2px;box-shadow:0 2px 0 rgba(23,17,14,.22),0 12px 24px rgba(23,17,14,.18)}
+.bs-hoja-tape{position:absolute;left:50%;top:-9px;width:112px;height:18px;margin-left:-56px;background:var(--crepe-h),var(--tape);transform:rotate(-1.5deg);clip-path:polygon(0 0,100% 0,calc(100% - 5px) 33%,100% 66%,calc(100% - 5px) 100%,0 100%)}
+.bs-hoja-orden{margin:16px 0 4px}
+.bs-ci-vacio{padding:10px 0 8px;border-top:2px dashed rgba(15,28,58,.28);border-bottom:2px dashed rgba(15,28,58,.28)}
+.bs-ci-vacio p{font-size:16px;color:var(--ink-2)}
+.bs-ci-vacio[hidden]{display:none}
+.bs-ci-list .r{display:grid;grid-template-columns:78px 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:2px dashed rgba(15,28,58,.28)}
+.bs-ci-list .r:first-child{border-top:2px dashed rgba(15,28,58,.28)}
+.bs-ci-list .r[hidden],.bs-ci-list[hidden]{display:none}
+.bs-ci-list dt{font:700 12px/1.2 var(--f-b);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.bs-ci-list dd{font:600 17px/1.3 var(--f-b)}
+.bs-hoja .bs-wa{width:100%;margin-top:16px}
+.bs-faltan{margin:0 4px;padding:6px 2px}
+.bs-faltan-h{font:400 clamp(26px,7.4vw,32px)/1 var(--f-t);color:var(--ink)}
+.bs-faltan-h .red{color:var(--red)}
+.bs-faltan-p{margin-top:8px;font-size:16px;font-weight:600}
+.bs-faltan-l{margin-top:14px;border-top:2px solid rgba(15,28,58,.5)}
+.bs-faltan-l li{padding:9px 0 8px;font-size:16px;line-height:1.3;border-bottom:2px solid rgba(15,28,58,.5)}
+.bs-faltan-card{margin-top:14px;font-size:16px;font-weight:600}
+.bs-remate{margin:34px 16px 0;max-width:1266px}
+.bs-remate img{aspect-ratio:4/3;object-fit:cover}
+@media (min-width:760px){
+  .bs-ci-grid{grid-template-columns:6fr 6fr;gap:72px;align-items:start}
+  .bs-hoja{margin:0;padding:38px 32px 28px}
+  .bs-faltan{margin:0;padding:4px 0}
+  .bs-remate{margin:54px auto 0;width:calc(100% - 64px);max-width:1040px}
+  .bs-remate img{aspect-ratio:16/9;object-position:50% 45%}
+}
+@media (min-width:1100px){.bs-faltan-l{columns:2;column-gap:36px}.bs-faltan-l li{break-inside:avoid}}

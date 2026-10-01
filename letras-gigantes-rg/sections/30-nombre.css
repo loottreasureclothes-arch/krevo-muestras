@@ -1,0 +1,77 @@
+.lg-nombre { padding-bottom: 36px; }
+.lg-nombre-top { display: grid; gap: 22px; margin-bottom: 26px; }
+.lg-nombre-in { display: grid; gap: 8px; }
+.lg-short { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.lg-chip { min-height: 44px; padding: 0 14px; border-radius: 4px; border: 1.5px solid rgba(26, 21, 48, .38); font-weight: 600; font-size: 14px; letter-spacing: .02em; color: var(--tinta); background: transparent; transition: background-color 140ms, color 140ms, border-color 140ms, transform 120ms; }
+.lg-chip:active { transform: scale(.97); }
+.lg-chip[aria-pressed="true"] { background: var(--violeta); border-color: var(--violeta); color: var(--blanco); }
+.lg-chip--dark { border-color: rgba(255, 246, 244, .4); color: var(--blanco); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+@media (hover: hover) and (pointer: fine) { .lg-chip--dark:hover { border-color: var(--lav); background: rgba(169, 155, 255, .12); } .lg-chip:not(.lg-chip--dark):not([aria-pressed="true"]):hover { border-color: var(--violeta); } }
+
+/* ---------- El escenario ---------- */
+.lg-nombre-grid { padding-inline: 0; max-width: none; display: grid; gap: 26px; }
+.lg-stage-col { display: grid; gap: 14px; }
+.lg-stage { position: relative; background: var(--banda); padding: 48px var(--gutter) 0; overflow: hidden; border-block: 1px solid rgba(169, 155, 255, .14); }
+.lg-stage-plaque { position: absolute; z-index: 3; top: 14px; left: var(--gutter); max-width: calc(100% - 2 * var(--gutter)); }
+.lg-stage-plaque[hidden] { display: none; }
+.lg-tiles { --th: 120px; display: grid; justify-items: center; row-gap: 8px; }
+.lg-tline { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 4px; width: 100%; padding-bottom: calc(var(--th) * .3); }
+/* el piso oscuro de cada renglón */
+.lg-tline::after { content: ""; position: absolute; z-index: 0; left: calc(var(--gutter) * -1); right: calc(var(--gutter) * -1); bottom: 0; height: calc(var(--th) * .3); background: var(--suelo); border-top: 1px solid rgba(169, 155, 255, .28); }
+.lg-tile { position: relative; z-index: 1; flex: none; width: calc(var(--th) * var(--ar, .5)); min-width: 40px; height: var(--th); border-radius: 3px; background: var(--noche); display: block; padding: 0; box-shadow: 0 0 0 1px var(--filo); cursor: pointer; }
+.lg-tile > img { display: block; width: 100%; height: 100%; border-radius: 3px; object-fit: contain; }
+.lg-refl { position: absolute; left: 0; top: 100%; width: 100%; height: 30%; overflow: hidden; opacity: .3; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .95), rgba(0, 0, 0, 0)); mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .95), rgba(0, 0, 0, 0)); }
+.lg-refl img { position: absolute; left: 0; top: 0; width: 100%; height: 333%; transform: scaleY(-1); object-fit: cover; }
+.lg-sp { flex: none; width: calc(var(--th) * .22); }
+.lg-tile.is-new { animation: lg-drop 240ms cubic-bezier(.55, 0, .75, .5) both; }
+@keyframes lg-drop { 0% { opacity: 0; transform: translateY(-26px); } 55% { opacity: 1; transform: translateY(0); } 78% { transform: translateY(2px); animation-timing-function: var(--e); } 100% { opacity: 1; transform: none; } }
+.lg-tile.is-out { animation: lg-out 160ms var(--e) both; pointer-events: none; }
+@keyframes lg-out { to { opacity: 0; transform: translateY(-18px); } }
+.lg-tile.is-sel { box-shadow: 0 0 0 2px var(--foco), 0 0 18px rgba(255, 227, 176, .45); }
+@media (hover: hover) and (pointer: fine) { .lg-tile:hover { box-shadow: 0 0 0 2px var(--lav); } }
+.lg-stage[data-demo="true"] .lg-tile { opacity: .94; }
+/* Letra que aún no sale en sus fotos: caja punteada y letra hueca */
+.lg-tile.is-empty { background: transparent; box-shadow: none; border: 2px dashed rgba(169, 155, 255, .7); display: grid; place-items: center; }
+.lg-t-hollow { font-family: var(--f-titulo); font-size: calc(var(--th) * .42); line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--lav); text-transform: uppercase; }
+.lg-source { padding-inline: var(--gutter); display: grid; gap: 2px; }
+.lg-source-a { font-weight: 300; font-size: 16px; line-height: 1.4; }
+.lg-source-b { font-weight: 300; font-size: 14px; color: var(--mute); }
+
+/* ---------- La ficha (papel lavanda con canto) ---------- */
+.lg-ficha { margin: 0 calc(var(--gutter) + 10px) 10px var(--gutter); background: var(--papel); color: var(--tinta); padding: 20px 18px 18px; display: grid; gap: 15px; box-shadow: 10px 10px 0 var(--canto-foto); }
+.lg-ficha::after { display: none; }
+.lg-f-set { border: 0; padding: 0; min-width: 0; display: grid; gap: 8px; }
+.lg-f-leg { padding: 0; font-family: var(--f-cuerpo); font-weight: 600; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-mute); line-height: 1.2; }
+.lg-f-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.lg-f-in { width: 100%; min-height: 52px; padding: 0 14px; border-radius: 4px; border: 1.5px solid rgba(26, 21, 48, .38); background: #fff; color: var(--tinta); font-family: var(--f-cuerpo); font-size: 17px; }
+.lg-f-in:focus { outline: none; border-color: var(--violeta); box-shadow: 3px 3px 0 rgba(106, 82, 232, .35); }
+.lg-f-lista { display: grid; gap: 0; }
+.lg-f-lista li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 4px 10px; padding: 4px 0 4px; border-top: 1px solid rgba(26, 21, 48, .14); font-size: 15.5px; line-height: 1.3; }
+.lg-f-lista li:first-child { border-top: 0; }
+.lg-f-n { font-weight: 600; }
+.lg-f-p { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--violeta); font-size: 14.5px; white-space: nowrap; }
+.lg-f-p.is-ask { font-weight: 400; color: var(--tinta-mute); font-size: 13.5px; }
+.lg-f-x { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 4px; color: var(--tinta-mute); }
+.lg-f-x svg { width: 18px; height: 18px; }
+.lg-f-x:active { background: rgba(26, 21, 48, .08); }
+.lg-f-vacia { font-size: 15px; color: var(--tinta-mute); }
+.lg-f-vacia a { color: var(--tinta); text-decoration: underline; text-decoration-color: var(--violeta); text-decoration-thickness: 2px; text-underline-offset: 4px; font-weight: 600; }
+.lg-f-nota { font-size: 14px; color: var(--tinta-mute); margin-top: -6px; }
+@media (min-width: 720px) and (max-width: 999px) {
+  .lg-nombre-grid { max-width: 640px; margin-inline: auto; padding-inline: var(--gutter); }
+  .lg-stage { border-radius: 6px; border: 0; box-shadow: 10px 10px 0 var(--canto-foto), inset 0 0 0 1px var(--filo); margin-right: 10px; padding-inline: 28px; }
+  .lg-stage-plaque { left: 28px; }
+  .lg-tline::after { left: -28px; right: -28px; }
+  .lg-source { padding-inline: 0; }
+  .lg-ficha { margin: 0 10px 10px 0; padding: 26px 24px 24px; }
+  .lg-nombre-top { max-width: 640px; margin-inline: auto; }
+}
+@media (min-width: 1000px) {
+  .lg-nombre-top { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; gap: 40px; margin-bottom: 40px; }
+  .lg-nombre-grid { max-width: 1240px; margin-inline: auto; padding-inline: var(--gutter); grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 40px; align-items: start; }
+  .lg-stage { border-radius: 6px; border: 0; box-shadow: 10px 10px 0 var(--canto-foto), inset 0 0 0 1px var(--filo); margin-right: 10px; padding-inline: 28px; }
+  .lg-stage-plaque { left: 28px; }
+  .lg-tline::after { left: -28px; right: -28px; }
+  .lg-source { padding-inline: 0; }
+  .lg-ficha { margin: 0 10px 10px 0; padding: 26px 24px 24px; }
+}

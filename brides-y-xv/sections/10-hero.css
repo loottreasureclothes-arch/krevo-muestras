@@ -1,0 +1,30 @@
+/* ===== 10 · Hero: su rótulo en la vitrina ===== */
+.bx-hero { padding: calc(var(--head-h) + 16px) 0 8px; background: var(--ink); overflow: hidden; }
+.bx-hero-grid { display: grid; grid-template-columns: 1fr; grid-template-areas: "b" "d" "e" "c"; row-gap: 0; }
+.bx-hero-a { grid-area: e; z-index: 3; align-self: start; justify-self: start; margin-top: 36px; position: relative; pointer-events: none; }
+.bx-hero-b { grid-area: b; }
+.bx-hero-c { grid-area: c; color: var(--mute); margin-top: 18px; font-size: 16px; }
+.bx-hero-d { grid-area: d; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 26px; margin-top: 22px; margin-bottom: 8px; }
+.bx-hero-e { grid-area: e; margin-inline: calc(var(--g) * -1); margin-top: 18px; position: relative; z-index: 1; }
+.bx-hero-d { position: relative; z-index: 2; }
+.bx-hero-logo { width: 168px; height: auto; }
+.bx-hero-h { font-size: clamp(40px, 11.8vw, 54px); margin-top: 16px; line-height: 1.02; }
+.bx-hero-h .bx-l2 { color: var(--brand-lite); }
+.bx-hero-h .bx-l { display: block; }
+.bx-hero-e img { width: 100%; height: auto; }
+/* foto grande: entra desde blur 8 px a 0 */
+.bx-js .bx-hero-e:not(.is-in) img { filter: blur(8px); }
+.bx-hero-e img { transition: filter 900ms var(--ease-out); }
+
+@media (min-width: 820px) {
+  .bx-hero { padding: calc(var(--head-h) + 30px) 0 var(--sec-b); min-height: min(100svh, 860px); display: flex; align-items: center; }
+  .bx-hero-grid { width: 100%; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); grid-template-areas: "a e" "b e" "c e" "d e"; column-gap: clamp(28px, 4vw, 64px); align-content: center; align-items: start; }
+  .bx-hero-a { grid-area: a; margin-top: 0; align-self: start; }
+  .bx-hero-logo { width: 240px; }
+  .bx-hero-h { font-size: clamp(40px, 5.3vw, 80px); margin-top: 22px; }
+  .bx-hero-c { font-size: 19px; margin-top: 22px; max-width: 40ch; }
+  .bx-hero-d { margin-top: 28px; margin-bottom: 0; }
+  .bx-hero-e { margin-inline: 0; margin-top: 0; max-width: 720px; justify-self: end; align-self: center; }
+}
+
+@media (min-width: 820px) { .bx-hero .bx-eyebrow::after { display: none; } .bx-hero .bx-eyebrow { margin-top: 18px; } }

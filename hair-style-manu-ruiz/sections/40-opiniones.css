@@ -1,13 +1,19 @@
-/* Momento firma: EL BALAYAGE. Unica banda espresso. 90 hebras SVG que se aclaran de punta a raiz con el scroll. */
-.mr-ops{background:var(--esp);color:var(--crema);padding-block:var(--pad) 0;overflow:hidden;isolation:isolate}
-.mr-bal{position:absolute;inset:0;width:100%;height:100%;z-index:-1;display:block}
-.mr-ops::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(42,27,20,.55) 0%,rgba(42,27,20,0) 34%);pointer-events:none}
-.mr-eyebrow--lt{color:rgba(244,237,227,.78)}
-.mr-big{font:400 calc(var(--h1) * .92)/.86 var(--serif);letter-spacing:-.02em;margin:10px 0 6px;color:var(--crema)}
-.mr-big-sub{font:italic 400 clamp(24px,6.6vw,34px)/1.1 var(--serif);color:#E2BC82;max-width:16ch}
-.mr-ops-ver{margin-top:14px}
-.mr-ops-head{padding-bottom:6px;text-shadow:0 0 14px rgba(42,27,20,.95),0 0 4px rgba(42,27,20,.9)}
-.mr-cards{display:flex;gap:12px;margin:22px calc(-1 * var(--gut)) 0;padding:0 var(--gut) 78px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+/* Momento firma: EL BALAYAGE. Unica banda espresso. Campo propio de ~155 hebras en 14 mechones que se aclaran
+   de punta a raiz con el scroll; el 5.0 enorme encima (sobre la raiz oscura); las opiniones van DEBAJO del campo. */
+.mr-ops{background:var(--esp);color:var(--crema);padding:0 0 64px;overflow:hidden;isolation:isolate}
+.mr-bal-field{position:relative;height:max(560px,72svh);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start}
+.mr-bal{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.mr-bal path{vector-effect:non-scaling-stroke}
+.mr-bal--2,.mr-bal--3{display:none}
+.mr-bal-field::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(42,27,20,.82) 0%,rgba(42,27,20,.45) 22%,rgba(42,27,20,0) 44%,rgba(42,27,20,0) 90%,rgba(42,27,20,.35) 100%)}
+.mr-ops-head{position:relative;z-index:2;padding-top:40px;text-shadow:0 0 18px rgba(42,27,20,.9),0 0 4px rgba(42,27,20,.8)}
+.mr-eyebrow--lt{color:rgba(244,237,227,.82)}
+.mr-big{font:400 clamp(150px,42vw,240px)/.8 var(--serif);letter-spacing:-.035em;margin:14px 0 4px -.04em;color:var(--crema)}
+.mr-big-sub{font:italic 400 clamp(24px,6.6vw,34px)/1.1 var(--serif);color:#E8C48A;max-width:15ch}
+.mr-ops-grid{position:relative;z-index:2}
+.mr-ops-ver{margin-top:6px}
+.mr-cards{display:flex;gap:12px;margin:6px calc(-1 * var(--gut)) 0;padding:0 var(--gut) 18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .mr-cards::-webkit-scrollbar{display:none}
 .mr-card{flex:0 0 min(84vw,330px);scroll-snap-align:start}
 .mr-card{position:relative;background:var(--crema);color:var(--esp);padding:26px 18px 18px;box-shadow:0 14px 26px -16px rgba(0,0,0,.55)}
@@ -20,13 +26,22 @@
 .mr-card figcaption b{font:400 24px/1 var(--serif);letter-spacing:-.005em}
 .mr-card figcaption span{font:600 11px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
 @media (min-width:760px){
-  .mr-ops{padding-block:72px}
-  .mr-ops-grid{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,560px);column-gap:clamp(28px,7vw,120px);align-items:center}
-  .mr-ops-head{align-self:start;padding-top:8px}
-  .mr-cards{margin:0;gap:18px;flex-direction:column;overflow:visible;padding:0}
-  .mr-card{flex:none}
+  .mr-ops{padding-bottom:80px}
+  .mr-bal-field{height:clamp(560px,78vh,760px)}
+  .mr-bal{width:50%}
+  .mr-bal--2{display:block;left:50%;transform:scaleX(-1)}
+}
+@media (min-width:1180px){
+  .mr-bal{width:33.4%}
+  .mr-bal--2{left:33.3%}
+  .mr-bal--3{display:block;left:66.6%}
+}
+@media (min-width:760px){
+  .mr-ops-head{padding-top:64px}
+  .mr-big{font-size:clamp(200px,19vw,280px)}
+  .mr-big-sub{max-width:20ch}
+  .mr-cards{margin:8px 0 0;padding:0;overflow:visible;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}
   .mr-card{padding:30px 26px 22px}
-  .mr-card:nth-child(2){margin-left:48px}
-  .mr-card:nth-child(3){margin-right:48px}
-  .mr-big-sub{max-width:18ch}
+  .mr-card:nth-child(2){margin-top:34px}
+  .mr-ops-ver{margin-top:22px}
 }

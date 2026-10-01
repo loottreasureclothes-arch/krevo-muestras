@@ -1,0 +1,60 @@
+.ks-frasesec { background: var(--min); color: var(--g); padding: 72px 0 56px; }
+.ks-frase-grid { display: grid; gap: 26px; }
+.ks-frase-sub { margin-top: 14px; font: 500 16px/1.4 var(--sans); color: #3f5651; }
+/* Progreso: cuatro rayitas a 60 grados que se vuelven banda al llenar cada hueco */
+.ks-rail { display: flex; align-items: center; gap: 16px; }
+.ks-rails { display: inline-flex; gap: 9px; height: 30px; padding-left: 10px; }
+.ks-rails i { display: block; width: 6px; height: 100%; background: transparent; border: 1px solid rgba(31, 122, 112, .55); transform: skewX(-30deg); transition: background 160ms var(--ease), border-color 160ms var(--ease); }
+.ks-rails i.is-on { background: var(--tq); border-color: var(--tqd); }
+.ks-rails i.is-off { display: none; }
+.ks-rail-txt { font: 600 12px/1.3 var(--sans); font-stretch: 118%; letter-spacing: .16em; text-transform: uppercase; color: var(--tqd); font-variant-numeric: tabular-nums; }
+
+/* La frase: voz del paciente, Spectral italica, cuatro huecos subrayados */
+.ks-sentence { font: italic 300 clamp(26px, 7vw, 46px)/1.62 var(--serif); letter-spacing: -.005em; color: var(--g); }
+.ks-hole { display: inline; font: 600 .78em/1 var(--sans); font-stretch: 100%; font-style: normal; letter-spacing: 0; color: var(--tqd); cursor: pointer; padding: .06em .08em .16em; margin: 0 -.02em;
+  background: linear-gradient(to bottom, transparent calc(100% - 7px), var(--tqd) calc(100% - 7px), var(--tqd) calc(100% - 4px), transparent calc(100% - 4px), transparent calc(100% - 1px), var(--tqd) calc(100% - 1px));
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; transition: background-color 160ms var(--ease); }
+.ks-hole:empty::before { content: attr(data-ph); }
+.ks-hole.is-empty { font: italic 300 1em/1 var(--serif); color: #4a6963; }
+.ks-hole.is-open { background-color: rgba(52, 180, 168, .22); }
+.ks-hole.is-swap { animation: ks-swap 220ms var(--ease); }
+@keyframes ks-swap { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.ks-name { font: 600 .78em/1.2 var(--sans); font-stretch: 100%; font-style: normal; color: var(--tqd); background: linear-gradient(to bottom, transparent calc(100% - 7px), var(--tqd) calc(100% - 7px), var(--tqd) calc(100% - 4px), transparent calc(100% - 4px), transparent calc(100% - 1px), var(--tqd) calc(100% - 1px)); border: 0; border-radius: 0; padding: 0 .1em .2em; width: 7.5ch; min-width: 7ch; max-width: 100%; outline-offset: 4px; vertical-align: baseline; }
+.ks-name::placeholder { font: italic 300 1.05em var(--serif); color: #4a6963; opacity: 1; }
+
+/* Chips: 44 px, esquina superior derecha cortada a 60 grados (10 px) */
+.ks-chipbox { margin-top: 26px; animation: ks-fade 160ms var(--ease); }
+.ks-chipbox[hidden] { display: none; }
+@keyframes ks-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.ks-chipbox .ks-tag { margin-bottom: 12px; }
+.ks-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.ks-chip { position: relative; display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 2px; min-height: 44px; padding: 8px 16px 8px 14px; border: 0; background: rgba(31, 122, 112, .62); cursor: pointer; text-align: left; color: var(--g);
+  font: 500 15px/1.25 var(--sans); font-stretch: 100%; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 17.32px, 100% 100%, 0 100%); transition: transform 160ms var(--ease); }
+.ks-chip::before { content: ""; position: absolute; inset: 1px; background: var(--min); clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 15.6px, 100% 100%, 0 100%); transition: background 160ms var(--ease); }
+.ks-chip > * { position: relative; }
+.ks-chip b { font: 600 12px/1.2 var(--sans); font-stretch: 118%; letter-spacing: .14em; text-transform: uppercase; color: var(--tqd); }
+.ks-chip small { font: 400 13px/1.25 var(--sans); color: #3f5651; }
+.ks-chip:active { transform: scale(.97); }
+.ks-chip[aria-pressed="true"]::before { background: var(--tq); }
+.ks-chip[aria-pressed="true"], .ks-chip[aria-pressed="true"] b, .ks-chip[aria-pressed="true"] small { color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .ks-chip:hover::before { background: #d4e4e0; } .ks-chip[aria-pressed="true"]:hover::before { background: var(--tq); } }
+
+.ks-send { margin-top: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.ks-note { font: 400 14px/1.45 var(--sans); color: #3f5651; }
+.ks-send .ks-btn--wa { box-shadow: 0 2px 0 rgba(11, 61, 31, .55), 0 0 0 1px rgba(11, 61, 31, .35); }
+.ks-nojs-list { margin-top: 16px; display: grid; gap: 8px; font-size: 16px; }
+.ks-nojs-list b { display: block; font: 600 12px/1.4 var(--sans); font-stretch: 118%; letter-spacing: .14em; text-transform: uppercase; color: var(--tqd); }
+html.ks-js .ks-nojs { display: none; }
+.ks-frase-ph { display: none; }
+
+@media (min-width: 900px) {
+  .ks-frasesec { padding: 110px 0 120px; }
+  .ks-frase-grid { grid-template-columns: 150px minmax(0, 1fr) 260px; column-gap: 40px; row-gap: 40px; align-items: start; }
+  .ks-frase-head { grid-column: 1 / -1; }
+  .ks-rail { flex-direction: column; align-items: flex-start; gap: 14px; padding-top: 10px; }
+  .ks-rails { height: 120px; gap: 12px; }
+  .ks-rails i { width: 8px; }
+  .ks-frase-main { grid-column: 2; }
+  .ks-frase-ph { display: block; grid-column: 3; grid-row: 2; width: 100%; max-width: 260px; --cx: 30px; align-self: start; margin-top: 10px; }
+  .ks-chip { font-size: 16px; }
+}

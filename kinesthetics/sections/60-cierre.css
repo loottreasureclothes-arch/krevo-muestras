@@ -1,0 +1,36 @@
+.ks-cierre { background: var(--g); }
+.ks-pend { padding-top: 70px; padding-bottom: 52px; }
+.ks-pend-in { display: grid; gap: 20px; }
+.ks-pend-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; row-gap: 0; }
+.ks-pend-list li { grid-column: 1 / -1; }
+.ks-pend-list li.short { grid-column: auto; }
+.ks-pend-list li { position: relative; padding: 5px 0 5px 28px; font: 400 16px/1.45 var(--sans); color: var(--g); }
+.ks-pend-list li::before { content: ""; position: absolute; left: 0; top: 11px; width: 14px; height: 12px; background: linear-gradient(120deg, transparent 0 2px, var(--tqd) 2px 5px, transparent 5px 8px, var(--tqd) 8px 9px, transparent 9px); }
+.ks-pend-foot { display: grid; gap: 8px; }
+.ks-pend-foot p { font: 500 16px/1.45 var(--sans); color: #3f5651; }
+.ks-pend-foot .ks-pend-ask { font-weight: 600; color: var(--g); }
+.ks-remate { background: var(--g); padding-top: 60px; padding-bottom: 60px; }
+.ks-remate-in { display: grid; gap: 24px; }
+.ks-remate-ph { width: 66%; --cx: 30px; }
+.ks-remate-txt { display: grid; gap: 24px; justify-items: start; }
+.ks-r-frase { margin-top: 18px; font: italic 300 clamp(22px, 6vw, 30px)/1.5 var(--serif); color: var(--min); max-width: 36ch; }
+.ks-remate-txt [hidden] { display: none; }
+.ks-remate-txt .ks-link { margin-top: 8px; }
+@media (min-width: 760px) {
+  .ks-pend { padding-top: 110px; padding-bottom: 96px; }
+  .ks-pend-in { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); column-gap: 72px; row-gap: 28px; }
+  .ks-pend-in .ks-h { grid-column: 1; }
+  .ks-pend-list { grid-column: 2; grid-row: 1 / 3; }
+  .ks-pend-foot { grid-column: 1; align-self: start; }
+  .ks-pend-list li { font-size: 17px; }
+  .ks-remate { padding-top: 110px; padding-bottom: 120px; }
+  .ks-remate-in { grid-template-columns: 420px minmax(0, 1fr); column-gap: 80px; align-items: center; }
+  .ks-remate-ph { width: 100%; --cx: 44px; }
+  .ks-r-frase { font-size: 34px; }
+}
+
+/* Tableta: el texto del remate necesita aire (sin esto "Empieza / por / el área" cae en 5 renglones) */
+@media (min-width: 760px) and (max-width: 999px) {
+  .ks-remate-in { grid-template-columns: 290px minmax(0, 1fr); column-gap: 44px; }
+}
+.ks-remate .ks-btn--wa { white-space: nowrap; }

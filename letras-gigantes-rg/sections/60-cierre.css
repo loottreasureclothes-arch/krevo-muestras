@@ -1,0 +1,41 @@
+/* Todo listo para completar: banda papel */
+.lg-listo { padding-block: calc(var(--sec-y) - 12px); }
+.lg-listo-grid { display: grid; gap: 16px; }
+.lg-listo-head { display: grid; gap: 10px; align-content: start; }
+.lg-listo .lg-ln--2 { color: var(--violeta); }
+.lg-listo-p { font-weight: 600; font-size: 17px; }
+.lg-listo-p--b { font-weight: 300; font-size: 16px; color: var(--tinta-mute); margin-top: -4px; }
+.lg-listo-list { display: grid; }
+.lg-listo-list li { padding: 9px 0 8px 22px; font-size: 15.5px; line-height: 1.3; }
+.lg-listo-list li::before { left: 0; }
+/* Remate: OH BABY a sangre con la frase en neón */
+.lg-remate { position: relative; background: var(--noche); isolation: isolate; }
+.lg-remate-photo { position: absolute; inset: 0; margin: 0; border-radius: 0; box-shadow: none; z-index: -1; }
+.lg-remate-photo img { position: absolute; inset: 0; border-radius: 0; object-position: 50% 52%; }
+.lg-remate-photo::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(20, 16, 42, .68) 0%, rgba(20, 16, 42, .18) 26%, rgba(20, 16, 42, .12) 44%, rgba(20, 16, 42, .86) 72%, rgba(20, 16, 42, .97) 100%); }
+.lg-remate-photo::after { display: none; }
+.lg-remate-in { min-height: 640px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: 40px var(--gutter) 36px; }
+.lg-remate-neon { font-size: clamp(44px, 13vw, 60px); max-width: 9em; }
+.lg-remate-box { display: grid; gap: 14px; justify-items: start; }
+.lg-remate-tiles { display: flex; gap: 3px; min-height: 0; flex-wrap: wrap; }
+.lg-remate-tiles:empty { display: none; }
+.lg-remate-tiles img { width: auto; height: 52px; border-radius: 2px; box-shadow: 0 0 0 1px var(--filo); object-fit: cover; }
+.lg-remate-tiles .lg-sp { width: 12px; }
+.lg-remate-sum { display: grid; gap: 4px; font-weight: 300; font-size: 16.5px; line-height: 1.4; max-width: 40ch; }
+.lg-remate-sum span { display: block; }
+.lg-remate-sum b { font-weight: 600; }
+.lg-remate-wa { width: 100%; }
+@media (min-width: 720px) {
+  .lg-listo-grid { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: 56px; align-items: start; }
+  .lg-listo .lg-h { font-size: clamp(30px, 3.1vw, 48px); }
+  .lg-listo-list li { font-size: 17px; }
+  .lg-remate { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); max-width: 1360px; margin-inline: auto; column-gap: clamp(24px, 4vw, 64px); padding: 80px var(--gutter) 90px; align-items: center; background: transparent; isolation: auto; }
+  .lg-remate-photo { position: relative; inset: auto; z-index: 0; grid-column: 2; grid-row: 1; width: 100%; max-width: 560px; justify-self: end; aspect-ratio: 3 / 4; border-radius: 6px; box-shadow: 10px 10px 0 var(--canto-foto); margin-right: 10px; }
+  .lg-remate-photo img { border-radius: 6px; }
+  .lg-remate-photo::before { display: none; }
+  .lg-remate-photo::after { display: block; }
+  .lg-remate-in { grid-column: 1; grid-row: 1; min-height: 0; padding: 0; gap: 40px; justify-content: center; }
+  .lg-remate-neon { font-size: clamp(60px, 5.6vw, 92px); max-width: 8em; }
+  .lg-remate-tiles img { width: auto; height: 64px; }
+  .lg-remate-wa { width: auto; }
+}

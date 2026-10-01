@@ -11,7 +11,7 @@
     if (t) {
       l1.textContent = "Tu tono"; l2.textContent = "ya está elegido.";
       nm.textContent = t.name; row.hidden = false; lnk.hidden = true;
-      mini.style.setProperty("--r", t.r); mini.style.setProperty("--m", t.m); mini.style.setProperty("--t", t.t);
+      mini.style.setProperty("--r", t.r); mini.style.setProperty("--m", t.m); mini.style.setProperty("--t", t.t); mini.style.setProperty("--l", t.l);
     } else {
       l1.textContent = "Falta elegir"; l2.textContent = "tu tono.";
       row.hidden = true; lnk.hidden = false;

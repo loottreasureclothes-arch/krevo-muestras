@@ -31,8 +31,8 @@
   function refresh() {
     var t = MR.tone();
     readT.textContent = t ? t.name : "Sin elegir, asesórame";
-    if (t) { mini2.style.setProperty("--r", t.r); mini2.style.setProperty("--m", t.m); mini2.style.setProperty("--t", t.t); }
-    else { mini2.style.setProperty("--r", "#4A2C1F"); mini2.style.setProperty("--m", "#8E6A48"); mini2.style.setProperty("--t", "#D9B27A"); }
+    if (t) { mini2.style.setProperty("--r", t.r); mini2.style.setProperty("--m", t.m); mini2.style.setProperty("--t", t.t); mini2.style.setProperty("--l", t.l); }
+    else { mini2.style.setProperty("--r", "#4A2C1F"); mini2.style.setProperty("--m", "#8E6A48"); mini2.style.setProperty("--t", "#D9B27A"); mini2.style.setProperty("--l", "#D9B27A"); }
     tiles.forEach(function (b) { var i = parseInt(b.getAttribute("data-i"), 10); b.setAttribute("aria-pressed", t && MR.sel === i ? "true" : "false"); });
     none.setAttribute("aria-pressed", t ? "false" : "true");
     var m = MR.msg(ficha());
