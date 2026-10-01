@@ -1,5 +1,5 @@
 .bi-ops .bi-title{margin-bottom:10px}
-.bi-score{display:flex;flex-direction:column;align-items:center;text-align:center;padding:10px 0 34px}
+.bi-score{display:flex;flex-direction:column;align-items:center;text-align:center;padding:10px 0 22px}
 .bi-big{transition:none!important;font:700 clamp(130px,40vw,230px)/.9 var(--f-title);color:var(--sun);letter-spacing:-.02em;text-shadow:0 5px 0 rgba(8,16,60,.4)}
 .bi-js .bi-big[data-reveal].is-in{opacity:1;animation:bi-slam .75s both}
 @keyframes bi-slam{0%{opacity:0;transform:translateY(-90%)}48%{opacity:1;transform:translateY(0)}62%{transform:translateY(-9%)}78%{transform:translateY(0)}88%{transform:translateY(-2.5%)}100%{transform:none}}
@@ -10,18 +10,30 @@
 .bi-star .fill{position:absolute;left:0;top:0;height:100%;overflow:hidden;color:var(--sun);display:block}
 .bi-star .fill svg{width:clamp(44px,12vw,62px);height:100%;max-width:none}
 .bi-gmaps{margin-top:14px;font-size:15px;font-weight:700;color:rgba(251,243,223,.85);text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
-.bi-revs{display:grid;gap:26px;padding-top:6px}
-.bi-rev{padding:22px 18px 18px 46px;--rot:0deg;transform:rotate(var(--rot));background-image:repeating-linear-gradient(to bottom,transparent 0 29px,var(--line) 29px 30px)}
-.bi-rev-stars{display:flex;gap:3px;color:var(--sun-deep)}
+/* Celular: las 3 hojas en una fila deslizable (asoma 24 px de la siguiente). Compu: en fila bajo el 4.8. */
+.bi-revs{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--gut));padding:16px var(--gut) 26px;scroll-padding-inline:var(--gut);scrollbar-width:none;align-items:flex-start}
+.bi-revs::-webkit-scrollbar{display:none}
+.bi-revs:focus-visible{outline-offset:-3px}
+.bi-rev{flex:0 0 calc(100% - 24px);scroll-snap-align:start;padding:28px 18px 28px 46px;--rot:0deg;transform:rotate(var(--rot))}
+.bi-rev-stars{display:flex;align-items:center;height:28px;gap:3px;color:var(--sun-deep)}
 .bi-rev-stars svg{width:20px;height:20px}
-.bi-rev blockquote{margin:10px 0 12px;font-size:17px;line-height:1.55;color:var(--ink)}
-.bi-rev-name{font:700 18px/1.2 var(--f-title);color:var(--blue)}
-.bi-all{margin-top:24px;text-align:center}
+.bi-rev blockquote{margin:0;font-size:17px;color:var(--ink)}
+.bi-rev-name{font:700 18px/28px var(--f-title);color:var(--blue)}
+.bi-hl{color:inherit;padding:0 .12em;margin:0 -.06em;-webkit-box-decoration-break:clone;box-decoration-break:clone;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12C40 7 80 14 120 9S180 8 198 11' fill='none' stroke='%23ffc63a' stroke-width='13' stroke-linecap='round' stroke-opacity='.78'/%3E%3C/svg%3E") 0 62%/100% 70% no-repeat}
+.bi-revdots{display:flex;justify-content:center;gap:10px;height:28px;align-items:center}
+.bi-revdots i{width:12px;height:12px;background:rgba(251,243,223,.3);clip-path:polygon(50% 0,62% 36%,100% 38%,70% 60%,80% 100%,50% 76%,20% 100%,30% 60%,0 38%,38% 36%);transition:background .2s,transform .2s}
+.bi-revdots i.is-on{background:var(--sun);transform:scale(1.35)}
+.bi-all{margin-top:18px;text-align:center}
+@media (min-width:600px) and (max-width:859px){.bi-rev{flex-basis:calc(62% - 8px)}}
 @media (min-width:860px){
-  .bi-ops .bi-wrap{display:grid;grid-template-columns:5fr 7fr;gap:0 60px;align-items:start}
-  .bi-ops .bi-title{grid-column:1;margin-bottom:0}
-  .bi-score{grid-column:1;grid-row:2;align-items:flex-start;text-align:left}
-  .bi-revs{grid-column:2;grid-row:1/4}
-  .bi-all{grid-column:2;text-align:left;margin-top:28px}
+  .bi-ops .bi-wrap{display:block}
+  .bi-ops .bi-title{text-align:center;margin-bottom:0}
+  .bi-score{align-items:center;text-align:center;padding:14px 0 30px}
+  .bi-big{font-size:clamp(170px,16vw,250px)}
+  .bi-revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;overflow:visible;margin:0;padding:10px 0 0}
+  .bi-rev:nth-child(1){--rot:-1.2deg!important}.bi-rev:nth-child(2){--rot:.8deg!important;margin-top:22px}.bi-rev:nth-child(3){--rot:-.6deg!important}
+  .bi-revdots{display:none}
+  .bi-all{margin-top:34px}
 }
 @media (prefers-reduced-motion:reduce){.bi-js .bi-big[data-reveal].is-in{animation:none}}

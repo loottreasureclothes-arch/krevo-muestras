@@ -207,6 +207,16 @@
     });
   }
 
-  function init() { initWa(); initHeader(); initMenu(); initReveal(); initWaHide(); initAnchors(); }
+  /* Sin salto de fuente: los titulos no caen hasta que Fredoka este lista (maximo 600 ms de espera). */
+  function revealWhenFonts() {
+    var done = false;
+    function go() { if (!done) { done = true; initReveal(); } }
+    if (document.fonts && document.fonts.ready && !reduce) {
+      if (document.fonts.check && document.fonts.check('700 1em "Fredoka"') && document.fonts.status === "loaded") { go(); return; }
+      try { document.fonts.load('700 1em "Fredoka"').then(function (f) { if (f && f.length) go(); }, go); } catch (e) {}
+      setTimeout(go, 600);
+    } else go();
+  }
+  function init() { initWa(); initHeader(); initMenu(); revealWhenFonts(); initWaHide(); initAnchors(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();

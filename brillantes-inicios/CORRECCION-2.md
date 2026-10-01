@@ -1,0 +1,35 @@
+# Corrección 2 · Brillantes Inicios (30 sep 2026)
+
+Aplica `REVISION-2.md` en orden, con las decisiones del orquestador. Flujo: HTML en `_build/gen.py` (+ `_build/template.src.html`, `_build/syms.html`), fotos nuevas en `_build/fotos2.py`, luego `python3 build.py`. `index.html` no se tocó a mano.
+Rehacer todo: `python3 _build/soles.py && python3 _build/fotos2.py && python3 _build/gen.py && python3 build.py`.
+
+## Lo que más sube: fotos reales nuevas (de su ficha de Google Maps)
+Bajé 6 archivos de la galería pública de la ficha (`research/fotos/maps-01..06.jpg`, versión =w1600); 2 son la misma, así que son **5 fotos nuevas**: recepción, fachada, salón con mesitas, pasillo con personal y barda. Ninguna trae caras de niños. Las pestañas "Interior", "Videos" y "Del propietario" no abrieron completas (la galería necesita que el navegador pinte la página y el pane estaba oculto): solo salieron las que la ficha carga de entrada. Detalle de recortes en IMAGENES.md y research/FOTOS.md.
+Se usaron 4: recepción y pasillo (hero), salón (sala) y fachada (Dónde). La barda no aporta.
+
+## Aplicados
+1. **Hero en marco, nada a sangre.** Foto pegada grande "La recepción" (mostrador y logo dorado, 1000 px reales) y, encimada, una foto chica del personal de uniforme lila saludando en el pasillo (x4 con Real-ESRGAN). Fondo azul liso con el garabato. En compu la foto va a la derecha del título, completa. Elegí la recepción en vez de ig-03 porque es nítida y real, y en ig-03 los soles enormes mandaban; la calidez la pone la foto del personal saludando. **Sala:** ig-07 completa en su marco (máx. 780 px en compu para que no se vea suave), los 7 soles quedan dentro. Pie literal de su post: "Un día normal con peques".
+2. **Fotos en la mitad de abajo.** Sala: + "Mesitas y sillitas de colores" (Maps) junto a la fruta. Dónde: la fachada arriba del mapa. Cierre: tira chica "De su Instagram: lo que les comparten a los papás" con 3 posts pegados en abanico (ig-01, ig-04, ig-02, -4°/2°/-1°), cada uno con "@brillantes_inicios" y link a su IG.
+3. **Cierre con la frase de una mamá:** "“Ya sonríe / cuando llegamos.”" a dos tonos, y debajo 5 estrellas y "Martha Yadira Barrios Marin · mamá, opinión en Google" (literal de research/resenas.md). Pie: el lema ya no repite el hero; dice "Guardería IMSS / Ciudad Industrial" (parte de su nombre en Maps). No puse la dirección como sugería la revisión porque justo abajo ya va la dirección completa y se repetía.
+4. **Libreta de verdad.** Un solo ritmo de 28 px: renglón a 22 px de cada bloque (justo bajo la base de Nunito y Fredoka), espiral cada 56 px, padding 28. En las hojas `p`, `li`, `blockquote`, `h3`, `small` y `.bi-hint` van a 28 px; los documentos ocupan 56 u 84 px; campos 28+56; botones 56; el contador usa 56 px por línea y baja 11 px para asentarse. Comprobado en las capturas: cada renglón de texto queda sobre su raya (cartilla, reseñas y "Todo listo").
+5. **Premio sin confeti.** Al palomear aparece una estrellita dorada de maestra en el margen de la espiral (escala 0.6→1 en 250 ms). Al llegar a 7 de 7 cae un sello circular azul con el sol y "¡Listo!" (filo de tinta con feTurbulence, -8°, 400 ms) en la esquina de la hoja y otro junto al botón verde del cierre (ahí con disco crema para que se lea sobre el azul). Reversible: al desmarcar uno se van los dos.
+6. **Reseñas.** Marcatexto de crayón amarillo en "salen contentos", "se adaptó en aproximadamente un mes" y "las maestras son un amor" (la de Martha cambia porque su frase ya es el cierre). Celular: fila deslizable con scroll-snap, asoma 24 px de la siguiente y 3 estrellitas que marcan cuál se ve. Compu: 4.8 y estrellas centrados y grandes, las 3 hojas en fila (-1.2°, 0.8°, -0.6°).
+7. **Sin salto de fuente ni viudas.** `site.js` no deja caer los títulos hasta que Fredoka está lista (máx. 600 ms). `h1,h2,h3{text-wrap:balance}` y `p,li,blockquote,figcaption,dd{text-wrap:pretty}`.
+8. **Títulos propios:** "7 papeles / y un clic en STIGI." y "Cunitas, sillas altas / y su maestra.".
+9. **Botón principal con contraste:** en fondos azules (`.bi-dark` y `.bi-deep`) el azul pasa a crema con texto azul ("VER REQUISITOS", "CÓMO LLEGAR"); dentro de las hojas sigue azul. Se quitó el hueco entre el hero y la cartilla (padding 12 + 30 en celular).
+10. **Mapa pensado.** Busca por nombre con las coordenadas de la ficha (21.8315435, -102.2956786, z=16): el pin sale con "Brillantes Inicios - Guardería IMSS" (visto en las capturas de 390 y 1440). El iframe se contrarrota para que los letreros no salgan chuecos. "Cómo llegar" va al nombre del negocio + dirección.
+11. **Compu: Dónde en espejo.** Fachada y mapa a la izquierda (60 %), título y ficha a la derecha. Con las reseñas en fila y el cierre "frase + tira de posts" quedan composiciones distintas.
+12. **La pestaña del sol ya no asoma:** al compactarse sube 100 % y se desvanece.
+
+Extras con datos comprobados en la ficha de Maps: "45 opiniones" y "Ver las 45" ahora abren la ficha exacta (`maps.google.com/?cid=11383600013015527303`). La ficha dice "sábado, Cerrado" y "domingo, Cerrado": PENDIENTES 7 y 8 quedan resueltos.
+
+## No aplicados (y por qué)
+- **ig-06 chiquita en el margen de la cartilla** (parte del cambio 2): el orquestador decidió que los posts del IG van solo en la tira del cierre, máximo 3.
+- **Hero con ig-03** (cambio 1): se cambió por la recepción real de Maps + el personal saludando, como pidió el orquestador (usar la mejor foto real). ig-03 ya no sale en la página.
+- No cambié reseñas, requisitos IMSS, dirección ni teléfonos. La og:image se queda como estaba (sigue siendo foto real del sitio).
+
+## Verificación
+- krevo-shot `m`: alto **7,768 px**, alertas **[]**. krevo-shot `d`: alto **6,969 px**, alertas **[]**. Consola limpia y sin 404.
+- 820 px (script propio): scrollWidth 820, sin desborde (solo el sello oculto, recortado por `overflow-x:clip`), alto 8,551 px (a 820 las reseñas muestran 1.6 hojas).
+- Cartilla y WhatsApp (script propio a 390): con 3 marcados dice "Te faltan 4 documentos" y el link es `https://wa.me/524491927631?text=Hola Brillantes Inicios, quiero inscribir a mi bebé. Ya tengo: 3 de 7 documentos. ¿Cuándo puedo visitarlos?`. Con 7 + edad + nombre: `...Edad: 8 meses. Ya tengo: 7 de 7 documentos. ¿Cuándo puedo visitarlos? Mi nombre: Ana`, sale el sello en la hoja y en el cierre y las 7 estrellitas. Al desmarcar uno: 6 de 7 y los sellos se quitan.
+- Hojas de contacto: `/private/tmp/claude-501/-Users-emmanuelcruzsalas/b9faa90f-ee10-4c60-bbac-8709a2bea114/scratchpad/r2fix-brillantes-inicios/hoja-m.png`, `/private/tmp/claude-501/-Users-emmanuelcruzsalas/b9faa90f-ee10-4c60-bbac-8709a2bea114/scratchpad/r2fix-brillantes-inicios/hoja-d.png`, `/private/tmp/claude-501/-Users-emmanuelcruzsalas/b9faa90f-ee10-4c60-bbac-8709a2bea114/scratchpad/r2fix-brillantes-inicios/w820/hoja-820.png`, acciones `/private/tmp/claude-501/-Users-emmanuelcruzsalas/b9faa90f-ee10-4c60-bbac-8709a2bea114/scratchpad/r2fix-brillantes-inicios/act/hoja-acciones.png`. Fotos de Maps: `/private/tmp/claude-501/-Users-emmanuelcruzsalas/b9faa90f-ee10-4c60-bbac-8709a2bea114/scratchpad/r2fix-brillantes-inicios/maps-sheet1.jpg`.

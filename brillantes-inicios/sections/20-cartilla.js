@@ -21,6 +21,8 @@
             : "Te faltan " + left + " documentos";
       if (txt) txt.textContent = t;
       if (count) { count.style.setProperty("--p", (n / C.TOTAL * 100) + "%"); count.classList.toggle("is-done", left === 0); }
+      var sheet = root.querySelector(".bi-cart-sheet");
+      if (sheet) sheet.classList.toggle("is-done", left === 0); /* sello "¡Listo!" (una vez por llegada, reversible) */
       var sn = document.getElementById("bi-side-n"), st = document.getElementById("bi-side-txt"), sb = document.getElementById("bi-side-bar");
       if (sn) sn.textContent = n;
       if (st) st.textContent = left === 0 ? "Ya tienes todo. Siguiente: STIGI." : n === 1 ? "documento listo" : "documentos listos";

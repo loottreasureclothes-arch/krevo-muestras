@@ -40,3 +40,23 @@
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
+/* Fila deslizable de opiniones (celular): la estrellita de abajo marca cual hoja se ve. */
+(function () {
+  "use strict";
+  function init() {
+    var row = document.getElementById("bi-revs"), dots = document.querySelectorAll(".bi-revdots i");
+    if (!row || !dots.length) return;
+    var raf = null;
+    function update() {
+      raf = null;
+      var items = row.children, best = 0, bd = 1e9, x0 = row.getBoundingClientRect().left;
+      for (var i = 0; i < items.length; i++) {
+        var d = Math.abs(items[i].getBoundingClientRect().left - x0);
+        if (d < bd) { bd = d; best = i; }
+      }
+      for (var k = 0; k < dots.length; k++) dots[k].classList.toggle("is-on", k === best);
+    }
+    row.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();

@@ -1,5 +1,11 @@
-.bi-donde-in{display:grid;gap:30px}
-.bi-donde .bi-title{margin-bottom:18px}
+/* Celular: titulo, fachada, ficha, mapa. Compu: fachada y mapa grandes a la izquierda (60 %), ficha a la derecha. */
+.bi-donde-in{display:grid;gap:30px;grid-template-areas:"head" "fach" "info" "map" "foot"}
+.bi-donde-head{grid-area:head}
+.bi-fachada{grid-area:fach;margin:0}
+.bi-donde-info{grid-area:info}
+.bi-donde-map{grid-area:map;display:grid;gap:22px}
+.bi-donde-foot{grid-area:foot;display:grid;gap:14px}
+.bi-donde .bi-title{margin-bottom:0}
 .bi-open{display:flex;align-items:center;gap:10px;font:800 15px/1.3 var(--f-body);padding:10px 14px;border-radius:10px;background:rgba(251,243,223,.1);width:fit-content;max-width:100%;margin-bottom:16px}
 .bi-open i{width:12px;height:12px;border-radius:50%;background:rgba(251,243,223,.45);flex:none}
 .bi-open.is-open i{background:var(--sun);box-shadow:0 0 0 4px rgba(255,198,58,.28)}
@@ -11,13 +17,16 @@
 .bi-contact li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:6px 0;border-bottom:2px dotted rgba(251,243,223,.35)}
 .bi-contact span{font:800 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:rgba(251,243,223,.68)}
 .bi-contact a{font:800 22px/1.6 var(--f-body);text-decoration:none;font-variant-numeric:tabular-nums;display:inline-flex;align-items:center;min-height:44px}
-.bi-donde-map{display:grid;gap:22px}
 .bi-map{padding:10px}
+/* La rotacion va solo en el marco: el mapa se contrarrota para que los letreros no salgan chuecos */
 .bi-map iframe{display:block;width:100%;height:280px;border:0;border-radius:3px;background:var(--cream-2)}
-.bi-donde-foot{display:grid;gap:14px}
+.bi-map.is-in iframe,.bi-map:not([data-reveal]) iframe{transform:rotate(calc(var(--rot) * -1))}
+html:not(.bi-js) .bi-map iframe{transform:rotate(calc(var(--rot) * -1))}
 .bi-dir{font-size:14px;color:rgba(251,243,223,.7);max-width:44ch}
 @media (min-width:860px){
-  .bi-donde-in{grid-template-columns:5fr 6fr;gap:40px 70px;align-items:start}
-  .bi-donde-foot{grid-column:1/-1}
-  .bi-map iframe{height:380px}
+  .bi-donde-in{grid-template-columns:minmax(0,6fr) minmax(0,4fr);grid-template-areas:"fach head" "fach info" "map info" "foot foot";gap:34px 64px;align-items:start}
+  .bi-fachada{margin-top:8px}
+  .bi-donde-map{margin-top:-6px}
+  .bi-map iframe{height:400px}
+  .bi-donde-map>.bi-btn{justify-self:start}
 }
