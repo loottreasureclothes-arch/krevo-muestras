@@ -1,0 +1,30 @@
+/* 60-cierre · la nota ya llena, Todo listo para completar y el remate de la pierna */
+.gc-cierre { background: var(--slate2); padding-bottom: 44px; }
+.gc-cierre .gc-title .gc-cz-lleno, .gc-cierre .gc-title .gc-cz-vacio { display: block; }
+.gc-cierre-nota { margin-top: 22px; display: grid; gap: 16px; max-width: 520px; justify-items: stretch; }
+.gc-cz-resumen { background: var(--coal); border: 1px solid rgba(208, 176, 144, .4); border-radius: 2px; padding: 6px 16px 14px; }
+.gc-cz-rows li { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; min-height: 42px; padding: 8px 0; border-bottom: 1px solid rgba(237, 228, 211, .1); font: 500 15px/1.3 var(--f-b); }
+.gc-cz-rows li b { font: 600 24px/1 var(--f-t); font-variant-numeric: tabular-nums; flex: none; }
+.gc-cz-total { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-top: 12px; }
+.gc-cz-total span { font: 700 11.5px/1.2 var(--f-b); letter-spacing: .08em; color: var(--gold); }
+.gc-cz-total b { font: 700 48px/.9 var(--f-t); font-variant-numeric: tabular-nums; color: var(--bone); }
+.gc-cz-vacio-t { justify-self: start; }
+.gc-cierre-nota .gc-wa-btn { width: 100%; }
+.gc-listo-wrap { margin-top: 36px; filter: drop-shadow(0 10px 16px rgba(0, 0, 0, .4)); transform: rotate(.6deg); max-width: 560px; }
+.gc-listo { background: var(--paper); color: var(--ink); padding: 20px 20px 34px;
+  -webkit-mask: radial-gradient(circle 8px at 50% 100%, transparent 97%, #000) left bottom / 18px 100% repeat-x; mask: radial-gradient(circle 8px at 50% 100%, transparent 97%, #000) left bottom / 18px 100% repeat-x; }
+.gc-listo-h { font: 700 24px/1 var(--f-t); letter-spacing: .12em; padding-bottom: 10px; border-bottom: 2px dashed rgba(22, 22, 22, .45); }
+.gc-listo-l li { position: relative; padding: 6px 0 6px 18px; border-bottom: 1px dashed rgba(22, 22, 22, .2); font: 500 15px/1.4 var(--f-b); }
+.gc-listo-l li::before { content: ""; position: absolute; left: 0; top: 13px; width: 7px; height: 7px; background: var(--red); }
+.gc-listo-p { margin-top: 14px; font: 700 15px/1.4 var(--f-b); }
+.gc-cierre-arco { margin: 32px auto 0; aspect-ratio: 1.02; max-width: 460px; }
+.gc-cierre-arco > img { object-position: 50% 40%; }
+.gc-cierre-arco::before { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(to bottom, rgba(31, 41, 53, .78) 0%, rgba(31, 41, 53, .35) 34%, rgba(31, 41, 53, 0) 55%); pointer-events: none; }
+.gc-satisfy { position: absolute; z-index: 4; left: 0; right: 0; top: 17%; text-align: center; font: 400 36px/1.05 var(--f-s); color: var(--bone); text-shadow: 0 2px 14px rgba(0, 0, 0, .6); }
+.gc-cierre-lbl { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 4; white-space: nowrap; }
+@media (min-width: 768px) {
+  .gc-cierre > .gc-wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); column-gap: 52px; align-items: start; grid-auto-flow: row; }
+  .gc-cierre .gc-title, .gc-cierre-nota, .gc-listo-wrap { grid-column: 1; }
+  .gc-cierre-arco { grid-column: 2; grid-row: 1 / span 3; margin: 0; width: 100%; max-width: 480px; justify-self: end; position: sticky; top: 110px; }
+  .gc-satisfy { font-size: 44px; }
+}

@@ -1,0 +1,49 @@
+/* ---------- Opiniones: el marco se arma alrededor del 84 % ---------- */
+.ns-soc-sec{background:var(--crema);color:var(--carbon)}
+.ns-soc-grid{display:grid;gap:22px}
+.ns-arma{--v:1;--m:1;--pa:1;position:relative;width:100%;max-width:600px;aspect-ratio:6/4.6;margin-inline:auto}
+.ns-arma-papel{position:absolute;inset:4px;background:var(--papel);opacity:var(--pa)}
+.ns-arma-papel::before{content:"";position:absolute;inset:6px;border:1px solid var(--oro-claro)}
+.ns-m{position:absolute;display:block;pointer-events:none}
+.ns-m--t1,.ns-m--t2,.ns-m--b1,.ns-m--b2{height:4px;width:50%;background:linear-gradient(var(--oro) 0 1px,transparent 1px 3px,var(--oro) 3px 4px);transform:scaleX(var(--m))}
+.ns-m--l1,.ns-m--l2,.ns-m--r1,.ns-m--r2{width:4px;height:50%;background:linear-gradient(90deg,var(--oro) 0 1px,transparent 1px 3px,var(--oro) 3px 4px);transform:scaleY(var(--m))}
+.ns-m--t1{left:0;top:0;transform-origin:left center}
+.ns-m--t2{right:0;top:0;transform-origin:right center}
+.ns-m--b1{left:0;bottom:0;transform-origin:left center}
+.ns-m--b2{right:0;bottom:0;transform-origin:right center}
+.ns-m--l1{left:0;top:0;transform-origin:center top}
+.ns-m--l2{left:0;bottom:0;transform-origin:center bottom}
+.ns-m--r1{right:0;top:0;transform-origin:center top}
+.ns-m--r2{right:0;bottom:0;transform-origin:center bottom}
+.ns-vc{position:absolute;width:34px;height:34px;color:var(--oro);pointer-events:none;z-index:2}
+.ns-vc svg{width:100%;height:100%;transform:rotate(calc((1 - var(--v)) * -40deg)) scale(calc(.4 + .6 * var(--v)));transform-origin:30% 70%}
+.ns-vc--tl{left:9px;top:9px}
+.ns-vc--tr{right:9px;top:9px;transform:scaleX(-1)}
+.ns-vc--bl{left:9px;bottom:9px;transform:scaleY(-1)}
+.ns-vc--br{right:9px;bottom:9px;transform:scale(-1,-1)}
+.ns-dato{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;opacity:var(--pa);transform:translateY(calc((1 - var(--pa)) * 10px))}
+.ns-dato-a{margin-bottom:10px;font:600 11px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--carbon)}
+.ns-dato-n{font:400 clamp(84px,27vw,132px)/.95 var(--serif);color:var(--vino);letter-spacing:-.01em;font-variant-numeric:lining-nums}
+.ns-dato-b{font:500 13px/1.3 var(--sans);letter-spacing:.04em;color:var(--carbon)}
+.ns-soc-q{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.ns-cita--dark{background:var(--noche);color:var(--texto);width:100%}
+.ns-cita--dark::before{border-color:var(--oro)}
+.ns-cita--dark p{color:var(--texto);font-size:20px}
+.ns-cita--dark span{color:var(--oro-claro)}
+.ns-soc-q .ns-link{color:var(--noche)}
+.ns-soc-q .ns-link .ns-fbico{color:var(--vino);width:20px;height:20px}
+.ns-soc-fig{width:100%}
+.ns-soc-fig img{width:100%;aspect-ratio:5/4;object-fit:cover}
+@media(min-width:720px){
+  .ns-soc-grid{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);grid-template-areas:"h h" "arma fig" "q fig";gap:28px clamp(32px,5vw,72px);align-items:start}
+  .ns-soc-h{grid-area:h}
+  .ns-arma{grid-area:arma;margin-inline:0;max-width:none}
+  .ns-soc-q{grid-area:q}
+  .ns-soc-fig{grid-area:fig;width:100%;max-width:300px;align-self:center;justify-self:center}
+  .ns-soc-fig img{aspect-ratio:3/4}
+  .ns-vc{width:44px;height:44px}
+  .ns-arma{aspect-ratio:6/4}
+  .ns-dato-n{font-size:clamp(110px,10vw,150px)}
+}
+/* Pulidor: en banda crema la cartela va en placa noche para que se lea como cartela */
+.ns-soc-sec .ns-cartela{background:var(--noche);color:var(--oro-claro)}

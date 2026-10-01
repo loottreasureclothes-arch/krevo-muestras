@@ -1,0 +1,29 @@
+/* ---------- Hero: cartel vino noche con el cuadro colgado del riel ---------- */
+.ns-hero{position:relative;background:var(--noche);padding:calc(var(--hh) + 24px) 0 34px;overflow:clip}
+.ns-hero-grid{display:grid;gap:14px;grid-template-areas:"txt" "fig" "badge"}
+.ns-hero-txt{grid-area:txt;display:flex;flex-direction:column;align-items:flex-start}
+.ns-h1{font-size:clamp(40px,12.4vw,54px);line-height:.98;margin-top:12px;letter-spacing:-.01em}
+.ns-h1 .ns-ln{white-space:nowrap}
+.ns-hero-lead{margin-top:14px;max-width:30ch;font-size:16px;line-height:1.5;color:var(--texto-suave)}
+.ns-hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;margin-top:18px}
+.ns-hero-fig{grid-area:fig;position:relative;padding:28px 9px 0;gap:14px}
+.ns-riel{position:absolute;left:50%;top:0;width:100vw;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--oro) 14%,var(--oro) 86%,transparent)}
+.ns-hilos{position:absolute;left:9px;right:9px;top:2px;width:calc(100% - 18px);height:26px;pointer-events:none}
+.ns-clavo-g{position:absolute;left:50%;top:-4px;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--oro-claro);box-shadow:0 0 0 2px var(--noche)}
+.ns-hero-fig .ns-frame{margin-top:0}
+.ns-badge{display:block;grid-area:badge;justify-self:start;align-self:start;--r:5px;background:var(--crema);max-width:100%}
+.ns-badge b{font-weight:700;color:var(--vino);letter-spacing:.06em}
+@media(min-width:720px){
+  .ns-hero{padding:calc(var(--hh) + 44px) 0 48px;display:flex;align-items:center}
+  .ns-hero .ns-wrap{width:100%}
+  .ns-hero-grid{grid-template-columns:minmax(0,1fr) clamp(300px,36vw,420px);grid-template-areas:"txt fig" "badge fig";grid-template-rows:auto auto;gap:22px clamp(32px,6vw,96px);align-items:center}
+  .ns-hero-txt{align-self:end}
+  .ns-badge{align-self:start}
+  .ns-h1{font-size:clamp(46px,6.2vw,92px);margin-top:16px}
+  .ns-hero-lead{font-size:18px;max-width:28ch;margin-top:20px}
+  .ns-hero-cta{margin-top:26px;gap:8px 28px}
+  .ns-hero-fig{grid-row:1/3;padding-inline:9px}
+}
+
+/* Pulidor: solo en compu ancha el hero llena la pantalla; en tableta no deja vino vacío arriba */
+@media(min-width:1100px){.ns-hero{min-height:min(100svh,860px)}}

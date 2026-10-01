@@ -1,0 +1,178 @@
+/* El Gran Chava by Darío's · base: tokens, tipografía, header, menú, botones, formas de la BOCA DEL HORNO, pie, WhatsApp flotante */
+@font-face { font-family: "Teko"; font-weight: 600; font-style: normal; font-display: swap; src: url(fonts/teko-600.woff2) format("woff2"); }
+@font-face { font-family: "Teko"; font-weight: 700; font-style: normal; font-display: swap; src: url(fonts/teko-700.woff2) format("woff2"); }
+@font-face { font-family: "Epilogue"; font-weight: 100 900; font-style: normal; font-display: swap; src: url(fonts/epilogue.woff2) format("woff2"); }
+@font-face { font-family: "Satisfy"; font-weight: 400; font-style: normal; font-display: swap; src: url(fonts/satisfy-400.woff2) format("woff2"); }
+
+:root {
+  --slate: #1F2935;
+  --slate2: #2A384A;
+  --slate3: #667488;
+  --coal: #161616;
+  --bone: #EDE4D3;
+  --paper: #EFE5CF;
+  --red: #C8222B;
+  --red-lt: #E8423F;
+  --red-dk: #8A1A1F;
+  --gold: #D0B090;
+  --wa: #25D366;
+  --ink: #161616;
+  --muted: rgba(237, 228, 211, .72);
+  --f-t: "Teko", "Arial Narrow", Impact, sans-serif;
+  --f-b: "Epilogue", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-s: "Satisfy", "Brush Script MT", cursive;
+  --gut: 16px;
+  --head-h: 84px;
+  --t-hero: clamp(46px, 15vw, 76px);
+  --t-sec: clamp(40px, 12.5vw, 56px);
+  --ease: cubic-bezier(.23, 1, .32, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: auto !important; }
+body { margin: 0; background: var(--slate); color: var(--bone); font: 400 16px/1.55 var(--f-b); padding-top: var(--head-h); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.gc-skip { position: absolute; left: -9999px; top: 8px; z-index: 200; background: var(--bone); color: var(--ink); padding: 10px 14px; font-weight: 700; }
+.gc-skip:focus { left: 8px; }
+.gc-wrap { width: 100%; max-width: 1240px; margin: 0 auto; padding-inline: var(--gut); }
+
+/* sin JS: la carta y la tabla; con JS: la báscula */
+:where([hidden]) { display: none !important; }
+html:not(.gc-js) .gc-js-only { display: none !important; }
+html.gc-js .gc-nojs { display: none; }
+body.gc-menu-open { overflow: hidden; }
+
+/* ---------- títulos ---------- */
+.gc-title, .gc-h1 { font-family: var(--f-t); font-weight: 600; text-transform: uppercase; line-height: .88; letter-spacing: 0; text-wrap: balance; color: var(--bone); }
+.gc-title { font-size: var(--t-sec); }
+.gc-h1 { font-size: var(--t-hero); }
+.gc-ln { display: block; white-space: nowrap; }
+.gc-t2 { color: var(--red-lt); }
+
+/* ---------- botones: LA BOCA ---------- */
+.gc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 24px 4px; background: var(--red); color: var(--bone); border-radius: 2px; text-decoration: none;
+  font: 600 22px/1 var(--f-t); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap;
+  -webkit-mask-image: radial-gradient(circle 7px at 50% 100%, transparent 97%, #000); mask-image: radial-gradient(circle 7px at 50% 100%, transparent 97%, #000); transition: background-color .18s var(--ease), transform .18s var(--ease); }
+.gc-btn--sm { min-height: 44px; padding: 0 13px 3px; font-size: 19px; letter-spacing: .08em; }
+.gc-btn:focus-visible, .gc-lbl:focus-visible { outline-offset: -5px; }
+@media (max-width: 380px) { .gc-menu-lbl { display: none; } .gc-brand-t { font-size: 20px; } }
+.gc-btn:active { transform: scale(.97); }
+@media (hover: hover) and (pointer: fine) { .gc-btn:hover { background: #d9333c; } }
+.gc-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: 600 15px/1.2 var(--f-b); letter-spacing: .02em; text-decoration: none; border-bottom: 2px solid var(--red); padding: 0 2px; align-self: center; }
+.gc-link svg { width: 18px; height: 18px; flex: none; }
+@media (hover: hover) and (pointer: fine) { .gc-link:hover svg { transform: translateX(3px); } .gc-link svg { transition: transform .2s var(--ease); } }
+.gc-wa-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; background: var(--wa); color: #0b3d1f; border-radius: 2px; text-decoration: none; font: 600 22px/1 var(--f-t); letter-spacing: .08em; text-transform: uppercase; transition: transform .18s var(--ease), filter .18s; }
+.gc-wa-btn svg { width: 24px; height: 24px; flex: none; }
+.gc-wa-btn:active { transform: scale(.97); }
+@media (hover: hover) and (pointer: fine) { .gc-wa-btn:hover { filter: brightness(1.06); } }
+
+/* ---------- placa de horno (etiquetas) ---------- */
+.gc-lbl { display: inline-block; background: var(--coal); color: var(--gold); border: 1px solid var(--gold); border-radius: 2px; padding: 6px 12px 10px; font: 700 11.5px/1.2 var(--f-b); letter-spacing: .08em; text-transform: uppercase;
+  -webkit-mask-image: radial-gradient(circle 7px at 50% 100%, transparent 97%, #000); mask-image: radial-gradient(circle 7px at 50% 100%, transparent 97%, #000); }
+.gc-lbl--s { font-size: 11px; padding: 5px 10px 9px; }
+
+/* ---------- marco de foto: el arco ---------- */
+.gc-arco { position: relative; border: 4px solid var(--slate2); border-radius: 50% 50% 0 0 / 38% 38% 0 0; background: var(--coal); overflow: hidden; }
+.gc-arco > img { width: 100%; height: 100%; object-fit: cover; }
+.gc-arco::after { content: ""; position: absolute; inset: 8px; border: 1px solid var(--gold); border-radius: 50% 50% 0 0 / 38% 38% 0 0; pointer-events: none; z-index: 3; }
+
+/* ---------- arcada: divisor ---------- */
+.gc-arcada { display: flex; justify-content: center; gap: 8px; height: 18px; align-items: flex-end; }
+.gc-arcada svg { width: 26px; height: 16px; overflow: visible; flex: none; }
+.gc-arcada path { fill: none; stroke: rgba(237, 228, 211, .35); stroke-width: 1.5; }
+.gc-arcada path.c { fill: var(--red); stroke: var(--red); }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  html.gc-js .gc-arcada:not(.is-in) svg { opacity: 0; transform: translateY(6px); }
+  .gc-arcada svg { transition: opacity .3s var(--ease), transform .3s var(--ease); transition-delay: calc(var(--i, 0) * 40ms); }
+}
+
+/* ---------- reveal: el título sale del humo ---------- */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  html.gc-js [data-gc-reveal]:not(.is-in) { opacity: 0; transform: translateY(12px); filter: blur(6px); }
+  [data-gc-reveal] { transition: opacity .52s var(--ease), transform .52s var(--ease), filter .52s var(--ease); transition-delay: calc(var(--d, 0) * 80ms); }
+}
+
+/* ---------- header: LA PLACA DEL HORARIO ---------- */
+.gc-header { position: fixed; inset: 0 0 auto 0; z-index: 90; background: var(--slate); }
+.gc-bar { height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 12px 0 var(--gut); border-bottom: 1px solid var(--gold); transition: height .25s var(--ease); max-width: none; }
+.gc-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; min-width: 0; }
+.gc-brand img { width: 40px; height: 40px; flex: none; transition: width .25s var(--ease), height .25s var(--ease); }
+.gc-brand-t { font: 700 20px/1 var(--f-t); letter-spacing: .02em; white-space: nowrap; }
+.gc-actions { display: flex; align-items: center; gap: 4px; }
+.gc-menu-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 8px; font: 600 18px/1 var(--f-t); letter-spacing: .1em; }
+.gc-burger { width: 22px; height: 14px; position: relative; display: block; }
+.gc-burger i { position: absolute; left: 0; right: 0; height: 2px; background: var(--bone); transition: transform .25s var(--ease), top .25s var(--ease); }
+.gc-burger i:nth-child(1) { top: 2px; } .gc-burger i:nth-child(2) { top: 10px; }
+.gc-menu-open .gc-burger i:nth-child(1) { top: 6px; transform: rotate(45deg); } .gc-menu-open .gc-burger i:nth-child(2) { top: 6px; transform: rotate(-45deg); }
+.gc-placa-h { position: relative; display: block; text-align: center; line-height: 26px; height: 26px; background: var(--coal); color: var(--gold); text-decoration: none; font: 700 11px/26px var(--f-b); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; overflow: hidden; transition: height .25s var(--ease); }
+.gc-placa-h a { color: inherit; text-decoration: none; }
+.gc-placa-h a::after { content: ""; position: absolute; inset: 0; }
+.gc-ph-d { display: none; }
+.gc-header.is-compact .gc-bar { height: 48px; }
+.gc-header.is-compact .gc-brand img { width: 36px; height: 36px; }
+.gc-header.is-compact .gc-placa-h { height: 0; }
+.gc-menu-open .gc-header { background: var(--slate); }
+
+/* ---------- menú a pantalla completa ---------- */
+.gc-menu { position: fixed; inset: 0; z-index: 80; background: var(--slate); visibility: hidden; opacity: 0; transition: opacity .25s var(--ease), visibility 0s .25s; overflow-y: auto; }
+.gc-menu-open .gc-menu { visibility: visible; opacity: 1; transition: opacity .25s var(--ease); }
+.gc-menu-panel { min-height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: calc(var(--head-h) + 28px) var(--gut) 28px; }
+.gc-menu-nav { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.gc-menu-nav > a { font: 700 48px/1.05 var(--f-t); text-transform: uppercase; text-decoration: none; letter-spacing: .01em; min-height: 52px; }
+.gc-menu-nav > a:active { color: var(--red-lt); }
+.gc-arcada--m { margin: 6px 0 10px; justify-content: flex-start; }
+.gc-menu-nav .gc-menu-wa { display: inline-flex; align-items: center; gap: 12px; margin-top: 14px; min-height: 56px; padding: 0 22px; background: var(--wa); color: #0b3d1f; border-radius: 2px; font: 600 28px/1 var(--f-t); letter-spacing: .06em; }
+.gc-menu-wa svg { width: 26px; height: 26px; }
+.gc-menu-foot { display: flex; gap: 22px; margin-top: 32px; padding-top: 16px; border-top: 1px solid rgba(208, 176, 144, .35); }
+.gc-menu-foot a { min-height: 44px; display: inline-flex; align-items: center; font: 600 22px/1 var(--f-t); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border-bottom: 2px solid var(--red); }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .gc-menu-nav > a { transform: translateY(14px); opacity: 0; transition: transform .35s var(--ease), opacity .35s var(--ease); }
+  .gc-menu-open .gc-menu-nav > a { transform: none; opacity: 1; }
+  .gc-menu-open .gc-menu-nav > a:nth-of-type(2) { transition-delay: 50ms; } .gc-menu-open .gc-menu-nav > a:nth-of-type(3) { transition-delay: 90ms; } .gc-menu-open .gc-menu-nav > a:nth-of-type(4) { transition-delay: 130ms; } .gc-menu-open .gc-menu-nav > a:nth-of-type(5) { transition-delay: 170ms; }
+}
+
+/* ---------- secciones ---------- */
+.gc-sec { padding: 34px 0; }
+.gc-sechead { display: grid; gap: 14px; margin-bottom: 22px; }
+.gc-sechead .gc-arcada { justify-content: flex-start; }
+
+/* ---------- pie ---------- */
+.gc-foot { background: var(--coal); padding: 40px 0 30px; border-top: 1px solid var(--gold); }
+.gc-foot-grid { display: grid; gap: 28px; }
+.gc-foot-brand { display: flex; align-items: center; gap: 18px; }
+.gc-foot-brand img { width: 140px; height: 140px; flex: none; }
+.gc-foot-lema { font: 600 26px/1.05 var(--f-t); text-transform: uppercase; letter-spacing: .04em; }
+.gc-foot-est { color: var(--gold); letter-spacing: .12em; font-size: .8em; }
+.gc-foot-h { font: 700 15px/1 var(--f-b); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.gc-foot address { font-style: normal; line-height: 1.5; color: var(--bone); }
+.gc-foot-hr { margin-top: 10px; color: var(--muted); }
+.gc-foot-tel { display: inline-flex; align-items: center; min-height: 48px; font: 600 38px/1 var(--f-t); letter-spacing: .03em; text-decoration: none; font-variant-numeric: tabular-nums; }
+.gc-fb { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; text-decoration: none; font: 600 15px/1 var(--f-b); }
+.gc-fb-ic { width: 44px; height: 44px; border: 1px solid var(--gold); border-radius: 2px; display: grid; place-items: center; flex: none; }
+.gc-fb-ic svg { width: 26px; height: 26px; color: var(--bone); }
+.gc-credit { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(237, 228, 211, .14); font-size: 12.5px; color: var(--muted); }
+
+/* ---------- WhatsApp flotante ---------- */
+.gc-wa { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 70; width: 58px; height: 58px; border-radius: 50%; background: var(--wa); color: #0b3d1f; display: grid; place-items: center; box-shadow: 0 8px 22px rgba(0, 0, 0, .4); }
+.gc-wa svg { width: 32px; height: 32px; }
+.gc-wa:active { transform: scale(.94); }
+body.gc-menu-open .gc-wa, body.gc-wa-off .gc-wa { visibility: hidden; opacity: 0; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) { .gc-wa { animation: gc-wa-in .6s var(--ease) 1s both; } @keyframes gc-wa-in { from { opacity: 0; transform: translateY(14px) scale(.9); } to { opacity: 1; transform: none; } } body.gc-menu-open .gc-wa, body.gc-wa-off .gc-wa { animation: none; } }
+
+@media (min-width: 768px) {
+  :root { --gut: 28px; --t-sec: clamp(52px, 6.4vw, 84px); }
+  .gc-sec { padding: 44px 0; }
+  .gc-bar { padding: 0 24px 0 28px; }
+  .gc-placa-h { font-size: 12px; letter-spacing: .1em; }
+  .gc-ph-d { display: inline; } .gc-ph-m { display: none; }
+  .gc-foot-grid { grid-template-columns: 1.3fr 1fr 1fr; align-items: start; }
+  .gc-menu-nav > a { font-size: 72px; min-height: 76px; }
+  .gc-menu-panel { padding-inline: 40px; max-width: 1240px; margin: 0 auto; }
+}
+@media (min-width: 1100px) { .gc-wa { right: 26px; bottom: 26px; } }
+@media (prefers-reduced-motion: reduce) { * { transition-duration: .01ms !important; animation-duration: .01ms !important; } }

@@ -1,0 +1,68 @@
+<section class="band b-crema s-escudo" id="20-escudo" aria-labelledby="escudo-h">
+  <div class="wrap esc-grid">
+    <h2 class="h2 esc-title" id="escudo-h" data-reveal>
+      <span class="l"><span>Toca el escudo.</span></span>
+      <span class="l t2"><span>Mira qué hornean.</span></span>
+    </h2>
+    <div class="esc-stage">
+      <svg class="esc-svg" id="esc-svg" viewBox="-4 -4 308 368" role="group" aria-label="Escudo de la casa, dividido en cuatro cuarteles. Toca uno para ver qué hornean.">
+        <defs>
+          <clipPath id="cShield"><path d="M0 0H300V190C300 280 215 335 150 360C85 335 0 280 0 190Z"/></clipPath>
+          <clipPath id="cTL"><path d="M0 0H150V170H0Z"/></clipPath>
+          <clipPath id="cTR"><path d="M150 0H300V170H150Z"/></clipPath>
+          <clipPath id="cBL"><path d="M0 170H150V360C85 335 0 280 0 190Z"/></clipPath>
+          <clipPath id="cBR"><path d="M150 170H300V190C300 280 215 335 150 360Z"/></clipPath>
+          <clipPath id="cEsc"><path d="M-23 -27H23V6C23 21 11 32 0 38C-11 32 -23 21 -23 6Z"/></clipPath>
+        </defs>
+
+        <g class="q" data-q="pasteles" role="button" tabindex="0" aria-pressed="false" aria-label="Pasteles">
+          <g clip-path="url(#cTL)"><image href="img/q-pasteles2.webp" x="0" y="0" width="150" height="170" preserveAspectRatio="xMidYMid slice"/><rect class="dim" x="0" y="0" width="150" height="170"/></g>
+          <g class="lab" transform="translate(10 10)"><path d="M0 0H76V16L38 22L0 16Z"/><text x="38" y="12.5">PASTELES</text></g>
+        </g>
+        <g class="q" data-q="postres" role="button" tabindex="0" aria-pressed="false" aria-label="Postres">
+          <g clip-path="url(#cTR)"><image href="img/q-postres.webp" x="150" y="0" width="150" height="170" preserveAspectRatio="xMidYMid slice"/><rect class="dim" x="150" y="0" width="150" height="170"/></g>
+          <g class="lab" transform="translate(219 10)"><path d="M0 0H71V16L35.5 22L0 16Z"/><text x="35.5" y="12.5">POSTRES</text></g>
+        </g>
+        <g class="q" data-q="pan" role="button" tabindex="0" aria-pressed="false" aria-label="Pan">
+          <g clip-path="url(#cBL)"><image href="img/q-pan.webp" x="0" y="170" width="150" height="190" preserveAspectRatio="xMidYMid slice"/><rect class="dim" x="0" y="170" width="150" height="190"/></g>
+          <g class="lab" transform="translate(10 182)"><path d="M0 0H41V16L20.5 22L0 16Z"/><text x="20.5" y="12.5">PAN</text></g>
+        </g>
+        <g class="q" data-q="cafeteria" role="button" tabindex="0" aria-pressed="false" aria-label="Cafetería">
+          <g clip-path="url(#cBR)"><image href="img/q-cafeteria.webp" x="150" y="170" width="150" height="190" preserveAspectRatio="xMidYMid slice"/><rect class="dim" x="150" y="170" width="150" height="190"/></g>
+          <g class="lab" transform="translate(208 182)"><path d="M0 0H82V16L41 22L0 16Z"/><text x="41" y="12.5">CAFETERÍA</text></g>
+        </g>
+
+        <g clip-path="url(#cShield)" pointer-events="none"><path class="cross" d="M150 0V360M0 170H300"/></g>
+        <g class="outs" pointer-events="none">
+          <path class="qo" data-q="pasteles" d="M0 0H150V170H0Z"/>
+          <path class="qo" data-q="postres" d="M150 0H300V170H150Z"/>
+          <path class="qo" data-q="pan" d="M0 170H150V360C85 335 0 280 0 190Z"/>
+          <path class="qo" data-q="cafeteria" d="M150 170H300V190C300 280 215 335 150 360Z"/>
+        </g>
+        <path class="rim" d="M0 0H300V190C300 280 215 335 150 360C85 335 0 280 0 190Z" pointer-events="none"/>
+        <g transform="translate(150 170)" pointer-events="none">
+          <path d="M-27 -31H27V7C27 23 13 34 0 40C-13 34 -27 23 -27 7Z" fill="#F1E3C3"/>
+          <g clip-path="url(#cEsc)"><image href="img/logo-escudo.webp" x="-23" y="-27" width="46" height="53" preserveAspectRatio="xMidYMid slice"/></g>
+          <path d="M-23 -27H23V6C23 21 11 32 0 38C-11 32 -23 21 -23 6Z" fill="none" stroke="#AC7D17" stroke-width="1.5"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="esc-side">
+      <div class="ficha ficha-dyn" id="ficha">
+        <h3 class="ficha-h" id="ficha-h">Toca un cuartel.</h3>
+        <p class="ficha-p" id="ficha-p">Pasteles, postres y pan recién horneados, y la cafetería.</p>
+        <a class="lnk ficha-lnk" id="ficha-lnk" href="#30-pasteles" hidden>Ver tamaños y precios<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="ficha-st">
+        <article><h3 class="ficha-h">Pasteles</h3><p class="ficha-p">Condesa de frutas, chocolate, fresas, nuez, piñón, queso y piña, chantilly fresa. Y el de piñón y tres leches.</p></article>
+        <article><h3 class="ficha-h">Postres</h3><p class="ficha-p">Cupcakes, muffins y galletas.</p></article>
+        <article><h3 class="ficha-h">Pan</h3><p class="ficha-p">Conchas, concha rellena de frutos rojos, medialunas y pan de muerto de temporada.</p></article>
+        <article><h3 class="ficha-h">Cafetería</h3><p class="ficha-p">Sándwich club, saludable y croissant; capuchino y té frío.</p></article>
+      </div>
+      <div class="wa-row" data-hide-wa>
+        <a class="wa-btn" id="esc-wa" data-wa="Hola Arienzo, quiero preguntar por sus pasteles, postres, pan y cafetería." href="https://wa.me/524495536331?text=Hola%20Arienzo%2C%20quiero%20preguntar%20por%20sus%20pasteles%2C%20postres%2C%20pan%20y%20cafeter%C3%ADa." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span id="esc-wa-t">Preguntar por WhatsApp</span></a>
+      </div>
+    </div>
+  </div>
+</section>

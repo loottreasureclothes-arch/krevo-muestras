@@ -1,0 +1,43 @@
+.s-plato{padding-top:56px;padding-bottom:56px}
+.plato-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+.plato-zone{display:flex;flex-direction:column;align-items:center;gap:26px}
+.plato{position:relative;width:290px;height:290px;border-radius:50%;background:radial-gradient(circle at 50% 42%,#FBF6EA 0,#F3EAD3 55%,#EADFC6 100%);box-shadow:0 22px 36px rgba(10,5,2,.55),0 3px 0 #fff inset,0 -10px 22px rgba(120,80,30,.14) inset;flex:none}
+.plato::before{content:"";position:absolute;inset:16px;border-radius:50%;border:1.5px solid var(--oro-claro);pointer-events:none}
+.plato-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.plato-svg text{font-family:var(--f-s);font-size:26px}
+.plato-svg .ink{fill:#3A2418}
+.plato-svg .sheen{fill:#a67550;opacity:.55}
+.plato-cap{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.plato-line{font:500 16px/1.2 var(--f-b);color:var(--oro-claro);letter-spacing:.02em}
+.plato-fig{position:relative;width:min(100%,320px)}
+.plato-fig .esc-in{--ar:320/270}
+.plato-fig .tag{left:12px;top:12px}
+.plato-div{margin:10px 0 2px}
+.rev-zone{display:flex;flex-direction:column;gap:20px}
+.rating{display:flex;align-items:center;gap:16px}
+.r-num{font:400 56px/.9 var(--f-t);color:var(--oro-claro);letter-spacing:-.02em}
+.r-meta{display:flex;flex-direction:column;gap:6px}
+.r-stars{width:124px;height:24px;display:block;overflow:visible}
+.r-meta p{font-size:14px;color:var(--crema)}
+.notas{display:flex;flex-direction:column;gap:14px}
+.notas .nota p{font:400 16px/1.5 var(--f-b)}
+.notas .nota footer{display:flex;align-items:baseline;gap:10px;margin-top:12px}
+.notas .nota cite{font:700 13px/1.2 var(--f-b);font-style:normal;letter-spacing:.06em;color:var(--oro-claro)}
+.notas .nota footer span{font-size:12px;color:#cdb98f}
+.notas .nota:nth-child(2){margin-left:auto;width:94%}
+.rev-lnk{align-self:flex-start}
+@media (min-width:700px){
+  .s-plato{padding-top:104px;padding-bottom:112px}
+  .plato-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(32px,6vw,88px);align-items:start}
+  .plato-zone{position:sticky;top:130px;gap:34px}
+  .plato{width:clamp(300px,34vw,440px);height:auto;aspect-ratio:1}
+  .plato::before{inset:24px}
+  .plato-div{display:none}
+  .plato-fig{width:340px}
+  .plato-fig .esc-in{--ar:340/280}
+  .rev-zone{gap:28px}
+  .r-num{font-size:88px}
+  .r-stars{width:150px;height:29px}
+  .notas{gap:22px}
+  .notas .nota p{font-size:17px}
+}

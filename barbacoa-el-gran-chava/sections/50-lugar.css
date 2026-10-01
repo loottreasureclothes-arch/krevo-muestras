@@ -1,0 +1,29 @@
+/* 50-lugar · horario literal, sillas equipales, datos en renglones grandes, mapa */
+.gc-lugar { background: var(--slate); }
+.gc-lugar-grid { display: grid; gap: 26px; }
+.gc-lugar-arco { height: 236px; margin-top: 18px; }
+.gc-lugar-arco > img { object-position: 52% 12%; }
+.gc-lugar-lbl { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 4; white-space: nowrap; }
+.gc-datos { border-bottom: 1px solid rgba(208, 176, 144, .28); }
+.gc-dato-r { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 12px; padding: 14px 0; border-top: 1px solid rgba(208, 176, 144, .28); align-items: baseline; }
+.gc-dato-r dt { font: 700 11px/1.3 var(--f-b); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.gc-dato-r dd { display: grid; gap: 2px; font: 500 15px/1.45 var(--f-b); color: var(--bone); }
+.gc-dato-r dd b { font: 600 30px/1 var(--f-t); letter-spacing: .02em; text-transform: uppercase; }
+.gc-hr { font: 700 46px/.95 var(--f-t); letter-spacing: .02em; font-variant-numeric: tabular-nums; color: var(--red-lt); }
+.gc-tel { display: inline-flex; align-items: center; min-height: 56px; font: 600 44px/1 var(--f-t); letter-spacing: .03em; text-decoration: none; font-variant-numeric: tabular-nums; border-bottom: 2px solid var(--red); align-self: start; justify-self: start; }
+.gc-mapa { margin-top: 22px; border: 4px solid var(--slate2); background: var(--coal); }
+.gc-mapa iframe { display: block; width: 100%; height: 210px; border: 0; }
+.gc-lugar-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 18px; }
+.gc-fachada { margin-top: 18px; }
+.gc-fachada-img { border: 4px solid var(--slate2); outline: 1px solid rgba(208, 176, 144, .55); outline-offset: -9px; background: var(--coal); overflow: hidden; }
+.gc-fachada-img img { display: block; width: 100%; height: auto; }
+.gc-fachada .gc-lbl { margin-top: 10px; }
+@media (min-width: 768px) {
+  .gc-lugar-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+  .gc-lugar-arco { height: auto; aspect-ratio: 1.15; max-height: 520px; }
+  .gc-lugar-arco > img { object-position: 50% 0%; }
+  .gc-mapa iframe { height: 300px; }
+  .gc-dato-r { grid-template-columns: 110px minmax(0, 1fr); }
+  .gc-dato-r dd b { font-size: 36px; }
+  .gc-hr { font-size: 54px; }
+}

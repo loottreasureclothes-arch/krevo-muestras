@@ -1,0 +1,43 @@
+/* 10-hero · cartel de celular: arco con la cazuela y el título encima de su base */
+.gc-hero { padding: 12px 0 36px; background: var(--slate); }
+.gc-hero-grid { display: flex; flex-direction: column; position: relative; }
+.gc-hero-arco { height: 366px; border-bottom: 0; }
+.gc-hero-arco > img { object-position: 64% 58%; }
+.gc-hero-arco::before { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(to bottom, rgba(31, 41, 53, 0) 42%, rgba(31, 41, 53, .55) 66%, rgba(31, 41, 53, .96) 100%); pointer-events: none; }
+.gc-hero-arco::after { inset: 8px 8px 112px 8px; border-bottom: 0; }
+.gc-hero-lbl { position: absolute; left: 50%; bottom: 124px; transform: translateX(-50%); z-index: 4; white-space: nowrap; max-width: calc(100% - 32px); }
+.gc-hero-text { position: relative; z-index: 5; margin-top: -100px; display: flex; flex-direction: column; align-items: flex-start; }
+.gc-hero .gc-h1 { text-shadow: 0 2px 14px rgba(0, 0, 0, .55); }
+.gc-hero-line { margin-top: 14px; font: 500 17px/1.4 var(--f-b); color: var(--bone); }
+.gc-pizarra { align-self: stretch; margin-top: 16px; background: var(--coal); border: 1px solid rgba(208, 176, 144, .4); border-radius: 2px; position: relative; padding-top: 26px; }
+.gc-pizarra::before { content: "PLATO DE BARBACOA O BIRRIA"; position: absolute; top: 0; left: 0; right: 0; height: 26px; display: flex; align-items: center; padding: 0 14px; font: 700 11px/1 var(--f-b); letter-spacing: .1em; color: var(--gold); border-bottom: 1px solid rgba(208, 176, 144, .25); }
+.gc-pizarra a { display: flex; align-items: center; gap: 12px; min-height: 46px; padding: 0 14px; text-decoration: none; transition: background-color .18s var(--ease); }
+.gc-pizarra li + li a { border-top: 1px solid rgba(237, 228, 211, .08); }
+.gc-pizarra .g { font: 600 16px/1 var(--f-b); letter-spacing: .04em; font-variant-numeric: tabular-nums; min-width: 56px; }
+.gc-pizarra .f { flex: 1; border-bottom: 2px dotted rgba(208, 176, 144, .4); transform: translateY(4px); }
+.gc-pizarra b { font: 600 32px/1 var(--f-t); letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+.gc-pizarra a:active { background: rgba(200, 34, 43, .25); }
+@media (hover: hover) and (pointer: fine) { .gc-pizarra a:hover { background: rgba(200, 34, 43, .18); } }
+.gc-rating { margin-top: 14px; display: flex; align-items: center; gap: 8px; font: 500 15px/1.2 var(--f-b); color: var(--muted); }
+.gc-rating svg { width: 20px; height: 20px; color: var(--gold); flex: none; }
+.gc-rating b { color: var(--bone); font-weight: 700; }
+.gc-hero-cta { margin-top: 18px; display: flex; align-items: center; flex-wrap: wrap; gap: 8px 22px; }
+.gc-hero-dir { display: none; }
+
+@media (min-width: 768px) {
+  :root { --t-hero: clamp(46px, 7vw, 104px); }
+  .gc-hero { padding: 28px 0 44px; }
+  .gc-hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 0 44px; align-items: center; }
+  .gc-hero-text { grid-column: 1; grid-row: 1; margin-top: 0; }
+  .gc-hero-arco { grid-column: 2; grid-row: 1; height: auto; aspect-ratio: .88; max-height: 590px; border-bottom: 4px solid var(--slate2); }
+  .gc-hero-arco > img { object-position: 62% 60%; }
+  .gc-hero-arco::before { display: none; }
+  .gc-hero-arco::after { inset: 8px; border-bottom: 1px solid var(--gold); }
+  .gc-hero-lbl { bottom: 22px; }
+  .gc-hero .gc-h1 { text-shadow: none; }
+  .gc-hero-line { font-size: 20px; margin-top: 18px; }
+  .gc-pizarra { max-width: 460px; }
+  .gc-pizarra a { min-height: 50px; }
+  .gc-pizarra b { font-size: 36px; }
+  .gc-hero-dir { display: inline-block; position: absolute; right: 11%; bottom: -16px; z-index: 6; }
+}

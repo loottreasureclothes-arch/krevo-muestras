@@ -1,0 +1,46 @@
+.s-pasteles{padding-top:52px;padding-bottom:56px}
+.pas-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+.pas-fig{position:relative}
+.pas-fig .esc-in{--ar:358/262}
+.pas-fig .esc-img img{object-position:64% 38%}
+.pas-fig .tag{left:14px;top:14px}
+.pas-pick{display:flex;flex-direction:column;gap:22px}
+/* tamaños: escuditos grandes */
+.sizes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sz{position:relative;display:block;width:100%;aspect-ratio:1/.94;padding:0;border:0;background:var(--oro);clip-path:var(--shield);-webkit-tap-highlight-color:transparent;transition:transform .18s var(--ease)}
+.sz:active{transform:scale(.97)}
+.sz-in{position:absolute;inset:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:20%;background:var(--crema);color:var(--tinta);clip-path:var(--shield);transition:background .18s ease-out;text-align:center}
+.sz b{font:400 56px/.95 var(--f-t)}
+.sz em{font:500 12px/1.2 var(--f-b);font-style:normal;letter-spacing:.06em;text-transform:uppercase;margin-top:2px;color:var(--suave)}
+.sz strong{margin-top:6px;font:700 17px/1 var(--f-b);font-variant-numeric:tabular-nums;color:var(--oro-tinta)}
+.sz[aria-pressed="true"] .sz-in{background:var(--oro)}
+.sz[aria-pressed="true"] em,.sz[aria-pressed="true"] strong{color:var(--tinta)}
+@media (hover:hover) and (pointer:fine){.sz:hover .sz-in{background:var(--plato)}.sz[aria-pressed="true"]:hover .sz-in{background:var(--oro)}}
+/* sabores: fichas de texto con punta */
+.sab-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.sab{position:relative;padding:0;border:0;background:var(--plato);color:var(--tinta);min-height:44px;clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),50% 100%,0 calc(100% - 6px));-webkit-tap-highlight-color:transparent;transition:background .18s}
+.sab span{display:flex;align-items:center;min-height:44px;padding:0 16px 6px;font:500 15px/1 var(--f-b)}
+.sab[aria-pressed="true"]{background:var(--choc);color:var(--crema)}
+@media (hover:hover) and (pointer:fine){.sab:hover{background:var(--crema)}.sab[aria-pressed="true"]:hover{background:var(--choc2)}}
+/* resumen que se escribe */
+.res{padding:2px 0}
+.res-t{font:400 24px/1.2 var(--f-t);color:var(--tinta);min-height:58px;text-wrap:balance}
+.res-n{margin-top:6px;font-size:13px;color:var(--suave)}
+/* dedicatoria */
+.ded{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ded input{width:100%;max-width:420px;min-height:48px;padding:0 14px;background:var(--plato);border:1.5px solid var(--oro-tinta);border-radius:0;font:500 16px/1 var(--f-b);color:var(--tinta)}
+.ded input::placeholder{color:#8a7458}
+.ded-prev span{display:block;background:var(--plato);color:var(--choc);clip-path:var(--shield-short);padding:12px 26px 24px;font:400 26px/1.15 var(--f-s);text-align:center;max-width:100%;overflow-wrap:anywhere}
+@media (min-width:700px){
+  .s-pasteles{padding-top:96px;padding-bottom:104px}
+  .pas-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);grid-template-areas:"t t" "f p";column-gap:clamp(28px,5vw,72px);row-gap:40px;align-items:start}
+  .pas-title{grid-area:t}
+  .pas-fig{grid-area:f;max-width:540px}
+  .pas-fig .esc-in{--ar:540/430}
+  .pas-pick{grid-area:p;gap:28px}
+  .sizes{gap:10px}
+  .sz b{font-size:50px}
+  .sz strong{font-size:16px}
+  .res-t{font-size:30px;min-height:74px}
+}
+@media (min-width:1100px){.sizes{grid-template-columns:repeat(4,minmax(0,1fr))}}

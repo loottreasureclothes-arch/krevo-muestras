@@ -1,0 +1,40 @@
+/* ---------- Sucursales: dos cartelas, fachada y mapa con pestañas ---------- */
+.ns-suc-grid{display:grid;gap:22px}
+.ns-suc-cards{display:grid;gap:14px}
+.ns-scard{--r:10px;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:20px 20px 16px;background:var(--crema);color:var(--noche);
+  -webkit-mask:radial-gradient(circle at 0 0,#0000 var(--r),#000 calc(var(--r) + .5px)),radial-gradient(circle at 100% 0,#0000 var(--r),#000 calc(var(--r) + .5px)),radial-gradient(circle at 0 100%,#0000 var(--r),#000 calc(var(--r) + .5px)),radial-gradient(circle at 100% 100%,#0000 var(--r),#000 calc(var(--r) + .5px));-webkit-mask-composite:source-in;
+  mask:radial-gradient(circle at 0 0,#0000 var(--r),#000 calc(var(--r) + .5px)),radial-gradient(circle at 100% 0,#0000 var(--r),#000 calc(var(--r) + .5px)),radial-gradient(circle at 0 100%,#0000 var(--r),#000 calc(var(--r) + .5px)),radial-gradient(circle at 100% 100%,#0000 var(--r),#000 calc(var(--r) + .5px));mask-composite:intersect}
+.ns-scard::before{content:"";position:absolute;inset:5px;border:1px solid var(--oro);pointer-events:none}
+.ns-scard h3{font:400 clamp(30px,8.4vw,40px)/1 var(--serif);color:var(--vino)}
+.ns-scard address{font-style:normal;font-size:14.5px;line-height:1.5;color:var(--carbon)}
+.ns-scard address span{display:inline-block;margin-top:4px;font:600 10.5px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--vino)}
+.ns-stel{display:inline-flex;align-items:center;min-height:44px;font:500 20px/1 var(--sans);color:var(--noche);letter-spacing:.02em;background:linear-gradient(var(--oro),var(--oro)) 0 calc(100% - 8px)/100% 1px no-repeat}
+.ns-sact{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:6px}
+.ns-scard .ns-btn{padding:0 18px}
+.ns-suc-fig{max-width:560px;width:100%}
+.ns-mapa{display:flex;flex-direction:column;gap:12px}
+.ns-tabs{display:flex;gap:8px}
+.ns-tab{--r:6px;position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;background:var(--oro);color:var(--oro-claro);font:600 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.ns-tab::before{content:"";position:absolute;inset:1.5px;background:var(--noche);--r:5px;
+  -webkit-mask:radial-gradient(circle at 0 0,#0000 var(--r),#000 calc(var(--r) + .5px)),radial-gradient(circle at 100% 0,#0000 var(--r),#000 calc(var(--r) + .5px)),radial-gradient(circle at 0 100%,#0000 var(--r),#000 calc(var(--r) + .5px)),radial-gradient(circle at 100% 100%,#0000 var(--r),#000 calc(var(--r) + .5px));-webkit-mask-composite:source-in;
+  mask:radial-gradient(circle at 0 0,#0000 var(--r),#000 calc(var(--r) + .5px)),radial-gradient(circle at 100% 0,#0000 var(--r),#000 calc(var(--r) + .5px)),radial-gradient(circle at 0 100%,#0000 var(--r),#000 calc(var(--r) + .5px)),radial-gradient(circle at 100% 100%,#0000 var(--r),#000 calc(var(--r) + .5px));mask-composite:intersect}
+.ns-tab.is-on{color:var(--noche)}
+.ns-tab.is-on::before{background:var(--oro)}
+.ns-tab{isolation:isolate}
+.ns-tab::before{z-index:-1}
+.ns-mapa-box{position:relative;width:100%;aspect-ratio:16/11;max-height:300px;background:var(--noche-2);box-shadow:0 0 0 1px var(--oro),0 0 0 4px var(--noche),0 0 0 5px var(--oro);margin:5px;width:calc(100% - 10px)}
+.ns-mapa-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:sepia(.18) saturate(.85)}
+.ns-suc-soc{display:flex;align-items:center;gap:16px}
+.ns-suc-soc .ns-lbl{color:var(--oro-claro)}
+@media(min-width:720px){
+  .ns-suc-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:"h h" "cards cards" "fig mapa" "soc soc";gap:28px clamp(28px,4vw,56px);align-items:start}
+  .ns-suc-h{grid-area:h}
+  .ns-suc-cards{grid-area:cards;grid-template-columns:1fr 1fr;gap:20px}
+  .ns-suc-fig{grid-area:fig}
+  .ns-mapa{grid-area:mapa}
+  .ns-mapa-box{aspect-ratio:auto;height:300px;max-height:none}
+  .ns-suc-soc{grid-area:soc}
+  .ns-scard{padding:26px 26px}
+}
+/* Pulidor: teléfono y "Cómo llegar" alineados al pie de cada cartela */
+.ns-sact{margin-top:auto;padding-top:6px}
