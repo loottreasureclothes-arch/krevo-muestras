@@ -27,3 +27,11 @@ Script: `_build/fotos2.py` (PIL, idempotente). Nada de IA generativa.
 | Dónde, fachada | research/fotos/maps-06.jpg | Recorte y 140-1110 (muro con el logo, mural y portón). webp 480/960/1400. |
 | Cierre, tira "De su Instagram" | ig-01, ig-04, ig-02 | Cuadro 512x512 arriba de la franja de WhatsApp/logos/IMSS (ig-01 y 104-616 sin el logo de la esquina). webp 480. Se presentan como posts, con "@brillantes_inicios" y link a su IG. |
 ig-03 (`img/sala-*.webp`) ya no se usa en la página (los soles enormes dominaban); `_build/soles.py` lo sigue generando.
+
+## Corrección 3 (30 sep 2026)
+| Dónde | Origen | Proceso |
+|---|---|---|
+| Cierre, tira "De su Instagram", primer post | research/fotos/ig-06.jpg ("¿Sueles olvidar esta libretita?", con la Cartilla Nacional de Salud) | `_build/fotos2.py`: cuadro 512x512 en y 20-532, arriba de la franja de logo, WhatsApp e IMSS (igual que los otros dos). webp 480 (`img/post-06-480.webp`). Es ilustración del propio post, sin caras reales. |
+| ~~post-01~~ | ig-01 | RETIRADO: a 390 px era un cuadro amarillo con letra ilegible. El webp se movió a `_build/src/retirado/post-01-480.webp`. |
+| Hero, foto chica de la maestra | la misma `img/maestra-*.webp` | Sin cambio de archivo: sube a la esquina superior derecha, 44 % del ancho en celular y 260 px en compu, con pie "Así te reciben". |
+Nada de IA generativa ni stock.

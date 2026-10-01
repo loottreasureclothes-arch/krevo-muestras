@@ -38,7 +38,8 @@
 .bi-field input:focus{outline:3px solid var(--sun);border-color:var(--blue)}
 .bi-preview{font-size:14px;color:var(--ink-2);margin:0 0 28px;font-style:italic}
 .bi-step .bi-btn--wa{box-shadow:0 3px 0 rgba(11,61,31,.55),inset 0 0 0 2px rgba(11,61,31,.28)}
-.bi-notes{margin-top:28px;padding-top:26px;border-top:2px dashed rgba(27,47,122,.25);display:grid;gap:0}
+.bi-notes-h{margin-top:28px;padding-top:26px;border-top:2px dashed rgba(27,47,122,.25);font:800 12px/28px var(--f-body)!important;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.bi-notes{display:grid;gap:0}
 .bi-notes li{font-size:15px;color:var(--ink);padding-left:18px;position:relative}
 .bi-notes li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;background:var(--sun-deep);border-radius:50%}
 .bi-notes .bi-src{font-size:14px;color:var(--ink-2)}
@@ -70,3 +71,18 @@
 .is-done .bi-seal,.bi-seal.is-on{opacity:.93;transform:scale(1) rotate(-8deg);transition:none;animation:bi-stamp .4s cubic-bezier(.3,1.4,.5,1) both}
 @keyframes bi-stamp{0%{opacity:0;transform:scale(1.6) rotate(-14deg)}60%{opacity:.95;transform:scale(.94) rotate(-7deg)}100%{opacity:.93;transform:scale(1) rotate(-8deg)}}
 @media (prefers-reduced-motion:reduce){.is-done .bi-seal,.bi-seal.is-on{animation:none}.bi-sticker{transition:none}}
+
+/* Correccion 3 (celular): cartilla mas corta sin salirse de la libreta. La ayuda corta va en la misma linea del nombre tras " · "
+   (nowrap: si no cabe, baja completa a su renglon); la larga va a media linea, 2 por renglon. Avisos del pie: un renglon por punto. */
+.bi-notes b{font-weight:800;color:var(--blue)}
+.bi-notes abbr{text-decoration:none}
+@media (max-width:600px){
+  .bi-doc-t{display:block;text-wrap:wrap}
+  .bi-doc-t b{display:inline}
+  .bi-doc-t small{display:block}
+  .bi-doc-t small.bi-in{display:inline-block;white-space:nowrap}
+  .bi-doc-t small.bi-in::before{content:"\00a0·\00a0"}
+  .bi-doc-t small.bi-in.is-own{display:block}
+  .bi-doc-t small.bi-in.is-own::before{content:none}
+  .bi-notes li{font-size:14.5px}
+}

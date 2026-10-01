@@ -27,8 +27,9 @@ hero=f'''<section class="bi-hero bi-dark bi-doodle" id="top" aria-label="Brillan
         <img src="img/recepcion-1000.webp" srcset="img/recepcion-480.webp 480w, img/recepcion-1000.webp 1000w" sizes="(max-width: 899px) 78vw, 520px" width="1000" height="1000" alt="Recepción de Brillantes Inicios: mostrador de madera y el logo dorado en la pared" fetchpriority="high" decoding="async">
         <figcaption>La recepción</figcaption>
       </figure>
-      <figure class="bi-foto bi-hero-small" style="--rot:4deg;--tape:9deg">
-        <img src="img/maestra-360.webp" srcset="img/maestra-360.webp 360w, img/maestra-720.webp 720w" sizes="(max-width: 899px) 36vw, 220px" width="720" height="950" alt="Personal de Brillantes Inicios con uniforme lila saluda desde el pasillo" decoding="async">
+      <figure class="bi-foto bi-hero-small" style="--rot:4deg;--tape:-8deg">
+        <img src="img/maestra-360.webp" srcset="img/maestra-360.webp 360w, img/maestra-720.webp 720w" sizes="(max-width: 899px) 44vw, 260px" width="720" height="950" alt="Personal de Brillantes Inicios con uniforme lila saluda desde el pasillo" fetchpriority="high" decoding="async">
+        <figcaption>Así te reciben</figcaption>
       </figure>
     </div>
     <div class="bi-hero-copy">
@@ -46,16 +47,18 @@ hero=f'''<section class="bi-hero bi-dark bi-doodle" id="top" aria-label="Brillan
 open('sections/10-hero.html','w').write(hero+'\n')
 
 # ------------ 20 cartilla
-docs=[('acta','Acta de nacimiento','Original o copia certificada, y una copia simple'),
-('curp','CURP del niño o niña','Solo si el acta no la trae'),
-('salud','Cartilla Nacional de Salud','El original'),
-('examen','Solicitud de examen médico de admisión','Ya llenada'),
-('id','Identificación oficial con foto','De la persona trabajadora asegurada'),
-('solicitud','Solicitud de inscripción a guardería del IMSS',''),
-('platica','Constancia de plática de nuevo ingreso','')]
+# modo de la ayuda en celular (correccion 3): 'in' = misma linea que el nombre tras " · " si cabe (si no, baja a su renglon);
+# 'half' = media linea (14 px, 2 por renglon); '' = su propio renglon de 28 px.
+docs=[('acta','Acta de nacimiento','Original o copia certificada, y una copia simple','half'),
+('curp','CURP del niño o niña','Solo si el acta no la trae','in'),
+('salud','Cartilla Nacional de Salud','El original','in'),
+('examen','Solicitud de examen médico de admisión','Ya llenada','in'),
+('id','Identificación oficial con foto','De la persona trabajadora asegurada',''),
+('solicitud','Solicitud de inscripción a guardería del IMSS','',''),
+('platica','Constancia de plática de nuevo ingreso','','')]
 lis=''
-for id_,t,s in docs:
-    small=f'<small>{s}</small>' if s else ''
+for id_,t,s,mode in docs:
+    small=f'<small{(" class=bi-"+mode) if mode else ""}>{s}</small>' if s else ''
     lis+=f'''
         <li><label class="bi-doc"><input type="checkbox" data-doc="{id_}"><span class="bi-box" aria-hidden="true"><svg viewBox="0 0 44 44"><path class="bi-tick" d="M10 24C13 27 16 30.5 19 33.5C24 26 29 18.5 35 11.5"/></svg></span><span class="bi-doc-t"><b>{t}</b>{small}</span><svg class="bi-sticker" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg></label></li>'''
 cart=f'''<section class="bi-sec bi-dark bi-doodle bi-cartilla" id="cartilla" data-hide-wa aria-labelledby="cartilla-h">
@@ -81,7 +84,7 @@ cart=f'''<section class="bi-sec bi-dark bi-doodle bi-cartilla" id="cartilla" dat
         </li>
         <li class="bi-step">
           <h3><span class="bi-num">2</span>Inscribe en STIGI</h3>
-          <p class="bi-hint">Es el sitio del IMSS. Se abre en otra pestaña.</p>
+          <p class="bi-hint bi-half">Es el sitio del IMSS. Se abre en otra pestaña.</p>
           <a class="bi-btn bi-btn--blue" href="https://stigi.imss.gob.mx" target="_blank" rel="noopener">Inscribir en STIGI<svg aria-hidden="true"><use href="#i-ext"/></svg></a>
         </li>
         <li class="bi-step">
@@ -94,10 +97,11 @@ cart=f'''<section class="bi-sec bi-dark bi-doodle bi-cartilla" id="cartilla" dat
           <a class="bi-btn bi-btn--wa" data-wa-cartilla href="https://wa.me/524491927631?text=Hola%20Brillantes%20Inicios%2C%20quiero%20inscribir%20a%20mi%20beb%C3%A9.%20%C2%BFCu%C3%A1ndo%20puedo%20visitarlos%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Agendar visita</span><span class="bi-vh"> por WhatsApp</span></a>
         </li>
       </ol>
+      <p class="bi-notes-h">Según el IMSS</p>
       <ul class="bi-notes">
-        <li>Según el IMSS: niños desde 43 días de nacidos hasta que cumplan 4 años.</li>
-        <li>Cuando la guardería te acepta, tienes 7 días hábiles para concluir el trámite.</li>
-        <li>También te piden datos: número de seguridad social, domicilio, teléfonos, correo y datos de tu trabajo.</li>
+        <li><b>Edad:</b> de 43 días de nacidos a 4 años.</li>
+        <li><b>Plazo:</b> 7 días hábiles tras la aceptación.</li>
+        <li><b>Datos:</b> <abbr title="número de seguridad social">NSS</abbr>, domicilio, teléfonos, correo y trabajo.</li>
         <li class="bi-src">Fuente: <a href="https://www.imss.gob.mx/tramites/imss01006" target="_blank" rel="noopener">imss.gob.mx/tramites/imss01006</a></li>
       </ul>
     </div>
@@ -189,13 +193,15 @@ donde=f'''<section class="bi-sec bi-deep bi-donde" id="donde" data-hide-wa aria-
         <li><span>Teléfono</span><a href="tel:+524496241782">449 624 1782</a></li>
         <li><span>WhatsApp</span><a href="https://wa.me/524491927631?text=Hola%20Brillantes%20Inicios%2C%20quiero%20informaci%C3%B3n." data-wa target="_blank" rel="noopener">449 192 7631</a></li>
       </ul>
-      <a class="bi-btn bi-btn--wa bi-donde-wa" data-wa href="https://wa.me/524491927631?text=Hola%20Brillantes%20Inicios%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escríbenos por WhatsApp</a>
+      <div class="bi-donde-acts">
+        <a class="bi-btn bi-btn--wa bi-donde-wa" data-wa href="https://wa.me/524491927631?text=Hola%20Brillantes%20Inicios%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escríbenos por WhatsApp</a>
+        <a class="bi-btn bi-btn--blue" href="{DIR}" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
     </div>
     <div class="bi-donde-map">
       <div class="bi-foto bi-map" style="--rot:1.2deg;--tape:-3deg" data-reveal>
         <iframe title="Mapa: Brillantes Inicios, Cerro de Aconcagua 101-C, Aguascalientes" src="https://www.google.com/maps?q=Brillantes+Inicios+Guarder%C3%ADa+IMSS+Ciudad+Industrial&amp;ll=21.8315435,-102.2956786&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-      <a class="bi-btn bi-btn--blue" href="{DIR}" target="_blank" rel="noopener">Cómo llegar</a>
     </div>
     <div class="bi-donde-foot">
       <ul class="bi-social" aria-label="Redes de Brillantes Inicios">{soc}</ul>
@@ -209,7 +215,7 @@ open('sections/50-donde.html','w').write(donde+'\n')
 todo=['Logo en alta','Fotos en alta de salas, cocina y patio','Edades y capacidad por sala','Nombre de la directora','Si aceptan pago particular','Link de cobro, si aplica']
 tl=''.join(f'<li>{t}</li>' for t in todo)
 IG='https://www.instagram.com/brillantes_inicios/'
-posts=[('01','-4deg','-6deg','Post: No hay niños difíciles, hay niños que necesitan más empatía y paciencia'),
+posts=[('06','-4deg','-6deg','Post: ¿Sueles olvidar esta libretita? Un bebé con la Cartilla Nacional de Salud del IMSS'),
 ('04','2deg','5deg','Post: ¿Te quedaste sin ideas para el lunch?'),
 ('02','-1deg','-3deg','Post: Alerta de lenguaje que debes conocer, y cuándo consultar al especialista')]
 pp=''.join(f'''
@@ -219,7 +225,7 @@ cierre=f'''<section class="bi-sec bi-dark bi-doodle bi-cierre" id="cierre" data-
     <div class="bi-cierre-main">
       {title([("“Ya sonríe",""),("cuando llegamos.”","t2")],'h2','','cierre-h')}
       <p class="bi-cierre-who" data-reveal><span class="bi-rev-stars" aria-label="5 de 5 estrellas">{stars_svg()}</span>Martha Yadira Barrios Marin · mamá, opinión en Google</p>
-      <p class="bi-cierre-doc" id="bi-cierre-doc" data-reveal>Marca lo que ya tienes en la cartilla y se suma a tu mensaje.</p>
+      <p class="bi-cierre-doc" id="bi-cierre-doc" data-reveal><span class="bi-nw">Cerro de Aconcagua 101-C ·</span> <span class="bi-nw">de lunes a viernes, 7:00 a 17:00</span></p>
       <div class="bi-cierre-act">
         <a class="bi-btn bi-btn--wa bi-cierre-wa" data-wa-cartilla href="https://wa.me/524491927631?text=Hola%20Brillantes%20Inicios%2C%20quiero%20inscribir%20a%20mi%20beb%C3%A9.%20%C2%BFCu%C3%A1ndo%20puedo%20visitarlos%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar visita por WhatsApp</a>
         {SEAL}

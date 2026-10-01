@@ -39,3 +39,26 @@
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
+
+/* Correccion 3: la ayuda corta va tras " · " en la misma linea del documento; si no cupo y bajo a su renglon, se quita el punto. */
+(function () {
+  "use strict";
+  function fit() {
+    var smalls = document.querySelectorAll("#cartilla small.bi-in");
+    Array.prototype.forEach.call(smalls, function (s) {
+      s.classList.remove("is-own");
+      var b = s.previousElementSibling;
+      if (!b) return;
+      var r = b.getClientRects(), last = r[r.length - 1];
+      if (last && Math.abs(s.getBoundingClientRect().top - last.top) > 8) s.classList.add("is-own");
+    });
+  }
+  var t;
+  function soon() { clearTimeout(t); t = setTimeout(fit, 120); }
+  function init() {
+    fit();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    window.addEventListener("resize", soon);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();

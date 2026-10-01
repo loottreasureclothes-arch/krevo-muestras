@@ -27,6 +27,7 @@ out(fa.crop((0, 140, 1600, 1110)), 'fachada', [480, 960, 1400])
 s = Image.open(F + 'maps-01.jpg')
 out(s.crop((0, 40, 1080, 840)), 'salon', [480, 900])
 # Posts del IG para la tira del cierre (512x640): cuadro arriba de la franja de WhatsApp, logos e IMSS.
-for n, box in [('01', (0, 104, 512, 616)), ('04', (0, 0, 512, 512)), ('02', (0, 0, 512, 512))]:
+# Correccion 3: sale ig-01 (cuadro amarillo con letra ilegible a 390 px) y entra ig-06 (la libretita: Cartilla Nacional de Salud), y 20-532.
+for n, box in [('06', (0, 20, 512, 532)), ('04', (0, 0, 512, 512)), ('02', (0, 0, 512, 512))]:
     p = Image.open(F + f'ig-{n}.jpg')
     out(p.crop(box), f'post-{n}', [480])
