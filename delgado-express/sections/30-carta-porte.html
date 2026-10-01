@@ -1,0 +1,56 @@
+<section class="cp dx-sec" id="cotizar" data-unit="016" data-hide-wa>
+  <div class="dx-wrap cp-grid">
+    <div class="cp-intro">
+      <p class="dx-eyebrow">El cotizador</p>
+      <h2 class="dx-h2" data-drop><span class="ln">Llena tu</span><span class="ln r">carta porte.</span></h2>
+      <ul class="cp-steps" data-reveal>
+        <li>De dónde sale y a dónde llega.</li>
+        <li>Qué carga y cuánta.</li>
+        <li>Para cuándo.</li>
+      </ul>
+    </div>
+
+    <form class="cp-sheet" id="cp-form" autocomplete="off" novalidate data-reveal>
+      <div class="cp-top">
+        <div class="cp-top-t"><b>Carta porte</b><span>Documento de embarque</span></div>
+        <div class="cp-seal"><span class="cp-seal-l" aria-hidden="true">Sello</span>
+          <div class="cp-stamp" id="cp-stamp" aria-hidden="true"><span>Lista para</span><b>cotizar</b></div>
+        </div>
+        <p class="cp-folio">Folio <output id="cp-folio" for="cp-origen cp-destino cp-carga">__ / __ / __</output></p>
+      </div>
+
+      <div class="cp-row cp-row--2">
+        <label class="cp-box"><span class="cp-lbl">Origen</span><input id="cp-origen" name="origen" type="text" value="Aguascalientes, Ags." placeholder="Ciudad, estado" autocomplete="off" enterkeyhint="next"></label>
+        <label class="cp-box"><span class="cp-lbl">Destino</span><input id="cp-destino" name="destino" type="text" placeholder="Ciudad, estado" autocomplete="off" enterkeyhint="next"></label>
+      </div>
+
+      <label class="cp-box"><span class="cp-lbl">Qué carga</span><input id="cp-carga" name="carga" type="text" placeholder="Tarimas de alimento, maquinaria, paquetería" autocomplete="off" enterkeyhint="next"></label>
+
+      <fieldset class="cp-box cp-cuanta">
+        <legend class="cp-lbl">Cuánta carga</legend>
+        <div class="cp-chips">
+          <label><input type="radio" name="cuanta" value="Caja completa"><span>Caja completa</span></label>
+          <label><input type="radio" name="cuanta" value="Media caja"><span>Media caja</span></label>
+          <label><input type="radio" name="cuanta" value="Algunas tarimas"><span>Algunas tarimas</span></label>
+          <label><input type="radio" name="cuanta" value="No sé todavía"><span>No sé todavía</span></label>
+        </div>
+      </fieldset>
+
+      <div class="cp-row cp-row--2">
+        <label class="cp-box"><span class="cp-lbl">Peso aproximado <em>(opcional)</em></span><input id="cp-peso" name="peso" type="text" placeholder="Ej. 12 toneladas" autocomplete="off"></label>
+        <label class="cp-box"><span class="cp-lbl">Fecha de carga</span><input id="cp-fecha" name="fecha" type="date"></label>
+      </div>
+
+      <div class="cp-row cp-row--2">
+        <label class="cp-box"><span class="cp-lbl">Empresa <em>(opcional)</em></span><input id="cp-empresa" name="empresa" type="text" autocomplete="organization"></label>
+        <label class="cp-box"><span class="cp-lbl">Tu nombre <em>(opcional)</em></span><input id="cp-nombre" name="nombre" type="text" autocomplete="name"></label>
+      </div>
+
+      <div class="cp-talon">
+        <a class="dx-btn dx-btn--wa" id="cp-wa" href="https://wa.me/524499764042?text=Hola%20Delgado%20Express%2C%20quiero%20cotizar%20un%20flete." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar por WhatsApp</a>
+        <p class="cp-fixed">Te confirmamos tarifa y disponibilidad por WhatsApp.</p>
+        <a class="cp-tel" href="tel:+524499764042">o llámanos: <span class="dx-nowrap">449 976 4042</span></a>
+      </div>
+    </form>
+  </div>
+</section>

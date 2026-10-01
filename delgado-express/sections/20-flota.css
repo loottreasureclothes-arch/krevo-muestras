@@ -1,0 +1,39 @@
+/* 20 · la flota: las 5 fotos reales a la vista (apiladas en celular, 1 + 4 en compu). Sin carrusel. */
+.fl { background: var(--ink); padding-bottom: 46px; overflow-x: clip; }
+.fl-title { margin-top: 10px; }
+.fl-rail { margin-top: 24px; display: grid; gap: 12px; padding: 0 var(--gut); }
+.fl-card figure { aspect-ratio: 4 / 3; }
+.fl-card picture { display: block; width: 100%; height: 100%; }
+.fl-card--c figure, .fl-card--d figure { aspect-ratio: 16 / 9; }
+.fl-card--e figure { aspect-ratio: 2 / 1; }
+.fl-cap { position: absolute; left: 8px; bottom: 8px; z-index: 2; padding: 5px 9px 4px; background: rgba(7, 11, 23, 0.84); font: 500 11px/1.2 var(--f-mono); letter-spacing: 0.06em; color: var(--white); }
+@media (max-width: 759px) {
+  /* el Kenworth a sangre, 4:5 */
+  .fl-rail .fl-card.fl-card--a { margin: 0 calc(var(--gut) * -1) 4px; padding: 0; border: 0; background: none; }
+  .fl-card--a::before, .fl-card--a::after { display: none; }
+  .fl-card--a figure { aspect-ratio: 4 / 5; }
+  .fl-card--a .fl-cap { left: var(--gut); bottom: 14px; }
+  .fl-rail .panel { padding: 16px 7px; }
+  .fl-rail .panel::before { top: 6px; } .fl-rail .panel::after { bottom: 6px; }
+}
+.fl-lines { margin-top: 34px; display: grid; }
+.fl-lines li {
+  padding: 18px 0 16px; border-top: 1px solid rgba(201, 205, 213, 0.3);
+  font-stretch: 125%; font-weight: 800; text-transform: uppercase; font-size: clamp(21px, 6.1vw, 26px); line-height: 1.05; letter-spacing: -0.01em; text-wrap: balance;
+}
+.fl-lines li:last-child { border-bottom: 1px solid rgba(201, 205, 213, 0.3); }
+.fl-tape { position: absolute; left: 0; right: 0; bottom: 0; }
+@media (min-width: 760px) {
+  .fl { padding-bottom: 66px; }
+  .fl-title { margin-top: 14px; }
+  .fl-rail { max-width: 1240px; margin: 40px auto 0; gap: 22px; grid-template-columns: repeat(12, 1fr); }
+  .fl-card--a { grid-column: 1 / span 7; grid-row: 1 / span 2; display: flex; flex-direction: column; }
+  .fl-card--a figure { flex: 1; aspect-ratio: auto; min-height: 420px; }
+  .fl-card--b { grid-column: 8 / span 5; grid-row: 1; }
+  .fl-card--c { grid-column: 8 / span 5; grid-row: 2; }
+  .fl-card--b figure, .fl-card--c figure { aspect-ratio: 16 / 9; }
+  .fl-card--d { grid-column: 1 / span 6; grid-row: 3; } .fl-card--e { grid-column: 7 / span 6; grid-row: 3; }
+  .fl-card--d figure, .fl-card--e figure { aspect-ratio: 16 / 9; }
+  .fl-lines { margin-top: 56px; grid-template-columns: repeat(3, 1fr); column-gap: 32px; }
+  .fl-lines li { font-size: clamp(20px, 2.1vw, 30px); border-bottom: 0 !important; padding-top: 22px; }
+}

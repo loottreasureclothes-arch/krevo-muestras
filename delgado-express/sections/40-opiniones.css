@@ -1,0 +1,106 @@
+/* 40 · MOMENTO FIRMA "SE ABREN LAS PUERTAS": la parte trasera de una caja seca de 53'.
+   Las puertas tapan solo el 5.0 (cada hoja ~1:2.4, como puerta real) y se abren con el scroll. */
+.op { background: var(--ink); overflow-x: clip; }
+.op-title { margin-top: 10px; }
+.op-grid { display: grid; gap: 26px; margin-top: 26px; }
+.op-box {
+  --p: 1; --hd: 24px; --post: 7px; --sill: 12px;
+  position: relative; aspect-ratio: 1 / 1.25; max-height: 640px; perspective: 1400px; perspective-origin: 50% 45%;
+}
+/* interior de la caja: azul noche, costillas de pared y piso */
+.op-in {
+  position: absolute; top: var(--hd); bottom: var(--sill); left: var(--post); right: var(--post);
+  display: grid; place-items: center; padding: 18px 14px; text-align: center;
+  background:
+    radial-gradient(120% 80% at 50% 45%, rgba(22, 34, 63, 0) 40%, rgba(3, 6, 14, 0.75) 100%),
+    linear-gradient(180deg, transparent 82%, rgba(201, 205, 213, 0.08) 82% 83%, rgba(7, 11, 23, 0.5) 83%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.045) 0 2px, transparent 2px 30px),
+    var(--ink-2);
+}
+.op-score { display: grid; justify-items: center; }
+.op-big { font-stretch: 125%; font-weight: 900; line-height: 0.82; font-size: clamp(88px, 27vw, 118px); letter-spacing: -0.03em; }
+.op-stars { margin-top: 14px; display: flex; gap: 4px; color: var(--red); }
+.op-stars svg { width: 26px; height: 26px; }
+.op-stars--s { margin: 0; gap: 2px; } .op-stars--s svg { width: 15px; height: 15px; }
+.op-count { margin-top: 12px; font: 700 13px/1.3 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--chrome); }
+.op-more { margin-top: 6px; }
+
+/* marco: cabezal con plafones rojos, postes y travesaño */
+.op-head { position: absolute; z-index: 6; left: 0; right: 0; top: 0; height: var(--hd); display: flex; justify-content: center; align-items: center; gap: 22px;
+  background: linear-gradient(180deg, #4b515d, #2b303b 70%, #1c2029); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 2px 0 #11141b; }
+.op-led { display: block; width: 16px; height: 7px; border-radius: 4px; background: radial-gradient(circle at 50% 35%, #ff8a8f, #e3202f 55%, #8d0f1b); box-shadow: 0 0 9px 2px rgba(227, 32, 47, 0.55); }
+.op-post { position: absolute; z-index: 5; top: var(--hd); bottom: var(--sill); width: var(--post); background: linear-gradient(90deg, #252a34, #6b717d 45%, #2e333d); }
+.op-post--l { left: 0; } .op-post--r { right: 0; }
+.op-sill { position: absolute; z-index: 6; left: 0; right: 0; bottom: 0; height: var(--sill); background: linear-gradient(180deg, #9aa0aa, #3a3f4a 30%, #1a1d25); }
+
+/* hojas de la puerta */
+.op-door {
+  position: absolute; z-index: 4; top: var(--hd); bottom: var(--sill); width: calc(50% - var(--post));
+  backface-visibility: hidden; -webkit-backface-visibility: hidden; will-change: transform; transition: none;
+  background:
+    radial-gradient(circle, rgba(60, 66, 78, 0.55) 0 1.4px, transparent 1.8px) 0 10px / 12px 6px repeat-x,
+    radial-gradient(circle, rgba(60, 66, 78, 0.55) 0 1.4px, transparent 1.8px) 0 calc(100% - 8px) / 12px 6px repeat-x,
+    linear-gradient(180deg, transparent 70%, rgba(92, 76, 52, 0.16) 92%, rgba(70, 58, 40, 0.3)),
+    linear-gradient(180deg, #f1f2f5, #d6d9df 50%, #c2c7cf);
+}
+.op-door--l { left: var(--post); transform-origin: 0 50%; transform: rotateY(calc(var(--p) * -112deg)); box-shadow: inset -3px 0 0 #171a21, inset 1px 0 0 rgba(0, 0, 0, 0.25); }
+.op-door--r { right: var(--post); transform-origin: 100% 50%; transform: rotateY(calc(var(--p) * 112deg)); box-shadow: inset 3px 0 0 #171a21, inset -1px 0 0 rgba(0, 0, 0, 0.25); }
+.op-box.is-auto .op-door { transition: transform 650ms var(--ease-out); }
+.op-door.is-gone { visibility: hidden; }
+/* bisagras en el canto exterior */
+.op-hinge { position: absolute; width: 13px; height: 20px; background: linear-gradient(90deg, #1f232b, #59606c 50%, #1f232b); border: 1px solid #12151b; border-radius: 1px; }
+.op-door--l .op-hinge { left: -4px; } .op-door--r .op-hinge { right: -4px; }
+.op-hinge--1 { top: 7%; } .op-hinge--2 { top: 33%; } .op-hinge--3 { top: 59%; } .op-hinge--4 { bottom: 9%; }
+/* barras de cierre con levas arriba y abajo y su manija */
+.op-rod { position: absolute; top: 3.5%; bottom: 3.5%; width: 8px; margin-left: -4px; border-radius: 4px;
+  background: linear-gradient(90deg, #4c525e, #f4f5f7 38%, #9aa0aa 62%, #dfe2e7 80%, #4c525e); box-shadow: 1px 0 3px rgba(0, 0, 0, 0.3); }
+.op-door--l .op-rod--1 { left: 30%; } .op-door--l .op-rod--2 { left: 66%; }
+.op-door--r .op-rod--1 { left: 70%; } .op-door--r .op-rod--2 { left: 34%; }
+.op-cam { position: absolute; left: -6px; width: 20px; height: 13px; border-radius: 2px; background: linear-gradient(180deg, #5d636f, #262a33); border: 1px solid #12151b; }
+.op-cam::after { content: ""; position: absolute; top: 3px; width: 7px; height: 5px; border-radius: 0 3px 3px 0; background: #9aa0aa; }
+.op-door--l .op-cam::after { right: -7px; } .op-door--r .op-cam::after { left: -7px; border-radius: 3px 0 0 3px; }
+.op-cam--t { top: -4px; } .op-cam--b { bottom: -4px; }
+.op-lever { position: absolute; top: 57%; height: 8px; width: 78px; max-width: 26cqw; border-radius: 4px;
+  background: linear-gradient(180deg, #f4f5f7, #a3a9b3 55%, #5d636f); box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35); }
+.op-lever::before { content: ""; position: absolute; top: -5px; width: 16px; height: 16px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #f4f5f7, #7b818d 60%, #353a45); border: 1px solid #1b1e26; }
+.op-lever::after { content: ""; position: absolute; top: -4px; width: 9px; height: 16px; border-radius: 1px; background: linear-gradient(90deg, #2b2f38, #5d636f); }
+.op-door--l .op-lever { right: 4px; } .op-door--l .op-lever::before { right: -8px; } .op-door--l .op-lever::after { left: -5px; }
+.op-door--r .op-lever { left: 4px; } .op-door--r .op-lever::before { left: -8px; } .op-door--r .op-lever::after { right: -5px; }
+.op-door { container-type: inline-size; }
+.op-door .op-lever { width: 25cqw; }
+/* número, cinta reflejante vertical en el canto y franja de abajo */
+.op-num { position: absolute; top: 9%; font-stretch: 125%; font-weight: 900; font-size: clamp(20px, 6vw, 30px); line-height: 1; letter-spacing: 0.02em; color: #1c2238; }
+.op-door--l .op-num { left: 40%; } .op-door--r .op-num { right: 40%; }
+.op-refl { position: absolute; top: 4%; bottom: 20%; width: 9px; background: repeating-linear-gradient(180deg, var(--red) 0 22px, #f4f5f7 22px 44px); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12); }
+.op-door--l .op-refl { left: 9px; } .op-door--r .op-refl { right: 9px; }
+.op-tape { position: absolute; left: 0; right: 0; bottom: 12%; height: 14px; background: repeating-linear-gradient(90deg, var(--red) 0 24px, #f4f5f7 24px 48px); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2); }
+
+/* reseñas y foto: siempre a la vista, fuera de la caja */
+.op-side { display: grid; gap: 18px; }
+.op-quotes { display: grid; gap: 14px; }
+.op-q { padding: 16px 14px 14px; border-left: 3px solid var(--red); background: var(--ink-2); }
+.op-q p { font-stretch: 100%; font-weight: 600; font-size: 18px; line-height: 1.3; }
+.op-q footer { margin-top: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 13.5px; }
+.op-q footer b { font-weight: 700; }
+.op-q footer em { font: 500 11px/1 var(--f-mono); font-style: normal; color: var(--chrome); letter-spacing: 0.06em; text-transform: uppercase; }
+.op-rot { position: relative; margin: 0; aspect-ratio: 960 / 1065; overflow: hidden; border: 2px solid var(--chrome); box-shadow: 0 0 0 1px rgba(7, 11, 23, 0.8); }
+.op-rot img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+@media (min-width: 760px) {
+  .op-title { margin-top: 14px; }
+  .op-grid { margin-top: 40px; grid-template-columns: 5fr 6fr; gap: 40px; align-items: center; }
+  .op-box { --hd: 30px; --post: 9px; --sill: 14px; }
+  .op-led { width: 20px; height: 8px; }
+  .op-big { font-size: clamp(110px, 11vw, 170px); }
+  .op-stars svg { width: 32px; height: 32px; } .op-stars--s svg { width: 16px; height: 16px; }
+  .op-count { font-size: 15px; }
+  .op-q { padding: 22px 24px 20px; } .op-q p { font-size: clamp(19px, 1.8vw, 25px); }
+  .op-rot { max-width: 320px; }
+  .op-hinge { width: 15px; height: 26px; } .op-rod { width: 10px; margin-left: -5px; } .op-tape { height: 18px; } .op-refl { width: 11px; }
+}
+@media (min-width: 1000px) {
+  .op-side { grid-template-columns: 1fr 230px; align-items: end; }
+  .op-rot { max-width: none; }
+}
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .dx-js .op-box { --p: 0; }
+}
