@@ -29,6 +29,14 @@
     var key = m ? "1" : "0";
     if (key !== last) { last = key; if (m) setLines("Tu casa", "ya tiene plano."); else setLines("Falta elegir", "modelo."); }
   }
+  /* sin elegir: tocar una de las dos casas elige el modelo ahí mismo (y deja el interruptor de Modelos igual) */
+  Array.prototype.forEach.call(document.querySelectorAll(".sj-pick"), function (b) {
+    b.addEventListener("click", function () {
+      var k = b.getAttribute("data-pick"), r = document.getElementById(k === "dos" ? "sj-pl-2" : "sj-pl-1");
+      if (r && !r.checked) { r.checked = true; r.dispatchEvent(new Event("change", { bubbles: true })); }
+      SJ.set("modelo", k);
+    });
+  });
   SJ.on(paint);
   paint();
 })();

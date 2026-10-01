@@ -48,3 +48,14 @@ Recortes, x4 y webp hechos con `scratchpad/r2fix-san-jose-premier/crops.py` y `e
 | og.jpg | hero-tt21 + logo + texto con PIL (DM Serif Display / DM Sans) | | 1200x630 | og:image |
 
 Ya no se usan en la página: `hero-fachada-*` (solo como fuente de `lad-final`), `casa-una-planta-*`, `bosques-aerea-*`, `int-sala-*`, `casa-dos-plantas-*`, `terreno-excedente-*`, `terrenos-aerea-*` (no se borraron). La nota de origen de las fotos queda una sola vez, en el pie: "Fotos tomadas de los videos públicos de la constructora."
+
+## Corrección 3 (30 sep 2026)
+Recorte hecho con PIL en `scratchpad/r3fix-san-jose-premier/terr.py`. Sin IA generativa, sin stock y sin x4 nuevo (sale de un archivo que ya estaba subido con Real-ESRGAN).
+
+| Archivo en `img/` | Video (ID TikTok) | Cuadro | Recorte | Dónde va |
+|---|---|---|---|---|
+| terrenos-fracc-{480,960,1600} | 7648858278222433556 (v08, últimos terrenos) | seg. 12 (013) | sale de `terrenos-aerea-1600`: x 0 a 1600, y 56 a 856 (2 % a 30 % del alto), 2:1. Campos, árboles y filas de casas blancas; sin el techo en obra ni el cascajo | Ficha "Terrenos" (pie "Los últimos terrenos, desde el dron") y cierre cuando se elige Terreno |
+| hero-fachada-{960,1600} | (corrección 1) | | sin cambio | Vuelve al hero, solo en compu (`<picture>`, 900 px o más); en celular sigue `hero-tt21` |
+| una-planta-tt30-{480,960}, dos-plantas-frente-{480,960} | (corrección 2 y 1) | | sin cambio | Además, las dos fotos 4:5 del cierre sin elegir |
+
+Ya no se usa en la página: `terreno-sur-*` (no se borró).

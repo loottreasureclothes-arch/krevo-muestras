@@ -1,6 +1,7 @@
 /* 10-hero: foto real de casa terminada con velo marino abajo; título que cae y pega */
 .sj-hero { position: relative; background: var(--navy); min-height: 0; display: flex; flex-direction: column; justify-content: flex-end; padding-top: var(--bar); overflow: hidden; isolation: isolate; }
 .sj-hero-photo { position: absolute; inset: 0 0 auto 0; top: var(--bar); height: min(80vw, 58svh); min-height: 280px; z-index: -1; }
+.sj-hero-photo picture { display: block; width: 100%; height: 100%; }
 .sj-hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 30%; }
 /* velo solo en el 40 % de abajo: el cielo azul se queda azul */
 .sj-hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(18, 40, 63, 0) 62%, rgba(18, 40, 63, 0.6) 84%, var(--navy) 100%); }
@@ -20,7 +21,7 @@
   .sj-hero-photo::after { background: linear-gradient(to right, var(--navy) 0, rgba(18, 40, 63, 0) 9%), linear-gradient(to top, rgba(18, 40, 63, 0.45), rgba(18, 40, 63, 0) 26%); }
   .sj-hero-photo::before { left: auto; right: 24px; top: 24px; border-left: 0; border-right: 2px solid var(--gold); width: 54px; height: 54px; }
   .sj-hero-body { grid-column: 1; grid-row: 1; padding: 0 max(var(--gutter), calc((100vw - 1200px) / 2)) 0 max(var(--gutter), calc((100vw - 1200px) / 2)); gap: 22px; align-self: center; z-index: 1; margin-right: -40px; max-width: none; }
-  .sj-hero-photo img { object-position: 22% 50%; }
+  .sj-hero-photo img { object-position: 50% 30%; }
   .sj-h--hero { font-size: clamp(52px, 4.7vw, 80px); }
   .sj-hero-line { font-size: 18px; }
 }

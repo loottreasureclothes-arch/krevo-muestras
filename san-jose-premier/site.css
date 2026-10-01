@@ -182,8 +182,9 @@ body.sj-wa-off .sj-wa { visibility: hidden; opacity: 0; }
 /* ---------- Footer: remata con el dron y el lema ---------- */
 .sj-foot { background: var(--navy-2); color: var(--cal); padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
 .sj-foot-band { position: relative; height: 256px; overflow: hidden; isolation: isolate; display: flex; align-items: flex-end; }
-.sj-foot-band img { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
-.sj-foot-band::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to bottom, rgba(12, 28, 46, 0) 40%, rgba(12, 28, 46, 0.75) 82%, var(--navy-2) 100%); }
+.sj-foot-band img { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; object-position: 50% 88%; }
+/* velo solo en el 35 % de abajo, donde va el lema: el cielo, la sierra y las casas quedan limpios */
+.sj-foot-band::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to bottom, rgba(12, 28, 46, 0) 65%, rgba(12, 28, 46, 0.72) 86%, var(--navy-2) 100%); }
 .sj-foot-band-in { padding-bottom: 18px; }
 .sj-foot-motto { font-family: var(--serif); font-size: clamp(34px, 9.4vw, 64px); line-height: 1.02; text-shadow: 0 2px 18px rgba(6, 14, 24, 0.7); }
 .sj-foot-motto span { display: block; }
@@ -207,7 +208,10 @@ body.sj-wa-off .sj-wa { visibility: hidden; opacity: 0; }
 .sj-credit { font-size: 13px; line-height: 1.45; color: rgba(244, 241, 234, 0.6); max-width: 60ch; }
 @media (min-width: 900px) {
   .sj-foot-band { height: 420px; }
-  .sj-foot-band img { object-position: 50% 58%; }
+  .sj-foot-band img { object-position: 50% 92%; }
+  /* compu: el lema cae sobre techos blancos; el velo empieza un poco antes (38 %) y la sombra del lema es más firme */
+  .sj-foot-band::after { background: linear-gradient(to bottom, rgba(12, 28, 46, 0) 62%, rgba(12, 28, 46, 0.8) 84%, var(--navy-2) 100%); }
+  .sj-foot-motto { text-shadow: 0 2px 24px rgba(6, 14, 24, 0.85), 0 0 3px rgba(6, 14, 24, 0.6); }
   .sj-foot-band-in { padding-bottom: 34px; }
   .sj-foot-grid { grid-template-columns: 1fr 1fr 2fr; gap: 40px; align-items: start; }
   .sj-foot-addr { grid-column: auto; margin-top: 0; padding-top: 0; border-top: 0; gap: 10px; font-size: 15px; }

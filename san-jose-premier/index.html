@@ -28,14 +28,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero-tt21-960.webp" imagesrcset="img/hero-tt21-480.webp 480w, img/hero-tt21-960.webp 960w, img/hero-tt21-1233.webp 1233w" imagesizes="(min-width: 900px) 85vw, 116vw" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1790821084">
-<link rel="stylesheet" href="sections/10-hero.css?v=1790821146">
-<link rel="stylesheet" href="sections/20-modelos.css?v=1790821084">
-<link rel="stylesheet" href="sections/30-ladrillo.css?v=1790821084">
-<link rel="stylesheet" href="sections/40-bosques.css?v=1790821084">
+<link rel="preload" as="image" media="(max-width: 899px)" href="img/hero-tt21-960.webp" imagesrcset="img/hero-tt21-480.webp 480w, img/hero-tt21-960.webp 960w, img/hero-tt21-1233.webp 1233w" imagesizes="116vw" fetchpriority="high">
+<link rel="preload" as="image" media="(min-width: 900px)" href="img/hero-fachada-960.webp" imagesrcset="img/hero-fachada-960.webp 960w, img/hero-fachada-1600.webp 1600w" imagesizes="50vw" fetchpriority="high">
+<link rel="stylesheet" href="site.css?v=1790823639">
+<link rel="stylesheet" href="sections/10-hero.css?v=1790823174">
+<link rel="stylesheet" href="sections/20-modelos.css?v=1790823364">
+<link rel="stylesheet" href="sections/30-ladrillo.css?v=1790821274">
+<link rel="stylesheet" href="sections/40-bosques.css?v=1790821274">
 <link rel="stylesheet" href="sections/50-credito.css?v=1790817503">
-<link rel="stylesheet" href="sections/60-cierre.css?v=1790821084">
+<link rel="stylesheet" href="sections/60-cierre.css?v=1790823528">
 <noscript><style>[data-sj-reveal]{opacity:1!important;transform:none!important}.sj-w{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
@@ -84,7 +85,10 @@
 <main id="top">
 <section class="sj-hero" id="inicio" aria-labelledby="sj-h1">
   <figure class="sj-hero-photo">
-    <img src="img/hero-tt21-960.webp" srcset="img/hero-tt21-480.webp 480w, img/hero-tt21-960.webp 960w, img/hero-tt21-1233.webp 1233w" sizes="(min-width: 900px) 85vw, 116vw" width="1233" height="850" alt="Fachada de una casa de dos plantas terminada: bloque de cantera gris con ventanal y barandal de vidrio, muro blanco y cielo azul, al sur de Aguascalientes" fetchpriority="high" decoding="async">
+    <picture>
+      <source media="(min-width: 900px)" srcset="img/hero-fachada-960.webp 960w, img/hero-fachada-1600.webp 1600w" sizes="50vw" width="1600" height="1570">
+      <img src="img/hero-tt21-960.webp" srcset="img/hero-tt21-480.webp 480w, img/hero-tt21-960.webp 960w, img/hero-tt21-1233.webp 1233w" sizes="116vw" width="1233" height="850" alt="Fachada de una casa de dos plantas terminada: bloque de piedra gris con ventanal, muros blancos y cielo azul, al sur de Aguascalientes" fetchpriority="high" decoding="async">
+    </picture>
   </figure>
   <div class="sj-hero-body sj-wrap">
     <h1 class="sj-h sj-h--hero sj-drop" id="sj-h1"><span class="sj-ln">Casas al sur</span><span class="sj-ln">de Aguascalientes.</span></h1>
@@ -115,7 +119,7 @@
       <div class="sj-ficha-photo">
         <img class="sj-ph sj-ph--1" src="img/una-planta-tt30-960.webp" srcset="img/una-planta-tt30-480.webp 480w, img/una-planta-tt30-960.webp 960w, img/una-planta-tt30-1236.webp 1236w" sizes="(min-width: 900px) 66vw, 112vw" width="1236" height="786" alt="Casa de una planta terminada: marco de cantera gris, marquesina negra, ventanales y patio de tierra con cielo azul" decoding="async">
         <img class="sj-ph sj-ph--2" src="img/dos-plantas-frente-960.webp" srcset="img/dos-plantas-frente-480.webp 480w, img/dos-plantas-frente-960.webp 960w, img/dos-plantas-frente-1600.webp 1600w" sizes="(min-width: 900px) 46vw, 100vw" width="960" height="933" alt="Frente de una casa de dos plantas terminada: bloque de piedra gris arriba, puerta y ventanales abajo" decoding="async">
-        <span class="sj-ph-cap sj-ph-cap--1">La casa de su video más visto: 276 mil vistas.</span>
+        <span class="sj-ph-cap sj-ph-cap--1">La casa de nuestro video más visto: 276 mil vistas.</span>
         <span class="sj-ph-cap sj-ph-cap--2">Casa de dos plantas terminada</span>
       </div>
       <div class="sj-ficha-body">
@@ -152,7 +156,7 @@
               <div><dt>Construcción</dt><dd>88.91<small> m²</small></dd></div>
               <div><dt>Terreno</dt><dd>129.50<small> m²</small></dd></div>
             </dl>
-            <p class="sj-spec-note">Plano y render publicados en su Facebook.</p>
+            <p class="sj-spec-note">Plano y render en nuestro Facebook.</p>
           </div>
           <div class="sj-spec" data-for="2">
             <p class="sj-kicker">Dos plantas</p>
@@ -161,7 +165,7 @@
               <div><dt>Construcción</dt><dd>130.36<small> m²</small></dd></div>
               <div><dt>Terreno</dt><dd>141.75<small> m²</small></dd></div>
             </dl>
-            <p class="sj-spec-note">Terreno de 7 x 20.25 m. Plano publicado en su Facebook.</p>
+            <p class="sj-spec-note">Terreno de 7 x 20.25 m. Plano en nuestro Facebook.</p>
           </div>
         </div>
         <div class="sj-ficha-foot">
@@ -182,7 +186,7 @@
         </div>
       </article>
       <article class="sj-card sj-mini" data-mini="terrenos">
-        <div class="sj-win sj-mini-photo"><img src="img/terreno-sur-960.webp" srcset="img/terreno-sur-480.webp 480w, img/terreno-sur-960.webp 960w, img/terreno-sur-1600.webp 1600w" sizes="(min-width: 900px) 40vw, 90vw" width="960" height="600" alt="Vista con dron de un terreno parejo junto a casas blancas, al sur de Aguascalientes" decoding="async"></div>
+        <div class="sj-win sj-mini-photo"><img src="img/terrenos-fracc-960.webp" srcset="img/terrenos-fracc-480.webp 480w, img/terrenos-fracc-960.webp 960w, img/terrenos-fracc-1600.webp 1600w" sizes="(min-width: 900px) 40vw, 90vw" width="1600" height="800" alt="Vista con dron de filas de casas blancas, árboles y campos al sur de Aguascalientes" decoding="async"><span class="sj-mini-cap">Los últimos terrenos, desde el dron</span></div>
         <div class="sj-mini-body">
           <h3 class="sj-spec-name">Terrenos al sur de Aguascalientes</h3>
           <p class="sj-spec-note">Te podemos vender el terreno o construirte cualquiera de nuestros modelos. Estos terrenos están a 5 minutos del centro comercial Villa Asunción.</p>
@@ -230,8 +234,8 @@
         <img src="img/obra-ladrillo-960.webp" srcset="img/obra-ladrillo-480.webp 480w, img/obra-ladrillo-960.webp 960w, img/obra-ladrillo-1600.webp 1600w" sizes="(min-width: 900px) 42vw, 100vw" width="960" height="714" alt="Casa de dos plantas en obra, muros de ladrillo aparente con andamio" decoding="async">
         <figcaption>Obra en proceso</figcaption>
       </figure>
-      <p class="sj-lad-dato" data-sj-reveal>Tú ves la obra en sus videos: 36 en TikTok, uno con 276 mil vistas.</p>
-      <a class="sj-link" href="https://www.tiktok.com/@const.sanjosepremier" target="_blank" rel="noopener">Ver sus videos<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <p class="sj-lad-dato" data-sj-reveal>Grabamos la obra: 36 videos en TikTok, uno con 276 mil vistas.</p>
+      <a class="sj-link" href="https://www.tiktok.com/@const.sanjosepremier" target="_blank" rel="noopener">Ver los videos<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
   <div class="sj-wrap sj-gal">
@@ -343,15 +347,14 @@
       <h2 class="sj-h sj-drop" id="sj-h-cierre"><span class="sj-ln">Falta elegir</span><span class="sj-ln">modelo.</span></h2>
       <article class="sj-card sj-choice" id="sj-choice" data-has="0">
         <div class="sj-choice-ph" id="sj-choice-ph" data-show="none">
-          <svg class="sj-choice-sil" viewBox="0 0 320 180" aria-hidden="true">
-            <path d="M8 156h304"/>
-            <g><rect x="34" y="102" width="112" height="54"/><rect x="28" y="96" width="124" height="6"/><rect x="48" y="114" width="30" height="22"/><rect x="104" y="114" width="30" height="22"/><rect x="84" y="122" width="16" height="34"/></g>
-            <g><rect x="178" y="58" width="112" height="98"/><rect x="172" y="52" width="124" height="6"/><rect class="sil-stone" x="178" y="58" width="62" height="48"/><rect x="190" y="66" width="38" height="28"/><rect x="250" y="68" width="28" height="24"/><path d="M178 106h112"/><rect x="190" y="118" width="28" height="22"/><rect x="250" y="118" width="28" height="22"/><rect x="226" y="122" width="16" height="34"/></g>
-          </svg>
+          <div class="sj-picks" role="group" aria-label="Elige tu modelo">
+            <button type="button" class="sj-pick" data-pick="una"><span class="sj-win sj-pick-ph"><img src="img/una-planta-tt30-480.webp" srcset="img/una-planta-tt30-480.webp 480w, img/una-planta-tt30-960.webp 960w" sizes="(min-width: 900px) 260px, 45vw" width="480" height="305" alt="" loading="lazy" decoding="async"></span><span class="sj-pick-lb">Una planta<span class="sj-pick-dot"> · </span><span class="sj-pick-m">88.91 m²</span></span></button>
+            <button type="button" class="sj-pick" data-pick="dos"><span class="sj-win sj-pick-ph"><img src="img/dos-plantas-frente-480.webp" srcset="img/dos-plantas-frente-480.webp 480w, img/dos-plantas-frente-960.webp 960w" sizes="(min-width: 900px) 260px, 45vw" width="480" height="467" alt="" loading="lazy" decoding="async"></span><span class="sj-pick-lb">Dos plantas<span class="sj-pick-dot"> · </span><span class="sj-pick-m">130.36 m²</span></span></button>
+          </div>
           <img data-k="una" src="img/una-planta-tt30-960.webp" srcset="img/una-planta-tt30-480.webp 480w, img/una-planta-tt30-960.webp 960w" sizes="(min-width: 900px) 520px, 90vw" width="960" height="610" alt="Casa de una planta terminada" loading="lazy" decoding="async">
           <img data-k="dos" src="img/dos-plantas-frente-960.webp" srcset="img/dos-plantas-frente-480.webp 480w, img/dos-plantas-frente-960.webp 960w" sizes="(min-width: 900px) 520px, 90vw" width="960" height="933" alt="Casa de dos plantas terminada" loading="lazy" decoding="async">
           <img data-k="excedente" src="img/excedente-patio-960.webp" srcset="img/excedente-patio-480.webp 480w, img/excedente-patio-960.webp 960w" sizes="(min-width: 900px) 520px, 90vw" width="960" height="600" alt="Casa con terreno excedente" loading="lazy" decoding="async">
-          <img data-k="terrenos" src="img/terreno-sur-960.webp" srcset="img/terreno-sur-480.webp 480w, img/terreno-sur-960.webp 960w" sizes="(min-width: 900px) 520px, 90vw" width="960" height="600" alt="Terreno al sur de Aguascalientes" loading="lazy" decoding="async">
+          <img data-k="terrenos" src="img/terrenos-fracc-960.webp" srcset="img/terrenos-fracc-480.webp 480w, img/terrenos-fracc-960.webp 960w" sizes="(min-width: 900px) 520px, 90vw" width="960" height="480" alt="Vista con dron de los terrenos al sur de Aguascalientes" loading="lazy" decoding="async">
         </div>
         <dl class="sj-choice-list">
           <div><dt>Modelo</dt><dd id="sj-c-modelo">Falta elegir</dd></div>
@@ -466,10 +469,10 @@
 </script>
 <script src="site.js?v=1790811131" defer></script>
 <script src="sections/10-hero.js?v=1790811146" defer></script>
-<script src="sections/20-modelos.js?v=1790821084" defer></script>
-<script src="sections/30-ladrillo.js?v=1790821084" defer></script>
+<script src="sections/20-modelos.js?v=1790821274" defer></script>
+<script src="sections/30-ladrillo.js?v=1790821274" defer></script>
 <script src="sections/40-bosques.js?v=1790811280" defer></script>
 <script src="sections/50-credito.js?v=1790811311" defer></script>
-<script src="sections/60-cierre.js?v=1790821084" defer></script>
+<script src="sections/60-cierre.js?v=1790823461" defer></script>
 </body>
 </html>
