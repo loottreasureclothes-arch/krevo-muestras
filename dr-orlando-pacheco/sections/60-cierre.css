@@ -2,14 +2,15 @@
 .pc-todo { padding: 26px 22px 24px; background: var(--band); }
 .pc-todo h2 { font-size: calc(var(--h2) * 0.9); }
 .pc-todo h2 span { display: block; white-space: nowrap; }
+.pc-todo .pc-t2 { color: var(--salmon-ink); }
 .pc-todo-list { margin-top: 16px; display: grid; gap: 8px; }
 .pc-todo-list li { position: relative; padding-left: 18px; font-size: 15.5px; line-height: 1.35; }
 .pc-todo-list li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 7px; height: 7px; border-radius: 50%; background: var(--salmon); }
 .pc-todo-note { margin-top: 16px; padding-top: 14px; border-top: 1.5px solid var(--salmon); font-size: 15.5px; font-weight: 500; }
 .pc-close-stage { margin-top: 26px; position: relative; }
-.pc-close-photo { position: relative; margin: 0; height: 400px; overflow: hidden; background: #111; }
-.pc-close-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 44% 50%; }
-.pc-close-photo::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 55%; background: linear-gradient(to bottom, rgba(18, 14, 12, 0.78), rgba(18, 14, 12, 0)); pointer-events: none; }
+.pc-close-photo { position: relative; margin: 0; height: 380px; overflow: hidden; background: #111; }
+.pc-close-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; }
+.pc-close-photo::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 62%; background: linear-gradient(to bottom, rgba(18, 14, 12, 0.86), rgba(18, 14, 12, 0.5) 55%, rgba(18, 14, 12, 0)); pointer-events: none; }
 .pc-close-h { position: absolute; z-index: 2; left: 24px; top: 26px; font-size: var(--h2); color: var(--paper); }
 .pc-close-h span { display: block; white-space: nowrap; }
 .pc-close-h .pc-t2 { color: var(--peach); }
@@ -31,4 +32,4 @@
   .pc-todo-list { margin-top: 0; grid-template-columns: 1fr 1fr; gap: 8px 28px; }
   .pc-todo-note { grid-column: 2; margin-top: 8px; }
 }
-@media (min-width: 1100px) { .pc-close-photo { height: 560px; } .pc-close-h { font-size: calc(var(--h2) * 1.1); } }
+@media (min-width: 1100px) { .pc-close-photo { height: 560px; } .pc-close-photo img { object-position: 50% 42%; } .pc-close-h { font-size: calc(var(--h2) * 1.1); } }

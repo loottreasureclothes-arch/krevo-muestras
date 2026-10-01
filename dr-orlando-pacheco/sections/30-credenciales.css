@@ -3,15 +3,16 @@
 .pc-cred-who { display: grid; gap: 18px; }
 .pc-retrato { width: 216px; max-width: 264px; margin: 0; overflow: hidden; background: var(--paper); }
 .pc-retrato img { width: 100%; height: auto; aspect-ratio: 1 / 1.1; object-fit: cover; object-position: 50% 24%; }
-.pc-cita { font-weight: 300; font-size: 19px; line-height: 1.4; max-width: 34ch; padding-top: 14px; position: relative; }
+.pc-cred .pc-t2 { color: var(--salmon-ink); }
+.pc-cita { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 20px; line-height: 1.4; max-width: 34ch; padding-top: 14px; position: relative; }
 .pc-cita::before { content: ""; position: absolute; left: 0; top: 0; width: 120px; height: 1.5px; background: var(--salmon); }
-.pc-cita cite { display: block; margin-top: 8px; font-style: normal; font-weight: 500; font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute); }
+.pc-cita cite { display: block; margin-top: 10px; font-family: var(--font); font-style: normal; font-weight: 500; font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute); }
 .pc-ren { display: grid; gap: 14px; }
 .pc-ren li { padding: 14px 16px 14px 18px; background: var(--paper); border-radius: 22px 4px 22px 4px; }
 .pc-ren li:nth-child(even) { border-radius: 4px 22px 4px 22px; }
 .pc-tag { font-weight: 500; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
 .pc-tag::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--salmon); margin-right: 9px; vertical-align: 1px; }
-.pc-tag b { display: block; margin-top: 4px; font-size: 30px; letter-spacing: 0.02em; font-weight: 500; line-height: 1.1; padding-left: 16px; }
+.pc-tag b { display: block; margin-top: 8px; font-size: 44px; letter-spacing: 0.04em; font-weight: 300; line-height: 1; padding-left: 16px; color: var(--ink); }
 .pc-ren li p:last-child { margin-top: 6px; padding-left: 16px; font-size: 16px; color: var(--ink); }
 .pc-cred-list .pc-link { margin-top: 12px; }
 .pc-mini { margin-top: 8px; display: grid; gap: 6px; }
@@ -24,10 +25,16 @@
   .pc-cred-list { grid-column: 2; grid-row: 2; }
   .pc-retrato { width: 264px; }
   .pc-ren li { padding: 18px 24px 18px 24px; }
-  .pc-tag b { font-size: 40px; }
+  .pc-tag b { font-size: 54px; }
 }
 @media (min-width: 1100px) {
   .pc-cred-grid { grid-template-columns: 264px 1fr; }
   .pc-ren { grid-template-columns: 1fr 1fr; }
   .pc-ren li:nth-child(3) { grid-column: 1 / -1; }
+  .pc-cred-grid { gap: 24px 72px; }
+  .pc-ren { gap: 16px; }
+  .pc-ren li { padding: 24px 28px 22px; }
+  .pc-tag b { font-size: 64px; letter-spacing: 0.03em; margin-top: 12px; }
+  .pc-ren li p:last-child { font-size: 16.5px; margin-top: 10px; }
+  .pc-mini { grid-template-columns: repeat(3, auto); justify-content: start; gap: 6px 32px; margin-top: 14px; }
 }

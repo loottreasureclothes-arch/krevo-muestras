@@ -1,4 +1,4 @@
-<section class="pc-consulta" id="consulta" data-hide-wa aria-labelledby="consulta-h">
+<section class="pc-consulta" id="consulta" aria-labelledby="consulta-h">
   <div class="pc-wrap">
     <header class="pc-head" data-reveal>
       <p class="pc-label">Consulta sin escribir</p>
@@ -6,8 +6,6 @@
     </header>
 
     <form class="dm" id="dm" autocomplete="off" onsubmit="return false">
-      <p class="dm-cue" aria-hidden="true"><svg viewBox="0 0 70 54" width="70" height="54"><path d="M6 6 C 8 28, 30 24, 38 40 M26 38 L38 42 L40 29" fill="none" stroke="#C4785C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="pc-label">Toca tu motivo</span></p>
-
       <div class="dm-leaves">
         <fieldset class="dm-leaf leaf" data-group="a">
           <legend class="dm-legend">Urología ginecológica</legend>
@@ -34,10 +32,13 @@
         </fieldset>
       </div>
 
-      <button type="button" class="dm-chip dm-chip--libre leaf" aria-pressed="false" data-libre="1">Prefiero decírselo en consulta</button>
-      <div class="dm-price dm-price--libre" hidden aria-live="polite"><p class="dm-price-line">No mandamos ningún motivo. Lo platicas con él en consulta.</p></div>
-
-      <p class="dm-notes">Precios publicados por él en Doctoralia para pacientes sin aseguradora. Confirma el vigente al agendar.<br>Solo pacientes privados: no acepta aseguradoras.</p>
+      <div class="dm-row">
+        <div class="dm-libre">
+          <button type="button" class="dm-chip dm-chip--libre leaf" aria-pressed="false" data-libre="1">Prefiero decírselo en consulta</button>
+          <div class="dm-price dm-price--libre" hidden aria-live="polite"><p class="dm-price-line">No mandamos ningún motivo. Lo platicas con él en consulta.</p></div>
+        </div>
+        <p class="dm-notes">Precios publicados por él en Doctoralia para pacientes sin aseguradora. Confirma el vigente al agendar. Solo pacientes privados: no acepta aseguradoras.</p>
+      </div>
 
       <div class="dm-steps">
         <fieldset class="dm-step">
@@ -59,7 +60,7 @@
         <div class="dm-step dm-final">
           <label class="dm-field"><span class="dm-legend">Tu nombre (opcional)</span><input type="text" name="nombre" maxlength="40" autocomplete="off" autocapitalize="words" placeholder="Como quieres que te llame"></label>
           <label class="dm-check"><input type="checkbox" name="ingles"><span class="dm-check-box" aria-hidden="true"></span><span>Consultation in English</span></label>
-          <a class="pc-btn pc-btn--wa" data-wa-dm href="https://wa.me/524491070751?text=Hola%20Dr.%20Pacheco%2C%20quiero%20agendar%20una%20consulta." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir consulta por WhatsApp</a>
+          <a class="pc-btn pc-btn--wa" data-hide-wa data-wa-dm href="https://wa.me/524491070751?text=Hola%20Dr.%20Pacheco%2C%20quiero%20agendar%20una%20consulta." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir consulta por WhatsApp</a>
           <p class="dm-preview" aria-live="polite"><span class="dm-preview-lbl">Tu mensaje</span><span class="dm-preview-txt" id="dm-preview">Hola Dr. Pacheco, quiero agendar una consulta.</span></p>
           <p class="dm-privacy">Tu mensaje se abre en tu WhatsApp. Esta página no guarda nada.</p>
         </div>

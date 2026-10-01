@@ -154,11 +154,13 @@
     var strip = document.getElementById("papel");
     if (!strip) return;
     var flags = strip.querySelectorAll(".pp-f");
-    var hung = false;
+    var hung = false, seen = false;
     function hang() { if (hung) return; hung = true; strip.classList.add("is-hung"); }
     if (reduce) { hang(); strip.classList.add("is-still"); return; }
-    watchVisible([strip], 0.9, function () { hang(); });
-    setTimeout(hang, 4000);
+    /* Al entrar: caen una por una. Blindaje: a los 1.6 s ya están colgadas pase lo que pase;
+       si se colgaron fuera de vista, al asomarse les da un golpe de viento (sin desaparecer). */
+    watchVisible([strip], 0.9, function () { if (seen) return; seen = true; if (hung) strip.classList.add("is-viento"); else hang(); });
+    setTimeout(function () { var r = strip.getBoundingClientRect(); if (!(r.top < innerHeight && r.bottom > 0)) hang(); else { seen = true; hang(); } }, 1600);
     var ticking = false;
     function sway() {
       ticking = false;

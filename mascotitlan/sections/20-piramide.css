@@ -7,17 +7,31 @@
 .pir-grid > .lista { grid-area: lista; }
 .pir-hint { margin-top: 12px; font-size: 12.5px; line-height: 1.5; letter-spacing: 0.02em; color: var(--verde-d); }
 
-/* la piramide */
-.pir-bloques { display: grid; gap: 4px; }
-.nivel { display: flex; gap: 4px; margin-inline: auto; width: 100%; }
-.n2 { width: 84%; } .n3 { width: 68%; } .n4 { width: 40%; }
-.bloque { --e: 6px; flex: 1 1 0; min-width: 0; min-height: 64px; padding: 14px 8px 12px; border: 0; background: var(--verde-d); color: var(--cal); font: 800 12px/1.1 var(--f-d); letter-spacing: 0.05em; text-transform: uppercase; text-align: center; display: grid; place-items: center; transition: background-color 160ms; position: relative; }
-.n2 .bloque { background: var(--verde); }
-.n3 .bloque { background: #238a50; }
-.n4 .bloque { background: var(--oro); color: var(--noche); }
+/* la piramide: UNA piramide escalonada (retranqueo parejo, bloques pegados, canto oscuro, escalinata y templo) */
+.pir-bloques { --s: 7.5%; --h: 62px; --canto: 7px; display: grid; justify-items: center; padding-top: 4px; filter: drop-shadow(0 10px 14px rgba(18, 38, 28, 0.16)); }
+.nivel { display: flex; width: 100%; padding-bottom: var(--canto); background: #0f4b2a; position: relative; }
+.n2 { width: calc(100% - var(--s) * 2); } .n3 { width: calc(100% - var(--s) * 4); }
+.n4 { width: calc(100% - var(--s) * 7.2); background: transparent; padding-bottom: 0; margin-top: 18px; }
+.pir-base { width: calc(100% + 12px); height: 9px; background: var(--noche); clip-path: polygon(6px 0, calc(100% - 6px) 0, 100% 100%, 0 100%); }
+.bloque { flex: 1 1 0; min-width: 0; min-height: var(--h); padding: 10px 6px; border: 0; border-radius: 0; color: var(--cal); font: 800 12px/1.1 var(--f-d); letter-spacing: 0.05em; text-transform: uppercase; text-align: center; display: grid; place-items: center; position: relative; transition: background-color 160ms, color 160ms; -webkit-tap-highlight-color: transparent; }
+.bloque span { position: relative; z-index: 1; }
+.n1 .bloque { background: #187441; } .n2 .bloque { background: var(--verde); } .n3 .bloque { background: #25924f; }
+.bloque + .bloque { box-shadow: inset 2px 0 0 rgba(10, 40, 22, 0.42); }
+.nivel > .bloque:last-child::before { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 6px; background: rgba(10, 40, 22, 0.28); }
+/* la escalinata central: 3 rayas por nivel, con alfardas */
+.escalinata { flex: none; width: 30px; display: block; background: repeating-linear-gradient(to bottom, #3aa466 0 calc(100% / 3 - 3px), #0f4b2a calc(100% / 3 - 3px) calc(100% / 3)); box-shadow: inset 3px 0 0 #0f4b2a, inset -3px 0 0 #0f4b2a; }
+.bloque--esc { padding-top: 34px; }
+.esc-seg { position: absolute; top: 0; left: 50%; width: 30px; height: 24px; transform: translateX(-50%); background: repeating-linear-gradient(to bottom, #3aa466 0 5px, #0f4b2a 5px 8px); box-shadow: inset 3px 0 0 #0f4b2a, inset -3px 0 0 #0f4b2a; }
+/* el templo de la cima */
+.templo { flex: 1 1 auto; min-height: 54px; background: var(--noche); color: var(--oro); box-shadow: inset 0 0 0 2px var(--noche), inset 0 0 0 4px var(--oro); font-size: 12px; overflow: visible; }
+.nivel > .templo.bloque:last-child::before { content: ""; position: absolute; left: 10%; right: 10%; top: -14px; bottom: auto; width: auto; height: 14px; background: var(--noche); clip-path: polygon(0 100%, 0 50%, 12% 50%, 12% 0, 88% 0, 88% 50%, 100% 50%, 100% 100%); }
+.templo.is-on { color: var(--cal); }
+.templo.is-on, .nivel > .templo.bloque.is-on:last-child::before { background: var(--rosa); }
+.templo.is-on { box-shadow: inset 0 0 0 2px var(--rosa), inset 0 0 0 4px var(--cal); }
 .bloque.is-on { background: var(--rosa); color: var(--cal); }
-.bloque.is-open { box-shadow: inset 0 -5px 0 var(--cal); }
-.bloque.salta { animation: hz-salta 180ms var(--ease); }
+/* bloque abierto: triangulo cempasuchil que apunta a la ficha */
+.bloque.is-open::after { content: ""; position: absolute; left: 50%; bottom: 3px; width: 0; height: 0; transform: translateX(-50%); border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 9px solid var(--oro); }
+.bloque.salta { animation: hz-salta 180ms var(--ease); z-index: 2; }
 @keyframes hz-salta { 0% { transform: translateY(0); } 45% { transform: translateY(-6px); } 100% { transform: translateY(0); } }
 @media (hover: hover) and (pointer: fine) { .bloque:hover { filter: brightness(1.12); } }
 .pir-lona { display: none; }
@@ -33,8 +47,12 @@ html:not(.hz-js) .pir-lona { display: grid; gap: 4px; font: 900 22px/1.2 var(--f
 .ficha-med { position: relative; aspect-ratio: 4 / 3; background: var(--verde-d); overflow: hidden; margin-top: 0; }
 .ficha-med img { width: 100%; height: 100%; object-fit: cover; }
 .ficha-med .placa { left: 0; bottom: 12px; }
-.ficha-med--t { display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: 26px 22px; background: var(--verde); }
-.ficha-q { font: 900 clamp(22px, 6.4vw, 30px)/1.08 var(--f-d); letter-spacing: -0.015em; text-wrap: balance; }
+.ficha-med.ficha-med--t { aspect-ratio: auto; max-height: none; display: flex; flex-direction: column; justify-content: flex-start; gap: 10px; padding: 34px 22px 8px; background: var(--noche); overflow: visible; }
+.ficha-med--t::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 14px; background: var(--greca-v) repeat-x left center / 28px 14px; }
+.ficha-med--t::after { content: ""; position: absolute; right: 20px; top: 32px; width: 34px; height: 22px; background: var(--rosa); clip-path: polygon(0 100%, 0 70%, 15% 70%, 15% 40%, 30% 40%, 30% 10%, 70% 10%, 70% 40%, 85% 40%, 85% 70%, 100% 70%, 100% 100%); }
+.ficha-k { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--oro); padding-right: 50px; }
+.ficha-q { font: 900 clamp(22px, 6.2vw, 28px)/1.08 var(--f-d); letter-spacing: -0.015em; text-wrap: balance; color: var(--cal); }
+.ficha-med--t + .ficha-cap { padding-top: 10px; color: rgba(251, 248, 241, 0.86); }
 .ficha-cap { padding: 14px 18px 18px; font: 600 15px/1.4 var(--f-d); min-height: 3.4em; }
 .ficha-in { width: 100%; min-height: 48px; padding: 0 12px; border: 0; border-bottom: 3px solid var(--cal); background: rgba(251, 248, 241, 0.14); color: var(--cal); font: 600 16px var(--f-d); border-radius: 0; }
 .ficha-in::placeholder { color: rgba(251, 248, 241, 0.7); }
@@ -64,16 +82,22 @@ html:not(.hz-js) .pir-lona { display: grid; gap: 4px; font: 900 22px/1.2 var(--f
 .lista .btn--wa { width: 100%; margin-top: 4px; }
 
 @media (min-width: 820px) {
-  .bloque { min-height: 82px; font-size: 14px; padding: 16px 12px 14px; --e: 8px; }
+  .pir-bloques { --h: 80px; --canto: 9px; }
+  .bloque { font-size: 14px; padding: 14px 12px; }
+  .templo { min-height: 66px; font-size: 13px; }
+  .escalinata, .esc-seg { width: 36px; }
+  .bloque--esc { padding-top: 40px; } .esc-seg { height: 30px; }
+  .bloque.is-open::after { left: auto; right: 10px; bottom: auto; top: 50%; transform: translateY(-50%); border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 9px solid var(--oro); border-right: 0; }
   .ficha-q { font-size: clamp(26px, 2.4vw, 34px); }
 }
 @media (min-width: 820px) {
   .pir-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); grid-template-areas: "tit ficha" "cuerpo ficha" "para ficha" "lista lista"; column-gap: 56px; row-gap: 26px; align-items: start; }
   .ficha-med { aspect-ratio: 1 / 1; }
+  .ficha-med.ficha-med--t { aspect-ratio: auto; padding: 40px 30px 10px; }
   .pir-grid > .lista { grid-template-columns: minmax(0, 1fr) auto; align-items: end; padding: 26px 30px 26px; gap: 8px 40px; }
   .pir-grid .lista-t { grid-column: 1 / -1; }
   .pir-grid .lista-d { grid-template-columns: 1.4fr 1fr 1fr; gap: 0 28px; }
   .pir-grid .lista-r { grid-template-columns: 1fr; gap: 2px; border-bottom: 0; border-top: 2px dotted rgba(18, 38, 28, 0.3); padding-top: 10px; }
   .pir-grid .lista .btn--wa { width: auto; margin: 0; min-width: 300px; }
 }
-@media (min-width: 1100px) { .pir-grid { column-gap: 80px; } .bloque { min-height: 92px; font-size: 15px; } }
+@media (min-width: 1100px) { .pir-grid { column-gap: 80px; } .pir-bloques { --h: 90px; } .bloque { font-size: 15px; } }

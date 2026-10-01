@@ -1,11 +1,12 @@
 /* 3 · LLENA EL VASO: el cotizador. Cada dato llena un nivel del vaso. */
-.vaso{position:relative;padding:0 0 54px;background:var(--band)}
-.vaso-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"title" "stage" "form";padding-top:36px;row-gap:20px}
+.vaso{position:relative;padding:0 0 46px;background:var(--band)}
+.vaso-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"title" "form";padding-top:36px;row-gap:8px}
 .vaso-h{grid-area:title;font-size:clamp(36px,10.4vw,58px)}
-.vaso-stage{grid-area:stage;position:sticky;top:50px;z-index:6;display:grid;grid-template-columns:112px minmax(0,1fr);gap:16px;align-items:center;
-  background:var(--band);margin-inline:calc(var(--gut) * -1);padding:12px var(--gut) 10px;align-self:start}
-.vaso-stage::after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:14px;background:url(../img/escarchado.svg) repeat-x 0 0/420px 14px;pointer-events:none}
-.glass{width:100%;height:auto;margin-top:0}
+/* celular: el vaso va pegado ABAJO mientras contestas (no tapa la pregunta de arriba) y al final se asienta en su lugar */
+.vaso-stage{position:sticky;bottom:0;z-index:6;display:grid;grid-template-columns:84px minmax(0,1fr);gap:14px;align-items:center;
+  background:var(--band);margin-inline:calc(var(--gut) * -1);padding:20px var(--gut) 8px;box-shadow:0 -10px 22px rgba(10,6,6,.55)}
+.vaso-stage::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;background:url(../img/escarchado.svg) repeat-x 0 0/420px 14px;pointer-events:none}
+.glass{width:100%;height:auto;overflow:hidden}
 .liq{transform:translateY(calc(var(--y) * 1px));transition:transform 1s var(--ease)}
 .wave-a{animation:wave 3.6s linear infinite}
 .wave-b{animation:wave 5.2s linear infinite reverse}
@@ -14,24 +15,25 @@
 .cube{transition:transform .9s var(--ease)}
 .cube-in{visibility:hidden;transform:translateY(-330px);opacity:0;transition:transform .32s cubic-bezier(.3,1.5,.5,1),opacity .12s linear;transition-delay:calc(var(--k) * 75ms)}
 .has-ice .cube-in{visibility:visible;transform:none;opacity:1}
-.cube-in rect{fill:rgba(236,240,244,.30);stroke:rgba(255,255,255,.7);stroke-width:1.5}
-.cube-in path{fill:none;stroke:rgba(255,255,255,.55);stroke-width:1.5;stroke-linecap:round}
-.straw-in{visibility:hidden;transform:translateY(-340px);opacity:0;transition:transform .6s cubic-bezier(.3,1.35,.5,1) .55s,opacity .1s linear .55s}
+.straw-in{visibility:hidden;transform:translateY(-300px);opacity:0;transition:transform .6s cubic-bezier(.3,1.35,.5,1) .5s,opacity .1s linear .5s}
 .is-full .straw-in{visibility:visible;transform:none;opacity:1}
-.rim-frost{opacity:0;transition:opacity .5s}
-.is-full .rim-frost{opacity:.85}
-#frost circle{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.3);transition:opacity .25s,transform .25s var(--ease);transition-delay:var(--d,0s)}
-.is-full #frost circle{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.cube-in,.straw-in,#frost circle,.rim-frost{transition:none!important}}
+.glass .frost{visibility:hidden}
+.glass.is-full .frost{visibility:visible}
+.glass .wipe{transition:stroke-dashoffset .5s var(--ease)}
+.glass.is-full .wipe{stroke-dashoffset:0}
+.glass .rim-line{transition:opacity .3s}
+.glass.is-full .rim-line{opacity:0}
+@media (prefers-reduced-motion:reduce){.cube-in,.straw-in,.glass .wipe,.glass .frost{transition:none!important}}
 
-.resumen{display:grid;gap:7px}
-.resumen div{display:grid;grid-template-columns:78px minmax(0,1fr);align-items:baseline;gap:8px;padding-bottom:6px;border-bottom:1px solid rgba(219,214,196,.14)}
-.resumen dt{font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.resumen{display:grid;gap:4px}
+.resumen div{display:grid;grid-template-columns:82px minmax(0,1fr);align-items:baseline;gap:8px;padding-bottom:4px;border-bottom:1px solid rgba(219,214,196,.14)}
+.resumen dt{font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
 .resumen dd{font-weight:600;font-size:15px;line-height:1.2;color:var(--cream);min-height:1.2em;overflow-wrap:anywhere}
 .resumen dd.is-empty{color:rgba(219,214,196,.38);font-weight:500;font-style:italic}
 
-.vaso-form{grid-area:form;display:grid;gap:26px;padding-top:30px}
-.step{display:grid;gap:12px}
+.vaso-form{grid-area:form;display:grid;gap:26px;padding-top:22px}
+.step{display:grid;gap:12px;scroll-margin-top:80px;scroll-margin-bottom:220px}
+.vaso-stage + .step{margin-top:4px}
 .step-head{display:flex;align-items:center;gap:12px;min-height:34px}
 .step-n{flex:none;display:grid;place-items:center;width:32px;height:32px;border:2px solid var(--gold);border-radius:50%;font-weight:800;font-stretch:85%;font-size:16px;color:var(--gold);font-variant-numeric:tabular-nums}
 .step-n--o{border-style:dashed;color:var(--cream-d);border-color:rgba(219,214,196,.45)}
@@ -76,14 +78,18 @@ input[type=date].field{display:block;-webkit-appearance:none;appearance:none;tex
 
 @media (min-width:760px){
   .vaso{padding-bottom:84px}
-  .vaso-grid{grid-template-columns:clamp(360px,44%,500px) minmax(0,1fr);grid-template-areas:"title title" "stage form";column-gap:clamp(32px,6vw,96px);padding-top:56px;row-gap:34px}
+  .vaso-grid{padding-top:56px;row-gap:30px}
   .vaso-h{font-size:clamp(44px,5.6vw,88px)}
-  .vaso-stage{top:72px;margin-inline:0;padding:0;grid-template-columns:minmax(120px,170px) minmax(0,1fr);gap:20px;background:transparent}
-  .vaso-stage::after{display:none}
-  .glass{margin-top:0}
-  .resumen dd{font-size:17px}
-  .vaso-form{padding-top:10px}
+  .vaso-form{grid-template-columns:clamp(340px,46%,620px) minmax(0,1fr);column-gap:clamp(32px,5vw,88px);row-gap:28px;padding-top:0;align-items:start}
+  .vaso-form > *{grid-column:2}
+  .vaso-stage{grid-column:1;grid-row:1 / span 8;position:sticky;top:84px;bottom:auto;margin:0;padding:0;box-shadow:none;background:transparent;
+    grid-template-columns:clamp(140px,19vw,270px) minmax(0,1fr);gap:clamp(18px,2.4vw,34px)}
+  .vaso-stage::before{display:none}
+  .vaso-stage + .step{margin-top:0}
+  .resumen{gap:8px}
+  .resumen div{grid-template-columns:minmax(0,1fr);gap:2px;padding-bottom:9px}
+  .resumen dt{font-size:13px}
+  .resumen dd{font-size:clamp(16px,1.35vw,19px)}
   .step-q{font-size:clamp(24px,2.2vw,30px)}
   .vaso-btn{width:auto;min-width:320px;justify-self:start}
 }
-@media (min-width:1100px){.vaso-stage{grid-template-columns:230px minmax(0,1fr)}}

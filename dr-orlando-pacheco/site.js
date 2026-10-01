@@ -91,7 +91,7 @@
     });
   }
 
-  /* ---------- WhatsApp flotante: se esconde donde hay datos, campos o un verde propio ([data-hide-wa]) ---------- */
+  /* ---------- WhatsApp flotante: se esconde solo cuando ya hay un botón verde a la vista o el pie ([data-hide-wa]) ---------- */
   function initWaHide() {
     var zones = document.querySelectorAll("[data-hide-wa]");
     if (!zones.length) return;
@@ -102,7 +102,7 @@
       var on = false;
       for (var i = 0; i < zones.length; i++) {
         var r = zones[i].getBoundingClientRect();
-        if (r.top < vh * 0.85 && r.bottom > vh * 0.08) { on = true; break; }
+        if (r.top < vh - 4 && r.bottom > vh * 0.08) { on = true; break; }
       }
       document.body.classList.toggle("pc-wa-off", on);
     }

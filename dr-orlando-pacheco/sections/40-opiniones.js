@@ -1,9 +1,9 @@
 /* LA PALABRA QUE SE REPITE: un solo path SVG. Se calcula con la posición real de cada frase subrayada,
-   se dibuja con el avance del scroll (rAF, reversible, sin pin, sin GSAP). Completo con reduced-motion. */
+   se dibuja con el avance del scroll (rAF, sin pin, sin GSAP) y a los 1.6 s de asomarse queda completo. Completo siempre con reduced-motion. */
 (function () {
   "use strict";
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var box, svg, path, total = 0, lens = [], ys = [], ready = false, raf = null;
+  var box, svg, path, total = 0, lens = [], ys = [], ready = false, raf = null, done = false, seen = false;
 
   function lineFragments(el) {
     var range = document.createRange();
@@ -44,7 +44,6 @@
     var ex = document.getElementById("pc-explica-w");
     if (ex) targets.push(ex);
     var quotes = Array.prototype.slice.call(box.querySelectorAll(".pc-q"));
-    var xl = 10, xr = W - 10;
     var pts = [];
     var prevEnd = null, prevBottom = 0;
     targets.forEach(function (t, idx) {
@@ -59,9 +58,16 @@
         var nextQ = quotes[idx];
         var nt = nextQ ? nextQ.getBoundingClientRect().top - br.top : (ex ? ex.getBoundingClientRect().top - br.top : first.y - 30);
         var gapMid = (qb + nt) / 2;
-        var cx = Math.max(60, Math.min(W - 60, W * (idx % 2 ? 0.34 : 0.62)));
-        pts.push([E.x + 14, E.y + 5]);
-        pts.push([xr - 6, E.y + 26]);
+        // márgenes propios de cada cita (en compu las citas ocupan 2/3 y alternan lado): el hilo rodea la cita, no cruza la banda entera
+        var qr = q ? q.getBoundingClientRect().right - br.left : W;
+        var nl = (nextQ || t).getBoundingClientRect().left - br.left;
+        var xr = Math.min(W - 8, Math.max(qr + 18, E.x + 28)), xl = Math.max(8, nl - 18);
+        var lo = Math.min(xl, xr) + 40, hi = Math.max(xl, xr) - 40;
+        var cx = Math.max(lo, Math.min(hi, xl + (xr - xl) * (idx % 2 ? 0.38 : 0.62)));
+        // sale corriendo HORIZONTAL por la misma línea base hasta el margen, y solo ahí baja (nunca pisa el renglón de abajo)
+        pts.push([Math.max(E.x + 8, Math.min(E.x + 16, xr - 22)), E.y + 0.5]);
+        pts.push([xr - 12, E.y + 1]);
+        pts.push([xr, E.y + 16]);
         pts.push([xr, Math.max(E.y + 60, qb - 6)]);
         pts.push([xr - 14, gapMid - 14]);
         // lazo (trocoide): de derecha a izquierda
@@ -113,6 +119,7 @@
   function update() {
     raf = null;
     if (!ready) return;
+    if (reduce || done) { path.style.strokeDashoffset = "0"; return; }
     var br = box.getBoundingClientRect();
     var vh = window.innerHeight || document.documentElement.clientHeight;
     var yTarget = vh * 0.72 - br.top;
@@ -125,7 +132,21 @@
     }
     path.style.strokeDashoffset = (total - len).toFixed(1);
   }
-  function schedule() { if (!raf) raf = requestAnimationFrame(update); }
+  function schedule() { if (!raf) raf = requestAnimationFrame(update); watch(); }
+  // Blindaje: en cuanto el hilo se asoma corre un reloj; a 1.2 s termina de dibujarse en 0.4 s.
+  // Completo a los 1.6 s pase lo que pase (quien se queda quieto a media sección no lo ve a medias).
+  function finish() {
+    if (done) return;
+    done = true;
+    if (!path) return;
+    if (!reduce) path.style.transition = "stroke-dashoffset 400ms cubic-bezier(0.23, 1, 0.32, 1)";
+    path.style.strokeDashoffset = "0";
+  }
+  function watch() {
+    if (seen || !box) return;
+    var r = box.getBoundingClientRect(), vh = window.innerHeight || document.documentElement.clientHeight;
+    if (r.top < vh && r.bottom > 0) { seen = true; setTimeout(finish, 1200); }
+  }
 
   function start() {
     var okb = false;

@@ -3,14 +3,17 @@
 .peces .hz-h2 { color: var(--cal); }
 .peces .hz-h2 .ac { color: var(--noche); }
 .peces-grid { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); }
-.cita { margin: 20px 0 14px; padding: 0 0 0 16px; border-left: 4px solid var(--oro); }
+.cita { margin: 20px 0 14px; padding: 14px 16px 16px; border-left: 4px solid var(--oro); background: var(--cal); color: var(--noche); }
 .cita p { font: 600 20px/1.3 var(--f-d); text-wrap: balance; }
-.cita footer { margin-top: 10px; font-size: 12px; line-height: 1.5; letter-spacing: 0.04em; color: rgba(251, 248, 241, 0.92); }
+.cita footer { margin-top: 10px; font-size: 12px; line-height: 1.5; letter-spacing: 0.04em; color: var(--verde-d); }
 .pe-a { aspect-ratio: 1 / 1.1; }
 .pe-par { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: calc(var(--gut) * -1); padding-inline: var(--gut); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .pe-par::-webkit-scrollbar { display: none; }
 .pe-par .marco { flex: 0 0 76%; aspect-ratio: 4 / 3; scroll-snap-align: start; }
-.pe-pas { aspect-ratio: 1 / 0.92; }
+.pe-pas { aspect-ratio: 16 / 10; }
+.pe-pas img { object-position: 42% 50%; }
+.cita-st { display: flex; gap: 3px; color: var(--rosa); margin-bottom: 10px; }
+.cita-st svg { width: 18px; height: 18px; }
 @media (min-width: 820px) {
   .peces { padding-top: 94px; }
   .peces-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "txt a" "pas a" "par par"; gap: 22px 28px; align-items: stretch; }

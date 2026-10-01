@@ -17,10 +17,17 @@
   .tienda-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "tit tit" "big par" "lona lona"; gap: 28px 32px; }
   .ti-tit { grid-area: tit; max-width: 16ch; }
   .ti-big { grid-area: big; aspect-ratio: auto; min-height: 640px; }
-  .ti-par { grid-area: par; gap: 14px; grid-template-rows: 1fr 2fr; }
+  .ti-par { grid-area: par; gap: 14px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) minmax(0, 1.6fr); min-width: 0; }
+  .ti-b, .ti-c { aspect-ratio: auto; min-height: 0; min-width: 0; }
+  .ti-c img { object-position: 50% 60%; }
   .ti-a { grid-row: 1 / span 2; min-height: 0; }
-  .lona { grid-area: lona; grid-template-columns: 1fr auto; align-items: end; padding: 34px 36px 30px; gap: 8px 40px; }
-  .lona-l { grid-column: 1; font-size: clamp(30px, 3.3vw, 46px); }
-  .lona-r { grid-column: 2; grid-row: 1; font-size: clamp(22px, 2vw, 30px); text-align: right; }
+  .lona { grid-area: lona; padding: 34px 36px 30px; gap: 12px 40px; }
+  .lona-l { font-size: clamp(30px, 3.3vw, 46px); }
+  .lona-r { font-size: clamp(22px, 2vw, 30px); }
+}
+@media (min-width: 1100px) {
+  .lona { grid-template-columns: 1fr auto; align-items: end; }
+  .lona-l { grid-column: 1; }
+  .lona-r { grid-column: 2; grid-row: 1; text-align: right; }
   .lona-n { grid-column: 1 / -1; }
 }

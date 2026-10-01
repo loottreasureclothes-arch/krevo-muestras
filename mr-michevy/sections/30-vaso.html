@@ -3,42 +3,6 @@
   <div class="vaso-grid m-wrap">
     <h2 class="m-title vaso-h" id="vaso-h" data-words><span class="ln">Llena el vaso.</span><span class="ln ln--g">Cotiza tu fiesta.</span></h2>
 
-    <div class="vaso-stage" id="vaso-stage">
-      <svg class="glass" id="glass" viewBox="24 -34 192 474" role="img" aria-label="Vaso de michelada que se llena con cada dato que contestas" style="overflow:visible">
-        <defs>
-          <clipPath id="g-clip"><path d="M36 58 L204 58 L186 402 Q185 414 172 414 L68 414 Q55 414 54 402 Z"/></clipPath>
-          <clipPath id="g-logo"><circle cx="120" cy="246" r="44"/></clipPath>
-          <linearGradient id="g-liq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B8402A"/><stop offset=".45" stop-color="#8C2717"/><stop offset="1" stop-color="#561510"/></linearGradient>
-          <linearGradient id="g-shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-        </defs>
-        <ellipse cx="120" cy="58" rx="84" ry="11" fill="rgba(219,214,196,.05)" stroke="rgba(219,214,196,.35)" stroke-width="2"/>
-        <g clip-path="url(#g-clip)">
-          <rect x="0" y="40" width="240" height="390" fill="rgba(219,214,196,.06)"/>
-          <g class="liq" id="liq" style="--y:444">
-            <g class="wave wave-b"><path d="M-120 0 q30 -9 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 V420 H-120Z" fill="#C24A31" fill-opacity=".55"/></g>
-            <g class="wave wave-a"><path d="M-120 3 q30 8 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 V420 H-120Z" fill="url(#g-liq)"/></g>
-          </g>
-          <g id="ice"></g>
-        </g>
-        <path d="M36 58 L204 58 L186 402 Q185 414 172 414 L68 414 Q55 414 54 402 Z" fill="none" stroke="rgba(219,214,196,.6)" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M46 70 L60 70 L72 396 L66 396 Z" fill="url(#g-shine)"/>
-        <g class="straw" id="straw"><g class="straw-in"><g transform="rotate(13 150 60)"><rect x="143" y="-62" width="14" height="318" rx="3" fill="#A22A1E"/><path d="M143 -50 l14 -8 M143 -34 l14 -8 M143 -18 l14 -8 M143 -2 l14 -8 M143 14 l14 -8 M143 30 l14 -8" stroke="#C93A2C" stroke-width="3" fill="none" opacity=".8"/><rect x="143" y="-62" width="14" height="9" rx="3" fill="#DBD6C4"/></g></g></g>
-        <ellipse class="rim-frost" cx="120" cy="58" rx="84" ry="11" fill="none" stroke="#B3261E" stroke-width="6"/>
-        <ellipse cx="120" cy="58" rx="84" ry="11" fill="none" stroke="rgba(219,214,196,.75)" stroke-width="2"/>
-        <g id="frost"></g>
-        <circle cx="120" cy="246" r="46" fill="#C09D1A"/>
-        <image href="img/logo-256.webp" x="76" y="202" width="88" height="88" clip-path="url(#g-logo)"/>
-      </svg>
-
-      <dl class="resumen" id="resumen" aria-label="Resumen de tu evento">
-        <div><dt>Evento</dt><dd data-r="evento" data-ph="sin elegir" class="is-empty">sin elegir</dd></div>
-        <div><dt>Invitados</dt><dd data-r="invitados" data-ph="sin elegir" class="is-empty">sin elegir</dd></div>
-        <div><dt>Fecha</dt><dd data-r="fecha" data-ph="sin elegir" class="is-empty">sin elegir</dd></div>
-        <div><dt>Lugar</dt><dd data-r="lugar" data-ph="sin elegir" class="is-empty">sin elegir</dd></div>
-        <div><dt>Nombre</dt><dd data-r="nombre" data-ph="opcional" class="is-empty">opcional</dd></div>
-      </dl>
-    </div>
-
     <form class="vaso-form" id="vaso-form" action="#" onsubmit="return false" novalidate>
       <div class="step" data-step="evento" role="group" aria-labelledby="q-evento">
         <div class="step-head"><span class="step-n" aria-hidden="true">1</span><span class="step-q" id="q-evento">¿Qué evento es?</span><button type="button" class="step-clear" hidden>Quitar</button></div>
@@ -48,7 +12,7 @@
           <label class="chip"><input type="radio" name="evento" value="cumpleaños"><span>Cumpleaños</span></label>
           <label class="chip"><input type="radio" name="evento" value="posada"><span>Posada</span></label>
           <label class="chip"><input type="radio" name="evento" value="bautizo"><span>Bautizo</span></label>
-          <label class="chip"><input type="radio" name="evento" value="evento de empresa"><span>Empresa</span></label>
+          <label class="chip"><input type="radio" name="evento" value="empresa"><span>Empresa</span></label>
           <label class="chip"><input type="radio" name="evento" value="otro"><span>Otro</span></label>
         </div>
         <input class="field field--otro" type="text" id="evento-otro" name="evento-otro" placeholder="¿Qué evento?" autocomplete="off" maxlength="40" hidden aria-label="¿Qué evento?">
@@ -78,6 +42,58 @@
           <label class="chip"><input type="radio" name="lugar" value="otro"><span>Otro</span></label>
         </div>
         <input class="field" type="text" id="colonia" name="colonia" placeholder="Colonia o municipio (opcional)" autocomplete="off" maxlength="50" aria-label="Colonia o municipio, opcional">
+      </div>
+
+      <div class="vaso-stage" id="vaso-stage">
+        <svg class="glass" id="glass" viewBox="20 -30 200 430" role="img" aria-label="Vaso de michelada que se llena con cada dato que contestas">
+          <defs>
+            <clipPath id="g-clip"><path d="M36 70 L204 70 L184 372 Q183 383 171 383 L69 383 Q57 383 56 372 Z"/></clipPath>
+            <clipPath id="g-logo"><circle cx="120" cy="228" r="36"/></clipPath>
+            <linearGradient id="g-liq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A3519"/><stop offset=".22" stop-color="#6A2311"/><stop offset=".7" stop-color="#4C170B"/><stop offset="1" stop-color="#360E07"/></linearGradient>
+            <linearGradient id="g-vol" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset=".2" stop-color="#000" stop-opacity="0"/><stop offset=".34" stop-color="#fff" stop-opacity=".07"/><stop offset=".62" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/></linearGradient>
+            <linearGradient id="g-shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".05"/><stop offset=".45" stop-color="#fff" stop-opacity=".34"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <linearGradient id="g-rim" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4E120B"/><stop offset=".2" stop-color="#8E2818"/><stop offset=".48" stop-color="#A9361F"/><stop offset=".8" stop-color="#8A2617"/><stop offset="1" stop-color="#4A110A"/></linearGradient>
+            <linearGradient id="g-rimtop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B8432A"/><stop offset="1" stop-color="#7E2214"/></linearGradient>
+            <linearGradient id="g-straw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5E120F"/><stop offset=".42" stop-color="#A3261D"/><stop offset=".7" stop-color="#8C1F18"/><stop offset="1" stop-color="#55100C"/></linearGradient>
+            <linearGradient id="g-tip" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C9711F"/><stop offset=".45" stop-color="#F2B23C"/><stop offset="1" stop-color="#B9621C"/></linearGradient>
+            <radialGradient id="g-shadow"><stop offset="0" stop-color="#000" stop-opacity=".6"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+            <mask id="g-wipe" maskUnits="userSpaceOnUse" x="0" y="20" width="240" height="120"><path class="wipe" d="M22 82 H218" stroke="#fff" stroke-width="96" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" fill="none"/></mask>
+          </defs>
+          <ellipse cx="120" cy="388" rx="78" ry="9" fill="url(#g-shadow)"/>
+          <path d="M36 70 L204 70 L184 372 Q183 383 171 383 L69 383 Q57 383 56 372 Z" fill="rgba(219,214,196,.05)"/>
+          <ellipse cx="120" cy="70" rx="84" ry="11" fill="rgba(10,6,6,.35)"/>
+          <g class="frost" mask="url(#g-wipe)"><path id="rim-top" fill="url(#g-rimtop)" fill-rule="evenodd"/><g id="frost-back"></g></g>
+          <g class="straw" id="straw"><g class="straw-in"><g transform="rotate(11 140 300)">
+            <rect x="132" y="-14" width="16" height="316" rx="5" fill="url(#g-straw)"/>
+            <g id="straw-grain"></g>
+            <rect x="132" y="-14" width="16" height="20" rx="5" fill="url(#g-tip)"/>
+            <ellipse cx="140" cy="-13" rx="7" ry="2.4" fill="#6B3410"/>
+          </g></g></g>
+          <g clip-path="url(#g-clip)">
+            <g class="liq" id="liq" style="--y:384">
+              <g class="wave wave-b"><path d="M-120 0 q30 -7 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 V330 H-120Z" fill="#9A4423" fill-opacity=".5"/></g>
+              <g class="wave wave-a"><path d="M-120 3 q30 6 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 V330 H-120Z" fill="url(#g-liq)"/><path d="M-120 3 q30 6 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0" fill="none" stroke="#B95E33" stroke-width="3" stroke-opacity=".75"/></g>
+            </g>
+            <g id="ice"></g>
+            <rect x="20" y="56" width="200" height="340" fill="url(#g-vol)"/>
+          </g>
+          <circle cx="120" cy="228" r="37.5" fill="rgba(0,0,0,.35)"/>
+          <image href="img/logo-256.webp" x="84" y="192" width="72" height="72" clip-path="url(#g-logo)"/>
+          <path d="M204 70 L184 372 Q183 383 171 383 L69 383 Q57 383 56 372 L36 70" fill="none" stroke="rgba(219,214,196,.55)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M54 340 H186 M55 354 H185" stroke="rgba(219,214,196,.16)" stroke-width="1.5" fill="none"/>
+          <path d="M45 82 L60 82 L71 366 L65 366 Z" fill="url(#g-shine)"/>
+          <path d="M196 86 L193 86 L178 360 L180 360 Z" fill="rgba(255,255,255,.16)"/>
+          <ellipse class="rim-line" cx="120" cy="70" rx="84" ry="11" fill="none" stroke="rgba(219,214,196,.7)" stroke-width="2"/>
+          <g class="frost" mask="url(#g-wipe)"><path id="rim-band" fill="url(#g-rim)"/><g id="frost-front"></g></g>
+        </svg>
+
+        <dl class="resumen" id="resumen" aria-label="Resumen de tu evento">
+          <div><dt>Evento</dt><dd data-r="evento" data-ph="sin elegir" class="is-empty">sin elegir</dd></div>
+          <div><dt>Invitados</dt><dd data-r="invitados" data-ph="sin elegir" class="is-empty">sin elegir</dd></div>
+          <div><dt>Fecha</dt><dd data-r="fecha" data-ph="sin elegir" class="is-empty">sin elegir</dd></div>
+          <div><dt>Lugar</dt><dd data-r="lugar" data-ph="sin elegir" class="is-empty">sin elegir</dd></div>
+          <div><dt>Nombre</dt><dd data-r="nombre" data-ph="opcional" class="is-empty">opcional</dd></div>
+        </dl>
       </div>
 
       <div class="step" data-step="nombre">

@@ -1,6 +1,6 @@
 .vis { background: var(--cal); }
 .vis-grid { display: grid; gap: 22px; grid-template-columns: minmax(0, 1fr); }
-.vi-foto { aspect-ratio: 995 / 720; }
+.vi-foto { aspect-ratio: 995 / 604; }
 .vi-estado { display: flex; align-items: center; gap: 10px; font: 800 17px/1.3 var(--f-d); }
 .vi-dot { flex: none; width: 12px; height: 12px; background: var(--verde); }
 .vi-estado.is-cerrado .vi-dot { background: var(--rosa); }
@@ -21,11 +21,11 @@
 .vi-map { height: 250px; }
 .vi-map iframe { width: 100%; height: 100%; border: 0; display: block; }
 .vi-mapa > .btn { justify-self: start; }
-.redes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 4px; }
+.redes { display: grid; grid-template-columns: auto auto auto; justify-content: space-between; gap: 8px; margin-top: 4px; }
 .red { display: grid; justify-items: start; gap: 6px; text-decoration: none; min-height: 44px; }
 .red-i { --e: 6px; width: 44px; height: 44px; background: var(--verde); color: var(--cal); display: grid; place-items: center; }
 .red-i svg { width: 24px; height: 24px; }
-.red .mono { font-size: 11.5px; letter-spacing: 0.01em; overflow-wrap: anywhere; }
+.red .mono { font-size: 11px; letter-spacing: 0; white-space: nowrap; }
 .todo { background: var(--noche); color: var(--cal); padding: 26px 18px 24px; --e: 10px; }
 .todo-t { font: 900 clamp(24px, 6.6vw, 30px)/1 var(--f-d); letter-spacing: -0.02em; margin-bottom: 16px; }
 .todo-l { display: grid; gap: 6px; counter-reset: t; }
@@ -36,15 +36,14 @@
 .remate .greca { width: 100%; }
 .remate-logo { width: 150px; height: auto; clip-path: polygon(0 0, calc(100% - 16px) 0, calc(100% - 16px) 8px, calc(100% - 8px) 8px, calc(100% - 8px) 16px, 100% 16px, 100% 100%, 0 100%); }
 .remate-q { font: 900 clamp(28px, 8vw, 40px)/1 var(--f-d); letter-spacing: -0.02em; color: var(--rosa); text-wrap: balance; }
+.vi-col { display: contents; }
+.vi-tit { order: 0; } .vi-foto { order: 1; } .vi-hora { order: 2; } .vi-lista { order: 3; } .vi-mapa { order: 4; } .todo { order: 5; } .remate { order: 6; }
 @media (min-width: 820px) {
-  .vis-grid { grid-template-columns: 1.1fr 0.9fr; grid-template-areas: "tit tit" "foto lista" "hora mapa" "todo remate"; gap: 26px 48px; align-items: start; }
-  .vi-tit { grid-area: tit; max-width: 20ch; }
-  .vi-foto { grid-area: foto; }
-  .vi-lista { grid-area: lista; }
-  .vi-hora { grid-area: hora; }
-  .vi-mapa { grid-area: mapa; }
-  .todo { grid-area: todo; }
-  .remate { grid-area: remate; align-self: stretch; align-content: center; padding: 20px 0; }
+  .vis-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 30px 48px; align-items: start; }
+  .vi-tit { grid-column: 1 / -1; max-width: 20ch; }
+  .vi-col { display: grid; gap: 30px; align-content: start; min-width: 0; }
+  .vi-map { height: 360px; }
+  .remate { padding: 26px 0 0; }
   .remate-logo { width: 180px; }
   .remate-q { font-size: clamp(34px, 3.2vw, 52px); }
 }

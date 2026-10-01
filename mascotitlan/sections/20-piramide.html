@@ -7,20 +7,23 @@
 
     <div class="pir-cuerpo">
       <div class="pir-bloques" role="group" aria-label="Lo que buscas">
-        <div class="nivel n4"><button type="button" class="bloque esc" data-b="otra" aria-pressed="false">Otra cosa</button></div>
+        <div class="nivel n4"><button type="button" class="bloque templo" data-b="otra" aria-pressed="false"><span>Otra cosa</span></button></div>
         <div class="nivel n3">
-          <button type="button" class="bloque esc" data-b="vacunas" aria-pressed="false">Vacunas y consultas</button>
-          <button type="button" class="bloque esc" data-b="estetica" aria-pressed="false">Estética</button>
+          <button type="button" class="bloque" data-b="vacunas" aria-pressed="false"><span>Vacunas y consultas</span></button>
+          <i class="escalinata" aria-hidden="true"></i>
+          <button type="button" class="bloque" data-b="estetica" aria-pressed="false"><span>Estética</span></button>
         </div>
         <div class="nivel n2">
-          <button type="button" class="bloque esc" data-b="exoticos" aria-pressed="false">Animales exóticos</button>
-          <button type="button" class="bloque esc" data-b="aves" aria-pressed="false">Aves</button>
+          <button type="button" class="bloque" data-b="exoticos" aria-pressed="false"><span>Animales exóticos</span></button>
+          <i class="escalinata" aria-hidden="true"></i>
+          <button type="button" class="bloque" data-b="aves" aria-pressed="false"><span>Aves</span></button>
         </div>
         <div class="nivel n1">
-          <button type="button" class="bloque esc" data-b="alimento" aria-pressed="false">Alimento</button>
-          <button type="button" class="bloque esc" data-b="accesorios" aria-pressed="false">Accesorios</button>
-          <button type="button" class="bloque esc" data-b="peces" aria-pressed="false">Peces y acuarios</button>
+          <button type="button" class="bloque" data-b="alimento" aria-pressed="false"><span>Alimento</span></button>
+          <button type="button" class="bloque bloque--esc" data-b="accesorios" aria-pressed="false"><i class="esc-seg" aria-hidden="true"></i><span>Accesorios</span></button>
+          <button type="button" class="bloque" data-b="peces" aria-pressed="false"><span>Peces y acuarios</span></button>
         </div>
+        <div class="pir-base" aria-hidden="true"></div>
       </div>
       <ul class="pir-lona" aria-label="Lo que anuncian en su lona">
         <li>Vacunas</li><li>Consultas</li><li>Estética</li><li>Animales exóticos</li><li>Alimento</li><li>Accesorios</li><li>Todo para tus mascotas</li>
@@ -29,7 +32,7 @@
 
     <div class="ficha esc" id="ficha" aria-live="polite">
       <article class="ficha-i" data-f="alimento">
-        <div class="ficha-med"><img src="img/ficha-alimento-480.webp" width="480" height="840" alt="Pasillo de alimento de Mascotitlán con anaqueles de costales de alimento para mascotas" decoding="async"><p class="placa">Pasillo del alimento</p></div>
+        <div class="ficha-med"><picture><source media="(min-width: 820px)" srcset="img/ficha-alimento-sq-480.webp 480w, img/ficha-alimento-sq-640.webp 640w" sizes="(min-width: 1100px) 500px, 44vw"><img src="img/ficha-alimento-720.webp" srcset="img/ficha-alimento-480.webp 480w, img/ficha-alimento-720.webp 720w" sizes="92vw" width="720" height="540" alt="Pasillo de alimento de Mascotitlán con anaqueles de costales de alimento para perros y gatos" decoding="async"></picture><p class="placa">Pasillo del alimento</p></div>
         <p class="ficha-cap">Pasillo de alimento. Pregunta por la marca y el tamaño que buscas.</p>
       </article>
       <article class="ficha-i" data-f="accesorios" hidden>
@@ -41,23 +44,23 @@
         <p class="ficha-cap">Peces betta y acuarios.</p>
       </article>
       <article class="ficha-i" data-f="exoticos" hidden>
-        <div class="ficha-med"><img src="img/ficha-exoticos-960.webp" srcset="img/ficha-exoticos-480.webp 480w, img/ficha-exoticos-960.webp 960w, img/ficha-exoticos-1536.webp 1536w" sizes="(min-width: 900px) 480px, 92vw" width="1536" height="1024" alt="Collage de Mascotitlán con un pez betta, una pitón bola, un gecko crestado y erizos" decoding="async"><p class="placa">Su collage de exóticos</p></div>
+        <div class="ficha-med"><img src="img/ficha-exoticos-960.webp" srcset="img/ficha-exoticos-480.webp 480w, img/ficha-exoticos-960.webp 960w, img/ficha-exoticos-1536.webp 1536w" sizes="(min-width: 900px) 480px, 92vw" width="1536" height="1024" alt="Collage de Mascotitlán con un pez betta, una pitón bola, un gecko crestado y erizos" decoding="async"><p class="placa">Exóticos de la tienda</p></div>
         <p class="ficha-cap">«pensamos en ti, y en lo que te gusta, pregunta por lo que buscas!»</p>
       </article>
       <article class="ficha-i" data-f="aves" hidden>
-        <div class="ficha-med ficha-med--t"><p class="ficha-q">«gran variedad de aves, peces, perros, animales exóticos, y más»</p></div>
-        <p class="ficha-cap">Así lo dicen ellos en su Instagram. Pregunta por las aves que hay hoy.</p>
+        <div class="ficha-med ficha-med--t"><p class="ficha-k mono">Aves</p><p class="ficha-q">«gran variedad de aves, peces, perros, animales exóticos, y más»</p></div>
+        <p class="ficha-cap">Así lo dice nuestro Instagram. Pregunta por las aves que hay hoy.</p>
       </article>
       <article class="ficha-i" data-f="vacunas" hidden>
-        <div class="ficha-med ficha-med--t"><p class="ficha-q">«la medicina preventiva empieza VACUNANDO Y DESPARACITANDO»</p></div>
+        <div class="ficha-med ficha-med--t"><p class="ficha-k mono">Vacunas y consultas</p><p class="ficha-q">«la medicina preventiva empieza VACUNANDO Y DESPARASITANDO»</p></div>
         <p class="ficha-cap">Horario de consulta: pregúntalo.</p>
       </article>
       <article class="ficha-i" data-f="estetica" hidden>
-        <div class="ficha-med ficha-med--t"><p class="ficha-q">Estética canina.</p></div>
+        <div class="ficha-med ficha-med--t"><p class="ficha-k mono">Estética</p><p class="ficha-q">Estética canina.</p></div>
         <p class="ficha-cap">Pide tu turno por WhatsApp.</p>
       </article>
       <article class="ficha-i" data-f="otra" hidden>
-        <div class="ficha-med ficha-med--t"><label class="ficha-q" for="otra-txt">¿Qué otra cosa buscas?</label><input id="otra-txt" class="ficha-in" type="text" maxlength="60" placeholder="Escríbelo con tus palabras" autocomplete="off"></div>
+        <div class="ficha-med ficha-med--t"><p class="ficha-k mono">Otra cosa</p><label class="ficha-q" for="otra-txt">¿Qué otra cosa buscas?</label><input id="otra-txt" class="ficha-in" type="text" maxlength="60" placeholder="Escríbelo con tus palabras" autocomplete="off"></div>
         <p class="ficha-cap">Lo agregamos a tu lista.</p>
       </article>
     </div>
@@ -82,7 +85,7 @@
         <div class="lista-r"><dt class="mono">PARA</dt><dd id="l-para" class="mono" data-vacio="(elige una mascota)">(elige una mascota)</dd></div>
         <div class="lista-r"><dt class="mono"><label for="nombre">NOMBRE</label></dt><dd><input id="nombre" class="lista-in mono" type="text" maxlength="40" placeholder="opcional" autocomplete="given-name"></dd></div>
       </dl>
-      <a class="btn btn--wa" id="pir-wa" data-wa-dyn href="https://wa.me/524495666644?text=Hola%20Mascotit%C3%A1n%2C%20quiero%20preguntar%20por%20algo%20para%20mi%20mascota." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Preguntar por WhatsApp</a>
+      <a class="btn btn--wa" id="pir-wa" data-wa-dyn href="https://wa.me/524495666644?text=Hola%20Mascotitl%C3%A1n%2C%20quiero%20preguntar%20por%20algo%20para%20mi%20mascota." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Preguntar por WhatsApp</a>
     </div>
   </div>
 </section>

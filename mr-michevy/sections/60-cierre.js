@@ -13,6 +13,8 @@
     Array.prototype.forEach.call(root.querySelectorAll("[data-r]"), function (dd) { set(dd, d[dd.getAttribute("data-r")]); });
     show(full, d.complete); show(empty, !d.complete);
     if (llenar) llenar.hidden = d.complete;
+    var btn = document.querySelector('#cierre .ci-btn');
+    if (btn && window.MVwaUrl && window.MV.vasoMsg) btn.href = window.MVwaUrl(window.MV.vasoMsg());
   }
   if (window.MV) { window.MV.on(update); update(); }
 })();

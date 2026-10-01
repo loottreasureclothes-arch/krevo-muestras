@@ -63,7 +63,7 @@ html.hz-js .placa[data-reveal]:not(.is-in) { transform: translateX(-10px); }
 .hz-tag { font: 500 9.5px/1.2 var(--f-m); letter-spacing: 0.02em; color: var(--verde); white-space: nowrap; }
 .hz-head.is-compact .hz-tag { display: none; }
 .hz-pir { flex: none; display: grid; gap: 1px; width: 32px; height: 24px; align-content: end; justify-items: center; }
-.hz-pir i { display: block; height: 4px; background: rgba(18, 38, 28, 0.14); transition: background-color 280ms var(--ease); }
+.hz-pir i { display: block; height: 4px; background: rgba(29, 129, 73, 0.25); transition: background-color 280ms var(--ease); }
 .hz-pir i:nth-child(1) { width: 8px; } .hz-pir i:nth-child(2) { width: 14px; } .hz-pir i:nth-child(3) { width: 20px; } .hz-pir i:nth-child(4) { width: 26px; } .hz-pir i:nth-child(5) { width: 32px; }
 .hz-pir i.is-past { background: var(--verde); }
 .hz-pir i.is-now { background: var(--rosa); }
@@ -75,6 +75,9 @@ html.hz-js .placa[data-reveal]:not(.is-in) { transform: translateX(-10px); }
 body.hz-menu-open .hz-bars i:first-child { top: 5px; transform: rotate(45deg); }
 body.hz-menu-open .hz-bars i:last-child { top: 5px; transform: rotate(-45deg); }
 body.hz-menu-open .hz-burger-lbl { display: inline; }
+/* con el menu abierto: el boton PREGUNTAR y la piramide se apartan para no tapar el lema */
+body.hz-menu-open .hz-head .btn--sm, body.hz-menu-open .hz-pir { visibility: hidden; }
+@media (max-width: 819px) { body.hz-menu-open .hz-head .btn--sm, body.hz-menu-open .hz-pir { display: none; } }
 @media (max-width: 379px) { .hz-tag { font-size: 8.5px; } .hz-bar { gap: 7px; } .hz-pir { width: 26px; } .hz-pir i:nth-child(n+4) { margin: 0; } .hz-head .btn--sm { padding: 0 11px; } }
 @media (min-width: 820px) { :root { --hh: 64px; --gut: 32px; } .hz-name { font-size: 22px; } .hz-tag { font-size: 11px; } .hz-bar { gap: 20px; } .hz-burger-lbl { display: inline; } .hz-pir { width: 40px; height: 30px; } .hz-pir i { height: 5px; } .hz-pir i:nth-child(1) { width: 10px; } .hz-pir i:nth-child(2) { width: 18px; } .hz-pir i:nth-child(3) { width: 26px; } .hz-pir i:nth-child(4) { width: 33px; } .hz-pir i:nth-child(5) { width: 40px; } }
 @media (min-width: 1100px) { :root { --gut: 48px; } }
