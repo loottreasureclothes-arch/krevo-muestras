@@ -41,4 +41,5 @@
 @media (min-width: 560px) { .cat-grid { gap: 16px; } }
 @media (min-width: 1000px) { .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 20px; } .cat-more p { font-size: 1.5rem; } .cat-more { padding: 18px 2px 16px; } .cat-tags { flex-wrap: wrap; overflow: visible; } .cat-bar { position: static; border: 0; background: none; padding-block: 0; } }
 @media (min-width: 700px) and (max-width: 999px) { .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (min-width: 1200px) { .cat-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } .card-name { font-size: 1.12rem; } }
+/* R3 (opcional del juez): desde 1200 px, 3 columnas en lugar de 6 (las x4 aguantan ~380 px); foto 4:3 para no alargar la tienda */
+@media (min-width: 1200px) { .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 24px; } .card-ph { aspect-ratio: 4 / 3; } .card-name { font-size: 1.45rem; } .card-body { padding: 14px 16px 6px; } }

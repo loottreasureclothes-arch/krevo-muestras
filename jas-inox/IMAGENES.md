@@ -29,3 +29,10 @@ Corrección 2 (`gen/fix_assets.py r2`):
 | frente-480/960/1112 | ig-07, panel de arriba (48,14)-(326,247): la barra frente al letrero JAS INOX con la Virgen en la pared; sin inpaint | Taller, FIG. 07 |
 | th-*.webp 144x180 | miniaturas 4:5 de carrito-a, carrito-c, redilas-b, truck-tj, campana y frente | Tira del pie |
 Ya no se usan (se quedan en img/ por si se regresa): carga-480/868 y tarja-gab-456.
+
+Corrección 3 (`gen/fix_assets.py r3`):
+| carga3-480/776 | ig-05, panel inferior izquierdo (5,372)-(199,638): dos muebles de inoxidable emplayados con su forma a la vista. Arranca debajo de la etiqueta "JAS INOX" que cruza el collage; la marca "JAS" del emplaye de la izquierda con cv2.inpaint, la de la derecha y la orilla blanca del collage quedan fuera por recorte | Ruta, FIG. 05 · Ags. · Listas para salir |
+| banda-b-480/640 | ig-06, panel superior derecho, DETALLE 4:5 (338,85)-(498,285) de la torre de redilas vista de atrás; "JAS" del costado con inpaint. No es el panel completo porque ese ya es REF. 06 del catálogo, justo arriba | Banda (solo compu), FIG. 02b |
+| banda-c-480/960 | ig-06, panel inferior izquierdo (0,323)-(254,640): la pickup de lado frente a la casa; sin inpaint | Banda (solo compu), FIG. 02c |
+| tarja-top-480/664 | la misma tarja x4, solo el 75 % de arriba (cubierta, tarja y puertas; fuera el piso con la mancha del inpaint) | Catálogo REF. 04 |
+Ya no se usan (se quedan en img/): carga2-480/828 y tarja-480/664.

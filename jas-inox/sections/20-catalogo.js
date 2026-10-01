@@ -20,11 +20,14 @@
       });
     });
     var sec = document.getElementById("catalogo") || grid;
-    sec.addEventListener("click", function (e) {
+    function pick(e) {
       var a = e.target.closest ? e.target.closest("a[data-tipo]") : null;
       if (!a) return;
       if (window.JasCotiza) window.JasCotiza.setTipo(a.getAttribute("data-tipo"), a.getAttribute("data-otro") || "");
-    });
+    }
+    sec.addEventListener("click", pick);
+    var banda = document.querySelector(".banda"); /* R3: "Cotizar redilas" de la banda (compu) */
+    if (banda) banda.addEventListener("click", pick);
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();

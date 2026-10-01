@@ -21,7 +21,7 @@
 
 /* figura: en celular se queda pegada arriba (bajo la barra) mientras se mueven medidas y opciones */
 .med-fig-wrap { position: sticky; top: var(--bar-s); z-index: 20; margin-inline: calc(-1 * var(--gutter)); padding: 8px var(--gutter) 10px; background-color: var(--c); background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 3px); align-self: start; }
-.med-fig-wrap .med-fig { max-height: 36svh; margin-inline: auto; aspect-ratio: 420 / 300; }
+.med-fig-wrap .med-fig { max-height: 26svh; margin-inline: auto; aspect-ratio: 420 / 300; }
 .med-fig { --cut: 12px; position: relative; margin: 0; aspect-ratio: 420 / 300; background-color: var(--edge); }
 .med-fig::before {
   background-image:
@@ -93,7 +93,7 @@
   .med-out { grid-column: 2; grid-row: 4; align-self: start; }
 }
 /* celular bajito: el dibujo pegado arriba no tapa el rotulo de la medida que se esta moviendo */
-@media (max-width: 899px) and (max-height: 759px) { .med-fig-wrap .med-fig { max-height: 30svh; } }
+/* R3: el tope de alto aplica en TODOS los celulares (arriba). Con 30svh no cambiaba nada en un celular de 844 (el dibujo ya media ~250 px por su ancho), asi que baja a 26svh (~220 px) para que "03 Opciones" y sus 4 casillas quepan debajo del dibujo pegado */
 /* compu: el dibujo se pega dentro de su propia columna (filas 1 a 3) y ya no se monta sobre el resumen de abajo */
 @media (min-width: 900px) {
   .med-fig-wrap { position: relative; top: auto; align-self: stretch; }

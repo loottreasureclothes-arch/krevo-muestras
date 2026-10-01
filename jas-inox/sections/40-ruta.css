@@ -31,10 +31,10 @@
   /* compu: el mapa manda (7 de 12 columnas); la pareja va apilada y escalonada en las otras 5 */
   .ruta-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(18px, 2.4vw, 32px); align-items: stretch; }
   .ruta-map { grid-column: span 7; width: min(100%, 66svh); margin-inline: 0; }
-  .ruta-side { grid-column: span 5; align-content: space-between; gap: 22px; }
-  .ruta-pair { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .ruta-pair .ruta-f { width: min(64%, 300px); }
-  .ruta-pair .ruta-f:nth-child(2) { justify-self: end; }
+  /* R3: pareja lado a lado (~250 px cada una), alineada abajo con el borde del mapa; .ruta-foot debajo */
+  .ruta-side { grid-column: span 5; align-content: end; gap: 22px; }
+  .ruta-pair { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; max-width: 520px; }
+  .ruta-f .fig { font-size: 9.5px; letter-spacing: 0.04em; padding: 6px 8px; }
   .ruta-foot { padding-right: 0; }
   .ruta-t { top: 18px; right: 18px; max-width: 64%; padding: 12px 16px 14px; font-size: clamp(1.8rem, 2.6vw, 2.6rem); }
 }

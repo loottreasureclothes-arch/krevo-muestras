@@ -2,7 +2,8 @@
 """Correccion 1 (30 sep 2026): fotos limpias sin marcas de agua ni texto de Instagram.
 Todo local y sin IA generativa: recorte con PIL + inpaint local de OpenCV (cv2.inpaint, TELEA) solo sobre
 la zona del texto -> Real-ESRGAN x4 (realesrgan-x4plus -s 4, corrido desde tools/realesrgan) -> webp.
-Uso: python3 gen/fix_assets.py prep   (recortes + inpaint en _work/fix/*.png)
+Uso: python3 gen/fix_assets.py r3  (correccion 3: prep3 + up3 + emit3; solo carga3, banda-b, banda-c y tarja-top)
+     python3 gen/fix_assets.py prep   (recortes + inpaint en _work/fix/*.png)
      python3 gen/fix_assets.py up     (Real-ESRGAN x4 -> _work/fix/up/)
      python3 gen/fix_assets.py emit   (webp 480/960/1600 + og.jpg)"""
 import os, sys, subprocess, numpy as np, cv2
@@ -72,6 +73,18 @@ JOBS = {
     'frente':     ('ig-07.jpg', (48, 14, 326, 247), []),
 }
 R2 = ['carga2', 'frente']
+# Correccion 3 (REVISION-3): FIG. 05 que se entienda + pareja chica de la banda en compu
+JOBS.update({
+    # FIG. 05: panel inferior izquierdo de ig-05, dos muebles de inoxidable emplayados con su forma a la vista.
+    # Arranca en y=372, debajo de la etiqueta "JAS INOX" que cruza el collage; la marca "JAS" del emplaye con inpaint; la 2a queda fuera por recorte.
+    'carga3':   ('ig-05.jpg', (5, 372, 199, 638), [('wm', (38, 426, 80, 468), 7)]),  # hasta x=199: fuera la orilla blanca del collage y la 2a marca
+    # FIG. 02b: ig-06 panel superior derecho, pero como DETALLE 4:5 de la torre de redilas (el panel completo ya es REF. 06
+    # del catalogo, justo arriba; repetirlo entero se veria a 20 cm). "JAS" del costado de la caja con inpaint.
+    'banda-b':  ('ig-06.jpg', (338, 85, 498, 285), [('wm', (428, 176, 462, 206), 9)]),
+    # FIG. 02c: ig-06 panel inferior izquierdo, la pickup de lado frente a la casa (sin texto ni gente).
+    'banda-c':  ('ig-06.jpg', (0, 323, 254, 640), []),
+})
+R3 = ['carga3', 'banda-b', 'banda-c']
 
 def prep(names=None):
     os.makedirs(FIX, exist_ok=True)
@@ -183,6 +196,19 @@ def r2():
     emit_one('frente', detex('frente'), [480, 960, 1600])
     thumbs()
 
+def tarja_top():
+    """R3 cambio 4: REF. 04 solo con el 75 % de arriba (cubierta, tarja y puertas; fuera el piso con la mancha)."""
+    im = detex('tarja'); h = round(im.height * 0.75)
+    emit_one('tarja-top', im.crop((0, 0, im.width, h)), [480, 960])
+
+def emit3():
+    for n in R3: emit_one(n, detex(n), [480, 960])
+    tarja_top()
+
+def r3():
+    prep(R3); up(R3); emit3()
+
 if __name__ == '__main__':
     for step in sys.argv[1:] or ['prep']:
-        {'prep': prep, 'up': up, 'emit': emit, 'og': og, 'r2': r2, 'thumbs': thumbs}[step]()
+        {'prep': prep, 'up': up, 'emit': emit, 'og': og, 'r2': r2, 'thumbs': thumbs, 'r3': r3, 'tarja_top': tarja_top,
+         'prep3': lambda: prep(R3), 'up3': lambda: up(R3), 'emit3': emit3}[step]()
