@@ -29,3 +29,11 @@ Pendiente: fotos profesionales de platillos, cocteles y música en vivo.
 | hero-m, hero-d (rehechas) | maps-interior-salon.jpg, mismos recortes | Hero | Sin parches; desenfoque parejo de la franja del fondo después de subir x4 |
 | p-mesa-v, p-tabla-v, p-tarro-v, p-botellas-v (680x850) | botanas-mesa, parrillada-tabla, tarro (ig-02) y botellero (barra-02) | Columna fija de la carta a ≥860 | Mismo grado por tipo |
 | f-colosio (rehecha) | sitio-fachada-colosio-noche.jpg recortada a 3:2 sin cielo negro | Tarjeta Colosio | Grado noche |
+
+## Corrección 3 (script `scratchpad/r3fix-cantina-de-antano/imgs3.py`)
+| Archivo | Origen | Uso | Tratamiento |
+|---|---|---|---|
+| epoca-c-640, epoca-c-1146 (rehechas) | maps-interior-barra-02.jpg (x 975-1548, y 615-876: se quita abajo el marco con el busto fantasma) | Lobby card de Época de Oro, máx. 620 px | Grado interior, subida solo x2 con Lanczos + UnsharpMask(1.2, 60). SIN Real-ESRGAN (derretía las caras chicas) |
+| hero-d-960/1600 (rehechas) | maps-interior-salon.jpg, mismo recorte | Hero en compu | Mismo desenfoque parejo de la franja del fondo y luz al 70 % dentro de esa franja: los meseros quedan como sombra. hero-m no se tocó |
+
+Ya no se usan (movidas a `scratchpad/r3fix-cantina-de-antano/old-img/`): epoca-c-1280, epoca-c-1840.

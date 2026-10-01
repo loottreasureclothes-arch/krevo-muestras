@@ -1,12 +1,13 @@
 .epoca{background:var(--cafe);position:relative}
 .epoca-head{padding-top:44px;padding-bottom:20px}
 .epoca .tt{font-size:clamp(30px,8.2vw,72px)}
-.epoca-card{margin:0;padding:10px 10px 12px;max-width:920px;margin-inline:auto}
+.epoca-main{display:grid;gap:28px;padding-bottom:24px}
+.epoca-card{margin:0;padding:10px 10px 12px;width:100%;max-width:620px;justify-self:start}
 .epoca-card>*{position:relative}
-.epoca-card img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:58% 50%;border-radius:2px;background:var(--banda)}
+.epoca-card img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:60% 50%;border-radius:2px;background:var(--banda)}
 .epoca-card figcaption{font:italic 400 15px/1.4 var(--f-txt);color:var(--tinta2);padding:10px 4px 0;text-align:center;text-wrap:balance}
-.epoca-body{padding-block:28px 32px;display:grid;gap:24px}
-.revs{display:grid;gap:16px;padding:0}
+.epoca-body{padding-block:0 32px}
+.revs{display:grid;gap:16px;padding:0;margin:0}
 .rev{display:flex;flex-direction:column;gap:8px;padding:18px 18px 14px}
 .rev>*{position:relative}
 .rev blockquote{margin:0;font:400 16px/1.45 var(--f-txt);font-style:italic;color:var(--tinta);text-wrap:pretty}
@@ -16,11 +17,18 @@
 .evt-t{font:400 clamp(26px,7vw,40px)/1.08 var(--f-tit);color:var(--crema);text-wrap:balance}
 .evt-t .ln{display:block}.evt-t .rj{color:var(--rojo-t)}
 .evt-s{font-size:16px;color:var(--crema);opacity:.9;margin:6px 0 4px;text-wrap:pretty}
+/* la foto sale de un recorte de 573 px subido x2: nunca se muestra a más de 620 px */
 @media (min-width:700px){.epoca-card img{aspect-ratio:auto}}
 @media (min-width:860px){
   .epoca-head{padding-top:84px;padding-bottom:32px;text-align:center}
-  .epoca-card{padding:12px 12px 14px}
-  .epoca-body{display:block;padding-block:56px 88px}
+  .epoca-card{padding:12px 12px 14px;justify-self:center}
+  .epoca-main{gap:56px;padding-bottom:0}
+  .epoca-body{padding-block:48px 88px}
   .revs{grid-template-columns:repeat(3,1fr);gap:22px}
-  .evt{margin-top:48px;padding-top:28px}
+  .evt{padding-top:28px}
+}
+@media (min-width:1100px){
+  .epoca-main{grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+  .epoca-card{justify-self:end;position:sticky;top:96px}
+  .revs{grid-template-columns:1fr;gap:16px}
 }
