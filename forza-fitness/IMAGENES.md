@@ -1,4 +1,17 @@
-# Forza Fitness Club · Imágenes (30 sep 2026, corrección 3)
+# Forza Fitness Club · Imágenes (30 sep 2026, corrección 4)
+
+**Corrección 4:** misma serie de marca (B/N con curva en S, rojo de verdad, grano 2.8 %) más un paso nuevo `punch` contra lo lodoso: niveles (negro 5 a 7 %, blanco 97 %), CLAHE en la L de LAB (no toca el tono del rojo) y unsharp suave. Scripts: `scratchpad/r4fix-forza-fitness/imgs4.py` + `punch.py` + `grade.py`. Solo PIL, OpenCV y Real-ESRGAN x4 (`-s 4`); nada generativo.
+
+| Archivo en img/ (corrección 4) | Origen | Proceso | Dónde va |
+|---|---|---|---|
+| rack-480/960/1600.webp, rack-m-480/960.webp | maps-04 sin el 16 % de arriba | Real-ESRGAN x4 → 1600, mezcla 55/45 con el original; serie B/N + rojo (gamma .55); punch (CLAHE 1.8) | Club (rayo); velo más ligero |
+| funcional-w-480/960/1170.webp (1170x936) | maps-03, recorte x 0-1600, y 120-1120, luego x 430-1600, y 64-1000 (sin la columna movida) | Real-ESRGAN x4 mezcla 55/45; serie B/N (gamma .7); punch (CLAHE 2.0) | Horario, dentro del casillero "Y además" (#031). Reemplaza a funcional-480/960 (retiradas) |
+| pasillo-480/960.webp | maps-02, mismo recorte x 0-1100, y 520-1895 | SIN Real-ESRGAN: denoise suave, serie B/N + rojo, punch (CLAHE 1.6) | Colosio, igual tamaño |
+
+Retiradas en esta vuelta (en `scratchpad/r4fix-forza-fitness/img-retiradas/`): fierro-800/1400/2000 (repetía las mancuernas del hero antes del cierre) y funcional-480/960.
+Sin cambios: hero-m, hero-d, reloaded, og, favicon.
+
+Historial (corrección 3):
 
 **Corrección 3:** mismas reglas de la serie de marca (B/N con curva en S, rojo de verdad conservado, grano 3.2 %). Script: `scratchpad/r3fix-forza-fitness/imgs3.py` (usa `grade.py`). Solo PIL y OpenCV; en esta vuelta NO se usó Real-ESRGAN.
 

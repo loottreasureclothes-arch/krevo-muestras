@@ -199,7 +199,7 @@
     personal: ["personal", "FILA DE HIACE Y URVAN"],
     aeropuerto: ["aeropuerto", "SPRINTER LISTA PARA ABORDAR"],
     turismo: ["turismo", "URVAN EN CARRETERA"],
-    ejecutivo: ["ejecutivo", "UNIDAD CON RÓTULO GTLO"]
+    ejecutivo: ["fila", "UNIDADES MONITOREADAS POR GPS 24 H"]
   };
   function paintSign(box, r, k, g) {
     g = g || {};
@@ -233,8 +233,8 @@
       ph.src = "img/" + fo[0] + "-480.webp";
       var big = fo[0] === "turismo" ? "900" : "960";
       ph.srcset = "img/" + fo[0] + "-480.webp 480w, img/" + fo[0] + "-" + big + ".webp " + big + "w";
-      if (cap) cap.textContent = fo[1];
     }
+    if (cap && cap.textContent !== fo[1]) cap.textContent = fo[1];
     var href = url();
     $$(".js-waruta").forEach(function (a) { a.href = href; });
   }
@@ -268,6 +268,10 @@
   function update() { readForm(); showFields(); persist(); renderSign(); }
   function setState(patch) { for (var k in patch) S[k] = patch[k]; syncForm(); persist(); renderSign(); }
   var sn = $("#senal");
+  /* alto real de la señal pegada (celular): el contenedor la suelta un alto de señal antes de que acabe el formulario */
+  var ptw = $(".pt-wrap");
+  function sth() { if (sn && ptw) sn.style.setProperty("--sth", ptw.offsetHeight + "px"); }
+  if (ptw && window.ResizeObserver) new ResizeObserver(sth).observe(ptw); else sth();
   function typing(on) { if (sn) sn.classList.toggle("is-typing", on); }
   if (form) {
     form.addEventListener("focusin", function (e) { var t = e.target; typing(t.tagName === "INPUT" && /^(text|number|date|time)$/.test(t.type)); });
@@ -290,20 +294,22 @@
   window.GTLO = { state: function () { return JSON.parse(JSON.stringify(S)); }, set: setState, message: message, url: url };
 
   /* ====================================================================
-     EL CONVOY: placas-foto de sus unidades (126, 123, 121, 114, 152) entran en fila ligadas al scroll
-     (rAF, reversible, sin pin). Si la fila no cabe (celular), toda la fila pasa de derecha a izquierda
-     y termina con la última unidad alineada; si cabe (compu), cada placa llega por la derecha y frena en
-     su lugar: la de atrás siempre trae más distancia que la de adelante, así nunca se enciman.
+     EL CONVOY: placas-foto grandes de sus unidades (126, 123, 121, 114, 152) entran rodando ligadas al scroll
+     (rAF, reversible, sin pin). Si la fila no cabe (celular y compu normal), la fila entera cruza de derecha a
+     izquierda y frena con la última unidad alineada; mientras rueda, las placas vienen separadas y se cierran en
+     formación al frenar, y el carril de abajo corre con ellas. Si cabe (pantallas muy anchas), cada placa llega
+     por la derecha y frena en su lugar.
      ==================================================================== */
-  var cv = $("#cv"), cvIn = cv ? $(".cv-in", cv) : null;
+  var cv = $("#cv"), cvIn = cv ? $(".cv-in", cv) : null, cvLane = cv ? $(".cv-lane", cv) : null;
   if (cv && cvIn && !reduce) {
-    var us = $$(".cv-u", cv), mode = "fit", rowX0 = 0, rowX1 = 0, offs = [], cvPend = false;
+    var us = $$(".cv-u", cv), mode = "fit", rowX0 = 0, rowX1 = 0, offs = [], spread = 0, cvPend = false;
     function cvMeasure() {
       cvIn.style.transform = "none"; us.forEach(function (u) { u.style.transform = "none"; });
       var cw = cv.clientWidth, last = us[us.length - 1].getBoundingClientRect(), r0 = cvIn.getBoundingClientRect();
       var rw = (last.right - r0.left) + (parseFloat(getComputedStyle(cvIn).paddingRight) || 0);
-      if (!window.matchMedia("(min-width:900px)").matches && rw > cw + 2) {
-        mode = "travel"; rowX0 = cw * 0.5; rowX1 = cw - rw;
+      var uw = us[0].getBoundingClientRect().width;
+      if (rw > cw + 2) {
+        mode = "travel"; rowX0 = cw * (cw >= 900 ? 0.62 : 0.5); rowX1 = cw - rw; spread = uw * 0.26;
       } else {
         mode = "fit";
         var lefts = us.map(function (u) { return u.getBoundingClientRect().left - cv.getBoundingClientRect().left; });
@@ -311,19 +317,21 @@
         offs = lefts.map(function (l, i) { return (cw - l) + 40 + i * pitch * 1.3; });
       }
     }
-    function cvEase(t) { return 1 - Math.pow(1 - t, 3); }
     function cvPaint() {
       cvPend = false;
       var vh = window.innerHeight, rc = cv.getBoundingClientRect();
-      var endAt = mode === "travel" ? 0.1 : 0.34;
+      var endAt = mode === "travel" ? 0.12 : 0.34;
       var p = Math.max(0, Math.min(1, (vh * 0.98 - rc.top) / (vh * 0.98 - vh * endAt)));
+      var e = 1 - Math.pow(1 - p, 2.2), x = 0;
       if (mode === "travel") {
-        var x = rowX0 + (rowX1 - rowX0) * p;
-        cvIn.style.transform = p >= 1 ? "translate3d(" + rowX1.toFixed(1) + "px,0,0)" : "translate3d(" + x.toFixed(1) + "px,0,0)";
+        x = p >= 1 ? rowX1 : rowX0 + (rowX1 - rowX0) * e;
+        cvIn.style.transform = "translate3d(" + x.toFixed(1) + "px,0,0)";
+        us.forEach(function (u, i) { u.style.transform = p >= 1 ? "none" : "translate3d(" + ((1 - e) * i * spread).toFixed(1) + "px,0,0)"; });
       } else {
-        var e = cvEase(p);
         us.forEach(function (u, i) { u.style.transform = e >= 0.999 ? "none" : "translate3d(" + ((1 - e) * offs[i]).toFixed(1) + "px,0,0)"; });
+        x = -(1 - e) * 600;
       }
+      if (cvLane) cvLane.style.setProperty("--lx", (x * 0.5).toFixed(1));
     }
     function cvReq() { if (!cvPend) { cvPend = true; requestAnimationFrame(cvPaint); } }
     cvMeasure(); cvPaint();

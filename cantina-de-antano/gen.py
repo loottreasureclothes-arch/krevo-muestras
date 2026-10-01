@@ -134,7 +134,7 @@ PANELS = [
  ("cervezas","Cervezas",
   pan(F_TARRO, rows(CERV_COMP,"Para compartir") + rows(CERV_355,"Cerveza 355 ml") + rows(CERV_VASO,"Vasos")
   + '<p class="nota">Cubetas y vasos no aplican al 2x1.</p>')),
- ("cocteles","Cocteles", reparto() + clasicos() + rows(COCT_SUELTOS,"Y más") + '<p class="nota">Todos los cocteles son de 300 ml. En toda la coctelería no aplica el 2x1.</p>'),
+ ("cocteles","Cocteles", '<p class="nota rep-ir">Las especialidades de $152 salen en <a href="#reparto">El reparto</a>, al final de la carta.</p>' + clasicos() + rows(COCT_SUELTOS,"Y más") + '<p class="nota">Todos los cocteles son de 300 ml. En toda la coctelería no aplica el 2x1.</p>'),
  ("destilados","Destilados",
   casa() + pan(F_BOT, rows(DESTILADOS[2:],"Copa y botella") +
   '<p class="nota">Tequilas desde $111 hasta $299 la copa: Don Ramón, Centenario, Maestro Tequilero, 1800, 30-30, Don Julio, Herradura y más. Todos los servicios se sirven con 6 refrescos. Carta completa de destilados en la cantina.</p>')),
@@ -152,7 +152,7 @@ FR = [("jpani","Fachada de la sucursal J. Pani al atardecer, con luces rosas y s
  ("fajitas","Parrillada norteña caliente en su plancha de fierro"),
  ("mesa","Botanas en la mesa: totopos, salsa, limones y chicharrón"),
  ("barra","El botellero de la barra, con su radio antiguo"),
- ("nacozari","Sucursal Nacozari de noche, con su neón verde"),
+ ("nacozari","Sucursal Nacozari de noche, con su neón"),
  ("tampi","Tampiqueña con guacamole, arroz, frijoles y salsas"),
  ("colosio","Sucursal Colosio de noche, la original de 2001")]
 FILM = ('<div class="film" id="film" aria-label="Fotos de La Cantina de Antaño. Desliza para ver más" role="group">'
@@ -160,6 +160,7 @@ FILM = ('<div class="film" id="film" aria-label="Fotos de La Cantina de Antaño.
   + ''.join(f'<figure class="fr"><img src="img/fr-{k}.webp" alt="{E(a)}" width="400" height="300" loading="lazy"></figure>' for k, a in FR)
   + '</div><div class="film-band" aria-hidden="true"></div></div>')
 
+REP = reparto()
 carta_html = f'''<section class="carta on-crema" id="carta" data-hide-wa aria-labelledby="carta-t">
   {FILM}
   <div class="wrap carta-in">
@@ -169,11 +170,14 @@ carta_html = f'''<section class="carta on-crema" id="carta" data-hide-wa aria-la
       <figcaption><b>Parrillada norteña</b><span class="mq">2 personas $588 · 4 personas $1,026</span></figcaption>
     </figure>
   </div>
+  <div class="carta-tabs">
   <div class="chips-wrap"><div class="wrap"><div class="chips" role="tablist" aria-label="Categorías de la carta">{chips}</div></div></div>
   <div class="wrap carta-in">
     <div class="panels">{panels}</div>
     <p class="nota carta-nota">Precios de su carta publicada; pueden cambiar. Toca el + para sumar a tu mesa.</p>
   </div>
+  </div>
+  <div class="rep-band" id="reparto"><div class="wrap">{REP}</div></div>
 </section>
 '''
 open('sections/30-carta.html','w').write(carta_html)
@@ -253,7 +257,7 @@ cards = [
  dict(k='anita', nom='Sta. Anita', tag='', img='f-anita', w=(480,960), iw=(960,917), alt='Letrero de La Cantina de Antaño Santa Anita visto desde arriba',
       dir='Av. de la Convención de 1914 Ote. 901, Lomas de Santa Anita', tel='449 975 0938', tel2='+524499750938',
       hor=['Lunes a domingo','1:30 p.m. a 2:00 a.m.'], rating='4.3 · 2,090 opiniones en Google', extra='Área infantil', ll='21.8916869,-102.2754623'),
- dict(k='nacozari', nom='Nacozari', tag='', img='f-nacozari', w=(480,960), iw=(960,712), alt='Fachada de La Cantina de Antaño Nacozari de noche, con su techo a dos aguas y neón verde',
+ dict(k='nacozari', nom='Nacozari', tag='', img='f-nacozari', w=(480,960), iw=(960,712), alt='Fachada de La Cantina de Antaño Nacozari de noche, con su techo a dos aguas y su neón',
       dir='Av. Héroe de Nacozari 2500, Jardines del Parque', tel='449 913 4289', tel2='+524499134289',
       hor=['Jueves y viernes','2:00 p.m. a 2:00 a.m.','Resto de la semana','2:00 p.m. a 10:00 p.m.'], rating='4.3 · 2,650 opiniones en Google', extra='Área infantil', ll='21.853804,-102.282404'),
  dict(k='jpani', nom='J. Pani', tag='Perímetro ferial', img='f-jpani', w=(480,960), iw=(960,720), alt='Fachada de La Cantina de Antaño J. Pani al atardecer, con terraza y arcos',

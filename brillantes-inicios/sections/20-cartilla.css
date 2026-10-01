@@ -2,9 +2,9 @@
 .bi-cartilla .bi-title{margin-bottom:28px}
 .bi-cart-meter{display:none}
 #cartilla .bi-step .bi-btn--wa{font-size:14px;letter-spacing:.1em;white-space:nowrap}
-/* Renglones de 28 px: el contador usa 2 renglones por linea y baja 11 px para asentarse en la raya */
+/* Renglones de 28 px: el contador usa 2 renglones por linea; sube 2 px para que cada linea se asiente en su raya (medido a 2x, correccion 4) */
 .bi-count{font:700 clamp(25px,7vw,30px)/56px var(--f-title);color:var(--blue);padding:0 64px 0 0;margin-bottom:28px;position:relative}
-.bi-count span{position:relative;top:11px}
+.bi-count span{position:relative;top:-2px}
 .bi-count::after{content:"";position:absolute;left:0;bottom:-16px;height:5px;border-radius:5px;width:var(--p,0%);background:var(--sun);transition:width .4s var(--ease);max-width:100%}
 .bi-count::before{content:"";position:absolute;left:0;bottom:-16px;height:5px;border-radius:5px;width:100%;background:rgba(27,47,122,.14)}
 .bi-count.is-done{color:var(--blue)}
@@ -26,7 +26,8 @@
 .bi-doc input:active+.bi-box{transform:scale(.94)}
 .bi-doc input:focus-visible+.bi-box{outline:3px solid var(--sun-deep);outline-offset:3px}
 .bi-doc-t{display:flex;flex-direction:column;line-height:28px;color:var(--ink);min-width:0}
-.bi-doc-t b{font:800 17px/28px var(--f-body)}
+.bi-doc-t b{font:800 17px/28px var(--f-body);text-wrap:pretty}
+.bi-doc-t small{text-wrap:pretty}
 .bi-doc-t small{color:var(--ink-2)}
 .bi-doc input:checked~.bi-doc-t b{text-decoration:underline;text-decoration-color:var(--sun-deep);text-decoration-thickness:3px;text-underline-offset:3px}
 .bi-step>.bi-btn--blue{margin-top:0;width:100%;min-height:56px}

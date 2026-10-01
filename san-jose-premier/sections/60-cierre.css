@@ -51,3 +51,9 @@
 @media (hover: hover) { .sj-pick:hover { background: var(--brand); } .sj-pick:hover img { transform: scale(1.03); } }
 @media (max-width: 599px) { .sj-pick-dot { display: none; } .sj-pick-m { display: block; margin-top: 2px; } }
 .sj-choice .sj-btn--wa { white-space: nowrap; padding-inline: 16px; }
+
+/* sin elegir: no hay tabla de pendientes; las dos casas son los dos botones grandes y queda el verde */
+.sj-choice[data-has="0"] .sj-choice-list, .sj-choice[data-has="0"] .sj-choice-pick { display: none; }
+.sj-choice[data-has="0"] .sj-choice-act { grid-template-columns: 1fr; }
+.sj-pick-lb { min-height: 56px; padding: 13px 12px 12px; font-size: 13px; }
+@media (min-width: 900px) { #sj-h-cierre { font-size: clamp(44px, 4.4vw, 66px); } #sj-h-cierre .sj-ln { white-space: nowrap; } }

@@ -31,12 +31,12 @@
 <link rel="preload" as="image" href="img/hero-m-960.webp" media="(max-width: 1023px)" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero-d-1600.webp" media="(min-width: 1024px)" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="site.css?v=1790821084">
-<link rel="stylesheet" href="sections/10-hero.css?v=1790823676">
-<link rel="stylesheet" href="sections/20-planes.css?v=1790823676">
-<link rel="stylesheet" href="sections/30-horario.css?v=1790823060">
-<link rel="stylesheet" href="sections/40-club.css?v=1790823624">
+<link rel="stylesheet" href="sections/10-hero.css?v=1790825726">
+<link rel="stylesheet" href="sections/20-planes.css?v=1790825888">
+<link rel="stylesheet" href="sections/30-horario.css?v=1790825952">
+<link rel="stylesheet" href="sections/40-club.css?v=1790825726">
 <link rel="stylesheet" href="sections/50-colosio.css?v=1790823555">
-<link rel="stylesheet" href="sections/60-cierre.css?v=1790821084">
+<link rel="stylesheet" href="sections/60-cierre.css?v=1790825726">
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
@@ -102,8 +102,8 @@
     <img src="img/reloaded-960.webp" srcset="img/reloaded-480.webp 480w, img/reloaded-960.webp 960w, img/reloaded-1600.webp 1600w" sizes="(min-width: 900px) 60vw, 100vw" width="2048" height="1367" alt="" decoding="async">
   </div>
   <div class="fz-wrap">
-    <h2 class="fz-h" id="h-planes" data-drop><span class="fz-l">Elige tu</span><span class="fz-l fz-red">casillero.</span></h2>
-    <p class="fz-lead">Precios de su Instagram y de Wellhub. Te confirmamos el vigente al inscribirte.</p>
+    <h2 class="fz-h" id="h-planes" data-drop><span class="fz-l">Elige tu</span><span class="fz-l fz-red">plan.</span></h2>
+    <p class="fz-lead">Precios publicados; confirmamos el vigente al inscribirte.</p>
 
     <ol class="fz-plans" role="list">
       <li class="fz-locker fz-plan" data-reveal data-plan="Plan Gold">
@@ -123,8 +123,7 @@
       <li class="fz-locker fz-plan" data-reveal data-plan="Otros paquetes">
         <span class="fz-vent" aria-hidden="true"></span><span class="fz-num">#033</span>
         <h3 class="fz-plan-n">Otros paquetes</h3>
-        <p class="fz-price fz-price--ask"><b>Pregunta el precio</b></p>
-        <button class="fz-btn fz-btn--line fz-btn--sm fz-pick" type="button" data-pick="Otros paquetes" aria-pressed="false"><span>Elegir</span></button>
+        <a class="fz-ask" href="#cierre" data-pick="Otros paquetes" data-ask><span class="fz-ask-t">Pregunta</span><span class="fz-ask-t fz-red">el precio</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </li>
     </ol>
 
@@ -177,15 +176,14 @@
       <a class="fz-btn fz-btn--wa" id="fz-send" data-wa-dyn href="https://wa.me/524491538877?text=Hola%20Forza%20Fitness%20Club%2C%20quiero%20pedir%20mi%20inscripci%C3%B3n." target="_blank" rel="noopener"><span><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir mi inscripción por WhatsApp</span></a>
     </div>
 
-    <div class="fz-split">
-      <figure class="fz-fig" data-reveal>
-        <div class="fz-fig-c">
-          <img src="img/funcional-480.webp" srcset="img/funcional-480.webp 480w, img/funcional-960.webp 960w" sizes="(max-width: 720px) 42vw, 360px" width="1250" height="1550" alt="Zona funcional de Forza con trineo, pasto sintético y estante de balones medicinales" decoding="async">
-        </div>
+    <div class="fz-locker fz-otras" data-reveal>
+      <span class="fz-vent" aria-hidden="true"></span><span class="fz-num">#031 · Más clases</span>
+      <figure class="fz-otras-ph">
+        <div class="fz-otras-ph-c"><img src="img/funcional-w-960.webp" srcset="img/funcional-w-480.webp 480w, img/funcional-w-960.webp 960w, img/funcional-w-1170.webp 1170w" sizes="(min-width: 1024px) 400px, (min-width: 720px) 260px, 92vw" width="1170" height="936" alt="Zona funcional de Forza con el estante de balones medicinales, cajones de salto y trineo" decoding="async"></div>
         <figcaption class="fz-k">Zona funcional</figcaption>
       </figure>
-      <div class="fz-otras" data-reveal>
-        <h3 class="fz-k">Y además</h3>
+      <div class="fz-otras-b">
+        <h3 class="fz-otras-h">Y además</h3>
         <ul class="fz-otras-l" role="list">
           <li>Body Combat</li>
           <li>RPM / ciclo indoor</li>
@@ -196,7 +194,7 @@
           <li>Body Balance</li>
           <li>Cardio</li>
         </ul>
-        <p class="fz-otras-n">Horario: pregúntanos.</p>
+        <p class="fz-otras-n"><span>Horario</span> pregúntanos.</p>
       </div>
     </div>
   </div>
@@ -291,9 +289,7 @@
 </section>
 
 <section class="fz-cierre" id="cierre" data-hide-wa aria-labelledby="h-cierre">
-  <div class="fz-fierro">
-    <img src="img/fierro-1400.webp" srcset="img/fierro-800.webp 800w, img/fierro-1400.webp 1400w, img/fierro-2000.webp 2000w" sizes="100vw" width="2000" height="634" alt="Hileras de mancuernas de Forza con su detalle rojo" decoding="async">
-  </div>
+  <div class="fz-div fz-div--cierre" aria-hidden="true"><svg><use href="#fz-mark"/></svg></div>
   <div class="fz-wrap">
     <div class="fz-locker fz-ready" data-reveal>
       <span class="fz-vent" aria-hidden="true"></span><span class="fz-num">#001 · Tu casillero</span>
@@ -311,7 +307,7 @@
     <div class="fz-todo" data-reveal>
       <h3 class="fz-h fz-todo-h"><span class="fz-l">Todo listo</span><span class="fz-l fz-red">para completar</span></h3>
       <ul class="fz-todo-l" role="list">
-        <li>3 fotos: la fachada, una clase de CrossFit en el box y la guardería (y de los coaches)</li>
+        <li>Fotos con gente entrenando: una clase de CrossFit en el box, la fachada, la guardería y los coaches</li>
         <li>Recuperar el dominio forzafc.com.mx (está libre en NIC México y sigue impreso en sus lonas)</li>
         <li>Teléfono y WhatsApp oficiales</li>
         <li>Precios de todos los planes</li>
@@ -382,7 +378,7 @@
 })();
 </script>
 <script src="site.js?v=1790814551" defer></script>
-<script src="sections/20-planes.js?v=1790810756" defer></script>
+<script src="sections/20-planes.js?v=1790825726" defer></script>
 <script src="sections/30-horario.js?v=1790821084" defer></script>
 <script src="sections/40-club.js?v=1790821084" defer></script>
 <script src="sections/50-colosio.js?v=1790821084" defer></script>

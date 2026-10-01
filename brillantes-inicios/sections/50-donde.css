@@ -1,12 +1,11 @@
-/* Celular: titulo, fachada, ficha, mapa. Compu: fachada y mapa grandes a la izquierda (60 %); a la derecha titulo, ficha (con WhatsApp y Como llegar) y abajo redes + directorio IMSS, para que las dos columnas terminen parejas. */
-.bi-donde-in{display:grid;gap:30px;grid-template-areas:"head" "fach" "info" "map" "foot"}
+/* Celular: titulo, fachada, ficha, mapa. Compu: fachada y mapa grandes a la izquierda (60 %); a la derecha titulo, ficha (con WhatsApp y Como llegar) y la linea del directorio IMSS bajo los botones (correccion 4: las redes van solo en el pie), para que las dos columnas terminen parejas. */
+.bi-donde-in{display:grid;gap:30px;grid-template-areas:"head" "fach" "info" "map"}
 .bi-donde-head{grid-area:head}
 .bi-fachada{grid-area:fach;margin:0}
 .bi-donde-info{grid-area:info}
 .bi-donde-map{grid-area:map;display:grid;gap:22px}
 .bi-donde-acts{display:grid;gap:14px}
 .bi-donde-acts .bi-btn{width:100%}
-.bi-donde-foot{grid-area:foot;display:grid;gap:14px}
 .bi-donde .bi-title{margin-bottom:0}
 .bi-open{display:flex;align-items:center;gap:10px;font:800 15px/1.3 var(--f-body);padding:10px 14px;border-radius:10px;background:rgba(251,243,223,.1);width:fit-content;max-width:100%;margin-bottom:16px}
 .bi-open i{width:12px;height:12px;border-radius:50%;background:rgba(251,243,223,.45);flex:none}
@@ -24,11 +23,10 @@
 .bi-map iframe{display:block;width:100%;height:280px;border:0;border-radius:3px;background:var(--cream-2)}
 .bi-map.is-in iframe,.bi-map:not([data-reveal]) iframe{transform:rotate(calc(var(--rot) * -1))}
 html:not(.bi-js) .bi-map iframe{transform:rotate(calc(var(--rot) * -1))}
-.bi-dir{font-size:14px;color:rgba(251,243,223,.7);max-width:44ch}
+.bi-dir{font-size:14px;color:rgba(251,243,223,.7);max-width:44ch;margin-top:18px}
 @media (min-width:860px){
-  .bi-donde-in{grid-template-columns:minmax(0,6fr) minmax(0,4fr);grid-template-areas:"fach head" "fach info" "map info" "map foot";gap:34px 64px;align-items:start}
+  .bi-donde-in{grid-template-columns:minmax(0,6fr) minmax(0,4fr);grid-template-areas:"fach head" "fach info" "map info";gap:34px 64px;align-items:start}
   .bi-fachada{margin-top:8px}
   .bi-donde-map{margin-top:-6px}
-  .bi-map iframe{height:400px}
-  .bi-donde-foot{align-self:end}
+  .bi-map iframe{height:310px}
 }

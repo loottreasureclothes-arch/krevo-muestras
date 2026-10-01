@@ -94,7 +94,7 @@ html = f'''  <section id="sala" class="ep-sec ep-sala" data-hide-wa aria-labelle
           <p class="ep-paso-t"><b>1</b>Elige la función</p>
           <div class="ep-fichas" role="radiogroup" aria-label="Función de la semana">{fichas}</div>
           <p class="ep-fichas-hoytxt" id="ep-fichas-hoytxt" hidden>Hoy: pregúntanos si aún quedan lugares.</p>
-          <p class="ep-fichas-nota">Precio y hora de cada función: te los confirmamos por WhatsApp.</p>
+          <p class="ep-fichas-nota">Hora y precio final: te los confirmamos por WhatsApp.</p>
           <div class="ep-fechas" id="ep-fechas" role="radiogroup" aria-label="Fecha" hidden></div>
         </div>
         <div class="ep-paso ep-paso-2" id="plano">

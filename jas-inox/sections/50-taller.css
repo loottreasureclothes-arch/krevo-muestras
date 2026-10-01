@@ -1,10 +1,7 @@
 /* 50-taller: quienes son y donde. Ficha de plano + mapa en marco. */
 .taller-top { display: grid; gap: 22px; }
-/* foto real del frente en recuadro con marco (origen chico); el titulo va como pie grande sobre la foto */
-.taller-foto { --cut: 12px; position: relative; margin: 0; aspect-ratio: 1112 / 932; }
-.taller-foto::after { content: ""; position: absolute; inset: 1px; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(20, 21, 23, 0) 52%, rgba(20, 21, 23, 0.86) 100%); }
-.taller-foto .fig { top: 1px; bottom: auto; }
-.taller-t { position: absolute; z-index: 2; left: 14px; right: 14px; bottom: 10px; font-size: clamp(2rem, 9vw, 3.2rem); }
+/* R4: sin foto grande (la barra del frente ya es el hero): titulo a dos tonos + cita del catalogo, lado a lado en compu */
+.taller-top { margin-top: 26px; }
 .taller-q { margin-top: 0; padding-left: 16px; border-left: 2px solid var(--steel); display: grid; gap: 12px; max-width: 62ch; }
 .taller-q p { font-size: 1.02rem; line-height: 1.55; color: var(--text); }
 .taller-q cite { font: 500 11px/1.4 var(--f-m); font-style: normal; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel-2); }
@@ -27,15 +24,11 @@
 .taller-act { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: 26px; }
 @media (min-width: 640px) {
   .taller-top { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(22px, 4vw, 64px); align-items: end; }
-  .taller-foto { order: 2; }
-  .taller-q { order: 1; }
 }
 @media (min-width: 900px) {
-  .taller-top { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(28px, 4vw, 64px); align-items: end; }
-  .taller-foto { order: 2; }
-  .taller-q { order: 1; padding-left: 22px; padding-bottom: 6px; }
+  .taller-top { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(28px, 4vw, 64px); align-items: end; }
+  .taller-q { padding-left: 22px; padding-bottom: 6px; }
   .taller-q p { font-size: 1.32rem; line-height: 1.5; }
-  .taller-t { left: 22px; bottom: 16px; font-size: clamp(2.8rem, 4.4vw, 4.4rem); }
   .taller-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(24px, 3vw, 44px); align-items: stretch; }
   .taller-card { padding: 28px 26px 14px; }
   .taller-map { min-height: 420px; }

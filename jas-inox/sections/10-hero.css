@@ -29,4 +29,13 @@
   .t--hero { font-size: clamp(3.4rem, 7.1vw, 7.4rem); }
 }
 /* tableta: un poco mas de foto para que entre el letrero */
-@media (min-width: 600px) and (max-width: 959px) { .hero-fig { height: min(60svh, 600px); } .hero-fig img { object-position: 50% 72%; } }
+/* R4: alto suficiente para que entren el letrero JAS INOX (arriba) y las rodajas (abajo) */
+@media (min-width: 600px) and (max-width: 959px) { .hero-fig { height: min(76svh, 880px); } .hero-fig img { object-position: 50% 45%; } }
+
+/* R4: en celular y tableta la etiqueta FIG. 01 no tapa el letrero real JAS INOX (arriba a la derecha de la foto):
+   va abajo a la izquierda, sobre la banqueta, en version corta ("Barra con vidrio"); el kicker baja para no encimarse */
+@media (max-width: 959px) {
+  .fig-long { display: none; }
+  .hero-fig .fig { top: auto; bottom: 26px; left: 8px; letter-spacing: 0.06em; }
+  .hero-copy { margin-top: 2px; }
+}

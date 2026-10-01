@@ -21,10 +21,13 @@
 .listo-p { margin-top: 16px; font: 500 13px/1.6 var(--f-m); color: var(--text); }
 .listo-p + .listo-p { margin-top: 6px; color: var(--steel); }
 @media (min-width: 900px) {
-  .cierre-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: start; margin-top: 34px; }
-  .cierre-grid .cierre-ficha { margin-top: 26px; padding: 22px 26px 26px; }
-  .cierre-fig { max-height: none; margin: 0; }
-  .cierre-grid .listo { margin-top: 0; }
+  /* R4: el titulo va arriba a todo lo ancho; ficha y "Todo listo" lado a lado con el MISMO alto (sin hueco negro a la derecha) */
+  .cierre-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: stretch; margin-top: 30px; }
+  .cierre-grid .cierre-ficha { margin-top: 0; padding: 20px 24px 22px; height: 100%; align-content: start; }
+  .cierre-main { display: grid; }
+  .cierre-fig { max-height: 250px; width: 100%; margin: 0 auto; }
+  .cierre-grid .listo { margin-top: 0; display: flex; flex-direction: column; }
+  .cierre-grid .listo-p:first-of-type { margin-top: auto; padding-top: 16px; }
   .listo-list li { font-size: 1.02rem; }
 }
 .listo-list em.as-is { text-transform: none; letter-spacing: 0.04em; }

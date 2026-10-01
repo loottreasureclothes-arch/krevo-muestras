@@ -2,7 +2,8 @@
 """Correccion 1 (30 sep 2026): fotos limpias sin marcas de agua ni texto de Instagram.
 Todo local y sin IA generativa: recorte con PIL + inpaint local de OpenCV (cv2.inpaint, TELEA) solo sobre
 la zona del texto -> Real-ESRGAN x4 (realesrgan-x4plus -s 4, corrido desde tools/realesrgan) -> webp.
-Uso: python3 gen/fix_assets.py r3  (correccion 3: prep3 + up3 + emit3; solo carga3, banda-b, banda-c y tarja-top)
+Uso: python3 gen/fix_assets.py r4  (correccion 4: rehace las 4 del catalogo y re-emite todas las x4 con mas textura y grano)
+     python3 gen/fix_assets.py r3  (correccion 3: prep3 + up3 + emit3; solo carga3, banda-b, banda-c y tarja-top)
      python3 gen/fix_assets.py prep   (recortes + inpaint en _work/fix/*.png)
      python3 gen/fix_assets.py up     (Real-ESRGAN x4 -> _work/fix/up/)
      python3 gen/fix_assets.py emit   (webp 480/960/1600 + og.jpg)"""
@@ -208,7 +209,45 @@ def emit3():
 def r3():
     prep(R3); up(R3); emit3()
 
+# Correccion 4 (juez: "las fotos x4 se ven cerosas"): las 4 del catalogo que salian de make_assets.py (su x4 ya no
+# existe) se rehacen desde el mismo recorte (hallado por cv2.matchTemplate contra la webp publicada, score > 0.99)
+JOBS.update({
+    'carrito-a': ('ig-03.jpg', (0, 320, 256, 640), []),
+    'carrito-c': ('ig-04.jpg', (256, 320, 512, 640), []),
+    'campana':   ('ig-10.jpg', (120, 0, 361, 275), []),
+    'redilas-b': ('ig-06.jpg', (256, 0, 512, 320), []),
+})
+R4_NEW = ['carrito-a', 'carrito-c', 'campana', 'redilas-b']
+R4 = ['hero', 'cajones', 'carga3', 'truck-tj', 'banda', 'banda-b', 'banda-c'] + R4_NEW
+
+def detex4(name):
+    """R4: mas textura original (42 % Lanczos del recorte) y menos realce: el x4 solo deja 'cera' en el acero liso."""
+    a = Image.open(UP + name + '.png').convert('RGB')
+    b = Image.open(FIX + name + '.png').convert('RGB').resize(a.size, Image.LANCZOS)
+    return Image.blend(a, b, 0.42).filter(ImageFilter.UnsharpMask(radius=1.6, percent=30, threshold=2))
+
+def grain(im, sigma, seed=7):
+    """Grano fino monocromo a la resolucion final (como pelicula): rompe el liso pintado del x4. Sin IA."""
+    arr = np.asarray(im).astype(np.float32)
+    n = np.random.default_rng(seed).normal(0, 1, arr.shape[:2]).astype(np.float32)
+    n = cv2.GaussianBlur(n, (0, 0), 0.6); n *= sigma / max(1e-3, n.std())
+    return Image.fromarray(np.clip(arr + n[..., None], 0, 255).astype(np.uint8))
+
+def emit_g(name, im, widths):
+    ws = sorted({w for w in widths if w <= im.width} | ({im.width} if im.width < max(widths) else set()))
+    for w in ws:
+        h = round(im.height * w / im.width)
+        grain(im.resize((w, h), Image.LANCZOS), 4.2 if w > 600 else 3.2).save(f'{OUT}{name}-{w}.webp', 'WEBP', quality=84, method=6)
+    print('emit4', name, ws, im.size)
+
+def emit4():
+    for n in R4: emit_g(n, detex4(n), [480, 960, 1600] if n == 'hero' else [480, 960])
+    im = detex4('tarja'); emit_g('tarja-top', im.crop((0, 0, im.width, round(im.height * 0.75))), [480, 960])
+
+def r4():
+    prep(R4_NEW); up(R4_NEW); emit4()
+
 if __name__ == '__main__':
     for step in sys.argv[1:] or ['prep']:
         {'prep': prep, 'up': up, 'emit': emit, 'og': og, 'r2': r2, 'thumbs': thumbs, 'r3': r3, 'tarja_top': tarja_top,
-         'prep3': lambda: prep(R3), 'up3': lambda: up(R3), 'emit3': emit3}[step]()
+         'prep3': lambda: prep(R3), 'up3': lambda: up(R3), 'emit3': emit3, 'r4': r4, 'emit4': emit4}[step]()

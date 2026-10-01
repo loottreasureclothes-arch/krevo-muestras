@@ -1,5 +1,5 @@
 /* 20 · Cartelera: sello "YA SE PRESENTÓ" calculado con la fecha real del visitante, link "Apartar" solo
-   si la función sigue vigente, indicador "1 / 9" (empieza en la tarjeta viva "Esta semana") en celular y flechas del riel en compu (swipe nativo). */
+   si la función sigue vigente, indicador "1 / 8" de los carteles de septiembre en celular (Corrección 4: la tarjeta viva ya no va en el riel) y flechas del riel en compu (swipe nativo). */
 (function () {
   "use strict";
   var WD = { 0: "dom", 3: "mie", 4: "jue", 5: "vie", 6: "sab" };

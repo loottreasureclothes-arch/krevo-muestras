@@ -59,3 +59,14 @@ Recorte hecho con PIL en `scratchpad/r3fix-san-jose-premier/terr.py`. Sin IA gen
 | una-planta-tt30-{480,960}, dos-plantas-frente-{480,960} | (corrección 2 y 1) | | sin cambio | Además, las dos fotos 4:5 del cierre sin elegir |
 
 Ya no se usa en la página: `terreno-sur-*` (no se borró).
+
+## Corrección 4 (30 sep 2026)
+Hecho con `scratchpad/r4fix-san-jose-premier/export4.py` + `enh.py`. Sin IA generativa ni stock. El "realce" es solo contraste local (CLAHE en el canal L, suave), +6 a 8 % de color y máscara de enfoque ligera; no se inventa nada de la foto.
+
+| Archivo en `img/` | Video (ID TikTok) | Cuadro | Recorte | Dónde va |
+|---|---|---|---|---|
+| hero-fachada-{960,1600,2000} | 7672935418857360661 (v03) | seg. 0 (cuadro 001; a 60 cps es también el más nítido de los primeros 2 s) | el mismo de la corrección 1 (x4 ya hecho); se reexportó con realce y webp q88; se agregó 2000w para compu retina | Hero en compu |
+| pie-dron-{480,960,1600} | 7658892646030511380 (v09) | seg. 13 (mismo de la corrección 2, x4 ya hecho) | se reexportó con realce suave (CLAHE 1.15) y webp q82 | Pie: a sangre en celular y tableta; en compu va en marco de 620 px a la derecha, ya no a sangre (el cuadro de video es de 1080 px) |
+| granada-d-{960,1600} | portada `research/fotos/tt-30.jpg` = 7611720873267203348 | | x 0 a 1236, y 230 a 786 (sin el cielo de arriba), 1236x556; Real-ESRGAN x4 | Ficha "Una planta" solo en compu (`<picture>`, 900 px o más); en celular sigue `una-planta-tt30` |
+
+`lad-final-960` no se tocó (salió del `hero-fachada-1600` anterior y se queda igual).

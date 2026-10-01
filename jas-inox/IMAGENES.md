@@ -36,3 +36,9 @@ Corrección 3 (`gen/fix_assets.py r3`):
 | banda-c-480/960 | ig-06, panel inferior izquierdo (0,323)-(254,640): la pickup de lado frente a la casa; sin inpaint | Banda (solo compu), FIG. 02c |
 | tarja-top-480/664 | la misma tarja x4, solo el 75 % de arriba (cubierta, tarja y puertas; fuera el piso con la mancha del inpaint) | Catálogo REF. 04 |
 Ya no se usan (se quedan en img/): carga2-480/828 y tarja-480/664.
+
+Corrección 4 (`gen/fix_assets.py r4`): menos "cera" en todas las fotos x4.
+| todas las x4 publicadas (hero, carrito-a, carrito-c, cajones, tarja-top, campana, redilas-b, banda, banda-b, banda-c, carga3, truck-tj) | mismo recorte de siempre; ahora 42 % de textura original (Lanczos del recorte) sobre el x4, realce más suave (UnsharpMask 30 %) y grano fino monocromo a la resolución final (sigma 4.2 en 960, 3.2 en 480). Sin IA | mismos nombres de archivo, el HTML no cambia |
+| carrito-a, carrito-c, campana, redilas-b | su x4 de make_assets.py ya no existía: se rehízo desde el mismo recorte (hallado con cv2.matchTemplate contra la webp publicada, score > 0.99): ig-03 (0,320)-(256,640), ig-04 (256,320)-(512,640), ig-10 (120,0)-(361,275), ig-06 (256,0)-(512,320); Real-ESRGAN x4 `-s 4` | Catálogo |
+Ya no se usa en la página: frente-480/960/1112 (FIG. 07 repetía la barra del hero). Se queda en img/ y sigue siendo la miniatura 06 del pie (th-barra).
+Mapa de la ruta: ya no es trazo a mano. `gen/mx_map_ne.py` lo genera de Natural Earth 1:50m (dominio público, `gen/ne50-mexico.json`).

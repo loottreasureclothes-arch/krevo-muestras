@@ -22,10 +22,12 @@
 @media (max-width:899px){.bi-hero-cta{padding-right:66px}}
 @media (min-width:900px){
   .bi-hero{min-height:100svh;padding:calc(var(--bar) + 40px) 0 56px;display:flex;align-items:center}
-  .bi-hero-in{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:0 64px;align-items:center}
-  .bi-hero-pics{grid-column:2;grid-row:1;padding:70px 0 0;margin:0}
-  .bi-hero-main{width:86%;max-width:540px}
-  .bi-hero-small{width:260px;max-width:46%;right:-14px;top:0;padding:10px 10px 0}
+  /* Correccion 4: fotos pegadas mas grandes en compu (la recepcion es de 1000 px reales; la maestra se queda en 300 px por su origen chico) */
+  .bi-hero-in{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:0 48px;align-items:center}
+  .bi-hero-pics{grid-column:2;grid-row:1;padding:80px 0 0;margin:0}
+  .bi-hero .bi-wrap{max-width:1320px}
+  .bi-hero-main{width:88%;max-width:620px}
+  .bi-hero-small{width:300px;max-width:48%;right:-20px;top:0;padding:10px 10px 0}
   .bi-hero-small figcaption{font-size:19px;padding:12px 2px 12px}
   .bi-hero-copy{grid-column:1;grid-row:1}
   .bi-hero-copy>*{max-width:560px}

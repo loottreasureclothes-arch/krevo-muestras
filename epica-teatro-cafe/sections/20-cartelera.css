@@ -1,75 +1,94 @@
-/* ===== 20 · CARTELERA: posters reales como tarjetas grandes, riel con swipe ===== */
+/* ===== 20 · CARTELERA (Corrección 4) =====
+   Manda lo VIVO: "Esta semana / en Épica." con el programa de la semana (papel crema, 5 renglones Courier con la
+   fecha real que calcula 30-sala.js y la referencia de precio de septiembre) y, al lado, "En la mesa" (comida y café).
+   Abajo, con su propio rótulo y más chicos, los carteles que ya pasaron: "Así se vivió septiembre". */
 .ep-cart { padding-bottom: calc(var(--sec-y) - 10px); background: var(--ink); }
-.ep-cart-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 30px; }
-.ep-cart-ctl { display: none; gap: 8px; }
-.ep-ctl { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--red); border-radius: 2px; color: var(--cream); transition: background 160ms; }
-.ep-ctl svg { width: 20px; height: 20px; }
-.ep-ctl[data-dir="-1"] svg { transform: scaleX(-1); }
-.ep-ctl:active { transform: scale(0.96); }
-@media (hover: hover) and (pointer: fine) { .ep-ctl:hover { background: var(--red); } }
-.ep-cart-rail { --w: clamp(250px, 78vw, 320px); display: flex; gap: 22px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-  padding: 10px var(--gut) 26px; scroll-padding-inline: var(--gut); scrollbar-width: none; }
-.ep-cart-rail::-webkit-scrollbar { display: none; }
-.ep-card { flex: 0 0 var(--w); width: var(--w); scroll-snap-align: start; display: flex; flex-direction: column; gap: 16px; }
-.ep-slot { position: relative; display: grid; place-items: end center; height: calc(var(--w) * 1.25 + 14px); }
-.ep-slot .ep-marco { max-width: 100%; max-height: 100%; }
-.ep-slot .ep-marco-in { max-height: 100%; }
-.ep-slot img { width: auto; height: auto; max-width: 100%; max-height: calc(var(--w) * 1.25 - 12px); margin-inline: auto; }
-.ep-card-info { display: grid; gap: 8px; justify-items: start; }
-.ep-card-t { font-size: 30px; line-height: 1; letter-spacing: -0.01em; font-variation-settings: "opsz" 72, "WONK" 0; } /* a 144 la f de "Off" se pega y se lee "Ofi" */
-.ep-card-sub { font-size: 14px; color: var(--cream-mute); line-height: 1.35; }
-.ep-card-fechas { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 2px 0 2px; }
-.ep-card-precio { font-family: var(--f-mono); font-size: 15px; color: var(--cream); }
-.ep-cart-nota { font-size: 13px; color: var(--cream-mute); max-width: 52ch; }
-.ep-cart-pie { display: grid; gap: 10px; }
-.ep-cart-pos { font-family: var(--f-mono); font-weight: 700; font-size: 14px; letter-spacing: 0.08em; color: var(--cream); }
-/* Corrección 2: el sello "YA SE PRESENTÓ" ya no tapa el arte; va chico junto a las fechas tachadas */
-.ep-pasada { display: inline-block; padding: 4px 8px 3px; border: 1.5px solid var(--red-hi); color: var(--red-hi); font-family: var(--f-mono); font-weight: 700; font-size: 12px;
-  letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.15; transform: rotate(-3deg); white-space: nowrap; }
-.ep-pasada[hidden] { display: none; }
-/* Corrección 3: el riel ABRE con la tarjeta viva "Esta semana en Épica" (papel crema, 5 renglones Courier con
-   la fecha real; cada renglón aparta esa función en la sala). Septiembre va después, como archivo. */
-.ep-oct { display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; width: 100%; height: calc(var(--w) * 1.25 - 6px); padding: 26px 22px 22px;
-  background: var(--paper); color: var(--paper-ink); clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%); transform: rotate(-1deg); }
-.ep-oct-k { margin-bottom: auto; font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(27, 20, 18, 0.62); }
-.ep-oct-h { font-family: var(--f-display); font-weight: 900; font-size: clamp(38px, 11vw, 52px); line-height: 0.98; letter-spacing: -0.01em; font-variation-settings: "opsz" 72, "WONK" 0; }
-.ep-oct-h .ep-line { display: block; }
-.ep-oct-h .ep-b { color: var(--red); font-style: italic; font-weight: 800; }
-/* la tarjeta viva ocupa todo el alto de la tarjeta (poster + datos) para no dejar negro debajo */
-.ep-card--semana .ep-slot { flex: 1; height: auto; min-height: calc(var(--w) * 1.25 + 14px); display: flex; align-items: stretch; padding: 6px 0 4px; }
-.ep-semana { justify-content: flex-start; gap: 0; height: auto; padding: 22px 18px 12px; }
-.ep-semana .ep-oct-k { margin-bottom: 10px; }
-.ep-semana .ep-oct-h { font-size: clamp(34px, 9.6vw, 46px); margin-bottom: 16px; }
-.ep-sem { flex: 1; display: grid; grid-auto-rows: minmax(54px, 1fr); margin-bottom: 14px; border-top: 1.5px solid var(--paper-ink); }
-.ep-sem-pie { display: flex; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 12px; border-top: 1.5px dashed rgba(27, 20, 18, 0.45);
-  font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(27, 20, 18, 0.62); }
+.ep-cart-head { margin-bottom: 26px; }
+.ep-vivo { display: grid; gap: 22px; align-items: start; }
+
+/* programa de la semana (papel crema) */
+.ep-oct { display: flex; flex-direction: column; background: var(--paper); color: var(--paper-ink);
+  clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%); }
+.ep-semana { padding: 18px 18px 14px; filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.6)); }
+.ep-oct-k { display: flex; justify-content: space-between; gap: 10px; margin: 0 22px 12px 0; font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(27, 20, 18, 0.62); }
+.ep-sem { display: grid; border-top: 1.5px solid var(--paper-ink); }
 .ep-sem li { display: grid; }
 .ep-sem li + li { border-top: 1px dashed rgba(27, 20, 18, 0.32); }
-.ep-sem-r { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "d a" "n a"; align-items: center; align-content: center; gap: 2px 10px; min-height: 54px; padding: 6px 0; font-family: var(--f-mono); font-weight: 700; font-size: 14px; line-height: 1.2; color: var(--paper-ink); }
-.ep-sem-d { grid-area: d; font-size: 12px; color: var(--red); letter-spacing: 0.02em; white-space: nowrap; }
-.ep-sem-n { grid-area: n; }
+.ep-sem-r { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "d a" "n a" "p a"; align-items: center; align-content: center; gap: 2px 10px; min-height: 60px; padding: 8px 0;
+  font-family: var(--f-mono); font-weight: 700; font-size: 15px; line-height: 1.2; color: var(--paper-ink); }
+.ep-sem-d { grid-area: d; font-size: 12px; color: var(--red); letter-spacing: 0.04em; white-space: nowrap; }
+.ep-sem-n { grid-area: n; font-family: var(--f-display); font-weight: 800; font-size: 20px; line-height: 1.05; letter-spacing: -0.005em; font-variation-settings: "opsz" 48, "WONK" 0; }
+.ep-sem-p { grid-area: p; font-weight: 400; font-size: 12.5px; color: rgba(27, 20, 18, 0.72); }
 .ep-sem-a { grid-area: a; display: inline-flex; align-items: center; gap: 4px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1.5px solid var(--red); padding-bottom: 1px; }
 .ep-sem-a svg { width: 13px; height: 13px; color: var(--red); }
 .ep-sem-r:active { background: rgba(179, 18, 31, 0.08); }
 @media (hover: hover) and (pointer: fine) { .ep-sem-r:hover .ep-sem-n { color: var(--red); } }
-/* etiqueta de archivo entre la tarjeta viva y el primer poster pasado */
-.ep-cart-sep { flex: 0 0 26px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 14px; margin-inline: -6px; }
-.ep-cart-sep span { display: inline-flex; align-items: center; gap: 8px; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
-  font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red-hi); }
-.ep-cart-sep svg { width: 14px; height: 14px; transform: rotate(180deg); }
-.ep-sello.is-pasado { opacity: 0.45; text-decoration: line-through; }
+.ep-sem-pie { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 10px; margin-top: 4px; padding-top: 10px; border-top: 1.5px dashed rgba(27, 20, 18, 0.45);
+  font-family: var(--f-mono); font-weight: 700; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(27, 20, 18, 0.62); }
+
+/* "En la mesa": comida y café, como renglones de carta (sin precio inventado) */
+.ep-carta { position: relative; padding: 20px 18px 18px; border: 1px solid rgba(241, 231, 210, 0.28); background: var(--ink-2);
+  clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%); }
+.ep-carta-k { font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red-hi); }
+.ep-carta-h { margin-top: 8px; font-family: var(--f-display); font-weight: 900; font-size: clamp(28px, 8vw, 40px); line-height: 1; color: var(--cream); font-variation-settings: "opsz" 72, "WONK" 0; }
+.ep-carta-h .ep-line { display: block; }
+.ep-carta-h .ep-b { color: var(--red-hi); font-style: italic; font-weight: 800; }
+.ep-carta-l { margin-top: 16px; display: grid; gap: 12px; }
+.ep-carta-l li { display: grid; gap: 3px; padding-bottom: 10px; border-bottom: 1px dotted rgba(241, 231, 210, 0.3); }
+.ep-carta-n { font-family: var(--f-mono); font-weight: 700; font-size: 15px; line-height: 1.3; color: var(--cream); }
+.ep-carta-l i { display: none; }
+.ep-carta-p { font-family: var(--f-mono); font-size: 12.5px; color: var(--cream-mute); white-space: nowrap; }
+.ep-carta-pie { margin-top: 16px; font-size: 14px; line-height: 1.45; color: var(--cream-mute); }
+
+/* archivo: "Así se vivió septiembre", carteles chicos en riel */
+.ep-arch-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-top: 44px; margin-bottom: 4px; }
+.ep-arch-h { font-family: var(--f-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-mute); }
+.ep-arch-h em { font-style: normal; color: var(--red-hi); }
+.ep-cart-ctl { display: none; gap: 8px; }
+.ep-ctl { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--red); border-radius: 2px; color: var(--cream); transition: background 160ms; }
+.ep-ctl svg { width: 18px; height: 18px; }
+.ep-ctl[data-dir="-1"] svg { transform: scaleX(-1); }
+.ep-ctl:active { transform: scale(0.96); }
+@media (hover: hover) and (pointer: fine) { .ep-ctl:hover { background: var(--red); } }
+.ep-cart-rail { --w: 42vw; display: flex; gap: 16px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  padding: 14px var(--gut) 16px; scroll-padding-inline: var(--gut); scrollbar-width: none; }
+.ep-cart-rail::-webkit-scrollbar { display: none; }
+.ep-card { flex: 0 0 var(--w); width: var(--w); scroll-snap-align: start; display: flex; flex-direction: column; gap: 10px; }
+.ep-slot { position: relative; display: grid; place-items: end center; height: calc(var(--w) * 1.25 + 10px); }
+.ep-slot .ep-marco { max-width: 100%; max-height: 100%; filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.6)); }
+.ep-slot .ep-marco > .ep-marco-in { padding: 4px; }
+.ep-slot .ep-marco-in { max-height: 100%; }
+.ep-slot img { width: auto; height: auto; max-width: 100%; max-height: calc(var(--w) * 1.25 - 8px); margin-inline: auto; filter: saturate(0.85); }
+.ep-card-info { display: grid; gap: 4px; justify-items: start; }
+.ep-card-t { font-family: var(--f-display); font-weight: 800; font-size: 18px; line-height: 1.05; color: var(--cream); font-variation-settings: "opsz" 48, "WONK" 0; }
+.ep-card-sub { font-size: 12.5px; color: var(--cream-mute); line-height: 1.3; }
+.ep-arch-f { font-family: var(--f-mono); font-weight: 700; font-size: 11.5px; letter-spacing: 0.04em; color: var(--red-hi); }
+.ep-card-precio { font-family: var(--f-mono); font-size: 12.5px; color: var(--cream-mute); }
+.ep-cart-pie { display: grid; gap: 8px; }
+.ep-cart-pos { font-family: var(--f-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; color: var(--cream); }
+.ep-cart-nota { font-size: 13px; color: var(--cream-mute); max-width: 60ch; }
+
 @media (min-width: 720px) {
+  .ep-cart-head { margin-bottom: 36px; }
+  .ep-vivo { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; }
+  .ep-semana { padding: 24px 26px 18px; }
+  .ep-sem-r { min-height: 66px; }
+  .ep-sem-n { font-size: 24px; }
+  .ep-sem-p { font-size: 13px; }
+  .ep-carta { padding: 26px 26px 24px; margin-top: 14px; }
+  .ep-carta-h { font-size: clamp(32px, 3.2vw, 44px); }
+  .ep-arch-head { margin-top: 64px; }
   .ep-cart-ctl { display: flex; }
   .ep-cart-pos { display: none; }
-  .ep-cart-rail { --w: calc((100vw - 2 * var(--gut) - 34px) / 2.4); gap: 34px; padding-inline: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); scroll-padding-inline: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); }
-  .ep-card-t { font-size: 34px; }
-  .ep-oct-h { font-size: clamp(44px, 4vw, 60px); }
-  .ep-semana .ep-oct-h { font-size: clamp(40px, 3.4vw, 52px); }
-  .ep-sem-r { font-size: 15px; }
-  .ep-sem-d { font-size: 13px; }
-  .ep-cart-head { margin-bottom: 40px; }
+  .ep-cart-rail { --w: 27vw; gap: 26px; padding-inline: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); scroll-padding-inline: max(var(--gut), calc((100vw - 1240px) / 2 + var(--gut))); }
+  .ep-card-t { font-size: 20px; }
 }
-/* 1024+: 3 tarjetas completas dentro de la retícula; la cuarta asoma después del borde (no se ve mordida) */
-@media (min-width: 1024px) { .ep-cart-rail { --w: calc((min(100vw, 1240px) - 2 * var(--gut) - 68px) / 3); } }
-/* Corrección 3: menos negro muerto en celular (hero → título y "1 / 9" → "Aparta tu lugar.") */
-@media (max-width: 719px) { .ep-cart { padding-top: calc(var(--sec-y) - 12px); padding-bottom: 26px; } .ep-cart-head { margin-bottom: 22px; } .ep-cart-rail { padding-bottom: 18px; } }
+/* 1024+: 5 carteles chicos dentro de la retícula; el sexto asoma */
+/* renglones de carta con puntos guía solo cuando la columna es ancha (en 720-1023 el nombre se partía en 5 renglones) */
+@media (min-width: 1024px) {
+  .ep-carta-l li { grid-template-columns: auto minmax(16px, 1fr) auto; align-items: baseline; gap: 8px; padding-bottom: 0; border-bottom: 0; }
+  .ep-carta-n { max-width: 24ch; }
+  .ep-carta-l i { display: block; border-bottom: 2px dotted rgba(241, 231, 210, 0.35); transform: translateY(-4px); }
+}
+@media (min-width: 1024px) { .ep-cart-rail { --w: calc((min(100vw, 1240px) - 2 * var(--gut) - 4 * 26px) / 5); } }
+@media (max-width: 719px) { .ep-cart { padding-top: calc(var(--sec-y) - 12px); padding-bottom: 26px; } }

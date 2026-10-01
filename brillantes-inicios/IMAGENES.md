@@ -35,3 +35,11 @@ ig-03 (`img/sala-*.webp`) ya no se usa en la página (los soles enormes dominaba
 | ~~post-01~~ | ig-01 | RETIRADO: a 390 px era un cuadro amarillo con letra ilegible. El webp se movió a `_build/src/retirado/post-01-480.webp`. |
 | Hero, foto chica de la maestra | la misma `img/maestra-*.webp` | Sin cambio de archivo: sube a la esquina superior derecha, 44 % del ancho en celular y 260 px en compu, con pie "Así te reciben". |
 Nada de IA generativa ni stock.
+
+## Corrección 4 (30 sep 2026)
+| Dónde | Origen | Proceso |
+|---|---|---|
+| Sala "Cunitas, sillas altas y su maestra" (`img/salas-480.webp`, `img/salas-825.webp`) | ig-07, el mismo maestro x4 `_build/src/hero-master.webp` | `_build/soles.py` → `salas()`: recorte x 525-1350, y 100-1205 (maestra, 2 cunitas, sillas altas). Deja fuera la mancha del logo borrado y 5 de las 7 caritas, así que solo lleva 2 soles chicos con rayos cortos. Cada sol tapa la carita completa. Unsharp suave (r 1.6, 55 %) y grano fino 3.5 %. Va chica en marco de foto pegada (máximo 320/340 px), nunca a sangre. |
+| ~~Cierre, tira "De su Instagram"~~ | ig-06, ig-04, ig-02 | RETIRADA: eran pósters con texto quemado (regla de fotos sin texto). Los webp se movieron a `_build/src/retirado/`. |
+`img/hero-*.webp` (la sala completa con 7 soles) ya no se usa en la página. `soles.py` la sigue generando para `hero-soles.png` (og:image).
+Nada de IA generativa ni stock.

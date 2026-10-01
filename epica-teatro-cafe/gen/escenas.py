@@ -22,7 +22,11 @@ def export(im, slug, widths):
         print(slug, w2, out.size)
 
 # ---------- Off Shakespeare: escena ----------
-a = np.array(Image.open(os.path.join(SCR, 'up', 'ig-10.png')).convert('RGB'))
+# Corrección 4: el x4 puro dejaba las caras lisas "de plástico". Se mezcla 45 % Real-ESRGAN con 55 % del
+# poster original subido con LANCZOS, más un grano fino (sigma 2.2) para que la piel no se vea encerada.
+_up = Image.open(os.path.join(SCR, 'up', 'ig-10.png')).convert('RGB')
+_or = Image.open(os.path.join(HERE, 'research', 'fotos', 'ig-10.jpg')).convert('RGB').resize(_up.size, Image.LANCZOS)
+a = np.array(Image.blend(_or, _up, 0.45))
 x0, y0, x1, y1 = int(20 * K), int(386 * K), int(840 * K), int(985 * K)
 c = a[y0:y1, x0:x1].copy()
 bx0, by1 = int((620 - 20) * K), int((505 - 386) * K)          # caja de "19 de Sep"
@@ -31,7 +35,8 @@ m = np.zeros(c.shape[:2], np.uint8)
 m[0:by1, bx0:] = (lum > 95).astype(np.uint8) * 255
 m = cv2.dilate(m, np.ones((9, 9), np.uint8), iterations=2)
 c = cv2.cvtColor(cv2.inpaint(cv2.cvtColor(c, cv2.COLOR_RGB2BGR), m, 15, cv2.INPAINT_TELEA), cv2.COLOR_BGR2RGB)
-export(Image.fromarray(c), 'escena-off-shakespeare', [800, 1280, 1750])
+c = c.astype(float) + np.random.default_rng(10).normal(0, 2.2, c.shape)
+export(Image.fromarray(np.clip(c, 0, 255).astype(np.uint8)), 'escena-off-shakespeare', [800, 1280, 1750])
 
 # ---------- Jean de Blues: escenario con el foco ----------
 a = Image.open(os.path.join(SCR, 'up', 'ig-07.png')).convert('RGB')

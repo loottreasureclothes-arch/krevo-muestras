@@ -5,12 +5,15 @@
 (function () {
   "use strict";
   var DIAS = {
-    mie: { wd: 3, corto: "MIÉ", nombre: "Stand-up", msg: "el stand-up" },
-    jue: { wd: 4, corto: "JUE", nombre: "Teatro experimental y arte urbano", msg: "el teatro experimental y arte urbano" },
-    vie: { wd: 5, corto: "VIE", nombre: "Teatro", msg: "el teatro" },
-    sab: { wd: 6, corto: "SÁB", nombre: "Teatro", msg: "el teatro" },
-    dom: { wd: 0, corto: "DOM", nombre: "Teatro infantil y música", msg: "el teatro infantil y música" }
+    mie: { wd: 3, corto: "MIÉ", nombre: "Stand-up", msg: "el stand-up", ref: "" },
+    jue: { wd: 4, corto: "JUE", nombre: "Teatro experimental y arte urbano", msg: "el teatro experimental y arte urbano", ref: "En sep: $250 con 1 bebida. Se confirma por WhatsApp" },
+    vie: { wd: 5, corto: "VIE", nombre: "Teatro", msg: "el teatro", ref: "En sep: $250 con 1 bebida. Se confirma por WhatsApp" },
+    sab: { wd: 6, corto: "SÁB", nombre: "Teatro", msg: "el teatro", ref: "En sep: $250 con 1 bebida. Se confirma por WhatsApp" },
+    dom: { wd: 0, corto: "DOM", nombre: "Teatro infantil y música", msg: "el teatro infantil y música", ref: "En sep: niños $50, adultos $100. Se confirma por WhatsApp" }
   };
+  /* Corrección 4: precio de REFERENCIA en el boleto, tomado de los carteles de septiembre (research/hechos.md):
+     obras $250 con 1 bebida (jue La Herencia, vie Gigoló, sáb Off Shakespeare); dom Mariquita niños $50 / adultos $100.
+     Stand-up no tiene precio publicado: queda "Te lo confirmamos por WhatsApp". El mensaje de WhatsApp no cambia. */
   var MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
   /* Corrección 2: la función de HOY se puede apartar mientras no empiece: mié a dom antes de las 20:30
      (corte solo de la interfaz; el equipo confirma por WhatsApp si aún quedan lugares). */
@@ -157,7 +160,7 @@
       } else { fe.hidden = true; fe.removeAttribute("data-sig"); }
     }
     function set(id, val) { var el = $(id); if (!el) return; el.textContent = val || el.getAttribute("data-empty") || ""; el.classList.toggle("is-empty", !val); }
-    set("b-fn", c ? c.sh.nombre : ""); set("b-fecha", c ? c.f.l : ""); set("b-lug", n ? state.seats.join(" · ") : ""); set("b-precio", "");
+    set("b-fn", c ? c.sh.nombre : ""); set("b-fecha", c ? c.f.l : ""); set("b-lug", n ? state.seats.join(" · ") : ""); set("b-precio", c ? DIAS[c.dia].ref : "");
     var bn = $("b-n"); if (bn) bn.textContent = n ? n : "___";
     var falta = $("b-falta");
     if (falta) {

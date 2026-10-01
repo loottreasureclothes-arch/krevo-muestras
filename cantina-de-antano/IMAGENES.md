@@ -37,3 +37,14 @@ Pendiente: fotos profesionales de platillos, cocteles y música en vivo.
 | hero-d-960/1600 (rehechas) | maps-interior-salon.jpg, mismo recorte | Hero en compu | Mismo desenfoque parejo de la franja del fondo y luz al 70 % dentro de esa franja: los meseros quedan como sombra. hero-m no se tocó |
 
 Ya no se usan (movidas a `scratchpad/r3fix-cantina-de-antano/old-img/`): epoca-c-1280, epoca-c-1840.
+
+## Corrección 4 (script `scratchpad/r4fix-cantina-de-antano/imgs4.py`)
+Caras: desenfoque LOCAL y chico en cada cara (personal de la barra y las 2 clientas del fondo), ya no una franja borrosa. Las clientas de la derecha quedan fuera de todos los recortes.
+| Archivo | Origen | Uso | Tratamiento |
+|---|---|---|---|
+| epoca-s-640/1146 (NUEVAS) | maps-interior-salon.jpg (x 110-990, y 215-800: barra con botellero, caballito, retrato de charro en la barra, techo con objetos y el pasillo) | Lobby card de Época de Oro, máx. 620 px | Real-ESRGAN x4 (foto nítida), sepia: color al 20 %, tinte café, +0.18 EV |
+| hero-m-480/960 (rehechas, 960x1646) | maps-interior-salon.jpg (x 100-660, y 240-1200) | Hero en celular | Barra, caballito, botellero y mesas; sin franja borrosa; Real-ESRGAN x4, grado interior |
+| hero-d-960/1600 (rehechas) | maps-interior-salon.jpg (x 0-1300, y 60-1200, mismo recorte) | Hero en compu | Sin franja ni luz al 70 %: solo caras chicas desenfocadas; Real-ESRGAN x4, grado interior |
+| f-colosio, f-nacozari, f-jpani, f-anita, fr-colosio, fr-nacozari, fr-jpani | mismas fuentes y recortes | Tarjetas de sucursal y tira de fotogramas | "Noche calma": OpenCV fastNlMeans (quita grano), saturación al 55-60 %, verdes neón al 50 % y movidos hacia el oro, rosas al ~40 % y movidos hacia el rojo, tinte café leve. J. Pani y Sta. Anita sin subir exposición |
+
+Ya no se usan (movidas a `scratchpad/r4fix-cantina-de-antano/old-img/`): epoca-c-640, epoca-c-1146 (barra-02, borrosa y chueca).

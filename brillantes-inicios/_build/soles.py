@@ -64,7 +64,29 @@ def run(name, widths):
         im.save(f'img/{name}-{wd}.webp', 'WEBP', quality=82, method=6)
     return m
 
+# Correccion 4: la sala "Cunitas, sillas altas y su maestra" va recortada a la maestra y las dos cunitas junto a ella.
+# Recorte sobre el maestro x4 (x 525-1350, y 100-1205): deja fuera la mancha del logo borrado (abajo a la izquierda)
+# y las otras 5 caritas, asi bastan 2 soles chicos de rayos cortos. Se afina poquito (unsharp) y lleva grano fino
+# para que no se vea plastica. Sale chica, en marco de foto pegada (la fuente son ~240 px reales de ancho).
+SALAS_BOX = (525, 100, 1350, 1205)
+SALAS_CARAS = [(603, 292, 53), (707, 258, 58)]
+
+def salas(widths=(480, 825)):
+    from PIL import ImageFilter
+    m = Image.open('_build/src/hero-master.webp').convert('RGBA')
+    for cx, cy, r in SALAS_CARAS:
+        sol(m, cx, cy, r, ray=(1.08, 1.24, .12))
+    c = m.crop(SALAS_BOX).convert('RGB')
+    c = c.filter(ImageFilter.UnsharpMask(radius=1.6, percent=55, threshold=2))
+    g = Image.effect_noise(c.size, 9).convert('L')
+    c = Image.blend(c, Image.merge('RGB', (g, g, g)), .035)
+    for wd in widths:
+        im = c if wd == c.width else c.resize((wd, round(c.height * wd / c.width)), Image.LANCZOS)
+        im.save(f'img/salas-{wd}.webp', 'WEBP', quality=84, method=6)
+    return c
+
 if __name__ == '__main__':
     run('hero', [480, 960, 1600]).save('_build/src/hero-soles.png')
     run('sala', [480, 960, 1600])
+    print('salas', salas().size)
     print('soles listos')

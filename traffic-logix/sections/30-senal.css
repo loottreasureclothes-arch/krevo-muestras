@@ -5,6 +5,12 @@
 /* celular: la señal se pega compacta, con fondo propio para que nada asome detrás; al escribir se suelta */
 .pt-wrap{position:sticky;top:var(--hh);z-index:6;margin-inline:calc(var(--pad)*-1);padding:6px var(--pad) 8px;background:#1b1c1f;box-shadow:0 12px 14px -10px rgba(0,0,0,.6)}
 .sn.is-typing .pt-wrap{position:relative;top:auto}
+/* contenedor de la señal pegada: termina un alto de señal antes que el formulario (margen negativo = --sth, el alto real de la señal), así se suelta con "Tus datos" ya a la vista; el botón verde y su nota quedan fuera */
+.sn-stick{display:grid;gap:18px;align-items:start}
+@media (max-width:899.98px){
+  .sn-stick>.sn-form{margin-bottom:calc(-1*(var(--sth,160px) + 16px))}
+  .sn-grid>.sn-cta{margin-top:calc(var(--sth,160px) + 16px)}
+}
 .pt{position:relative}
 /* viga de armadura: dos largueros y celosía diagonal */
 .pt{padding-top:16px}
@@ -67,6 +73,7 @@
 .sn-note{font-size:14px;color:var(--mut);text-align:center}
 [hidden]{display:none!important}
 @media (min-width:900px){
+  .sn-stick{display:contents}
   .sn{padding:96px 0 56px}
   .sn-grid{grid-template-columns:5fr 6fr;gap:56px;margin-top:38px}
   .pt-wrap{top:calc(var(--hh) + 22px);order:2;margin:0;padding:0;background:none;box-shadow:none}

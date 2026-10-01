@@ -78,3 +78,20 @@ html.ep-ready .ep-telon { display: none; }
   .ep-hero-title .ep-line:first-child .ep-hw { display: block; }
   .ep-hoy-linea, .ep-hero-cta { max-width: 42%; }
 }
+/* Corrección 4: en celular y tableta la escena ya NO va a sangre (era un recorte de 437 px subido x4 y las caras
+   se veían de plástico). Va en el marco de la casa (crema 6 px, esquina cortada, giro -1.5°), arriba del título,
+   con su pie Courier debajo. La imagen ahora es 45 % Real-ESRGAN + 55 % original con grano fino (gen/escenas.py). */
+@media (max-width: 899px) {
+  .ep-hero { flex-direction: column; align-items: stretch; justify-content: center; gap: 26px; padding-top: calc(var(--bar) + 26px); }
+  .ep-escena { position: relative; top: auto; left: auto; right: auto; height: auto; width: calc(100% - 2 * var(--gut)); max-width: 560px; margin: 0 auto;
+    transform: rotate(-1.5deg); filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.7)); }
+  .ep-escena-in { height: auto; background: var(--paper); padding: 6px; clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%); }
+  .ep-escena img { height: auto; aspect-ratio: 1750 / 1278; object-position: 50% 50%; }
+  .ep-escena::after { display: none; }
+  .ep-escena-pie { position: static; margin-top: 10px; text-align: right; text-shadow: none; transform: rotate(1.5deg); }
+  .ep-hero-in { gap: 16px; }
+  .ep-hero-title { font-size: clamp(50px, 15vw, 96px); }
+}
+/* Corrección 4: en celular el hero mide lo que su contenido (sin 100svh): así no queda negro muerto
+   entre "Apartar lugares" y "Esta semana / en Épica.", que ya asoma al pie de la primera pantalla. */
+@media (max-width: 719px) { .ep-hero { min-height: 0; justify-content: flex-start; } }

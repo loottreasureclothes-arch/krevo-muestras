@@ -1,4 +1,4 @@
-/* 60-cierre: la ficha refleja lo elegido arriba y el título cambia a "Tu casa ya tiene plano." */
+/* 60-cierre: la ficha refleja lo elegido arriba; sin elegir, "Elige una planta o dos." con las dos casas como botones */
 (function () {
   "use strict";
   var h = document.getElementById("sj-h-cierre");
@@ -21,13 +21,13 @@
   function paint() {
     var st = SJ.state, m = st.modelo && SJ.MODELOS[st.modelo] && st.modelo !== "nose" ? SJ.MODELOS[st.modelo] : null;
     box.setAttribute("data-has", m ? "1" : "0");
-    cM.textContent = m ? m.etiqueta : (st.modelo === "nose" ? "Todavía no sé" : "Falta elegir");
+    cM.textContent = m ? m.etiqueta : (st.modelo === "nose" ? "Todavía no sé" : "Por elegir");
     cD.textContent = m ? m.medida : "Las ves en Modelos";
-    cC.textContent = st.credito || "Falta elegir";
+    cC.textContent = st.credito || "Lo vemos por WhatsApp";
     if (ph) ph.setAttribute("data-show", m ? st.modelo : "none");
     if (pick) pick.textContent = m ? "Cambiar modelo" : "Elegir modelo";
     var key = m ? "1" : "0";
-    if (key !== last) { last = key; if (m) setLines("Tu casa", "ya tiene plano."); else setLines("Falta elegir", "modelo."); }
+    if (key !== last) { last = key; if (m) setLines("Tu casa", "ya tiene plano."); else setLines("Elige una planta", "o dos."); }
   }
   /* sin elegir: tocar una de las dos casas elige el modelo ahí mismo (y deja el interruptor de Modelos igual) */
   Array.prototype.forEach.call(document.querySelectorAll(".sj-pick"), function (b) {

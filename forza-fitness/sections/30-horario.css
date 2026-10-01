@@ -41,21 +41,26 @@ td.fz-off { background: repeating-linear-gradient(-8deg, rgba(255, 255, 255, 0.0
 .fz-sendrow { display: grid; gap: 12px; justify-items: start; margin-top: 24px; }
 .fz-sendrow .fz-btn { max-width: 100%; white-space: normal; text-align: center; padding: 12px 22px; font-size: 14px; }
 
-.fz-split { display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); gap: 20px; align-items: stretch; margin-top: 44px; }
-.fz-fig { margin: 0; display: flex; flex-direction: column; }
-.fz-fig-c { position: relative; flex: 1 1 0; min-height: 240px; clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%); overflow: hidden; background: #121313; }
-.fz-fig-c img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 35%; }
-.fz-fig figcaption { margin-top: 8px; }
-.fz-otras-l { margin-top: 12px; }
-.fz-otras { align-self: start; }
-.fz-otras-l li { padding: 7px 0; border-bottom: 1px solid var(--line); font: italic 800 24px / 1 var(--f-h); text-transform: uppercase; }
-.fz-otras-n { margin-top: 12px; font: 600 14px / 1.2 var(--f-n); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); }
+/* Y ademas: casillero con el mismo peso del tablero; las clases son casillas (grafito + filo rojo), sin iconos */
+.fz-otras { display: grid; gap: 16px; margin-top: 40px; margin-inline: -10px; padding: 40px 10px 14px; background: #121313; }
+.fz-otras-ph { margin: 0; }
+.fz-otras-ph-c { aspect-ratio: 16 / 10; overflow: hidden; background: #121313; clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%); }
+.fz-otras-ph-c img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+.fz-otras-ph figcaption { margin-top: 8px; }
+.fz-otras-h { font: italic 800 40px / 0.95 var(--f-h); text-transform: uppercase; }
+.fz-otras-l { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 14px; }
+.fz-otras-l li { display: flex; align-items: center; min-height: 52px; padding: 6px 10px; background: var(--graf); border-left: 3px solid var(--red); font: italic 800 20px / 1 var(--f-h); text-transform: uppercase; letter-spacing: 0.01em; }
+.fz-otras-n { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 6px 12px; border: 1px solid var(--red); font: 600 13px / 1.2 var(--f-n); letter-spacing: 0.1em; text-transform: uppercase; color: #fff; }
+.fz-otras-n span { color: var(--mute); }
 
 @media (min-width: 720px) {
   .fz-board { margin-inline: 0; padding: 46px 16px 16px; }
   .fz-tbl { border-spacing: 4px; }
   .fz-cell { font-size: 14px; text-transform: uppercase; letter-spacing: 0.04em; }
-  .fz-split { grid-template-columns: 280px 1fr; gap: 40px; }
+  /* tableta: la foto no crece a todo el ancho (es de celular y algo movida): columna de 260 px a la izquierda */
+  .fz-otras { margin-inline: 0; padding: 46px 16px 16px; grid-template-columns: 260px 1fr; gap: 0 24px; align-items: stretch; }
+  .fz-otras-ph { display: flex; flex-direction: column; }
+  .fz-otras-ph-c { flex: 1 1 auto; aspect-ratio: auto; min-height: 220px; }
 }
 @media (min-width: 900px) {
   .fz-horario .fz-wrap:first-child { display: grid; grid-template-columns: 1.5fr 1fr; align-items: end; gap: 0 48px; }
@@ -67,8 +72,11 @@ td.fz-off { background: repeating-linear-gradient(-8deg, rgba(255, 255, 255, 0.0
   .fz-hr { width: 54px; } .fz-hr b { font-size: 26px; }
   .fz-dh { font-size: 15px; }
   .fz-sendrow { grid-template-columns: 1fr auto; align-items: center; margin-top: 28px; }
-  .fz-split { grid-template-columns: minmax(300px, 340px) 1fr; gap: 56px; margin-top: 64px; }
-  .fz-otras-l { columns: 2; column-gap: 40px; }
+  .fz-otras { grid-template-columns: 360px 1fr; gap: 0 36px; align-items: stretch; margin-top: 56px; padding: 50px 22px 22px; }
+  .fz-otras-ph-c { min-height: 260px; }
+  .fz-otras-h { font-size: 56px; }
+  .fz-otras-l { grid-template-columns: repeat(2, 1fr); gap: 5px; margin-top: 18px; }
+  .fz-otras-l li { min-height: 64px; padding: 8px 16px; font-size: 26px; }
 }
 @media (min-width: 1024px) {
   .fz-next { font-size: 18px; }
@@ -77,6 +85,8 @@ td.fz-off { background: repeating-linear-gradient(-8deg, rgba(255, 255, 255, 0.0
   .fz-cell { font-size: 15px; min-height: 64px; line-height: 1.12; gap: 2px; }
   .fz-board-n { font-size: 15px; }
   .fz-sel { font-size: 14px; }
-  .fz-otras-n { font-size: 16px; }
-  .fz-otras .fz-k, .fz-fig figcaption { font-size: 14px; }
+  .fz-otras-n { font-size: 15px; margin-top: 16px; }
+  .fz-otras .fz-k { font-size: 14px; }
+  .fz-otras { grid-template-columns: 400px 1fr; }
+  .fz-otras-l li { font-size: 30px; }
 }

@@ -48,8 +48,8 @@ open('sections/10-hero.html','w').write(hero+'\n')
 
 # ------------ 20 cartilla
 # modo de la ayuda en celular (correccion 3): 'in' = misma linea que el nombre tras " · " si cabe (si no, baja a su renglon);
-# 'half' = media linea (14 px, 2 por renglon); '' = su propio renglon de 28 px.
-docs=[('acta','Acta de nacimiento','Original o copia certificada, y una copia simple','half'),
+# '' = su propio renglon de 28 px (correccion 4: ya no hay media linea; todo texto cae en su raya de 28 px).
+docs=[('acta','Acta de nacimiento','Original o copia certificada, y una copia simple',''),
 ('curp','CURP del niño o niña','Solo si el acta no la trae','in'),
 ('salud','Cartilla Nacional de Salud','El original','in'),
 ('examen','Solicitud de examen médico de admisión','Ya llenada','in'),
@@ -84,7 +84,7 @@ cart=f'''<section class="bi-sec bi-dark bi-doodle bi-cartilla" id="cartilla" dat
         </li>
         <li class="bi-step">
           <h3><span class="bi-num">2</span>Inscribe en STIGI</h3>
-          <p class="bi-hint bi-half">Es el sitio del IMSS. Se abre en otra pestaña.</p>
+          <p class="bi-hint">Es el sitio del IMSS. Se abre en otra pestaña.</p>
           <a class="bi-btn bi-btn--blue" href="https://stigi.imss.gob.mx" target="_blank" rel="noopener">Inscribir en STIGI<svg aria-hidden="true"><use href="#i-ext"/></svg></a>
         </li>
         <li class="bi-step">
@@ -114,11 +114,11 @@ salas=f'''<section class="bi-sec bi-deep bi-salas" id="salas" aria-labelledby="s
   <div class="bi-wrap">
     {title([("Cunitas, sillas altas",""),("y su maestra.","t2")],'h2','','salas-h')}
   </div>
-  <figure class="bi-salas-hero">
-    <img src="img/hero-960.webp" srcset="img/hero-480.webp 480w, img/hero-960.webp 960w, img/hero-1600.webp 1600w" sizes="(max-width: 760px) 100vw, 780px" width="1600" height="1339" alt="Sala de la guardería con cunitas, sillas altas y una maestra con uniforme lila; las caritas de los bebés van tapadas con el sol de Brillantes" loading="lazy" decoding="async">
-    <figcaption class="bi-wrap"><b>01</b><span>SALA</span><em>Un día normal con peques</em></figcaption>
-  </figure>
   <div class="bi-wrap bi-salas-pics">
+    <figure class="bi-foto bi-salas-hero" style="--rot:-1.6deg;--tape:-4deg" data-reveal>
+      <img src="img/salas-480.webp" srcset="img/salas-480.webp 480w, img/salas-825.webp 825w" sizes="(max-width: 639px) 80vw, 340px" width="825" height="1105" alt="Maestra con uniforme lila en la sala, junto a las cunitas y las sillas altas; las caritas de los bebés van tapadas con el sol de Brillantes" loading="lazy" decoding="async">
+      <figcaption>Un día normal con peques</figcaption>
+    </figure>
     <figure class="bi-foto bi-foto--b" style="--rot:1.8deg;--tape:3deg" data-reveal>
       <img src="img/salon-480.webp" srcset="img/salon-480.webp 480w, img/salon-900.webp 900w" sizes="(max-width: 760px) 78vw, 360px" width="900" height="667" alt="Salón con mesitas y sillitas de colores" loading="lazy" decoding="async">
       <figcaption>Mesitas y sillitas de colores</figcaption>
@@ -171,9 +171,7 @@ op=f'''<section class="bi-sec bi-dark bi-doodle bi-ops" id="opiniones" aria-labe
 open('sections/40-opiniones.html','w').write(op+'\n')
 
 # ------------ 50 donde
-soc=''.join(f'<li><a href="{u}" target="_blank" rel="noopener" aria-label="{n}"><svg aria-hidden="true"><use href="#{i}"/></svg></a></li>' for n,u,i in [
-('Facebook','https://www.facebook.com/brillantesinicios','i-fb'),('Instagram','https://www.instagram.com/brillantes_inicios/','i-ig'),
-('TikTok','https://www.tiktok.com/@brillantes.inicio','i-tt'),('YouTube','https://www.youtube.com/@BrillantesInicios','i-yt')])
+# Correccion 4: las redes van solo en el pie (template), no en Dónde.
 donde=f'''<section class="bi-sec bi-deep bi-donde" id="donde" data-hide-wa aria-labelledby="donde-h">
   <div class="bi-wrap bi-donde-in">
     <div class="bi-donde-head">
@@ -197,15 +195,12 @@ donde=f'''<section class="bi-sec bi-deep bi-donde" id="donde" data-hide-wa aria-
         <a class="bi-btn bi-btn--wa bi-donde-wa" data-wa href="https://wa.me/524491927631?text=Hola%20Brillantes%20Inicios%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escríbenos por WhatsApp</a>
         <a class="bi-btn bi-btn--blue" href="{DIR}" target="_blank" rel="noopener">Cómo llegar</a>
       </div>
+      <p class="bi-dir">Guardería del esquema IMSS. Aparece en el directorio oficial de guarderías 2025.</p>
     </div>
     <div class="bi-donde-map">
       <div class="bi-foto bi-map" style="--rot:1.2deg;--tape:-3deg" data-reveal>
         <iframe title="Mapa: Brillantes Inicios, Cerro de Aconcagua 101-C, Aguascalientes" src="https://www.google.com/maps?q=Brillantes+Inicios+Guarder%C3%ADa+IMSS+Ciudad+Industrial&amp;ll=21.8315435,-102.2956786&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-    </div>
-    <div class="bi-donde-foot">
-      <ul class="bi-social" aria-label="Redes de Brillantes Inicios">{soc}</ul>
-      <p class="bi-dir">Guardería del esquema IMSS. Aparece en el directorio oficial de guarderías 2025.</p>
     </div>
   </div>
 </section>'''
@@ -214,12 +209,7 @@ open('sections/50-donde.html','w').write(donde+'\n')
 # ------------ 60 cierre
 todo=['Logo en alta','Fotos en alta de salas, cocina y patio','Edades y capacidad por sala','Nombre de la directora','Si aceptan pago particular','Link de cobro, si aplica']
 tl=''.join(f'<li>{t}</li>' for t in todo)
-IG='https://www.instagram.com/brillantes_inicios/'
-posts=[('06','-4deg','-6deg','Post: ¿Sueles olvidar esta libretita? Un bebé con la Cartilla Nacional de Salud del IMSS'),
-('04','2deg','5deg','Post: ¿Te quedaste sin ideas para el lunch?'),
-('02','-1deg','-3deg','Post: Alerta de lenguaje que debes conocer, y cuándo consultar al especialista')]
-pp=''.join(f'''
-        <li><a class="bi-foto bi-post" style="--rot:{r};--tape:{t}" href="{IG}" target="_blank" rel="noopener" data-reveal><img src="img/post-{n}-480.webp" width="480" height="480" alt="{a}" loading="lazy" decoding="async"><span>@brillantes_inicios</span></a></li>''' for n,r,t,a in posts)
+# Correccion 4: sale la tira 'De su Instagram' (eran posters con texto; regla de fotos sin texto).
 cierre=f'''<section class="bi-sec bi-dark bi-doodle bi-cierre" id="cierre" data-hide-wa aria-labelledby="cierre-h">
   <div class="bi-wrap">
     <div class="bi-cierre-main">
@@ -230,11 +220,6 @@ cierre=f'''<section class="bi-sec bi-dark bi-doodle bi-cierre" id="cierre" data-
         <a class="bi-btn bi-btn--wa bi-cierre-wa" data-wa-cartilla href="https://wa.me/524491927631?text=Hola%20Brillantes%20Inicios%2C%20quiero%20inscribir%20a%20mi%20beb%C3%A9.%20%C2%BFCu%C3%A1ndo%20puedo%20visitarlos%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar visita por WhatsApp</a>
         {SEAL}
       </div>
-    </div>
-    <div class="bi-ig">
-      <p class="bi-ig-h"><svg aria-hidden="true"><use href="#i-ig"/></svg>De su Instagram: lo que les comparten a los papás</p>
-      <ul class="bi-posts">{pp}
-      </ul>
     </div>
     <div class="bi-sheet bi-todo" data-reveal>
       <h3>Todo listo para completar</h3>

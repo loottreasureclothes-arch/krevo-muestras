@@ -1,4 +1,5 @@
-/* Cierre: la frase de una mama (Martha Yadira, Google) + boton verde con el sello, tira de su Instagram y "Todo listo". */
+/* Cierre: la frase de una mama (Martha Yadira, Google) + boton verde con el sello y "Todo listo".
+   Correccion 4: salio la tira "De su Instagram" (posters con texto). En compu: frase a la izquierda, "Todo listo" a la derecha. */
 .bi-cierre .bi-title{margin-bottom:14px}
 .bi-cierre-who{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font:700 15px/1.4 var(--f-body);color:rgba(251,243,223,.85);margin-bottom:26px}
 .bi-cierre-who .bi-rev-stars{display:inline-flex;gap:2px;color:var(--sun)}
@@ -9,15 +10,6 @@
 .bi-cierre-act .bi-seal{right:-4px;top:-80px;width:74px;height:74px}
 .bi-cierre-doc{padding-right:78px}
 @media (min-width:340px){.bi-cierre-doc .bi-nw{white-space:nowrap}}
-.bi-ig{margin-bottom:46px}
-.bi-ig-h{display:flex;align-items:center;gap:10px;font:700 17px/1.3 var(--f-title);color:var(--cream);margin-bottom:26px}
-.bi-ig-h svg{width:26px;height:26px;flex:none;color:var(--sun)}
-.bi-posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:0 4px}
-.bi-post{display:block;padding:6px 6px 0;text-decoration:none;border-radius:6px}
-.bi-post::before{width:48px;height:18px;margin-left:-24px;top:-9px}
-.bi-post img{aspect-ratio:1;border-radius:2px}
-.bi-post span{display:block;font:800 9.5px/26px var(--f-body);color:var(--ink-2);text-align:center;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-@media (hover:hover){.bi-post:hover{transform:rotate(0) translateY(-4px)!important;transition:transform .25s var(--ease)}}
 .bi-todo{padding:28px 18px 28px 46px;--rot:-.6deg;transform:rotate(var(--rot))}
 .bi-todo h3{font:700 23px/28px var(--f-title);color:var(--blue);margin-bottom:0}
 .bi-todo-who{font:700 15px/28px var(--f-body)!important;color:var(--ink-2)!important;margin:0!important}
@@ -26,16 +18,11 @@
 .bi-todo li::before{content:counter(todo);position:absolute;left:0;top:3px;width:22px;height:22px;border-radius:50%;background:var(--blue);color:var(--cream);display:grid;place-items:center;font:700 12px/1 var(--f-title)}
 .bi-todo p{font-size:16px;color:var(--ink);margin:0}
 .bi-todo-send{font-weight:800;color:var(--blue)!important}
-@media (min-width:640px){
-  .bi-posts{gap:22px;max-width:620px}
-  .bi-post{padding:9px 9px 0}
-  .bi-post span{font-size:12px;line-height:30px}
-}
 @media (min-width:860px){
   .bi-cierre .bi-wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:0 60px;align-items:center}
   .bi-cierre-main{grid-column:1}
-  .bi-ig{grid-column:2;grid-row:1;margin:0}
+  .bi-cierre-act{margin-bottom:0}
   .bi-cierre .bi-wrap>.bi-divider{grid-column:1/-1}
-  .bi-todo{grid-column:1/-1;width:100%;max-width:680px;justify-self:center;margin-top:30px}
+  .bi-todo{grid-column:2;grid-row:1;width:100%;max-width:520px;justify-self:end}
 }
 .bi-cierre-act .bi-seal svg{background:var(--cream);border-radius:50%;box-shadow:0 4px 10px rgba(8,16,60,.4)}
