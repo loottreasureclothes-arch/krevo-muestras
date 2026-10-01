@@ -1,0 +1,145 @@
+/* GTLO · Grupo Traffic Logix · muestra KREVO. Asfalto, amarillo de carretera, señales de tránsito. */
+:root{
+  --as:#1f2124; --as2:#2a2d31; --as3:#16171a; --am:#FCCC24; --am-d:#d9ac0c; --sn:#f5f5f0; --ink:#141517;
+  --wa:#25D366; --wa-ink:#0b3d1f; --mut:rgba(245,245,240,.72); --line:rgba(245,245,240,.2);
+  --f:'Overpass',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --fm:'Overpass Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --hh:60px; --r:8px; --out:cubic-bezier(.23,1,.32,1);
+  --pad:clamp(16px,4.5vw,40px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip;-webkit-text-size-adjust:100%;scroll-behavior:auto!important}
+body{margin:0;min-height:100svh;background-color:var(--as);color:var(--sn);font-family:var(--f);font-size:17px;line-height:1.45;font-weight:400;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .055 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+  background-size:220px;overflow-x:clip}
+body.mn-open{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,figure,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{width:min(100% - 2*var(--pad),1200px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:8px;top:-60px;z-index:200;background:var(--am);color:var(--ink);padding:10px 14px;border-radius:var(--r);font-weight:800}
+.skip:focus{top:8px}
+:focus-visible{outline:3px solid var(--am);outline-offset:3px}
+section[id],article[id]{scroll-margin-top:72px}
+
+/* ---------- tipografía ---------- */
+.tt{font-weight:900;line-height:.96;letter-spacing:-.012em;font-size:clamp(38px,11vw,64px);text-wrap:balance}
+.tt .y,.y{color:var(--am)}
+.mono{font-family:var(--fm)}
+.sep{display:inline-block;margin:0 .45em;font-weight:800;color:var(--am)}
+.lk{display:inline-flex;align-items:center;gap:8px;min-height:48px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:13px;color:var(--sn);text-decoration:none;border-bottom:2px solid var(--am);padding:0 2px}
+.lk:hover{color:var(--am)}
+
+/* ---------- LENGUAJE DE FORMAS: señal y carril ---------- */
+.sg{position:relative;border-radius:var(--r);background:var(--sn);color:var(--ink);--fil:var(--ink)}
+.sg::after{content:"";position:absolute;inset:3px;border:2px solid var(--fil);border-radius:5px;pointer-events:none}
+.sg--dk{background:var(--as2);color:var(--sn);--fil:rgba(245,245,240,.88)}
+.sg--am{background:var(--am);color:var(--ink);--fil:var(--ink)}
+.lane{height:4px;background:repeating-linear-gradient(90deg,var(--am) 0 36px,transparent 36px 60px)}
+.plc{display:inline-block;font-family:var(--fm);font-weight:700;font-size:12px;letter-spacing:.08em;background:var(--sn);color:var(--ink);border:2px solid var(--ink);border-radius:4px;padding:2px 7px;line-height:1.3;box-shadow:0 0 0 2px var(--sn)}
+.exit{width:30px;height:30px;flex:none;display:grid;place-items:center;background:var(--am);color:var(--ink);border-radius:5px}
+.exit svg{width:18px;height:18px}
+
+/* ---------- botones ---------- */
+.bt{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border:0;border-radius:var(--r);background:var(--am);color:var(--ink);font-weight:800;font-size:14px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .14s var(--out),background .14s}
+.bt::after{content:"";position:absolute;inset:3px;border:1.5px solid var(--ink);border-radius:5px;pointer-events:none}
+.bt:active{transform:scale(.97)}
+.bt--sm{min-height:44px;padding:0 14px;font-size:12px;letter-spacing:.1em}
+.bt--line{background:transparent;color:var(--am);box-shadow:inset 0 0 0 2px var(--am)}
+.bt--line::after{display:none}
+.bt--wa{background:var(--wa);color:var(--wa-ink)}
+.bt--wa::after{border-color:var(--wa-ink)}
+.bt--wa svg{width:22px;height:22px;flex:none}
+.bt--full{width:100%}
+@media (hover:hover) and (pointer:fine){.bt:hover{background:#ffd948}.bt--line:hover{background:var(--am);color:var(--ink)}.bt--wa:hover{background:#3be57c}}
+
+/* ---------- reveal (estado final = visible; se esconde solo con JS + movimiento permitido) ---------- */
+@media (scripting:enabled) and (prefers-reduced-motion:no-preference){
+  html.js [data-reveal]{opacity:0;transform:translateY(14px)}
+  html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .5s var(--out),transform .5s var(--out)}
+  html.js [data-drop] .w{display:inline-block;opacity:0}
+  html.js [data-drop].in .w{animation:drop .5s both;animation-delay:calc(var(--i,0)*70ms)}
+  html.js [data-reveal].is-in{opacity:1;transform:none;transition:none}
+  html.js [data-drop].is-in .w{opacity:1;animation:none}
+}
+@keyframes drop{0%{opacity:0;transform:translateY(-.75em);animation-timing-function:cubic-bezier(.5,0,1,.6)}55%{opacity:1;transform:translateY(.05em);animation-timing-function:cubic-bezier(.23,1,.32,1)}100%{opacity:1;transform:none}}
+
+/* ---------- EL PÓRTICO (header) ---------- */
+.hd{position:fixed;inset:0 0 auto 0;z-index:90;height:var(--hh);background:var(--as);transition:height .25s var(--out)}
+.hd.is-compact{--hh:50px}
+.hd-bar{height:100%;display:flex;align-items:center;gap:10px;padding:0 max(12px,env(safe-area-inset-left)) 4px max(12px,env(safe-area-inset-left));max-width:1400px;margin:0 auto}
+.hd-logo{flex:none;display:grid;place-items:center;height:calc(var(--hh) - 12px);padding:3px 7px;background:var(--sn);border-radius:var(--r);position:relative;transition:height .25s var(--out)}
+.hd-logo::after{content:"";position:absolute;inset:2px;border:1.5px solid var(--ink);border-radius:6px;pointer-events:none}
+.hd-logo img{height:calc(var(--hh) - 24px);width:auto;transition:height .25s var(--out)}
+.hd-signs{display:none}
+.hd-r{margin-left:auto;display:flex;align-items:center;gap:8px}
+.hd-open{display:none;position:relative;align-items:center;gap:6px;padding:0 10px;height:34px;background:var(--am);color:var(--ink);border-radius:6px;font-family:var(--fm);font-weight:700;font-size:11px;letter-spacing:.06em;white-space:nowrap}
+.hd-open::after{content:"";position:absolute;inset:2px;border:1.5px solid var(--ink);border-radius:4px}
+.hd-open i{width:7px;height:7px;background:var(--ink);border-radius:50%;animation:blink 2.4s steps(1) infinite}
+@keyframes blink{50%{opacity:.25}}
+/* en celular el pórtico lleva solo logo, odómetro, COTIZAR y menú; "24 H" va en el hero y en el menú */
+@media (min-width:600px){.hd-open{display:inline-flex}}
+.hd-burger{width:44px;height:44px;border:2px solid var(--line);border-radius:var(--r);background:transparent;cursor:pointer;display:grid;place-items:center;padding:0}
+.hd-burger span{display:block;width:20px;height:14px;position:relative}
+.hd-burger span::before,.hd-burger span::after,.hd-burger i{content:"";position:absolute;left:0;right:0;height:2px;background:var(--sn);border-radius:1px;transition:transform .25s var(--out),opacity .2s}
+.hd-burger span::before{top:0}.hd-burger span::after{bottom:0}.hd-burger i{top:6px}
+body.mn-open .hd-burger span::before{transform:translateY(6px) rotate(45deg)}
+body.mn-open .hd-burger span::after{transform:translateY(-6px) rotate(-45deg)}
+body.mn-open .hd-burger i{opacity:0}
+.hd-lane{position:absolute;left:0;right:0;bottom:0;height:4px;background-image:repeating-linear-gradient(90deg,var(--am) 0 36px,transparent 36px 60px);background-size:60px 4px;background-position:calc(var(--lane,0)*-1px) 0}
+.hd-odo{display:inline-flex;align-items:center;height:30px;padding:0 8px;color:var(--am);font-family:var(--fm);font-weight:700;font-size:11px;letter-spacing:.08em;border-radius:5px;font-variant-numeric:tabular-nums;border:1.5px solid rgba(252,204,36,.55);white-space:nowrap;pointer-events:none}
+@media (min-width:1080px){
+  .hd-signs{display:flex;gap:8px;margin:0 auto}
+  .hd-signs a{position:relative;background:var(--sn);color:var(--ink);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:0 16px;min-height:40px;display:inline-flex;align-items:center;border-radius:6px;transition:transform .14s var(--out)}
+  .hd-signs a::after{content:"";position:absolute;inset:2px;border:1.5px solid var(--ink);border-radius:4px}
+  .hd-signs a:hover{transform:translateY(-1px);background:#fff}
+  .hd-r{margin-left:0}
+  .hd-logo{margin-right:0}
+  :root{--hh:72px}
+  .hd.is-compact{--hh:60px}
+}
+
+/* ---------- menú a pantalla completa ---------- */
+.mn{position:fixed;inset:0;z-index:80;background:var(--as);visibility:hidden;opacity:0;transition:opacity .28s var(--out),visibility 0s linear .28s;overflow:auto;padding:calc(var(--hh) + 26px) var(--pad) 28px}
+body.mn-open .mn{visibility:visible;opacity:1;transition:opacity .28s var(--out)}
+.mn-nav{display:grid;gap:10px;max-width:640px;margin:0 auto}
+.mn-nav a{position:relative;display:flex;align-items:center;justify-content:space-between;min-height:62px;padding:0 16px 0 20px;background:var(--sn);color:var(--ink);border-radius:var(--r);text-decoration:none;font-weight:900;font-size:clamp(24px,7vw,34px);letter-spacing:-.005em;opacity:0;transform:translateY(10px);transition:opacity .3s var(--out),transform .3s var(--out)}
+.mn-nav a::after{content:"";position:absolute;inset:3px;border:2px solid var(--ink);border-radius:5px;pointer-events:none}
+body.mn-open .mn-nav a{opacity:1;transform:none;transition-delay:calc(60ms + var(--i)*45ms)}
+.mn-nav a.g{background:var(--wa);color:var(--wa-ink)}
+.mn-nav a.g::after{border-color:var(--wa-ink)}
+.mn-nav small{font-family:var(--fm);font-size:12px;font-weight:700;letter-spacing:.06em}
+.mn-foot{max-width:640px;margin:22px auto 0;color:var(--mut);font-size:14px;display:grid;gap:4px}
+.mn-foot .lane{margin-bottom:14px}
+.mn-foot a{display:inline-flex;align-items:center;min-height:44px}
+
+/* ---------- pie ---------- */
+.ft{margin-top:0;padding:48px 0 96px;background:var(--as3);border-top:4px solid var(--as3)}
+.ft-top{display:grid;gap:30px}
+.ft-logo{display:inline-block;background:var(--sn);border-radius:var(--r);padding:6px 12px;position:relative;width:fit-content}
+.ft-logo::after{content:"";position:absolute;inset:3px;border:1.5px solid var(--ink);border-radius:5px}
+.ft-logo img{height:68px;width:auto}
+.ft h2{font-family:var(--fm);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--am);margin-bottom:10px}
+.ft address{font-style:normal;color:var(--mut)}
+.ft-list{display:grid;gap:2px}
+.ft-list a{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;font-weight:600}
+.ft-list a:hover{color:var(--am)}
+.ft-soc{display:flex;gap:10px;margin-top:6px}
+.soc{width:44px;height:44px;display:grid;place-items:center;border-radius:var(--r);background:var(--as2);border:2px solid var(--line);color:var(--sn);transition:color .15s,border-color .15s}
+.soc svg{width:22px;height:22px}
+@media (hover:hover){.soc:hover{color:var(--am);border-color:var(--am)}}
+.ft-end{margin-top:34px;padding-top:18px;border-top:1px dashed var(--line);color:var(--mut);font-size:13px;display:grid;gap:4px}
+@media (min-width:860px){.ft-top{grid-template-columns:1.1fr 1fr 1fr;gap:48px}}
+
+/* ---------- WhatsApp flotante ---------- */
+.wa-f{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));z-index:85;width:58px;height:58px;display:grid;place-items:center;background:var(--wa);color:#fff;border-radius:var(--r);box-shadow:0 6px 20px rgba(0,0,0,.45);text-decoration:none;transition:transform .15s var(--out)}
+.wa-f::after{content:"";position:absolute;inset:3px;border:1.5px solid rgba(255,255,255,.75);border-radius:5px}
+.wa-f svg{width:32px;height:32px}
+.wa-f:active{transform:scale(.95)}
+body.wa-off .wa-f{visibility:hidden;animation:none}
+body.mn-open .wa-f{visibility:hidden}
+@media (scripting:enabled) and (prefers-reduced-motion:no-preference){.wa-f{animation:waIn .5s var(--out) 1.2s both}}
+@keyframes waIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}

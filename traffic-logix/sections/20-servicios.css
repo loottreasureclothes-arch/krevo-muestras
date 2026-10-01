@@ -1,0 +1,18 @@
+.sv{padding:56px 0 44px}
+.sv-grid{margin-top:30px;display:grid;gap:18px}
+.sv-card{display:flex;flex-direction:column;padding:12px}
+.sv-ph{position:relative;border-radius:3px;overflow:hidden;aspect-ratio:4/3;background:var(--as3)}
+.sv-ph img{width:100%;height:100%;object-fit:cover}
+.sv-ph .plc{position:absolute;left:10px;bottom:10px;font-size:11px}
+.sv-cap{padding:8px 4px 0;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--mut)}
+.sv-cap--pend{color:var(--am)}
+.sv-bd{padding:14px 8px 10px;display:flex;flex-direction:column;gap:12px;flex:1}
+.sv-hd{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sv-hd h3{font-weight:900;font-size:clamp(24px,7vw,30px);line-height:1;text-transform:uppercase;letter-spacing:.005em}
+.sv-bd p{color:var(--mut);font-size:16px;line-height:1.45;flex:1}
+.sv-bd .bt{align-self:flex-start;margin-top:6px}
+@media (min-width:820px){
+  .sv{padding:84px 0 70px}
+  .sv-grid{grid-template-columns:1fr 1fr;gap:26px;margin-top:40px}
+  .sv-ph{aspect-ratio:16/11}
+}

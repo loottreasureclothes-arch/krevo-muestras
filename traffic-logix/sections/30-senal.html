@@ -1,0 +1,99 @@
+<section class="sn" id="senal" aria-labelledby="sn-t">
+  <div class="wrap">
+    <h2 class="tt" id="sn-t" data-drop>Rotula <span class="y">tu ruta.</span></h2>
+    <p class="sn-lead">Elige, y la señal se rotula sola.</p>
+    <div class="sn-grid">
+
+      <div class="pt-wrap">
+        <div class="pt" aria-live="polite" aria-atomic="true"><span class="sr">Tu ruta: </span>
+          <div class="pt-beam" aria-hidden="true"></div>
+          <div class="pt-panel sg">
+            <div class="pt-row pt-r1"><span class="js-serv">ELIGE SERVICIO</span><span class="exit" aria-hidden="true"><svg><use href="#i-exit"/></svg></span></div>
+            <div class="pt-row pt-r2 js-pax" hidden></div>
+            <div class="pt-row pt-r3 js-when" hidden></div>
+            <div class="pt-row pt-r4 js-route" hidden></div>
+          </div>
+          <span class="pt-post pt-post--l" aria-hidden="true"></span><span class="pt-post pt-post--r" aria-hidden="true"></span>
+        </div>
+        <figure class="pt-ph" aria-hidden="true">
+          <img class="js-ptph" src="img/flotilla-480.webp" srcset="img/flotilla-480.webp 480w, img/flotilla-960.webp 960w" sizes="440px" width="480" height="353" alt="" loading="lazy" decoding="async">
+          <figcaption class="mono js-ptcap">SUS UNIDADES, CON GPS 24 H</figcaption>
+        </figure>
+      </div>
+
+      <form class="sn-form" id="ruta" novalidate autocomplete="off">
+        <fieldset class="fs">
+          <legend>1 · Servicio</legend>
+          <div class="fichas">
+            <label class="ficha"><input type="radio" name="servicio" value="personal"><span>Personal empresarial</span></label>
+            <label class="ficha"><input type="radio" name="servicio" value="aeropuerto"><span>Aeropuerto</span></label>
+            <label class="ficha"><input type="radio" name="servicio" value="turismo"><span>Turismo</span></label>
+            <label class="ficha"><input type="radio" name="servicio" value="ejecutivo"><span>Ejecutivo</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="fs">
+          <legend>2 · Pasajeros</legend>
+          <div class="pax">
+            <button type="button" class="pax-b" id="pax-m" aria-label="Menos pasajeros"><svg aria-hidden="true"><use href="#i-minus"/></svg></button>
+            <input class="pax-i mono" id="pax" name="pax" type="number" inputmode="numeric" min="1" max="200" placeholder="0" aria-label="Número de pasajeros">
+            <button type="button" class="pax-b" id="pax-p" aria-label="Más pasajeros"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+          </div>
+        </fieldset>
+
+        <div id="f-personal">
+          <fieldset class="fs">
+            <legend>3 · Días</legend>
+            <div class="dias" id="dias">
+              <label class="dia"><input type="checkbox" name="dia" value="0"><span>L</span></label>
+              <label class="dia"><input type="checkbox" name="dia" value="1"><span>M</span></label>
+              <label class="dia"><input type="checkbox" name="dia" value="2"><span>M</span></label>
+              <label class="dia"><input type="checkbox" name="dia" value="3"><span>J</span></label>
+              <label class="dia"><input type="checkbox" name="dia" value="4"><span>V</span></label>
+              <label class="dia"><input type="checkbox" name="dia" value="5"><span>S</span></label>
+              <label class="dia"><input type="checkbox" name="dia" value="6"><span>D</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="fs">
+            <legend>Turnos</legend>
+            <div class="turnos">
+              <label class="ficha ficha--s"><input type="checkbox" name="turno" value="m"><span>Matutino</span></label>
+              <label class="ficha ficha--s"><input type="checkbox" name="turno" value="v"><span>Vespertino</span></label>
+              <label class="ficha ficha--s"><input type="checkbox" name="turno" value="n"><span>Nocturno</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div id="f-otro" hidden>
+          <fieldset class="fs">
+            <legend>3 · Fecha y hora</legend>
+            <div class="dos">
+              <label class="fld"><span>Fecha</span><input type="date" name="fecha" id="fecha"></label>
+              <label class="fld"><span>Hora</span><input type="time" name="hora" id="hora"></label>
+            </div>
+          </fieldset>
+          <fieldset class="fs">
+            <legend>Ruta</legend>
+            <div class="dos">
+              <label class="fld"><span>Origen</span><input type="text" name="origen" id="origen" maxlength="60" placeholder="Ej. AGS"></label>
+              <label class="fld"><span>Destino</span><input type="text" name="destino" id="destino" maxlength="60" placeholder="Ej. GDL"></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <fieldset class="fs">
+          <legend>Tus datos <em>(opcional)</em></legend>
+          <div class="dos">
+            <label class="fld"><span>Empresa</span><input type="text" name="empresa" id="empresa" maxlength="60"></label>
+            <label class="fld"><span>Tu nombre</span><input type="text" name="nombre" id="nombre" maxlength="60"></label>
+          </div>
+        </fieldset>
+
+      </form>
+    </div>
+    <div class="sn-cta" data-hide-wa>
+      <a class="bt bt--wa bt--full js-waruta" href="https://wa.me/524494683835?text=Hola%20GTLO%2C%20quiero%20cotizar%20transporte." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Cotizar por WhatsApp</a>
+      <p class="sn-note">Te confirmamos precio y disponibilidad por WhatsApp.</p>
+    </div>
+  </div>
+</section>
