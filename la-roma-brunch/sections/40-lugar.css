@@ -1,0 +1,28 @@
+/* 40-lugar: collage de placas de anchos desiguales (7/12 + 5/12) */
+.rm-lugar-s { padding: 44px 0 60px; }
+.rm-lugar-s .rm-h { max-width: 12ch; }
+.rm-col { position: relative; margin-top: 30px; display: grid; grid-template-columns: 1fr; }
+.rm-col figure { position: relative; margin: 0; }
+.rm-col img { width: 100%; height: auto; object-fit: cover; }
+.rm-col-a img { aspect-ratio: 16 / 10; object-position: 50% 72%; }
+.rm-col-a .rm-tag { left: 18px; top: 14px; }
+.rm-col-b { --bg: var(--sand); --fil: var(--plate); width: 78%; margin: 18px 7px 0 auto !important; z-index: 2; background: var(--sand); }
+.rm-col-b .rm-tag { right: -6px; top: -6px; background: var(--deep); }
+.rm-col figure.rm-col-c { --bg: var(--sand); --fil: var(--plate); position: absolute; z-index: 3; left: 14px; bottom: -40px; width: 30%; max-width: 118px; margin: 0 !important; background: var(--sand); }
+.rm-col-c .rm-tag { left: -6px; bottom: -10px; }
+.rm-lugar-q { margin: 72px 0 0; max-width: 46ch; font-size: 16px; line-height: 1.5; font-weight: 500; color: var(--deep); }
+.rm-lugar-q cite { display: block; margin-top: 10px; font-style: normal; font-size: 13px; color: var(--ink-soft); }
+@media (min-width: 700px) {
+  .rm-lugar-s { padding: 64px 0 88px; }
+  .rm-col { max-width: 1240px; margin: 44px auto 0; padding-inline: var(--gutter); grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 28px; align-items: start; }
+  .rm-col-a { grid-column: 1 / 8; }
+  .rm-col-a img { aspect-ratio: 1600 / 1205; object-position: 50% 50%; }
+  .rm-col-a .rm-tag { top: auto; bottom: 18px; }
+  .rm-col-b { grid-column: 8 / 13; width: auto; margin: 70px 7px 0 7px !important; }
+  .rm-col-b .rm-tag { right: auto; left: -6px; }
+  .rm-col figure.rm-col-c { left: auto; right: calc(var(--gutter) + 14px); bottom: -48px; width: 150px; max-width: 150px; }
+}
+@media (min-width: 1000px) {
+  .rm-col figure.rm-col-c { width: 200px; max-width: 200px; right: calc(var(--gutter) + 20px); }
+  .rm-lugar-q { margin-top: 84px; margin-left: auto; margin-right: 0; font-size: 18px; }
+}

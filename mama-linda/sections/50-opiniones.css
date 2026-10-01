@@ -1,0 +1,28 @@
+/* 5 · Las florecitas del techo: la sala y lo que dicen de ella. */
+.op-grid{display:grid;gap:26px}
+.op-foto .ml-h2{margin-bottom:22px}
+.op-sala img{aspect-ratio:358/370;object-fit:cover;object-position:46% 30%;background:#10200a}
+.op-citas{display:grid;gap:14px}
+.op-grande{margin:4px 0 2px}
+.op-grande p{margin-top:10px;font:italic 400 clamp(19px,5.3vw,22px)/1.32 var(--serif);text-wrap:pretty}
+.op-grande footer{margin-top:14px;font:600 13.5px/1.3 var(--sans);color:var(--hoja)}
+.op-grande .ml-stars svg{width:20px;height:20px}
+.op-citas .ml-nota{padding:22px 16px 14px}
+.ml-nota .ml-stars+p{margin-top:8px;font:400 15.5px/1.4 var(--serif)}
+.op-citas .ml-nota footer{margin-top:8px;font:400 13px/1.3 var(--sans);color:#46525e}
+.op-citas .ml-nota footer b{color:var(--tinta);font-weight:700}
+.op-nota{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:4px;padding-top:16px;border-top:1px solid rgba(251,253,239,.28)}
+.op-stars{display:inline-flex;gap:3px}
+.op-stars svg{width:22px;height:22px;color:var(--hoja)}
+.op-num{font:600 16px/1.2 var(--sans)}
+.op-num b{font:700 24px/1 var(--serif);margin-right:2px}
+.op-nota .ml-link{flex-basis:100%}
+@media (min-width:800px){
+  .op-grid{grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(36px,5vw,84px);align-items:start}
+  .op-sala img{aspect-ratio:1/1.12;object-position:50% 40%}
+  .op-citas{padding-top:92px;gap:22px}
+  .op-grande p{font-size:clamp(26px,2.3vw,33px)}
+  .op-nota .ml-link{flex-basis:auto;margin-left:auto}
+}
+
+.op{padding-bottom:36px}

@@ -1,0 +1,47 @@
+/* 40 · LA PILA DE PLATOS: la distribucion completa de Google, hecha de la vajilla de la casa */
+.ops{position:relative;background:var(--hondo);overflow:hidden}
+.ops::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.2 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.ops .wrap{position:relative}
+.ops .tit{font-size:clamp(32px,9.2vw,38px)}
+.ops-grid{display:grid;gap:26px;margin-top:22px}
+.pilas{display:flex;justify-content:space-between;align-items:flex-end;gap:2px;max-width:420px}
+.pila{display:grid;justify-items:center;gap:6px;flex:1 1 0;min-width:0}
+.pila>svg{display:block;width:100%;max-width:60px;height:auto;overflow:visible}
+.pila-n{display:grid;justify-items:center;gap:1px;line-height:1.15}
+.pila-e{display:inline-flex;align-items:center;gap:2px;font-size:13px;font-weight:700;color:var(--lima);letter-spacing:.04em}
+.pila-e svg{width:13px;height:13px}
+.pila-n b{font-size:15px;font-weight:700;color:var(--papel)}
+.pt{transform:translateY(calc((1 - var(--q,1)) * -14px));opacity:var(--q,1)}
+.ops-ley{margin-top:14px;font-size:13.5px;color:#BFD0C6}
+.ops-gran{display:flex;align-items:center;gap:22px;margin-top:22px}
+.gran-num{display:grid;gap:4px;flex:1 1 auto;min-width:0}
+.g44{font-family:var(--f-t);font-weight:400;letter-spacing:0;font-size:clamp(78px,24vw,96px);line-height:.9;color:var(--papel)}
+.g-st{display:flex;gap:3px}
+.g-st svg{width:26px;height:26px;color:var(--lima)}
+.g-tx{font-size:14.5px;color:#D6E2DA}
+.ops-foto{flex:none;width:136px}
+.ops-foto .cuadro-p{padding:7px}
+.ops-foto img{aspect-ratio:4/5;object-fit:cover}
+.ops-foto .placa{font-size:10px;padding:3px 6px;max-width:100%}
+.ops-cartas{display:grid;gap:18px}
+.rv .cuadro-p{background:var(--papel)}
+.rv-p{padding:14px 15px 12px!important;color:var(--tinta)}
+.rv-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+.rv-h b{font-size:16px}
+.rv-st{display:flex;gap:2px;color:var(--bosque)}
+.rv-st svg{width:15px;height:15px}
+.rv blockquote{margin:0;font-size:15px;line-height:1.42}
+.rv-f{margin-top:8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#56615A}
+.ops-lnk{justify-self:start}
+@media (min-width:820px){
+  .ops-grid{grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:start;margin-top:36px}
+  .pilas{max-width:600px}
+  .pila>svg{max-width:100px}
+  .pila-n b{font-size:17px}
+  .pila-e{font-size:14px}
+  .g44{font-size:clamp(88px,7vw,112px)}
+  .ops-foto{width:170px}
+  .ops-cartas{gap:26px}
+  .rv blockquote{font-size:16.5px}
+}
+@media (prefers-reduced-motion:reduce){.pt{transform:none;opacity:1}}

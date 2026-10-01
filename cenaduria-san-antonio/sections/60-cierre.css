@@ -1,0 +1,31 @@
+/* 60 · CIERRE: la cuenta lista, lo que falta del dueño y el pozole que remata */
+.cierre{padding-bottom:50px}
+.cierre-grid{display:grid;gap:34px}
+.c-estado{margin-top:18px}
+.c-h3{font-family:var(--f-t);font-weight:400;font-size:clamp(26px,7.4vw,32px);line-height:1.08;color:var(--bosque)}
+.c-p{margin-top:8px;font-size:16px;line-height:1.45;max-width:48ch}
+.c-p b{font-weight:700}
+.c-acc{display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px;margin-top:16px}
+.c-acc .btn-wa{width:100%;max-width:360px}
+.listo{margin-top:34px;padding:16px 16px 14px;background:var(--papel);box-shadow:0 0 0 1px #B8B39A,0 10px 16px -10px rgba(20,38,30,.5);color:#444D48}
+.listo-h{font-family:var(--f-b);font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#5E6661;padding-bottom:8px;border-bottom:2px solid #8A948E}
+.listo-l{counter-reset:li;margin-top:4px}
+.listo-l li{position:relative;padding:8px 0 8px 30px;font-size:15px;line-height:1.35;border-bottom:1px dashed #B9B5A0;font-weight:500}
+.listo-l li:last-child{border-bottom:0}
+.listo-l li::before{content:"";position:absolute;left:0;top:11px;width:16px;height:16px;box-shadow:inset 0 0 0 1.5px #6E7A73}
+.listo-f{margin-top:8px;padding-top:10px;border-top:2px solid #8A948E;font-weight:700;font-size:15.5px;color:var(--tinta)}
+.c-foto{width:min(100%,520px);justify-self:center}
+.c-foto .cuadro-p{padding:9px}
+.c-foto img{aspect-ratio:16/10;object-fit:cover}
+.c-cita{margin:14px 4px 0;text-align:left}
+.c-cita blockquote{margin:0;font-family:var(--f-t);font-size:clamp(22px,6.2vw,28px);line-height:1.12;color:var(--tinta)}
+.c-quien{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:8px;font-size:14px}
+.c-quien .rv-st{color:var(--bosque)}
+@media (min-width:820px){
+  .cierre .tit{font-size:clamp(34px,4.4vw,56px)}
+  .cierre{padding-bottom:76px}
+  .cierre-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start}
+  .c-foto{position:sticky;top:96px;justify-self:end;margin-top:12px}
+  .listo-l{columns:1}
+  .c-acc .btn-wa{width:auto}
+}

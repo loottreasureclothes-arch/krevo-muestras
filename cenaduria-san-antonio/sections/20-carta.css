@@ -1,0 +1,42 @@
+/* 20 · LA CARTA: papel de cuenta, lista con puntos guia y precios reales */
+.carta{padding-bottom:0}
+.carta-grid{display:grid;gap:22px;margin-top:22px;padding-bottom:24px}
+.carta-fotos{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px;align-items:start;padding-top:6px}
+.cf-g{grid-column:1/-1}
+.cf-g img{aspect-ratio:16/10;object-fit:cover}
+.cf-e img{aspect-ratio:3/4;object-fit:cover}
+.cf-p{margin-top:30px}
+.cf-p img{aspect-ratio:4/3;object-fit:cover}
+.carta .cuadro-p{padding:8px}
+.lista{margin:0}
+.lh{font-family:var(--f-t);font-weight:400;font-size:25px;line-height:1.1;color:var(--bosque);margin:20px 0 0}
+.it{display:grid;grid-template-columns:minmax(0,1fr) 44px;grid-template-areas:"top btn" "desc btn";column-gap:10px;row-gap:1px;align-items:center;padding:6px 0;border-bottom:1px solid #D2CEBB}
+.it:last-child{border-bottom:0}
+.it-top{grid-area:top;display:flex;align-items:baseline;gap:8px;min-width:0}
+.it-n{font-weight:700;font-size:17px;line-height:1.25}
+.it-pr{font-weight:700;font-size:17px;white-space:nowrap}
+.it-q{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#56615A;font-weight:700}
+.it-d{grid-area:desc;font-size:14px;line-height:1.38;color:#4A564F}
+.it .sq{grid-area:btn;align-self:center}
+.it-rec{grid-template-columns:minmax(0,1fr);grid-template-areas:"top" "desc" "arma";padding-bottom:14px;row-gap:5px}
+.it-rec .it-n{font-size:20px}
+.it-rec .it-pr{font-size:20px}
+.it-d .sello{margin-right:4px;vertical-align:1px}
+.it-arma{grid-area:arma;justify-self:start;margin-top:8px}
+.carta-nota{margin-top:18px;font-size:13.5px;color:#56615A;max-width:52ch}
+.carta-bar{position:sticky;bottom:0;z-index:30;background:var(--hondo);color:var(--papel);border-top:3px solid var(--bosque)}
+.carta-bar-in{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:62px;padding-top:6px;padding-bottom:6px}
+.cb-t{display:grid;line-height:1.15}
+.cb-l{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--lima);font-weight:700}
+.cb-v{font-size:17px;font-weight:700}
+@media (min-width:820px){
+  .carta-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:60px;align-items:start;margin-top:34px}
+  .carta-fotos{position:sticky;top:96px;grid-template-columns:1fr 1fr;gap:26px 22px}
+  .cf-g{margin-bottom:0}
+  .it{padding:11px 0}
+  .it-n{font-size:18px}
+  .carta-bar-in{justify-content:flex-start;gap:28px}
+  .cb-t{display:flex;align-items:baseline;gap:14px}
+  .cb-v{font-size:19px}
+  .carta-bar .btn{margin-left:auto}
+}

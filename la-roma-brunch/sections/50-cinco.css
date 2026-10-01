@@ -1,0 +1,30 @@
+/* 50-cinco: la fachada y las cinco placas, una por sucursal */
+.rm-cinco { padding: 52px 0 56px; }
+.rm-cinco .rm-h { max-width: 13ch; }
+.rm-cinco-grid { display: grid; gap: 26px; margin-top: 34px; }
+.rm-fachada { margin: 7px; background: var(--plate); }
+.rm-fachada img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 54%; }
+.rm-suc-l { display: grid; gap: 20px; }
+.rm-sucursal { padding: 8px 16px 6px; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; align-items: center; background: rgba(20, 58, 67, 0.55); }
+.rm-sucursal h3 { font-size: 22px; letter-spacing: 0.04em; color: var(--cream); }
+.rm-dir { grid-column: 1 / -1; font-size: 15px; line-height: 1.4; color: var(--ink-soft); max-width: 40ch; }
+.rm-cal { font-size: 14px; line-height: 1.35; font-weight: 500; color: var(--sand); font-variant-numeric: tabular-nums; }
+.rm-suc-acts { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.rm-suc-acts .rm-btn { flex: none; min-height: 44px; padding: 0 16px; font-size: 13px; margin: 8px 7px 8px 0; }
+.rm-tel { display: inline-flex; align-items: center; min-height: 44px; font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; color: var(--cream); background: linear-gradient(currentColor, currentColor) 0 calc(100% - 9px) / 100% 1px no-repeat; }
+.rm-cinco-pie { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; margin-top: 30px; }
+.rm-hr { font-family: var(--f-title); font-weight: 700; font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sand); }
+.rm-cinco .rm-social { margin-top: 0; --bg: var(--teal); }
+.rm-cinco .rm-social a { box-shadow: 0 0 0 4px var(--teal), 0 0 0 5px var(--cream); }
+@media (min-width: 600px) and (max-width: 999px) {
+  .rm-cinco-grid { gap: 30px; }
+  .rm-fachada img { aspect-ratio: 16 / 9; }
+  .rm-suc-l { grid-template-columns: 1fr 1fr; gap: 18px; }
+}
+@media (min-width: 760px) { .rm-cinco { padding: 88px 0 80px; } }
+@media (min-width: 1000px) {
+  .rm-cinco-grid { grid-template-columns: minmax(0, 11fr) minmax(0, 9fr); gap: 56px; align-items: start; margin-top: 44px; }
+  .rm-fachada { position: sticky; top: 72px; }
+  .rm-fachada img { aspect-ratio: 3 / 4; object-position: 50% 50%; max-height: calc(100svh - 110px); }
+  .rm-suc-l { gap: 24px; }
+}

@@ -1,0 +1,128 @@
+/* 2 · MITAD Y MITAD: la carta de pizzas real que se arma en un dibujo de dos mitades. */
+.mt{padding-top:44px;padding-bottom:48px}
+.mt-armar{margin-top:20px;display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+/* la pizza (celular: pegada arriba mientras se recorre la carta) */
+.mt-pizza-col{position:sticky;top:54px;z-index:5;align-self:start;display:grid;grid-template-columns:172px minmax(0,1fr);gap:16px;align-items:center;margin:0 -16px;padding:10px 16px 18px;background:var(--crema)}
+.mt-pizza-col::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:repeating-conic-gradient(var(--bosque) 0 25%,var(--crema) 0 50%) 0 0/8px 8px}
+.mt-pizza-box{width:172px;padding:4px 6px 2px 4px}
+.mt-svg{display:block;width:100%;height:auto;overflow:visible;-webkit-tap-highlight-color:transparent;user-select:none}
+.mt-half{cursor:pointer;outline:none}
+.mt-half:focus-visible .mt-active-line{opacity:1;stroke:var(--tomate)}
+.mt-hit{fill:transparent;pointer-events:all}
+.mt-dough{fill:#E4D39C}
+.mt-inner{fill:#F7EFCF}
+.mt-sauce{fill:transparent;opacity:0;transition:opacity .18s var(--out),fill .18s var(--out)}
+.mt-sauce.is-roja{fill:var(--tomate);opacity:.46}
+.mt-sauce.is-blanca{fill:#FFFCEC;opacity:1}
+.mt-crust{fill:none;stroke:var(--tinta);stroke-width:2.6;stroke-linejoin:round;pointer-events:none}
+.mt-crust-in{fill:none;stroke:var(--tinta);stroke-width:1.5;stroke-dasharray:1 7;stroke-linecap:round;pointer-events:none}
+.mt-corte{stroke:var(--tinta);stroke-width:2;stroke-linecap:round;stroke-dasharray:2 6;fill:none;pointer-events:none}
+.mt-awn{opacity:0;transform:translateY(-8px);transition:opacity .18s var(--out),transform .18s var(--out);pointer-events:none}
+.mt-half.is-act .mt-awn{opacity:1;transform:none}
+.mt-active-line{fill:none;stroke:var(--bosque);stroke-width:3;stroke-dasharray:7 7;stroke-linecap:round;opacity:0;transition:opacity .18s;pointer-events:none}
+.mt-half.is-act .mt-active-line{opacity:1}
+.mt-gl{fill:none;stroke:var(--tinta);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mt-dot{fill:var(--tinta)}
+.mt-pop{transform-box:fill-box;transform-origin:center;animation:mt-pop .18s var(--out) both;animation-delay:calc(var(--i,0)*9ms)}
+@keyframes mt-pop{from{opacity:0;transform:scale(.55)}to{opacity:1;transform:none}}
+.mt-g-hoja{fill:var(--albahaca);stroke:var(--tinta);stroke-width:1.5}
+.mt-g-circulo{fill:var(--tomate);stroke:var(--tinta);stroke-width:1.7}
+.mt-g-cherry{fill:var(--tomate);stroke:var(--tinta);stroke-width:1.7}
+.mt-g-hoja2{fill:none;stroke:var(--albahaca);stroke-width:2;stroke-linecap:round}
+.mt-g-crema{fill:var(--crema);stroke:var(--tinta);stroke-width:1.7;stroke-linejoin:round}
+.mt-g-anillo{fill:none;stroke:var(--tinta);stroke-width:3.4}
+.mt-g-gar{fill:none;stroke:var(--tinta);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mt-g-pt{fill:var(--tinta)}
+/* resumen */
+.mt-resumen{min-width:0}
+.mt-res-l{font:700 17px/1.2 var(--serif);color:var(--tinta);text-wrap:balance}
+.mt-res-s{margin-top:6px;font:600 13.5px/1.35 var(--sans);color:#4a5460}
+/* la carta */
+.mt-carta{padding-top:20px}
+.mt-tabs{display:none}
+.mt-js .mt-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-bottom:6px;border-bottom:2px solid var(--bosque)}
+.mt-tab{position:relative;min-height:50px;padding:8px 4px 0;background:transparent;color:var(--bosque);border:0;font:700 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mt-tab::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(90deg,var(--crema) 0 6px,var(--bosque) 6px 12px);transform:translateY(-6px);opacity:0;transition:transform .18s var(--out),opacity .18s var(--out)}
+.mt-tab[aria-selected="true"]{background:var(--bosque);color:var(--crema)}
+.mt-tab[aria-selected="true"]::before{transform:none;opacity:1}
+.mt-js .mt-grupo{display:none}
+.mt-js .mt-grupo.is-on{display:block}
+.mt-js .mt-gh{display:none}
+.mt-gh{margin:26px 0 4px;font:700 22px/1.1 var(--serif);color:var(--bosque)}
+.mt-gh small{font:700 13px/1 var(--sans);letter-spacing:.08em;color:var(--tomate)}
+.mt-lista li+li .mt-row{border-top:1px solid rgba(45,54,64,.18)}
+.mt-row{display:block;width:100%;min-height:54px;padding:9px 66px 9px 12px;background:transparent;border:0;border-left:4px solid transparent;text-align:left;color:var(--tinta);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s}
+.mt-l1{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px}
+.mt-n{font:700 18px/1.15 var(--serif);letter-spacing:-.005em}
+.mt-mas{font:700 13px/1 var(--sans);font-style:normal;letter-spacing:.06em;color:var(--tomate)}
+.mt-ing{display:block;margin-top:2px;font:400 14px/1.34 var(--sans);color:#46525e}
+.mt-tag{display:none;font:700 11px/1 var(--sans);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--crema);background:var(--bosque);padding:4px 7px 3px;border-radius:2px}
+.mt-row.is-sel{background:rgba(49,76,33,.09);border-left-color:var(--bosque)}
+.mt-row.is-sel .mt-tag{display:inline-block}
+@media (hover:hover) and (pointer:fine){.mt-row:hover{background:rgba(49,76,33,.07)}.mt-row.is-sel:hover{background:rgba(49,76,33,.12)}}
+.mt-row:active{background:rgba(49,76,33,.14)}
+.mt-row:focus-visible{outline-offset:-3px}
+/* pedir: cuántos, cuándo y el verde */
+.mt-pedir{margin-top:26px;display:grid;gap:20px;padding-top:28px;padding-bottom:18px}
+.mt-ph{margin-bottom:8px;font:700 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--bosque)}
+.mt-fichas{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.mt-fichas--c{grid-template-columns:repeat(3,1fr)}
+.mt-ficha{min-height:46px;padding:2px 4px 0;background:var(--crema);color:var(--bosque);border:1.5px solid var(--bosque);border-radius:2px;font:700 18px/1 var(--serif);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s,color .15s,transform .15s var(--out)}
+.mt-fichas--c .mt-ficha{font:700 13px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase}
+.mt-ficha[aria-pressed="true"]{background:var(--bosque);color:var(--crema)}
+.mt-ficha:active{transform:translateY(1px)}
+.mt-ficha[aria-disabled="true"]{opacity:.45;text-decoration:line-through;cursor:not-allowed}
+.mt-ab{margin-top:10px;font:600 14px/1.3 var(--sans);color:var(--tinta)}
+.mt-envio .ml-wa{width:100%;border:1px solid rgba(11,61,31,.4)}
+.mt-per{margin-top:12px;font:400 13px/1.45 var(--sans);color:#46525e}
+@media (min-width:800px){
+  .mt{padding-top:84px}
+  .mt-armar{grid-template-columns:minmax(300px,440px) minmax(0,1fr);gap:clamp(36px,5vw,84px);align-items:start;margin-top:40px}
+  .mt-pizza-col{position:sticky;top:96px;display:block;margin:0;padding:0;background:transparent}
+  .mt-pizza-col::after{display:none}
+  .mt-pizza-box{width:100%;max-width:440px}
+  .mt-resumen{margin-top:18px;padding:16px 18px 14px;background:#fff9e6;box-shadow:0 0 0 1px rgba(45,54,64,.14);position:relative}
+  .mt-resumen::before{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:repeating-linear-gradient(90deg,var(--bosque) 0 8px,var(--crema) 8px 16px)}
+  .mt-res-l{padding-top:6px;font-size:21px}
+  .mt-carta{padding-top:0}
+  .mt-row{padding-right:24px;min-height:64px}
+  .mt-n{font-size:21px}
+  .mt-ing{font-size:15.5px}
+  .mt-pedir{grid-template-columns:1fr 1fr;gap:0;padding:34px 0 28px;margin-top:56px}
+  .mt-paso{padding:0 30px}
+  .mt-paso:first-child{padding-left:28px}
+  .mt-envio{grid-column:1/-1;margin-top:26px;padding:26px 28px 0;border-top:1px solid rgba(45,54,64,.2)}
+  .mt-paso+.mt-paso{border-left:1px solid rgba(45,54,64,.2)}
+}
+.mt-hint{display:none;font:italic 400 72px/1 var(--serif);fill:var(--tinta);opacity:.4;text-anchor:middle;pointer-events:none}
+.mt-half.is-vacia .mt-hint{display:block}
+@media (min-width:1100px){
+  .mt-pedir{grid-template-columns:1.1fr 1fr 1.25fr}
+  .mt-envio{grid-column:auto;margin-top:0;padding:0 28px 0 30px;border-top:0;border-left:1px solid rgba(45,54,64,.2)}
+}
+
+/* pulido: masa con harina, adornos de su carta y pista de qué tocar */
+.mt-harina{pointer-events:none}
+.mt-deco{pointer-events:none}
+.mt-d-tom{fill:var(--tomate);stroke:var(--tinta);stroke-width:2.2}
+.mt-d-tom-in{fill:#EE6A5C;stroke:var(--tinta);stroke-width:1.2;stroke-dasharray:3 4}
+.mt-d-sep{stroke:#F7EFCF;stroke-width:1.6;stroke-linecap:round;fill:none;opacity:.8}
+.mt-d-sem{fill:#FBFDEF;stroke:var(--tinta);stroke-width:.9}
+.mt-d-hoja{fill:var(--albahaca);stroke:var(--tinta);stroke-width:2;stroke-linejoin:round}
+.mt-d-ven{fill:none;stroke:#9FD0A8;stroke-width:1.3;stroke-linecap:round}
+.mt-d-tallo{fill:none;stroke:var(--tinta);stroke-width:2;stroke-linecap:round}
+.mt-pizza-col.is-vacia .mt-res-s{color:var(--tomate);font-weight:700}
+.mt-pizza-col.is-vacia .mt-res-s::after{content:"";display:inline-block;width:8px;height:8px;margin-left:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-3px) rotate(45deg);animation:mt-nudge 1.1s var(--out) 2}
+@keyframes mt-nudge{50%{transform:translateY(1px) rotate(45deg)}}
+.mt-envio .ml-wa{white-space:nowrap;letter-spacing:.06em;padding:0 14px}
+@media (max-width:359px){.mt-envio .ml-wa{font-size:12.5px;letter-spacing:.04em}}
+@media (min-width:800px){.mt-pizza-box{padding:0}}
+
+/* pulido: queso derretido debajo de los trazos, resumen en dos renglones, fundido bajo la pizza pegada */
+.mt-queso{fill:#FFF4CF;stroke:var(--tinta);stroke-width:1.1;stroke-opacity:.45;stroke-linejoin:round}
+.mt-sauce.is-blanca~.mt-tp .mt-queso{fill:#F4E2A6}
+.mt-r0,.mt-r1,.mt-r2{display:block}
+.mt-r0{margin-bottom:6px;font:700 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--tomate)}
+.mt-r2 i{font-weight:400;font-style:italic;color:var(--tomate)}
+.mt-r2{margin-top:2px}
+@media (max-width:799px){.mt-pizza-col::before{content:"";position:absolute;left:0;right:0;top:100%;height:18px;background:linear-gradient(var(--crema),rgba(251,253,239,0));pointer-events:none}}

@@ -1,0 +1,43 @@
+@property --p{syntax:'<number>';inherits:true;initial-value:1}
+.tq-ops{background:var(--ink-2);padding:44px 0 46px}
+.tq-ops-grid{display:grid;gap:26px}
+.tq-ops-left{display:grid;gap:0}
+.tq-score{display:flex;align-items:center;gap:16px;margin-top:22px}
+.tq-score-n{font:800 clamp(56px,16vw,72px)/.9 var(--f-d);color:var(--y);letter-spacing:-.04em}
+.tq-score-r{display:grid;gap:8px}
+.tq-score-st{position:relative;display:inline-flex;width:max-content;color:var(--y)}
+.tq-score-st svg{width:22px;height:22px;flex:none}
+.tq-st-base{display:flex;color:#3a3a2a}
+.tq-st-fill{position:absolute;left:0;top:0;display:flex;overflow:hidden;width:92%}
+.tq-score-t{font:500 15px/1.35 var(--f-b);max-width:19ch}
+.tq-score-mas{display:grid;gap:4px;margin-top:14px;font:400 14px/1.4 var(--f-b);color:#d8d8d0}
+.tq-ops .tq-pic--salsas{width:min(300px,82%);margin:30px auto 18px 6px;--c:20px}
+.tq-pic--salsas img{aspect-ratio:1000/1220;object-fit:cover}
+.tq-ops-ver{margin-top:2px}
+.tq-notas{display:grid;gap:18px}
+.tq-nota{--c:22px;padding:20px 18px 14px}
+.tq-nota:nth-child(2){margin-left:10px}
+.tq-nota-st{display:flex;gap:2px;color:var(--ink)}
+.tq-nota-st svg{width:18px;height:18px}
+.tq-nota blockquote{margin:10px 0 0;font:500 18px/1.65 var(--f-b);color:var(--ink)}
+.tq-hl{--p:1;background:linear-gradient(var(--y),var(--y)) no-repeat 0 100%/calc(var(--p) * 100%) 100%;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:.05em .1em;margin:0 -.1em;color:var(--ink)}
+html.tq-js .tq-hl{--p:0}
+html.tq-js.tq-reduce .tq-hl{--p:1}
+.is-done .tq-hl{transition:--p .35s var(--ease)}
+.tq-nota-by{margin-top:12px;font:400 13px/1.4 var(--f-b);color:#3b3b36}
+.tq-nota-by b{font-weight:700;color:var(--ink)}
+.tq-pedir{margin-top:2px}
+.tq-pedir.is-ok span{background-size:100% 100%}
+
+@media (min-width:760px){
+  .tq-ops{padding:84px 0 88px}
+  .tq-ops-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:72px;align-items:start}
+  .tq-ops-left{position:sticky;top:96px}
+  .tq-ops .tq-pic--salsas{width:min(330px,70%);margin:36px 0 22px 20px}
+  .tq-notas{gap:34px;padding-top:16px}
+  .tq-nota{padding:28px 28px 20px}
+  .tq-nota:nth-child(1){rotate:-.6deg}
+  .tq-nota:nth-child(2){rotate:.5deg;margin-left:36px}
+  .tq-nota:nth-child(3){rotate:-.4deg}
+  .tq-nota blockquote{font-size:21px}
+}
