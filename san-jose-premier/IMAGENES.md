@@ -1,0 +1,28 @@
+# Imágenes · Constructora San José Premier
+
+Todas salen de videos PÚBLICOS de TikTok de @const.sanjosepremier (yt-dlp, bajados a `_work/`, que no se publica). Cuadros extraídos con ffmpeg a 1 por segundo (el cuadro N de `fr/vNN/` es el segundo N-1). Elegidos a ojo en hojas de contacto. Cuadros SIN letras encimadas: los que tenían letras se recortaron por la parte limpia. Sin IA generativa ni stock; las de 720 px y las recortadas se subieron con Real-ESRGAN x4 (luego bajadas con PIL a 480/960/1600 webp).
+
+| Archivo en `img/` | Video (ID TikTok) | Cuadro | Recorte | Dónde va |
+|---|---|---|---|---|
+| casa-una-planta-* | 7640330900823198996 (casa de una planta, 101.9K vistas) | seg. 7 (cuadro 008) | completo 720x1280, limpio | Ficha "Una planta" (ya no va en el hero) |
+| casa-dos-plantas-* | 7672935418857360661 ("¿Cuánto crees que cuesta esta casa?") | seg. 0 (cuadro 001) | parte alta (0 a 52 %), se corta antes de la letra | Solo og:image (ya no se usa en la página) |
+| terreno-excedente-* | 7640330900823198996 | seg. 5 (cuadro 006) | completo 720x1280, limpio | Ficha "Casa con terreno excedente" |
+| terrenos-aerea-* | 7648858278222433556 (últimos terrenos) | seg. 12 (cuadro 013) | completo 720x1280, limpio | Ficha "Terrenos" |
+| obra-ladrillo-* | 7645884185051204884 ("Por estas razones es mejor construir con ladrillo") | seg. 32 (cuadro 033) | 0 a 36 % de alto y x desde 14 % (sin la persona ni el número) | Sección "Ladrillo" |
+| bosques-aerea-* | 7651457616782167316 ("Esto es lo nuevo en Bosques Providencia") | seg. 14 (cuadro 015) | 26 a 100 % de alto (debajo del título en letras) | Sección "Bosques Providencia" |
+| hero-fachada-* | 7672935418857360661 (`_work/fr/v03-cuanto-cuesta`) | seg. 0 (cuadro 001) | 1080x1060 desde arriba, antes de la letra; Real-ESRGAN x4 | Hero (corrección 1) |
+| dos-plantas-frente-* | 7672935418857360661 (v03) | seg. 1 (cuadro 002) | 1080x1050 desde arriba, antes de la letra; x4 | Ficha "Dos plantas" (corrección 1) |
+| excedente-patio-* | v04-casa90 (video de casa con "excedente de terreno listo") | seg. 11 (cuadro 012) | y 550 a 1225 (entre el título y el subtítulo), 1080x675; x4 | Ficha "Casa con terreno excedente" (corrección 1; otra casa, no la del hero ni la de una planta) |
+| terreno-sur-* | 7648858278222433556 (v08-terrenos) | seg. 5 (cuadro 006) | x 60 a 540, y 440 a 740 (arriba de la letra y del cascajo), 480x300; x4 | Ficha "Terrenos" (corrección 1) |
+| int-escalera-* | v03-cuanto-cuesta | seg. 7 (cuadro 008) | y 420 a 1770, 1080x1350; x4 | Galería "Así queda por dentro" |
+| int-sala-* | v01-excedente | seg. 27 (cuadro 028) | y 300 a 1650, 1080x1350; x4 | Galería "Así queda por dentro" |
+| int-bano-* | v02-una-planta | seg. 23 (cuadro 024) | y 60 a 960, 720x900; x4 | Galería "Así queda por dentro" |
+| letrero-* | 7658892646030511380 (¿tienes un crédito para vivienda?) | seg. 4 (cuadro 005) | 0 a 60 % de alto (letrero completo, sin la frase de abajo) | "Busca el letrero" en Crédito |
+| logo.png, favicon-32.png, apple-touch-icon.png | `research/fotos/logo-tiktok.jpg` (200 px) | | redimensionado, sin estirar | Header, footer, iconos |
+| og.jpg | casa-dos-plantas + logo + texto con PIL (DM Serif Display / DM Sans) | | 1200x630 | og:image |
+
+Videos bajados pero sin cuadro usado: 7686707209354349845 (interiores con mano y letras), 7644034241335971093 (90 s con la mujer del equipo siempre en cuadro y letras fijas). No se usó ningún cuadro con personas en grande. Dos videos (7627692845029281045 y 7652948341575126292) no bajaron como video (yt-dlp solo trajo el audio o falló; probablemente carruseles de fotos).
+
+Interiores reales limpios que SÍ existen en los videos y no se usaron para respetar el tope de fotos: v01 cuadros 21, 28, 34; v03 cuadro 8 (escalera) y 49 (baño); v02 cuadros 9, 24, 35.
+
+Corrección 1 (30 sep): `terreno-excedente-*` y `terrenos-aerea-*` quedaron sin usar en `img/` (se cambiaron por `excedente-patio` y `terreno-sur`). Los recortes y los x4 de la corrección están en el scratchpad `sanjose-fix/src/`.

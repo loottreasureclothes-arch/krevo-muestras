@@ -1,0 +1,32 @@
+/* 30-ladrillo: MOMENTO FIRMA. La fachada se levanta hilada por hilada ligada al scroll y se aplana en blanco cal. */
+.sj-ladrillo { background: var(--navy); padding-block: 56px 60px; }
+.sj-lad-grid { display: grid; gap: 30px; }
+.sj-lad-main { display: grid; gap: 10px; }
+.sj-house { max-width: 520px; width: 100%; margin-inline: auto; }
+.sj-house svg { width: 100%; height: auto; overflow: visible; }
+.sj-ladrillo .sj-h { font-size: clamp(40px, 11vw, 64px); }
+.sj-lad-side { display: grid; gap: 14px; justify-items: start; }
+.sj-lad-photo { position: relative; width: 100%; aspect-ratio: 5 / 4; background: var(--navy-3); }
+.sj-lad-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
+.sj-lad-photo figcaption { position: absolute; left: 12px; bottom: 12px; font-size: 11px; letter-spacing: 0.06em; background: rgba(12, 28, 46, 0.62); padding: 4px 8px; }
+.sj-lad-photo::before { content: ""; position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); z-index: 2; }
+.sj-lad-dato { font-size: 18px; line-height: 1.45; max-width: 30ch; color: var(--cal); }
+#sj-final { transition: none; }
+@media (min-width: 900px) {
+  .sj-ladrillo { padding-block: 100px 110px; }
+  .sj-lad-grid { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+  .sj-house { max-width: 600px; margin-inline: 0; }
+  .sj-ladrillo .sj-h { font-size: clamp(56px, 5.4vw, 84px); }
+}
+
+/* galería chica de interiores: tres ventanales */
+.sj-gal { width: 100%; display: grid; gap: 10px; margin-top: 6px; }
+.sj-gal-t { font-size: 15px; font-weight: 600; color: var(--cal); }
+.sj-gal-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.sj-gal-i { aspect-ratio: 4 / 5; }
+.sj-gal-cap { font-size: 12px; letter-spacing: 0.06em; color: var(--mute-w); }
+/* foto de obra: en tableta y compu va en marco más chico (es un cuadro de video) */
+@media (min-width: 600px) {
+  .sj-lad-photo { max-width: 520px; aspect-ratio: 5 / 4; }
+  .sj-gal { max-width: 520px; }
+}

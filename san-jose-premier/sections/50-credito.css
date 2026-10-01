@@ -1,0 +1,49 @@
+/* 50-credito: el trabajo de la página. Formulario corto sobre blanco cal + oficinas como fichas de fachada. */
+.sj-credito { background: var(--cal); }
+.sj-cred-grid { display: grid; gap: 44px; }
+.sj-form { display: grid; gap: 16px; margin-top: 22px; }
+.sj-fs { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 10px; }
+.sj-fs legend, .sj-lbl { padding: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brand); margin-bottom: 10px; display: block; }
+.sj-opts { display: grid; gap: 8px; }
+.sj-opts--2 { grid-template-columns: 1fr 1fr; }
+.sj-opt { position: relative; display: block; }
+.sj-opt--wide { grid-column: 1 / -1; }
+.sj-opt input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; z-index: 1; appearance: none; -webkit-appearance: none; background: transparent; border: 0; outline: 0; }
+.sj-opt span { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 52px; padding: 8px 10px; border: 1.5px solid var(--ink); background: var(--paper); font-size: 14px; font-weight: 700; line-height: 1.2; color: var(--ink); transition: background-color 160ms, color 160ms; }
+.sj-opt input:checked + span { background: var(--navy); color: var(--cal); border-bottom: 3px solid var(--gold); }
+.sj-opt input:focus-visible + span { outline: 2px solid var(--brand); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) { .sj-opt:hover span { background: #ddd7c8; } .sj-opt input:checked + span { background: var(--navy); } }
+.sj-fs--name { display: block; }
+.sj-input { width: 100%; min-height: 52px; padding: 0 14px; border: 1.5px solid var(--ink); border-radius: 0; background: #fbf9f4; color: var(--ink); font: 600 16px var(--sans); }
+.sj-input::placeholder { color: rgba(18, 40, 63, 0.5); }
+.sj-input:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.sj-preview { font-size: 14px; line-height: 1.5; color: var(--mute); border-left: 3px solid var(--gold); padding: 4px 0 4px 12px; }
+.sj-send { width: 100%; min-height: 58px; }
+
+.sj-cred-ofs { display: grid; gap: 18px; align-content: start; }
+.sj-ofs { display: grid; gap: 14px; }
+.sj-of { display: grid; gap: 6px; justify-items: start; background: #fbf9f4; }
+.sj-of-name { font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.05; color: var(--ink); }
+.sj-of address { color: var(--mute); font-size: 15px; line-height: 1.5; }
+.sj-of .sj-tel { color: var(--brand); font-size: 20px; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; }
+.sj-of .sj-btn { margin-top: 6px; }
+.sj-mapwrap { position: relative; aspect-ratio: 4 / 3; border: 1.5px solid var(--ink); background: var(--paper); }
+.sj-map { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.sj-sign { display: grid; grid-template-columns: 136px 1fr; gap: 16px; align-items: center; }
+.sj-sign-photo { aspect-ratio: 1 / 1; }
+.sj-sign-photo img { object-position: 40% 30%; }
+.sj-sign-photo::after { display: none; }
+.sj-sign-t { font-family: var(--serif); font-size: 26px; line-height: 1.1; color: var(--ink); margin-bottom: 8px; }
+.sj-social--light { margin-top: 0; }
+.sj-social--light a { border-color: var(--line); color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .sj-social--light a:hover { border-color: var(--brand); color: var(--brand); } }
+@media (min-width: 900px) {
+  .sj-cred-grid { grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .sj-ofs { grid-template-columns: 1fr 1fr; }
+  .sj-sign { grid-template-columns: 160px 1fr; }
+  .sj-opts--2 { gap: 10px; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  .sj-mapwrap { aspect-ratio: 16 / 9; }
+  .sj-ofs { grid-template-columns: 1fr 1fr; }
+}

@@ -1,0 +1,26 @@
+/* 60-cierre: ficha de fachada con lo elegido + "Todo listo para completar" */
+.sj-cierre { background: var(--navy); }
+.sj-cie-grid { display: grid; gap: 48px; }
+.sj-cie-main { display: grid; gap: 26px; align-content: start; }
+.sj-choice { display: grid; gap: 18px; }
+.sj-choice-list { display: grid; }
+.sj-choice-list > div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.sj-choice-list > div:first-child { padding-top: 0; }
+.sj-choice-list dt { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand); }
+.sj-choice-list dd { font-weight: 700; font-size: 17px; line-height: 1.3; color: var(--ink); font-variant-numeric: tabular-nums; }
+.sj-choice[data-has="0"] #sj-c-modelo, .sj-choice[data-has="0"] #sj-c-medidas { color: var(--mute); font-weight: 600; }
+.sj-choice-act { display: grid; gap: 10px; }
+.sj-choice-act .sj-btn { width: 100%; min-height: 56px; }
+.sj-choice[data-has="1"] .sj-choice-pick { background: transparent; color: var(--brand); border: 1.5px solid var(--brand); }
+.sj-todo { border-top: 2px solid var(--gold); padding-top: 26px; display: grid; gap: 16px; align-content: start; }
+.sj-todo-h { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 8vw, 40px); line-height: 1.05; color: var(--cal); }
+.sj-todo-list { display: grid; gap: 4px; }
+.sj-todo-list li { position: relative; padding: 9px 0 9px 26px; font-size: 16px; line-height: 1.4; color: var(--mute-w); border-bottom: 1px solid var(--line-w); }
+.sj-todo-list li::before { content: ""; position: absolute; left: 0; top: 17px; width: 15px; height: 7px; background: var(--terra); box-shadow: 0 0 0 1px rgba(156, 90, 68, 0.3); }
+.sj-todo-end { font-family: var(--serif); font-size: 24px; line-height: 1.2; color: var(--gold-hi); max-width: 26ch; margin-top: 6px; }
+@media (min-width: 900px) {
+  .sj-cie-grid { grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .sj-choice-list > div { grid-template-columns: 120px 1fr; }
+  .sj-choice-act { grid-template-columns: 1.6fr 1fr; }
+  .sj-todo { padding-top: 34px; }
+}
