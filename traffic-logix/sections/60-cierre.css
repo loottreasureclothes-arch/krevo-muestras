@@ -1,8 +1,10 @@
-.cr{padding:48px 0 64px}
+.cr{padding:56px 0 56px}
 .cr-grid{margin-top:26px;display:grid;gap:16px;align-items:start}
-.pt--cr{padding-top:14px}
-.pt--cr.is-ej .pt-panel{opacity:.5}
-.pt-ej{position:absolute;z-index:2;left:18px;top:2px;background:var(--am);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:4px}
+.pt--cr{padding-top:18px}
+/* ejemplo: panel blanco entero, solo el texto en gris medio */
+.pt--cr.is-ej .pt-row{color:#9a9a94}
+.pt--cr.is-ej .pt-row .exit{opacity:.45}
+.pt-ej{position:absolute;z-index:3;left:18px;top:6px;box-shadow:inset 0 0 0 1.5px var(--am),inset 0 0 0 2.6px var(--ink);background:var(--am);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:4px}
 .pt--cr:not(.is-ej) .pt-ej{display:none}
 .cr-cta{display:grid;gap:12px;justify-items:stretch}
 .cr-cta .lk{justify-self:start}
@@ -16,9 +18,10 @@
 .cr-list p{font-weight:700;font-size:17px;line-height:1.3}
 .cr-foot{position:relative;z-index:1;margin-top:18px;padding-top:16px;border-top:4px solid var(--ink);font-size:17px;line-height:1.35}
 @media (min-width:900px){
-  .cr{padding:88px 0 96px}
+  .cr{padding:96px 0 72px}
   .cr-grid{grid-template-columns:6fr 5fr;gap:48px;margin-top:38px;align-items:center}
   .cr-todo{margin-top:72px;padding:40px 44px 36px}
   .cr-list{grid-template-columns:1fr 1fr;column-gap:44px}
   .cr-list p{font-size:18px}
 }
+.js-cr-t .y{display:block}

@@ -1,23 +1,24 @@
 .hero{position:relative;padding-top:var(--hh);overflow:clip}
-/* celular: la foto entera (Urvan 116 completa y la fila 125/123 atrás), debajo del pórtico */
-.hero-ph{position:absolute;left:0;right:0;top:var(--hh);height:75vw;overflow:hidden}
-.hero-img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.hero-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(31,33,36,0) 0,rgba(31,33,36,0) 58%,rgba(31,33,36,.7) 84%,var(--as) 100%)}
+/* celular: cartel. La foto ocupa casi dos tercios de la primera pantalla y el título monta sobre su último tercio.
+   Sin velo de color: la foto se desvanece con máscara y debajo se ve el mismo asfalto con grano (sin raya de corte). */
+.hero-ph{position:absolute;left:0;right:0;top:var(--hh);height:min(134vw,64svh);overflow:hidden}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:6% 50%;-webkit-mask-image:linear-gradient(to bottom,#000 50%,rgba(0,0,0,.55) 74%,transparent 100%);mask-image:linear-gradient(to bottom,#000 50%,rgba(0,0,0,.55) 74%,transparent 100%)}
+.hero-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(31,33,36,.38) 0,rgba(31,33,36,0) 14%);pointer-events:none}
 .hero-plc{position:absolute;z-index:2;left:12px;top:calc(var(--hh) + 10px)}
-.hero-tx{position:relative;z-index:2;margin-top:calc(75vw - 44px);padding-bottom:34px}
-.hero-tt{font-size:clamp(35px,9.6vw,60px);line-height:.98;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.hero-tx{position:relative;z-index:2;margin-top:calc(min(134vw,64svh) * .66);padding-bottom:8px}
+.hero-tt{font-size:clamp(44px,12.2vw,64px);line-height:.95;letter-spacing:-.018em;text-shadow:0 2px 18px rgba(0,0,0,.55)}
 .hero-line{margin-top:16px;font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--mut);line-height:1.6}
 .hero-line b{color:var(--am);font-weight:700}
 .hero-line span{display:block}
 .hl-s{display:none}
 @media (min-width:640px){.hero-line span{display:inline}.hl-s{display:inline}}
-.hero-cta{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px}
+.hero-cta{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 26px}
 @media (min-width:900px){
-  .hero-ph{top:0;height:calc(var(--hh) + 74svh)}
-  .hero-img{object-position:50% 58%}
-  .hero-ph::after{background:linear-gradient(to bottom,rgba(31,33,36,.5) 0,rgba(31,33,36,0) 18%,rgba(31,33,36,0) 34%,rgba(31,33,36,.86) 80%,var(--as) 100%)}
-  .hero-tx{margin-top:calc(74svh - 260px);padding-bottom:56px}
-  .hero-tt{font-size:clamp(58px,6.3vw,96px)}
+  .hero-ph{top:0;height:calc(var(--hh) + 76svh)}
+  .hero-img{object-position:50% 58%;-webkit-mask-image:linear-gradient(to bottom,#000 54%,rgba(0,0,0,.5) 78%,transparent 100%);mask-image:linear-gradient(to bottom,#000 54%,rgba(0,0,0,.5) 78%,transparent 100%)}
+  .hero-ph::after{background:linear-gradient(to bottom,rgba(31,33,36,.55) 0,rgba(31,33,36,0) 18%)}
+  .hero-tx{margin-top:calc(76svh - 300px);padding-bottom:24px}
+  .hero-tt{font-size:clamp(60px,6.2vw,96px)}
   .hero-tt .l1,.hero-tt .l2{display:block}
   .hero-line{font-size:14px}
   .hero-plc{right:auto;left:var(--pad);top:calc(var(--hh) + 34px);font-size:14px}

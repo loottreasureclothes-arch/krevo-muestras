@@ -123,8 +123,14 @@
   function fechaMsg() { var f = parseF(S.fecha); return f && MESES[f.m] ? f.d + " de " + MESES[f.m] : ""; }
   function clean(s) { return (s || "").replace(/\s+/g, " ").trim(); }
 
+  /* renglones fantasma: lo que falta se ve al 25 % y se vuelve sólido (con su "clac") al elegirlo */
+  var GHOST = {
+    "": { serv: "PERSONAL EMPRESARIAL", pax: "45 PASAJEROS", when: "L A V · 3 TURNOS", route: "" },
+    personal: { pax: "45 PASAJEROS", when: "L A V · 3 TURNOS", route: "" },
+    otro: { pax: "6 PASAJEROS", when: "12 OCT · 05:30", route: "AGS → GDL" }
+  };
   function signRows() {
-    var r = { serv: S.servicio ? SERV[S.servicio].sign : "ELIGE SERVICIO", pax: "", when: "", route: "" };
+    var r = { serv: S.servicio ? SERV[S.servicio].sign : "", pax: "", when: "", route: "" };
     if (!S.servicio) return r;
     if (S.pax > 0) r.pax = S.pax + (S.pax === 1 ? " PASAJERO" : " PASAJEROS");
     if (S.servicio === "personal") {
@@ -162,37 +168,48 @@
   function url() { return waUrl(message()); }
 
   var lastRows = {};
-  function setRow(el, txt, key) {
+  function setRow(el, txt, key, ghost) {
     if (!el) return;
-    var had = lastRows[key];
-    if (txt) { el.hidden = false; if (el.textContent !== txt) { el.textContent = txt; if (!reduce) { el.classList.remove("clac"); void el.offsetWidth; el.classList.add("clac"); } } }
-    else { el.hidden = true; el.textContent = ""; }
+    var show = txt || ghost || "", isG = !txt && !!ghost, was = el.classList.contains("is-ghost");
+    if (show) {
+      el.hidden = false;
+      el.classList.toggle("is-ghost", isG);
+      if (isG) el.setAttribute("aria-hidden", "true"); else el.removeAttribute("aria-hidden");
+      if (el.textContent !== show || (was && !isG)) { el.textContent = show; if (!reduce && !isG) { el.classList.remove("clac"); void el.offsetWidth; el.classList.add("clac"); } }
+    } else { el.hidden = true; el.textContent = ""; el.classList.remove("is-ghost"); }
     lastRows[key] = txt;
   }
   var EJ = { serv: "PERSONAL EMPRESARIAL", pax: "45 PASAJEROS", when: "L A V", route: "" };
   var FOTO = {
-    "": ["flotilla", "SUS UNIDADES, CON GPS 24 H"],
+    "": ["fila", "SUS UNIDADES EN FILA, CON GPS 24 H"],
     personal: ["personal", "FILA DE HIACE Y URVAN"],
     aeropuerto: ["aeropuerto", "SPRINTER LISTA PARA ABORDAR"],
     turismo: ["turismo", "URVAN EN CARRETERA"],
-    ejecutivo: ["ejecutivo", "FOTO DE SU UNIDAD EJECUTIVA: PENDIENTE"]
+    ejecutivo: ["ejecutivo", "UNIDAD CON RÓTULO GTLO"]
   };
-  function paintSign(box, r, k) {
-    var sv = $(".js-serv", box);
-    if (sv && sv.textContent !== r.serv) { sv.textContent = r.serv; if (!reduce) { var row = sv.parentNode; row.classList.remove("clac"); void row.offsetWidth; row.classList.add("clac"); } }
-    setRow($(".js-pax", box), r.pax, "pax" + k);
-    setRow($(".js-when", box), r.when, "when" + k);
-    setRow($(".js-route", box), r.route, "route" + k);
+  function paintSign(box, r, k, g) {
+    g = g || {};
+    var sv = $(".js-serv", box), txt = r.serv || g.serv || "", isG = !r.serv;
+    if (sv) {
+      var row = sv.parentNode, was = row.classList.contains("is-ghost");
+      row.classList.toggle("is-ghost", isG);
+      if (isG) row.setAttribute("aria-hidden", "true"); else row.removeAttribute("aria-hidden");
+      if (sv.textContent !== txt || (was && !isG)) { sv.textContent = txt; if (!reduce && !isG) { row.classList.remove("clac"); void row.offsetWidth; row.classList.add("clac"); } }
+    }
+    setRow($(".js-pax", box), r.pax, "pax" + k, g.pax);
+    setRow($(".js-when", box), r.when, "when" + k, g.when);
+    setRow($(".js-route", box), r.route, "route" + k, g.route);
   }
   function renderSign() {
     var r = signRows(), has = !!S.servicio;
-    var main = $("#senal .pt"); if (main) paintSign(main, r, 0);
+    var g = !has ? GHOST[""] : S.servicio === "personal" ? GHOST.personal : GHOST.otro;
+    var main = $("#senal .pt"); if (main) paintSign(main, r, 0, g);
     var cr = $(".pt--cr");
     if (cr) { cr.classList.toggle("is-ej", !has); paintSign(cr, has ? r : EJ, 1); }
     var t = $(".js-cr-t"), empty = $(".js-empty"), want = has ? "on" : "off";
     if (t && t.getAttribute("data-st") !== want) {
       t.setAttribute("data-st", want);
-      t.innerHTML = has ? 'Tu ruta <span class="y">ya está rotulada.</span>' : 'Falta rotular <span class="y">tu ruta.</span>';
+      t.innerHTML = has ? 'Tu ruta <span class="y">ya está rotulada.</span>' : '¿A dónde <span class="y">vamos?</span>';
     }
     if (empty) empty.hidden = has;
     var ph = $(".js-ptph"), cap = $(".js-ptcap"), fo = FOTO[S.servicio] || FOTO[""];
@@ -258,44 +275,45 @@
   window.GTLO = { state: function () { return JSON.parse(JSON.stringify(S)); }, set: setState, message: message, url: url };
 
   /* ====================================================================
-     EL CONVOY: las unidades entran rodando en fila, ligadas al scroll (rAF, reversible, sin pin).
-     Todas avanzan en el mismo sentido; la de atrás siempre trae más distancia que la de adelante,
-     así los huecos solo se cierran al frenar y nunca se atraviesan ni se enciman los rótulos.
+     EL CONVOY: placas-foto de sus unidades (126, 123, 121, 114, 152) entran en fila ligadas al scroll
+     (rAF, reversible, sin pin). Si la fila no cabe (celular), toda la fila pasa de derecha a izquierda
+     y termina con la última unidad alineada; si cabe (compu), cada placa llega por la derecha y frena en
+     su lugar: la de atrás siempre trae más distancia que la de adelante, así nunca se enciman.
      ==================================================================== */
-  var cv = $("#cv");
-  if (cv) {
-    var vans = $$(".cv-van", cv).map(function (el) {
-      return { el: el, wh: $$(".wh", el), cap: $("figcaption", el), off: 0, r: 14 };
-    });
-    var n = vans.length, pending = false;
-    function measure() {
-      var maxR = 0;
-      vans.forEach(function (v) { v.el.style.transform = "none"; var r = v.el.getBoundingClientRect(); if (r.right > maxR) maxR = r.right; });
-      var gap = cv.getBoundingClientRect().width * 0.22;
-      vans.forEach(function (v, i) {
-        v.off = maxR + 40 + (n - 1 - i) * gap;
-        var svg = $("svg", v.el), sc = svg.getBoundingClientRect().width / svg.viewBox.baseVal.width;
-        v.r = 14 * (sc || 1);
-      });
+  var cv = $("#cv"), cvIn = cv ? $(".cv-in", cv) : null;
+  if (cv && cvIn && !reduce) {
+    var us = $$(".cv-u", cv), mode = "fit", rowX0 = 0, rowX1 = 0, offs = [], cvPend = false;
+    function cvMeasure() {
+      cvIn.style.transform = "none"; us.forEach(function (u) { u.style.transform = "none"; });
+      var cw = cv.clientWidth, last = us[us.length - 1].getBoundingClientRect(), r0 = cvIn.getBoundingClientRect();
+      var rw = (last.right - r0.left) + (parseFloat(getComputedStyle(cvIn).paddingRight) || 0);
+      if (!window.matchMedia("(min-width:900px)").matches && rw > cw + 2) {
+        mode = "travel"; rowX0 = cw * 0.5; rowX1 = cw - rw;
+      } else {
+        mode = "fit";
+        var lefts = us.map(function (u) { return u.getBoundingClientRect().left - cv.getBoundingClientRect().left; });
+        var pitch = us.length > 1 ? lefts[1] - lefts[0] : 200;
+        offs = lefts.map(function (l, i) { return (cw - l) + 40 + i * pitch * 1.3; });
+      }
     }
-    function ease(t) { return 1 - Math.pow(1 - t, 3); }
-    function paint() {
-      pending = false;
+    function cvEase(t) { return 1 - Math.pow(1 - t, 3); }
+    function cvPaint() {
+      cvPend = false;
       var vh = window.innerHeight, rc = cv.getBoundingClientRect();
-      var p = (vh * 0.98 - rc.top) / (vh * 0.98 - vh * 0.34);
-      p = reduce ? 1 : Math.max(0, Math.min(1, p));
-      var e = ease(p);
-      vans.forEach(function (v) {
-        var x = -(1 - e) * v.off;
-        v.el.style.transform = e >= 0.999 ? "none" : "translate3d(" + x.toFixed(1) + "px,0,0)";
-        var ang = (e * v.off / v.r) * 57.2958;
-        v.wh.forEach(function (w) { w.style.transform = "rotate(" + ang.toFixed(1) + "deg)"; });
-        if (v.cap) v.cap.style.opacity = e > 0.97 ? "1" : "0";
-      });
+      var endAt = mode === "travel" ? 0.1 : 0.34;
+      var p = Math.max(0, Math.min(1, (vh * 0.98 - rc.top) / (vh * 0.98 - vh * endAt)));
+      if (mode === "travel") {
+        var x = rowX0 + (rowX1 - rowX0) * p;
+        cvIn.style.transform = p >= 1 ? "translate3d(" + rowX1.toFixed(1) + "px,0,0)" : "translate3d(" + x.toFixed(1) + "px,0,0)";
+      } else {
+        var e = cvEase(p);
+        us.forEach(function (u, i) { u.style.transform = e >= 0.999 ? "none" : "translate3d(" + ((1 - e) * offs[i]).toFixed(1) + "px,0,0)"; });
+      }
     }
-    function req() { if (!pending) { pending = true; requestAnimationFrame(paint); } }
-    if (!reduce) { measure(); window.addEventListener("scroll", req, { passive: true }); window.addEventListener("resize", function () { measure(); req(); }); }
-    paint();
-    window.addEventListener("load", function () { if (!reduce) measure(); req(); });
+    function cvReq() { if (!cvPend) { cvPend = true; requestAnimationFrame(cvPaint); } }
+    cvMeasure(); cvPaint();
+    window.addEventListener("scroll", cvReq, { passive: true });
+    window.addEventListener("resize", function () { cvMeasure(); cvReq(); });
+    window.addEventListener("load", function () { cvMeasure(); cvReq(); });
   }
 })();
