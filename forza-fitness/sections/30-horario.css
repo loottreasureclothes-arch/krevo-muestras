@@ -12,7 +12,7 @@
 
 .fz-board-wrap { margin-top: 26px; }
 .fz-board { margin-inline: -10px; padding: 40px 6px 12px; background: #121313; }
-.fz-tbl-sc { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.fz-tbl-sc { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 8px; margin: -8px; }
 .fz-tbl { width: 100%; border-collapse: separate; border-spacing: 2px; table-layout: fixed; }
 .fz-tbl col { width: auto; }
 .fz-dh { padding: 4px 0 7px; font: 600 12px / 1 var(--f-n); letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); text-align: center; box-shadow: inset 0 -3px 0 rgba(255, 255, 255, 0.1); }
@@ -24,7 +24,9 @@
 .fz-tbl td { padding: 0; height: 46px; }
 .fz-cell { width: 100%; height: 100%; min-height: 46px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; padding: 3px 1px; background: var(--graf); border-left: 3px solid var(--red); color: #fff; font: 600 12px / 1.08 var(--f-n); letter-spacing: 0; text-transform: none; transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out); }
 .fz-cell:active { transform: scale(0.96); }
-.fz-cell.is-next { background: var(--red); border-left-color: #fff; animation: fzPulse 1.2s ease-in-out infinite alternate; }
+/* la proxima clase: fondo rojo pleno y texto blanco al 100 % siempre; lo que late es un halo por fuera */
+.fz-cell.is-next { position: relative; z-index: 2; background: var(--red); border-left-color: #fff; color: #fff; animation: fzHalo 1.2s ease-out infinite; }
+@keyframes fzHalo { from { box-shadow: 0 0 0 0 rgba(226, 10, 20, 0.7); } to { box-shadow: 0 0 0 6px rgba(226, 10, 20, 0); } }
 .fz-cell.is-sel { outline: 2px solid #fff; outline-offset: 1px; background: var(--graf-2); }
 .fz-cell.is-next.is-sel { background: var(--red); }
 td.fz-off { background: repeating-linear-gradient(-8deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 7px); }

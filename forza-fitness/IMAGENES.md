@@ -1,4 +1,17 @@
-# Forza Fitness Club · Imágenes (30 sep 2026, corrección 2)
+# Forza Fitness Club · Imágenes (30 sep 2026, corrección 3)
+
+**Corrección 3:** mismas reglas de la serie de marca (B/N con curva en S, rojo de verdad conservado, grano 3.2 %). Script: `scratchpad/r3fix-forza-fitness/imgs3.py` (usa `grade.py`). Solo PIL y OpenCV; en esta vuelta NO se usó Real-ESRGAN.
+
+| Archivo en img/ (corrección 3) | Origen | Proceso | Dónde va |
+|---|---|---|---|
+| hero-d-960/1600/1930.webp (1930x831) | maps-01 limpio, recorte x 0-1930, y 705-1536 (sin la lona en inglés y sin el reloj) | serie B/N + rojo (rojo solo debajo de y = 1050; trapo del piso excluido); 1930 a tamaño nativo, 1600 y 960 con Lanczos | Hero compu (≥1024), a todo lo ancho con velo lateral. Reemplaza a hero-960/1600/2048 (retiradas) |
+| pasillo-480/960.webp (960x1200) | maps-02, recorte x 0-1100, y 520-1895 | SIN Real-ESRGAN: denoise suave, gamma .6, serie B/N + rojo, Lanczos hacia abajo | Colosio; en celular al 58 % del ancho |
+| rack-480/960/1600.webp (1600x1344), rack-m-480/960.webp | maps-04 sin el 16 % de arriba (destello y neblina) | denoise, gamma .55, serie B/N + rojo de las columnas | Club (rayo) |
+
+Sin cambios en esta vuelta: hero-m, fierro, funcional, reloaded, og, favicon.
+
+Historial (corrección 2):
+
 
 **Serie de marca (corrección 2):** todas las fotos del gimnasio llevan el mismo tratamiento, como su cartel Reloaded: blanco y negro con curva en S (+15 a 18 % de contraste en medios), grano fino de 3.2 % (puesto después de reducir a cada ancho) y **solo el rojo de verdad conservado** (mancuernas, columnas del rack, letras y barra del pasillo, la palabra FORZA de la caja). El rojo se detecta en la foto ANTES de aclararla (tono 338° a 18°, saturación > 0.34 a 0.42, G < 0.5 a 0.68·R según la foto), se limpia con apertura morfológica y se descartan islas chicas, y se suaviza el borde. En maps-01 el rojo solo cuenta debajo de y = 1050 (así la lona coral, el cartel de frutas y el short rojo de un socio quedan grises) y se excluye a mano un trapo rojo del piso. Scripts: `scratchpad/r2fix-forza-fitness/grade.py` + `imgs2.py`. Solo PIL, OpenCV y Real-ESRGAN x4 (sin IA generativa).
 

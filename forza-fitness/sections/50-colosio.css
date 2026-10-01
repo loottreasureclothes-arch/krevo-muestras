@@ -1,8 +1,9 @@
 /* 50-colosio: ficha de llegada. Horario real, estado en vivo, mapa en casillero */
 .fz-colosio .fz-h { padding-top: 4px; }
 .fz-col-grid { display: grid; gap: 20px; margin-top: 26px; }
-/* pasillo: la original es de celular, asi que no va a sangre: casillero con marco, 4:5, en paralelogramo a 8 grados */
-.fz-col-ph { margin: 0; display: grid; grid-template-columns: 70% 1fr; align-items: end; gap: 0 12px; }
+/* pasillo: la original es de celular (1,100 px de ancho), asi que no va a sangre: casillero con marco, 4:5, en paralelogramo a 8 grados.
+   En celular, 58 % del ancho: asi sale nitida a 2x sin reescalar con IA. El par foto + lema va centrado */
+.fz-col-ph { margin: 0; display: grid; grid-template-columns: 58% auto; justify-content: center; align-items: end; gap: 0 16px; }
 .fz-col-ph-lk { padding: 34px 8px 8px; }
 .fz-col-ph-c { aspect-ratio: 4 / 5; overflow: hidden; background: #121313; clip-path: polygon(7% 0, 100% 0, 93% 100%, 0 100%); }
 .fz-col-ph-c img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; }

@@ -6,7 +6,7 @@
 .fz-hero-photo img { object-fit: cover; object-position: 30% 60%; }
 .fz-hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18, 19, 19, 0) 0, rgba(18, 19, 19, 0) 70%, rgba(18, 19, 19, 0.72) 88%, #121313 100%); }
 .fz-h--hero { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55); }
-.fz-hero-in { position: relative; display: grid; gap: 16px; justify-items: start; margin-top: -58px; padding-bottom: 30px; }
+.fz-hero-in { position: relative; display: grid; gap: 16px; justify-items: start; margin-top: -58px; padding-bottom: 8px; }
 .fz-hero-lk { display: inline-flex; align-items: center; gap: 10px; max-width: 100%; padding: 10px 14px 10px 12px; background: rgba(30, 31, 32, 0.92); border: 1px solid var(--line); border-left: 3px solid var(--red); font: 600 15px / 1.2 var(--f-n); letter-spacing: 0.03em; color: var(--mute); }
 .fz-hero-lk b { font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 0.08em; }
 .fz-nw { white-space: nowrap; }
@@ -25,12 +25,13 @@
 }
 @media (min-width: 1024px) {
   .fz-hero { min-height: 100svh; display: flex; align-items: flex-end; }
-  .fz-hero-photo { position: absolute; left: 30%; right: 0; top: 0; width: auto; margin: 0; aspect-ratio: auto; max-height: none; height: 84svh; clip-path: polygon(17% 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%); }
-  /* la foto sube 80 px: las letras FORZA de la pared quedan arriba del titulo, no debajo */
-  .fz-hero-photo img { height: calc(100% + 80px); transform: translateY(-80px); object-position: 30% 50%; }
+  /* la foto empieza en left 0 (sin tercio negro vacio); el paralelogramo se queda con el corte de abajo */
+  .fz-hero-photo { position: absolute; left: 0; right: 0; top: 0; width: auto; margin: 0; aspect-ratio: auto; max-height: none; height: 84svh; clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%); }
+  /* foto propia de compu (hero-d): recortada de maps-01 desde abajo de la lona, asi la lona en ingles no entra; mandan la pared FORZA, el piso y las mancuernas rojas */
+  .fz-hero-photo img { object-position: 18% 50%; }
   .fz-h--hero .fz-red { text-shadow: 0 0 2px rgba(0, 0, 0, 0.6), 0 2px 22px rgba(0, 0, 0, 0.85); }
-  /* la lona queda de fondo: velo .6 en el primer 40 % */
-  .fz-hero-photo::after { background: linear-gradient(180deg, rgba(18, 19, 19, 0.62) 0, rgba(18, 19, 19, 0.55) 40%, rgba(18, 19, 19, 0.2) 58%, rgba(18, 19, 19, 0.3) 72%, rgba(18, 19, 19, 0.88) 100%); }
+  /* velo lateral + mancha oscura detras del titulo: las letras FORZA de la pared se leen arriba y el titulo lee sobre la pared; abajo se funde al negro */
+  .fz-hero-photo::after { background: radial-gradient(ellipse 62% 50% at 24% 80%, rgba(18, 19, 19, 0.88) 0, rgba(18, 19, 19, 0.6) 55%, rgba(18, 19, 19, 0) 100%), linear-gradient(90deg, rgba(18, 19, 19, 0.78) 0, rgba(18, 19, 19, 0.5) 28%, rgba(18, 19, 19, 0.12) 55%, rgba(18, 19, 19, 0) 72%), linear-gradient(180deg, rgba(18, 19, 19, 0.3) 0, rgba(18, 19, 19, 0) 16%, rgba(18, 19, 19, 0) 66%, rgba(18, 19, 19, 0.88) 100%); }
   .fz-h--hero { font-size: clamp(60px, 8.6vw, 132px); }
   .fz-hero-in { margin-top: 0; padding-top: calc(var(--hdr) + 40px); padding-bottom: 54px; gap: 20px; }
   .fz-hero-lk { font-size: 17px; padding: 12px 18px 12px 14px; }
