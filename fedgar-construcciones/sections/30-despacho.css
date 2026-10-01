@@ -1,0 +1,38 @@
+/* 30-despacho: EL ARCO SE ABRE (momento firma). Contenedor con width y border-radius animados por el scroll; sin pin. */
+.fg-despacho { padding-top: 0; background: var(--bg); }
+.fg-arco { position: relative; height: min(76svh, 640px); display: flex; justify-content: center; align-items: flex-start; overflow: hidden; }
+.fg-arco-clip { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--band); flex: none; }
+.fg-arco-clip picture { display: block; width: 100%; height: 100%; }
+.fg-arco-clip img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; transform-origin: 50% 40%; }
+.fg-arco-veil { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8, 28, 34, 0.92) 0%, rgba(8, 28, 34, 0.5) 34%, rgba(8, 28, 34, 0) 62%); }
+.fg-arco-title { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 26px; z-index: 2; text-shadow: 0 2px 22px rgba(5, 20, 24, 0.6); }
+.fg-arco-title .fg-word { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  html.fg-js .fg-arco-title.fg-drop .fg-word { opacity: 0; }
+}
+.fg-despacho-text { padding-top: 34px; display: grid; gap: 22px; }
+.fg-historia { font-size: 19px; line-height: 1.5; max-width: 34ch; }
+.fg-vision { border-left: 2px solid var(--brand); padding: 2px 0 2px 16px; }
+.fg-vision p { font-family: var(--f-d); font-weight: 700; font-size: 19px; line-height: 1.3; letter-spacing: -0.01em; }
+.fg-vision cite { display: block; margin-top: 10px; font-style: normal; font-family: var(--f-m); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand); }
+.fg-diptico { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fg-dip { margin: 0; }
+.fg-dip-img { aspect-ratio: 4 / 5; background: var(--band); border: 1px solid var(--line-d); border-bottom: 0; }
+.fg-dip-img picture { display: block; width: 100%; height: 100%; }
+.fg-dip figcaption { margin-top: 8px; font-family: var(--f-m); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute-d); }
+.fg-clientes { font-family: var(--f-m); font-size: 12.5px; line-height: 1.75; letter-spacing: 0.02em; color: var(--mute-d); padding-top: 18px; border-top: 1px solid var(--line-d); }
+.fg-clientes strong { color: var(--stone); font-weight: 700; }
+@media (min-width: 760px) {
+  .fg-arco { height: min(86svh, 880px); }
+  .fg-arco-title { left: max(var(--gutter), calc((100vw - 1240px) / 2 + var(--gutter))); right: var(--gutter); bottom: 44px; }
+  .fg-arco-title .fg-word { display: inline-block; }
+  .fg-arco-title .fg-word:last-child { display: block; }
+  .fg-arco-title { font-size: clamp(44px, 5.6vw, 84px); }
+  .fg-despacho-text { padding-top: 44px; grid-template-columns: 1.15fr 1fr; gap: 26px 56px; align-items: start; }
+  .fg-historia { font-size: 26px; max-width: 28ch; }
+  .fg-vision p { font-size: 22px; }
+  .fg-clientes, .fg-diptico { grid-column: 1 / -1; }
+  .fg-diptico { gap: 26px; grid-template-columns: repeat(2, minmax(0, 440px)); }
+  .fg-dip-img { aspect-ratio: 1 / 1; }
+  .fg-arco-clip img { object-position: 50% 40%; }
+}

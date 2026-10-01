@@ -1,0 +1,44 @@
+/* 60-cierre: primero "Tu lámina" + "Todo listo para completar" (sobre banda); al final la foto de obra
+   a lo ancho con la cita literal de su Visión, que se funde con el pie. */
+.fg-cierre { padding: 0; background: var(--band); }
+.fg-cierre-body { display: grid; gap: 40px; padding-top: var(--sec-y); padding-bottom: 54px; }
+.fg-cierre-lam { display: grid; gap: 14px; }
+.fg-cierre-lam-t { font-family: var(--f-m); font-size: 11.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brand-deep); }
+.fg-cajetin--sum dd { min-height: 1.3em; }
+.fg-cajetin--sum dd.is-set { color: var(--brand-deep); }
+.fg-cajetin[hidden] { display: none; }
+/* Cajetín "EL TUYO": dos datos y la marca a todo lo ancho */
+.fg-cajetin--tuyo dd { font-size: 15px; letter-spacing: 0.04em; }
+.fg-cajetin--tuyo > div:nth-child(-n+2) { border-bottom: 1px solid var(--line-l); }
+.fg-cajetin--tuyo > .fg-caj-brand { grid-column: 1 / -1; border-right: 0; }
+.fg-cierre-cta { width: 100%; padding: 0 20px; font-size: 12.5px; letter-spacing: 0.1em; }
+.fg-cierre-edit { color: var(--ink); justify-self: start; }
+.fg-completar { display: grid; gap: 14px; }
+.fg-completar-lead { color: var(--mute-d); }
+.fg-comp-list { list-style: none; padding: 0; border-top: 1px solid var(--line-d); }
+.fg-comp-list li { display: grid; grid-template-columns: 38px 1fr; gap: 6px; padding: 12px 0; border-bottom: 1px solid var(--line-d); font-size: 16px; line-height: 1.4; }
+.fg-comp-list li span { font-family: var(--f-m); font-size: 12.5px; color: var(--brand); padding-top: 2px; }
+.fg-comp-note { font-family: var(--f-m); font-size: 12.5px; line-height: 1.7; color: var(--stone); padding-top: 4px; }
+
+/* Remate: foto de obra + Visión; el velo termina en el color del pie y el pie arranca encima */
+/* Celular: la foto vertical completa (900x1058) y la cita encima de su parte baja */
+.fg-cierre-foto { position: relative; overflow: hidden; background: var(--band-2); }
+.fg-cierre-foto picture { display: block; aspect-ratio: 900 / 1058; }
+.fg-cierre-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.fg-cierre-veil { position: absolute; inset: 0; background: linear-gradient(to top, #0a2229 0%, rgba(10, 34, 41, 0.9) 22%, rgba(10, 34, 41, 0.55) 44%, rgba(10, 34, 41, 0) 70%), linear-gradient(to bottom, var(--band) 0%, rgba(18, 59, 69, 0) 14%); }
+.fg-cierre-cita { position: relative; z-index: 2; margin-top: -150px; padding-bottom: 96px; }
+.fg-h2--cita { font-size: clamp(26px, 7.6vw, 34px); line-height: 1.1; text-shadow: 0 2px 20px rgba(5, 20, 24, 0.6); }
+.fg-h2--cita .fg-word { display: block; }
+.fg-h2--cita .fg-word + .fg-word { margin-top: 6px; }
+.fg-cierre-by { margin-top: 14px; font-family: var(--f-m); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute-d); }
+@media (min-width: 760px) {
+  .fg-cierre-foto { min-height: min(94svh, 880px); display: flex; align-items: flex-end; }
+  .fg-cierre-foto picture { position: absolute; inset: 0; aspect-ratio: auto; }
+  .fg-cierre-foto img { object-position: 50% 40%; }
+  .fg-cierre-cita { margin-top: 0; padding-top: 260px; padding-bottom: 130px; }
+  .fg-h2--cita { font-size: clamp(38px, 4.6vw, 68px); max-width: 20ch; }
+}
+@media (min-width: 1040px) {
+  .fg-cierre-body { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; padding-top: 64px; padding-bottom: 80px; }
+  .fg-cierre-lam { position: sticky; top: calc(var(--hh-c) + 24px); padding: 30px 28px; }
+}

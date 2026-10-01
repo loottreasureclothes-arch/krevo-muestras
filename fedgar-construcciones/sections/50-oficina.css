@@ -1,0 +1,22 @@
+/* 50-oficina: ficha + mapa en marco de arco sobre cantera */
+.fg-eyebrow { font-family: var(--f-m); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brand-deep); margin-bottom: 12px; }
+.fg-oficina-grid { display: grid; gap: 26px; }
+.fg-h2--addr { font-size: clamp(21px, 6.8vw, 28px); letter-spacing: -0.02em; }
+.fg-h2--addr .fg-word { display: block; }
+@media (min-width: 760px) { .fg-h2--addr { font-size: clamp(30px, 3.2vw, 46px); } }
+@media (min-width: 1100px) { .fg-h2--addr .fg-word { white-space: nowrap; } }
+.fg-ficha { margin-top: 22px; display: grid; gap: 0; }
+.fg-ficha > div { display: grid; gap: 2px; padding: 12px 0; border-top: 1px solid var(--line-l); }
+.fg-ficha > div:last-child { border-bottom: 1px solid var(--line-l); }
+.fg-ficha dt { font-family: var(--f-m); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute-l); }
+.fg-ficha dd { font-size: 16.5px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.fg-ficha-link { display: inline-flex; align-items: center; min-height: 44px; background-image: linear-gradient(var(--brand-deep), var(--brand-deep)); background-repeat: no-repeat; background-size: 100% 1.5px; background-position: 0 calc(100% - 9px); }
+.fg-oficina-cta { margin-top: 24px; }
+.fg-oficina-map { position: relative; margin: 0; height: clamp(320px, 88vw, 420px); background: var(--stone-2); border: 1px solid var(--ink); border-bottom: 0; }
+/* El iframe se recorre hacia arriba: la tarjeta de Google (con "Ver en Maps") queda fuera del arco; CÓMO LLEGAR cubre la ruta */
+.fg-oficina-map iframe { position: absolute; left: 0; right: 0; top: -64px; width: 100%; height: calc(100% + 64px); border: 0; filter: saturate(0.82) contrast(0.96); }
+@media (min-width: 760px) {
+  .fg-oficina-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr); gap: 64px; align-items: center; }
+  .fg-oficina-map { height: clamp(460px, 46vw, 600px); }
+  .fg-oficina-map iframe { top: -100px; height: calc(100% + 100px); }
+}

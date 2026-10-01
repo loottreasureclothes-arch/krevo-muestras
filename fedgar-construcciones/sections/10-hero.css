@@ -1,0 +1,33 @@
+/* 10-hero: cartel. Foto en marco de arco con el titular encima; la foto se funde al lienzo (sin raya de corte). */
+.fg-hero { position: relative; padding-top: var(--hh); overflow: hidden; background: var(--bg); }
+.fg-hero-frame {
+  position: relative; margin: 12px var(--gutter) 0; padding: 10px 10px 0; height: min(60svh, 560px);
+  -webkit-mask-image: linear-gradient(#000 56%, rgba(0, 0, 0, 0.55) 80%, transparent 99%);
+  mask-image: linear-gradient(#000 56%, rgba(0, 0, 0, 0.55) 80%, transparent 99%);
+}
+.fg-hero-frame::before { content: ""; position: absolute; inset: 0; border: 1px solid rgba(236, 227, 212, 0.42); border-bottom: 0; border-radius: 999px 999px 0 0; }
+.fg-hero-photo { position: relative; height: 100%; border-radius: 999px 999px 0 0; overflow: hidden; background: var(--band); }
+.fg-hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(13, 46, 54, 0.9) 0%, rgba(13, 46, 54, 0.62) 30%, rgba(13, 46, 54, 0) 62%); }
+.fg-hero-photo picture { display: block; height: 100%; }
+.fg-hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 70%; }
+.fg-hero-clave { position: absolute; left: 50%; top: 20px; transform: translateX(-50%); font-family: var(--f-m); font-size: 11px; letter-spacing: 0.16em; color: var(--stone); padding: 5px 10px; background: rgba(8, 25, 29, 0.6); }
+.fg-hero-copy { position: relative; z-index: 2; margin-top: -26svh; padding: 0 var(--gutter) 40px; }
+.fg-h1 { font-size: clamp(38px, 12.4vw, 58px); line-height: 0.98; letter-spacing: -0.025em; color: var(--stone); text-shadow: 0 2px 26px rgba(5, 20, 24, 0.55); }
+.fg-h1 .fg-b { color: var(--brand); }
+.fg-h1 .fg-word { display: block; }
+.fg-hero-line { margin-top: 16px; font-family: var(--f-m); font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.6; color: var(--stone); max-width: 36ch; }
+.fg-hero-cta { margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px; }
+@media (min-width: 760px) {
+  .fg-hero { min-height: clamp(660px, 100svh, 940px); display: flex; flex-direction: column; justify-content: flex-end; padding: calc(var(--hh) + 20px) 0 44px; }
+  .fg-hero-frame {
+    position: absolute; right: var(--gutter); top: calc(var(--hh) + 20px); bottom: 0; width: min(56vw, 780px); height: auto; margin: 0;
+    -webkit-mask-image: linear-gradient(#000 50%, rgba(0, 0, 0, 0.5) 76%, transparent 97%);
+    mask-image: linear-gradient(#000 50%, rgba(0, 0, 0, 0.5) 76%, transparent 97%);
+  }
+  .fg-hero-photo img { object-position: 33% 50%; }
+  .fg-hero-copy { margin: 0; padding: 0 var(--gutter); width: 100%; max-width: 1480px; margin-inline: auto; }
+  .fg-h1 { font-size: clamp(64px, 7.1vw, 128px); }
+  .fg-h1 .fg-w1, .fg-h1 .fg-w2 { display: inline-block; }
+  .fg-hero-line { max-width: none; margin-top: 22px; font-size: 13.5px; }
+  .fg-hero-cta { margin-top: 26px; }
+}

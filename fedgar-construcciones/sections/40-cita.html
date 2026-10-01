@@ -1,0 +1,69 @@
+<section class="fg-sec fg-sec--band fg-cita" id="cita" aria-labelledby="cita-title" data-hide-wa>
+  <div class="fg-wrap">
+    <div class="fg-cita-head">
+      <h2 class="fg-h2 fg-drop" id="cita-title" data-reveal><span class="fg-word">Cuéntanos</span> <span class="fg-word fg-b">tu obra.</span></h2>
+      <p class="fg-cita-sub" data-reveal>Elige, escribe y la lámina se llena sola. Tú solo mandas el mensaje.</p>
+      <p class="fg-elegida" id="cita-elegida" aria-live="polite" hidden><span class="fg-elegida-arc"><img id="cita-elegida-img" src="img/idx-ambar.webp" alt="" width="120" height="156" loading="lazy" decoding="async"></span><span class="fg-elegida-t">Lámina elegida: <b id="cita-elegida-n">AMBAR</b></span></p>
+    </div>
+    <form class="fg-paper fg-form" id="cita-form" action="#" novalidate data-reveal>
+      <div class="fg-form-grid">
+        <div class="fg-form-fields">
+          <fieldset class="fg-fs">
+            <legend>¿Qué quieres construir?</legend>
+            <div class="fg-opts">
+              <label class="fg-opt"><input type="radio" name="tipo" value="Residencia"><span>Residencia</span></label>
+              <label class="fg-opt"><input type="radio" name="tipo" value="Nave"><span>Nave</span></label>
+              <label class="fg-opt"><input type="radio" name="tipo" value="Oficinas"><span>Oficinas</span></label>
+              <label class="fg-opt"><input type="radio" name="tipo" value="Local comercial"><span>Local comercial</span></label>
+              <label class="fg-opt"><input type="radio" name="tipo" value="Otro"><span>Otro</span></label>
+            </div>
+          </fieldset>
+          <div class="fg-row2">
+            <label class="fg-field"><span class="fg-lbl">Metros aproximados (opcional)</span>
+              <span class="fg-inwrap"><input type="text" name="m2" inputmode="numeric" autocomplete="off" placeholder="250" maxlength="7"><i aria-hidden="true">m²</i></span></label>
+            <label class="fg-field"><span class="fg-lbl">Obra que te gustó (opcional)</span>
+              <select name="obra">
+                <option value="">Ninguna todavía</option>
+                <option>AMBAR</option><option>CISNE</option><option>MANANTIAL</option><option>PPGLZ</option><option>TAPIA</option><option>NAVES</option><option>OFICINAS</option><option>LOCALES</option>
+              </select></label>
+          </div>
+          <div class="fg-row2">
+            <fieldset class="fg-fs">
+              <legend>¿Ya tienes terreno?</legend>
+              <div class="fg-opts">
+                <label class="fg-opt"><input type="radio" name="terreno" value="Sí"><span>Sí</span></label>
+                <label class="fg-opt"><input type="radio" name="terreno" value="No"><span>No</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="fg-fs">
+              <legend>¿Ya tienes proyecto?</legend>
+              <div class="fg-opts">
+                <label class="fg-opt"><input type="radio" name="proyecto" value="Sí"><span>Sí</span></label>
+                <label class="fg-opt"><input type="radio" name="proyecto" value="No"><span>No</span></label>
+                <label class="fg-opt"><input type="radio" name="proyecto" value="Quiero que lo hagan ustedes"><span>Quiero que lo hagan ustedes</span></label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="fg-row2">
+            <label class="fg-field"><span class="fg-lbl">Ciudad</span><input type="text" name="ciudad" autocomplete="address-level2" placeholder="Aguascalientes"></label>
+            <label class="fg-field"><span class="fg-lbl">Tu nombre</span><input type="text" name="nombre" autocomplete="given-name" placeholder="Nombre"></label>
+          </div>
+        </div>
+        <div class="fg-form-side">
+          <dl class="fg-cajetin fg-cajetin--live" aria-live="polite">
+            <div><dt>Tipo</dt><dd data-k="tipo"></dd></div>
+            <div><dt>Metros</dt><dd data-k="m2"></dd></div>
+            <div><dt>Terreno</dt><dd data-k="terreno"></dd></div>
+            <div><dt>Proyecto</dt><dd data-k="proyecto"></dd></div>
+            <div><dt>Me gustó</dt><dd data-k="obra"></dd></div>
+            <div><dt>Ciudad</dt><dd data-k="ciudad"></dd></div>
+            <div><dt>Nombre</dt><dd data-k="nombre"></dd></div>
+            <div class="fg-caj-brand"><img src="img/logo-negro.png" alt="" width="40" height="16"><span>FEDGAR</span></div>
+          </dl>
+          <a class="fg-btn fg-btn--wa fg-btn--arch fg-form-cta" id="cita-wa" data-wa-form href="https://wa.me/524493932124?text=Hola%20Fedgar%2C%20quiero%20cotizar%20una%20obra." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir cita por WhatsApp</a>
+          <p class="fg-form-note">Te respondemos por WhatsApp para agendar.</p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

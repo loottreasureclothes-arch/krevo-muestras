@@ -1,0 +1,245 @@
+/* ======================================================================
+   FEDGAR Construcciones: fundación (prefijo fg-)
+   Lenguaje de formas: ARCO y LÁMINA. Lienzo verde azulado profundo + cantera.
+   TOKENS: --bg #0d2e36 · --band #123b45 · --stone #ece3d4 (cantera) · --brand #2a94a8 · --brand-deep #176677
+   Tipos: Syne (títulos) · Figtree (cuerpo) · Space Mono (claves y cajetín)
+   ====================================================================== */
+:root {
+  --bg: #0d2e36;
+  --band: #123b45;
+  --band-2: #0a2229;
+  --stone: #ece3d4;
+  --stone-2: #e2d7c4;
+  --brand: #2a94a8;
+  --brand-deep: #176677;
+  --brand-ink: #08191d;
+  --ink: #10181a;
+  --mute-d: rgba(236, 227, 212, 0.76);
+  --mute-l: rgba(16, 24, 26, 0.72);
+  --line-d: rgba(236, 227, 212, 0.24);
+  --line-l: rgba(16, 24, 26, 0.3);
+  --wa: #25d366;
+  --wa-dark: #1ebe5b;
+  --wa-ink: #0b3d1f;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-land: cubic-bezier(0.16, 0.84, 0.44, 1);
+  --f-d: "Syne", "Arial Black", system-ui, sans-serif;
+  --f-b: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-m: "Space Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --gutter: 18px;
+  --sec-y: 44px;
+  --hh: 60px;
+  --hh-c: 50px;
+}
+@media (min-width: 760px) { :root { --gutter: 40px; --sec-y: 44px; --hh: 68px; --hh-c: 54px; } }
+@media (min-width: 1280px) { :root { --gutter: 56px; } }
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; overflow-x: clip; scroll-padding-top: calc(var(--hh-c) + 16px); scroll-behavior: auto !important; }
+body {
+  min-height: 100svh; background: var(--bg); color: var(--stone);
+  font-family: var(--f-b); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; overflow-x: clip;
+}
+h1, h2, h3 { font-family: var(--f-d); font-weight: 700; line-height: 1.02; text-wrap: balance; overflow-wrap: break-word; letter-spacing: -0.015em; }
+p { text-wrap: pretty; overflow-wrap: break-word; }
+img, picture, svg { display: block; max-width: 100%; }
+img { height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+input, select { font-size: max(16px, 1em); }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+a, button, label, [role="button"] { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+ul[class], ol[class] { list-style: none; padding: 0; }
+address { font-style: normal; }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+::selection { background: var(--brand); color: var(--brand-ink); }
+.fg-wrap { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: var(--gutter); }
+.fg-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.fg-nowrap { white-space: nowrap; }
+.fg-skip { position: fixed; left: 12px; top: 12px; z-index: 120; padding: 12px 18px; background: var(--stone); color: var(--ink); font-weight: 600; transform: translateY(-160%); transition: transform 200ms var(--ease-out); }
+.fg-skip:focus { transform: none; }
+.fg-mono { font-family: var(--f-m); }
+
+/* ---------- Secciones ---------- */
+.fg-sec { position: relative; padding-block: var(--sec-y); }
+.fg-sec--band { background: var(--band); }
+.fg-sec--stone { background: var(--stone); color: var(--ink); }
+
+/* ---------- Titulos (a dos tonos) ---------- */
+.fg-h2 { font-size: clamp(27px, 7.4vw, 34px); color: var(--stone); }
+.fg-h2 .fg-b { color: var(--brand); }
+.fg-sec--stone .fg-h2 { color: var(--ink); }
+.fg-sec--stone .fg-h2 .fg-b { color: var(--brand-deep); }
+@media (min-width: 760px) { .fg-h2 { font-size: clamp(40px, 4.4vw, 64px); } }
+.fg-word { display: inline-block; }
+/* Cifras legibles en titulos: el 0 de Syne se lee como o; las cifras van en Figtree */
+.fg-num { font-family: var(--f-b); font-weight: 700; font-variant-numeric: lining-nums tabular-nums; letter-spacing: -0.03em; }
+.fg-line { display: block; }
+
+/* ---------- Botones ---------- */
+.fg-btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 30px; border: 1.5px solid transparent;
+  font-family: var(--f-b); font-weight: 600; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  line-height: 1; white-space: nowrap; user-select: none; cursor: pointer;
+  transition: transform 160ms var(--ease-out), background-color 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.fg-btn svg { width: 20px; height: 20px; flex: none; }
+.fg-btn:active { transform: scale(0.97); }
+.fg-btn--arch { border-radius: 999px 999px 0 0; background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+@media (hover: hover) and (pointer: fine) { .fg-btn--arch:hover { background: #3aa7bc; border-color: #3aa7bc; } }
+.fg-btn--sm { min-height: 44px; padding: 0 18px; font-size: 11px; letter-spacing: 0.1em; }
+.fg-btn--wa { background: var(--wa); border-color: var(--wa); color: var(--wa-ink); }
+@media (hover: hover) and (pointer: fine) { .fg-btn--wa:hover { background: var(--wa-dark); border-color: var(--wa-dark); } }
+.fg-btn--wa:active { background: var(--wa-dark); }
+.fg-btn--line { background: transparent; border-color: currentColor; color: inherit; border-radius: 0; }
+@media (hover: hover) and (pointer: fine) { .fg-btn--line:hover { background: rgba(236, 227, 212, 0.08); } }
+.fg-link {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  font-family: var(--f-m); font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;
+  background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 100% 1.5px; background-position: 0 calc(100% - 9px);
+}
+.fg-link svg { width: 18px; height: 18px; transition: transform 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .fg-link:hover svg { transform: translateX(4px); } }
+
+/* ---------- Header: EL TRAZO ---------- */
+.fg-header { position: fixed; inset: 0 0 auto 0; z-index: 90; }
+.fg-bar {
+  height: var(--hh); display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 0 calc(var(--gutter) - 4px) 0 var(--gutter); background: var(--bg);
+  transition: height 240ms var(--ease-out);
+}
+.fg-header.is-compact .fg-bar { height: var(--hh-c); box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.5); }
+.fg-brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
+.fg-brand img { width: 50px; height: auto; transition: width 240ms var(--ease-out); }
+.fg-header.is-compact .fg-brand img { width: 44px; }
+.fg-brand-name { font-family: var(--f-d); font-weight: 800; font-size: 14.5px; letter-spacing: 0.03em; color: var(--stone); }
+.fg-nav-d { display: none; }
+.fg-actions { display: flex; align-items: center; gap: 4px; }
+.fg-burger { width: 46px; height: 46px; display: grid; place-items: center; }
+.fg-burger-i { position: relative; width: 24px; height: 12px; display: block; }
+.fg-burger-i i { position: absolute; left: 0; width: 100%; height: 2px; background: var(--stone); transition: transform 260ms var(--ease-out), top 260ms var(--ease-out); }
+.fg-burger-i i:nth-child(1) { top: 0; }
+.fg-burger-i i:nth-child(2) { top: 10px; }
+body.fg-menu-open .fg-burger-i i:nth-child(1) { top: 5px; transform: rotate(45deg); }
+body.fg-menu-open .fg-burger-i i:nth-child(2) { top: 5px; transform: rotate(-45deg); }
+/* El trazo vive DENTRO de la barra (abajo), para no tachar el texto que pasa debajo */
+.fg-trazo { position: absolute; left: 0; top: calc(100% - 8px); width: 100%; height: 7px; pointer-events: none; overflow: visible; z-index: 1; }
+.fg-brand, .fg-actions, .fg-nav-d { position: relative; z-index: 2; }
+.fg-header .fg-btn--sm { padding: 0 14px; letter-spacing: 0.08em; }
+body.fg-menu-open .fg-trazo { opacity: 0; }
+@media (min-width: 760px) {
+  .fg-nav-d a { font-family: var(--f-m); font-size: 12.5px; letter-spacing: 0.14em; min-height: 44px; display: inline-flex; align-items: center; color: var(--mute-d); transition: color 200ms; }
+  .fg-nav-d a:hover { color: var(--stone); }
+  .fg-brand img { width: 78px; }
+  .fg-header.is-compact .fg-brand img { width: 64px; }
+  .fg-brand-name { font-size: 19px; }
+  .fg-btn--sm, .fg-header .fg-btn--sm { padding: 0 26px; font-size: 12px; letter-spacing: 0.12em; }
+  .fg-actions { gap: 10px; }
+}
+
+/* ---------- Menu a pantalla completa ---------- */
+.fg-menu {
+  position: fixed; inset: 0; z-index: 70; background: var(--bg); overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center; padding: 84px var(--gutter) 28px;
+  visibility: hidden; opacity: 0; transition: opacity 260ms var(--ease-out), visibility 0s linear 260ms;
+}
+body.fg-menu-open .fg-menu { visibility: visible; opacity: 1; transition: opacity 260ms var(--ease-out); }
+body.fg-menu-open { overflow: hidden; }
+.fg-menu-arco { position: absolute; left: 50%; bottom: -2%; width: min(150%, 1100px); transform: translateX(-50%); color: var(--stone); opacity: 0.16; pointer-events: none; }
+.fg-menu-nav { position: relative; display: flex; flex-direction: column; }
+.fg-menu-nav a {
+  display: flex; align-items: baseline; gap: 16px; min-height: 56px; padding: 6px 0; border-bottom: 1px solid var(--line-d);
+  font-family: var(--f-d); font-weight: 700; font-size: clamp(26px, 8vw, 40px); letter-spacing: -0.01em;
+}
+.fg-menu-nav a span { font-family: var(--f-m); font-weight: 400; font-size: 12px; letter-spacing: 0.1em; color: var(--brand); }
+.fg-menu-foot { position: relative; margin-top: 28px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.fg-menu-dir { font-family: var(--f-m); font-size: 12px; color: var(--mute-d); }
+.fg-menu-nav a, .fg-menu-foot { opacity: 0; transform: translateY(12px); }
+body.fg-menu-open .fg-menu-nav a, body.fg-menu-open .fg-menu-foot { opacity: 1; transform: none; transition: opacity 360ms var(--ease-out), transform 360ms var(--ease-out); transition-delay: calc(var(--i, 0) * 50ms + 80ms); }
+@media (min-width: 760px) {
+  .fg-menu { padding-inline: calc((100vw - 1240px) / 2 + var(--gutter)); }
+  .fg-menu-nav { max-width: 640px; }
+}
+
+/* ---------- WhatsApp flotante ---------- */
+.fg-wa {
+  position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 60;
+  width: 56px; height: 56px; display: grid; place-items: center; border-radius: 50%;
+  background: var(--wa); color: var(--wa-ink); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
+  animation: fg-wa-in 640ms var(--ease-out) 1s both;
+}
+.fg-wa svg { width: 30px; height: 30px; }
+.fg-wa:active { transform: scale(0.94); }
+body.fg-menu-open .fg-wa { visibility: hidden; animation: none; }
+body.fg-wa-off .fg-wa { visibility: hidden; opacity: 0; animation: none; }
+@keyframes fg-wa-in { from { opacity: 0; transform: translateY(14px) scale(0.9); } to { opacity: 1; transform: none; } }
+
+/* ---------- Reveal (el CSS base es el estado FINAL visible) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html.fg-js [data-reveal]:not(.fg-drop) { opacity: 0; transform: translateY(14px); transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); }
+  html.fg-js [data-reveal]:not(.fg-drop).is-in { opacity: 1; transform: none; }
+  html.fg-js .fg-drop .fg-word { opacity: 0; }
+  html.fg-js .fg-drop.is-in .fg-word { animation: fg-fall 500ms var(--ease-land) both; }
+  html.fg-js .fg-drop.is-in .fg-word:nth-child(2) { animation-delay: 90ms; }
+  html.fg-js .fg-drop.is-in .fg-word:nth-child(3) { animation-delay: 180ms; }
+  html.fg-js .fg-drop.is-in .fg-word:nth-child(4) { animation-delay: 270ms; }
+}
+@keyframes fg-fall {
+  0% { opacity: 0; transform: translateY(-0.42em); }
+  62% { opacity: 1; transform: translateY(0.05em); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Lamina (tarjeta cantera con margen de plano) ---------- */
+.fg-paper { position: relative; background: var(--stone); color: var(--ink); padding: 22px 20px; box-shadow: 0 22px 44px -26px rgba(0, 0, 0, 0.7); }
+.fg-paper::before { content: ""; position: absolute; inset: 8px; border: 1px solid var(--line-l); pointer-events: none; }
+.fg-arch { border-radius: 999px 999px 0 0; overflow: hidden; }
+.fg-arch img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Cajetin */
+.fg-cajetin { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--ink); font-family: var(--f-m); color: var(--ink); background: rgba(255, 255, 255, 0.16); }
+.fg-cajetin > div { padding: 7px 9px 8px; border-bottom: 1px solid var(--line-l); min-width: 0; }
+.fg-cajetin > div:nth-child(odd) { border-right: 1px solid var(--line-l); }
+.fg-cajetin > div:nth-last-child(-n+2) { border-bottom: 0; }
+.fg-cajetin dt { font-size: 9.5px; letter-spacing: 0.14em; color: var(--mute-l); text-transform: uppercase; }
+.fg-cajetin dd { font-size: 12.5px; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
+/* Celda sin llenar: renglón punteado de plano, no un punto suelto */
+.fg-cajetin dd:empty { min-height: 1.3em; }
+.fg-cajetin dd:empty::after { content: ""; display: block; height: 1px; margin-top: 9px; width: 72%; background: repeating-linear-gradient(90deg, var(--line-l) 0 6px, transparent 6px 10px); }
+.fg-caj-brand { display: flex; align-items: center; gap: 6px; font-family: var(--f-d); font-weight: 800; font-size: 11px; letter-spacing: 0.03em; }
+.fg-caj-brand img { width: 30px; height: auto; flex: none; }
+
+/* ---------- Pie ---------- */
+.fg-foot { background: linear-gradient(to bottom, rgba(10, 34, 41, 0), var(--band-2) 70px); color: var(--stone); padding: 0 0 30px; margin-top: -70px; position: relative; z-index: 3; overflow: hidden; }
+.fg-foot-grid { display: grid; gap: 28px; }
+.fg-foot-brand { display: grid; justify-items: start; }
+.fg-foot-brand img { width: 150px; height: auto; opacity: 0.95; }
+.fg-foot-mark { white-space: nowrap; margin-top: 6px; font-family: var(--f-d); font-weight: 800; font-size: 12.4vw; line-height: 0.9; letter-spacing: 0.01em; color: var(--stone); }
+.fg-foot-h { font-family: var(--f-m); font-weight: 400; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brand); margin-bottom: 10px; }
+.fg-foot-list { display: grid; gap: 4px; }
+.fg-foot-list a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 16px; }
+.fg-foot-list svg { width: 18px; height: 18px; flex: none; }
+.fg-foot address { line-height: 1.7; color: var(--mute-d); }
+.fg-foot-bottom { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line-d); }
+.fg-foot-bottom p { font-family: var(--f-m); font-size: 11.5px; line-height: 1.6; color: var(--mute-d); }
+@media (min-width: 760px) {
+  .fg-foot { padding-top: 0; }
+  .fg-foot-grid { grid-template-columns: 1fr 1fr; align-items: start; gap: 32px 48px; }
+  .fg-foot-brand { grid-column: 1 / -1; }
+  .fg-foot-mark { font-size: clamp(64px, 11vw, 120px); }
+}
+@media (min-width: 1100px) {
+  .fg-foot-mark { font-size: clamp(90px, 8.2vw, 126px); }
+  .fg-foot-grid { grid-template-columns: minmax(250px, 1fr) minmax(250px, 1fr) minmax(0, 1fr); gap: 32px 56px; }
+  .fg-foot-brand { grid-column: 1 / -1; grid-template-columns: 190px auto; justify-content: start; align-items: end; gap: 28px; }
+  .fg-foot-brand img { width: 190px; max-width: none; margin-bottom: 10px; }
+}
+@media (min-width: 1040px) { .fg-nav-d { display: flex; gap: 38px; position: absolute; left: 50%; transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .fg-wa { animation: none; }
+  .fg-bar, .fg-brand img { transition: none; }
+}
