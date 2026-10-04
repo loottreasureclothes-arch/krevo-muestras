@@ -1,0 +1,7 @@
+.listo{background:var(--brick);color:var(--ink);padding:44px 0}
+.listo h2 span{color:var(--red)}
+.listo-p{margin:12px 0 14px;font-size:19px;font-weight:600;max-width:30ch}
+.listo-l{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.listo-l li{padding:8px 0 8px 28px;border-bottom:1px solid rgba(22,23,23,.2);position:relative;font-size:17px}
+.listo-l li::before{content:"";position:absolute;left:2px;top:50%;width:12px;height:12px;margin-top:-6px;border:2px solid var(--red);border-radius:50%}
+@media (min-width:760px){.listo{padding:88px 0}.listo-in{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}.listo-in .tag,.listo-in h2,.listo-in .listo-p{grid-column:1}.listo-l{grid-column:2;grid-row:1/4}}

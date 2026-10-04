@@ -1,0 +1,48 @@
+<section class="sec sec-ronda" id="ronda">
+  <div class="wrap ronda">
+    <div class="ronda-head">
+      <p class="eyebrow" data-reveal>Tu ronda</p>
+      <h2 class="t2" data-reveal>Arma la ronda.<span>Llama y pídela.</span></h2>
+      <p class="lead" data-reveal>Suma lo que se te antoje, mira cuánto es y llévala lista a la mesa.</p>
+    </div>
+    <div class="ronda-body">
+      <div class="tarro-box" data-reveal>
+        <div class="seg" role="radiogroup" aria-label="Tipo de barril">
+          <button type="button" role="radio" aria-checked="true" data-tipo="clara">Barril clara</button>
+          <button type="button" role="radio" aria-checked="false" data-tipo="oscura">Barril oscura</button>
+        </div>
+        <svg class="tarro" viewBox="0 0 200 240" role="img" aria-label="Tarro que se llena con tu ronda">
+          <defs><clipPath id="tarro-clip"><path d="M40 30h110l-8 176a14 14 0 01-14 13H62a14 14 0 01-14-13z"/></clipPath>
+          <linearGradient id="g-clara" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f2c04a"/><stop offset="1" stop-color="#c8801c"/></linearGradient>
+          <linearGradient id="g-oscura" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#6b3418"/><stop offset="1" stop-color="#24100a"/></linearGradient></defs>
+          <path class="t-asa" d="M150 62h22a16 16 0 0116 16v62a16 16 0 01-16 16h-26" fill="none" stroke-width="12"/>
+          <g clip-path="url(#tarro-clip)">
+            <rect class="t-fondo" x="30" y="20" width="130" height="210"/>
+            <g class="t-nivel" id="t-nivel">
+              <rect id="t-liquido" x="30" y="30" width="130" height="210" fill="url(#g-clara)"/>
+              <path class="t-espuma" d="M30 22q14-16 30-6t30-6 30 6 30-6 10 6v26H30z"/>
+            </g>
+          </g>
+          <path class="t-vidrio" d="M40 30h110l-8 176a14 14 0 01-14 13H62a14 14 0 01-14-13z" fill="none" stroke-width="5"/>
+          <path class="t-brillo" d="M62 52v132" stroke-width="4" fill="none"/>
+        </svg>
+        <p class="tarro-n" id="tarro-n" aria-live="polite">Todavía vacío</p>
+      </div>
+      <div class="ticket" data-reveal>
+        <div class="seg seg-s" role="radiogroup" aria-label="Casa para pasar">
+          <button type="button" role="radio" aria-checked="true" data-casa="g">Guadalupe 331</button>
+          <button type="button" role="radio" aria-checked="false" data-casa="p">Poder Legislativo 210</button>
+        </div>
+        <ul class="ticket-lines" id="ticket-lines"></ul>
+        <p class="ticket-empty" id="ticket-empty">Aún no hay nada en la ronda. Agrega de la carta o toca aquí abajo.</p>
+        <div class="quick" id="quick"></div>
+        <div class="ticket-total"><span>Total</span><b id="ticket-total">$0</b></div>
+        <div class="actions">
+          <a class="btn btn-red" id="ronda-call" href="tel:+524493639327"><svg class="ic"><use href="#i-phone"/></svg>Llamar y pedir mi ronda</a>
+          <button class="btn btn-line" id="ronda-copy" type="button">Copiar mi ronda</button>
+        </div>
+        <p class="nota" id="ronda-nota">Total de las cervezas, sin botana. Botana y tragos se preguntan al llamar.</p>
+      </div>
+    </div>
+  </div>
+</section>

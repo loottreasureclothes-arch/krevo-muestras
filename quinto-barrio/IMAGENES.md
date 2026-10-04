@@ -1,0 +1,1 @@
+Fotos de Maps (research/fotos/maps): 01 hero, 04 corte, 30 tacos, 10 ramen, 12 pizza, 14 hamburguesa, 18 costillas, 24 lasagna, 25 alitas, 15 cerveza, 16 coctel, 21 nave, 02 fachada, 08 barra, 29 mesa, 17 corte2, 07 plana, 26 burger2. Webp 480/960/1600 en img/. og.jpg 1200x630 y favicon con PIL. No usadas: 03,09,11,19,20,22,23,32-35.

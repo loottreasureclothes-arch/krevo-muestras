@@ -1,0 +1,46 @@
+.charola{background:var(--c2);padding:48px 0 50px;border-top:1px solid var(--line)}
+.ch-grid{display:grid;gap:28px}
+.ch-intro .nav-btn{margin-top:24px}
+.mini{font-size:14px;color:var(--stone);margin-top:10px}
+.paper{--paper:#efe9d6;position:relative;padding:22px 16px 34px;background:var(--check);background-size:26px 26px;background-color:#f2eee0;clip-path:var(--cut)}
+.paper::before{content:"";position:absolute;inset:0;background:rgba(19,17,12,.62);pointer-events:none}
+.ticket{position:relative;z-index:1;background:var(--paper);color:var(--c);padding:22px 18px 26px;margin-bottom:14px;box-shadow:0 14px 30px rgba(0,0,0,.45);transform:rotate(-.6deg)}
+.ticket::after{content:"";position:absolute;left:0;right:0;top:100%;height:9px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9'%3E%3Cpath d='M0 0H16L8 9Z' fill='%23efe9d6'/%3E%3C/svg%3E") repeat-x}
+.tk-top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px dashed rgba(19,17,12,.35);padding-bottom:12px;margin-bottom:14px}
+.tk-top b{font:400 22px/1 var(--display)}
+.tk-top span{font:700 10px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--wood)}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--c)}
+.seg button{height:44px;background:transparent;border:0;font:700 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.seg button[aria-pressed=true]{background:var(--c);color:var(--cr)}
+.tk-list{margin-top:6px}
+.tk-list li{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:11px 0;border-bottom:1px dotted rgba(19,17,12,.4);animation:stamp .3s ease}
+@keyframes stamp{from{opacity:0;transform:translateX(-14px)}}
+.tk-list .q{font:400 18px/1 var(--display);min-width:30px}
+.tk-list .n{font:700 15px/1.2 var(--body);text-transform:uppercase;letter-spacing:.03em}
+.tk-list .p{font:700 16px/1 var(--body)}
+.tk-list .x{width:34px;height:34px;border:1px solid rgba(19,17,12,.4);background:transparent;cursor:pointer;font:700 18px/1 var(--body)}
+.tk-empty{padding:22px 0 18px;color:#5b5646;font-size:16px}
+.tk-empty a{display:inline-flex;align-items:center;min-height:44px;margin-top:4px;color:var(--wood);font-weight:700}
+.tk-empty[hidden]{display:none}
+.tk-quick{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.tk-quick button{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:52px;padding:8px 10px;background:#fffdf4;border:1.5px dashed rgba(19,17,12,.45);color:var(--c);font:700 12.5px/1.15 var(--body);letter-spacing:.04em;text-transform:uppercase;text-align:left;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.tk-quick button b{font:400 17px/1 var(--display);color:var(--wood)}
+.tk-quick button:hover{background:var(--mos);border-color:var(--c);border-style:solid}
+.tk-quick button:active{transform:scale(.97)}
+.tk-total{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0 6px;border-top:2px dashed rgba(19,17,12,.35);margin-top:6px}
+.tk-total span{font:700 12px/1 var(--body);letter-spacing:.22em;text-transform:uppercase}
+.tk-total b{font:400 34px/1 var(--display);transition:transform .25s}
+.tk-total b.bump{transform:scale(1.12)}
+.tk-name{display:block;margin-top:12px;font:700 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase}
+.tk-name input{display:block;width:100%;margin-top:8px;height:46px;border:1.5px solid var(--c);background:#fffdf4;padding:0 12px;font:500 17px var(--body);color:var(--c);border-radius:0}
+.tk-note{font-size:13.5px;color:#5b5646;margin-top:12px}
+.send{position:relative;z-index:1;margin-top:26px}
+.send .wa-btn{width:100%;font-size:12.5px;letter-spacing:.1em}
+@media (min-width:900px){
+  .charola{padding:84px 0}
+  .ch-grid{grid-template-columns:.9fr 1.1fr;align-items:center;gap:64px}
+  .charola .t{font-size:clamp(44px,4.3vw,66px)}
+  .paper{padding:36px 40px 44px}
+  .ticket{padding:28px 28px 32px;max-width:520px;margin-inline:auto;margin-bottom:14px}
+  .send{max-width:520px;margin-inline:auto}
+}

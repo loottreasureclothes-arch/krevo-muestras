@@ -1,0 +1,11 @@
+.mesa{position:relative;height:min(80vw,640px);overflow:hidden;background:var(--c)}
+.mesa-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.mesa-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(19,17,12,.92) 0,rgba(19,17,12,.5) 45%,rgba(19,17,12,.1) 100%)}
+.mesa-txt{position:absolute;left:0;right:0;bottom:0;padding-bottom:36px}
+.mesa-txt .t{font-size:clamp(40px,10.6vw,110px)}
+.mesa-txt p{margin:12px 0 4px;max-width:28ch;color:var(--cr2)}
+.mesa-roll{position:absolute;left:0;right:0;bottom:0;height:16px;background:var(--check);background-size:16px 16px;z-index:3;transform-origin:left center;transition:transform .9s cubic-bezier(.6,0,.2,1) .15s}
+.mesa-ph{transition:transform 1.1s cubic-bezier(.2,.6,.2,1)}
+html.js-rv .mesa:not(.is-seen) .mesa-ph{transform:scale(1.12)}
+html.js-rv .mesa:not(.is-seen) .mesa-roll{transform:scaleX(0)}
+@media (min-width:900px){.mesa{height:min(56vw,760px)}.mesa-txt{padding-bottom:64px}.mesa-txt .t{font-size:clamp(70px,9vw,150px)}}

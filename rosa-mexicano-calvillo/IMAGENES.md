@@ -1,0 +1,1 @@
+Todas de Google Maps (research/fotos/maps), webp 480/960/1600 en img/. Usadas: 07 hero, 02 carta, 03 y 20 miniaturas, 15 escalera, 01/09/16 rincones (09 en slot piedra, 16 barra), 08/04/19/17/14/10 galería, 23 fachada. Prohibidas: 05,06,12,18,21,22,24,25,26. Las 3 de rincones se cargan por JS (mesa, piedra, barra).

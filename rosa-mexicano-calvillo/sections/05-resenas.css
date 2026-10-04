@@ -1,0 +1,23 @@
+.resenas{background:var(--wine)}
+.resenas .eb{color:#FFC2D8}.resenas h2 .t2{color:#FFD3E3}
+.rs-top{display:grid;gap:22px;margin-top:34px;padding:26px 0;border-top:1px solid rgba(255,255,255,.3);border-bottom:1px solid rgba(255,255,255,.3)}
+.rs-big{display:flex;align-items:center;gap:18px}
+.rs-big b{font:400 clamp(110px,34vw,200px)/.8 var(--f1);color:#fff;letter-spacing:-.03em}
+.rs-big span{font:800 12px/1.7 var(--f2);letter-spacing:.14em;text-transform:uppercase;color:#FFD3E3}
+.rs-big span{font:600 15px/1.45 var(--f2);letter-spacing:0;text-transform:none}.rs-big em{font:800 12px/2 var(--f2);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.rs-g{display:flex;align-items:center;gap:14px}
+.rs-g b{font:400 54px/1 var(--f1)}.rs-g span{font:600 15px/1.4 var(--f2);color:#FFD3E3}
+.rs-hint{margin-top:26px;font:800 12px var(--f2);letter-spacing:.14em;text-transform:uppercase;color:#FFD3E3}.rs-hint::after{content:" \2192"}
+.rs-list{display:flex;gap:12px;margin:14px -20px 0;padding:0 20px 8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.rs-list::-webkit-scrollbar{display:none}
+.rv{flex:0 0 84%;scroll-snap-align:start;background:var(--ink);padding:22px 20px;border-radius:2px;display:grid;gap:12px;align-content:start;border-top:3px solid var(--rosa)}
+.rv p{font:400 19px/1.4 var(--f1)}
+.rv footer{display:grid;gap:1px}.rv footer b{font:800 14px var(--f2)}.rv footer span{font-size:13px;color:var(--mut)}
+.stars{display:block;height:18px;width:calc(19px * var(--n));background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='19' height='18' viewBox='0 0 19 18'%3E%3Cpath fill='%23F77BA6' d='M9.500 0l2.600 6 6.400.5-4.900 4.200 1.500 6.300L9.500 13.700 3.900 17l1.500-6.300L.5 6.500 6.900 6z'/%3E%3C/svg%3E") repeat-x}
+.rs-btn{margin-top:30px;border-color:#fff;color:#fff}
+@media(min-width:820px){
+ .rs-top{grid-template-columns:auto auto;justify-content:space-between;align-items:center}
+ .rs-list{display:grid;margin:30px 0 0;padding:0;overflow:visible;grid-template-columns:repeat(3,1fr);gap:18px}
+ .rv{flex:none}
+ .rs-hint{display:none}
+ .rv:nth-child(1),.rv:nth-child(7){grid-column:span 2}
+}

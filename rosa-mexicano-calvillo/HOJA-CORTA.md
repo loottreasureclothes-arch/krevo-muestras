@@ -1,0 +1,7 @@
+# Rosa Mexicano Cocina (Calvillo): hoja corta
+Trabajo: reservar mesa en 1 toque. wa.me/524959560095 (tel publicado en Maps; WhatsApp SIN confirmar, va a PENDIENTES). Llamar tel:+524959560095 siempre al lado.
+Promesa: "Mesa larga en el Malecón de Calvillo." #1 de 55 en Calvillo (TA 4.9), Google 4.6 con 1,414 opiniones.
+Identidad: lienzo vino oscuro #1F0710, vino de marca #7B1E3A, rosa mexicano #F0508A (texto acento #F77BA6), crema #F4ECE2 solo para leer, azul talavera #1F4E8C en detalles. Gloock (títulos) + Karla (texto). Forma: arco de portal (radio 999 arriba) + azulejo. Header: hamburguesa izq, wordmark centro, "Reservar" der.
+Firma: "Elige tu rincón": 3 rincones con foto (mesa larga, terraza de piedra, barra azul) + día (lun cerrado) + hora (cierre por día) + personas + "a mi mesa" desde la carta. Ticket vivo -> WhatsApp literal. Momento firma: el arco se abre (clip-path) al entrar.
+Secciones: 01-hero (07 azul, "Mesa larga en el / Malecón de Calvillo.") | 02-carta (02, "Empieza con / totopos y molcajete.") | 03-escalera (15, "Escalera. Piedra. Jardín.") | 04-rincon (mesa/piedra/barra, "Elige tu rincón / y avísanos.") | 05-resenas (4.9 gigante, "El primero de / 55 en Calvillo.") | 06-mesa (6 platos, "Lo que llega / a tu mesa.") | 07-casa (23, "Una casa con jardín, / tres cocinas.") | 08-visitanos (mapa, "Malecón Norte, / ven por tu mesa.") | 09-pendientes | pie.
+Prohibidas: 05,06,12,18,21,22,24,25,26. PENDIENTE-DUEÑO: WhatsApp, logo, carta con precios, horario confirmado, Instagram.

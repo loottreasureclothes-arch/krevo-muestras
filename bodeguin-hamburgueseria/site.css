@@ -1,0 +1,84 @@
+@font-face{font-family:"Alfa Slab One";src:url(fonts/alfa-slab.woff2) format("woff2");font-weight:400;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Barlow";src:url(fonts/barlow-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Barlow";src:url(fonts/barlow-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Barlow";src:url(fonts/barlow-600.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Barlow";src:url(fonts/barlow-700.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{
+  --c:#13110c;--c2:#1c1a14;--c3:#262219;--wood:#4d3326;--wood2:#715b41;
+  --cr:#e9e4d3;--cr2:#cdcabf;--stone:#9a9484;--mos:#dba92c;--mos2:#b98a17;
+  --wa:#25D366;--waink:#0b3d1f;--line:rgba(233,228,211,.16);
+  --display:"Alfa Slab One","Rockwell","Georgia",serif;--body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --pad:20px;--hd:62px;
+  --cut:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
+  --check:conic-gradient(#f2eee0 25%,#13110c 0 50%,#f2eee0 0 75%,#13110c 0) 0 0/22px 22px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--hd) + 8px)}
+body{margin:0;background:var(--c);color:var(--cr);font:500 17px/1.5 var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,p,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+button{font:inherit;color:inherit}
+.skip{position:absolute;left:-999px;top:0;background:var(--mos);color:var(--c);padding:10px 14px;z-index:100}
+.skip:focus{left:8px;top:8px}
+:focus-visible{outline:2px solid var(--mos);outline-offset:3px}
+
+/* tipografía común */
+.eyebrow{font:700 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--mos);display:block;margin-bottom:14px}
+.t{font:400 clamp(34px,10.4vw,60px)/1.02 var(--display);letter-spacing:.005em;text-wrap:balance}
+.t span{display:block;color:var(--mos)}
+.lead{font-size:18px;line-height:1.45;color:var(--cr2);max-width:34ch;margin-top:14px}
+.wrap{padding-inline:var(--pad);max-width:1240px;margin-inline:auto}
+
+/* botones: verde SOLO wa.me; navegar = marca, fino, rectangular */
+.btn,.nav-btn,.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;text-decoration:none;font:700 13px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;border-radius:0;cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.wa-btn{background:var(--wa);color:var(--waink);border:0}
+.wa-btn:hover{transform:translateY(-2px)}
+.nav-btn{background:transparent;color:var(--mos);border:1px solid var(--mos)}
+.nav-btn:hover{background:var(--mos);color:var(--c)}
+.go{display:inline-flex;gap:10px;align-items:center;color:var(--mos);text-decoration:none;font:700 13px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;padding:14px 0;border-bottom:1px solid var(--mos)}
+.go::after{content:"\2192";transition:transform .2s}
+.go:hover::after{transform:translateX(5px)}
+.row-btns{display:flex;flex-direction:column;gap:12px;margin-top:26px}
+
+/* header propio: placa con esquinas cortadas */
+.hd{position:fixed;inset:0 0 auto 0;height:var(--hd);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:rgba(19,17,12,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.hd::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;background:var(--check);opacity:.9}
+.hd-brand{display:flex;flex-direction:column;text-decoration:none;background:var(--cr);color:var(--c);padding:7px 16px 6px;clip-path:var(--cut);line-height:1}
+.hd-brand span{font:400 19px/1 var(--display);letter-spacing:.02em}
+.hd-brand small{font:700 8.5px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;margin-top:4px;color:var(--wood)}
+.hd-carta{display:none}
+.hd-btn{width:46px;height:46px;border:1px solid var(--line);background:transparent;display:grid;place-content:center;gap:5px;cursor:pointer}
+.hd-btn i{display:block;width:22px;height:2px;background:var(--cr);transition:transform .25s,opacity .2s}
+body.menu-open .hd-btn i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+body.menu-open .hd-btn i:nth-child(2){opacity:0}
+body.menu-open .hd-btn i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.menu{position:fixed;inset:var(--hd) 0 0 0;z-index:49;background:var(--c);padding:30px var(--pad) 40px;display:flex;flex-direction:column;gap:28px;visibility:hidden;opacity:0;transform:translateY(-8px);transition:opacity .25s,transform .25s,visibility 0s .25s;overflow:auto}
+body.menu-open .menu{visibility:visible;opacity:1;transform:none;transition:opacity .25s,transform .25s}
+body.menu-open{overflow:hidden}
+.menu-nav li{border-bottom:1px solid var(--line)}
+.menu-nav a{display:flex;gap:16px;align-items:baseline;padding:18px 0;text-decoration:none;font:400 30px/1 var(--display)}
+.menu-nav b{font:700 12px/1 var(--body);letter-spacing:.18em;color:var(--mos)}
+.menu .wa-btn{margin-top:auto}
+
+/* flotante WhatsApp */
+.wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:45;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:transform .25s,opacity .25s}
+.wa-float.is-off{opacity:0;pointer-events:none}
+
+/* franja de cuadros */
+.check{height:14px;background:var(--check)}
+
+/* reveal: base = estado final; JS lo esconde solo si no hay reduced-motion */
+html.js-rv [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+html.js-rv [data-reveal].is-in{opacity:1;transform:none}
+
+section{position:relative}
+@media (min-width:760px){
+  :root{--pad:40px;--hd:72px}
+  body{font-size:18px}
+  .hd-carta{display:inline-flex;align-items:center;min-height:44px;margin-left:auto;margin-right:20px;color:var(--mos);text-decoration:none;font:700 13px/1 var(--body);letter-spacing:.18em;text-transform:uppercase}
+  .row-btns{flex-direction:row;flex-wrap:wrap}
+  .btn,.nav-btn,.wa-btn{min-width:210px}
+}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}}

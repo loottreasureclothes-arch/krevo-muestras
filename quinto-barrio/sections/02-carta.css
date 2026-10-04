@@ -1,0 +1,13 @@
+.carta{padding:56px 0 52px;background:var(--c)}
+.menu{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:22px 12px;margin-top:30px}
+.dish{display:flex;flex-direction:column}
+.dish-ph{aspect-ratio:1/1;overflow:hidden;background:var(--c3);border-radius:50% 50% 4px 4px/36% 36% 4px 4px}
+.dish-ph img{width:100%;height:100%;object-fit:cover}
+.dish h3{font:800 24px/1 var(--bsd);text-transform:uppercase;margin-top:12px;letter-spacing:.02em}
+.dish p{font-size:13.5px;line-height:1.4;color:#b9b0a2;margin-top:6px;flex:1}
+.dish-ft{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.pr{font:600 11px/1 var(--ws);letter-spacing:.1em;text-transform:uppercase;color:var(--h)}
+.add{min-height:44px;border:1.5px solid var(--cut);color:var(--cut);font:700 12px/1 var(--ws);letter-spacing:.16em;text-transform:uppercase;transition:background .2s,color .2s}
+.add[aria-pressed="true"]{background:var(--cut);color:var(--c)}
+.add[aria-pressed="true"]::before{content:"✓ "}
+@media (min-width:820px){.menu{grid-template-columns:repeat(4,1fr);gap:40px 22px}.dish h3{font-size:28px}.carta{padding:90px 0 80px}}

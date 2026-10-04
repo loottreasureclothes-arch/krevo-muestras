@@ -1,0 +1,9 @@
+.nave{position:relative;min-height:112svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--c2)}
+.nave>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%;filter:brightness(.55) saturate(.8);transition:filter 1s ease}
+.nave::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(21,29,47,.92));pointer-events:none}
+.nave.lit>img{filter:brightness(1) saturate(1.08)}
+.rv-done .nave>img{filter:brightness(1) saturate(1.08)}
+.nave-tx{position:relative;z-index:2;padding-bottom:56px;padding-top:80px;width:100%}
+.nv{font-size:clamp(84px,27vw,150px);line-height:.86}
+.nave .lnk{margin-top:26px}
+@media (min-width:820px){.nave{min-height:92vh}.nv{font-size:clamp(110px,13vw,210px)}.nave>img{object-position:50% 45%}}

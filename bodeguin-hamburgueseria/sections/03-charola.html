@@ -1,0 +1,28 @@
+<section class="charola" id="charola">
+  <div class="wrap ch-grid">
+    <div class="ch-intro">
+      <span class="eyebrow">Tu charola</span>
+      <h2 class="t">Arma tu pedido.<span>Mándalo armado.</span></h2>
+      <p class="lead">Lo que agregaste en la carta cae aquí, con total. Un toque y va por WhatsApp.</p>
+      <button class="nav-btn" id="sugerida" type="button">Cargar sugerencia</button>
+      <p class="mini">Sugerencia: Clásica Bodeguín con papas en gajos.</p>
+    </div>
+    <div class="paper" id="paper">
+      <div class="ticket" id="ticket">
+        <div class="tk-top"><b>El Bodeguín</b><span>Taberna social</span></div>
+        <div class="seg" role="group" aria-label="Cómo lo quieres">
+          <button type="button" data-modo="aquí" aria-pressed="true">Comer aquí</button>
+          <button type="button" data-modo="para llevar" aria-pressed="false">Para llevar</button>
+        </div>
+        <ul class="tk-list" id="tkList" aria-live="polite"></ul>
+        <div class="tk-empty" id="tkEmpty"><p>Tu charola va vacía. Empieza con una:</p><div class="tk-quick"><button type="button" data-add="clasica">Clásica Bodeguín <b>$120</b></button><button type="button" data-add="vivamex">Viva Mex <b>$130</b></button><button type="button" data-add="hd-clasico">Hot dog clásico <b>$100</b></button><button type="button" data-add="gajos">Papas en gajos <b>$78</b></button></div><a href="#carta">O ve la carta completa</a></div>
+        <div class="tk-total"><span>Total</span><b id="tkTotal">$0</b></div>
+        <label class="tk-name">A nombre de<input id="tkName" type="text" autocomplete="given-name" placeholder="Tu nombre" maxlength="30"></label>
+        <p class="tk-note">Precios de la carta. Tu pedido se confirma por WhatsApp.</p>
+      </div>
+      <div class="send" data-hide-wa>
+        <a class="wa-btn" id="tkSend" href="https://wa.me/524499188874?text=Hola%20El%20Bodegu%C3%ADn%2C%20quiero%20hacer%20un%20pedido." data-wa="Hola El Bodeguín, quiero hacer un pedido.">Mandar mi pedido por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>

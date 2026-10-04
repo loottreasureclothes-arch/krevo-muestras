@@ -1,0 +1,36 @@
+<section class="caja" id="caja">
+<div class="wrap">
+  <div class="caja-head" data-reveal>
+    <span class="tag tag-w">ARMA TU PEDIDO</span>
+    <h2>Tu caja.<br><span>Tu sucursal.</span></h2>
+  </div>
+  <div class="caja-grid">
+    <div class="box-wrap" data-reveal>
+      <div class="box" id="box" aria-hidden="true">
+        <span class="box-tt">TT</span>
+        <span class="box-wm">TRASTĒVERE</span>
+        <div class="box-in" id="box-in"></div>
+        <span class="box-empty" id="box-empty"><i class="ghost g1"></i><i class="ghost g2"></i><em>Toca un precio<br>y se llena</em></span>
+      </div>
+    </div>
+    <div class="caja-ui" data-reveal>
+      <p class="lbl">1 · ¿Dónde pides?</p>
+      <div class="suc" role="radiogroup" aria-label="Sucursal">
+        <button type="button" class="suc-b on" role="radio" aria-checked="true" data-suc="plaza"><b>Plaza Patio</b><span>449 979 0707</span><em class="open-tag" data-open="plaza"></em></button>
+        <button type="button" class="suc-b" role="radio" aria-checked="false" data-suc="meridian"><b>Meridian Park</b><span>449 688 0101</span><em class="open-tag" data-open="meridian"></em></button>
+      </div>
+      <p class="lbl">2 · Tu caja</p>
+      <ul class="lines" id="lines" aria-live="polite"></ul>
+      <p class="quick-t">Atajos de la carta</p><div class="quicks"><button type="button" class="quick" data-q="upa|UPA|gra|175"><span>+</span>UPA<small>grande $175</small></button><button type="button" class="quick" data-q="pepperoni|Pepperoni|gra|175"><span>+</span>Pepperoni<small>grande $175</small></button><button type="button" class="quick" data-q="4-quesos|4 Quesos|gra|185"><span>+</span>4 Quesos<small>grande $185</small></button></div>
+      <p class="lbl">3 · ¿Cómo la quieres?</p>
+      <div class="modo" role="radiogroup" aria-label="Entrega">
+        <button type="button" class="modo-b on" role="radio" aria-checked="true" data-modo="dom">A domicilio</button>
+        <button type="button" class="modo-b" role="radio" aria-checked="false" data-modo="paso">Paso por ella</button>
+      </div>
+      <div class="tot"><span>Total de carta</span><b id="total">$0</b></div>
+      <a class="btn btn-wa btn-full" id="order-wa" data-wa-primary href="{{wa:plaza|Hola Trastévere Plaza Patio, quiero hacer un pedido a domicilio.}}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24"><use href="#i-wa"/></svg>Mandar mi pedido</a>
+      <p class="note" id="caja-note">Te llega armado a su WhatsApp. Ellos confirman tiempo y total.</p>
+    </div>
+  </div>
+</div>
+</section>
