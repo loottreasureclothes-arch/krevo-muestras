@@ -1,0 +1,38 @@
+<section class="subida" id="pedido" data-hide-wa>
+  <div class="wrap sub-grid">
+    <div class="sub-intro">
+      <p class="eyebrow" data-reveal>Arma tu subida</p>
+      <h2 class="t" data-reveal>Tu mesa<em>ya va subiendo.</em></h2>
+      <p class="sub-p" data-reveal>Lo armas aquí y llega listo a su WhatsApp.</p>
+      <div class="sub-go" data-reveal>
+        <a class="btn btn--wa" id="sub-wa" data-wa="Hola, Calvillo Lindo Terraza. Quiero apartar para 2 en la terraza. Se antoja: 1 Filete. ¿Me confirman disponibilidad y precio?" href="https://wa.me/524959562971?text=Hola%2C%20Calvillo%20Lindo%20Terraza.%20Quiero%20apartar%20para%202%20en%20la%20terraza.%20Se%20antoja%3A%201%20Filete.%20%C2%BFMe%20confirman%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mandar mi subida</a>
+        <p class="sub-msg"><span>Así les llega</span><q id="sub-prev">Hola, Calvillo Lindo Terraza. Quiero apartar para 2 en la terraza. Se antoja: 1 Filete. ¿Me confirman disponibilidad y precio?</q></p>
+      </div>
+    </div>
+    <div class="peldanos">
+      <div class="peld" style="--l:0" id="p1" data-reveal>
+        <h3><span class="pn">1</span>¿Cómo lo quieres?</h3>
+        <div class="seg" role="radiogroup" aria-label="Cómo lo quieres">
+          <button type="button" role="radio" aria-checked="false" data-modo="terraza"><b>En la terraza</b><small>Aparta tu mesa</small></button>
+          <button type="button" role="radio" aria-checked="false" data-modo="puerta"><b>Paso a la puerta</b><small>Retiro en la puerta</small></button>
+          <button type="button" role="radio" aria-checked="false" data-modo="domicilio"><b>A domicilio</b><small>Que te lo lleven</small></button>
+        </div>
+      </div>
+      <div class="peld" style="--l:1" id="p2" data-reveal>
+        <h3><span class="pn">2</span>¿Cuántos suben?</h3>
+        <div class="pers">
+          <button type="button" id="pm" aria-label="Menos personas">−</button>
+          <output id="pn" aria-live="polite">2</output>
+          <button type="button" id="pp" aria-label="Más personas">+</button>
+          <span class="pl" id="pl">personas</span>
+        </div>
+        <p class="rango" id="rango"></p>
+      </div>
+      <div class="peld" style="--l:2" id="p3" data-reveal>
+        <h3><span class="pn">3</span>Lo que se antoja</h3>
+        <ul class="sub-items" id="sub-items"></ul>
+        <p class="vacio" id="sub-vacio">Aún no agregas nada. <a href="#carta">Elige de la carta</a> o pregunta qué recomiendan.</p>
+      </div>
+    </div>
+  </div>
+</section>

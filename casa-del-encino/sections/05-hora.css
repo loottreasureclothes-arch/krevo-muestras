@@ -1,0 +1,15 @@
+.hora-s{background:var(--ink);padding:60px var(--gut) 64px;overflow:hidden}
+.hs-in{max-width:1200px;margin:0 auto;display:grid;gap:30px}
+.hs-h{display:flex;flex-direction:column;gap:2px}
+.big{font:800 clamp(130px,40vw,260px)/.82 var(--f-d);color:var(--cream);letter-spacing:-.04em}
+.hs-h .t2{font-size:clamp(30px,8.4vw,52px);line-height:1.04;max-width:12ch}
+.hs-d{font:600 12px/1 var(--f-b);letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:12px}
+.hs-info address{font:normal 600 20px/1.4 var(--f-b);margin-bottom:22px}
+.hs-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hs-ph{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.hs-ph figure{background:url(../img/azulejo.svg) 0 0/16px 16px;padding:7px}
+.hs-ph img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.hs-b{margin-top:34px}
+@media (min-width:900px){.hora-s{padding:96px max(var(--gut),4vw)}
+.hs-in{grid-template-columns:1.25fr 1fr;grid-template-areas:"h ph" "info ph";gap:34px 70px;align-items:start}
+.hs-h{grid-area:h}.hs-info{grid-area:info}.hs-ph{grid-area:ph}}

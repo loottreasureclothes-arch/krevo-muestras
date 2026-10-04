@@ -1,0 +1,43 @@
+<section class="mesa" id="mesa">
+  <div class="mesa-in">
+    <header class="mesa-h">
+      <p class="eyebrow" data-r>El azulejo de tu mesa</p>
+      <h2 data-r style="--d:.08s">Voltea el azulejo <span class="t2">que se te antoje.</span></h2>
+      <p class="mesa-p" data-r style="--d:.16s">Toca los que quieras. Los mandamos con tu reserva por WhatsApp.</p>
+    </header>
+    <div class="azulejos" id="azulejos" role="group" aria-label="Platillos de la casa">
+      <button type="button" class="az" aria-pressed="false" data-plato="Cazuela de huevo" data-img="img/huevo-480.webp" data-r>
+        <span class="az-in"><span class="az-f"><img src="img/huevo-480.webp" srcset="img/huevo-480.webp 480w, img/huevo-960.webp 960w, img/huevo-1600.webp 1600w" sizes="(min-width:900px) 22vw, 46vw" width="480" height="360" alt="Cazuela de huevo con salsa verde, chicharrón y huevo estrellado" style="object-position:40% 50%"><span class="az-cap"><b>Cazuela de huevo</b><em>$175</em></span></span><span class="az-b"><svg aria-hidden="true"><use href="#i-leaf"/></svg><b>Cazuela de huevo</b><em>En tu mesa</em></span></span>
+      </button>
+      <button type="button" class="az" aria-pressed="false" data-plato="Cazuela verde" data-img="img/verde-480.webp" data-r style="--d:.06s">
+        <span class="az-in"><span class="az-f"><img src="img/verde-480.webp" srcset="img/verde-480.webp 480w, img/verde-960.webp 960w, img/verde-1600.webp 1200w" sizes="(min-width:900px) 22vw, 46vw" width="480" height="640" alt="Cazuela verde en su sartén de hierro sobre mesa de talavera"><span class="az-cap"><b>Cazuela verde</b><em>Pregunta el precio</em></span></span><span class="az-b"><svg aria-hidden="true"><use href="#i-leaf"/></svg><b>Cazuela verde</b><em>En tu mesa</em></span></span>
+      </button>
+      <button type="button" class="az" aria-pressed="false" data-plato="Enchiladas de la casa" data-img="img/enchiladas-480.webp" data-r style="--d:.12s">
+        <span class="az-in"><span class="az-f"><img src="img/enchiladas-480.webp" srcset="img/enchiladas-480.webp 480w, img/enchiladas-960.webp 960w, img/enchiladas-1600.webp 1200w" sizes="(min-width:900px) 22vw, 46vw" width="480" height="640" alt="Enchiladas de la casa con cebolla morada, crema y un café con leche"><span class="az-cap"><b>Enchiladas de la casa</b><em>Pregunta el precio</em></span></span><span class="az-b"><svg aria-hidden="true"><use href="#i-leaf"/></svg><b>Enchiladas de la casa</b><em>En tu mesa</em></span></span>
+      </button>
+      <button type="button" class="az" aria-pressed="false" data-plato="Enchiladas negras" data-img="img/negras-480.webp" data-r style="--d:.18s">
+        <span class="az-in"><span class="az-f"><img src="img/negras-480.webp" srcset="img/negras-480.webp 480w, img/negras-960.webp 960w, img/negras-1600.webp 1200w" sizes="(min-width:900px) 22vw, 46vw" width="480" height="640" alt="Enchiladas negras con crema y cebolla morada"><span class="az-cap"><b>Enchiladas negras</b><em>Pregunta el precio</em></span></span><span class="az-b"><svg aria-hidden="true"><use href="#i-leaf"/></svg><b>Enchiladas negras</b><em>En tu mesa</em></span></span>
+      </button>
+      <button type="button" class="az" aria-pressed="false" data-plato="Waffles" data-img="img/waffles-480.webp" data-r style="--d:.24s">
+        <span class="az-in"><span class="az-f"><img src="img/waffles-480.webp" srcset="img/waffles-480.webp 480w, img/waffles-960.webp 960w, img/waffles-1600.webp 1200w" sizes="(min-width:900px) 22vw, 46vw" width="480" height="640" alt="Plato de waffles con salsa oscura sobre mantel fucsia"><span class="az-cap"><b>Waffles</b><em>Pregunta el precio</em></span></span><span class="az-b"><svg aria-hidden="true"><use href="#i-leaf"/></svg><b>Waffles</b><em>En tu mesa</em></span></span>
+      </button>
+      <button type="button" class="az" aria-pressed="false" data-plato="Desayuno completo" data-img="img/completo-480.webp" data-r style="--d:.3s">
+        <span class="az-in"><span class="az-f"><img src="img/completo-480.webp" srcset="img/completo-480.webp 480w, img/completo-960.webp 960w, img/completo-1600.webp 1200w" sizes="(min-width:900px) 22vw, 46vw" width="480" height="640" alt="Desayuno completo con enchiladas, huevo, pan y café sobre mantel fucsia"><span class="az-cap"><b>Desayuno completo</b><em>Pregunta el precio</em></span></span><span class="az-b"><svg aria-hidden="true"><use href="#i-leaf"/></svg><b>Desayuno completo</b><em>En tu mesa</em></span></span>
+      </button>
+    </div>
+    <aside class="tray" id="tray" aria-label="Tu mesa">
+      <h3>Tu mesa</h3>
+      <ul class="chips" id="chips" aria-live="polite"><li class="chips-empty">Voltea un azulejo para empezar.</li></ul>
+      <div class="tray-row">
+        <div class="step" role="group" aria-label="Personas">
+          <button type="button" id="p-menos" aria-label="Una persona menos">&minus;</button>
+          <span><b id="p-n">2</b><i id="p-t">personas</i></span>
+          <button type="button" id="p-mas" aria-label="Una persona más">+</button>
+        </div>
+        <label class="hora"><span>Hora</span><select id="hora" aria-label="Hora de la reserva"></select></label>
+      </div>
+      <a class="btn-wa" id="mesa-wa" href="{{wa:Hola Casa del Encino, quiero reservar mesa para 2 a las 9:00.}}" data-wa target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar mi mesa</a>
+      <p class="tray-note">Abrimos de 8:30 a 14:00, todos los días.</p>
+    </aside>
+  </div>
+</section>

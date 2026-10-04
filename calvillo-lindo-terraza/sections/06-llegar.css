@@ -1,0 +1,17 @@
+.llegar{background:var(--bg);padding:64px 0 60px;position:relative;overflow:hidden}
+.dir{margin:14px 0 24px;font-size:1.05rem;color:rgba(239,230,210,.85)}
+.vias{list-style:none;margin-bottom:28px}
+.vias li{display:grid;grid-template-columns:44px 1fr;grid-template-areas:"n b" ". s";padding:14px 0;border-top:1px solid rgba(185,174,135,.22)}
+.vias li:nth-child(2){padding-left:14px}.vias li:nth-child(3){padding-left:28px}
+.vias li:last-child{border-bottom:1px solid rgba(185,174,135,.22)}
+.vias span{grid-area:n;font:600 .72rem/1.9 var(--f-b);letter-spacing:.14em;color:var(--gold)}
+.vias b{grid-area:b;font:400 1.35rem/1.2 var(--f-d)}
+.vias small{grid-area:s;font-size:.9rem;color:rgba(239,230,210,.7)}
+.llegar-btns{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center}
+.tel{font:600 .86rem/1 var(--f-b);letter-spacing:.06em;color:var(--gold2);text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
+.escal{display:block;width:78%;max-width:300px;margin:36px 0 0 auto;color:var(--gold)}
+@media (min-width:820px){
+ .llegar{padding:100px 0}
+ .llegar-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:end}
+ .escal{width:100%;max-width:none;margin:0}
+}@media (max-width:819px){.llegar{padding-bottom:40px}.escal{width:56%;max-width:220px;margin-top:20px}}

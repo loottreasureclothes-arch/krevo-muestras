@@ -1,0 +1,19 @@
+.cream{background:var(--cream);color:var(--ink)}
+.carta{padding:56px var(--gut) 52px;border-top:10px solid transparent;position:relative}
+.carta::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:url(../img/azulejo.svg) 0 0/16px 16px repeat-x}
+.carta-in{max-width:1200px;margin:0 auto}
+.carta-h{margin-bottom:22px}
+.carta-h .eyebrow{margin-bottom:14px}
+.carta h2{font-size:clamp(40px,11vw,64px)}
+.carta-l{list-style:none;display:grid;gap:0}
+.carta-l li{padding:13px 0;border-bottom:1px solid rgba(14,26,51,.18)}
+.cl-top{display:flex;align-items:baseline;gap:10px}
+.cl-top h3{font:800 21px/1.12 var(--f-d)}
+.dots{flex:1;border-bottom:2px dotted rgba(14,26,51,.35);transform:translateY(-4px);min-width:16px}
+.cl-top b{font:800 18px/1 var(--f-b);background:var(--copper);color:var(--cream);padding:5px 9px;letter-spacing:.02em}
+.carta-l p{margin-top:4px;font-size:15px;color:#3b4766;max-width:46ch}
+@media (min-width:900px){.carta{padding:84px max(var(--gut),4vw) 80px}
+.carta-h{margin-bottom:40px}
+.carta h2{font-size:clamp(52px,5vw,76px)}
+.carta-l{grid-template-columns:1fr 1fr;column-gap:64px}
+.carta-l li:nth-last-child(2){border-bottom:1px solid rgba(14,26,51,.18)}}

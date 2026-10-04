@@ -1,0 +1,52 @@
+.carta{padding:72px 0 56px;background:var(--cafe)}
+.cd-grupo{font:600 13px/1 "Figtree",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--rojo);margin:44px 0 18px;padding-bottom:10px;border-bottom:1px solid #4f4337}
+.cd-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 14px}
+.cd-card{display:flex;flex-direction:column}
+.cd-card-foto{aspect-ratio:4/5;border-radius:999px 999px 8px 8px;overflow:hidden;background:var(--madera);margin-bottom:10px;position:relative;box-shadow:0 0 0 0 var(--rojo);transition:box-shadow .25s}
+.cd-card.is-on .cd-card-foto{box-shadow:0 0 0 3px var(--rojo)}
+.cd-card-foto img{width:100%;height:100%;object-fit:cover}
+.cd-card h4{font-size:21px;line-height:1.05;text-align:center}
+.cd-precio{text-align:center;font:800 18px/1 "Figtree",sans-serif;margin:7px 0 10px;color:var(--crema)}
+.cd-precio.is-ask{font:400 14px/1 "Figtree",sans-serif;color:var(--beige)}
+.cd-add{margin-top:auto;min-height:44px;background:transparent;border:1.5px solid var(--crema);color:var(--crema);font:600 12px/1 "Figtree",sans-serif;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:background .2s,color .2s}
+.cd-add[aria-pressed=true]{background:var(--crema);color:var(--cafe)}
+.cd-card-wide{grid-column:1/-1}
+.cd-card-wide .cd-card-foto{aspect-ratio:16/11;border-radius:999px 999px 8px 8px}
+.cd-wide-t{display:flex;flex-direction:column}
+.cd-mini{margin:26px 0 12px;color:var(--beige);font-size:15px}
+.cd-chips{display:flex;flex-wrap:wrap;gap:10px}
+.cd-chip{display:flex;gap:10px;align-items:baseline;min-height:44px;padding:10px 14px;background:transparent;border:1.5px solid #6b5c4d;color:var(--crema);font:600 15px/1 "Figtree",sans-serif;border-radius:2px;cursor:pointer;transition:background .2s}
+.cd-chip b{font-weight:800;color:var(--beige)}
+.cd-chip[aria-pressed=true]{background:var(--crema);color:var(--cafe);border-color:var(--crema)}
+.cd-chip[aria-pressed=true] b{color:var(--cafe)}
+.charola{position:sticky;bottom:calc(10px + env(safe-area-inset-bottom));z-index:60;margin-top:30px;display:flex;flex-direction:column;gap:12px;padding:12px;border-radius:6px;background:linear-gradient(180deg,#5b4d40,var(--madera));box-shadow:0 10px 30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.15);animation:ch-in .35s ease}
+@keyframes ch-in{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.charola[hidden]{display:none}
+.charola-tabla{display:flex;align-items:center;gap:12px;min-width:0}
+.charola-fotos{display:flex;flex:none}
+.ch-ph{width:44px;height:52px;border-radius:999px 999px 4px 4px;overflow:hidden;border:2px solid var(--crema);margin-right:-8px;background:var(--cafe);display:grid;place-items:center;font:400 20px "Gloock",serif}
+.ch-ph img{width:100%;height:100%;object-fit:cover}
+.charola-txt{font:600 15px/1.25 "Figtree",sans-serif;color:var(--crema);min-width:0;margin-left:10px}
+.charola .btn-wa{width:100%}
+@media (min-width:760px){
+ .carta{padding:104px 0 80px}
+ .cd-grid{grid-template-columns:repeat(4,1fr);gap:34px 22px}
+ .cd-card-wide{grid-column:span 2}
+ .cd-card-wide .cd-card-foto{aspect-ratio:4/5;border-radius:999px 999px 8px 8px}
+ .charola{flex-direction:row;align-items:center;justify-content:space-between;max-width:760px;margin-left:auto;margin-right:auto;padding:14px 18px}
+ .charola .btn-wa{width:auto;flex:none}
+}
+
+.charola-txt b{display:block;font:400 19px/1.1 "Gloock",serif;color:var(--crema);margin-bottom:3px}
+.ch-ph.ch-vacio{background:rgba(29,12,11,.35);border:2px dashed rgba(223,220,211,.55)}
+.charola.is-empty .btn-wa{opacity:.92}
+.charola.is-bump{animation:ch-bump .3s ease}
+@keyframes ch-bump{50%{transform:translateY(-6px) scale(1.015)}}
+.charola::before{content:"";position:absolute;left:10px;right:10px;top:5px;height:2px;border-radius:2px;background:rgba(255,255,255,.12)}
+.charola{position:sticky}
+@media (min-width:760px){
+ .cd-grid+.cd-mini+.cd-chips+.cd-grupo+.cd-grid{grid-template-columns:repeat(5,1fr)}
+ .cd-card-wide{grid-column:auto}
+ .cd-card-wide .cd-card-foto{aspect-ratio:4/5}
+ .cd-card-wide .cd-wide-t{flex:1}
+}

@@ -1,0 +1,18 @@
+.hero{display:flex;flex-direction:column}
+.hero-ph{position:relative;height:55svh;min-height:380px;max-height:600px;background:url(../img/azulejo-d.svg) 0 0/32px 32px;overflow:hidden;border-bottom:8px solid var(--blue)}
+.hero-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;transition:clip-path 1s cubic-bezier(.65,0,.2,1)}
+/* momento firma: la puerta azul se abre sobre la talavera */
+html.js-anim .hero-ph:not(.is-in) img{clip-path:inset(0 50% 0 50%)}
+.hero-tx{padding:22px var(--gut) 44px;background:var(--ink)}
+.plate{position:absolute;left:var(--gut);bottom:16px;z-index:2;display:inline-flex;flex-direction:column;gap:4px;background:var(--ink3);border:2px solid var(--cream);outline:2px solid var(--ink3);outline-offset:2px;padding:9px 16px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.plate span{font:600 10px/1 var(--f-b);letter-spacing:.3em;text-transform:uppercase;color:var(--mute)}
+.plate b{font:700 15px/1.1 var(--f-b);letter-spacing:.06em;text-transform:uppercase}
+.hero h1{font-size:clamp(44px,12.6vw,84px);margin-bottom:16px}
+.lede{font-size:19px;color:var(--mute);max-width:30ch;margin-bottom:26px}
+@media (min-width:900px){
+.hero{display:grid;grid-template-columns:1fr 52%;min-height:calc(100svh - var(--hd) - 8px);align-items:stretch}
+.hero-ph{order:2;height:auto;max-height:none;min-height:560px;border-bottom:0;border-left:8px solid var(--blue)}
+.hero-tx{order:1;display:flex;flex-direction:column;justify-content:center;padding:60px max(var(--gut),4vw) 60px max(var(--gut),calc((100vw - 1280px)/2))}
+.hero h1{font-size:clamp(64px,6.6vw,104px)}
+.hero-ph img{object-position:42% 50%}
+.plate{left:32px;bottom:32px}}

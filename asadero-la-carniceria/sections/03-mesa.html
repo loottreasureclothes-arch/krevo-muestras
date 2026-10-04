@@ -1,0 +1,62 @@
+<section class="s-mesa" id="mesa" data-hide-wa aria-labelledby="mesa-h">
+  <figure class="mesa-photo" data-reveal>
+    <img src="img/tabla-960.webp" srcset="img/tabla-480.webp 480w, img/tabla-960.webp 960w, img/tabla-1536.webp 1536w" sizes="100vw" width="1536" height="2048" alt="Hueso asado con chile y cebolla sobre una charola de hierro">
+  </figure>
+  <div class="wrap mesa-grid">
+    <header class="mesa-head">
+      <p class="eyebrow">Tu tabla</p>
+      <h2 class="h2" id="mesa-h" data-reveal>Arma tu tabla. <span class="t2">Nosotros la prendemos.</span></h2>
+      <p class="lead">Di cuántos son y qué parrillada quieren. La tabla se arma sola y el total sale en pesos.</p>
+    </header>
+
+    <fieldset class="ctl ctl-n">
+      <legend>¿Cuántos son?</legend>
+      <div class="stepper">
+        <button type="button" class="stp" data-p="-1" aria-label="Una persona menos"><svg width="22" height="22" aria-hidden="true"><use href="#i-minus"/></svg></button>
+        <output id="mesa-n" aria-live="polite">4</output>
+        <button type="button" class="stp" data-p="1" aria-label="Una persona más"><svg width="22" height="22" aria-hidden="true"><use href="#i-plus"/></svg></button>
+        <span class="stp-l">personas</span>
+      </div>
+    </fieldset>
+
+    <fieldset class="ctl ctl-par">
+      <legend>Tu parrillada</legend>
+      <div class="seg3" role="radiogroup" aria-label="Tipo de parrillada">
+        <button type="button" class="par-b" role="radio" aria-checked="true" data-par="clasica"><b>Clásica</b><small>Para 2 $340<br>Para 4 $670</small></button>
+        <button type="button" class="par-b" role="radio" aria-checked="false" data-par="select"><b>Select</b><small>Para 2 $550<br>Para 4 $990</small></button>
+        <button type="button" class="par-b" role="radio" aria-checked="false" data-par="mar"><b>Mar y Tierra</b><small>Para 2 $650<br>Para 4 $1,200</small></button>
+      </div>
+      <p class="par-d" id="mesa-desc"></p>
+    </fieldset>
+
+    <div class="ctl ctl-add">
+      <p class="legend">Para empezar</p>
+      <ul class="chips">
+        <li><button type="button" class="chip" data-add="tuetanos" aria-label="Agregar Tuétanos a tu tabla"><span class="chip-n">Tuétanos</span><span class="chip-p">$150</span><em class="cnt" aria-hidden="true"></em></button></li>
+        <li><button type="button" class="chip" data-add="mollejas" aria-label="Agregar Mollejas de res a tu tabla"><span class="chip-n">Mollejas de res</span><span class="chip-p">$160</span><em class="cnt" aria-hidden="true"></em></button></li>
+        <li><button type="button" class="chip" data-add="provoleta" aria-label="Agregar Queso provoleta a tu tabla"><span class="chip-n">Queso provoleta</span><span class="chip-p">$150</span><em class="cnt" aria-hidden="true"></em></button></li>
+        <li><button type="button" class="chip" data-add="guacamole" aria-label="Agregar Guacamole Margarito a tu tabla"><span class="chip-n">Guacamole Margarito</span><span class="chip-p">$145</span><em class="cnt" aria-hidden="true"></em></button></li>
+        <li><button type="button" class="chip" data-add="costillas" aria-label="Agregar Costillas BBQ a tu tabla"><span class="chip-n">Costillas BBQ</span><span class="chip-p">$245</span><em class="cnt" aria-hidden="true"></em></button></li>
+        <li><button type="button" class="chip" data-add="alitas" aria-label="Agregar Alitas a tu tabla"><span class="chip-n">Alitas</span><span class="chip-p">$160</span><em class="cnt" aria-hidden="true"></em></button></li>
+      </ul>
+    </div>
+
+    <fieldset class="ctl ctl-day">
+      <legend>¿Cuándo vienen?</legend>
+      <div class="seg4" role="radiogroup" aria-label="Día"><button type="button" class="seg-b" role="radio" aria-checked="false" data-day="Hoy">Hoy</button><button type="button" class="seg-b" role="radio" aria-checked="false" data-day="Mañana">Mañana</button><button type="button" class="seg-b" role="radio" aria-checked="false" data-day="Este fin de semana">Este fin de semana</button><button type="button" class="seg-b" role="radio" aria-checked="false" data-day="Otro día">Otro día</button></div>
+    </fieldset>
+
+    <div class="mesa-right" id="mesa-right">
+      <div class="board" aria-label="Tu tabla">
+        <div class="board-wood" id="board"></div>
+        <p class="board-hint" id="board-hint">Toca un plato para quitarlo.</p>
+      </div>
+      <div class="mesa-total">
+        <div><small>Total</small><b id="mesa-total">$670</b></div>
+        <div><small>Por persona</small><b id="mesa-pp">$168</b></div>
+      </div>
+      <p class="mesa-sum" id="mesa-sum"></p>
+      <a class="btn btn-wa" id="mesa-wa" data-wa="Hola, quiero reservar mesa en Asadero Bar La Carnicería. Somos 4 personas. Mi tabla: 1 Parrillada Clásica para 4 ($670). Total aprox: $670 ($168 por persona). ¿Qué día y hora tienen mesa?" href="#" target="_blank" rel="noopener"><svg width="22" height="22" aria-hidden="true"><use href="#i-wa"/></svg>Reservar con mi tabla</a>
+    </div>
+  </div>
+</section>

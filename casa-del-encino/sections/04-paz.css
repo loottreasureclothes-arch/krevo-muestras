@@ -1,0 +1,7 @@
+.paz{position:relative;height:74svh;min-height:480px;max-height:760px;overflow:hidden;background:var(--ink)}
+.paz img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.paz::after{content:"";position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(transparent,rgba(8,15,32,.9));pointer-events:none}
+.paz-tx{position:absolute;left:var(--gut);right:var(--gut);bottom:34px;z-index:2}
+.paz h2{font-size:clamp(52px,15.5vw,120px);line-height:.96;text-shadow:0 2px 24px rgba(0,0,0,.5)}
+.paz-q{margin-top:14px;font:600 12px/1.4 var(--f-b);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+@media (min-width:900px){.paz{height:80vh;max-height:860px}.paz-tx{left:max(var(--gut),4vw);bottom:56px}}

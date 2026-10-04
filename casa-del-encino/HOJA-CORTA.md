@@ -1,0 +1,8 @@
+# Hoja corta: Casa del Encino
+- Trabajo de la página: reservar mesa en 1 toque. wa.me/524498068918 (teléfono de Maps; WhatsApp propio no publicado, va a PENDIENTES para confirmar).
+- Promesa: "Aquí el desayuno no se apura." (reseña: "lugar tranquilo, se respira mucha paz"; abren 8:30 a 14:00).
+- Identidad: lienzo azul talavera #0e1a33, bandas crema #f6ead9 solo para leer, marca durazno de la fachada (medido #bf8e70, aclarado a #eaa77f). Tipos: Bodoni Moda (títulos, como la carta) + Hanken Grotesk. Forma: azulejo (cuadro con franja de talavera, esquinas rectas). Header: letrero oscuro de fachada con tira de azulejo debajo y hoja de encino.
+- Componente firma: "El azulejo de tu mesa". 6 azulejos con sus fotos (voltea para sumar el platillo, cara de talavera con su nombre), bandeja con personas + hora (8:30 a 13:30) y botón. Mensaje: "Hola Casa del Encino, quiero reservar mesa para 4 a las 10:00. Me antojo: Cazuela de huevo, Waffles."
+- Momento firma: la puerta azul se abre (la foto del hero se abre desde el centro) al entrar.
+- Secciones: 01-hero | fachada | "Aquí el desayuno / no se apura." ; 02-mesa | 6 azulejos | "Voltea el azulejo / que se te antoje." ; 03-carta | catálogo tipográfico crema con precios de su carta | "Cazuelas y comal / desde $175." ; 04-paz | foto salón a sangre | "Se respira / mucha paz" ; 05-hora | dato gigante 8:30 + 2 fotos | "Desde las 8:30 / hasta las 2." ; 06-resenas | 3 reseñas con nombre | "Lo que dicen / en Google." ; 07-completar | "Todo listo / para completar". Pie con redes.
+- Fotos prohibidas: 03, 06, 07, 09, 13, 18, 22, 23, 24. PENDIENTE-DUEÑO: WhatsApp, logo, horario por día, precios vigentes, fotos propias, cuál Instagram.
