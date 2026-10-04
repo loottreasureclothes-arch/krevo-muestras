@@ -1,20 +1,31 @@
-.lp-casas{background:var(--navy);padding:60px 0}
+.lp-casas{background:var(--navy);padding:60px 0 64px}
 .lp-casas h2{font-size:clamp(44px,13vw,70px);margin-top:10px}
 .lp-casas h2 .t2{display:block}
-.lp-casas-grid{display:grid;gap:34px;margin-top:34px}
-.lp-casa{position:relative;display:grid;grid-template-columns:1fr auto;column-gap:14px;border-top:1px solid rgba(255,255,255,.18);padding-top:8px}
-.lp-num{grid-column:1 / -1;font-family:var(--font-display);font-weight:900;font-size:clamp(120px,40vw,200px);line-height:.85;color:transparent;-webkit-text-stroke:2px var(--sky);letter-spacing:.01em}
-.lp-casa-body{grid-column:1;position:relative;margin-top:-10px}
-.lp-casa h3{font-size:34px;color:var(--white)}
-.lp-casa address{font-style:normal;color:#dbe4f0;margin-top:6px}
-.lp-hrs{margin-top:10px;font-size:14px;color:var(--muted)}
-.lp-hoy{margin-top:6px;font-size:14px;font-weight:700;color:var(--sky);min-height:21px}
-.lp-casa-btns{display:grid;gap:10px;margin-top:16px;max-width:300px}
-.lp-casa-img{grid-column:2;grid-row:2;align-self:start;width:112px;height:146px;object-fit:cover;object-position:50% 0;border-radius:56px;margin-top:-20px;box-shadow:0 14px 24px -8px rgba(0,0,0,.6),0 0 0 3px var(--navy),0 0 0 4px rgba(255,255,255,.28)}
+.lp-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:30px}
+.lp-tabs button{text-align:left;padding:8px 0 12px;border-bottom:3px solid rgba(255,255,255,.15);transition:border-color 200ms ease,opacity 200ms ease;opacity:.6}
+.lp-tabs button[aria-selected="true"]{border-color:var(--sky);opacity:1}
+.lp-tabs b{display:block;font-family:var(--font-display);font-weight:900;font-size:clamp(76px,24vw,150px);line-height:.85;color:transparent;-webkit-text-stroke:2px var(--sky)}
+.lp-tabs button[aria-selected="true"] b{color:var(--sky)}
+.lp-tabs span{display:block;margin-top:6px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#dbe4f0}
+.lp-visit-panel{display:grid;gap:24px;margin-top:26px}
+.lp-visit-panel[hidden]{display:none}
+.lp-map{position:relative;border-radius:999px 999px 6px 6px / 120px 120px 6px 6px;overflow:hidden;background:var(--navy3);height:340px;box-shadow:0 0 0 3px var(--navy),0 0 0 5px #dcecf5}
+.lp-map::before{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;z-index:2;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M5.2 2.5h3.6l.9 2.4c-1 .9-1 2.2 0 3.1l1 2.5H3.3l1-2.5c1-.9 1-2.2 0-3.1z' fill='%23dcecf5'/%3E%3C/svg%3E") repeat-x 0 0/14px 14px,var(--navy)}
+.lp-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.85)}
+.lp-visit-body h3{font-size:40px}
+.lp-visit-body address{font-style:normal;color:#dbe4f0;margin-top:6px}
+.lp-hoy{margin-top:10px;font-size:15px;font-weight:700;color:var(--sky);min-height:22px;display:flex;align-items:center;gap:8px}
+.lp-hoy.is-open::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--wa);box-shadow:0 0 0 4px rgba(37,211,102,.2)}
+.lp-week{list-style:none;margin-top:12px;max-width:380px;font-size:14px}
+.lp-week li{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed rgba(255,255,255,.18);color:#c9d3e0}
+.lp-week li.is-closed span:last-child{color:#e0a3a9}
+.lp-week li.is-today{color:#fff;font-weight:700}
+.lp-week li.is-today span:first-child::after{content:" · hoy";color:var(--sky);font-weight:500}
+.lp-visit-btns{display:grid;gap:10px;margin-top:20px;max-width:380px}
 @media (min-width:820px){
-  .lp-casas{padding:64px 0 80px}
+  .lp-casas{padding:80px 0 88px}
   .lp-casas h2 .t2{display:inline}
-  .lp-casas-grid{grid-template-columns:1fr 1fr;gap:56px;margin-top:48px}
-  .lp-casa-btns{grid-auto-flow:column;max-width:none;justify-content:start}
-  .lp-casa-img{width:150px;height:196px;border-radius:75px}
+  .lp-tabs{max-width:640px}
+  .lp-visit-panel{grid-template-columns:1.25fr 1fr;gap:48px;align-items:start;margin-top:36px}
+  .lp-map{height:480px;border-radius:999px 999px 6px 6px / 180px 180px 6px 6px}
 }

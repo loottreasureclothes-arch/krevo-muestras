@@ -1,0 +1,20 @@
+.pedido{background:var(--canvas2)}
+.ped-grid{display:grid;gap:40px;max-width:1240px;margin:0 auto}
+.rank{list-style:none;padding:0;margin-top:22px;border-top:2px solid var(--red)}
+.rank li{display:flex;align-items:baseline;gap:16px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.rank b{font:400 clamp(58px,17vw,96px)/.9 var(--fd);color:var(--red-hi);min-width:2.1em;font-variant-numeric:tabular-nums}
+.rank li:first-child b{font-size:clamp(84px,25vw,140px);color:#fff;text-shadow:4px 4px 0 var(--red)}
+.rank span{font:400 clamp(26px,7vw,40px)/1 var(--fd)}
+.rank-s{margin-top:12px;color:var(--mut);font-size:14px}
+.como{font:400 30px/1.1 var(--fd)}
+.como-c{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 26px}
+.como-c span{background:var(--cream);color:var(--red);font:400 17px/1 var(--fd);padding:10px 14px;border-radius:999px}
+.faq details{border-bottom:1px solid rgba(255,255,255,.14)}
+.faq details:first-child{border-top:1px solid rgba(255,255,255,.14)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;font:600 18px/1.25 var(--fb)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 28px/1 var(--fb);color:var(--red-hi);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--mut);padding:0 0 16px;max-width:42ch}
+.ped-cta{margin-top:26px;width:100%}
+@media(min-width:820px){.ped-grid{grid-template-columns:1fr 1fr;gap:6vw;align-items:start}.ped-r{padding-top:40px}.ped-cta{width:auto}}

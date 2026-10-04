@@ -1,0 +1,18 @@
+.cierre{background:var(--clay);padding:8px 0 0}
+.todo{margin:0 0 48px;border:1.5px dashed rgba(246,234,210,.45);padding:22px 20px 24px;border-radius:2px}
+.todo h3{font-size:24px;margin-bottom:8px;color:var(--yel)}
+.todo p{font-size:16px;color:var(--cream2);max-width:60ch}
+.pie{background:var(--clay2)}
+.pie .stitch{margin-bottom:6px}
+.pie-in{display:flex;flex-direction:column;gap:22px;padding-top:18px;padding-bottom:calc(36px + env(safe-area-inset-bottom));font-size:15px;color:var(--cream2)}
+.pie-n{font-family:var(--font-display);font-size:clamp(40px,11vw,64px);line-height:1;color:var(--cream)}
+.pie-n em{font-style:normal;color:var(--magl)}
+.pie-cols{display:grid;gap:18px}
+.pie-cols p{display:flex;flex-direction:column;gap:4px;line-height:1.4}
+.pie-cols b{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--yel)}
+.pie-cols a{text-decoration:none;font-family:var(--font-display);font-size:22px;color:var(--cream);min-height:44px;display:flex;align-items:center}
+.pie-top{align-self:flex-start;color:var(--cream)}
+@media (min-width:760px){
+  .todo{margin-bottom:72px}
+  .pie-cols{grid-template-columns:repeat(3,1fr);gap:40px}
+}

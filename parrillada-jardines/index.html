@@ -28,14 +28,16 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/anton-400.woff2" crossorigin>
 <link rel="preload" as="image" href="img/hero-m-480.webp" media="(max-width: 700px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero-d-1600.webp" media="(min-width: 701px)" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1791088993">
+<link rel="stylesheet" href="site.css?v=1791104125">
 <link rel="stylesheet" href="sections/01-hero.css?v=1791088785">
 <link rel="stylesheet" href="sections/02-pedido.css?v=1791088626">
 <link rel="stylesheet" href="sections/03-aire.css?v=1791088626">
-<link rel="stylesheet" href="sections/04-carta.css?v=1791088626">
-<link rel="stylesheet" href="sections/05-mesa.css?v=1791088993">
-<link rel="stylesheet" href="sections/06-cierre.css?v=1791088993">
-<link rel="stylesheet" href="sections/07-pendientes.css?v=1791088993">
+<link rel="stylesheet" href="sections/04-carta.css?v=1791104061">
+<link rel="stylesheet" href="sections/05-mesa.css?v=1791104033">
+<link rel="stylesheet" href="sections/06-resenas.css?v=1791104061">
+<link rel="stylesheet" href="sections/07-galeria.css?v=1791104097">
+<link rel="stylesheet" href="sections/08-visitanos.css?v=1791104119">
+<link rel="stylesheet" href="sections/09-pendientes.css?v=1791088993">
 <noscript><style>[data-hd-reveal]{opacity:1!important;transform:none!important}.pj-grill{display:none!important}</style></noscript>
 </head>
 <body>
@@ -68,8 +70,10 @@
       <a href="#pedido"><span>01</span>Arma tu pedido</a>
       <a href="#aire"><span>02</span>El lugar</a>
       <a href="#carta"><span>03</span>La carta</a>
-      <a href="#mesa"><span>04</span>Opiniones</a>
-      <a href="#cierre"><span>05</span>Cómo llegar</a>
+      <a href="#mesa"><span>04</span>Para grupos</a>
+      <a href="#resenas"><span>05</span>Opiniones</a>
+      <a href="#galeria"><span>06</span>Fotos</a>
+      <a href="#cierre"><span>07</span>Visítanos</a>
     </nav>
     <div class="hd-menu-foot">
       <p>Prol. Josefa Ortiz de Domínguez 604<br>Jardines de Aguascalientes</p>
@@ -263,6 +267,7 @@
       </div>
     </div>
     <p class="pj-carta-foot">Alambres, tacos, quesadillas y chilaquiles: pregunta el precio al pedir.</p>
+    <a class="pj-link" href="#pedido">Arma tu pedido<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
   </div>
 </section>
 
@@ -274,40 +279,144 @@
       <p class="pj-dato-n" aria-label="De 100 a 200 pesos">$100–200</p>
       <p class="pj-dato-l">por persona. Aquí cabe un grupo de 20, con aire y juegos para niños.</p>
     </div>
-    <div class="pj-quotes">
-      <figure class="pj-q" data-hd-reveal>
-        <div class="pj-stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
-        <blockquote>“Tienen aire acondicionado, tienen juegos para niños, está amplio el lugar, la comida está súper bien servida.”</blockquote>
-        <figcaption>Andrea Hernandez, en Google. Fueron 20 personas.</figcaption>
-      </figure>
-      <figure class="pj-q" data-hd-reveal>
-        <div class="pj-stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
-        <blockquote>“What a great family owned restaurant! Delicious Mexican food!”</blockquote>
-        <figcaption>René, en Google.</figcaption>
-      </figure>
+    <div class="pj-mesa-cta" data-hd-reveal>
+      <a class="pj-btn pj-btn--wa" href="https://wa.me/524499787878?text=Hola%20Parrillada%20Jardines%2C%20vamos%20en%20grupo.%20%C2%BFNos%20apartan%20mesa%3F%20Somos%20___%20personas." data-wa="Hola Parrillada Jardines, vamos en grupo. ¿Nos apartan mesa? Somos ___ personas." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Apartar mesa</a>
     </div>
   </div>
   <img class="pj-banda" src="img/banda-960.webp" srcset="img/banda-480.webp 480w, img/banda-960.webp 960w, img/banda-1600.webp 1600w" sizes="100vw" width="1600" height="720" alt="Taco y burrito en plato blanco" loading="lazy" decoding="async">
 </section>
 
+<section class="pj-sec pj-rese" id="resenas" aria-labelledby="t-rese">
+  <div class="pj-wrap">
+    <p class="pj-eyebrow">Lo que dicen en la mesa</p>
+    <div class="pj-rese-head">
+      <h2 class="pj-t" id="t-rese"><span>Salen llenos.</span><span class="pj-t2">Y regresan.</span></h2>
+      <a class="pj-score" href="https://maps.google.com/?cid=1300022819075006433" target="_blank" rel="noopener" aria-label="4.4 de 5 en Google con 2,365 opiniones. Ver todas en Google" data-hd-reveal>
+        <span class="pj-score-n">4.4</span>
+        <span class="pj-score-tx"><span class="pj-rv-st" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg class="off"><use href="#i-star"/></svg></span><b>2,365 opiniones</b><span>en Google Maps</span></span>
+      </a>
+    </div>
+  </div>
+  <div class="pj-rv-track" id="pj-rv-track" role="list" aria-label="Reseñas de clientes" tabindex="0">
+      <figure class="pj-rv pj-rv--0" role="listitem">
+        <div class="pj-rv-st" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <blockquote>“Tienen aire acondicionado, tienen juegos para niños, está amplio el lugar, la comida está súper bien servida.”</blockquote>
+        <figcaption><b>Andrea Hernandez</b><span>Google · Fueron 20 personas</span></figcaption>
+      </figure>
+      <figure class="pj-rv pj-rv--1" role="listitem">
+        <div class="pj-rv-st" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <blockquote>“Excelente servicio, muy limpio, buena calidad de alimentos, sabor muy rico. Nos atendió Marco, felicidades.”</blockquote>
+        <figcaption><b>Lee Rams</b><span>TripAdvisor · Diciembre 2024</span></figcaption>
+      </figure>
+      <figure class="pj-rv pj-rv--2" role="listitem">
+        <div class="pj-rv-st" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <blockquote>“Excelente servicio y calidad en sus platillos, además de un ambiente muy agradable.”</blockquote>
+        <figcaption><b>Luis Alvarado</b><span>Google · Hace 7 meses</span></figcaption>
+      </figure>
+      <figure class="pj-rv pj-rv--0" role="listitem">
+        <div class="pj-rv-st" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <blockquote>“Siempre que visito esta ciudad no me pierdo venir a comer a este lugar. Los tacos son lo mejor.”</blockquote>
+        <figcaption><b>ERNESTOAD</b><span>TripAdvisor · De Querétaro</span></figcaption>
+      </figure>
+      <figure class="pj-rv pj-rv--1" role="listitem">
+        <div class="pj-rv-st" role="img" aria-label="4 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg class="off"><use href="#i-star"/></svg></div>
+        <blockquote>“A mi familia y a mí nos gusta mucho este lugar. El agua y los postres son deliciosos.”</blockquote>
+        <figcaption><b>aprendizdeviajemx</b><span>TripAdvisor · Viene con niños</span></figcaption>
+      </figure>
+      <figure class="pj-rv pj-rv--2" role="listitem">
+        <div class="pj-rv-st" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <blockquote>“Platillos a la parrilla muy sabrosos y a muy buen precio. Altamente recomendable desayunar o comer ahí.”</blockquote>
+        <figcaption><b>J.J Esparza</b><span>TripAdvisor · De Aguascalientes</span></figcaption>
+      </figure>
+      <figure class="pj-rv pj-rv--0" role="listitem">
+        <div class="pj-rv-st" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <blockquote>“What a great family owned restaurant! Delicious Mexican food!”</blockquote>
+        <figcaption><b>René</b><span>Google · En inglés, tal cual</span></figcaption>
+      </figure>
+      <figure class="pj-rv pj-rv--1" role="listitem">
+        <div class="pj-rv-st" role="img" aria-label="4 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg class="off"><use href="#i-star"/></svg></div>
+        <blockquote>“Las malteadas son deliciosas, lugar amplio.”</blockquote>
+        <figcaption><b>Coco L</b><span>TripAdvisor · Fue en familia</span></figcaption>
+      </figure>
+      <figure class="pj-rv pj-rv--2" role="listitem">
+        <div class="pj-rv-st" role="img" aria-label="4 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg class="off"><use href="#i-star"/></svg></div>
+        <blockquote>“El lugar es agradable, muy limpio y la comida deliciosa, además de que las cervezas están frías.”</blockquote>
+        <figcaption><b>Hectool</b><span>TripAdvisor · Fue en familia</span></figcaption>
+      </figure>
+  </div>
+  <div class="pj-wrap pj-rv-ctl">
+    <div class="pj-rv-bar" aria-hidden="true"><i id="pj-rv-fill"></i></div>
+    <button class="pj-rv-btn" type="button" data-dir="-1" aria-label="Reseña anterior"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    <button class="pj-rv-btn" type="button" data-dir="1" aria-label="Siguiente reseña"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+  </div>
+  <div class="pj-wrap"><a class="pj-btn pj-btn--nav pj-rv-all" href="https://maps.google.com/?cid=1300022819075006433" target="_blank" rel="noopener">Ver todas en Google<svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+</section>
+
+<section class="pj-sec pj-gal" id="galeria" aria-labelledby="t-gal">
+  <div class="pj-wrap">
+    <p class="pj-eyebrow">De la parrilla a tu mesa</p>
+    <h2 class="pj-t" id="t-gal"><span>Así sale</span><span class="pj-t2">a la mesa.</span></h2>
+  </div>
+  <div class="pj-wrap pj-gal-grid">
+    <figure class="pj-gl pj-gl--a" data-hd-reveal>
+      <img src="img/g-alambre-960.webp" srcset="img/g-alambre-480.webp 480w, img/g-alambre-960.webp 960w" sizes="(min-width:900px) 50vw, 100vw" width="960" height="720" alt="Alambre de carne con pimiento y queso gratinado" decoding="async">
+      <figcaption>Alambre</figcaption>
+    </figure>
+    <figure class="pj-gl pj-gl--b" data-hd-reveal>
+      <img src="img/g-nopal-960.webp" srcset="img/g-nopal-480.webp 480w, img/g-nopal-960.webp 960w" sizes="(min-width:900px) 50vw, 100vw" width="960" height="1280" alt="Plato de carne asada con nopal y frijoles" decoding="async">
+      <figcaption>Carne con nopal</figcaption>
+    </figure>
+    <figure class="pj-gl pj-gl--c" data-hd-reveal>
+      <img src="img/g-postre-960.webp" srcset="img/g-postre-480.webp 480w, img/g-postre-960.webp 960w" sizes="(min-width:900px) 50vw, 100vw" width="960" height="1280" alt="Postre servido en cazuela de barro" decoding="async">
+      <figcaption>Postre de cazuela</figcaption>
+    </figure>
+    <figure class="pj-gl pj-gl--d" data-hd-reveal>
+      <img src="img/salsas-960.webp" srcset="img/salsas-480.webp 480w, img/salsas-960.webp 960w, img/salsas-1600.webp 1600w" sizes="(min-width:900px) 50vw, 100vw" width="1600" height="669" alt="Salsas de la casa en sus salseros" decoding="async">
+      <figcaption>Sus salsas</figcaption>
+    </figure>
+    <figure class="pj-gl pj-gl--e" data-hd-reveal>
+      <img src="img/g-tostadas-960.webp" srcset="img/g-tostadas-480.webp 480w, img/g-tostadas-960.webp 960w" sizes="(min-width:900px) 50vw, 100vw" width="960" height="1200" alt="Tostadas de carne con salsa" decoding="async">
+      <figcaption>Tostadas de carne</figcaption>
+    </figure>
+    <figure class="pj-gl pj-gl--f" data-hd-reveal>
+      <img src="img/g-chila-960.webp" srcset="img/g-chila-480.webp 480w, img/g-chila-960.webp 960w" sizes="(min-width:900px) 50vw, 100vw" width="960" height="1198" alt="Chilaquiles con carne servidos en Parrillada Jardines" decoding="async">
+      <figcaption>Chilaquiles</figcaption>
+    </figure>
+  </div>
+  <div class="pj-wrap pj-gal-cta">
+    <a class="pj-btn pj-btn--nav" href="#pedido">Armar mi pedido<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="pj-link" href="https://maps.google.com/?cid=1300022819075006433" target="_blank" rel="noopener">Ver 341 fotos en Google<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+
 <section class="pj-sec pj-cierre" id="cierre" aria-labelledby="t-cierre">
   <div class="pj-wrap pj-cierre-grid">
     <div class="pj-cierre-tx">
-      <p class="pj-eyebrow">Cómo llegar</p>
+      <p class="pj-eyebrow">Visítanos</p>
       <h2 class="pj-t" id="t-cierre"><span>Te esperamos</span><span class="pj-t2">en Jardines.</span></h2>
-      <address class="pj-addr" data-hd-reveal>Prol. Josefa Ortiz de Domínguez 604<br>Jardines de Aguascalientes</address>
-      <ul class="pj-hrs" data-hd-reveal>
-        <li><span>Lunes</span><b>9 a.m. a 11:45 p.m.</b></li>
-        <li class="pj-hrs-off"><span>Martes</span><b>Cerrado</b></li>
-        <li><span>Miércoles a domingo</span><b>9 a.m. a 11:45 p.m.</b></li>
+      <p class="pj-now" id="pj-now" data-hd-reveal><i aria-hidden="true"></i><span>Lunes y miércoles a domingo, de 9 a.m. a 11:45 p.m.</span></p>
+      <address class="pj-addr" data-hd-reveal>Prol. Josefa Ortiz de Domínguez 604<br>Jardines de Aguascalientes, 20268 Ags.</address>
+      <ul class="pj-hrs" id="pj-hrs" data-hd-reveal>
+        <li data-d="1"><span>Lunes</span><b>9 a.m. a 11:45 p.m.</b></li>
+        <li data-d="2" class="pj-hrs-off"><span>Martes</span><b>Cerrado</b></li>
+        <li data-d="3"><span>Miércoles</span><b>9 a.m. a 11:45 p.m.</b></li>
+        <li data-d="4"><span>Jueves</span><b>9 a.m. a 11:45 p.m.</b></li>
+        <li data-d="5"><span>Viernes</span><b>9 a.m. a 11:45 p.m.</b></li>
+        <li data-d="6"><span>Sábado</span><b>9 a.m. a 11:45 p.m.</b></li>
+        <li data-d="0"><span>Domingo</span><b>9 a.m. a 11:45 p.m.</b></li>
       </ul>
+    </div>
+    <div class="pj-map-col">
+      <div class="pj-map" data-hd-reveal>
+        <iframe src="https://www.google.com/maps?q=Parrillada+Jardines,+Prol.+Josefa+Ortiz+de+Dom%C3%ADnguez+604,+Jardines+de+Aguascalientes,+Aguascalientes&amp;output=embed" loading="lazy" title="Mapa de Parrillada Jardines" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <span class="pj-map-tag" aria-hidden="true">604</span>
+      </div>
       <div class="pj-cta2" data-hd-reveal>
         <a class="pj-btn pj-btn--wa" href="https://wa.me/524499787878?text=Hola%20Parrillada%20Jardines%2C%20quiero%20reservar%20una%20mesa.%20%C2%BFTienen%20lugar%20hoy%3F" data-wa="Hola Parrillada Jardines, quiero reservar una mesa. ¿Tienen lugar hoy?" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar mesa</a>
-        <a class="pj-btn pj-btn--nav" href="https://www.google.com/maps/dir/?api=1&amp;destination=Parrillada+Jardines%2C+Prol.+Josefa+Ortiz+de+Dom%C3%ADnguez+604%2C+Jardines+de+Aguascalientes" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="pj-btn pj-btn--nav" href="https://maps.google.com/?cid=1300022819075006433" target="_blank" rel="noopener">Cómo llegar<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="pj-btn pj-btn--nav" href="tel:+524499787878">Llamar 449 978 7878</a>
       </div>
-      <p class="pj-tel">O llama al <a href="tel:+524499787878">449 978 7878</a></p>
     </div>
-    <img class="pj-cierre-ph" src="img/cierre-960.webp" srcset="img/cierre-480.webp 480w, img/cierre-960.webp 960w, img/cierre-1600.webp 1600w" sizes="(min-width:900px) 560px, 100vw" width="1600" height="1680" alt="Tacos de carne con salsa servidos en Parrillada Jardines" decoding="async">
   </div>
 </section>
 
@@ -335,6 +444,7 @@
     <div>
       <p class="pj-foot-brand"><span>PARRILLADA</span> JARDINES</p>
       <address>Prol. Josefa Ortiz de Domínguez 604<br>Jardines de Aguascalientes, C.P. 20268<br>Aguascalientes, Ags.</address>
+      <p class="pj-foot-tel"><a href="tel:+524499787878">449 978 7878</a></p>
     </div>
     <div>
       <p class="pj-foot-h">Horario</p>
@@ -396,5 +506,7 @@
 <script src="site.js?v=1791089015" defer></script>
 <script src="sections/01-hero.js?v=1791088366" defer></script>
 <script src="sections/02-pedido.js?v=1791088411" defer></script>
+<script src="sections/06-resenas.js?v=1791104061" defer></script>
+<script src="sections/08-visitanos.js?v=1791104119" defer></script>
 </body>
 </html>

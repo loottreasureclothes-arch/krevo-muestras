@@ -272,3 +272,80 @@ address{font:600 19px/1.4 "Karla";margin:16px 0}
 }
 @media (min-width:1300px){.hero-copy{width:52%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* === Corrección 3: reseñas en comandas, galería, mapa, pie completo === */
+.btn-ink{background:var(--ink);color:var(--yel);margin-top:22px}
+.btn-ink:hover{background:var(--navy3)}
+.lnk{display:inline-flex;align-items:center;gap:8px;min-height:44px;font:800 14px/1 "Karla";letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid currentColor}
+.lnk span{transition:transform .2s ease}
+.lnk:hover span{transform:translateX(4px)}
+.lnk-y{color:var(--yel)}
+.ops-st{display:flex;align-items:center;gap:10px;margin-top:8px}
+.ops-st .stars svg{width:24px;height:24px}
+.ops-st span{font:800 15px/1 "Karla";letter-spacing:.1em;text-transform:uppercase}
+.tk-wall{display:grid;gap:22px;margin-top:22px}
+.tk{position:relative;background:#fffdf3;color:var(--ink);padding:18px 18px 22px;border-radius:4px 4px 0 0;box-shadow:0 10px 22px rgba(10,21,48,.18);
+  -webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle at 8px 0,transparent 6px,#000 6.5px) bottom left/16px 10px repeat-x;
+  mask:linear-gradient(#000,#000) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle at 8px 0,transparent 6px,#000 6.5px) bottom left/16px 10px repeat-x}
+.tk::before{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:repeating-linear-gradient(90deg,var(--ink) 0 8px,var(--yel) 8px 16px)}
+.tk header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px dashed rgba(10,21,48,.35);padding:6px 0 10px;margin-bottom:12px;font:800 12px/1 "Karla";letter-spacing:.16em;text-transform:uppercase}
+.tk header span{color:#6b5a3a;letter-spacing:.06em;text-transform:none;font-weight:600}
+.tk p{font-size:17.5px;line-height:1.42}
+.tk footer{display:flex;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+.tk .stars svg.on{color:#e5a100}
+.t1{transform:rotate(-1.2deg)}.t2{transform:rotate(1deg);margin-left:6%}.t3{transform:rotate(-.6deg);margin-right:4%}
+.ops-pide{margin-top:30px}
+.ops-pide p{font:800 12.5px/1 "Karla";letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}
+.ops-pide ul{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.ops-pide li{font:400 22px/1 "Anton";text-transform:uppercase;padding:9px 14px 8px;border:2px solid var(--ink);border-radius:999px}
+.ops-pide li:nth-child(odd){background:var(--ink);color:var(--yel)}
+.ops .lnk{color:var(--ink)}
+/* galería */
+.gal{grid-column:1/-1;padding:10px var(--g) 76px;max-width:1200px;margin:0 auto;width:100%}
+.gal-t{font:400 clamp(40px,11vw,78px)/.98 "Anton";text-transform:uppercase;margin-bottom:24px}
+.gal-t em{font-style:normal;color:var(--yel)}
+.gal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:26px}
+.gal-grid figure{position:relative;overflow:hidden;border-radius:6px;background:var(--navy2)}
+.gal-grid img{width:100%;height:100%;object-fit:cover}
+.gal-grid figcaption{position:absolute;left:10px;bottom:10px;background:var(--yel);color:var(--ink);font:800 11.5px/1 "Karla";letter-spacing:.12em;text-transform:uppercase;padding:7px 9px}
+.gal-grid figure{aspect-ratio:4/5}
+.gal-grid figure:first-child{grid-row:span 2;aspect-ratio:auto}
+.gal-pano{grid-column:1/-1;aspect-ratio:16/9!important}
+/* mapa y horario */
+.visita-map{display:grid;gap:14px}
+.map-frame{position:relative;border:3px solid var(--yel);border-radius:var(--r);overflow:hidden;background:var(--navy3);box-shadow:8px 8px 0 var(--yel)}
+.map-frame iframe{display:block;width:100%;height:340px;border:0;filter:saturate(.9)}
+.map-tag{font:800 13px/1 "Karla";letter-spacing:.1em;text-transform:uppercase;color:#c9d2ee;margin-top:6px}
+.map-tag b{background:var(--yel);color:var(--ink);padding:5px 8px;margin-right:8px}
+.visita-ph{position:relative}
+.visita-ph figcaption{position:absolute;right:10px;bottom:10px;background:var(--navy);color:var(--yel);font:800 12px/1 "Karla";letter-spacing:.1em;text-transform:uppercase;padding:7px 9px}
+.estado{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:10px 14px;border:2px solid rgba(255,255,255,.3);border-radius:999px;font-weight:800;font-size:15.5px}
+.estado i{width:11px;height:11px;border-radius:50%;background:#ff6b5a;flex:none}
+.estado.is-open i{background:var(--wa);box-shadow:0 0 0 4px rgba(37,211,102,.25)}
+.hrs tr.hoy th,.hrs tr.hoy td{color:var(--navy);background:var(--yel)}
+.hrs tr.hoy th{padding-left:10px}.hrs tr.hoy td{padding-right:10px}
+.vis-cta{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vis-cta .btn-wa{grid-column:1/-1}
+.pie-tel{display:inline-block;margin-top:12px;font:400 26px/1 "Anton";color:var(--yel);text-decoration:none;min-height:44px;padding-top:8px}
+.pie-h{color:#c9d2ee;font-size:14.5px;margin-top:4px}
+@media (min-width:900px){
+  .tk-wall{grid-template-columns:1fr 1fr;align-items:start}
+  .t1{grid-column:1/-1}
+  .t2{margin-left:0;margin-top:18px}.t3{margin-right:0}
+  .gal{padding:30px var(--g) 110px}
+  .gal-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px}
+  .gal-grid figure{aspect-ratio:auto}
+  .gal-tall{grid-row:span 2}
+  .gal-grid figure:first-child{grid-row:span 2}
+  .gal-pano{aspect-ratio:auto!important}
+  .gal-tall+.gal-wide{grid-column:span 2;grid-row:span 2}
+  .gal-pano{grid-column:span 2}
+  .gal-sq{grid-column:span 1}
+  .visita-grid{align-items:start}
+  .map-frame iframe{height:420px}
+  .vis-cta{grid-template-columns:auto auto auto;justify-content:start}
+  .vis-cta .btn-wa{grid-column:auto}
+}
+.vis-h{grid-column:1/-1}
+.visita-txt .estado{margin-top:0}
+@media (min-width:900px){.vis-h{margin-bottom:-10px}}

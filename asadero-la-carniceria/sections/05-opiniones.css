@@ -1,19 +1,35 @@
-.s-op{background:linear-gradient(160deg,var(--brasa),#4a2314 70%);padding:64px 0 60px;position:relative;overflow:hidden}
-.op-grid{display:grid;gap:30px}
-.op-big{font:900 clamp(110px,34vw,300px)/.8 var(--f-d);color:var(--luz);letter-spacing:-.01em}
-.op-cap{font:700 20px/1.2 var(--f-d);letter-spacing:.1em;text-transform:uppercase;color:var(--crema);margin-top:10px}
+.s-op{background:linear-gradient(170deg,var(--brasa),#3e1d10 75%);padding:64px 0 56px;position:relative;overflow:hidden}
+.op-head{display:grid;gap:26px}
+.op-score{display:flex;align-items:center;gap:18px}
+.op-big{font:900 clamp(112px,32vw,200px)/.78 var(--f-d);color:var(--luz);letter-spacing:-.02em}
+.op-cap{font:600 17px/1.3 var(--f-b);color:#ead6bd;margin-top:8px}
+.op-cap b{font:800 22px/1 var(--f-d);letter-spacing:.06em;text-transform:uppercase;color:var(--crema);display:block}
 .s-op .h2 .t2{color:var(--luz)}
-.quotes{display:grid;gap:14px;margin-top:26px}
-.q{background:rgba(11,8,6,.55);padding:18px 18px 16px;border-left:4px solid var(--luz)}
-.stars{display:flex;gap:3px;color:var(--luz);margin-bottom:8px}
-.q blockquote{margin:0;font:700 24px/1.15 var(--f-d);text-transform:none;letter-spacing:.01em}
-.q cite{display:block;margin-top:8px;font-style:normal;font-size:14px;color:#e3cdb4;letter-spacing:.02em}
-.postre{display:flex;align-items:center;gap:14px;margin-top:22px}
-.postre img{width:120px;height:90px;object-fit:cover;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
-.postre figcaption{font:700 16px var(--f-d);letter-spacing:.14em;text-transform:uppercase;color:#e3cdb4}
+.stars{display:flex;gap:3px;color:var(--brasa2)}
+.stars .off{color:#cdb894;opacity:.55}
+.stars-lg{color:var(--luz)}
+.stars-lg svg{width:26px;height:26px}
+.stars .half{clip-path:inset(0 90% 0 0)}
+.tk-rail{height:8px;margin-top:40px;background:linear-gradient(#2a1a10,#5d4632 40%,#2a1a10);box-shadow:0 2px 0 rgba(0,0,0,.35)}
+.tk-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--gut) 26px;scroll-padding:0 var(--gut);scrollbar-width:none;outline-offset:-3px}
+.tk-track::-webkit-scrollbar{display:none}
+.tk{position:relative;flex:0 0 min(78vw,330px);scroll-snap-align:start;margin-top:26px;transform-origin:50% -22px;filter:drop-shadow(0 12px 18px rgba(0,0,0,.3))}
+.tk-p{background:var(--papel);color:var(--carbon);padding:26px 20px 30px;height:100%;
+  -webkit-mask:radial-gradient(circle 7px at 50% 100%,#0000 98%,#000) 0 0/18px 100% repeat-x;mask:radial-gradient(circle 7px at 50% 100%,#0000 98%,#000) 0 0/18px 100% repeat-x}
+.tk-0{transform:rotate(-1.4deg)}.tk-1{transform:rotate(1deg);margin-top:38px}.tk-2{transform:rotate(-.4deg);flex-basis:min(84vw,370px)}
+.tk-hook{position:absolute;left:50%;top:-30px;width:16px;height:34px;margin-left:-8px;border:3px solid #8f7a62;border-top:0;border-radius:0 0 10px 10px;border-left-color:transparent}
+.tk-top{display:flex;justify-content:space-between;font:700 13px/1 var(--f-d);letter-spacing:.18em;text-transform:uppercase;color:var(--brasa);border-bottom:1.5px dashed #b9a483;padding-bottom:10px;margin-bottom:12px}
+.tk blockquote{margin:12px 0 0;font:700 23px/1.12 var(--f-d);letter-spacing:.005em}
+.tk-who{margin-top:16px;display:flex;justify-content:space-between;gap:10px;font-size:14px;color:#5b4a3a}
+.tk-who b{color:var(--carbon)}
+.op-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:6px}
+.tk-nav{display:flex;gap:10px}
+.tk-btn{display:grid;place-items:center;width:52px;height:52px;background:rgba(11,8,6,.4);border:1.5px solid var(--luz);color:var(--luz);transition:background .2s}
+.tk-btn:hover{background:rgba(232,197,136,.15)}
 @media (min-width:900px){
-  .s-op{padding:110px 0}
-  .op-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;column-gap:64px}
-  .quotes{grid-template-columns:1fr 1fr}
-  .op-big{font-size:clamp(150px,15vw,224px)}
+  .s-op{padding:110px 0 64px}
+  .op-head{grid-template-columns:auto 1fr;align-items:end;column-gap:72px}
+  .op-head .h2{justify-self:end;text-align:right}
+  .tk-track{padding:0 max(var(--gut),calc((100vw - 1240px)/2)) 30px;scroll-padding:0 max(var(--gut),calc((100vw - 1240px)/2))}
+  .tk{flex-basis:340px}.tk-2{flex-basis:390px}
 }

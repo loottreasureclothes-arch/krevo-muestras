@@ -40,7 +40,7 @@
  setTimeout(function(){els.forEach(function(el){el.classList.add("is-in")});els=[]},1600);
 
  /* flotantes: se esconden donde ya hay llamada o caja grande */
- var zFab=d.querySelectorAll("#caja,#lugar,#pendientes,.pie"), zPill=d.querySelectorAll("#caja");
+ var zFab=d.querySelectorAll("#caja,#lugar,#dudas,#pendientes,.pie"), zPill=d.querySelectorAll("#caja");
  function inView(list,f){var vh=window.innerHeight;for(var i=0;i<list.length;i++){var r=list[i].getBoundingClientRect();if(r.top<vh*f&&r.bottom>vh*(1-f))return true}return false}
  function upd(){b.classList.toggle("fab-off",inView(zFab,.75));b.classList.toggle("pill-off",inView(zPill,.8))}
  var ra=null; function sch(){if(!ra)ra=requestAnimationFrame(function(){ra=null;upd()})}

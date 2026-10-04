@@ -27,10 +27,11 @@
 <link rel="stylesheet" href="sections/01-horno.css?v=1791093237">
 <link rel="stylesheet" href="sections/02-carta.css?v=1791092766">
 <link rel="stylesheet" href="sections/03-mesa.css?v=1791093350">
-<link rel="stylesheet" href="sections/04-top50.css?v=1791092841">
-<link rel="stylesheet" href="sections/05-resenas.css?v=1791093252">
-<link rel="stylesheet" href="sections/06-visita.css?v=1791092841">
-<link rel="stylesheet" href="sections/07-completar.css?v=1791093237">
+<link rel="stylesheet" href="sections/04-top50.css?v=1791104714">
+<link rel="stylesheet" href="sections/05-resenas.css?v=1791104656">
+<link rel="stylesheet" href="sections/06-galeria.css?v=1791104696">
+<link rel="stylesheet" href="sections/07-visita.css?v=1791104696">
+<link rel="stylesheet" href="sections/08-completar.css?v=1791104714">
 <script>document.documentElement.className+=(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)?"":" js";</script>
 </head>
 <body>
@@ -48,8 +49,9 @@
   <nav class="ln-menu-nav" aria-label="Secciones">
     <a href="#carta"><span>01</span>La carta</a>
     <a href="#mesa"><span>02</span>Tu mesa</a>
-    <a href="#resenas"><span>03</span>En la mesa de al lado</a>
-    <a href="#visita"><span>04</span>Cómo llegar</a>
+    <a href="#resenas"><span>03</span>Reseñas</a>
+    <a href="#galeria"><span>04</span>El lugar</a>
+    <a href="#visita"><span>05</span>Visítanos</a>
   </nav>
   <p class="ln-menu-foot">Allende 252, Centro<br><a href="tel:+524492935602">449 293 5602</a></p>
 </div>
@@ -120,39 +122,79 @@
   <div class="top-txt">
     <h2 class="ttl" data-reveal="2">Top 50 Pizza<em>Latinoamérica 2024.</em></h2>
     <p class="top-p" data-reveal="3">El sello rojo ya está en la lista. La pizza sale de este horno.</p>
+    <a class="top-link" href="#carta" data-reveal="3">Pide la burrata <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
 <section class="sec resenas" id="resenas">
   <div class="salon" data-reveal>
-    <img src="img/salon-960.webp" srcset="img/salon-480.webp 480w, img/salon-960.webp 960w, img/salon-1600.webp 1600w" sizes="100vw" width="1600" height="1094" alt="El salón amarillo con mesas de mantel de cuadros azules" loading="lazy">
+    <img src="img/salon-960.webp" srcset="img/salon-480.webp 480w, img/salon-960.webp 960w, img/salon-1600.webp 1600w" sizes="100vw" width="1600" height="1094" alt="El salón amarillo con mesas de mantel de cuadros azules">
     <p class="salon-t">Mantel<br>de cuadros.</p>
   </div>
-  <div class="res-in">
+  <div class="res-head">
     <p class="eyebrow" data-reveal>En la mesa de al lado</p>
-    <p class="res-g" data-reveal="2">4.5 en Google · 1,058 reseñas</p>
-    <figure class="cita" data-reveal><blockquote>La pizza y las pastas están muy ricos, el servicio es rápido y excelente, los meseros muy atentos y amables.</blockquote><figcaption><span class="est" aria-label="5 estrellas">★★★★★</span> Jesus Lozano</figcaption></figure>
-    <figure class="cita" data-reveal><blockquote>De mis lugares favoritos en Aguascalientes definitivamente! Todo es delicioso ahí.</blockquote><figcaption><span class="est" aria-label="5 estrellas">★★★★★</span> Danyela Navarrete</figcaption></figure>
-    <figure class="cita" data-reveal><blockquote>Por el premio de estar en top 50 pizzas napolitanas de latinoamericanas definitivamente me encantó.</blockquote><figcaption><span class="est" aria-label="5 estrellas">★★★★★</span> Francisco Cervantes Orozco</figcaption></figure>
-    <p class="res-fuente">Reseñas de Google Maps.</p>
+    <div class="res-score" data-reveal="2">
+      <p class="res-num">4.5</p>
+      <div><p class="res-est" aria-label="4.5 de 5 estrellas"><span>★★★★</span><span class="half">★</span></p><p class="res-cuenta">1,058 opiniones en Google</p></div>
+    </div>
+    <p class="res-sub" data-reveal="3">Desliza las comandas. Lo que escriben de la mesa.</p>
+  </div>
+  <div class="comandas" id="comandas" tabindex="0" aria-label="Reseñas, desliza para ver más">
+    <figure class="comanda"><p class="c-top"><span>Comanda 01</span><span>Google</span></p><p class="c-est" aria-label="5 estrellas">★★★★★</p><blockquote>De mis lugares favoritos en Aguascalientes definitivamente! Todo es delicioso ahí. (Me encanta que no tardan mucho en servir los alimentos)</blockquote><figcaption>Danyela Navarrete<small>Local Guide · Google</small></figcaption></figure>
+    <figure class="comanda"><p class="c-top"><span>Comanda 02</span><span>Google</span></p><p class="c-est" aria-label="5 estrellas">★★★★★</p><blockquote>Por recomendación y por el premio de estar en top 50 pizzas napolitanas de latinoamericanas definitivamente me encantó, pedimos la pizza Burrata…</blockquote><figcaption>Francisco Cervantes Orozco<small>Local Guide · Google</small></figcaption></figure>
+    <figure class="comanda"><p class="c-top"><span>Comanda 03</span><span>Google</span></p><p class="c-est" aria-label="5 estrellas">★★★★★</p><blockquote>La pizza y las pastas están muy ricos, el servicio es rápido y excelente, los meseros muy atentos y amables.</blockquote><figcaption>Jesus Lozano<small>Google</small></figcaption></figure>
+    <figure class="comanda"><p class="c-top"><span>Comanda 04</span><span>Tripadvisor</span></p><p class="c-est" aria-label="5 de 5">★★★★★</p><blockquote>Las pizzas muy ricas, de masa delgada; las pastas también muy ricas y muy buenas porciones.</blockquote><figcaption>Claudia<small>Aguascalientes · Tripadvisor</small></figcaption></figure>
+    <figure class="comanda"><p class="c-top"><span>Comanda 05</span><span>Uber Eats</span></p><p class="c-big">De las mejores pizzas de Ags. La recomiendo.</p><figcaption>Ana P.<small>Uber Eats</small></figcaption></figure>
+    <figure class="comanda"><p class="c-top"><span>Comanda 06</span><span>Uber Eats</span></p><p class="c-big">Simplemente Delicioso!!</p><figcaption>Lu M.<small>Uber Eats</small></figcaption></figure>
+    <figure class="comanda"><p class="c-top"><span>Comanda 07</span><span>Uber Eats</span></p><p class="c-big">Deliciosas las pizzas!</p><figcaption>Hugo F.<small>Uber Eats</small></figcaption></figure>
+  </div>
+  <div class="res-nav">
+    <button type="button" class="res-flecha" data-dir="-1" aria-label="Comanda anterior">←</button>
+    <span class="res-pos" id="res-pos">1 / 7</span>
+    <button type="button" class="res-flecha" data-dir="1" aria-label="Comanda siguiente">→</button>
+  </div>
+  <div class="res-cta"><a class="btn btn-nav" href="https://www.google.com/maps/place/Ristorante+La+Nonna/@21.880926,-102.2998089,17z/data=!4m6!3m5!1s0x8429efd27f055e7f:0x4eb8bea87a4e8674!8m2!3d21.880926!4d-102.2998089!16s%2Fg%2F11g_zljl8g" target="_blank" rel="noopener">Ver todas en Google</a></div>
+</section>
+
+<section class="sec galeria" id="galeria">
+  <p class="eyebrow" data-reveal>El recorrido</p>
+  <h2 class="ttl" data-reveal="2">Pasa,<em>hay mesa.</em></h2>
+  <div class="collage">
+    <figure class="g g1" data-reveal><img src="img/arco-960.webp" srcset="img/arco-480.webp 480w, img/arco-960.webp 960w" sizes="(min-width:820px) 30vw, 60vw" width="960" height="1352" alt="El salón del arco con mesas de madera y cuadros en la pared" loading="lazy"><figcaption>El salón del arco</figcaption></figure>
+    <figure class="g g2" data-reveal="2"><img src="img/terraza-720.webp" srcset="img/terraza-480.webp 480w, img/terraza-720.webp 720w" sizes="(min-width:820px) 22vw, 40vw" width="720" height="967" alt="La terraza al atardecer con farol" loading="lazy"><figcaption>La terraza</figcaption></figure>
+    <figure class="g g3" data-reveal><img src="img/pizzalarga-960.webp" srcset="img/pizzalarga-480.webp 480w, img/pizzalarga-960.webp 960w" sizes="(min-width:820px) 40vw, 100vw" width="960" height="815" alt="Pizza larga al centro de la mesa en la terraza techada" loading="lazy"><figcaption>Para compartir</figcaption></figure>
+    <figure class="g g4" data-reveal="2"><img src="img/bases-960.webp" srcset="img/bases-480.webp 480w, img/bases-960.webp 960w, img/bases-1600.webp 1600w" sizes="(min-width:820px) 30vw, 50vw" width="1600" height="1200" alt="Dos pizzas en base de metal sobre la mesa azul" loading="lazy"><figcaption>Dos pisos de pizza</figcaption></figure>
+    <figure class="g g5" data-reveal="3"><img src="img/arugula-960.webp" srcset="img/arugula-480.webp 480w, img/arugula-960.webp 960w, img/arugula-1536.webp 1536w" sizes="(min-width:820px) 22vw, 50vw" width="960" height="1124" alt="Pizza con arúgula y jamón serrano" loading="lazy"><figcaption>Recién salida</figcaption></figure>
+    <figure class="g g6" data-reveal><img src="img/chilaquiles-960.webp" srcset="img/chilaquiles-480.webp 480w, img/chilaquiles-960.webp 960w" sizes="(min-width:820px) 30vw, 100vw" width="960" height="720" alt="Chilaquiles con huevo estrellado y café" loading="lazy"><figcaption>También chilaquiles</figcaption></figure>
+  </div>
+  <div class="btns gal-btns" data-reveal>
+    <a class="btn btn-wa" data-wa="Hola La Nonna, quiero apartar una mesa en la terraza." href="https://wa.me/524492935602?text=Hola%20La%20Nonna%2C%20quiero%20apartar%20una%20mesa%20en%20la%20terraza." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Apartar en la terraza</a>
   </div>
 </section>
 
 <section class="sec visita" id="visita">
-  <div class="v-foto" data-reveal><img src="img/puerta-960.webp" srcset="img/puerta-480.webp 480w, img/puerta-960.webp 960w" sizes="(min-width:820px) 36vw, 70vw" width="960" height="1707" alt="La puerta azul con limones del restaurante y una pizza en la mesa" loading="lazy"></div>
   <div class="v-txt">
-    <p class="eyebrow" data-reveal>Cómo llegar</p>
+    <p class="eyebrow" data-reveal>Visítanos</p>
     <h2 class="ttl" data-reveal="2">Allende 252,<em>en el Centro.</em></h2>
-    <p class="v-estado" id="v-estado" data-reveal="3">Lunes a sábado de 2 a 11 p.m. Domingo de 2 a 10 p.m.</p>
-    <ul class="horas" data-reveal="3" id="horas">
-      <li data-d="1,2,3,4,5,6"><span>Lunes a sábado</span><b>2:00 a 11:00 p.m.</b></li>
+    <p class="v-dir" data-reveal="3">Gral. Ignacio Allende 252, Zona Centro, 20000 Aguascalientes. A unos pasos del Museo Regional de Historia.</p>
+    <p class="v-estado" id="v-estado" data-reveal="3">Todos los días desde las 2 p.m.</p>
+    <ul class="horas" id="horas" data-reveal="3">
+      <li data-d="1"><span>Lunes</span><b>2:00 a 11:00 p.m.</b></li>
+      <li data-d="2"><span>Martes</span><b>2:00 a 11:00 p.m.</b></li>
+      <li data-d="3"><span>Miércoles</span><b>2:00 a 11:00 p.m.</b></li>
+      <li data-d="4"><span>Jueves</span><b>2:00 a 11:00 p.m.</b></li>
+      <li data-d="5"><span>Viernes</span><b>2:00 a 11:00 p.m.</b></li>
+      <li data-d="6"><span>Sábado</span><b>2:00 a 11:00 p.m.</b></li>
       <li data-d="0"><span>Domingo</span><b>2:00 a 10:00 p.m.</b></li>
     </ul>
-    <div class="btns" data-reveal="3">
-      <a class="btn btn-wa" data-wa="Hola La Nonna, vi su página y quiero reservar una mesa." href="https://wa.me/524492935602?text=Hola%20La%20Nonna%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20reservar%20una%20mesa." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar mesa</a>
-      <a class="btn btn-nav" href="https://www.google.com/maps/search/?api=1&amp;query=Ristorante+La+Nonna+Allende+252+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
-      <a class="btn btn-nav" href="tel:+524492935602">Llamar 449 293 5602</a>
-    </div>
+  </div>
+  <div class="v-mapa" data-reveal>
+    <iframe src="https://www.google.com/maps?q=Ristorante+La+Nonna,+Gral.+Ignacio+Allende+252,+Zona+Centro,+Aguascalientes&amp;output=embed" loading="lazy" title="Mapa de Ristorante La Nonna en Allende 252" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <div class="btns v-btns" data-reveal>
+    <a class="btn btn-nav" href="https://www.google.com/maps/place/Ristorante+La+Nonna/@21.880926,-102.2998089,17z/data=!4m6!3m5!1s0x8429efd27f055e7f:0x4eb8bea87a4e8674!8m2!3d21.880926!4d-102.2998089!16s%2Fg%2F11g_zljl8g" target="_blank" rel="noopener">Cómo llegar</a>
+    <a class="btn btn-nav" href="tel:+524492935602">Llamar 449 293 5602</a>
+    <a class="btn btn-wa" data-wa="Hola La Nonna, vi su página y quiero reservar una mesa." href="https://wa.me/524492935602?text=Hola%20La%20Nonna%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20reservar%20una%20mesa." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar mesa</a>
   </div>
 </section>
 
@@ -161,17 +203,21 @@
   <h2 class="ttl" data-reveal="2">Todo listo<em>para completar.</em></h2>
   <ul class="falta" data-reveal="3">
     <li>El WhatsApp del restaurante, para que los botones lleguen directo.</li>
-    <li>La carta completa con sus precios.</li>
+    <li>La carta completa con sus precios de salón (pastas, postres y bebidas).</li>
+    <li>Su logo en archivo, para el encabezado.</li>
     <li>Más fotos del salón y de los platillos.</li>
   </ul>
   <p class="falta-p" data-reveal="3">Pásanoslo por el mismo chat donde te llegó esta muestra.</p>
 </section>
 <footer class="ln-foot">
   <p class="ln-foot-n">La Nonna</p>
-  <p>Gral. Ignacio Allende 252, Zona Centro<br>20000 Aguascalientes, Ags.</p>
-  <p><a href="tel:+524492935602">449 293 5602</a></p>
-  <a class="ln-fb" href="https://www.facebook.com/ristorantelanonnaags" target="_blank" rel="noopener" aria-label="Facebook de Ristorante La Nonna"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
-  <p class="ln-credit">Muestra de diseño hecha por KREVO. Las fotos son de Google Maps, aportadas por visitantes y por el restaurante.</p>
+  <div class="ln-foot-g">
+    <div><p class="ln-foot-l">Dónde</p><p>Gral. Ignacio Allende 252, Zona Centro<br>20000 Aguascalientes, Ags.</p><p><a href="https://www.google.com/maps/place/Ristorante+La+Nonna/@21.880926,-102.2998089,17z/data=!4m6!3m5!1s0x8429efd27f055e7f:0x4eb8bea87a4e8674!8m2!3d21.880926!4d-102.2998089!16s%2Fg%2F11g_zljl8g" target="_blank" rel="noopener">Cómo llegar →</a></p></div>
+    <div><p class="ln-foot-l">Horario</p><p>Lunes a sábado 2:00 a 11:00 p.m.<br>Domingo 2:00 a 10:00 p.m.</p></div>
+    <div><p class="ln-foot-l">Teléfono</p><p><a href="tel:+524492935602">449 293 5602</a></p>
+    <a class="ln-fb" href="https://www.facebook.com/ristorantelanonnaags" target="_blank" rel="noopener" aria-label="Facebook de Ristorante La Nonna"><svg aria-hidden="true"><use href="#i-fb"/></svg></a></div>
+  </div>
+  <p class="ln-credit">Muestra de diseño hecha por KREVO. Fotos de Google Maps, aportadas por visitantes y por el restaurante. Reseñas de Google, Tripadvisor y Uber Eats.</p>
 </footer>
 
 </main>
@@ -181,7 +227,8 @@
 <script src="site.js?v=1791092920" defer></script>
 <script src="sections/01-horno.js?v=1791092766" defer></script>
 <script src="sections/03-mesa.js?v=1791093228" defer></script>
-<script src="sections/06-visita.js?v=1791092841" defer></script>
+<script src="sections/05-resenas.js?v=1791104656" defer></script>
+<script src="sections/07-visita.js?v=1791104696" defer></script>
 <script>
 /* red de seguridad: lo que siga escondido se muestra a los 1.6 s de ser visible y a los 4 s pase lo que pase */
 (function(){var r=function(){var a=[].slice.call(document.querySelectorAll("[data-reveal]:not(.is-in)"));a.forEach(function(e){e.classList.add("is-in")})};setTimeout(r,4000)})();

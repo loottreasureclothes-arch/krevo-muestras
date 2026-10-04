@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://loottreasureclothes-arch.github.io/krevo-muestras/carnitas-san-pancho/img/og.jpg">
 <meta name="format-detection" content="telephone=no">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Carnitas San Pancho La Purísima","image":"https://loottreasureclothes-arch.github.io/krevo-muestras/carnitas-san-pancho/img/og.jpg","url":"https://loottreasureclothes-arch.github.io/krevo-muestras/carnitas-san-pancho/","telephone":"+52 449 916 6458","servesCuisine":"Mexicana","address":{"@type":"PostalAddress","streetAddress":"Ezequiel A. Chávez 103, Barrio de la Purísima","addressLocality":"Aguascalientes","addressRegion":"Ags.","postalCode":"20259","addressCountry":"MX"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Carnitas San Pancho La Purísima","image":"https://loottreasureclothes-arch.github.io/krevo-muestras/carnitas-san-pancho/img/og.jpg","url":"https://loottreasureclothes-arch.github.io/krevo-muestras/carnitas-san-pancho/","telephone":"+52 449 916 6458","servesCuisine":"Mexicana","priceRange":"$100-200","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"17:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"08:00","closes":"18:00"}],"geo":{"@type":"GeoCoordinates","latitude":21.8820808,"longitude":-102.284359},"address":{"@type":"PostalAddress","streetAddress":"Ezequiel A. Chávez 103, Barrio de la Purísima","addressLocality":"Aguascalientes","addressRegion":"Ags.","postalCode":"20259","addressCountry":"MX"}}</script>
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="preload" as="image" href="img/fachada-960.webp" fetchpriority="high">
@@ -27,10 +27,12 @@
 <link rel="stylesheet" href="site.css?v=1791092681">
 <link rel="stylesheet" href="sections/01-hero.css?v=1791092681">
 <link rel="stylesheet" href="sections/02-plato.css?v=1791092681">
-<link rel="stylesheet" href="sections/03-mostrador.css?v=1791092372">
-<link rel="stylesheet" href="sections/04-opiniones.css?v=1791092199">
-<link rel="stylesheet" href="sections/05-visita.css?v=1791092288">
-<link rel="stylesheet" href="sections/06-pendientes.css?v=1791092681">
+<link rel="stylesheet" href="sections/03-mostrador.css?v=1791104662">
+<link rel="stylesheet" href="sections/04-comal.css?v=1791104662">
+<link rel="stylesheet" href="sections/05-opiniones.css?v=1791104662">
+<link rel="stylesheet" href="sections/06-pedido.css?v=1791104703">
+<link rel="stylesheet" href="sections/07-visita.css?v=1791104703">
+<link rel="stylesheet" href="sections/08-pendientes.css?v=1791104703">
 </head>
 <body>
 <header class="aw" id="aw">
@@ -41,7 +43,7 @@
   <div class="aw-fringe" aria-hidden="true"></div>
 </header>
 <nav class="aw-menu" id="aw-menu" aria-hidden="true">
-  <a href="#plato">Arma tu plato</a><a href="#mostrador">El mostrador</a><a href="#opiniones">Lo dice el barrio</a><a href="#visita">Dónde estamos</a>
+  <a href="#plato">Arma tu plato</a><a href="#comal">Del comal</a><a href="#opiniones">Lo dice el barrio</a><a href="#pedido">Lo más pedido</a><a href="#visita">Dónde estamos</a>
   <a class="btn-wa" data-wa="Hola San Pancho, quiero hacer un pedido. ¿Qué tienen hoy?" href="https://wa.me/524499166458?text=Hola%20San%20Pancho%2C%20quiero%20hacer%20un%20pedido.%20%C2%BFQu%C3%A9%20tienen%20hoy%3F">Pedir por WhatsApp</a>
 </nav>
 <main>
@@ -52,7 +54,7 @@
     <p class="hero-p" data-reveal>Gorditas, tacos de guisado y carnitas. Todo a un mensaje.</p>
     <div class="hero-btns" data-reveal>
       <a class="btn-wa" data-wa="Hola San Pancho, quiero hacer un pedido. ¿Qué tienen hoy?" href="https://wa.me/524499166458?text=Hola%20San%20Pancho%2C%20quiero%20hacer%20un%20pedido.%20%C2%BFQu%C3%A9%20tienen%20hoy%3F">Pedir por WhatsApp</a>
-      <a class="btn-nav" href="https://www.google.com/maps/search/?api=1&query=Carnitas+San+Pancho+La+Purisima+Ezequiel+A.+Chavez+103+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
+      <a class="btn-nav" href="#plato">Ver la carta</a>
     </div>
   </div>
   <figure class="arch">
@@ -90,37 +92,120 @@
   <div class="mostr-win" data-open>
     <img src="img/mostrador-960.webp" srcset="img/mostrador-480.webp 480w,img/mostrador-960.webp 960w,img/mostrador-1600.webp 1600w" sizes="100vw" width="960" height="720" alt="Mostrador con carnitas y guisados de San Pancho" loading="lazy">
   </div>
-  <p class="mostr-w" data-reveal>Guisados.<br>Carnitas.<br><em>Chicharrón.</em></p>
+  <div class="mostr-t"><p class="mostr-w" data-reveal>Guisados.<br>Carnitas.<br><em>Chicharrón.</em></p><a class="mostr-a" data-wa="Hola San Pancho, ¿qué guisados tienen hoy?" href="https://wa.me/524499166458?text=Hola%20San%20Pancho%2C%20%C2%BFqu%C3%A9%20guisados%20tienen%20hoy%3F">¿Qué guisos hay hoy? <span aria-hidden="true">→</span></a></div>
+</section>
+
+<section class="sec comal" id="comal">
+  <div class="comal-h">
+    <p class="eb">Fotos de quienes ya vinieron</p>
+    <h2 data-reveal>Así sale<em>del comal.</em></h2>
+  </div>
+  <div class="comal-g">
+    <figure class="cg cg-a" data-reveal><img src="img/g-guisados-960.webp" srcset="img/g-guisados-480.webp 480w,img/g-guisados-960.webp 960w,img/g-guisados-1600.webp 1600w" sizes="(min-width:820px) 40vw,100vw" width="960" height="720" alt="Charolas con guisados del día en San Pancho"><figcaption>Guisados del día</figcaption></figure>
+    <figure class="cg cg-b" data-reveal><img src="img/g-gordita-960.webp" srcset="img/g-gordita-480.webp 480w,img/g-gordita-960.webp 960w,img/g-gordita-1600.webp 1600w" sizes="(min-width:820px) 22vw,50vw" width="960" height="1280" alt="Gordita rellena con pico de gallo"><figcaption>Gordita rellena</figcaption></figure>
+    <figure class="cg cg-c" data-reveal><img src="img/g-tacos-960.webp" srcset="img/g-tacos-480.webp 480w,img/g-tacos-960.webp 960w,img/g-tacos-1600.webp 1600w" sizes="(min-width:820px) 20vw,50vw" width="960" height="540" alt="Tacos en plato blanco"></figure>
+    <figure class="cg cg-d" data-reveal><img src="img/g-gordita-abierta-960.webp" srcset="img/g-gordita-abierta-480.webp 480w,img/g-gordita-abierta-960.webp 960w,img/g-gordita-abierta-1600.webp 1600w" sizes="(min-width:820px) 20vw,50vw" width="960" height="720" alt="Gordita abierta con guisado rojo"></figure>
+    <figure class="cg cg-e" data-reveal><img src="img/g-tacos-dorados-960.webp" srcset="img/g-tacos-dorados-480.webp 480w,img/g-tacos-dorados-960.webp 960w,img/g-tacos-dorados-1600.webp 1600w" sizes="(min-width:820px) 22vw,50vw" width="960" height="1280" alt="Tacos dorados en plato"><figcaption>Tacos dorados</figcaption></figure>
+    <figure class="cg cg-f" data-reveal><img src="img/g-carne-960.webp" srcset="img/g-carne-480.webp 480w,img/g-carne-960.webp 960w,img/g-carne-1600.webp 1600w" sizes="(min-width:820px) 40vw,50vw" width="960" height="432" alt="Carne dorada en charola"></figure>
+  </div>
+  <a class="comal-a" data-wa="Hola San Pancho, vi las fotos y se me antojó. ¿Qué me recomiendan hoy?" href="https://wa.me/524499166458?text=Hola%20San%20Pancho%2C%20vi%20las%20fotos%20y%20se%20me%20antoj%C3%B3.%20%C2%BFQu%C3%A9%20me%20recomiendan%20hoy%3F">Pide lo que ves <span aria-hidden="true">→</span></a>
 </section>
 
 <section class="sec ops" id="opiniones">
   <div class="ops-grid">
     <div class="ops-l">
-      <p class="eb" style="color:var(--red)">Google Maps</p>
+      <p class="eb" style="color:var(--red)">Reseñas en Google</p>
       <h2 data-reveal>Lo dice<em>el barrio.</em></h2>
-      <p class="big" data-reveal>4.2</p>
-      <p class="big-s">de 2,916 opiniones en Google</p>
+      <div class="score">
+        <p class="big" data-reveal>4.2</p>
+        <div class="score-r">
+          <span class="stars s42" aria-label="4.2 de 5 estrellas"></span>
+          <p class="big-s">2,916 opiniones en Google</p>
+        </div>
+      </div>
+      <ul class="bars" aria-label="Opiniones por estrellas">
+        <li><span>5★</span><i style="--w:100%"></i><b>1,579</b></li>
+        <li><span>4★</span><i style="--w:48.8%"></i><b>771</b></li>
+        <li><span>3★</span><i style="--w:20.7%"></i><b>327</b></li>
+        <li><span>2★</span><i style="--w:6.3%"></i><b>99</b></li>
+        <li><span>1★</span><i style="--w:8.9%"></i><b>140</b></li>
+      </ul>
     </div>
     <div class="ops-r">
-      <blockquote data-reveal><p>Gorditas clásicas de Aguascalientes muuuy recomendables.</p><cite>Karla Barrios</cite></blockquote>
-      <blockquote data-reveal><p>Las gorditas son bastante grandes, llenadoras.</p><cite>Enrique G. Vázquez, Local Guide</cite></blockquote>
-      <blockquote data-reveal><p>La magia del sazón de las carnitas, gorditas y diferentes guisos.</p><cite>Luis Alvarado, Local Guide</cite></blockquote>
+      <div class="tix" id="tix" tabindex="0" aria-label="Reseñas, desliza para ver más">
+        <article class="tk"><p class="tk-n">Comanda 01</p><span class="stars s5" aria-label="5 estrellas"></span><p class="tk-q">La magia del sazón de las carnitas, gorditas y diferentes guisos ha elegir, una tradición muy especial.</p><p class="tk-c">Luis Alvarado<small>Local Guide · Google</small></p></article>
+        <article class="tk"><p class="tk-n">Comanda 02</p><span class="stars s4" aria-label="4 estrellas"></span><p class="tk-q">Gorditas clásicas de Aguascalientes muuuy recomendables. La masa y los guisados están delis.</p><p class="tk-c">Karla Barrios<small>Google</small></p></article>
+        <article class="tk"><p class="tk-n">Comanda 03</p><span class="stars s5" aria-label="5 estrellas"></span><p class="tk-q" lang="en">A must place to eat. We have never had a bad experience. Very busy on weekends.</p><p class="tk-c">Andres Cardenas<small>Google · escrita en inglés</small></p></article>
+        <article class="tk"><p class="tk-n">Comanda 04</p><span class="stars s4" aria-label="4 estrellas"></span><p class="tk-q">Las gorditas son bastante grandes, llenadoras. Bastante bien.</p><p class="tk-c">Enrique G. Vázquez<small>Local Guide · Google</small></p></article>
+        <article class="tk"><p class="tk-n">Comanda 05</p><span class="stars s5" aria-label="5 estrellas"></span><p class="tk-q" lang="en">A huge variety of dishes, you may ask it on a gordita or a bolillo or just a plate and tortillas.</p><p class="tk-c">Rodolfo Medina<small>Google · escrita en inglés</small></p></article>
+        <article class="tk tk-s"><p class="tk-n">Comanda 06</p><span class="stars s5" aria-label="5 estrellas"></span><p class="tk-q">Delicioso.</p><p class="tk-c">juaneke jmz<small>Local Guide · Google</small></p></article>
+        <article class="tk tk-s"><p class="tk-n">Comanda 07</p><span class="stars s4" aria-label="4 estrellas"></span><p class="tk-q">Esquisitas.</p><p class="tk-c">Enrique Segovia Palafox<small>Local Guide · Google</small></p></article>
+      </div>
+      <div class="tix-nav">
+        <button type="button" class="tix-b" data-d="-1" aria-label="Reseña anterior">←</button>
+        <span class="tix-c" id="tix-c">1 / 7</span>
+        <button type="button" class="tix-b" data-d="1" aria-label="Reseña siguiente">→</button>
+      </div>
+      <a class="btn-nav ops-g" href="https://maps.google.com/?cid=7158543791060723405" target="_blank" rel="noopener">Ver todas en Google</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec pedido" id="pedido">
+  <div class="ped-grid">
+    <div class="ped-l">
+      <p class="eb">Lo que más se nombra en Google</p>
+      <h2 data-reveal>Lo más<em>pedido.</em></h2>
+      <ol class="rank">
+        <li data-reveal><b>183</b><span>Gorditas</span></li>
+        <li data-reveal><b>93</b><span>Guisados</span></li>
+        <li data-reveal><b>36</b><span>Chicharrón</span></li>
+        <li data-reveal><b>21</b><span>Guacamole</span></li>
+      </ol>
+      <p class="rank-s">Veces que los clientes lo mencionan en sus reseñas.</p>
+    </div>
+    <div class="ped-r">
+      <p class="como">¿Cómo lo quieres?</p>
+      <p class="como-c"><span>En gordita</span><span>En bolillo</span><span>En plato con tortillas</span></p>
+      <div class="faq">
+        <details open><summary>¿A qué hora abren?</summary><p>Todos los días a las 8 a.m. Lunes a sábado hasta las 5:30 p.m.; domingo hasta las 6 p.m.</p></details>
+        <details><summary>¿Cuándo se llena?</summary><p>Fines de semana, sobre todo el domingo en la mañana. Pide antes por WhatsApp y llega por él.</p></details>
+        <details><summary>¿Llevan a domicilio?</summary><p>Sí, también hay entrega a domicilio. Pregúntanos si llegamos a tu colonia.</p></details>
+        <details><summary>¿Cuánto sale por persona?</summary><p>Entre $100 y $200 por persona.</p></details>
+      </div>
+      <a class="btn-wa ped-cta" data-wa="Hola San Pancho, quiero pedir para llevar. ¿Qué guisados tienen hoy?" href="https://wa.me/524499166458?text=Hola%20San%20Pancho%2C%20quiero%20pedir%20para%20llevar.%20%C2%BFQu%C3%A9%20guisados%20tienen%20hoy%3F">Pedir para llevar</a>
     </div>
   </div>
 </section>
 
 <section class="sec visita" id="visita" data-hide-wa>
   <div class="vis-grid">
-    <figure class="vis-ph" data-reveal><img src="img/gorditas-960.webp" srcset="img/gorditas-480.webp 480w,img/gorditas-960.webp 960w,img/gorditas-1600.webp 1600w" sizes="(min-width:820px) 45vw,100vw" width="960" height="720" alt="Gorditas surtidas en charola roja" loading="lazy"></figure>
     <div class="vis-t">
+      <p class="eb" style="color:var(--cream)">Barrio de la Purísima</p>
       <h2 data-reveal>Ven por<em>tu gordita.</em></h2>
-      <p class="addr" data-reveal>Ezequiel A. Chávez 103<br>Barrio de la Purísima<br>Aguascalientes</p>
-      <p class="vis-h">Domingos abre a las 8 a.m. · Comes aquí o te la llevamos a domicilio.</p>
-      <div class="hero-btns">
-        <a class="btn-wa" data-wa="Hola San Pancho, quiero hacer un pedido. ¿Qué tienen hoy?" href="https://wa.me/524499166458?text=Hola%20San%20Pancho%2C%20quiero%20hacer%20un%20pedido.%20%C2%BFQu%C3%A9%20tienen%20hoy%3F">Pedir por WhatsApp</a>
-        <a class="btn-nav" href="https://www.google.com/maps/search/?api=1&query=Carnitas+San+Pancho+La+Purisima+Ezequiel+A.+Chavez+103+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
+      <p class="now" id="now"><i></i><span>Abrimos todos los días a las 8 a.m.</span></p>
+      <p class="addr">Ezequiel A. Chávez 103<br>Barrio de la Purísima, 20259<br>Aguascalientes, Ags.</p>
+      <table class="hrs" id="hrs" aria-label="Horario">
+        <tr data-d="1"><th>Lunes</th><td>8:00 a.m. – 5:30 p.m.</td></tr>
+        <tr data-d="2"><th>Martes</th><td>8:00 a.m. – 5:30 p.m.</td></tr>
+        <tr data-d="3"><th>Miércoles</th><td>8:00 a.m. – 5:30 p.m.</td></tr>
+        <tr data-d="4"><th>Jueves</th><td>8:00 a.m. – 5:30 p.m.</td></tr>
+        <tr data-d="5"><th>Viernes</th><td>8:00 a.m. – 5:30 p.m.</td></tr>
+        <tr data-d="6"><th>Sábado</th><td>8:00 a.m. – 5:30 p.m.</td></tr>
+        <tr data-d="0"><th>Domingo</th><td>8:00 a.m. – 6:00 p.m.</td></tr>
+      </table>
+    </div>
+    <div class="vis-m">
+      <figure class="map" data-reveal>
+        <iframe src="https://www.google.com/maps?q=Carnitas+San+Pancho+La+Purisima,+Ezequiel+A.+Chavez+103,+Barrio+de+la+Purisima,+Aguascalientes&output=embed" loading="lazy" title="Mapa de Carnitas San Pancho La Purísima" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <figcaption class="plaque">Ezequiel A. Chávez 103</figcaption>
+      </figure>
+      <div class="vis-btns">
+        <a class="btn-wa" data-wa="Hola San Pancho, quiero hacer un pedido. ¿Qué tienen hoy?" href="https://wa.me/524499166458?text=Hola%20San%20Pancho%2C%20quiero%20hacer%20un%20pedido.%20%C2%BFQu%C3%A9%20tienen%20hoy%3F">WhatsApp</a>
+        <a class="btn-nav" href="https://maps.google.com/?cid=7158543791060723405" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn-nav" href="tel:+524499166458">Llamar</a>
       </div>
-      <p class="tel"><a href="tel:+524499166458">Llamar al 449 916 6458</a></p>
+      <p class="vis-n">Comes aquí o te lo llevamos a domicilio.</p>
     </div>
   </div>
 </section>
@@ -128,14 +213,16 @@
 <section class="sec todo" id="completar">
   <p class="eb">Todo listo para completar</p>
   <h2>Falta lo<em>que solo tú sabes.</em></h2>
-  <ul class="todo-l"><li>Horario de cada día</li><li>Tu WhatsApp para pedidos</li><li>Tus redes</li><li>Precios de la carta</li><li>Fotos propias y logo</li></ul>
+  <ul class="todo-l"><li>Confirmar el horario</li><li>Tu WhatsApp para pedidos</li><li>Tus redes</li><li>Precios de la carta</li><li>Fotos propias y logo</li></ul>
   <p class="todo-p">Pásanoslo por el mismo chat donde te llegó esta muestra.</p>
 </section>
-<footer class="pie"><b>Carnitas San Pancho La Purísima</b><p>Ezequiel A. Chávez 103, Barrio de la Purísima, 20259 Aguascalientes, Ags.</p><p>Tel. 449 916 6458</p><p class="credit">Muestra de diseño hecha por KREVO. Las fotos son del negocio, subidas por sus clientes en Google Maps.</p></footer>
+<footer class="pie"><div class="pie-g"><div><b>Carnitas San Pancho La Purísima</b><p><a href="https://maps.google.com/?cid=7158543791060723405" target="_blank" rel="noopener">Ezequiel A. Chávez 103, Barrio de la Purísima, 20259 Aguascalientes, Ags.</a></p><p><a href="tel:+524499166458">Tel. 449 916 6458</a></p></div><div><p class="pie-h">Horario</p><p>Lunes a sábado 8 a.m. – 5:30 p.m.</p><p>Domingo 8 a.m. – 6 p.m.</p></div><div><p class="pie-h">Pide</p><p><a data-wa="Hola San Pancho, quiero hacer un pedido. ¿Qué tienen hoy?" href="https://wa.me/524499166458?text=Hola%20San%20Pancho%2C%20quiero%20hacer%20un%20pedido.%20%C2%BFQu%C3%A9%20tienen%20hoy%3F">WhatsApp →</a></p><p><a href="#plato">Arma tu plato →</a></p></div></div><p class="credit">Muestra de diseño hecha por KREVO. Las fotos son del negocio, subidas por sus clientes en Google Maps.</p></footer>
 
 </main>
 <a class="wa-float" data-wa="Hola San Pancho, quiero hacer un pedido. ¿Qué tienen hoy?" href="https://wa.me/524499166458?text=Hola%20San%20Pancho%2C%20quiero%20hacer%20un%20pedido.%20%C2%BFQu%C3%A9%20tienen%20hoy%3F" aria-label="Pedir por WhatsApp"><svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="#fff" d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.4.7 4.7 1.9 6.600L3.200 29l7.100-2.100c1.800 1 3.800 1.500 5.700 1.500 7 0 12.600-5.600 12.600-12.500C28.600 8.600 23 3 16 3zm6.300 17.600c-.3.800-1.600 1.500-2.200 1.500-.6.100-1.300.1-2.100-.1-.5-.2-1.200-.4-2-.8-3.500-1.500-5.700-5-5.900-5.300-.2-.2-1.400-1.900-1.400-3.600 0-1.700.9-2.500 1.200-2.900.3-.3.700-.4.900-.4h.6c.2 0 .5-.1.800.6l1 2.500c.1.200.1.400 0 .6l-.4.600-.5.600c-.2.200-.4.400-.2.800.2.400 1 1.600 2.100 2.600 1.400 1.200 2.600 1.600 3 1.800.4.200.6.100.8-.1.200-.3.900-1.100 1.200-1.500.3-.4.500-.3.800-.2l2.400 1.200c.4.200.6.300.7.400.1.200.1.800-.2 1.600z"/></svg></a>
 <script src="site.js?v=1791092736" defer></script>
 <script src="sections/02-plato.js?v=1791092199" defer></script>
+<script src="sections/05-opiniones.js?v=1791104662" defer></script>
+<script src="sections/07-visita.js?v=1791104703" defer></script>
 </body>
 </html>

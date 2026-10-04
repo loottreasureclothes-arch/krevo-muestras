@@ -1,0 +1,3 @@
+(function(){var el=document.getElementById("ven-now");if(!el)return;var d,h,m;try{var p=new Intl.DateTimeFormat("en-US",{timeZone:"America/Mexico_City",weekday:"short",hour:"numeric",minute:"numeric",hourCycle:"h23"}).formatToParts(new Date()),o={};p.forEach(function(x){o[x.type]=x.value});d=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(o.weekday);h=+o.hour;m=+o.minute}catch(e){return}
+var li=document.querySelector('#ven-h li[data-d="'+d+'"]');if(li)li.classList.add("today");var s=el.querySelector("span");
+if(h>=10){el.classList.add("open");s.textContent="Abierto ahora · cierra a las 12 a.m."}else{el.classList.add("closed");s.textContent="Cerrado · abre hoy a las 10 a.m."}})();

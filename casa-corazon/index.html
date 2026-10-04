@@ -25,13 +25,15 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="fonts/young-serif.woff2" crossorigin>
 <link rel="preload" as="image" href="img/fachada-1536.webp" imagesrcset="img/fachada-480.webp 480w, img/fachada-960.webp 960w, img/fachada-1536.webp 1536w" imagesizes="(max-width:759px) 90vw, 45vw" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1791092905">
+<link rel="stylesheet" href="site.css?v=1791104982">
 <link rel="stylesheet" href="sections/01-hero.css?v=1791092366">
 <link rel="stylesheet" href="sections/02-carta.css?v=1791092810">
 <link rel="stylesheet" href="sections/03-tabla.css?v=1791092810">
-<link rel="stylesheet" href="sections/04-terraza.css?v=1791092810">
-<link rel="stylesheet" href="sections/05-llegar.css?v=1791092415">
-<link rel="stylesheet" href="sections/06-completar.css?v=1791092415">
+<link rel="stylesheet" href="sections/04-terraza.css?v=1791104982">
+<link rel="stylesheet" href="sections/05-voces.css?v=1791104995">
+<link rel="stylesheet" href="sections/06-recorrido.css?v=1791104869">
+<link rel="stylesheet" href="sections/07-llegar.css?v=1791104869">
+<link rel="stylesheet" href="sections/08-completar.css?v=1791092415">
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 <script>setTimeout(function(){document.documentElement.classList.add('rv-all')},1600)</script>
 </head>
@@ -54,7 +56,9 @@
   <a href="#carta"><small>01</small>La carta</a>
   <a href="#tabla"><small>02</small>Tu tabla</a>
   <a href="#terraza"><small>03</small>La terraza</a>
-  <a href="#llegar"><small>04</small>Cómo llegar</a>
+  <a href="#voces"><small>04</small>Lo que dicen</a>
+  <a href="#recorrido"><small>05</small>La casona</a>
+  <a href="#llegar"><small>06</small>Cómo llegar</a>
 </nav>
 
 <main id="top">
@@ -134,25 +138,87 @@
     <h2 data-reveal>Terraza<em>al atardecer.</em></h2>
   </div>
   <div class="terr-dato" data-reveal>
-    <b>4.1</b>
-    <p>en Google, con 2,698 reseñas.<br>Aquí se queda uno hasta las 2 a.m.</p>
+    <b>81</b>
+    <div><p>reseñas en Google hablan de la vista: el templo de la Merced y Carranza desde arriba.</p><a class="lnk" href="#voces">Lo que dicen →</a></div>
+  </div>
+</section>
+
+<section class="voces" id="voces">
+  <div class="voces-in">
+    <div class="voces-head">
+      <h2 data-reveal>Así la cantan<em>los de la mesa.</em></h2>
+      <div class="gscore" data-reveal>
+        <b>4.1</b>
+        <div><span class="stars" aria-label="4.1 de 5"><i style="--p:82%"></i></span><p>2,698 opiniones en Google</p></div>
+      </div>
+      <dl class="temas" data-reveal>
+        <dt>Lo que más se nombra en Google</dt>
+        <dd><span>La vista</span><b>81</b></dd>
+        <dd><span>La música</span><b>35</b></dd>
+        <dd><span>Las crepas</span><b>15</b></dd>
+        <dd><span>Los mojitos</span><b>12</b></dd>
+        <dd><span>El mezcal</span><b>12</b></dd>
+        <dd><span>El frappé</span><b>11</b></dd>
+      </dl>
+    </div>
+    <ul class="muro" role="list" data-reveal>
+      <li class="nota n1"><span class="nota-n">01</span><p>“La música es increíble, Iggy Pop, The Cure, cosas diferentes a los bares regulares de Ags.… La tarde-noche en la terraza está súper agusto y los meseros son súper buena onda.”</p><footer><span class="st">★★★★★</span><b>Rebeca F.</b><small>TripAdvisor</small></footer><em class="nota-l">La música</em></li>
+      <li class="nota n2"><span class="nota-n">02</span><p>“Me encanta la terraza ya que tiene una vista maravillosa de noche… un panorama hacia del templo de la Merced y la calle Venustiano Carranza, el clericot es muy sabroso.”</p><footer><span class="st">★★★★<s>★</s></span><b>ClaudiaIsela</b><small>TripAdvisor</small></footer><em class="nota-l">La vista</em></li>
+      <li class="nota n3"><span class="nota-n">03</span><p>“Una vieja casona del centro convertida en un agradable lugar para pasar un buen rato con amistades o pareja. Cada habitación es buen lugar para estar.”</p><footer><span class="st">★★★★<s>★</s></span><b>Luis G.</b><small>TripAdvisor</small></footer><em class="nota-l">La casona</em></li>
+      <li class="nota n4"><span class="nota-n">04</span><p>“El café está muy bueno… el ambiente es muy relajado y casual.”</p><footer><span class="st">★★★★<s>★</s></span><b>Mariana J.</b><small>TripAdvisor</small></footer><em class="nota-l">El café</em></li>
+      <li class="nota n5"><span class="nota-n">05</span><p>“Lugar acogedor, tranquilo, para disfrutar una plática mientras comes tus platillos, buena relación precio-servicio.”</p><footer><span class="st">★★★★<s>★</s></span><b>Alucard66</b><small>TripAdvisor</small></footer><em class="nota-l">La plática</em></li>
+      <li class="nota n6"><span class="nota-n">06</span><p>“El verdadero fuerte es su cafe, y sus chavelas de aguas y jugos frutales.”</p><footer><span class="st">★★★<s>★★</s></span><b>antonio lozack</b><small>TripAdvisor</small></footer><em class="nota-l">Las chavelas</em></li>
+    </ul>
+    <div class="voces-cta" data-reveal>
+      <a class="btn btn-nav" href="https://maps.google.com/?cid=13189156026786874112" target="_blank" rel="noopener">Ver todas en Google</a>
+      <span class="voces-sw" aria-hidden="true">Desliza →</span>
+    </div>
+  </div>
+</section>
+
+<section class="reco" id="recorrido">
+  <div class="reco-in">
+    <h2 data-reveal>Cuarto por cuarto,<em>la casona.</em></h2>
+    <div class="col">
+      <figure class="f1" data-reveal><img src="img/fachada-1536.webp" srcset="img/fachada-480.webp 480w, img/fachada-960.webp 960w, img/fachada-1536.webp 1536w" sizes="(max-width:759px) 56vw, 26vw" width="1536" height="2048" alt="La entrada de la casona sobre Carranza" loading="lazy" style="object-position:50% 45%"><figcaption>La entrada</figcaption></figure>
+      <figure class="f2" data-reveal><img src="img/neon-916.webp" srcset="img/neon-480.webp 480w, img/neon-916.webp 916w" sizes="(max-width:759px) 40vw, 18vw" width="916" height="1863" alt="El corazón de neón encendido" loading="lazy" style="object-position:50% 35%"><figcaption>El corazón</figcaption></figure>
+      <figure class="f3" data-reveal><img src="img/interior-1000.webp" srcset="img/interior-480.webp 480w, img/interior-1000.webp 1000w" sizes="(max-width:759px) 100vw, 40vw" width="1000" height="635" alt="El patio interior con lámparas de mimbre y muro de piedra" loading="lazy"><figcaption>El patio</figcaption></figure>
+      <figure class="f4" data-reveal><img src="img/cafe-1080.webp" srcset="img/cafe-480.webp 480w, img/cafe-960.webp 960w, img/cafe-1080.webp 1080w" sizes="(max-width:759px) 48vw, 22vw" width="1080" height="1920" alt="Café en el balcón con el templo iluminado al fondo" loading="lazy" style="object-position:50% 30%"><figcaption>El balcón</figcaption></figure>
+      <figure class="f5" data-reveal><img src="img/frappes-999.webp" srcset="img/frappes-480.webp 480w, img/frappes-960.webp 960w, img/frappes-999.webp 999w" sizes="(max-width:759px) 48vw, 22vw" width="999" height="1024" alt="Frappés en la terraza de noche" loading="lazy"><figcaption>La azotea</figcaption></figure>
+    </div>
+    <div class="reco-cta" data-reveal>
+      <p>Pide la terraza, el balcón o un cuarto adentro.</p>
+      <a class="btn btn-wa" href="https://wa.me/524492056026?text=Hola%20Casa%20Coraz%C3%B3n%2C%20quiero%20apartar%20mesa.%20%C2%BFHay%20lugar%20en%20la%20terraza%3F" data-wa="Hola Casa Corazón, quiero apartar mesa. ¿Hay lugar en la terraza?" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Apartar mi lugar</a>
+    </div>
   </div>
 </section>
 
 <section class="lleg" id="llegar" data-hide-wa>
   <div class="lleg-in">
     <h2 data-reveal>Carranza 124-B,<em>pleno Centro.</em></h2>
-    <div class="lleg-ph" data-reveal><img src="img/neon-916.webp" srcset="img/neon-480.webp 480w, img/neon-916.webp 916w" sizes="(max-width:759px) 70vw, 30vw" width="916" height="1863" alt="Corazón de neón encendido en una pared de Casa Corazón" loading="lazy" style="object-position:50% 40%"></div>
+    <div class="mapa" data-reveal>
+      <iframe src="https://www.google.com/maps?q=Casa+Coraz%C3%B3n,+Venustiano+Carranza+124-B,+Zona+Centro,+Aguascalientes&output=embed" loading="lazy" title="Mapa de Casa Corazón en Venustiano Carranza 124-B" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
     <div class="lleg-info">
+      <p class="estado" id="estado" data-reveal><i></i><span>Abre todos los días a las 3 p.m.</span></p>
+      <ul class="horas" id="horas" data-reveal>
+        <li data-d="1"><span>Lunes</span><b>3 p.m. a 2 a.m.</b></li>
+        <li data-d="2"><span>Martes</span><b>3 p.m. a 2 a.m.</b></li>
+        <li data-d="3"><span>Miércoles</span><b>3 p.m. a 2 a.m.</b></li>
+        <li data-d="4"><span>Jueves</span><b>3 p.m. a 2 a.m.</b></li>
+        <li data-d="5"><span>Viernes</span><b>3 p.m. a 2 a.m.</b></li>
+        <li data-d="6"><span>Sábado</span><b>3 p.m. a 2 a.m.</b></li>
+        <li data-d="0"><span>Domingo</span><b>3 p.m. a 2 a.m.</b></li>
+      </ul>
       <dl data-reveal>
-        <div><dt>Dónde</dt><dd>Venustiano Carranza 124-B, Zona Centro, Aguascalientes</dd></div>
-        <div><dt>Cuándo</dt><dd>Lunes a domingo, 3 p.m. a 2 a.m.</dd></div>
+        <div><dt>Dónde</dt><dd>Venustiano Carranza 124-B, Zona Centro, 20000 Aguascalientes</dd></div>
         <div><dt>Cuánto</dt><dd>De $100 a $300 por persona</dd></div>
         <div><dt>Cómo</dt><dd>En el local, para llevar o a domicilio</dd></div>
       </dl>
       <div class="lleg-cta" data-reveal>
         <a class="btn btn-wa" href="https://wa.me/524492056026?text=Hola%20Casa%20Coraz%C3%B3n%2C%20%C2%BFme%20pueden%20apartar%20una%20mesa%20para%20hoy%3F" data-wa="Hola Casa Corazón, ¿me pueden apartar una mesa para hoy?" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Apartar mesa</a>
-        <a class="btn btn-nav" href="https://www.google.com/maps/search/?api=1&query=Casa+Coraz%C3%B3n+Venustiano+Carranza+124-B+Aguascalientes" target="_blank" rel="noopener">Abrir en Maps</a>
+        <a class="btn btn-nav" href="https://maps.google.com/?cid=13189156026786874112" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn btn-nav" href="tel:+524492056026">Llamar 449 205 6026</a>
       </div>
     </div>
   </div>
@@ -164,8 +230,8 @@
     <ul>
       <li>Su WhatsApp real (aquí usamos el teléfono de Google Maps).</li>
       <li>La carta con precios.</li>
-      <li>Reseñas de clientes con nombre.</li>
-      <li>Su logo y sus redes.</li>
+      <li>Sus reseñas favoritas de Google (aquí van las de TripAdvisor).</li>
+      <li>Su logo y su Instagram, si tienen.</li>
     </ul>
     <p>Pásanoslo por el mismo chat donde te llegó esta muestra.</p>
   </div>
@@ -175,8 +241,9 @@
   <div class="pie-in">
     <p class="pie-big" data-reveal>Nos vemos<em>en la terraza.</em></p>
     <b>Casa Corazón</b>
-    <p>Venustiano Carranza 124-B, Zona Centro, Aguascalientes.<br>Lunes a domingo, 3 p.m. a 2 a.m.</p>
-    <div class="pie-soc"><a href="https://www.facebook.com/search/top?q=Casa%20Coraz%C3%B3n%20Centro" target="_blank" rel="noopener" aria-label="Facebook de Casa Corazón"><svg aria-hidden="true"><use href="#i-fb"/></svg></a></div>
+    <p>Venustiano Carranza 124-B, Zona Centro, Aguascalientes.<br>Lunes a domingo, 3 p.m. a 2 a.m.<br><a href="tel:+524492056026">449 205 6026</a></p>
+    <div class="pie-cta"><a class="btn btn-wa" href="https://wa.me/524492056026?text=Hola%20Casa%20Coraz%C3%B3n%2C%20quiero%20apartar%20mesa%20para%20hoy." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escribir por WhatsApp</a><a class="lnk-p" href="https://maps.google.com/?cid=13189156026786874112" target="_blank" rel="noopener">Cómo llegar →</a></div>
+    <div class="pie-soc"><a href="https://www.facebook.com/CasaCorazonCentro/" target="_blank" rel="noopener" aria-label="Facebook de Casa Corazón"><svg aria-hidden="true"><use href="#i-fb"/></svg></a></div>
     <small>Muestra de página, hecha con fotos del local.</small>
   </div>
 </footer>
@@ -184,7 +251,7 @@
 </main>
 
 <a class="wa-float" href="https://wa.me/524492056026?text=Hola%20Casa%20Coraz%C3%B3n%2C%20quiero%20hacer%20un%20pedido.%20%C2%BFQu%C3%A9%20tienen%20hoy%3F" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
-
+<script src="sections/07-llegar.js?v=1791104869" defer></script>
 <script src="site.js?v=1791092415" defer></script>
 </body>
 </html>

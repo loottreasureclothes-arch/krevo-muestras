@@ -1,15 +1,41 @@
-.lp-op{background:var(--vino);padding:64px 0}
-.lp-op-grid{display:grid;gap:36px}
+.lp-op{background:var(--vino);padding:64px 0 60px;overflow:hidden}
+.lp-op-top{display:grid;gap:26px}
 .lp-big{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
-.lp-big-n{font:400 clamp(150px,46vw,260px)/.8 var(--f-d);color:var(--cebolla);letter-spacing:-.04em}
-.lp-big p{font-size:16px;padding-bottom:6px}.lp-big b{display:block;font:400 26px/1.1 var(--f-d)}
-.lp-op-col{display:grid;gap:28px}
-.lp-quotes{display:grid;gap:0}
-.lp-quotes li{padding:18px 0;border-top:1px solid rgba(247,236,218,.3)}
-.lp-quotes blockquote{font:400 21px/1.3 var(--f-d)}
-.lp-quotes cite{display:block;margin-top:8px;font:700 11px/1 var(--f-b);letter-spacing:.16em;text-transform:uppercase;font-style:normal;color:#ffc2dd}
+.lp-big-n{font:400 clamp(130px,40vw,240px)/.8 var(--f-d);color:var(--cebolla);letter-spacing:-.04em}
+.lp-big-s{display:grid;gap:8px;padding-bottom:6px}
+.lp-big p{font-size:16px}.lp-big p b{display:block;font:400 26px/1.1 var(--f-d)}
+.lp-stars{position:relative;display:inline-block;font-size:26px;line-height:1;letter-spacing:3px;color:rgba(247,236,218,.3)}
+.lp-stars::before{content:"★★★★★"}
+.lp-stars i{position:absolute;inset:0;width:var(--p);overflow:hidden;color:#ffd27a;white-space:nowrap}
+.lp-stars i::before{content:"★★★★★"}
+.lp-tix-wrap{margin-top:34px;position:relative}
+.lp-tix{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 20px 18px;scrollbar-width:none;outline:none}
+.lp-tix::-webkit-scrollbar{display:none}
+.lp-tk{flex:0 0 min(82vw,360px);scroll-snap-align:center;background:var(--crema);color:var(--noche);padding:20px 20px 22px;position:relative;display:flex;flex-direction:column;gap:14px;
+ -webkit-mask:radial-gradient(circle 7px at 50% 0,#0000 98%,#000) 0 0/18px 51% repeat-x,radial-gradient(circle 7px at 50% 100%,#0000 98%,#000) 0 100%/18px 51% repeat-x;
+ mask:radial-gradient(circle 7px at 50% 0,#0000 98%,#000) 0 0/18px 51% repeat-x,radial-gradient(circle 7px at 50% 100%,#0000 98%,#000) 0 100%/18px 51% repeat-x;transform:rotate(var(--r,0deg))}
+.lp-tk:nth-child(2n){--r:.8deg}.lp-tk:nth-child(3n){--r:-.7deg}
+.lp-tk-h{display:flex;justify-content:space-between;align-items:center;padding:6px 0 10px;border-bottom:1.5px dashed rgba(42,5,16,.4);font:700 11px/1 var(--f-b);letter-spacing:.18em;text-transform:uppercase;color:var(--vino)}
+.lp-tk-st{color:#c4881a;letter-spacing:2px;font-size:15px}.lp-tk-st s{text-decoration:none;color:rgba(42,5,16,.2)}
+.lp-tk blockquote{font:400 21px/1.3 var(--f-d);flex:1}
+.lp-tk-f{display:grid;gap:3px;padding-top:12px;border-top:1.5px dashed rgba(42,5,16,.4)}
+.lp-tk-f b{font:800 16px/1.2 var(--f-b)}.lp-tk-f span{font:700 11px/1 var(--f-b);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.lp-tix-nav{display:none}
+.lp-op-bot{margin-top:30px;display:grid;gap:16px;justify-items:start}
+.lp-temas-k{font:700 11px/1 var(--f-b);letter-spacing:.18em;text-transform:uppercase;color:#ffc2dd}
+.lp-temas{display:flex;flex-wrap:wrap;gap:6px 18px}
+.lp-temas li{display:flex;align-items:baseline;gap:6px;font:400 26px/1.2 var(--f-d)}
+.lp-temas span{font:700 12px/1 var(--f-b);color:#ffc2dd}
+.lp-op .lp-btn-nav{margin-top:8px}
 @media (min-width:760px){
- .lp-op{padding:104px 0}
- .lp-op-grid{grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
- .lp-big{flex-direction:column;align-items:flex-start}
+ .lp-op{padding:104px 0 96px}
+ .lp-op-top{grid-template-columns:1fr 1fr;align-items:end;gap:64px}
+ .lp-tix{padding:14px max(28px,calc((100vw - 1180px)/2)) 22px;gap:20px}
+ .lp-tk{flex-basis:380px;padding:24px}
+ .lp-tix-nav{display:flex;gap:10px;justify-content:flex-end;width:min(1180px,100% - 40px);margin:6px auto 0}
+ .lp-tn{width:52px;height:52px;display:grid;place-items:center;background:transparent;border:1px solid var(--crema);color:var(--crema);cursor:pointer;transition:background .2s,color .2s}
+ .lp-tn:hover{background:var(--crema);color:var(--vino)}
+ .lp-tn svg{width:22px;height:22px}.lp-tn[data-d="-1"] svg{transform:scaleX(-1)}
+ .lp-op-bot{grid-template-columns:1fr auto;align-items:end;column-gap:40px}
+ .lp-temas-k{grid-column:1/-1}.lp-op .lp-btn-nav{margin:0}
 }

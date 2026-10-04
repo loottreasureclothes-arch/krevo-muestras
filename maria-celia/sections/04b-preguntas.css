@@ -1,0 +1,19 @@
+.mc-faq{background:var(--crema);color:var(--tinta);padding:64px var(--pad) 68px;border-top:12px solid transparent;border-image:var(--greca) 12 round}
+.mc-faq-in{max-width:1100px;margin:0 auto}
+.mc-faq-h{color:var(--cobalto)}
+.mc-faq-l{margin:26px 0 30px;border-top:2px solid var(--cobalto)}
+.mc-faq details{border-bottom:1px dotted #8c97b8}
+.mc-faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;padding:12px 0;cursor:pointer;font:400 22px/1.2 var(--serif);color:var(--cobalto)}
+.mc-faq summary::-webkit-details-marker{display:none}
+.mc-faq summary i{flex:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--rojo);position:relative;transition:transform .25s}
+.mc-faq summary i::before,.mc-faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;background:var(--rojo);transform:translate(-50%,-50%)}
+.mc-faq summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.mc-faq details[open] summary i{transform:rotate(45deg)}
+.mc-faq details p{margin:0 0 18px;max-width:46ch;color:#33406b}
+@media(min-width:900px){
+  .mc-faq{padding:92px var(--pad)}
+  .mc-faq-in{display:grid;grid-template-columns:.8fr 1.2fr;gap:0 72px;align-items:start}
+  .mc-faq-h{font-size:clamp(56px,6vw,84px);grid-row:1/3}
+  .mc-faq-l{margin-top:0}
+  .mc-faq .mc-btn{grid-column:2;justify-self:start}
+}

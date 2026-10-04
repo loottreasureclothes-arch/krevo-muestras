@@ -11,4 +11,6 @@
   dia.textContent = "Hoy es " + DIAS[d].toLowerCase() + ", en el caldero";
   big.textContent = tipo === "rojo" ? "Rojo" : tipo === "verde" ? "Verde" : "Blanco";
   sub.textContent = tipo === "rojo" ? "Pozole rojo, el de todos los días." : tipo === "verde" ? "Hoy hay verde, solo viernes. El rojo también está." : "Hoy hay blanco, solo sábado. El rojo también está.";
+  var cta = document.getElementById("pz-cta");
+  if (cta) { var t = "Hola, quiero un pozole " + tipo + "."; cta.setAttribute("data-wa", t); cta.href = "https://wa.me/524493319024?text=" + encodeURIComponent(t); }
 })();

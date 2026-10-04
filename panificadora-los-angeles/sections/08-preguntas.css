@@ -1,0 +1,19 @@
+.preg{background:var(--cr);color:var(--ca)}
+.preg .tone2{color:var(--cu)}
+.preg-foto{margin:0 0 36px;position:relative}
+.preg-foto img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:999px 999px 0 0}
+.preg-foto figcaption{position:absolute;left:14px;bottom:-22px;background:var(--ca);color:var(--cr);padding:12px 18px;display:flex;align-items:baseline;gap:10px}
+.preg-foto figcaption b{font:400 34px/1 "Young Serif",serif;color:var(--am)}
+.preg-foto figcaption span{font-size:13px;max-width:150px;line-height:1.25}
+.faq{margin:24px 0 28px;border-top:1.5px solid var(--cu)}
+.faq details{border-bottom:1.5px solid var(--cu)}
+.faq summary{list-style:none;cursor:pointer;font-family:"Young Serif",serif;font-size:21px;line-height:1.2;padding:16px 36px 16px 0;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:12px;font:400 26px "Work Sans";color:var(--cu);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{padding:0 0 18px;font-size:16px;max-width:46ch}
+@media(min-width:820px){
+ .sec.preg{padding:100px 0}
+ .preg-grid{display:grid;grid-template-columns:.9fr 1fr;gap:80px;align-items:center}
+ .preg-foto{margin:0}
+}

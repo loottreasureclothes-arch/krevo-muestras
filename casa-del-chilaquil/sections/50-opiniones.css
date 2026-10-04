@@ -1,0 +1,34 @@
+.cc-op{padding:56px 0 48px}
+.cc-op-top{display:grid;gap:18px}
+.cc-op-score .cc-big{margin:6px 0 8px}
+.cc-stars{display:inline-flex;gap:3px;color:var(--coral)}
+.cc-stars svg{width:16px;height:16px}
+.cc-stars-lg svg{width:26px;height:26px}
+.cc-op-score .cc-big-lbl{margin-top:10px}
+.cc-rv-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:30px calc(-1*var(--gut)) 0;padding:6px var(--gut) 10px;scrollbar-width:none;overscroll-behavior-x:contain}
+.cc-rv-track::-webkit-scrollbar{display:none}
+.cc-rv{flex:0 0 82%;scroll-snap-align:start;margin:0;background:var(--bg2);border-top:4px solid var(--coral);border-radius:3px 3px 120px 3px;padding:22px 22px 30px;display:flex;flex-direction:column;gap:14px;transition:transform .3s}
+.cc-rv:nth-child(even){background:var(--cream);color:var(--on-cream);border-top-color:var(--red);border-radius:3px 3px 3px 120px}
+.cc-rv:nth-child(even) .cc-stars{color:var(--red)}
+.cc-rv p{font:italic 500 21px/1.35 var(--disp);flex:1}
+.cc-rv-big p{font-size:24px}
+.cc-rv footer{display:flex;flex-direction:column;gap:4px}
+.cc-rv footer b{font:800 18px/1.1 var(--disp)}
+.cc-rv footer span{font:700 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--beige)}
+.cc-rv:nth-child(even) footer span{color:var(--on-cream-muted)}
+.cc-rv-nav{display:flex;align-items:center;gap:14px;margin-top:16px}
+.cc-rv-btn{width:48px;height:48px;border-radius:50%;border:1px solid var(--beige);background:transparent;color:var(--beige);display:grid;place-items:center;transition:background .2s,transform .2s}
+.cc-rv-btn:active{transform:scale(.94)}
+.cc-rv-btn svg{width:20px;height:20px}
+.cc-rv-btn[data-dir="-1"] svg{transform:scaleX(-1)}
+.cc-rv-count{font:700 13px/1 var(--body);letter-spacing:.16em;color:var(--muted)}
+.cc-op-topics{margin-top:26px;font-size:15px;color:var(--muted)}
+.cc-op-topics b{color:var(--text);font-weight:700}
+.cc-op-cta{margin-top:20px}
+.cc-op-cta .cc-btn svg{width:18px;height:18px}
+@media (min-width:760px){
+  .cc-op{padding:84px 0 64px}
+  .cc-op-top{grid-template-columns:1.2fr 1fr;align-items:end}
+  .cc-rv{flex-basis:calc((100% - 28px)/3)}
+  .cc-rv-track{margin:40px 0 0;padding:6px 0 10px}
+}

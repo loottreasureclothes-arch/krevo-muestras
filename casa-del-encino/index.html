@@ -28,13 +28,14 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/bodoni-800.woff2" crossorigin>
 <link rel="preload" as="image" href="img/hero-m-780.webp" media="(max-width: 760px)" fetchpriority="high">
 <link rel="stylesheet" href="site.css?v=1791092759">
-<link rel="stylesheet" href="sections/01-hero.css?v=1791093084">
+<link rel="stylesheet" href="sections/01-hero.css?v=1791105023">
 <link rel="stylesheet" href="sections/02-mesa.css?v=1791093084">
-<link rel="stylesheet" href="sections/03-carta.css?v=1791093084">
+<link rel="stylesheet" href="sections/03-carta.css?v=1791105023">
 <link rel="stylesheet" href="sections/04-paz.css?v=1791092624">
-<link rel="stylesheet" href="sections/05-hora.css?v=1791092624">
-<link rel="stylesheet" href="sections/06-resenas.css?v=1791092624">
-<link rel="stylesheet" href="sections/07-completar.css?v=1791092624">
+<link rel="stylesheet" href="sections/05-casona.css?v=1791105218">
+<link rel="stylesheet" href="sections/06-visita.css?v=1791105089">
+<link rel="stylesheet" href="sections/07-resenas.css?v=1791105121">
+<link rel="stylesheet" href="sections/08-completar.css?v=1791092624">
 <script>(function(){var d=document.documentElement;if(!window.matchMedia||!matchMedia("(prefers-reduced-motion: reduce)").matches){d.classList.add("js-anim");setTimeout(function(){d.classList.remove("js-anim")},1600)}})();</script>
 </head>
 <body>
@@ -60,7 +61,8 @@
   <nav class="hd-nav" id="hd-nav" aria-label="Principal">
     <a href="#mesa">El azulejo de tu mesa</a>
     <a href="#carta">Cazuelas y comal</a>
-    <a href="#hora">Horario y dirección</a>
+    <a href="#casona">La casona</a>
+    <a href="#visita">Visítanos</a>
     <a href="#resenas">Lo que dicen</a>
   </nav>
 </header>
@@ -77,7 +79,7 @@
   <div class="hero-tx">
     <h1 data-r style="--d:.1s">Aquí el desayuno <span class="t2">no se apura.</span></h1>
     <p class="lede" data-r style="--d:.2s">Cazuelas, enchiladas y café de olla. Todos los días de 8:30 a 14:00.</p>
-    <p class="hero-cta" data-r style="--d:.3s"><a class="btn-wa" href="https://wa.me/524498068918?text=Hola%20Casa%20del%20Encino%2C%20quiero%20reservar%20mesa%20para%202%20a%20las%209%3A00." data-wa target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar mesa</a></p>
+    <p class="hero-cta" data-r style="--d:.3s"><a class="btn-wa" href="https://wa.me/524498068918?text=Hola%20Casa%20del%20Encino%2C%20quiero%20reservar%20mesa%20para%202%20a%20las%209%3A00." data-wa target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar mesa</a><a class="btn-nav" href="#carta">Ver la carta</a></p>
   </div>
 </section>
 
@@ -145,6 +147,7 @@
       <li data-r><div class="cl-top"><h3>Cazuela de lengua en salsa verde</h3><span class="dots"></span><b>$185</b></div><p>Lajas de lengua de puerco con frijoles y huevo estrellado.</p></li>
       <li data-r><div class="cl-top"><h3>Cazuela pasilla</h3><span class="dots"></span><b>$195</b></div><p>Tiras de bistec en salsa pasilla con frijoles.</p></li>
     </ol>
+    <p class="carta-cta" data-r><a class="btn-wa" href="https://wa.me/524498068918?text=Hola%20Casa%20del%20Encino%2C%20quiero%20apartar%20mesa%20para%20ma%C3%B1ana.%20%C2%BFMe%20pasan%20la%20carta%20completa%3F" data-wa target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir la carta completa</a><a class="arrow" href="#visita">Para llevar o en mesa →</a></p>
   </div>
 </section>
 
@@ -156,50 +159,110 @@
   <div class="paz-tx">
     <h2 data-r>Se respira <span class="t2">mucha paz</span></h2>
     <p class="paz-q" data-r style="--d:.12s">maria fernada robledo hernandez, 5 estrellas en Google</p>
+    <p data-r style="--d:.2s;margin-top:18px"><a class="arrow" href="#casona">Recorre la casona →</a></p>
   </div>
 </section>
 
-<section class="hora-s" id="hora">
-  <div class="hs-in">
-    <h2 class="hs-h" data-r><span class="big">8:30</span><span class="t2">hasta las 2 de la tarde.</span></h2>
-    <div class="hs-info" data-r style="--d:.1s">
-      <p class="hs-d">Todos los días.</p>
-      <address>Dr Jesús Díaz de León 504<br>Barrio del Encino, Aguascalientes</address>
-      <p class="hs-cta">
-        <a class="btn-wa" href="https://wa.me/524498068918?text=Hola%20Casa%20del%20Encino%2C%20quiero%20reservar%20mesa%20para%204%20a%20las%2010%3A00." data-wa target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar mesa</a>
-        <a class="btn-nav" href="https://www.google.com/maps/search/?api=1&amp;query=Casa+del+Encino+Dr+Jes%C3%BAs+D%C3%ADaz+de+Le%C3%B3n+504+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
-      </p>
+<section class="casona" id="casona">
+  <div class="cs-in">
+    <header class="cs-h">
+      <p class="eyebrow" data-r>Uno de los barrios originales</p>
+      <h2 data-r style="--d:.08s">Una casona <span class="t2">del Encino.</span></h2>
+      <p class="cs-p" data-r style="--d:.14s">Pan hecho aquí mismo, mesas adentro y afuera, y un salón privado para grupos.</p>
+    </header>
+    <div class="cs-g">
+      <figure class="cs-a" data-r><img src="img/casona-960.webp" srcset="img/casona-480.webp 480w, img/casona-960.webp 960w, img/casona-1600.webp 1536w" sizes="(min-width:900px) 34vw, 100vw" width="960" height="1280" alt="Salón de doble altura de Casa del Encino con lámparas de mimbre y muro de ladrillo"><figcaption>El salón</figcaption></figure>
+      <figure class="cs-b" data-r style="--d:.08s"><img src="img/pasillo-480.webp" srcset="img/pasillo-480.webp 480w, img/pasillo-960.webp 960w, img/pasillo-1600.webp 1440w" sizes="(min-width:900px) 22vw, 50vw" width="480" height="640" alt="Pasillo con mesas de mantel azul que lleva a la puerta de la casona"><figcaption>La entrada</figcaption></figure>
+      <figure class="cs-c" data-r style="--d:.14s"><img src="img/postre2-480.webp" srcset="img/postre2-480.webp 480w, img/postre2-960.webp 921w" sizes="(min-width:900px) 16vw, 50vw" width="480" height="1067" alt="Pan dulce de la casa junto a una taza con el logo de Casa del Encino"><figcaption>Pan de la casa</figcaption></figure>
+      <figure class="cs-d" data-r style="--d:.1s"><img src="img/enchcafe-960.webp" srcset="img/enchcafe-480.webp 480w, img/enchcafe-960.webp 960w, img/enchcafe-1600.webp 1536w" sizes="(min-width:900px) 26vw, 100vw" width="960" height="1280" alt="Enchiladas rojas con crema y cilantro junto a un café con leche"><figcaption>Enchiladas y café</figcaption></figure>
+      <figure class="cs-e" data-r style="--d:.16s"><img src="img/mole-480.webp" srcset="img/mole-480.webp 480w, img/mole-960.webp 960w, img/mole-1600.webp 1440w" sizes="(min-width:900px) 22vw, 50vw" width="480" height="640" alt="Enchiladas bañadas en salsa oscura con crema y cebolla morada"><figcaption>De la casa</figcaption></figure>
     </div>
-    <div class="hs-ph">
-      <figure class="hs-a" data-r><img src="img/postre-480.webp" srcset="img/postre-480.webp 480w, img/postre-960.webp 960w, img/postre-1600.webp 1200w" sizes="(min-width:900px) 24vw, 52vw" width="480" height="640" alt="Postre con frutos rojos y un café con leche"></figure>
-      <figure class="hs-b" data-r style="--d:.12s"><img src="img/jugo-480.webp" srcset="img/jugo-480.webp 480w, img/jugo-960.webp 960w, img/jugo-1600.webp 1200w" sizes="(min-width:900px) 24vw, 52vw" width="480" height="640" alt="Desayuno con jugo de naranja y café sobre mantel blanco"></figure>
+    <p class="cs-cta" data-r><a class="btn-wa" href="https://wa.me/524498068918?text=Hola%20Casa%20del%20Encino%2C%20quiero%20preguntar%20por%20el%20sal%C3%B3n%20privado%20para%20un%20grupo." data-wa target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Apartar el salón privado</a></p>
+  </div>
+</section>
+
+<section class="visita" id="visita">
+  <div class="vi-in">
+    <header class="vi-h" data-r>
+      <p class="eyebrow">Visítanos en el barrio</p>
+      <h2><span class="big">8:30</span><span class="t2">hasta las 2 de la tarde.</span></h2>
+      <p class="vi-now" id="vi-now" aria-live="polite"><i></i><span>Abrimos todos los días de 8:30 a 14:00</span></p>
+    </header>
+    <div class="vi-info" data-r style="--d:.08s">
+      <address><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Dr Jesús Díaz de León 504<br>Barrio del Encino, 20240 Aguascalientes</span></address>
+      <ol class="vi-days" id="vi-days">
+        <li data-day="1"><b>Lunes</b><span>8:30 a 14:00</span></li>
+        <li data-day="2"><b>Martes</b><span>8:30 a 14:00</span></li>
+        <li data-day="3"><b>Miércoles</b><span>8:30 a 14:00</span></li>
+        <li data-day="4"><b>Jueves</b><span>8:30 a 14:00</span></li>
+        <li data-day="5"><b>Viernes</b><span>8:30 a 14:00</span></li>
+        <li data-day="6"><b>Sábado</b><span>8:30 a 14:00</span></li>
+        <li data-day="0"><b>Domingo</b><span>8:30 a 14:00</span></li>
+      </ol>
     </div>
+    <figure class="vi-map" data-r style="--d:.12s">
+      <iframe src="https://www.google.com/maps?q=Casa+del+Encino,+Dr+Jes%C3%BAs+D%C3%ADaz+de+Le%C3%B3n+504,+Barrio+del+Encino,+Aguascalientes&amp;output=embed" loading="lazy" title="Mapa de Casa del Encino en el Barrio del Encino" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <figcaption>A unos pasos del jardín y templo del Encino</figcaption>
+    </figure>
+    <p class="vi-cta" data-r>
+      <a class="btn-wa" href="https://wa.me/524498068918?text=Hola%20Casa%20del%20Encino%2C%20quiero%20reservar%20mesa%20para%204%20a%20las%2010%3A00." data-wa target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar mesa</a>
+      <a class="btn-nav" href="https://www.google.com/maps?cid=15779361219229514992" target="_blank" rel="noopener">Cómo llegar</a>
+      <a class="btn-nav" href="tel:+524498068918">Llamar 449 806 8918</a>
+    </p>
   </div>
 </section>
 
 <section class="res cream" id="resenas">
   <div class="res-in">
     <header class="res-h">
-      <h2 data-r>Lo que dicen <span class="t2">en Google.</span></h2>
-      <p class="res-s" data-r style="--d:.08s">4,0 de calificación, 464 opiniones.</p>
+      <p class="eyebrow" data-r>Lo que dicen de la mesa</p>
+      <h2 data-r style="--d:.06s">Vuelven por <span class="t2">el pan.</span></h2>
     </header>
-    <div class="res-g">
-      <figure class="rq" data-r>
-        <p class="stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p>
-        <blockquote>“La atención fue muy amable desde que llegamos, es un lugar tranquilo y se respira mucha paz”</blockquote>
-        <figcaption>maria fernada robledo hernandez</figcaption>
-      </figure>
-      <figure class="rq" data-r style="--d:.1s">
-        <p class="stars" role="img" aria-label="4 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p>
-        <blockquote>“Recomiendo las enchiladas de la casa y los chilaquiles rojos. El café también es muy rico. Baños limpios y mesas amplias.”</blockquote>
-        <figcaption>Fa Lego</figcaption>
-      </figure>
-      <figure class="rq" data-r style="--d:.2s">
-        <p class="stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p>
-        <blockquote>“La atención y el servicio muy muy bien y la comida deliciosa! El personal muy amable y atento”</blockquote>
-        <figcaption>melissa flores</figcaption>
-      </figure>
+    <div class="res-score" data-r style="--d:.1s">
+      <a class="sc g" href="https://www.google.com/maps?cid=15779361219229514992" target="_blank" rel="noopener"><b>4,0</b><span><p class="stars" role="img" aria-label="4 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p>464 opiniones en Google</span></a>
+      <a class="sc" href="https://www.tripadvisor.com.mx/Restaurant_Review-g153976-d19981917-Reviews-Casa_del_Encino-Aguascalientes_Central_Mexico_and_Gulf_Coast.html" target="_blank" rel="noopener"><b>4,8</b><span><p class="stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p>16 opiniones en TripAdvisor</span></a>
     </div>
+    <figure class="res-big" data-r>
+      <blockquote>“Tienen un pan hecho en casa maravilloso, y los chilaquiles en salsa pasilla lo mejor!!”</blockquote>
+      <figcaption><p class="stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p><b>Ismaglez</b><span>TripAdvisor</span></figcaption>
+    </figure>
+    <div class="res-car">
+      <ol class="res-track" id="res-track" tabindex="0" aria-label="Reseñas, desliza para ver más">
+        <li class="rn">
+          <figure><p class="stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p><blockquote>“La atención fue muy amable desde que llegamos, es un lugar tranquilo y se respira mucha paz.”</blockquote><figcaption><b>maria fernada robledo hernandez</b><span>Google</span></figcaption></figure>
+        </li>
+        <li class="rn alt">
+          <figure><p class="stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p><blockquote>“Esta muy bueno el capuchino moka y la cazuela en salsa verde, además el pan lo hacen ahí mismo.”</blockquote><figcaption><b>Lucy G</b><span>TripAdvisor</span></figcaption></figure>
+        </li>
+        <li class="rn">
+          <figure><p class="stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p><blockquote>“La atención y el servicio muy muy bien y la comida deliciosa! El personal muy amable y atento.”</blockquote><figcaption><b>melissa flores</b><span>Google</span></figcaption></figure>
+        </li>
+        <li class="rn">
+          <figure><p class="stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p><blockquote>“Asistimos en familia a desayunar y realmente todo está delicioso, recomiendo ampliamente el pan y el café preparado de la casa.”</blockquote><figcaption><b>Pau Cuevas</b><span>TripAdvisor</span></figcaption></figure>
+        </li>
+        <li class="rn alt">
+          <figure><p class="stars" role="img" aria-label="4 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p><blockquote>“Recomiendo las enchiladas de la casa y los chilaquiles rojos. El café también es muy rico.”</blockquote><figcaption><b>Fa Lego</b><span>Google</span></figcaption></figure>
+        </li>
+        <li class="rn">
+          <figure><p class="stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p><blockquote>“La atención personal del dueño, y su familia le dan calidez al trato.”</blockquote><figcaption><b>maria eugenia s</b><span>TripAdvisor</span></figcaption></figure>
+        </li>
+        <li class="rn">
+          <figure><p class="stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p><blockquote>“El lugar muy agradable, el servicio rápido y atento. Las porciones son generosas.”</blockquote><figcaption><b>Pepe L</b><span>TripAdvisor</span></figcaption></figure>
+        </li>
+        <li class="rn alt">
+          <figure><p class="stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p><blockquote>“La panadería es increíble también, hay que pedir para llevar.”</blockquote><figcaption><b>Paulina G</b><span>TripAdvisor</span></figcaption></figure>
+        </li>
+        <li class="rn">
+          <figure><p class="stars" role="img" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></p><blockquote>“Negocio familiar con un pan excelente. Las enchiladas de la casa son deliciosas.”</blockquote><figcaption><b>Aurora C</b><span>TripAdvisor</span></figcaption></figure>
+        </li>
+      </ol>
+      <div class="res-ctl">
+        <button type="button" class="rc-b" id="rc-prev" aria-label="Reseña anterior">←</button>
+        <p class="rc-n" aria-hidden="true"><b id="rc-i">01</b> / 09</p>
+        <button type="button" class="rc-b" id="rc-next" aria-label="Reseña siguiente">→</button>
+      </div>
+    </div>
+    <p class="res-cta" data-r><a class="btn-nav" href="https://www.google.com/maps?cid=15779361219229514992" target="_blank" rel="noopener">Ver todas en Google</a><a class="arrow" href="#visita">Ven a probarlo →</a></p>
   </div>
 </section>
 
@@ -239,7 +302,8 @@
 
 <a class="wa-float" id="wa-float" href="https://wa.me/524498068918?text=Hola%20Casa%20del%20Encino%2C%20quiero%20reservar%20una%20mesa." data-wa target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
 
-<script src="site.js?v=1791092691" defer></script>
-
+<script src="site.js?v=1791105089" defer></script>
+<script src="sections/06-visita.js?v=1791105089" defer></script>
+<script src="sections/07-resenas.js?v=1791105127" defer></script>
 </body>
 </html>

@@ -1,14 +1,29 @@
 .llegar{background:var(--brick);color:var(--cream)}
 .llegar .tt em{color:var(--gold)}
-.lg-d{margin:26px 0 28px;display:grid;gap:14px}
+.lg-now{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px;font-size:16px}
+.lg-now b{font-weight:800}
+.lg-dot{width:12px;height:12px;border-radius:50%;background:#7CF0A4;box-shadow:0 0 0 4px rgba(124,240,164,.25)}
+.lg-d{margin:22px 0 18px;display:grid;gap:12px}
 .lg-d div{border-top:1px solid rgba(243,230,211,.35);padding-top:10px}
 .lg-d dt{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:2px}
 .lg-d dd{font-size:18px}
-.lg-cta{display:flex;flex-wrap:wrap;gap:12px}
+.lg-h{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 18px;font-size:15px}
+.lg-h li{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed rgba(243,230,211,.3)}
+.lg-h b{font-weight:600;opacity:.85}
+.lg-h li.hoy{color:var(--wine);background:var(--gold);padding:7px 8px;margin:0 -8px;border-bottom-color:transparent;font-weight:800}
+.lg-h li.hoy b{opacity:1;font-weight:800}
+.lg-map{margin-top:34px}
+.lg-frame{position:relative;padding:10px;background:var(--wine);border:2px solid var(--gold);border-radius:180px 180px 10px 10px;overflow:hidden}
+.lg-frame::before,.lg-frame::after{content:"";position:absolute;bottom:12px;width:8px;height:8px;border-radius:50%;background:var(--gold);z-index:2}
+.lg-frame::before{left:12px}.lg-frame::after{right:12px}
+.lg-frame iframe{display:block;width:100%;height:340px;border:0;border-radius:170px 170px 4px 4px;background:#e9e1d6}
+.lg-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
 .llegar .btn-nav{color:var(--cream)}
 .llegar .btn-nav:hover{background:var(--cream);color:var(--wine)}
-.lg-ph{width:58%;max-width:260px;margin:34px 0 0 auto;border-radius:999px 999px 8px 8px;border:3px solid var(--gold);aspect-ratio:4/5;object-fit:cover;transform:rotate(2deg)}
+.llegar .lg-go{background:var(--gold);color:var(--wine);border-color:var(--gold)}
 @media (min-width:820px){
- .llegar .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:70px;align-items:center}
- .lg-ph{width:100%;max-width:360px;margin:0 auto}
+ .llegar .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:center}
+ .lg-map{margin-top:0}
+ .lg-frame iframe{height:460px;border-radius:230px 230px 4px 4px}
+ .lg-frame{border-radius:240px 240px 10px 10px}
 }

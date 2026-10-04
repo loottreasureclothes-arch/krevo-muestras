@@ -1,0 +1,24 @@
+.ca{background:var(--ink);padding:64px 0 56px}
+.ca h2{font-size:15vw;max-width:10ch}
+.ca-sub{margin-top:12px;color:#e6dccf;font-weight:600}
+.ca-rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:28px 20px 10px;scrollbar-width:none;align-items:flex-end}
+.ca-rail::-webkit-scrollbar{display:none}
+.ca-f{flex:0 0 auto;scroll-snap-align:center}
+.ca-f.w{width:78vw}.ca-f.t{width:56vw}
+.ca-k{padding:10px}
+.ca-k img{width:100%;object-fit:cover}
+.ca-f.w img{aspect-ratio:4/3}.ca-f.t img{aspect-ratio:3/4}
+.ca-f:nth-child(odd) .ca-k{transform:rotate(-1.2deg)}
+.ca-f:nth-child(even) .ca-k{transform:rotate(1deg)}
+.ca-f figcaption{font:900 26px/1 "Passion One",sans-serif;text-transform:uppercase;margin-top:12px}
+.ca-end{margin-top:22px}
+.ca-link{display:inline-flex;align-items:center;gap:10px;min-height:48px;font:700 15px/1 "Barlow",sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#fff;border-bottom:3px solid var(--red)}
+.ca-link span{color:var(--red);font-size:22px;transition:transform .2s}
+.ca-link:hover span{transform:translateX(6px)}
+@media (min-width:820px){
+ .ca{padding:100px 0 88px}
+ .ca h2{font-size:clamp(80px,8vw,124px);max-width:none}
+ .ca-rail{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;grid-auto-flow:dense;gap:28px;overflow:visible;max-width:1240px;margin:0 auto;padding:40px 40px 0;align-items:start}
+ .ca-f.w,.ca-f.t{width:auto}
+}
+@media (min-width:820px){.ca-f.t img{aspect-ratio:4/5}}

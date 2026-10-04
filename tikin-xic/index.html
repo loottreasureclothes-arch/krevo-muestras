@@ -26,13 +26,15 @@
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="fonts/young-serif.woff2" crossorigin>
-<link rel="stylesheet" href="site.css?v=1791079886">
+<link rel="stylesheet" href="site.css?v=1791103743">
 <link rel="stylesheet" href="sections/01-hero.css?v=1791080402">
 <link rel="stylesheet" href="sections/02-piden.css?v=1791079923">
 <link rel="stylesheet" href="sections/03-plato.css?v=1791080200">
 <link rel="stylesheet" href="sections/04-fuertes.css?v=1791092004">
 <link rel="stylesheet" href="sections/05-riel.css?v=1791092004">
-<link rel="stylesheet" href="sections/06-voces.css?v=1791092004">
+<link rel="stylesheet" href="sections/06-voces.css?v=1791103665">
+<link rel="stylesheet" href="sections/07-galeria.css?v=1791103703">
+<link rel="stylesheet" href="sections/08-visita.css?v=1791103732">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -53,6 +55,7 @@
     <a href="#fuertes">Platos fuertes</a>
     <a href="#riel">Tu comanda</a>
     <a href="#voces">Opiniones</a>
+    <a href="#galeria">Galería</a>
     <a href="#llegar">Cómo llegar</a>
   </div>
   <p class="hd-menu-foot">Martes a domingo, 1 a 7 p.m.<br>Cerrado los lunes</p>
@@ -85,6 +88,7 @@
    <li class="pc" data-reveal style="--d:80ms"><div class="pc-img"><img src="img/p-coctel-480.webp" srcset="img/p-coctel-480.webp 480w, img/p-coctel-960.webp 960w" sizes="(min-width:760px) 30vw, 46vw" width="960" height="1280" alt="Copa de coctel de mariscos con limón"></div><h3>Coctel de mariscos</h3><p class="pc-pr">Pregunta el precio</p><button class="add" type="button" data-add="coctel" data-name="Coctel de mariscos">Agregar</button></li>
    <li class="pc" data-reveal style="--d:160ms"><div class="pc-img"><img src="img/p-capeados-480.webp" srcset="img/p-capeados-480.webp 480w, img/p-capeados-960.webp 960w" sizes="(min-width:760px) 30vw, 46vw" width="960" height="720" alt="Dos tacos capeados con repollo y salsa"></div><h3>Tacos capeados</h3><p class="pc-pr">Pregunta el precio</p><button class="add" type="button" data-add="tacos-capeados" data-name="Tacos capeados">Agregar</button></li>
   </ul>
+  <div class="sec-act" data-reveal><a class="btn" href="#riel">Ver mi comanda</a><a class="lnk" href="#fuertes">Platos fuertes <span aria-hidden="true">→</span></a></div>
  </div>
 </section>
 
@@ -108,6 +112,7 @@
    <li class="fu-r" data-reveal><span class="fu-n">Milanesa de pollo</span><span class="fu-l"></span><span class="fu-p">$171</span><button class="add" type="button" data-add="milanesa" data-name="Milanesa de pollo" data-price="171">Agregar</button></li>
   </ol>
   <p class="fu-nota" data-reveal>Precios de la carta impresa. Pueden cambiar.</p>
+  <div class="sec-act" data-reveal><a class="lnk" href="#riel">Ir a tu comanda <span aria-hidden="true">→</span></a></div>
  </div>
 </section>
 
@@ -138,49 +143,90 @@
 </section>
 
 <section class="voces" id="voces">
-  <div class="wrap voces-in">
-    <div class="voces-txt">
-      <p class="eb dk" data-reveal>Opiniones en Google</p>
-      <h2 class="t dk" data-reveal>Quien viene,<em>regresa.</em></h2>
-      <div class="dato" data-reveal><b>4.8</b><span>con 613 opiniones<br>en Google Maps</span></div>
-      <figure class="voz voz-g" data-reveal>
-        <blockquote>Súper recomendable el servicio excelente, los precios y el sabor super bien. Me gusto mucho les recomiendo el aguachile de Salmón, definitivamente volveremos a ir nos encanto</blockquote>
-        <figcaption><span class="est" aria-label="5 estrellas">★★★★★</span> Itzel Ortega</figcaption>
-      </figure>
-      <figure class="voz" data-reveal>
-        <blockquote>La comida tiene muy bien sabor! Y la atención está súper bien! El estacionamiento es el único problema. Pero la comida, servicio y lugar 10/10!</blockquote>
-        <figcaption><span class="est" aria-label="5 estrellas">★★★★★</span> Socorro Rubio Alfaro</figcaption>
-      </figure>
-    </div>
-    <div class="voces-img" data-reveal><img src="img/local-960.webp" srcset="img/local-480.webp 480w, img/local-960.webp 960w" sizes="(min-width:760px) 38vw, 100vw" width="960" height="1135" alt="Interior de Tikin con mural de palmera y mar, y mesas blancas"><span class="voces-cap">El mural de la casa</span></div>
-  </div>
-</section>
-<section class="llegar" id="llegar">
   <div class="wrap">
-    <p class="eb" data-reveal>Cómo llegar</p>
-    <h2 class="t" data-reveal>Av. Aguascalientes<em>Pte. 1313.</em></h2>
-    <div class="llegar-g">
-      <div data-reveal>
-        <p class="ll-sub">Fracc. Las Brisas, Aguascalientes</p>
-        <dl class="hor">
-          <div><dt>Lunes</dt><dd>Cerrado</dd></div>
-          <div><dt>Martes a domingo</dt><dd>1 a 7 p.m.</dd></div>
-        </dl>
-        <p class="ll-est">Estacionamiento limitado. Llega temprano.</p>
-        <p class="ll-serv">Comer aquí, para llevar y a domicilio.</p>
-        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Tikin+Av.+Aguascalientes+Pte.+1313+Las+Brisas+Aguascalientes" target="_blank" rel="noopener">Abrir en Google Maps</a>
+    <div class="voces-top">
+      <div class="dato" data-reveal><b>4.8</b><span>613 opiniones<br>en Google Maps</span></div>
+      <div class="voces-h">
+        <p class="eb dk" data-reveal>Lo que dice la mesa</p>
+        <h2 class="t dk" data-reveal>Quien viene,<em>regresa.</em></h2>
+        <p class="voces-otros" data-reveal>4.9 en TripAdvisor. Recomendado por el 98% en Facebook.</p>
       </div>
     </div>
+  </div>
+  <div class="vz-rail" id="vz-rail" tabindex="0" aria-label="Reseñas, desliza para ver más">
+    <figure class="vz vz-a"><span class="est" aria-label="5 estrellas">★★★★★</span><blockquote>Súper recomendable el servicio excelente, los precios y el sabor super bien. Me gusto mucho les recomiendo el aguachile de Salmón, definitivamente volveremos a ir nos encanto</blockquote><figcaption><b>Itzel Ortega</b><i>Google</i></figcaption></figure>
+    <figure class="vz vz-b"><span class="est" aria-label="5 estrellas">★★★★★</span><blockquote>Alta cocina en una tostada. Productos de alta calidad, una excelente mezcla de sabores.</blockquote><figcaption><b>Diego T.</b><i>TripAdvisor</i></figcaption></figure>
+    <figure class="vz vz-c"><span class="est" aria-label="5 estrellas">★★★★★</span><blockquote>La comida tiene muy bien sabor! Y la atención está súper bien! El estacionamiento es el único problema. Pero la comida, servicio y lugar 10/10!</blockquote><figcaption><b>Socorro Rubio Alfaro</b><i>Google</i></figcaption></figure>
+    <figure class="vz vz-a"><span class="est" aria-label="5 estrellas">★★★★★</span><blockquote>La comida es excelente en sabor, porciones y presentación. El trato es muy bueno y los precios son súper razonables, bueno, hasta el dulce de cortesía al pagar la cuenta está riquísimo.</blockquote><figcaption><b>Liliana R.</b><i>TripAdvisor</i></figcaption></figure>
+    <figure class="vz vz-b"><span class="est" aria-label="5 estrellas">★★★★★</span><blockquote>Excelente todo lo que tienen en el menú, rapidez en el servicio, delicioso, tienen muy buena presentación, están bien servidos y son ricos todos los platillos! Sin duda regresaría!</blockquote><figcaption><b>Hakuna Matata</b><i>Google</i></figcaption></figure>
+    <figure class="vz vz-c"><span class="est" aria-label="5 estrellas">★★★★★</span><blockquote>Es digno de un restaurante alta gama pero con precios súper accesibles.</blockquote><figcaption><b>Sandrineflor</b><i>TripAdvisor</i></figcaption></figure>
+    <figure class="vz vz-a"><span class="est" aria-label="5 estrellas">★★★★★</span><blockquote>Una gran sorpresa! El lugar se ve sencillo pero los platillos tienen una pinta buenísima que totalmente cuadran con un excelente sabor.</blockquote><figcaption><b>Lilián F.</b><i>TripAdvisor</i></figcaption></figure>
+    <figure class="vz vz-b"><span class="est" aria-label="5 estrellas">★★★★★</span><blockquote>Probé tacos : vietnamita, tilín-xic y calamares-jalapeños, la verdad muy ricos ! Atención amable y rapidez en el servicio.</blockquote><figcaption><b>Mela M.</b><i>TripAdvisor</i></figcaption></figure>
+    <figure class="vz vz-c"><span class="est" aria-label="5 estrellas">★★★★★</span><blockquote>Platillos con excelente presentación y con un juego de sabores que van de lo diferente a lo excepcional, con un servicio muy rápido y atento</blockquote><figcaption><b>LuisMa</b><i>TripAdvisor</i></figcaption></figure>
+  </div>
+  <div class="wrap vz-foot">
+    <div class="vz-nav" aria-hidden="true"><button type="button" class="vz-b-prev" tabindex="-1">‹</button><span id="vz-n">1 / 9</span><button type="button" class="vz-b-next" tabindex="-1">›</button></div>
+    <a class="btn btn-dk" href="https://maps.google.com/?cid=17951894216658760606" target="_blank" rel="noopener">Ver todas en Google <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section class="galeria" id="galeria">
+  <div class="wrap">
+    <p class="eb" data-reveal>De la cocina a la mesa</p>
+    <h2 class="t" data-reveal>Cada plato,<em>su retrato.</em></h2>
+  </div>
+  <div class="wrap ga-g">
+    <figure class="ga ga-w" data-reveal><img src="img/local-960.webp" srcset="img/local-480.webp 480w, img/local-960.webp 960w, img/local-1100.webp 1100w" sizes="(min-width:760px) 50vw, 100vw" width="960" height="1135" alt="Interior de Tikin con mural de palmera y mar, y mesas blancas"><figcaption>El mural de la casa</figcaption></figure>
+    <figure class="ga ga-h" data-reveal><img src="img/g-atun-960.webp" srcset="img/g-atun-480.webp 480w, img/g-atun-960.webp 960w" sizes="(min-width:760px) 33vw, 60vw" width="960" height="720" alt="Atún sellado con salsa oscura, ajonjolí negro y hojas de lechuga"><figcaption>Atún sellado</figcaption></figure>
+    <figure class="ga ga-t" data-reveal><img src="img/g-ceviche-elote-960.webp" srcset="img/g-ceviche-elote-480.webp 480w, img/g-ceviche-elote-960.webp 960w" sizes="(min-width:760px) 33vw, 60vw" width="960" height="1280" alt="Ceviche con elote, camote y cebolla morada en plato blanco"><figcaption>Ceviche con elote y camote</figcaption></figure>
+    <figure class="ga ga-t" data-reveal><img src="img/g-rollo-960.webp" srcset="img/g-rollo-480.webp 480w, img/g-rollo-960.webp 960w" sizes="(min-width:760px) 33vw, 60vw" width="960" height="1280" alt="Rollo envuelto con cilantro sobre plato blanco con trazos de salsa"><figcaption>Rollo de la casa</figcaption></figure>
+    <figure class="ga ga-h" data-reveal><img src="img/g-tostada-atun-960.webp" srcset="img/g-tostada-atun-480.webp 480w, img/g-tostada-atun-960.webp 960w" sizes="(min-width:760px) 33vw, 60vw" width="960" height="720" alt="Tostada de atún con fideo crujiente y rollo de aguacate en plato negro"><figcaption>Tostada de atún</figcaption></figure>
+    <figure class="ga ga-h" data-reveal><img src="img/g-filete-verde-960.webp" srcset="img/g-filete-verde-480.webp 480w, img/g-filete-verde-960.webp 960w" sizes="(min-width:760px) 33vw, 60vw" width="960" height="723" alt="Filete en salsa verde con aguacate y cebolla morada"><figcaption>Filete en salsa verde</figcaption></figure>
+    <figure class="ga ga-t" data-reveal><img src="img/g-aguachile-960.webp" srcset="img/g-aguachile-480.webp 480w, img/g-aguachile-960.webp 960w" sizes="(min-width:760px) 33vw, 60vw" width="960" height="1280" alt="Aguachile verde con pepino y cebolla morada en plato blanco"><figcaption>Aguachile verde</figcaption></figure>
+  </div>
+  <div class="wrap ga-foot" data-reveal>
+    <a class="lnk" href="https://www.instagram.com/tikin.cocinademar" target="_blank" rel="noopener">Ver más en Instagram <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section class="llegar" id="llegar">
+  <div class="wrap ll-g">
+    <div class="ll-txt">
+      <p class="eb" data-reveal>Visítanos</p>
+      <h2 class="t" data-reveal>Av. Aguascalientes<em>Pte. 1313.</em></h2>
+      <p class="ll-sub" data-reveal>Fracc. Las Brisas, 20010 Aguascalientes, Ags.</p>
+      <p class="ll-estado" id="ll-estado" data-reveal><i></i><span>Martes a domingo, 1 a 7 p.m.</span></p>
+      <dl class="hor" id="ll-hor" data-reveal>
+        <div data-d="2"><dt>Martes</dt><dd>1 a 7 p.m.</dd></div>
+        <div data-d="3"><dt>Miércoles</dt><dd>1 a 7 p.m.</dd></div>
+        <div data-d="4"><dt>Jueves</dt><dd>1 a 7 p.m.</dd></div>
+        <div data-d="5"><dt>Viernes</dt><dd>1 a 7 p.m.</dd></div>
+        <div data-d="6"><dt>Sábado</dt><dd>1 a 7 p.m.</dd></div>
+        <div data-d="0"><dt>Domingo</dt><dd>1 a 7 p.m.</dd></div>
+        <div data-d="1" class="off"><dt>Lunes</dt><dd>Cerrado</dd></div>
+      </dl>
+      <p class="ll-est" data-reveal>Comer aquí, para llevar y a domicilio. Estacionamiento limitado: llega temprano.</p>
+    </div>
+    <div class="ll-mapa" data-reveal>
+      <div class="ll-marco"><iframe src="https://www.google.com/maps?q=Restaurante+Tikin+Av.+Aguascalientes+Pte.+1313+Las+Brisas+Aguascalientes&output=embed" loading="lazy" title="Mapa de Tikin en Google Maps" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div class="ll-btns">
+        <a class="btn" href="https://maps.google.com/?cid=17951894216658760606" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn" href="tel:+524493475594">Llamar 449 347 5594</a>
+        <a class="btn btn-wa" href="https://wa.me/524493475594?text=Hola%20Tikin%2C%20%C2%BFtienen%20mesa%20hoy%3F" data-wa="Hola Tikin, ¿tienen mesa hoy?" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>WhatsApp</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
     <div class="listo" id="listo" data-hide-wa>
-    <p class="eb" data-reveal>Muestra de página</p>
-    <h2 class="t" data-reveal>Todo listo<em>para completar.</em></h2>
-    <ul class="listo-l" data-reveal>
-      <li>El WhatsApp donde reciben pedidos</li>
-      <li>La carta de tacos, tostadas y ceviches con precios</li>
-      <li>Foto de la fachada y del equipo</li>
-      <li>Su logo en buena resolución</li>
-    </ul>
-    <p class="listo-p" data-reveal>Pásanoslo por el mismo chat donde te llegó esta muestra.</p>
+      <p class="eb" data-reveal>Muestra de página</p>
+      <h2 class="t" data-reveal>Todo listo<em>para completar.</em></h2>
+      <ul class="listo-l" data-reveal>
+        <li>El WhatsApp donde reciben pedidos</li>
+        <li>La carta de tacos, tostadas y ceviches con precios</li>
+        <li>Foto de la fachada y del equipo</li>
+        <li>Su logo en buena resolución</li>
+      </ul>
+      <p class="listo-p" data-reveal>Pásanoslo por el mismo chat donde te llegó esta muestra.</p>
     </div>
   </div>
 </section>
@@ -190,6 +236,7 @@
 <footer class="pie" data-hide-wa>
   <p class="pie-sign"><b>TIKIN</b><i>cocina de mar</i></p>
   <p class="pie-dir">Av. Aguascalientes Pte. 1313, Las Brisas<br>Aguascalientes, Ags.</p>
+  <p class="pie-dir"><a href="tel:+524493475594">449 347 5594</a><br>Martes a domingo, 1 a 7 p.m. Lunes cerrado.</p>
   <div class="pie-redes">
     <a href="https://www.instagram.com/tikin.cocinademar" target="_blank" rel="noopener" aria-label="Instagram de Tikin"><svg width="44" height="44"><use href="#i-ig"/></svg></a>
     <a href="https://www.facebook.com/tikinxictacos" target="_blank" rel="noopener" aria-label="Facebook de Tikin"><svg width="44" height="44"><use href="#i-fb"/></svg></a>
@@ -236,5 +283,7 @@
 <script src="site.js?v=1791079923" defer></script>
 <script src="sections/03-plato.js?v=1791079923" defer></script>
 <script src="sections/05-riel.js?v=1791092047" defer></script>
+<script src="sections/06-voces.js?v=1791103665" defer></script>
+<script src="sections/08-visita.js?v=1791103732" defer></script>
 </body>
 </html>

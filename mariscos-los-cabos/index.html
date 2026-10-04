@@ -23,13 +23,14 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="preload" as="image" href="img/hero-960.webp" imagesrcset="img/hero-480.webp 480w, img/hero-960.webp 960w, img/hero-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="fonts/slab.woff2" crossorigin>
-<link rel="stylesheet" href="site.css?v=1791089791">
+<link rel="stylesheet" href="site.css?v=1791104411">
 <link rel="stylesheet" href="sections/01-hero.css?v=1791090112">
 <link rel="stylesheet" href="sections/02-menu.css?v=1791090141">
 <link rel="stylesheet" href="sections/03-torre.css?v=1791090141">
 <link rel="stylesheet" href="sections/04-tres.css?v=1791090141">
-<link rel="stylesheet" href="sections/05-opiniones.css?v=1791090141">
-<link rel="stylesheet" href="sections/06-sucursales.css?v=1791090141">
+<link rel="stylesheet" href="sections/05-galeria.css?v=1791104670">
+<link rel="stylesheet" href="sections/06-opiniones.css?v=1791104753">
+<link rel="stylesheet" href="sections/07-visitanos.css?v=1791104753">
 <script>document.documentElement.className+=" js";setTimeout(function(){var a=document.querySelectorAll("[data-reveal]");for(var i=0;i<a.length;i++)a[i].classList.add("is-in")},1600);</script>
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
 </head>
@@ -49,8 +50,9 @@
   <nav class="lc-menu-nav" aria-label="Secciones">
     <a href="#menu"><span>01</span>Lo que sale</a>
     <a href="#torre"><span>02</span>Arma tu torre</a>
-    <a href="#opiniones"><span>03</span>Opiniones</a>
-    <a href="#visitanos"><span>04</span>Sucursales</a>
+    <a href="#terraza"><span>03</span>La terraza</a>
+    <a href="#opiniones"><span>04</span>Opiniones</a>
+    <a href="#visitanos"><span>05</span>Sucursales</a>
   </nav>
   <a class="lc-btn lc-btn--wa" data-wa="Hola Mariscos Los Cabos, vi su página y quiero hacer un pedido." href="https://wa.me/524499181146?text=Hola%20Mariscos%20Los%20Cabos%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
 </div>
@@ -159,25 +161,55 @@
   <p class="lc-tres-w" data-reveal><span>Pulpo.</span><span>Tostadas.</span><span class="or">Aguachile.</span></p>
 </section>
 
+<section class="lc-gal" id="terraza" aria-labelledby="gal-t">
+  <div class="lc-wrap lc-gal-in">
+    <header class="lc-gal-head" data-reveal>
+      <p class="lc-eye">Así se ve en Los Cabos</p>
+      <h2 class="lc-t" id="gal-t">La mesa<span>está puesta.</span></h2>
+      <p class="lc-gal-p">Terraza con toldo, micheladas escarchadas y platos que llegan llenos.</p>
+      <a class="lc-arrow" data-wa="Hola Mariscos Los Cabos, vi su página. Quiero apartar mesa en la terraza. ¿Tienen lugar hoy?" href="https://wa.me/524499181146?text=Hola%20Mariscos%20Los%20Cabos%2C%20vi%20su%20p%C3%A1gina.%20Quiero%20apartar%20mesa%20en%20la%20terraza.%20%C2%BFTienen%20lugar%20hoy%3F" target="_blank" rel="noopener">Aparta tu mesa por WhatsApp <span aria-hidden="true">→</span></a>
+    </header>
+    <figure class="lc-g lc-g--ter" data-reveal><img src="img/terraza-960.webp" srcset="img/terraza-480.webp 480w, img/terraza-960.webp 960w, img/terraza-1536.webp 1536w" sizes="(min-width:780px) 34vw, 100vw" width="960" height="1280" alt="Terraza techada con mesas azules en Mariscos Los Cabos" decoding="async"><figcaption>La terraza</figcaption></figure>
+    <figure class="lc-g lc-g--mic" data-reveal><img src="img/michelada-480.webp" srcset="img/michelada-480.webp 480w, img/michelada-960.webp 960w" sizes="(min-width:780px) 34vw, 50vw" width="480" height="640" alt="Michelada con camarón junto a una cerveza Modelo Negra" decoding="async"><figcaption>Michelada con camarón</figcaption></figure>
+    <figure class="lc-g lc-g--cok" data-reveal><img src="img/cocteles-480.webp" srcset="img/cocteles-480.webp 480w, img/cocteles-800.webp 800w" sizes="(min-width:780px) 40vw, 50vw" width="480" height="867" alt="Cóctel de mariscos servido con ostiones y limón" decoding="async"><figcaption>Cóctel y ostiones</figcaption></figure>
+    <figure class="lc-g lc-g--tac" data-reveal><img src="img/taco-480.webp" srcset="img/taco-480.webp 480w, img/taco-960.webp 960w" sizes="(min-width:780px) 34vw, 50vw" width="480" height="360" alt="Taco de mariscos con ensalada fresca" decoding="async"><figcaption>Taco y ensalada</figcaption></figure>
+    <figure class="lc-g lc-g--fil" data-reveal><img src="img/filete-papas-480.webp" srcset="img/filete-papas-480.webp 480w, img/filete-papas-960.webp 960w" sizes="(min-width:780px) 25vw, 40vw" width="480" height="640" alt="Filete empanizado con papas a la francesa y ensalada" decoding="async"><figcaption>Filete empanizado</figcaption></figure>
+    <figure class="lc-g lc-g--fac" data-reveal><img src="img/fachada-960.webp" srcset="img/fachada-480.webp 480w, img/fachada-960.webp 960w, img/fachada-1600.webp 1600w" sizes="(min-width:780px) 34vw, 60vw" width="960" height="540" alt="Entrada de Mariscos Los Cabos en Las Flores" decoding="async"><figcaption>La entrada</figcaption></figure>
+  </div>
+</section>
+
 <section class="lc-op" id="opiniones" aria-labelledby="op-t">
   <div class="lc-wrap lc-op-in">
-    <div class="lc-big" data-reveal>
-      <b class="lc-big-n" aria-hidden="true">4.3</b>
-      <p class="lc-big-l"><strong>3,874 opiniones</strong> en Google Maps<br>Sucursal Las Flores</p>
-    </div>
-    <div class="lc-op-r">
+    <div class="lc-op-l">
       <h2 class="lc-t" id="op-t" data-reveal>Lo dicen<span>sus mesas</span></h2>
-      <figure class="lc-q" data-reveal>
-        <div class="lc-st" role="img" aria-label="5 estrellas"><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24"><use href="#i-star"/></svg></div>
-        <blockquote>Un lugar agradable. Está fresco, los mariscos se preparan con una calidad increíble. Recomendable sitio sin duda…</blockquote>
-        <figcaption>Alberto Fernández, en Google Maps</figcaption>
-      </figure>
-      <figure class="lc-q" data-reveal>
-        <div class="lc-st" role="img" aria-label="5 estrellas"><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24"><use href="#i-star"/></svg></div>
-        <blockquote>Excelente! Me encanta la comida y el servicio. Recomendado al 100%.</blockquote>
-        <figcaption>Roselyn Ruiz, en Google Maps</figcaption>
-      </figure>
-      <p class="lc-said" data-reveal>Lo que más repiten: tostadas, ceviche, aguachile y caldo.</p>
+      <div class="lc-big" data-reveal>
+        <b class="lc-big-n" aria-hidden="true">4.3</b>
+        <div class="lc-big-l">
+          <div class="lc-st" role="img" aria-label="4.3 de 5 estrellas"><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg viewBox="0 0 24 24"><use href="#i-star"/></svg><svg class="half" viewBox="0 0 24 24"><use href="#i-star"/></svg></div>
+          <p><strong>3,874 opiniones</strong> en Google · Las Flores</p>
+          <p><strong>4.5</strong> con 294 opiniones · Villa Asunción</p>
+        </div>
+      </div>
+      <ul class="lc-tags" data-reveal aria-label="Lo que más mencionan">
+        <li>Tostadas</li><li>Ceviche</li><li>Aguachile</li><li>Caldo</li><li>Gobernador</li>
+      </ul>
+    </div>
+    <div class="lc-rail-w" data-reveal>
+      <div class="lc-rail" aria-hidden="true"></div>
+      <ol class="lc-tix" id="lc-tix" aria-label="Reseñas de clientes">
+        <li class="lc-tk"><p class="lc-tk-h"><span>Mesa 01</span><span class="lc-st5" aria-label="5 estrellas">★★★★★</span></p><blockquote>Un lugar agradable. Está fresco, los mariscos se preparan con una calidad increíble. Recomendable sitio sin duda…</blockquote><p class="lc-tk-f"><b>Alberto Fernández</b><span>Google</span></p></li>
+        <li class="lc-tk"><p class="lc-tk-h"><span>Mesa 02</span><span class="lc-st5" aria-label="5 estrellas">★★★★★</span></p><blockquote>Probablemente el mejor marisco en la ciudad de Aguascalientes… ¡Si vas, asegúrate de probar los Tacos Gobernador!</blockquote><p class="lc-tk-f"><b>Salim</b><span>Yelp</span></p></li>
+        <li class="lc-tk"><p class="lc-tk-h"><span>Mesa 03</span><span class="lc-st5" aria-label="5 estrellas">★★★★★</span></p><blockquote>Comer es delicioso, el personal es agradable y la terraza es genial para disfrutar de una comida con amigos.</blockquote><p class="lc-tk-f"><b>Aishwarya</b><span>Carta.menu</span></p></li>
+        <li class="lc-tk"><p class="lc-tk-h"><span>Mesa 04</span><span class="lc-st5" aria-label="5 estrellas">★★★★★</span></p><blockquote>Excelente! Me encanta la comida y el servicio. Recomendado al 100%.</blockquote><p class="lc-tk-f"><b>Roselyn Ruiz</b><span>Google</span></p></li>
+        <li class="lc-tk"><p class="lc-tk-h"><span>Mesa 05</span><span class="lc-st5" aria-label="5 estrellas">★★★★★</span></p><blockquote>Muy bien cocinado el ajillo y las rodajas de coco.</blockquote><p class="lc-tk-f"><b>Mirjam</b><span>Carta.menu</span></p></li>
+        <li class="lc-tk"><p class="lc-tk-h"><span>Mesa 06</span><span class="lc-st5" aria-label="5 estrellas">★★★★★</span></p><blockquote>Comida deliciosa y precios excelentes.</blockquote><p class="lc-tk-f"><b>Elif</b><span>Carta.menu</span></p></li>
+      </ol>
+      <div class="lc-tix-nav">
+        <button type="button" class="lc-tix-b" data-d="-1" aria-label="Reseña anterior">←</button>
+        <span class="lc-tix-c" id="lc-tix-c" aria-live="polite">1 / 6</span>
+        <button type="button" class="lc-tix-b" data-d="1" aria-label="Reseña siguiente">→</button>
+      </div>
+      <a class="lc-btn lc-btn--nav lc-op-cta" href="https://www.google.com/maps/place/Mariscos+Los+Cabos+Am%C3%A9ricas/@21.8737036,-102.3010492,17z/data=!4m6!3m5!1s0x8429ee809b9655cd:0x80f562f8a0af6111!8m2!3d21.8737036!4d-102.3010492" target="_blank" rel="noopener">Ver todas en Google <span aria-hidden="true">→</span></a>
     </div>
   </div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.2 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8L12 2.5Z"/></symbol></svg>
@@ -186,33 +218,44 @@
 <section class="lc-suc" id="visitanos" aria-labelledby="suc-t">
   <div class="lc-wrap lc-suc-in">
     <header class="lc-suc-head" data-reveal>
-      <p class="lc-eye">Dos sucursales</p>
+      <p class="lc-eye">Dos sucursales · mismo sazón</p>
       <h2 class="lc-t" id="suc-t">Pásale a la<span>terraza.</span></h2>
     </header>
-    <div class="lc-suc-ph" data-reveal>
-      <img class="lc-ph-a" src="img/terraza-960.webp" srcset="img/terraza-480.webp 480w, img/terraza-960.webp 960w, img/terraza-1536.webp 1536w" sizes="(min-width:900px) 40vw, 100vw" width="960" height="1280" alt="Terraza con toldos de la sucursal Las Flores" loading="lazy" decoding="async">
-      <img class="lc-ph-b" src="img/fachada-480.webp" srcset="img/fachada-480.webp 480w, img/fachada-960.webp 960w" sizes="(min-width:900px) 24vw, 62vw" width="960" height="540" alt="Fachada de Mariscos Los Cabos" loading="lazy" decoding="async">
+    <div class="lc-tabs" role="tablist" aria-label="Sucursales" data-reveal>
+      <button type="button" role="tab" id="tab-fl" aria-controls="pan-fl" aria-selected="true">Las Flores</button>
+      <button type="button" role="tab" id="tab-va" aria-controls="pan-va" aria-selected="false" tabindex="-1">Villa Asunción</button>
     </div>
-    <div class="lc-suc-list">
-      <article class="lc-card" data-reveal>
+    <article class="lc-pan" id="pan-fl" role="tabpanel" aria-labelledby="tab-fl" data-q="Mariscos+Los+Cabos+Am%C3%A9ricas,+Ignacio+T.+Ch%C3%A1vez+107,+Las+Flores,+Aguascalientes">
+      <div class="lc-map"><iframe src="https://www.google.com/maps?q=Mariscos+Los+Cabos+Am%C3%A9ricas,+Ignacio+T.+Ch%C3%A1vez+107,+Las+Flores,+Aguascalientes&amp;output=embed" loading="lazy" title="Mapa de Mariscos Los Cabos Las Flores" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div class="lc-pan-tx">
+        <p class="lc-now" data-now><i></i><span>Horario de hoy</span></p>
         <h3>Las Flores</h3>
-        <p>Ignacio T. Chávez 107, 20230</p>
-        <p class="lc-hrs">Lun a jue 12 a 7 pm<br>Vie a dom 12 a 8 pm</p>
-        <p class="lc-rate">4.3 en Google Maps</p>
-        <a class="lc-btn lc-btn--nav lc-btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=Mariscos+Los+Cabos+Ignacio+T.+Ch%C3%A1vez+107+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
-      </article>
-      <article class="lc-card" data-reveal>
-        <h3>Villa Asunción</h3>
-        <p>Av. José María Chávez 901B, 20280</p>
-        <p class="lc-hrs">Horario: pregúntalo por WhatsApp</p>
-        <p class="lc-rate">4.5 en Google Maps</p>
-        <a class="lc-btn lc-btn--nav lc-btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=Mariscos+Los+Cabos+Av.+Jos%C3%A9+Mar%C3%ADa+Ch%C3%A1vez+901B+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
-      </article>
-      <div class="lc-suc-cta" data-reveal>
-        <a class="lc-btn lc-btn--wa" data-wa="Hola Mariscos Los Cabos, vi su página. ¿Me confirman el horario de hoy?" href="https://wa.me/524499181146?text=Hola%20Mariscos%20Los%20Cabos%2C%20vi%20su%20p%C3%A1gina.%20%C2%BFMe%20confirman%20el%20horario%20de%20hoy%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Preguntar por WhatsApp</a>
-        <p class="lc-fine">También en Uber Eats, Rappi y DiDi.</p>
+        <p class="lc-adr">Ignacio T. Chávez 107, Las Flores, 20230 Aguascalientes, Ags.</p>
+        <ul class="lc-days" data-days></ul>
+        <p class="lc-rate">4.3 en Google · 3,874 opiniones</p>
+        <div class="lc-acts">
+          <a class="lc-btn lc-btn--wa" data-wa="Hola Mariscos Los Cabos, vi su página. ¿Tienen mesa hoy en la sucursal Las Flores?" href="https://wa.me/524499181146?text=Hola%20Mariscos%20Los%20Cabos%2C%20vi%20su%20p%C3%A1gina.%20%C2%BFTienen%20mesa%20hoy%20en%20la%20sucursal%20Las%20Flores%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+          <a class="lc-btn lc-btn--nav" href="https://www.google.com/maps/place/Mariscos+Los+Cabos+Am%C3%A9ricas/@21.8737036,-102.3010492,17z/data=!4m6!3m5!1s0x8429ee809b9655cd:0x80f562f8a0af6111!8m2!3d21.8737036!4d-102.3010492" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="lc-btn lc-btn--nav" href="tel:+524499181146">Llamar · 449 918 1146</a>
+        </div>
       </div>
-    </div>
+    </article>
+    <article class="lc-pan" id="pan-va" role="tabpanel" aria-labelledby="tab-va" hidden>
+      <div class="lc-map"><iframe data-src="https://www.google.com/maps?q=Mariscos+los+cabos+Suc+2,+Av.+Jos%C3%A9+Mar%C3%ADa+Ch%C3%A1vez+901B,+Villa+Asunci%C3%B3n,+Aguascalientes&amp;output=embed" loading="lazy" title="Mapa de Mariscos Los Cabos Villa Asunción" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div class="lc-pan-tx">
+        <p class="lc-now" data-now><i></i><span>Horario de hoy</span></p>
+        <h3>Villa Asunción</h3>
+        <p class="lc-adr">Av. José María Chávez 901B, Villa Asunción, Aguascalientes, Ags.</p>
+        <ul class="lc-days" data-days></ul>
+        <p class="lc-rate">4.5 en Google · 294 opiniones</p>
+        <div class="lc-acts">
+          <a class="lc-btn lc-btn--wa" data-wa="Hola Mariscos Los Cabos, vi su página. ¿Tienen mesa hoy en la sucursal Villa Asunción?" href="https://wa.me/524499181146?text=Hola%20Mariscos%20Los%20Cabos%2C%20vi%20su%20p%C3%A1gina.%20%C2%BFTienen%20mesa%20hoy%20en%20la%20sucursal%20Villa%20Asunci%C3%B3n%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+          <a class="lc-btn lc-btn--nav" href="https://www.google.com/maps/place/Mariscos+los+cabos+Suc+2/@21.8702198,-102.2952072,17z/data=!4m6!3m5!1s0x8429eda50f2585f3:0x4c479724aae54ab4!8m2!3d21.8702198!4d-102.2952072" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="lc-btn lc-btn--nav" href="tel:+524494735133">Llamar · 449 473 5133</a>
+        </div>
+      </div>
+    </article>
+    <p class="lc-fine lc-suc-fine" data-reveal>También a domicilio por Uber Eats, Rappi y DiDi.</p>
   </div>
 </section>
 
@@ -225,15 +268,15 @@
     <ul>
       <li>Tu WhatsApp oficial para pedidos</li>
       <li>La carta con precios al día</li>
-      <li>Horario y teléfono de la sucursal Villa Asunción</li>
       <li>Tu logo y fotos propias del local y del equipo</li>
       <li>Si la sucursal de Casa Blanca también es de ustedes</li>
     </ul>
   </section>
   <div class="lc-foot-row">
     <b class="lc-foot-name">LOS CABOS</b>
-    <p>Ignacio T. Chávez 107, Las Flores, 20230 Aguascalientes, Ags.</p>
-    <p>Av. José María Chávez 901B, Villa Asunción, 20280 Aguascalientes, Ags.</p>
+    <p class="lc-foot-hrs">Lunes a jueves 12 a 7 pm · Viernes a domingo 12 a 8 pm</p>
+    <p><b>Las Flores</b> · Ignacio T. Chávez 107, 20230 · <a href="tel:+524499181146">449 918 1146</a></p>
+    <p><b>Villa Asunción</b> · Av. José María Chávez 901B · <a href="tel:+524494735133">449 473 5133</a></p>
     <div class="lc-soc">
       <a href="https://www.facebook.com/AgsMariscoslosCabos" target="_blank" rel="noopener" aria-label="Facebook de Mariscos Los Cabos"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
       <a href="https://www.instagram.com/cabosags" target="_blank" rel="noopener" aria-label="Instagram @cabosags"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
@@ -248,5 +291,7 @@
 <script src="sections/01-hero.js?v=1791089587" defer></script>
 <script src="sections/02-menu.js?v=1791089607" defer></script>
 <script src="sections/03-torre.js?v=1791092382" defer></script>
+<script src="sections/06-opiniones.js?v=1791104370" defer></script>
+<script src="sections/07-visitanos.js?v=1791104411" defer></script>
 </body>
 </html>

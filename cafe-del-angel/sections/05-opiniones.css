@@ -1,20 +1,46 @@
-.opi{background:var(--brand);color:var(--ink);padding:64px 0 70px;overflow:hidden}
+.opi{background:var(--brand);color:var(--ink);padding:64px 0 60px;overflow:hidden}
 .opi .eyebrow{color:#134a45}
-.opi-big{font-family:var(--disp);font-weight:700;font-size:clamp(9rem,52vw,18rem);line-height:.8;letter-spacing:-.02em;margin:10px 0 6px;color:var(--ink)}
-.opi-sub{font-size:1.2rem}
-.opi .ttl{margin:34px 0 22px}
+.opi-score{display:flex;align-items:flex-end;gap:16px;margin:10px 0 0}
+.opi-big{font-family:var(--disp);font-weight:700;font-size:clamp(8rem,44vw,16rem);line-height:.8;letter-spacing:-.02em;color:var(--ink)}
+.opi-meta{padding-bottom:10px}
+.opi-stars{display:flex;gap:3px;color:var(--ink)}
+.opi-stars svg{width:24px;height:24px}
+.opi-stars .half{clip-path:inset(0 70% 0 0)}
+.opi-sub{font-size:1.15rem;margin-top:6px;line-height:1.2}
+.opi .ttl{margin:30px 0 16px}
 .opi .ttl .t2{color:#fff}
-.opi-q{display:grid;gap:16px}
-.opi figure{background:var(--cream);padding:18px;border-radius:2px;border-top:4px solid var(--wood)}
-.stars{color:var(--wood)}.stars svg{width:120px;height:22px}
-.opi blockquote{font-size:1.18rem;line-height:1.35;margin:10px 0 8px;font-style:italic}
-.opi figcaption{font-family:var(--disp);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.9rem}
+.opi-tags{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.opi-tags li{font-style:italic;font-size:1rem;padding:6px 12px;border:1.5px solid var(--ink);border-radius:999px}
+.opi-rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:34px var(--g) 22px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.opi-rail::-webkit-scrollbar{display:none}
+.opi-c{flex:0 0 82%;max-width:380px;scroll-snap-align:center;padding:22px 20px 18px;border-radius:2px;position:relative;display:flex;flex-direction:column;min-height:250px}
+.opi-c::before{content:"";position:absolute;left:0;right:0;top:-6px;height:12px;background:radial-gradient(circle at 6px 0,transparent 5px,currentColor 5.5px) 0 0/12px 12px repeat-x;opacity:0}
+.c1{background:var(--cream);color:var(--ink);transform:rotate(-1.2deg)}
+.c2{background:var(--bg);color:var(--cream);transform:rotate(.8deg)}
+.c3{background:#fff;color:var(--ink);transform:rotate(-.5deg);border-top:5px solid var(--wood)}
+.c4{background:var(--wood);color:#1b0f05;transform:rotate(1.1deg)}
+.opi-s{display:flex;gap:2px;color:var(--wood)}
+.c2 .opi-s{color:var(--brand)}.c4 .opi-s{color:var(--cream)}
+.opi-s svg{width:20px;height:20px}
+.opi-c blockquote{font-size:1.22rem;line-height:1.32;margin:12px 0 16px;font-style:italic;flex:1}
+.c2 blockquote,.c4 blockquote{font-size:1.36rem}
+.opi-c figcaption{font-family:var(--disp);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.95rem;display:flex;justify-content:space-between;gap:10px;align-items:baseline;border-top:1px dashed currentColor;padding-top:10px}
+.opi-c small{font-weight:600;letter-spacing:.14em;font-size:.72rem;opacity:.75}
+.opi-foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.opi-nav{display:flex;align-items:center;gap:12px}
+.opi-b{width:48px;height:48px;border:1.5px solid var(--ink);border-radius:50%;font-size:1.3rem;color:var(--ink);transition:background .2s}
+.opi-b:hover{background:rgba(11,37,35,.1)}
+.opi-n{font-family:var(--disp);font-weight:700;letter-spacing:.16em;min-width:56px;text-align:center}
+.btn-ink{background:var(--ink);color:var(--brand)}
+.btn-ink:hover{background:#123a37}
 @media (min-width:900px){
-.opi{padding:100px 0}
+.opi{padding:100px 0 90px}
 .opi-in{display:grid;grid-template-columns:auto 1fr;column-gap:64px;align-items:end}
 .opi-in>.eyebrow{grid-column:1/-1}
-.opi-big{font-size:17rem;grid-row:2 / span 2}
-.opi-sub{align-self:start;grid-column:2;grid-row:3;padding-bottom:6px;font-size:1.6rem;max-width:20ch}
-.opi .ttl{grid-column:1/-1;margin:40px 0 28px}
-.opi-q{grid-column:1/-1;grid-template-columns:1fr 1fr;gap:24px}
+.opi-score{grid-row:2 / span 2}
+.opi-big{font-size:15rem}
+.opi .ttl{margin:0 0 18px;align-self:end}
+.opi-tags{grid-column:2}
+.opi-rail{padding:50px max(var(--g),calc((100vw - 1180px)/2 + var(--g))) 30px;gap:24px}
+.opi-c{flex-basis:340px}
 }

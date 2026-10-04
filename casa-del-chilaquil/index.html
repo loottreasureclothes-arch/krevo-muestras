@@ -28,7 +28,10 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/fraunces-normal.woff2" crossorigin>
 <link rel="preload" as="image" href="img/hero-960.webp" imagesrcset="img/hero-480.webp 480w, img/hero-960.webp 960w, img/hero-1538.webp 1538w" imagesizes="(max-width: 759px) 92vw, 46vw" fetchpriority="high">
 <link rel="stylesheet" href="site.css?v=1791092550">
-
+<link rel="stylesheet" href="sections/45-galeria.css?v=1791104251">
+<link rel="stylesheet" href="sections/50-opiniones.css?v=1791104251">
+<link rel="stylesheet" href="sections/60-casas.css?v=1791104419">
+<link rel="stylesheet" href="sections/90-pie.css?v=1791104310">
 <noscript><style>[data-cc-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
@@ -54,8 +57,9 @@
 <nav class="cc-menu" id="cc-menu" aria-label="Secciones" hidden>
   <a href="#carta">La carta</a>
   <a href="#divorciados">Arma tus divorciados</a>
+  <a href="#galeria">Así sale</a>
   <a href="#opiniones">Opiniones</a>
-  <a href="#casas">Dónde estamos</a>
+  <a href="#casas">Visítanos</a>
 </nav>
 
 <main id="top">
@@ -169,53 +173,112 @@
   <div class="cc-jarro-words" data-cc-reveal><p>Jarro.</p><p>Salsa.</p><p>Marranito.</p></div>
 </section>
 
+<section class="cc-sec cc-gal on-cream" id="galeria">
+  <div class="cc-wrap">
+    <div class="cc-gal-head">
+      <p class="cc-eyebrow">Así sale de la cocina</p>
+      <h2 class="cc-h2" data-cc-reveal>Recién servido,<em>en barro.</em></h2>
+    </div>
+    <div class="cc-gal-grid">
+      <figure class="g1" data-cc-reveal><img src="img/g-huevos-960.webp" srcset="img/g-huevos-480.webp 480w, img/g-huevos-960.webp 960w" sizes="(max-width: 759px) 92vw, 46vw" width="960" height="714" alt="Chilaquiles con dos huevos estrellados, cebolla morada y queso"><figcaption>Con dos huevos</figcaption></figure>
+      <figure class="g2" data-cc-reveal><img src="img/g-verdes-960.webp" srcset="img/g-verdes-480.webp 480w, img/g-verdes-960.webp 960w" sizes="(max-width: 759px) 45vw, 22vw" width="960" height="1280" alt="Chilaquiles verdes con frijoles y agua de jamaica"><figcaption>Verdes</figcaption></figure>
+      <figure class="g3" data-cc-reveal><img src="img/g-completo-960.webp" srcset="img/g-completo-480.webp 480w, img/g-completo-960.webp 960w" sizes="(max-width: 759px) 45vw, 22vw" width="960" height="960" alt="Desayuno completo con chilaquiles, huevo, café de olla y jugo de naranja"><figcaption>Con café de olla</figcaption></figure>
+      <figure class="g4" data-cc-reveal><img src="img/g-patio-960.webp" srcset="img/g-patio-480.webp 480w, img/g-patio-960.webp 960w" sizes="(max-width: 759px) 45vw, 22vw" width="960" height="1295" alt="Comedor techado con sillas rojas y clientes desayunando"><figcaption>El comedor</figcaption></figure>
+      <figure class="g5" data-cc-reveal><img src="img/g-estrellados-960.webp" srcset="img/g-estrellados-480.webp 480w, img/g-estrellados-960.webp 960w" sizes="(max-width: 759px) 45vw, 22vw" width="960" height="1707" alt="Chilaquiles verdes con dos huevos estrellados en plato de barro"><figcaption>Huevo al gusto</figcaption></figure>
+      <figure class="g6" data-cc-reveal><img src="img/g-tenedor-960.webp" srcset="img/g-tenedor-480.webp 480w, img/g-tenedor-960.webp 960w" sizes="(max-width: 759px) 92vw, 22vw" width="960" height="1280" alt="Chilaquiles verdes con queso y cebolla, listos para comer"><figcaption>Primer bocado</figcaption></figure>
+    </div>
+    <a class="cc-link" href="#divorciados">Arma los tuyos <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+
 <section class="cc-sec cc-op" id="opiniones">
   <div class="cc-wrap">
-    <p class="cc-eyebrow">Lo cuentan en la mesa</p>
-    <h2 class="cc-h2" data-cc-reveal>Lo dicen<em>en el Encino.</em></h2>
-    <div class="cc-op-grid">
+    <div class="cc-op-top">
       <div>
-        <p class="cc-big" data-cc-reveal>4.4<small>de 5</small></p>
-        <p class="cc-big-lbl">563 opiniones en Google Maps</p>
+        <p class="cc-eyebrow">Lo cuentan en la mesa</p>
+        <h2 class="cc-h2" data-cc-reveal>Lo dicen<em>en el Encino.</em></h2>
       </div>
-      <div class="cc-quotes">
-        <blockquote class="cc-quote" data-cc-reveal>
+      <div class="cc-op-score" data-cc-reveal>
+        <p class="cc-big">4.4<small>de 5</small></p>
+        <span class="cc-stars cc-stars-lg" aria-label="4.4 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+        <p class="cc-big-lbl">563 opiniones en Google · Encino<br>4.5 con 21 opiniones · Universidad</p>
+      </div>
+    </div>
+    <div class="cc-rv-track" id="cc-rv-track" tabindex="0" aria-label="Reseñas de clientes, desliza">
+        <blockquote class="cc-rv cc-rv-big">
+          <span class="cc-stars" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+          <p>Si en la mañana buscan un rico café de olla y unos chilaquiles para empezar el día con toda la energía, éste es el lugar ideal.</p>
+          <footer><b>Gustavo Marquez</b><span>Google · Universidad</span></footer>
+        </blockquote>
+        <blockquote class="cc-rv">
+          <span class="cc-stars" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
           <p>Muy rica la comida y las salsas. Excelente atención y buen ambiente.</p>
-          <footer><span class="cc-stars" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>Kelly Marroquin</footer>
+          <footer><b>Kelly Marroquin</b><span>Google · Encino</span></footer>
         </blockquote>
-        <blockquote class="cc-quote" data-cc-reveal>
-          <p>Muy bien servicio, muy amables a la hora de atender.</p>
-          <footer><span class="cc-stars" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>Norma Garcia</footer>
+        <blockquote class="cc-rv">
+          <span class="cc-stars" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+          <p>Excelente servicio, buena atencion al cliente y el ambiente es bueno, la comida esta rica y con buen precio.</p>
+          <footer><b>Fatima Gallegos</b><span>Google · Universidad</span></footer>
         </blockquote>
-      </div>
-      <div class="cc-op-photo" data-cc-reveal><img src="img/comedor-960.webp" srcset="img/comedor-480.webp 480w, img/comedor-960.webp 960w, img/comedor-1600.webp 1600w" sizes="(max-width: 759px) 92vw, 24vw" width="960" height="720" alt="Comedor con mesas de madera y azulejos" loading="lazy"></div>
+        <blockquote class="cc-rv cc-rv-big">
+          <span class="cc-stars" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+          <p>Muy ricas las carnitas, se pueden pedir por aplicaciones de comida. Muy bien servicio, muy amables a la hora de atender.</p>
+          <footer><b>Norma Garcia</b><span>Google · Encino</span></footer>
+        </blockquote>
+        <blockquote class="cc-rv">
+          <span class="cc-stars" aria-label="5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+          <p>Muy ricos los platillos y el servicio excelente, volveré.</p>
+          <footer><b>Jason Barcenas</b><span>Google · Universidad</span></footer>
+        </blockquote>
+    </div>
+    <div class="cc-rv-nav">
+      <button type="button" class="cc-rv-btn" data-dir="-1" aria-label="Reseña anterior"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      <span class="cc-rv-count" id="cc-rv-count" aria-hidden="true">1 / 5</span>
+      <button type="button" class="cc-rv-btn" data-dir="1" aria-label="Reseña siguiente"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </div>
+    <p class="cc-op-topics">Lo que más mencionan: <b>chilaquiles</b> · <b>sabor</b> · <b>café de olla</b> · <b>frijoles</b> · <b>molcajete</b></p>
+    <div class="cc-op-cta">
+      <a class="cc-btn cc-btn-nav" href="https://www.google.com/maps/place/La+Casa+del+Chilaquil+Encino/@21.8747654,-102.2921498,17z/data=!4m6!3m5!1s0x8429eff1d6b4687d:0xa4f5b1b078f2345f!8m2!3d21.8747654!4d-102.2921498!16s%2Fg%2F11qh3r33t3" target="_blank" rel="noopener">Ver todas en Google <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
 
-<section class="cc-sec cc-casas" id="casas" data-hide-wa>
+<section class="cc-sec cc-vis" id="casas" data-hide-wa>
   <div class="cc-wrap">
-    <p class="cc-eyebrow">Dos sucursales en Aguascalientes</p>
+    <p class="cc-eyebrow">Dos casas en Aguascalientes</p>
     <h2 class="cc-h2" data-cc-reveal>Pásale a<em>la casa.</em></h2>
-    <div class="cc-cards">
-      <article class="cc-card" data-cc-reveal>
-        <h3>Encino<span>Barrio del Encino</span></h3>
-        <address>Abasolo 206, Barrio del Encino, 20240</address>
-        <dl><dd>Todos los días, 8:30 a 13:00</dd><dd>Para comer aquí o para llevar</dd><dd>449 377 0498</dd></dl>
-        <a class="cc-btn cc-btn-nav" href="https://www.google.com/maps/search/?api=1&query=Abasolo+206+Barrio+del+Encino+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
-      </article>
-      <article class="cc-card" data-cc-reveal>
-        <h3>Universidad<span>Los Bosques</span></h3>
-        <address>Av. Universidad 1201-A, Los Bosques</address>
-        <dl><dd>Todos los días, 8:30 a 13:00</dd></dl>
-        <a class="cc-btn cc-btn-nav" href="https://www.google.com/maps/search/?api=1&query=Av+Universidad+1201-A+Los+Bosques+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
-      </article>
-      <div class="cc-fachada" data-cc-reveal><img src="img/fachada-480.webp" srcset="img/fachada-480.webp 480w, img/fachada-960.webp 960w, img/fachada-1200.webp 1200w" sizes="260px" width="480" height="640" alt="Fachada de La Casa del Chilaquil, sabor y tradición" loading="lazy"></div>
+    <div class="cc-vis-tabs" role="tablist" aria-label="Sucursales">
+      <button type="button" role="tab" id="t-enc" aria-controls="p-enc" aria-selected="true">Encino</button>
+      <button type="button" role="tab" id="t-uni" aria-controls="p-uni" aria-selected="false" tabindex="-1">Universidad</button>
     </div>
-    <p class="cc-apps">También nos encuentras en Uber Eats, DiDi Food, Rappi y ola.click.</p>
-    <div class="cc-casas-wa">
-      <a class="cc-btn cc-btn-wa" data-wa="Hola, vi su página. Quiero pedir desayuno, ¿ya están abiertos?" href="https://wa.me/524493770498?text=Hola%2C%20vi%20su%20p%C3%A1gina.%20Quiero%20pedir%20desayuno%2C%20%C2%BFya%20est%C3%A1n%20abiertos%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pide tu desayuno</a>
-      <small>Este WhatsApp es el de la sucursal Encino.</small>
+    <div class="cc-vis-panel" role="tabpanel" id="p-enc" aria-labelledby="t-enc">
+      <div class="cc-vis-map"><iframe src="https://www.google.com/maps?q=La+Casa+del+Chilaquil+Encino,+Abasolo+206,+Barrio+del+Encino,+20240+Aguascalientes&output=embed" loading="lazy" title="Mapa de La Casa del Chilaquil Encino" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div class="cc-vis-info">
+        <p class="cc-vis-now" data-now>Todos los días, 8:30 a 13:00</p>
+        <address>Abasolo 206, Barrio del Encino<br>20240 Aguascalientes, Ags.</address>
+        <ul class="cc-vis-days"><li data-d="1"><span>Lunes</span><span>8:30 a 13:00</span></li><li data-d="2"><span>Martes</span><span>8:30 a 13:00</span></li><li data-d="3"><span>Miércoles</span><span>8:30 a 13:00</span></li><li data-d="4"><span>Jueves</span><span>8:30 a 13:00</span></li><li data-d="5"><span>Viernes</span><span>8:30 a 13:00</span></li><li data-d="6"><span>Sábado</span><span>8:30 a 13:00</span></li><li data-d="0"><span>Domingo</span><span>8:30 a 13:00</span></li></ul>
+        <p class="cc-vis-note">Para comer aquí, para llevar y en Uber Eats, DiDi Food y Rappi.</p>
+        <div class="cc-vis-btns">
+          <a class="cc-btn cc-btn-wa" data-wa="Hola, vi su página. Quiero pedir desayuno en Encino." href="https://wa.me/524493770498?text=Hola%2C%20vi%20su%20p%C3%A1gina.%20Quiero%20pedir%20desayuno%20en%20Encino." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+          <a class="cc-btn cc-btn-nav" href="tel:+524493770498">Llamar 449 377 0498</a>
+          <a class="cc-link" href="https://www.google.com/maps/place/La+Casa+del+Chilaquil+Encino/@21.8747654,-102.2921498,17z/data=!4m6!3m5!1s0x8429eff1d6b4687d:0xa4f5b1b078f2345f!8m2!3d21.8747654!4d-102.2921498!16s%2Fg%2F11qh3r33t3" target="_blank" rel="noopener">Cómo llegar <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="cc-vis-panel" role="tabpanel" id="p-uni" aria-labelledby="t-uni" hidden>
+      <div class="cc-vis-map"><iframe src="https://www.google.com/maps?q=La+Casa+del+Chilaquil+Universidad,+Av.+Universidad+1201-A,+Los+Bosques,+20120+Aguascalientes&output=embed" loading="lazy" title="Mapa de La Casa del Chilaquil Universidad" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div class="cc-vis-info">
+        <p class="cc-vis-now" data-now>Todos los días, 8:30 a 13:00</p>
+        <address>Av. Universidad 1201-A, Los Bosques<br>20120 Aguascalientes, Ags.</address>
+        <ul class="cc-vis-days"><li data-d="1"><span>Lunes</span><span>8:30 a 13:00</span></li><li data-d="2"><span>Martes</span><span>8:30 a 13:00</span></li><li data-d="3"><span>Miércoles</span><span>8:30 a 13:00</span></li><li data-d="4"><span>Jueves</span><span>8:30 a 13:00</span></li><li data-d="5"><span>Viernes</span><span>8:30 a 13:00</span></li><li data-d="6"><span>Sábado</span><span>8:30 a 13:00</span></li><li data-d="0"><span>Domingo</span><span>8:30 a 13:00</span></li></ul>
+        <div class="cc-vis-fachada"><img src="img/fachada-480.webp" srcset="img/fachada-480.webp 480w, img/fachada-960.webp 960w" sizes="120px" width="480" height="640" alt="Fachada de La Casa del Chilaquil en Avenida Universidad" loading="lazy"><span>Busca el letrero morado: Sabor y Tradición.</span></div>
+        <p class="cc-vis-note">Los pedidos por WhatsApp entran al 449 377 0498.</p>
+        <div class="cc-vis-btns">
+          <a class="cc-btn cc-btn-wa" data-wa="Hola, vi su página. Quiero pedir desayuno en Universidad." href="https://wa.me/524493770498?text=Hola%2C%20vi%20su%20p%C3%A1gina.%20Quiero%20pedir%20desayuno%20en%20Universidad." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+          <a class="cc-btn cc-btn-nav" href="tel:+524492388290">Llamar 449 238 8290</a>
+          <a class="cc-link" href="https://www.google.com/maps/place/La+Casa+del+Chilaquil+Universidad/@21.9190522,-102.3145361,17z/data=!4m6!3m5!1s0x8429ef984f6d805f:0x477746969baefb1d!8m2!3d21.9190522!4d-102.3145361!16s%2Fg%2F11z1wggscj" target="_blank" rel="noopener">Cómo llegar <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -227,9 +290,9 @@
       <h2>Todo listo para completar</h2>
       <ul>
         <li>Precios al día de la carta</li>
-        <li>Teléfono de la sucursal Universidad</li>
-        <li>Enlaces de Facebook, Instagram y TikTok</li>
-        <li>Fotos propias del comedor y la fachada</li>
+        <li>Si Universidad tiene su propio WhatsApp</li>
+        <li>Enlaces de Instagram y TikTok</li>
+        <li>Fotos propias del comedor de Encino</li>
         <li>Logo en alta calidad</li>
       </ul>
       <p>Pásanoslo por el mismo chat donde te llegó esta muestra.</p>
@@ -241,9 +304,29 @@
 
 <footer class="cc-foot" data-hide-wa>
   <div class="cc-wrap">
-    <p class="cc-foot-name">La Casa del Chilaquil</p>
-    <p>Abasolo 206, Barrio del Encino, 20240 Aguascalientes<br>Av. Universidad 1201-A, Los Bosques, Aguascalientes<br>Todos los días de 8:30 a 13:00</p>
-    <p class="cc-credit">Muestra de diseño hecha por KREVO. Las fotos son reales del negocio.</p>
+    <div class="cc-foot-grid">
+      <div>
+        <p class="cc-foot-name">La Casa del Chilaquil</p>
+        <p class="cc-foot-tag">Sabor y tradición, en cada chilaquil.</p>
+        <a class="cc-foot-fb" href="https://www.facebook.com/lacasadelchilaquilags" target="_blank" rel="noopener" aria-label="Facebook de La Casa del Chilaquil"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4V10.5H7.9v3h2.6V21h3Z"/></svg></a>
+      </div>
+      <div>
+        <p class="cc-foot-h">Encino</p>
+        <p>Abasolo 206, Barrio del Encino, 20240</p>
+        <a class="cc-foot-tel" href="tel:+524493770498">449 377 0498</a>
+      </div>
+      <div>
+        <p class="cc-foot-h">Universidad</p>
+        <p>Av. Universidad 1201-A, Los Bosques, 20120</p>
+        <a class="cc-foot-tel" href="tel:+524492388290">449 238 8290</a>
+      </div>
+      <div>
+        <p class="cc-foot-h">Horario</p>
+        <p>Lunes a domingo<br>8:30 a.m. a 1:00 p.m.</p>
+        <a class="cc-btn cc-btn-wa cc-foot-wa" data-wa="Hola, vi su página y quiero pedir chilaquiles." href="https://wa.me/524493770498?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20pedir%20chilaquiles." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir por WhatsApp</a>
+      </div>
+    </div>
+    <p class="cc-credit">Muestra de diseño hecha por KREVO. Las fotos y reseñas son reales del negocio.</p>
   </div>
 </footer>
 
@@ -282,5 +365,7 @@
 <script src="site.js?v=1791088340" defer></script>
 <script src="sections/20-carta.js?v=1791088353" defer></script>
 <script src="sections/30-divorciados.js?v=1791088426" defer></script>
+<script src="sections/50-opiniones.js?v=1791104251" defer></script>
+<script src="sections/60-casas.js?v=1791104291" defer></script>
 </body>
 </html>

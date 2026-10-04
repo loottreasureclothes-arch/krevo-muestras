@@ -1,0 +1,1 @@
+(function(){var t=document.getElementById("lp-tix");if(!t)return;document.querySelectorAll(".lp-tn").forEach(function(b){b.addEventListener("click",function(){var c=t.querySelector(".lp-tk");t.scrollBy({left:(c?c.offsetWidth+20:360)*+b.dataset.d,behavior:"smooth"})})})})();

@@ -1,0 +1,40 @@
+.vi{background:var(--ink);padding:64px 0 72px}
+.vi h2{font-size:15vw;max-width:10ch}
+.vi-tabs{display:flex;margin-top:28px;border:3px solid #fff}
+.vi-tab{flex:1;min-height:52px;background:transparent;color:#fff;border:0;border-right:3px solid #fff;font:900 22px/1 "Passion One",sans-serif;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.vi-tab:last-child{border-right:0}
+.vi-tab[aria-selected="true"]{background:var(--red)}
+.vi-tab:hover{color:var(--red)}
+.vi-tab[aria-selected="true"]:hover{color:#fff}
+.vi-p{margin-top:22px}
+.vi-map{position:relative;padding:10px}
+.vi-map iframe{display:block;width:100%;height:300px;border:0;background:#222}
+.vi-pin{position:absolute;left:0;top:22px;background:var(--red);color:#fff;font:900 20px/1 "Passion One",sans-serif;text-transform:uppercase;padding:8px 14px}
+.vi-info{margin-top:22px}
+.vi-r{font:700 13px/1 "Barlow",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+.vi-a{font:900 28px/1.05 "Passion One",sans-serif;text-transform:uppercase;margin-top:10px}
+.vi-now{margin-top:16px;font-weight:700;display:inline-flex;align-items:center;gap:10px}
+.vi-now::before{content:"";width:12px;height:12px;background:#777}
+.vi-now.is-open::before{background:var(--wa)}
+.vi-now.is-closed::before{background:var(--red)}
+.vi-hrs{list-style:none;margin-top:14px;border-top:2px solid rgba(255,255,255,.3)}
+.vi-hrs li{display:flex;justify-content:space-between;padding:7px 0;border-bottom:2px solid rgba(255,255,255,.3);color:#e6dccf}
+.vi-hrs li.is-today{color:#fff;font-weight:700}
+.vi-hrs li.is-today span:first-child::after{content:" · hoy";color:var(--red)}
+.vi-tbd{margin-top:16px;color:#e6dccf}
+.vi-cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+.vi-cta .btn-wa{grid-column:1/-1}
+.vi-cta .btn:only-child,.vi-cta .btn:first-child:nth-last-child(2){grid-column:auto}
+@media (min-width:820px){
+ .vi{padding:104px 0}
+ .vi h2{font-size:clamp(80px,8vw,124px);max-width:none}
+ .vi-tabs{max-width:620px}
+ .vi-p{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;align-items:start;margin-top:34px}
+ .vi-map iframe{height:460px}
+ .vi-info{margin-top:0}
+ .vi-a{font-size:40px}
+ .vi-cta{grid-template-columns:repeat(3,auto);justify-content:start}
+ .vi-cta .btn-wa{grid-column:auto}
+}
+.vi-p[hidden]{display:none!important}
+.vi-cta .btn{padding:0 12px;letter-spacing:.1em;white-space:nowrap}

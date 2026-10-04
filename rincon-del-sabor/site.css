@@ -309,3 +309,94 @@ ul{padding:0;list-style:none}
   .pie-dir a{color:var(--rosa)}
   .pie .wrap{align-items:end}
 }
+
+/* ===== Mejorador 4 oct: reseñas en papeletas, galería, visítanos con mapa ===== */
+.arrow-link{display:inline-flex;align-items:center;gap:10px;margin-top:28px;min-height:44px;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--rosa);border-bottom:1.5px solid currentColor}
+.arrow-link span{transition:transform .25s}.arrow-link:hover span{transform:translateX(4px)}
+.comal .arrow-link{color:var(--mag)}
+.pz-cta{margin-top:20px;width:100%}
+
+.rs-score{display:flex;align-items:center;gap:18px;padding-bottom:26px;margin-bottom:30px;border-bottom:1px solid #ffffff22}
+.rs-num{font-family:var(--f-d);font-weight:400;font-size:clamp(96px,30vw,150px);line-height:.8;color:var(--oro)}
+.rs-score .stars svg{width:22px;height:22px}
+.stars .half{-webkit-mask:linear-gradient(90deg,#000 30%,#0004 30%);mask:linear-gradient(90deg,#000 30%,#0004 30%)}
+.rs-score p{font-size:15px;line-height:1.35;color:#fff3e1cc}.rs-score p b{color:var(--crema)}
+.rs-score .rs-2{margin-top:6px;font-size:13px}
+.rs-in .tt{margin-bottom:6px}
+.cuerda-r{height:14px;margin:0 -20px;background:radial-gradient(60% 9px at 50% 0,#0000 98%,#fff3e155 100%) 0 0/120px 14px repeat-x}
+.pp-row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:4px 20px 22px;scrollbar-width:none;outline:none}
+.pp-row::-webkit-scrollbar{display:none}
+.pp{flex:0 0 78%;scroll-snap-align:start;position:relative;padding-top:16px}
+.pp::before{content:"";position:absolute;top:0;left:50%;width:14px;height:22px;margin-left:-7px;background:var(--oro);border-radius:3px 3px 0 0;z-index:1;box-shadow:0 2px 0 #0003}
+.pp-in{background:var(--crema);color:var(--vino);padding:22px 20px 34px;min-height:100%;transform:rotate(-1.2deg);box-shadow:0 10px 24px #0005}
+.pp:nth-child(even) .pp-in{transform:rotate(1.1deg);background:#ffe3ec}
+.pp:nth-child(3n) .pp-in{background:#fff0c9}
+.pp-in .stars{color:var(--mag)}
+.pp-in p{font-family:var(--f-d);font-weight:400;text-transform:uppercase;font-size:27px;line-height:1.05;letter-spacing:.01em}
+.pp.big .pp-in p{font-family:var(--f-b);font-weight:600;text-transform:none;font-size:18px;line-height:1.4}
+.pp-in cite{display:block;font-style:normal;margin-top:16px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#2b0618a6}
+.pp-in cite b{display:block;font-size:14px;letter-spacing:.06em;color:var(--mag);margin-bottom:2px}
+.pp-nav{display:flex;align-items:center;gap:16px;margin:6px 0 20px;font-size:13px;font-weight:800;letter-spacing:.14em}
+.pp-b{width:44px;height:44px;border:1.5px solid var(--rosa);background:none;color:var(--rosa);font-size:24px;line-height:1}
+.pp-b:hover{background:var(--rosa);color:var(--vino)}
+.rs-cta{width:100%}
+
+.galeria{background:var(--vino3)}
+.galeria .tt{margin-bottom:26px}
+.gl{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gl figure{margin:0;position:relative;overflow:hidden;background:var(--vino2)}
+.gl img{width:100%;height:100%;object-fit:cover}
+.gl figcaption{position:absolute;left:0;bottom:0;background:var(--mag);color:var(--crema);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:7px 10px}
+.gl .g1{grid-column:1/-1;aspect-ratio:16/10}
+.gl .g2,.gl .g3{aspect-ratio:3/4}
+.gl .g4{grid-column:1/-1;aspect-ratio:16/8}
+.gl .g5{grid-column:1/-1;aspect-ratio:16/8}
+.gl .g5 img{object-position:50% 60%}
+
+.dn-tabs{display:flex;gap:0;margin:24px 0 0;border-bottom:2px solid var(--vino)}
+.dn-tabs button{flex:1;min-height:50px;padding:0 10px;border:0;background:#2b061833;color:var(--crema);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.dn-tabs button.on{background:var(--vino);color:var(--oro)}
+.dn-panel{background:var(--vino)}
+.dn-panel[hidden]{display:none}
+.dn-map{height:300px;background:var(--vino2)}
+.dn-map iframe{width:100%;height:100%;border:0;display:block;filter:saturate(.85)}
+.dn-info{padding:20px 20px 24px}
+.dn-now{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--oro)}
+.dn-now i{width:10px;height:10px;border-radius:50%;background:var(--oro);flex:none}
+.dn-now.open{color:#7be3a2}.dn-now.open i{background:#7be3a2;box-shadow:0 0 0 4px #7be3a233}
+.dn-now.closed{color:var(--rosa)}.dn-now.closed i{background:var(--rosa)}
+.dn-info address{font-style:normal;margin-top:12px;font-size:17px;line-height:1.4}
+.dn-hrs{margin:16px 0 20px;font-size:14px}
+.dn-hrs li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed #fff3e133;color:#fff3e1cc}
+.dn-hrs li b{font-weight:600;color:var(--crema)}
+.dn-hrs li.hoy{color:var(--oro)}.dn-hrs li.hoy span::after{content:" · hoy";font-weight:800}
+.dn-btns .btn{min-height:50px;font-size:12px;flex-basis:100%}
+.pie-dirs{display:grid;gap:18px;margin-top:30px}
+.pie .pie-dir{display:block;font-size:14px;line-height:1.5;color:#fff3e1cc}
+.pie .pie-dir b{display:block;font-family:var(--f-d);font-weight:400;font-size:22px;letter-spacing:.02em;text-transform:uppercase;color:var(--oro)}
+.pie .pie-dir a{color:var(--crema);font-weight:700}
+
+@media (min-width:700px){
+  .pp{flex-basis:44%}
+  .gl{grid-template-columns:repeat(6,1fr);gap:14px}
+  .gl .g1{grid-column:1/5;grid-row:span 2;aspect-ratio:auto}
+  .gl .g2{grid-column:5/7;aspect-ratio:4/5}
+  .gl .g3{grid-column:5/7;aspect-ratio:4/5}
+  .gl .g4{grid-column:1/4;aspect-ratio:16/10}
+  .gl .g5{grid-column:4/7;aspect-ratio:16/10}
+  .dn-panel:not([hidden]){display:grid;grid-template-columns:1.15fr 1fr}
+  .dn-map{height:auto;min-height:440px}
+  .dn-info{padding:30px 32px}
+  .dn-tabs{max-width:560px}
+  .rs-cta{width:auto}
+  .pie-dirs{grid-template-columns:1fr 1fr}
+}
+@media (min-width:1100px){
+  .rs-photo{min-height:0;height:520px}
+  .rs-photo img{object-position:50% 62%}
+  .rs-in{padding:70px 32px 0}
+  .rs-score{max-width:620px}
+  .pp{flex-basis:31%}
+  .pp-row{margin:0;padding:4px 0 22px}
+  .cuerda-r{margin:0}
+}

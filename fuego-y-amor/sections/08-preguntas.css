@@ -1,0 +1,17 @@
+.faq{padding:64px 0 70px;background:var(--bg)}
+.faq h2{font-size:clamp(38px,10.6vw,56px);margin-bottom:26px}
+.faq h2 em{display:block}
+.faq-h .btn-wa{margin-bottom:34px}
+.faq-l details{border-bottom:1px solid var(--line)}
+.faq-l details:first-child{border-top:1px solid var(--line)}
+.faq-l summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:62px;padding:12px 0;font-family:var(--f-d);font-size:22px;line-height:1.15}
+.faq-l summary::-webkit-details-marker{display:none}
+.faq-l summary::after{content:"";flex:none;width:14px;height:14px;border-right:1px solid var(--brasa);border-bottom:1px solid var(--brasa);transform:rotate(45deg) translate(-3px,-3px);transition:transform .25s}
+.faq-l details[open] summary::after{transform:rotate(225deg) translate(-3px,-3px)}
+.faq-l p{padding:0 0 20px;color:var(--mut);max-width:44ch}
+@media (min-width:900px){
+.faq{padding:110px 0}
+.faq-g{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px;align-items:start}
+.faq h2{font-size:clamp(52px,5vw,76px)}
+.faq-l summary{font-size:26px;min-height:74px}
+}

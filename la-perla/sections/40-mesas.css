@@ -21,3 +21,31 @@
   .lp-quotes blockquote{font-size:32px}
 }
 @media (max-width:819px){.lp-big{flex-direction:column;align-items:flex-start;gap:12px}.lp-big p{max-width:34ch;padding-bottom:0}}
+/* carrusel de reseñas (platos ovalados de barro en fila) */
+.lp-ops{padding-bottom:48px}
+.lp-revs{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:30px var(--gut) 10px;scroll-padding:0 var(--gut);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.lp-revs::-webkit-scrollbar{display:none}
+.lp-rev{flex:0 0 78%;scroll-snap-align:start;background:#fff;border:1px solid rgba(29,36,51,.14);border-top:5px solid var(--deep);border-radius:4px 4px 120px 120px / 4px 4px 40px 40px;padding:20px 20px 30px;display:flex;flex-direction:column;gap:12px;box-shadow:0 10px 24px -14px rgba(29,36,51,.35)}
+.lp-rev--big{flex-basis:86%;background:var(--ink);color:#fff;border-top-color:var(--sky)}
+.lp-rev blockquote{font-family:var(--font-display);font-weight:400;font-size:24px;line-height:1.1;flex:1}
+.lp-rev--big blockquote{font-size:28px}
+.lp-rev figcaption{display:grid;gap:1px;font-size:13px}
+.lp-rev figcaption b{font-size:15px}
+.lp-rev figcaption span{color:#5a6576}
+.lp-rev--big figcaption span{color:var(--muted)}
+.lp-stars{display:flex;gap:3px;color:#c9cfd8}
+.lp-stars i{width:18px;height:18px;display:block}
+.lp-stars i svg{width:100%;height:100%;display:block}
+.lp-stars i.on{color:#e8a623}
+.lp-revs-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap}
+.lp-revs-nav{display:flex;gap:8px}
+.lp-revs-nav button{width:48px;height:48px;border-radius:50%;border:1px solid var(--ink);display:grid;place-items:center;color:var(--ink)}
+.lp-revs-nav svg{width:20px;height:20px}
+.lp-btn--ink svg{width:18px;height:18px}
+@media (max-width:819px){.lp-revs-nav{display:none}.lp-revs-foot .lp-btn{width:100%}}
+@media (min-width:820px){
+  .lp-revs{padding-left:max(var(--gut),calc((100vw - 1180px)/2 + var(--gut)));scroll-padding-left:max(var(--gut),calc((100vw - 1180px)/2 + var(--gut)))}
+  .lp-rev{flex-basis:330px}
+  .lp-rev--big{flex-basis:420px}
+}
+@media (min-width:820px){.lp-ops header{grid-column:1;align-self:end}.lp-big{grid-column:2}}

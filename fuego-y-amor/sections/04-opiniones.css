@@ -1,17 +1,47 @@
-.ops{background:var(--cream);color:#171110;padding:64px 0 70px}
+.ops{background:var(--cream);color:#171110;padding:64px 0 60px;overflow:hidden}
 .ops em{color:var(--brick)}
 .dato{font-family:var(--f-d);font-size:min(46vw,190px);line-height:.85;color:var(--brick);letter-spacing:-.02em}
-.dato-t{font-size:18px;margin-top:10px;margin-bottom:46px}
-.ops h2{font-size:clamp(34px,9.6vw,50px);margin-bottom:26px}
-.op{padding:22px 0;border-top:1px solid rgba(23,17,16,.18)}
-.est{width:100px;height:20px;color:var(--brick);fill:currentColor;margin-bottom:12px}
-.op blockquote{font-family:var(--f-d);font-size:23px;line-height:1.2}
-.op figcaption{margin-top:12px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#5b4d49}
+.est{width:100px;height:20px;color:var(--brick);fill:currentColor;display:block}
+.est-xl{width:150px;height:30px;margin-top:14px}
+.dato-t{font-size:18px;margin-top:12px;margin-bottom:40px}
+.dato-t span{display:block;font-size:14px;color:#5b4d49;margin-top:4px}
+.ops h2{font-size:clamp(34px,9.6vw,50px)}
+.ops-sub{margin-top:12px;color:#5b4d49;max-width:30ch}
+.coms-w{margin-top:30px}
+.coms{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px var(--gut) 24px;scrollbar-width:none;-webkit-overflow-scrolling:touch;align-items:flex-start}
+.coms::-webkit-scrollbar{display:none}
+.coms:focus-visible{outline:2px solid var(--brick);outline-offset:-2px}
+.com{flex:0 0 78%;scroll-snap-align:center;background:#fbf6ee;padding:20px 20px 22px;position:relative;box-shadow:0 1px 0 rgba(23,17,16,.08),0 14px 30px -18px rgba(23,17,16,.45);
+  -webkit-mask:radial-gradient(circle at 8px 0,transparent 6px,#000 6.5px) -8px 0/16px 100% repeat-x;mask:radial-gradient(circle at 8px 0,transparent 6px,#000 6.5px) -8px 0/16px 100% repeat-x}
+.com:nth-child(even){margin-top:26px}
+.com-w{flex-basis:86%}
+.com-w blockquote{font-size:27px}
+.com-h{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#7a6a63;padding-bottom:12px;margin:6px 0 14px;border-bottom:1px dashed rgba(23,17,16,.3)}
+.com-h span:last-child{color:var(--brick)}
+.com blockquote{font-family:var(--f-d);font-size:22px;line-height:1.18;margin-top:12px}
+.com figcaption{margin-top:18px;padding-top:12px;border-top:1px dashed rgba(23,17,16,.3);display:flex;justify-content:space-between;gap:10px;font-size:13px}
+.com figcaption b{font-weight:600}
+.com figcaption span{color:#7a6a63}
+.ops-f{display:flex;flex-direction:column;gap:22px;margin-top:6px}
+.coms-nav{display:flex;align-items:center;gap:16px;font-size:13px;letter-spacing:.16em;color:#5b4d49}
+.cn{width:48px;height:48px;border:1px solid rgba(23,17,16,.35);font-size:18px;color:#171110;transition:background .2s,color .2s}
+.cn:hover{background:#171110;color:var(--cream)}
+.ops-b{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center}
+.btn-br{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;background:var(--brick);color:#fff;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.btn-br:hover{background:var(--brick-d)}
+.lnk{font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor;padding:12px 0 4px}
+.ops .lnk{color:var(--brick-d)}
+@media (min-width:700px){.com{flex-basis:46%}.com-w{flex-basis:56%}}
 @media (min-width:900px){
-.ops{padding:110px 0}
-.ops-g{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:80px;align-items:center}
-.dato{font-size:clamp(200px,24vw,340px)}
-.ops h2{font-size:clamp(46px,4.4vw,64px)}
+.ops{padding:110px 0 100px}
+.ops-top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:80px;align-items:end}
+.dato{font-size:clamp(200px,22vw,320px)}
 .dato-t{font-size:22px;margin-bottom:0}
-.op blockquote{font-size:28px}
+.ops h2{font-size:clamp(46px,4.4vw,64px)}
+.coms-w{margin-top:56px}
+.coms{padding-left:max(40px,calc((100vw - 1240px)/2 + 40px));padding-right:40px;gap:22px}
+.com{flex-basis:330px}
+.com-w{flex-basis:440px}
+.com-w blockquote{font-size:32px}
+.ops-f{flex-direction:row;justify-content:space-between;align-items:center}
 }

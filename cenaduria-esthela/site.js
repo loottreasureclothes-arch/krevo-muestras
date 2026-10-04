@@ -55,6 +55,7 @@
   else{var nd=(n.d+1)%7,nh=horas(nd); msg=nh?"<b>Cerrado</b> · abre "+(nd===1?"":(nd===6||nd===0?"mañana 2 pm":"mañana 6 pm")):"<b>Cerrado</b> · abre martes 6 pm"; if(nd===1) msg="<b>Cerrado</b> · abre martes 6 pm"; else if(!nh) msg="<b>Cerrado</b>";}
   if(n.d===1) msg="<b>Hoy cerrado</b> · abre martes 6 pm";
   if(out) out.innerHTML=msg;
+  var ln=d.getElementById("lu-now"); if(ln){var open=h&&n.m>=h[0]&&n.m<h[1]; ln.classList.toggle("on",!!open); ln.innerHTML="<i></i>"+(open?"Abierto ahora · cierra a las 11:45 pm":msg.replace(/<\/?b>/g,""));}
   var li=d.querySelector('#hrs li[data-d="'+n.d+'"]'); Array.prototype.forEach.call(d.querySelectorAll("#hrs li"),function(x){x.classList.remove("hoy")}); if(li) li.classList.add("hoy");
  }
  status(); setInterval(status,60000);

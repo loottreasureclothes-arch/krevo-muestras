@@ -25,7 +25,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="fonts/anton-400.woff2" crossorigin>
 <link rel="preload" as="image" href="img/hero-960.webp" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1791091964">
+<link rel="stylesheet" href="site.css?v=1791103828">
 
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}.flag{transform:none!important}</style></noscript>
 </head>
@@ -56,6 +56,8 @@
     <a href="#comanda">Mi comanda</a>
     <a href="#pozole">Pozole del día</a>
     <a href="#comal">Del comal</a>
+    <a href="#resenas">Reseñas</a>
+    <a href="#galeria">El lugar</a>
     <a href="#donde">Dónde estamos</a>
     <a class="hd-menu-call" href="tel:+524493319024">Llamar 449 331 9024</a>
   </div>
@@ -155,7 +157,7 @@
         <div class="flag verde" data-tipo="verde"><span class="hoy-tag">HOY</span><b>Verde</b><span>Viernes</span><i>Junior $65<br>Chico $80<br>Grande $90</i></div>
         <div class="flag blanco" data-tipo="blanco"><span class="hoy-tag">HOY</span><b>Blanco</b><span>Sábado</span><i>Junior $60<br>Chico $80<br>Grande $90</i></div>
       </div></div>
-      <div class="hoy-box" data-reveal><span class="hoy-dia" id="hoy-dia">Hoy en el caldero</span><b class="hoy-big" id="hoy-big">Rojo</b><p class="hoy-sub" id="hoy-sub">Pozole rojo, el de todos los días.</p></div>
+      <div class="hoy-box" data-reveal><span class="hoy-dia" id="hoy-dia">Hoy en el caldero</span><b class="hoy-big" id="hoy-big">Rojo</b><p class="hoy-sub" id="hoy-sub">Pozole rojo, el de todos los días.</p><a class="btn wa pz-cta" id="pz-cta" href="https://wa.me/524493319024?text=Hola%2C%20quiero%20un%20pozole%20rojo." data-wa="Hola, quiero un pozole rojo."><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir el pozole de hoy</a></div>
     </div>
     <figure class="pz-photo" data-reveal style="margin:0"><img class="zz" src="img/pozd-960.webp" srcset="img/pozd-480.webp 480w, img/pozd-960.webp 960w, img/pozd-1600.webp 1600w" sizes="(min-width:700px) 46vw, 100vw" width="880" height="427" alt="Pozole rojo con tostadas, cebolla, lechuga y rábano"><figcaption><p>Se acompaña con tostadas, lechuga, rábano y su cebolla. Pídelo con orden de pata, cueros o hueso.</p></figcaption></figure>
   </div>
@@ -177,37 +179,70 @@
         <div class="cl" data-reveal style="margin-top:30px"><h3>Para tomar</h3><ul><li><span>Michelada<small>Con su cerveza y su chile en el borde</small></span><b class="q">Pregunta el precio</b><button type="button" class="add" data-add data-id="michelada" data-name="Michelada" aria-label="Agregar Michelada"><svg aria-hidden="true"><use href="#i-plus"/></svg></button></li></ul></div>
       </div>
     </div>
+    <a class="arrow-link" href="#comanda" data-reveal>Ver mi comanda <span aria-hidden="true">↑</span></a>
   </div>
 </section>
 
 <section class="resenas" id="resenas">
-  <div class="rs-wrap">
-    <div class="rs-photo"><img src="img/mich-880.webp" srcset="img/mich-480.webp 480w, img/mich-880.webp 880w" sizes="(min-width:1100px) 44vw, 100vw" width="884" height="1896" alt="Michelada con chile en el borde y pepino"><h2 data-reveal>Y su <em>michelada.</em></h2></div>
-    <div class="rs-in wrap">
-      <h2 class="tt" data-reveal>Así lo cuentan <em>quienes ya cenaron.</em></h2>
-      <div class="q-list">
-        <blockquote class="qt" data-reveal style="margin:0"><div class="stars" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Muy buen sabor y sazón, buenas porciones y precio adecuado.”</p><cite>Christian Espinoza · Google Maps</cite></blockquote>
-        <blockquote class="qt" data-reveal style="margin:0"><div class="stars" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Súper recomendable y un muy buen servicio.”</p><cite>Estefany Sanchez · INEGI</cite></blockquote>
-        <blockquote class="qt" data-reveal style="margin:0"><div class="stars" role="img" aria-label="4 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg class="off"><use href="#i-star"/></svg></div><p>“Rico pozole.”</p><cite>Norma C · Google Maps</cite></blockquote>
-      </div>
-      <p class="rs-g">En Google: <b>4.3</b> con 1,632 opiniones en la matriz y <b>4.4</b> con 851 en INEGI.</p>
+  <div class="rs-photo"><img src="img/mich-880.webp" srcset="img/mich-480.webp 480w, img/mich-880.webp 880w" sizes="100vw" width="884" height="1896" alt="Michelada con chile en el borde y pepino"><h2 data-reveal>Y su <em>michelada.</em></h2></div>
+  <div class="wrap rs-in">
+    <div class="rs-score" data-reveal>
+      <b class="rs-num">4.3</b>
+      <div><div class="stars" role="img" aria-label="4.3 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg class="half"><use href="#i-star"/></svg></div><p><b>1,632 opiniones</b> en Google, matriz Paseo de la Cruz</p><p class="rs-2"><b>4.4</b> con 851 en la sucursal INEGI</p></div>
     </div>
+    <h2 class="tt" data-reveal>Lo que dicen <em>en la mesa.</em></h2>
+    <div class="cuerda-r" aria-hidden="true"></div>
+    <ul class="pp-row" id="pp-row" tabindex="0" aria-label="Reseñas, desliza para ver más">
+      <li class="pp big"><div class="pp-in zz"><div class="stars" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Muy buen sabor y sazón, buenas porciones y precio adecuado, servicio relativamente rápido para la demanda que normalmente tienen.”</p><cite><b>Christian Espinoza</b>Google · Matriz</cite></div></li>
+      <li class="pp"><div class="pp-in zz"><div class="stars" role="img" aria-label="4 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg class="off"><use href="#i-star"/></svg></div><p>“Rico pozole.”</p><cite><b>Norma Robles Correa</b>Google · Matriz</cite></div></li>
+      <li class="pp"><div class="pp-in zz"><div class="stars" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Súper recomendable y un muy buen servicio.”</p><cite><b>Estefany Sanchez</b>Restaurant Guru · INEGI</cite></div></li>
+      <li class="pp"><div class="pp-in zz"><div class="stars" role="img" aria-label="4 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg class="off"><use href="#i-star"/></svg></div><p>“Y precios muy justos!! Y un sazón adecuado para una cenaduría!!”</p><cite><b>mm rj</b>Google · Matriz</cite></div></li>
+      <li class="pp"><div class="pp-in zz"><div class="stars" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Really good food, people are nice.”</p><cite><b>Carlos Hernandez</b>Google · Matriz</cite></div></li>
+      <li class="pp"><div class="pp-in zz"><div class="stars" role="img" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p>“Very good food at great prices :) nice people and WiFi too :)”</p><cite><b>Beautiful Kim</b>Google · Matriz</cite></div></li>
+    </ul>
+    <div class="pp-nav"><button type="button" class="pp-b" data-dir="-1" aria-label="Reseña anterior">‹</button><span id="pp-i">1 / 6</span><button type="button" class="pp-b" data-dir="1" aria-label="Siguiente reseña">›</button></div>
+    <a class="btn line rs-cta" href="https://www.google.com/maps?cid=4437562968756175025" target="_blank" rel="noopener">Ver todas en Google</a>
+  </div>
+</section>
+
+<section class="sec galeria" id="galeria">
+  <div class="wrap">
+    <h2 class="tt" data-reveal>Así se pone <em>la mesa.</em></h2>
+    <div class="gl">
+      <figure class="g1" data-reveal><img src="img/salon-960.webp" srcset="img/salon-480.webp 480w, img/salon-960.webp 960w, img/salon-1600.webp 1600w" sizes="(min-width:1100px) 700px, 100vw" width="2048" height="1536" alt="Salón del Rincón del Sabor con manteles de colores y ventanales" loading="lazy"><figcaption>El salón</figcaption></figure>
+      <figure class="g2" data-reveal><img src="img/gal-enc-960.webp" srcset="img/gal-enc-480.webp 480w, img/gal-enc-960.webp 960w, img/gal-enc-1152.webp 1152w" sizes="(min-width:1100px) 420px, 50vw" width="1152" height="1440" alt="Enchiladas con queso, lechuga, cebolla y zanahoria" loading="lazy"><figcaption>Enchiladas</figcaption></figure>
+      <figure class="g3" data-reveal><img src="img/poz-960.webp" srcset="img/poz-480.webp 480w, img/poz-960.webp 960w" sizes="(min-width:1100px) 420px, 50vw" width="1152" height="2048" alt="Pozole rojo en plato de barro" loading="lazy"><figcaption>Pozole rojo</figcaption></figure>
+      <figure class="g4" data-reveal><img src="img/gal-tost-960.webp" srcset="img/gal-tost-480.webp 480w, img/gal-tost-960.webp 960w, img/gal-tost-1600.webp 1600w" sizes="(min-width:1100px) 560px, 100vw" width="2048" height="1152" alt="Tostadas con crema, queso, cebolla y verduras" loading="lazy"><figcaption>Tostadas</figcaption></figure>
+      <figure class="g5" data-reveal><img src="img/flau-960.webp" srcset="img/flau-480.webp 480w, img/flau-960.webp 960w, img/flau-1284.webp 1284w" sizes="(min-width:1100px) 560px, 100vw" width="1284" height="836" alt="Flautas con aguacate, lechuga y cebolla en plato de barro" loading="lazy"><figcaption>Flautas</figcaption></figure>
+    </div>
+    <a class="arrow-link" href="https://www.facebook.com/cenaduriarincondelsabor" target="_blank" rel="noopener" data-reveal>Más fotos en su Facebook <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
 <section class="sec donde" id="donde">
   <div class="wrap">
     <h2 class="tt" data-reveal>Dos casas, <em>la misma sazón.</em></h2>
-    <div class="dn-photo" data-reveal><img class="zz" src="img/salon-960.webp" srcset="img/salon-480.webp 480w, img/salon-960.webp 960w, img/salon-1600.webp 1600w" sizes="(min-width:1180px) 1116px, 100vw" width="2048" height="1536" alt="Salón del Rincón del Sabor con mesas de mantel pintado y ventanales" loading="lazy"></div>
-    <div class="suc-grid">
-      <article class="suc" data-reveal><h3>Matriz Paseo de la Cruz</h3>
-        <address>Av. Paseo de la Cruz 101, esq. Av. Gral. Mariano Escobedo, Jardines de la Cruz</address>
-        <dl><div><dt>Horario</dt><dd>Todos los días, 4 a 10 p.m.</dd></div><div><dt>Teléfono</dt><dd>449 331 9024</dd></div></dl>
-        <div class="btns"><a class="btn wa" href="https://wa.me/524493319024?text=Hola%2C%20quiero%20pedir%20en%20El%20Rinc%C3%B3n%20del%20Sabor." data-wa="Hola, quiero pedir en El Rincón del Sabor."><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a><a class="btn line" href="tel:+524493319024">Llamar</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Antojitos+Mexicanos+El+Rinc%C3%B3n+del+Sabor+Av.+Paseo+de+la+Cruz+101+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a></div></article>
-      <article class="suc" data-reveal><h3>Sucursal INEGI</h3>
-        <address>Av. del Lago 112, Aguascalientes</address>
-        <dl><div><dt>Horario</dt><dd>Confírmalo por teléfono</dd></div><div><dt>Teléfono</dt><dd>449 536 6427</dd></div></dl>
-        <div class="btns"><a class="btn line" href="tel:+524495366427">Llamar</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=El+Rinc%C3%B3n+del+Sabor+Av.+del+Lago+112+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a></div></article>
+    <div class="dn-tabs" role="tablist" aria-label="Sucursales">
+      <button type="button" role="tab" id="t-matriz" aria-controls="p-matriz" aria-selected="true" class="on">Matriz Paseo de la Cruz</button>
+      <button type="button" role="tab" id="t-inegi" aria-controls="p-inegi" aria-selected="false" tabindex="-1">INEGI</button>
+    </div>
+    <div class="dn-panel" role="tabpanel" id="p-matriz" aria-labelledby="t-matriz" data-hours='{"0":[[16,22]],"1":[[16,22]],"2":[[16,22]],"3":[[16,22]],"4":[[16,22]],"5":[[16,22]],"6":[[16,22]]}'>
+      <div class="dn-map zz"><iframe src="https://www.google.com/maps?q=Cenadur%C3%ADa+El+Rinc%C3%B3n+del+Sabor+Av.+Paseo+de+la+Cruz+101+Jardines+de+la+Cruz+Aguascalientes&output=embed" loading="lazy" title="Mapa de la matriz Paseo de la Cruz" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div class="dn-info">
+        <p class="dn-now"><i></i><span>Todos los días de 4 a 10 p.m.</span></p>
+        <address>Av. Paseo de la Cruz 101, esquina Av. Gral. Mariano Escobedo, Jardines de la Cruz</address>
+        <ul class="dn-hrs"><li data-d="1"><span>Lunes</span><b>4 a 10 p.m.</b></li><li data-d="2"><span>Martes</span><b>4 a 10 p.m.</b></li><li data-d="3"><span>Miércoles</span><b>4 a 10 p.m.</b></li><li data-d="4"><span>Jueves</span><b>4 a 10 p.m.</b></li><li data-d="5"><span>Viernes</span><b>4 a 10 p.m.</b></li><li data-d="6"><span>Sábado</span><b>4 a 10 p.m.</b></li><li data-d="0"><span>Domingo</span><b>4 a 10 p.m.</b></li></ul>
+        <div class="btns dn-btns"><a class="btn wa" href="https://wa.me/524493319024?text=Hola%2C%20quiero%20pedir%20en%20El%20Rinc%C3%B3n%20del%20Sabor." data-wa="Hola, quiero pedir en El Rincón del Sabor."><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a><a class="btn line" href="tel:+524493319024">Llamar 449 331 9024</a><a class="btn line" href="https://www.google.com/maps?cid=4437562968756175025" target="_blank" rel="noopener">Cómo llegar</a></div>
+      </div>
+    </div>
+    <div class="dn-panel" role="tabpanel" id="p-inegi" aria-labelledby="t-inegi" hidden data-hours='{"0":[[8,14],[16,22]],"1":[[8,14],[16,22]],"2":[[8,14],[16,22]],"3":[[8,14],[16,22]],"4":[[8,14],[16,22]],"5":[[8,14],[16,23]],"6":[[8,14],[16,23]]}'>
+      <div class="dn-map zz"><iframe data-src="https://www.google.com/maps?q=Cenadur%C3%ADa+y+Desayunos+El+Rinc%C3%B3n+del+Sabor+INEGI+Av.+del+Lago+112+Aguascalientes&output=embed" loading="lazy" title="Mapa de la sucursal INEGI" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div class="dn-info">
+        <p class="dn-now"><i></i><span>Desayunos y cenas</span></p>
+        <address>Av. del Lago 112, junto al INEGI, Aguascalientes</address>
+        <ul class="dn-hrs"><li data-d="1"><span>Lunes</span><b>8 a 2 · 4 a 10</b></li><li data-d="2"><span>Martes</span><b>8 a 2 · 4 a 10</b></li><li data-d="3"><span>Miércoles</span><b>8 a 2 · 4 a 10</b></li><li data-d="4"><span>Jueves</span><b>8 a 2 · 4 a 10</b></li><li data-d="5"><span>Viernes</span><b>8 a 2 · 4 a 11</b></li><li data-d="6"><span>Sábado</span><b>8 a 2 · 4 a 11</b></li><li data-d="0"><span>Domingo</span><b>8 a 2 · 4 a 10</b></li></ul>
+        <div class="btns dn-btns"><a class="btn line" href="tel:+524495366427">Llamar 449 536 6427</a><a class="btn line" href="https://www.google.com/maps?cid=5321035803270478755" target="_blank" rel="noopener">Cómo llegar</a></div>
+      </div>
     </div>
   </div>
 </section>
@@ -222,13 +257,12 @@
         <li>El WhatsApp donde quieres recibir las comandas</li>
         <li>Tu logo en buena calidad</li>
         <li>Fotos de la sucursal INEGI y de Juan Pablo II</li>
-        <li>Horario de cada sucursal</li>
-        <li>Teléfono y dirección de las demás sucursales</li>
+                <li>Teléfono y dirección de las demás sucursales</li>
         <li>Si los precios de la carta siguen vigentes</li>
       </ul>
     </div>
     <div>
-      <p class="pie-dir"><b>Matriz</b>Av. Paseo de la Cruz 101, Jardines de la Cruz<br>Todos los días, 4 a 10 p.m.<br><a href="tel:+524493319024">449 331 9024</a></p>
+      <div class="pie-dirs"><p class="pie-dir"><b>Matriz Paseo de la Cruz</b>Av. Paseo de la Cruz 101, Jardines de la Cruz<br>Todos los días, 4 a 10 p.m.<br><a href="tel:+524493319024">449 331 9024</a></p><p class="pie-dir"><b>INEGI</b>Av. del Lago 112<br>8 a 2 y 4 a 10 p.m. (vie y sáb hasta las 11)<br><a href="tel:+524495366427">449 536 6427</a></p></div>
       <div class="redes"><a href="https://www.facebook.com/cenaduriarincondelsabor" target="_blank" rel="noopener" aria-label="Facebook de El Rincón del Sabor"><svg><use href="#i-fb"/></svg></a><a href="https://www.tiktok.com/@el.rincon.del.sabor" target="_blank" rel="noopener" aria-label="TikTok de El Rincón del Sabor"><svg><use href="#i-tt"/></svg></a></div>
       <small>El Rincón del Sabor · Cenaduría y pozolería · Aguascalientes, Ags.<br>Muestra de página web. Precios y fotos tomados de la carta y de la ficha pública de Google Maps.</small>
     </div>
@@ -241,7 +275,9 @@
 <a class="mini-comanda" id="mini-comanda" href="#comanda" hidden><b id="mini-n">0</b> en tu comanda <span id="mini-t"></span></a>
 
 <script src="sections/03-comanda.js?v=1791082867" defer></script>
-<script src="sections/04-pozole.js?v=1791082867" defer></script>
+<script src="sections/04-pozole.js?v=1791103793" defer></script>
+<script src="sections/06-resenas.js?v=1791103742" defer></script>
+<script src="sections/08-donde.js?v=1791103781" defer></script>
 <script src="site.js?v=1791082867" defer></script>
 </body>
 </html>

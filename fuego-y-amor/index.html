@@ -22,16 +22,18 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Fuego y Amor Restaurante Bar","servesCuisine":"Italiana","telephone":"+52 449 435 3108","priceRange":"$200-600","url":"https://loottreasureclothes-arch.github.io/krevo-muestras/fuego-y-amor/","address":{"@type":"PostalAddress","streetAddress":"Silvestre Gómez 115, Unión Ganadera","addressLocality":"Aguascalientes","addressRegion":"Ags.","postalCode":"20130","addressCountry":"MX"},"acceptsReservations":true}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Fuego y Amor Restaurante Bar","servesCuisine":"Italiana","telephone":"+52 449 435 3108","priceRange":"$200-600","url":"https://loottreasureclothes-arch.github.io/krevo-muestras/fuego-y-amor/","address":{"@type":"PostalAddress","streetAddress":"Silvestre Gómez 115, Unión Ganadera","addressLocality":"Aguascalientes","addressRegion":"Ags.","postalCode":"20130","addressCountry":"MX"},"acceptsReservations":true,"openingHours":["Mo 14:00-22:00","Tu-Th 14:00-23:00","Fr-Sa 14:00-24:00","Su 14:00-20:00"],"hasMap":"https://maps.google.com/?cid=10190728050637738324"}</script>
 <link rel="preload" href="fonts/gloock-400.woff2" as="font" type="font/woff2" crossorigin>
 <script>(function(){var d=document.documentElement;try{if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){d.classList.add("rv-on");setTimeout(function(){d.classList.add("rv-safe")},1600)}}catch(e){}})();</script>
-<link rel="stylesheet" href="site.css?v=1791092587">
+<link rel="stylesheet" href="site.css?v=1791104772">
 <link rel="stylesheet" href="sections/01-hero.css?v=1791092951">
 <link rel="stylesheet" href="sections/02-carta.css?v=1791092951">
 <link rel="stylesheet" href="sections/03-salon.css?v=1791092462">
-<link rel="stylesheet" href="sections/04-opiniones.css?v=1791092462">
-<link rel="stylesheet" href="sections/05-barra.css?v=1791092951">
-<link rel="stylesheet" href="sections/06-visita.css?v=1791092462">
+<link rel="stylesheet" href="sections/04-opiniones.css?v=1791104600">
+<link rel="stylesheet" href="sections/05-barra.css?v=1791104863">
+<link rel="stylesheet" href="sections/06-recorrido.css?v=1791104863">
+<link rel="stylesheet" href="sections/07-visita.css?v=1791104674">
+<link rel="stylesheet" href="sections/08-preguntas.css?v=1791104674">
 </head>
 <body>
 <header class="hd" id="hd">
@@ -46,7 +48,9 @@
     <li><a href="#salon"><small>02</small>El salón</a></li>
     <li><a href="#opiniones"><small>03</small>Opiniones</a></li>
     <li><a href="#barra"><small>04</small>La barra</a></li>
-    <li><a href="#visita"><small>05</small>Visítanos</a></li>
+    <li><a href="#recorrido"><small>05</small>Recorrido</a></li>
+    <li><a href="#visita"><small>06</small>Visítanos</a></li>
+    <li><a href="#preguntas"><small>07</small>Preguntas</a></li>
   </ol>
   <div class="menu-foot">
     <a class="btn-wa" href="https://wa.me/524494353108?text=Hola%20Fuego%20y%20Amor%2C%20quiero%20reservar%20una%20mesa." target="_blank" rel="noopener">Reservar mesa</a>
@@ -99,33 +103,85 @@
 </section>
 
 <section class="ops" id="opiniones">
-  <div class="wrap ops-g">
+  <div class="wrap ops-top">
     <div class="ops-n" data-reveal>
       <p class="dato">4,7</p>
-      <p class="dato-t">en Google, con 411 opiniones.</p>
+      <svg class="est est-xl" viewBox="0 0 100 20" role="img" aria-label="Calificación 4,7 de 5"><use href="#e5"/></svg>
+      <p class="dato-t">411 opiniones en Google.<br><span>4.3 en TripAdvisor, n.° 56 de 1,349 en Aguascalientes.</span></p>
     </div>
-    <div class="ops-r">
+    <div class="ops-c">
       <h2 data-reveal>Ya vinieron,<br><em>ya lo contaron.</em></h2>
-      <figure class="op" data-reveal>
+      <p class="ops-sub" data-reveal>Comandas de quienes ya se sentaron a la mesa.</p>
+    </div>
+  </div>
+  <div class="coms-w">
+    <div class="coms" id="coms" tabindex="0" aria-label="Reseñas de clientes">
+      <figure class="com com-w" data-reveal>
+        <p class="com-h"><span>N.° 01</span><span>Capellini de trufa</span></p>
         <svg class="est" viewBox="0 0 100 20" role="img" aria-label="5 estrellas"><use href="#e5"/></svg>
-        <blockquote>&ldquo;La comida es muy rica y no demoran tanto en servirte.&rdquo;</blockquote>
-        <figcaption>Paula Cecilia Muñoz, en Google Maps</figcaption>
+        <blockquote>&ldquo;Recomiendo mucho el capellini de trufa, es lo máximo. Su servicio es de primera: pregunta alergias.&rdquo;</blockquote>
+        <figcaption><b>Kromo</b><span>en TripAdvisor</span></figcaption>
       </figure>
-      <figure class="op" data-reveal>
+      <figure class="com com-n" data-reveal>
+        <p class="com-h"><span>N.° 02</span><span>El salón</span></p>
+        <svg class="est" viewBox="0 0 100 20" role="img" aria-label="5 estrellas"><use href="#e5"/></svg>
+        <blockquote>&ldquo;El lugar es súper bonito, la comida es muy rica y no demoran tanto en servirte.&rdquo;</blockquote>
+        <figcaption><b>Paula Cecilia Muñoz</b><span>en Google</span></figcaption>
+      </figure>
+      <figure class="com com-n" data-reveal>
+        <p class="com-h"><span>N.° 03</span><span>Carbonara y calzone</span></p>
         <svg class="est" viewBox="0 0 100 20" role="img" aria-label="4 estrellas"><use href="#e4"/></svg>
         <blockquote>&ldquo;Probé la pasta carbonara y el calzone; este último fue mi favorito.&rdquo;</blockquote>
-        <figcaption>Adri Baz, en Google Maps</figcaption>
+        <figcaption><b>Adri Baz</b><span>en Google</span></figcaption>
       </figure>
-      <figure class="op" data-reveal>
+      <figure class="com com-w" data-reveal>
+        <p class="com-h"><span>N.° 04</span><span>Con amigos</span></p>
+        <svg class="est" viewBox="0 0 100 20" role="img" aria-label="5 estrellas"><use href="#e5"/></svg>
+        <blockquote>&ldquo;Las pastas muy ricas, la ensalada fresca y la pizza top. Excelente para ir con amigos.&rdquo;</blockquote>
+        <figcaption><b>Diego V</b><span>en TripAdvisor</span></figcaption>
+      </figure>
+      <figure class="com com-n" data-reveal>
+        <p class="com-h"><span>N.° 05</span><span>Primera vez</span></p>
+        <svg class="est" viewBox="0 0 100 20" role="img" aria-label="5 estrellas"><use href="#e5"/></svg>
+        <blockquote>&ldquo;Es la primera vez que visitamos el lugar y la verdad 10 de 10. 100% regreso.&rdquo;</blockquote>
+        <figcaption><b>Alejandra Mtz.</b><span>en Google</span></figcaption>
+      </figure>
+      <figure class="com com-n" data-reveal>
+        <p class="com-h"><span>N.° 06</span><span>Ravioli de queso</span></p>
+        <svg class="est" viewBox="0 0 100 20" role="img" aria-label="5 estrellas"><use href="#e5"/></svg>
+        <blockquote>&ldquo;Yo pedí una ravioli de queso y estaba delicioso. Recomiendo mucho que vayan con sus amigos.&rdquo;</blockquote>
+        <figcaption><b>denis s</b><span>en TripAdvisor</span></figcaption>
+      </figure>
+      <figure class="com com-w" data-reveal>
+        <p class="com-h"><span>N.° 07</span><span>Presentación</span></p>
+        <svg class="est" viewBox="0 0 100 20" role="img" aria-label="5 estrellas"><use href="#e5"/></svg>
+        <blockquote>&ldquo;El concepto de la comida es muy diferente a todos los restaurantes italianos, con presentaciones únicas.&rdquo;</blockquote>
+        <figcaption><b>Luis A</b><span>en TripAdvisor</span></figcaption>
+      </figure>
+      <figure class="com com-n" data-reveal>
+        <p class="com-h"><span>N.° 08</span><span>Simple y directo</span></p>
         <svg class="est" viewBox="0 0 100 20" role="img" aria-label="5 estrellas"><use href="#e5"/></svg>
         <blockquote>&ldquo;De los mejores lugares de comida italiana en Aguascalientes.&rdquo;</blockquote>
-        <figcaption>Arnulfo Tovar, en Google Maps</figcaption>
+        <figcaption><b>Arnulfo Tovar</b><span>en Google</span></figcaption>
+      </figure>
+      <figure class="com com-n" data-reveal>
+        <p class="com-h"><span>N.° 09</span><span>Sabor italiano</span></p>
+        <svg class="est" viewBox="0 0 100 20" role="img" aria-label="5 estrellas"><use href="#e5"/></svg>
+        <blockquote>&ldquo;Un lugar único, ambiente muy agradable y un sabor verdaderamente italiano.&rdquo;</blockquote>
+        <figcaption><b>Sergio Arteaga</b><span>en TripAdvisor</span></figcaption>
       </figure>
     </div>
   </div>
+  <div class="wrap ops-f">
+    <div class="coms-nav" aria-hidden="false"><button type="button" class="cn cn-p" aria-label="Reseña anterior">&larr;</button><span id="coms-i">01 / 09</span><button type="button" class="cn cn-n" aria-label="Siguiente reseña">&rarr;</button></div>
+    <div class="ops-b">
+      <a class="btn-br" href="https://maps.google.com/?cid=10190728050637738324" target="_blank" rel="noopener">Ver todas en Google</a>
+      <a class="lnk" href="https://www.tripadvisor.com.mx/Restaurant_Review-g153976-d26732122-Reviews-Fuego_y_Amor_Restaurante_Bar-Aguascalientes_Central_Mexico_and_Gulf_Coast.html" target="_blank" rel="noopener">Leer en TripAdvisor <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-    <g id="e5"><path id="st" d="M10 1l2.6 5.6 6 .7-4.5 4.1 1.2 6L10 14.4 4.7 17.4l1.2-6L1.400 7.300l6-.7z"/><use href="#st" x="20"/><use href="#st" x="40"/><use href="#st" x="60"/><use href="#st" x="80"/></g>
-    <g id="e4"><use href="#st"/><use href="#st" x="20"/><use href="#st" x="40"/><use href="#st" x="60"/><path d="M90 1l2.600 5.600 6 .7-4.500 4.100 1.200 6L90 14.400 84.700 17.400l1.200-6L81.400 7.300l6-.7z" fill="none" stroke="currentColor" stroke-width="1"/></g>
+    <g id="e5"><path id="st" d="M10 1l2.6 5.6 6 .7-4.5 4.1 1.2 6L10 14.4 4.7 17.4l1.2-6L1.4 7.3l6-.7z"/><use href="#st" x="20"/><use href="#st" x="40"/><use href="#st" x="60"/><use href="#st" x="80"/></g>
+    <g id="e4"><use href="#st"/><use href="#st" x="20"/><use href="#st" x="40"/><use href="#st" x="60"/><path d="M90 1l2.6 5.6 6 .7-4.5 4.1 1.2 6L90 14.4 84.7 17.4l1.2-6L81.4 7.3l6-.7z" fill="none" stroke="currentColor" stroke-width="1"/></g>
   </defs></svg>
 </section>
 
@@ -139,24 +195,72 @@
       <figure class="col-c arco" data-reveal><img src="img/pos-480.webp" srcset="img/pos-480.webp 480w, img/pos-960.webp 960w" sizes="(min-width:900px) 220px, 28vw" width="1536" height="2048" alt="Postre con helado y salsa de frutos rojos" loading="lazy"></figure>
       <figure class="col-c arco" data-reveal><img src="img/calz-480.webp" srcset="img/calz-480.webp 480w, img/calz-960.webp 960w" sizes="(min-width:900px) 220px, 28vw" width="1536" height="2048" alt="Calzone recién salido del horno" loading="lazy"></figure>
     </div>
+    <div class="barra-b" data-reveal><a class="btn-wa" href="https://wa.me/524494353108?text=Hola%20Fuego%20y%20Amor%2C%20quiero%20apartar%20una%20mesa%20para%20cenar." target="_blank" rel="noopener">Aparta tu mesa</a></div>
+  </div>
+</section>
+
+<section class="rec" id="recorrido">
+  <div class="wrap">
+    <div class="rec-h">
+      <p class="eyebrow" data-reveal>El recorrido</p>
+      <h2 data-reveal>Pasa, la mesa<br><em>ya está puesta.</em></h2>
+    </div>
+    <div class="rec-g">
+      <figure class="r1 arco" data-reveal><img src="img/g-salon-960.webp" srcset="img/g-salon-480.webp 480w, img/g-salon-960.webp 960w, img/g-salon-1080.webp 1080w" sizes="(min-width:900px) 380px, 50vw" width="1080" height="1920" alt="El salón con lámparas de palma y la barra al fondo"><figcaption>El salón</figcaption></figure>
+      <figure class="r2" data-reveal><img src="img/g-carp-960.webp" srcset="img/g-carp-480.webp 480w, img/g-carp-960.webp 960w, img/g-carp-1350.webp 1350w" sizes="(min-width:900px) 420px, 50vw" width="1350" height="1080" alt="Carpaccio de res con arúgula y pan tostado"><figcaption>Carpaccio</figcaption></figure>
+      <figure class="r3" data-reveal><img src="img/g-pesto-960.webp" srcset="img/g-pesto-480.webp 480w, img/g-pesto-960.webp 960w" sizes="(min-width:900px) 300px, 50vw" width="1536" height="2048" alt="Pasta corta con salsa verde" loading="lazy"><figcaption>Pasta de casa</figcaption></figure>
+      <figure class="r4" data-reveal><img src="img/g-pizza-960.webp" srcset="img/g-pizza-480.webp 480w, img/g-pizza-960.webp 960w, img/g-pizza-1600.webp 1600w" sizes="(min-width:900px) 720px, 100vw" width="2048" height="1536" alt="Pizza con salmón y arúgula" loading="lazy"><figcaption>Pizza</figcaption></figure>
+      <figure class="r5" data-reveal><img src="img/g-cesta-960.webp" srcset="img/g-cesta-480.webp 480w, img/g-cesta-960.webp 960w" sizes="(min-width:900px) 300px, 50vw" width="1536" height="2048" alt="Entrada servida en canasta de queso" loading="lazy"><figcaption>Para empezar</figcaption></figure>
+      <figure class="r6" data-reveal><img src="img/fach-960.webp" srcset="img/fach-480.webp 480w, img/fach-960.webp 960w, img/fach-1600.webp 1600w" sizes="(min-width:900px) 420px, 50vw" width="2048" height="1152" alt="Fachada de ladrillo con toldo blanco y negro, de noche" loading="lazy"><figcaption>La entrada</figcaption></figure>
+    </div>
+    <a class="lnk rec-l" href="#visita" data-reveal>Ven a conocerlo <span aria-hidden="true">&rarr;</span></a>
   </div>
 </section>
 
 <section class="vis" id="visita" data-hide-wa>
-  <figure class="vis-f"><img src="img/fach-960.webp" srcset="img/fach-480.webp 480w, img/fach-960.webp 960w, img/fach-1600.webp 1600w" sizes="(min-width:900px) 60vw, 100vw" width="2048" height="1152" alt="Fachada de Fuego y Amor de noche, con toldo blanco y negro y pared de ladrillo" loading="lazy"></figure>
-  <div class="vis-t wrap">
-    <p class="eyebrow" data-reveal>Visítanos</p>
-    <h2 data-reveal>Frente a la<br><em>Plaza de Toros.</em></h2>
-    <p class="vis-d" data-reveal>Silvestre Gómez 115, Unión Ganadera, Aguascalientes.</p>
-    <ul class="vis-l" data-reveal>
-      <li>Reserva tu mesa en Riservi</li>
-      <li>Pedidos desde el auto</li>
-      <li>A domicilio por Rappi, Uber Eats y DiDi</li>
-    </ul>
-    <div class="vis-b" data-reveal>
-      <a class="btn-wa" href="https://wa.me/524494353108?text=Hola%20Fuego%20y%20Amor%2C%20quiero%20reservar%20una%20mesa." target="_blank" rel="noopener">Reservar por WhatsApp</a>
-      <a class="btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Fuego+y+Amor+Silvestre+G%C3%B3mez+115+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
-      <a class="btn-line" href="tel:+524494353108">Llamar 449 435 3108</a>
+  <div class="wrap vis-g">
+    <div class="vis-t">
+      <p class="eyebrow" data-reveal>Visítanos</p>
+      <h2 data-reveal>Frente a la<br><em>Plaza de Toros.</em></h2>
+      <p class="vis-d" data-reveal>Silvestre Gómez 115, Unión Ganadera, 20130 Aguascalientes.</p>
+      <p class="vis-now" id="vis-now" data-reveal><i aria-hidden="true"></i><span>Abre de 2 pm a medianoche</span></p>
+      <ul class="hrs" id="hrs" data-reveal>
+        <li data-d="1"><span>Lunes</span><span>2 a 10 pm</span></li>
+        <li data-d="2"><span>Martes</span><span>2 a 11 pm</span></li>
+        <li data-d="3"><span>Miércoles</span><span>2 a 11 pm</span></li>
+        <li data-d="4"><span>Jueves</span><span>2 a 11 pm</span></li>
+        <li data-d="5"><span>Viernes</span><span>2 pm a 12 am</span></li>
+        <li data-d="6"><span>Sábado</span><span>2 pm a 12 am</span></li>
+        <li data-d="0"><span>Domingo</span><span>2 a 8 pm</span></li>
+      </ul>
+    </div>
+    <div class="vis-m">
+      <div class="mapa arco" data-reveal>
+        <iframe src="https://www.google.com/maps?q=Fuego+y+Amor+Restaurante+Bar,+Silvestre+G%C3%B3mez+115,+Uni%C3%B3n+Ganadera,+Aguascalientes&amp;output=embed" loading="lazy" title="Mapa de Fuego y Amor en Aguascalientes" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="vis-b" data-reveal>
+        <a class="btn-wa" href="https://wa.me/524494353108?text=Hola%20Fuego%20y%20Amor%2C%20quiero%20reservar%20una%20mesa." target="_blank" rel="noopener">Reservar por WhatsApp</a>
+        <a class="btn-line" href="https://maps.google.com/?cid=10190728050637738324" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn-line" href="tel:+524494353108">Llamar 449 435 3108</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="preguntas">
+  <div class="wrap faq-g">
+    <div class="faq-h">
+      <p class="eyebrow" data-reveal>Antes de venir</p>
+      <h2 data-reveal>Lo que nos<br><em>preguntan siempre.</em></h2>
+      <a class="btn-wa" href="https://wa.me/524494353108?text=Hola%20Fuego%20y%20Amor%2C%20tengo%20una%20pregunta." target="_blank" rel="noopener" data-reveal>Pregúntanos por WhatsApp</a>
+    </div>
+    <div class="faq-l">
+      <details data-reveal open><summary>¿Las pastas son de casa?</summary><p>Sí. Todas nuestras pastas son frescas y elaboradas artesanalmente en casa.</p></details>
+      <details data-reveal><summary>¿Hay estacionamiento?</summary><p>Sí, para clientes y en la calle.</p></details>
+      <details data-reveal><summary>¿Puedo reservar?</summary><p>Sí, por WhatsApp o en Riservi. Arma tu cena en la carta y nos llega lista.</p></details>
+      <details data-reveal><summary>¿Llevan a domicilio?</summary><p>Por Rappi, Uber Eats y DiDi. También hay pedidos desde el auto.</p></details>
+      <details data-reveal><summary>¿Hay menú para niños?</summary><p>Sí, para menores de 12 años, desde $90.</p></details>
+      <details data-reveal><summary>¿Qué tarjetas aceptan?</summary><p>Visa, Mastercard y American Express.</p></details>
     </div>
   </div>
 </section>
@@ -165,17 +269,22 @@
   <div class="wrap grid">
     <div>
       <a class="mark" href="#inicio" aria-label="Fuego y Amor, inicio"><span class="mark-t">Fuego <i>&amp;</i> Amor</span><span class="tri" aria-hidden="true"></span></a>
-      <p>Restaurante Bar<br>Silvestre Gómez 115, Unión Ganadera, Aguascalientes.<br>Tel. 449 435 3108</p>
+      <p>Restaurante Bar<br>Silvestre Gómez 115, Unión Ganadera, Aguascalientes.<br><a href="tel:+524494353108">Tel. 449 435 3108</a></p>
+      <p class="foot-h">Lunes 2 a 10 pm. Martes a jueves 2 a 11 pm.<br>Viernes y sábado 2 pm a 12 am. Domingo 2 a 8 pm.</p>
+      <div class="redes">
+        <a href="https://maps.google.com/?cid=10190728050637738324" target="_blank" rel="noopener" aria-label="Fuego y Amor en Google Maps"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg></a>
+        <a href="https://www.tripadvisor.com.mx/Restaurant_Review-g153976-d26732122-Reviews-Fuego_y_Amor_Restaurante_Bar-Aguascalientes_Central_Mexico_and_Gulf_Coast.html" target="_blank" rel="noopener" aria-label="Fuego y Amor en TripAdvisor"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><path fill="currentColor" d="M12 6.2c-2.3 0-4.5.6-6.3 1.8H2l1.5 1.7A4.6 4.6 0 0 0 7 17.4c1.2 0 2.3-.5 3.2-1.2L12 18.2l1.8-2a4.6 4.6 0 0 0 7.7-3.4c0-1.2-.4-2.3-1.1-3.1L22 8h-3.7A11.6 11.6 0 0 0 12 6.2Zm-5 3.7a2.9 2.9 0 1 1 0 5.8 2.9 2.9 0 0 1 0-5.8Zm10 0a2.9 2.9 0 1 1 0 5.8 2.9 2.9 0 0 1 0-5.8ZM12 7.9c1.3 0 2.6.3 3.7.8a4.6 4.6 0 0 0-3.7 4 4.6 4.6 0 0 0-3.7-4c1.1-.5 2.4-.8 3.7-.8ZM7 11.2a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2Zm10 0a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2Z"/></svg></a>
+      </div>
       <small>Muestra de página hecha por KREVO para Fuego y Amor Restaurante Bar.</small>
     </div>
     <div>
       <h2>Todo listo para completar</h2>
       <ul>
         <li>Su WhatsApp para reservas</li>
-        <li>Horario de cada día</li>
         <li>Su logo en grande</li>
         <li>Fotos de sus platillos con nombre</li>
         <li>Su Facebook, Instagram y enlace de Riservi</li>
+        <li>La carta de postres y bebidas</li>
       </ul>
       <p>Pásanoslo por el mismo chat donde te llegó esta muestra.</p>
     </div>
@@ -188,5 +297,7 @@
 <script src="site.js?v=1791092462" defer></script>
 <script src="sections/01-hero.js?v=1791092401" defer></script>
 <script src="sections/02-carta.js?v=1791092425" defer></script>
+<script src="sections/04-opiniones.js?v=1791104600" defer></script>
+<script src="sections/07-visita.js?v=1791104674" defer></script>
 </body>
 </html>

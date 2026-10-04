@@ -19,14 +19,15 @@
 <link rel="preload" href="fonts/gloock-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="img/hero-960.webp" imagesrcset="img/hero-480.webp 480w, img/hero-960.webp 960w, img/hero-1536.webp 1536w" imagesizes="(min-width:900px) 40vw, 100vw">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"La Plazoela","servesCuisine":"Mexicana","image":"https://loottreasureclothes-arch.github.io/krevo-muestras/la-plazoela/img/og.jpg","telephone":"+524499153815","priceRange":"$100-200","address":{"@type":"PostalAddress","streetAddress":"Dr. Jesús Díaz de León 460, Barrio del Encino","addressLocality":"Aguascalientes","postalCode":"20240","addressCountry":"MX"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday"],"opens":"17:30","closes":"24:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"17:30","closes":"00:30"}]}</script>
-<link rel="stylesheet" href="site.css?v=1791088552">
+<link rel="stylesheet" href="site.css?v=1791104184">
 <link rel="stylesheet" href="sections/01-inicio.css?v=1791088365">
 <link rel="stylesheet" href="sections/02-carta.css?v=1791088921">
 <link rel="stylesheet" href="sections/03-pozole.css?v=1791088921">
 <link rel="stylesheet" href="sections/04-mantel.css?v=1791088921">
-<link rel="stylesheet" href="sections/05-casa.css?v=1791092350">
-<link rel="stylesheet" href="sections/06-visita.css?v=1791088402">
-<link rel="stylesheet" href="sections/07-completar.css?v=1791088921">
+<link rel="stylesheet" href="sections/05-resenas.css?v=1791104047">
+<link rel="stylesheet" href="sections/06-casa.css?v=1791104184">
+<link rel="stylesheet" href="sections/07-visita.css?v=1791104047">
+<link rel="stylesheet" href="sections/08-completar.css?v=1791104047">
 </head>
 <body>
 <header class="pz-bar">
@@ -46,7 +47,7 @@
     <p class="pz-hero-hoy" id="pz-hoy">Cenamos desde las 5:30 pm, martes cerrado.</p>
     <div class="pz-hero-btns">
       <a class="pz-btn pz-wa" href="https://wa.me/524499153815?text=Hola%20La%20Plazoela%2C%20quiero%20hacer%20un%20pedido." data-wa="Hola La Plazoela, quiero hacer un pedido."><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.4 4 15.04c0 2.12.56 4.2 1.62 6.03L4 28l7.1-1.86a12 12 0 0 0 4.94 1.06C22.68 27.2 28 21.8 28 15.16 28 8.5 22.68 3 16.04 3Zm5.46 14.45c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.8-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.52-.08-.15-.68-1.64-.93-2.25-.24-.58-.5-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.27.3-1.04 1.02-1.04 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.48.7.3 1.26.5 1.7.62.72.23 1.37.2 1.88.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>Pedir por WhatsApp</a>
-      <a class="pz-btn pz-nav-btn" href="https://www.google.com/maps/search/?api=1&amp;query=La+Plazoela+Dr+Jes%C3%BAs+D%C3%ADaz+de+Le%C3%B3n+460+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
+      <a class="pz-btn pz-nav-btn" href="#carta">Ver la carta</a>
     </div>
   </div>
 </section>
@@ -141,38 +142,107 @@
   <p class="pz-mantel-t" data-reveal>Mesa de <em>cuadros.</em></p>
 </section>
 
-<section class="pz-sec pz-casa" id="casa">
-  <div class="pz-in pz-casa-in">
-    <div class="pz-casa-txt">
-      <p class="pz-eye" data-reveal>La casa</p>
-      <h2 data-reveal>Casa de barrio, <em>mesa puesta</em></h2>
-      <div class="pz-dato" data-reveal>
-        <b>912</b>
-        <span>opiniones en Google, con 4.2 de calificación.</span>
+<section class="pz-sec pz-res" id="resenas">
+  <div class="pz-in">
+    <div class="pz-res-top">
+      <div>
+        <p class="pz-eye" data-reveal>Lo que dicen en la mesa</p>
+        <h2 data-reveal>Treinta años <em>de cenar aquí</em></h2>
       </div>
-      <blockquote class="pz-voz" data-reveal>
-        <p>Bastante rico todo, el personal es atento, tiene una buena variedad de platillos, todo muy limpio.</p>
-        <cite>Disraeli Goytortua, en Google</cite>
-      </blockquote>
+      <div class="pz-nota" data-reveal>
+        <b>4.2</b>
+        <p><span class="pz-nota-st" role="img" aria-label="4.2 de 5 estrellas"><i><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg></i><i class="on"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg></i></span>913 opiniones en Google<br><small>4.2 en TripAdvisor, 29 opiniones</small></p>
+      </div>
     </div>
-    <div class="pz-col">
-      <div class="pz-arco pz-c1" data-reveal><img src="img/puerta-480.webp" srcset="img/puerta-480.webp 480w, img/puerta-960.webp 960w, img/puerta-1600.webp 1526w" sizes="(min-width:900px) 20vw, 46vw" width="480" height="640" alt="Puerta abierta al salón de paredes azules" loading="lazy"></div>
-      <div class="pz-arco pz-c2" data-reveal style="--d:.1s"><img src="img/patio-480.webp" srcset="img/patio-480.webp 480w, img/patio-960.webp 960w, img/patio-1600.webp 1080w" sizes="(min-width:900px) 20vw, 46vw" width="480" height="640" alt="Rincón del salón con nicho y pared azul" loading="lazy"></div>
-      <div class="pz-arco pz-c3" data-reveal style="--d:.2s"><img src="img/salon-480.webp" srcset="img/salon-480.webp 480w, img/salon-960.webp 960w, img/salon-1600.webp 1526w" sizes="(min-width:900px) 20vw, 46vw" width="480" height="640" alt="Salón con mesas de mantel de cuadros visto desde la entrada roja" loading="lazy"></div>
+    <ul class="pz-coms" id="pz-coms" tabindex="0" aria-label="Reseñas de clientes, desliza para ver más">
+      <li class="pz-com" style="--r:-1.6deg">
+        <p class="pz-com-n">Comanda 01<span role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg></span></p>
+        <blockquote>Riquísimo, suena sencillo pero más de 30 años de cenar ahí, es un gran recuerdo y el sabor igual.</blockquote>
+        <p class="pz-com-who"><b>jesus romo</b> en Google</p>
+      </li>
+      <li class="pz-com" style="--r:1.2deg">
+        <p class="pz-com-n">Comanda 02<span role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg></span></p>
+        <blockquote>La Plazoela me recuerda mi infancia, las enchiladas y verduras encurtidas son buenisimas.</blockquote>
+        <p class="pz-com-who"><b>Mariel G</b> en TripAdvisor</p>
+      </li>
+      <li class="pz-com" style="--r:-0.6deg">
+        <p class="pz-com-n">Comanda 03<span role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg></span></p>
+        <blockquote>Queríamos probar el pozole de Aguascalientes que está hecho con lengua de res. No nos arrepentimos. El sazón es buenísimo.</blockquote>
+        <p class="pz-com-who"><b>MaryCarmen Aparicio</b> en TripAdvisor</p>
+      </li>
+      <li class="pz-com" style="--r:1.8deg">
+        <p class="pz-com-n">Comanda 04<span role="img" aria-label="4 de 5 estrellas"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg class="off" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg></span></p>
+        <blockquote>Bastante rico todo, el personal es atento, tiene una buena variedad de platillos, todo muy limpio.</blockquote>
+        <p class="pz-com-who"><b>Disraeli Goytortua</b> en Google</p>
+      </li>
+      <li class="pz-com" style="--r:-1.2deg">
+        <p class="pz-com-n">Comanda 05<span role="img" aria-label="4 de 5 estrellas"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg class="off" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg></span></p>
+        <blockquote>Un rico y sencillo lugar en el corazón del encino de Aguascalientes. El cuerito y pozole no se lo pueden perder.</blockquote>
+        <p class="pz-com-who"><b>Ruz</b> en TripAdvisor</p>
+      </li>
+      <li class="pz-com" style="--r:0.8deg">
+        <p class="pz-com-n">Comanda 06<span role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg></span></p>
+        <blockquote>It honestly does not get better than this. Even on a hot night, the pozole hits the spot.</blockquote>
+        <p class="pz-com-who"><b>Marie P</b> en Google</p>
+      </li>
+      <li class="pz-com" style="--r:-1.8deg">
+        <p class="pz-com-n">Comanda 07<span role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg></span></p>
+        <blockquote>Me encanta la ambientación. Los meseros muy amables y respetuosos. La comida tipo cenaduría muy sabrosa y típica.</blockquote>
+        <p class="pz-com-who"><b>Ruso R</b> en TripAdvisor</p>
+      </li>
+      <li class="pz-com" style="--r:1deg">
+        <p class="pz-com-n">Comanda 08<span role="img" aria-label="4 de 5 estrellas"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg class="off" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg></span></p>
+        <blockquote>Además del buen sabor, servicio y atención, el lugar es acogedor y frente a uno de los jardines más emblemáticos de Aguascalientes.</blockquote>
+        <p class="pz-com-who"><b>Alucard66</b> en TripAdvisor</p>
+      </li>
+      <li class="pz-com" style="--r:-0.4deg">
+        <p class="pz-com-n">Comanda 09<span role="img" aria-label="5 de 5 estrellas"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.9l-5.3 2.9 1.2-5.9L1.4 7.8l6-.7z"/></svg></span></p>
+        <blockquote>Todo lo que venden aquí está delicioso, he ido varias veces con mi familia. Los precios son muy accesibles.</blockquote>
+        <p class="pz-com-who"><b>Celibm</b> en TripAdvisor</p>
+      </li>
+    </ul>
+    <div class="pz-coms-ctl" aria-hidden="true"><button type="button" class="pz-flecha" data-dir="-1" tabindex="-1">&#8592;</button><span id="pz-coms-n">1 / 9</span><button type="button" class="pz-flecha" data-dir="1" tabindex="-1">&#8594;</button></div>
+    <div class="pz-res-btns" data-reveal>
+      <a class="pz-btn pz-nav-btn" href="https://www.google.com/maps/place/La+Plazoela/@21.8752822,-102.2925287,17z/data=!4m6!3m5!1s0x8429ee79722df441:0xe072cfb6f247d11!8m2!3d21.8752822!4d-102.2925287" target="_blank" rel="noopener">Ver todas en Google</a>
+      <a class="pz-flink" href="https://www.tripadvisor.com.mx/Restaurant_Review-g153976-d4469739-Reviews-Antojitos_Mexicanos_la_Plazoela-Aguascalientes_Central_Mexico_and_Gulf_Coast.html" target="_blank" rel="noopener">Leer en TripAdvisor <span aria-hidden="true">&#8594;</span></a>
     </div>
+  </div>
+</section>
+
+<section class="pz-sec pz-casa" id="casa">
+  <div class="pz-in">
+    <div class="pz-casa-txt">
+      <p class="pz-eye" data-reveal>Pásale a la casa</p>
+      <h2 data-reveal>Casa de barrio, <em>mesa puesta</em></h2>
+      <p class="pz-casa-p" data-reveal>Portal de arco, paredes azules, papel picado y mantel de cuadros. Así se cena en el Encino.</p>
+    </div>
+    <div class="pz-gal">
+      <figure class="pz-g pz-g1" data-reveal><img src="img/comedor-960.webp" srcset="img/comedor-480.webp 480w, img/comedor-960.webp 960w, img/comedor-1600.webp 1536w" sizes="(min-width:900px) 50vw, 100vw" width="1536" height="880" alt="Comedor techado con papel picado tricolor y arcos" loading="lazy"><figcaption>El comedor</figcaption></figure>
+      <figure class="pz-g pz-g2 pz-arco" data-reveal style="--d:.08s"><img src="img/puerta-480.webp" srcset="img/puerta-480.webp 480w, img/puerta-960.webp 960w, img/puerta-1600.webp 1526w" sizes="(min-width:900px) 22vw, 46vw" width="480" height="640" alt="Puerta abierta al salón de paredes azules" loading="lazy"></figure>
+      <figure class="pz-g pz-g3 pz-arco" data-reveal style="--d:.16s"><img src="img/patio-480.webp" srcset="img/patio-480.webp 480w, img/patio-960.webp 960w, img/patio-1600.webp 1080w" sizes="(min-width:900px) 22vw, 46vw" width="480" height="640" alt="Rincón del salón con nicho y pared azul" loading="lazy"></figure>
+      <figure class="pz-g pz-g4 pz-arco" data-reveal style="--d:.08s"><img src="img/salon-480.webp" srcset="img/salon-480.webp 480w, img/salon-960.webp 960w, img/salon-1600.webp 1526w" sizes="(min-width:900px) 22vw, 46vw" width="480" height="640" alt="Salón con mesas de mantel de cuadros visto desde la entrada roja" loading="lazy"></figure>
+      <figure class="pz-g pz-g5" data-reveal><img src="img/jarro-960.webp" srcset="img/jarro-480.webp 480w, img/jarro-960.webp 960w, img/jarro-1600.webp 1600w" sizes="(min-width:900px) 30vw, 100vw" width="1600" height="1200" alt="Jarro de barro y encurtidos sobre mantel de colores" loading="lazy"><figcaption>Encurtidos de la casa</figcaption></figure>
+      <figure class="pz-g pz-g6" data-reveal style="--d:.08s"><img src="img/enchiladas-960.webp" srcset="img/enchiladas-480.webp 480w, img/enchiladas-960.webp 960w, img/enchiladas-1600.webp 1600w" sizes="(min-width:900px) 30vw, 100vw" width="1600" height="1200" alt="Enchiladas con papa, crema, lechuga y rábano" loading="lazy"><figcaption>Enchiladas</figcaption></figure>
+    </div>
+    <a class="pz-flink pz-casa-l" href="#visita" data-reveal>Ver cómo llegar <span aria-hidden="true">&#8594;</span></a>
   </div>
 </section>
 
 <section class="pz-sec pz-visita" id="visita">
   <div class="pz-in pz-vis-in">
-    <div>
-      <p class="pz-eye" data-reveal>Horario y dirección</p>
+    <div class="pz-vis-a">
+      <p class="pz-eye" data-reveal>Visítanos</p>
       <h2 data-reveal>Se cena <em>desde las 5:30</em></h2>
+      <p class="pz-vis-hoy" id="pz-vis-hoy" data-reveal><i aria-hidden="true"></i><span>Martes cerrado, los demás días desde las 5:30 pm.</span></p>
       <p class="pz-dir" data-reveal><b>Dr. Jesús Díaz de León 460</b><br>Barrio del Encino, 20240 Aguascalientes.<br>Aquí, para llevar y a domicilio.</p>
       <div class="pz-vis-btns" data-reveal>
-        <a class="pz-btn pz-wa" href="https://wa.me/524499153815?text=Hola%20La%20Plazoela%2C%20%C2%BFtienen%20mesa%20para%20hoy%3F" data-wa="Hola La Plazoela, ¿tienen mesa para hoy?">Escribirnos</a>
-        <a class="pz-btn pz-cob" href="https://www.google.com/maps/search/?api=1&amp;query=La+Plazoela+Dr+Jes%C3%BAs+D%C3%ADaz+de+Le%C3%B3n+460+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="pz-btn pz-cob" href="https://www.google.com/maps/place/La+Plazoela/@21.8752822,-102.2925287,17z/data=!4m6!3m5!1s0x8429ee79722df441:0xe072cfb6f247d11!8m2!3d21.8752822!4d-102.2925287" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="pz-btn pz-cob" href="tel:+524499153815">Llamar 449 915 3815</a>
+        <a class="pz-btn pz-wa" href="https://wa.me/524499153815?text=Hola%20La%20Plazoela%2C%20%C2%BFtienen%20mesa%20para%20hoy%3F" data-wa="Hola La Plazoela, ¿tienen mesa para hoy?">Apartar por WhatsApp</a>
       </div>
+    </div>
+    <div class="pz-mapa" data-reveal>
+      <iframe src="https://www.google.com/maps?q=La+Plazoela+Dr+Jes%C3%BAs+D%C3%ADaz+de+Le%C3%B3n+460+Barrio+del+Encino+Aguascalientes&amp;output=embed" loading="lazy" title="Mapa de La Plazoela en el Barrio del Encino" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     </div>
     <ul class="pz-hrs" id="pz-hrs" data-reveal>
       <li data-d="1"><span>Lunes</span><b>5:30 pm a 12 am</b></li>
@@ -196,14 +266,17 @@
       <li>La carta completa con precios al día</li>
       <li>Fotos de la fachada y de más platillos</li>
       <li>Sus redes, si las tienen</li>
+      <li>Zona de entrega a domicilio</li>
     </ul>
   </div>
 </section>
 <footer class="pz-pie">
-  <b>La Plazoela</b>
-  <p>Cenaduría y pozole en el Barrio del Encino. Dr. Jesús Díaz de León 460, Aguascalientes.</p>
-  <p>Cena desde las 5:30 pm hasta las 12:30 am; lunes hasta las 12. Martes cerrado.</p>
-  <a class="pz-btn pz-nav-btn pz-pie-btn" href="https://www.google.com/maps/search/?api=1&amp;query=La+Plazoela+Dr+Jes%C3%BAs+D%C3%ADaz+de+Le%C3%B3n+460+Aguascalientes" target="_blank" rel="noopener">Cómo llegar a la Plazoela</a>
+  <div class="pz-pie-in">
+    <div><b>La Plazoela</b><p>Cenaduría y pozole en el Barrio del Encino.</p></div>
+    <div><h3>Dónde</h3><p>Dr. Jesús Díaz de León 460, Barrio del Encino, 20240 Aguascalientes.</p><a class="pz-flink" href="https://www.google.com/maps/place/La+Plazoela/@21.8752822,-102.2925287,17z/data=!4m6!3m5!1s0x8429ee79722df441:0xe072cfb6f247d11!8m2!3d21.8752822!4d-102.2925287" target="_blank" rel="noopener">Cómo llegar <span aria-hidden="true">&#8594;</span></a></div>
+    <div><h3>Cuándo</h3><p>Lunes 5:30 pm a 12 am.<br>Martes cerrado.<br>Miércoles a domingo 5:30 pm a 12:30 am.</p></div>
+    <div><h3>Llámanos</h3><p><a class="pz-tel" href="tel:+524499153815">449 915 3815</a></p><a class="pz-btn pz-nav-btn" href="#carta">Ver la carta</a></div>
+  </div>
   <small>Muestra de página para La Plazoela</small>
 </footer>
 
@@ -211,9 +284,10 @@
 <a class="pz-fab" id="pz-fab" href="https://wa.me/524499153815?text=Hola%20La%20Plazoela%2C%20quiero%20hacer%20un%20pedido." aria-label="Escribir por WhatsApp a La Plazoela">
   <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#0b3d1f" d="M16.04 3C9.4 3 4 8.4 4 15.04c0 2.12.56 4.2 1.62 6.03L4 28l7.1-1.86a12 12 0 0 0 4.94 1.06C22.68 27.2 28 21.8 28 15.16 28 8.5 22.68 3 16.04 3Zm0 21.9c-1.7 0-3.36-.46-4.8-1.32l-.34-.2-3.7.97.99-3.6-.22-.37a9.9 9.9 0 0 1-1.52-5.34c0-5.5 4.46-9.96 9.96-9.96 5.52 0 10 4.4 10 9.9 0 5.5-4.48 9.93-9.98 9.93Zm5.46-7.45c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.8-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.52-.08-.15-.68-1.64-.93-2.25-.24-.58-.5-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.27.3-1.04 1.02-1.04 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.48.7.3 1.26.5 1.7.62.72.23 1.37.2 1.88.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
 </a>
-<script src="site.js?v=1791089001" defer></script>
+<script src="site.js?v=1791104061" defer></script>
 <script src="sections/01-inicio.js?v=1791088320" defer></script>
 <script src="sections/03-pozole.js?v=1791088402" defer></script>
+<script src="sections/05-resenas.js?v=1791103978" defer></script>
 <script>
 (function(){var d=document.documentElement;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('rv');
 setTimeout(function(){var vh=innerHeight,e=document.querySelectorAll('[data-reveal]:not(.in)');for(var i=0;i<e.length;i++){var r=e[i].getBoundingClientRect();if(r.top<vh&&r.bottom>0)e[i].classList.add('in')}d.classList.add('rv-ok')},1600);})();

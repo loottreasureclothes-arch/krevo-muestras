@@ -107,6 +107,7 @@
     else if (wd === 6 || wd === 0) { msg = "Cerrado. Abre el lunes a las 8:30 a.m."; cls = "is-closed"; }
     else { msg = "Cerrado. Abre mañana a las 8:30 a.m."; cls = "is-closed"; }
     if (live) { live.classList.add(cls); live.querySelector("span").textContent = msg; }
+    var v2 = document.getElementById("mc-vis-live"); if (v2) { v2.classList.add(cls); v2.querySelector("span").textContent = msg; }
     if (t2) t2.textContent = cls === "is-open" ? "Abierto ahora" : "Madero 341";
     if (tabla) { var r = tabla.querySelector('tr[data-d="' + wd + '"]'); if (r) r.classList.add("is-hoy"); }
   }

@@ -1,0 +1,1 @@
+(function(){var u=document.getElementById("vis-dias");if(!u)return;try{var d=new Intl.DateTimeFormat("en-US",{timeZone:"America/Mexico_City",weekday:"short"}).format(new Date());var i=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(d);var li=u.querySelector('[data-d="'+i+'"]');if(li)li.classList.add("is-hoy");}catch(e){}})();

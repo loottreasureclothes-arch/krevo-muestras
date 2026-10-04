@@ -1,38 +1,44 @@
 <section class="lp-casas" id="casas" aria-labelledby="casas-h">
   <div class="lp-wrap">
     <header class="lp-casas-head" data-reveal>
-      <p class="lp-eyebrow">04 · Las dos casas</p>
+      <p class="lp-eyebrow">04 · Visítanos</p>
       <h2 id="casas-h">Dos casas, <span class="t2">ninguna cierra el mismo día.</span></h2>
     </header>
-    <div class="lp-casas-grid">
-      <article class="lp-casa" id="casa-centro" data-reveal>
-        <p class="lp-num" aria-hidden="true">916</p>
-        <div class="lp-casa-body">
-          <h3>Centro</h3>
-          <address>José María González Bocanegra 916<br>José López Portillo</address>
-          <p class="lp-hrs">12 p.m. a 7 p.m.<br>Cierra los miércoles</p>
-          <p class="lp-hoy" data-hoy="centro"></p>
-          <div class="lp-casa-btns">
-            <a class="lp-btn lp-btn--line" href="tel:+524499781535">449 978 1535</a>
-            <a class="lp-btn lp-btn--line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Jos%C3%A9+Mar%C3%ADa+Gonz%C3%A1lez+Bocanegra+916%2C+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
-          </div>
+    <div class="lp-tabs" role="tablist" aria-label="Sucursales">
+      <button type="button" role="tab" id="t-centro" aria-controls="p-centro" aria-selected="true"><b>916</b><span>Centro · cierra miércoles</span></button>
+      <button type="button" role="tab" id="t-poniente" aria-controls="p-poniente" aria-selected="false" tabindex="-1"><b>612</b><span>Poniente · cierra martes</span></button>
+    </div>
+    <div class="lp-visit-panel" id="p-centro" role="tabpanel" aria-labelledby="t-centro">
+      <div class="lp-map">
+        <iframe src="https://www.google.com/maps?q=Mariscos+La+Perla+Jos%C3%A9+Mar%C3%ADa+Gonz%C3%A1lez+Bocanegra+916+Aguascalientes&amp;output=embed" loading="lazy" title="Mapa de La Perla Centro" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="lp-visit-body">
+        <h3>Centro</h3>
+        <address>José María González Bocanegra 916<br>José López Portillo, 20206</address>
+        <p class="lp-hoy" data-hoy="centro"></p>
+        <ul class="lp-week" data-week="centro"><li data-d="1"><span>Lunes</span><span>12 p.m. a 7 p.m.</span></li><li data-d="2"><span>Martes</span><span>12 p.m. a 7 p.m.</span></li><li data-d="3"><span>Miércoles</span><span>Cerrado</span></li><li data-d="4"><span>Jueves</span><span>12 p.m. a 7 p.m.</span></li><li data-d="5"><span>Viernes</span><span>12 p.m. a 7 p.m.</span></li><li data-d="6"><span>Sábado</span><span>12 p.m. a 7 p.m.</span></li><li data-d="0"><span>Domingo</span><span>12 p.m. a 7 p.m.</span></li></ul>
+        <div class="lp-visit-btns">
+          <a class="lp-btn lp-btn--wa" data-wa="Hola La Perla, vi su página. Quiero ir a la casa Centro." data-branch="centro" href="https://wa.me/524499781535?text=Hola%20La%20Perla%2C%20vi%20su%20p%C3%A1gina.%20Quiero%20ir%20a%20la%20casa%20Centro." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+          <a class="lp-btn lp-btn--line" href="https://www.google.com/maps/search/?api=1&amp;query=Mariscos+La+Perla+Jos%C3%A9+Mar%C3%ADa+Gonz%C3%A1lez+Bocanegra+916+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="lp-btn lp-btn--line" href="tel:+524499781535">Llamar 449 978 1535</a>
         </div>
-        <img class="lp-casa-img" src="img/tiburon-480.webp" srcset="img/tiburon-480.webp 480w, img/tiburon-960.webp 960w" sizes="170px" width="480" height="853" alt="Fachada del Centro con el tiburón sobre el balcón" loading="lazy" decoding="async">
-      </article>
-      <article class="lp-casa" id="casa-poniente" data-reveal>
-        <p class="lp-num" aria-hidden="true">612</p>
-        <div class="lp-casa-body">
-          <h3>Poniente</h3>
-          <address>Av. Abelardo López Rodríguez&nbsp;612<br>Puerta del Sol</address>
-          <p class="lp-hrs">11 a.m. a 7 p.m.<br>Cierra los martes</p>
-          <p class="lp-hoy" data-hoy="poniente"></p>
-          <div class="lp-casa-btns">
-            <a class="lp-btn lp-btn--line" href="tel:+524493009138">449 300 9138</a>
-            <a class="lp-btn lp-btn--line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.+Abelardo+L%C3%B3pez+Rodr%C3%ADguez+612%2C+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
-          </div>
+      </div>
+    </div>
+    <div class="lp-visit-panel" id="p-poniente" role="tabpanel" aria-labelledby="t-poniente" hidden>
+      <div class="lp-map">
+        <iframe src="https://www.google.com/maps?q=La+Perla+Mariscos+Av+Abelardo+L%C3%B3pez+Rodr%C3%ADguez+612+Aguascalientes&amp;output=embed" loading="lazy" title="Mapa de La Perla Poniente" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="lp-visit-body">
+        <h3>Poniente</h3>
+        <address>Av. Abelardo López Rodríguez&nbsp;612<br>Puerta del Sol, 20329</address>
+        <p class="lp-hoy" data-hoy="poniente"></p>
+        <ul class="lp-week" data-week="poniente"><li data-d="1"><span>Lunes</span><span>11 a.m. a 7 p.m.</span></li><li data-d="2"><span>Martes</span><span>Cerrado</span></li><li data-d="3"><span>Miércoles</span><span>11 a.m. a 7 p.m.</span></li><li data-d="4"><span>Jueves</span><span>11 a.m. a 7 p.m.</span></li><li data-d="5"><span>Viernes</span><span>11 a.m. a 7 p.m.</span></li><li data-d="6"><span>Sábado</span><span>11 a.m. a 7 p.m.</span></li><li data-d="0"><span>Domingo</span><span>11 a.m. a 7 p.m.</span></li></ul>
+        <div class="lp-visit-btns">
+          <a class="lp-btn lp-btn--wa" data-wa="Hola La Perla, vi su página. Quiero ir a la casa Poniente." data-branch="poniente" href="https://wa.me/524493009138?text=Hola%20La%20Perla%2C%20vi%20su%20p%C3%A1gina.%20Quiero%20ir%20a%20la%20casa%20Poniente." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+          <a class="lp-btn lp-btn--line" href="https://www.google.com/maps/search/?api=1&amp;query=La+Perla+Mariscos+Av+Abelardo+L%C3%B3pez+Rodr%C3%ADguez+612+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="lp-btn lp-btn--line" href="tel:+524493009138">Llamar 449 300 9138</a>
         </div>
-        <img class="lp-casa-img" src="img/parrilla-480.webp" srcset="img/parrilla-480.webp 480w, img/parrilla-960.webp 960w" sizes="170px" width="480" height="626" alt="Plato a la parrilla con arroz y ensalada, en la casa Poniente" loading="lazy" decoding="async">
-      </article>
+      </div>
     </div>
   </div>
 </section>

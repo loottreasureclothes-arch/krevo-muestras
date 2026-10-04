@@ -18,13 +18,16 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/gloock.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="img/arco-960.webp" imagesrcset="img/arco-480.webp 480w, img/arco-960.webp 960w, img/arco-1280.webp 1280w" imagesizes="100vw">
-<link rel="stylesheet" href="site.css?v=1791078755">
+<link rel="stylesheet" href="site.css?v=1791103714">
 <link rel="stylesheet" href="sections/01-portada.css?v=1791078755">
-<link rel="stylesheet" href="sections/02-mesa.css?v=1791092082">
-<link rel="stylesheet" href="sections/03-patio.css?v=1791092206">
+<link rel="stylesheet" href="sections/02-mesa.css?v=1791103613">
+<link rel="stylesheet" href="sections/03-patio.css?v=1791103613">
 <link rel="stylesheet" href="sections/04-visita.css?v=1791092082">
-<link rel="stylesheet" href="sections/05-llegar.css?v=1791078755">
-<link rel="stylesheet" href="sections/06-completar.css?v=1791092082">
+<link rel="stylesheet" href="sections/05-recorrido.css?v=1791103631">
+<link rel="stylesheet" href="sections/06-opiniones.css?v=1791103660">
+<link rel="stylesheet" href="sections/07-preguntas.css?v=1791103707">
+<link rel="stylesheet" href="sections/08-llegar.css?v=1791103707">
+<link rel="stylesheet" href="sections/09-completar.css?v=1791092082">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":["Restaurant","EventVenue"],"name":"Casa Escobedo","servesCuisine":"Mexicana","telephone":"+524495290113","address":{"@type":"PostalAddress","streetAddress":"Av Tecnológico 102, Ojocaliente","addressLocality":"Aguascalientes","addressRegion":"Ags.","postalCode":"20190","addressCountry":"MX"},"maximumAttendeeCapacity":145,"openingHours":["Tu-Fr 13:00-19:00","Sa 13:30-18:00"],"sameAs":["https://www.instagram.com/casaescobedoags","https://www.facebook.com/casaescobedoags"]}</script>
 <script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('js');setTimeout(function(){var a=document.querySelectorAll('[data-reveal]');for(var i=0;i<a.length;i++)a[i].classList.add('in')},1600)}</script>
 </head>
@@ -39,8 +42,9 @@
 <nav class="menu" id="menu" aria-label="Secciones" hidden>
   <a href="#mesa">La mesa</a>
   <a href="#patio">El patio</a>
-  <a href="#visita">Arma tu visita</a>
-  <a href="#llegar">Cómo llegar</a>
+  <a href="#visita">Arma tu evento</a>
+  <a href="#opiniones">Opiniones</a>
+  <a href="#llegar">Visítanos</a>
 </nav>
 <a class="wa-float" data-wa="Hola Casa Escobedo, vi su página y quiero información." href="https://wa.me/524495290113" aria-label="Escribir por WhatsApp">
   <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.3.6 4.4 1.7 6.3L3 29l7.4-1.9c1.8 1 3.8 1.500 5.900 1.500 6.900 0 12.600-5.600 12.600-12.500S22.900 3 16 3zm0 22.800c-1.900 0-3.700-.5-5.300-1.500l-.4-.2-4.400 1.100 1.200-4.300-.3-.4a10.300 10.300 0 1 1 9.200 5.300zm5.700-7.700c-.3-.2-1.900-.9-2.200-1s-.5-.2-.7.200-.8 1-1 1.200-.4.200-.7.100a8.400 8.400 0 0 1-4.200-3.700c-.3-.6.300-.5.900-1.700.1-.2 0-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400s-1 1-1 2.400 1 2.800 1.200 3 2 3.100 4.900 4.300c1.800.8 2.500.8 3.400.7.500-.1 1.700-.7 1.900-1.400s.2-1.200.2-1.400-.3-.2-.6-.4z"/></svg>
@@ -78,11 +82,7 @@
       <li><b>Postres</b><span>Pregunta el precio</span></li>
       <li><b>Bebidas</b><span>Pregunta el precio</span></li>
     </ul>
-    <figure class="cita" data-reveal>
-      <div class="estrellas" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <blockquote>Excelente comida, lugar y atención, las entradas, platillos y bebidas que pedimos estuvieron perfectas, respetaron los términos de las carnes y el sabor fue exquisito.</blockquote>
-      <figcaption>Isabel Esparza, Google Maps</figcaption>
-    </figure>
+    <p class="mesa-nota" data-reveal>Antojo de la casa: pregunta por el bak’ bak’.</p>
     <a class="btn btn-wa" data-wa="Hola Casa Escobedo, ¿me pasan el menú y los precios?" href="https://wa.me/524495290113">Pídenos el menú</a>
   </div>
 </section>
@@ -105,10 +105,7 @@
       <img src="img/terraza-960.webp" srcset="img/terraza-480.webp 480w, img/terraza-960.webp 960w, img/terraza-1280.webp 1280w" sizes="(min-width:760px) 50vw, 100vw" decoding="async" alt="Terraza con mesas y regalos para un brunch" width="1280" height="853">
       <img src="img/larga-960.webp" srcset="img/larga-480.webp 480w, img/larga-960.webp 960w, img/larga-1600.webp 1600w" sizes="(min-width:760px) 50vw, 100vw" decoding="async" alt="Mesa larga en el patio" width="1138" height="758">
     </div>
-    <figure class="cita2" data-reveal>
-      <blockquote>Julio es un gran anfitrion lo tiene todo controlado, es super amable y flexible, el lugar es hermoso</blockquote>
-      <figcaption><span class="estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</span> Brenda, bodas.com.mx</figcaption>
-    </figure>
+    <a class="btn btn-line patio-cta" href="#visita">Arma tu evento &rarr;</a>
   </div>
 </section>
 
@@ -157,12 +154,77 @@
   </div>
 </section>
 
+<section class="recorrido" id="recorrido">
+  <div class="rc-head">
+    <p class="eyebrow" data-reveal>Recorrido</p>
+    <h2 data-reveal>Piedra, carrizo<span class="t2">y luz de tarde.</span></h2>
+  </div>
+  <div class="rc-tira" tabindex="0" aria-label="Fotos del lugar, desliza">
+    <figure class="rc a"><img src="img/ceremonia-960.webp" srcset="img/ceremonia-480.webp 480w, img/ceremonia-960.webp 960w" sizes="(min-width:760px) 50vw, 100vw" decoding="async" alt="Ceremonia civil bajo el arco de piedra" width="960" height="639"><figcaption>La ceremonia, bajo el arco</figcaption></figure>
+    <figure class="rc b"><img src="img/patio-960.webp" srcset="img/patio-480.webp 480w, img/patio-960.webp 960w, img/patio-1280.webp 1280w" sizes="(min-width:760px) 50vw, 100vw" decoding="async" alt="Patio con mesas largas" width="1280" height="853"><figcaption>El patio de mesas largas</figcaption></figure>
+    <figure class="rc c"><img src="img/gypsos-960.webp" srcset="img/gypsos-480.webp 480w, img/gypsos-960.webp 960w" sizes="(min-width:760px) 50vw, 100vw" decoding="async" alt="Centro de mesa de gypsophila" width="1184" height="789"><figcaption>Cada mesa, puesta a mano</figcaption></figure>
+    <figure class="rc a"><img src="img/fiesta-960.webp" srcset="img/fiesta-480.webp 480w, img/fiesta-960.webp 960w, img/fiesta-1280.webp 1280w" sizes="(min-width:760px) 50vw, 100vw" decoding="async" alt="Fiesta de noche en el patio iluminado" width="1280" height="853"><figcaption>Y la fiesta, hasta tarde</figcaption></figure>
+    <figure class="rc b"><img src="img/mesa-960.webp" srcset="img/mesa-480.webp 480w, img/mesa-960.webp 960w, img/mesa-1280.webp 1280w" sizes="(min-width:760px) 50vw, 100vw" decoding="async" alt="Mesa servida con plato y cubiertos" width="1280" height="853"><figcaption>La mesa lista</figcaption></figure>
+    <figure class="rc c"><img src="img/fuente-960.webp" srcset="img/fuente-480.webp 480w, img/fuente-960.webp 960w, img/fuente-1440.webp 1440w" sizes="(min-width:760px) 50vw, 100vw" decoding="async" alt="Fuente central y corredor colonial" width="1440" height="958"><figcaption>El corredor de la fuente</figcaption></figure>
+  </div>
+  <div class="rc-pie">
+    <p class="rc-cuenta"><span id="rc-i">1</span> / 6</p>
+    <a class="rc-ig" href="https://www.instagram.com/casaescobedoags" rel="noopener">Más fotos en Instagram &rarr;</a>
+  </div>
+</section>
+
+<section class="opin band" id="opiniones">
+  <div class="op-in">
+    <div class="op-nota" data-reveal>
+      <p class="op-num">4.4</p>
+      <div>
+        <p class="op-est" aria-label="4.4 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;<span>&#9733;</span></p>
+        <p class="op-cuantas">1,119 opiniones en Google</p>
+        <p class="op-bodas">4.8 de 5 en bodas.com.mx</p>
+      </div>
+    </div>
+    <h2 data-reveal>Lo cuentan<span class="t2">quienes ya vinieron.</span></h2>
+    <div class="op-tira" tabindex="0" aria-label="Opiniones, desliza">
+      <figure class="op g"><p class="op-s" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>Excelente comida, lugar y atención (…) respetaron los términos de las carnes y el sabor fue exquisito. Sin duda el mejor platillo a mi gusto fue el bak' bak’.</blockquote><figcaption><b>Isabel Esparza</b>Google</figcaption></figure>
+      <figure class="op"><p class="op-s" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>Julio y su equipo son de lo mejor que recomiendo para todo evento. Es nuestro lugar favorito en Aguascalientes.</blockquote><figcaption><b>Denisse</b>bodas.com.mx</figcaption></figure>
+      <figure class="op o"><p class="op-s" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>Calidad de alimentos excepcional. El servicio por parte del personal de lo mejor</blockquote><figcaption><b>Victor</b>bodas.com.mx</figcaption></figure>
+      <figure class="op"><p class="op-s" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>Julio es un gran anfitrion lo tiene todo controlado, es super amable y flexible, el lugar es hermoso</blockquote><figcaption><b>Brenda</b>bodas.com.mx</figcaption></figure>
+      <figure class="op g"><p class="op-s" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>La atención a los detalles y respuesta a nuestras necesidades hicieron de nuestra boda civil y recepción un momento inolvidable. El ambiente es romántico y acogedor.</blockquote><figcaption><b>Abigail</b>bodas.com.mx</figcaption></figure>
+      <figure class="op o"><p class="op-s" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>¡Muy linda atención por parte de Cindy y Julio, la comida estuvo deliciosa!</blockquote><figcaption><b>Karen</b>bodas.com.mx</figcaption></figure>
+    </div>
+    <div class="op-pie">
+      <div class="op-pasos" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+      <a class="btn btn-line" href="https://www.google.com/maps/place/Casa+Escobedo/@21.8842111,-102.2698292,17z/data=!4m6!3m5!1s0x8429ee0e2caa1db3:0xc65abd01cefdb03d!8m2!3d21.8842111!4d-102.2698292!16s%2Fg%2F11gh0cwvxc" rel="noopener">Ver todas en Google &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="preg" id="preguntas">
+  <div class="pr-in">
+    <h2 data-reveal>Antes de apartar<span class="t2">tu fecha.</span></h2>
+    <div class="pr-lista" data-reveal>
+      <details open><summary>¿Cuántos invitados caben?</summary><p>Hasta 145, entre patio, jardín y terraza.</p></details>
+      <details><summary>¿Puedo hacer la ceremonia civil aquí?</summary><p>Sí. La ceremonia se hace bajo el arco de piedra y la recepción sigue en el patio.</p></details>
+      <details><summary>¿Ustedes ponen la comida?</summary><p>Sí: banquete, barra y cocina para el catering. Pídenos el menú por WhatsApp.</p></details>
+      <details><summary>¿Qué más me pueden armar?</summary><p>Decoración, música, fotografía y pista de baile.</p></details>
+      <details><summary>¿Hay dónde estacionarse?</summary><p>Sí, estacionamiento y valet parking.</p></details>
+      <details><summary>¿Abren como restaurante?</summary><p>Martes a viernes de 1:00 a 7:00 p.m. y sábado de 1:30 a 6:00 p.m.</p></details>
+    </div>
+    <a class="btn btn-wa pr-cta" data-wa="Hola Casa Escobedo, tengo una pregunta sobre mi evento." href="https://wa.me/524495290113">Pregúntanos lo que falte</a>
+  </div>
+</section>
+
 <section class="llegar" id="llegar" data-hide-wa>
   <div class="ll-in">
-    <div class="ll-foto" data-reveal><img src="img/fuente-960.webp" srcset="img/fuente-480.webp 480w, img/fuente-960.webp 960w, img/fuente-1440.webp 1440w" sizes="(min-width:760px) 50vw, 100vw" decoding="async" alt="Fuente central y corredor colonial de Casa Escobedo" width="1440" height="958"></div>
+    <div class="ll-mapa" data-reveal>
+      <div class="ll-arco"><iframe src="https://www.google.com/maps?q=Casa+Escobedo+Av+Tecnol%C3%B3gico+102+Ojocaliente+20190+Aguascalientes&amp;output=embed" loading="lazy" title="Mapa de Casa Escobedo" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <p class="ll-pin">Dentro de Baños Termales de Ojocaliente</p>
+    </div>
     <div class="ll-txt">
+      <p class="eyebrow" data-reveal>Visítanos</p>
       <h2 data-reveal>Te esperamos<span class="t2">en Ojocaliente.</span></h2>
-      <p class="ll-dir" data-reveal>Av Tecnológico 102, Ojocaliente.<br>Dentro de Baños Termales de Ojocaliente.</p>
+      <p class="ll-dir" data-reveal>Av Tecnológico 102, Ojocaliente<br>20190 Aguascalientes, Ags.</p>
+      <p class="ll-estado" id="ll-estado" data-reveal><i></i><span>Martes a sábado, desde la 1:00 p.m.</span></p>
       <ul class="horas" data-reveal>
         <li data-d="2"><b>Martes</b><span>1:00 a 7:00 p.m.</span></li>
         <li data-d="3"><b>Miércoles</b><span>1:00 a 7:00 p.m.</span></li>
@@ -174,7 +236,8 @@
       </ul>
       <div class="ll-cta" data-reveal>
         <a class="btn btn-wa" data-wa="Hola Casa Escobedo, quiero reservar. ¿Qué fecha tienen libre?" href="https://wa.me/524495290113">Reservar por WhatsApp</a>
-        <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Casa+Escobedo+Av+Tecnol%C3%B3gico+102+Ojocaliente+Aguascalientes" rel="noopener">Cómo llegar</a>
+        <a class="btn btn-line" href="https://www.google.com/maps/place/Casa+Escobedo/@21.8842111,-102.2698292,17z/data=!4m6!3m5!1s0x8429ee0e2caa1db3:0xc65abd01cefdb03d!8m2!3d21.8842111!4d-102.2698292!16s%2Fg%2F11gh0cwvxc" rel="noopener">Cómo llegar &rarr;</a>
+        <a class="btn btn-line" href="tel:+524495290113">Llamar 449 529 0113</a>
       </div>
     </div>
   </div>
@@ -199,6 +262,8 @@
   <div class="pie-in">
     <p class="pie-brand">Casa Escobedo</p>
     <p class="pie-dir">Av Tecnológico 102, Ojocaliente<br>20190 Aguascalientes, Ags.</p>
+    <p class="pie-tel"><a href="tel:+524495290113">449 529 0113</a></p>
+    <p class="pie-hor">Mar a vie 1:00 a 7:00 p.m. · Sáb 1:30 a 6:00 p.m.<br>Domingo y lunes cerrado</p>
     <div class="redes">
       <a href="https://www.instagram.com/casaescobedoags" aria-label="Instagram de Casa Escobedo" rel="noopener"><svg viewBox="0 0 24 24" width="44" height="44"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg></a>
       <a href="https://www.facebook.com/casaescobedoags" aria-label="Facebook de Casa Escobedo" rel="noopener"><svg viewBox="0 0 24 24" width="44" height="44"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13.2 20v-6.6h2.2l.4-2.6h-2.600V9.200c0-.8.300-1.300 1.400-1.300h1.300V5.600c-.2 0-1-.1-1.900-.1-2 0-3.300 1.200-3.300 3.400v1.900H8.500v2.600h2.200V20" fill="currentColor"/></svg></a>
@@ -208,6 +273,8 @@
 </footer>
 <script src="site.js?v=1791078139" defer></script>
 <script src="sections/04-visita.js?v=1791078360" defer></script>
-<script src="sections/05-llegar.js?v=1791078209" defer></script>
+<script src="sections/05-recorrido.js?v=1791103631" defer></script>
+<script src="sections/06-opiniones.js?v=1791103660" defer></script>
+<script src="sections/08-llegar.js?v=1791103707" defer></script>
 </body>
 </html>

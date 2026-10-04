@@ -1,0 +1,30 @@
+.casona{background:var(--ink2);padding:60px var(--gut) 60px;position:relative}
+.cs-in{max-width:1200px;margin:0 auto}
+.cs-h{margin-bottom:28px}
+.casona h2{font-size:clamp(44px,12vw,76px);margin:12px 0 14px}
+.cs-p{font-size:18px;color:var(--mute);max-width:32ch}
+.cs-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cs-g figure{position:relative;overflow:hidden;background:var(--ink)}
+.cs-g img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.cs-g figure:hover img{transform:scale(1.04)}
+.cs-g figcaption{position:absolute;left:0;bottom:0;background:var(--ink3);color:var(--cream);font:600 10px/1 var(--f-b);letter-spacing:.24em;text-transform:uppercase;padding:9px 12px;border-top:3px solid var(--peach)}
+.cs-a{grid-column:1/3;aspect-ratio:4/3.4}.cs-a img{object-position:50% 40%}
+.cs-b,.cs-c{aspect-ratio:3/4}
+.cs-c img{object-position:50% 70%}
+.cs-d{grid-column:1/3;aspect-ratio:16/10}.cs-d img{object-position:50% 62%}
+.cs-e{display:none}
+.cs-g::after{content:"";grid-column:1/3;height:10px;background:url(../img/azulejo.svg) 0 0/16px 16px repeat-x}
+.cs-cta{margin-top:26px}
+@media (min-width:760px){.cs-g{grid-auto-flow:dense}.cs-e{display:block;aspect-ratio:3/4}.cs-d{grid-column:1/4;aspect-ratio:16/7}.cs-g{grid-template-columns:1fr 1fr 1fr}.cs-a{grid-column:1/4}.cs-g::after{grid-column:1/4}}
+@media (min-width:1000px){.casona{padding:96px max(var(--gut),4vw)}
+.cs-in{display:grid;grid-template-columns:340px 1fr;gap:20px 56px;align-items:start}
+.cs-h{position:sticky;top:110px}
+.casona h2{font-size:clamp(50px,4.2vw,64px)}
+.cs-g{grid-template-columns:1.4fr 1fr .8fr;grid-template-rows:300px 260px;gap:14px}
+.cs-a{grid-column:1;grid-row:1/3;aspect-ratio:auto}
+.cs-b{grid-column:2;grid-row:1;aspect-ratio:auto}
+.cs-c{grid-column:3;grid-row:1/3;aspect-ratio:auto}
+.cs-d{grid-column:2;grid-row:2;aspect-ratio:auto}
+.cs-e{display:none}
+.cs-g::after{grid-column:1/4}
+.cs-cta{grid-column:2}}

@@ -1,0 +1,30 @@
+.reco{background:var(--d);padding:84px 0 60px}
+.reco-head{margin-bottom:30px}
+.reco-head .eyebrow{margin-bottom:14px}
+.reco-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.reco-f{position:relative;overflow:hidden;background:var(--d2);margin:0}
+.reco-f img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.reco-f:hover img{transform:scale(1.04)}
+.reco-f figcaption{position:absolute;left:10px;bottom:10px;display:flex;align-items:center;gap:8px;background:var(--cream);color:var(--ink);font:700 11px/1.15 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:6px 12px 6px 6px;border-radius:999px;max-width:calc(100% - 20px)}
+.reco-f figcaption b{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:var(--cream);font:italic 700 12px/1 var(--serif);letter-spacing:0}
+.rf-a{grid-column:1/-1;aspect-ratio:16/10}
+.rf-b{grid-row:span 2;aspect-ratio:auto}
+.rf-c,.rf-d{aspect-ratio:1/1}
+.rf-e{grid-column:1/-1;aspect-ratio:16/9}
+.rf-f{grid-column:1/-1;aspect-ratio:2/1}
+/* el plato redondo: la del café va en círculo como taza vista desde arriba */
+.rf-b{border-radius:999px 999px 0 0}
+.reco-go{display:inline-flex;align-items:center;gap:10px;min-height:48px;margin-top:26px;font:700 14px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--teal);text-decoration:none;border-bottom:1.5px solid var(--teal)}
+.reco-go span{transition:transform .25s}.reco-go:hover span{transform:translateX(5px)}
+@media(min-width:900px){
+.reco{padding:130px 0 120px}
+.reco-head{display:grid;grid-template-columns:1fr 1fr;align-items:end;margin-bottom:44px}
+.reco-grid{grid-template-columns:repeat(12,1fr);grid-auto-rows:150px;gap:14px}
+.rf-a{grid-column:1/8;grid-row:1/4;aspect-ratio:auto}
+.rf-b{grid-column:8/11;grid-row:1/4}
+.rf-c{grid-column:11/13;grid-row:1/3;aspect-ratio:auto}
+.rf-d{grid-column:11/13;grid-row:3/6;aspect-ratio:auto}
+.rf-e{grid-column:1/6;grid-row:4/6;aspect-ratio:auto}
+.rf-f{grid-column:6/11;grid-row:4/6;aspect-ratio:auto}
+.reco-f figcaption{left:14px;bottom:14px;font-size:12px}
+}

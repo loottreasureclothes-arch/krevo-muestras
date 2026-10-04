@@ -24,7 +24,9 @@ MSG = {
  'WA1': 'Hola Mariscos Los Cabos, vi su página y quiero hacer un pedido.',
  'WA2': 'Hola Mariscos Los Cabos, vi su página. ¿Me pasan el menú con precios?',
  'WA3': 'Hola Mariscos Los Cabos, vi su página. Quiero una torre. ¿Cuánto sale y en qué sucursal la recojo?',
- 'WA4': 'Hola Mariscos Los Cabos, vi su página. ¿Me confirman el horario de hoy?',
+ 'WA4': 'Hola Mariscos Los Cabos, vi su página. ¿Tienen mesa hoy en la sucursal Las Flores?',
+ 'WA5': 'Hola Mariscos Los Cabos, vi su página. Quiero apartar mesa en la terraza. ¿Tienen lugar hoy?',
+ 'WA6': 'Hola Mariscos Los Cabos, vi su página. ¿Tienen mesa hoy en la sucursal Villa Asunción?',
 }
 for k, m in MSG.items():
     out = out.replace('%%' + k + '%%', 'https://wa.me/' + WA + '?text=' + urllib.parse.quote(m, safe=''))

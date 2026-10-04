@@ -27,14 +27,16 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="fonts/syne-800.woff2" crossorigin>
 <link rel="preload" as="image" href="img/fachada-960.webp" imagesrcset="img/fachada-480.webp 480w, img/fachada-960.webp 960w, img/fachada-1200.webp 1200w" imagesizes="100vw" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1791092632">
+<link rel="stylesheet" href="site.css?v=1791104649">
 <link rel="stylesheet" href="sections/01-hero.css?v=1791093112">
-<link rel="stylesheet" href="sections/02-carta.css?v=1791092544">
+<link rel="stylesheet" href="sections/02-carta.css?v=1791104558">
 <link rel="stylesheet" href="sections/03-cielo.css?v=1791092447">
-<link rel="stylesheet" href="sections/04-noche.css?v=1791092544">
-<link rel="stylesheet" href="sections/05-opiniones.css?v=1791093112">
-<link rel="stylesheet" href="sections/06-visita.css?v=1791092370">
-<link rel="stylesheet" href="sections/07-listo.css?v=1791093112">
+<link rel="stylesheet" href="sections/04-noche.css?v=1791104658">
+<link rel="stylesheet" href="sections/05-chelas.css?v=1791104558">
+<link rel="stylesheet" href="sections/06-opiniones.css?v=1791104762">
+<link rel="stylesheet" href="sections/07-recorrido.css?v=1791104607">
+<link rel="stylesheet" href="sections/08-visita.css?v=1791104649">
+<link rel="stylesheet" href="sections/09-listo.css?v=1791093112">
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
@@ -57,8 +59,10 @@
 <nav class="menu" id="hd-menu" aria-label="Menú" hidden>
   <a href="#carta"><span>01</span>La carta</a>
   <a href="#cielo"><span>02</span>Tu mesa</a>
-  <a href="#opiniones"><span>03</span>Opiniones</a>
-  <a href="#visita"><span>04</span>Cómo llegar</a>
+  <a href="#hora-feliz"><span>03</span>Hora feliz</a>
+  <a href="#opiniones"><span>04</span>Opiniones</a>
+  <a href="#fotos"><span>05</span>Fotos</a>
+  <a href="#visita"><span>06</span>Cómo llegar</a>
 </nav>
 
 <main id="top">
@@ -90,7 +94,7 @@
       <li class="it" data-id="Ensalada" data-reveal style="--d:0"><div class="it-ph"><img src="img/ensalada-480.webp" srcset="img/ensalada-480.webp 480w, img/ensalada-960.webp 960w" sizes="(min-width:820px) 22vw, 44vw" width="480" height="270" alt="Ensalada con crutones y aderezo" loading="lazy"></div><h3>Ensalada</h3><p class="pr">Pregunta el precio</p><button type="button" class="add" aria-pressed="false">Agregar</button></li>
       <li class="it" data-id="Mezcal sobre el barril" data-reveal style="--d:1"><div class="it-ph"><img src="img/mezcal-480.webp" srcset="img/mezcal-480.webp 480w, img/mezcal-960.webp 960w" sizes="(min-width:820px) 22vw, 44vw" width="480" height="360" alt="Botellas de mezcal y un trago rojo sobre un barril" loading="lazy"></div><h3>Mezcal sobre el barril</h3><p class="pr">Pregunta el precio</p><button type="button" class="add" aria-pressed="false">Agregar</button></li>
     </ul>
-    <p class="carta-more" data-reveal>Hay más: cervezas, destilados y pizzas. Pídenos la carta completa por WhatsApp.</p>
+    <div class="carta-end" data-reveal><p class="carta-more">Hay más: destilados, cócteles y pizzas. Agrega lo tuyo y súbelo a tu mesa.</p><a class="lnk" href="#cielo">Apartar con esto <span aria-hidden="true">&rarr;</span></a></div>
   </div>
 </section>
 
@@ -138,56 +142,135 @@
   <div class="noche-tx">
     <p class="noche-big" data-reveal>Música.<br>Comida.<br><span>Tragos.</span></p>
     <p class="noche-s" data-reveal style="--d:2">Alternative music, food, drinks.</p>
+    <a class="lnk noche-l" href="#hora-feliz" data-reveal style="--d:3">Ver la hora feliz <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</section>
+
+<section class="hh" id="hora-feliz" aria-labelledby="hh-h">
+  <div class="wrap hh-in">
+    <div class="hh-head">
+      <p class="eyebrow" data-reveal>Cerveza 355 ml</p>
+      <h2 class="h2" id="hh-h" data-reveal style="--d:1">Hora feliz<span class="t2">de 2 a 6.</span></h2>
+      <p class="hh-now" id="hh-now" data-reveal style="--d:2"><i aria-hidden="true"></i><span>De 2 p.m. a 6 p.m. la cerveza baja de precio.</span></p>
+    </div>
+    <div class="hh-list" data-reveal style="--d:2">
+      <div class="hh-row hh-top" aria-hidden="true"><span></span><span>Precio</span><span class="hh-hh">2 a 6</span></div>
+      <dl>
+        <div class="hh-row"><dt>Indio, Tecate Roja, Tecate Light, Carta Blanca</dt><dd>$40</dd><dd class="hh-hh">$30</dd></div>
+        <div class="hh-row"><dt>XX Lager, XX Ámbar</dt><dd>$45</dd><dd class="hh-hh">$35</dd></div>
+        <div class="hh-row"><dt>Bohemia, Heineken, Ultra</dt><dd>$50</dd><dd class="hh-hh">$40</dd></div>
+        <div class="hh-row"><dt>Strongbow Cider <small>330 ml</small></dt><dd>$50</dd><dd class="hh-hh">$45</dd></div>
+        <div class="hh-row"><dt>Indio o Carta Blanca <small>1.2 litros</small></dt><dd>$90</dd><dd class="hh-hh">$70</dd></div>
+        <div class="hh-row"><dt>XX Lager <small>1.2 litros</small></dt><dd>$100</dd><dd class="hh-hh">$80</dd></div>
+        <div class="hh-row"><dt>Artesanal local, especial o nacional</dt><dd>$75 a $100</dd><dd class="hh-hh"></dd></div>
+      </dl>
+      <p class="hh-note">También sin alcohol: Heineken 0.0, $40.</p>
+      <a class="btn btn-wa hh-go" data-wa="Hola, ¿siguen con la hora feliz de 2 a 6 en Hostal Terraza Bar? Quiero apartar mesa." href="https://wa.me/524493188586?text=Hola%2C%20%C2%BFsiguen%20con%20la%20hora%20feliz%20de%202%20a%206%20en%20Hostal%20Terraza%20Bar%3F%20Quiero%20apartar%20mesa."><svg width="22" height="22" aria-hidden="true"><use href="#i-wa"/></svg>Llegar en hora feliz</a>
+    </div>
   </div>
 </section>
 
 <section class="op" id="opiniones" aria-labelledby="op-h">
   <div class="wrap op-in">
     <div class="op-head">
-      <p class="eyebrow op-eb" data-reveal>Lo que dicen en Google</p>
-      <p class="op-big" data-reveal style="--d:1" aria-label="4.6 de calificación"><span aria-hidden="true">4<i class="op-dot"></i>6</span></p>
+      <p class="eyebrow op-eb" data-reveal>Lo que dicen de la azotea</p>
+      <div class="op-score" data-reveal style="--d:1">
+        <p class="op-big" aria-label="4.6 de calificación en Google"><span aria-hidden="true">4<i class="op-dot"></i>6</span></p>
+        <div class="op-meta"><p class="stars" aria-hidden="true"><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg></p><p class="op-n"><strong>2,018</strong> opiniones en Google</p></div>
+      </div>
       <h2 class="h2 op-h" id="op-h" data-reveal style="--d:2">Dos mil opiniones<span class="t2">y los gatitos.</span></h2>
-      <p class="op-n" data-reveal style="--d:3">2,018 opiniones en Google Maps.</p>
+      <p class="op-tags" data-reveal style="--d:3">Lo que más repiten: <b>pizza</b> 54, <b>vista</b> 53, <b>gato</b> 11, <b>calimocho</b> 10.</p>
     </div>
-    <ul class="qs">
-      <li class="q" data-reveal>
-        <p class="stars" aria-label="5 estrellas"><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg></p>
-        <blockquote class="q-big">&ldquo;Lo que se llevó la noche fueron los gatitos, por ellos volvería a venir.&rdquo;</blockquote>
-        <p class="who">lotsaulmoreno</p>
+    <div class="op-rail">
+      <ul class="rvs" id="rvs" tabindex="0" aria-label="Opiniones, desliza para ver más">
+      <li class="rv rv-big">
+        <p class="stars" aria-label="5 de 5 estrellas"><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg></p>
+        <blockquote>&ldquo;Muy bonito lugar y lo que se llevó la noche fueron los gatitos, por ellos volvería a venir.&rdquo;</blockquote>
+        <p class="who">lotsaulmoreno<span>Google</span></p>
       </li>
-      <li class="q" data-reveal style="--d:1">
-        <p class="stars" aria-label="4 estrellas"><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg></p>
+      <li class="rv rv-tall">
+        <p class="stars" aria-label="5 de 5 estrellas"><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg></p>
+        <blockquote>&ldquo;Desde su terraza se pueden observar 11 templos.&rdquo;</blockquote>
+        <p class="who">Osmarkaos<span>TripAdvisor</span></p>
+      </li>
+      <li class="rv">
+        <p class="stars" aria-label="4 de 5 estrellas"><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg></p>
         <blockquote>&ldquo;Últimamente uno de mis lugares favoritos en la ciudad, me encanta lo versátil que es el lugar.&rdquo;</blockquote>
-        <p class="who">raudi g</p>
+        <p class="who">raudi g<span>Google</span></p>
       </li>
-      <li class="q" data-reveal style="--d:2">
-        <p class="stars" aria-label="5 estrellas"><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg><svg width="18" height="18"><use href="#i-star"/></svg></p>
-        <blockquote>&ldquo;E ido ya unas 4 veces, hasta ahora me a tocado muy buen servicio.&rdquo;</blockquote>
-        <p class="who">AndreMorgado</p>
+      <li class="rv">
+        <p class="stars" aria-label="5 de 5 estrellas"><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg></p>
+        <blockquote>&ldquo;Excelente lugar, buen ambiente y música de 10! La vista también me gustó mucho.&rdquo;</blockquote>
+        <p class="who">Samuel B<span>TripAdvisor</span></p>
       </li>
-    </ul>
+      <li class="rv">
+        <p class="stars" aria-label="5 de 5 estrellas"><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg></p>
+        <blockquote>&ldquo;El lugar me agrada porque no es muy común, es un edificio antiguo, su terraza tiene buenas vistas.&rdquo;</blockquote>
+        <p class="who">AndreMorgado<span>Google</span></p>
+      </li>
+      <li class="rv">
+        <p class="stars" aria-label="5 de 5 estrellas"><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg><svg width="16" height="16"><use href="#i-star"/></svg></p>
+        <blockquote>&ldquo;Lo recomiendo totalmente, la comida es muy rica, la música, las bebidas.&rdquo;</blockquote>
+        <p class="who">Mayra R<span>TripAdvisor</span></p>
+      </li>
+      </ul>
+      <div class="op-ctl">
+        <button type="button" class="op-arr" id="rv-prev" aria-label="Opinión anterior">&larr;</button>
+        <span class="op-bar" aria-hidden="true"><i id="rv-bar"></i></span>
+        <button type="button" class="op-arr" id="rv-next" aria-label="Siguiente opinión">&rarr;</button>
+      </div>
+      <a class="btn btn-nav op-g" href="https://www.google.com/maps/place/Hostal+Terraza+Bar/@21.8796253,-102.3019003,17z/data=!4m6!3m5!1s0x8429ee8796401ac1:0x2ea2292444a51937!8m2!3d21.8796253!4d-102.3019003" target="_blank" rel="noopener">Ver todas en Google <span aria-hidden="true">&rarr;</span></a>
+    </div>
   </div>
 </section>
 
-<section class="vis" id="visita" aria-labelledby="vis-h">
+<section class="rc" id="fotos" aria-labelledby="rc-h">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Un recorrido</p>
+    <h2 class="h2" id="rc-h" data-reveal style="--d:1">Así se ve<span class="t2">desde arriba.</span></h2>
+    <div class="rc-grid">
+      <figure class="rc-f rc-a" data-reveal><img src="img/coctel-960.webp" srcset="img/coctel-480.webp 480w, img/coctel-960.webp 960w" sizes="(min-width:820px) 34vw, 62vw" width="1536" height="2048" alt="Cóctel en copa sobre el barandal de madera de la azotea, con techos del Centro al fondo"><figcaption>El barandal</figcaption></figure>
+      <figure class="rc-f rc-b" data-reveal style="--d:1"><img src="img/papas-960.webp" srcset="img/papas-480.webp 480w, img/papas-960.webp 960w" sizes="(min-width:820px) 22vw, 36vw" width="1152" height="2048" alt="Papas gajo y un tarro de cerveza oscura en la mesa"><figcaption>Botana</figcaption></figure>
+      <figure class="rc-f rc-c" data-reveal><img src="img/tablas-960.webp" srcset="img/tablas-480.webp 480w, img/tablas-960.webp 960w, img/tablas-1600.webp 1600w" sizes="(min-width:820px) 40vw, 100vw" width="2048" height="1536" alt="Pizza y tablas con botanas sobre una mesa de madera"><figcaption>Para compartir</figcaption></figure>
+      <figure class="rc-f rc-d" data-reveal style="--d:1"><img src="img/noche-960.webp" srcset="img/noche-480.webp 480w, img/noche-960.webp 960w" sizes="(min-width:820px) 24vw, 48vw" width="960" height="1280" alt="La terraza de noche con focos colgantes y Catedral iluminada"><figcaption>La terraza de noche</figcaption></figure>
+      <figure class="rc-f rc-e" data-reveal style="--d:2"><img src="img/jarra-roja-960.webp" srcset="img/jarra-roja-480.webp 480w, img/jarra-roja-960.webp 960w, img/jarra-roja-1600.webp 1600w" sizes="(min-width:820px) 24vw, 48vw" width="2048" height="1536" alt="Hamburguesa, tablas y una jarra roja en la terraza"><figcaption>Jarra y hamburguesa</figcaption></figure>
+      <figure class="rc-f rc-g" data-reveal><img src="img/atardecer-960.webp" srcset="img/atardecer-480.webp 480w, img/atardecer-960.webp 960w" sizes="(min-width:820px) 30vw, 100vw" width="960" height="1707" alt="Mesas de la azotea y la torre de Catedral al atardecer"><figcaption>La torre de Catedral</figcaption></figure>
+    </div>
+    <a class="lnk rc-more" href="https://www.facebook.com/terrazabarags" target="_blank" rel="noopener" data-reveal>Más fotos en su Facebook <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</section>
+
+<section class="vis" id="visita" data-hide-wa aria-labelledby="vis-h">
   <div class="wrap vis-in">
-    <figure class="vis-ph" data-reveal>
-      <img src="img/jarra-960.webp" srcset="img/jarra-480.webp 480w, img/jarra-960.webp 960w, img/jarra-1600.webp 1600w" sizes="(min-width:820px) 50vw, 100vw" width="1600" height="1200" alt="Jarra de cerveza sobre la mesa de madera de la terraza" loading="lazy">
-    </figure>
     <div class="vis-tx">
-      <p class="eyebrow" data-reveal>Cómo llegar</p>
+      <p class="eyebrow" data-reveal>Visítanos</p>
       <h2 class="h2" id="vis-h" data-reveal style="--d:1">Eduardo J. Correa 139<span class="t2">entra y sube.</span></h2>
-      <dl class="facts" data-reveal style="--d:2">
-        <div><dt>Dónde</dt><dd>Centro histórico, Aguascalientes</dd></div>
-        <div><dt>Horario</dt><dd>Todos los días, 1 p.m. a 2 a.m.</dd></div>
-        <div><dt>También</dt><dd>Para llevar, entrega a domicilio y pedir en línea</dd></div>
-      </dl>
-      <p class="vis-lgbt" data-reveal style="--d:3">Lugar amigable con la comunidad LGBTQ+.</p>
-      <div class="vis-cta" data-reveal style="--d:3">
-        <a class="btn btn-nav" href="https://www.google.com/maps/search/?api=1&amp;query=Hostal+Terraza+Bar+Eduardo+J.+Correa+139+Aguascalientes" target="_blank" rel="noopener"><svg width="14" height="20" aria-hidden="true"><use href="#i-pin"/></svg>Abrir en Google Maps</a>
-        <a class="btn btn-nav" href="https://www.facebook.com/terrazabarags" target="_blank" rel="noopener">Facebook</a>
+      <p class="vis-st" id="vis-st" data-reveal style="--d:2"><i aria-hidden="true"></i><span>Todos los días de 1 p.m. a 2 a.m.</span></p>
+      <p class="vis-a" data-reveal style="--d:2">Centro histórico, 20000 Aguascalientes, Ags. Cerca del Jardín de San Marcos.</p>
+      <table class="hrs" data-reveal style="--d:3" aria-label="Horario">
+        <tbody id="hrs">
+          <tr data-d="1"><th>Lunes</th><td>1 p.m. a 2 a.m.</td></tr>
+          <tr data-d="2"><th>Martes</th><td>1 p.m. a 2 a.m.</td></tr>
+          <tr data-d="3"><th>Miércoles</th><td>1 p.m. a 2 a.m.</td></tr>
+          <tr data-d="4"><th>Jueves</th><td>1 p.m. a 2 a.m.</td></tr>
+          <tr data-d="5"><th>Viernes</th><td>1 p.m. a 2 a.m.</td></tr>
+          <tr data-d="6"><th>Sábado</th><td>1 p.m. a 2 a.m.</td></tr>
+          <tr data-d="0"><th>Domingo</th><td>1 p.m. a 2 a.m.</td></tr>
+        </tbody>
+      </table>
+      <p class="vis-x" data-reveal>También para llevar y a domicilio. Lugar amigable con la comunidad LGBTQ+.</p>
+      <div class="vis-cta" data-reveal style="--d:2">
+        <a class="btn btn-nav" href="https://www.google.com/maps/place/Hostal+Terraza+Bar/@21.8796253,-102.3019003,17z/data=!4m6!3m5!1s0x8429ee8796401ac1:0x2ea2292444a51937!8m2!3d21.8796253!4d-102.3019003" target="_blank" rel="noopener"><svg width="14" height="20" aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar</a>
+        <a class="btn btn-nav" href="tel:+524493188586">Llamar 449 318 8586</a>
+        <a class="btn btn-wa" data-wa="Hola, voy en camino a Hostal Terraza Bar. ¿Tienen mesa en la terraza?" href="https://wa.me/524493188586?text=Hola%2C%20voy%20en%20camino%20a%20Hostal%20Terraza%20Bar.%20%C2%BFTienen%20mesa%20en%20la%20terraza%3F"><svg width="22" height="22" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
       </div>
     </div>
+    <figure class="vis-map" data-reveal style="--d:1">
+      <div class="vis-fr">
+        <iframe src="https://www.google.com/maps?q=Hostal+Terraza+Bar,+Eduardo+J.+Correa+139,+Centro,+Aguascalientes&amp;output=embed" loading="lazy" title="Mapa de Hostal Terraza Bar en Google Maps" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <figcaption><span class="vis-sc">Hostal</span><span>Eduardo J. Correa 139, Centro</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -197,7 +280,8 @@
     <h2 class="h2" id="ls-h" data-reveal style="--d:1">Todo listo<span class="t2">para completar.</span></h2>
     <ul class="ls-l" data-reveal style="--d:2">
       <li>Confirmar el WhatsApp del bar</li>
-      <li>Precios y nombres de la carta</li>
+      <li>Precios y nombres de la carta de comida</li>
+      <li>Confirmar que la hora feliz sigue igual</li>
       <li>Instagram y más fotos de la azotea</li>
       <li>Fotos de los gatitos</li>
     </ul>
@@ -212,6 +296,7 @@
   <p class="foot-t">Terraza Bar</p>
   <p class="foot-a">Eduardo J. Correa 139, Centro histórico<br>Aguascalientes, Ags. 20000</p>
   <p class="foot-h">Todos los días, 1 p.m. a 2 a.m.</p>
+  <a class="foot-tel" href="tel:+524493188586">449 318 8586</a>
   <a class="foot-soc" href="https://www.facebook.com/terrazabarags" target="_blank" rel="noopener" aria-label="Hostal Terraza Bar en Facebook"><svg width="44" height="44" aria-hidden="true"><use href="#i-fb"/></svg></a>
   <p class="foot-c">Muestra de página web hecha en Aguascalientes.</p>
 </footer>
@@ -221,5 +306,8 @@
 <script src="site.js?v=1791092277"></script>
 <script src="sections/02-carta.js?v=1791092306" defer></script>
 <script src="sections/03-cielo.js?v=1791092884" defer></script>
+<script src="sections/05-chelas.js?v=1791104558" defer></script>
+<script src="sections/06-opiniones.js?v=1791104587" defer></script>
+<script src="sections/08-visita.js?v=1791104649" defer></script>
 </body>
 </html>

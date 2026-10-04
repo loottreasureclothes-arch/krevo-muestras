@@ -1,22 +1,36 @@
-.cm-voces{background:var(--rojo-d);background-image:radial-gradient(90% 70% at 0 0,#8a2018 0,transparent 70%);padding:70px 0 72px;position:relative;overflow:hidden}
-.cm-voces-g{display:grid;gap:44px}
-.cm-dato{position:relative}
-.cm-dato b{display:block;font-family:var(--f-d);font-weight:400;font-size:clamp(190px,58vw,340px);line-height:.8;color:var(--cobre);letter-spacing:-.02em;text-shadow:6px 6px 0 rgba(18,10,7,.35);margin-left:-6px}
-.cm-dato p{margin-top:18px;max-width:26ch;font-size:19px;line-height:1.35}
-.cm-dato strong{font-family:var(--f-d);font-weight:400;font-size:26px;display:block;line-height:1.1;margin-bottom:6px}
-.cm-voces-c{display:grid;gap:22px}
+.cm-voces{background:var(--rojo-d);background-image:radial-gradient(90% 70% at 0 0,#8a2018 0,transparent 70%);padding:70px 0 64px;position:relative;overflow:hidden}
+.cm-voces-top{display:grid;gap:26px;margin-bottom:30px}
+.cm-nota{display:flex;align-items:center;gap:18px}
+.cm-nota>b{font-family:var(--f-d);font-weight:400;font-size:clamp(110px,32vw,190px);line-height:.8;color:var(--cobre);letter-spacing:-.02em;text-shadow:5px 5px 0 rgba(18,10,7,.35)}
+.cm-nota .cm-est{color:var(--crema);font-size:24px}
+.cm-nota-t{font-family:var(--f-d);font-size:21px;line-height:1.1;margin-top:8px}
+.cm-nota-fb{font-size:15px;color:var(--crema2);margin-top:6px}
 .cm-voces .t2{font-size:clamp(34px,9.4vw,60px);margin-top:8px}
 .cm-voces .t2 em{color:var(--crema)}
-.cm-voces .eyebrow{color:var(--cobre)}
-.cm-cita{background:var(--crema);color:var(--tinta);padding:20px 22px 18px;position:relative;box-shadow:6px 6px 0 rgba(18,10,7,.4)}
-.cm-cita::before{content:"";position:absolute;left:-1px;top:14px;width:6px;height:44px;background:var(--rojo)}
 .cm-est{color:var(--rojo);letter-spacing:.14em;font-size:19px;line-height:1}
-.cm-cita p:not(.cm-est){font-size:18px;line-height:1.38;margin-top:8px}
-.cm-cita footer{margin-top:10px;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--rojo)}
-.cm-g{font-size:15px;color:var(--crema2)}
+.cm-est span{opacity:.3}
+.cm-muro{display:grid;grid-auto-flow:column;grid-auto-columns:82%;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 18px;margin:0 calc(var(--gut)*-1);padding-left:var(--gut);scroll-padding-left:var(--gut);scrollbar-width:none}
+.cm-muro::-webkit-scrollbar{display:none}
+.cm-cita{scroll-snap-align:start;background:var(--crema);color:var(--tinta);padding:22px 22px 18px;position:relative;box-shadow:6px 6px 0 rgba(18,10,7,.4);display:flex;flex-direction:column}
+.cm-cita::before{content:"";position:absolute;left:-1px;top:16px;width:6px;height:44px;background:var(--rojo)}
+.cm-cita p:not(.cm-est){font-size:18px;line-height:1.38;margin-top:10px;flex:1}
+.cm-cita footer{margin-top:14px;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--rojo)}
+.cm-cita footer span{display:block;color:#7a6250;font-weight:600;letter-spacing:.1em;margin-top:3px;font-size:11px}
+.cm-cita--g{background:var(--cobre)}
+.cm-cita--g p:not(.cm-est){font-family:var(--f-d);font-size:21px;line-height:1.2}
+.cm-cita--r{transform:rotate(-1.2deg)}
+.cm-voces-acc{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:22px}
+.cm-desliza{font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--cobre)}
+.cm-voces .cm-nav{border-color:var(--crema);color:var(--crema)}
+.cm-voces .cm-nav:hover{background:var(--crema);color:var(--rojo-d)}
 @media (min-width:820px){
   .cm-voces{padding:84px 0 80px}
-  .cm-voces-g{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:72px;align-items:center}
-  .cm-dato b{font-size:clamp(280px,29vw,430px)}
+  .cm-voces-top{grid-template-columns:auto 1fr;gap:72px;align-items:end;margin-bottom:44px}
+  .cm-nota>b{font-size:200px}
   .cm-voces .t2{font-size:clamp(44px,4.6vw,66px)}
+  .cm-muro{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;margin:0;padding:4px 0 8px;gap:22px}
+  .cm-cita--g{grid-row:span 2;justify-content:center}
+  .cm-cita--g p:not(.cm-est){font-size:30px}
+  .cm-desliza{visibility:hidden}
 }
+@media (min-width:820px){.cm-muro .cm-cita:last-child{grid-column:1/-1;flex-direction:row;align-items:center;gap:22px}.cm-muro .cm-cita:last-child p:not(.cm-est){margin-top:0}.cm-muro .cm-cita:last-child footer{margin-top:0}}

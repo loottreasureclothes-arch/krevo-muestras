@@ -1,0 +1,34 @@
+.rs{background:var(--ink);padding:44px 0 48px;overflow:hidden;border-top:1px solid rgba(244,235,215,.12)}
+.rs-top{display:flex;flex-direction:column;gap:18px}
+.rs-score{display:flex;align-items:center;gap:16px}
+.rs-score>b{font:900 96px/.8 var(--fd);color:var(--cream)}
+.rs-gst{font-size:22px;letter-spacing:3px;color:#e0a24a}
+.rs-gst i,.rs-st i{font-style:normal;opacity:.3}
+.rs-score p{font-size:15px;color:var(--cream2);margin-top:2px}
+.rs-rail{margin-top:26px}
+.rs-track{list-style:none;display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:22px var(--gut) 26px;scrollbar-width:none;overscroll-behavior-x:contain}
+.rs-track::-webkit-scrollbar{display:none}
+.rs-c{flex:none;width:300px;height:300px;scroll-snap-align:center;border-radius:50%;display:grid;place-items:center;transform:rotate(var(--r));box-shadow:0 14px 30px rgba(0,0,0,.45);position:relative;transition:transform .3s}
+.rs-c::before{content:"";position:absolute;inset:9px;border-radius:50%;border:1.5px dashed currentColor;opacity:.35;pointer-events:none}
+.rs-c figure{margin:0;width:74%;text-align:center}
+.rs-st{font-size:16px;letter-spacing:3px;color:#c9862e}
+.rs-c blockquote{font:500 15px/1.38 var(--fb);margin:8px 0 10px}
+.rs-c figcaption b{display:block;font:900 22px/1 var(--fd);text-transform:uppercase;letter-spacing:.03em}
+.rs-c figcaption span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.rs-c{background:var(--cream);color:var(--ink)}
+.rs-l{background:var(--leaf-d);color:var(--cream)}
+.rs-l .rs-st{color:#f4d27a}
+.rs-o{background:var(--ink3);color:var(--cream);box-shadow:inset 0 0 0 2px var(--cream2),0 14px 30px rgba(0,0,0,.45)}
+.rs-o .rs-st{color:#e0a24a}
+.rs-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.rs-nav{display:flex;gap:10px}
+.rs-b{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--cream);background:transparent;color:var(--cream);font-size:20px;cursor:pointer;transition:background .2s,color .2s}
+.rs-b:hover,.rs-b:focus-visible{background:var(--cream);color:var(--ink)}
+@media (min-width:900px){
+ .rs{padding:64px 0}
+ .rs-top{flex-direction:row;align-items:flex-end;justify-content:space-between}
+ .rs-score>b{font-size:150px}
+ .rs-track{padding:30px max(40px,calc((100vw - 1180px)/2 + 40px)) 34px;gap:22px}
+ .rs-c{width:330px;height:330px}
+ .rs-c:hover{transform:rotate(0) translateY(-6px)}
+}

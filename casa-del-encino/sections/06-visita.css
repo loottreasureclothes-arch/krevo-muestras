@@ -1,0 +1,24 @@
+.visita{background:var(--ink);padding:60px var(--gut) 64px;overflow:hidden}
+.vi-in{max-width:1200px;margin:0 auto;display:grid;gap:28px}
+.vi-h h2{display:flex;flex-direction:column;margin-top:14px}
+.big{font:800 clamp(130px,40vw,250px)/.82 var(--f-d);color:var(--cream);letter-spacing:-.04em}
+.vi-h .t2{font-size:clamp(30px,8.4vw,52px);line-height:1.04;max-width:12ch;margin-top:6px}
+.vi-now{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:10px 14px;border:1px solid rgba(246,234,217,.25);font:600 13px/1.3 var(--f-b);letter-spacing:.06em}
+.vi-now i{width:10px;height:10px;background:var(--mute);flex:none}
+.vi-now.on i{background:var(--wa);box-shadow:0 0 0 4px rgba(37,211,102,.2)}
+.vi-now.off i{background:var(--peach)}
+.vi-info address{display:flex;gap:12px;font:normal 600 19px/1.4 var(--f-b);margin-bottom:22px}
+.vi-info address svg{width:24px;height:24px;color:var(--peach);flex:none;margin-top:2px}
+.vi-days{list-style:none;border-top:1px solid rgba(246,234,217,.16)}
+.vi-days li{display:flex;justify-content:space-between;padding:10px 4px;border-bottom:1px solid rgba(246,234,217,.16);font-size:16px;color:var(--mute)}
+.vi-days b{font-weight:600;color:var(--cream)}
+.vi-days li.today{background:var(--ink3);padding:10px 12px;color:var(--cream)}
+.vi-days li.today b::after{content:" · hoy";color:var(--peach);font-weight:600}
+.vi-map{position:relative;padding:8px;background:url(../img/azulejo.svg) 0 0/16px 16px}
+.vi-map iframe{display:block;width:100%;height:340px;border:0;background:var(--ink2);filter:saturate(.85)}
+.vi-map figcaption{position:absolute;left:8px;right:8px;bottom:8px;background:rgba(14,26,51,.92);padding:10px 14px;font:600 11px/1.3 var(--f-b);letter-spacing:.16em;text-transform:uppercase;color:var(--cream)}
+.vi-cta{display:flex;flex-wrap:wrap;gap:12px}
+@media (min-width:900px){.visita{padding:96px max(var(--gut),4vw)}
+.vi-in{grid-template-columns:1fr 1.15fr;grid-template-areas:"h map" "info map" "cta map";gap:30px 64px;align-items:start}
+.vi-h{grid-area:h}.vi-info{grid-area:info}.vi-cta{grid-area:cta}
+.vi-map{grid-area:map;align-self:stretch}.vi-map iframe{height:100%;min-height:560px}}

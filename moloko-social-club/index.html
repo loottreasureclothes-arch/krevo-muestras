@@ -19,14 +19,16 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/passion-one-900.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/familjen-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="site.css?v=1791092901">
+<link rel="stylesheet" href="site.css?v=1791105032">
 <link rel="stylesheet" href="sections/01-hero.css?v=1791092912">
 <link rel="stylesheet" href="sections/02-pizza.css?v=1791092974">
 <link rel="stylesheet" href="sections/03-barril.css?v=1791093165">
 <link rel="stylesheet" href="sections/04-musica.css?v=1791092912">
-<link rel="stylesheet" href="sections/05-mesas.css?v=1791092763">
-<link rel="stylesheet" href="sections/06-visita.css?v=1791092763">
-<link rel="stylesheet" href="sections/07-pendientes.css?v=1791092763">
+<link rel="stylesheet" href="sections/05-mesas.css?v=1791105038">
+<link rel="stylesheet" href="sections/06-resenas.css?v=1791105064">
+<link rel="stylesheet" href="sections/07-recorrido.css?v=1791105223">
+<link rel="stylesheet" href="sections/08-visita.css?v=1791105119">
+<link rel="stylesheet" href="sections/09-pendientes.css?v=1791092763">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Moloko Social Club","servesCuisine":["Pizza","Cerveza artesanal","Cocteles"],"priceRange":"$200-300","telephone":"+524495835385","url":"https://loottreasureclothes-arch.github.io/krevo-muestras/moloko-social-club/","image":"https://loottreasureclothes-arch.github.io/krevo-muestras/moloko-social-club/og.jpg","address":{"@type":"PostalAddress","streetAddress":"Nieto 430, Centro","addressLocality":"Aguascalientes","addressRegion":"Ags.","postalCode":"20000","addressCountry":"MX"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"14:00","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"14:00","closes":"00:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"14:00","closes":"22:00"}],"sameAs":["https://facebook.com/moloko.ags","https://instagram.com/moloko.socialclub"]}</script>
 </head>
 <body>
@@ -38,7 +40,8 @@
   <a href="#pizza">Arma tu pizza</a>
   <a href="#barril">La barra</a>
   <a href="#musica">La música</a>
-  <a href="#mesas">Las mesas</a>
+  <a href="#resenas">Reseñas</a>
+  <a href="#recorrido">El lugar</a>
   <a href="#visita">Visítanos</a>
 </nav>
 <main>
@@ -88,6 +91,7 @@
   <div class="br-tx wrap">
     <h2 class="br-h2"><span data-reveal>Barril.</span><span data-reveal style="--d:.1s">Mezcal.</span><span class="t2" data-reveal style="--d:.2s">Mojito.</span></h2>
     <p class="br-p" data-reveal style="--d:.3s">Cerveza artesanal por litro y cocteles de la casa. La carta completa está en la mesa.</p>
+    <a class="lk-arrow br-lk" data-reveal style="--d:.36s" href="https://menu.fu.do/molokodelivery" target="_blank" rel="noopener">Pedir a domicilio <span aria-hidden="true">&rarr;</span></a>
   </div>
 </section>
 
@@ -97,7 +101,8 @@
     <p class="eyebrow" data-reveal>Lo que dicen en Google</p>
     <div class="mu-num" data-reveal style="--d:.06s" aria-hidden="true">71</div>
     <h2 class="h2" data-reveal style="--d:.12s"><span>reseñas hablan</span><span class="t2">de la música.</span></h2>
-    <p class="lede" data-reveal style="--d:.18s">4.5 en Google con 5,456 reseñas. Después de la música, lo que más se nombra: la cerveza artesanal y los 4 quesos.</p>
+    <p class="lede" data-reveal style="--d:.18s">Después de la música, lo que más se nombra: la cerveza artesanal y los 4 quesos.</p>
+    <a class="lk-arrow mu-lk" data-reveal style="--d:.24s" href="#resenas">Leer lo que dicen <span aria-hidden="true">&rarr;</span></a>
   </div>
 </section>
 
@@ -110,26 +115,99 @@
     <figure class="ms-big" data-reveal style="--d:.1s"><img src="img/tabla-quesos-960.webp" srcset="img/tabla-quesos-480.webp 480w, img/tabla-quesos-960.webp 960w, img/tabla-quesos-1600.webp 1600w, img/tabla-quesos-full.webp 2048w" sizes="(min-width:900px) 52vw, 100vw" width="960" height="720" alt="Tabla de quesos, frutas y pretzels para compartir" loading="lazy"></figure>
     <figure class="ms-in" data-reveal style="--d:.16s"><img src="img/interior-960.webp" srcset="img/interior-480.webp 480w, img/interior-960.webp 960w, img/interior-1600.webp 1600w, img/interior-full.webp 2048w" sizes="(min-width:900px) 24vw, 46vw" width="960" height="720" alt="Interior del local con mesas de madera" loading="lazy"></figure>
     <figure class="ms-pz" data-reveal style="--d:.22s"><img src="img/pizza-pepperoni-960.webp" srcset="img/pizza-pepperoni-480.webp 480w, img/pizza-pepperoni-960.webp 960w, img/pizza-pepperoni-1600.webp 1600w" sizes="(min-width:900px) 24vw, 46vw" width="960" height="1707" alt="Pizza de pepperoni recién salida del horno" loading="lazy"></figure>
+    <a class="lk-arrow ms-lk" data-reveal href="#recorrido">Ver el lugar <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</section>
+
+<section class="rs" id="resenas">
+  <div class="wrap rs-top">
+    <div class="rs-head">
+      <p class="eyebrow" data-reveal>Lo que dejan escrito</p>
+      <h2 class="h2" data-reveal style="--d:.06s"><span>Lo dicen</span><span class="t2">en la mesa.</span></h2>
+    </div>
+    <div class="rs-score" data-reveal style="--d:.12s">
+      <b>4.5</b>
+      <div><span class="rs-gst" aria-hidden="true">★★★★<i>★</i></span><p>5,456 opiniones en Google</p></div>
+    </div>
+  </div>
+  <div class="rs-rail" data-reveal style="--d:.16s">
+    <ul class="rs-track" id="rs-track" aria-label="Reseñas de clientes">
+      <li class="rs-c rs-c" style="--r:-3deg">
+        <figure><p class="rs-st" aria-label="5 de 5">★★★★★<i></i></p><blockquote>&ldquo;Me gustó mucho la instalaciones de la terraza y la comida riquísima además de q están a precio accesible&rdquo;</blockquote><figcaption><b>Irma R</b><span>TripAdvisor · abr 2023</span></figcaption></figure>
+      </li>
+      <li class="rs-c rs-l" style="--r:2deg">
+        <figure><p class="rs-st" aria-label="5 de 5">★★★★★<i></i></p><blockquote>&ldquo;Sin palabras! una pizza riquisima, aun mas si la acompanas con una Buena ensalada y su cerveza artisanal.&rdquo;</blockquote><figcaption><b>ramirod480</b><span>TripAdvisor · dic 2017</span></figcaption></figure>
+      </li>
+      <li class="rs-c rs-o" style="--r:-1.5deg">
+        <figure><p class="rs-st" aria-label="4 de 5">★★★★<i>★</i></p><blockquote>&ldquo;La pizza está buena es de masa delgada y buen sabor, tienen opciones para vegetarianos.&rdquo;</blockquote><figcaption><b>Andrea L</b><span>TripAdvisor · sep 2020</span></figcaption></figure>
+      </li>
+      <li class="rs-c rs-c" style="--r:3deg">
+        <figure><p class="rs-st" aria-label="5 de 5">★★★★★<i></i></p><blockquote>&ldquo;Excelente calidad en los alimentos, buen servicio e instalaciones agradables. Aunque por el tamaño de local se tiene que esperar un poco, vale la pena.&rdquo;</blockquote><figcaption><b>Paco F</b><span>TripAdvisor · dic 2017</span></figcaption></figure>
+      </li>
+      <li class="rs-c rs-l" style="--r:-2.5deg">
+        <figure><p class="rs-st" aria-label="4 de 5">★★★★<i>★</i></p><blockquote>&ldquo;Muy buena la ensalada cesar de pollo y la pizza Moloko que es la especialidad la variedad de cerveza muy buena&rdquo;</blockquote><figcaption><b>Julio G</b><span>TripAdvisor · dic 2017</span></figcaption></figure>
+      </li>
+      <li class="rs-c rs-o" style="--r:1.5deg">
+        <figure><p class="rs-st" aria-label="4 de 5">★★★★<i>★</i></p><blockquote>&ldquo;Moloko se ubica en una casa colonial, cuyo patio central ha sido bien acondicionado.&rdquo;</blockquote><figcaption><b>Miguemex</b><span>TripAdvisor · ago 2021</span></figcaption></figure>
+      </li>
+      <li class="rs-c rs-c" style="--r:-1deg">
+        <figure><p class="rs-st" aria-label="5 de 5">★★★★★<i></i></p><blockquote>&ldquo;Una de las mejores de la ciudad.&rdquo;</blockquote><figcaption><b>Karla A</b><span>TripAdvisor · jul 2017</span></figcaption></figure>
+      </li>
+      <li class="rs-c rs-l" style="--r:2.5deg">
+        <figure><p class="rs-st" aria-label="5 de 5">★★★★★<i></i></p><blockquote>&ldquo;Muy rico y buen precio... el sabor lo vale bastante&rdquo;</blockquote><figcaption><b>jorgejimvillbs</b><span>TripAdvisor · abr 2018</span></figcaption></figure>
+      </li>
+    </ul>
+  </div>
+  <div class="wrap rs-foot">
+    <div class="rs-nav"><button type="button" class="rs-b" data-dir="-1" aria-label="Reseña anterior">&larr;</button><button type="button" class="rs-b" data-dir="1" aria-label="Reseña siguiente">&rarr;</button></div>
+    <a class="btn-nav" href="https://www.google.com/maps?cid=3830784698240425093" target="_blank" rel="noopener">Ver todas en Google</a>
+  </div>
+</section>
+
+<section class="rc" id="recorrido">
+  <div class="wrap">
+    <div class="rc-head">
+      <p class="eyebrow" data-reveal>El recorrido</p>
+      <h2 class="h2" data-reveal style="--d:.06s"><span>Pasa,</span><span class="t2">hay mesa.</span></h2>
+    </div>
+    <div class="rc-grid">
+    <figure class="rc-f rc-a" data-reveal style="--d:0.00s"><img src="img/terraza-960.webp" srcset="img/terraza-480.webp 480w, img/terraza-960.webp 960w, img/terraza-1600.webp 1600w, img/terraza-full.webp 2048w" sizes="(min-width:900px) 34vw, 60vw" width="960" height="720" alt="Terraza con sombrillas y mesas sobre la calle Nieto"></figure>
+    <figure class="rc-f rc-b" data-reveal style="--d:0.06s"><img src="img/mural-960.webp" srcset="img/mural-480.webp 480w, img/mural-960.webp 960w, img/mural-full.webp 1536w" sizes="(min-width:900px) 34vw, 60vw" width="960" height="1280" alt="Mural de un rostro junto a una mesa redonda"></figure>
+    <figure class="rc-f rc-c" data-reveal style="--d:0.12s"><img src="img/coctel-flor-960.webp" srcset="img/coctel-flor-480.webp 480w, img/coctel-flor-960.webp 960w, img/coctel-flor-1600.webp 1440w" sizes="(min-width:900px) 34vw, 60vw" width="960" height="1280" alt="Coctel con fruta y flor"></figure>
+    <figure class="rc-f rc-d" data-reveal style="--d:0.18s"><img src="img/old-fashioned-960.webp" srcset="img/old-fashioned-480.webp 480w, img/old-fashioned-960.webp 960w, img/old-fashioned-1600.webp 1536w" sizes="(min-width:900px) 34vw, 60vw" width="960" height="1280" alt="Old fashioned sobre la barra de madera"></figure>
+    <figure class="rc-f rc-e" data-reveal style="--d:0.24s"><img src="img/pizza-espinaca-960.webp" srcset="img/pizza-espinaca-480.webp 480w, img/pizza-espinaca-960.webp 960w, img/pizza-espinaca-1600.webp 1600w" sizes="(min-width:900px) 34vw, 60vw" width="960" height="720" alt="Pizza con espinaca, champiñón y cebolla morada"></figure>
+    <figure class="rc-f rc-h" data-reveal style="--d:0.30s"><img src="img/totopos-960.webp" srcset="img/totopos-480.webp 480w, img/totopos-960.webp 960w, img/totopos-1600.webp 1600w" sizes="(min-width:900px) 34vw, 60vw" width="960" height="720" alt="Totopos con salsa para la mesa"></figure>
+    <figure class="rc-f rc-g" data-reveal style="--d:0.36s"><img src="img/coctel-espuma-960.webp" srcset="img/coctel-espuma-480.webp 480w, img/coctel-espuma-960.webp 960w, img/coctel-espuma-1600.webp 1076w" sizes="(min-width:900px) 34vw, 60vw" width="960" height="1827" alt="Coctel espumoso con naranja deshidratada y flor"></figure>
+    </div>
+    <a class="btn-nav rc-cta" href="https://instagram.com/moloko.socialclub" target="_blank" rel="noopener">Más fotos en Instagram</a>
   </div>
 </section>
 
 <section class="vi" id="visita" data-hide-wa>
   <div class="wrap vi-grid">
-    <figure class="vi-ph" data-reveal><img src="img/terraza-960.webp" srcset="img/terraza-480.webp 480w, img/terraza-960.webp 960w, img/terraza-1600.webp 1600w, img/terraza-full.webp 2048w" sizes="(min-width:900px) 50vw, 100vw" width="960" height="720" alt="Terraza con sombrillas y mesas de madera sobre la calle" loading="lazy"></figure>
+    <div class="vi-map" data-reveal>
+      <iframe src="https://www.google.com/maps?q=Moloko+Social+Club+Nieto+430+Centro+Aguascalientes&amp;output=embed" loading="lazy" title="Mapa de Moloko Social Club" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <span class="vi-coaster" aria-hidden="true"><small>Calle</small><b>Nieto</b><small>430</small></span>
+    </div>
     <div class="vi-tx">
       <p class="eyebrow" data-reveal>Aquí es</p>
       <h2 class="h2" data-reveal style="--d:.06s"><span>Nieto 430,</span><span class="t2">Centro.</span></h2>
       <p class="vi-addr" data-reveal style="--d:.1s">Zona Centro, 20000 Aguascalientes. Para comer aquí, llevar o pedir a domicilio.</p>
-      <dl class="vi-hr" data-reveal style="--d:.14s">
-        <div><dt>Lunes</dt><dd>Cerrado</dd></div>
-        <div><dt>Mar a jue</dt><dd>2 pm a 11 pm</dd></div>
-        <div><dt>Vie y sáb</dt><dd>2 pm a 12 am</dd></div>
-        <div><dt>Domingo</dt><dd>2 pm a 10 pm</dd></div>
+      <p class="vi-now" id="vi-now" data-reveal style="--d:.12s" aria-live="polite"><i></i><span>Martes a domingo desde las 2 pm</span></p>
+      <dl class="vi-hr" id="vi-hr" data-reveal style="--d:.14s">
+        <div data-d="1"><dt>Lunes</dt><dd>Cerrado</dd></div>
+        <div data-d="2"><dt>Martes</dt><dd>2 pm a 11 pm</dd></div>
+        <div data-d="3"><dt>Miércoles</dt><dd>2 pm a 11 pm</dd></div>
+        <div data-d="4"><dt>Jueves</dt><dd>2 pm a 11 pm</dd></div>
+        <div data-d="5"><dt>Viernes</dt><dd>2 pm a 12 am</dd></div>
+        <div data-d="6"><dt>Sábado</dt><dd>2 pm a 12 am</dd></div>
+        <div data-d="0"><dt>Domingo</dt><dd>2 pm a 10 pm</dd></div>
       </dl>
       <div class="vi-cta" data-reveal style="--d:.2s">
-        <a class="btn-wa" href="#" data-wa="Hola Moloko, quiero saber si hay mesa hoy."><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#0b3d1f" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.7.9 3.5 1.4 5.4 1.4C24 28.3 28 23 28 16.4 28 9 22.6 3 16 3zm0 22.4c-1.7 0-3.3-.5-4.7-1.3l-.4-.2-3.5.9.9-3.4-.2-.4a9.6 9.6 0 0 1-1.5-5.1c0-5.3 4.3-9.6 9.5-9.6s9.5 4.3 9.5 9.6-4.3 9.5-9.6 9.5zm5.3-7.1c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1a7.8 7.8 0 0 1-3.9-3.4c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5 4.5 1.9.8 2.6.9 3.5.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>Preguntar por una mesa</a>
-        <a class="btn-nav" href="https://www.google.com/maps/search/?api=1&amp;query=Moloko+Social+Club+Nieto+430+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
-        <a class="btn-nav" href="https://menu.fu.do/molokodelivery" target="_blank" rel="noopener">Pedir a domicilio</a>
+        <a class="btn-wa" href="#" data-wa="Hola Moloko, quiero saber si hay mesa hoy."><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#0b3d1f" d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.3L4 29l8-2.1c1.7.9 3.5 1.4 5.4 1.4C24 28.3 28 23 28 16.4 28 9 22.6 3 16 3zm0 22.4c-1.7 0-3.3-.5-4.7-1.3l-.4-.2-3.5.9.9-3.4-.2-.4a9.6 9.6 0 0 1-1.5-5.1c0-5.3 4.3-9.6 9.5-9.6s9.5 4.3 9.5 9.6-4.3 9.5-9.6 9.5zm5.3-7.1c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1a7.8 7.8 0 0 1-3.9-3.4c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5 4.5 1.9.8 2.6.9 3.5.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg> Preguntar por una mesa</a>
+        <a class="btn-nav" href="https://www.google.com/maps?cid=3830784698240425093" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn-nav" href="tel:+524495835385">Llamar 449 583 5385</a>
+        <a class="lk-arrow vi-lk" href="https://menu.fu.do/molokodelivery" target="_blank" rel="noopener">Pedir a domicilio <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </div>
@@ -142,7 +220,7 @@
     <ul class="pe-ul">
       <li>Su logo en grande</li>
       <li>Fotos de la pizza Andrea y de los 4 quesos</li>
-      <li>Ocho reseñas con nombre de clientes</li>
+      <li>Reseñas de Google que quieran destacar</li>
       <li>Confirmar si el 449 583 5385 es WhatsApp</li>
       <li>Link de su playlist de Spotify</li>
       <li>Precios de Andrea, 4 quesos, pizzas blancas y bebidas</li>
@@ -155,6 +233,7 @@
   <div class="wrap">
     <span class="mk-coaster big">M</span>
     <p class="foot-addr">Moloko Social Club<br>Nieto 430, Centro<br>20000 Aguascalientes, Ags.</p>
+    <p class="foot-addr"><a href="tel:+524495835385">449 583 5385</a><br>Mar a jue 2 pm a 11 pm<br>Vie y sáb 2 pm a 12 am · Dom 2 pm a 10 pm<br>Lunes cerrado</p>
     <div class="foot-soc">
       <a href="https://facebook.com/moloko.ags" target="_blank" rel="noopener" aria-label="Facebook de Moloko"><svg viewBox="0 0 44 44" width="44" height="44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M23.6 33V23.2h3.2l.5-3.8h-3.7v-2.4c0-1.1.3-1.8 1.9-1.8h2v-3.4c-.3 0-1.5-.1-2.9-.1-2.9 0-4.8 1.7-4.8 4.9v2.8h-3.2v3.8h3.2V33z" fill="currentColor"/></svg></a>
       <a href="https://instagram.com/moloko.socialclub" target="_blank" rel="noopener" aria-label="Instagram de Moloko"><svg viewBox="0 0 44 44" width="44" height="44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="12.5" y="12.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="22" r="4.6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="27.6" cy="16.4" r="1.3" fill="currentColor"/></svg></a>
@@ -166,5 +245,7 @@
 <script src="site.js?v=1791092632" defer></script>
 <script src="sections/02-pizza.js?v=1791092724" defer></script>
 <script src="sections/03-barril.js?v=1791092763" defer></script>
+<script src="sections/06-resenas.js?v=1791105064" defer></script>
+<script src="sections/08-visita.js?v=1791105119" defer></script>
 </body>
 </html>

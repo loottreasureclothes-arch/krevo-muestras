@@ -17,3 +17,9 @@ out('salon','maps-10.jpg',(0,0,0.64,1))
 out('lateral','maps-12.jpg')
 out('sticker','maps-17.jpg',(0.08,0.04,0.92,0.68))
 out('zarza','maps-16.jpg')
+# Correccion 3: galeria
+if __name__=='__main__' and os.environ.get('GAL'):
+    out('vainilla','maps-03.jpg',(0,0.14,0.82,1),(480,960,1400))
+    out('coca','maps-04.jpg',(0.04,0.2,1,1),(480,960,1400))
+    out('puerta','maps-13.jpg',(0,0,1,1),(480,960,1400))
+    out('banca','maps-14.jpg',(0,0.05,1,1),(480,960,1400))

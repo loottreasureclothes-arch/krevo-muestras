@@ -1,0 +1,2 @@
+(function(){var s=document.querySelector(".mc-rec-strip"),n=document.getElementById("mc-rec-i");if(!s||!n)return;var f=s.querySelectorAll(".mc-rf"),r=null;
+s.addEventListener("scroll",function(){if(r)return;r=requestAnimationFrame(function(){r=null;var x=s.scrollLeft+10,k=0;for(var i=0;i<f.length;i++){if(f[i].offsetLeft-s.offsetLeft<=x)k=i;}if(s.scrollLeft+s.clientWidth>=s.scrollWidth-4)k=f.length-1;n.textContent=k+1;});},{passive:true});})();

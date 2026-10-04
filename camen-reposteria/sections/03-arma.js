@@ -7,8 +7,8 @@
   var SAB = [["Chocolate", "#4a2a1c"], ["Moro de Venecia", "#5a3524"], ["Mármol", "#8a6a55"], ["Zanahoria", "#c98b4e"], ["Moka", "#8a6246"], ["Tres leches", "#f1e4cc"], ["Nuez", "#e4cfa6"], ["Naranja", "#f0cf8a"], ["Vainilla, chocolate y almendra", "#b88a64"], ["Piña-coco", "#f4ecd6"], ["Moro Valenciano", "#6b4330"]];
   var DIAS = ["Hoy", "Mañana", "Otro día"];
   var SUC = [{ n: "Zaragoza", full: "Matriz Zaragoza", num: "524499121601", tel: "449 912 1601" }, { n: "Fundición", full: "Fundición", num: "524499149636", tel: "449 914 9636" }, { n: "Américas", full: "Américas", num: "524495362673", tel: "449 536 2673" }];
-  /* Únicos precios publicados (Uber Eats, sucursal Zaragoza) */
-  var PRECIOS = { "Chocolate|16": 602, "Tres leches|8": 401 };
+  /* Precios publicados en Uber Eats (carta Fundición; tres leches de Zaragoza) */
+  var PRECIOS = { "Chocolate|8": 401, "Chocolate|12": 519, "Chocolate|16": 602, "Mármol|8": 401, "Mármol|16": 602, "Vainilla, chocolate y almendra|8": 401, "Vainilla, chocolate y almendra|16": 602, "Moro de Venecia|12": 519, "Zanahoria|8": 366, "Nuez|4": 266, "Nuez|12": 519, "Naranja|4": 248, "Tres leches|8": 401 };
   var st = { n: 8, s: 5, d: 0, c: 0 };
   var $ = function (id) { return document.getElementById(id); };
 
@@ -58,7 +58,7 @@
 
   function precio() {
     var p = PRECIOS[SAB[st.s][0] + "|" + st.n], el = $("precio");
-    el.innerHTML = p ? '<b>$' + p + '</b>en Uber Eats, sucursal Zaragoza' : 'Pregunta el precio. Te lo confirman por WhatsApp.';
+    el.innerHTML = p ? '<b>$' + p + '</b>precio publicado en Uber Eats' : 'Pregunta el precio. Te lo confirman por WhatsApp.';
   }
 
   function msg() {

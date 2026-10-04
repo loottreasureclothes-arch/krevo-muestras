@@ -1,13 +1,23 @@
-.local{background:var(--wine2)}
-.lc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
-.lc img{width:100%;object-fit:cover;border:2px solid rgba(217,164,65,.5)}
-.lc-a{grid-column:1/-1;aspect-ratio:4/3;border-radius:999px 999px 8px 8px}
-.lc-a{border-radius:140px 140px 8px 8px}
-.lc-b,.lc-c{aspect-ratio:4/5;border-radius:8px}
-.lc-c{margin-top:26px}
-.lc-p{margin-top:22px;font-size:17px;opacity:.85}
+.local{background:var(--wine2);padding-left:0;padding-right:0}
+.local .wrap{padding:0 20px}
+.gl-p{margin-top:14px;font-size:17px;opacity:.85;max-width:30ch}
+.gl{position:relative;display:flex;align-items:flex-end;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:30px 20px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gl::-webkit-scrollbar{display:none}
+.gl-i{flex:none;scroll-snap-align:center;position:relative}
+.gl-i img{width:100%;height:100%;object-fit:cover;border:2px solid rgba(217,164,65,.55);border-radius:8px;background:var(--wine)}
+.g-arc img{border-radius:160px 160px 8px 8px}
+.g-w{width:82vw;height:62vw}
+.g-t{width:56vw;height:92vw}
+.g-s{width:66vw;height:80vw}
+.gl-i figcaption{position:absolute;left:12px;bottom:12px;background:var(--wine);color:var(--cream);font:700 11px var(--f-b);letter-spacing:.18em;text-transform:uppercase;padding:7px 10px;border-left:3px solid var(--gold)}
+.gl-ft{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px;flex-wrap:wrap}
+.gl-nav{display:flex;align-items:center;gap:12px;font-variant-numeric:lining-nums tabular-nums;font-weight:700;font-size:14px;letter-spacing:.12em}
+.gl-b{width:48px;height:48px;border:1px solid var(--gold);background:none;color:var(--gold);font-size:20px;cursor:pointer;transition:background .2s,color .2s}
+.gl-b:hover{background:var(--gold);color:var(--wine)}
 @media (min-width:820px){
- .lc{grid-template-columns:1.8fr 1fr 1fr;align-items:start;gap:20px}
- .lc-a{grid-column:auto;border-radius:260px 260px 8px 8px;aspect-ratio:1/1.1}
- .lc-c{margin-top:60px}
+ .local .wrap{padding:0 40px}
+ .gl{padding:40px max(40px,calc((100vw - 1180px)/2)) 10px;gap:20px}
+ .g-w{width:520px;height:390px}
+ .g-t{width:300px;height:500px}
+ .g-s{width:380px;height:460px}
 }

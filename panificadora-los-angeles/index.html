@@ -17,14 +17,16 @@
 <link rel="preload" href="fonts/young-serif.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Bakery","name":"Panificadora Los Ángeles","telephone":"+524499159943","address":{"@type":"PostalAddress","streetAddress":"Venustiano Carranza 110A, Zona Centro","addressLocality":"Aguascalientes","addressRegion":"Ags.","postalCode":"20000","addressCountry":"MX"},"openingHours":"Mo-Su 08:00-20:30","servesCuisine":"Pan integral y de alta fibra"}</script>
 <script>(function(){var d=document.documentElement;if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){d.classList.add("js-rv");setTimeout(function(){var a=document.querySelectorAll("[data-reveal],[data-door]");for(var i=0;i<a.length;i++)a[i].classList.add("is-in")},1600)}})();</script>
-<link rel="stylesheet" href="site.css?v=1791092560">
-<link rel="stylesheet" href="sections/01-inicio.css?v=1791092988">
+<link rel="stylesheet" href="site.css?v=1791104587">
+<link rel="stylesheet" href="sections/01-inicio.css?v=1791104334">
 <link rel="stylesheet" href="sections/02-bolsa.css?v=1791092988">
-<link rel="stylesheet" href="sections/03-horno.css?v=1791092338">
-<link rel="stylesheet" href="sections/04-sin-azucar.css?v=1791092338">
-<link rel="stylesheet" href="sections/05-opiniones.css?v=1791092338">
-<link rel="stylesheet" href="sections/06-visita.css?v=1791092988">
-<link rel="stylesheet" href="sections/07-todo-listo.css?v=1791092338">
+<link rel="stylesheet" href="sections/03-horno.css?v=1791104587">
+<link rel="stylesheet" href="sections/04-sin-azucar.css?v=1791104334">
+<link rel="stylesheet" href="sections/05-opiniones.css?v=1791104408">
+<link rel="stylesheet" href="sections/06-recorrido.css?v=1791104587">
+<link rel="stylesheet" href="sections/07-visita.css?v=1791104446">
+<link rel="stylesheet" href="sections/08-preguntas.css?v=1791104446">
+<link rel="stylesheet" href="sections/09-todo-listo.css?v=1791092338">
 </head>
 <body>
 <header class="bar" id="bar">
@@ -36,7 +38,9 @@
   <a href="#horno">Del horno</a>
   <a href="#sin-azucar">Sin azúcar</a>
   <a href="#opiniones">Opiniones</a>
+  <a href="#recorrido">El local</a>
   <a href="#visita">Visítanos</a>
+  <a href="#preguntas">Preguntas</a>
 </nav>
 <main>
 <section class="hero" id="inicio">
@@ -46,8 +50,11 @@
   <div class="hero-txt">
     <h1><span>Pan de alta fibra,</span><em>y olor a toda la calle.</em></h1>
     <p class="hero-sub">Venustiano Carranza 110A, Centro.<br>Todos los días de 8:00 a 20:30.</p>
-    <p class="hero-rate"><b>4.7</b> en Google, 565 opiniones</p>
-    <a class="btn-nav" href="#bolsa">Arma tu bolsa</a>
+    <p class="hero-rate"><b>4.7</b> en Google, 565 opiniones · desde 1996</p>
+    <div class="hero-btns">
+      <a class="btn-wa" data-wa="Hola, quiero apartar pan en Panificadora Los Ángeles. ¿Qué tienen hoy?" href="https://wa.me/524499159943">Aparta por WhatsApp</a>
+      <a class="btn-nav" href="#bolsa">Arma tu bolsa</a>
+    </div>
   </div>
 </section>
 
@@ -86,7 +93,8 @@
 
 <section class="horno" id="horno">
   <img src="img/horno-960.webp" srcset="img/horno-480.webp 480w,img/horno-960.webp 960w,img/horno-1600.webp 1600w" sizes="100vw" width="1600" height="720" alt="El horno y la producción de Panificadora Los Ángeles">
-  <h2 data-reveal>Del horno<span class="tone2">al mostrador.</span></h2>
+  <div class="horno-txt"><h2 data-reveal>Del horno<span class="tone2">al mostrador.</span></h2>
+  <a class="horno-link" href="#bolsa">Elige tu pan <span aria-hidden="true">→</span></a></div>
 </section>
 
 <section class="sec sinaz" id="sin-azucar">
@@ -103,43 +111,117 @@
         <li>Sin gluten</li>
       </ul>
       <p class="quote" data-reveal>“Pan integral de lo más delicioso.”<span>Opinión en Google</span></p>
+      <a class="btn-wa sz-btn" data-wa="Hola, ¿qué pan sin azúcar o integral tienen hoy en Panificadora Los Ángeles?" href="https://wa.me/524499159943">Pregunta qué hay hoy</a>
     </div>
   </div>
 </section>
 
 <section class="sec ops" id="opiniones">
-  <div class="wrap ops-grid">
-    <div class="gran" data-reveal><b>4.7</b><span>565 opiniones en Google</span></div>
-    <div class="ops-list">
-      <blockquote data-reveal><p>“Me agrada mucho esta pastelería, es higiénica, el pan es de muy buena calidad y delicioso. Mis preferidos son los cuernitos rellenos de cajeta.”</p><cite><svg class="st" viewBox="0 0 90 16" width="90" height="16" aria-label="5 estrellas"><use href="#s5"/></svg>Luis Fernando Martínez Gómez</cite></blockquote>
-      <blockquote data-reveal><p>“Muy rico, amo que tengan opciones sin azúcar, ¡No es solo para diabéticos!”</p><cite><svg class="st" viewBox="0 0 90 16" width="90" height="16" aria-label="5 estrellas"><use href="#s5"/></svg>Isa</cite></blockquote>
-      <blockquote data-reveal><p>“El pan es muy rico.”</p><cite><svg class="st" viewBox="0 0 90 16" width="90" height="16" aria-label="4 estrellas"><use href="#s4"/></svg>Marcos Solis</cite></blockquote>
+  <div class="wrap ops-top">
+    <div class="gran" data-reveal>
+      <b>4.7</b>
+      <svg class="st-big" viewBox="0 0 90 16" width="160" height="28" aria-label="4.7 de 5 estrellas"><use href="#s5"/></svg>
+      <span>565 opiniones en Google</span>
+    </div>
+    <div class="ops-head">
+      <h2 data-reveal>La calle ya<span class="tone2">lo dijo.</span></h2>
+      <p class="ops-sub" data-reveal>Lo que escriben quienes ya se llevaron su bolsa.</p>
     </div>
   </div>
+  <div class="tk-rail" id="tkRail" tabindex="0" aria-label="Opiniones en Google, desliza para ver más">
+    <figure class="tk tk-a"><blockquote>“Me agrada mucho esta pastelería, es higiénica, el pan es de muy buena calidad y delicioso. Mis preferidos son los cuernitos rellenos de cajeta.”</blockquote><figcaption><svg class="st" viewBox="0 0 90 16" width="90" height="16" aria-label="5 estrellas"><use href="#s5c"/></svg><b>Luis Fernando Martínez Gómez</b><small>Google · Local Guide</small></figcaption></figure>
+    <figure class="tk tk-b"><blockquote>“Las galletas de naranja sumamente ricas, me encantaron.”</blockquote><figcaption><b>Destacada en Google Maps</b><small>Resumen de opiniones</small></figcaption></figure>
+    <figure class="tk tk-c"><blockquote>“Amo que tengan opciones sin azúcar, ¡no es solo para diabéticos! Compramos rosca de reyes sin azúcar nevada y a todos nos encantó.”</blockquote><figcaption><svg class="st" viewBox="0 0 90 16" width="90" height="16" aria-label="5 estrellas"><use href="#s5c"/></svg><b>Isa</b><small>Google · Local Guide</small></figcaption></figure>
+    <figure class="tk tk-a"><blockquote>“Bien organizado, muy limpio. El pan muy rico y muy bien presentado.”</blockquote><figcaption><b>Destacada en Google Maps</b><small>Resumen de opiniones</small></figcaption></figure>
+    <figure class="tk tk-b"><blockquote>“El pan es muy rico.”</blockquote><figcaption><svg class="st" viewBox="0 0 90 16" width="90" height="16" aria-label="4 estrellas"><use href="#s4c"/></svg><b>Marcos Solis</b><small>Google</small></figcaption></figure>
+    <figure class="tk tk-c"><blockquote>“Pan delicioso y las mini roscas. Buenos precios.”</blockquote><figcaption><b>Destacada en Google Maps</b><small>Resumen de opiniones</small></figcaption></figure>
+    <figure class="tk tk-a"><blockquote>“El pan es delicioso, un poco caro pero lo vale, está muy rico.”</blockquote><figcaption><b>Opinión en Google</b><small>Resultados locales</small></figcaption></figure>
+  </div>
+  <div class="wrap tk-ctl">
+    <button class="tk-arr" data-d="-1" aria-label="Opinión anterior">←</button>
+    <span class="tk-n" id="tkN">1 / 7</span>
+    <button class="tk-arr" data-d="1" aria-label="Opinión siguiente">→</button>
+  </div>
+  <div class="wrap temas" data-reveal>
+    <p class="eyebrow">Lo que más mencionan en sus 565 opiniones</p>
+    <ol class="temas-l">
+      <li style="--v:100%"><span>Pan integral</span><b>50</b></li>
+      <li style="--v:40%"><span>Sabor</span><b>20</b></li>
+      <li style="--v:28%"><span>Azúcar</span><b>14</b></li>
+      <li style="--v:12%"><span>Cajeta</span><b>6</b></li>
+      <li style="--v:10%"><span>Conchas</span><b>5</b></li>
+      <li style="--v:10%"><span>Pan de caja</span><b>5</b></li>
+    </ol>
+    <a class="btn-nav" href="https://maps.google.com/?cid=8572562567373437489" target="_blank" rel="noopener">Ver todas en Google</a>
+  </div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-    <g id="s5" fill="#f9bd6e"><path id="st1" d="M8 0l2.3 5.2 5.7.5-4.3 3.800 1.300 5.500L8 12l-5 3 1.300-5.500L0 5.700l5.700-.5z"/><use href="#st1" x="18"/><use href="#st1" x="36"/><use href="#st1" x="54"/><use href="#st1" x="72"/></g>
+    <path id="st1" d="M8 0l2.3 5.2 5.7.5-4.3 3.8 1.3 5.5L8 12l-5 3 1.3-5.5L0 5.7l5.7-.5z"/>
+    <g id="s5" fill="#f9bd6e"><use href="#st1"/><use href="#st1" x="18"/><use href="#st1" x="36"/><use href="#st1" x="54"/><use href="#st1" x="72"/></g>
     <g id="s4"><g fill="#f9bd6e"><use href="#st1"/><use href="#st1" x="18"/><use href="#st1" x="36"/><use href="#st1" x="54"/></g><use href="#st1" x="72" fill="#5b3a22"/></g>
+    <g id="s5c" fill="#b9763e"><use href="#st1"/><use href="#st1" x="18"/><use href="#st1" x="36"/><use href="#st1" x="54"/><use href="#st1" x="72"/></g>
+    <g id="s4c"><g fill="#b9763e"><use href="#st1"/><use href="#st1" x="18"/><use href="#st1" x="36"/><use href="#st1" x="54"/></g><use href="#st1" x="72" fill="#d9bf98"/></g>
   </defs></svg>
+</section>
+
+<section class="sec reco" id="recorrido">
+  <div class="wrap">
+    <h2 data-reveal>Pasa, huele<span class="tone2">y escoge.</span></h2>
+    <p class="reco-sub" data-reveal>Venustiano Carranza 110A, a media cuadra del Centro.</p>
+  </div>
+  <div class="reco-grid">
+    <figure class="r1" data-reveal><img src="img/mostrador-960.webp" srcset="img/mostrador-480.webp 480w,img/mostrador-960.webp 960w,img/mostrador-1600.webp 1600w" sizes="(min-width:820px) 50vw,100vw" width="960" height="720" alt="Mostrador largo de Panificadora Los Ángeles"><figcaption>El mostrador</figcaption></figure>
+    <figure class="r2" data-reveal><img src="img/mural-horno-960.webp" srcset="img/mural-horno-480.webp 480w,img/mural-horno-960.webp 960w,img/mural-horno-1600.webp 1600w" sizes="(min-width:820px) 25vw,50vw" width="960" height="720" alt="Mural del horno y el trigo en la pared de la panadería" loading="lazy"><figcaption>El mural</figcaption></figure>
+    <figure class="r3" data-reveal><img src="img/anaquel-960.webp" srcset="img/anaquel-480.webp 480w,img/anaquel-960.webp 960w,img/anaquel-1536.webp 1536w" sizes="(min-width:820px) 25vw,50vw" width="960" height="1280" alt="Anaquel lleno de pan" loading="lazy"><figcaption>Los anaqueles</figcaption></figure>
+    <figure class="r4" data-reveal><img src="img/galletas-960.webp" srcset="img/galletas-480.webp 480w,img/galletas-960.webp 960w,img/galletas-1600.webp 1600w" sizes="(min-width:820px) 25vw,50vw" width="960" height="720" alt="Charola de galletas" loading="lazy"><figcaption>Las galletas</figcaption></figure>
+    <figure class="r5" data-reveal><img src="img/conchas-960.webp" srcset="img/conchas-480.webp 480w,img/conchas-960.webp 960w,img/conchas-1600.webp 1600w" sizes="(min-width:820px) 25vw,50vw" width="960" height="720" alt="Charola de conchas y pan dulce" loading="lazy"><figcaption>Pan dulce</figcaption></figure>
+    <figure class="r6" data-reveal><img src="img/mural-trigo-960.webp" srcset="img/mural-trigo-480.webp 480w,img/mural-trigo-960.webp 960w,img/mural-trigo-1600.webp 1600w" sizes="(min-width:820px) 50vw,100vw" width="960" height="720" alt="Mural de trigo sobre los estantes de pan" loading="lazy"><figcaption>Los estantes</figcaption></figure>
+  </div>
+  <div class="wrap"><a class="reco-link" href="#visita">Cómo llegar <span aria-hidden="true">→</span></a></div>
 </section>
 
 <section class="sec visita" id="visita">
   <div class="wrap vis-grid">
-    <div class="vis-fotos">
-      <img class="v-big" src="img/letrero-960.webp" srcset="img/letrero-480.webp 480w,img/letrero-960.webp 960w,img/letrero-1600.webp 1600w" sizes="(min-width:820px) 50vw,100vw" width="960" height="720" alt="Letrero de pared: Panificadora Los Ángeles, especialistas en pan de alta fibra" loading="lazy">
-      <img class="v-s1" src="img/repisas-480.webp" srcset="img/repisas-480.webp 480w,img/repisas-960.webp 960w" sizes="40vw" width="480" height="360" alt="Repisas de madera con pan dulce" loading="lazy">
-      <img class="v-s2" src="img/anaquel-480.webp" srcset="img/anaquel-480.webp 480w,img/anaquel-960.webp 960w" sizes="40vw" width="480" height="640" alt="Anaquel de pan" loading="lazy">
+    <div class="vis-map" data-reveal>
+      <iframe src="https://www.google.com/maps?q=Panificadora+Los+%C3%81ngeles,+Venustiano+Carranza+110A,+Zona+Centro,+Aguascalientes&output=embed" loading="lazy" title="Mapa de Panificadora Los Ángeles" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <div class="vis-txt" data-hide-wa>
       <h2 data-reveal>Pásale por tu pan.<span class="tone2">Todos los días.</span></h2>
-      <dl class="datos" data-reveal>
-        <dt>Dónde</dt><dd>Venustiano Carranza 110A, Zona Centro</dd>
-        <dt>Horario</dt><dd>De 8:00 a 20:30, todos los días</dd>
-        <dt>Cómo</dt><dd>Para llevar o a domicilio</dd>
-      </dl>
+      <p class="estado" id="estado" data-reveal><i></i><span>Abre todos los días de 8:00 a 20:30</span></p>
+      <p class="dir" data-reveal>Venustiano Carranza 110A, Zona Centro, 20000 Aguascalientes, Ags.</p>
+      <ul class="horas" id="horas" data-reveal>
+        <li data-d="1"><span>Lunes</span><b>8:00 a 20:30</b></li>
+        <li data-d="2"><span>Martes</span><b>8:00 a 20:30</b></li>
+        <li data-d="3"><span>Miércoles</span><b>8:00 a 20:30</b></li>
+        <li data-d="4"><span>Jueves</span><b>8:00 a 20:30</b></li>
+        <li data-d="5"><span>Viernes</span><b>8:00 a 20:30</b></li>
+        <li data-d="6"><span>Sábado</span><b>8:00 a 20:30</b></li>
+        <li data-d="0"><span>Domingo</span><b>8:00 a 20:30</b></li>
+      </ul>
       <div class="vis-btns">
-        <a class="btn-wa" data-wa="Hola, quiero pasar por pan a Panificadora Los Ángeles. ¿Qué tienen hoy?" href="https://wa.me/524499159943">Escríbenos por WhatsApp</a>
+        <a class="btn-nav" href="https://www.google.com/maps/dir/?api=1&amp;destination=Panificadora+Los+%C3%81ngeles+Venustiano+Carranza+110A+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
         <a class="btn-nav" href="tel:+524499159943">Llamar 449 915 9943</a>
+        <a class="btn-wa" data-wa="Hola, quiero pasar por pan a Panificadora Los Ángeles. ¿Qué tienen hoy?" href="https://wa.me/524499159943">Escríbenos por WhatsApp</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec preg" id="preguntas">
+  <div class="wrap preg-grid">
+    <figure class="preg-foto" data-reveal>
+      <img src="img/letrero-960.webp" srcset="img/letrero-480.webp 480w,img/letrero-960.webp 960w,img/letrero-1600.webp 1600w" sizes="(min-width:820px) 45vw,100vw" width="960" height="720" alt="Letrero de pared: Panificadora Los Ángeles, especialistas en pan de alta fibra" loading="lazy">
+      <figcaption><b>1996</b><span>horneando alta fibra en el Centro</span></figcaption>
+    </figure>
+    <div>
+      <h2 data-reveal>Lo que nos<span class="tone2">preguntan.</span></h2>
+      <div class="faq" data-reveal>
+        <details open><summary>¿Tienen pan sin azúcar?</summary><p>Sí. La rosca de reyes nevada sin azúcar es de las que más piden. Pregunta qué salió hoy.</p></details>
+        <details><summary>¿Qué es lo más pedido?</summary><p>Pan integral, cuernitos rellenos de cajeta, conchas, galletas y pan de caja.</p></details>
+        <details><summary>¿A qué hora abren?</summary><p>Todos los días, de 8:00 a 20:30, en Venustiano Carranza 110A.</p></details>
+        <details><summary>¿Puedo apartar mi pan?</summary><p>Sí. Arma tu bolsa aquí arriba y mándala por WhatsApp; pasas y te la llevas.</p></details>
+        <details><summary>¿Cuándo sale la rosca de reyes?</summary><p>Cada temporada, como cada año. Escríbenos para apartar la tuya.</p></details>
+      </div>
+      <a class="btn-wa" data-wa="Hola, tengo una pregunta sobre el pan de Panificadora Los Ángeles." href="https://wa.me/524499159943">Pregúntanos por WhatsApp</a>
     </div>
   </div>
 </section>
@@ -151,7 +233,7 @@
       <li>WhatsApp de la panadería</li>
       <li>Precios de cada pan</li>
       <li>Foto de la fachada y del equipo</li>
-      <li>Sus redes y su año de fundación</li>
+      <li>Si hay envío a domicilio y pan sin gluten</li>
     </ul>
     <p class="pasa">Pásanoslo por el mismo chat donde te llegó esta muestra.</p>
   </div>
@@ -160,12 +242,22 @@
 </main>
 <footer class="foot">
   <p class="foot-name">Panificadora Los Ángeles</p>
-  <p>Venustiano Carranza 110A, Zona Centro, Aguascalientes</p>
-  <a class="social" href="https://www.facebook.com/PanLosAngeles" aria-label="Facebook de Panificadora Los Ángeles" target="_blank" rel="noopener"><svg viewBox="0 0 44 44" width="44" height="44"><circle cx="22" cy="22" r="21" fill="none" stroke="currentColor" stroke-width="1.5"/><path fill="currentColor" d="M23.6 33V23.2h3.2l.5-3.8h-3.7V17c0-1.1.3-1.8 1.9-1.8h2v-3.4c-.3 0-1.5-.1-2.9-.1-2.9 0-4.8 1.7-4.8 4.9v2.8h-3.2v3.8h3.2V33z"/></svg></a>
+  <p class="foot-lema">Especialistas en pan de alta fibra desde 1996</p>
+  <div class="foot-cols">
+    <p><b>Dirección</b><a href="https://maps.google.com/?cid=8572562567373437489" target="_blank" rel="noopener">Venustiano Carranza 110A, Zona Centro, Aguascalientes</a></p>
+    <p><b>Teléfono</b><a href="tel:+524499159943">449 915 9943</a></p>
+    <p><b>Horario</b>Todos los días, 8:00 a 20:30</p>
+  </div>
+  <div class="foot-soc">
+    <a class="social" href="https://www.facebook.com/PanLosAngeles" aria-label="Facebook de Panificadora Los Ángeles" target="_blank" rel="noopener"><svg viewBox="0 0 44 44" width="44" height="44"><circle cx="22" cy="22" r="21" fill="none" stroke="currentColor" stroke-width="1.5"/><path fill="currentColor" d="M23.6 33V23.2h3.2l.5-3.8h-3.7V17c0-1.1.3-1.8 1.9-1.8h2v-3.4c-.3 0-1.5-.1-2.9-.1-2.9 0-4.8 1.7-4.8 4.9v2.8h-3.2v3.8h3.2V33z"/></svg></a>
+    <a class="social" href="https://www.instagram.com/panificadora_los_angeles_ags/" aria-label="Instagram de Panificadora Los Ángeles" target="_blank" rel="noopener"><svg viewBox="0 0 44 44" width="44" height="44"><circle cx="22" cy="22" r="21" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="13" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="22" cy="22" r="4.3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="27.4" cy="16.6" r="1.2" fill="currentColor"/></svg></a>
+  </div>
   <p class="foot-k">Muestra de página hecha por KREVO</p>
 </footer>
 <a class="wa-fab" data-wa="Hola, vi la página de Panificadora Los Ángeles y quiero preguntar por el pan." href="https://wa.me/524499159943" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 32 32" width="30" height="30"><path fill="#0b3d1f" d="M16 3.2A12.7 12.7 0 0 0 5.2 22.4L3.4 28.8l6.6-1.7A12.7 12.7 0 1 0 16 3.2zm0 2.3a10.4 10.4 0 1 1-5.4 19.3l-.4-.2-3.9 1 1-3.8-.3-.4A10.4 10.4 0 0 1 16 5.5zm-4 5.2c-.3 0-.8.1-1.2.6-.4.5-1.5 1.5-1.5 3.6s1.6 4.2 1.8 4.5c.2.3 3 4.8 7.400 6.500 3.700 1.400 4.400 1.100 5.200 1 .8-.1 2.500-1 2.800-2 .4-1 .4-1.800.2-2-.1-.2-.4-.3-.8-.5l-2.600-1.300c-.3-.1-.6-.2-.9.200l-1.200 1.500c-.2.300-.5.300-.9.100-.4-.2-1.700-.6-3.200-2-1.200-1.100-2-2.400-2.200-2.800-.2-.4 0-.6.200-.8l.6-.7c.2-.2.300-.4.400-.7.100-.3.100-.5 0-.7l-1.200-2.900c-.3-.7-.6-.7-.9-.7z"/></svg></a>
 <script src="site.js?v=1791092264" defer></script>
 <script src="sections/02-bolsa.js?v=1791092988" defer></script>
+<script src="sections/05-opiniones.js?v=1791104374" defer></script>
+<script src="sections/07-visita.js?v=1791104446" defer></script>
 </body>
 </html>

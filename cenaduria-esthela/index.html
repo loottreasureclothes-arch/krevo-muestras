@@ -18,14 +18,15 @@
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preload" href="fonts/youngserif.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="site.css?v=1791088693">
+<link rel="stylesheet" href="site.css?v=1791103726">
 <link rel="stylesheet" href="sections/01-portada.css?v=1791092007">
 <link rel="stylesheet" href="sections/02-carta.css?v=1791092007">
 <link rel="stylesheet" href="sections/03-comanda.css?v=1791088905">
-<link rel="stylesheet" href="sections/04-comedor.css?v=1791092006">
-<link rel="stylesheet" href="sections/05-opiniones.css?v=1791088375">
-<link rel="stylesheet" href="sections/06-lugar.css?v=1791088485">
-<link rel="stylesheet" href="sections/07-pendientes.css?v=1791088894">
+<link rel="stylesheet" href="sections/04-comedor.css?v=1791103735">
+<link rel="stylesheet" href="sections/05-opiniones.css?v=1791103846">
+<link rel="stylesheet" href="sections/06-mesa.css?v=1791103823">
+<link rel="stylesheet" href="sections/07-lugar.css?v=1791103718">
+<link rel="stylesheet" href="sections/08-pendientes.css?v=1791088894">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Cenaduría Esthela","servesCuisine":"Mexicana","priceRange":"$100-200","telephone":"+52 449 918 0751","email":"cenaduriaesthela@hotmail.com","address":{"@type":"PostalAddress","streetAddress":"Av. José María Chávez 644, Barrio del Encino","addressLocality":"Aguascalientes","addressRegion":"Ags.","postalCode":"20000","addressCountry":"MX"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday"],"opens":"18:00","closes":"23:45"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"14:00","closes":"23:45"}],"url":"https://loottreasureclothes-arch.github.io/krevo-muestras/cenaduria-esthela/"}</script>
 <script>/* seguro anti-blanco: todo [data-reveal] se ve a los 1.6 s pase lo que pase */
 setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i=0;i<e.length;i++)e[i].classList.add('is-in')},1600);</script>
@@ -49,6 +50,7 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
     <a href="#carta">La carta</a>
     <a href="#comanda">Tu comanda</a>
     <a href="#opiniones">Opiniones</a>
+    <a href="#mesa">Los platos</a>
     <a href="#lugar">Horario y lugar</a>
     <a class="menu-call" href="tel:+524499180751">Llamar 449 918 0751</a>
   </div>
@@ -161,6 +163,7 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
       <li class="plato plato-line" data-id="chamorro" data-name="Chamorro de puerco" data-p="260"><div class="plato-in"><h3>Chamorro de puerco <em>sáb y dom</em></h3><p class="plato-d">Con mole rojo o verde, ensalada, frijoles, nopales y arroz.</p></div><div class="plato-pie"><span class="plato-p"></span><button class="add" type="button" aria-label="Agregar chamorro de puerco a mi comanda">+</button></div></li>
     </ul>
     <p class="car-nota">Medias órdenes y platillos personalizados cuestan más.</p>
+    <a class="arrow-link" href="#comanda">Ya escogí, armar mi comanda <span aria-hidden="true">&rarr;</span></a>
   </div>
 </section>
 
@@ -208,24 +211,97 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
 <section class="mes" id="comedor">
   <figure class="mes-fig" data-reveal>
     <img src="img/comedor-960.webp" srcset="img/comedor-480.webp 480w, img/comedor-960.webp 960w, img/comedor-1600.webp 1600w" sizes="(min-width:760px) 55vw, 100vw" width="1600" height="2043" alt="El comedor de Esthela: mesas y sillas de madera, piso de barro" loading="lazy">
-    <div class="mes-tx"><p class="mes-cap"><span>Mesas</span> <span class="t2">para todos.</span></p><p class="mes-sub">Lugar amplio, sillas de madera y piso de barro.</p></div>
+    <div class="mes-tx"><p class="mes-cap"><span>Mesas</span> <span class="t2">para todos.</span></p><p class="mes-sub">Lugar amplio, sillas de madera y piso de barro.</p><a class="arrow-link mes-link" href="#lugar">Ver horario y cómo llegar <span aria-hidden="true">&rarr;</span></a></div>
   </figure>
 </section>
 
 <section class="op" id="opiniones">
-  <div class="wrap op-grid">
+  <div class="wrap op-head">
     <div class="op-dato" data-reveal>
-      <p class="op-num">4,535</p>
-      <p class="op-cap">opiniones en Google, 4.5 de 5.</p>
+      <p class="op-num">4.5</p>
+      <div><p class="op-st" aria-label="4.5 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;<span>&#9733;</span></p><p class="op-cap">4,535 opiniones en Google</p></div>
     </div>
-    <div class="op-col">
-      <h2 class="h2" data-reveal>Lo dicen <span class="t2">en la mesa</span></h2>
-      <ul class="op-list">
-        <li data-reveal><p class="op-stars" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>Muy rico, tienen un súper sazón, está muy bien servido todo! Me encantaron los sopes de lengua y las enmoladas.</blockquote><cite>Alexa Pérez</cite></li>
-        <li data-reveal><p class="op-stars" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>Un lugar amplio con bastantes mesas, los chicos del servicio muy atentos, la comida muy rica y salió super rápido!</blockquote><cite>Elhergon Flores</cite></li>
-        <li data-reveal><p class="op-stars" aria-label="5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>Muy buena la comida, calientito todo, sabor muy bueno.</blockquote><cite>Armando De la Peña Bernal</cite></li>
-      </ul>
+    <h2 class="h2" data-reveal>Lo dicen <span class="t2">en la mesa</span></h2>
+  </div>
+  <div class="op-rail">
+    <ul class="op-track" id="op-track" tabindex="0" aria-label="Opiniones de clientes, desliza">
+      <li class="tk" style="--r:-1.2deg">
+        <p class="tk-fol">Nº 645 <span>Google</span></p>
+        <p class="tk-st" aria-label="5 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;<i></i></p>
+        <blockquote>Muy rico, tienen un súper sazón, está muy bien servido todo! Me encantaron los sopes de lengua y las enmoladas.</blockquote>
+        <cite>Alexa Pérez</cite>
+      </li>
+      <li class="tk" style="--r:0.8deg">
+        <p class="tk-fol">Nº 646 <span>TripAdvisor</span></p>
+        <p class="tk-st" aria-label="5 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;<i></i></p>
+        <blockquote>Los sopes de lengua son mis favoritos pero también he probado el pozole y los taquitos dorados y saben riquísimos.</blockquote>
+        <cite>Julio César Aragón Valdés</cite>
+      </li>
+      <li class="tk" style="--r:-0.5deg">
+        <p class="tk-fol">Nº 647 <span>Google</span></p>
+        <p class="tk-st" aria-label="5 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;<i></i></p>
+        <blockquote>Un lugar amplio con bastantes mesas, los chicos del servicio muy atentos, la comida muy rica y salió super rápido!</blockquote>
+        <cite>Elhergon Flores</cite>
+      </li>
+      <li class="tk" style="--r:1.1deg">
+        <p class="tk-fol">Nº 648 <span>TripAdvisor</span></p>
+        <p class="tk-st" aria-label="5 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;<i></i></p>
+        <blockquote>El Pozole es muy rico al igual que los FLAUTONES.</blockquote>
+        <cite>Manolo A</cite>
+      </li>
+      <li class="tk" style="--r:-0.9deg">
+        <p class="tk-fol">Nº 649 <span>TripAdvisor</span></p>
+        <p class="tk-st" aria-label="4 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;<i>&#9733;</i></p>
+        <blockquote>El chamorro con mole delicioso, aunque solo lo hacen los fines de semana. El flan napolitano uno de los mejores que he probado.</blockquote>
+        <cite>Nicole M</cite>
+      </li>
+      <li class="tk" style="--r:0.6deg">
+        <p class="tk-fol">Nº 650 <span>Google</span></p>
+        <p class="tk-st" aria-label="5 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;<i></i></p>
+        <blockquote>Muy buena la comida, calientito todo, sabor muy bueno que ya tiene tradición en Aguascalientes.</blockquote>
+        <cite>Armando De la Peña Bernal</cite>
+      </li>
+      <li class="tk" style="--r:-1deg">
+        <p class="tk-fol">Nº 651 <span>TripAdvisor</span></p>
+        <p class="tk-st" aria-label="5 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;<i></i></p>
+        <blockquote>Un clásico en Aguascalientes, muy bien atendido y extraordinariamente bien servido!!! De seguro no te quedarás con hambre!</blockquote>
+        <cite>pablofs</cite>
+      </li>
+      <li class="tk" style="--r:0.9deg">
+        <p class="tk-fol">Nº 652 <span>TripAdvisor</span></p>
+        <p class="tk-st" aria-label="4 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;<i>&#9733;</i></p>
+        <blockquote>Lugar para comer sabroso, pozole, flautas, sopes etc y mis favoritas las enchiladas, buen servicio y rico sazón.</blockquote>
+        <cite>ClaudiaIsela</cite>
+      </li>
+      <li class="tk" style="--r:-0.4deg">
+        <p class="tk-fol">Nº 653 <span>TripAdvisor</span></p>
+        <p class="tk-st" aria-label="5 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;<i></i></p>
+        <blockquote>En Esthela recibes un platillo delicioso y basto, hecho por gente valiosa y comprometida con su quehacer.</blockquote>
+        <cite>Salud Vital</cite>
+      </li>
+    </ul>
+  </div>
+  <div class="wrap op-pie">
+    <div class="op-nav"><button type="button" class="op-b" data-dir="-1" aria-label="Opinión anterior">&larr;</button><span class="op-n" id="op-n">1 / 9</span><button type="button" class="op-b" data-dir="1" aria-label="Siguiente opinión">&rarr;</button></div>
+    <a class="btn solid" href="https://www.google.com/maps/place/Cenadur%C3%ADa+Esthela/@21.8736205,-102.2949266,17z/data=!4m6!3m5!1s0x8429ee7ed35d7f4f:0x52b8f46a97bcca82!8m2!3d21.8736205!4d-102.2949266!16s%2Fg%2F1tnss7bw" target="_blank" rel="noopener">Ver todas en Google</a>
+  </div>
+</section>
+
+<section class="ms" id="mesa">
+  <div class="wrap">
+    <div class="ms-head">
+      <p class="eyebrow" data-reveal>Así llega a tu mesa</p>
+      <h2 class="h2" data-reveal>Platos llenos, <span class="t2">salsa al lado.</span></h2>
     </div>
+    <div class="ms-grid">
+    <figure class="ms-i w" data-reveal><img src="img/g-pozole-960.webp" srcset="img/g-pozole-480.webp 480w, img/g-pozole-960.webp 960w" sizes="(min-width:760px) 33vw, 50vw" width="960" height="636" alt="Pozole rojo con tostadas, en Esthela"><figcaption>pozole</figcaption></figure>
+    <figure class="ms-i t" data-reveal><img src="img/g-sopes-960.webp" srcset="img/g-sopes-480.webp 480w, img/g-sopes-960.webp 960w" sizes="(min-width:760px) 33vw, 50vw" width="960" height="1485" alt="Sopes con lechuga y crema, en Esthela"><figcaption>sopes</figcaption></figure>
+    <figure class="ms-i " data-reveal><img src="img/g-salsas-960.webp" srcset="img/g-salsas-480.webp 480w, img/g-salsas-960.webp 960w" sizes="(min-width:760px) 33vw, 50vw" width="960" height="742" alt="Las salsas de la casa, en Esthela"><figcaption>salsas</figcaption></figure>
+    <figure class="ms-i t" data-reveal><img src="img/g-verdes-960.webp" srcset="img/g-verdes-480.webp 480w, img/g-verdes-960.webp 960w" sizes="(min-width:760px) 33vw, 50vw" width="960" height="1229" alt="Enchiladas verdes, en Esthela"><figcaption>verdes</figcaption></figure>
+    <figure class="ms-i " data-reveal><img src="img/g-tacos-960.webp" srcset="img/g-tacos-480.webp 480w, img/g-tacos-960.webp 960w" sizes="(min-width:760px) 33vw, 50vw" width="960" height="1178" alt="Tacos en tortilla de maíz, en Esthela"><figcaption>tacos</figcaption></figure>
+    <figure class="ms-i w" data-reveal><img src="img/g-flautas-960.webp" srcset="img/g-flautas-480.webp 480w, img/g-flautas-960.webp 960w" sizes="(min-width:760px) 33vw, 50vw" width="960" height="1076" alt="Flautas con queso y lechuga, en Esthela"><figcaption>flautas</figcaption></figure>
+    </div>
+    <div class="ms-pie"><a class="btn" href="#comanda">Arma tu comanda</a><a class="arrow-link" href="#carta">Ver precios <span aria-hidden="true">&rarr;</span></a></div>
   </div>
 </section>
 
@@ -234,12 +310,17 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
     <div class="lu-tx">
       <p class="eyebrow" data-reveal>Av. José María Chávez 644</p>
       <h2 class="h2" data-reveal>Te esperamos <span class="t2">de noche.</span></h2>
+      <p class="lu-now" id="lu-now" data-reveal></p>
       <p class="lu-addr" data-reveal>Barrio del Encino, Aguascalientes.<br>Local, para llevar o a domicilio.</p>
       <div class="lu-cta" data-reveal>
         <a class="btn solid" href="tel:+524499180751">Llamar 449 918 0751</a>
-        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Cenadur%C3%ADa+Esthela+Av.+Jos%C3%A9+Mar%C3%ADa+Ch%C3%A1vez+644+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn" href="https://www.google.com/maps/place/Cenadur%C3%ADa+Esthela/@21.8736205,-102.2949266,17z/data=!4m6!3m5!1s0x8429ee7ed35d7f4f:0x52b8f46a97bcca82!8m2!3d21.8736205!4d-102.2949266!16s%2Fg%2F1tnss7bw" target="_blank" rel="noopener">Cómo llegar</a>
       </div>
       <p class="lu-suc" data-reveal>También en CC Villasunción, Local 1: <a href="tel:+524491483727">449 148 3727</a></p>
+    </div>
+    <div class="lu-map notch" data-reveal>
+      <iframe src="https://www.google.com/maps?q=Cenadur%C3%ADa+Esthela,+Av.+Jos%C3%A9+Mar%C3%ADa+Ch%C3%A1vez+644,+Barrio+del+Encino,+Aguascalientes&output=embed" loading="lazy" title="Mapa de Cenaduría Esthela" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p class="lu-pin">Chávez 644 · Barrio del Encino</p>
     </div>
     <div class="lu-hrs notch" data-reveal>
       <p class="lu-hrs-t">Horario</p>
@@ -277,6 +358,8 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
   <div class="pie-in">
     <p class="pie-name">Cenaduría Esthela</p>
     <p class="pie-addr">Av. José María Chávez 644, Barrio del Encino<br>20000 Aguascalientes, Ags.</p>
+    <p class="pie-addr pie-hrs">Martes a viernes 6 pm a 11:45 pm<br>Sábado y domingo 2 pm a 11:45 pm · Lunes cerrado</p>
+    <p class="pie-addr"><a href="https://www.google.com/maps/place/Cenadur%C3%ADa+Esthela/@21.8736205,-102.2949266,17z/data=!4m6!3m5!1s0x8429ee7ed35d7f4f:0x52b8f46a97bcca82!8m2!3d21.8736205!4d-102.2949266!16s%2Fg%2F1tnss7bw" target="_blank" rel="noopener">Ver en Google Maps &rarr;</a></p>
     <p class="pie-addr"><a href="tel:+524499180751">449 918 0751</a> · <a href="mailto:cenaduriaesthela@hotmail.com">cenaduriaesthela@hotmail.com</a></p>
     <div class="pie-soc">
       <a href="https://www.instagram.com/cenaduriaesthela/" target="_blank" rel="noopener" aria-label="Instagram de Cenaduría Esthela">
@@ -292,7 +375,8 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
   <span>Llamar</span>
 </a>
 <a class="com-pill" id="com-pill" href="#comanda" hidden><b>0</b><em>en tu comanda</em><span></span></a>
-<script src="site.js?v=1791088617"></script>
+<script src="site.js?v=1791103718"></script>
 <script src="sections/03-comanda.js?v=1791088335" defer></script>
+<script src="sections/05-opiniones.js?v=1791103672" defer></script>
 </body>
 </html>

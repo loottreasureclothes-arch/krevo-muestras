@@ -45,7 +45,7 @@
   }
 
   function initWaHide() {
-    var zones = $$("#tray, #hora .hs-cta, #completar, .foot, .hero-cta");
+    var zones = $$("#tray, #visita .vi-cta, .cs-cta, .carta-cta, #completar, .foot, .hero-cta");
     function upd() {
       var vh = window.innerHeight, on = false;
       zones.forEach(function (z) { var r = z.getBoundingClientRect(); if (r.top < vh * 0.85 && r.bottom > 0) on = true; });

@@ -88,3 +88,10 @@ section{position:relative}
 .pill-off .com-pill{opacity:0;transform:translateY(16px);pointer-events:none}
 @media (max-width:380px){.com-pill em{display:none}}
 [hidden]{display:none!important}
+/* link con flecha (acción secundaria de cada sección) */
+.arrow-link{display:inline-flex;align-items:center;gap:10px;min-height:48px;margin-top:18px;font:800 12.5px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--teja);border-bottom:1.5px solid currentColor}
+.arrow-link span{transition:transform .2s}
+.arrow-link:hover span{transform:translateX(5px)}
+.band .arrow-link{color:var(--burd)}
+.pie-hrs{line-height:1.6}
+@media (min-width:760px){.pie-in{display:grid;grid-template-columns:1fr 1fr;column-gap:64px}.pie-name,.pie-mini{grid-column:1 / -1}}

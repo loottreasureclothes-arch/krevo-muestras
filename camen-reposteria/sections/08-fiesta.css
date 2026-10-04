@@ -1,0 +1,30 @@
+.fi{background:var(--crema);color:var(--ink);padding:64px 0 70px}
+.fi-grid{display:grid;gap:28px}
+.fi h2{font-size:clamp(36px,10vw,62px)}
+.fi-sub{margin-top:14px;font-size:17px;max-width:30ch;color:#5a3d34}
+.fi-ticket{position:relative;background:#fffaf2;padding:30px 20px 24px;border-radius:4px;box-shadow:0 18px 34px -20px rgba(42,22,19,.5);transform:rotate(.6deg)}
+.fi-ticket:before,.fi-ticket:after{content:"";position:absolute;left:0;right:0;height:12px;background:radial-gradient(circle at 8px 12px,var(--crema) 7px,transparent 7.6px) 0 0/16px 12px repeat-x}
+.fi-ticket:before{top:-1px;transform:scaleY(-1)}
+.fi-ticket:after{bottom:-1px}
+.fi-tt{font:400 26px/1 var(--disp);text-align:center;padding-bottom:16px;border-bottom:2px dashed rgba(58,33,28,.3)}
+.fi-tt span{display:block;font:800 10.5px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--vino);margin-top:8px}
+.fi-lista{list-style:none}
+.fi-lista li{border-bottom:1px dotted rgba(58,33,28,.3)}
+.fi-lista label{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:12px;padding:13px 0;cursor:pointer;min-height:56px}
+.fi-lista input{appearance:none;-webkit-appearance:none;width:24px;height:24px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s;margin:0}
+.fi-lista input:checked{background:var(--vino);border-color:var(--vino)}
+.fi-lista input:checked:after{content:"";width:6px;height:11px;border:solid var(--crema);border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.fi-lista input:focus-visible{outline:3px solid var(--terra);outline-offset:2px}
+.fi-n{font:600 16px/1.2 var(--body)}
+.fi-n small{display:block;font-weight:400;font-size:13px;color:#7a5d52;margin-top:2px}
+.fi-p{font:400 21px/1 var(--disp);color:var(--vino)}
+.fi-tot{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0 6px;border-top:2px dashed rgba(58,33,28,.3);margin-top:-1px;font:800 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase}
+.fi-tot b{font:400 38px/1 var(--disp);letter-spacing:0;color:var(--ink);transition:transform .25s}
+.fi-tot b.bump{transform:scale(1.12)}
+.fi-nota{font-size:12.5px;color:#7a5d52;margin-bottom:18px}
+.fi-wa{width:100%}
+@media(min-width:720px){
+  .fi{padding:100px 0}
+  .fi-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:70px;align-items:center}
+  .fi-ticket{padding:36px 34px 30px;max-width:520px;justify-self:end;width:100%}
+}

@@ -1,0 +1,34 @@
+.lc-suc{background:var(--navy);padding:64px 0 56px;position:relative}
+.lc-suc::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px;background:radial-gradient(circle at 12px 12px,var(--navy) 11.5px,transparent 12px) 0 0/24px 12px repeat-x}
+.lc-suc-head{margin-bottom:24px}
+.lc-tabs{display:flex;background:var(--navy2);border-radius:99px;padding:5px;margin-bottom:22px}
+.lc-tabs button{flex:1;min-height:46px;border:0;border-radius:99px;background:transparent;color:var(--cream);font:800 .76rem/1 var(--f-b);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background-color .25s,color .25s}
+.lc-tabs button[aria-selected="true"]{background:var(--or);color:var(--navy)}
+.lc-map{position:relative;aspect-ratio:4/3.4;border-radius:200px 200px 0 0;overflow:hidden;border:4px solid var(--cream);background:var(--navy2)}
+.lc-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.9)}
+.lc-pan-tx{padding-top:22px}
+.lc-now{display:inline-flex;align-items:center;gap:9px;background:var(--navy2);border-radius:99px;padding:8px 14px;font:800 .72rem/1 var(--f-b);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+.lc-now i{width:10px;height:10px;border-radius:50%;background:#9aa3b5}
+.lc-now.is-open i{background:var(--wa);box-shadow:0 0 0 4px rgba(37,211,102,.25)}
+.lc-now.is-closed i{background:var(--or)}
+.lc-pan h3{font:400 1.9rem/1.05 var(--f-d);text-transform:uppercase;color:var(--or);margin-bottom:6px}
+.lc-adr{font-weight:600}
+.lc-days{margin:16px 0 10px;border-top:2px solid rgba(245,236,220,.16)}
+.lc-days li{display:flex;justify-content:space-between;padding:8px 2px;border-bottom:1px solid rgba(245,236,220,.12);font-size:.95rem}
+.lc-days li.is-today{color:var(--or);font-weight:800}
+.lc-rate{font-size:.88rem;opacity:.75;margin-bottom:18px}
+.lc-acts{display:grid;gap:10px}
+.lc-acts .lc-btn{width:100%}
+.lc-suc-fine{text-align:center;margin-top:20px}
+@media (min-width:780px){
+  .lc-suc{padding:100px 0 40px}
+  .lc-suc-in{display:grid;grid-template-columns:1.1fr .9fr;gap:0 60px;align-items:start}
+  .lc-suc-head{grid-column:1/-1}
+  .lc-tabs{grid-column:1/-1;max-width:480px}
+  .lc-pan{grid-column:1/-1;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start}
+  .lc-pan[hidden]{display:none}
+  .lc-map{aspect-ratio:4/3.6}
+  .lc-pan-tx{padding-top:0}
+  .lc-acts{max-width:420px}
+  .lc-suc-fine{grid-column:1/-1;text-align:left}
+}

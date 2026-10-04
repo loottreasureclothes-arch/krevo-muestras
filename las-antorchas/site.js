@@ -126,6 +126,7 @@
     body.classList.toggle("at-has", t > 0);
     wa.href = waUrl(msg());
     var n = wa.querySelector(".at-wa-n"); if (n) n.textContent = t;
+    Array.prototype.forEach.call(document.querySelectorAll(".at-wa-live"), function (a) { a.href = waUrl(msg()); });
     var ps = document.getElementById("at-party-n"); if (ps) ps.textContent = party;
     Array.prototype.forEach.call(document.querySelectorAll("[data-item]"), function (el) {
       var q = items[el.getAttribute("data-item")] || 0;
@@ -156,6 +157,38 @@
     paint();
   }
 
-  function init() { initWa(); initMenu(); initAnchors(); initReveal(); initWaHide(); initLetrero(); initComanda(); }
+  /* Horario: abierto ahora con la hora de Aguascalientes */
+  var HRS = { 0: [9, 23], 1: [8, 24], 2: [8, 24], 3: [8, 24], 4: [8, 24], 5: [8, 24], 6: [8, 24] };
+  function hLabel(h) { if (h === 24 || h === 0) return "12 a.m."; if (h === 12) return "12 p.m."; return (h > 12 ? h - 12 : h) + (h >= 12 ? " p.m." : " a.m."); }
+  function initHoras() {
+    var now = document.getElementById("at-now"); if (!now) return;
+    var d, hh, mm;
+    try {
+      var p = new Intl.DateTimeFormat("en-US", { timeZone: "America/Mexico_City", weekday: "short", hour: "numeric", minute: "numeric", hour12: false }).formatToParts(new Date());
+      var o = {}; p.forEach(function (x) { o[x.type] = x.value; });
+      d = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(o.weekday); hh = parseInt(o.hour, 10) % 24; mm = parseInt(o.minute, 10);
+    } catch (e) { var n = new Date(); d = n.getDay(); hh = n.getHours(); mm = n.getMinutes(); }
+    var li = document.querySelector('#at-hrs li[data-d="' + d + '"]'); if (li) li.classList.add("is-today");
+    var r = HRS[d], t = hh + mm / 60, txt, open = t >= r[0] && t < r[1];
+    if (open) txt = "Abierto ahora · Cierra a las " + hLabel(r[1]);
+    else { var nx = t < r[0] ? r : HRS[(d + 1) % 7]; txt = "Cerrado · Abre " + (t < r[0] ? "hoy" : "mañana") + " a las " + hLabel(nx[0]); }
+    now.querySelector("span").textContent = txt; now.classList.toggle("is-off", !open);
+  }
+
+  /* Reseñas: contador del carrusel */
+  function initTks() {
+    var ul = document.getElementById("at-tks"), out = document.getElementById("at-tks-i"); if (!ul || !out) return;
+    var raf = null;
+    ul.addEventListener("scroll", function () {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = null; var c = ul.scrollLeft + ul.clientWidth / 2, best = 0, bd = 1e9;
+        Array.prototype.forEach.call(ul.children, function (li, i) { var m = li.offsetLeft + li.offsetWidth / 2, dd = Math.abs(m - c); if (dd < bd) { bd = dd; best = i; } });
+        out.textContent = (best < 9 ? "0" : "") + (best + 1);
+      });
+    }, { passive: true });
+  }
+
+  function init() { initHoras(); initTks(); initWa(); initMenu(); initAnchors(); initReveal(); initWaHide(); initLetrero(); initComanda(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();

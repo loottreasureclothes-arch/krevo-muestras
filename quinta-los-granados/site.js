@@ -117,4 +117,30 @@
   window.addEventListener("scroll", sch, { passive: true });
   window.addEventListener("resize", sch);
   upd();
+
+  /* reseñas: flechas y posición */
+  var rv = $("#rv-row");
+  if (rv) {
+    var cards = $$(".ql-rv", rv), pos = $("#rv-pos");
+    var cur = function () { var x = rv.scrollLeft, best = 0, d = 1e9; cards.forEach(function (c, i) { var dd = Math.abs(c.offsetLeft - rv.offsetLeft - x - (rv.clientWidth - c.clientWidth) / 2); if (dd < d) { d = dd; best = i; } }); return best; };
+    var go = function (i) { i = Math.max(0, Math.min(cards.length - 1, i)); var c = cards[i]; rv.scrollTo({ left: c.offsetLeft - rv.offsetLeft - (rv.clientWidth - c.clientWidth) / 2, behavior: reduce ? "auto" : "smooth" }); };
+    $("#rv-prev").addEventListener("click", function () { go(cur() - 1); });
+    $("#rv-next").addEventListener("click", function () { go(cur() + 1); });
+    var t; rv.addEventListener("scroll", function () { clearTimeout(t); t = setTimeout(function () { pos.textContent = (cur() + 1) + " / " + cards.length; }, 80); }, { passive: true });
+  }
+
+  /* abierto ahora (hora de Aguascalientes) */
+  var now = $("#ql-now");
+  if (now) {
+    try {
+      var parts = new Intl.DateTimeFormat("en-US", { timeZone: "America/Mexico_City", weekday: "short", hour: "numeric", minute: "numeric", hour12: false }).formatToParts(new Date());
+      var g = function (k) { var p = parts.filter(function (x) { return x.type === k; })[0]; return p ? p.value : ""; };
+      var wd = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(g("weekday"));
+      var h = parseInt(g("hour"), 10) % 24 + parseInt(g("minute"), 10) / 60;
+      var li = $('#ql-week li[data-d="' + wd + '"]'); if (li) li.classList.add("is-today");
+      var tx = $("#now-t");
+      if (h >= 9 && h < 19) { now.classList.add("is-open"); tx.textContent = "Abierto ahora · Cierra a las 7 p.m."; }
+      else { now.classList.add("is-closed"); tx.textContent = "Cerrado ahora · Abre " + (h < 9 ? "hoy" : "mañana") + " a las 9 a.m."; }
+    } catch (e) {}
+  }
 })();

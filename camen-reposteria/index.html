@@ -30,11 +30,14 @@
 <script>(function(){var d=document.documentElement;try{if(window.matchMedia('(prefers-reduced-motion: no-preference)').matches){d.classList.add('rv');setTimeout(function(){d.classList.add('rv-all')},1600)}}catch(e){}})()</script>
 <link rel="stylesheet" href="site.css?v=1791082944">
 <link rel="stylesheet" href="sections/01-inicio.css?v=1791092015">
-<link rel="stylesheet" href="sections/02-vitrina.css?v=1791092015">
+<link rel="stylesheet" href="sections/02-vitrina.css?v=1791103747">
 <link rel="stylesheet" href="sections/03-arma.css?v=1791092015">
 <link rel="stylesheet" href="sections/04-hecho.css?v=1791082944">
-<link rel="stylesheet" href="sections/05-opiniones.css?v=1791082944">
-<link rel="stylesheet" href="sections/06-sucursales.css?v=1791092015">
+<link rel="stylesheet" href="sections/05-opiniones.css?v=1791104005">
+<link rel="stylesheet" href="sections/06-galeria.css?v=1791103768">
+<link rel="stylesheet" href="sections/07-visitanos.css?v=1791104090">
+<link rel="stylesheet" href="sections/08-fiesta.css?v=1791103849">
+<link rel="stylesheet" href="sections/09-listo.css?v=1791103849">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -47,13 +50,13 @@
 <header class="cm-head" id="top">
   <div class="cm-bar">
     <a class="cm-logo" href="#inicio" aria-label="Camen Repostería, inicio"><b>Camen</b><i>Repostería ®</i></a>
-    <nav class="cm-nav" aria-label="Principal"><a href="#vitrina">Vitrina</a><a href="#arma">Arma tu pastel</a><a href="#opiniones">Opiniones</a><a href="#sucursales">Sucursales</a></nav>
+    <nav class="cm-nav" aria-label="Principal"><a href="#vitrina">Vitrina</a><a href="#arma">Arma tu pastel</a><a href="#opiniones">Opiniones</a><a href="#sucursales">Visítanos</a></nav>
     <button type="button" class="cm-menu-btn" aria-expanded="false" aria-controls="cm-menu"><span class="cm-burger" aria-hidden="true"></span><span class="cm-menu-lbl">Menú</span></button>
   </div>
   <div class="cm-fest" aria-hidden="true"></div>
 </header>
 <div class="cm-menu" id="cm-menu" aria-hidden="true">
-  <nav aria-label="Menú"><a href="#vitrina">La vitrina</a><a href="#arma">Arma tu pastel</a><a href="#opiniones">Opiniones</a><a href="#sucursales">Sucursales</a><a href="#listo">Todo listo para completar</a></nav>
+  <nav aria-label="Menú"><a href="#vitrina">La vitrina</a><a href="#arma">Arma tu pastel</a><a href="#opiniones">Opiniones</a><a href="#sucursales">Visítanos</a><a href="#listo">Todo listo para completar</a></nav>
 </div>
 
 <main>
@@ -79,15 +82,16 @@
   <div class="cm-wrap">
     <h2 data-reveal><span class="t1">De la vitrina</span><span class="t2">a tu mesa</span></h2>
     <ul class="vit-grid" id="vit-grid">
-      <li class="card" data-reveal><div class="ph"><img src="img/nuez-480.webp" srcset="img/nuez-480.webp 480w, img/nuez-960.webp 960w, img/nuez-1245.webp 1245w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="772" alt="Pastel con nuez y cereza sobre carpeta tejida" decoding="async"></div><h3>Pastel con nuez</h3><p class="pr">Pregunta el precio</p><button type="button" class="add" data-item="Pastel con nuez" aria-pressed="false">Agregar</button></li>
+      <li class="card" data-reveal><div class="ph"><img src="img/nuez-480.webp" srcset="img/nuez-480.webp 480w, img/nuez-960.webp 960w, img/nuez-1245.webp 1245w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="772" alt="Pastel con nuez y cereza sobre carpeta tejida" decoding="async"></div><h3>Pastel de nuez</h3><p class="pr"><b>$266</b> para 4<small>$519 para 12, en Uber Eats</small></p><button type="button" class="add" data-item="Pastel de nuez" aria-pressed="false">Agregar</button></li>
       <li class="card" data-reveal><div class="ph"><img src="img/aro-480.webp" srcset="img/aro-480.webp 480w, img/aro-960.webp 960w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="720" alt="Pastel blanco con aro de chocolate en su domo" decoding="async"></div><h3>Pastel con aro de chocolate</h3><p class="pr">Pregunta el precio</p><button type="button" class="add" data-item="Pastel con aro de chocolate" aria-pressed="false">Agregar</button></li>
-      <li class="card" data-reveal><div class="ph"><img src="img/marmol-480.webp" srcset="img/marmol-480.webp 480w, img/marmol-960.webp 960w, img/marmol-1245.webp 1245w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="772" alt="Pastel de mármol con virutas de chocolate" decoding="async"></div><h3>Pastel de mármol</h3><p class="pr">Pregunta el precio</p><button type="button" class="add" data-item="Pastel de mármol" aria-pressed="false">Agregar</button></li>
+      <li class="card" data-reveal><div class="ph"><img src="img/marmol-480.webp" srcset="img/marmol-480.webp 480w, img/marmol-960.webp 960w, img/marmol-1245.webp 1245w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="772" alt="Pastel de mármol con virutas de chocolate" decoding="async"></div><h3>Pastel de mármol</h3><p class="pr"><b>$401</b> para 8<small>$602 para 16, en Uber Eats</small></p><button type="button" class="add" data-item="Pastel de mármol" aria-pressed="false">Agregar</button></li>
       <li class="card" data-reveal><div class="ph"><img src="img/blanco-480.webp" srcset="img/blanco-480.webp 480w, img/blanco-960.webp 960w, img/blanco-1280.webp 1280w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="720" alt="Pastel blanco decorado con festón de betún" decoding="async"></div><h3>Pastel blanco decorado</h3><p class="pr">Pregunta el precio</p><button type="button" class="add" data-item="Pastel blanco decorado" aria-pressed="false">Agregar</button></li>
       <li class="card" data-reveal><div class="ph"><img src="img/flan-480.webp" srcset="img/flan-480.webp 480w, img/flan-960.webp 960w, img/flan-1204.webp 1204w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="1276" alt="Flan napolitano en charola" decoding="async"></div><h3>Flan napolitano</h3><p class="pr"><b>$330</b> entero<small>precio en Uber Eats</small></p><button type="button" class="add" data-item="Flan napolitano" aria-pressed="false">Agregar</button></li>
-      <li class="card" data-reveal><div class="ph"><img src="img/gelatinas-480.webp" srcset="img/gelatinas-480.webp 480w, img/gelatinas-960.webp 960w, img/gelatinas-1245.webp 1245w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="772" alt="Tres vasos de gelatina de capas" decoding="async"></div><h3>Gelatinas de capas</h3><p class="pr">Pregunta el precio</p><button type="button" class="add" data-item="Gelatinas de capas" aria-pressed="false">Agregar</button></li>
-      <li class="card" data-reveal><div class="ph"><img src="img/galletas-480.webp" srcset="img/galletas-480.webp 480w, img/galletas-960.webp 960w, img/galletas-1245.webp 1245w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="772" alt="Charola de galletas surtidas" decoding="async"></div><h3>Galletas surtidas</h3><p class="pr">Pregunta el precio</p><button type="button" class="add" data-item="Galletas surtidas" aria-pressed="false">Agregar</button></li>
-      <li class="card" data-reveal><div class="ph"><img src="img/rebanada-480.webp" srcset="img/rebanada-480.webp 480w, img/rebanada-960.webp 960w, img/rebanada-1080.webp 1080w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="1707" alt="Rebanada de pastel de chocolate y nuez en plato" decoding="async"></div><h3>Rebanada de pastel</h3><p class="pr">Pregunta el precio</p><button type="button" class="add" data-item="Rebanada de pastel" aria-pressed="false">Agregar</button></li>
+      <li class="card" data-reveal><div class="ph"><img src="img/gelatinas-480.webp" srcset="img/gelatinas-480.webp 480w, img/gelatinas-960.webp 960w, img/gelatinas-1245.webp 1245w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="772" alt="Tres vasos de gelatina de capas" decoding="async"></div><h3>Gelatinas de capas</h3><p class="pr"><b>$19</b> el vaso<small>precio en Uber Eats</small></p><button type="button" class="add" data-item="Gelatinas de capas" aria-pressed="false">Agregar</button></li>
+      <li class="card" data-reveal><div class="ph"><img src="img/galletas-480.webp" srcset="img/galletas-480.webp 480w, img/galletas-960.webp 960w, img/galletas-1245.webp 1245w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="772" alt="Charola de galletas surtidas" decoding="async"></div><h3>Pastitas surtidas</h3><p class="pr"><b>$282</b> 300 g<small>$376 medio kilo, en Uber Eats</small></p><button type="button" class="add" data-item="Pastitas surtidas" aria-pressed="false">Agregar</button></li>
+      <li class="card" data-reveal><div class="ph"><img src="img/rebanada-480.webp" srcset="img/rebanada-480.webp 480w, img/rebanada-960.webp 960w, img/rebanada-1080.webp 1080w" sizes="(min-width:900px) 22vw, 46vw" width="960" height="1707" alt="Rebanada de pastel de chocolate y nuez en plato" decoding="async"></div><h3>Rebanada de pastel</h3><p class="pr"><b>$54</b> la rebanada<small>precio en Uber Eats</small></p><button type="button" class="add" data-item="Rebanada de pastel" aria-pressed="false">Agregar</button></li>
     </ul>
+    <a class="vit-cta" href="#arma">Arma tu pastel por personas <span aria-hidden="true">→</span></a>
     <p class="vit-nota" id="vit-nota" hidden>Va en tu pedido. <a href="#arma">Termínalo aquí</a></p>
   </div>
 </section>
@@ -137,55 +141,148 @@
     <div class="op-num" data-reveal>
       <b>4.7</b>
       <p>en Google, con 196 opiniones<br><small>Sucursal Zaragoza</small></p>
+      <ul class="op-otras">
+        <li><strong>4.5</strong> Google, Fundición (50)</li>
+        <li><strong>4.9</strong> Uber Eats, Fundición (37)</li>
+      </ul>
     </div>
-    <div class="op-qs">
-      <blockquote data-reveal><p>Muy lindo lugar con los mejores pasteles que te puedes encontrar en Aguascalientes.</p><footer><span class="st" aria-label="5 estrellas">★★★★★</span> Aline Delgado</footer></blockquote>
-      <blockquote data-reveal><p>Simplemente delicioso. Sabores y texturas artesanales.</p><footer><span class="st" aria-label="5 estrellas">★★★★★</span> Marya B. Martín del Campo</footer></blockquote>
-      <blockquote data-reveal><p>Pasteles de pan tipo casero, el pan puede ser de distintos sabores. Muy buenos.</p><footer><span class="st" aria-label="5 estrellas">★★★★★</span> Juan Jose Aguirre Garcia</footer></blockquote>
+    <div class="op-car">
+      <h2 class="op-h"><span class="t1">Lo dicen</span><span class="t2">con la boca llena</span></h2>
+      <ol class="op-track" id="op-track" tabindex="0" aria-label="Opiniones de clientes">
+        <li class="rvw rvw-a"><p>El sabor de sus pasteles inigualable. De lo más rico que hay. Mi esposa y yo siempre contentos.</p><footer><span class="st" aria-label="5 estrellas">★★★★★</span><b>Alex Nava</b><i>Google, Zaragoza</i></footer></li>
+        <li class="rvw rvw-b"><p>Pasteles deliciosos, su calidad no baja de “Excelente”, sus sabores son dulces sin llegar a ser empalagosos, hay variedad para todos los gustos.</p><footer><span class="st" aria-label="5 estrellas">★★★★★</span><b>Venus Becerra</b><i>Google, Zaragoza</i></footer></li>
+        <li class="rvw rvw-c"><p>Muy lindo lugar con los mejores pasteles que te puedes encontrar en Aguascalientes.</p><footer><span class="st" aria-label="5 estrellas">★★★★★</span><b>Aline Delgado</b><i>Google, Zaragoza</i></footer></li>
+        <li class="rvw rvw-a"><p>Simplemente delicioso. Sabores y texturas artesanales.</p><footer><span class="st" aria-label="5 estrellas">★★★★★</span><b>Marya B. Martín del Campo</b><i>Google, Fundición</i></footer></li>
+        <li class="rvw rvw-b"><p>Pasteles de pan tipo casero, el pan puede ser de distintos sabores, 3 leches, chocolate, etc. Muy buenos.</p><footer><span class="st" aria-label="5 estrellas">★★★★★</span><b>Juan Jose Aguirre Garcia</b><i>Google, Fundición</i></footer></li>
+        <li class="rvw rvw-c"><p>Excelentes pasteles, los recomiendo, es 100% calidad en repostería.</p><footer><b>Acatzin A.</b><i>Uber Eats, Fundición, marzo 2026</i></footer></li>
+      </ol>
+      <div class="op-ctl">
+        <button type="button" class="op-arr" data-d="-1" aria-label="Opinión anterior">←</button>
+        <span class="op-cnt" id="op-cnt" aria-live="polite">1 / 6</span>
+        <button type="button" class="op-arr" data-d="1" aria-label="Opinión siguiente">→</button>
+      </div>
+      <a class="btn btn-nav op-g" href="https://www.google.com/maps/place/Camen+Reposter%C3%ADa+Matriz/@21.921806,-102.3043006,17z/data=!4m6!3m5!1s0x8429ef013a7d5483:0x8ee363fbf883e4b3!8m2!3d21.921806!4d-102.3043006" target="_blank" rel="noopener">Ver todas en Google <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
 
-<section class="suc" id="sucursales" data-hide-wa>
+<section class="gal" id="galeria">
   <div class="cm-wrap">
-    <h2 data-reveal><span class="t1">Tres sucursales,</span><span class="t2">elige la tuya</span></h2>
-    <div class="suc-grid">
-      <article class="sede" data-reveal>
-        <img src="img/hero-480.webp" srcset="img/hero-480.webp 480w, img/hero-960.webp 960w, img/hero-1200.webp 1200w" sizes="(min-width:900px) 18vw, 40vw" width="480" height="640" alt="Fachada de la sucursal Zaragoza" loading="lazy" decoding="async">
-        <div class="sede-t"><h3>Zaragoza</h3><p>Prol. Gral. Ignacio Zaragoza 119, Jardines de la Concepción II</p><a class="btn btn-nav" href="tel:+524499121601"><svg width="18" height="18" aria-hidden="true"><use href="#i-tel"/></svg>449 912 1601</a></div>
-      </article>
-      <article class="sede" data-reveal>
-        <img src="img/fach-480.webp" srcset="img/fach-480.webp 480w, img/fach-960.webp 960w" sizes="(min-width:900px) 24vw, 56vw" width="960" height="721" alt="Fachada amarilla de la sucursal Fundición con el letrero Camen Repostería" loading="lazy" decoding="async">
-        <div class="sede-t"><h3>Fundición</h3><p>Av. Fundición 2019 C, La Fundición</p><a class="btn btn-nav" href="tel:+524499149636"><svg width="18" height="18" aria-hidden="true"><use href="#i-tel"/></svg>449 914 9636</a></div>
-      </article>
-      <article class="sede solo" data-reveal>
-        <div class="sede-t"><h3>Américas</h3><p>Pregunta por la dirección.</p><a class="btn btn-nav" href="tel:+524495362673"><svg width="18" height="18" aria-hidden="true"><use href="#i-tel"/></svg>449 536 2673</a></div>
-      </article>
+    <h2 data-reveal><span class="t1">Pásale, la vitrina</span><span class="t2">ya está llena</span></h2>
+    <div class="gal-grid">
+      <figure class="g g1" data-reveal><img src="img/local-960.webp" srcset="img/local-480.webp 480w, img/local-960.webp 960w, img/local-1200.webp 1200w" sizes="(min-width:720px) 30vw, 52vw" width="960" height="1280" alt="Interior de la sucursal Fundición con su vitrina refrigerada y pizarrón de postres" decoding="async"><figcaption>Fundición, por dentro</figcaption></figure>
+      <figure class="g g2" data-reveal><img src="img/domo-960.webp" srcset="img/domo-480.webp 480w, img/domo-960.webp 960w, img/domo-1536.webp 1536w" sizes="(min-width:720px) 24vw, 46vw" width="960" height="1000" alt="Pastel de chocolate con cereza en su domo para llevar" decoding="async"><figcaption>Listo, en su domo</figcaption></figure>
+      <figure class="g g3" data-reveal><img src="img/fach-960.webp" srcset="img/fach-480.webp 480w, img/fach-960.webp 960w, img/fach-1600.webp 1600w" sizes="(min-width:720px) 24vw, 46vw" width="960" height="721" alt="Fachada amarilla de la sucursal Fundición" decoding="async"><figcaption>Fundición de día</figcaption></figure>
+      <figure class="g g4" data-reveal><img src="img/vit2-960.webp" srcset="img/vit2-480.webp 480w, img/vit2-960.webp 960w, img/vit2-1600.webp 1600w" sizes="(min-width:720px) 46vw, 100vw" width="960" height="720" alt="Vitrina refrigerada con pasteles enteros, rebanadas y gelatinas" decoding="async"><figcaption>La vitrina de Zaragoza</figcaption></figure>
+      <figure class="g g5" data-reveal><img src="img/hero-480.webp" srcset="img/hero-480.webp 480w, img/hero-960.webp 960w" sizes="(min-width:720px) 22vw, 46vw" width="480" height="640" alt="Fachada de la sucursal Zaragoza de noche con el letrero encendido" decoding="async"><figcaption>Zaragoza de noche</figcaption></figure>
     </div>
-    <dl class="horas" data-reveal>
-      <div><dt>Lunes a viernes</dt><dd>9:00 a 20:00</dd></div>
-      <div><dt>Sábado</dt><dd>9:00 a 19:30</dd></div>
-      <div><dt>Domingo</dt><dd>12:00 a 14:30</dd></div>
-    </dl>
+    <a class="gal-cta" href="#sucursales">Ver cómo llegar <span aria-hidden="true">→</span></a>
   </div>
 </section>
+
+<section class="vis fest-top" id="sucursales" data-hide-wa>
+  <div class="cm-wrap">
+    <h2 data-reveal><span class="t1">Tres sucursales,</span><span class="t2">elige la tuya</span></h2>
+    <div class="vis-tabs" role="tablist" aria-label="Sucursales">
+      <button type="button" role="tab" id="vt-0" aria-selected="true" aria-controls="vis-panel" data-i="0">Zaragoza<small>Matriz</small></button>
+      <button type="button" role="tab" id="vt-1" aria-selected="false" aria-controls="vis-panel" data-i="1" tabindex="-1">Fundición</button>
+      <button type="button" role="tab" id="vt-2" aria-selected="false" aria-controls="vis-panel" data-i="2" tabindex="-1">Américas</button>
+    </div>
+    <div class="vis-grid" id="vis-panel" role="tabpanel" aria-labelledby="vt-0">
+      <div class="vis-mapa" id="vis-mapa">
+        <iframe id="vis-iframe" src="https://www.google.com/maps?q=Camen+Reposter%C3%ADa+Matriz,+Prol.+Gral.+Ignacio+Zaragoza+119,+Jardines+de+la+Concepci%C3%B3n+II,+Aguascalientes&output=embed" loading="lazy" title="Mapa de Camen Repostería Zaragoza" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="vis-sin" id="vis-sin" hidden><b>Américas</b><p>Esta sucursal todavía no tiene ficha en Google. Llámales y te dicen cómo llegar.</p></div>
+      </div>
+      <div class="vis-info">
+        <p class="vis-estado" id="vis-estado"><span class="dot" aria-hidden="true"></span><span id="vis-estado-t">Lunes a viernes 9:00 a 20:00</span></p>
+        <h3 id="vis-nom">Zaragoza</h3>
+        <p class="vis-dir" id="vis-dir">Prol. Gral. Ignacio Zaragoza 119, Jardines de la Concepción II, 20120 Aguascalientes</p>
+        <dl class="vis-horas" id="vis-horas">
+          <div data-d="1"><dt>Lunes</dt><dd>9:00 a 20:00</dd></div>
+          <div data-d="2"><dt>Martes</dt><dd>9:00 a 20:00</dd></div>
+          <div data-d="3"><dt>Miércoles</dt><dd>9:00 a 20:00</dd></div>
+          <div data-d="4"><dt>Jueves</dt><dd>9:00 a 20:00</dd></div>
+          <div data-d="5"><dt>Viernes</dt><dd>9:00 a 20:00</dd></div>
+          <div data-d="6"><dt>Sábado</dt><dd>9:00 a 19:30</dd></div>
+          <div data-d="0"><dt>Domingo</dt><dd>12:00 a 14:30</dd></div>
+        </dl>
+        <div class="vis-btns">
+          <a class="btn btn-wa" id="vis-wa" href="https://wa.me/524499121601?text=Hola%20Camen%20Reposter%C3%ADa%20Zaragoza%2C%20quiero%20pedir%20un%20pastel." data-wa="Hola Camen Repostería Zaragoza, quiero pedir un pastel." data-wa-num="524499121601"><svg width="22" height="22" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+          <a class="btn btn-nav" id="vis-tel" href="tel:+524499121601"><svg width="18" height="18" aria-hidden="true"><use href="#i-tel"/></svg><span id="vis-tel-t">449 912 1601</span></a>
+          <a class="btn btn-nav" id="vis-ir" href="https://www.google.com/maps/place/Camen+Reposter%C3%ADa+Matriz/@21.921806,-102.3043006,17z/data=!4m6!3m5!1s0x8429ef013a7d5483:0x8ee363fbf883e4b3!8m2!3d21.921806!4d-102.3043006" target="_blank" rel="noopener">Cómo llegar <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fi on-crema" id="fiesta">
+  <div class="cm-wrap fi-grid">
+    <div class="fi-cab">
+      <h2 data-reveal><span class="t1">¿Hay fiesta?</span><span class="t2">Que no falte nada</span></h2>
+      <p class="fi-sub" data-reveal>Velas, platos y cucharas van con tu pastel. Marca lo que te llevas.</p>
+    </div>
+    <div class="fi-ticket" data-reveal>
+      <p class="fi-tt">Camen Repostería <span>para la fiesta</span></p>
+      <ul class="fi-lista" id="fi-lista">
+        <li><label><input type="checkbox" value="Velas mágicas rosas (10 pzas)" data-p="35"><span class="fi-n">Velas mágicas rosas<small>10 piezas, se vuelven a prender solas</small></span><span class="fi-p">$35</span></label></li>
+        <li><label><input type="checkbox" value="Velas mágicas blancas (10 pzas)" data-p="35"><span class="fi-n">Velas mágicas blancas<small>10 piezas</small></span><span class="fi-p">$35</span></label></li>
+        <li><label><input type="checkbox" value="Vela de pirotecnia" data-p="50"><span class="fi-n">Vela de pirotecnia<small>1 pieza, diseño surtido</small></span><span class="fi-p">$50</span></label></li>
+        <li><label><input type="checkbox" value="Platos para pastel (25 pzas)" data-p="36"><span class="fi-n">Platos para pastel<small>25 piezas</small></span><span class="fi-p">$36</span></label></li>
+        <li><label><input type="checkbox" value="Cucharas (50 pzas)" data-p="24"><span class="fi-n">Cucharas<small>50 piezas</small></span><span class="fi-p">$24</span></label></li>
+        <li><label><input type="checkbox" value="Servilletas (125 pzas)" data-p="24"><span class="fi-n">Servilletas<small>125 piezas</small></span><span class="fi-p">$24</span></label></li>
+      </ul>
+      <p class="fi-tot"><span>Extras</span><b id="fi-tot">$0</b></p>
+      <p class="fi-nota">Precios publicados en Uber Eats, sucursal Fundición.</p>
+      <a class="btn btn-wa fi-wa" id="fi-wa" href="https://wa.me/524499121601?text=Hola%20Camen%20Reposter%C3%ADa%2C%20tengo%20una%20fiesta%20y%20quiero%20pedir%20un%20pastel." data-wa="Hola Camen Repostería, tengo una fiesta y quiero pedir un pastel." data-wa-num="524499121601"><svg width="22" height="22" aria-hidden="true"><use href="#i-wa"/></svg>Pedir pastel y extras</a>
+    </div>
+  </div>
+</section>
+
 <section class="cm-foot" id="listo" data-hide-wa>
   <div class="cm-wrap">
     <h2><span class="t1">Todo listo</span><span class="t2">para completar</span></h2>
     <ul class="lista">
       <li>Tu WhatsApp oficial para pedidos</li>
-      <li>La carta completa con precios</li>
+      <li>Precios de mostrador (los de aquí son de Uber Eats)</li>
       <li>Dirección de la sucursal Américas</li>
       <li>Más fotos de tus pasteles y el logo en alta</li>
     </ul>
     <p class="pasa">Pásanoslo por el mismo chat donde te llegó esta muestra.</p>
-    <div class="cm-redes">
-      <a href="https://www.instagram.com/camenreposteria/" aria-label="Instagram de Camen Repostería" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
-      <a href="https://www.facebook.com/search/top?q=Camen%20Reposter%C3%ADa" aria-label="Facebook de Camen Repostería" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
-    </div>
-    <p class="cm-legal">Camen Repostería ® Aguascalientes. Muestra de página hecha por KREVO.</p>
   </div>
 </section>
+<footer class="cm-pie">
+  <div class="cm-wrap pie-grid">
+    <div class="pie-marca">
+      <p class="pie-logo"><b>Camen</b><i>Repostería ®</i></p>
+      <p class="pie-lema">Horneamos hoy, desde hace 26 años.</p>
+      <div class="cm-redes">
+        <a href="https://www.instagram.com/camenreposteria/" aria-label="Instagram de Camen Repostería" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
+        <a href="https://www.facebook.com/search/top?q=Camen%20Reposter%C3%ADa" aria-label="Facebook de Camen Repostería" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
+      </div>
+    </div>
+    <div class="pie-col">
+      <h3>Zaragoza</h3>
+      <p>Prol. Gral. Ignacio Zaragoza 119, Jardines de la Concepción II</p>
+      <a href="tel:+524499121601">449 912 1601</a>
+    </div>
+    <div class="pie-col">
+      <h3>Fundición</h3>
+      <p>Av. Fundición 2019 C, La Fundición</p>
+      <a href="tel:+524499149636">449 914 9636</a>
+    </div>
+    <div class="pie-col">
+      <h3>Américas</h3>
+      <p>Pregunta por la dirección</p>
+      <a href="tel:+524495362673">449 536 2673</a>
+    </div>
+    <div class="pie-col pie-hor">
+      <h3>Horario</h3>
+      <p>Lunes a viernes 9:00 a 20:00<br>Sábado 9:00 a 19:30<br>Domingo 12:00 a 14:30</p>
+    </div>
+  </div>
+  <p class="cm-legal cm-wrap">Camen Repostería ® Aguascalientes. Muestra de página hecha por KREVO.</p>
+</footer>
 
 </main>
 
@@ -194,7 +291,10 @@
 <script src="site.js?v=1791082543" defer></script>
 <script src="sections/01-inicio.js?v=1791082558" defer></script>
 <script src="sections/02-vitrina.js?v=1791082583" defer></script>
-<script src="sections/03-arma.js?v=1791083182" defer></script>
+<script src="sections/03-arma.js?v=1791103690" defer></script>
 <script src="sections/04-hecho.js?v=1791082660" defer></script>
+<script src="sections/05-opiniones.js?v=1791103747" defer></script>
+<script src="sections/07-visitanos.js?v=1791103810" defer></script>
+<script src="sections/08-fiesta.js?v=1791103849" defer></script>
 </body>
 </html>

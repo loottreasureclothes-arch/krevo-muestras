@@ -23,13 +23,15 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="preload" as="image" href="img/hero-960.webp" imagesrcset="img/hero-480.webp 480w, img/hero-960.webp 960w, img/hero-1536.webp 1536w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="fonts/bsd.woff2" crossorigin>
-<link rel="stylesheet" href="site.css?v=1791091959">
+<link rel="stylesheet" href="site.css?v=1791103941">
 <link rel="stylesheet" href="sections/01-inicio.css?v=1791091959">
-<link rel="stylesheet" href="sections/02-carta.css?v=1791088353">
+<link rel="stylesheet" href="sections/02-carta.css?v=1791103941">
 <link rel="stylesheet" href="sections/03-termino.css?v=1791092060">
 <link rel="stylesheet" href="sections/04-noche.css?v=1791088373">
-<link rel="stylesheet" href="sections/05-opiniones.css?v=1791088373">
-<link rel="stylesheet" href="sections/06-visitanos.css?v=1791088373">
+<link rel="stylesheet" href="sections/05-opiniones.css?v=1791103887">
+<link rel="stylesheet" href="sections/06-recorrido.css?v=1791103887">
+<link rel="stylesheet" href="sections/07-grupos.css?v=1791103925">
+<link rel="stylesheet" href="sections/08-visitanos.css?v=1791103925">
 <script>document.documentElement.className+=" js";setTimeout(function(){var a=document.querySelectorAll("[data-bd-reveal]");for(var i=0;i<a.length;i++)a[i].classList.add("is-in")},1600);</script>
 <noscript><style>[data-bd-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
 </head>
@@ -48,7 +50,9 @@
     <a href="#carta"><span>01</span>Qué sale</a>
     <a href="#termino"><span>02</span>Tu término</a>
     <a href="#opiniones"><span>03</span>Opiniones</a>
-    <a href="#visitanos"><span>04</span>Cómo llegar</a>
+    <a href="#recorrido"><span>04</span>El lugar</a>
+    <a href="#grupos"><span>05</span>Grupos</a>
+    <a href="#visitanos"><span>06</span>Cómo llegar</a>
   </nav>
   <a class="bd-btn bd-btn--wa" data-wa="Hola Burdo, vi su página y quiero preguntar por una mesa." href="https://wa.me/524494605315?text=Hola%20Burdo%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20preguntar%20por%20una%20mesa." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
 </div>
@@ -108,6 +112,7 @@
       <button class="bd-add" type="button" data-key="cocteles" data-name="Cocteles" aria-pressed="false">Agregar a mi mesa</button></div>
     </article>
   </div>
+  <div class="bd-wrap bd-carta-end"><a class="bd-arrow" href="#termino">Ya elegiste, arma tu mesa <span aria-hidden="true">→</span></a></div>
 </section>
 
 <section class="bd-sec bd-termino" id="termino" aria-labelledby="termino-t">
@@ -162,37 +167,105 @@
 <section class="bd-sec bd-op" id="opiniones" aria-labelledby="op-t">
   <div class="bd-wrap bd-op-grid">
     <div class="bd-op-dato" data-bd-reveal>
-      <p class="bd-op-n" aria-label="4.7 en Google"><span>4.7</span></p>
-      <p class="bd-op-c">en Google, con 1,683 opiniones</p>
+      <p class="bd-op-n" aria-label="4.7 de 5 en Google"><span>4.7</span></p>
+      <div class="bd-op-stars" role="img" aria-label="4.7 de 5 estrellas"><i style="--f:1"></i><i style="--f:1"></i><i style="--f:1"></i><i style="--f:1"></i><i style="--f:.7"></i></div>
+      <p class="bd-op-c">1,683 opiniones en Google</p>
+      <a class="bd-btn bd-btn--ink" href="https://www.google.com/maps/place/Burdo+Parrilla+P%C3%BAblica/@21.8656998,-102.2876757,17z/data=!4m6!3m5!1s0x8429ed0c8fba6475:0xbfdd40b8e65d99ad!8m2!3d21.8656998!4d-102.2876757!16s%2Fg%2F11rjs5mxvt" target="_blank" rel="noopener">Ver todas en Google<span aria-hidden="true">→</span></a>
     </div>
     <div class="bd-op-txt">
       <h2 class="bd-t" id="op-t" data-bd-reveal>Ya fueron,<em>y lo contaron.</em></h2>
-      <figure class="bd-q" data-bd-reveal>
-        <div class="bd-stars" role="img" aria-label="5 estrellas">★★★★★</div>
-        <blockquote>“Una experiencia espectacular! Mi esposo y yo visitamos Burdo y quedamos encantados…”</blockquote>
-        <figcaption>Carolina</figcaption>
-      </figure>
-      <figure class="bd-q" data-bd-reveal>
-        <div class="bd-stars" role="img" aria-label="5 estrellas">★★★★★</div>
-        <blockquote>“Desde la bienvenida la experiencia fue muy agradable, el spot es estético y limpio, las sillas son súper cómodas…”</blockquote>
-        <figcaption>Regina Portilla</figcaption>
-      </figure>
+      <div class="bd-op-strip" data-bd-reveal>
+        <figure class="bd-q">
+          <div class="bd-stars" role="img" aria-label="5 estrellas">★★★★★</div>
+          <blockquote>“Una experiencia espectacular! Mi esposo y yo visitamos Burdo y quedamos encantados. La calidad de los cortes es excelente, con un término en su punto…”</blockquote>
+          <figcaption><b>Carolina</b><span>Google · hace 2 meses</span></figcaption>
+        </figure>
+        <figure class="bd-q bd-q--b">
+          <div class="bd-stars" role="img" aria-label="5 estrellas">★★★★★</div>
+          <blockquote>“El spot es estético y limpio, las sillas son súper cómodas; el servicio a cargo de Carlos fue impecable y muy eficiente…”</blockquote>
+          <figcaption><b>Regina Portilla</b><span>Google · hace 5 meses</span></figcaption>
+        </figure>
+      </div>
+      <div class="bd-temas" data-bd-reveal>
+        <p class="bd-temas-h">De lo que más hablan en Google</p>
+        <ol>
+          <li style="--w:1"><b>Coctelería</b><span>44 reseñas</span></li>
+          <li style="--w:.75"><b>El concepto</b><span>33 reseñas</span></li>
+          <li style="--w:.5"><b>La parrillada</b><span>22 reseñas</span></li>
+          <li style="--w:.48"><b>Los platillos</b><span>21 reseñas</span></li>
+          <li style="--w:.2"><b>La arrachera</b><span>9 reseñas</span></li>
+        </ol>
+        <p class="bd-temas-tags">Excelente lugar / Buenos precios / Mejor trato del equipo / Altamente recomendado</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bd-sec bd-rec" id="recorrido" aria-labelledby="rec-t">
+  <div class="bd-wrap">
+    <p class="bd-eyebrow" data-bd-reveal>Date una vuelta</p>
+    <h2 class="bd-t" id="rec-t" data-bd-reveal>Patio, grava<em>y fuego.</em></h2>
+  </div>
+  <div class="bd-col">
+    <figure class="bd-f bd-f--a" data-bd-reveal><img src="img/patio-960.webp" srcset="img/patio-480.webp 480w, img/patio-960.webp 960w, img/patio-1600.webp 1600w" sizes="(min-width:820px) 720px, 100vw" width="2048" height="1536" alt="Patio de Burdo con plantas colgantes, mesas de madera y el letrero BURDO"><figcaption>El patio</figcaption></figure>
+    <figure class="bd-f bd-f--b" data-bd-reveal><img src="img/carne-reja-960.webp" srcset="img/carne-reja-480.webp 480w, img/carne-reja-960.webp 960w, img/carne-reja-1600.webp 1152w" sizes="(min-width:820px) 360px, 50vw" width="1152" height="2048" alt="Carne asándose en la parrilla de hierro"><figcaption>A la reja</figcaption></figure>
+    <figure class="bd-f bd-f--c" data-bd-reveal><img src="img/coctel-rojo-960.webp" srcset="img/coctel-rojo-480.webp 480w, img/coctel-rojo-960.webp 960w, img/coctel-rojo-1600.webp 1536w" sizes="(min-width:820px) 360px, 50vw" width="1536" height="2048" alt="Coctel rojo con flor comestible"><figcaption>La barra</figcaption></figure>
+    <figure class="bd-f bd-f--d" data-bd-reveal><img src="img/piedra-chorizo-960.webp" srcset="img/piedra-chorizo-480.webp 480w, img/piedra-chorizo-960.webp 960w, img/piedra-chorizo-1600.webp 1600w" sizes="(min-width:820px) 720px, 100vw" width="2048" height="1152" alt="Chorizo y cortes servidos sobre piedra caliente"><figcaption>Sobre piedra</figcaption></figure>
+    <figure class="bd-f bd-f--e" data-bd-reveal><img src="img/cocina-960.webp" srcset="img/cocina-480.webp 480w, img/cocina-960.webp 960w, img/cocina-1536.webp 1536w" sizes="(min-width:820px) 360px, 50vw" width="1536" height="2048" alt="Cocina abierta de Burdo con plantas y lámparas"><figcaption>La cocina</figcaption></figure>
+    <figure class="bd-f bd-f--f" data-bd-reveal><img src="img/coctel-azul-960.webp" srcset="img/coctel-azul-480.webp 480w, img/coctel-azul-960.webp 960w, img/coctel-azul-1600.webp 1536w" sizes="(min-width:820px) 360px, 50vw" width="1536" height="2048" alt="Coctel azul escarchado con romero y flor"><figcaption>De autor</figcaption></figure>
+    <figure class="bd-f bd-f--g" data-bd-reveal><img src="img/mesa-llena-960.webp" srcset="img/mesa-llena-480.webp 480w, img/mesa-llena-960.webp 960w, img/mesa-llena-1600.webp 1600w" sizes="(min-width:820px) 720px, 100vw" width="2048" height="1544" alt="Mesa con pizza, corte y ensalada para compartir"><figcaption>Mesa llena</figcaption></figure>
+  </div>
+  <div class="bd-wrap bd-rec-end" data-bd-reveal>
+    <a class="bd-arrow" href="https://www.google.com/maps/place/Burdo+Parrilla+P%C3%BAblica/@21.8656998,-102.2876757,17z/data=!4m6!3m5!1s0x8429ed0c8fba6475:0xbfdd40b8e65d99ad!8m2!3d21.8656998!4d-102.2876757!16s%2Fg%2F11rjs5mxvt" target="_blank" rel="noopener">Más fotos en Google <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section class="bd-sec bd-gr" id="grupos" aria-labelledby="gr-t">
+  <div class="bd-wrap bd-gr-grid">
+    <div class="bd-gr-head">
+      <p class="bd-gr-big" aria-hidden="true" data-bd-reveal>$300<span>a $600</span></p>
+      <p class="bd-gr-cap" data-bd-reveal>por persona, según Google</p>
+      <h2 class="bd-t" id="gr-t" data-bd-reveal>¿Vienen en bola?<em>Hay mesa larga.</em></h2>
+    </div>
+    <div class="bd-gr-faq" data-bd-reveal>
+      <details open><summary>¿Hay lugar para los niños?</summary><p>Sí, hay área de niños. Tú cenas, ellos juegan.</p></details>
+      <details><summary>¿Se puede pedir a domicilio?</summary><p>Sí: en el lugar, para llevar, a domicilio y por Rappi.</p></details>
+      <details><summary>¿Qué piden más?</summary><p>Cocteles de la barra, parrillada en piedra y pizza de arrachera.</p></details>
+      <details><summary>¿Reservan para grupos?</summary><p>Escríbenos cuántos son y a qué hora. Te confirmamos por WhatsApp.</p></details>
+      <a class="bd-btn bd-btn--wa" data-wa="Hola Burdo, vi su página. Vamos en grupo y queremos mesa. Somos __ personas, el día __ a las __." href="https://wa.me/524494605315?text=Hola%20Burdo%2C%20vi%20su%20p%C3%A1gina.%20Vamos%20en%20grupo%20y%20queremos%20mesa.%20Somos%20__%20personas%2C%20el%20d%C3%ADa%20__%20a%20las%20__." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Apartar para mi grupo</a>
     </div>
   </div>
 </section>
 
 <section class="bd-sec bd-vis" id="visitanos" aria-labelledby="vis-t" data-hide-wa>
+  <div class="bd-wrap">
+    <p class="bd-eyebrow" data-bd-reveal>Ven por tu mesa</p>
+    <h2 class="bd-t" id="vis-t" data-bd-reveal>La mesa es pública,<em>el antojo es tuyo.</em></h2>
+  </div>
   <div class="bd-wrap bd-vis-grid">
-    <div class="bd-vis-ph" data-bd-reveal><img src="img/patio-960.webp" srcset="img/patio-480.webp 480w, img/patio-960.webp 960w, img/patio-1600.webp 1600w" sizes="(min-width:820px) 560px, 100vw" width="2048" height="1536" alt="Patio de Burdo con plantas colgantes, mesas de madera y el letrero BURDO"></div>
+    <div class="bd-map" data-bd-reveal>
+      <iframe src="https://www.google.com/maps?q=Burdo+Parrilla+P%C3%BAblica+Av+de+la+Convenci%C3%B3n+de+1914+Sur+901+Aguascalientes&output=embed" loading="lazy" title="Mapa de Burdo Parrilla Pública" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <span class="bd-map-pin" aria-hidden="true">BURDO</span>
+    </div>
     <div class="bd-vis-tx">
-      <p class="bd-eyebrow" data-bd-reveal>Ven por tu mesa</p>
-      <h2 class="bd-t" id="vis-t" data-bd-reveal>La mesa es pública,<em>el antojo es tuyo.</em></h2>
-      <p class="bd-addr" data-bd-reveal>Av. de la Convención de 1914 Sur 901,<br>Jardines de Aguascalientes, Ags.</p>
-      <p class="bd-svc" data-bd-reveal>En el lugar, para llevar, a domicilio y por Rappi.</p>
-      <p class="bd-svc" data-bd-reveal>Horario: pregúntalo por WhatsApp.</p>
+      <p class="bd-now" id="bd-now" data-bd-reveal><i aria-hidden="true"></i><span>Abierto ahora</span></p>
+      <p class="bd-addr" data-bd-reveal>Av. de la Convención de 1914 Sur 901,<br>Jardines de Aguascalientes, 20270 Ags.</p>
+      <table class="bd-hor" data-bd-reveal aria-label="Horario">
+        <tbody>
+          <tr data-d="1"><th>Lunes</th><td>Abierto 24 h</td></tr>
+          <tr data-d="2"><th>Martes</th><td>Abierto 24 h</td></tr>
+          <tr data-d="3"><th>Miércoles</th><td>Abierto 24 h</td></tr>
+          <tr data-d="4"><th>Jueves</th><td>Abierto 24 h</td></tr>
+          <tr data-d="5"><th>Viernes</th><td>Abierto 24 h</td></tr>
+          <tr data-d="6"><th>Sábado</th><td>Abierto 24 h</td></tr>
+          <tr data-d="0"><th>Domingo</th><td>Abierto 24 h</td></tr>
+        </tbody>
+      </table>
+      <p class="bd-svc" data-bd-reveal>Horario publicado en Google. Antes de venir, confírmalo por WhatsApp.</p>
       <div class="bd-vis-act" data-bd-reveal>
-        <a class="bd-btn bd-btn--wa" data-wa="Hola Burdo, vi su página. ¿A qué hora abren hoy y tienen mesa?" href="https://wa.me/524494605315?text=Hola%20Burdo%2C%20vi%20su%20p%C3%A1gina.%20%C2%BFA%20qu%C3%A9%20hora%20abren%20hoy%20y%20tienen%20mesa%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pregunta por tu mesa</a>
-        <a class="bd-btn bd-btn--nav" href="https://www.google.com/maps/search/?api=1&query=Burdo+Parrilla+P%C3%BAblica+Av+de+la+Convenci%C3%B3n+de+1914+Sur+901+Aguascalientes" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="bd-btn bd-btn--wa" data-wa="Hola Burdo, vi su página. ¿Tienen mesa hoy?" href="https://wa.me/524494605315?text=Hola%20Burdo%2C%20vi%20su%20p%C3%A1gina.%20%C2%BFTienen%20mesa%20hoy%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>¿Hay mesa hoy?</a>
+        <a class="bd-btn bd-btn--nav" href="https://www.google.com/maps/place/Burdo+Parrilla+P%C3%BAblica/@21.8656998,-102.2876757,17z/data=!4m6!3m5!1s0x8429ed0c8fba6475:0xbfdd40b8e65d99ad!8m2!3d21.8656998!4d-102.2876757!16s%2Fg%2F11rjs5mxvt" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="bd-btn bd-btn--nav" href="tel:+524494605315">Llamar</a>
       </div>
     </div>
   </div>
@@ -214,8 +287,15 @@
   </section>
   <div class="bd-foot-row">
     <b class="bd-foot-name">BURDO</b>
-    <p>Av. de la Convención de 1914 Sur 901, Jardines de Aguascalientes, 20270 Aguascalientes, Ags.</p>
-    <p class="bd-muted">Fotos tomadas por nuestros comensales.</p>
+    <div class="bd-foot-info">
+      <p>Av. de la Convención de 1914 Sur 901, Jardines de Aguascalientes, 20270 Aguascalientes, Ags.</p>
+      <p><a href="tel:+524494605315">449 460 5315</a> · Abierto 24 h según Google</p>
+      <p class="bd-muted">Fotos tomadas por nuestros comensales.</p>
+    </div>
+    <div class="bd-foot-soc">
+      <a class="bd-soc" data-wa="Hola Burdo, vi su página y quiero preguntar por una mesa." href="https://wa.me/524494605315?text=Hola%20Burdo%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20preguntar%20por%20una%20mesa." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg></a>
+      <a class="bd-soc" href="https://www.google.com/maps/place/Burdo+Parrilla+P%C3%BAblica/@21.8656998,-102.2876757,17z/data=!4m6!3m5!1s0x8429ed0c8fba6475:0xbfdd40b8e65d99ad!8m2!3d21.8656998!4d-102.2876757!16s%2Fg%2F11rjs5mxvt" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg></a>
+    </div>
   </div>
 </footer>
 
@@ -224,5 +304,6 @@
 <script src="site.js?v=1791088277" defer></script>
 <script src="sections/02-carta.js?v=1791088323" defer></script>
 <script src="sections/03-termino.js?v=1791088741" defer></script>
+<script src="sections/08-visitanos.js?v=1791103925" defer></script>
 </body>
 </html>

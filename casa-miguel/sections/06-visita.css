@@ -18,3 +18,13 @@
   .cm-visita .t2{font-size:clamp(44px,4.6vw,66px)}
   .cm-visita-f .plato{width:min(100%,460px)}
 }
+.cm-mapa{width:min(80vw,340px);aspect-ratio:1;background:var(--cafe2)}
+.cm-mapa iframe{width:100%;height:100%;border:0;border-radius:50%;display:block;filter:sepia(.25) saturate(.9)}
+.cm-visita-f{position:relative}
+.cm-mapa-pin{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);background:var(--rojo);color:var(--crema);font-family:var(--f-d);font-size:16px;padding:6px 14px;box-shadow:4px 4px 0 rgba(18,10,7,.5);white-space:nowrap}
+.cm-ahora{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;color:var(--crema)}
+.cm-ahora i{width:10px;height:10px;border-radius:50%;background:var(--cobre)}
+.cm-ahora.on i{background:var(--verde);box-shadow:0 0 0 4px rgba(37,211,102,.2)}
+.cm-ahora.off i{background:var(--rojo-l)}
+.cm-hr li{padding:10px 4px;font-size:17px}
+@media (min-width:820px){.cm-mapa{width:min(100%,480px)}}

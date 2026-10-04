@@ -1,0 +1,42 @@
+.at-s5{padding:64px 0 60px;background:var(--ink);position:relative}
+.at-s5-top{display:flex;flex-direction:column;gap:26px;margin-bottom:34px}
+.at-s5 h2{font-size:clamp(44px,12.4vw,84px);margin-top:12px}
+.at-score{display:flex;align-items:center;gap:18px;padding:16px 0;border-top:2px solid var(--brand);border-bottom:1px solid var(--ink3)}
+.at-score b{font:400 clamp(76px,22vw,120px)/.85 "Young Serif",serif;color:var(--cream);letter-spacing:-.03em}
+.at-score-s{display:flex;gap:4px}
+.at-score-s i,.at-tk-s i{display:block;width:22px;height:22px;color:#5a4238}
+.at-score-s i.on,.at-tk-s i.on{color:#f0b03a}
+.at-score-s svg,.at-tk-s svg{width:100%;height:100%;fill:currentColor}
+.at-score-l{margin-top:8px;font:800 12px/1.35 Karla,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+/* comandas: papel crema con orilla rasgada */
+.at-tks{list-style:none;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px var(--gut) 34px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.at-tks::-webkit-scrollbar{display:none}
+.at-tk{flex:0 0 80%;max-width:340px;scroll-snap-align:center;position:relative;background:var(--cream);color:#2a1a14;padding:20px 20px 30px;transform:rotate(-1.2deg);box-shadow:0 14px 30px #0008}
+.at-tk:nth-child(even){transform:rotate(1.1deg);margin-top:14px}
+.at-tk::before{content:"";position:absolute;left:50%;top:-9px;width:42px;height:16px;margin-left:-21px;background:#c0392acc;transform:rotate(-3deg)}
+.at-tk::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;background:linear-gradient(-45deg,transparent 7px,var(--cream) 0) 0 0/14px 10px repeat-x,linear-gradient(45deg,transparent 7px,var(--cream) 0) 7px 0/14px 10px repeat-x}
+.at-tk-h{display:flex;justify-content:space-between;gap:10px;font:800 10.5px/1 Karla,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8a6d5f;padding-bottom:12px;border-bottom:1.5px dashed #c9b39b}
+.at-tk-s{display:flex;gap:3px;margin:14px 0 10px}
+.at-tk-s i{width:18px;height:18px;color:#d9c7b3}
+.at-tk-s i.on{color:var(--brand)}
+.at-tk blockquote p{font:400 19px/1.32 "Young Serif",serif}
+.at-tk-n{margin-top:16px;display:flex;flex-direction:column;gap:2px}
+.at-tk-n b{font:800 15px/1.2 Karla,sans-serif}
+.at-tk-n span{font:600 13px/1.2 Karla,sans-serif;color:#8a6d5f}
+.at-s5-foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 20px}
+.at-tks-c{flex:1 0 100%;font:400 22px/1 "Young Serif",serif;color:var(--cream)}
+.at-tks-c em{font:800 11px/1 Karla,sans-serif;font-style:normal;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-left:14px}
+.at-s5-foot .at-btn{flex:1 1 220px}
+.at-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;font:800 13px/1 Karla,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-t);text-decoration:none;border-bottom:1.5px solid currentColor}
+@media (min-width:760px){
+  .at-s5{padding:110px 0 100px}
+  .at-s5-top{flex-direction:row;align-items:end;justify-content:space-between}
+  .at-s5 h2{font-size:clamp(44px,4.8vw,76px)}
+  .at-score{min-width:360px}
+  .at-tks{display:block;columns:2;column-gap:26px;overflow:visible;max-width:1180px;margin:0 auto;padding:16px var(--gut) 30px}
+  .at-tk{max-width:none;break-inside:avoid;margin:0 0 34px;display:block}
+  .at-tk:nth-child(even){margin-top:0}
+  .at-tks-c{display:none}
+  .at-s5-foot .at-btn{flex:0 0 auto}
+}
+@media (min-width:1100px){.at-tks{columns:3;column-gap:30px;padding-left:40px;padding-right:40px}.at-tk blockquote p{font-size:20px}}
