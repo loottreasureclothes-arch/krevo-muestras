@@ -1,0 +1,41 @@
+<section class="pz-sec pz-poz" id="pozole">
+  <div class="pz-in pz-poz-in">
+    <div class="pz-poz-txt">
+      <p class="pz-eye" data-reveal>Arma tu pedido</p>
+      <h2 data-reveal>Tu pozole, <em>a tu modo</em></h2>
+      <p class="pz-poz-sub" data-reveal>Elige y se arma el tazón. Precio de su carta.</p>
+    </div>
+    <div class="pz-tazon-wrap" data-reveal>
+      <svg class="pz-tazon" id="pz-tazon" viewBox="0 46 320 204" role="img" aria-label="Tazón de pozole que cambia con tu elección">
+        <ellipse cx="160" cy="226" rx="118" ry="14" fill="#000" opacity=".28"/>
+        <g id="pz-bowl" style="transform-origin:160px 226px">
+          <path d="M28 96h264c0 78-52 124-132 124S28 174 28 96Z" fill="#fbf3dc"/>
+          <path d="M28 96h264c0 8-.8 15-2.4 22H30.4C28.8 111 28 104 28 96Z" fill="#1a2590"/>
+          <path d="M40 140h240" stroke="#1a2590" stroke-width="3" opacity=".7"/><path d="M48 152h224" stroke="#1a2590" stroke-width="3" opacity=".7"/><g fill="#1a2590"><path d="M70 146l8-6 8 6-8 6z"/><path d="M110 146l8-6 8 6-8 6z"/><path d="M150 146l10-7 10 7-10 7z"/><path d="M194 146l8-6 8 6-8 6z"/><path d="M234 146l8-6 8 6-8 6z"/></g><g fill="#f0663a"><circle cx="98" cy="146" r="3"/><circle cx="138" cy="146" r="3"/><circle cx="182" cy="146" r="3"/><circle cx="222" cy="146" r="3"/></g>
+          <ellipse cx="160" cy="96" rx="132" ry="26" fill="#fbf3dc"/>
+          <ellipse cx="160" cy="98" rx="116" ry="20" fill="#b23a2a" id="pz-caldo"/>
+          <ellipse cx="160" cy="98" rx="116" ry="20" fill="#f0663a" opacity=".35"/>
+          <g id="pz-carne"></g>
+          <g class="pz-top" id="t-tostada"><circle cx="232" cy="82" r="30" fill="#e9c27a" stroke="#c99a46" stroke-width="3"/><circle cx="224" cy="76" r="3" fill="#c99a46"/><circle cx="240" cy="88" r="3" fill="#c99a46"/><circle cx="238" cy="74" r="2.5" fill="#c99a46"/></g>
+          <g class="pz-top" id="t-lechuga"><path d="M96 90c-10-16 6-28 18-16 8-12 24-4 18 10 12 2 8 18-6 16-8 8-22 4-22-4-8-2-12-4-8-6Z" fill="#7fbf4a" stroke="#4f8f2a" stroke-width="2.5"/></g>
+          <g class="pz-top" id="t-rabano"><circle cx="150" cy="104" r="12" fill="#fff" stroke="#e3365f" stroke-width="4"/><circle cx="178" cy="92" r="11" fill="#fff" stroke="#e3365f" stroke-width="4"/><circle cx="130" cy="86" r="10" fill="#fff" stroke="#e3365f" stroke-width="4"/></g>
+          <g class="pz-top" id="t-limon"><path d="M196 108a30 30 0 0 1 56-14z" fill="#b6dd4a" stroke="#6ca21c" stroke-width="3"/><path d="M204 104a22 22 0 0 1 40-9z" fill="#e9f59a"/></g>
+          <g class="pz-top" id="t-oregano"><g fill="#4f8f2a"><circle cx="118" cy="100" r="2.4"/><circle cx="132" cy="108" r="2.4"/><circle cx="160" cy="84" r="2.4"/><circle cx="186" cy="108" r="2.4"/><circle cx="104" cy="92" r="2.4"/><circle cx="200" cy="90" r="2.4"/><circle cx="146" cy="94" r="2.4"/><circle cx="172" cy="104" r="2.4"/></g></g>
+          <g class="pz-top" id="t-cebolla"><g fill="none" stroke="#e6d7f0" stroke-width="3.5" stroke-linecap="round"><path d="M110 108c6-8 14-8 20 0"/><path d="M206 96c6-8 14-8 20 0"/><path d="M144 84c6-8 14-8 20 0"/></g></g>
+        </g>
+      </svg>
+      <p class="pz-tot"><span id="pz-tot-n">$82</span><small id="pz-tot-t">Grande de pierna</small></p>
+    </div>
+    <form class="pz-ctrl" id="pz-ctrl" onsubmit="return false">
+      <fieldset><legend>Tamaño</legend>
+        <div class="pz-opts" data-k="tam"><button type="button" class="on" data-v="grande">Grande</button><button type="button" data-v="chico">Chico</button></div></fieldset>
+      <fieldset><legend>Carne</legend>
+        <div class="pz-opts" data-k="carne"><button type="button" class="on" data-v="pierna">Pierna</button><button type="button" data-v="lengua">Lengua</button><button type="button" data-v="combinado">Combinado</button></div></fieldset>
+      <fieldset><legend>Le pones</legend>
+        <div class="pz-opts pz-multi" data-k="top"><button type="button" data-v="rábano" data-t="t-rabano">Rábano</button><button type="button" data-v="limón" data-t="t-limon">Limón</button><button type="button" data-v="lechuga" data-t="t-lechuga">Lechuga</button><button type="button" data-v="tostada" data-t="t-tostada">Tostada</button><button type="button" data-v="orégano" data-t="t-oregano">Orégano</button><button type="button" data-v="cebolla" data-t="t-cebolla">Cebolla</button></div></fieldset>
+      <fieldset><legend>Cómo lo quieres</legend>
+        <div class="pz-opts" data-k="modo"><button type="button" class="on" data-v="para comer aquí">Aquí</button><button type="button" data-v="para llevar">Para llevar</button><button type="button" data-v="a domicilio">A domicilio</button></div></fieldset>
+      <a class="pz-btn pz-wa pz-send" id="pz-send" href="WA[Hola La Plazoela, quiero un pozole grande de pierna, para comer aquí. Total de carta: $82. ¿Me confirman por favor?]">Mandar mi pozole</a>
+    </form>
+  </div>
+</section>

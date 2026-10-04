@@ -1,0 +1,76 @@
+@font-face{font-family:"Saira Condensed";font-weight:600;font-display:swap;src:url(fonts/saira-600.woff2) format("woff2")}
+@font-face{font-family:"Saira Condensed";font-weight:700;font-display:swap;src:url(fonts/saira-700.woff2) format("woff2")}
+@font-face{font-family:Newsreader;font-weight:400;font-display:swap;src:url(fonts/newsreader-400.woff2) format("woff2")}
+@font-face{font-family:Newsreader;font-weight:400;font-style:italic;font-display:swap;src:url(fonts/newsreader-i400.woff2) format("woff2")}
+@font-face{font-family:Newsreader;font-weight:600;font-display:swap;src:url(fonts/newsreader-600.woff2) format("woff2")}
+:root{--bg:#0c1f1e;--bg2:#12312e;--bg3:#0a1918;--brand:#6ad7cb;--brand-d:#3f9d93;--wood:#b9824f;--cream:#f3ead8;--ink:#0b2523;--mute:#9db7b2;--wa:#25D366;--wa-ink:#0b3d1f;
+--disp:"Saira Condensed","Arial Narrow",sans-serif;--body:Newsreader,Georgia,serif;--hh:58px;--g:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+body{background:var(--bg);color:var(--cream);font-family:var(--body);font-size:18px;line-height:1.45;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.skip{position:absolute;left:-999px;top:0;background:var(--brand);color:var(--ink);padding:10px 14px;z-index:200}
+.skip:focus{left:8px;top:8px}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+
+/* header propio: alas + herreria */
+.hd{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--bg);}
+.hd-bar{height:var(--hh);display:flex;align-items:center;justify-content:space-between;padding:0 var(--g)}
+.hd-logo{min-height:44px;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--brand)}
+.hd-wings{width:44px;height:25px}
+.hd-name{font-family:var(--disp);font-weight:700;font-size:1.28rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);line-height:1;white-space:nowrap}
+.hd-btn{display:flex;align-items:center;gap:10px;height:44px;padding:0 4px 0 10px;font-family:var(--disp);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.95rem;color:var(--brand)}
+.hd-btn-i{width:22px;height:12px;position:relative;display:block}
+.hd-btn-i i{position:absolute;left:0;width:100%;height:2px;background:currentColor;transition:transform .28s ease}
+.hd-btn-i i:first-child{top:1px}.hd-btn-i i:last-child{bottom:1px}
+.menu-open .hd-btn-i i:first-child{transform:translateY(4.5px) rotate(45deg)}
+.menu-open .hd-btn-i i:last-child{transform:translateY(-4.5px) rotate(-45deg)}
+.hd-iron{height:12px;opacity:.55;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='12' viewBox='0 0 48 12'%3E%3Cpath d='M0 6C6 6 6 1.500 11 1.500S16 6 12 8 7 6 12 4.500M24 6c6 0 6-4.500 11-4.500S40 6 36 8s-5-2 0-3.500M0 6h2M22 6h4M46 6h2' fill='none' stroke='%236ad7cb' stroke-width='1.200' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center/48px 12px}
+.menu{position:fixed;inset:0;z-index:80;background:var(--bg3);transform:translateY(-102%);transition:transform .3s ease;visibility:hidden;padding-top:calc(var(--hh) + 12px)}
+.menu-open .menu{transform:none;visibility:visible}
+.menu-open{overflow:hidden}
+.menu-nav{display:flex;flex-direction:column;padding:18px var(--g);gap:2px;max-width:560px}
+.menu-nav a{font-family:var(--disp);font-weight:700;font-size:2.6rem;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;padding:6px 0;border-bottom:1px solid #1d3d3a;line-height:1.05}
+.menu-nav a:hover{color:var(--brand)}
+.menu-nav a.menu-wa{margin-top:22px;border:0;background:var(--wa);color:var(--wa-ink);font-size:1.25rem;letter-spacing:.14em;padding:16px 18px;display:flex;align-items:center;gap:12px}
+.menu-wa svg{width:24px;height:24px}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;font-family:var(--disp);font-weight:700;font-size:1.05rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:transform .2s ease,background .2s ease}
+.btn:active{transform:scale(.98)}
+.btn-wa{background:var(--wa);color:var(--wa-ink)}
+.btn-wa svg{width:22px;height:22px}
+.btn-wa:hover{background:#3ae07a}
+.btn-line{border:1.5px solid var(--brand);color:var(--brand)}
+.btn-line:hover{background:rgba(106,215,203,.12)}
+
+/* titulos a dos tonos */
+.ttl{font-family:var(--disp);font-weight:700;text-transform:uppercase;line-height:.92;letter-spacing:.005em;font-size:clamp(2.6rem,12.5vw,4.6rem)}
+.ttl .t2{display:block;color:var(--brand)}
+.eyebrow{font-family:var(--disp);font-weight:600;letter-spacing:.24em;text-transform:uppercase;font-size:.85rem;color:var(--wood)}
+.arch{border-radius:999px 999px 0 0;overflow:hidden}
+section{position:relative}
+.wrap{padding-left:var(--g);padding-right:var(--g);max-width:1180px;margin:0 auto}
+
+/* reveal */
+@media (prefers-reduced-motion:no-preference){
+.js [data-reveal]:not(.is-in){opacity:0;transform:translateY(18px)}
+[data-reveal]{transition:opacity .7s ease,transform .7s ease}
+}
+
+/* flotante */
+.wa-float{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:70;width:56px;height:56px;border-radius:50%;background:var(--wa);color:var(--wa-ink);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.45);transition:transform .25s ease,opacity .25s ease}
+.wa-float svg{width:30px;height:30px}
+.wa-off .wa-float{opacity:0;transform:scale(.8);pointer-events:none}
+
+/* pie */
+.foot{background:var(--bg3);padding:34px var(--g) 90px;text-align:center}
+.foot .hd-iron{margin:0 auto 22px;max-width:1180px}
+.foot-name{font-family:var(--disp);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:1.5rem}
+.foot p{color:var(--mute);font-size:.98rem;margin-top:6px}
+.foot-soc{display:flex;gap:14px;justify-content:center;margin-top:18px}
+.foot-soc a{width:44px;height:44px;border:1px solid var(--brand-d);color:var(--brand);display:grid;place-items:center}
+.foot-soc svg{width:22px;height:22px}
+@media (min-width:900px){:root{--hh:68px;--g:40px}body{font-size:19px}.hd-name{font-size:1.5rem}.menu-nav a{font-size:3.4rem}.wa-float{right:26px;bottom:26px}}

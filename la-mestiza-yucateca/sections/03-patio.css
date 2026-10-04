@@ -1,0 +1,10 @@
+.patio{position:relative;height:62svh;min-height:430px;max-height:880px;overflow:hidden;background:var(--azul-hondo)}
+.patio img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+.patio:after{content:"";position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(to top,rgba(13,24,68,.92),rgba(13,24,68,0))}
+.patio-t{position:absolute;left:20px;bottom:30px;z-index:2;display:flex;flex-direction:column;font:400 clamp(3.4rem,17vw,7.5rem)/.9 var(--disp);text-transform:uppercase}
+.patio-t span:last-child{color:var(--rosa-claro)}
+@media (min-width:760px){
+  .patio{height:78vh}
+  .patio img{object-position:50% 36%}
+  .patio-t{left:max(40px,calc(50% - 600px));bottom:50px;flex-direction:row;gap:.35em;font-size:clamp(3.4rem,6vw,6.4rem)}
+}

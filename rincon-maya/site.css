@@ -1,0 +1,76 @@
+/* Rincón Maya: lienzo de barro oscuro, magenta del bordado, formas de arco y plato */
+@font-face{font-family:"Young Serif";src:url(fonts/youngserif-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Karla";src:url(fonts/karla-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Karla";src:url(fonts/karla-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Karla";src:url(fonts/karla-700.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{
+  --clay:#240d09; --clay2:#361610; --clay3:#4a2016;
+  --mag:#c81e6b; --magl:#ff5f9f; --magd:#7d0f47;
+  --cream:#f6ead2; --cream2:#ead9b8; --blue:#2b8fb5; --yel:#f2b632;
+  --wa:#25D366; --wa-ink:#0b3d1f;
+  --font-display:"Young Serif",Georgia,serif; --font-body:"Karla",system-ui,sans-serif;
+  --gut:20px; --hd:60px; --ease:cubic-bezier(.22,.8,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--clay);color:var(--cream);font-family:var(--font-body);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1;text-wrap:balance;overflow-wrap:break-word}
+h2{font-size:clamp(40px,11.5vw,76px);letter-spacing:-.01em}
+h2 em,h1 em{font-style:normal;color:var(--magl);display:block}
+button{font:inherit;color:inherit;cursor:pointer}
+.skip{position:absolute;left:-999px;top:0;background:var(--cream);color:var(--clay);padding:10px 14px;z-index:200}
+.skip:focus{left:8px;top:8px}
+:focus-visible{outline:3px solid var(--yel);outline-offset:3px}
+.wrap{padding-left:var(--gut);padding-right:var(--gut);max-width:1280px;margin:0 auto}
+
+/* botones: rectangulares, finos, mayusculas espaciadas */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 22px;border:1.5px solid var(--mag);background:transparent;color:var(--cream);font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background 200ms var(--ease),transform 200ms var(--ease)}
+.btn:hover{background:var(--mag)}
+.btn:active{transform:translateY(1px)}
+.btn--wa{background:var(--wa);border-color:var(--wa);color:var(--wa-ink)}
+.btn--wa:hover{background:#3be07c}
+.btn svg{width:20px;height:20px;flex:none}
+.btn--fill{background:var(--mag)}
+
+/* header propio: barra de barro con puntada */
+.hd{position:fixed;inset:0 0 auto 0;z-index:90;background:var(--clay);transition:transform 260ms var(--ease)}
+.hd-bar{height:var(--hd);display:flex;align-items:center;justify-content:space-between;padding:0 var(--gut);max-width:1440px;margin:0 auto}
+.hd-logo{min-height:44px;display:flex;align-items:center;gap:10px;text-decoration:none}
+.hd-flor{width:34px;height:34px;transition:transform 400ms var(--ease)}
+.hd-logo:hover .hd-flor{transform:rotate(45deg)}
+.hd-name{font-family:var(--font-display);font-size:22px;letter-spacing:-.005em}
+.hd-name b{font-weight:400;color:var(--magl)}
+.hd-btn{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;background:none;border:1.5px solid rgba(246,234,210,.35);border-radius:2px;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.hd-x{position:relative;width:18px;height:12px}
+.hd-x i{position:absolute;left:0;right:0;height:2px;background:var(--cream);transition:transform 220ms var(--ease),top 220ms var(--ease)}
+.hd-x i:first-child{top:2px}.hd-x i:last-child{top:8px}
+body.menu-open .hd-x i:first-child{top:5px;transform:rotate(45deg)}
+body.menu-open .hd-x i:last-child{top:5px;transform:rotate(-45deg)}
+.hd-puntada{height:10px;background:url(img/puntada.svg) repeat-x 0 0/24px 10px;opacity:.9}
+
+.menu{position:fixed;inset:0;z-index:80;background:var(--clay2);padding:calc(var(--hd) + 40px) var(--gut) 32px;display:flex;flex-direction:column;justify-content:space-between;visibility:hidden;opacity:0;transition:opacity 220ms var(--ease),visibility 0s linear 220ms}
+body.menu-open .menu{visibility:visible;opacity:1;transition-delay:0s}
+body.menu-open{overflow:hidden}
+.menu-nav{display:flex;flex-direction:column}
+.menu-nav a{font-family:var(--font-display);font-size:clamp(34px,10vw,56px);line-height:1;padding:16px 0;border-bottom:1px solid rgba(246,234,210,.16);text-decoration:none;display:block}
+.menu-nav a:hover{color:var(--magl)}
+.menu-foot{font-size:15px;color:var(--cream2);opacity:.8}
+
+/* reveal: estado base = final; solo se esconde con JS y sin reduced-motion */
+html.js-reveal [data-reveal]:not(.is-in){opacity:0;transform:translateY(16px)}
+[data-reveal]{transition:opacity 700ms var(--ease),transform 700ms var(--ease)}
+html.reveal-safe [data-reveal]{opacity:1!important;transform:none!important}
+.stitch{display:block;height:56px;background:url(img/bordado.svg) repeat-x center/160px 56px;transition:clip-path 900ms var(--ease)}
+html.js-reveal .stitch:not(.is-in){clip-path:inset(0 100% 0 0)}
+html.reveal-safe .stitch:not(.is-out){clip-path:none}
+html.js-reveal .stitch.is-out{clip-path:inset(0 0 0 100%)}
+
+/* flotante WhatsApp */
+.wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:70;width:56px;height:56px;border-radius:50%;background:var(--wa);color:var(--wa-ink);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.4);transition:opacity 200ms,transform 200ms var(--ease)}
+.wa-float svg{width:30px;height:30px}
+body.wa-off .wa-float{opacity:0;pointer-events:none;transform:scale(.8)}
+
+@media (min-width:760px){:root{--gut:40px;--hd:68px}.hd-name{font-size:26px}}
+@media (min-width:1100px){:root{--gut:56px}}

@@ -1,0 +1,40 @@
+<section class="com" id="comanda">
+  <div class="wrap com-grid">
+    <div class="com-tx">
+      <p class="eyebrow" data-reveal>Antes de llamar</p>
+      <h2 class="h2" data-reveal>Arma tu comanda, <span class="t2">como en mesa.</span></h2>
+      <p class="com-p" data-reveal>Toca + en la carta. Se apunta aquí. Luego llamas y la lees.</p>
+      <a class="btn" href="#carta" data-reveal>Volver a la carta</a>
+    </div>
+    <div class="com-pad-wrap" data-reveal>
+      <div class="pad" id="pad">
+        <div class="pad-stack">
+          <article class="hoja" id="hoja" aria-live="polite">
+            <div class="hoja-top">
+              <span class="hoja-marca">Esthela</span>
+              <span class="hoja-folio">Nº <b>0644</b></span>
+            </div>
+            <label class="hoja-nom"><span>A nombre de</span><input id="pad-nombre" type="text" maxlength="40" autocomplete="off" placeholder="Tu nombre"></label>
+            <ol class="hoja-lineas" id="hoja-lineas"></ol>
+            <p class="hoja-vacio" id="hoja-vacio">Aún no apuntas nada.<br>Toca + en lo que se te antoje.</p>
+            <div class="hoja-tot"><span>Suma</span><strong id="hoja-total">$0</strong></div>
+            <p class="hoja-aviso" id="hoja-aviso" hidden>Faltan platillos sin precio aquí: se confirman al pedir.</p>
+            <div class="hoja-perf" aria-hidden="true"></div>
+            <button class="btn solid hoja-arrancar" id="pad-arrancar" type="button" disabled>Arrancar la hoja</button>
+          </article>
+          <article class="talon" id="talon" aria-hidden="true">
+            <p class="talon-t">Listo. Dile esto al contestar:</p>
+            <pre class="talon-txt" id="talon-txt"></pre>
+            <div class="talon-cta">
+              <a class="btn solid" id="talon-call" href="tel:+524499180751">Llamar 449 918 0751</a>
+              <a class="btn" id="talon-wa" href="#" hidden target="_blank" rel="noopener">Mandar por WhatsApp</a>
+              <button class="btn" id="talon-copy" type="button">Copiar comanda</button>
+              <button class="btn" id="talon-otra" type="button">Escribir otra</button>
+            </div>
+            <p class="talon-ok" id="talon-ok" aria-live="polite"></p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+.bd-vis{background:var(--canvas);background-image:var(--celo)}
+.bd-vis-grid{display:grid;gap:28px}
+.bd-vis-ph{position:relative;border:1px solid var(--neon);box-shadow:8px 8px 0 var(--vino);aspect-ratio:4/3;overflow:hidden;margin-right:8px}
+.bd-vis-ph img{width:100%;height:100%;object-fit:cover}
+.bd-addr{font:600 20px/1.3 var(--f-b);margin:20px 0 10px}
+.bd-svc{color:var(--muted);margin-bottom:4px}
+.bd-vis-act{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+@media (min-width:820px){
+  .bd-vis-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+  .bd-vis-act{flex-direction:row;flex-wrap:wrap}
+}

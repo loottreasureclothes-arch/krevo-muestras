@@ -1,0 +1,28 @@
+.bd-hero{position:relative;min-height:max(600px,92svh);display:flex;align-items:flex-end;overflow:hidden;background:var(--canvas)}
+.bd-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.bd-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,8,11,.35) 0%,rgba(20,8,11,0) 28%,rgba(20,8,11,.78) 62%,#14080b 100%)}
+.bd-hero-in{position:relative;z-index:2;width:100%;padding:calc(var(--hh) + 24px) var(--gut) 32px}
+.bd-neon{display:flex;gap:.02em;font:900 clamp(92px,30vw,250px)/.84 var(--f-d);letter-spacing:.03em}
+.bd-neon .l{position:relative;color:#ffe1e3;text-shadow:0 0 2px #fff}
+.bd-neon .l::after{content:attr(data-c);position:absolute;left:0;top:0;color:var(--neon);filter:blur(10px);opacity:.9;z-index:-1}
+.bd-hero-sub{display:block;margin-top:10px;font:800 clamp(34px,10vw,76px)/.92 var(--f-d);text-transform:uppercase}
+.bd-hero-sub em{display:block;font-style:normal;color:var(--neon)}
+.bd-hero-act{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.bd-hero-act .bd-btn{flex:1 1 210px}
+.bd-calle{display:inline-block;margin-top:22px;border:1px solid var(--neon);padding:7px 12px;font:600 11px/1 var(--f-b);letter-spacing:.18em;text-transform:uppercase;color:var(--txt)}
+@media (prefers-reduced-motion:no-preference){
+  html.js .bd-neon .l{animation:bd-tubo 1.25s steps(1,end) both}
+  html.js .bd-neon .l:nth-child(1){animation-delay:.05s}
+  html.js .bd-neon .l:nth-child(2){animation-delay:.2s}
+  html.js .bd-neon .l:nth-child(3){animation-delay:.1s}
+  html.js .bd-neon .l:nth-child(4){animation-delay:.3s}
+  html.js .bd-neon .l:nth-child(5){animation-delay:.15s}
+}
+@keyframes bd-tubo{0%{opacity:0}12%{opacity:1}20%{opacity:.1}34%{opacity:1}42%{opacity:.25}58%{opacity:1}68%{opacity:.6}80%,100%{opacity:1}}
+@media (min-width:820px){
+  .bd-hero{min-height:max(640px,96svh)}
+  .bd-hero-img{object-position:50% 35%}
+  .bd-hero::after{background:linear-gradient(90deg,#14080bf2 0%,rgba(20,8,11,.55) 55%,rgba(20,8,11,.2) 100%)}
+  .bd-hero-in{max-width:1200px;margin:0 auto;padding:calc(var(--hh) + 40px) var(--gut) 72px}
+  .bd-hero-act .bd-btn{flex:0 0 auto}
+}

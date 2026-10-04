@@ -1,0 +1,9 @@
+# HOJA CORTA Parrillada Jardines
+Trabajo: pedir en 1 toque. wa.me/524499787878 (tel de Maps, NO confirmado como WhatsApp, a PENDIENTES).
+Promesa: "Bien servido hasta las 11:45." (reseñas: "súper bien servida"; horario 9 a.m.-11:45 p.m.)
+Identidad: lienzo brasa #1b1410, naranja de su carta/letrero #E67910 (medido), crema #f4e8d2 solo para leer. Anton + Figtree (casa-miguel usó Alfa Slab + Barlow). Forma: plato y salsero redondos + letrero con corte inclinado (header de letrero con borde inferior inclinado, "PARRILLADA/JARDINES"). Placa de calle azul en el hero (su calle, 604).
+Componente firma: "El salsero y la comanda": 6 platos redondos con foto y Agregar (cantidad), foto real del salsero con 3 salseros tocables (verde, roja, pico de gallo), comanda en papel que se imprime línea por línea, aquí/para llevar, y WhatsApp literal: "Hola Parrillada Jardines, quiero pedir para llevar: 2 Tacos, 1 Alambre. Con salsa roja y pico de gallo. ¿Cuánto sería?"
+Momento firma: la parrilla se abre. Rejilla de 9 barras sobre el hero que se levantan con brasa naranja en el filo (1.2 s), se vuelve a cerrar al salir del hero.
+Secciones: 01-hero | fachada | "Bien servido / hasta las 11:45." ; 02-pedido | platos+salsero | "Escoge tu plato. / Ponle salsa." ; 03-aire | interior a sangre | "AIRE. JUEGOS. ESPACIO." ; 04-carta | catálogo tipográfico con precios de su carta | "Lo que se antoja, / con su precio." ; 05-mesa | dato gigante $100-200 + reseñas Andrea y René | "Mesa grande, / plato grande." ; 06-cierre | salsas | "Te esperamos / en Jardines." ; 07-pendientes | "Todo listo para completar". Pie con Facebook.
+Prohibidas: maps-09 (flyer con texto), 13 (cliente), 17/18/19 (otros negocios), 02/08 solo precios. Reseña de 1 estrella no se cita.
+PENDIENTE-DUEÑO: WhatsApp real, precios de alambres/tacos/chilaquiles/quesadillas, redes, fotos de juegos y barra.

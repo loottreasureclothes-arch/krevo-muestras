@@ -1,0 +1,29 @@
+.pz-poz{background:var(--cob2);background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 36px,transparent 36px 72px),repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 36px,transparent 36px 72px)}
+.pz-poz-sub{margin-top:12px;opacity:.9}
+.pz-tazon-wrap{margin:18px auto 4px;max-width:420px;text-align:center}
+.pz-tazon{width:100%;height:auto;display:block;overflow:visible}
+#pz-bowl{transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.pz-top{opacity:0;transform:translateY(-26px) scale(.8);transform-box:fill-box;transform-origin:center;transition:opacity .3s,transform .4s cubic-bezier(.3,1.5,.5,1)}
+.pz-top.on{opacity:1;transform:none}
+#pz-carne ellipse{transition:fill .3s}
+.pz-tot{display:flex;flex-direction:column;align-items:center;margin-top:-8px}
+.pz-tot span{font:400 64px/1 var(--f-d);color:var(--amar)}
+.pz-tot small{font:700 12px/1.3 var(--f-b);letter-spacing:.16em;text-transform:uppercase;margin-top:4px}
+.pz-ctrl{margin-top:26px;display:grid;gap:18px}
+.pz-ctrl fieldset{border:0}
+.pz-ctrl legend{font:700 12px/1 var(--f-b);letter-spacing:.2em;text-transform:uppercase;color:var(--amar);margin-bottom:10px;padding:0}
+.pz-opts{display:flex;flex-wrap:wrap;gap:8px}
+.pz-opts button{flex:1 1 auto;min-height:46px;padding:0 16px;background:var(--cob3);color:var(--cre);border:2px solid rgba(251,243,220,.28);border-radius:0;font:500 15px/1 var(--f-b);cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .15s}
+.pz-opts button.on{background:var(--amar);color:var(--cob);border-color:var(--amar);font-weight:700}
+.pz-opts button:active{transform:scale(.97)}
+.pz-opts button:focus-visible{outline:3px solid var(--cre);outline-offset:2px}
+.pz-multi{display:grid;grid-template-columns:repeat(3,1fr)}.pz-multi button{padding:0 8px}
+.pz-send{margin-top:6px;width:100%}
+@media (min-width:900px){
+ .pz-poz-in{display:grid;grid-template-columns:1fr 1fr;gap:20px 64px;align-items:start}
+ .pz-poz-txt{grid-column:1/-1}
+ .pz-tazon-wrap{margin:10px 0 0;max-width:none}
+ .pz-tazon{max-width:520px;margin:0 auto}
+ .pz-ctrl{margin-top:10px}
+ .pz-tot span{font-size:84px}
+}

@@ -1,0 +1,18 @@
+.op{background:var(--azul-hondo);padding:44px 0 36px;border-top:3px solid var(--rosa)}
+.op-in{display:flex;flex-direction:column;gap:20px}
+.op-num{display:flex;flex-direction:column;line-height:.8}
+.op-big{font:400 clamp(7rem,38vw,15rem)/.82 var(--disp);color:var(--rosa-claro);letter-spacing:-.02em}
+.op-sub{font:800 13px/1 var(--txt);letter-spacing:.24em;text-transform:uppercase;margin-top:12px}
+.op .ttl{margin:14px 0 26px;font-size:clamp(2.1rem,9vw,3.6rem)}
+.cita{padding:16px 0 16px;border-top:1px dashed rgba(247,237,217,.32)}
+.est{display:flex;gap:3px;color:#ffc94d;margin-bottom:10px}
+.est svg{width:20px;height:20px}
+.cita blockquote{font:600 1.2rem/1.35 var(--txt);max-width:30ch}
+.cita figcaption{margin-top:10px;font:800 12px/1 var(--txt);letter-spacing:.16em;text-transform:uppercase;color:var(--rosa-claro)}
+@media (min-width:760px){
+  .op{padding:100px 0 96px}
+  .op-in{flex-direction:row;align-items:center;gap:70px}
+  .op-num{flex:0 0 42%}
+  .op-txt{flex:1}
+  .op-big{font-size:clamp(12rem,22vw,22rem)}
+}

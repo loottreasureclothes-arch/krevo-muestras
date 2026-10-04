@@ -1,0 +1,38 @@
+.platos{background:var(--clay);padding:56px 0 70px;position:relative}
+.platos h2{margin-bottom:34px}
+.dishes{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:34px 16px}
+.dish{display:flex;flex-direction:column}
+.dish-pic{position:relative;aspect-ratio:1;border-radius:50%;overflow:hidden;margin-bottom:14px;box-shadow:0 0 0 3px var(--clay),0 0 0 5px var(--mag)}
+.dish-pic img{width:100%;height:100%;object-fit:cover;transition:transform 500ms var(--ease)}
+.dish:hover .dish-pic img{transform:scale(1.06)}
+.dish h3{font-size:21px;line-height:1.05;margin-top:6px}
+.dish-precio{font-size:14px;color:var(--cream2);opacity:.85;margin:4px 0 12px}
+.dish-ctl{margin-top:auto;min-height:46px}
+.dish-add{width:100%;min-height:46px;background:transparent;border:1.5px solid var(--mag);color:var(--cream);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;border-radius:2px;transition:background 200ms var(--ease)}
+.dish-add:hover{background:var(--mag)}
+.dish-step{display:flex;align-items:stretch;border:1.5px solid var(--mag);background:var(--mag);border-radius:2px;min-height:46px}
+.dish-step[hidden]{display:none}
+.dish-step button{flex:0 0 46px;background:none;border:0;display:grid;place-items:center}
+.dish-step button:hover{background:rgba(0,0,0,.2)}
+.dish-step svg{width:20px;height:20px}
+.dish-step output{flex:1;display:grid;place-items:center;font-family:var(--font-display);font-size:22px}
+.dish.is-in-order .dish-pic{box-shadow:0 0 0 3px var(--clay),0 0 0 6px var(--yel)}
+.pedido{position:fixed;left:0;right:0;bottom:0;z-index:75;background:var(--cream);color:var(--clay);display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px var(--gut) calc(12px + env(safe-area-inset-bottom));border-top:4px solid var(--mag);transform:translateY(110%);transition:transform 260ms var(--ease);visibility:hidden}
+body.pedido-on .pedido{transform:none;visibility:visible}
+body.pedido-on .wa-float{opacity:0;pointer-events:none}
+.pedido-txt{line-height:1.1;font-size:17px}
+.pedido-txt b{font-family:var(--font-display);font-weight:400;font-size:30px;color:var(--mag)}
+.pedido-txt small{display:block;font-size:12.5px;opacity:.75;margin-top:2px}
+.pedido .btn{flex:none;color:var(--wa-ink)}
+body.pedido-hide .pedido{transform:translateY(110%);visibility:hidden}
+@media (min-width:760px){
+  .platos{padding:90px 0 110px}
+  .dishes{grid-template-columns:repeat(3,1fr);gap:56px 36px}
+  .dish h3{font-size:26px}
+  .dish-precio{font-size:15px}
+  .platos h2{margin-bottom:56px}
+  .pedido{left:50%;right:auto;width:min(760px,calc(100% - 40px));margin-bottom:18px;border:0;border-top:0;box-shadow:0 14px 40px rgba(0,0,0,.5);border-radius:2px;border-left:6px solid var(--mag)}
+  body.pedido-on .pedido{transform:translateX(-50%)}
+  .pedido{transform:translate(-50%,130%)}
+  body.pedido-hide .pedido{transform:translate(-50%,130%)}
+}

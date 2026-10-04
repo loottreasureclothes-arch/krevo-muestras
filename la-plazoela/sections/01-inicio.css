@@ -1,0 +1,25 @@
+.pz-hero{position:relative;background:var(--cob);overflow:hidden}
+.pz-picado{position:absolute;left:0;right:0;top:0;height:48px;z-index:5;display:flex;justify-content:space-between;pointer-events:none;padding:0 2px}
+.pz-picado::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--cre)}
+.pz-picado i{display:block;flex:1;max-width:46px;height:44px;margin-top:3px;transform-origin:50% 0;background:var(--c);clip-path:polygon(0 0,100% 0,100% 55%,50% 100%,0 55%);transition:transform .8s cubic-bezier(.3,1.5,.5,1),opacity .5s;transition-delay:calc(var(--n)*.04s)}
+.pz-picado i:nth-child(4n+1){--c:var(--cor)}.pz-picado i:nth-child(4n+2){--c:var(--amar)}.pz-picado i:nth-child(4n+3){--c:var(--cre)}.pz-picado i:nth-child(4n){--c:var(--lad)}
+.pz-picado.fuera i{transform:translateY(-120%) rotate(-14deg);opacity:0}
+.pz-hero-foto{position:relative;height:calc(100svh - var(--hh) - 215px);min-height:430px;max-height:640px}
+.pz-hero-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.pz-hero-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--cob) 4%,rgba(17,25,109,.8) 38%,rgba(17,25,109,0) 70%);pointer-events:none}
+.pz-h1{position:relative;z-index:2;margin:-175px var(--gut) 0;font-size:clamp(54px,16.5vw,92px);line-height:.95}
+.pz-hero-pie{padding:12px var(--gut) 38px;position:relative;z-index:2}
+.pz-hero-dir{font-size:16px;margin-bottom:6px}
+.pz-hero-hoy{font:700 12px/1.3 var(--f-b);letter-spacing:.14em;text-transform:uppercase;color:var(--amar);margin-bottom:18px}
+.pz-hero-btns{display:flex;flex-direction:column;gap:12px}
+@media (min-width:900px){
+ .pz-hero{display:grid;grid-template-columns:1.1fr .9fr;grid-template-areas:"h pic" "p pic";align-content:center;align-items:end;min-height:calc(100vh - var(--hh));padding:70px var(--gut) 70px 6vw;column-gap:4vw}
+ .pz-picado{height:54px}.pz-picado i{max-width:56px;height:50px}
+ .pz-hero-foto{grid-area:pic;height:min(78vh,780px);max-height:none;min-height:0;border-radius:999px 999px 0 0;overflow:hidden;border:4px solid var(--amar);border-bottom:0;align-self:center;position:relative}
+ .pz-hero-foto::after{display:none}
+ .pz-hero-foto img{object-position:50% 30%}
+ .pz-h1{grid-area:h;margin:0;font-size:clamp(70px,7.2vw,122px);align-self:end}
+ .pz-hero-pie{grid-area:p;padding:26px 0 0;align-self:start}
+ .pz-hero-dir{font-size:20px;margin:0 0 10px;max-width:480px}
+ .pz-hero-btns{flex-direction:row;flex-wrap:wrap;margin-top:6px}
+}

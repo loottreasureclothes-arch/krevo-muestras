@@ -1,0 +1,19 @@
+.pj-mesa{background:var(--bg2);padding-bottom:0}
+.pj-dato{margin-top:34px;padding:30px 0 28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pj-dato-n{white-space:nowrap;font-family:var(--f-d);font-size:clamp(70px,22vw,210px);line-height:.95;color:var(--brand);letter-spacing:.005em}
+.pj-dato-l{font-size:19px;max-width:20em;margin-top:8px}
+.pj-quotes{display:grid;gap:18px;margin-top:34px}
+.pj-q{margin:0;padding:20px 20px;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--brand)}
+.pj-stars{display:flex;gap:4px;color:var(--brand-hi)}
+.pj-stars svg{width:20px;height:20px}
+.pj-q blockquote{margin:10px 0 0;font-weight:600;font-size:18px;line-height:1.4}
+.pj-q figcaption{margin-top:12px;font-size:14px;color:var(--muted);font-weight:600}
+.pj-banda{width:100%;height:auto;aspect-ratio:16/8;object-fit:cover;margin-top:48px;display:block}
+@media (min-width:900px){
+  .pj-mesa .pj-wrap{display:grid;grid-template-columns:1fr 1fr;column-gap:60px}
+  .pj-mesa .pj-eyebrow,.pj-mesa .pj-t{grid-column:1/-1}
+  .pj-dato-n{font-size:clamp(110px,10.5vw,170px)}
+  .pj-dato{grid-column:1;margin-top:40px;align-self:start}
+  .pj-quotes{grid-column:2;margin-top:40px}
+  .pj-banda{aspect-ratio:21/7;margin-top:70px}
+}

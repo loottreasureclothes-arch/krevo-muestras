@@ -1,0 +1,58 @@
+.beb{padding:56px 0 64px;background:linear-gradient(var(--bg),var(--bg2) 12%,var(--bg2) 88%,var(--bg))}
+.beb .ttl{margin:8px 0 26px}
+.taza{display:grid;gap:18px}
+.taza-side{display:contents}
+.taza-stage{order:1}.carta{order:2}.ticket{order:3}
+.taza-stage{position:sticky;top:var(--hh);z-index:5;display:flex;align-items:center;gap:14px;background:var(--bg3);border:1px solid #1f4440;border-top:3px solid var(--brand);padding:8px 14px;margin:0 calc(var(--g)*-1);border-left:0;border-right:0}
+.vaso{width:104px;height:118px;flex:none;overflow:visible}
+.layers rect{transform-box:fill-box;transform-origin:50% 100%;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.layers rect.pre{transform:scaleY(0);transition:none}
+.steam,.ice{opacity:0;transition:opacity .8s ease,transform .8s ease}
+.steam{transform:translateY(6px)}
+.vaso[data-hot="1"] .steam{opacity:1;transform:none}
+.vaso[data-hot="0"] .ice{opacity:1}
+.taza-name{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:1.65rem;line-height:1;letter-spacing:.03em}
+.taza-price{font-family:var(--disp);font-weight:600;color:var(--brand);font-size:1.5rem;margin-top:4px}
+.cat-h{display:flex;align-items:flex-end;gap:14px;margin:12px 0 4px}
+.cat-h h3{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--wood);font-size:1.3rem;padding-bottom:6px;border-bottom:1px solid #3a5b57;flex:1}
+.cat-ph{width:56px;height:70px;flex:none}
+.cat-ph img{width:100%;height:100%;object-fit:cover}
+.rows{list-style:none}
+.row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;border-bottom:1px solid #1f4440;min-height:56px}
+.row-n{text-align:left;padding:10px 0;font-size:1.12rem;line-height:1.2;color:var(--cream)}
+.row-p{font-family:var(--disp);font-weight:600;font-size:1.3rem;color:var(--cream)}
+.row-add{min-height:44px;padding:0 14px;border:1.5px solid var(--brand);color:var(--brand);font-family:var(--disp);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.9rem;border-radius:2px;transition:background .2s ease,color .2s ease,transform .2s ease}
+.row-add:hover{background:var(--brand);color:var(--ink)}
+.row-add:active{transform:scale(.95)}
+.row.on .row-n{color:var(--brand)}
+.ticket{background:var(--cream);color:var(--ink);padding:20px 18px 18px;position:relative;border-radius:2px;
+ -webkit-mask:radial-gradient(circle 9px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 9px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
+.ticket-h{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.95rem;border-bottom:2px dashed #b9a98a;padding-bottom:10px}
+.ticket-list{list-style:none;min-height:54px;padding:8px 0}
+.ticket-empty{color:#6b7c78;font-style:italic;padding:8px 0}
+.t-it{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:5px 0}
+.t-it span{line-height:1.2}
+.t-q{display:flex;align-items:center;gap:2px}
+.t-q button{width:40px;height:40px;font-family:var(--disp);font-weight:700;font-size:1.4rem;border:1px solid #b9a98a;color:var(--ink)}
+.t-q b{min-width:26px;text-align:center;font-family:var(--disp);font-size:1.2rem}
+.t-m{font-family:var(--disp);font-weight:600;font-size:1.15rem;min-width:52px;text-align:right}
+.modo{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--ink);margin-top:6px}
+.modo button{min-height:46px;font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.88rem;color:var(--ink)}
+.modo button+button{border-left:1.5px solid var(--ink)}
+.modo [aria-checked="true"]{background:var(--ink);color:var(--cream)}
+.ticket-nota{font-size:.9rem;color:#4b5f5b;margin-top:8px}
+.ticket-total{display:flex;justify-content:space-between;align-items:baseline;border-top:2px dashed #b9a98a;margin:12px 0 14px;padding-top:12px;font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.12em}
+.ticket-total b{font-size:2.1rem;letter-spacing:0}
+.ticket-total b.vacio{font-size:1rem;letter-spacing:.08em;color:#6b7c78}
+.ticket-go{width:100%}
+@media (min-width:900px){
+.beb{padding:90px 0 100px}
+.taza{grid-template-columns:minmax(0,1.25fr) minmax(0,.95fr);gap:22px 56px;align-items:start}
+.taza-side{display:flex;flex-direction:column;gap:22px;position:sticky;top:calc(var(--hh) + 14px);order:2}
+.carta{order:1}
+.taza-stage{position:static;margin:0;border:1px solid #1f4440;border-top:3px solid var(--brand);padding:18px 22px;order:0}
+.ticket{order:0}
+.vaso{width:150px;height:170px}
+.taza-name{font-size:2.2rem}
+.beb .wrap{max-width:1140px}
+}

@@ -1,0 +1,54 @@
+@font-face{font-family:"Gloock";src:url(fonts/gloock-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Figtree";src:url(fonts/figtree-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Figtree";src:url(fonts/figtree-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Figtree";src:url(fonts/figtree-700.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{--cob:#11196d;--cob2:#1a2590;--cob3:#0a1048;--amar:#f2c230;--cor:#f0663a;--lad:#b23a2a;--cre:#fbf3dc;--tinta:#161a4f;--gut:20px;--hh:58px;--f-d:"Gloock",Georgia,serif;--f-b:"Figtree",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--cob);color:var(--cre);font:400 17px/1.5 var(--f-b);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2{font-family:var(--f-d);font-weight:400;line-height:1.02;letter-spacing:-.005em}
+h2{font-size:clamp(40px,11vw,60px)}
+h2 em,h1 em{font-style:normal;color:var(--amar);display:block}
+.pz-eye{font:700 12px/1 var(--f-b);letter-spacing:.2em;text-transform:uppercase;color:var(--amar);margin-bottom:14px}
+.pz-sec{padding:64px var(--gut);position:relative}
+.pz-in{max-width:1200px;margin:0 auto}
+.pz-bar{position:sticky;top:0;z-index:50;height:var(--hh);background:var(--cob3);border-bottom:2px solid var(--amar);display:flex;align-items:flex-start;justify-content:space-between;padding:0 var(--gut)}
+.pz-placa{display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--amar);color:var(--cob);text-decoration:none;width:104px;height:70px;border-radius:0 0 52px 52px;padding-top:2px;box-shadow:0 3px 0 var(--lad);line-height:1}
+.pz-placa span{font:700 10px/1 var(--f-b);letter-spacing:.3em;text-transform:uppercase;margin-bottom:2px}
+.pz-placa b{font:400 21px/1 var(--f-d)}
+.pz-estado{display:flex;align-items:center;gap:8px;height:var(--hh);font:700 12px/1.2 var(--f-b);letter-spacing:.12em;text-transform:uppercase;text-align:right}
+.pz-estado i{width:9px;height:9px;border-radius:50%;background:var(--amar);flex:none}
+.pz-estado.on i{background:#4cd964}
+.pz-estado.off i{background:var(--cor)}
+.pz-nav{display:none}
+.pz-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;font:700 14px/1 var(--f-b);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;border-radius:0;cursor:pointer;transition:transform .2s,background .2s}
+.pz-btn:active{transform:translateY(1px)}
+.pz-wa{background:#25D366;color:#0b3d1f}
+.pz-wa:hover{background:#3be07a}
+.pz-nav-btn{background:transparent;color:var(--amar);border-color:var(--amar);font-weight:500;min-height:46px;padding:0 20px;font-size:12.5px}
+.pz-nav-btn:hover{background:rgba(242,194,48,.12)}
+.pz-btn svg{width:20px;height:20px;flex:none}
+.pz-fab{position:fixed;right:16px;bottom:16px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.35);transition:transform .25s,opacity .25s}
+.pz-fab.off{opacity:0;transform:translateY(16px);pointer-events:none}
+.rv [data-reveal]:not(.in){opacity:0;transform:translateY(22px)}
+.rv [data-reveal]{transition:opacity .7s ease,transform .7s ease;transition-delay:var(--d,0s)}
+.pz-pie{background:var(--cob3);padding:44px var(--gut) 96px;text-align:center;border-top:2px solid var(--amar)}
+.pz-pie b{font:400 30px/1 var(--f-d);color:var(--amar);display:block;margin-bottom:10px}
+.pz-pie p{font-size:15px;opacity:.85;max-width:420px;margin:0 auto 6px}
+.pz-pie small{display:block;margin-top:18px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.55}
+@media (min-width:900px){
+ :root{--hh:68px;--gut:48px}
+ body{font-size:18px}
+ .pz-sec{padding:110px var(--gut)}
+ .pz-bar{justify-content:flex-start}
+ .pz-nav{display:flex;gap:30px;height:var(--hh);align-items:center;margin-left:auto;margin-right:34px;order:3}
+ .pz-nav a{padding:14px 2px;font:700 12.5px/1 var(--f-b);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;opacity:.85}
+ .pz-nav a:hover{opacity:1;color:var(--amar)}
+ .pz-placa{width:128px;height:84px;border-radius:0 0 64px 64px}
+ .pz-placa b{font-size:25px}
+ .pz-estado{order:4}
+ .pz-fab{right:28px;bottom:28px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

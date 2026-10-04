@@ -1,0 +1,8 @@
+# HOJA CORTA Cenaduría Esthela
+- Trabajo: pedir la cena en 1 toque. SIN WhatsApp confirmado: acción = `tel:+524499180751` (comanda se lee o se copia). wa.me queda cableado y oculto (WA="" en site.js) y va a PENDIENTES.
+- Promesa: "Esta noche, cena en Esthela." Flautas, sopes y enmoladas, con los precios de su carta.
+- Identidad: lienzo vino #3a0a18/#4a0b1c, marca burdeos #8f1737 + crema #f3e8d3 (medido de su carta), teja #f0804f solo 2o tono de títulos (lo trae su carta). Young Serif + Figtree. Forma: marco con esquinas cóncavas (cartela de su menú) y talón de comanda con perforación. Header = placa esmaltada crema con esquinas cóncavas, "Abierto/Cerrado" vivo, Menú.
+- Componente firma: LA LIBRETA DEL MESERO (talonario con folio Nº 644). Toca + en platillos, se escriben a mano (clip-path), total, nombre, "Arrancar la hoja" desprende el talón; luego Llamar con la comanda a la vista + Copiar. Texto literal: "Hola, soy <nombre>. Mi comanda: 2 x Flautas de res (3 pzas)...".
+- Momento firma: la hoja de libreta se arranca por la perforación (translate/rotate, 0.8 s, reversible con "Escribir otra").
+- Secciones: 01-portada | maps-15 flautas con su logo | "Esta noche, / cena en Esthela." ; 02-carta | cards con foto | "La carta / de la casa" ; 03-comanda | libreta | "Arma tu comanda, / como en mesa." ; 04-comedor | maps-09 a sangre | "Mesas para todos" ; 05-opiniones | dato gigante 4,535 | "Lo dicen / en la mesa" ; 06-lugar | horario de hoy + dirección | "Te esperamos / de noche." ; 07-pendientes | "Todo listo para completar".
+- Prohibidas: 02, 06, 27, 28, 30 (cartas), 16, 26, 14. PENDIENTE-DUEÑO: WhatsApp, 1975, IG, fachada propia, logo grande, precios de pozole/enchiladas/enmoladas/mole/tamal, 5 reseñas.

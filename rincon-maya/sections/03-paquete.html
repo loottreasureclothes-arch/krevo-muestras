@@ -1,0 +1,45 @@
+<section class="paquete" id="paquete" data-hide-wa>
+  <div class="wrap paq-grid">
+    <h2 data-reveal>Paquete Tulum,<em>para llevar.</em></h2>
+    <div class="canasta" data-reveal aria-hidden="true">
+      <div class="cesta">
+        <div class="tok tok-coch" data-tok="coch"><img src="img/cochinita2-480.webp" width="480" height="480" alt=""><span>2 kg</span></div>
+        <div class="tok tok-rosca" data-tok="rosca"><img src="img/rosca-480.webp" width="480" height="480" alt=""></div>
+        <div class="tok tok-cafe" data-tok="cafe"><img src="img/cafe-480.webp" width="480" height="480" alt=""><span>1 lt</span></div>
+      </div>
+    </div>
+    <form class="paq-form" id="paq-form" data-reveal onsubmit="return false">
+      <fieldset class="paq-items">
+        <legend class="sr">Qué lleva tu paquete</legend>
+        <label class="paq-it is-on"><input type="checkbox" name="coch" checked><span class="paq-chk"></span><span class="paq-t"><b>2 kg de cochinita pibil</b><small>Incluye frijoles negros</small></span></label>
+        <label class="paq-it is-on"><input type="checkbox" name="rosca" checked><span class="paq-chk"></span><span class="paq-t"><b>1 rosca mediana</b><small>De naranja o de nata</small></span></label>
+        <label class="paq-it is-on"><input type="checkbox" name="cafe" checked><span class="paq-chk"></span><span class="paq-t"><b>1 litro de café de olla</b><small>Caliente para la mesa</small></span></label>
+      </fieldset>
+      <div class="paq-row" id="paq-rosca-row">
+        <span class="paq-lbl">Rosca de</span>
+        <div class="seg" role="radiogroup" aria-label="Sabor de la rosca">
+          <button type="button" role="radio" aria-checked="true" data-rosca="naranja">Naranja</button>
+          <button type="button" role="radio" aria-checked="false" data-rosca="nata">Nata</button>
+        </div>
+      </div>
+      <div class="paq-row">
+        <span class="paq-lbl">Para el</span>
+        <div class="seg" role="radiogroup" aria-label="Día de entrega">
+          <button type="button" role="radio" aria-checked="false" data-dia="viernes">Vie</button>
+          <button type="button" role="radio" aria-checked="false" data-dia="sábado">Sáb</button>
+          <button type="button" role="radio" aria-checked="false" data-dia="domingo">Dom</button>
+        </div>
+      </div>
+      <div class="paq-row">
+        <span class="paq-lbl">Paquetes</span>
+        <div class="paq-step"><button type="button" id="paq-less" aria-label="Menos paquetes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-minus"/></svg></button><output id="paq-n" aria-live="polite">1</output><button type="button" id="paq-more" aria-label="Más paquetes"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
+      </div>
+      <div class="paq-total">
+        <span class="paq-precio" id="paq-precio" aria-live="polite">$840</span>
+        <span class="paq-nota" id="paq-nota">$840 cada paquete</span>
+      </div>
+      <a class="btn btn--wa paq-wa" id="paq-wa" href="https://wa.me/524499167574?text=Hola%20Rinc%C3%B3n%20Maya%2C%20quiero%20el%20Paquete%20Tulum." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>Pedir mi paquete</a>
+      <p class="paq-horario">Paquetes de viernes a domingo, de 9:00 a 16:00.</p>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+.car{padding:64px 0 56px}
+.car .h2{margin:12px 0 28px}
+.car-list{list-style:none;display:grid;gap:14px}
+.plato{display:grid;grid-template-columns:112px 1fr;gap:14px;background:#fff8e8;border:1px solid #d9c9a6;padding:10px;align-items:stretch;transition:border-color .2s,transform .2s}
+.plato.is-hit{border-color:var(--burd);transform:scale(1.012)}
+.plato-ph{background:var(--crema2);overflow:hidden;--n:10px;height:100%;min-height:112px}
+.plato-ph img{width:100%;height:100%;object-fit:cover}
+.plato-in{display:flex;flex-direction:column;gap:3px;min-width:0}
+.plato h3{font:400 20px/1.1 var(--serif);color:var(--burd)}
+.plato h3 em{font:800 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--tinta);margin-left:6px;white-space:nowrap}
+.plato-d{font-size:13.5px;line-height:1.35;color:#5a3d3a}
+.plato-sel{margin-top:4px;height:40px;max-width:100%;border:1px solid #bfa97c;background:var(--crema);color:var(--tinta);font:600 14px var(--sans);padding:0 8px}
+.plato-pie{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:6px}
+.plato-p{font:400 24px/1 var(--serif);color:var(--tinta)}
+.plato-p small{font:600 12px var(--sans);letter-spacing:.02em;margin-left:4px;color:#5a3d3a}
+.plato-p.ask{font:600 14px/1.2 var(--sans);color:#5a3d3a}
+.add{width:44px;height:44px;border:0;background:var(--burd);color:var(--crema);font:400 28px/1 var(--serif);cursor:pointer;flex:none;transition:background .2s,transform .2s;--n:8px}
+.add:hover{background:var(--tinta)}
+.add:active{transform:scale(.94)}
+.car-mas-t{font:400 24px/1.1 var(--serif);color:var(--burd);margin:38px 0 12px}
+.car-mas{list-style:none;display:grid;gap:0;border-top:1.5px solid var(--burd)}
+.plato-line{grid-template-columns:1fr auto;grid-template-rows:auto;background:transparent;border:0;border-bottom:1px dashed #bfa97c;padding:14px 0;align-items:center}
+.plato-line h3{font-size:19px}
+.plato-line .plato-pie{margin:0;padding:0}
+.car-nota{margin-top:18px;font-size:13px;color:#5a3d3a}
+@media (min-width:760px){
+ .car{padding:96px 0 84px}
+ .car-list{grid-template-columns:repeat(3,1fr);gap:20px}
+ .plato{grid-template-columns:1fr;grid-template-rows:200px 1fr;padding:12px;gap:12px}
+ .plato-ph{min-height:0;height:100%}
+ .car-mas{grid-template-columns:1fr 1fr;column-gap:36px}
+}
+@media (min-width:1100px){.car-list{grid-template-columns:repeat(4,1fr)}.plato{grid-template-rows:220px 1fr}}
+@media (min-width:760px){.plato.plato-line{grid-template-rows:auto;padding:14px 0}}

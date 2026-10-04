@@ -1,0 +1,17 @@
+.ter{padding:0}
+.ter-box{--p:50%;position:relative;height:min(86svh,640px);min-height:480px;overflow:hidden;background:var(--bg3)}
+.ter-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ter-dia{object-position:50% 60%}
+.ter-noche{object-position:50% 60%;clip-path:inset(0 0 0 var(--p))}
+.ter-box::after{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(to top,rgba(10,25,24,.94) 10%,rgba(10,25,24,0));pointer-events:none}
+.ter-seam{position:absolute;top:0;bottom:0;left:var(--p);width:2px;margin-left:-1px;background:var(--brand);z-index:3;will-change:transform}
+.ter-seam svg{position:absolute;top:50%;left:50%;width:46px;height:26px;transform:translate(-50%,-50%);color:var(--ink);background:var(--brand);padding:7px 9px;box-sizing:content-box;border-radius:50%}
+.ter-tag{position:absolute;top:calc(var(--hh) + 22px);z-index:4;font-family:var(--disp);font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:.85rem;background:rgba(10,25,24,.8);padding:6px 10px}
+.ter-t1{left:var(--g)}.ter-t2{right:var(--g)}
+.ter-ttl{position:absolute;left:var(--g);right:var(--g);bottom:30px;z-index:4;font-size:clamp(3.6rem,19vw,7.4rem)}
+@media (min-width:900px){
+.ter{padding:24px var(--g) 0}
+.ter-box{max-width:880px;margin:0 auto;height:min(82svh,720px);border-radius:999px 999px 0 0}
+.ter-ttl{left:56px;right:56px;bottom:44px;font-size:6rem}
+.ter-tag{top:90px}.ter-t1{left:calc(25% - 40px)}.ter-t2{right:calc(25% - 40px)}
+}
