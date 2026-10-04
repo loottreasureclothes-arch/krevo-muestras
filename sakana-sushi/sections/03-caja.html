@@ -1,0 +1,51 @@
+<section class="caj" id="caja">
+  <div class="wrap">
+    <div class="caj-head">
+      <p class="eyebrow" data-reveal>Para llevar, aquí o a domicilio</p>
+      <h2 class="h2" data-reveal><span>Arma tu</span> <span class="t2">caja.</span></h2>
+    </div>
+    <div class="caj-grid">
+      <div class="caj-boxcol" data-reveal>
+        <div class="box" id="box">
+          <div class="box-in">
+            <div class="box-tray" id="tray" role="img" aria-label="Tu caja de rollos"></div>
+            <div class="box-lid" aria-hidden="true">
+              <span class="rib">Sakana Sushi</span>
+              <p class="lid-n" id="lid-n"></p>
+              <p class="lid-s">Lista para llevar</p>
+            </div>
+          </div>
+        </div>
+        <p class="box-hint" id="box-hint">Tu caja está vacía. Toca el + naranja o el + de cualquier rollo.</p>
+      </div>
+      <div class="caj-ctl" id="ctl" data-reveal>
+        <ul class="lns" id="lns"></ul>
+        <div class="tot"><span>Suma</span><b id="tot">$0</b></div>
+        <fieldset class="modo">
+          <legend>Es para</legend>
+          <label><input type="radio" name="modo" value="llevar" checked><span>Llevar</span></label>
+          <label><input type="radio" name="modo" value="aqui"><span>Comer aquí</span></label>
+          <label><input type="radio" name="modo" value="domicilio"><span>Domicilio</span></label>
+        </fieldset>
+        <label class="nom"><span>Tu nombre</span><input id="nom" type="text" autocomplete="given-name" placeholder="Como te llamo"></label>
+        <button type="button" class="btn solid cerrar" id="cerrar" disabled>Cerrar la caja</button>
+        <div class="tick" id="tick" hidden>
+          <p class="tick-h">Tu caja está lista. Llama y dicta esto.</p>
+          <pre class="tick-t" id="tick-t"></pre>
+          <div class="tick-b">
+            <a class="btn solid" href="tel:+524491016863">Llamar 449 101 6863</a>
+            <button type="button" class="btn" id="copiar">Copiar pedido</button>
+            <a class="btn wa" id="wa" href="#" hidden>Mandar por WhatsApp</a>
+          </div>
+          <p class="tick-ok" id="tick-ok" aria-live="polite"></p>
+          <button type="button" class="tick-otra" id="otra">Abrir la caja otra vez</button>
+        </div>
+      </div>
+    </div>
+    <div class="caj-fotos" data-reveal>
+      <figure><img src="img/caja1-480.webp" srcset="img/caja1-480.webp 480w, img/caja1-960.webp 960w" sizes="(min-width:900px) 18vw, 44vw" width="960" height="1280" alt="Dos rollos empanizados con queso en una caja blanca para llevar"></figure>
+      <figure><img src="img/caja2-480.webp" srcset="img/caja2-480.webp 480w, img/caja2-960.webp 960w" sizes="(min-width:900px) 18vw, 44vw" width="960" height="1280" alt="Rollo de salmón en una caja blanca para llevar"></figure>
+      <p class="caj-pie">Así sale tu pedido, en caja blanca para llevar.</p>
+    </div>
+  </div>
+</section>

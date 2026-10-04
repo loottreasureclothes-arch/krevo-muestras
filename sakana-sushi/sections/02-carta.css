@@ -1,0 +1,33 @@
+.car{padding:44px 0 44px;background:var(--ink)}
+.car-head{display:grid;gap:22px;margin-bottom:26px}
+.car-sub{margin:14px 0 0;color:var(--muted);font-size:16px}
+.car-ph{margin:0;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 16px),0 100%);background:var(--ink2)}
+.car-ph img{width:100%;aspect-ratio:16/8;object-fit:cover;object-position:50% 60%}
+.car-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px;position:sticky;top:calc(var(--hdh) + 6px);z-index:5;padding:8px 0;background:linear-gradient(var(--ink) 82%,rgba(11,11,14,0))}
+.car-tab{display:flex;justify-content:space-between;align-items:center;min-height:46px;padding:0 14px;background:transparent;border:1.5px solid var(--line);color:var(--cream);font:700 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.car-tab small{font:600 11px/1 var(--body);letter-spacing:.04em;color:var(--muted)}
+.car-tab.on{background:var(--or);border-color:var(--or);color:var(--ink)}
+.car-tab.on small{color:var(--ink)}
+html.js .car-cat{display:none}
+html.js .car-cat.on{display:block}
+.car-cat+.car-cat{margin-top:36px}
+.car-cat>.rib{margin-bottom:6px}
+.car-l{list-style:none;margin:0;padding:0}
+.plato{display:grid;grid-template-columns:minmax(0,1fr) auto 46px;align-items:center;column-gap:12px;padding:16px 0;border-bottom:1px solid var(--line);transition:background .25s}
+.plato.is-hit{background:rgba(240,144,0,.14)}
+.plato h3{margin:0 0 3px;font:700 18px/1.2 var(--body)}
+.plato p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.4}
+.plato-p{font:400 26px/1 var(--disp);color:var(--yel);letter-spacing:.02em;text-align:right}
+.add{display:grid;place-items:center;width:46px;height:46px;background:var(--or);color:var(--ink);border:0;border-radius:0;cursor:pointer;transition:background .2s,transform .12s}
+.add:hover{background:var(--or2)}
+.add:active{transform:scale(.92)}
+.car-nota{margin:26px 0 0;color:var(--muted);font-size:13.5px}
+@media (min-width:900px){
+  .car{padding:48px 0 40px}
+  .car-head{grid-template-columns:minmax(0,6fr) minmax(0,5fr);align-items:end;gap:48px;margin-bottom:34px}
+  .car-ph img{aspect-ratio:4/3}
+  .car-tabs{grid-template-columns:repeat(4,1fr);max-width:880px}
+  html.js .car-l{columns:2;column-gap:56px}
+  html.js .plato{break-inside:avoid}
+  .plato h3{font-size:19px}
+}

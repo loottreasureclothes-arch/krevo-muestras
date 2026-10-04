@@ -1,0 +1,79 @@
+@font-face{font-family:"Slab";src:url(fonts/slab.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"BG";src:url(fonts/bg400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"BG";src:url(fonts/bg600.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"BG";src:url(fonts/bg800.woff2) format("woff2");font-weight:800;font-display:swap}
+:root{--navy:#0a1638;--navy2:#12255e;--navy3:#1b3487;--or:#ee6a24;--cream:#f5ecdc;--sea:#5cc0e0;--wa:#25D366;--wa-t:#0b3d1f;--h:58px;--f-d:"Slab",Georgia,serif;--f-b:"BG",system-ui,sans-serif;--pad:20px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--navy)}
+body{margin:0;background:var(--navy);color:var(--cream);font-family:var(--f-b);font-size:17px;line-height:1.45;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,p,ul{margin:0}
+ul{padding:0;list-style:none}
+section[id]{scroll-margin-top:calc(var(--h) + 8px)}
+.lc-skip{position:fixed;left:8px;top:-60px;z-index:200;background:var(--cream);color:var(--navy);padding:10px 14px;font-weight:600}
+.lc-skip:focus{top:8px}
+:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+
+/* botones */
+.lc-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;font:800 .82rem/1 var(--f-b);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:2px solid var(--or);color:var(--or);background:transparent;cursor:pointer;transition:background-color .2s,color .2s,transform .2s}
+.lc-btn:active{transform:translateY(1px)}
+.lc-btn--nav:hover{background:var(--or);color:var(--navy)}
+.lc-btn--wa{background:var(--wa);border-color:var(--wa);color:var(--wa-t)}
+.lc-btn--wa:hover{filter:brightness(1.06)}
+.lc-btn svg{width:22px;height:22px;flex:none}
+.lc-btn--sm{min-height:40px;padding:0 14px;font-size:.72rem}
+
+/* titulos a dos tonos */
+.lc-t{font:400 clamp(2.15rem,10.6vw,3.2rem)/1.02 var(--f-d);text-transform:uppercase;letter-spacing:.005em}
+.lc-t span{display:block;color:var(--or)}
+.lc-eye{font:800 .74rem/1 var(--f-b);letter-spacing:.2em;text-transform:uppercase;color:var(--sea);margin-bottom:14px}
+
+/* header: toldo naranja con feston */
+.lc-bar{position:fixed;inset:0 0 auto 0;z-index:100;height:var(--h);background:var(--or);color:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);transition:transform .3s}
+.lc-bar::after{content:"";position:absolute;left:0;right:0;top:100%;height:10px;background:radial-gradient(circle at 10px 0,var(--or) 9.5px,transparent 10px) 0 0/20px 10px repeat-x;pointer-events:none}
+.lc-logo{display:flex;flex-direction:column;justify-content:center;min-height:44px;text-decoration:none;line-height:1}
+.lc-logo small{font:800 .62rem/1 var(--f-b);letter-spacing:.34em;text-transform:uppercase}
+.lc-logo b{font:400 1.55rem/1 var(--f-d);text-transform:uppercase;margin-top:3px}
+.lc-menu-btn{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--cream);border:0;border-radius:99px;min-height:42px;padding:0 16px 0 14px;font:800 .72rem/1 var(--f-b);letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.lc-burger{display:grid;gap:5px;width:18px}
+.lc-burger i{display:block;height:2px;background:currentColor;transition:transform .25s}
+.lc-menu-open .lc-burger i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.lc-menu-open .lc-burger i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.lc-menu{position:fixed;inset:0;z-index:90;background:var(--navy);padding:calc(var(--h) + 40px) var(--pad) 40px;display:flex;flex-direction:column;justify-content:space-between;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.lc-menu-open .lc-menu{opacity:1;visibility:visible}
+.lc-menu-open{overflow:hidden}
+.lc-menu-nav{display:grid}
+.lc-menu-nav a{display:flex;align-items:baseline;gap:16px;text-decoration:none;font:400 2rem/1 var(--f-d);text-transform:uppercase;padding:18px 0;border-bottom:1px solid rgba(245,236,220,.16)}
+.lc-menu-nav a span{font:800 .72rem/1 var(--f-b);letter-spacing:.2em;color:var(--or)}
+.lc-menu .lc-btn{width:100%}
+
+/* WhatsApp flotante */
+.lc-wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:80;width:58px;height:58px;border-radius:50%;background:var(--wa);color:var(--wa-t);display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.4);transition:opacity .25s,transform .25s}
+.lc-wa svg{width:32px;height:32px}
+.lc-wa-off .lc-wa,.lc-menu-open .lc-wa{opacity:0;pointer-events:none;transform:scale(.8)}
+
+/* reveal: estado base = final; se esconde solo con JS */
+@media (prefers-reduced-motion:no-preference){
+  .js [data-reveal]{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .js [data-reveal]:not(.is-in){opacity:0;transform:translateY(22px)}
+}
+
+/* pie */
+.lc-foot{background:var(--navy);padding:56px var(--pad) 120px}
+.lc-todo{border:2px dashed rgba(245,236,220,.35);padding:26px 22px;margin-bottom:44px}
+.lc-todo h2{font:400 1.5rem/1.1 var(--f-d);text-transform:uppercase;color:var(--or)}
+.lc-todo p{margin:10px 0 14px;font-weight:600}
+.lc-todo li{padding:8px 0 8px 22px;position:relative;border-top:1px solid rgba(245,236,220,.12)}
+.lc-todo li::before{content:"";position:absolute;left:0;top:15px;width:9px;height:9px;border:2px solid var(--or);border-radius:50%}
+.lc-foot-name{font:400 2.6rem/1 var(--f-d);display:block;margin-bottom:12px}
+.lc-foot-row p{margin-top:6px;opacity:.85}
+.lc-soc{display:flex;gap:12px;margin:20px 0 6px}
+.lc-soc a{width:44px;height:44px;display:grid;place-items:center;border:2px solid rgba(245,236,220,.4);border-radius:50%}
+.lc-soc svg{width:24px;height:24px}
+.lc-muted{font-size:.85rem;opacity:.6!important}
+
+@media (min-width:760px){:root{--pad:40px;--h:66px}.lc-t{font-size:clamp(2.6rem,5.2vw,3.8rem)}.lc-foot{padding-bottom:80px}.lc-wa{right:24px;bottom:24px}
+ .lc-foot{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;max-width:1240px;margin:0 auto}.lc-todo{margin:0}}
+@media (min-width:1100px){:root{--pad:64px}}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}

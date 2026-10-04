@@ -1,0 +1,7 @@
+.lc-tres{position:relative;min-height:78svh;display:flex;align-items:flex-end;background:var(--navy);overflow:hidden}
+.lc-tres img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.lc-tres::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,56,.2),rgba(10,22,56,0) 30%,rgba(10,22,56,.88) 100%)}
+.lc-tres-w{position:relative;z-index:2;padding:0 var(--pad) 40px;font:400 clamp(2.6rem,14vw,4.6rem)/1 var(--f-d);text-transform:uppercase;text-shadow:0 2px 18px rgba(10,22,56,.7)}
+.lc-tres-w span{display:block}
+.lc-tres-w .or{color:var(--or)}
+@media (min-width:780px){.lc-tres{min-height:min(80svh,760px)}.lc-tres-w{padding:0 var(--pad) 60px;font-size:clamp(4rem,8vw,7.4rem);max-width:1300px;margin:0 auto;width:100%}.lc-tres-w span{display:inline}.lc-tres-w span+span::before{content:" "}}
