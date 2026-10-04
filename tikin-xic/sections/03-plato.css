@@ -1,0 +1,17 @@
+.plato{position:relative;height:clamp(440px,78svh,760px);overflow:hidden;background:var(--g0)}
+.plato-img{position:absolute;inset:0}
+.plato-img img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.plato::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,26,17,.86));pointer-events:none}
+.plato-t{position:absolute;z-index:2;left:var(--pad);right:var(--pad);bottom:34px;display:flex;flex-direction:column;font:400 clamp(44px,13.5vw,120px)/.98 var(--f1);color:var(--cr)}
+.plato-t span:last-child{color:var(--ye)}
+@media (min-width:760px){.plato-t{flex-direction:row;flex-wrap:wrap;gap:0 .35em;bottom:48px;left:calc(var(--pad) + 4vw)}}
+/* momento firma: el plato se abre al entrar y se cierra al salir (reversible, 0.9 s) */
+@media (prefers-reduced-motion:no-preference){
+  .js .plato .plato-img{clip-path:circle(31% at 50% 52%);transition:clip-path .9s cubic-bezier(.3,.7,.2,1)}
+  .js .plato.is-in .plato-img{clip-path:circle(82% at 50% 52%)}
+  .js .plato-t span{opacity:0;transform:translateY(16px);transition:opacity .6s .35s,transform .6s .35s}
+  .js .plato.is-in .plato-t span{opacity:1;transform:none}
+  .js .plato.is-in .plato-t span:nth-child(2){transition-delay:.5s}
+  .js .plato.is-in .plato-t span:nth-child(3){transition-delay:.65s}
+}
+@media (min-width:760px){.plato-t{font-size:clamp(48px,6.2vw,96px)}}

@@ -1,0 +1,57 @@
+.riel{padding:70px 0 80px;background:var(--g1)}
+.riel-bar{position:relative;height:16px;margin-top:34px;border-radius:8px;background:linear-gradient(180deg,#e9efe6,#9fb0a5 45%,#62736a);box-shadow:0 5px 0 rgba(0,0,0,.35),0 12px 20px rgba(0,0,0,.3)}
+.riel-tope{position:absolute;top:-4px;left:-6px;width:12px;height:24px;border-radius:4px;background:#46544c}
+.riel-tope.r{left:auto;right:-6px}
+.riel-tks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:22px 12px;padding:0 6px;min-height:44px;margin-top:-4px}
+.tk{position:relative;margin-top:0;padding:28px 12px 14px;background:var(--paper);color:var(--ink);box-shadow:0 8px 14px rgba(0,0,0,.28);animation:tkin .6s cubic-bezier(.2,.8,.2,1) both;transform-origin:50% 0}
+.tk::before{content:"";position:absolute;top:-2px;left:50%;margin-left:-20px;width:40px;height:22px;border-radius:3px;background:linear-gradient(180deg,#46544c,#2c3630)}
+.tk::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:8px;background:linear-gradient(135deg,var(--paper) 25%,transparent 25%) -8px 0,linear-gradient(225deg,var(--paper) 25%,transparent 25%) -8px 0;background-size:16px 16px}
+.tk:nth-child(odd){transform:rotate(-.8deg)}.tk:nth-child(even){transform:rotate(.7deg)}
+.tk-n{display:block;font:400 17px/1.15 var(--f1);min-height:2.3em}
+.tk-pr{display:block;margin:6px 0 10px;font:800 13px/1 var(--f2);letter-spacing:.04em;color:#26462f}
+.tk-q{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.tk-q button{width:44px;height:44px;border:1.5px solid var(--ink);font:800 20px/1 var(--f2);color:var(--ink);background:transparent}
+.tk-q button:hover{background:var(--ink);color:var(--paper)}
+.tk-q b{font:800 18px/1 var(--f2);min-width:22px;text-align:center}
+@keyframes tkin{from{opacity:0;transform:translateY(-26px) rotate(-4deg)}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.tk{animation:none}}
+.riel-tks:empty{display:none}
+.riel-vacio{margin:26px 0 0;padding:26px 18px;border:2px dashed rgba(207,233,180,.4);text-align:center;font-size:16px;opacity:.9}
+.riel-vacio[hidden]{display:none}
+.riel-ctl{margin-top:34px;max-width:620px}
+.riel-fila{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.riel-lb{font:800 11px/1 var(--f2);letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+.seg{display:flex;border:1.5px solid var(--cr)}
+.seg button{flex:1;min-height:48px;padding:0 6px;font:800 11.5px/1 var(--f2);letter-spacing:.12em;text-transform:uppercase;border-right:1.5px solid var(--cr)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--cr);color:var(--g0)}
+.riel-nombre input{min-height:48px;padding:0 14px;background:var(--g0);border:1.5px solid rgba(207,233,180,.5);color:var(--cr);font:400 17px var(--f2);border-radius:0}
+.riel-nombre input::placeholder{color:rgba(207,233,180,.5)}
+.riel-tot{display:flex;align-items:baseline;justify-content:space-between;padding:14px 0;border-top:1.5px solid rgba(207,233,180,.45)}
+.riel-tot span{font:800 11px/1 var(--f2);letter-spacing:.2em;text-transform:uppercase}
+.riel-tot b{font:400 44px/1 var(--f1);color:var(--ye)}
+.riel-por{margin:-4px 0 14px;font-size:14px;opacity:.85}
+.riel-go{width:100%}
+.riel-limpiar{margin-top:14px;font:600 14px var(--f2);text-decoration:underline;opacity:.8;min-height:44px}
+@media (min-width:600px){.riel-tks{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:760px){
+  .riel{padding:100px 0 110px}
+  .riel-bar{margin-top:44px}
+  .riel-tks{grid-template-columns:repeat(4,1fr);gap:30px 22px}
+  .riel-fila{flex-direction:row;align-items:center;gap:18px}
+  .riel-fila .riel-lb{width:80px}
+  .seg{flex:1}
+  .riel-nombre input{flex:1}
+  .tk-n{font-size:19px}
+}
+.riel-tot b.vac{font-size:26px;color:var(--cr);opacity:.75}
+@media (min-width:1000px){
+  .riel-ctl{max-width:none;display:grid;grid-template-columns:1.15fr .85fr;gap:0 56px;align-items:start}
+  .riel-ctl>.riel-fila{grid-column:1}
+  .riel-ctl>.riel-tot,.riel-ctl>.riel-por,.riel-ctl>.riel-go,.riel-ctl>.riel-limpiar{grid-column:2}
+  .riel-ctl>.riel-tot{grid-row:1;border-top:0;padding-top:0}
+  .riel-ctl>.riel-por{grid-row:2}
+  .riel-ctl>.riel-go{grid-row:3;min-height:60px;font-size:14px}
+  .riel-ctl>.riel-limpiar{grid-row:4;justify-self:start}
+  .riel-tot b{font-size:64px}
+}

@@ -1,0 +1,24 @@
+<section class="riel" id="riel" data-hide-wa>
+  <div class="wrap">
+    <p class="eb" data-reveal>Tu comanda</p>
+    <h2 class="t" data-reveal>Cuelga tu pedido.<em>Mándalo a cocina.</em></h2>
+    <div class="riel-bar" aria-hidden="true"><span class="riel-tope"></span><span class="riel-tope r"></span></div>
+    <ul class="riel-tks" id="riel-tks" aria-live="polite"></ul>
+    <p class="riel-vacio" id="riel-vacio">Aún no cuelgas nada. Toca Agregar en cualquier plato.</p>
+    <div class="riel-ctl">
+      <div class="riel-fila">
+        <span class="riel-lb" id="lb-serv">Para</span>
+        <div class="seg" role="radiogroup" aria-labelledby="lb-serv" id="seg-serv">
+          <button type="button" role="radio" aria-checked="true" data-serv="aquí" class="on">Comer aquí</button>
+          <button type="button" role="radio" aria-checked="false" data-serv="llevar">Llevar</button>
+          <button type="button" role="radio" aria-checked="false" data-serv="domicilio">Domicilio</button>
+        </div>
+      </div>
+      <label class="riel-fila riel-nombre"><span class="riel-lb">Nombre</span><input id="riel-nombre" type="text" maxlength="40" autocomplete="given-name" placeholder="Para la comanda"></label>
+      <div class="riel-tot"><span>Total de la carta</span><b id="riel-total" class="vac">Sin platos</b></div>
+      <p class="riel-por" id="riel-por" hidden></p>
+      <a class="btn btn-wa riel-go" id="riel-go" href="https://wa.me/524493475594?text=Hola%20Tikin%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg><span id="riel-go-t">Pedir por WhatsApp</span></a>
+      <button class="riel-limpiar" id="riel-limpiar" type="button" hidden>Descolgar todo</button>
+    </div>
+  </div>
+</section>
