@@ -1,0 +1,68 @@
+@font-face{font-family:"Young Serif";src:url(fonts/young-serif-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url(fonts/bricolage-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url(fonts/bricolage-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url(fonts/bricolage-700.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url(fonts/bricolage-800.woff2) format("woff2");font-weight:800;font-display:swap}
+:root{--vino:#8f0f28;--noche:#2a0510;--noche2:#3a0916;--cebolla:#ff7fb8;--crema:#f7ecda;--barro:#b4562d;--wa:#25D366;--wat:#0b3d1f;--hd:64px;
+--f-d:"Young Serif",Georgia,serif;--f-b:"Bricolage Grotesque",system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--noche);color:var(--crema);font:400 17px/1.5 var(--f-b);overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,p,ul,figure,blockquote{margin:0;padding:0}
+ul{list-style:none}
+em{font-style:normal;color:var(--cebolla)}
+.lp-wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.lp-skip{position:absolute;left:-999px;top:0;background:var(--crema);color:var(--noche);padding:10px 14px;z-index:200}
+.lp-skip:focus{left:8px;top:8px}
+.lp-t-xl{font:400 clamp(44px,13.4vw,92px)/.96 var(--f-d);letter-spacing:-.01em}
+.lp-t-l{font:400 clamp(34px,9.6vw,60px)/1 var(--f-d);letter-spacing:-.01em}
+/* header */
+.lp-header{position:fixed;inset:0 0 auto 0;z-index:90;background:var(--vino);border-bottom:1px solid rgba(247,236,218,.18)}
+.lp-bar{display:flex;align-items:center;justify-content:space-between;height:var(--hd);padding:0 16px;max-width:1440px;margin:0 auto}
+.lp-logo{display:inline-flex;flex-direction:column;align-items:center;gap:1px;border:1.5px solid var(--crema);padding:3px 10px 4px;text-decoration:none;color:var(--crema)}
+.lp-logo b{font:400 24px/1 var(--f-d)}
+.lp-logo i{font:700 7.5px/1 var(--f-b);letter-spacing:.22em;text-transform:uppercase;font-style:normal}
+.lp-menu-btn{display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 14px;background:transparent;color:var(--crema);border:1px solid var(--crema);font:700 12px/1 var(--f-b);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.lp-menu-btn:hover{background:var(--crema);color:var(--vino)}
+.lp-burger{display:grid;gap:5px;width:18px}
+.lp-burger i{height:1.5px;background:currentColor;transition:transform .25s}
+.lp-menu-open .lp-burger i:first-child{transform:translateY(3.25px) rotate(45deg)}
+.lp-menu-open .lp-burger i:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+.lp-menu{position:fixed;inset:var(--hd) 0 0 0;z-index:80;background:var(--noche);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s,visibility 0s .25s;display:flex;align-items:center}
+.lp-menu-open .lp-menu{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s}
+.lp-menu-nav{width:min(560px,100% - 40px);margin:0 auto;display:grid;gap:4px}
+.lp-menu-nav a{display:flex;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid rgba(247,236,218,.16);text-decoration:none;font:400 clamp(30px,8vw,44px)/1.05 var(--f-d)}
+.lp-menu-nav a span{font:700 12px var(--f-b);letter-spacing:.16em;color:var(--cebolla)}
+.lp-menu-nav a.lp-menu-wa{margin-top:22px;border:0;background:var(--wa);color:var(--wat);justify-content:center;gap:10px;font:700 15px/1 var(--f-b);letter-spacing:.06em;text-transform:uppercase;padding:18px}
+.lp-menu-wa svg{width:22px;height:22px}
+.lp-menu-open{overflow:hidden}
+/* botones */
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;text-decoration:none;font:700 13px/1 var(--f-b);letter-spacing:.14em;text-transform:uppercase;transition:transform .2s,background .2s,color .2s}
+.lp-btn svg{width:22px;height:22px;flex:none}
+.lp-btn-wa{background:var(--wa);color:var(--wat)}
+.lp-btn-wa:hover{transform:translateY(-2px)}
+.lp-btn-nav{background:transparent;color:var(--crema);border:1px solid var(--crema)}
+.lp-btn-nav:hover{background:var(--crema);color:var(--vino)}
+.lp-btn:focus-visible,.lp-menu-btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--cebolla);outline-offset:3px}
+/* flotante */
+.lp-wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:70;width:56px;height:56px;border-radius:50%;background:var(--wa);color:var(--wat);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.4);transition:opacity .25s,transform .25s}
+.lp-wa svg{width:30px;height:30px}
+.lp-wa-off .lp-wa{opacity:0;pointer-events:none;transform:scale(.8)}
+/* reveal: CSS base = estado final */
+.lp-rv [data-reveal]:not(.is-in){opacity:0;transform:translateY(14px)}
+[data-reveal]{transition:opacity .7s ease,transform .7s ease}
+/* pie */
+.lp-foot{background:var(--vino);padding:40px 0 calc(40px + env(safe-area-inset-bottom))}
+.lp-foot-grid{display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between}
+.lp-foot-logo{display:inline-flex;flex-direction:column;align-items:center;border:1.5px solid var(--crema);padding:6px 14px 7px;margin-bottom:14px}
+.lp-foot-logo b{font:400 30px/1 var(--f-d)}
+.lp-foot-logo i{font:700 9px/1.3 var(--f-b);letter-spacing:.22em;text-transform:uppercase;font-style:normal}
+.lp-foot-addr{font-size:15px;opacity:.9}
+.lp-foot-social{display:flex;gap:14px}
+.lp-foot-social a{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--crema);transition:background .2s,color .2s}
+.lp-foot-social a:hover{background:var(--crema);color:var(--vino)}
+.lp-foot-social svg{width:22px;height:22px}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+@media (min-width:760px){.lp-bar{padding:0 28px}.lp-t-xl{font-size:clamp(64px,7.2vw,112px)}.lp-t-l{font-size:clamp(44px,5vw,72px)}}

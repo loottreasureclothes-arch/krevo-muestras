@@ -1,0 +1,111 @@
+/* La Perla: base (fuentes, tokens, header con balaustrada, menu, botones, pie, flotante, reveal) */
+@font-face{font-family:"Passion One";src:url(fonts/passion-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Passion One";src:url(fonts/passion-900.woff2) format("woff2");font-weight:900;font-display:swap}
+@font-face{font-family:"Figtree";src:url(fonts/figtree-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Figtree";src:url(fonts/figtree-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Figtree";src:url(fonts/figtree-700.woff2) format("woff2");font-weight:700;font-display:swap}
+
+:root{
+  --navy:#1d2433; --navy2:#262d3c; --navy3:#313a4d; --sky:#76c3e7; --blue:#4498d8; --deep:#1f78b4;
+  --white:#fff; --crema:#f3efe6; --ink:#1d2433; --muted:#aab4c4; --barro:#6f3c44;
+  --wa:#25D366; --wa-ink:#0b3d1f;
+  --font-display:"Passion One","Arial Narrow",Impact,sans-serif; --font-body:"Figtree",system-ui,sans-serif;
+  --gut:20px; --bar:56px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:90px}
+body{background:var(--navy);color:var(--white);font-family:var(--font-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2,h3{font-family:var(--font-display);font-weight:900;line-height:.95;text-wrap:balance;overflow-wrap:break-word;letter-spacing:.005em}
+.lp-wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 var(--gut)}
+.lp-skip{position:absolute;left:-999px;top:8px;background:var(--sky);color:var(--navy);padding:10px 14px;z-index:200}
+.lp-skip:focus{left:8px}
+:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+.t2{color:var(--sky)}
+.lp-eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sky)}
+
+/* botones */
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:3px;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:transform 160ms ease,background-color 160ms ease,color 160ms ease}
+.lp-btn:active{transform:scale(.97)}
+.lp-btn svg{width:20px;height:20px;flex:none}
+.lp-btn--wa{background:var(--wa);color:var(--wa-ink)}
+.lp-btn--line{border:1px solid var(--sky);color:var(--sky)}
+.lp-btn--line:hover{background:var(--sky);color:var(--navy)}
+.lp-btn--ink{border:1px solid var(--deep);color:var(--deep)}
+
+/* header */
+.lp-header{position:sticky;top:0;z-index:90;background:var(--navy)}
+.lp-bar{height:var(--bar);display:flex;align-items:center;justify-content:space-between;padding:0 var(--gut);max-width:1400px;margin:0 auto}
+.lp-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.lp-pearl{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#fff 0,#dff3fb 38%,var(--sky) 100%);box-shadow:0 0 0 2px var(--navy),0 0 0 3px var(--sky);flex:none}
+.lp-pearl--lg{width:44px;height:44px}
+.lp-wordmark{font-family:var(--font-display);font-weight:900;font-size:24px;letter-spacing:.06em;line-height:1}
+.lp-actions{display:flex;align-items:center;gap:6px}
+.lp-navbtn{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--sky);border:1px solid var(--sky);padding:9px 12px;border-radius:3px}
+.lp-menu-btn{display:flex;align-items:center;gap:8px;padding:10px 6px 10px 10px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.lp-burger{position:relative;width:20px;height:12px;display:block}
+.lp-burger i{position:absolute;left:0;width:20px;height:2px;background:var(--white);transition:transform 220ms ease,top 220ms ease}
+.lp-burger i:nth-child(1){top:1px}.lp-burger i:nth-child(2){top:9px}
+body.lp-menu-open .lp-burger i:nth-child(1){top:5px;transform:rotate(45deg)}
+body.lp-menu-open .lp-burger i:nth-child(2){top:5px;transform:rotate(-45deg)}
+.lp-balaustre{height:14px;background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M5.2 2.5h3.6l.9 2.4c-1 .9-1 2.2 0 3.1l1 2.5H3.3l1-2.5c1-.9 1-2.2 0-3.1z' fill='%23dcecf5'/%3E%3C/svg%3E") repeat-x 0 0/14px 14px;
+  border-top:2px solid #dcecf5;border-bottom:2px solid var(--blue);box-sizing:content-box;height:10px}
+
+/* menu */
+.lp-menu{position:fixed;inset:0;z-index:80;visibility:hidden;opacity:0;transition:opacity 220ms ease,visibility 220ms}
+body.lp-menu-open .lp-menu{visibility:visible;opacity:1}
+.lp-menu-scrim{position:absolute;inset:0;background:rgba(8,12,20,.6)}
+.lp-menu-panel{position:absolute;inset:0;background:var(--navy2);padding:96px var(--gut) 28px;display:flex;flex-direction:column;justify-content:space-between;transform:translateY(-10px);transition:transform 260ms cubic-bezier(.23,1,.32,1)}
+body.lp-menu-open .lp-menu-panel{transform:none}
+.lp-menu-nav{display:flex;flex-direction:column}
+.lp-menu-nav a{font-family:var(--font-display);font-weight:900;font-size:44px;line-height:1.1;text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:baseline;gap:14px}
+.lp-menu-nav a span{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--sky)}
+.lp-menu-foot{display:grid;gap:14px}
+.lp-menu-foot p{color:var(--muted);font-size:14px}
+@media (min-width:820px){.lp-menu-panel{left:auto;width:420px}}
+
+/* flotante */
+.lp-wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;width:56px;height:56px;border-radius:50%;background:var(--wa);color:var(--wa-ink);display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.4);animation:lp-wa-in 640ms cubic-bezier(.23,1,.32,1) 1s both}
+.lp-wa svg{width:30px;height:30px}
+.lp-wa:active{transform:scale(.94)}
+body.lp-menu-open .lp-wa{visibility:hidden;animation:none}
+body.lp-wa-off .lp-wa{visibility:hidden;opacity:0;animation:none}
+@keyframes lp-wa-in{from{opacity:0;transform:translateY(14px) scale(.9)}to{opacity:1;transform:none}}
+
+/* pie */
+.lp-foot{background:#141a27;padding:48px 0 calc(32px + 70px);border-top:3px solid var(--blue)}
+.lp-foot-grid{display:grid;gap:28px}
+.lp-foot-name{font-family:var(--font-display);font-weight:900;font-size:34px;letter-spacing:.06em;margin-top:10px;line-height:1}
+.lp-foot-sub{color:var(--muted);font-size:14px}
+.lp-foot-h{font-family:var(--font-body);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--sky);margin-bottom:8px;font-weight:700}
+.lp-foot address{font-style:normal;color:#dfe6f0;font-size:15px}
+.lp-foot-tel{display:inline-block;margin-top:6px;font-weight:700;text-decoration:none;color:var(--white);padding:6px 0}
+.lp-foot-social{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--sky);border-radius:50%;color:var(--sky)}
+.lp-foot-social svg{width:22px;height:22px}
+.lp-credit{margin-top:30px;color:var(--muted);font-size:13px;border-top:1px solid rgba(255,255,255,.1);padding-top:16px}
+
+/* reveal: el CSS base es el estado final; solo se esconde con JS y movimiento permitido */
+@media (prefers-reduced-motion:no-preference){
+  .lp-js [data-reveal]:not(.is-in){opacity:0;transform:translateY(18px)}
+  [data-reveal]{transition:opacity 700ms cubic-bezier(.23,1,.32,1),transform 700ms cubic-bezier(.23,1,.32,1)}
+}
+@media (prefers-reduced-motion:reduce){.lp-wa{animation:none}}
+
+@media (min-width:820px){
+  :root{--gut:32px;--bar:64px}
+  .lp-foot-grid{grid-template-columns:1.2fr 1fr 1fr auto;gap:40px}
+  .lp-foot{padding-bottom:60px}
+}
+.lp-brand{min-height:44px}
+.lp-foot-tel{display:inline-flex;align-items:center;min-height:44px}
+.lp-skip{min-height:44px;display:inline-flex;align-items:center}
+.lp-navbtn{min-height:40px;display:inline-flex;align-items:center}
+.lp-menu-btn{min-height:44px}
+.lp-wordmark,.lp-navbtn,.lp-menu-btn{white-space:nowrap}
+.lp-wordmark{font-size:21px}
+.lp-navbtn{font-size:11px;padding:0 10px;letter-spacing:.12em}
+.lp-menu-btn{font-size:11px;padding:10px 2px 10px 8px;letter-spacing:.12em}
+@media (min-width:820px){.lp-wordmark{font-size:26px}.lp-navbtn{font-size:12px;padding:0 14px}.lp-menu-btn{font-size:12px}}

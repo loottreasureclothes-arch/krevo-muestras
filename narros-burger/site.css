@@ -1,0 +1,66 @@
+@font-face{font-family:"Passion One";font-weight:900;font-display:swap;src:url(fonts/latin-normal-900.woff2) format("woff2")}
+@font-face{font-family:"Passion One";font-weight:700;font-display:swap;src:url(fonts/latin-normal-700.woff2) format("woff2")}
+@font-face{font-family:"Barlow";font-weight:400;font-display:swap;src:url(fonts/barlow-400.woff2) format("woff2")}
+@font-face{font-family:"Barlow";font-weight:600;font-display:swap;src:url(fonts/barlow-600.woff2) format("woff2")}
+@font-face{font-family:"Barlow";font-weight:700;font-display:swap;src:url(fonts/barlow-700.woff2) format("woff2")}
+:root{--red:#FE040E;--red2:#B40712;--ink:#010101;--ink2:#151010;--paper:#F6EFE3;--wa:#25D366;--wat:#0b3d1f;--bar:64px;
+--gingham:linear-gradient(90deg,rgba(254,4,14,.55) 50%,transparent 50%),linear-gradient(rgba(254,4,14,.55) 50%,transparent 50%)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:#fff;font:400 17px/1.45 "Barlow",system-ui,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:"Passion One",Impact,sans-serif;font-weight:900;line-height:.92;text-transform:uppercase;letter-spacing:.01em}
+.t2{color:var(--red)}
+.gingham{background-color:#fff;background-image:var(--gingham);background-size:28px 28px}
+.sec{position:relative;scroll-margin-top:var(--bar)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;font:700 15px/1 "Barlow",sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:2px solid var(--red);color:#fff;background:transparent;border-radius:0;cursor:pointer;transition:background .2s,transform .2s}
+.btn:hover{background:var(--red)}
+.btn:active{transform:translateY(2px)}
+.btn-wa{background:var(--wa);border-color:var(--wa);color:var(--wat)}
+.btn-wa:hover{background:#3be57d;border-color:#3be57d}
+.btn:focus-visible,a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #fff;outline-offset:3px}
+/* header propio */
+.nb-bar{position:sticky;top:0;z-index:50;height:var(--bar);display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:var(--ink)}
+.nb-bar::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:8px;background-color:#fff;background-image:var(--gingham);background-size:16px 16px}
+.nb-brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:900 22px/1 "Passion One",sans-serif;letter-spacing:.04em}
+.nb-brand img{width:44px;height:44px}
+.nb-brand b{color:var(--red);margin-left:.3em;font-weight:900}
+.nb-menu-btn{display:flex;align-items:center;gap:10px;height:44px;padding:0 4px 0 12px;background:none;border:0;color:#fff;font:700 14px/1 "Barlow",sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+.nb-menu-btn i{width:44px;height:44px;background:var(--red);position:relative}
+.nb-menu-btn i::before,.nb-menu-btn i::after{content:"";position:absolute;left:11px;right:11px;height:3px;background:#fff;transition:transform .25s,top .25s}
+.nb-menu-btn i::before{top:16px}.nb-menu-btn i::after{top:25px}
+.nb-menu-open .nb-menu-btn i::before{top:20px;transform:rotate(45deg)}
+.nb-menu-open .nb-menu-btn i::after{top:20px;transform:rotate(-45deg)}
+.nb-menu{position:fixed;left:0;right:0;top:var(--bar);bottom:0;background:var(--red);padding:28px 24px;display:flex;flex-direction:column;gap:2px;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility 0s .25s;overflow:auto}
+.nb-menu-open .nb-menu{opacity:1;transform:none;visibility:visible;transition:opacity .25s,transform .25s}
+.nb-menu a{font:900 11vw/1.05 "Passion One",sans-serif;text-transform:uppercase;text-decoration:none;color:#fff;padding:6px 0;border-bottom:2px solid rgba(255,255,255,.35)}
+.nb-menu-open{overflow:hidden}
+/* flotante */
+.nb-wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;width:60px;height:60px;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.5);transition:opacity .25s,transform .25s}
+.nb-wa.is-hidden{opacity:0;transform:translateY(12px);pointer-events:none}
+/* pie */
+.nb-foot{background:var(--red2);padding:44px 20px 60px}
+.nb-foot-in{max-width:1240px;margin:0 auto}
+.nb-foot-name{font:900 46px/1 "Passion One",sans-serif;text-transform:uppercase;margin-bottom:12px}
+.nb-social{display:flex;gap:14px;margin:22px 0}
+.nb-social a{display:block;width:44px;height:44px;color:#fff}
+.nb-foot-s{font-size:14px;opacity:.85;max-width:44ch}
+/* reveal */
+.js-rv [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.js-rv [data-reveal].is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js-rv [data-reveal]{opacity:1;transform:none;transition:none}}
+@media (min-width:820px){
+ :root{--bar:76px}
+ body{font-size:18px}
+ .nb-bar{padding:0 40px}
+ .nb-brand{font-size:28px}
+ .nb-menu{position:static;flex-direction:row;gap:30px;padding:0;background:none;opacity:1;visibility:visible;transform:none;overflow:visible}
+ .nb-menu a{font:700 14px/1 "Barlow",sans-serif;letter-spacing:.16em;border:0;padding:0;display:flex;align-items:center;min-height:44px}
+ .nb-menu a:hover{color:var(--red)}
+ .nb-menu-btn{display:none}
+ .wrap{padding:0 40px}
+ .nb-foot{padding:64px 40px 72px}
+}

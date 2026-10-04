@@ -1,0 +1,24 @@
+.lp-hero{position:relative;background:var(--navy);overflow:hidden}
+.lp-hero-photo{position:relative;height:560px}
+.lp-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:40% 18%}
+.lp-hero-photo::after{content:"";position:absolute;inset:auto 0 0 0;height:62%;background:linear-gradient(to top,var(--navy) 4%,rgba(29,36,51,.0) 100%)}
+.lp-plato{position:absolute;top:16px;right:16px;width:104px;height:104px;border-radius:50%;display:grid;place-content:center;text-align:center;line-height:1.05;color:var(--white);
+  background:radial-gradient(circle at 36% 30%,#8d4f4a 0,var(--barro) 62%,#4f2a31 100%);box-shadow:0 10px 24px rgba(0,0,0,.45),inset 0 0 0 4px rgba(255,255,255,.14),inset 0 0 0 7px rgba(0,0,0,.18);transform:rotate(-8deg)}
+.lp-plato b{font-family:var(--font-display);font-weight:900;font-size:40px;line-height:.9}
+.lp-plato span{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.lp-plato small{font-size:10px;opacity:.85;margin-top:2px}
+.lp-hero-body{position:relative;margin-top:-210px;padding:0 var(--gut) 40px;max-width:1180px;margin-left:auto;margin-right:auto}
+.lp-hero h1{font-size:clamp(58px,17.5vw,92px);margin:12px 0 14px;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.lp-hero h1 span{display:block}
+.lp-hero-sub{font-size:17px;color:#dbe4f0;max-width:34ch;margin-bottom:22px}
+.lp-hero-cta{display:grid;gap:12px;max-width:360px}
+@media (min-width:820px){
+  .lp-hero{display:grid;grid-template-columns:1.05fr .95fr;min-height:calc(100svh - 90px);max-height:880px;align-items:stretch}
+  .lp-hero-photo{grid-column:2;grid-row:1;height:auto;min-height:620px}
+  .lp-hero-photo::after{inset:0 auto 0 0;width:34%;height:auto;background:linear-gradient(to right,var(--navy) 2%,rgba(29,36,51,0) 100%)}
+  .lp-hero-body{grid-column:1;grid-row:1;margin:0;align-self:center;padding:56px 24px 56px max(var(--gut),calc((100vw - 1180px)/2 + var(--gut)));z-index:2;max-width:none}
+  .lp-hero h1{font-size:clamp(78px,8.4vw,128px)}
+  .lp-plato{top:28px;right:28px;width:128px;height:128px}
+  .lp-plato b{font-size:50px}
+  .lp-hero-cta{grid-auto-flow:column;max-width:none;justify-content:start}
+}

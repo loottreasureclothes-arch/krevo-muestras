@@ -1,0 +1,20 @@
+.lp-casas{background:var(--navy);padding:60px 0}
+.lp-casas h2{font-size:clamp(44px,13vw,70px);margin-top:10px}
+.lp-casas h2 .t2{display:block}
+.lp-casas-grid{display:grid;gap:34px;margin-top:34px}
+.lp-casa{position:relative;display:grid;grid-template-columns:1fr auto;column-gap:14px;border-top:1px solid rgba(255,255,255,.18);padding-top:8px}
+.lp-num{grid-column:1 / -1;font-family:var(--font-display);font-weight:900;font-size:clamp(120px,40vw,200px);line-height:.85;color:transparent;-webkit-text-stroke:2px var(--sky);letter-spacing:.01em}
+.lp-casa-body{grid-column:1;position:relative;margin-top:-10px}
+.lp-casa h3{font-size:34px;color:var(--white)}
+.lp-casa address{font-style:normal;color:#dbe4f0;margin-top:6px}
+.lp-hrs{margin-top:10px;font-size:14px;color:var(--muted)}
+.lp-hoy{margin-top:6px;font-size:14px;font-weight:700;color:var(--sky);min-height:21px}
+.lp-casa-btns{display:grid;gap:10px;margin-top:16px;max-width:300px}
+.lp-casa-img{grid-column:2;grid-row:2;align-self:start;width:112px;height:146px;object-fit:cover;object-position:50% 0;border-radius:56px;margin-top:-20px;box-shadow:0 14px 24px -8px rgba(0,0,0,.6),0 0 0 3px var(--navy),0 0 0 4px rgba(255,255,255,.28)}
+@media (min-width:820px){
+  .lp-casas{padding:64px 0 80px}
+  .lp-casas h2 .t2{display:inline}
+  .lp-casas-grid{grid-template-columns:1fr 1fr;gap:56px;margin-top:48px}
+  .lp-casa-btns{grid-auto-flow:column;max-width:none;justify-content:start}
+  .lp-casa-img{width:150px;height:196px;border-radius:75px}
+}

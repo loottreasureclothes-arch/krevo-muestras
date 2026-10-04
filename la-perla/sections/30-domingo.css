@@ -1,0 +1,8 @@
+.lp-dom{position:relative;height:72svh;min-height:440px;max-height:760px;overflow:hidden;display:flex;align-items:flex-end}
+.lp-dom img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.lp-dom::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(29,36,51,.92) 0,rgba(29,36,51,.4) 36%,rgba(29,36,51,0) 62%)}
+.lp-dom-txt{position:relative;z-index:2;padding-bottom:36px}
+.lp-dom h2{font-size:clamp(64px,19vw,120px);max-width:8ch;text-shadow:0 2px 22px rgba(0,0,0,.4)}
+.lp-dom h2 .t2{display:block}
+.lp-dom p{margin-top:12px;color:#e3eaf4;max-width:30ch;font-size:16px}
+@media (min-width:820px){.lp-dom{height:78svh}.lp-dom h2{max-width:none;font-size:clamp(100px,11vw,170px)}.lp-dom h2 .t2{display:inline}.lp-dom-txt{padding-bottom:56px}}

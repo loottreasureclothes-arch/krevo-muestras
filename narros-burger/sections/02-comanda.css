@@ -1,0 +1,58 @@
+.cm{background:var(--ink2);padding:56px 0 0}
+.cm-head h2{font-size:17vw}
+.cm-head p{margin-top:12px;color:#d9cfc4;max-width:34ch}
+.cm-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:36px;margin-top:30px;padding-bottom:40px}
+.cm-list{list-style:none;display:grid;gap:0;border-top:2px solid rgba(255,255,255,.18)}
+.cm-it{display:grid;grid-template-columns:84px 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:2px solid rgba(255,255,255,.18)}
+.cm-ph{width:84px;height:84px;padding:5px;background-color:#fff;background-image:var(--gingham);background-size:14px 14px}
+.cm-ph img{width:100%;height:100%;object-fit:cover}
+.cm-ph.nop{display:flex;align-items:center;justify-content:center;background:var(--red);padding:0;font:900 30px/1 "Passion One",sans-serif}
+.cm-nm{font:900 25px/1 "Passion One",sans-serif;text-transform:uppercase;letter-spacing:.01em}
+.cm-ds{font-size:14px;color:#cdbfb2;margin-top:3px}
+.cm-pr{font:700 17px/1 "Barlow",sans-serif;margin-top:6px;color:var(--red);letter-spacing:.04em}
+.cm-ctl{display:flex;align-items:center;gap:0}
+.cm-ctl button{width:44px;height:44px;border:2px solid var(--red);background:transparent;color:#fff;font:700 26px/1 "Barlow",sans-serif;cursor:pointer;transition:background .2s,transform .2s}
+.cm-ctl button.plus{background:var(--red)}
+.cm-ctl button:active{transform:scale(.92)}
+.cm-ctl button:disabled{opacity:.25;cursor:default}
+.cm-q{min-width:30px;text-align:center;font:900 24px/1 "Passion One",sans-serif}
+.cm-it.on .cm-nm{color:#fff}
+.cm-opts{display:grid;gap:14px;margin-bottom:16px}
+.cm-modo{border:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.cm-modo legend,.cm-suc span{font:700 12px/1 "Barlow",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#cdbfb2;margin-bottom:8px;display:block}
+.cm-modo label{position:relative;display:block}
+.cm-modo input{position:absolute;opacity:0;inset:0}
+.cm-modo span{display:flex;align-items:center;justify-content:center;min-height:46px;border:2px solid var(--red);margin-left:-2px;font:700 14px/1 "Barlow",sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.cm-modo label:first-of-type span{margin-left:0}
+.cm-modo input:checked+span{background:var(--red)}
+.cm-modo input:focus-visible+span{outline:3px solid #fff;outline-offset:2px}
+.cm-suc select{width:100%;min-height:46px;background:var(--ink);color:#fff;border:2px solid var(--red);border-radius:0;padding:0 12px;font:600 16px "Barlow",sans-serif}
+/* ticket */
+.tk{position:relative;background:var(--paper);color:#1a1210;padding:20px 20px 34px;clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),95% 100%,90% calc(100% - 12px),85% 100%,80% calc(100% - 12px),75% 100%,70% calc(100% - 12px),65% 100%,60% calc(100% - 12px),55% 100%,50% calc(100% - 12px),45% 100%,40% calc(100% - 12px),35% 100%,30% calc(100% - 12px),25% 100%,20% calc(100% - 12px),15% 100%,10% calc(100% - 12px),5% 100%,0 calc(100% - 12px))}
+.tk-top{display:flex;gap:12px;align-items:center;padding-bottom:14px;border-bottom:3px dashed #1a1210}
+.tk-top b{display:block;font:900 26px/1 "Passion One",sans-serif;letter-spacing:.06em}
+.tk-top span{font:700 12px/1 "Barlow",sans-serif;letter-spacing:.2em}
+.tk-lines{list-style:none;padding:14px 0;min-height:70px;display:grid;gap:8px}
+.tk-lines li{display:flex;justify-content:space-between;gap:12px;font:700 16px/1.2 "Barlow",sans-serif;letter-spacing:.06em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.tk-lines li span:last-child{white-space:nowrap}
+.tk-lines .tk-empty{display:block;font-weight:600;color:#6b5a50;text-transform:none;letter-spacing:.02em}
+.tk-lines li.print{animation:tkp .3s ease-out}
+@keyframes tkp{from{clip-path:inset(0 0 100% 0);transform:translateY(-8px)}to{clip-path:inset(0);transform:none}}
+.tk-total{display:flex;justify-content:space-between;align-items:baseline;border-top:3px dashed #1a1210;padding-top:12px;font:700 13px/1 "Barlow",sans-serif;letter-spacing:.18em}
+.tk-total b{font:900 44px/1 "Passion One",sans-serif;letter-spacing:.02em;color:var(--red2)}
+.tk-note{font-size:13px;color:#6b5a50;margin-top:10px}
+.cm-send{width:100%;margin-top:18px}
+.cm-bar{position:sticky;bottom:0;z-index:5;display:flex;align-items:center;gap:14px;background:var(--red);color:#fff;text-decoration:none;min-height:58px;padding:0 20px;font:700 14px/1 "Barlow",sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.cm-bar b{font:900 28px/1 "Passion One",sans-serif;margin-left:auto}
+.cm-bar em{font-style:normal;border:2px solid #fff;padding:10px 12px}
+@media (min-width:820px){
+ .cm{padding-top:88px}
+ .cm-head h2{font-size:clamp(80px,8vw,120px)}
+ .cm-grid{grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:56px;align-items:start;padding-bottom:96px}
+ .cm-side{position:sticky;top:calc(var(--bar) + 28px)}
+ .cm-bar{display:none}
+ .cm-it{grid-template-columns:104px 1fr auto}
+ .cm-ph{width:104px;height:104px}
+ .cm-nm{font-size:30px}
+}
+.tk-total b.is-empty{font-size:26px;color:#8a7d72}
