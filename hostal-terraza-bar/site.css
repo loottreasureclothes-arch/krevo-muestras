@@ -1,0 +1,68 @@
+@font-face{font-family:"Syne";font-weight:700;font-display:swap;src:url(fonts/syne-700.woff2) format("woff2")}
+@font-face{font-family:"Syne";font-weight:800;font-display:swap;src:url(fonts/syne-800.woff2) format("woff2")}
+@font-face{font-family:"Schibsted";font-weight:400;font-display:swap;src:url(fonts/schibsted-400.woff2) format("woff2")}
+@font-face{font-family:"Schibsted";font-weight:600;font-display:swap;src:url(fonts/schibsted-600.woff2) format("woff2")}
+@font-face{font-family:"Schibsted";font-weight:700;font-display:swap;src:url(fonts/schibsted-700.woff2) format("woff2")}
+@font-face{font-family:"Satisfy";font-weight:400;font-display:swap;src:url(fonts/satisfy-400.woff2) format("woff2")}
+:root{--bg:#170c0e;--bg2:#210f12;--wine:#271718;--red:#a91829;--rt:#ee4a5f;--tan:#bfb296;--tan2:#9f8668;--cream:#ede2db;--ink:#2a1517;--wa:#25D366;--wat:#0b3d1f;
+--fd:"Syne","Arial Black",sans-serif;--fb:"Schibsted",system-ui,sans-serif;--fs:"Satisfy","Brush Script MT",cursive;--hh:64px;--gut:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--hh)}
+body{background:var(--bg);color:var(--cream);font:400 17px/1.5 var(--fb);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.skip{position:absolute;left:-999px;top:0;background:var(--cream);color:var(--ink);padding:10px 14px;z-index:99}
+.skip:focus{left:8px;top:8px}
+:focus-visible{outline:2px solid var(--rt);outline-offset:3px}
+.eyebrow{font:700 12px/1 var(--fb);letter-spacing:.22em;text-transform:uppercase;color:var(--tan)}
+.h2{font:800 clamp(28px,8.2vw,60px)/1 var(--fd);letter-spacing:-.035em;text-transform:uppercase;text-wrap:balance}
+.h2 .t2{display:block;color:var(--rt)}
+.wrap{padding-inline:var(--gut);max-width:1240px;margin-inline:auto}
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;font:700 14px/1 var(--fb);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,background-color .2s,color .2s}
+.btn:active{transform:translateY(1px)}
+.btn-wa{background:var(--wa);color:var(--wat)}
+.btn-wa:hover{background:#3be07b}
+.btn-nav{background:transparent;color:var(--cream);border:1px solid var(--rt);min-height:46px;padding:0 20px;font-size:12px}
+.btn-nav:hover{background:var(--red);border-color:var(--red)}
+/* header */
+.hd{position:fixed;inset:0 0 auto 0;height:var(--hh);z-index:60;transition:background-color .3s}
+.hd.solid,body.menu-open .hd{background:rgba(23,12,14,.94);backdrop-filter:blur(8px)}
+.hd-bar{height:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding-inline:var(--gut);max-width:1400px;margin-inline:auto}
+.hd-btn{justify-self:start;background:none;border:0;color:var(--cream);display:flex;align-items:center;gap:10px;font:700 11px/1 var(--fb);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;min-height:44px}
+.hd-bars{display:grid;gap:6px;width:24px}
+.hd-bars i{display:block;height:2px;background:var(--cream);transition:transform .25s}
+body.menu-open .hd-bars i:first-child{transform:translateY(4px) rotate(45deg)}
+body.menu-open .hd-bars i:last-child{transform:translateY(-4px) rotate(-45deg)}
+.hd-plaque{display:grid;place-items:center;width:118px;height:50px;border-radius:50%;background:var(--red);color:var(--cream);text-decoration:none;border:2px solid var(--cream);box-shadow:0 0 0 3px var(--red),0 8px 20px rgba(0,0,0,.4);line-height:1;transform:translateY(6px)}
+.hd-s{font:400 25px/.9 var(--fs);margin-top:3px}
+.hd-t{font:700 8px/1 var(--fb);letter-spacing:.22em;text-transform:uppercase;margin-top:-1px}
+.hd-res{justify-self:end;color:var(--cream);text-decoration:none;font:700 11px/1 var(--fb);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--rt);padding:0 10px;min-height:44px;display:inline-flex;align-items:center}
+.hd-res:hover{background:var(--red);border-color:var(--red)}
+.menu{position:fixed;inset:0;z-index:55;background:var(--bg);display:flex;flex-direction:column;justify-content:center;gap:6px;padding:90px var(--gut) 40px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.menu[hidden]{display:flex}
+body.menu-open .menu{opacity:1;visibility:visible}
+.menu a{min-height:52px;font:800 clamp(30px,9vw,72px)/1.1 var(--fd);text-transform:uppercase;text-decoration:none;display:flex;align-items:baseline;gap:16px;transform:translateY(14px);opacity:0;transition:transform .3s,opacity .3s,color .2s}
+.menu a span{font:700 12px/1 var(--fb);letter-spacing:.2em;color:var(--rt)}
+.menu a:hover{color:var(--rt)}
+body.menu-open .menu a{transform:none;opacity:1}
+body.menu-open .menu a:nth-child(2){transition-delay:.05s}body.menu-open .menu a:nth-child(3){transition-delay:.1s}body.menu-open .menu a:nth-child(4){transition-delay:.15s}
+body.menu-open{overflow:hidden}
+/* flotante */
+.wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;width:58px;height:58px;border-radius:50%;background:var(--wa);color:var(--wat);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.45);transition:transform .3s,opacity .3s}
+.wa-float.hide{opacity:0;transform:scale(.8);pointer-events:none}
+/* pie */
+.foot{background:#0f0708;padding:56px var(--gut) calc(40px + env(safe-area-inset-bottom));text-align:center}
+.foot-script{font:400 56px/1 var(--fs);color:var(--cream)}
+.foot-t{font:800 20px/1 var(--fd);letter-spacing:.2em;text-transform:uppercase;color:var(--rt);margin-top:4px}
+.foot-a{margin-top:24px;color:var(--tan)}
+.foot-h{margin-top:8px;font-weight:600}
+.foot-soc{display:inline-grid;place-items:center;width:44px;height:44px;margin-top:24px;color:var(--cream)}
+.foot-soc:hover{color:var(--rt)}
+.foot-c{margin-top:28px;font-size:13px;color:var(--tan2)}
+/* reveal: el CSS base ya es el estado final; solo se esconde con JS y sin reduced-motion */
+.js-rv [data-reveal]:not(.in){opacity:0;transform:translateY(22px)}
+[data-reveal]{transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0)*80ms)}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+@media(min-width:820px){:root{--gut:40px;--hh:76px}.hd-plaque{width:160px;height:62px}.hd-s{font-size:34px}.hd-t{font-size:9px}body{font-size:18px}}
+@media(min-width:1200px){:root{--gut:56px}}

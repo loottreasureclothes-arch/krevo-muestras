@@ -1,0 +1,17 @@
+.lleg{padding:64px var(--g) 56px;background:var(--bg)}
+.lleg-in{max-width:1100px;margin:0 auto;display:grid;gap:28px}
+.lleg h2{font-size:clamp(38px,10.5vw,84px)}
+.lleg-ph{width:min(70%,300px);aspect-ratio:1/1.7;border-radius:999px 999px 14px 14px;overflow:hidden;border:1.5px solid rgba(255,176,46,.5);justify-self:center}
+.lleg-ph img{width:100%;height:100%;object-fit:cover}
+.lleg dl{display:grid}
+.lleg dl div{display:grid;grid-template-columns:92px 1fr;gap:12px;padding:15px 0;border-top:1px solid rgba(246,234,214,.2)}
+.lleg dl div:last-child{border-bottom:1px solid rgba(246,234,214,.2)}
+.lleg dt{font:700 12px/1.6 var(--f-b);letter-spacing:.18em;text-transform:uppercase;color:var(--marca)}
+.lleg dd{font-size:17px}
+.lleg-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+@media (min-width:760px){
+  .lleg{padding:104px var(--g)}
+  .lleg-in{grid-template-columns:.8fr 1.2fr;gap:40px 72px;align-items:center}
+  .lleg h2{grid-column:1/-1;font-size:clamp(48px,6vw,92px)}
+  .lleg-ph{width:100%;max-width:340px;justify-self:start}
+}

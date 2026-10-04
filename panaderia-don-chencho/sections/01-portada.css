@@ -1,0 +1,28 @@
+.hero{position:relative;height:calc(100svh - 0px);min-height:600px;max-height:780px;overflow:hidden;background:var(--wine)}
+.hero-ph{position:absolute;left:0;right:0;top:0;height:66%}
+.hero-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-night{object-position:50% 45%}
+.hero-day{object-position:50% 60%;clip-path:inset(0 var(--cut,0%) 0 0);will-change:clip-path}
+.hero.pre .hero-day{clip-path:inset(0 100% 0 0)}
+.hero.go .hero-day{transition:clip-path 1s cubic-bezier(.5,0,.2,1)}
+.hero-ph::after{content:"";position:absolute;top:0;bottom:0;width:3px;background:var(--gold);right:var(--cut,0%);opacity:0;transition:opacity .3s;box-shadow:0 0 14px rgba(217,164,65,.8)}
+.hero.go .hero-ph::after,.hero.pre .hero-ph::after{opacity:1}
+.hero.pre .hero-ph::after{right:100%}
+.hero.go .hero-ph::after{right:var(--cut,0%);transition:right 1s cubic-bezier(.5,0,.2,1),opacity .3s 1s}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,18,22,.55) 0,rgba(42,18,22,0) 22%,rgba(42,18,22,0) 55%,rgba(42,18,22,.85) 88%,var(--wine) 100%)}
+.hero-plate{position:absolute;top:calc(var(--hd) + 18px);left:16px;background:var(--gold);color:var(--wine);padding:8px 12px;display:flex;align-items:baseline;gap:8px;border-radius:2px;box-shadow:0 3px 0 rgba(42,18,22,.5);transform:rotate(-2deg)}
+.hero-plate b{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:800}
+.hero-plate span{font-family:var(--f-d);font-size:28px;line-height:1}
+.hero-copy{position:absolute;left:0;right:0;bottom:0;padding:0 20px 34px;max-width:760px}
+.hero .tt{font-size:clamp(46px,13.6vw,96px);line-height:.96;text-shadow:0 2px 24px rgba(42,18,22,.5)}
+.hero-sub{margin:14px 0 20px;font-size:17px;opacity:.92}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+@media (min-width:820px){
+ .hero{max-height:860px;min-height:640px}
+ .hero-ph{left:46%;height:100%}
+ .hero-ph::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,var(--wine),rgba(42,18,22,0) 28%)}
+ .hero-shade{background:linear-gradient(180deg,rgba(42,18,22,.5) 0,rgba(42,18,22,0) 24%,rgba(42,18,22,0) 70%,rgba(42,18,22,.55) 100%)}
+ .hero-plate{left:auto;right:40px}
+ .hero-copy{top:0;display:flex;flex-direction:column;justify-content:center;padding:var(--hd) 40px 0 max(40px,calc((100vw - 1180px)/2));width:50%;z-index:3;max-width:none}
+ .hero .tt{font-size:clamp(64px,6vw,104px)}
+}

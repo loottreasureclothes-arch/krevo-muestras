@@ -1,0 +1,27 @@
+.vaso{padding:48px 0 60px;background:var(--bg2)}
+.vaso-g{display:grid;gap:0}
+.vaso-copa{justify-self:center;width:min(210px,56vw);padding:26px 0 4px}
+@media (max-width:759px){.vaso-ui{display:contents}.vaso-g>.vaso-ui>*{order:5}.vaso .eyebrow{order:1}.vaso .t2{order:2}.vaso .lead{order:3}.vaso-copa{order:4}}
+.vaso-copa svg{width:100%;height:auto;overflow:visible}
+.slot .dash{fill:none;stroke:rgba(121,202,212,.55);stroke-width:3;stroke-dasharray:7 7}
+.slot .q{fill:rgba(121,202,212,.7);font:400 28px var(--head);text-anchor:middle}
+.slot .bola{transform-box:fill-box;transform-origin:50% 50%;transform:scale(0);transition:transform .28s cubic-bezier(.2,1.4,.4,1),fill .2s}
+.slot.on .bola{transform:scale(1)}.slot.on .dash,.slot.on .q{display:none}
+.stk{font:400 14px var(--head);fill:#231d44}.stk2{font:400 22px var(--head);fill:#231d44}
+.gas{fill:rgba(255,255,255,.55);opacity:0;transition:opacity .2s}.on-cola .gas{opacity:1}
+#cola{transform:translateY(112px);transition:transform .3s}.on-cola #cola{transform:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 14px 0 10px;background:rgba(255,255,255,.07);border:0;box-shadow:inset 0 0 0 2px rgba(121,202,212,.45);clip-path:var(--ch-s);font:700 15px var(--txt);color:var(--cr);transition:background .2s,transform .2s}
+.chip i{width:20px;height:20px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 2px rgba(255,255,255,.35);flex:none}
+.chip[aria-pressed="true"]{background:var(--yw);color:var(--ink);box-shadow:none}
+.chip:active{transform:scale(.95)}
+.cola{display:inline-flex;align-items:center;gap:10px;margin-top:14px;height:44px;padding:0 16px;background:transparent;border:0;box-shadow:inset 0 0 0 2px var(--tq);clip-path:var(--ch-s);font:700 15px var(--txt);letter-spacing:.06em;color:var(--tq)}
+.cola .sq{width:16px;height:16px;border:2px solid var(--tq);transform:rotate(45deg)}
+.cola[aria-pressed="true"]{background:#3b1d12;color:var(--cr);box-shadow:inset 0 0 0 2px #8a5a3b}
+.cola[aria-pressed="true"] .sq{background:var(--yw);border-color:var(--yw)}
+.resumen{margin:22px 0 14px;font:400 22px/1.15 var(--head);min-height:52px;color:var(--yw)}
+@media (min-width:760px){
+ .vaso{padding:84px 0 96px}
+ .vaso-g{grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+ .vaso-copa{width:min(380px,100%);justify-self:center}
+}

@@ -1,0 +1,30 @@
+.at-s3{padding:56px 0 64px;background:var(--ink2);position:relative}
+.at-s3 h2{font-size:clamp(44px,12.4vw,84px);margin:12px 0 28px}
+.at-list{list-style:none}
+.at-row{display:grid;grid-template-columns:1fr auto 52px;align-items:center;gap:12px;padding:18px 0;border-top:1px solid var(--ink3)}
+.at-row--gap{margin-top:22px;border-top:2px solid var(--brand)}
+.at-row-m h3{font-size:clamp(22px,6.4vw,32px);line-height:1.05}
+.at-row-m p{font-size:14px;line-height:1.3;color:var(--mute);margin-top:4px;max-width:30ch}
+.at-row-p{font:400 clamp(26px,7.6vw,38px)/1 "Young Serif",serif;color:var(--brand-t);text-align:right}
+.at-row-p--ask{font:600 13px/1.25 Karla,sans-serif;color:var(--mute);letter-spacing:.02em}
+.at-row-c{position:relative;width:52px;height:52px}
+.at-rt{width:52px;height:52px;display:grid;place-items:center;border:1.5px solid var(--brand-t);color:#6b5348;border-radius:26px 26px 4px 4px;transition:color .25s,background .25s}
+.at-rf{width:20px;height:28px;transform-origin:50% 100%}
+.at-rq{display:none}
+.at-row.is-lit .at-rt{color:var(--brand-t);background:var(--ink)}
+.at-row.is-lit .at-rf{filter:drop-shadow(0 0 8px #ff9a5a);animation:fl .9s ease-in-out infinite alternate}
+.at-row.is-lit{background:linear-gradient(90deg,#c0392a26,transparent 70%)}
+.at-row.is-lit .at-row-c{width:auto}
+.at-row.is-lit{grid-template-columns:1fr auto auto}
+.at-row.is-lit .at-rt{display:none}
+.at-row.is-lit .at-rq{display:flex;align-items:center;height:52px;background:var(--brand);color:#fff}
+.at-row .at-qm,.at-row .at-qp{width:42px;height:52px;font:600 24px/1 Karla,sans-serif}
+.at-row .at-qn{min-width:22px;text-align:center;font:400 20px/1 "Young Serif",serif}
+.at-note{margin-top:22px;font-size:14px;color:var(--mute)}
+@media (min-width:760px){
+  .at-s3{padding:100px 0}
+  .at-s3 h2{font-size:clamp(40px,3.8vw,58px)}.at-s3 .at-wrap{grid-template-rows:auto auto 1fr;display:grid;grid-template-columns:minmax(300px,1fr) 2.2fr;column-gap:56px;align-items:start}
+  .at-s3 .at-eyebrow,.at-s3 h2{grid-column:1}
+  .at-s3 .at-list{grid-column:2;grid-row:1/span 3;max-width:720px}
+  .at-s3 .at-note{grid-column:1;grid-row:3}
+}

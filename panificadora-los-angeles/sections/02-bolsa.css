@@ -1,0 +1,51 @@
+.bolsa{background:var(--bg)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:22px 14px;margin-top:32px}
+.card{display:flex;flex-direction:column}
+.th{aspect-ratio:1/1.08;border-radius:999px 999px 0 0;overflow:hidden;background:var(--bg2);margin-bottom:12px}
+.th img{width:100%;height:100%;object-fit:cover}
+.card h3{font-size:18px;line-height:1.15}
+.pr{font-size:14px;color:var(--cr2);margin:4px 0 10px}
+.card:first-child .pr{color:var(--am);font-weight:600}
+.ctl{margin-top:auto;display:flex;align-items:center;min-height:44px}
+.add{width:100%;border:1px solid var(--am);background:none;color:var(--am);height:44px;text-transform:uppercase;letter-spacing:.14em;font:700 12px "Work Sans";cursor:pointer}
+.add:hover{background:var(--am);color:var(--ca)}
+.step{display:flex;width:100%;border:1px solid var(--am);height:44px;align-items:stretch}
+.step button{width:48px;background:var(--am);color:var(--ca);border:0;font:700 22px "Work Sans";cursor:pointer}
+.step b{flex:1;display:flex;align-items:center;justify-content:center;font-size:17px}
+.bagbox{margin-top:44px;background:var(--bg2);padding:26px 20px;display:grid;gap:22px;border-top:3px solid var(--cu)}
+.bag{position:relative;width:170px;height:240px;margin:0 auto;padding-top:40px;transform-origin:50% 100%;transition:transform .3s}
+.bag svg{position:absolute;bottom:0;left:0}
+.peek{position:absolute;left:0;right:0;top:0;height:100px}
+.pk{position:absolute;width:46px;height:46px;border-radius:50%;overflow:hidden;border:2px solid var(--cr);animation:pop .3s ease-out both;bottom:0}
+.pk img{width:100%;height:100%;object-fit:cover}
+@keyframes pop{from{transform:scale(0) translateY(20px)}to{transform:none}}
+.badge{position:absolute;right:6px;bottom:6px;min-width:34px;height:34px;border-radius:17px;background:var(--am);color:var(--ca);font:700 16px/34px "Work Sans";text-align:center;padding:0 8px}
+.sum-t{font-size:24px;line-height:1.1;margin-bottom:10px}
+.lines{list-style:none;padding:0;margin-bottom:10px;font-size:15px;color:var(--cr2)}
+.lines li{padding:5px 0;border-bottom:1px solid rgba(249,189,110,.16)}
+.money{font-size:14px;color:var(--am);margin-bottom:14px;min-height:20px}
+.modo{display:flex;margin-bottom:16px}
+.modo button{flex:1;height:44px;background:none;border:1px solid rgba(249,189,110,.5);color:var(--cr);font:600 13px "Work Sans";letter-spacing:.06em;cursor:pointer}
+.modo button.on{background:var(--am);color:var(--ca);border-color:var(--am)}
+.sum .btn-wa{display:block;text-align:center}
+@media(min-width:820px){
+ .cards{grid-template-columns:repeat(6,1fr);gap:20px}
+ .card h3{font-size:16px}
+ .bagbox{grid-template-columns:240px 1fr;align-items:center;padding:36px 44px;gap:48px}
+ .sum{max-width:560px}
+}
+.bag{height:206px;padding-top:6px}
+.peek{top:-34px}
+.bag-chip{position:fixed;left:16px;bottom:22px;z-index:45;display:flex;align-items:center;gap:8px;height:48px;padding:0 16px 0 12px;background:var(--am);color:var(--ca);text-decoration:none;font:700 12px "Work Sans";letter-spacing:.12em;text-transform:uppercase;box-shadow:0 6px 18px rgba(0,0,0,.4);transform:translateY(90px);opacity:0;pointer-events:none;transition:transform .3s,opacity .3s}
+.bag-chip b{background:var(--ca);color:var(--am);min-width:24px;height:24px;border-radius:12px;font-size:13px;line-height:24px;text-align:center;padding:0 6px;letter-spacing:0}
+.bag-chip.on{transform:none;opacity:1;pointer-events:auto}
+.bag-chip.bump b{animation:pop .3s ease-out}
+@media(min-width:820px) and (max-width:1099px){.cards{grid-template-columns:repeat(3,1fr);gap:28px 22px}.card h3{font-size:19px}}
+@media(min-width:1100px){
+ .bolsa .wrap{display:grid;grid-template-columns:1fr 340px;column-gap:56px;align-items:start}
+ .bolsa .eyebrow,.bolsa h2{grid-column:1/-1}
+ .cards{grid-column:1;grid-template-columns:repeat(3,1fr);gap:28px 24px}
+ .card h3{font-size:20px}
+ .bagbox{grid-column:2;grid-row:3;margin-top:32px;position:sticky;top:84px;grid-template-columns:1fr;padding:28px 28px;gap:16px}
+ .bag-chip{display:none}
+}

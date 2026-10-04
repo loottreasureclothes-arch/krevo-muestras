@@ -1,0 +1,84 @@
+@font-face{font-family:"Young Serif";src:url(fonts/youngserif-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Figtree";src:url(fonts/figtree-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Figtree";src:url(fonts/figtree-600.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Figtree";src:url(fonts/figtree-800.woff2) format("woff2");font-weight:800;font-display:swap}
+:root{
+  --cobalto:#0E1F4D;--cobalto-2:#1B3A8C;--cobalto-3:#142C6B;--crema:#F6EBD3;--crema-2:#EADBB8;--sol:#F2B632;--rojo:#C23B2B;--tinta:#0E1F4D;
+  --serif:"Young Serif",Georgia,serif;--sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hd:70px;--pad:20px;
+  --greca:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='12' viewBox='0 0 28 12'%3E%3Crect width='28' height='12' fill='%23F6EBD3'/%3E%3Cpath d='M14 1 21 6 14 11 7 6Z' fill='%231B3A8C'/%3E%3Ccircle cx='14' cy='6' r='2' fill='%23C23B2B'/%3E%3Ccircle cx='0' cy='6' r='1.600' fill='%231B3A8C'/%3E%3Ccircle cx='28' cy='6' r='1.600' fill='%231B3A8C'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cobalto);color:var(--crema);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+.mc-skip{position:absolute;left:-999px;top:8px;background:var(--sol);color:var(--tinta);padding:10px 14px;z-index:200;font-weight:800}
+.mc-skip:focus{left:8px}
+:focus-visible{outline:3px solid var(--sol);outline-offset:3px}
+
+/* header */
+.mc-header{position:fixed;inset:0 0 auto 0;z-index:90;background:var(--cobalto);transition:transform .3s}
+.mc-bar{height:56px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 var(--pad);transition:height .25s}
+.mc-header.is-compact .mc-bar{height:48px}
+.mc-greca{height:12px;background:var(--greca) repeat-x 0 0/28px 12px;border-top:1px solid rgba(246,235,211,.25)}
+.mc-brand{font-family:var(--serif);font-size:22px;line-height:1;text-decoration:none;text-align:center;white-space:nowrap;letter-spacing:.2px}
+.mc-brand-b{color:var(--sol)}
+.mc-menu-btn{justify-self:start;display:flex;align-items:center;gap:10px;background:none;border:0;color:var(--crema);font:800 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;min-height:44px;padding:0;cursor:pointer}
+.mc-burger{width:24px;height:12px;position:relative;display:block}
+.mc-burger i{position:absolute;left:0;right:0;height:2px;background:var(--crema);transition:transform .25s,top .25s}
+.mc-burger i:first-child{top:1px}.mc-burger i:last-child{top:9px}
+.mc-menu-open .mc-burger i:first-child{top:5px;transform:rotate(45deg)}
+.mc-menu-open .mc-burger i:last-child{top:5px;transform:rotate(-45deg)}
+.mc-hcall{justify-self:end;display:inline-flex;align-items:center;gap:7px;min-height:44px;color:var(--crema);text-decoration:none;font:800 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.mc-hcall svg{color:var(--sol)}
+.mc-menu{position:fixed;inset:0;z-index:80;background:var(--cobalto);padding:calc(var(--hd) + 24px) var(--pad) 32px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.mc-menu-open .mc-menu{opacity:1;visibility:visible}
+.mc-menu-nav{display:flex;flex-direction:column;gap:6px;max-width:520px}
+.mc-menu-nav a{font-family:var(--serif);font-size:34px;line-height:1.2;text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(246,235,211,.18)}
+.mc-menu-nav a.mc-menu-call{margin-top:22px;border:0;background:var(--sol);color:var(--tinta);font:800 14px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:18px 20px;text-align:center}
+
+/* botones */
+.mc-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;font:800 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;border-radius:0;cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.mc-btn:active{transform:translateY(1px)}
+.mc-btn-sol{background:var(--sol);color:var(--tinta)}
+.mc-btn-sol:hover{background:#ffc94d}
+.mc-btn-line{border-color:var(--crema);color:var(--crema);background:transparent}
+.mc-btn-line:hover{background:var(--crema);color:var(--tinta)}
+.mc-btn-cobalto{background:var(--cobalto-2);color:var(--crema)}
+.mc-btn-cobalto:hover{background:var(--cobalto)}
+.mc-btn-line-d{border-color:var(--cobalto);color:var(--cobalto);background:transparent}
+.mc-btn-line-d:hover{background:var(--cobalto);color:var(--crema)}
+
+/* flotante */
+.mc-fab{position:fixed;right:16px;bottom:16px;z-index:70;display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 20px 0 16px;background:var(--sol);color:var(--tinta);border-radius:999px;text-decoration:none;font:800 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;box-shadow:0 6px 18px rgba(0,0,0,.35);transition:transform .25s,opacity .25s}
+.mc-fab.is-off{opacity:0;transform:translateY(20px);pointer-events:none}
+.mc-fab.has-items{background:var(--crema)}
+
+/* reveal: CSS base = estado final */
+@media (prefers-reduced-motion:no-preference){
+  .js [data-mc-reveal]{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .js [data-mc-reveal].is-in{opacity:1;transform:none}
+}
+
+/* pie */
+.mc-foot{background:var(--cobalto);padding:44px var(--pad) 110px;border-top:12px solid transparent;border-image:var(--greca) 12 round}
+.mc-foot-in{max-width:1100px;margin:0 auto;display:grid;gap:28px}
+.mc-foot .mc-brand{font-size:34px;text-align:left}
+.mc-foot p{color:rgba(246,235,211,.82);font-size:16px}
+.mc-foot a.mc-tel{color:var(--sol);font-weight:800;text-decoration:none}
+.mc-soc{display:flex;gap:12px}
+.mc-soc a{width:44px;height:44px;display:grid;place-items:center;border:1.5px solid rgba(246,235,211,.5);color:var(--crema);border-radius:50%}
+.mc-soc a:hover{background:var(--crema);color:var(--tinta)}
+.mc-soc svg{width:22px;height:22px}
+.mc-small{font-size:13px!important;opacity:.7}
+@media(min-width:900px){
+  :root{--pad:40px}
+  .mc-foot-in{grid-template-columns:1.2fr 1fr 1fr;align-items:start}
+  .mc-brand{font-size:26px}
+  .mc-menu-nav{margin:0 auto}
+}
+.mc-foot .mc-brand,.mc-foot a.mc-tel{display:inline-flex;align-items:center;min-height:44px}
+.mc-menu-nav a{min-height:44px}
+.mc-bar .mc-brand{display:inline-flex;align-items:center;min-height:44px}

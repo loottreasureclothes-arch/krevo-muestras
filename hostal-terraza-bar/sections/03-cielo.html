@@ -1,0 +1,38 @@
+<section class="cielo" id="cielo" data-hide-wa aria-labelledby="cielo-h">
+  <div class="lights" id="lights" aria-hidden="true"></div>
+  <div class="wrap cielo-in">
+    <div class="cielo-tx">
+      <p class="eyebrow" data-reveal>Tu mesa en la azotea</p>
+      <h2 class="h2" id="cielo-h" data-reveal style="--d:1">Elige la hora<span class="t2">de tu mesa.</span></h2>
+      <div class="ctl" data-reveal style="--d:2">
+        <div class="ctl-row">
+          <label for="hora" class="ctl-l">Hora</label>
+          <output id="hora-o" class="ctl-v" for="hora">8 p.m.</output>
+        </div>
+        <input id="hora" type="range" min="13" max="25" step="1" value="20" aria-label="Hora de llegada">
+        <div class="ticks" aria-hidden="true"><span>1 p.m.</span><span>7 p.m.</span><span>1 a.m.</span></div>
+        <div class="ctl-row ctl-row2">
+          <span class="ctl-l" id="pers-l">Personas</span>
+          <div class="step" role="group" aria-labelledby="pers-l">
+            <button type="button" id="p-menos" aria-label="Una persona menos">&minus;</button>
+            <output id="p-o" aria-live="polite">4</output>
+            <button type="button" id="p-mas" aria-label="Una persona más">+</button>
+          </div>
+        </div>
+        <p class="sel" id="sel">Aún no agregas nada de la carta. <a href="#carta">Ir a la carta</a></p>
+        <a class="btn btn-wa cielo-go" id="cielo-go" href="https://wa.me/524493188586?text=Hola%2C%20quiero%20apartar%20mesa%20en%20la%20terraza%20para%204%20personas%20a%20las%208%20p.m.%20%C2%BFHay%20lugar%3F"><svg width="22" height="22" aria-hidden="true"><use href="#i-wa"/></svg>Apartar mesa</a>
+      </div>
+    </div>
+    <figure class="win" data-reveal style="--d:2">
+      <div class="win-ph" id="win">
+        <img class="sky is-on" data-from="13" data-to="17" src="img/dia-960.webp" srcset="img/dia-480.webp 480w, img/dia-960.webp 960w, img/dia-1536.webp 1536w" sizes="(min-width:820px) 40vw, 80vw" width="960" height="1280" alt="Limonada sobre la mesa y la Catedral de Aguascalientes al fondo, de tarde">
+        <img class="sky" data-from="18" data-to="20" src="img/atardecer-960.webp" srcset="img/atardecer-480.webp 480w, img/atardecer-960.webp 960w" sizes="(min-width:820px) 40vw, 80vw" width="960" height="1707" alt="Terraza con mesas y la torre de Catedral bajo un cielo nublado" loading="lazy">
+        <img class="sky" data-from="21" data-to="23" src="img/noche-960.webp" srcset="img/noche-480.webp 480w, img/noche-960.webp 960w, img/noche-1536.webp 1536w" sizes="(min-width:820px) 40vw, 80vw" width="960" height="1280" alt="Terraza de noche con focos colgantes y Catedral iluminada" loading="lazy">
+        <img class="sky" data-from="24" data-to="25" src="img/catedral-960.webp" srcset="img/catedral-480.webp 480w, img/catedral-960.webp 960w, img/catedral-1536.webp 1536w" sizes="(min-width:820px) 40vw, 80vw" width="960" height="1280" alt="Torres de Catedral encendidas de noche vistas desde la azotea" loading="lazy">
+        <div class="tint" id="tint"></div>
+        <span class="orb" id="orb"></span>
+      </div>
+      <figcaption class="cap" aria-live="polite"><strong id="cap-t">Se pone el cielo</strong><span id="cap-d">Cerveza fría y la ciudad cambiando de color.</span></figcaption>
+    </figure>
+  </div>
+</section>

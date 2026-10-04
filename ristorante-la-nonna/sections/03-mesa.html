@@ -1,0 +1,27 @@
+<section class="sec mesa" id="mesa">
+  <p class="eyebrow" data-reveal>Tu mesa</p>
+  <h2 class="ttl" data-reveal="2">Pon la mesa.<em>Nosotros el horno.</em></h2>
+  <div class="mesa-wrap">
+    <div class="mesa-visual" data-reveal>
+      <div class="mesa-mesa" id="mesa-mesa" role="img" aria-label="Mesa vista desde arriba con tus platillos y sillas">
+        <div class="mantel"><p class="mantel-vacio" id="mantel-vacio">Agrega platillos desde la carta</p></div>
+        <div id="sillas"></div>
+        <div id="platos-mesa"></div>
+      </div>
+      <p class="mesa-hint">Toca un plato para quitarlo.</p>
+    </div>
+    <div class="mesa-ctl" data-reveal="2">
+      <div class="ctl">
+        <span class="ctl-l" id="l-pers">Personas</span>
+        <div class="step" role="group" aria-labelledby="l-pers"><button type="button" id="p-menos" aria-label="Una persona menos">−</button><output id="p-n" aria-live="polite">2</output><button type="button" id="p-mas" aria-label="Una persona más">+</button></div>
+      </div>
+      <div class="ctl"><label class="ctl-l" for="s-dia">Día</label>
+        <select id="s-dia"><option>hoy</option><option>mañana</option><option>el sábado</option><option>el domingo</option></select></div>
+      <div class="ctl"><label class="ctl-l" for="s-hora">Hora</label>
+        <select id="s-hora"><option>2:00 p.m.</option><option selected>3:00 p.m.</option><option>4:00 p.m.</option><option>5:00 p.m.</option><option>6:00 p.m.</option><option>7:00 p.m.</option><option>8:00 p.m.</option><option>9:00 p.m.</option></select></div>
+      <p class="mesa-msg" id="mesa-msg"></p>
+      <a class="btn btn-wa mesa-btn" id="mesa-wa" href="https://wa.me/524492935602" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Reservar por WhatsApp</a>
+      <p class="mesa-nota">La mesa se confirma por el chat.</p>
+    </div>
+  </div>
+</section>

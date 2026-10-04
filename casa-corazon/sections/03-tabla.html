@@ -1,0 +1,32 @@
+<section class="tabla" id="tabla" data-hide-wa>
+  <div class="tabla-in">
+    <h2 data-reveal>Marca tu tabla.<em>Canta lotería.</em></h2>
+    <div class="board" data-reveal>
+      <div class="board-top"><span>Tabla de la casa</span><span class="count" id="count">0 fichas</span></div>
+      <div class="grid" id="grid">
+      <button class="cl" type="button" data-cl="frappes" data-name="Frappés" aria-pressed="false"><span class="cl-n">1</span><span class="cl-ph"><img src="{{src:frappes}}" srcset="{{srcset:frappes}}" sizes="(max-width:759px) 30vw, 140px" alt=""></span><span class="cl-name">Frappés</span><span class="ficha" aria-hidden="true"><svg><use href="#i-heart"/></svg></span></button>
+      <button class="cl" type="button" data-cl="capuchino" data-name="Capuchino" aria-pressed="false"><span class="cl-n">2</span><span class="cl-ph"><img src="{{src:capuchino}}" srcset="{{srcset:capuchino}}" sizes="(max-width:759px) 30vw, 140px" alt="" style="object-position:50% 60%"></span><span class="cl-name">Capuchino</span><span class="ficha" aria-hidden="true"><svg><use href="#i-heart"/></svg></span></button>
+      <button class="cl" type="button" data-cl="cafe" data-name="Café" aria-pressed="false"><span class="cl-n">3</span><span class="cl-ph"><img src="{{src:cafe}}" srcset="{{srcset:cafe}}" sizes="(max-width:759px) 30vw, 140px" alt="" style="object-position:50% 70%"></span><span class="cl-name">Café</span><span class="ficha" aria-hidden="true"><svg><use href="#i-heart"/></svg></span></button>
+      <button class="cl" type="button" data-cl="micheladas" data-name="Micheladas" aria-pressed="false"><span class="cl-n">4</span><span class="cl-ph"><img src="{{src:micheladas}}" srcset="{{srcset:micheladas}}" sizes="(max-width:759px) 30vw, 140px" alt="" style="object-position:30% 50%"></span><span class="cl-name">Micheladas</span><span class="ficha" aria-hidden="true"><svg><use href="#i-heart"/></svg></span></button>
+      <button class="cl" type="button" data-cl="mojitos" data-name="Mojitos" aria-pressed="false"><span class="cl-n">5</span><span class="cl-ph"><img src="{{src:mojitos}}" srcset="{{srcset:mojitos}}" sizes="(max-width:759px) 30vw, 140px" alt="" style="object-position:45% 50%"></span><span class="cl-name">Mojitos</span><span class="ficha" aria-hidden="true"><svg><use href="#i-heart"/></svg></span></button>
+      <button class="cl" type="button" data-cl="clericot" data-name="Clericot" aria-pressed="false"><span class="cl-n">6</span><span class="cl-ph cl-t"><i>El<br>clericot</i></span><span class="cl-name">Clericot</span><span class="ficha" aria-hidden="true"><svg><use href="#i-heart"/></svg></span></button>
+      <button class="cl" type="button" data-cl="alitas" data-name="Alitas" aria-pressed="false"><span class="cl-n">7</span><span class="cl-ph"><img src="{{src:alitas}}" srcset="{{srcset:alitas}}" sizes="(max-width:759px) 30vw, 140px" alt="" style="object-position:50% 70%"></span><span class="cl-name">Alitas</span><span class="ficha" aria-hidden="true"><svg><use href="#i-heart"/></svg></span></button>
+      <button class="cl" type="button" data-cl="boneless" data-name="Boneless" aria-pressed="false"><span class="cl-n">8</span><span class="cl-ph cl-t"><i>Los<br>boneless</i></span><span class="cl-name">Boneless</span><span class="ficha" aria-hidden="true"><svg><use href="#i-heart"/></svg></span></button>
+      <button class="cl" type="button" data-cl="churritos" data-name="Churritos" aria-pressed="false"><span class="cl-n">9</span><span class="cl-ph"><img src="{{src:churritos}}" srcset="{{srcset:churritos}}" sizes="(max-width:759px) 30vw, 140px" alt="" style="object-position:50% 30%"></span><span class="cl-name">Churritos</span><span class="ficha" aria-hidden="true"><svg><use href="#i-heart"/></svg></span></button>
+      <button class="cl" type="button" data-cl="cheesecake" data-name="Cheesecake" aria-pressed="false"><span class="cl-n">10</span><span class="cl-ph cl-t"><i>El<br>cheese<br>cake</i></span><span class="cl-name">Cheesecake</span><span class="ficha" aria-hidden="true"><svg><use href="#i-heart"/></svg></span></button>
+      <button class="cl" type="button" data-cl="croissant" data-name="Croissant" aria-pressed="false"><span class="cl-n">11</span><span class="cl-ph cl-t"><i>El<br>croissant</i></span><span class="cl-name">Croissant</span><span class="ficha" aria-hidden="true"><svg><use href="#i-heart"/></svg></span></button>
+      <button class="cl" type="button" data-cl="tequila" data-name="Tequila" aria-pressed="false"><span class="cl-n">12</span><span class="cl-ph cl-t"><i>El<br>tequila</i></span><span class="cl-name">Tequila</span><span class="ficha" aria-hidden="true"><svg><use href="#i-heart"/></svg></span></button>
+      </div>
+      <div class="stamp" id="stamp" aria-live="polite">¡Lotería!</div>
+    </div>
+    <div class="ctrl" data-reveal>
+      <div class="modos" role="group" aria-label="Cómo lo quieres">
+        <button type="button" class="modo on" data-modo="aquí">Aquí</button>
+        <button type="button" class="modo" data-modo="llevar">Para llevar</button>
+        <button type="button" class="modo" data-modo="domicilio">A domicilio</button>
+      </div>
+      <p class="sum" id="sum">Toca las casillas que se te antojan. Con 4 fichas cantas lotería.</p>
+      <a class="btn btn-wa" id="tabla-wa" href="{{wa:Hola Casa Corazón, quiero hacer un pedido. ¿Qué tienen hoy?}}" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mandar mi tabla</a>
+    </div>
+  </div>
+</section>

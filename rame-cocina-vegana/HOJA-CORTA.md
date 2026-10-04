@@ -1,0 +1,8 @@
+# Ramé Cocina Vegana - hoja corta
+**Trabajo:** pedir en 1 toque: armas tu pedido en el pizarron y sale a wa.me/524494142106 (telefono de Maps, NO confirmado como WhatsApp -> PENDIENTES).
+**Promesa:** "Sabor vegano en el Centro." Carta real con precios del flyer (maps-03), 4.8 y 906 opiniones en Google.
+**Identidad:** lienzo verde bosque #0f2a22; marca coral #E8506A (logo medido), rojo letrero #B80000 en bandas crema, verde hoja #98D048 solo detalle. Fraunces (titulos, italica de gis) + Hanken Grotesk (texto). Mundo = el plato redondo y el circulo del logo (fotos en circulo, insignia redonda). Header: insignia circular coral "Rame" + boton MENU rectangular fino.
+**Componente firma:** EL PIZARRON QUE SE ESCRIBE. Elige platillo (foto en plato circular), tamano, Agregar; el gis escribe la linea y subraya el total; modo Aqui/Llevar/Entrega; WhatsApp literal: "Hola Rame, quiero hacer un pedido: - Enmoladas, 4 pza x1 ($108) ... Total: $X ... Es para: llevar".
+**Momento firma:** el plato (bowl mango y aguacate) se abre como iris circular a foto completa al entrar, reversible, resuelto a 1.6 s.
+**Secciones:** 01-hero | fachada | "Sabor vegano / en el Centro." ; 02-pizarron | plato circular | "Pide y se escribe / en el pizarron." ; 03-carta | tipografico | "Todo lo demas / de la carta." ; 04-plato | bowl a sangre | "Mango o durazno, / segun temporada." ; 05-opiniones | dato 4.8 | "Lo probaron / y lo cuentan." ; 06-visita | collage | "Pasale / al Centro." ; pie con Todo listo para completar.
+**Fotos prohibidas:** 03 flyer (solo referencia), 07, 16 (menu ajeno), 18. **PENDIENTE-DUENO:** 15 interior y 17 patio (verificar que sean Rame), logo, horario por dia, WhatsApp, precios de postres y chocolate.

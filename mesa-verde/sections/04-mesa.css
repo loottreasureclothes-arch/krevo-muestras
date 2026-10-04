@@ -1,0 +1,46 @@
+.mesa{background:var(--ink)}
+.mesa-head{margin-bottom:24px}
+.spots{display:grid;gap:14px;margin-bottom:26px}
+.spot{position:relative;display:block;text-align:left;background:transparent;border:0;padding:0;color:inherit;cursor:pointer;font:inherit}
+.spot-ph{display:block;aspect-ratio:16/10;border-radius:26px;box-shadow:0 0 0 0 var(--wood);transition:transform .3s ease,filter .3s ease;filter:saturate(.7) brightness(.78)}
+.spot.is-on .spot-ph{filter:none;transform:translateY(-3px)}
+.spot::before{content:"";position:absolute;inset:-4px;border:2px solid transparent;border-radius:30px;transition:border-color .25s ease;pointer-events:none;z-index:3}
+.spot.is-on::before{border-color:var(--wood)}
+.spot-n{position:absolute;left:16px;bottom:14px;z-index:2;font:600 1.5rem/1 var(--fd);text-shadow:0 2px 14px #000}
+.spot-ph::after{content:"";position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(#0000,#000a)}
+/* cartelito de madera con tu nombre */
+.tent{position:absolute;right:14px;bottom:-6px;z-index:4;display:flex;flex-direction:column;align-items:center;min-width:104px;padding:8px 14px 9px;background:linear-gradient(#d3ab76,#b98c57);color:#2a1d10;border-radius:4px 4px 2px 2px;box-shadow:0 8px 16px #0009;transform-origin:50% 100%;transform:translateY(16px) rotate(-3deg) scale(.9);opacity:0;transition:transform .35s cubic-bezier(.3,1.4,.5,1),opacity .25s ease;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
+.tent i{font:700 .6rem/1 var(--fb);letter-spacing:.2em;text-transform:uppercase;font-style:normal}
+.tent b{font:600 1.15rem/1.15 var(--fd);max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tent em{font:700 .66rem/1 var(--fb);letter-spacing:.12em;text-transform:uppercase;font-style:normal;margin-top:3px}
+.spot.is-on .tent{opacity:1;transform:rotate(-3deg)}
+.mesa-body{display:grid;gap:22px;padding-top:12px}
+.ctl{display:grid;grid-template-columns:1fr 1fr;gap:14px 12px}
+.f{display:grid;gap:6px;font:inherit}
+.f>span:first-child{font:700 .72rem/1 var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--wood)}
+.f input[type=text],.f select{height:50px;background:var(--ink3);color:var(--txt);border:1.5px solid #ffffff2a;border-radius:3px;padding:0 12px;font:400 1rem var(--fb);width:100%}
+.f select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--wood) 50%),linear-gradient(135deg,var(--wood) 50%,transparent 50%);background-position:calc(100% - 18px) 22px,calc(100% - 12px) 22px;background-size:6px 6px;background-repeat:no-repeat;padding-right:32px}
+.f input:focus,.f select:focus{outline:2px solid var(--wood);outline-offset:1px}
+.f:first-child{grid-column:1/-1}
+.pers{display:flex;align-items:center;justify-content:space-between;height:50px;background:var(--ink3);border:1.5px solid #ffffff2a;border-radius:3px}
+.pers button{width:50px;height:100%;display:grid;place-items:center;background:transparent;border:0;color:var(--wood);cursor:pointer}
+.pers svg{width:18px;height:18px}
+.pers b{font:600 1.35rem var(--fd)}
+.chk{grid-column:1/-1;display:flex;align-items:center;gap:12px;cursor:pointer;min-height:44px}
+.chk input{position:absolute;opacity:0;width:1px;height:1px}
+.chk-box{width:26px;height:26px;border:1.5px solid var(--wood);border-radius:3px;flex:none;display:grid;place-items:center}
+.chk input:checked+.chk-box::after{content:"";width:12px;height:7px;border-left:3px solid var(--wood);border-bottom:3px solid var(--wood);transform:rotate(-45deg) translate(1px,-1px)}
+.chk input:focus-visible+.chk-box{outline:2px solid var(--wood);outline-offset:2px}
+.chk>span:last-child{font:400 1rem var(--fb);color:var(--txt);letter-spacing:0;text-transform:none}
+.tick{position:relative;background:var(--cream);color:var(--cream-ink);padding:22px 20px 20px;display:grid;gap:12px;clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),96% 100%,92% calc(100% - 10px),88% 100%,84% calc(100% - 10px),80% 100%,76% calc(100% - 10px),72% 100%,68% calc(100% - 10px),64% 100%,60% calc(100% - 10px),56% 100%,52% calc(100% - 10px),48% 100%,44% calc(100% - 10px),40% 100%,36% calc(100% - 10px),32% 100%,28% calc(100% - 10px),24% 100%,20% calc(100% - 10px),16% 100%,12% calc(100% - 10px),8% 100%,4% calc(100% - 10px),0 100%);padding-bottom:30px}
+.tick-h{font:700 .72rem/1 var(--fb);letter-spacing:.16em;text-transform:uppercase;color:#7a5a36}
+.tick-b{font:400 1.02rem/1.45 var(--fb);white-space:pre-line}
+.tick-s{font-size:.86rem;color:#6b5a48}
+@media (min-width:720px){
+ .spots{grid-template-columns:repeat(3,1fr);gap:20px}
+ .spot-ph{aspect-ratio:4/4.2}
+ .spot-n{font-size:1.7rem}
+ .mesa-body{grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+ .ctl{grid-template-columns:1fr 1fr}
+ .f:first-child{grid-column:1/-1}
+}

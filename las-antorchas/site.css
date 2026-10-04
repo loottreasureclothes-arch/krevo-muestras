@@ -1,0 +1,58 @@
+@font-face{font-family:"Young Serif";src:url(fonts/ys-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Karla;src:url(fonts/karla-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Karla;src:url(fonts/karla-600.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:Karla;src:url(fonts/karla-800.woff2) format("woff2");font-weight:800;font-display:swap}
+:root{--ink:#170e0b;--ink2:#241713;--ink3:#33211a;--brand:#c0392a;--brand-t:#ee6a52;--cream:#f3e6d3;--mute:#b9a591;--wa:#25D366;--wa-t:#0b3d1f;--bar:62px;--gut:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:var(--cream);font:400 17px/1.5 Karla,system-ui,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2,h3{font-family:"Young Serif",Georgia,serif;font-weight:400;line-height:1.02;letter-spacing:-.01em}
+.at-skip{position:absolute;left:-999px;top:8px;background:var(--cream);color:var(--ink);padding:8px 12px;z-index:200}
+.at-skip:focus{left:8px}
+.at-wrap{padding:0 var(--gut);max-width:1180px;margin:0 auto}
+.at-eyebrow{font:800 12px/1 Karla,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--brand-t)}
+.t2{color:var(--brand-t)}
+.at-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;font:800 14px/1 Karla,sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-radius:0}
+.at-btn svg{width:22px;height:22px}
+.at-btn--wa{background:var(--wa);color:var(--wa-t)}
+.at-btn--nav{border:1.5px solid var(--brand-t);color:var(--cream);min-height:48px;font-weight:600}
+.at-btn:focus-visible,.at-torch:focus-visible,.at-menu-btn:focus-visible{outline:3px solid var(--cream);outline-offset:2px}
+
+/* header: letrero oscuro con toldo festoneado */
+.at-bar{position:fixed;inset:0 0 auto 0;height:var(--bar);z-index:90;display:flex;align-items:center;justify-content:space-between;padding:0 var(--gut);background:var(--ink)}
+.at-bar::after{content:"";position:absolute;left:0;right:0;top:100%;height:11px;background:radial-gradient(circle at 11px 0,var(--brand) 10px,transparent 10.5px) 0 0/22px 11px repeat-x;pointer-events:none}
+.at-logo{display:flex;align-items:center;gap:9px;text-decoration:none;min-height:44px}
+.at-logo b{font:400 22px/1 "Young Serif",serif;letter-spacing:.005em}
+.at-logo-fl{width:17px;height:24px;color:var(--brand-t);transform-origin:50% 100%;animation:fl 1.1s ease-in-out infinite alternate}
+@keyframes fl{from{transform:scale(1,.94) rotate(-2deg)}to{transform:scale(.96,1.05) rotate(2deg)}}
+.at-menu-btn{display:flex;align-items:center;gap:10px;height:44px;padding:0 4px 0 10px;font:800 12px/1 Karla,sans-serif;letter-spacing:.18em;text-transform:uppercase}
+.at-burger{position:relative;width:22px;height:12px}
+.at-burger i{position:absolute;left:0;right:0;height:2px;background:var(--cream);transition:transform .25s}
+.at-burger i:first-child{top:0}.at-burger i:last-child{bottom:0}
+.at-menu-open .at-burger i:first-child{transform:translateY(5px) rotate(45deg)}
+.at-menu-open .at-burger i:last-child{transform:translateY(-5px) rotate(-45deg)}
+.at-menu{position:fixed;inset:0;z-index:80;background:var(--ink2);visibility:hidden;opacity:0;transition:opacity .25s,visibility 0s .25s}
+.at-menu-open .at-menu{visibility:visible;opacity:1;transition:opacity .25s}
+.at-menu-panel{padding:calc(var(--bar) + 36px) var(--gut) 40px;display:flex;flex-direction:column;gap:6px;max-width:720px}
+.at-menu-panel a{font:400 clamp(30px,9vw,52px)/1.15 "Young Serif",serif;text-decoration:none;padding:6px 0;border-bottom:1px solid var(--ink3)}
+.at-menu-panel p{margin-top:24px;color:var(--mute);font-size:15px}
+.at-menu-open{overflow:hidden}
+
+/* flotante WhatsApp = comanda */
+.at-wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:70;display:flex;align-items:center;gap:10px;height:58px;min-width:58px;padding:0 16px;background:var(--wa);color:var(--wa-t);text-decoration:none;border-radius:29px;box-shadow:0 8px 24px #0009;font:800 13px/1 Karla,sans-serif;letter-spacing:.1em;text-transform:uppercase;transition:transform .3s,opacity .3s}
+.at-wa svg{width:28px;height:28px;flex:none}
+.at-wa-t{display:none;white-space:nowrap}
+.at-wa-n{display:none;min-width:24px;height:24px;line-height:24px;text-align:center;background:var(--wa-t);color:var(--wa);border-radius:12px;font-size:13px;letter-spacing:0}
+.at-has .at-wa{left:16px;justify-content:center}
+.at-has .at-wa-t,.at-has .at-wa-n{display:block}
+.at-wa-off .at-wa{transform:translateY(120px);opacity:0;pointer-events:none}
+
+/* reveal: CSS base = estado final; solo se esconde con JS y sin reduced-motion */
+@media (prefers-reduced-motion:no-preference){
+  .js [data-at-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .js [data-at-reveal].is-in{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){.at-logo-fl,.at-flame{animation:none!important}}

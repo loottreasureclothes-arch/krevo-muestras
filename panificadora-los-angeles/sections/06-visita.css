@@ -1,0 +1,20 @@
+.visita{background:var(--bg)}
+.vis-fotos{position:relative;margin-bottom:34px;padding-bottom:70px}
+.v-big{width:100%;aspect-ratio:4/3;object-fit:cover}
+.v-s1,.v-s2{position:absolute;bottom:0;object-fit:cover;border:4px solid var(--bg)}
+.v-s1{left:5%;width:46%;aspect-ratio:4/3}
+.v-s2{right:5%;width:34%;aspect-ratio:3/4;bottom:0;border-radius:999px 999px 0 0}
+.datos{margin:26px 0 28px;display:grid;grid-template-columns:78px 1fr;gap:12px 8px;font-size:16px}
+.datos dt{font:600 12px/1.9 "Work Sans";letter-spacing:.18em;text-transform:uppercase;color:var(--am)}
+.datos dd{margin:0}
+.vis-btns{display:flex;flex-direction:column;gap:12px}
+.vis-btns a{text-align:center}
+@media(min-width:820px){
+ .vis-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:center}
+ .vis-fotos{margin:0}
+ .vis-btns{flex-direction:row;flex-wrap:wrap}
+ .sec.visita{padding:96px 0}
+}
+.vis-fotos{padding-bottom:128px}
+.v-s1{bottom:6px}
+.v-s2{width:31%}

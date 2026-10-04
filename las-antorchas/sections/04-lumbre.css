@@ -1,0 +1,11 @@
+.at-s4{position:relative;height:min(118vw,860px);overflow:hidden;background:var(--ink)}
+.at-s4 img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.at-s4::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#170e0bee 4%,#170e0b00 62%)}
+.at-s4-t{position:absolute;z-index:2;left:0;right:0;bottom:30px}
+.at-s4 h2{font-size:clamp(44px,12.2vw,128px);line-height:.92}
+@media (min-width:760px){
+  .at-s4{height:min(88vh,820px)}
+  .at-s4 img{object-position:50% 58%}
+  .at-s4-t{bottom:56px}
+  .at-s4 h2{font-size:clamp(88px,9vw,150px)}
+}

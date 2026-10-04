@@ -1,0 +1,42 @@
+<section class="mesa sec" id="mesa">
+  <div class="wrap">
+    <div class="mesa-head" data-reveal>
+      <p class="eyebrow">Tu mesa de hoy</p>
+      <h2 class="t">Elige dónde<em>sentarte.</em></h2>
+    </div>
+    <div class="spots" id="spots" role="radiogroup" aria-label="Dónde sentarte">
+      <button type="button" class="spot is-on" role="radio" aria-checked="true" data-spot="la mesa larga de madera" data-reveal>
+        <span class="tabla spot-ph"><img src="img/mesalarga-480.webp" srcset="img/mesalarga-480.webp 480w, img/mesalarga-960.webp 960w" sizes="(min-width:720px) 30vw, 90vw" width="480" height="270" alt="Mesa larga de madera junto a la barra" loading="lazy" decoding="async"></span>
+        <span class="spot-n">La mesa larga</span>
+        <span class="tent" aria-hidden="true"><i>Para</i><b class="tent-who">tu nombre</b><em class="tent-n"></em></span>
+      </button>
+      <button type="button" class="spot" role="radio" aria-checked="false" data-spot="la terraza techada" data-reveal>
+        <span class="tabla spot-ph"><img src="img/terraza-480.webp" srcset="img/terraza-480.webp 480w, img/terraza-960.webp 960w" sizes="(min-width:720px) 30vw, 90vw" width="480" height="270" alt="Terraza techada con pared de ladrillo y mesas" loading="lazy" decoding="async"></span>
+        <span class="spot-n">La terraza techada</span>
+        <span class="tent" aria-hidden="true"><i>Para</i><b class="tent-who">tu nombre</b><em class="tent-n"></em></span>
+      </button>
+      <button type="button" class="spot" role="radio" aria-checked="false" data-spot="el patio con pasto" data-reveal>
+        <span class="tabla spot-ph"><img src="img/patio-480.webp" srcset="img/patio-480.webp 480w, img/patio-960.webp 960w" sizes="(min-width:720px) 30vw, 90vw" width="480" height="480" alt="Patio con pasto, mesas de madera y sillas blancas" loading="lazy" decoding="async"></span>
+        <span class="spot-n">El patio con pasto</span>
+        <span class="tent" aria-hidden="true"><i>Para</i><b class="tent-who">tu nombre</b><em class="tent-n"></em></span>
+      </button>
+    </div>
+    <div class="mesa-body">
+      <form class="ctl" id="ctl" onsubmit="return false" autocomplete="off">
+        <label class="f"><span>Tu nombre</span><input id="f-name" type="text" maxlength="30" placeholder="Ana" autocapitalize="words"></label>
+        <div class="f"><span>Personas</span>
+          <div class="pers"><button type="button" id="p-minus" aria-label="Menos personas"><svg aria-hidden="true"><use href="#i-minus"/></svg></button><b id="p-n">2</b><button type="button" id="p-plus" aria-label="Más personas"><svg aria-hidden="true"><use href="#i-plus"/></svg></button></div>
+        </div>
+        <label class="f"><span>Día</span><select id="f-dia"></select></label>
+        <label class="f"><span>Hora</span><select id="f-hora"></select></label>
+        <label class="f chk"><input type="checkbox" id="f-dog"><span class="chk-box" aria-hidden="true"></span><span>Va mi perro (aceptan mascotas)</span></label>
+      </form>
+      <div class="tick" aria-live="polite">
+        <p class="tick-h">Tu aviso</p>
+        <p class="tick-b" id="tick-b"></p>
+        <a class="btn btn-wa" id="mesa-wa" data-wa="Hola Mesa Verde" href="https://wa.me/524496889208?text=Hola%20Mesa%20Verde" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Avisar por WhatsApp</a>
+        <p class="tick-s" id="tick-s">Pásalo por aquí y ellos te confirman si hay lugar.</p>
+      </div>
+    </div>
+  </div>
+</section>

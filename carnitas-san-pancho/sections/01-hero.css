@@ -1,0 +1,8 @@
+.hero{padding:96px var(--pad) 48px;background:radial-gradient(120% 60% at 50% 100%,#3a1316,var(--canvas) 70%);display:flex;flex-direction:column;gap:26px}
+.arch{order:-1;position:relative;margin:0 auto;width:min(86vw,420px);aspect-ratio:3/4.1;border-radius:999px 999px 6px 6px;overflow:hidden;border:6px solid var(--cream);background:#000}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.plaque{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:var(--cream);color:var(--red);font:400 13px/1 var(--fd);letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border:2px solid var(--red);white-space:nowrap}
+.hero-p{margin:16px 0 22px;color:var(--mut);max-width:30ch}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px}
+@media(min-width:820px){.hero{flex-direction:row;align-items:center;min-height:100vh;gap:5vw;padding-top:110px}.hero-txt{flex:1.1}.arch{order:0;flex:.9;width:auto;max-width:480px;margin:0}.hero h1{font-size:clamp(64px,8vw,120px)}}
+@media(min-width:820px){.hero-p{font-size:20px;max-width:34ch}.arch{max-width:500px}}
