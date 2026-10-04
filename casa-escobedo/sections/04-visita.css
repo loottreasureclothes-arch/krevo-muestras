@@ -1,0 +1,44 @@
+.visita{background:linear-gradient(180deg,var(--tierra),#38200f 100%);padding:46px var(--g) 46px}
+.visita h2{font-size:clamp(2.5rem,11vw,4.4rem);margin-bottom:28px}
+.v-panel{background:var(--noche);padding:22px 18px 22px;border-top:3px solid var(--ambar)}
+.v-paso{margin-bottom:26px}
+.v-lbl{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--cantera);font-weight:600;margin-bottom:12px}
+.v-lbl b{display:inline-grid;place-items:center;width:24px;height:24px;border:1px solid var(--ambar);color:var(--ambar);font-family:Gloock,serif;font-weight:400;font-size:13px;margin-right:8px;letter-spacing:0}
+.v-opts,.v-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.v-tabs{grid-template-columns:repeat(4,1fr);margin-top:12px;gap:6px}
+.v-opts button,.v-tabs button{min-height:50px;background:transparent;border:1px solid rgba(213,203,195,.3);color:var(--arena);font:600 14px "Albert Sans",sans-serif;cursor:pointer;padding:6px 4px;line-height:1.15;transition:background .2s,color .2s,border-color .2s}
+.v-tabs button{font-size:12.5px;min-height:46px}
+.v-opts button[aria-checked=true],.v-tabs button[aria-checked=true]{background:var(--ambar);border-color:var(--ambar);color:var(--noche)}
+.v-arco{position:relative;border-radius:999px 999px 0 0;overflow:hidden;aspect-ratio:4/4.1;background:var(--tierra);box-shadow:0 0 0 1px rgba(222,153,88,.5),0 0 0 7px var(--noche),0 0 0 8px rgba(222,153,88,.25)}
+.v-arco img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .35s ease,transform .5s ease}
+.v-arco img.on{opacity:1;transform:none}
+.v-nombre{margin-top:16px;font-family:Gloock,serif;font-size:1.5rem;color:var(--arena);text-align:center}
+.v-inv{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.v-step{width:60px;height:60px;border:1px solid var(--ambar);background:transparent;color:var(--ambar);font:400 30px Gloock,serif;cursor:pointer;line-height:1}
+.v-step:active{background:var(--ambar);color:var(--noche)}
+.v-num{text-align:center;display:flex;flex-direction:column}
+.v-num output{font-family:Gloock,serif;font-size:3.6rem;line-height:1;color:var(--arena)}
+.v-num span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cantera);margin-top:4px}
+.v-barra{height:6px;background:rgba(213,203,195,.15);margin-top:16px;overflow:hidden}
+.v-barra i{display:block;height:100%;background:var(--ambar);transform-origin:left;transform:scaleX(.41);transition:transform .25s}
+.v-msg{background:rgba(213,203,195,.07);padding:14px;margin-bottom:18px;font-size:15px;line-height:1.45}
+.v-msg span{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cantera);margin-bottom:6px;font-weight:600}
+.v-msg em{font-style:italic;color:var(--arena)}
+.visita .btn{width:100%}
+@media (min-width:760px){
+ .visita{padding:80px 56px}
+ .v-in{max-width:1180px;margin:0 auto}
+ .visita h2{font-size:clamp(3.4rem,5vw,5.6rem);margin:0 0 36px}
+ .v-panel{padding:34px;display:grid;grid-template-columns:1fr 1fr;column-gap:44px;align-items:start}
+ .v-escena{grid-column:1;grid-row:1/6;margin:0}
+ .v-panel>.v-paso:first-child,.v-panel>.v-paso:nth-child(3),.v-msg,#v-wa{grid-column:2}
+ .v-opts button,.v-tabs button{font-size:15px}
+ .v-tabs button{font-size:14px}
+ .v-arco{aspect-ratio:4/3.6}
+}
+@media (min-width:600px) and (max-width:759px){
+ .visita{padding:64px 40px}
+ .v-panel{display:grid;grid-template-columns:1fr 1fr;column-gap:28px;align-items:start}
+ .v-escena{grid-column:1;grid-row:1/6;margin:0}
+ .v-panel>.v-paso:first-child,.v-panel>.v-paso:nth-child(3),.v-msg,#v-wa{grid-column:2}
+}

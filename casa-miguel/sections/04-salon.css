@@ -1,0 +1,17 @@
+.cm-salon{position:relative;background:var(--cafe3);overflow:hidden}
+.cm-salon-f{position:relative;height:min(118vw,560px);overflow:hidden}
+.cm-salon-f img{width:100%;height:100%;object-fit:cover;object-position:46% 50%;transition:transform 1.1s ease}
+.cm-salon-luz{position:absolute;inset:0;background:radial-gradient(60% 50% at 62% 20%,rgba(255,196,110,.5),transparent 70%);mix-blend-mode:screen;opacity:1;transition:opacity .9s ease;pointer-events:none}
+.cm-salon-f::after{content:"";position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(to top,var(--cafe3) 6%,rgba(18,10,7,0))}
+/* apagado solo si hay JS, sin reduced-motion y antes de los 1.6 s */
+.cm-salon-f::before{content:"";position:absolute;inset:0;z-index:1;background:rgba(10,6,4,.74);opacity:0;transition:opacity .9s ease;pointer-events:none}
+.rv .cm-salon.js-on:not(.lit) .cm-salon-f::before{opacity:1}
+.rv .cm-salon.js-on:not(.lit) .cm-salon-f img{transform:scale(1.04)}
+.rv .cm-salon.js-on:not(.lit) .cm-salon-luz{opacity:0}
+.cm-salon-t{position:absolute;left:0;right:0;bottom:30px;z-index:2}
+.cm-salon-t .t2{font-size:clamp(38px,11vw,96px);margin-top:6px;text-shadow:0 3px 20px rgba(0,0,0,.6)}
+@media (min-width:820px){
+  .cm-salon-f{height:min(62vw,760px)}
+  .cm-salon-t{bottom:56px}
+  .cm-salon-t .t2{font-size:clamp(64px,8vw,128px)}
+}

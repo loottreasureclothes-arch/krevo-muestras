@@ -1,0 +1,25 @@
+.band{background:var(--crema);color:var(--tinta)}
+.mesa{padding:56px var(--g) 52px}
+.mesa h2{font-size:clamp(2.5rem,11vw,4.4rem);margin-bottom:30px;color:var(--tinta)}
+.arch-m{height:auto;aspect-ratio:4/4.3;animation:none!important}
+.arch-m img{object-position:50% 55%}
+.mesa-chicas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.mesa-chicas img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.carta{list-style:none;margin:34px 0 0;border-top:1px solid rgba(42,23,16,.25)}
+.carta li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:16px 0;border-bottom:1px solid rgba(42,23,16,.25)}
+.carta b{font-family:Gloock,serif;font-weight:400;font-size:clamp(1.5rem,6.4vw,2.1rem)}
+.carta span{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#7d4a22;font-weight:600;white-space:nowrap}
+.cita{margin:36px 0 34px;padding-left:18px;border-left:3px solid #9a5a26}
+.estrellas{color:#b8741f;letter-spacing:3px;font-size:20px}
+.cita blockquote{margin:8px 0;font-size:18px;line-height:1.45;max-width:34ch}
+.cita figcaption{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#7d4a22;font-weight:600}
+.mesa .btn{width:100%}
+@media (min-width:760px){
+ .mesa{padding:84px 56px}
+ .mesa-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;column-gap:70px;align-items:start}
+ .mesa h2{grid-column:1/-1;font-size:clamp(3.6rem,6vw,6.4rem);max-width:12ch}
+ .mesa-fotos{grid-column:1;grid-row:2/5}
+ .carta{grid-column:2;grid-row:2;margin-top:0}
+ .cita{grid-column:2;grid-row:3;margin:30px 0}
+ .mesa .btn{grid-column:2;grid-row:4;width:auto;justify-self:start;padding:0 38px}
+}

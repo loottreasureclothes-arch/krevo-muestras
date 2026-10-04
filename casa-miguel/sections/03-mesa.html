@@ -1,0 +1,42 @@
+<section class="cm-mesa" id="mesa" data-hide-wa>
+  <div class="wrap">
+    <header class="cm-mesa-h" data-reveal>
+      <p class="eyebrow">Tu mesa</p>
+      <h2 class="t2">Pon la mesa. <em>Nosotros la guisamos.</em></h2>
+    </header>
+    <div class="cm-mesa-g">
+      <div class="cm-tabla" data-reveal="s">
+        <div class="cm-sitios" id="cm-sitios" role="img" aria-label="Mesa redonda con un plato por persona">
+          <div class="cm-mantel"></div>
+          <div class="cm-centro" id="cm-centro"><b id="cm-n">2</b><small id="cm-n-t">personas</small></div>
+        </div>
+        <ul class="cm-pedido" id="cm-pedido" aria-label="Platillos agregados"></ul>
+      </div>
+      <form class="cm-ctrl" id="cm-form" onsubmit="return false">
+        <div class="cm-modo" role="tablist" aria-label="Cómo quieres tu pedido">
+          <button type="button" role="tab" class="is-on" data-modo="mesa" aria-selected="true">Comer aquí</button>
+          <button type="button" role="tab" data-modo="llevar" aria-selected="false">Para llevar</button>
+        </div>
+        <div class="cm-campo" data-solo="mesa">
+          <label>Cuántos son</label>
+          <div class="cm-cuenta"><button type="button" id="cm-menos" aria-label="Menos personas">−</button><output id="cm-cuenta-n">2</output><button type="button" id="cm-mas" aria-label="Más personas">+</button></div>
+        </div>
+        <div class="cm-campo" data-solo="mesa">
+          <label>Dónde se sientan</label>
+          <div class="cm-opc" id="cm-zona" role="radiogroup"><button type="button" role="radio" class="is-on" aria-checked="true" data-v="en el salón">Salón</button><button type="button" role="radio" aria-checked="false" data-v="en la terraza">Terraza</button></div>
+        </div>
+        <div class="cm-campo">
+          <label id="cm-dia-l">Qué día</label>
+          <div class="cm-opc" id="cm-dia" role="radiogroup" aria-labelledby="cm-dia-l"></div>
+        </div>
+        <div class="cm-campo">
+          <label for="cm-hora" id="cm-hora-l">A qué hora llegan</label>
+          <select id="cm-hora"></select>
+        </div>
+        <p class="cm-msg" id="cm-msg" aria-live="polite"></p>
+        <a class="cm-wa" id="cm-wa" href="https://wa.me/524491827393" target="_blank" rel="noopener">Mandar mi mesa</a>
+        <p class="cm-aviso">Ellos te confirman por WhatsApp. Más de 12: avísales y juntan mesas.</p>
+      </form>
+    </div>
+  </div>
+</section>
