@@ -1,0 +1,8 @@
+# Camen Repostería: hoja corta
+- Trabajo: pedir pastel en 1 toque. wa.me/524499121601 (Matriz, el único teléfono con horario y reseñas; NO confirmado como WhatsApp, va a PENDIENTES). Fundición 524499149636 y Américas 524495362673 igual.
+- Promesa: "Horneamos hoy, desde hace 26 años" (su flyer: horneamos diariamente; IG 26 años).
+- Identidad: lienzo café #2a1613 y terracota de marca #D27C60 (flyer), crema/arena para leer, vino #A0475A. Gloock + Karla. Mundo: festón de betún (borde de pastel) en header y entre secciones, fotos con esquina redondeada tipo tarjeta del flyer. Header terracota con festón y logo en texto (Camen / REPOSTERÍA ®).
+- Firma: "El corte": pastel visto desde arriba que se parte en tantas porciones como personas (1,4,8,12,16,20,25) y cambia de color por sabor (11 del flyer) + día + sucursal + extras de la vitrina. Mensaje literal: "Hola Camen Repostería, quiero un pastel de {sabor} para {n} personas ({tamaño}). Lo necesito para {día}, sucursal {suc}. También quiero: {extras}. ¿Me confirman precio y disponibilidad?"
+- Momento firma: las puertas de la vitrina se abren al entrar y revelan "Hecho a diario." (reversible, 0.9 s).
+- Secciones: 01-inicio | fachada Zaragoza | Horneamos hoy, / desde hace 26 años · 02-vitrina | 8 fotos | De la vitrina / a tu mesa · 03-arma | pastel SVG | ¿Cuántos van / a comer pastel? · 04-hecho | vitrina interior a sangre | Hecho / a diario. · 05-opiniones | 4.7 gigante + 3 reseñas con nombre · 06-sucursales | fachada Fundición | Tres sucursales, / elige la tuya · pie Todo listo para completar.
+- Prohibidas: maps-13/14/15/17, f-13/14/15, maps-12 Fundición (corazones, baja res), Uber Eats recibo. PENDIENTE-DUEÑO: WhatsApp, dirección Américas, carta con precios, logo alta.
