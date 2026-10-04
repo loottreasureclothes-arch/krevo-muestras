@@ -99,3 +99,25 @@ body.pill-off .caja-pill{opacity:0;transform:translateY(12px);pointer-events:non
 .hd-logo{min-height:44px}
 .menu-panel .menu-call{display:flex;align-items:center;min-height:48px;padding:0}
 .pie-addr a,.lug-dl a{display:inline-flex;align-items:center;min-height:44px}
+
+/* tableta 700-899: dos columnas propias, no el celular estirado */
+@media (min-width:700px) and (max-width:899px){
+  :root{--gut:32px}
+  .por-ph{height:min(62vh,560px)}
+  .por-h{font-size:clamp(72px,11vw,96px)}
+  .car-head{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;gap:32px}
+  .car-ph img{aspect-ratio:4/3}
+  .car-tabs{grid-template-columns:repeat(4,1fr)}
+  html.js .car-l{columns:2;column-gap:40px}
+  html.js .plato{break-inside:avoid}
+  .caj-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}
+  .caj-boxcol{grid-column:1;grid-row:1/span 2}
+  .caj-ctl{grid-column:2;grid-row:1}
+  .caj-fotos{grid-column:2;grid-row:2;margin-top:8px}
+  .opi-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+  .opi-ph{grid-column:1/-1}
+  .lug-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+  .pen .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;grid-template-rows:auto auto 1fr;align-items:start}
+  .pen .eyebrow,.pen .h2,.pen-p{grid-column:1}
+  .pen-l{grid-column:2;grid-row:1/span 3;margin-top:0}
+}

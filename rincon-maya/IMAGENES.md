@@ -3,3 +3,4 @@
 - Prohibidas: 01 fachada (rótulo de otro nombre), 02/06/16 menús, 15 flyer, 24-27 otros negocios, 28 persona.
 - Webp 480/960/1440-1600 en img/. og.jpg, favicon-32, apple-touch-icon hechos con PIL. bordado.svg y puntada.svg dibujados.
 - PENDIENTE-DUEÑO: fotos propias, fachada, logo.
+- Inspector HD (3 oct): sin Real-ESRGAN (originales ≥1,536 px). Todos los webp regenerados desde el original con LANCZOS q82, mismos recortes y nombres; nuevos: cochinita/panuchos/salbutes/tamal/negro/cafepan-1080, mesa-1536, casona-2048 (ya en srcset).

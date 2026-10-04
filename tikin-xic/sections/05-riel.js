@@ -39,7 +39,7 @@
     for (var i = 0; i < bs.length; i++) {
       var it = items[bs[i].getAttribute("data-add")];
       bs[i].classList.toggle("on", !!it);
-      bs[i].textContent = it ? "En comanda · " + it.qty : "Agregar";
+      bs[i].textContent = it ? "En comanda · " + it.qty : (bs[i].getAttribute("data-lbl") || "Agregar");
     }
   }
   function render(anim) {

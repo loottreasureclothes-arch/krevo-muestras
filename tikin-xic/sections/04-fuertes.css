@@ -10,10 +10,18 @@
 .fu-nota{margin-top:18px;font-size:13px;opacity:.7}
 @media (min-width:760px){
   .fuertes{padding:100px 0 110px}
-  .fu{max-width:900px;margin-top:44px}
+  .fu{max-width:none;margin-top:0}
   .fu-r{grid-template-columns:auto 1fr auto auto;grid-template-areas:"n l p b";gap:0 18px;align-items:center;padding:14px 0}
   .fu-l{display:block;grid-area:l;border-bottom:2px dotted rgba(207,233,180,.45);height:1px;align-self:end;margin-bottom:8px}
   .fu .add{margin-top:0}
   .fu-n{font-size:25px}
 }
 .fu .add{justify-self:start}
+
+@media (min-width:1000px){
+  .fuertes .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:0 70px;align-items:start}
+  .fuertes .wrap>.eb{grid-column:1/-1}
+  .fuertes .wrap>.t{grid-column:1;position:sticky;top:calc(var(--hd) + 24px);font-size:clamp(60px,6.5vw,96px)}
+  .fuertes .fu{grid-column:2;grid-row:2/4}
+  .fu-nota{grid-column:1;margin-top:24px}
+}

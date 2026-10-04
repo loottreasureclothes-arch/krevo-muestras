@@ -8,7 +8,7 @@
     on.forEach(function (c) { var p = +c.dataset.p; if (p) suma += p; else sinPrecio++; });
     cnt.textContent = on.length + (on.length === 1 ? " marcada" : " marcadas");
     if (!on.length) {
-      lst.textContent = "Toca una carta para ponerle su frijol.";
+      lst.textContent = "Toca y ponle frijol.";
       wa.href = MZ.wa("Hola La Mestiza Yucateca, quiero pedir. ¿Qué tienen hoy?");
       return;
     }

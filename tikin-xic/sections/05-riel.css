@@ -16,7 +16,11 @@
 @keyframes tkin{from{opacity:0;transform:translateY(-26px) rotate(-4deg)}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.tk{animation:none}}
 .riel-tks:empty{display:none}
-.riel-vacio{margin:26px 0 0;padding:26px 18px;border:2px dashed rgba(207,233,180,.4);text-align:center;font-size:16px;opacity:.9}
+.riel-vacio{margin:26px 0 0;padding:22px 18px 20px;border:2px dashed rgba(207,233,180,.4);font-size:16px}
+.riel-vacio p{opacity:.9;margin-bottom:14px}
+.riel-arranque{display:flex;flex-wrap:wrap;gap:10px}
+.riel-arranque .add{margin-top:0;text-transform:none;letter-spacing:.02em;font-size:14px;font-weight:600;padding:0 14px}
+.riel-intro{margin-top:16px;max-width:36ch;font-size:16px;opacity:.85}
 .riel-vacio[hidden]{display:none}
 .riel-ctl{margin-top:34px;max-width:620px}
 .riel-fila{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
@@ -36,6 +40,11 @@
 @media (min-width:600px){.riel-tks{grid-template-columns:repeat(3,1fr)}}
 @media (min-width:760px){
   .riel{padding:100px 0 110px}
+  .riel .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:0 60px;align-items:end}
+  .riel .wrap>.eb{grid-column:1/-1}
+  .riel .wrap>.t{grid-column:1}
+  .riel-intro{grid-column:2;margin:0 0 10px;font-size:18px;max-width:30ch}
+  .riel-bar,.riel-tks,.riel-vacio,.riel-ctl{grid-column:1/-1}
   .riel-bar{margin-top:44px}
   .riel-tks{grid-template-columns:repeat(4,1fr);gap:30px 22px}
   .riel-fila{flex-direction:row;align-items:center;gap:18px}

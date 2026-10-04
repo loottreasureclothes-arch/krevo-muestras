@@ -145,7 +145,7 @@ html.cc-js .cc-plate:not(.is-in) .cc-serve{opacity:0;transform:translateY(-14px)
 .cc-op-photo img{width:100%;height:100%;object-fit:cover}
 
 /* ---------- 06 Casas ---------- */
-.cc-casas{background:var(--bg)}
+.cc-casas{background:var(--bg);padding-bottom:20px}
 .cc-casas .cc-h2{margin:10px 0 28px}
 .cc-cards{display:grid;gap:18px}
 .cc-card{background:var(--bg2);border:1px solid rgba(200,166,135,.3);border-radius:4px;padding:22px 20px;display:grid;gap:10px}
@@ -162,14 +162,14 @@ html.cc-js .cc-plate:not(.is-in) .cc-serve{opacity:0;transform:translateY(-14px)
 .cc-casas-wa small{color:var(--muted);font-size:14px}
 
 /* ---------- 07 Completar ---------- */
-.cc-todo{background:var(--bg);padding-top:0}
-.cc-todo-box{border:2px dashed rgba(200,166,135,.55);border-radius:4px;padding:26px 20px}
+.cc-todo{background:var(--bg);padding:0 0 28px}
+.cc-todo-box{border:2px dashed rgba(200,166,135,.55);border-radius:4px;padding:22px 20px}
 .cc-todo h2{font:900 30px/1.05 var(--disp);margin:8px 0 14px}
 .cc-todo ul{padding-left:20px;display:grid;gap:6px;color:var(--muted);margin-bottom:16px}
 .cc-todo p{color:var(--text)}
 
 /* ---------- Pie ---------- */
-.cc-foot{background:var(--ink);padding:44px 0 56px;color:var(--muted);font-size:15px}
+.cc-foot{background:var(--ink);padding:36px 0 56px;color:var(--muted);font-size:15px}
 .cc-foot-name{font:900 28px/1 var(--disp);color:var(--text);margin-bottom:12px}
 .cc-credit{margin-top:18px;font-size:13px;opacity:.8}
 .cc-foot::before{content:"";display:block;height:9px;margin-bottom:34px;background:radial-gradient(circle at 50% 100%,var(--red) 7px,transparent 7.6px) 0 0/16px 9px repeat-x;margin-top:-44px}
@@ -180,7 +180,7 @@ html.cc-js .cc-plate:not(.is-in) .cc-serve{opacity:0;transform:translateY(-14px)
   body{font-size:18px}
   .cc-hours{display:block}
   .cc-sec{padding:44px 0}
-  .cc-hero{padding:calc(var(--hdr) + 36px) 0 64px}
+  .cc-hero{padding:calc(var(--hdr) + 36px) 0 36px}
   .cc-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;column-gap:56px;align-items:center;grid-template-rows:1fr auto}
   .cc-hero-photo{display:contents}
   .cc-hero-img{position:relative;inset:auto;grid-column:2;grid-row:1/3;height:min(78vh,720px);border-radius:999px 999px 6px 6px;overflow:hidden;background:var(--bg2)}
@@ -202,6 +202,11 @@ html.cc-js .cc-plate:not(.is-in) .cc-serve{opacity:0;transform:translateY(-14px)
   .cc-cards{grid-template-columns:1fr 1fr 220px;align-items:start}
   .cc-fachada{width:100%}
   .cc-todo-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .cc-todo ul{grid-template-columns:1fr 1fr;column-gap:40px;max-width:760px}
+  .cc-carta{padding-bottom:36px}
+  .cc-div{padding-top:0}
+  .cc-casas{padding-bottom:16px}
+  .cc-todo{padding:0 0 20px}
   .cc-wa{right:28px;bottom:28px}
 }
 @media (min-width:1200px){

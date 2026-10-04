@@ -127,7 +127,7 @@
       var w = document.createElement("div"); w.className = "lp-slot-w";
       w.style.left = (50 + R * Math.cos(ang)) + "%"; w.style.top = (50 + R * Math.sin(ang)) + "%";
       var d = document.createElement("button"); d.type = "button"; d.className = "lp-slot"; d.setAttribute("aria-label", "Agregar " + m.n); d.addEventListener("click", function () { set(m.id, qty[m.id] + 1); });
-      d.innerHTML = m.img ? '<img src="img/' + m.img + '-96.webp" alt="" width="96" height="96">' : '<span class="lp-ini">' + m.ini + "</span>";
+      d.innerHTML = m.img ? '<img src="img/' + m.img + '-192.webp" srcset="img/' + m.img + '-96.webp 96w, img/' + m.img + '-192.webp 192w" sizes="120px" alt="" width="192" height="192">' : '<span class="lp-ini">' + m.ini + "</span>";
       var b = document.createElement("b"); b.textContent = "0";
       w.appendChild(d); w.appendChild(b); plate.appendChild(w); slots[m.id] = { w: w, b: b };
 
