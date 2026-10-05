@@ -1,0 +1,21 @@
+.desde{background:var(--red);color:#fff;overflow:hidden;padding:0}
+.desde .eyebrow{color:#fff}
+.desde-in{padding-top:44px;padding-bottom:50px}
+.tendido{height:26px;clip-path:inset(0 0 0 0);transition:clip-path .9s cubic-bezier(.2,.7,.2,1)}
+.tendido-b{transition-delay:.15s}
+.gran{position:relative;display:block;font-size:clamp(150px,46vw,400px);margin:.16em 0 .2em}
+.num{display:block;font-family:var(--serif);font-size:1em;line-height:1.02;letter-spacing:-.02em;color:#fff}
+.sello-cae{position:absolute;right:-6px;bottom:-4px;width:clamp(74px,22vw,150px);height:clamp(74px,22vw,150px);transform:rotate(-7deg);transition:transform .45s cubic-bezier(.3,1.5,.5,1),opacity .3s;box-shadow:0 8px 18px rgba(0,0,0,.3)}
+.desde-p{font-family:var(--serif);font-size:clamp(24px,6.6vw,34px);line-height:1.15;max-width:20ch;margin-top:0}
+.desde .lnk{color:#fff}
+@media(prefers-reduced-motion:no-preference){
+  html.jsrv .desde:not(.on) .tendido{clip-path:inset(0 100% 0 0)}
+  html.jsrv .desde:not(.on) .tendido-b{clip-path:inset(0 0 0 100%)}
+  html.jsrv .desde:not(.on) .sello-cae{transform:rotate(-18deg) scale(1.7);opacity:0}
+  html.jsrv .desde.on .sello-cae{transition-delay:.55s}
+}
+@media(min-width:760px){
+  .desde-in{padding-top:90px;padding-bottom:96px}
+  .tendido{height:34px}
+  .desde-p{max-width:26ch}
+}

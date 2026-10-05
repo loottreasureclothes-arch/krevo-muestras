@@ -1,0 +1,63 @@
+.mesa{padding:52px 0 52px;background:var(--bg)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+.card{display:flex;flex-direction:column;background:var(--bg2);border:1px solid var(--line)}
+.card img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.card-b{padding:12px 12px 14px;display:flex;flex-direction:column;flex:1}
+.card h3{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.1}
+.precio{font-size:13px;color:var(--mute);margin-top:5px;letter-spacing:.02em}
+.add{margin-top:auto;align-self:stretch;min-height:44px;padding:0 12px;background:transparent;border:2px solid var(--cream);color:var(--cream);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,color .2s,transform .2s}
+.card-b>.precio+.add{margin-top:14px}
+.add:hover{background:var(--cream);color:var(--ink)}
+.add:active{transform:scale(.97)}
+.add b{font-weight:800;color:var(--redt)}
+.add:hover b{color:var(--red)}
+.card-wide{grid-column:1/-1}
+.card-wide img{aspect-ratio:16/10;object-position:50% 42%}
+.opt-l{margin-top:14px;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:7px 0 4px}
+.chips button{min-height:40px;padding:0 10px;background:transparent;border:1px solid var(--line);font-size:13.5px;font-weight:700;cursor:pointer;transition:background .2s,border-color .2s}
+.chips button[aria-pressed=true]{background:var(--red);border-color:var(--red);color:#fff}
+.card-wide .add{margin-top:16px}
+
+.tabla{margin-top:26px;display:grid;gap:14px}
+.mantel{border:6px solid var(--paper);min-height:210px;padding:18px 12px;display:flex;align-items:center;justify-content:center;position:relative}
+.vacia{font-family:var(--serif);font-size:28px;color:var(--ink);background:var(--paper);padding:8px 20px;border:2px solid var(--red);transform:rotate(-2deg)}
+.mantel.llena .vacia{display:none}
+.platos{display:flex;flex-wrap:wrap;gap:16px 14px;justify-content:center}
+.plato{position:relative;width:96px;text-align:center;animation:cae .32s ease-out backwards}
+.plato img{width:88px;height:88px;border-radius:50%;object-fit:cover;border:4px solid var(--paper);box-shadow:0 5px 12px rgba(0,0,0,.4);margin:0 auto}
+.plato b{position:absolute;top:-6px;right:2px;min-width:28px;height:28px;padding:0 6px;border-radius:14px;background:var(--red);color:#fff;font-size:14px;line-height:28px;border:2px solid var(--paper)}
+.plato span{display:block;margin-top:6px;font-size:11px;font-weight:800;line-height:1.15;background:var(--paper);color:var(--ink);padding:3px 4px}
+@keyframes cae{from{opacity:0;transform:translateY(-22px) scale(1.12)}to{opacity:1;transform:none}}
+
+.dicta{background:var(--paper);color:var(--ink);padding:20px 18px 18px;border-top:3px dashed var(--red)}
+.dicta[hidden]{display:none}
+.dicta-k{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+.modo{display:flex;margin-top:12px}
+.modo button{flex:1;min-height:44px;background:transparent;border:2px solid var(--ink);font-weight:800;font-size:13px;letter-spacing:.06em;cursor:pointer;color:var(--ink)}
+.modo button+button{border-left:0}
+.modo button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.lineas{margin-top:12px}
+.lineas li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px dashed rgba(42,13,14,.3);font-weight:700;font-size:16px;line-height:1.25}
+.lineas li span{flex:1}
+.lineas button{width:40px;height:40px;background:transparent;border:2px solid var(--ink);font-size:20px;line-height:1;cursor:pointer;color:var(--ink)}
+.lineas button:active{background:var(--ink);color:var(--paper)}
+.frase{margin-top:14px;font-size:15px;color:#5a3a38}
+.dicta-b{display:flex;align-items:center;gap:16px;margin-top:16px;flex-wrap:wrap}
+.vaciar{background:none;border:0;padding:8px 0;font-weight:700;font-size:14px;text-decoration:underline;cursor:pointer;color:var(--red)}
+@media(min-width:760px){
+  .mesa{padding:96px 0 90px}
+  .cards{grid-template-columns:repeat(4,1fr);gap:16px}
+  .card-wide{grid-column:1/-1;flex-direction:row}
+  .card-wide img{width:42%;aspect-ratio:auto;min-height:340px}
+  .card-wide .card-b{padding:28px 36px;justify-content:center}
+  .card-wide h3{font-size:34px}
+  .card-wide .chips button{min-height:44px;padding:0 16px;font-size:15px}
+  .card-wide .add{max-width:420px}
+  .card h3{font-size:21px}
+  .tabla{grid-template-columns:1.2fr 1fr;align-items:start;margin-top:34px}
+  .tabla .llamar{grid-column:1/-1}
+  .mantel{min-height:340px}
+  .tabla:has(.dicta[hidden]) .mantel{grid-column:1/-1;min-height:260px}
+  .plato{width:110px}.plato img{width:100px;height:100px}
+}

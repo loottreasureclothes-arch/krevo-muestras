@@ -1,0 +1,69 @@
+<section class="mesa" id="mesa">
+  <div class="wrap">
+    <p class="eyebrow">La mesa</p>
+    <h2 class="t" data-reveal>Pon tu mesa.<em>Luego llámanos.</em></h2>
+    <p class="lead" data-reveal>Toca lo que se te antoja. Abajo queda tu pedido listo para dictar por teléfono.</p>
+
+    <div class="cards">
+      <article class="card card-wide" data-id="pozole" data-name="Pozole" data-img="pozole-rojo">
+        <img src="img/pozole-rojo-480.webp" srcset="img/pozole-rojo-480.webp 480w, img/pozole-rojo-960.webp 960w" sizes="(min-width:760px) 33vw, 100vw" width="480" height="640" alt="Pozole rojo con carne" loading="lazy">
+        <div class="card-b">
+          <h3>Pozole</h3>
+          <p class="precio">Pregunta el precio</p>
+          <p class="opt-l">Tamaño</p>
+          <div class="chips" data-group="size" role="group" aria-label="Tamaño del pozole">
+            <button type="button" data-v="infantil" aria-pressed="false">Infantil</button>
+            <button type="button" data-v="chico" aria-pressed="false">Chico</button>
+            <button type="button" data-v="mediano" aria-pressed="true">Mediano</button>
+            <button type="button" data-v="grande" aria-pressed="false">Grande</button>
+          </div>
+          <p class="opt-l">Carne</p>
+          <div class="chips" data-group="carne" role="group" aria-label="Carne del pozole">
+            <button type="button" data-v="maciza" aria-pressed="true">Maciza</button>
+            <button type="button" data-v="lengua" aria-pressed="false">Lengua</button>
+            <button type="button" data-v="trompa" aria-pressed="false">Trompa</button>
+            <button type="button" data-v="surtido" aria-pressed="false">Surtido</button>
+          </div>
+          <button class="add" type="button">Agregar <b data-n></b></button>
+        </div>
+      </article>
+      <article class="card" data-id="quesadilla" data-name="Quesadilla con guisado" data-img="quesadilla-lechuga">
+        <img src="img/quesadilla-lechuga-480.webp" srcset="img/quesadilla-lechuga-480.webp 480w, img/quesadilla-lechuga-960.webp 960w" sizes="(min-width:760px) 25vw, 50vw" width="480" height="270" alt="Quesadilla con lechuga y salsa" loading="lazy">
+        <div class="card-b"><h3>Quesadilla con guisado</h3><p class="precio">Pregunta el precio</p><button class="add" type="button">Agregar <b data-n></b></button></div>
+      </article>
+      <article class="card" data-id="sope" data-name="Sope" data-img="sope">
+        <img src="img/sope-480.webp" srcset="img/sope-480.webp 480w, img/sope-960.webp 960w" sizes="(min-width:760px) 25vw, 50vw" width="480" height="853" alt="Sope rojo con lechuga y salsas" loading="lazy">
+        <div class="card-b"><h3>Sope</h3><p class="precio">Pregunta el precio</p><button class="add" type="button">Agregar <b data-n></b></button></div>
+      </article>
+      <article class="card" data-id="dorados" data-name="Tacos dorados o flautas" data-img="flautas">
+        <img src="img/flautas-480.webp" srcset="img/flautas-480.webp 480w, img/flautas-960.webp 960w" sizes="(min-width:760px) 25vw, 50vw" width="480" height="640" alt="Flautas con lechuga" loading="lazy">
+        <div class="card-b"><h3>Tacos dorados o flautas</h3><p class="precio">Pregunta el precio</p><button class="add" type="button">Agregar <b data-n></b></button></div>
+      </article>
+      <article class="card" data-id="tostada" data-name="Tostada" data-img="tostada-crema">
+        <img src="img/tostada-crema-480.webp" srcset="img/tostada-crema-480.webp 480w, img/tostada-crema-960.webp 960w" sizes="(min-width:760px) 25vw, 50vw" width="480" height="640" alt="Tostada con crema y queso" loading="lazy">
+        <div class="card-b"><h3>Tostada</h3><p class="precio">Pregunta el precio</p><button class="add" type="button">Agregar <b data-n></b></button></div>
+      </article>
+    </div>
+
+    <div class="tabla">
+      <div class="mantel ging" aria-live="polite">
+        <p class="vacia">Elige arriba</p>
+        <div class="platos"></div>
+      </div>
+      <div class="dicta" hidden>
+        <p class="dicta-k">Dicta esto cuando contesten</p>
+        <div class="modo" role="group" aria-label="Comer aquí o llevar">
+          <button type="button" data-m="aquí" aria-pressed="true">Comer aquí</button>
+          <button type="button" data-m="para llevar" aria-pressed="false">Para llevar</button>
+        </div>
+        <ul class="lineas"></ul>
+        <p class="frase"></p>
+        <div class="dicta-b">
+          <button class="btn btn-ink copiar" type="button">Copiar pedido</button>
+          <button class="vaciar" type="button">Vaciar mesa</button>
+        </div>
+      </div>
+      <a class="btn btn-block llamar" href="tel:+524499771365"><svg aria-hidden="true"><use href="#tel"/></svg><span data-ll>Llamar para pedir</span></a>
+    </div>
+  </div>
+</section>

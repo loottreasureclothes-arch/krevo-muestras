@@ -1,0 +1,33 @@
+.listo{background:var(--bg);padding:48px 0 40px}
+.ticket{border:2px dashed var(--redt);padding:22px 18px 20px;background:var(--bg2)}
+.falta{margin-top:20px}
+.falta li{padding:9px 0 9px 30px;border-bottom:1px dashed var(--line);position:relative;font-size:17px}
+.falta li::before{content:"";position:absolute;left:2px;top:14px;width:14px;height:14px;border:2px solid var(--redt)}
+.pasa{margin-top:20px;font-family:var(--serif);font-size:23px;line-height:1.2}
+.pie{background:#120607}
+.pie-edge{height:22px}
+.pie-in{padding-top:30px;padding-bottom:96px;display:grid;grid-template-columns:1fr 1fr;gap:22px 18px}
+.pie-b,.pie-r,.pie-up{grid-column:1/-1}
+.pie-b{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
+.pie-sello{width:56px;height:56px}
+.pie-n{font-family:var(--serif);font-size:20px;line-height:1.05}
+.pie-n b{display:block;font-weight:400;font-size:26px;letter-spacing:.06em;text-transform:uppercase;color:var(--redt)}
+.pie-s{flex-basis:100%;font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.pie h3{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--redt);margin:14px 0 5px}
+.pie-c h3:first-child{margin-top:0}
+.pie-c a{font-family:var(--serif);font-size:22px;text-decoration:none}
+.pie-c p{font-size:15px;color:var(--mute);max-width:34ch}
+.pie-r{display:flex;gap:12px}
+.pie-r a{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--line);color:var(--cream)}
+.pie-r a:hover{background:var(--red);border-color:var(--red)}
+.pie-r svg{width:24px;height:24px}
+.pie-up{justify-self:start}
+@media(min-width:760px){
+  .listo{padding:96px 0 80px}
+  .ticket{padding:44px 48px;display:grid;grid-template-columns:1.1fr 1fr;column-gap:56px}
+  .ticket .eyebrow,.ticket .t{grid-column:1}
+  .falta{grid-column:2;grid-row:1/4;margin-top:0}
+  .pasa{grid-column:1;align-self:end}
+  .pie-in{grid-template-columns:1.1fr 1fr 1fr;align-items:start;padding-bottom:90px}
+  .pie-b,.pie-r,.pie-up{grid-column:auto}
+}
