@@ -1,0 +1,18 @@
+.visita{background:var(--plum)}
+.visita-grid{display:grid;gap:28px}
+.mapa{position:relative;aspect-ratio:4/3;border:3px solid var(--maiz);box-shadow:10px 10px 0 var(--guay);background:var(--plum3)}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.visita-info address{font-style:normal;font-size:18px;line-height:1.45;margin-bottom:16px}
+.visita-info address b{display:block;font-family:var(--disp);font-weight:400;font-size:28px;color:var(--maiz);line-height:1.1;margin-bottom:6px}
+.ahora{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--plum3);border-left:5px solid var(--maiz);font-weight:800;margin-bottom:16px}
+.ahora-dot{width:12px;height:12px;background:var(--maiz);transform:rotate(45deg);flex:none}
+.ahora.on .ahora-dot{background:#7BE0A0}
+.ahora.off .ahora-dot{background:var(--guay2)}
+.horario{margin-bottom:16px}
+.horario li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid rgba(255,241,207,.2);font-size:16.5px}
+.horario li.cerrado span:last-child{color:var(--guay2);font-weight:800}
+.horario li.hoy{font-weight:900;color:var(--maiz)}
+.horario li.hoy span:first-child::after{content:" · hoy"}
+.pago{margin-bottom:22px;font-size:15.5px;opacity:.92}
+@media (min-width:900px){.visita-grid{grid-template-columns:1.15fr 1fr;gap:56px;align-items:start}.mapa{aspect-ratio:auto;height:560px}}
+@media (min-width:760px) and (max-width:899px){.visita-grid{grid-template-columns:1fr 1fr;gap:32px;align-items:start}.mapa{aspect-ratio:auto;height:520px}}

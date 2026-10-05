@@ -1,0 +1,62 @@
+<section class="sec piz" id="pizarron">
+  <header class="sh" data-reveal>
+    <p class="eyebrow">Arma tu pedido</p>
+    <h2 class="t">El pizarrón <em>de hoy.</em></h2>
+    <p class="sub">Elige tus enchiladas, súmale té, y dicta el pedido por teléfono.</p>
+  </header>
+  <div class="piz-grid">
+    <div class="build" data-reveal>
+      <figure class="build-photo" aria-hidden="true">
+        <img data-i="mole2" alt="" class="bp bp-mole on" sizes="(min-width:900px) 40vw, 90vw">
+        <img data-i="azul" alt="" class="bp bp-suizas" sizes="(min-width:900px) 40vw, 90vw">
+        <img data-i="hero" alt="" class="bp bp-mix" sizes="(min-width:900px) 40vw, 90vw">
+      </figure>
+      <fieldset class="opt">
+        <legend>1. La salsa</legend>
+        <div class="opt-row" id="o-salsa">
+          <label><input type="radio" name="salsa" value="mole" checked><span>Mole de guayaba</span></label>
+          <label><input type="radio" name="salsa" value="suizas"><span>Suizas</span></label>
+          <label><input type="radio" name="salsa" value="mix"><span>Mix, 2 y 2</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="opt">
+        <legend>2. El relleno</legend>
+        <div class="opt-row" id="o-rell">
+          <label><input type="radio" name="rell" value="pollo" checked><span>Pollo</span></label>
+          <label><input type="radio" name="rell" value="camaron"><span>Camarón</span></label>
+          <label><input type="radio" name="rell" value="champi"><span>Champiñón</span></label>
+        </div>
+      </fieldset>
+      <p class="build-cap" id="b-cap" aria-live="polite"></p>
+      <div class="build-go">
+        <b class="build-price" id="b-price">$100</b>
+        <button type="button" class="btn btn-main" id="b-add"><svg width="18" height="18" aria-hidden="true"><use href="#i-plus"/></svg>Al pizarrón</button>
+      </div>
+      <div class="drinks">
+        <p>Algo para tomar</p>
+        <div class="drinks-row">
+          <button type="button" class="add add-o" data-add="te-500" data-name="Té de guayaba helado 500 ml" data-price="25"><svg width="16" height="16" aria-hidden="true"><use href="#i-plus"/></svg><span>Té de guayaba $25</span></button>
+          <button type="button" class="add add-o" data-add="te-cal" data-name="Té de guayaba caliente" data-price="25"><svg width="16" height="16" aria-hidden="true"><use href="#i-plus"/></svg><span>Té caliente $25</span></button>
+          <button type="button" class="add add-o" data-add="cafe" data-name="Café de olla" data-price="25"><svg width="16" height="16" aria-hidden="true"><use href="#i-plus"/></svg><span>Café de olla $25</span></button>
+          <button type="button" class="add add-o" data-add="malteada" data-name="Malteada" data-price="40"><svg width="16" height="16" aria-hidden="true"><use href="#i-plus"/></svg><span>Malteada $40</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="board" data-reveal>
+      <div class="board-in">
+        <p class="board-h">Pedido para</p>
+        <p class="board-name">Algarabía</p>
+        <ul class="board-list" id="b-list" aria-live="polite"></ul>
+        <p class="board-empty" id="b-empty">Elige arriba</p>
+        <div class="board-total"><span>Total</span><b id="b-total">Elige arriba</b></div>
+        <p class="board-pay">Se paga en efectivo o transferencia.</p>
+      </div>
+      <p class="dictar" id="b-dictar">Aquí aparece lo que vas a decir por teléfono.</p>
+      <div class="btns board-btns">
+        <a class="btn btn-main" id="b-call" href="tel:+524959562183"><svg width="20" height="20" aria-hidden="true"><use href="#i-tel"/></svg>Llamar y dictar</a>
+        <button type="button" class="btn btn-ghost" id="b-copy" disabled><svg width="18" height="18" aria-hidden="true"><use href="#i-copy"/></svg><span>Elige arriba</span></button>
+      </div>
+      <button type="button" class="board-clear" id="b-clear" hidden>Borrar el pizarrón</button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+.fav{background:var(--plum2);padding-top:0}
+.fav-pp{margin:0 calc(var(--gut) * -1) 44px}
+.fav-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.fav-card{position:relative;display:grid;grid-template-columns:38% minmax(0,1fr);background:var(--plum);border-left:5px solid var(--guay);min-height:128px}
+.fav-card img{position:absolute;left:0;top:0;width:38%;height:100%;object-fit:cover;background:var(--plum3)}
+.fav-body{grid-column:2}
+.fav-body{padding:12px 12px 12px 14px;display:flex;flex-direction:column;flex:1}
+.fav-body h3{font-family:var(--disp);font-weight:400;font-size:18px;line-height:1.1;color:var(--crema);margin-bottom:4px}
+.fav-body p{font-size:13.5px;line-height:1.25;opacity:.85;margin-bottom:8px}
+.fav-row{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.price{font-family:var(--disp);font-weight:400;font-size:25px;color:var(--maiz);line-height:1}
+.add{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;background:var(--maiz);color:var(--ink);border:2px solid var(--maiz);font-weight:900;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.add.did{background:var(--crema);border-color:var(--crema)}
+.add-o{background:none;color:var(--maiz)}
+.add-o.did{background:var(--maiz);color:var(--ink)}
+.te{margin-top:18px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center;padding:12px 14px;border:2px dashed rgba(255,241,207,.45)}
+.te-txt h3{font-family:var(--disp);font-weight:400;font-size:26px;line-height:1.05;color:var(--maiz)}
+.te-txt p{font-size:15px;opacity:.9}
+.te-btns{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.n-pill{display:inline-block;min-width:24px;padding:2px 7px;background:var(--ink);color:var(--maiz);font-size:13px;letter-spacing:0;text-align:center}
+@media (min-width:700px){.fav-card{display:flex;flex-direction:column;border-left:0;border-top:4px solid var(--guay);min-height:0}.fav-card img{position:static;width:100%;aspect-ratio:4/3;height:auto}.fav-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.fav-body h3{font-size:22px}.te{grid-template-columns:auto 1fr auto;padding:22px 26px}.te-btns{grid-column:auto;margin:0}}
+@media (min-width:1024px){.fav{padding-bottom:90px}}

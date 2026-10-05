@@ -1,0 +1,2 @@
+# IMAGENES - research/fotos (Google Maps, subidas por clientes). webp 480/960/máx en img/
+hero=04 (también mix del pizarrón), plato=21, mole=01, suizas=10, chila=19, hotcakes=06, flautazo=27, ancha=23 (Guayaba en todo), mole2=15 (pizarrón), azul=08 (pizarrón), caldo=14 (galería), int1=02, int2=11, tostada=16, ensalada=18, tacos=07, verdes=05. og.jpg=04 + Shrikhand. Tipos: Shrikhand + Nunito (fonts/).

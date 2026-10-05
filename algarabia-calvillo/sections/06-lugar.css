@@ -1,0 +1,8 @@
+.lugar{background:var(--teal)}
+.mosaic{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:100px;gap:10px}
+.mosaic figure{overflow:hidden;background:var(--plum3);position:relative}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+.m1{grid-row:span 2}.m4{grid-row:span 2}.m5{grid-column:1/-1;grid-row:span 1}.m2,.m3,.m6,.m7{grid-row:span 1}
+.m1 img{object-position:50% 35%}
+.lugar-nota{margin-top:14px;font-size:14px;opacity:.8}
+@media (min-width:700px){.mosaic{grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px;grid-auto-flow:dense}.m1{grid-row:span 2}.m2{grid-column:span 2}.m4{grid-row:span 2}.m5{grid-column:span 2}}
