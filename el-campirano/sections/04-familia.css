@@ -1,0 +1,15 @@
+.familia{background:var(--ink)}
+.fam-grid{display:grid;gap:34px}
+.fam-ph{aspect-ratio:1/.78;border-bottom:6px solid var(--red)}
+.fam-ph img{object-position:50% 60%}
+.familia h2{font-size:clamp(40px,11.5vw,64px);margin-bottom:22px}
+.fam-ls li{padding:14px 0;border-top:2px solid var(--brand);display:grid;gap:3px}
+.fam-ls li:last-child{border-bottom:2px solid var(--brand)}
+.fam-ls b{font:400 26px/1.1 var(--f-d)}
+.fam-ls span{font-size:15.5px;color:var(--mut)}
+.fam-h3{font-size:30px;margin:34px 0 4px;color:var(--brand)}
+@media (min-width:820px){
+  .fam-grid{grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+  .familia h2{font-size:clamp(56px,5.2vw,80px)}
+  .fam-ph{aspect-ratio:1/1.1}
+}

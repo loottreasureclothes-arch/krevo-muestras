@@ -1,0 +1,4 @@
+(function(){var tabs=[].slice.call(document.querySelectorAll(".ctabs .ct")),ps=[].slice.call(document.querySelectorAll(".carta .cp"));
+function go(i,f){tabs.forEach(function(t,j){t.classList.toggle("on",i===j);t.setAttribute("aria-selected",i===j?"true":"false");t.tabIndex=i===j?0:-1});ps.forEach(function(p,j){p.hidden=i!==j;if(i===j){p.classList.remove("flip");void p.offsetWidth;p.classList.add("flip")}});if(f)tabs[i].focus()}
+tabs.forEach(function(t,i){t.addEventListener("click",function(){go(i)});t.addEventListener("keydown",function(e){var n=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(n){e.preventDefault();go((i+n+tabs.length)%tabs.length,true)}})});
+})();

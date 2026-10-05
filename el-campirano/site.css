@@ -1,0 +1,83 @@
+@font-face{font-family:"Patua One";src:url(fonts/patua-one-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Karla";src:url(fonts/karla-var.woff2) format("woff2");font-weight:200 800;font-display:swap}
+:root{
+  --ink:#241a23;--ink2:#2f2230;--wine:#4a2a34;--line:#4d3a4c;
+  --cream:#f7ecd5;--cream2:#ecdcb8;--paper:#fff8e8;
+  --brand:#f0b429;--brand-d:#c98f10;--red:#c9283f;--green:#3f8f4f;--blue:#2e5aa8;
+  --mut:#cdbfa9;
+  --f-d:"Patua One",Georgia,serif;--f-b:"Karla",system-ui,sans-serif;
+  --gut:20px;--hh:58px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:70px}
+body{background:var(--ink);color:var(--cream);font:400 17px/1.5 var(--f-b);overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+ul{list-style:none}
+h1,h2,h3{font-family:var(--f-d);font-weight:400;line-height:1.02;letter-spacing:.005em;text-wrap:balance}
+.t2{color:var(--brand);display:block}
+.eyebrow{font:700 12.5px/1.2 var(--f-b);letter-spacing:.2em;text-transform:uppercase;color:var(--brand);display:block;margin-bottom:12px}
+.ico{width:18px;height:18px;flex:none}
+.sec{padding:48px var(--gut);position:relative}
+.wrap{max-width:1200px;margin:0 auto}
+/* botones: marca, rectangulares, mayusculas espaciadas */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;font:800 14px/1 var(--f-b);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:2px solid var(--brand);cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.btn-brand{background:var(--brand);color:var(--ink)}
+.btn-brand:hover{background:var(--cream);border-color:var(--cream)}
+.btn-line{background:transparent;color:var(--brand)}
+.btn-line:hover{background:var(--brand);color:var(--ink)}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--cream);outline-offset:3px}
+.btn-nav{min-height:40px;padding:0 14px;font-size:12px;background:var(--brand);color:var(--ink)}
+.lnk{display:inline-flex;align-items:center;gap:10px;font:800 13.5px/1 var(--f-b);letter-spacing:.14em;text-transform:uppercase;color:var(--brand);text-decoration:none;padding:14px 0;border-bottom:2px solid var(--brand)}
+.lnk svg{width:20px;height:20px}
+.end{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center}
+/* header propio: barra + banderines de papel picado */
+.ec-head{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--ink);border-bottom:2px solid var(--brand)}
+.ec-bar{height:var(--hh);display:flex;align-items:center;gap:12px;padding:0 var(--gut);max-width:1440px;margin:0 auto}
+.ec-logo{display:flex;align-items:center;min-height:44px;align-items:baseline;gap:7px;text-decoration:none;margin-right:auto;white-space:nowrap}
+.ec-logo-s{font:700 12px/1 var(--f-b);letter-spacing:.2em;text-transform:uppercase;color:var(--brand)}
+.ec-logo-b{font:400 25px/1 var(--f-d);color:var(--cream)}
+.ec-nav{display:none}
+.ec-bar-cta{display:none}
+.ec-menu-btn{display:flex;align-items:center;gap:10px;background:none;border:2px solid var(--line);color:var(--cream);height:40px;padding:0 12px;font:800 12px/1 var(--f-b);letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.ec-burger{width:18px;height:12px;position:relative;display:block}
+.ec-burger i{position:absolute;left:0;right:0;height:2px;background:var(--brand);transition:transform .25s}
+.ec-burger i:first-child{top:1px}.ec-burger i:last-child{bottom:1px}
+.menu-open .ec-burger i:first-child{transform:translateY(4px) rotate(45deg)}
+.menu-open .ec-burger i:last-child{transform:translateY(-4px) rotate(-45deg)}
+.ec-flags{position:absolute;left:0;right:0;top:100%;height:18px;overflow:hidden;pointer-events:none;transform-origin:top;transform:scaleY(var(--u,1));
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='18' viewBox='0 0 120 18'%3E%3Cpath d='M0 0h120' stroke='%23f0b429' stroke-width='2'/%3E%3Cpath d='M3 0h24L15 17z' fill='%23c9283f'/%3E%3Cpath d='M33 0h24L45 17z' fill='%23f0b429'/%3E%3Cpath d='M63 0h24L75 17z' fill='%233f8f4f'/%3E%3Cpath d='M93 0h24L105 17z' fill='%232e5aa8'/%3E%3C/svg%3E") repeat-x 0 0/120px 18px}
+html.rv .ec-flags{animation:unfurl .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes unfurl{from{transform:scaleY(0)}}
+.ec-menu{position:fixed;inset:0;z-index:55;background:var(--ink2);padding:calc(var(--hh) + 40px) var(--gut) 40px;overflow:auto}
+.ec-menu[hidden]{display:none}
+.ec-menu nav{display:flex;flex-direction:column;gap:6px}
+.ec-menu nav a:not(.btn){font:400 34px/1.15 var(--f-d);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line)}
+.ec-menu .btn{margin-top:24px}
+.menu-open{overflow:hidden}
+/* flotante: llamar, color de marca */
+.ec-float{position:fixed;right:16px;bottom:16px;z-index:50;width:56px;height:56px;border-radius:50%;background:var(--brand);color:var(--ink);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.45);transition:transform .2s,opacity .25s}
+.ec-float svg{width:26px;height:26px}
+.ec-float:active{transform:scale(.94)}
+.ec-float.is-off{opacity:0;pointer-events:none;transform:scale(.8)}
+/* reveal */
+html.rv [data-reveal]{opacity:0;transform:translateY(18px)}
+[data-reveal]{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+html.rv [data-reveal].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* foto en arco (el portal de Bienvenidos) */
+.arch{border-radius:999px 999px 0 0;overflow:hidden;background:var(--wine)}
+.arch img{width:100%;height:100%;object-fit:cover}
+@media (min-width:820px){
+  :root{--gut:40px;--hh:66px}
+  body{font-size:18px}
+  .ec-nav{display:flex;gap:26px;margin-right:12px}
+  .ec-nav a{font:800 12.5px/1 var(--f-b);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--cream);padding:14px 0;border-bottom:2px solid transparent}
+  .ec-nav a:hover{border-color:var(--brand)}
+  .ec-bar-cta{display:inline-flex}
+  .ec-menu-btn{display:none}
+  .ec-logo{margin-right:auto}
+  .sec{padding:84px var(--gut)}
+  .ec-float{display:none}
+}

@@ -32,3 +32,4 @@ Estas páginas usan botones de Llamar. Si se confirma un WhatsApp publicado por 
 | pelicanos-pabellon | Restaurante Pelicanos (Pabellón de Arteaga) | 465 958 0786 | https://www.facebook.com/pelicanosrestaurant1/ | no encontré |
 | birrieria-los-angeles-jm | Birriería Los Ángeles (Jesús María) | 449 194 1346 | https://www.facebook.com/p/Birrieria-los-Angeles-Margaritas-100027732171532/ | no encontré |
 | maria-maria-trattoria | María María Trattoria | 449 321 7290 | no encontré | https://www.instagram.com/mariamaria_trattoria/ |
+| el-campirano | El Campirano (Av. Universidad 411) | 449 813 5545 | https://www.facebook.com/people/El-Campirano/100040925202911/ (probable; hay otras de sucursales) | https://www.instagram.com/el.campirano/ (dudoso; también @elcampiranorestaurantehotel, @campirano_americas) |
