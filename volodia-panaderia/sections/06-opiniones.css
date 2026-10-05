@@ -1,0 +1,16 @@
+.v-op{background:var(--lienzo2)}
+.vo-nota{display:flex;align-items:center;gap:18px;margin:26px 0 22px;padding:16px 0;border-block:2px solid var(--cobalto)}
+.vo-big{font:400 76px/1 var(--serif);color:var(--crema)}
+.vo-st{color:var(--marca-t);font-size:20px;letter-spacing:.12em;line-height:1}
+.vo-st span{color:rgba(244,234,219,.25)}
+.vo-tx{margin-top:8px;font:800 12px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.vo-lista{list-style:none;display:grid;gap:14px}
+.vo-r{background:var(--lienzo3);border-left:4px solid var(--marca);padding:16px 18px 14px}
+.vo-r blockquote{margin:12px 0 14px;font-size:16px;line-height:1.5}
+.vo-n{font-size:13px;color:var(--muted)}
+.vo-n b{color:var(--crema);font-weight:800;margin-right:6px}
+.vo-n b::after{content:" ·";font-weight:400}
+@media(min-width:900px){
+  .vo-lista{grid-template-columns:repeat(2,1fr);gap:18px}
+  .vo-nota{max-width:420px}
+}

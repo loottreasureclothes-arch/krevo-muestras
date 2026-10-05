@@ -1,0 +1,47 @@
+<section class="v-s on-crema vr" id="recado">
+  <div class="vr-intro">
+    <p class="v-ey">Avisa que vas</p>
+    <h2 class="v-h">Que te esperen<em>con mesa.</em></h2>
+    <p class="v-p">Las mesas son para pocos y se llena rápido. Arma tu recado y llama. <small>Diana Flores, Google</small></p>
+  </div>
+  <div class="vr-card" data-reveal>
+    <div class="vr-paso">
+      <p class="vr-t"><b>1</b> ¿Qué día?</p>
+      <div class="vr-dias" role="group" aria-label="Día">
+        <button type="button" data-d="0">Lun</button><button type="button" data-d="1">Mar</button><button type="button" data-d="2">Mié</button><button type="button" data-d="3">Jue</button><button type="button" data-d="4">Vie</button><button type="button" data-d="5">Sáb</button><button type="button" data-d="6">Dom</button>
+      </div>
+    </div>
+    <div class="vr-paso">
+      <p class="vr-t"><b>2</b> ¿A qué hora?</p>
+      <div class="vr-hora"><output id="vr-out" for="vr-rng">Elige arriba</output></div>
+      <input id="vr-rng" class="vr-rng" type="range" min="0" max="12" step="1" value="0" aria-label="Hora de llegada">
+      <div class="vr-reg" aria-hidden="true"><span>9:00</span><span>11:00</span><span>13:00</span><span>15:00</span></div>
+      <p class="vr-nota" id="vr-nota">Abre a las 9:00 (domingo, 9:30) y cierra a las 16:00.</p>
+    </div>
+    <div class="vr-paso">
+      <p class="vr-t"><b>3</b> ¿Cuántos son?</p>
+      <div class="vr-mesa">
+        <svg viewBox="0 0 240 240" role="group" aria-label="Mesa redonda con ocho sillas">
+          <circle cx="120" cy="120" r="62" class="mt"/><circle cx="120" cy="120" r="54" class="mt2"/>
+          <g class="sil" data-i="0" transform="translate(120.0 32.0) rotate(0)" tabindex="0" role="button" aria-label="Silla 1"><rect x="-17" y="-12" width="34" height="24" rx="9"/><rect class="resp" x="-17" y="-18" width="34" height="8" rx="3"/></g><g class="sil" data-i="1" transform="translate(182.2 57.8) rotate(45)" tabindex="0" role="button" aria-label="Silla 2"><rect x="-17" y="-12" width="34" height="24" rx="9"/><rect class="resp" x="-17" y="-18" width="34" height="8" rx="3"/></g><g class="sil" data-i="2" transform="translate(208.0 120.0) rotate(90)" tabindex="0" role="button" aria-label="Silla 3"><rect x="-17" y="-12" width="34" height="24" rx="9"/><rect class="resp" x="-17" y="-18" width="34" height="8" rx="3"/></g><g class="sil" data-i="3" transform="translate(182.2 182.2) rotate(135)" tabindex="0" role="button" aria-label="Silla 4"><rect x="-17" y="-12" width="34" height="24" rx="9"/><rect class="resp" x="-17" y="-18" width="34" height="8" rx="3"/></g><g class="sil" data-i="4" transform="translate(120.0 208.0) rotate(180)" tabindex="0" role="button" aria-label="Silla 5"><rect x="-17" y="-12" width="34" height="24" rx="9"/><rect class="resp" x="-17" y="-18" width="34" height="8" rx="3"/></g><g class="sil" data-i="5" transform="translate(57.8 182.2) rotate(225)" tabindex="0" role="button" aria-label="Silla 6"><rect x="-17" y="-12" width="34" height="24" rx="9"/><rect class="resp" x="-17" y="-18" width="34" height="8" rx="3"/></g><g class="sil" data-i="6" transform="translate(32.0 120.0) rotate(270)" tabindex="0" role="button" aria-label="Silla 7"><rect x="-17" y="-12" width="34" height="24" rx="9"/><rect class="resp" x="-17" y="-18" width="34" height="8" rx="3"/></g><g class="sil" data-i="7" transform="translate(57.8 57.8) rotate(315)" tabindex="0" role="button" aria-label="Silla 8"><rect x="-17" y="-12" width="34" height="24" rx="9"/><rect class="resp" x="-17" y="-18" width="34" height="8" rx="3"/></g>
+          <g class="pata" aria-hidden="true"><ellipse cx="214" cy="222" rx="9" ry="7"/><circle cx="203" cy="210" r="3.4"/><circle cx="210" cy="206" r="3.4"/><circle cx="218" cy="206" r="3.4"/><circle cx="225" cy="210" r="3.4"/></g>
+        </svg>
+        <div class="vr-n"><output id="vr-n">0</output><span id="vr-nl">personas</span></div>
+      </div>
+      <div class="vr-cont">
+        <button type="button" id="vr-menos" aria-label="Una persona menos">−</button>
+        <button type="button" id="vr-mas" aria-label="Una persona más">+</button>
+        <button type="button" id="vr-pet" aria-pressed="false">Voy con mascota</button>
+      </div>
+      <p class="vr-nota">Pet friendly: así lo cuenta Daniel Flores en Google.</p>
+    </div>
+    <div class="vr-papel" aria-live="polite">
+      <p class="vr-pt">Lo que vas a decir</p>
+      <p class="vr-rec" id="vr-rec">Elige arriba</p>
+      <div class="vr-bot">
+        <a class="v-btn" href="tel:+524494899637">Llamar 449 489 9637</a>
+        <button type="button" class="v-btn co" id="vr-copy" disabled>Elige arriba</button>
+      </div>
+    </div>
+  </div>
+</section>

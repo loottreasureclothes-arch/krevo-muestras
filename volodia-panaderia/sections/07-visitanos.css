@@ -1,0 +1,20 @@
+.v-vis{background:var(--lienzo)}
+.vv-abierto{margin-top:16px;display:inline-block;font:800 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:10px 12px;border:2px solid var(--muted);color:var(--muted)}
+.vv-abierto.si{border-color:#8fd19a;color:#8fd19a}
+.vv-abierto.no{border-color:var(--marca-t);color:var(--marca-t)}
+.vv-mapa{margin:26px 0 24px;border:3px solid var(--cobalto);outline:2px solid var(--crema);outline-offset:-8px;padding:10px;background:var(--crema)}
+.vv-mapa iframe{display:block;width:100%;height:340px;border:0}
+.vv-datos address{font-style:normal;font-size:18px;line-height:1.5;margin-bottom:20px}
+.vv-horas{list-style:none}
+.vv-horas li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(244,234,219,.18);color:var(--muted)}
+.vv-horas li b{font-weight:600}
+.vv-horas li.hoy{color:var(--crema);border-bottom-color:var(--marca-t)}
+.vv-horas li.hoy span::after{content:" · hoy";color:var(--marca-t);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+@media(min-width:900px){
+  .v-vis{display:grid;grid-template-columns:1.2fr .8fr;gap:0 64px;align-items:start}
+  .vv-cab{grid-column:1/-1}
+  .vv-mapa{margin:32px 0 0;grid-column:1;grid-row:2}
+  .vv-mapa iframe{height:480px}
+  .vv-datos{grid-column:2;grid-row:2;margin-top:32px}
+  .v-vis .v-acciones{grid-column:1/-1;margin-top:36px}
+}
