@@ -1,0 +1,15 @@
+.bleed{position:relative;height:min(135vw,640px);overflow:hidden;background:var(--c)}
+.bleed-ph,.bleed-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bleed-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,26,23,.15) 30%,rgba(27,26,23,.9) 100%)}
+.bleed-t{position:absolute;z-index:2;left:var(--pad);right:var(--pad);bottom:38px}
+.bleed-t h2{padding-bottom:.25em;color:var(--w);font:400 clamp(60px,20vw,140px)/.92 "Anton";text-transform:uppercase}
+.bleed-t em{font-style:normal;color:var(--y);display:block}
+.q{font-size:15px;margin-top:34px;max-width:30ch;color:#f0ead6}
+.q-by{font:600 11px/1 "Lexend";letter-spacing:.18em;text-transform:uppercase;color:var(--y);margin-top:10px}
+@media(min-width:900px){
+ .bleed{display:grid;grid-template-columns:1fr 1fr;height:auto;min-height:720px}
+ .bleed-ph{position:relative;grid-column:2;order:2;min-height:720px}
+ .bleed-ph::after{background:linear-gradient(90deg,var(--c) 0,rgba(27,26,23,0) 25%)}
+ .bleed-t{position:static;order:1;padding:var(--pad) 56px;align-self:center}
+ .bleed-t h2{padding-bottom:.25em;font-size:clamp(100px,10vw,160px)}
+}

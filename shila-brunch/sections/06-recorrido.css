@@ -1,0 +1,16 @@
+.recorrido{padding:84px var(--pad) 90px;background:var(--c2)}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:34px;align-items:start}
+.g{overflow:hidden;background:var(--c)}
+.g img{width:100%;height:100%;object-fit:cover}
+.g-a{aspect-ratio:3/4}.g-b{aspect-ratio:3/4;margin-top:34px}
+.g-c{aspect-ratio:3/4}.g-d{grid-column:1/-1;aspect-ratio:3/2}
+.g-e{aspect-ratio:3/4}.g-f{aspect-ratio:3/4;margin-top:34px}
+.arc-t{border-radius:999px 999px 0 0}
+.gal-note{margin-top:34px;font:400 clamp(30px,9vw,46px)/1 "Anton";text-transform:uppercase;color:var(--y)}
+@media(min-width:900px){
+ .recorrido{padding:110px var(--pad)}
+ .gal{grid-template-columns:repeat(6,1fr);gap:20px}
+ .g-a{grid-column:1/3}.g-b{grid-column:3/5;margin-top:60px}.g-c{grid-column:5/7}
+ .g-d{grid-column:1/4;aspect-ratio:3/2;margin-top:0}.g-e{grid-column:4/6;margin-top:-40px}.g-f{grid-column:6/7;margin-top:40px}
+ .g-d{grid-column:1/4}
+}

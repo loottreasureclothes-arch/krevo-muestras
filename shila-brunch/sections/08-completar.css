@@ -1,0 +1,8 @@
+.completar{padding:84px var(--pad) 90px;background:var(--cr);color:var(--c)}
+.completar .eyebrow{color:var(--c)}
+.completar .tt{color:var(--c)}.completar .tt em{color:#b78f00}
+.todo{margin-top:30px;border-top:3px solid var(--c)}
+.todo li{padding:14px 0 14px 34px;border-bottom:1px solid rgba(27,26,23,.25);font-size:17px;position:relative}
+.todo li::before{content:"";position:absolute;left:4px;top:50%;width:14px;height:14px;margin-top:-7px;border:2px solid var(--c)}
+.todo-p{margin-top:28px;font:400 clamp(24px,7vw,34px)/1.05 "Anton";text-transform:uppercase;max-width:22ch}
+@media(min-width:900px){.completar{padding:110px var(--pad);display:grid;grid-template-columns:5fr 7fr;gap:0 70px}.completar>.eyebrow,.completar>.tt{grid-column:1}.todo{grid-column:2;grid-row:1/4;margin:0}.todo-p{grid-column:1}}

@@ -1,0 +1,64 @@
+@font-face{font-family:"Anton";src:url(fonts/anton.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Lexend";src:url(fonts/lexend.woff2) format("woff2");font-weight:100 900;font-display:swap}
+:root{--c:#1b1a17;--c2:#262420;--y:#FFD60A;--cr:#FFF3C4;--g:#8A8A8A;--w:#fff;--wa:#25D366;--wat:#0b3d1f;--pad:20px;--hd:62px;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--c);color:var(--w);font:400 16px/1.5 "Lexend",system-ui,sans-serif;overflow-x:hidden;padding-top:var(--hd)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+ul{list-style:none}
+.i{width:20px;height:20px;flex:none}
+.skip{position:absolute;left:-999px;top:0;background:var(--y);color:var(--c);padding:0 14px;min-height:44px;display:inline-flex;align-items:center;z-index:99}.skip:focus{left:8px;top:8px}
+.eyebrow{font:500 12px/1 "Lexend";letter-spacing:.2em;text-transform:uppercase;color:var(--y)}
+.tt{font:400 clamp(46px,14vw,92px)/.95 "Anton",Impact,sans-serif;text-transform:uppercase;letter-spacing:.005em;margin-top:26px}
+.tt{line-height:.98;color:var(--w)}.tt em{font-style:normal;color:var(--y);display:block}
+.sub{color:#cfcabb;margin-top:14px;font-size:15px}
+section{position:relative}
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;font:600 13px/1 "Lexend";letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;border-radius:0;cursor:pointer;transition:transform .2s var(--ease),background .2s}
+.btn:active{transform:translateY(1px)}
+.btn-wa{background:var(--wa);color:var(--wat)}
+.btn-wa:hover{background:#2fe574}
+.btn-line{border-color:var(--y);color:var(--y);background:transparent}
+.btn-line:hover{background:var(--y);color:var(--c)}
+.lnk{display:inline-flex;align-items:center;gap:6px;color:var(--y);text-decoration:none;font:600 12px/1 "Lexend";letter-spacing:.16em;text-transform:uppercase;min-height:44px}
+.lnk .i{width:16px;height:16px;transition:transform .2s}.lnk:hover .i{transform:translateX(3px)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--y);outline-offset:3px}
+/* header propio: placa carbon con sol */
+.hdr{position:fixed;inset:0 0 auto 0;height:var(--hd);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:var(--c);border-bottom:3px solid var(--y)}
+.brand{min-height:44px;display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-sun{width:38px;height:38px;color:var(--y)}.brand-sun svg{width:100%;height:100%}
+.brand-n{font:400 28px/.9 "Anton";letter-spacing:.04em;display:flex;flex-direction:column}
+.brand-n small{font:500 8.5px/1 "Lexend";letter-spacing:.22em;text-transform:uppercase;color:var(--y);margin-top:3px}
+.mbtn{display:flex;align-items:center;gap:10px;background:var(--y);color:var(--c);border:0;height:40px;padding:0 12px 0 14px;font:600 12px/1 "Lexend";letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.mbtn-b{position:relative;width:18px;height:12px}.mbtn-b i{position:absolute;left:0;right:0;height:2.5px;background:var(--c);transition:transform .25s var(--ease)}.mbtn-b i:first-child{top:1px}.mbtn-b i:last-child{bottom:1px}
+.menu-open .mbtn-b i:first-child{transform:translateY(4.5px) rotate(45deg)}.menu-open .mbtn-b i:last-child{transform:translateY(-4.5px) rotate(-45deg)}
+.menu{position:fixed;inset:var(--hd) 0 0 0;z-index:49;background:var(--y);color:var(--c);display:flex;flex-direction:column;justify-content:center;gap:4px;padding:30px var(--pad);clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .28s var(--ease),visibility 0s .28s}
+.menu[hidden]{display:flex}
+.menu-open .menu{clip-path:inset(0);visibility:visible;transition:clip-path .28s var(--ease)}
+.menu a{font:400 clamp(52px,16vw,96px)/1.05 "Anton";text-transform:uppercase;text-decoration:none;border-bottom:2px solid rgba(27,26,23,.18)}
+/* WhatsApp flotante */
+.wa-fab{position:fixed;right:16px;bottom:16px;z-index:40;width:56px;height:56px;border-radius:50%;background:var(--wa);color:var(--wat);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.4);transition:transform .25s var(--ease),opacity .25s}
+.wa-fab .i{width:30px;height:30px}
+.wa-off .wa-fab{opacity:0;transform:scale(.7);pointer-events:none}
+/* reveal: base = estado final */
+.js-rv [data-reveal]{transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js-rv:not(.rv-done) [data-reveal]:not(.in){opacity:0;transform:translateY(26px)}
+/* pie */
+.foot{position:relative;background:var(--y);color:var(--c);padding:70px var(--pad) 110px;overflow:hidden}
+.foot-sun{position:absolute;right:-70px;top:-70px;width:220px;height:220px;border-radius:50%;background:var(--c);opacity:.07}
+.foot-n{padding-bottom:.32em;font:400 clamp(90px,30vw,200px)/.85 "Anton";letter-spacing:.02em}
+.foot-s{font:600 12px/1 "Lexend";letter-spacing:.22em;text-transform:uppercase;margin-top:28px}
+.foot-l{margin-top:34px;display:grid;gap:18px}
+.foot-l li{font-size:15px;border-top:2px solid var(--c);padding-top:12px}
+.foot-l b{display:block;font:600 11px/1 "Lexend";letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px}
+.foot-l a{font-weight:600}
+.foot-c{margin-top:34px;font-size:12px;opacity:.7}
+@media(min-width:900px){
+ :root{--pad:56px;--hd:72px}
+ .foot-l{grid-template-columns:repeat(4,1fr);gap:28px}
+ .foot{padding-bottom:90px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.foot-l a{display:inline-flex;align-items:center;min-height:44px}
+button{font-family:inherit}

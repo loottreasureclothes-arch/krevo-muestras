@@ -1,0 +1,34 @@
+.amanecer{background:var(--y);color:var(--c);padding:84px var(--pad) 90px;overflow:hidden}
+.amanecer .eyebrow{color:var(--c)}
+.amanecer .tt{color:var(--c)}.amanecer .tt em{color:var(--w);-webkit-text-stroke:0;text-shadow:3px 3px 0 var(--c)}
+.am-grid{display:grid;gap:30px;margin-top:30px}
+.am-stage{position:relative;display:grid;place-items:center;padding:20px 0 0}
+.am-sun{position:absolute;top:-6px;left:50%;width:min(104vw,520px);aspect-ratio:1;margin-left:calc(min(104vw,520px)/-2);color:var(--c);opacity:.12;transition:transform .9s var(--ease)}
+.am-sun svg{width:100%;height:100%}
+.am-arch{position:relative;width:min(76vw,360px);aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden;background:var(--c);box-shadow:10px 10px 0 var(--c)}
+.m-ph{position:absolute;inset:0;z-index:0}
+.m-ph.on{z-index:1;animation:phin .45s ease both}
+@keyframes phin{from{opacity:0}to{opacity:1}}
+.m-ph img{width:100%;height:100%;object-fit:cover}
+.am-lbl{font:600 11px/1 "Lexend";letter-spacing:.2em;text-transform:uppercase;margin:22px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:46px;padding:0 16px;background:transparent;color:var(--c);border:2px solid var(--c);font:400 20px/1 "Anton";letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.chip-s{min-width:64px;padding:0 10px}
+.chip.on{background:var(--c);color:var(--y);transform:translateY(-2px)}
+.am-dish{font:400 clamp(30px,9vw,44px)/1 "Anton";text-transform:uppercase;margin-top:16px}
+.step{display:flex;align-items:center;gap:0}
+.step button{width:52px;height:52px;border:2px solid var(--c);background:var(--c);color:var(--y);display:grid;place-items:center;cursor:pointer}
+.step output{min-width:64px;height:52px;display:grid;place-items:center;border:2px solid var(--c);border-left:0;border-right:0;font:400 30px/1 "Anton"}
+.step-u{margin-left:14px;font-size:14px}
+.ticket{margin-top:26px;background:var(--cr);padding:16px 18px 14px;position:relative;box-shadow:5px 5px 0 var(--c);-webkit-mask:radial-gradient(circle 7px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 7px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 7px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 7px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
+.tk-h{display:flex;justify-content:space-between;font:400 22px/1 "Anton";letter-spacing:.06em;border-bottom:2px dashed var(--c);padding-bottom:10px;margin-bottom:10px}
+.tk-h span:last-child{font:500 11px/1.9 "Lexend";letter-spacing:.14em;text-transform:uppercase}
+.tk-r{display:flex;justify-content:space-between;gap:12px;padding:5px 0;font-size:14px}.tk-r b{font-weight:600;text-align:right}
+.tk-f{font-size:11px;margin-top:8px;opacity:.7}
+.amanecer .btn-wa{margin-top:20px;width:100%;box-shadow:5px 5px 0 var(--c)}
+@media(min-width:900px){
+ .amanecer{padding:110px var(--pad)}
+ .am-grid{grid-template-columns:5fr 6fr;gap:70px;align-items:center}
+ .am-arch{width:min(34vw,440px)}
+ .am-sun{width:640px;margin-left:-320px;top:-60px}
+}

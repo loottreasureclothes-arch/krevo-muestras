@@ -1,0 +1,1 @@
+Acción: pedir por WhatsApp 524492436096 (confirmado). Promesa: Alitas que crujen, con la salsa que tú escojas. Lienzo #170b0a, marca rojo #e0402a, Anton + Barlow, esquina cortada. Firma: La charola (3 bases, 12 salsas, 3 modos). Momento: neón CRUJEN. Secciones: 01 hero, 02 carta, 03 charola, 04 mesa, 05 opiniones, 06 recorrido, 07 visitanos, 08 completar, 09 pie.

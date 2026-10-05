@@ -1,0 +1,9 @@
+# EG Salón de Belleza - hoja corta
+- Trabajo: agendar cita en 1 toque. wa.me/5214492897006 (confirmado en su Facebook). Llamar tel:+524492897006.
+- Promesa: "Entra por la fachada rosa. Sal con otro cabello." Emmanuel Gutiérrez, estilista profesional, 4.9 en Google (52 opiniones).
+- Identidad: lienzo vino casi negro #1b1317 (del rótulo negro/vino), rosa de la fachada medido #ab5f72 (texto sobre oscuro #e3a3b5), crema #efe3d8 solo para leer. Bodoni Moda (títulos, itálica en la 2a línea) + Jost. Forma: espejo de salón, marcos de arco/óvalo con doble filo. Header propio: placa negra rectangular "EG" como su rótulo, con filete rosa.
+- Componente firma: "El espejo del look". 5 tonos (cobre, chocolate rizado, ceniza, largo ondulado, caramelo) con SUS fotos en un espejo de arco + día preferido; termina en WhatsApp: "Hola Emmanuel, vi la página de EG Salón de Belleza. Quiero el look: X. Me acomoda: Y. ¿Qué horario tienes disponible?"
+- Momento firma: el espejo del hero se abre desde una línea central (clip-path) a la entrada.
+- Secciones: 01-hero fachada | 02-servicios (carta, "Pregunta el precio") foto cobre chica | 03-espejo | 04-sangre (largo, "Largo. Vivo. Tuyo.") | 05-resenas (4.9 + 7) | 06-cursos foto cursos | 07-galeria (6 fotos) | 08-visitanos (mapa, horario, abierto ahora) | 09-pendientes. Pie con FB, tel, dirección, horario.
+- Títulos 2 tonos: "Fachada rosa. / Cabello nuevo." | "Lo que te / hacemos." | "Elige tu / reflejo." | "Largo. Vivo. / Tuyo." | "Lo dicen / en Google." | "Aprende con / Emmanuel." | "Así se ve / el trabajo." | "Te esperamos / en Insurgentes." | "Todo listo / para completar."
+- Fotos prohibidas: maps-07 (local ajeno), maps-09 (retrato con marca). maps-06 solo recortada al cabello (rostro fuera). PENDIENTE-DUEÑO: precios, nombres de 4 reseñas, Instagram, foto de Emmanuel.

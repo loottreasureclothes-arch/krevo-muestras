@@ -1,0 +1,52 @@
+.enc{background:var(--bg);padding:64px 0 64px}
+.enc h2{font-size:clamp(44px,12vw,72px);margin:24px 0 14px;color:var(--cream)}
+.enc-p{color:var(--muted);max-width:30ch;margin-bottom:30px}
+.tal{position:relative;max-width:560px;margin:0 auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))}
+.tal-top{height:18px;background:radial-gradient(circle at 50% 100%,var(--bg) 0 6px,transparent 6.5px) 0 0/26px 18px repeat-x,#e9d3a2}
+.tal-in{background:#e9d3a2;color:var(--ink);padding:6px 18px 26px;background-image:repeating-linear-gradient(0deg,rgba(90,55,20,.035) 0 2px,transparent 2px 5px);-webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 12px) no-repeat,conic-gradient(from -45deg at bottom,transparent 90deg,#000 0) bottom/16px 12px repeat-x;mask:linear-gradient(#000,#000) top/100% calc(100% - 12px) no-repeat,conic-gradient(from -45deg at bottom,transparent 90deg,#000 0) bottom/16px 12px repeat-x}
+.tal-h{font:700 11px/1 var(--bd);letter-spacing:.2em;text-transform:uppercase;color:#7a4a17;margin:22px 0 10px;border-bottom:1px dashed rgba(43,26,11,.35);padding-bottom:8px}
+.tal-h b{font:400 18px/1 var(--hd);color:var(--ink);margin-right:8px;letter-spacing:0}
+.tal-grp{font:700 11px/1.3 var(--bd);letter-spacing:.12em;text-transform:uppercase;color:#7a4a17;margin:24px 0 2px}
+.tal-row{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(43,26,11,.12)}
+.tal-nm{font:500 16px/1.2 var(--bd);color:var(--ink)}
+.tal-nm small{display:block;font-weight:400;font-size:13px;color:#6b4a26;margin-top:2px}
+.tal-pr{font:400 18px/1 var(--hd);color:var(--ink);grid-column:1;margin-top:2px}
+.tal-pr.ask{font:700 11px/1 var(--bd);letter-spacing:.1em;text-transform:uppercase;color:#7a4a17}
+.tal-step{grid-column:2;grid-row:1/3;display:flex;align-items:center;gap:2px}
+.tal-step button{width:44px;height:44px;border:1px solid rgba(43,26,11,.45);background:transparent;color:var(--ink);font:500 22px/1 var(--bd);cursor:pointer}
+.tal-step .plus{background:var(--ink);color:#f4e8d0;border-color:var(--ink)}
+.tal-step .minus{visibility:hidden}
+.tal-step output{min-width:30px;text-align:center;font:700 16px/1 var(--bd)}
+.tal-row.has .tal-step .minus{visibility:visible}
+.tal-row.has .tal-nm{color:#000}
+.tal-days{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tal-day{border:1px solid rgba(43,26,11,.45);background:transparent;color:var(--ink);min-height:56px;font:500 13px/1.15 var(--bd);cursor:pointer;padding:6px 4px}
+.tal-day b{display:block;font:400 20px/1 var(--hd)}
+.tal-day.is-on{background:var(--ink);color:#f4e8d0}
+.tal-day[disabled]{opacity:.45;cursor:not-allowed;text-decoration:line-through}
+.tal-casas{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tal-casa{border:1px solid rgba(43,26,11,.45);background:transparent;color:var(--ink);text-align:left;min-height:64px;padding:10px 12px;font:400 22px/1 var(--hd);cursor:pointer}
+.tal-casa small{display:block;font:400 12px/1.2 var(--bd);color:#6b4a26;margin-top:6px}
+.tal-casa.is-on{background:var(--ink);color:#f4e8d0}.tal-casa.is-on small{color:#d8c49a}
+.tal-cut{margin:24px -18px 0;border-top:2px dashed rgba(43,26,11,.4)}
+.tal-foot{padding-top:18px}
+.tal-total{display:flex;justify-content:space-between;align-items:baseline;font:700 11px/1 var(--bd);letter-spacing:.18em;text-transform:uppercase;color:#7a4a17}
+.tal-total b{font:400 44px/1 var(--hd);color:var(--ink);letter-spacing:-.01em}
+.tal-note{font-size:14px;color:#6b4a26;margin:8px 0 16px;line-height:1.35}
+.tal-send{width:100%}
+@media (min-width:760px){
+  .enc{padding:120px 0}
+  .enc .wrap{display:grid;grid-template-columns:5fr 7fr;gap:0 72px;align-items:start}
+  .enc .side{grid-column:1;position:sticky;top:110px}
+  .enc h2{font-size:clamp(64px,6vw,92px)}
+  .tal{grid-column:2;grid-row:1;width:100%;max-width:none}
+  .tal-in{padding:6px 32px 32px}
+  .tal-cut{margin-inline:-32px}
+  .tal-days{grid-template-columns:repeat(6,1fr)}
+}
+.tal-row.m:not(.has){display:none}
+.tal-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 6px}
+.tal-chip{min-height:44px;padding:0 14px;border:1px dashed rgba(43,26,11,.55);background:rgba(255,248,232,.35);color:var(--ink);font:500 14px/1 var(--bd);cursor:pointer;transition:background .2s,color .2s}
+.tal-chip::before{content:"+ ";font-weight:700;color:#7a4a17}
+.tal-chip.on{background:var(--ink);color:#f4e8d0;border-style:solid}
+.tal-chip.on::before{content:"\2713  ";color:var(--ocre)}

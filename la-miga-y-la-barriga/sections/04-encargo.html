@@ -1,0 +1,27 @@
+<section class="enc" id="encargo" data-hide-wa>
+  <div class="wrap">
+    <div class="side"><p class="eyebrow">Por encargo</p>
+    <h2>Tu talón<span class="t2">de encargo.</span></h2>
+    <p class="enc-p">Marca lo que quieres, el día y la casa. Te llega armado a WhatsApp.</p></div>
+    <form class="tal" id="talon" onsubmit="return false">
+      <div class="tal-top" aria-hidden="true"></div>
+      <div class="tal-in">
+        <p class="tal-h"><b>01</b> Pieza</p>
+        <div id="tal-rows" class="tal-rows"></div>
+        <p class="tal-h"><b>02</b> Día para recoger</p>
+        <div id="tal-days" class="tal-days" role="radiogroup" aria-label="Día para recoger"></div>
+        <p class="tal-h"><b>03</b> Casa</p>
+        <div class="tal-casas" role="radiogroup" aria-label="Casa">
+          <button type="button" class="tal-casa is-on" role="radio" aria-checked="true" data-casa="Norte" data-dir="Sierra de Pinos 112">Norte<small>Sierra de Pinos 112</small></button>
+          <button type="button" class="tal-casa" role="radio" aria-checked="false" data-casa="Sur" data-dir="Miguel Caldera 320 A">Sur<small>Miguel Caldera 320 A</small></button>
+        </div>
+        <div class="tal-cut" aria-hidden="true"></div>
+        <div class="tal-foot">
+          <p class="tal-total"><span>Total con precio</span><b id="tal-sum">$0</b></p>
+          <p class="tal-note" id="tal-note">Lo que no trae precio te lo confirmamos en el chat.</p>
+          <a class="btn btn-wa tal-send" id="tal-wa" href="#">Mandar mi encargo</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

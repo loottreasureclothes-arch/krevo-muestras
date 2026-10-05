@@ -1,0 +1,209 @@
+@font-face{font-family:"Passion One";font-weight:900;font-display:swap;src:url(fonts/passion-900.woff2) format("woff2")}
+@font-face{font-family:"Passion One";font-weight:400;font-display:swap;src:url(fonts/passion-400.woff2) format("woff2")}
+@font-face{font-family:"Nunito";font-weight:400;font-display:swap;src:url(fonts/nunito-400.woff2) format("woff2")}
+@font-face{font-family:"Nunito";font-weight:600;font-display:swap;src:url(fonts/nunito-600.woff2) format("woff2")}
+@font-face{font-family:"Nunito";font-weight:800;font-display:swap;src:url(fonts/nunito-800.woff2) format("woff2")}
+:root{--az:#0b2b66;--az2:#071d47;--am:#ffc21c;--rj:#f0502a;--cr:#fff3d6;--cr2:#f6e3b4;--wa:#25D366;--wat:#0b3d1f;--hd:64px;
+--wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='14' viewBox='0 0 56 14'%3E%3Cpath d='M0 0H56V7Q42 14 28 7T0 7Z'/%3E%3C/svg%3E")}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--az);color:var(--cr);font:400 17px/1.5 "Nunito",system-ui,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+.skip{position:absolute;left:-999px;top:0;background:var(--am);color:var(--az2);padding:8px 12px;z-index:99}.skip:focus{left:8px;top:8px}
+.d{font-family:"Passion One",Impact,sans-serif;font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:.01em}
+.d em{font-style:normal;color:var(--am);display:block}
+.on-cr .d em,.on-cr em.d2{color:var(--rj)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+section{position:relative}
+.eb{font-weight:800;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--am)}
+.on-cr .eb{color:var(--rj)}
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;font-weight:800;font-size:15px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:2px solid var(--cr);border-radius:0;transition:transform .2s,background .2s}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:22px;height:22px;flex:none}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:var(--wat)}
+.btn.mk{border-color:var(--am);color:var(--am);font-weight:800}
+.on-cr .btn.mk{border-color:var(--az);color:var(--az)}
+.lnk{display:inline-flex;align-items:center;min-height:44px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:14px;text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:3px;color:var(--am)}
+.on-cr .lnk{color:var(--az)}
+.lnk::after{content:" \2192"}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+/* header propio: letrero con franjas de fachada */
+.hd{position:fixed;inset:0 0 auto 0;height:var(--hd);z-index:60;background:var(--az2);display:flex;align-items:center;justify-content:space-between;padding:0 16px 6px 20px}
+.hd::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:linear-gradient(90deg,var(--am) 0 34%,var(--az) 34% 67%,var(--rj) 67%)}
+.hd-logo{justify-content:center;min-height:44px;text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.hd-logo b{font-family:"Passion One";font-weight:900;font-size:27px;color:var(--am);letter-spacing:.02em}
+.hd-logo span{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin-top:2px}
+.hd-r{display:flex;align-items:center;gap:8px}
+.hd-tel{display:none;padding:12px 0}
+.hd-m{height:40px;padding:0 14px;border:2px solid var(--am);color:var(--am);font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.menu{position:fixed;inset:var(--hd) 0 0 0;z-index:55;background:var(--az2);padding:28px 24px;display:flex;flex-direction:column;gap:6px;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .25s,transform .25s,visibility 0s .25s}
+.menu-open .menu{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s}
+.menu a.m{font-family:"Passion One";font-weight:900;font-size:44px;text-transform:uppercase;text-decoration:none;line-height:1.1;border-bottom:1px solid rgba(255,243,214,.15);padding:6px 0}
+.menu .btns{margin-top:18px}
+/* hero */
+.hero{margin-top:var(--hd);min-height:calc(100svh - var(--hd));position:relative;display:flex;align-items:flex-end;background:var(--az2);overflow:hidden}
+.hero-ph{position:absolute;inset:0 0 36% 0}
+.hero-ph img{width:100%;height:100%;object-fit:cover;object-position:34% 50%}
+.hero-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,29,71,.1) 0,rgba(7,29,71,0) 45%,rgba(7,29,71,.75) 82%,var(--az2) 100%)}
+.hero-tx{position:relative;z-index:2;padding:0 20px 56px;width:100%}
+.plate{display:inline-flex;align-items:center;gap:10px;background:var(--cr);color:var(--az2);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-left:6px solid var(--rj);margin-bottom:18px}
+.hero h1{font-size:clamp(60px,19vw,128px);margin-bottom:16px;text-shadow:0 2px 24px rgba(7,29,71,.5)}
+.hero p.sub{max-width:30ch;font-size:19px;margin-bottom:24px;font-weight:600}
+.stripes{position:absolute;left:0;right:0;bottom:0;height:18px;display:flex;z-index:3}
+.stripes i{flex:1;display:block;transform-origin:left}
+.stripes i:nth-child(1){background:var(--am)}.stripes i:nth-child(2){background:var(--az)}.stripes i:nth-child(3){background:var(--rj)}
+@media (prefers-reduced-motion:no-preference){
+.stripes i{animation:wipe .7s cubic-bezier(.2,.7,.2,1) both}.stripes i:nth-child(2){animation-delay:.18s}.stripes i:nth-child(3){animation-delay:.36s}
+@keyframes wipe{from{transform:scaleX(0)}to{transform:none}}
+.hero-ph img{animation:zoom 1.1s ease-out both}@keyframes zoom{from{transform:scale(1.08)}to{transform:none}}
+}
+/* reveal */
+.js-rv [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.js-rv [data-reveal].is-in{opacity:1;transform:none}
+/* carta */
+.carta{background:var(--cr);color:var(--az2);padding:72px 0 80px}
+.carta h2{font-size:clamp(44px,13vw,84px);margin:10px 0 28px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:44px}
+.card{background:#fff;display:flex;flex-direction:column;border-bottom:5px solid var(--am)}
+.card .ph{aspect-ratio:1;overflow:hidden;-webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 14px) no-repeat,var(--wave) bottom/56px 14px repeat-x;mask:linear-gradient(#000,#000) top/100% calc(100% - 14px) no-repeat,var(--wave) bottom/56px 14px repeat-x}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card h3{font-family:"Passion One";font-weight:900;text-transform:uppercase;font-size:22px;line-height:1;padding:10px 12px 0}
+.card .pr{padding:4px 12px 10px;font-weight:800;font-size:15px;color:var(--rj)}
+.card a.ag{min-height:44px;margin-top:auto;display:block;background:var(--az);color:var(--cr);text-align:center;text-decoration:none;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:13px 0}
+.mn{margin-bottom:34px}
+.mn h3{font-family:"Passion One";font-weight:900;text-transform:uppercase;font-size:34px;color:var(--az);border-bottom:3px solid var(--az);padding-bottom:4px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.mn h3 small{font:800 11px/1.2 "Nunito";letter-spacing:.12em;color:var(--rj);text-align:right}
+.mn li{list-style:none;display:flex;align-items:baseline;gap:8px;padding:7px 0;font-weight:600;font-size:16px}
+.mn li::after{content:"";order:1;flex:1;border-bottom:2px dotted rgba(11,43,102,.35);transform:translateY(-4px)}
+.mn li b{order:2;font-weight:800;color:var(--az);white-space:nowrap}
+.mn li span{order:0}
+.mn li em{font-style:normal;font-size:13px;opacity:.7;display:block;font-weight:400}
+.nota{font-size:14px;opacity:.75;margin:6px 0 26px}
+/* picor */
+.picor{background:var(--az2);padding:72px 0 80px}
+.picor h2{font-size:clamp(46px,14vw,88px);margin:10px 0 26px}
+.pc{display:grid;gap:22px}
+.stage{position:relative;aspect-ratio:4/4.4;background:var(--az);overflow:hidden;-webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 14px) no-repeat,var(--wave) bottom/56px 14px repeat-x;mask:linear-gradient(#000,#000) top/100% calc(100% - 14px) no-repeat,var(--wave) bottom/56px 14px repeat-x}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.stage img.on{z-index:1;animation:fin .35s ease both}@keyframes fin{from{opacity:.2}to{opacity:1}}
+.stage .heat{position:absolute;inset:0;background:radial-gradient(circle at 50% 120%,rgba(240,80,42,.85),transparent 65%);opacity:calc(.12 + var(--h,0));z-index:2;transition:opacity .3s;mix-blend-mode:multiply;pointer-events:none}
+.stage .tag{z-index:3;position:absolute;left:12px;top:12px;background:var(--cr);color:var(--az2);font:900 24px/1 "Passion One";text-transform:uppercase;padding:8px 12px;border-left:6px solid var(--rj)}
+.ctl h4{font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--am);margin:0 0 8px}
+.dish{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+.dish button{position:relative;aspect-ratio:1/.85;overflow:hidden;border:2px solid transparent;background:var(--az)}
+.dish button img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.dish button span{position:absolute;left:0;right:0;bottom:0;background:rgba(7,29,71,.82);font:900 15px/1 "Passion One";text-transform:uppercase;padding:6px 4px;text-align:center}
+.dish button[aria-pressed=true]{border-color:var(--am)}.dish button[aria-pressed=true] img{opacity:1}
+.chiles{display:flex;gap:6px;margin-bottom:6px}
+.chiles button{width:25%;min-width:44px;max-width:76px;color:var(--rj);padding:6px 4px;border:2px solid rgba(255,243,214,.25);display:flex;justify-content:center;height:70px;transition:transform .2s}
+.chiles button svg{width:28px;height:100%}
+.chiles button[aria-pressed=true]{--f:var(--rj);border-color:var(--rj);background:rgba(240,80,42,.12)}
+.chiles button.fill{--f:var(--rj)}
+.chiles button:active{transform:scale(.94)}
+.lvl{font:900 34px/1 "Passion One";text-transform:uppercase;color:var(--am);margin-bottom:20px;min-height:34px}
+.row2{display:flex;gap:12px;align-items:stretch;margin-bottom:20px}
+.step{display:flex;border:2px solid var(--cr)}
+.step button{width:48px;min-height:52px;font:900 28px/1 "Passion One"}
+.step output{min-width:44px;display:flex;align-items:center;justify-content:center;font:900 28px/1 "Passion One";color:var(--am)}
+.seg{display:flex;flex:1}
+.seg button{flex:1;min-height:52px;min-width:64px;border:2px solid var(--cr);font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.seg button+button{border-left:0}
+.seg button[aria-pressed=true]{background:var(--am);border-color:var(--am);color:var(--az2)}
+.resumen{border-left:6px solid var(--am);padding:6px 0 6px 14px;margin-bottom:18px;font-weight:600;min-height:3.2em}
+/* foto a sangre */
+.sangre{position:relative;height:84svh;min-height:520px;overflow:hidden;background:var(--az2)}
+.sangre img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sangre::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,29,71,0) 35%,rgba(7,29,71,.9))}
+.sangre .tx{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:0 20px 48px}
+.sangre h2{font-size:clamp(60px,18vw,150px);margin-bottom:16px}
+.sangre h2 span{display:block}.sangre h2 span:nth-child(3){color:var(--am)}
+/* reseñas */
+.res{padding:80px 0}
+.dato{display:flex;align-items:flex-end;gap:14px;margin:14px 0 40px}
+.dato b{font:900 clamp(140px,44vw,300px)/.78 "Passion One";color:var(--am)}
+.dato div{padding-bottom:6px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:14px}
+.stars{display:flex;gap:2px;color:var(--am)}.stars svg{width:18px;height:18px}.stars .off{color:rgba(255,243,214,.3)}
+.res h2{font-size:clamp(40px,11vw,72px);margin:18px 0 30px}
+.rv{display:grid;gap:16px;margin-bottom:34px}
+.rc{background:var(--cr);color:var(--az2);padding:22px 22px 20px;border-left:8px solid var(--rj);margin-right:22px}
+.rc:nth-child(even){margin-right:0;margin-left:22px;border-left-color:var(--am)}
+.rc blockquote{font-size:18px;line-height:1.4;font-weight:600;margin:10px 0 14px}
+.rc .who{font-weight:800;font-size:14px}.rc .who small{display:block;font-weight:600;opacity:.65;font-size:12px;letter-spacing:.06em}
+.rc .stars{color:var(--rj)}.rc .stars .off{color:rgba(11,43,102,.2)}
+/* lugar */
+.lugar{background:var(--am);color:var(--az2);padding:76px 0 84px}
+.lugar h2{font-size:clamp(46px,14vw,92px);margin:10px 0 24px}
+.lugar h2 em{color:var(--az)}
+.lugar .eb{color:var(--az)}
+.col{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:26px}
+.col figure{overflow:hidden;position:relative;background:var(--az2)}
+.col img{width:100%;height:100%;object-fit:cover}
+.col .a{grid-column:1/-1;aspect-ratio:16/9}
+.col .b{aspect-ratio:3/4}.col .c{aspect-ratio:3/4}
+.col .e{aspect-ratio:1}.col .f{aspect-ratio:1}
+.facts{display:flex;flex-wrap:wrap;gap:6px 18px;font:900 26px/1.1 "Passion One";text-transform:uppercase;margin-bottom:24px;color:var(--az)}
+.facts span::before{content:"\25B8  ";color:var(--rj)}
+.lugar .lnk{color:var(--az2)}
+/* visitanos */
+.vis{background:var(--az2);padding:76px 0 84px}
+.vis h2{font-size:clamp(44px,13vw,84px);margin:10px 0 26px}
+.mapbox{border:4px solid var(--am);background:var(--az);aspect-ratio:4/3.4;margin-bottom:24px;position:relative}
+.mapbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.dir{font:900 28px/1.05 "Passion One";text-transform:uppercase;margin-bottom:4px}
+.dir small{display:block;font:600 16px/1.4 "Nunito";text-transform:none;opacity:.85;margin-top:4px}
+.abierto{display:inline-block;margin:14px 0 6px;padding:6px 12px;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;background:var(--cr);color:var(--az2)}
+.abierto.si{background:var(--wa);color:var(--wat)}
+.hrs{margin:10px 0 26px}
+.hrs div{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,243,214,.18);font-weight:600}
+.hrs div.hoy{color:var(--am);font-weight:800;border-bottom-color:var(--am)}
+.hrs div.hoy::before{content:"HOY";order:-1;margin-right:auto;padding-right:10px;font-size:11px;letter-spacing:.2em}
+.hrs div span:last-child{margin-left:auto}
+/* completar */
+.comp{background:var(--cr);color:var(--az2);padding:72px 0}
+.comp h2{font-size:clamp(38px,11vw,70px);margin:10px 0 22px}
+.comp ul{list-style:none;margin-bottom:22px;padding-right:56px}
+.comp li{padding:11px 0;border-bottom:2px dotted rgba(11,43,102,.3);font-weight:600}
+.comp li::before{content:"\25A1  ";color:var(--rj);font-weight:800}
+.comp p.p{font:900 26px/1.1 "Passion One";text-transform:uppercase;color:var(--az)}
+/* pie */
+.ft{background:var(--az2);padding:48px 0 110px;position:relative}
+.ft::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:linear-gradient(90deg,var(--am) 0 34%,var(--az) 34% 67%,var(--rj) 67%)}
+.ft .lg{font:900 46px/.9 "Passion One";text-transform:uppercase;color:var(--am);margin-bottom:6px}
+.ft .lg span{display:block;font-size:22px;color:var(--cr)}
+.ft p a{display:inline-block;padding:11px 0}.ft p{margin:3px 0;font-weight:600;font-size:15px}
+.ft .soc{display:flex;gap:12px;margin:18px 0}
+.ft .soc a{width:44px;height:44px;border:2px solid var(--am);color:var(--am);display:flex;align-items:center;justify-content:center}
+.ft .soc svg{width:24px;height:24px}
+.ft small{display:block;margin-top:18px;opacity:.55;font-size:12px}
+/* flotante */
+.fw{position:fixed;right:16px;bottom:16px;z-index:50;width:58px;height:58px;border-radius:50%;background:var(--wa);color:var(--wat);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.35);transition:opacity .25s,transform .25s}
+.fw svg{width:32px;height:32px}
+.fw.hide{opacity:0;pointer-events:none;transform:scale(.8)}
+/* tableta y compu */
+@media(min-width:760px){
+.wrap{padding:0 40px}.hd{padding:0 32px 6px}
+.hd-tel{display:block;font-weight:800;letter-spacing:.08em;text-decoration:none;font-size:14px;margin-right:14px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);align-items:stretch;min-height:calc(100svh - var(--hd));max-height:900px}
+.hero-ph{position:relative;inset:auto;grid-column:2;grid-row:1}
+.hero-ph::after{background:linear-gradient(90deg,var(--az2),rgba(7,29,71,0) 22%)}
+.hero-tx{grid-column:1;grid-row:1;align-self:center;padding:40px 24px 60px 40px}
+.hero h1{font-size:clamp(70px,8.4vw,140px)}
+.cards{grid-template-columns:repeat(4,1fr)}
+.carta .cols{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+.pc{grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.stage{aspect-ratio:4/4.6}
+.rv{grid-template-columns:1fr 1fr;gap:20px}.rc,.rc:nth-child(even){margin:0}
+.col{grid-template-columns:repeat(4,1fr)}.col .a{grid-column:span 2;grid-row:span 1;aspect-ratio:auto}.col .b,.col .c{aspect-ratio:3/4}.col .e,.col .f{aspect-ratio:3/4}
+.col .a img{aspect-ratio:16/10}.col .e,.col .f{grid-column:span 2;aspect-ratio:16/10}
+.vis .g{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+.vis .mapbox{margin:0;aspect-ratio:auto;height:100%;min-height:520px}
+.fw{right:28px;bottom:28px}
+.res .top{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:end;margin-bottom:34px}
+.sangre{height:min(86svh,820px)}
+}
+@media(min-width:1100px){.carta .cols{gap:0 80px}}
+
+@media(min-width:760px){.comp ul{padding-right:0}}

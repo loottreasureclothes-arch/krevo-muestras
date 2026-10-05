@@ -1,0 +1,1 @@
+Fuente: research/fotos/maps (Google Maps), webp calidad 78, 480/960/1600 (máx. tamaño real). fachada=01, charola=03 (sin usar), ceviche=04, entrada=07, interior=10, charolas=11, pechuga=12, combos=13, alitas-papas=14, boneless=15, postres=20, alitas=21. og.jpg 1200x630 con PIL + Anton.

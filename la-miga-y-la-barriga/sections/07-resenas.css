@@ -1,0 +1,31 @@
+.res{background:var(--cream);color:var(--ink);padding:72px 0 76px}
+.res .eyebrow{color:#7a4a17}
+.res h2{font-size:clamp(44px,12vw,72px);margin:24px 0 26px;color:var(--ink)}
+.res .t2{color:#a4601a}
+.stars{color:#b8741f;letter-spacing:.14em;font-style:normal}
+.res-score{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:30px;border-top:2px solid var(--ink);border-bottom:1px solid rgba(43,26,11,.3);padding:18px 0}
+.rs b{display:block;font:400 clamp(54px,15vw,80px)/1 var(--hd);color:var(--ink);margin-bottom:12px}
+.rs .stars{display:block;font-size:15px;margin:0 0 8px;line-height:1.3}
+.rs small{font:700 11px/1.3 var(--bd);letter-spacing:.1em;text-transform:uppercase;color:#6b4a26}
+.res-big{display:grid;gap:14px;margin-bottom:28px}
+.res blockquote{background:#fbf3df;border:1px solid rgba(43,26,11,.18);padding:22px 20px 18px;position:relative}
+.res blockquote p{font:400 23px/1.2 var(--hd);margin:10px 0 16px;color:var(--ink)}
+.res cite{font:700 14px/1.2 var(--bd);font-style:normal;display:block}
+.res cite small,.res-tk small,.res-sn small{display:block;font:500 12px/1.3 var(--bd);color:#6b4a26;margin-top:3px;letter-spacing:.04em}
+.tal-h2{font:700 11px/1 var(--bd);letter-spacing:.2em;text-transform:uppercase;color:#7a4a17;margin-bottom:6px}
+.res-tk{list-style:none;margin-bottom:22px}
+.res-tk li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:11px 0;border-bottom:1px dashed rgba(43,26,11,.3);font-weight:500}
+.res-tk small{grid-column:1/3;margin:0}
+.res-sn{font:400 22px/1.25 var(--hd);margin-bottom:26px}
+.res-btn{color:var(--ink);border-color:var(--ink)}
+.res-btn:hover{background:rgba(43,26,11,.08)}
+@media (min-width:760px){
+  .res{padding:110px 0}
+  .res .wrap{display:grid;grid-template-columns:5fr 7fr;gap:0 72px;align-items:start}
+  .res .eyebrow,.res h2,.res-score{grid-column:1}
+  .res h2{font-size:clamp(60px,5.4vw,84px)}
+  .res-big,.tal-h2,.res-tk,.res-sn,.res-btn{grid-column:2}
+  .res-big{grid-row:1/3;grid-template-columns:1fr 1fr}
+  .res-big blockquote:first-child{grid-column:1/3}
+  .res-btn{justify-self:start}
+}
