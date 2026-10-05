@@ -44,3 +44,4 @@
 | algarabia-calvillo | El pizarrón (enchiladas por salsa y relleno + té, se anota con gis +/−, total, vacío "Elige arriba", pedido para dictar por teléfono o copiar; sin WhatsApp) | 5 oct 2026 |
 | lechon-rudy | El talón | 5 oct 2026 |
 | carnitas-mora | La mesa que se llena | 5 oct 2026 |
+| cenaduria-morelos | La mesa puesta (platos con foto sobre mantel, pozole por tamaño y carne, pedido para dictar por teléfono) | 5 oct 2026 |
