@@ -43,3 +43,4 @@
 | oaxakita | La tlayuda a tu modo (plato que gira con chapulines +$25 que llena un papel de estraza y se dicta por teléfono) | 5 oct 2026 |
 | algarabia-calvillo | El pizarrón (enchiladas por salsa y relleno + té, se anota con gis +/−, total, vacío "Elige arriba", pedido para dictar por teléfono o copiar; sin WhatsApp) | 5 oct 2026 |
 | lechon-rudy | El talón | 5 oct 2026 |
+| carnitas-mora | La mesa que se llena | 5 oct 2026 |
