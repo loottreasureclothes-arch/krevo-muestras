@@ -1,0 +1,13 @@
+.vis{padding:48px 0 56px;background:var(--bg2)}
+.vis-grid{display:grid;gap:30px}
+.vis-estado{margin:18px 0 14px;font-weight:700;padding-left:14px;border-left:3px solid var(--y);color:var(--mute)}
+.vis-estado.is-open{color:var(--crema);border-color:var(--g)}
+.vis address{font-style:normal;font-size:18px}
+.horas{margin-top:18px;border-top:1px solid var(--line)}
+.horas li{display:flex;justify-content:space-between;gap:12px;padding:10px 6px;border-bottom:1px solid var(--line)}
+.horas li.hoy{background:rgba(242,183,5,.14);border-left:4px solid var(--y);padding-left:10px}
+.horas b{font-weight:700}
+.vis-nota{margin-top:16px;color:var(--mute)}
+.vis-mapa{border:3px solid var(--crema);background:var(--bg)}
+.vis-mapa iframe{display:block;width:100%;height:340px;border:0;filter:saturate(.9)}
+@media (min-width:900px){.vis-grid{grid-template-columns:minmax(0,480px) 1fr;gap:56px;align-items:stretch}.vis-mapa{display:flex;flex-direction:column}.vis-mapa iframe{flex:1;min-height:520px}}

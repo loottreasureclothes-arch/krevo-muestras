@@ -38,3 +38,4 @@
 | cenaduria-el-sopecito | El plato en la mesa (platillos con foto y sello de precio que caen en un mantel de hule, cuenta y copiar pedido o Llamar) | 5 oct 2026 |
 | pibes-parrisha | La parrilla de la mesa (ahumados, parrishadas y postres de la carta caen como piezas a una parrilla con brasa y humo, con personas y total; copiar pedido o Llamar) | 5 oct 2026 |
 | vuelo76 | Pase a la mesa (rejilla de metal con canto turquesa donde aterrizan los platos con foto bajo un pase de abordar Vuelo 76 / Puerta 107; boleto troquelado que se copia o Llamar) | 5 oct 2026 |
+| cenaduria-alice | La lotería de la cena (tablero 3x3 de platos con frijoles y boleta Tu cena; ¡Lotería! al completar línea; Llamar o copiar) | 5 oct 2026 |

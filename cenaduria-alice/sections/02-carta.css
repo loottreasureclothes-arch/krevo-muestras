@@ -1,0 +1,16 @@
+.carta{padding:44px 0 56px;background:var(--bg)}
+.menu{margin-top:26px;border-top:1px solid var(--line)}
+.plato{display:grid;grid-template-columns:68px 1fr;grid-template-areas:"f t" "f p";gap:0 14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.plato>img,.plato>.inicial{grid-area:f;width:68px;height:84px;object-fit:cover}
+.plato h3{font-size:19px;line-height:1.2;font-weight:700}
+.plato p{font-size:14.5px;color:var(--mute)}
+.plato>div{grid-area:t;align-self:end}
+.precio{grid-area:p;align-self:start;margin-top:4px;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--tint)}
+.inicial{display:grid;place-items:center;font-family:var(--fd);font-size:34px;color:var(--crema)}
+.c-y{background:#8a6806}.c-b{background:var(--b)}.c-p{background:var(--p)}.c-r{background:var(--brand-d)}
+.cortesia{margin:22px 0 4px;padding-left:14px;border-left:3px solid var(--g);color:var(--crema)}
+.carta .btn{margin-top:18px}
+@media (min-width:820px){
+  .carta-head{max-width:560px}
+  .menu{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+}
