@@ -1,0 +1,36 @@
+.consome{background:radial-gradient(120% 60% at 50% 30%,#3a2118 0%,var(--carbon) 70%);padding:64px 0 60px}
+.cons-p{margin-top:16px;max-width:30ch;color:var(--mut)}
+.sr{position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.olla{margin-top:30px;display:grid;gap:8px}
+.olla-stage{position:relative;max-width:420px;margin:0 auto;width:100%;padding:0 20px}
+.olla-svg{width:100%;height:auto;overflow:visible}
+.olla-liq{transform:translateY(0);transition:transform .28s ease}
+.olla-ola{animation:ola 3.2s ease-in-out infinite alternate}
+@keyframes ola{from{transform:translateX(-14px)}to{transform:translateX(0)}}
+.olla-vapor path{animation:vapor 3.4s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+.olla-vapor path:nth-child(2){animation-delay:-1.1s}.olla-vapor path:nth-child(3){animation-delay:-2.2s}
+@keyframes vapor{0%{transform:translateY(8px);opacity:0}30%{opacity:.9}100%{transform:translateY(-12px);opacity:0}}
+.olla-vapor{transition:opacity .3s}
+.olla.vacia .olla-vapor{opacity:0}
+.olla-cuch{transform-origin:240px 80px;transition:transform .28s ease}
+.olla-tag{position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);background:var(--rojo);color:#fff;font:900 18px/1 var(--disp);letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;white-space:nowrap;box-shadow:3px 3px 0 rgba(0,0,0,.4)}
+.olla-ctl{padding:26px var(--g) 0;max-width:560px;margin:0 auto;width:100%}
+.olla-hora{font:900 clamp(60px,17vw,104px)/.9 var(--disp);letter-spacing:.01em;color:var(--tx)}
+.olla-msg{margin:12px 0 22px;font-size:19px;line-height:1.35;min-height:52px;max-width:28ch}
+.olla-rail{display:block;position:relative;padding:8px 0 4px}
+.olla-rail input{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;cursor:pointer;margin:0}
+.olla-rail input::-webkit-slider-runnable-track{height:12px;border-radius:6px;background:linear-gradient(90deg,#d9772a,#8f3a14 70%,#3a2118);box-shadow:inset 0 0 0 2px rgba(255,255,255,.12)}
+.olla-rail input::-moz-range-track{height:12px;border-radius:6px;background:linear-gradient(90deg,#d9772a,#8f3a14 70%,#3a2118);box-shadow:inset 0 0 0 2px rgba(255,255,255,.12)}
+.olla-rail input::-webkit-slider-thumb{-webkit-appearance:none;width:36px;height:36px;margin-top:-12px;border-radius:50%;background:#fff;border:6px solid var(--rojo);box-shadow:0 3px 10px rgba(0,0,0,.5)}
+.olla-rail input::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;border:6px solid var(--rojo);box-shadow:0 3px 10px rgba(0,0,0,.5)}
+.olla-rail input:focus-visible{outline:2px solid var(--naranja);outline-offset:4px;border-radius:6px}
+.olla-ticks{display:flex;justify-content:space-between;font:700 12px/1 var(--body);letter-spacing:.1em;color:var(--mut);padding:0 2px}
+.olla-ticks i{font-style:normal}
+.olla-act{display:grid;gap:10px;margin-top:26px}
+.olla-n{margin-top:16px;font-size:13px;color:var(--mut);max-width:34ch}
+@media (min-width:820px){
+  .consome{padding:96px 6vw}
+  .consome .wrap{padding:0}
+  .olla{grid-template-columns:1fr 1fr;align-items:center;gap:40px;max-width:1100px;margin:40px auto 0}
+  .olla-act{grid-template-columns:auto auto;justify-content:start}
+}

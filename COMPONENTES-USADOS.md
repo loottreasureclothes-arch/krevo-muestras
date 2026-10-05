@@ -52,3 +52,4 @@
 | palermo-ags | Tus vueltas (pizza en rebanadas, una por vuelta del buffet: eliges variedad con foto y la rebanada se pinta; plan en lista; Llamar o copiar mi plan) | 5 oct 2026 |
 | restaurante-cascadas | El recado de la mesa | 5 oct 2026 |
 | volodia-panaderia | El recado de la llamada (eliges día, hora en una regla y sillas de una mesa redonda, más mascota, para armar lo que vas a decir; Llamar o copiar el recado) | 5 oct 2026 |
+| tacos-el-super | La olla del consomé (barra de 3 paradas Temprano / Medio día / Al cierre baja el nivel de una olla dibujada con lo que cuentan los clientes; termina en Llamar) | 5 oct 2026 |
