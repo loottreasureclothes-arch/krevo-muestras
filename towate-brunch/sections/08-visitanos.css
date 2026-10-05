@@ -1,0 +1,15 @@
+.visita{background:var(--bg)}
+.visita-g{display:grid;gap:30px}
+.dir{margin:18px 0 20px;font-size:1.05rem}
+.ahora{display:flex;align-items:center;gap:10px;font-weight:700;margin-bottom:18px}
+.ahora i{width:10px;height:10px;border-radius:50%;background:var(--sage-t);flex:none}
+.ahora.off i{background:#c98a5b}
+.horas li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(235,237,225,.14);font-size:.98rem}
+.horas li.hoy{color:var(--sage-t);font-weight:700}
+.horas li.cerrado b{color:#d9a37a}
+.mapa{position:relative;aspect-ratio:4/3.4;border:1px solid rgba(235,237,225,.3);padding:8px;background:var(--bg2);box-shadow:8px 8px 0 var(--wood)}
+.mapa iframe{width:100%;height:100%;border:0;display:block;background:var(--cream2)}
+@media (min-width:900px){
+  .visita-g{grid-template-columns:.8fr 1.2fr;grid-template-areas:"h m" "b m";gap:30px 64px;align-items:start}
+  .visita-h{grid-area:h}.mapa{grid-area:m;aspect-ratio:auto;min-height:520px;height:100%}.visita-b{grid-area:b}
+}

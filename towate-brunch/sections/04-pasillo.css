@@ -1,0 +1,13 @@
+.pasillo{background:var(--bg3);padding-top:56px;padding-bottom:64px}
+.pasillo-g{display:grid;gap:30px}
+.mf-fig{aspect-ratio:4/4.4;overflow:hidden;border-radius:24px;max-height:620px;width:100%}
+.mf-fig img{width:100%;height:100%;object-fit:cover}
+.js .mf-fig{clip-path:inset(0 26% 0 26% round 200px);transition:clip-path .9s cubic-bezier(.2,.7,.2,1)}
+.js .mf-fig.open{clip-path:inset(0 0 0 0 round 24px)}
+@media (prefers-reduced-motion:reduce){.js .mf-fig{clip-path:none;transition:none}}
+.pasillo-t .lead{max-width:30ch}
+.pasillo-t .acts{margin-top:26px}
+@media (min-width:900px){
+  .pasillo-g{grid-template-columns:.9fr 1.1fr;align-items:center;gap:72px}
+  .mf-fig{max-height:680px}
+}
