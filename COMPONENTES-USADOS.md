@@ -50,3 +50,4 @@
 | casa-victoria | Arma tu fecha (evento, espacio con foto, invitados con mesas dibujadas, fecha; nota "Menú desde $X" o "Elige arriba"; Llamar o copiar resumen; sin WhatsApp) | 5 oct 2026 |
 | mariscos-el-pescadito | La copa que se llena (cóctel mediano/grande, de qué, cuántas, ticket de pedido a WhatsApp) | 5 oct 2026 |
 | palermo-ags | Tus vueltas (pizza en rebanadas, una por vuelta del buffet: eliges variedad con foto y la rebanada se pinta; plan en lista; Llamar o copiar mi plan) | 5 oct 2026 |
+| restaurante-cascadas | El recado de la mesa | 5 oct 2026 |
