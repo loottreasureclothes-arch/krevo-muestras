@@ -11,3 +11,13 @@ Estas páginas usan botones de Llamar. Si se confirma un WhatsApp publicado por 
 | cenaduria-morelos | Cenaduría Morelos | 449 977 1365 | https://www.facebook.com/cenaduriamorelos.cena | https://www.instagram.com/cenaduria_morelos/ |
 | el-gustoso | El Gustoso | 449 200 5979 (WhatsApp YA confirmado en su menú digital; la página ya usa wa.me) | https://www.facebook.com/elgustosoags/ | no encontré |
 | mariscos-el-pescadito | Mariscos El Pescadito | 449 912 1619 (WhatsApp YA confirmado: 449 499 1972 en su menú digital; la página ya usa wa.me) | https://www.facebook.com/MariscoselPescadito/ | no encontré |
+| los-antojos-de-carranza | Los Antojos de Carranza | 449 994 1977 | https://www.facebook.com/losantojosdecarranza/ | no encontré (TikTok @losantojosdecarra) |
+| cazona-corzo | Cazona Corzo | 458 161 0310 (directorios dicen también 449 915 9317) | https://www.facebook.com/CazonaCorzo/ | https://www.instagram.com/cazona_corzo/ |
+| birrieria-ricky | Birriería Ricky | 449 118 7548 | https://www.facebook.com/p/Birrieria-Ricky-100057370047069/ (dudoso) | no encontré |
+| towate-brunch | Towate Brunch & Lunch | 449 903 6102 | no encontré | https://www.instagram.com/towate.ags/ (sale en su menú) |
+| cenaduria-el-sopecito | Cenaduría El Sopecito | 449 106 6303 (su Facebook dice 449 915 1107) | https://www.facebook.com/p/Cocina-y-cenaduria-El-Sopecito-100063637867958/ | no encontré |
+| pibes-parrisha | Pibe's Parrisha | 449 792 1626 | https://www.facebook.com/p/Pibes-Parrisha-61555861713066/ | https://www.instagram.com/pibes_parrisha/ (dudoso) |
+| vuelo76 | Vuelo76 | 449 238 3438 | https://www.facebook.com/vuelo76/ | no encontré (Linktree: https://linktr.ee/vuelo76crepasycafe) |
+| cenaduria-alice | Cenaduría ALICE | 449 258 4516 | https://www.facebook.com/Cenaduria.Alice.Ags/ | no encontré |
+| monosanto | Monosanto | 449 835 3469 | https://www.facebook.com/monosantooficial/ | https://www.instagram.com/monosanto_oficial/ (no abierto) |
+| mariscos-la-morena | Mariscos La Morena | 449 913 7425 | https://www.facebook.com/profile.php?id=346021035485590 | no encontré |
