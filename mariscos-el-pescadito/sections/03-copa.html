@@ -1,0 +1,70 @@
+<section class="sec pe-copa" id="copa" aria-labelledby="t-copa">
+  <div class="wrap">
+    <p class="eyebrow">Tu pedido, armado</p>
+    <h2 class="h2" id="t-copa">Arma tu copa.<span class="t2">Mándala lista.</span></h2>
+    <div class="pe-copa-grid">
+      <div class="pe-stage" data-reveal>
+        <svg class="pe-copa-svg" viewBox="0 0 240 330" role="img" aria-label="Copa de cóctel de mariscos que se llena según el tamaño">
+          <defs>
+            <clipPath id="pe-bowl"><path d="M30 46 C30 114 74 162 120 164 C166 162 210 114 210 46 Z"/></clipPath>
+            <linearGradient id="pe-liq" x1="0" y1="0" x2="0" y2="1"><stop id="pe-liq-a" offset="0" stop-color="#e8503a"/><stop id="pe-liq-b" offset="1" stop-color="#a8261b"/></linearGradient>
+          </defs>
+          <g class="pe-steam" opacity="0"><path d="M92 34c-8-10 8-16 0-28M120 34c-8-10 8-16 0-28M148 34c-8-10 8-16 0-28" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></g>
+          <g clip-path="url(#pe-bowl)">
+            <g class="pe-liq" id="pe-liq">
+              <rect x="0" y="46" width="240" height="160" fill="url(#pe-liq)"/>
+              <ellipse cx="120" cy="47" rx="92" ry="7" fill="#fff" fill-opacity=".18"/>
+              <g id="pe-tops"></g>
+            </g>
+            <path d="M44 62C46 100 66 134 96 150" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="5" stroke-linecap="round"/>
+          </g>
+          <path d="M30 46 C30 114 74 162 120 164 C166 162 210 114 210 46" fill="rgba(255,255,255,.06)" stroke="#fff" stroke-opacity=".85" stroke-width="3"/>
+          <ellipse cx="120" cy="46" rx="90" ry="8" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="3"/>
+          <path d="M113 164h14v82h-14z" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-opacity=".8" stroke-width="2.5"/>
+          <ellipse cx="120" cy="256" rx="62" ry="12" fill="rgba(255,255,255,.2)" stroke="#fff" stroke-opacity=".85" stroke-width="3"/>
+          <path d="M176 36c14-4 28 2 34 16-14 4-30 0-34-16z" fill="#7bd05b" stroke="#c9f2b0" stroke-width="2"/>
+          <path d="M180 40c8 0 18 4 24 10" fill="none" stroke="#c9f2b0" stroke-width="1.5"/>
+        </svg>
+        <p class="pe-stage-cap" id="pe-cap">Cóctel grande de camarón</p>
+      </div>
+
+      <div class="pe-ctl" data-reveal>
+        <fieldset class="pe-fs">
+          <legend>1. Tamaño</legend>
+          <div class="pe-seg" role="radiogroup" aria-label="Tamaño">
+            <button type="button" class="pe-opt" role="radio" data-size="m" aria-checked="false"><b>Mediano</b><span>$85</span></button>
+            <button type="button" class="pe-opt" role="radio" data-size="g" aria-checked="true"><b>Grande</b><span>$105</span></button>
+          </div>
+        </fieldset>
+        <fieldset class="pe-fs">
+          <legend>2. De qué</legend>
+          <div class="pe-types" id="pe-types"></div>
+        </fieldset>
+        <fieldset class="pe-fs pe-fs-add">
+          <legend>3. Cuántas</legend>
+          <div class="pe-addrow">
+            <div class="pe-step" aria-label="Cantidad">
+              <button type="button" id="pe-minus" aria-label="Una menos"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button>
+              <output id="pe-qty">1</output>
+              <button type="button" id="pe-plus" aria-label="Una más"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button>
+            </div>
+            <button type="button" class="btn btn-nav pe-addcopa" id="pe-addcopa"><span id="pe-addlbl">Agregar · $105</span></button>
+          </div>
+        </fieldset>
+      </div>
+
+      <aside class="pe-ticket" data-reveal aria-label="Tu pedido">
+        <div class="pe-ticket-in">
+          <div class="pe-ticket-h"><span>Tu pedido</span><span class="pe-ticket-n" data-pedido-count></span></div>
+          <ul class="pe-lines" id="pe-lines"></ul>
+          <p class="pe-empty" id="pe-empty">Aquí va lo que sumes</p>
+          <div class="pe-total"><span>Total</span><b data-pedido-total>Elige arriba</b></div>
+          <div data-hide-wa>
+            <a class="btn btn-wa btn-block" href="{{WA_PEDIR}}" data-pedido-wa target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg><span data-pedido-wa-label>Pedir por WhatsApp</span></a>
+          </div>
+          <p class="pe-ticket-note">Se abre WhatsApp con tu pedido ya escrito.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

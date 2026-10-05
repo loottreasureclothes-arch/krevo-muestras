@@ -1,0 +1,30 @@
+.pe-hero{position:relative;background:var(--navy);display:grid;grid-template-columns:minmax(0,1fr)}
+.pe-hero-photo{grid-area:1/1;position:relative;height:min(58svh,560px);min-height:400px;overflow:hidden;background:var(--navy2)}
+.pe-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.pe-hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,26,61,.4) 0,rgba(8,26,61,0) 26%,rgba(8,26,61,0) 40%,rgba(8,26,61,.94) 100%);pointer-events:none}
+.pe-placa{position:absolute;z-index:2;top:18px;left:var(--gut);display:flex;flex-direction:column;gap:2px;padding:7px 14px 8px;background:var(--azul);color:#fff;border:2px solid #fff;box-shadow:0 0 0 3px var(--azul),0 8px 20px rgba(0,0,0,.35)}
+.pe-placa-a{font:700 10px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;opacity:.85}
+.pe-placa-b{font:700 17px/1.1 var(--sans);letter-spacing:.04em;text-transform:uppercase}
+.pe-placa-b b{font-weight:800}
+.pe-hero-h{grid-area:1/1;align-self:end;position:relative;z-index:2;padding:0 var(--gut) 14px;font:400 clamp(64px,19vw,104px)/1.04 var(--slab);text-shadow:0 3px 18px rgba(0,0,0,.5)}
+.pe-hero-h span{display:block;white-space:nowrap}
+.pe-hero-h .t2{color:var(--rojo)}
+.pe-hero-body{grid-area:2/1;width:100%;padding-top:20px;padding-bottom:36px}
+.pe-hero-p{max-width:28em;font-size:18px;color:#dbe5ff}
+.pe-hero-btns{display:grid;gap:10px;margin-top:22px}
+.pe-hero-cap{margin-top:20px;font-size:14px;color:var(--muted)}
+.pe-hero-cap b{color:#fff;font-weight:700}
+.pe-hero-cap a{color:#fff}
+@media (min-width:720px){
+  .pe-hero-btns{grid-template-columns:auto auto;justify-content:start}
+  .pe-hero-photo{height:min(58svh,520px)}
+  .pe-hero-h{font-size:clamp(88px,15vw,130px)}
+}
+@media (min-width:980px){
+  .pe-hero{grid-template-columns:minmax(0,5fr) minmax(0,6fr);grid-template-rows:1fr auto;min-height:min(calc(100svh - 88px),780px)}
+  .pe-hero-photo{grid-area:1/2/3/3;height:auto;min-height:0}
+  .pe-hero-photo::after{background:linear-gradient(90deg,rgba(8,26,61,1) 0,rgba(8,26,61,0) 24%),linear-gradient(180deg,rgba(8,26,61,.35),rgba(8,26,61,0) 26%)}
+  .pe-placa{left:auto;right:32px}
+  .pe-hero-h{grid-area:1/1;padding:48px 0 6px var(--gut);font-size:clamp(84px,7.4vw,130px);text-shadow:none;margin-left:max(0px,calc((100vw - 1180px)/2 - 40px))}
+  .pe-hero-body{grid-area:2/1;padding:30px 24px 56px var(--gut);margin-left:max(0px,calc((100vw - 1180px)/2 - 40px))}
+}

@@ -1,0 +1,113 @@
+/* Mariscos El Pescadito: base, header de toldo, botones, flotante. */
+@font-face{font-family:"Alfa Slab One";src:url(fonts/alfa-slab-one-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url(fonts/hanken-grotesk-var.woff2) format("woff2");font-weight:400 800;font-display:swap}
+
+:root{
+  --navy:#081a3d; --navy2:#0e2a5e; --navy3:#14367a;
+  --azul:#2158e0; --azul-l:#5f8cff;
+  --rojo:#ff4d3d; --rojo-d:#e8352b;
+  --crema:#fff4e3; --crema2:#f6e6c9; --tinta:#0b1b3a;
+  --wa:#25D366; --wa-t:#0b3d1f;
+  --blanco:#ffffff;
+  --muted:#b8c6e6;
+  --slab:"Alfa Slab One","Rockwell",Georgia,serif;
+  --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gut:20px; --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:90px}
+body{background:var(--navy);color:var(--blanco);font:400 17px/1.5 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+ul{list-style:none}
+.ic{width:20px;height:20px;flex:none;fill:currentColor}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
+
+/* ---------- Botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border:1px solid transparent;border-radius:0;font:700 13px/1.1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
+.btn:active{transform:translateY(1px)}
+.btn-nav{background:var(--azul);border-color:var(--azul-l);color:#fff}
+.btn-nav:hover{background:#2f67f0}
+.btn-line{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}
+.btn-line:hover{background:rgba(255,255,255,.08)}
+.btn-wa{background:var(--wa);color:var(--wa-t)}
+.btn-wa:hover{background:#2fe173}
+.btn-dark{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+.btn-block{width:100%}
+.link-arrow{display:inline-flex;align-items:center;gap:10px;min-height:48px;font:700 13px/1.1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#fff;border-bottom:2px solid var(--rojo)}
+.link-arrow .ic{width:18px;height:18px;stroke:currentColor}
+.link-arrow:hover{color:var(--rojo)}
+.on-crema .link-arrow{color:var(--tinta)}
+.on-crema .link-arrow:hover{color:var(--rojo-d)}
+
+/* ---------- Tipografia de secciones ---------- */
+.eyebrow{font:700 12px/1.2 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--azul-l);margin-bottom:14px}
+.on-crema .eyebrow{color:var(--azul)}
+.h2{font:400 clamp(36px,10vw,64px)/1.02 var(--slab);letter-spacing:.005em;text-wrap:balance}
+.h2 .t2{display:block;color:var(--rojo)}
+.on-crema .h2 .t2{color:var(--rojo-d)}
+.lede{max-width:34em;color:var(--muted);font-size:17px}
+.on-crema .lede{color:#33415f}
+.sec{padding:54px 0}
+.on-crema{background:var(--crema);color:var(--tinta)}
+
+/* ---------- Header: toldo ---------- */
+.pe-head{position:sticky;top:0;z-index:60;background:var(--navy)}
+.pe-bar{display:flex;align-items:center;gap:18px;height:62px;padding:0 var(--gut);max-width:1440px;margin:0 auto}
+.pe-logo{display:flex;flex-direction:column;justify-content:center;min-height:44px;line-height:1;text-decoration:none;margin-right:auto}
+.pe-logo-s{font:700 10px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--rojo);margin-bottom:4px}
+.pe-logo-b{font:400 22px/1 var(--slab);color:#fff;letter-spacing:.01em}
+.pe-nav,.pe-bar-cta{display:none}
+.pe-menu-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 4px 0 12px;background:none;border:0;cursor:pointer;font:700 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#fff}
+.pe-burger{position:relative;width:24px;height:14px;display:block}
+.pe-burger i{position:absolute;left:0;right:0;height:2px;background:#fff;transition:transform .25s,top .25s}
+.pe-burger i:first-child{top:2px}
+.pe-burger i:last-child{top:10px}
+.pe-menu-open .pe-burger i:first-child{top:6px;transform:rotate(45deg)}
+.pe-menu-open .pe-burger i:last-child{top:6px;transform:rotate(-45deg)}
+/* el toldo: tiras rojas y blancas con festón */
+.pe-awning{height:20px;margin-top:-1px;
+  background:
+   radial-gradient(circle at 12px 0,var(--rojo-d) 11.5px,transparent 12px) 0 8px/48px 12px repeat-x,
+   radial-gradient(circle at 36px 0,#fff 11.5px,transparent 12px) 0 8px/48px 12px repeat-x,
+   linear-gradient(90deg,var(--rojo-d) 0 24px,#fff 24px 48px) 0 0/48px 8px repeat-x}
+
+.pe-menu{position:fixed;inset:0;z-index:50;background:var(--navy2);padding:98px var(--gut) 28px;display:flex;flex-direction:column;justify-content:space-between;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.pe-menu-open .pe-menu{opacity:1;visibility:visible}
+.pe-menu-open{overflow:hidden}
+.pe-menu-nav{display:flex;flex-direction:column}
+.pe-menu-nav a{font:400 32px/1.1 var(--slab);text-decoration:none;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.12);min-height:56px;display:flex;align-items:center;transform:translateY(8px);opacity:0;transition:opacity .3s,transform .3s}
+.pe-menu-open .pe-menu-nav a{opacity:1;transform:none}
+.pe-menu-nav a:nth-child(2){transition-delay:.04s}.pe-menu-nav a:nth-child(3){transition-delay:.08s}.pe-menu-nav a:nth-child(4){transition-delay:.12s}.pe-menu-nav a:nth-child(5){transition-delay:.16s}.pe-menu-nav a:nth-child(6){transition-delay:.2s}
+.pe-menu-foot{display:grid;gap:10px}
+
+/* ---------- Flotante WhatsApp ---------- */
+.pe-fab{position:fixed;right:16px;bottom:16px;z-index:70;width:58px;height:58px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--wa);color:var(--wa-t);box-shadow:0 6px 20px rgba(0,0,0,.4);transition:transform .25s,opacity .25s}
+.pe-fab svg{width:32px;height:32px;fill:currentColor}
+.pe-wa-off .pe-fab,.pe-menu-open .pe-fab{opacity:0;transform:scale(.8);pointer-events:none}
+
+/* ---------- Reveal ---------- */
+[data-reveal]{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv [data-reveal]:not(.in){opacity:0;transform:translateY(18px)}
+@media (prefers-reduced-motion:reduce){[data-reveal]{transition:none}}
+
+/* ---------- Escritorio / tableta ---------- */
+@media (min-width:720px){
+  :root{--gut:32px}
+  .sec{padding:88px 0}
+  .pe-bar{height:68px}
+  .pe-logo-b{font-size:26px}
+}
+@media (min-width:980px){
+  :root{--gut:40px}
+  .pe-nav{display:flex;gap:6px}
+  .pe-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font:700 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
+  .pe-nav a:hover{color:#fff}
+  .pe-bar-cta{display:inline-flex}
+  .pe-menu-btn{display:none}
+  .pe-logo{margin-right:24px}
+  .pe-nav{margin-right:auto}
+  .sec{padding:104px 0}
+  .lede{font-size:19px}
+}
