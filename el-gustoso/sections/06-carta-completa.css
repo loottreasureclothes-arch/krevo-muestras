@@ -1,0 +1,14 @@
+.cmp{background:var(--bg)}
+.cmp-g{margin-top:30px;border-top:2px solid var(--coral)}
+.g{border-bottom:1px solid rgba(214,74,78,.4)}
+.gh{width:100%;background:none;border:0;text-align:left;display:flex;align-items:center;justify-content:space-between;min-height:62px;cursor:pointer;font:400 22px/1.1 var(--disp);text-transform:uppercase}
+.gh::after{content:"+";font:400 28px/1 var(--disp);color:var(--coral);transition:transform .25s}
+.g.is-open .gh::after{transform:rotate(45deg)}
+.g ul{list-style:none;padding:2px 0 18px}
+.g li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px dotted rgba(244,236,230,.22)}
+.g li b{display:block;font:700 15px/1.25 var(--body)}
+.g li small{display:block;font-size:12.5px;line-height:1.35;color:var(--mut);margin-top:2px}
+.g li>span{font:800 15px/1.25 var(--body);color:var(--teal);white-space:nowrap;text-align:right}
+html:not(.js) .g ul[hidden]{display:block}
+.cmp-n{margin-top:22px;color:var(--mut);font-size:13px;max-width:46ch}
+@media (min-width:820px){.cmp-g{columns:2;column-gap:56px}.g{break-inside:avoid}}

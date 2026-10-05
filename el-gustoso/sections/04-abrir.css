@@ -1,0 +1,15 @@
+.abrir{position:relative;background:var(--bg);padding-bottom:56px}
+.abrir-ph{position:relative;height:400px;overflow:hidden}
+.abrir-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.abrir-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,16,15,.15),rgba(21,16,15,.2) 40%,rgba(21,16,15,.92))}
+.js:not(.rm) .abrir-ph[data-reveal]{opacity:1;transform:none;clip-path:inset(34% 0 34% 0);transition:clip-path .9s cubic-bezier(.2,.7,.2,1)}
+.js:not(.rm) .abrir-ph[data-reveal].is-in{clip-path:inset(0)}
+.abrir-tx{position:relative;margin-top:-170px;padding:0 var(--g)}
+.abrir-tx p{font:400 clamp(44px,13.5vw,96px)/.96 var(--disp);text-transform:uppercase;text-shadow:0 4px 28px rgba(0,0,0,.7)}
+.js:not(.rm) .abrir-tx[data-reveal]{opacity:1;transform:none}
+.js:not(.rm) .abrir-tx p{opacity:0;transform:translateX(-26px);transition:opacity .6s,transform .6s}
+.js:not(.rm) .abrir-tx.is-in p{opacity:1;transform:none}
+.js:not(.rm) .abrir-tx.is-in .w2{transition-delay:.18s}.js:not(.rm) .abrir-tx.is-in .w3{transition-delay:.36s}
+.abrir-ft{padding:22px var(--g) 0}
+.abrir-ft p{max-width:30ch;color:var(--mut)}
+@media (min-width:820px){.abrir-ph{height:680px}.abrir-tx{margin-top:-300px}}

@@ -1,0 +1,1 @@
+Fotos propias de Google Maps (05,15,12,10,09,02,20,13,22,23) y de su menú digital (hojas 38,44,66,71,79). Webp 480/960/1600 con la talla real máxima. Logo recortado de menu/logo.jpg. Sin fotos con personas.

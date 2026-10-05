@@ -1,0 +1,36 @@
+<section class="sec bolsa" id="bolsa">
+<div class="wrap">
+  <p class="eyebrow" data-reveal>Tu bolsa, tu salsa</p>
+  <h2 data-reveal>Arma tu <em>bolsa.</em></h2>
+  <div class="bl">
+   <div class="bl-stage cut" data-reveal>
+    <svg id="bagsvg" viewBox="0 0 300 330" role="img" aria-label="Tu bolsa armada">
+      <defs>
+        <path id="shr" d="M3 22C4 8 20 1 33 7c8 4 9 14 3 18-4 3-8 1-7-3 2 1 5-1 4-5-2-5-11-7-18-2-4 3-5 9-10 7z"/>
+        <clipPath id="bagclip"><path d="M52 64h196l12 238c0 12-8 20-20 20H60c-12 0-20-8-20-20z"/></clipPath>
+      </defs>
+      <path d="M52 64h196l12 238c0 12-8 20-20 20H60c-12 0-20-8-20-20z" fill="rgba(255,255,255,.07)" stroke="rgba(244,236,230,.55)" stroke-width="2"/>
+      <g clip-path="url(#bagclip)"><g id="bag-items"></g></g>
+      <path d="M44 40h212v24H44z" fill="#D64A4E"/><path d="M44 40h212" stroke="#15100f" stroke-width="2" stroke-dasharray="2 4"/>
+      <path d="M44 52h212" stroke="#15100f" stroke-width="1" stroke-dasharray="2 4" opacity=".5"/>
+      <path d="M58 70l10 230" stroke="rgba(255,255,255,.28)" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+    <div class="heat" aria-live="polite"><span>Picante</span><i></i><i></i><i></i><b id="heat-l">Elige tu salsa</b></div>
+   </div>
+   <div class="bl-ctl">
+    <fieldset class="st" data-reveal><legend><span>1</span> Elige tu salsa</legend><div class="opt2"><label class="op cut"><input type="radio" name="sal" value="cajun" data-heat="0"><span><b>Cajún</b><small>Mezcla de especias, clásico de Louisiana. Sin picante.</small></span></label><label class="op cut"><input type="radio" name="sal" value="pimienta" data-heat="0"><span><b>Pimienta limón</b><small>Pimientas y un toque de limón. Sin picante.</small></span></label><label class="op cut"><input type="radio" name="sal" value="gustoso" data-heat="2"><span><b>Gustoso</b><small>Nuestra especialidad: México y Luisiana en una salsa picante.</small></span></label><label class="op cut"><input type="radio" name="sal" value="habanero" data-heat="3"><span><b>Habanero</b><small>Para los amantes del picante.</small></span></label></div></fieldset>
+    <fieldset class="st" data-reveal><legend><span>2</span> Elige porción</legend>
+      <div class="seg"><label><input type="radio" name="tipo" value="camarones" checked><span>Solo camarones</span></label><label><input type="radio" name="tipo" value="mix"><span>Mix mejillón y camarón</span></label></div>
+      <div class="opt3"><label class="op cut"><input type="radio" name="tam" value="chica" data-price="229"><span><b>Chica</b><small>220 g</small><em>$229</em></span></label><label class="op cut"><input type="radio" name="tam" value="grande" data-price="379"><span><b>Grande</b><small>440 g</small><em>$379</em></span></label><label class="op cut"><input type="radio" name="tam" value="kilo" data-price="669"><span><b>Kilo</b><small>1 kg</small><em>$669</em></span></label></div></fieldset>
+    <fieldset class="st" data-reveal><legend><span>3</span> Complementos <small>opcional</small></legend><div class="chips"><label class="chip"><input type="checkbox" name="comp" value="papitas" data-name="Papitas cambray" data-price="59"><span>Papitas cambray <em>+$59</em></span></label><label class="chip"><input type="checkbox" name="comp" value="salchichas" data-name="Salchichas" data-price="59"><span>Salchichas <em>+$59</em></span></label><label class="chip"><input type="checkbox" name="comp" value="elotitos" data-name="Elotitos" data-price="79"><span>Elotitos <em>+$79</em></span></label><label class="chip"><input type="checkbox" name="comp" value="panecillos" data-name="Panecillos" data-price="59"><span>Panecillos <em>+$59</em></span></label><label class="chip"><input type="checkbox" name="comp" value="arroz" data-name="Arroz blanco" data-price="49"><span>Arroz blanco <em>+$49</em></span></label><label class="chip"><input type="checkbox" name="comp" value="brocoli" data-name="Brócoli" data-price="59"><span>Brócoli <em>+$59</em></span></label><label class="chip"><input type="checkbox" name="comp" value="bastones" data-name="Bastones" data-price="79"><span>Bastones <em>+$79</em></span></label></div></fieldset>
+    <div class="ord cut" data-reveal>
+      <div class="ord-h"><h3>Tu pedido</h3><div class="qty"><button type="button" id="q-" aria-label="Menos bolsas">−</button><b id="q">1</b><button type="button" id="q+" aria-label="Más bolsas">+</button><span>bolsas</span></div></div>
+      <ul id="ord-list"></ul>
+      <div class="ord-t"><span>Total</span><b id="ord-total">Elige arriba</b></div>
+      <a class="btn btn-wa" id="ord-wa" href="https://wa.me/524492005979?text=Hola%2C%20quiero%20pedir%20en%20El%20Gustoso." target="_blank" rel="noopener">Mandar mi pedido</a>
+      <button class="ord-clr" type="button" id="ord-clr">Vaciar pedido</button>
+    </div>
+   </div>
+  </div>
+</div>
+</section>

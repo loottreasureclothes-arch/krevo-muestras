@@ -1,0 +1,7 @@
+.gal{background:var(--bg2)}
+.gal-g{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:96px;gap:10px;margin-top:30px}
+.gal-g figure{overflow:hidden;background:#000}
+.gal-g img{width:100%;height:100%;object-fit:cover}
+.gal-g figure{grid-row:span 2}
+.g1{grid-column:span 2}
+@media (min-width:820px){.gal-g{grid-template-columns:repeat(4,1fr);grid-auto-rows:210px}.g1{grid-column:span 2}}
