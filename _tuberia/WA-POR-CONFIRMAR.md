@@ -21,3 +21,4 @@ Estas páginas usan botones de Llamar. Si se confirma un WhatsApp publicado por 
 | cenaduria-alice | Cenaduría ALICE | 449 258 4516 | https://www.facebook.com/Cenaduria.Alice.Ags/ | no encontré |
 | monosanto | Monosanto | 449 835 3469 | https://www.facebook.com/monosantooficial/ | https://www.instagram.com/monosanto_oficial/ (no abierto) |
 | mariscos-la-morena | Mariscos La Morena | 449 913 7425 | https://www.facebook.com/profile.php?id=346021035485590 | no encontré |
+| palermo-ags | Palermo (buffet de pizza) | 449 412 0866 | https://www.facebook.com/palermo.ags/ | https://www.instagram.com/palermoaguascalientes/ (no verificado) |
