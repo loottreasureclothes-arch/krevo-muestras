@@ -43,3 +43,5 @@
 
 ## WhatsApp (REGLA 5 oct 2026)
 De 49 muestras mandadas, solo 8 números tenían WhatsApp: el teléfono de Google Maps casi siempre es FIJO. El investigador busca un WhatsApp PUBLICADO por el negocio (botón o link wa.me / api.whatsapp en Facebook, Instagram, Linktree, Google Maps 'Chat', menú digital, flyer) y anota la fuente. En la lista final cada negocio va marcado: 'WA confirmado (fuente)' o 'solo teléfono, sin WhatsApp'. Sin WhatsApp confirmado, la página usa botones de Llamar, nunca un wa.me a un fijo.
+
+**FILTRO DE ENTRADA (Emanuel, 5 oct 2026):** las muestras se mandan por WhatsApp; si el negocio no tiene WhatsApp no hay cómo contactarlo y la página se desperdicia. NO se hace página a negocios sin WhatsApp publicado. El investigador lo busca PRIMERO (5 minutos); si no hay WhatsApp publicado, veredicto NO con razón 'sin WhatsApp' y se pasa al siguiente.
