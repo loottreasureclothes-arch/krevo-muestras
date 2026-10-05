@@ -1,0 +1,92 @@
+@font-face{font-family:"Syne";font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/syne.woff2) format("woff2")}
+@font-face{font-family:"Albert Sans";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/albert-sans.woff2) format("woff2")}
+:root{
+  --ink:#1b1210;--ink2:#261a17;--ink3:#322320;--wine:#5c1f1f;--wine2:#7a2a28;
+  --yel:#f2bb2c;--yel2:#e2c588;--cream:#f3e8d0;--paper:#efe3c8;--paper-ink:#2a1c17;
+  --txt:#f4ead6;--mut:#cdbfa6;--line:rgba(243,232,208,.22);
+  --f1:"Syne","Albert Sans",system-ui,sans-serif;--f2:"Albert Sans",system-ui,sans-serif;
+  --g:20px;--hd:60px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--hd)}
+body{margin:0;background:var(--ink);color:var(--txt);font:400 17px/1.5 var(--f2);overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3,p,ul,figure,blockquote{margin:0}
+ul{padding:0;list-style:none}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 var(--g)}
+.eyebrow{margin-bottom:18px;font:700 12px/1.3 var(--f2);letter-spacing:.2em;text-transform:uppercase;color:var(--yel)}
+.h2{font:800 clamp(34px,10vw,66px)/1.02 var(--f1);letter-spacing:-.025em;color:var(--txt)}
+.h2 .t2,.t2{color:var(--yel);display:block}
+.lede{font-size:18px;line-height:1.45;color:var(--mut);max-width:34ch}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* botones: rectangulares, mayusculas espaciadas */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:14px 22px;border:1.5px solid var(--yel);background:transparent;color:var(--yel);font:700 13px/1.1 var(--f2);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,transform .2s;border-radius:0}
+.btn-y{background:var(--yel);color:var(--ink)}
+.btn:hover,.btn:focus-visible{background:var(--cream);border-color:var(--cream);color:var(--ink)}
+.btn:active{transform:translateY(1px)}
+.btn svg{flex:none}
+.lnk{display:inline-flex;align-items:center;gap:10px;font:700 13px/1.2 var(--f2);letter-spacing:.14em;text-transform:uppercase;color:var(--yel);text-decoration:none;padding:12px 0;border-bottom:1.5px solid var(--yel);min-height:44px}
+.lnk::after{content:"\2192";font-size:16px;transition:transform .2s}
+.lnk:hover::after{transform:translateX(4px)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.sec-end{margin-top:24px}
+@media (min-width:820px){.sec-end{margin-top:32px}}
+
+/* header propio: letrero negro con marco */
+.hd{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--hd);display:flex;align-items:center;gap:10px;padding:0 14px;background:rgba(27,18,16,.94);border-bottom:1px solid var(--line)}
+.hd-plaque{display:flex;flex-direction:column;align-items:center;margin-right:auto;padding:9px 12px 8px;text-decoration:none;color:var(--cream);outline:1px solid rgba(243,232,208,.7);outline-offset:-4px;background:#0f0908}
+.hd-name{font:800 17px/1 var(--f1);letter-spacing:.22em;padding-left:.22em}
+.hd-sub{font:600 7.5px/1.4 var(--f2);letter-spacing:.3em;padding-left:.3em}
+.hd-call{display:none;font:700 12px/1 var(--f2);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--yel);padding:14px 6px;min-height:44px}
+.hd-btn{display:inline-flex;align-items:center;gap:10px;height:42px;padding:0 14px;border:1.5px solid var(--yel);background:transparent;color:var(--yel);font:700 12px/1 var(--f2);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border-radius:0}
+.hd-btn-i{width:14px;height:10px;border-top:2px solid currentColor;border-bottom:2px solid currentColor;position:relative}
+.hd-btn-i::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:currentColor}
+.menu{position:fixed;inset:var(--hd) 0 0 0;z-index:49;background:var(--ink);padding:28px var(--g);display:flex;flex-direction:column;gap:2px;overflow:auto}
+.menu[hidden]{display:none}
+.menu a{font:800 clamp(28px,8vw,40px)/1.15 var(--f1);letter-spacing:-.02em;text-decoration:none;padding:12px 0;border-bottom:1px solid var(--line);color:var(--txt)}
+.menu a:hover{color:var(--yel)}
+.menu .menu-call{margin-top:22px;border:1.5px solid var(--yel);background:var(--yel);color:var(--ink);font:700 14px/1 var(--f2);letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:18px}
+body.menu-open{overflow:hidden}
+
+/* flotante de llamar: color de marca, no verde */
+.fab{position:fixed;right:14px;bottom:14px;z-index:40;display:inline-flex;align-items:center;gap:9px;height:52px;padding:0 18px;background:var(--yel);color:var(--ink);text-decoration:none;font:700 12px/1 var(--f2);letter-spacing:.16em;text-transform:uppercase;box-shadow:0 6px 20px rgba(0,0,0,.5);outline:1px solid var(--ink);outline-offset:-4px;transition:opacity .25s,transform .25s}
+.fab.is-off{opacity:0;transform:translateY(12px);pointer-events:none}
+
+/* marco de letrero para fotos */
+.frame{position:relative}
+.frame::after{content:"";position:absolute;inset:9px;border:1px solid rgba(243,232,208,.65);pointer-events:none}
+
+/* reveal: CSS base = estado final */
+@media (prefers-reduced-motion:no-preference){
+  html.rv [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  html.rv [data-reveal].is-in{opacity:1;transform:none}
+}
+
+/* pie */
+.foot{background:#0f0908;border-top:1px solid var(--line);padding:44px 0 96px}
+.foot-in{display:grid;gap:26px}
+.foot-name{font:800 30px/1 var(--f1);letter-spacing:.2em;color:var(--cream)}
+.foot-tag{font:600 11px/1.4 var(--f2);letter-spacing:.3em;color:var(--yel);margin-top:8px}
+.foot h3{font:700 12px/1.2 var(--f2);letter-spacing:.2em;text-transform:uppercase;color:var(--yel);margin-bottom:12px}
+.foot p,.foot li{color:var(--mut);font-size:16px}
+.foot a{text-decoration:none;color:var(--cream);display:inline-block;padding:10px 0;min-height:44px}
+.foot-soc a{padding:0}
+.foot a:hover{color:var(--yel)}
+.foot-soc{display:flex;gap:12px;margin-top:6px}
+.foot-soc a{width:44px;height:44px;display:grid;place-items:center;border:1.5px solid var(--yel);color:var(--yel)}
+.foot-soc a:hover{background:var(--yel);color:var(--ink)}
+.foot-fine{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--mut)}
+
+@media (min-width:820px){
+  :root{--g:40px;--hd:68px}
+  body{font-size:18px}
+  .hd{padding:0 32px;gap:22px}
+  .hd-name{font-size:20px}
+  .hd-sub{font-size:8.5px}
+  .hd-call{display:block}
+  .foot{padding-bottom:90px}
+  .foot-in{grid-template-columns:1.2fr 1fr 1fr;gap:48px}
+}
+@media (min-width:1200px){.fab{right:28px;bottom:26px}}

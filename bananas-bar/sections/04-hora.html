@@ -1,0 +1,48 @@
+<section class="hora" id="hora">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>La hora de Bananas</p>
+    <h2 class="h2" data-reveal>¿A qué hora<span class="t2">se te antoja?</span></h2>
+    <p class="lede" data-reveal>Abiertos de 9:00 a 23:00, martes a domingo. Mueve la hora, mira el lugar y arma tu pedido.</p>
+
+    <div class="hora-grid">
+      <div class="hora-stage frame" data-reveal>
+        <img class="hs" data-m="0" src="img/fachada-960.webp" srcset="img/fachada-480.webp 480w, img/fachada-960.webp 960w" sizes="(min-width:820px) 40vw, 90vw" width="960" height="1280" alt="Fachada amarilla de Banana's con la puerta abierta de día">
+        <img class="hs is-on" data-m="1" src="img/arbol-960.webp" srcset="img/arbol-480.webp 480w, img/arbol-960.webp 960w" sizes="(min-width:820px) 40vw, 90vw" width="960" height="1280" alt="Salón de Banana's con árbol metálico en la pared y luz del tragaluz">
+        <img class="hs" data-m="2" src="img/vino-960.webp" srcset="img/vino-480.webp 480w, img/vino-960.webp 960w" sizes="(min-width:820px) 40vw, 90vw" width="960" height="1280" alt="Rincón del salón con mesas y paredes en vino" loading="lazy">
+        <img class="hs" data-m="3" src="img/puerta-960.webp" srcset="img/puerta-480.webp 480w, img/puerta-960.webp 960w" sizes="(min-width:820px) 40vw, 90vw" width="960" height="1707" alt="Puerta de entrada de Banana's con su letrero negro" loading="lazy">
+        <div class="hs-clock"><b id="hClock">13:00</b><span id="hName">Mediodía</span></div>
+      </div>
+
+      <div class="hora-ctl" data-reveal>
+        <label class="hora-lbl" for="hRange">¿A qué hora vienes?</label>
+        <input id="hRange" class="hora-range" type="range" min="9" max="23" step="1" value="13" aria-describedby="hDesc">
+        <div class="hora-scale" aria-hidden="true"><span>9:00</span><span>23:00</span></div>
+        <div class="hora-seg" role="group" aria-label="Momentos del día">
+          <button type="button" data-h="9">Abrimos</button>
+          <button type="button" data-h="13">Mediodía</button>
+          <button type="button" data-h="18">Tarde</button>
+          <button type="button" data-h="21">Noche</button>
+        </div>
+        <p class="hora-desc" id="hDesc"></p>
+        <p class="hora-se">Lo que más piden</p>
+        <div class="hora-chips" id="hChips"></div>
+        <blockquote class="hora-q" id="hQ"><p id="hQt"></p><cite id="hQc"></cite></blockquote>
+      </div>
+    </div>
+
+    <div class="tk" id="pedido" data-reveal>
+      <div class="tk-hd"><h3>Tu pedido</h3><span class="tk-n" id="tkN">Elige arriba</span></div>
+      <ul class="tk-list" id="tkList"></ul>
+      <p class="tk-empty" id="tkEmpty">Elige arriba.</p>
+      <div class="tk-say" id="tkSay" hidden>
+        <p class="tk-say-l">Dile esto al contestar</p>
+        <p class="tk-say-t" id="tkText"></p>
+      </div>
+      <div class="cta">
+        <a class="btn btn-y" href="tel:+524658515039">Llamar y dictar</a>
+        <button class="btn" type="button" id="tkCopy" disabled>Copiar pedido</button>
+      </div>
+      <p class="tk-fine" id="tkFine">Te dicen el precio al contestar. Sin cargo por armar tu lista.</p>
+    </div>
+  </div>
+</section>
