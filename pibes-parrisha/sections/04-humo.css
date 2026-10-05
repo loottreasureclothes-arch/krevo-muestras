@@ -1,0 +1,32 @@
+.humo{background:var(--car);color:var(--cr2);position:relative}
+.humo-ph{position:relative;height:250px;overflow:hidden}
+.humo-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.humo-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,11,15,.05) 40%,rgba(172,28,57,.95) 100%)}
+.humo-ph figcaption{position:absolute;left:var(--g);bottom:16px;z-index:2;font:700 clamp(30px,9vw,46px)/1 var(--disp);color:var(--cr2);text-shadow:0 2px 14px rgba(27,11,15,.55)}
+.humo-in{padding-top:28px;padding-bottom:54px}
+.humo .eyebrow{color:var(--cr2)}
+.humo .tt .t2{color:var(--ink)}
+.dato{margin-top:20px;display:flex;align-items:baseline;gap:14px;line-height:.8}
+.dato b{font:700 clamp(150px,52vw,260px)/.78 var(--disp);color:var(--ink);letter-spacing:-.04em}
+.dato span{font:700 26px/1 var(--disp);text-transform:lowercase}
+.dato-t{font:500 18px/1.35 var(--body);max-width:30ch;margin-top:12px}
+.hs{margin-top:24px;display:grid;gap:16px}
+.hs li{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:end}
+.hs span{font:700 16px/1.1 var(--disp)}
+.hs b{font:700 18px/1 var(--disp)}
+.hs i{grid-column:1/-1;height:12px;background:rgba(27,11,15,.35);display:block;overflow:hidden}
+.hs u{display:block;height:100%;width:calc(var(--h)/8*100%);background:var(--cr2);transform-origin:0 50%;text-decoration:none}
+@media (prefers-reduced-motion:no-preference){
+  .js .hs:not(.on) u{transform:scaleX(0)}
+  .js .hs u{transition:transform .9s cubic-bezier(.3,.7,.2,1)}
+  .js .hs li:nth-child(2) u{transition-delay:.15s}
+  .js .hs li:nth-child(3) u{transition-delay:.3s}
+}
+.humo .btn--cr{color:var(--vino2)}
+.humo .lnk{color:var(--cr2)}
+@media (min-width:760px){
+  .humo{display:grid;grid-template-columns:1fr 1fr;min-height:640px;align-items:stretch}
+  .humo-ph{height:auto;min-height:100%}
+  .humo-ph::after{background:linear-gradient(90deg,rgba(27,11,15,0) 60%,var(--car) 100%)}
+  .humo-in{padding:80px var(--g) 80px 40px;align-self:center;max-width:620px}
+}

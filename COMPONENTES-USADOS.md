@@ -36,3 +36,4 @@
 | birrieria-ricky | La mesa de Ricky (plato con 4 fotos, cuántos y tazones de cebolla, cilantro, limón, salsa y tortillas que arman el papel del pedido, copiar o Llamar) | 5 oct 2026 |
 | towate-brunch | La baraja de antojos (fotos reales que se deslizan y arman "Tu mesa" con precio o "Pregunta el precio"; copia el pedido o llama) | 5 oct 2026 |
 | cenaduria-el-sopecito | El plato en la mesa (platillos con foto y sello de precio que caen en un mantel de hule, cuenta y copiar pedido o Llamar) | 5 oct 2026 |
+| pibes-parrisha | La parrilla de la mesa (ahumados, parrishadas y postres de la carta caen como piezas a una parrilla con brasa y humo, con personas y total; copiar pedido o Llamar) | 5 oct 2026 |

@@ -1,0 +1,78 @@
+.pa{background:var(--ink);padding:56px 0 60px;position:relative}
+.pa .lead{max-width:36ch}
+.pa-pick{margin-top:22px;display:grid;gap:16px}
+.pk-g h3{font:700 11.5px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--brasa);margin-bottom:10px;display:flex;justify-content:space-between;gap:10px}
+.pk-g h3 em{font-style:normal;color:rgba(223,202,184,.6)}
+.pk-l{display:grid;gap:6px}
+.pk{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 12px;text-align:left;min-height:50px;padding:8px 12px;background:var(--ink3);border:1.5px solid rgba(223,202,184,.2);transition:border-color .2s,background .2s,transform .15s}
+.pk:hover{border-color:var(--brasa)}
+.pk:active{transform:scale(.985)}
+.pk b{font:700 18px/1.15 var(--disp)}
+.pk small{grid-column:1;font:500 12.5px/1.2 var(--body);color:rgba(223,202,184,.7)}
+.pk .pp{grid-row:1/3;grid-column:2;display:flex;align-items:center;gap:10px;font:700 18px/1 var(--disp);color:var(--brasa)}
+.pk .pp .ic{width:22px;height:22px;background:var(--car);color:var(--cr2);padding:3px}
+.pk.on{border-color:var(--brasa);background:#3d1822}
+.pk .q{font:700 12px/1 var(--body);background:var(--brasa);color:var(--ink);min-width:22px;height:22px;display:none;place-items:center;border-radius:11px;padding:0 6px}
+.pk.on .q{display:grid}
+
+.pa-fire{margin-top:22px;display:grid;gap:16px}
+.grate{position:relative;min-height:230px;border:2px solid #4a2a2f;background:
+  linear-gradient(180deg,#120608 0%,#1b0b0f 55%,#2b0d10 100%);padding:18px 14px 74px;overflow:hidden}
+.grate .bars{position:absolute;left:0;right:0;bottom:0;height:70px;background:
+  repeating-linear-gradient(90deg,transparent 0 11px,#b9a79a 11px 14px);opacity:.34;pointer-events:none;
+  -webkit-mask:linear-gradient(180deg,transparent,#000 30%);mask:linear-gradient(180deg,transparent,#000 30%)}
+.embers{position:absolute;left:-10%;right:-10%;bottom:-40px;height:150px;background:
+  radial-gradient(60% 100% at 50% 100%,rgba(255,110,40,.75),rgba(172,28,57,.55) 45%,transparent 72%);animation:brasa 3.2s ease-in-out infinite alternate;pointer-events:none}
+.grate.hot .embers{opacity:1;animation-duration:1.8s}
+@keyframes brasa{from{opacity:.55;transform:scaleX(.96)}to{opacity:1;transform:scaleX(1.04)}}
+.smoke{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.smoke i{position:absolute;bottom:60px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(223,202,184,.28),transparent 70%);opacity:0}
+.smoke i:nth-child(1){left:12%}.smoke i:nth-child(2){left:36%;animation-delay:.9s!important}.smoke i:nth-child(3){left:60%;animation-delay:1.7s!important}.smoke i:nth-child(4){left:82%;animation-delay:.4s!important}
+.grate.hot .smoke i{animation:humo 3.6s ease-out infinite}
+@keyframes humo{0%{opacity:0;transform:translateY(0) scale(.6)}20%{opacity:.9}100%{opacity:0;transform:translateY(-170px) scale(1.6)}}
+.cold{position:absolute;inset:0 0 50px;display:grid;place-items:center;text-align:center;padding:0 24px;font:600 20px/1.25 var(--disp);color:rgba(223,202,184,.55)}
+.pieces{position:relative;display:grid;gap:10px;z-index:2}
+.pc{position:relative;display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;padding:12px 12px 12px 14px;color:var(--cr2);border:1px solid rgba(0,0,0,.35);box-shadow:0 8px 14px rgba(0,0,0,.45);animation:cae .5s cubic-bezier(.2,1.2,.4,1) both;
+  background:
+    repeating-linear-gradient(115deg,rgba(0,0,0,.28) 0 5px,transparent 5px 24px),
+    linear-gradient(135deg,#8f3326,#5e1d17)}
+.pc--pa{background:
+    repeating-linear-gradient(115deg,rgba(0,0,0,.28) 0 5px,transparent 5px 24px),
+    linear-gradient(135deg,#a63f2a,#6b2118)}
+.pc--po{background:
+    repeating-linear-gradient(115deg,rgba(74,11,22,.12) 0 5px,transparent 5px 24px),
+    linear-gradient(135deg,#e6d2bd,#cdb49c);color:var(--vino2)}
+@keyframes cae{from{opacity:0;transform:translateY(-34px) rotate(-2deg)}to{opacity:1;transform:none}}
+.pc.out{animation:sale .3s ease-in both}
+@keyframes sale{to{opacity:0;transform:translateY(-16px) scale(.96)}}
+.pc h4{font:700 19px/1.1 var(--disp)}
+.pc p{grid-column:1;font:500 12px/1.3 var(--body);opacity:.85}
+.pc .qty{grid-row:1/3;grid-column:2;display:flex;align-items:center;gap:2px;background:rgba(0,0,0,.35);padding:2px}
+.pc--po .qty{background:rgba(74,11,22,.15)}
+.pc .qty button{width:34px;height:34px;display:grid;place-items:center}
+.pc .qty .ic{width:16px;height:16px}
+.pc .qty b{min-width:24px;text-align:center;font:700 16px/1 var(--body)}
+.pc .sub{grid-column:1;font:700 14px/1 var(--disp);margin-top:2px}
+
+.ticket{background:var(--cr2);color:var(--vino2);padding:20px 18px 18px;position:relative;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),96% 100%,92% calc(100% - 10px),88% 100%,84% calc(100% - 10px),80% 100%,76% calc(100% - 10px),72% 100%,68% calc(100% - 10px),64% 100%,60% calc(100% - 10px),56% 100%,52% calc(100% - 10px),48% 100%,44% calc(100% - 10px),40% 100%,36% calc(100% - 10px),32% 100%,28% calc(100% - 10px),24% 100%,20% calc(100% - 10px),16% 100%,12% calc(100% - 10px),8% 100%,4% calc(100% - 10px),0 100%);padding-bottom:30px}
+.ticket dl>div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(74,11,22,.4)}
+.ticket dt{font:700 11px/1 var(--body);letter-spacing:.18em;text-transform:uppercase}
+.ticket dd{font:700 18px/1.1 var(--disp)}
+.ticket .tot dd{font-size:32px;color:var(--car)}
+.tk-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.tk-btns .btn{flex:1 1 150px}
+.ticket .btn--line{color:var(--vino2)}
+.tk-st{min-height:20px;margin-top:10px;font:600 13.5px/1.3 var(--body);color:var(--car)}
+.tk-clear{margin-top:2px;font:700 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;border-bottom:1.5px solid currentColor;padding:6px 0 4px}
+.tk-nota{margin-top:12px;font-size:13px;line-height:1.35;color:#5a1420}
+@media (min-width:760px){
+  .pa{padding:100px 0 110px}
+  .pa-pick{grid-template-columns:1.1fr 1.1fr .9fr;gap:30px;margin-top:44px;align-items:start}
+  .pa-fire{grid-template-columns:1.5fr 1fr;gap:30px;margin-top:44px;align-items:start}
+  .grate{min-height:380px;padding:22px 20px 80px}
+  .pieces{grid-template-columns:1fr 1fr}
+  .pc--pa{grid-column:1/-1}
+}
+.pc p:empty{display:none}
+.tk-btns .btn{letter-spacing:.12em;white-space:nowrap;padding:0 14px}
