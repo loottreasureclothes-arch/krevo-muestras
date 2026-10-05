@@ -40,3 +40,4 @@
 | vuelo76 | Pase a la mesa (rejilla de metal con canto turquesa donde aterrizan los platos con foto bajo un pase de abordar Vuelo 76 / Puerta 107; boleto troquelado que se copia o Llamar) | 5 oct 2026 |
 | cenaduria-alice | La lotería de la cena (tablero 3x3 de platos con frijoles y boleta Tu cena; ¡Lotería! al completar línea; Llamar o copiar) | 5 oct 2026 |
 | monosanto | El vaso de cobre (la cuenta de la mesa: + en la carta llena un vaso de cobre con brasa, total y por persona; copiar pedido o Llamar) | 5 oct 2026 |
+| oaxakita | La tlayuda a tu modo (plato que gira con chapulines +$25 que llena un papel de estraza y se dicta por teléfono) | 5 oct 2026 |
