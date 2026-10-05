@@ -40,8 +40,14 @@
   $("#llv-copy").addEventListener("click",function(){
     var t="Hola, quiero apartar en Hotel Argentina. "+resumen()+" Tarifa: pregunto el precio.";
     function done(m){ok.textContent=m;setTimeout(function(){ok.textContent=""},3500)}
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done("Resumen copiado. Léelo al llamar al 449 735 4464.")},function(){fb()});}else fb();
-    function fb(){var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");done("Resumen copiado. Léelo al llamar al 449 735 4464.")}catch(e){done("Dícteselo al recepcionista: "+t)}document.body.removeChild(ta);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done("Resumen copiado. Pégalo en tu mensaje.")},function(){fb()});}else fb();
+    function fb(){var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");done("Resumen copiado. Pégalo en tu mensaje.")}catch(e){done("Dícteselo al recepcionista: "+t)}document.body.removeChild(ta);}
   });
+  var wl=document.getElementById("llv-wa");
+  function wam(){
+    var t=st.fecha?"Hola, quiero reservar en Hotel Argentina. "+resumen()+" ¿Cuál es la tarifa?":"Hola, quiero reservar una habitación en Hotel Argentina. ¿Qué fechas tienen disponibles?";
+    return "https://wa.me/524495237440?text="+encodeURIComponent(t);
+  }
+  var _p=paint; paint=function(){_p();if(wl)wl.href=wam()};
   paint();
 })();

@@ -9,7 +9,7 @@
     setTimeout(function(){Array.prototype.forEach.call(els,function(el){el.classList.add("is-in")})},1600);
   }
   /* flotante de llamada: se esconde donde ya hay botones de llamar grandes */
-  var fab=document.querySelector(".call-fab");
+  var fab=document.querySelector(".wa-fab");
   var zones=document.querySelectorAll("#hero-btns,#visitanos,#cierre,.pie");
   if(fab&&"IntersectionObserver" in window){
     var vis={};

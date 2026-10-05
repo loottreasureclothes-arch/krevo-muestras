@@ -25,7 +25,7 @@ a{color:inherit}
 /* botones: rectangulares, finos, mayusculas espaciadas */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;font:700 14px/1 var(--f-b);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:2px solid var(--terra);background:var(--terra);color:var(--navy-dd);border-radius:0;cursor:pointer;transition:transform .2s,background .2s,color .2s}
 .btn:hover{transform:translateY(-2px)}
-.btn:focus-visible,.hd a:focus-visible,.call-fab:focus-visible,.chip:focus-visible,.step button:focus-visible{outline:3px solid var(--cream);outline-offset:3px}
+.btn:focus-visible,.hd a:focus-visible,.wa-fab:focus-visible,.chip:focus-visible,.step button:focus-visible{outline:3px solid var(--cream);outline-offset:3px}
 .btn-line{background:transparent;color:var(--cream);border-color:var(--cream)}
 .sec-cream .btn{background:var(--navy);border-color:var(--navy);color:var(--cream)}
 .sec-cream .btn-line{background:transparent;color:var(--navy)}
@@ -42,8 +42,8 @@ a{color:inherit}
 .hd-call{font:700 12px/1 var(--f-b);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border:2px solid var(--terra);color:var(--terra);padding:0 16px;min-height:42px;display:inline-flex;align-items:center}
 main{padding-top:62px}
 /* flotante de llamada */
-.call-fab{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:center;gap:8px;height:52px;padding:0 18px;background:var(--cream);color:var(--navy-dd);text-decoration:none;font:700 13px/1 var(--f-b);letter-spacing:.16em;text-transform:uppercase;border:2px solid var(--navy-dd);box-shadow:0 6px 18px rgba(0,0,0,.35);transition:opacity .25s,transform .25s}
-.call-fab.is-hidden{opacity:0;pointer-events:none;transform:translateY(12px)}
+.wa-fab{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:center;gap:8px;height:52px;padding:0 18px;background:var(--cream);color:var(--navy-dd);text-decoration:none;font:700 13px/1 var(--f-b);letter-spacing:.16em;text-transform:uppercase;border:2px solid var(--navy-dd);box-shadow:0 6px 18px rgba(0,0,0,.35);transition:opacity .25s,transform .25s}
+.wa-fab.is-hidden{opacity:0;pointer-events:none;transform:translateY(12px)}
 /* reveal: el CSS base es el estado final */
 html.rv [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 html.rv [data-reveal].is-in{opacity:1;transform:none}
@@ -60,3 +60,7 @@ html.rv [data-reveal].is-in{opacity:1;transform:none}
 }
 .hd-logo{min-height:44px}
 @media (min-width:900px){.hd-nav a{min-height:44px;display:inline-flex;align-items:center;padding:0}}
+
+/* whatsapp verde: solo wa.me y flotante */
+.btn.btn-wa,.sec-cream .btn.btn-wa,.sec-terra .btn.btn-wa{background:#25D366;border-color:#25D366;color:#0b3d1f}
+.wa-fab{background:#25D366;color:#0b3d1f;border-color:#0b3d1f}
