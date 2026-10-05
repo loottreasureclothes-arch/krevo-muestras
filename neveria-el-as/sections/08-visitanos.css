@@ -1,7 +1,7 @@
 .vis{padding:0 0 64px;background:var(--bg2)}
 .vis-foto img{width:100%;height:min(62vw,380px);object-fit:cover;object-position:30% 50%;clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),calc(100% - 28px) 100%,28px 100%,0 calc(100% - 28px))}
 .vis .eyebrow{margin-top:40px}
-.vis-tabs{display:flex;gap:8px;margin:24px 0 18px;overflow-x:auto;scrollbar-width:none}
+.vis-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 18px}
 .vt{flex:none;min-height:46px;padding:0 18px;border:0;background:rgba(255,255,255,.08);color:var(--cr);font:800 13px/1 var(--txt);letter-spacing:.14em;text-transform:uppercase;clip-path:var(--ch-s);transition:background .2s,color .2s}
 .vt.on{background:var(--yw);color:var(--ink)}
 .suc{display:grid;gap:22px}
@@ -29,3 +29,20 @@
 }
 @media (min-width:1100px){.vis-btns{flex-direction:row;flex-wrap:wrap}}
 .suc[hidden]{display:none}
+/* preguntas */
+.faq{margin-top:56px;max-width:720px}
+.faq-t{font:400 clamp(30px,8vw,44px)/1.08 var(--head);margin-bottom:18px}
+.faq-t em{display:block;font-style:normal;color:var(--yw)}
+.fq{border-top:2px solid rgba(121,202,212,.35)}
+.fq:last-of-type{border-bottom:2px solid rgba(121,202,212,.35)}
+.fq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:56px;padding:12px 0;font:700 18px/1.25 var(--txt)}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary i{flex:none;width:30px;height:30px;background:var(--yw);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);position:relative;transition:transform .25s}
+.fq summary i::before,.fq summary i::after{content:"";position:absolute;left:11px;top:14px;width:8px;height:2px;background:var(--ink)}
+.fq summary i::after{transform:rotate(90deg)}
+.fq[open] summary i{transform:rotate(45deg)}
+.fq[open] summary{color:var(--yw)}
+.fq p{padding:0 44px 16px 0;font-size:17px;line-height:1.45;opacity:.92}
+.faq-a{margin-top:22px}
+@media (min-width:760px){.faq{margin-top:80px}.fq summary{font-size:20px}.fq p{font-size:18px}}
+.fq:not([open])>p{display:none}

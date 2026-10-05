@@ -1,0 +1,24 @@
+.preguntas{background:var(--ink);display:grid;gap:34px}
+.pq-foto{position:relative;width:min(78vw,360px);margin:0 auto}
+.pq-arco{aspect-ratio:3/4.2;border-radius:999px 999px 0 0;overflow:hidden;background:var(--ink2);box-shadow:0 0 0 1px rgba(224,168,62,.5),0 0 0 8px var(--ink),0 0 0 9px rgba(224,168,62,.25)}
+.pq-arco img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.pq-sello{position:absolute;right:-10px;bottom:-18px;background:var(--brand);color:var(--ink);padding:12px 16px;display:grid;line-height:1.05;box-shadow:0 10px 24px rgba(0,0,0,.45);transform:rotate(-3deg)}
+.pq-sello b{font-family:var(--serif);font-weight:400;font-size:26px;white-space:nowrap}
+.pq-sello span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-top:4px}
+.pq-lista{margin-top:28px;border-top:1px solid rgba(224,168,62,.3)}
+.pq{border-bottom:1px solid rgba(224,168,62,.3)}
+.pq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;padding:14px 0;text-align:left;font-family:var(--serif);font-size:21px;line-height:1.15;color:var(--cream)}
+.pq-q i{position:relative;flex:0 0 30px;height:30px;border:1px solid var(--brand);border-radius:15px 15px 0 0}
+.pq-q i::before,.pq-q i::after{content:"";position:absolute;left:50%;top:55%;width:12px;height:2px;margin:-1px 0 0 -6px;background:var(--brand);transition:transform .25s}
+.pq-q i::after{transform:rotate(90deg)}
+.pq-q[aria-expanded="true"]{color:var(--brand)}
+.pq-q[aria-expanded="true"] i{background:var(--brand)}
+.pq-q[aria-expanded="true"] i::before,.pq-q[aria-expanded="true"] i::after{background:var(--ink)}
+.pq-q[aria-expanded="true"] i::after{transform:rotate(0)}
+.pq-a p{padding:0 44px 18px 0;color:var(--cream2);font-size:16px}
+@media (min-width:820px){
+  .preguntas{grid-template-columns:.8fr 1.2fr;align-items:center;column-gap:7vw;padding:90px 6vw}
+  .pq-foto{width:100%;max-width:440px}
+  .pq-q{font-size:24px}
+}
+.pq-sello{line-height:1.2;gap:6px}.pq-sello b{line-height:1.15}.pq-sello span{margin-top:0;line-height:1.2}

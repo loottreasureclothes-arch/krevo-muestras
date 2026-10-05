@@ -23,14 +23,16 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="preload" as="image" href="img/hero-960.webp" imagesrcset="img/hero-480.webp 480w, img/hero-960.webp 960w, img/hero-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="fonts/slab.woff2" crossorigin>
-<link rel="stylesheet" href="site.css?v=1791104411">
-<link rel="stylesheet" href="sections/01-hero.css?v=1791090112">
+<link rel="stylesheet" href="site.css?v=1791182687">
+<link rel="stylesheet" href="sections/01-hero.css?v=1791182285">
 <link rel="stylesheet" href="sections/02-menu.css?v=1791090141">
 <link rel="stylesheet" href="sections/03-torre.css?v=1791090141">
-<link rel="stylesheet" href="sections/04-tres.css?v=1791090141">
-<link rel="stylesheet" href="sections/05-galeria.css?v=1791104670">
-<link rel="stylesheet" href="sections/06-opiniones.css?v=1791104753">
-<link rel="stylesheet" href="sections/07-visitanos.css?v=1791104753">
+<link rel="stylesheet" href="sections/04-tres.css?v=1791182285">
+<link rel="stylesheet" href="sections/05-carta.css?v=1791176795">
+<link rel="stylesheet" href="sections/06-galeria.css?v=1791182687">
+<link rel="stylesheet" href="sections/07-opiniones.css?v=1791182742">
+<link rel="stylesheet" href="sections/08-pedir.css?v=1791182687">
+<link rel="stylesheet" href="sections/09-visitanos.css?v=1791182687">
 <script>document.documentElement.className+=" js";setTimeout(function(){var a=document.querySelectorAll("[data-reveal]");for(var i=0;i<a.length;i++)a[i].classList.add("is-in")},1600);</script>
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
 </head>
@@ -50,9 +52,11 @@
   <nav class="lc-menu-nav" aria-label="Secciones">
     <a href="#menu"><span>01</span>Lo que sale</a>
     <a href="#torre"><span>02</span>Arma tu torre</a>
-    <a href="#terraza"><span>03</span>La terraza</a>
-    <a href="#opiniones"><span>04</span>Opiniones</a>
-    <a href="#visitanos"><span>05</span>Sucursales</a>
+    <a href="#carta"><span>03</span>La carta</a>
+    <a href="#terraza"><span>04</span>La terraza</a>
+    <a href="#opiniones"><span>05</span>Opiniones</a>
+    <a href="#pedir"><span>06</span>Cómo pedir</a>
+    <a href="#visitanos"><span>07</span>Sucursales</a>
   </nav>
   <a class="lc-btn lc-btn--wa" data-wa="Hola Mariscos Los Cabos, vi su página y quiero hacer un pedido." href="https://wa.me/524499181146?text=Hola%20Mariscos%20Los%20Cabos%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
 </div>
@@ -161,6 +165,52 @@
   <p class="lc-tres-w" data-reveal><span>Pulpo.</span><span>Tostadas.</span><span class="or">Aguachile.</span></p>
 </section>
 
+<section class="lc-carta" id="carta" aria-labelledby="carta-t">
+  <div class="lc-wrap lc-carta-in">
+    <header class="lc-carta-head" data-reveal>
+      <p class="lc-eye">La carta, por lo que más piden</p>
+      <h2 class="lc-t" id="carta-t">Tostadas<span>y lo demás.</span></h2>
+      <p class="lc-carta-dato"><b>73</b><span>reseñas de Google hablan de nuestras tostadas. Luego vienen el ceviche, el aguachile y el caldo.</span></p>
+    </header>
+
+    <div class="lc-carta-col" data-reveal>
+      <h3 class="lc-carta-h">Tostadas</h3>
+      <dl class="lc-lines">
+        <div><dt>Atún estilo Cabo's</dt><dd>$75</dd></div>
+        <div><dt>Pulpo</dt><dd>$115</dd></div>
+        <div><dt>Ceviche</dt><dd>desde $68</dd></div>
+        <div><dt>Marlín</dt><dd>desde $68</dd></div>
+      </dl>
+      <h3 class="lc-carta-h">Frescos</h3>
+      <dl class="lc-lines">
+        <div><dt>Aguachile negro</dt><dd>$227</dd></div>
+        <div><dt>Ceviche por kilo</dt><dd>Pregunta el precio</dd></div>
+        <div><dt>Cóctel de camarón 355 / 500 ml</dt><dd>Pregunta el precio</dd></div>
+      </dl>
+    </div>
+
+    <div class="lc-carta-col" data-reveal>
+      <h3 class="lc-carta-h">De la cocina</h3>
+      <dl class="lc-lines">
+        <div><dt>Tacos gobernador</dt><dd>$86</dd></div>
+        <div><dt>Pulpo a las brasas</dt><dd>Pregunta el precio</dd></div>
+        <div><dt>Caldo de camarón</dt><dd>Pregunta el precio</dd></div>
+        <div><dt>Salmón</dt><dd>Pregunta el precio</dd></div>
+      </dl>
+      <h3 class="lc-carta-h">Filetes y camarones</h3>
+      <p class="lc-carta-est">Al ajillo · al coco · a la diabla · zarandeados · 3 quesos · estilo Cabo's</p>
+      <dl class="lc-lines">
+        <div><dt>Filete o camarones al estilo que elijas</dt><dd>Pregunta el precio</dd></div>
+      </dl>
+    </div>
+
+    <div class="lc-carta-cta" data-reveal>
+      <p class="lc-fine">Precios publicados en Uber Eats para Villa Asunción. En mesa o por WhatsApp te los confirmamos.</p>
+      <a class="lc-btn lc-btn--wa" data-wa="Hola Mariscos Los Cabos, vi su página. ¿Me pasan el menú con precios?" href="https://wa.me/524499181146?text=Hola%20Mariscos%20Los%20Cabos%2C%20vi%20su%20p%C3%A1gina.%20%C2%BFMe%20pasan%20el%20men%C3%BA%20con%20precios%3F" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir la carta completa</a>
+    </div>
+  </div>
+</section>
+
 <section class="lc-gal" id="terraza" aria-labelledby="gal-t">
   <div class="lc-wrap lc-gal-in">
     <header class="lc-gal-head" data-reveal>
@@ -170,7 +220,7 @@
       <a class="lc-arrow" data-wa="Hola Mariscos Los Cabos, vi su página. Quiero apartar mesa en la terraza. ¿Tienen lugar hoy?" href="https://wa.me/524499181146?text=Hola%20Mariscos%20Los%20Cabos%2C%20vi%20su%20p%C3%A1gina.%20Quiero%20apartar%20mesa%20en%20la%20terraza.%20%C2%BFTienen%20lugar%20hoy%3F" target="_blank" rel="noopener">Aparta tu mesa por WhatsApp <span aria-hidden="true">→</span></a>
     </header>
     <figure class="lc-g lc-g--ter" data-reveal><img src="img/terraza-960.webp" srcset="img/terraza-480.webp 480w, img/terraza-960.webp 960w, img/terraza-1536.webp 1536w" sizes="(min-width:780px) 34vw, 100vw" width="960" height="1280" alt="Terraza techada con mesas azules en Mariscos Los Cabos" decoding="async"><figcaption>La terraza</figcaption></figure>
-    <figure class="lc-g lc-g--mic" data-reveal><img src="img/michelada-480.webp" srcset="img/michelada-480.webp 480w, img/michelada-960.webp 960w" sizes="(min-width:780px) 34vw, 50vw" width="480" height="640" alt="Michelada con camarón junto a una cerveza Modelo Negra" decoding="async"><figcaption>Michelada con camarón</figcaption></figure>
+    <figure class="lc-g lc-g--mic" data-reveal><img src="img/michelada-480.webp" srcset="img/michelada-480.webp 480w, img/michelada-920.webp 920w" sizes="(min-width:780px) 34vw, 50vw" width="480" height="887" alt="Michelada escarchada con camarón y pepino" decoding="async"><figcaption>Michelada con camarón</figcaption></figure>
     <figure class="lc-g lc-g--cok" data-reveal><img src="img/cocteles-480.webp" srcset="img/cocteles-480.webp 480w, img/cocteles-800.webp 800w" sizes="(min-width:780px) 40vw, 50vw" width="480" height="867" alt="Cóctel de mariscos servido con ostiones y limón" decoding="async"><figcaption>Cóctel y ostiones</figcaption></figure>
     <figure class="lc-g lc-g--tac" data-reveal><img src="img/taco-480.webp" srcset="img/taco-480.webp 480w, img/taco-960.webp 960w" sizes="(min-width:780px) 34vw, 50vw" width="480" height="360" alt="Taco de mariscos con ensalada fresca" decoding="async"><figcaption>Taco y ensalada</figcaption></figure>
     <figure class="lc-g lc-g--fil" data-reveal><img src="img/filete-papas-480.webp" srcset="img/filete-papas-480.webp 480w, img/filete-papas-960.webp 960w" sizes="(min-width:780px) 25vw, 40vw" width="480" height="640" alt="Filete empanizado con papas a la francesa y ensalada" decoding="async"><figcaption>Filete empanizado</figcaption></figure>
@@ -213,6 +263,35 @@
     </div>
   </div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.2 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8L12 2.5Z"/></symbol></svg>
+</section>
+
+<section class="lc-ped" id="pedir" aria-labelledby="ped-t">
+  <div class="lc-wrap lc-ped-in">
+    <header class="lc-ped-head" data-reveal>
+      <p class="lc-eye">Para llevar o en la terraza</p>
+      <h2 class="lc-t" id="ped-t">Pide en<span>tres pasos.</span></h2>
+    </header>
+
+    <ol class="lc-pasos" data-reveal>
+      <li><b>1</b><div><h3>Escríbenos o llámanos</h3><p>Dinos qué se te antoja y para cuántos. Las torres y las tostadas salen al momento.</p></div></li>
+      <li><b>2</b><div><h3>Te confirmamos precio y sucursal</h3><p>Las Flores o Villa Asunción, la que te quede más cerca. Mismo sazón en las dos.</p></div></li>
+      <li><b>3</b><div><h3>Pasas por él o te lo llevan</h3><p>Recoges en mostrador, o lo pides a domicilio por Uber Eats, Rappi o DiDi.</p></div></li>
+    </ol>
+
+    <div class="lc-faq" data-reveal>
+      <h3 class="lc-faq-t">Lo que nos preguntan</h3>
+      <details class="lc-q" open><summary>¿Hacen envío a domicilio?<i></i></summary><p>Sí, por Uber Eats, Rappi y DiDi desde las dos sucursales. Para recoger, escríbenos por WhatsApp.</p></details>
+      <details class="lc-q"><summary>¿Cuánto gasto por persona?<i></i></summary><p>Calcula entre $200 y $300 por persona. Las porciones son generosas: una torre o un aguachile rinden para compartir.</p></details>
+      <details class="lc-q"><summary>¿Tienen lugar para familias y grupos?<i></i></summary><p>Sí, la terraza techada de Las Flores. Si vienen varios, aparta por WhatsApp y te acomodamos.</p></details>
+      <details class="lc-q"><summary>¿Qué horario tienen?<i></i></summary><p>Lunes a jueves de 12 a 7 pm, viernes a domingo de 12 a 8 pm, en las dos sucursales.</p></details>
+      <details class="lc-q"><summary>¿Dónde están?<i></i></summary><p>Las Flores: Ignacio T. Chávez 107. Villa Asunción: Av. José María Chávez 901B. Las dos en Aguascalientes.</p></details>
+    </div>
+
+    <div class="lc-ped-cta" data-reveal>
+      <a class="lc-btn lc-btn--wa" data-wa="Hola Mariscos Los Cabos, vi su página y quiero hacer un pedido." href="https://wa.me/524499181146?text=Hola%20Mariscos%20Los%20Cabos%2C%20vi%20su%20p%C3%A1gina%20y%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir por WhatsApp</a>
+      <a class="lc-btn lc-btn--nav" href="tel:+524499181146">Llamar · 449 918 1146</a>
+    </div>
+  </div>
 </section>
 
 <section class="lc-suc" id="visitanos" aria-labelledby="suc-t">
@@ -291,7 +370,7 @@
 <script src="sections/01-hero.js?v=1791089587" defer></script>
 <script src="sections/02-menu.js?v=1791089607" defer></script>
 <script src="sections/03-torre.js?v=1791092382" defer></script>
-<script src="sections/06-opiniones.js?v=1791104370" defer></script>
-<script src="sections/07-visitanos.js?v=1791104411" defer></script>
+<script src="sections/07-opiniones.js?v=1791104370" defer></script>
+<script src="sections/09-visitanos.js?v=1791104411" defer></script>
 </body>
 </html>

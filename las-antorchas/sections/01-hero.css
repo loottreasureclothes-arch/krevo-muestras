@@ -1,6 +1,7 @@
 .at-hero{position:relative;padding-top:var(--bar);background:var(--ink)}
 .at-hero-photo{position:relative;margin:0;height:min(560px,64svh);overflow:hidden}
-.at-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:4% 30%}
+.at-hero-photo::before{content:"";position:absolute;inset:-40px;background:url(../img/fachada-480.webp) 50% 40%/cover no-repeat;filter:blur(18px) brightness(.42) saturate(.8);transform:scale(1.08)}
+.at-hero-photo img{position:relative;width:100%;height:100%;object-fit:contain;object-position:50% 12%}
 .at-hero-photo::after{content:"";position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(to top,var(--ink),transparent)}
 .at-hero-dim{position:absolute;inset:0;background:#0a0504;opacity:0;z-index:1;pointer-events:none;will-change:opacity}
 .at-hero.is-pre .at-hero-dim{opacity:.88}
@@ -12,12 +13,16 @@
 .at-hero h1{font-size:clamp(40px,12.6vw,92px);margin:14px 0 24px;line-height:.98}
 .at-hero-cta{display:flex;flex-wrap:wrap;gap:12px}
 .at-hero-cta .at-btn{flex:1 1 150px}
+.at-hero-meta{margin-top:18px;font:600 13px/1.5 Karla,sans-serif;color:var(--mute);letter-spacing:.02em}
+.at-hero-meta b{font:400 20px/1 "Young Serif",serif;color:var(--cream);margin-right:2px}
+.at-hero-meta span{color:var(--brand-t);margin:0 4px}
 @media (min-width:760px){
   .at-hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;min-height:100svh;padding-top:calc(var(--bar) + 12px);gap:0}
   .at-hero-photo{grid-column:2;grid-row:1;height:min(78svh,680px);margin:0 var(--gut) 0 0;border-radius:999px 999px 10px 10px}
   .at-hero-photo::after{display:none}
-  .at-hero-photo img{object-position:3% 50%}
+  .at-hero-photo img{object-position:50% 50%}
+  .at-hero-photo::before{background-position:50% 50%}
   .at-hero-copy{grid-column:1;grid-row:1;margin:0;padding:0 40px 0 max(40px,calc((100vw - 1180px)/2))}
-  .at-hero h1{font-size:clamp(44px,5.2vw,84px)}.at-hero .at-eyebrow{font-size:14px}.at-hero-cta{max-width:520px}
+  .at-hero h1{font-size:clamp(44px,5.2vw,84px)}.at-hero .at-eyebrow{font-size:14px}.at-hero-cta{max-width:520px}.at-hero-meta{font-size:14px;margin-top:22px}
   .at-hero-fl{display:none}
 }

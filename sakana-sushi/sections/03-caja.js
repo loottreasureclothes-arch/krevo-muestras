@@ -39,7 +39,7 @@
   gs.forEach(function(g){
    h+='<li data-id="'+esc(g.id)+'"><span class="q"><button type="button" data-d="-1" aria-label="Quitar uno">&minus;</button><b>'+g.qty+'</b><button type="button" data-d="1" aria-label="Agregar uno">+</button></span><span class="t">'+esc(g.i.name)+'</span><span class="p">'+money(g.i.price*g.qty)+'</span></li>';
   });
-  lns.innerHTML=h; tot.textContent=money(sum()); cerrar.disabled=n<1;
+  lns.innerHTML=h; tot.textContent=n<1?"Vacía":money(sum()); cerrar.disabled=n<1;
   hint.textContent=n<1?"Tu caja está vacía. Toca el + naranja o el + de cualquier rollo.":(n===1?"1 rollo en tu caja.":n+" rollos en tu caja.");
   lidN.textContent=n+(n===1?" rollo":" rollos")+" · "+money(sum());
   document.body.classList.toggle("has-n",n>0);

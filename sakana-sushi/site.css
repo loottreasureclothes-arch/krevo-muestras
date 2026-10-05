@@ -1,4 +1,4 @@
-@font-face{font-family:"Anton";src:url(fonts/anton.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Anton";src:url(fonts/anton.woff2) format("woff2");font-weight:400;font-display:swap;ascent-override:90%;descent-override:14%;line-gap-override:0%}
 @font-face{font-family:"Hanken Grotesk";src:url(fonts/hanken.woff2) format("woff2");font-weight:100 900;font-display:swap}
 :root{
   --ink:#0b0b0e;--ink2:#14141a;--ink3:#1e1e27;--cream:#f4ead2;--muted:#b9b2a2;--line:rgba(244,234,210,.16);
@@ -119,3 +119,4 @@ body.pill-off .caja-pill{opacity:0;transform:translateY(12px);pointer-events:non
   .pen-l{grid-column:2;grid-row:1/span 3;margin-top:0}
 }
 .pie .btn{margin-top:14px}
+@media (min-width:900px){.pie-in{display:grid;grid-template-columns:1.3fr 1fr 1fr;column-gap:56px;align-items:center}.pie-name{grid-column:1/-1;margin-bottom:20px}.pie-addr{margin:0}.pie-soc{margin:22px 0 0}.pie .btn{justify-self:start;margin-top:22px}.pie-mini{margin-top:22px}}

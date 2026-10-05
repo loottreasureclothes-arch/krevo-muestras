@@ -1,6 +1,7 @@
 .op{background:var(--cream);color:var(--ink);padding:76px 0 84px;overflow:hidden}
 .op .eyebrow{color:#7a5a4a}
-.op-score{display:flex;align-items:flex-end;gap:16px;margin-top:18px}
+.op-score{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 16px;margin-top:18px;min-width:0}
+.op-head{min-width:0}
 .op-big{font:800 clamp(104px,30vw,280px)/.8 var(--fd);color:var(--red);letter-spacing:-.04em;white-space:nowrap}
 .op-dot{display:inline-block;width:.16em;height:.16em;border-radius:50%;background:currentColor;margin:0 .06em 0 .04em;vertical-align:baseline}
 .op-meta{padding-bottom:6px}
@@ -40,12 +41,12 @@
 @media(min-width:820px){
  .op{padding:120px 0}
  .op-in{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
- .op-big{font-size:clamp(140px,13vw,220px)}
+ .op-big{font-size:clamp(110px,10vw,170px)}
  .op-rail{margin-top:0;min-width:0}
  .rvs{margin-inline:0;padding-inline:0}
  .rv{flex-basis:46%}
  .rv blockquote{font-size:19px}
 }
-@media(min-width:1200px){.rv{flex-basis:40%}.rv-tall blockquote{font-size:34px}}
+@media(min-width:1200px){.rv{flex-basis:47%}.rv-big blockquote{font-size:21px}.rv-tall blockquote{font-size:32px}}
 @media(max-width:819px){.op-score{flex-wrap:wrap;gap:6px 16px}.op-big{font-size:clamp(96px,27vw,160px)}.rv-big blockquote{font-size:20px}.rv-tall blockquote{font-size:26px}}
 @media(min-width:820px){.op .h2{font-size:clamp(34px,3.6vw,52px)}}

@@ -27,15 +27,15 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="fonts/anton.woff2" crossorigin>
 <link rel="preload" as="image" href="img/hero-960.webp" imagesrcset="img/hero-480.webp 480w, img/hero-960.webp 960w, img/hero-1600.webp 1600w" imagesizes="(min-width:900px) 55vw, 100vw" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1791104395">
+<link rel="stylesheet" href="site.css?v=1791182618">
 <link rel="stylesheet" href="sections/01-portada.css?v=1791092359">
-<link rel="stylesheet" href="sections/02-carta.css?v=1791090048">
+<link rel="stylesheet" href="sections/02-carta.css?v=1791182285">
 <link rel="stylesheet" href="sections/03-caja.css?v=1791092359">
-<link rel="stylesheet" href="sections/04-barra.css?v=1791089696">
+<link rel="stylesheet" href="sections/04-barra.css?v=1791198872">
 <link rel="stylesheet" href="sections/05-galeria.css?v=1791104307">
 <link rel="stylesheet" href="sections/06-opiniones.css?v=1791104340">
-<link rel="stylesheet" href="sections/07-lugar.css?v=1791104362">
-<link rel="stylesheet" href="sections/08-dudas.css?v=1791104379">
+<link rel="stylesheet" href="sections/07-lugar.css?v=1791198872">
+<link rel="stylesheet" href="sections/08-dudas.css?v=1791182285">
 <link rel="stylesheet" href="sections/09-pendientes.css?v=1791090062">
 <script>/* seguro anti-blanco: todo [data-reveal] se ve a los 1.6 s pase lo que pase */
 setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i=0;i<e.length;i++)e[i].classList.add('is-in')},1600);</script>
@@ -72,7 +72,7 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
     <div class="por-placa" data-reveal><span>Ignacio T. Chávez</span><b>319</b><span>Las Flores</span></div>
   </div>
   <div class="por-tx wrap">
-    <p class="rib" data-reveal>Rollos para llevar en Las Flores</p>
+    <p class="rib" data-reveal>Para llevar en Las Flores</p>
     <h1 class="por-h" data-reveal><span>Pide tu rollo</span> <span class="t2">desde $100.</span></h1>
     <p class="por-lede" data-reveal>Empanizados, nevados y especiales. Llena tu caja y llama.</p>
     <div class="por-cta" data-reveal>
@@ -151,6 +151,7 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
       </ul>
     </div>
     <p class="car-nota">Precios del menú de Sakana. Confirma el precio al pedir. Pregunta por la sopa udon.</p>
+    <p class="car-cta"><a class="lnk" href="#caja">Ver mi caja <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
 
@@ -176,7 +177,7 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
       </div>
       <div class="caj-ctl" id="ctl" data-reveal>
         <ul class="lns" id="lns"></ul>
-        <div class="tot"><span>Suma</span><b id="tot">$0</b></div>
+        <div class="tot"><span>Suma</span><b id="tot">Vacía</b></div>
         <fieldset class="modo">
           <legend>Es para</legend>
           <label><input type="radio" name="modo" value="llevar" checked><span>Llevar</span></label>
@@ -210,6 +211,7 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
   <img src="img/barra-960.webp" srcset="img/barra-480.webp 480w, img/barra-960.webp 960w, img/barra-1600.webp 1600w" sizes="100vw" width="1600" height="900" alt="La barra de Sakana Sushi con la cocina al fondo, paredes azules y rojas" loading="lazy">
   <div class="bar-tx wrap">
     <p class="bar-h" data-reveal>Pasa a <span>la barra.</span></p>
+    <a class="lnk bar-lnk" href="#lugar" data-reveal>Cómo llegar <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
@@ -339,7 +341,7 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
         <li data-d="6"><span>Sábado</span><b>12 a 7 p. m.</b></li>
         <li data-d="0"><span>Domingo</span><b>Cerrado</b></li>
       </ul>
-      <p class="lug-addr" data-reveal>Ignacio T. Chávez 319, Las Flores, 20220 Aguascalientes<br><small>Comer aquí, para llevar y entrega sin contacto. Estacionamiento en la calle.</small></p>
+      <p class="lug-addr" data-reveal>Ignacio T. Chávez 319, Las Flores, 20220 Aguascalientes<br><small>Comer aquí, para llevar y entrega sin contacto.</small></p>
       <div class="lug-cta" data-reveal>
         <a class="btn solid" href="https://maps.google.com/?cid=14708081389780840092" target="_blank" rel="noopener">Cómo llegar</a>
         <a class="btn" href="tel:+524491016863">Llamar 449 101 6863</a>
@@ -365,8 +367,8 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
       <details open><summary>¿Llevan a domicilio?</summary><p>Sí. También para llevar y comer aquí. Arma tu caja arriba y llámanos para pedir.</p></details>
       <details><summary>¿Qué días abren?</summary><p>Lunes a sábado de 12 a 7 p. m. Domingo cerrado.</p></details>
       <details><summary>¿Qué es lo que más piden?</summary><p>El Gouda especial y la sopa udon. Nuestros clientes también repiten Bola de fuego y Avocado roll.</p></details>
-      <details><summary>¿Hay rollo sin pescado?</summary><p>Sí, el Vegetariano desde $100 en la carta.</p></details>
-      <details><summary>¿Dónde me estaciono?</summary><p>En la calle, sin costo, sobre Ignacio T. Chávez.</p></details>
+      <details><summary>¿Hay rollo sin pescado?</summary><p>Sí, el Vegetariano a $100 en la carta.</p></details>
+      <details><summary>¿Hacen charolas para compartir?</summary><p>Sí. Pregunta el precio al llamar y dinos para cuántos es.</p></details>
       <a class="btn" href="tel:+524491016863">Llamar y pedir</a>
     </div>
   </div>
@@ -414,9 +416,9 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
   <span>Llamar</span>
 </a>
 <a class="caja-pill" id="caja-pill" href="#caja" hidden><b>0</b><em>en tu caja</em><span></span></a>
-<script src="site.js?v=1791104395"></script>
+<script src="site.js?v=1791182618"></script>
 <script src="sections/02-carta.js?v=1791089664" defer></script>
-<script src="sections/03-caja.js?v=1791090072" defer></script>
+<script src="sections/03-caja.js?v=1791182735" defer></script>
 <script src="sections/06-opiniones.js?v=1791104340" defer></script>
 <script src="sections/07-lugar.js?v=1791104379" defer></script>
 </body>

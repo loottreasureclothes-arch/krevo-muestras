@@ -31,7 +31,7 @@
       linesEl.appendChild(li);
     });
     emptyEl.style.display=cart.length?"none":"block";
-    totalEl.textContent=money(total());
+    var tt=total();totalEl.textContent=tt>0?money(tt):"Elige arriba";totalEl.classList.toggle("is-vacio",tt<=0);
     copyBtn.disabled=!cart.length;
     noteEl.textContent=NOTE0;
     var n=count();
@@ -71,7 +71,7 @@
   copyBtn.addEventListener("click",function(){
     if(!cart.length)return;
     var t=text();
-    function ok(){noteEl.textContent="Copiada. Ahora llama al 449 916 7922 y dícteles tu comanda."}
+    function ok(){noteEl.textContent="Copiada. Ahora llámanos al 449 916 7922 y dinos tu comanda."}
     function fallback(){var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");ok()}catch(e){noteEl.textContent=t}document.body.removeChild(ta)}
     if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,fallback);else fallback();
   });

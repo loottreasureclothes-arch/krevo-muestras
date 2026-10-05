@@ -2,7 +2,7 @@
 .hero-foto{position:relative;height:70svh;min-height:420px;max-height:760px;clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),calc(100% - 28px) 100%,28px 100%,0 calc(100% - 28px))}
 .hero-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 38%}
 .hero-foto::after{content:"";position:absolute;inset:auto 0 0 0;height:38%;background:linear-gradient(to top,var(--bg),rgba(42,36,80,0))}
-.calle{position:absolute;left:16px;bottom:44px;z-index:2;font:700 13px/1 var(--txt);letter-spacing:.22em;text-transform:uppercase;color:var(--cr);background:var(--ink);padding:8px 12px;clip-path:var(--ch-s)}
+.calle{position:absolute;left:16px;top:76px;z-index:2;font:700 13px/1 var(--txt);letter-spacing:.22em;text-transform:uppercase;color:var(--cr);background:var(--ink);padding:8px 12px;clip-path:var(--ch-s)}
 .sello{position:absolute;z-index:3;right:14px;top:74px;width:118px;height:118px;transform:rotate(calc(-14deg + var(--sp)*50deg));animation:cae .9s .25s cubic-bezier(.2,1.3,.4,1) backwards}
 .sello span{position:absolute;inset:0;background:var(--yw);color:var(--ink);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);display:grid;place-content:center;text-align:center;line-height:.9;padding-top:4px}
 .sello::before{content:"";position:absolute;inset:-6px;background:var(--tq);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);z-index:-1}
@@ -10,8 +10,9 @@
 .sello b{font:400 30px/1 var(--head)}
 @keyframes cae{from{opacity:0;transform:rotate(-120deg) scale(.2)}to{opacity:1}}
 .hero-txt{margin-top:-96px;position:relative;z-index:2;padding-bottom:48px}
-.hero-t{font:400 clamp(48px,14vw,128px)/.98 var(--head);text-shadow:0 3px 24px rgba(20,16,50,.55)}
+.hero-t{font:400 clamp(48px,14vw,128px)/1.06 var(--head);text-shadow:0 3px 24px rgba(20,16,50,.55)}
 .hero-t em{display:block;font-style:normal;color:var(--yw)}
+.hero-txt .lead{margin-top:22px}
 .hero-btns{display:flex;flex-direction:column;gap:12px;margin-top:26px;max-width:340px}
 @media (min-width:760px){
  .hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;min-height:100svh;padding:76px 0 40px;gap:0}
@@ -22,5 +23,5 @@
  .hero-btns{flex-direction:row;flex-wrap:wrap;max-width:none;margin-top:32px}
  .hero-txt .lead{font-size:21px;max-width:30ch}
  .sello{top:24px;right:20px;width:140px;height:140px}
- .calle{bottom:20px}
+ .calle{top:auto;bottom:20px}
 }

@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/youngserif-400.woff2" crossorigin>
 <link rel="preload" as="image" href="img/hero-960.webp" imagesrcset="img/hero-480.webp 480w, img/hero-960.webp 960w" imagesizes="(max-width:900px) 86vw, 520px" fetchpriority="high">
 <link rel="stylesheet" href="site.css?v=1791092610">
-<link rel="stylesheet" href="sections/01-portal.css?v=1791092893">
-<link rel="stylesheet" href="sections/02-comanda.css?v=1791092538">
-<link rel="stylesheet" href="sections/03-opiniones.css?v=1791104384">
-<link rel="stylesheet" href="sections/04-sobremesa.css?v=1791104395">
-<link rel="stylesheet" href="sections/04b-preguntas.css?v=1791104434">
+<link rel="stylesheet" href="sections/01-portal.css?v=1791182285">
+<link rel="stylesheet" href="sections/02-comanda.css?v=1791182633">
+<link rel="stylesheet" href="sections/03-opiniones.css?v=1791182285">
+<link rel="stylesheet" href="sections/04-sobremesa.css?v=1791105488">
+<link rel="stylesheet" href="sections/04b-preguntas.css?v=1791182285">
 <link rel="stylesheet" href="sections/04c-recorrido.css?v=1791104434">
-<link rel="stylesheet" href="sections/05-visita.css?v=1791104463">
+<link rel="stylesheet" href="sections/05-visita.css?v=1791105488">
 <link rel="stylesheet" href="sections/06-listo.css?v=1791092416">
 <script>document.documentElement.className+=' js';setTimeout(function(){var l=document.querySelectorAll('[data-mc-reveal]'),h=window.innerHeight*1.1;for(var i=0;i<l.length;i++){if(l[i].getBoundingClientRect().top<h)l[i].classList.add('is-in')}},1600);</script>
 <noscript><style>[data-mc-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
@@ -87,7 +87,7 @@
 <section class="mc-comanda" id="comanda">
   <div class="mc-wrap">
     <h2 class="mc-h2"><span>Elige lo</span> <span class="mc-rojo">que se te antoja.</span></h2>
-    <p class="mc-sub">Precios de su carta. Arma tu comanda y llama.</p>
+    <p class="mc-sub">Precios de nuestra carta. Arma tu comanda y llama.</p>
     <div class="mc-cols">
   <div class="mc-dishes">
     <article class="mc-dish" data-id="chilaquiles" data-name="Chilaquiles" data-vars='[["Naturales", 129], ["Con huevo", 139], ["Con pollo", 149], ["Con carne", 159]]' data-sel="0" data-mc-reveal>
@@ -169,14 +169,22 @@
       <div class="mc-t-mode" role="radiogroup" aria-label="Dónde comes"><button type="button" class="is-on" role="radio" aria-checked="true" data-mode="Para comer aquí">Comer aquí</button><button type="button" role="radio" aria-checked="false" data-mode="Para llevar">Para llevar</button></div>
       <ul class="mc-t-lines" id="mc-t-lines" aria-live="polite"></ul>
       <p class="mc-t-empty" id="mc-t-empty">Toca Agregar y aquí se escribe tu comanda.</p>
-      <div class="mc-t-total"><span>Total aprox.</span><b id="mc-t-total">$0</b></div>
+      <div class="mc-t-total"><span>Total aprox.</span><b id="mc-t-total" class="is-vacio">Elige arriba</b></div>
       <div class="mc-t-btns">
         <a class="mc-btn mc-btn-sol" id="mc-t-call" href="tel:+524499167922"><svg width="18" height="18" aria-hidden="true"><use href="#i-tel"/></svg>Llamar y pedir</a>
         <button type="button" class="mc-btn mc-btn-line-d" id="mc-t-copy" disabled>Copiar comanda</button>
       </div>
-      <p class="mc-t-note" id="mc-t-note">Te contestan en el 449 916 7922. Confirma disponibilidad al llamar.</p>
+      <p class="mc-t-note" id="mc-t-note">Te contestamos en el 449 916 7922. Confirma disponibilidad al llamar.</p>
     </div>
   </aside>
+    </div>
+    <div class="mc-pasos" aria-label="Cómo pedir">
+      <p class="mc-pasos-h">Así de fácil</p>
+      <ol class="mc-pasos-l">
+        <li><b>1</b><span><strong>Elige</strong> tus platillos y toca Agregar.</span></li>
+        <li><b>2</b><span><strong>Llama</strong> al 449 916 7922 o copia la comanda.</span></li>
+        <li><b>3</b><span><strong>Comes aquí</strong> o pasas por tu pedido a Madero 341.</span></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -293,7 +301,7 @@
         <a class="mc-btn mc-btn-line-d" href="tel:+524499167922"><svg width="18" height="18" aria-hidden="true"><use href="#i-tel"/></svg>Llamar 449 916 7922</a>
       </div>
     </div>
-    <table class="mc-horas" id="mc-horas"><caption class="mc-sr">Horario</caption>
+    <table class="mc-horas" id="mc-horas" aria-label="Horario">
       <tbody>
         <tr data-d="1"><th>Lunes</th><td>8:30 a.m. a 4 p.m.</td></tr>
         <tr data-d="2"><th>Martes</th><td>8:30 a.m. a 4 p.m.</td></tr>
@@ -342,8 +350,8 @@
 
 <a class="mc-fab" id="mc-fab" href="tel:+524499167922" aria-label="Llamar al restaurante"><svg width="22" height="22" aria-hidden="true"><use href="#i-tel"/></svg><span class="mc-fab-t">Llamar</span></a>
 
-<script src="site.js?v=1791104463" defer></script>
-<script src="sections/02-comanda.js?v=1791092359" defer></script>
+<script src="site.js?v=1791105488" defer></script>
+<script src="sections/02-comanda.js?v=1791182621" defer></script>
 <script src="sections/04c-recorrido.js?v=1791104434" defer></script>
 </body>
 </html>
