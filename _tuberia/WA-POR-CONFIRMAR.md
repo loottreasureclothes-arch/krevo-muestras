@@ -34,3 +34,4 @@ Estas páginas usan botones de Llamar. Si se confirma un WhatsApp publicado por 
 | maria-maria-trattoria | María María Trattoria | 449 321 7290 | no encontré | https://www.instagram.com/mariamaria_trattoria/ |
 | el-campirano | El Campirano (Av. Universidad 411) | 449 813 5545 | https://www.facebook.com/people/El-Campirano/100040925202911/ (probable; hay otras de sucursales) | https://www.instagram.com/el.campirano/ (dudoso; también @elcampiranorestaurantehotel, @campirano_americas) |
 | hotel-argentina | Hotel Argentina | 449 735 4464 | https://www.facebook.com/hotel.argentina.ags | https://www.instagram.com/hotel.argentina/ |
+| xama-cocina | Xamâ Cocina Mexicana y Bar | 449 794 2472 | https://www.facebook.com/xamarestaurantemx/ | no confirmado (posible @xama_restaurante_) |

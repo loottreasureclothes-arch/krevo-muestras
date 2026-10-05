@@ -1,0 +1,46 @@
+<section class="perilla" id="perilla" aria-labelledby="perilla-h">
+  <div class="wrap">
+    <div class="pr-head">
+      <p class="eyebrow" data-rv>Tu antojo, a mano</p>
+      <h2 class="h2" id="perilla-h" data-rv style="--d:.06s">Gira la perilla,<em>y se antoja.</em></h2>
+      <p class="lede" data-rv style="--d:.12s">Cinco paradas. Elige un platillo y díselo por teléfono.</p>
+    </div>
+
+    <div class="pr-grid">
+      <div class="dial-box" data-rv>
+        <div class="dial" id="dial" role="radiogroup" aria-label="Parada de la perilla">
+          <svg class="dial-ticks" id="dial-ticks" viewBox="0 0 340 232" aria-hidden="true"></svg>
+          <button type="button" class="stop" role="radio" aria-checked="false" data-i="0" style="left:48.3px;top:126.4px">Café</button>
+          <button type="button" class="stop" role="radio" aria-checked="false" data-i="1" style="left:94.8px;top:62.4px">Desayuno</button>
+          <button type="button" class="stop" role="radio" aria-checked="true" data-i="2" style="left:170px;top:38px">Cocina</button>
+          <button type="button" class="stop" role="radio" aria-checked="false" data-i="3" style="left:245.2px;top:62.4px">Fresco</button>
+          <button type="button" class="stop" role="radio" aria-checked="false" data-i="4" style="left:291.7px;top:126.4px">Bar</button>
+          <div class="knob" id="knob" tabindex="0" role="slider" aria-label="Perilla del antojo" aria-valuemin="0" aria-valuemax="4" aria-valuenow="2" aria-valuetext="Cocina"><span class="knob-mark"></span></div>
+        </div>
+        <p class="dial-hint">Arrastra la perilla o toca una parada.</p>
+      </div>
+
+      <div class="pr-panel" data-rv style="--d:.08s">
+        <div class="pr-photo" aria-hidden="false">
+          <img class="pf" src="img/m12-960.webp" srcset="img/m12-480.webp 480w, img/m12-960.webp 960w, img/m12-1536.webp 1536w" sizes="(min-width:760px) 40vw, 90vw" width="1536" height="2048" alt="Café con arte latte en forma de flor" loading="lazy" decoding="async">
+          <img class="pf" src="img/m07-960.webp" srcset="img/m07-480.webp 480w, img/m07-960.webp 960w, img/m07-1600.webp 1600w" sizes="(min-width:760px) 40vw, 90vw" width="2048" height="1536" alt="Plato de fruta fresca con melón, papaya y granola" loading="lazy" decoding="async">
+          <img class="pf is-on" src="img/m09-960.webp" srcset="img/m09-480.webp 480w, img/m09-960.webp 960w, img/m09-1152.webp 1152w" sizes="(min-width:760px) 40vw, 90vw" width="1152" height="2048" alt="Camarones en salsa cremosa sobre plato de barro" loading="lazy" decoding="async">
+          <img class="pf" src="img/m15-960.webp" srcset="img/m15-480.webp 480w, img/m15-960.webp 960w, img/m15-1536.webp 1536w" sizes="(min-width:760px) 40vw, 90vw" width="1536" height="2048" alt="Acrílico de licuados de frutas naturales con el logo de Xamâ" loading="lazy" decoding="async">
+          <img class="pf" src="img/m08-960.webp" srcset="img/m08-480.webp 480w, img/m08-960.webp 960w, img/m08-1600.webp 1600w" sizes="(min-width:760px) 40vw, 90vw" width="2048" height="1536" alt="Entrada y patio empedrado de Xamâ" loading="lazy" decoding="async">
+        </div>
+        <h3 class="pr-title" id="pr-title" aria-live="polite">Cocina</h3>
+        <div class="opts" id="opts" role="radiogroup" aria-label="Qué se te antoja"></div>
+      </div>
+    </div>
+
+    <div class="ticket" id="ticket" data-rv>
+      <div class="tk-row"><span class="tk-k">Tu antojo</span><span class="tk-v" id="tk-item">Elige arriba</span></div>
+      <div class="tk-row"><span class="tk-k">Precio</span><span class="tk-v tk-v--s" id="tk-price">Pregunta el precio</span></div>
+      <p class="tk-say" id="tk-say">Toca un platillo y aquí queda lo que vas a decir.</p>
+      <div class="cta">
+        <a class="btn btn--ink" href="tel:+524497942472"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar al 449 794 2472</a>
+        <button type="button" class="btn btn--line tk-copy" id="tk-copy" disabled>Copiar lo que voy a decir</button>
+      </div>
+    </div>
+  </div>
+</section>

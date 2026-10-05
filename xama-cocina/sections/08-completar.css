@@ -1,0 +1,16 @@
+.todo{background:var(--ink);padding:56px 0 60px}
+.todo .h2{margin-top:12px}
+.todo-p{margin:16px 0 28px;max-width:40ch}
+.todo-l{list-style:none;counter-reset:t;border-top:1px solid rgba(239,228,200,.26)}
+.todo-l li{counter-increment:t;display:grid;grid-template-columns:36px 1fr;padding:12px 0;border-bottom:1px solid rgba(239,228,200,.26)}
+.todo-l li::before{content:counter(t,decimal-leading-zero);font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--tinte);padding-top:6px;grid-row:1/3}
+.todo-l span{font-family:var(--serif);font-size:21px;line-height:1.2}
+.todo-l small{font-size:14.5px;color:var(--crema2);margin-top:3px}
+.todo-cta{margin-top:30px}
+@media(min-width:760px){
+  .todo{padding:96px 0 104px}
+  .todo .wrap{display:grid;grid-template-columns:1fr 1fr;column-gap:72px;align-content:start}
+  .todo .wrap>*{grid-column:1}
+  .todo .wrap>.todo-l{grid-column:2;grid-row:1/span 5;border-top:0;align-self:start}
+  .todo-l li:first-child{padding-top:0}
+}

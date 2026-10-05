@@ -1,0 +1,53 @@
+.perilla{background:var(--marca);color:var(--crema);padding:56px 0 60px;overflow:hidden}
+.perilla .eyebrow{color:var(--crema2)}
+.perilla .h2 em{color:#f0b9a8}
+.pr-head .lede{margin-top:16px}
+.pr-grid{margin-top:34px;display:grid;gap:26px}
+.dial-box{display:flex;flex-direction:column;align-items:center}
+.dial{position:relative;width:340px;height:232px;flex:none}
+.dial-ticks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.stop{position:absolute;transform:translate(-50%,-50%);min-width:64px;height:40px;padding:0 6px;font-size:13.5px;font-weight:700;letter-spacing:.04em;color:var(--crema2);text-align:center;border-radius:2px;transition:color .2s,background-color .2s;white-space:nowrap}
+.stop[aria-checked="true"]{color:var(--marca);background:var(--crema)}
+.stop:hover{color:var(--crema)}
+.stop[aria-checked="true"]:hover{color:var(--marca)}
+.knob{position:absolute;left:114px;top:110px;width:112px;height:112px;border-radius:50%;cursor:grab;touch-action:none;transform:rotate(var(--rot,0deg));transition:transform .26s cubic-bezier(.3,1.4,.5,1);
+  background:radial-gradient(circle at 50% 45%,#f6ecd0 0 36%,transparent 37%),repeating-conic-gradient(from 0deg,#d9c9a0 0 6deg,#b9a679 6deg 12deg);box-shadow:0 10px 22px rgba(0,0,0,.45),inset 0 0 0 3px #3c1612,0 0 0 4px rgba(239,228,200,.35)}
+.knob.is-drag{transition:none;cursor:grabbing}
+.knob-mark{position:absolute;left:50%;top:7px;width:7px;height:42px;margin-left:-3.5px;background:var(--marca);border-radius:3px}
+.knob:focus-visible{outline:3px solid var(--tinte);outline-offset:5px}
+.dial-hint{font-size:13.5px;color:var(--crema2);margin-top:0}
+.pr-photo{position:relative;aspect-ratio:16/9;border-radius:999px 999px 4px 4px;overflow:hidden;background:#3c1612;border:2px solid rgba(239,228,200,.28)}
+.pr-photo .pf{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 0 100% 0);transition:clip-path .4s ease}
+.pr-photo .pf.is-on{clip-path:inset(0)}
+.pr-title{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1.05;margin:22px 0 6px;color:var(--crema)}
+.opts{display:flex;flex-direction:column}
+.opt{display:grid;grid-template-columns:26px 1fr;column-gap:12px;text-align:left;padding:15px 0;border-bottom:1px solid rgba(239,228,200,.26);width:100%}
+.opt-box{width:20px;height:20px;border:2px solid var(--crema);border-radius:2px;margin-top:3px;position:relative;grid-row:1/4}
+.opt[aria-checked="true"] .opt-box{background:var(--crema)}
+.opt[aria-checked="true"] .opt-box::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid var(--marca);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.opt-n{font-family:var(--serif);font-size:22px;line-height:1.15}
+.opt-q{font-size:14px;color:var(--crema2);margin-top:3px}
+.opt-p{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#f0b9a8;margin-top:5px}
+.ticket{position:relative;margin-top:36px;background:var(--crema);color:var(--ink);padding:26px 22px 24px;border-radius:2px;
+  -webkit-mask:radial-gradient(circle 9px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 9px at 0 50%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 9px at 100% 50%,transparent 98%,#000) right/51% 100% no-repeat}
+.tk-row{display:flex;flex-direction:column;gap:2px;padding-bottom:12px;margin-bottom:12px;border-bottom:2px dashed rgba(100,37,32,.35)}
+.tk-k{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--marca)}
+.tk-v{font-family:var(--serif);font-size:27px;line-height:1.12}
+.tk-v--s{font-size:20px}
+.tk-say{font-size:16px;color:#4a3430;margin:4px 0 18px;min-height:40px}
+.ticket .btn--line{border-color:var(--marca);color:var(--marca)}
+.ticket .btn--line:disabled{opacity:.4;cursor:not-allowed}
+.ticket .cta .btn{white-space:normal;text-align:center;line-height:1.25;padding-top:8px;padding-bottom:8px}
+@media(min-width:760px){
+  .perilla{padding:104px 0 112px}
+  .pr-grid{grid-template-columns:340px 1fr;gap:44px;align-items:start;margin-top:48px}
+  .dial-box{position:sticky;top:calc(var(--hd) + 30px);padding-top:30px}
+  .pr-title{margin-top:22px}
+  .ticket{max-width:760px;margin-left:auto;margin-right:0}
+}
+@media(min-width:1100px){
+  .pr-grid{grid-template-columns:380px 1fr;gap:72px}
+  .pr-panel{display:grid;grid-template-columns:1fr 1fr;column-gap:36px;align-items:start}
+  .pr-photo{grid-row:1/span 2;aspect-ratio:4/5}
+  .pr-title{margin-top:0}
+}

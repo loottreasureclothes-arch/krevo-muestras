@@ -1,0 +1,25 @@
+.hero{min-height:max(84svh,650px);display:flex;align-items:flex-end;padding:calc(var(--hd) + 24px) 0 40px;overflow:hidden;background:var(--ink)}
+.hero-photo{position:absolute;inset:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(31,18,16,.55) 0%,rgba(31,18,16,0) 22%,rgba(31,18,16,.15) 42%,rgba(31,18,16,.92) 76%,var(--ink) 100%)}
+.hero-in{position:relative;z-index:2}
+.plate{display:inline-flex;flex-direction:column;align-items:center;background:var(--crema);color:var(--marca);padding:7px 16px 8px;border:2px solid var(--marca);outline:2px solid var(--crema);outline-offset:2px;margin-bottom:22px;text-align:center}
+.plate-k{font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;font-weight:800}
+.plate-n{font-family:var(--serif);font-size:16px;line-height:1.1;letter-spacing:.04em;text-transform:uppercase}
+.plate-s{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.hero-h{font-family:var(--serif);font-weight:400;font-size:clamp(52px,15.4vw,120px);line-height:1.08;letter-spacing:-.015em;color:var(--crema);margin-bottom:18px;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero-h span,.hero-h em{display:block}
+.hero-h em{margin-top:4px}
+.hero-h em{font-style:normal;color:var(--tinte)}
+.hero-p{margin-bottom:12px}
+.hero-open{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;letter-spacing:.04em;margin-bottom:22px}
+.hero-open i{width:10px;height:10px;border-radius:50%;background:var(--crema2);flex:none}
+.hero-open:has([data-state="open"]) i{background:var(--crema)}
+@media(min-width:760px){
+  .hero{align-items:center;padding:calc(var(--hd) + 40px) 0 56px}
+  .hero-photo{inset:calc(var(--hd) + 36px) max(36px,calc((100vw - var(--max))/2 + 36px)) 56px 54%;border-radius:999px 999px 6px 6px;overflow:hidden;border:2px solid rgba(239,228,200,.3)}
+  .hero-photo::after{background:linear-gradient(180deg,rgba(31,18,16,0) 70%,rgba(31,18,16,.5) 100%)}
+  .hero-in{max-width:var(--max)}
+  .hero-in>*{max-width:46%}
+  .hero-h{font-size:clamp(64px,7.4vw,108px)}
+}
