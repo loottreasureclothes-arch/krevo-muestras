@@ -1,0 +1,1 @@
+Fuente: research/fotos/maps-NN (Google Maps). fachada=08 (hero), arrachera=04, gordita=07, tostada=09, queso=15 (recorte sin pierna), tacos=18 (recorte), salon=10, mesa=01, calle=03 (sin espejo), lejos=02. WebP 480/960/1600 sin estirar (máx. tamaño real). og.jpg 1200x630 con PIL.

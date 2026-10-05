@@ -1,0 +1,12 @@
+# Hoja corta: Carnitas Mora
+- Giro: restaurante-bar de carnitas, C. 57 305, Col. del Trabajo, Aguascalientes. Lema del letrero: "Un Palacio y Carnitas del Mercado".
+- Contacto: solo teléfono, tel:+524499750551 (449 975 0551). Sin WhatsApp publicado: cero wa.me; flotante crema "Llamar" con ícono de teléfono.
+- Horario: martes a domingo 8:30 a 17:30; lunes cerrado ("Abierto ahora" calculado en site.js).
+- Google: 4,3 con 3,524 opiniones; 8 reseñas reales con nombre en la página + "Ver todas en Google".
+- Lienzo: café oscuro #1d0f0c, ladrillo #b8402a, crema #f4e8cf, oro #f0b73a. Fuentes: Alfa Slab One + Barlow / Barlow Condensed.
+- Secciones (9 + pie): 01 hero cartel (fachada, "Un palacio de carnitas"), 02 La mesa que se llena, 03 cartel tipográfico, 04 salón con persiana (momento firma), 05 banquetes (banda crema), 06 reseñas, 07 galería (6 fotos), 08 visítanos con mapa embebido, 09 todo listo para completar, pie.
+- Componente firma: "La mesa que se llena". Agregar un platillo pone su plato redondo con foto sobre la tabla de madera y lo anota en un ticket para dictar por teléfono; botones Llamar y dictar / Copiar pedido. Vacío dice "Elige arriba".
+- Momento firma: la persiana metálica del local sube con el scroll y descubre el salón amarillo (reversible, abierta a los 1.6 s pase lo que pase).
+- Precios: ninguno legible; todo dice "Pregunta el precio".
+- Redes: ninguna confirmada (facebook.com/carnitamora vino de directorio, fuera del pie, va en PENDIENTES).
+- Alto celular: ~10,860 px. Armado con build.py (02-mesa.html editado a mano; no hay gen.py).
