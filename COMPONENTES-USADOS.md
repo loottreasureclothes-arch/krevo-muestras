@@ -48,3 +48,4 @@
 | mariscos-la-morena | El timón (rueda de barco de 13 manijas: platillo, estilo girando, tamaño con precio real, nota con total; copiar pedido o Llamar) | 5 oct 2026 |
 | el-gustoso | Arma tu bolsa (salsa, porción y complementos que arman el pedido) | 5 oct 2026 |
 | casa-victoria | Arma tu fecha (evento, espacio con foto, invitados con mesas dibujadas, fecha; nota "Menú desde $X" o "Elige arriba"; Llamar o copiar resumen; sin WhatsApp) | 5 oct 2026 |
+| mariscos-el-pescadito | La copa que se llena (cóctel mediano/grande, de qué, cuántas, ticket de pedido a WhatsApp) | 5 oct 2026 |
