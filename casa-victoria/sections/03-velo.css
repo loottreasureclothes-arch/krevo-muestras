@@ -1,0 +1,18 @@
+.velo{padding:8px 0 72px;background:var(--bg2);overflow:hidden}
+.velo-photo{--p:1;position:relative;height:64svh;min-height:420px;max-height:760px;margin-bottom:34px;
+  clip-path:inset(0 calc((1 - var(--p)) * 26%) round calc((1 - var(--p)) * 999px) calc((1 - var(--p)) * 999px) 0 0)}
+.velo-photo img{width:100%;height:100%;object-fit:cover}
+.velo-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#170a0c11,#170a0c99 100%)}
+.velo-words{position:absolute;left:calc(var(--pad) + (1 - var(--p)) * 26%);right:var(--pad);bottom:28px;z-index:2;display:flex;flex-direction:column;font:400 clamp(54px,17vw,120px)/.95 var(--hd);text-shadow:0 2px 24px #000a}
+.velo-words span:last-child{color:var(--oro)}
+.big{font:400 clamp(150px,46vw,300px)/1.18 var(--hd);color:var(--oro);display:flex;align-items:flex-start;margin:4px 0 10px;letter-spacing:-.03em}
+.big sup{font-size:.34em;margin:.12em .06em 0 0;line-height:1;color:var(--crema)}
+.big-cap{color:var(--mute);max-width:30ch;margin-bottom:26px}
+@media (min-width:760px){
+  .velo{padding:0 0 120px}
+  .velo-photo{height:84svh;margin-bottom:70px}
+  .velo-in{display:flex;flex-wrap:wrap;align-items:center;column-gap:70px}
+  .velo-in .eyebrow{flex:0 0 100%}
+  .big{margin:0}
+  .big-side{flex:1 1 320px}
+}

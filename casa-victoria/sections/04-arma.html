@@ -1,0 +1,50 @@
+<section class="arma" id="arma">
+  <div class="wrap">
+    <p class="eyebrow">Arma tu fecha</p>
+    <h2 data-reveal>Así te la<br><em>imaginas</em></h2>
+    <div class="mont" id="mont">
+      <fieldset class="paso">
+        <legend><b>1</b> ¿Qué celebras?</legend>
+        <div class="tabs" role="radiogroup" aria-label="Tipo de evento">
+          <button type="button" class="tab" role="radio" aria-checked="false" data-k="ev" data-v="Boda">Boda</button>
+          <button type="button" class="tab" role="radio" aria-checked="false" data-k="ev" data-v="XV años">XV años</button>
+          <button type="button" class="tab" role="radio" aria-checked="false" data-k="ev" data-v="Cumpleaños">Cumpleaños</button>
+          <button type="button" class="tab" role="radio" aria-checked="false" data-k="ev" data-v="Bautizo o comunión">Bautizo o comunión</button>
+          <button type="button" class="tab" role="radio" aria-checked="false" data-k="ev" data-v="Evento de empresa">Empresa</button>
+        </div>
+      </fieldset>
+      <fieldset class="paso">
+        <legend><b>2</b> ¿Dónde?</legend>
+        <div class="sitios" role="radiogroup" aria-label="Espacio">
+          <button type="button" class="sitio" role="radio" aria-checked="false" data-k="sp" data-v="el salón"><span class="arch"><img src="img/salon-480.webp" alt="" width="480" height="320"></span><b>El salón</b></button>
+          <button type="button" class="sitio" role="radio" aria-checked="false" data-k="sp" data-v="el jardín"><span class="arch"><img src="img/jardin-480.webp" alt="" width="480" height="320"></span><b>El jardín</b></button>
+          <button type="button" class="sitio" role="radio" aria-checked="false" data-k="sp" data-v="la terraza"><span class="arch"><img src="img/terraza-480.webp" alt="" width="480" height="320"></span><b>La terraza</b></button>
+        </div>
+      </fieldset>
+      <fieldset class="paso">
+        <legend><b>3</b> ¿Cuántos invitados?</legend>
+        <div class="inv">
+          <div class="inv-n"><output id="n" for="rg">150</output><span>invitados</span></div>
+          <input id="rg" type="range" min="140" max="450" step="10" value="150" aria-label="Número de invitados">
+          <div class="mesas" id="mesas" aria-hidden="true"></div>
+          <p class="inv-cap" id="mcap">15 mesas de 10</p>
+        </div>
+      </fieldset>
+      <fieldset class="paso">
+        <legend><b>4</b> ¿Ya tienes fecha? <i>(opcional)</i></legend>
+        <input id="fecha" class="fecha" type="date" aria-label="Fecha del evento">
+      </fieldset>
+      <div class="nota" id="nota" aria-live="polite">
+        <p class="nota-t">Tu nota para Casa Victoria</p>
+        <p class="nota-r" id="nota-r">Elige arriba</p>
+        <p class="nota-m" id="nota-m">Elige arriba</p>
+        <p class="nota-f">Menús de $300 a $380 por invitado. Casa Victoria confirma qué incluye y el total.</p>
+        <div class="row">
+          <a class="btn fill" id="m-call" href="tel:+524491552866"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Llamar y contar mi plan</a>
+          <button type="button" class="btn" id="m-copy">Copiar resumen</button>
+        </div>
+        <p class="nota-ok" id="m-ok" role="status"></p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,1 @@
+Todas de bodas.com.mx (galería del negocio), sin edición, solo recorte y webp: fachada(003), noche(026), salon(016), jardin(241), terraza(105), civil(188), guinda(048), novios-mesa(220), calado(133), centros(076), capilla(127), platillos(221), botanas(041), mesa-frutas(203). og.jpg y favicons hechos con PIL.
