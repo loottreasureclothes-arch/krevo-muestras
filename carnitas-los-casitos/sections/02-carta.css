@@ -1,0 +1,23 @@
+.carta{padding:56px 0 48px;background:var(--lienzo-2)}
+.carta h2{font-size:clamp(34px,10vw,52px);margin:10px 0 26px;color:var(--crema)}
+.carta-lista{list-style:none;display:grid;gap:14px}
+/* etiqueta de báscula: papel con muescas */
+.plato{display:grid;grid-template-columns:96px 1fr auto;grid-template-areas:"f t p" "f t p" "b b b";gap:6px 14px;align-items:start;background:var(--papel);color:var(--tinta);padding:14px;border-radius:2px;position:relative;
+  -webkit-mask:radial-gradient(circle 7px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 7px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 7px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 7px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
+.plato img{grid-area:f;width:96px;height:96px;object-fit:cover;border-radius:2px}
+.plato-t{grid-area:t;min-width:0}
+.plato h3{font-family:var(--f-b);font-weight:800;font-size:18px;line-height:1.15;color:var(--tinta)}
+.plato-t p{font-size:14px;line-height:1.35;margin-top:5px;color:rgba(42,20,16,.78)}
+.precio{grid-area:p;text-align:right;align-self:start}
+.precio b{font-family:var(--f-t);font-weight:400;font-size:30px;line-height:1;color:var(--marca-osc)}
+.precio span{display:block;font-weight:800;font-size:12px;line-height:1.2;letter-spacing:.04em;text-transform:uppercase;color:var(--marca-osc);max-width:9ch;margin-left:auto}
+.plato .btn{grid-area:b;width:100%;margin-top:6px}
+.plato.solo-texto{grid-template-columns:1fr auto;grid-template-areas:"t p" "b b"}
+.carta-nota{margin-top:20px;font-size:13px;color:var(--suave)}
+@media (min-width:820px){
+  .carta{padding:96px 0}
+  .carta-lista{grid-template-columns:1fr 1fr;gap:18px}
+  .plato{grid-template-columns:110px 1fr auto}
+  .plato img{width:110px;height:110px}
+  .plato .btn{width:auto;justify-self:start}
+}

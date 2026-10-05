@@ -1,0 +1,62 @@
+<section class="pesada" id="pesada" data-hide-wa>
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>La pesada</p>
+    <h2 data-reveal>Arrastra la pesa.<span class="t2">Te la armamos.</span></h2>
+    <p class="lead" data-reveal>Elige cuántas carnitas llevas. La balanza lo pesa y el pedido sale ya escrito.</p>
+
+    <div class="bal" id="bal" data-reveal>
+      <svg class="bal-svg" viewBox="0 0 360 250" role="img" aria-label="Balanza con un plato de carnitas">
+        <defs><clipPath id="bal-clip"><circle cx="0" cy="0" r="54"/></clipPath></defs>
+        <path d="M180 226V86" stroke="#c9a566" stroke-width="8" stroke-linecap="round"/>
+        <path d="M134 232h92" stroke="#c9a566" stroke-width="10" stroke-linecap="round"/>
+        <g id="bal-beam" style="transform-origin:180px 84px">
+          <path d="M70 84h220" stroke="#e8c27a" stroke-width="9" stroke-linecap="round"/>
+          <circle cx="180" cy="84" r="11" fill="#e8c27a"/><circle cx="180" cy="84" r="4" fill="#33191a"/>
+          <g id="bal-pan-l" style="transform-origin:70px 84px">
+            <path d="M70 84v36" stroke="#c9a566" stroke-width="3"/>
+            <path d="M24 120h92c-4 20-20 32-46 32s-42-12-46-32Z" fill="#c9a566"/>
+            <g id="bal-pesa"><rect x="46" y="94" width="48" height="26" rx="6" fill="#8a5a2a"/><text id="bal-pesa-t" x="70" y="112" text-anchor="middle" font-family="Karla,sans-serif" font-weight="800" font-size="15" fill="#f4e6cc">1 kg</text></g>
+          </g>
+          <g id="bal-pan-r" style="transform-origin:290px 84px">
+            <path d="M290 84v36" stroke="#c9a566" stroke-width="3"/>
+            <path d="M236 140h108c-5 20-24 30-54 30s-49-10-54-30Z" fill="#c9a566"/>
+            <g transform="translate(290 112)">
+              <g id="bal-plato" style="transform-origin:0 0">
+                <circle r="56" fill="#efdcb8"/>
+                <image id="bal-img" href="img/hero-480.webp" x="-96" y="-54" width="192" height="108" clip-path="url(#bal-clip)" preserveAspectRatio="xMidYMid slice"/>
+                <circle r="54" fill="none" stroke="#efdcb8" stroke-width="3"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+      <div class="bal-lectura" aria-live="polite"><span class="bal-kg" id="bal-kg">Elige arriba</span></div>
+
+      <div class="regla">
+        <label class="regla-t" for="bal-rng">Cuánto llevas</label>
+        <input type="range" id="bal-rng" min="0" max="4" step="1" value="0" aria-valuetext="Elige arriba">
+        <div class="regla-marcas" aria-hidden="true"><span>0</span><span>¼ kg</span><span>½ kg</span><span>1 kg</span><span>2 kg</span></div>
+      </div>
+
+      <div class="modo" role="radiogroup" aria-label="Cómo lo quieres">
+        <button type="button" role="radio" aria-checked="true" data-modo="Para llevar">Para llevar</button>
+        <button type="button" role="radio" aria-checked="false" data-modo="Para comer aquí">Para comer aquí</button>
+      </div>
+
+      <div class="extras" role="group" aria-label="En la misma bolsa">
+        <button type="button" aria-pressed="false" data-extra="guacamole">Guacamole</button>
+        <button type="button" aria-pressed="false" data-extra="chamorro">Chamorro</button>
+        <button type="button" aria-pressed="false" data-extra="mixiote de costilla">Mixiote de costilla</button>
+        <button type="button" aria-pressed="false" data-extra="sopa de médula">Sopa de médula</button>
+      </div>
+
+      <div class="ticket" id="bal-ticket">
+        <p class="ticket-l"><span>Llevas</span><b id="bal-t-llevas">Elige arriba</b></p>
+        <p class="ticket-l"><span>Precio</span><b id="bal-t-precio">Elige arriba</b></p>
+        <p class="ticket-nota" id="bal-t-nota">Mueve la pesa para empezar.</p>
+      </div>
+
+      <a class="btn btn-wa" id="bal-wa" href="WA[[Hola Los Casitos, quiero hacer un pedido de carnitas. ¿Qué me recomiendan?]]" target="_blank" rel="noopener"><svg width="22" height="22" aria-hidden="true"><use href="#i-wa"/></svg>Mandar mi pedido</a>
+    </div>
+  </div>
+</section>
