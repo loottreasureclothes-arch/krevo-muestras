@@ -1,0 +1,6 @@
+.reserva{position:relative;padding:0;min-height:480px;display:flex;align-items:flex-end;overflow:hidden;background:var(--cafe2)}
+.rsv-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.reserva::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(29,21,17,.15) 0,rgba(29,21,17,.2) 40%,rgba(29,21,17,.92) 100%)}
+.rsv-tx{position:relative;z-index:2;padding:0 var(--gut) 48px;width:100%;max-width:var(--max);margin:0 auto}
+.reserva .lead{margin-bottom:22px}
+@media (min-width:820px){.reserva{min-height:620px}.rsv-img{object-position:50% 50%}}

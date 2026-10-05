@@ -1,0 +1,14 @@
+.cocina{background:var(--crema);color:var(--tinta)}
+.cocina h2{color:var(--tinta)}
+.cocina h2 em{color:#b8480a}
+.cocina .eyebrow{color:#8a4a12}
+.cocina .lead{color:var(--tinta)}
+.cols{max-width:var(--max);margin:0 auto 32px;display:grid;gap:22px}
+.grupo h3{font-size:24px;color:var(--tinta);padding-bottom:10px;border-bottom:4px solid var(--naranja);margin-bottom:6px}
+.lista li{display:flex;align-items:baseline;gap:10px;padding:6px 0;border-bottom:1px dotted #8a6c4a;font:700 18px/1.25 var(--txt)}
+.lista li::before{content:"";flex:none;width:9px;height:9px;background:var(--naranja);clip-path:polygon(0 25%,50% 0,100% 25%,100% 100%,0 100%);transform:translateY(-1px)}
+.cocina .btn{display:flex;max-width:var(--max);margin:0 auto}
+@media (min-width:820px){
+  .cols{grid-template-columns:repeat(3,1fr);gap:48px}
+  .cocina .btn{display:inline-flex;margin-left:max(0px,calc((100% - var(--max))/2))}
+}
