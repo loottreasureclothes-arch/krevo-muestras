@@ -57,3 +57,4 @@
 | menudos-rosy | El tazón que se rellena | 5 oct 2026 |
 | bananas-bar | La hora de Bananas | 5 oct 2026 |
 | pelicanos-pabellon | Pon tu mesa a bordo (mesa ojo de buey vista desde arriba, sillas 1-12, comanda de a bordo para dictar o copiar) | 5 oct 2026 |
+| jardin-los-eucaliptos | Las nueve horas (evento, inicio e invitados; seis bloques llenan una barra de 9 horas de renta con foto que cambia, aviso si te pasas, boleto con horas reales y "Menús desde $499, pregunta qué incluye"; Llamar o copiar; sin WhatsApp) | 5 oct 2026 |

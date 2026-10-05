@@ -1,0 +1,1 @@
+Todas del negocio, bajadas de directorios (bodas.com.mx ficha e166055, tufieston.com, Google Maps foto del dueño) el 5 oct 2026. Webp 480/960/1600 o tamaño real. capilla=t4, altar=b3, contraluz=b9, jardin=b2, noche=b6, fuente=b7, salon=b8, pista=t5, redonda=t2, larga=t3, carpa=m1 (Maps), flores=b1. og.jpg y favicons hechos con PIL. Sin IA generativa.

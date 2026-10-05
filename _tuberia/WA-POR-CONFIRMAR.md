@@ -25,3 +25,4 @@ Estas páginas usan botones de Llamar. Si se confirma un WhatsApp publicado por 
 | volodia-panaderia | Volodía Panadería y Desayunador | 449 489 9637 | https://www.facebook.com/volodiaaguascalientes/ (probable) | https://www.instagram.com/volodia_aguascalientes/ (probable) |
 | tacos-el-super | Tacos de Barbacoa El Súper | 449 385 0945 | no encontré (facebook.com/TaqueriasElSuper es de Guadalajara, no es este) | https://www.instagram.com/tacos_el_super_ags/ (probable; otra: https://www.instagram.com/tacosdebarbacoa_elsuper/) |
 | hotel-mansion-suiza | Hotel Mansión Suiza | 449 917 2233 | https://www.facebook.com/mansionsuiza | no encontré |
+| jardin-los-eucaliptos | Jardín Los Eucaliptos | 449 545 5102 | https://www.facebook.com/jardinloseucaliptos21/ | no encontré (TikTok: https://www.tiktok.com/@jardineucaliptos) |
