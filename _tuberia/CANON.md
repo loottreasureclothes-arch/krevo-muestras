@@ -40,3 +40,6 @@
 
 ## Prueba anti-genérico (dos "sí" en 1-4 o uno en 5-8 = rechazo)
 1. Tapando el logo, ¿podría ser de otro negocio del giro? 2. ¿3+ secciones seguidas con el mismo ritmo? 3. ¿Hero = foto + velo + título + 2 botones sin nada propio? 4. ¿Más de 8 verdes? 5. ¿Contadores o rejilla de tarjetas con ícono? 6. ¿Falta componente firma o repite uno usado? 7. ¿Palabra prohibida en títulos? 8. ¿Más de 7 secciones o 9,000 px?
+
+## WhatsApp (REGLA 5 oct 2026)
+De 49 muestras mandadas, solo 8 números tenían WhatsApp: el teléfono de Google Maps casi siempre es FIJO. El investigador busca un WhatsApp PUBLICADO por el negocio (botón o link wa.me / api.whatsapp en Facebook, Instagram, Linktree, Google Maps 'Chat', menú digital, flyer) y anota la fuente. En la lista final cada negocio va marcado: 'WA confirmado (fuente)' o 'solo teléfono, sin WhatsApp'. Sin WhatsApp confirmado, la página usa botones de Llamar, nunca un wa.me a un fijo.
