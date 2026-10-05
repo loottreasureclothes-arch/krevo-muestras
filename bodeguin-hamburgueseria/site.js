@@ -69,7 +69,7 @@
   function render(changed) {
     var tt = totals(), html = "";
     for (var id in cart) html += '<li><span class="q">' + cart[id] + 'x</span><span class="n">' + items[id].name + '</span><span class="p">' + money(items[id].price * cart[id]) + '</span></li>';
-    tkList.innerHTML = html; tkEmpty.hidden = tt.n > 0;
+    tkList.innerHTML = html; tkEmpty.hidden = tt.n > 0; var tot = $("#tkTot"); if (tot) tot.hidden = !tt.n;
     tkTotal.textContent = money(tt.t);
     if (tt.t !== lastTotal) { tkTotal.classList.add("bump"); setTimeout(function () { tkTotal.classList.remove("bump"); }, 260); lastTotal = tt.t; }
     tkSend.href = waUrl(message());
@@ -84,6 +84,7 @@
     var t = e.target.closest("[data-add],[data-inc],[data-dec]"); if (!t) return;
     var id = t.getAttribute("data-add") || t.getAttribute("data-inc") || t.getAttribute("data-dec");
     if (t.hasAttribute("data-dec")) setQty(id, (cart[id] || 0) - 1); else setQty(id, (cart[id] || 0) + 1);
+    if (t.classList.contains("fav-add")) { t.textContent = "En tu charola (" + cart[id] + ")"; t.classList.add("on"); }
   });
   $$(".seg button").forEach(function (b) { b.addEventListener("click", function () { modo = b.getAttribute("data-modo"); $$(".seg button").forEach(function (o) { o.setAttribute("aria-pressed", o === b); }); render(); }); });
   tkName.addEventListener("input", function () { render(); });

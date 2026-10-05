@@ -5,10 +5,33 @@
 .salon-word{position:absolute;left:var(--gut);right:var(--gut);bottom:18px;font:900 clamp(64px,19vw,150px)/.86 var(--f-d);text-transform:uppercase;color:var(--crema);text-shadow:0 2px 20px rgba(0,0,0,.5)}
 .salon-word span{display:block;color:var(--luz)}
 .salon-body{display:grid;gap:20px;justify-items:start;padding-top:22px}
-@media (min-width:900px){
+@media (min-width:800px){
   .s-salon{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:end;padding:0 0 0}
   .salon-photo{aspect-ratio:auto;height:min(78vw,720px);clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
   .salon-photo{margin-right:-1px}
   .salon-word{left:max(var(--gut),calc((100vw - 1240px)/2));font-size:clamp(100px,11vw,170px)}
   .salon-body{align-self:center;padding:0 max(var(--gut),calc((100vw - 1240px)/2)) 0 56px;max-width:none;margin:0}
+}
+
+/* correccion 4: datos del salon */
+.salon-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;margin:0;border-top:2px solid var(--brasa);border-bottom:1px solid #3a2c20}
+.salon-facts>div{padding:14px 10px 14px 0}
+.salon-facts>div+div{padding-left:12px;border-left:1px dashed #3a2c20}
+.salon-facts dt{font:700 11px/1.3 var(--f-d);letter-spacing:.16em;text-transform:uppercase;color:var(--cobre)}
+.salon-facts dd{margin:6px 0 0;font:800 19px/1.1 var(--f-d);text-transform:uppercase;color:var(--crema)}
+.salon-btns{display:grid;gap:12px;width:100%}
+@media (min-width:600px){.salon-btns{grid-auto-flow:column;grid-auto-columns:max-content;width:auto}}
+@media (min-width:800px){
+  .salon-btns{grid-auto-flow:row;width:100%}
+  .salon-btns .btn{width:100%}
+  .salon-facts{grid-template-columns:1fr}
+  .salon-facts>div,.salon-facts>div+div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-left:0;border-top:1px dashed #3a2c20}
+  .salon-facts>div:first-child{border-top:0}
+  .salon-facts dd{margin:0;text-align:right}
+}
+@media (min-width:1200px){
+  .salon-facts{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .salon-facts>div,.salon-facts>div+div{display:block;border-top:0;padding:14px 10px 14px 0}
+  .salon-facts>div+div{padding-left:12px;border-left:1px dashed #3a2c20}
+  .salon-facts dd{margin-top:6px;text-align:left}
 }

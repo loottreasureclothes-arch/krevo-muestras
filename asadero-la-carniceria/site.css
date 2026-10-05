@@ -1,8 +1,8 @@
 /* La Carnicería: base, header, botones, hero */
-@font-face{font-family:"Saira Condensed";font-weight:600;font-style:normal;font-display:swap;src:url(fonts/latin-normal-600.woff2) format("woff2")}
-@font-face{font-family:"Saira Condensed";font-weight:700;font-style:normal;font-display:swap;src:url(fonts/latin-normal-700.woff2) format("woff2")}
-@font-face{font-family:"Saira Condensed";font-weight:800;font-style:normal;font-display:swap;src:url(fonts/latin-normal-800.woff2) format("woff2")}
-@font-face{font-family:"Saira Condensed";font-weight:900;font-style:normal;font-display:swap;src:url(fonts/latin-normal-900.woff2) format("woff2")}
+@font-face{font-family:"Saira Condensed";font-weight:600;font-style:normal;font-display:swap;ascent-override:92%;descent-override:24%;line-gap-override:0%;src:url(fonts/latin-normal-600.woff2) format("woff2")}
+@font-face{font-family:"Saira Condensed";font-weight:700;font-style:normal;font-display:swap;ascent-override:92%;descent-override:24%;line-gap-override:0%;src:url(fonts/latin-normal-700.woff2) format("woff2")}
+@font-face{font-family:"Saira Condensed";font-weight:800;font-style:normal;font-display:swap;ascent-override:92%;descent-override:24%;line-gap-override:0%;src:url(fonts/latin-normal-800.woff2) format("woff2")}
+@font-face{font-family:"Saira Condensed";font-weight:900;font-style:normal;font-display:swap;ascent-override:92%;descent-override:24%;line-gap-override:0%;src:url(fonts/latin-normal-900.woff2) format("woff2")}
 @font-face{font-family:"Hanken Grotesk";font-weight:100 900;font-style:normal;font-display:swap;src:url(fonts/hanken.woff2) format("woff2")}
 :root{
   --carbon:#0b0806;--carbon2:#15100c;--carbon3:#1e1710;
@@ -102,7 +102,7 @@ body.menu-open .mesa-bar{display:none}
 .ticket b{display:block;font:900 30px/1.05 var(--f-d);color:var(--luz)}
 .hero-btns{display:grid;gap:12px}
 
-@media (min-width:900px){
+@media (min-width:800px){
   :root{--gut:36px;--hh:68px}
   .s-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"head photo" "body photo";align-content:center;min-height:min(100svh,880px);padding-top:var(--hh);column-gap:0}
   .hero-photo{grid-area:photo;height:auto;min-height:560px;clip-path:polygon(0 0,100% 0,100% 100%,56px 100%,0 calc(100% - 56px))}
@@ -116,3 +116,17 @@ body.menu-open .mesa-bar{display:none}
   .hd-menu-nav a{font-size:clamp(64px,8vw,104px)}
 }
 .hd-brand{min-height:44px}
+
+/* correccion 4: aire entre etiqueta y titulo, y etiqueta legible sobre la foto */
+.eyebrow+.h2,.eyebrow+.h1{margin-top:12px}
+.hero-head .eyebrow{color:var(--luz);text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 14px rgba(0,0,0,.7)}
+.ticket small{margin-bottom:4px}
+.h1 .t2{margin-bottom:4px}
+.hero-head .h1{margin-top:.18em}
+@media (min-width:800px) and (max-width:1099px){
+  .hero-btns{grid-auto-flow:row;grid-auto-columns:auto}
+  .hero-btns .btn{width:100%}
+  .ticket{max-width:100%}
+  .ticket b{font-size:24px}
+  .ticket>div{padding:10px 12px}
+}

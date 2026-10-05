@@ -4,6 +4,7 @@
       <span class="eyebrow">Tu charola</span>
       <h2 class="t">Arma tu pedido.<span>Mándalo armado.</span></h2>
       <p class="lead">Lo que agregaste en la carta cae aquí, con total. Un toque y va por WhatsApp.</p>
+      <ol class="pasos"><li><b>1</b>Toca Agregar en la carta.</li><li><b>2</b>Elige aquí o para llevar.</li><li><b>3</b>Mándalo por WhatsApp y te confirmamos.</li></ol>
       <button class="nav-btn" id="sugerida" type="button">Cargar sugerencia</button>
       <p class="mini">Sugerencia: Clásica Bodeguín con papas en gajos.</p>
     </div>
@@ -16,7 +17,7 @@
         </div>
         <ul class="tk-list" id="tkList" aria-live="polite"></ul>
         <div class="tk-empty" id="tkEmpty"><p>Tu charola va vacía. Empieza con una:</p><div class="tk-quick"><button type="button" data-add="clasica">Clásica Bodeguín <b>$120</b></button><button type="button" data-add="vivamex">Viva Mex <b>$130</b></button><button type="button" data-add="hd-clasico">Hot dog clásico <b>$100</b></button><button type="button" data-add="gajos">Papas en gajos <b>$78</b></button></div><a href="#carta">O ve la carta completa</a></div>
-        <div class="tk-total"><span>Total</span><b id="tkTotal">$0</b></div>
+        <div class="tk-total" id="tkTot" hidden><span>Total</span><b id="tkTotal"></b></div>
         <label class="tk-name">A nombre de<input id="tkName" type="text" autocomplete="given-name" placeholder="Tu nombre" maxlength="30"></label>
         <p class="tk-note">Precios de la carta. Tu pedido se confirma por WhatsApp.</p>
       </div>

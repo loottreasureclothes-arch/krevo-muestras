@@ -22,3 +22,18 @@
   .slip:nth-child(3n+2){margin-top:30px}
 }
 @media (min-width:760px) and (max-width:899px){.slips{grid-template-columns:1fr 1fr}}
+/* corrección 4: el 4.4 gigante ya no pisa el eyebrow */
+.big4 b{line-height:.9;padding-top:.06em}
+.ops-head{gap:40px}
+@media (min-width:900px){.ops-head{gap:70px}}
+/* corrección 4: 8 reseñas; en celular se deslizan */
+.swipe{display:none}
+@media (max-width:759px){
+  .slips{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--pad) * -1);padding:4px var(--pad) 10px;scroll-padding-inline:var(--pad);-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .slips::-webkit-scrollbar{display:none}
+  .slip{flex:0 0 84%;scroll-snap-align:start}
+  .swipe{display:flex;align-items:center;gap:10px;margin-top:10px;font:700 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--wood)}
+  .swipe::after{content:"\2192";font-size:16px}
+}
+@media (min-width:900px){.slips{grid-template-columns:repeat(4,1fr)}.slip:nth-child(3n+2){margin-top:0}.slip:nth-child(2n){margin-top:30px}}
+@media (max-width:759px){html.js-rv .slip[data-reveal]{opacity:1;transform:none}}

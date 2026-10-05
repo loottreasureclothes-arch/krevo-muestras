@@ -12,3 +12,11 @@
   .g1,.g4,.g2,.g3{grid-column:auto;aspect-ratio:3/4.1}
   .g2,.g3{margin-top:50px}
 }
+/* corrección 4: 6 fotos */
+.g5,.g6{aspect-ratio:3/3.6}
+.g5 img,.g6 img{object-position:50% 70%}
+@media (min-width:900px){
+  .mos{grid-template-columns:1.25fr .75fr 1fr}
+  .g1,.g2,.g3,.g4,.g5,.g6{grid-column:auto;margin-top:0;aspect-ratio:auto;height:330px}
+  .g2,.g6{margin-top:40px}
+}

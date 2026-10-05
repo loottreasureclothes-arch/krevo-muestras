@@ -43,3 +43,30 @@
 .ask{margin:4px 0 22px;padding:18px 18px 16px;border:1.5px dashed var(--line);color:var(--cr2);font-size:16px;break-inside:avoid}.ask b{color:var(--mos)}
 .tel-go{display:inline-flex;align-items:center;min-height:44px;margin-top:10px;color:var(--cr);font:700 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--mos);padding-bottom:0}
 .tel-go::after{content:" \2192"}
+/* corrección 4: la etiqueta oculta de Agregar no cuenta como texto cortado en celular */
+@media (max-width:759px){.add span{display:none}}
+/* corrección 4: las más nombradas en Google */
+.fav{margin-top:30px;background:var(--cr);color:var(--c);padding:20px 18px 8px;clip-path:var(--cut);position:relative}
+.fav::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:var(--check);background-size:10px 10px}
+.fav-h{font:700 12px/1.2 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--wood);margin-top:6px}
+.fav-list{counter-reset:f}
+.fav-list li{counter-increment:f;display:grid;grid-template-columns:40px 1fr auto;column-gap:12px;row-gap:4px;padding:16px 0;border-bottom:1px dashed rgba(19,17,12,.3)}
+.fav-list li:last-child{border-bottom:0}
+.fav-list li::before{content:counter(f);grid-row:1/4;font:400 38px/1 var(--display);color:var(--mos2)}
+.fav-n{font:400 22px/1.05 var(--display);grid-column:2}
+.fav-p{grid-column:3;grid-row:1;font:400 22px/1 var(--display);color:var(--wood);text-align:right}
+.fav-list q{grid-column:2/4;font:500 15.5px/1.35 var(--body);color:#3d3a2e;quotes:"\201C" "\201D"}
+.fav-w{grid-column:2;font:700 11px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--wood)}
+.fav-w::before{content:"\2605\2605\2605\2605\2605  ";color:var(--mos2);letter-spacing:.05em}
+.fav-add{grid-column:2/4;justify-self:start;margin-top:8px;min-height:44px;padding:0 18px;background:var(--c);color:var(--cr);border:0;font:700 12px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.fav-add::after{content:" +"}
+.fav-add:hover{background:var(--wood)}
+.fav-add:active{transform:scale(.97)}
+.fav-add.on{background:var(--mos);color:var(--c)}
+.fav-add.on::after{content:""}
+@media (min-width:900px){
+  .fav{margin-top:40px;padding:26px 30px 14px}
+  .fav-list{display:grid;grid-template-columns:repeat(3,1fr);column-gap:34px}
+  .fav-list li{border-bottom:0;border-right:1px dashed rgba(19,17,12,.3);padding-right:26px;align-content:start}
+  .fav-list li:last-child{border-right:0}
+}

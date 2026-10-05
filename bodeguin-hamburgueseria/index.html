@@ -21,13 +21,13 @@
 <link rel="preload" href="fonts/barlow-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="site.css?v=1791104750">
 <link rel="stylesheet" href="sections/01-hero.css?v=1791105359">
-<link rel="stylesheet" href="sections/02-carta.css?v=1791105359">
-<link rel="stylesheet" href="sections/03-charola.css?v=1791105359">
-<link rel="stylesheet" href="sections/04-mesa.css?v=1791105359">
-<link rel="stylesheet" href="sections/05-opiniones.css?v=1791105359">
-<link rel="stylesheet" href="sections/06-lugar.css?v=1791105359">
+<link rel="stylesheet" href="sections/02-carta.css?v=1791210759">
+<link rel="stylesheet" href="sections/03-charola.css?v=1791210759">
+<link rel="stylesheet" href="sections/04-mesa.css?v=1791210527">
+<link rel="stylesheet" href="sections/05-opiniones.css?v=1791211511">
+<link rel="stylesheet" href="sections/06-lugar.css?v=1791210778">
 <link rel="stylesheet" href="sections/07-visitanos.css?v=1791105281">
-<link rel="stylesheet" href="sections/08-completar.css?v=1791104372">
+<link rel="stylesheet" href="sections/08-completar.css?v=1791210759">
 <link rel="stylesheet" href="sections/09-pie.css?v=1791104378">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"El Bodeguín Hamburguesería","servesCuisine":["Hamburguesas","Hot dogs","Alitas"],"priceRange":"$100-200","telephone":"+524499188874","image":"https://loottreasureclothes-arch.github.io/krevo-muestras/bodeguin-hamburgueseria/img/og.jpg","address":{"@type":"PostalAddress","streetAddress":"General Guadalupe Victoria 112, Zona Centro","addressLocality":"Aguascalientes","addressRegion":"Ags.","postalCode":"20000","addressCountry":"MX"},"geo":{"@type":"GeoCoordinates","latitude":21.8815708,"longitude":-102.297486},"hasMap":"https://www.google.com/maps/place/Bodeguin+Hamburgueser%C3%ADa/@21.8815708,-102.297486,825m/data=!3m2!1e3!4b1!4m6!3m5!1s0x8429ee7cd438cec5:0x5f2f0cdddfec432d!8m2!3d21.8815708!4d-102.297486!16s%2Fg%2F11b6mgmdtt","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"14:00","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"14:00","closes":"23:59"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"14:00","closes":"22:30"}]}
@@ -75,6 +75,15 @@
     <span class="eyebrow">La carta</span>
     <h2 class="t">Todo con papel,<span>todo con salsa.</span></h2>
     <p class="lead">Toca Agregar y arma tu charola. Los precios son los de la carta.</p>
+
+    <div class="fav" data-reveal>
+      <p class="fav-h">Las que más nombran en Google</p>
+      <ol class="fav-list">
+        <li><b class="fav-n">Levanta Muertos</b><q>La más rica que he comido.</q><span class="fav-w">さくら</span><span class="fav-p">$110</span><button type="button" class="fav-add" data-add="levanta">Agregar</button></li>
+        <li><b class="fav-n">Viejo Oeste</b><q>Deliciosas hamburguesas, probamos la viejo oeste.</q><span class="fav-w">Mara L.</span><span class="fav-p">$120</span><button type="button" class="fav-add" data-add="oeste-res">Agregar</button></li>
+        <li><b class="fav-n">Hot dog alemán</b><q>La salchicha del hotdog es de buena calidad.</q><span class="fav-w">Elizabeth Villalobos</span><span class="fav-p">$100</span><button type="button" class="fav-add" data-add="hd-clasico">Agregar</button></li>
+      </ol>
+    </div>
 
     <div class="menu-cols">
       <div class="grp" data-reveal>
@@ -131,7 +140,7 @@
 
     <a class="go" href="#charola">Ver mi charola</a>
   </div>
-  <a class="chip" id="chip" href="#charola" hidden><span id="chipN">0</span> en tu charola · <b id="chipT">$0</b><em>Ver</em></a>
+  <a class="chip" id="chip" href="#charola" hidden><span id="chipN">0</span> en tu charola · <b id="chipT"></b><em>Ver</em></a>
 </section>
 
 <section class="charola" id="charola">
@@ -140,6 +149,7 @@
       <span class="eyebrow">Tu charola</span>
       <h2 class="t">Arma tu pedido.<span>Mándalo armado.</span></h2>
       <p class="lead">Lo que agregaste en la carta cae aquí, con total. Un toque y va por WhatsApp.</p>
+      <ol class="pasos"><li><b>1</b>Toca Agregar en la carta.</li><li><b>2</b>Elige aquí o para llevar.</li><li><b>3</b>Mándalo por WhatsApp y te confirmamos.</li></ol>
       <button class="nav-btn" id="sugerida" type="button">Cargar sugerencia</button>
       <p class="mini">Sugerencia: Clásica Bodeguín con papas en gajos.</p>
     </div>
@@ -152,7 +162,7 @@
         </div>
         <ul class="tk-list" id="tkList" aria-live="polite"></ul>
         <div class="tk-empty" id="tkEmpty"><p>Tu charola va vacía. Empieza con una:</p><div class="tk-quick"><button type="button" data-add="clasica">Clásica Bodeguín <b>$120</b></button><button type="button" data-add="vivamex">Viva Mex <b>$130</b></button><button type="button" data-add="hd-clasico">Hot dog clásico <b>$100</b></button><button type="button" data-add="gajos">Papas en gajos <b>$78</b></button></div><a href="#carta">O ve la carta completa</a></div>
-        <div class="tk-total"><span>Total</span><b id="tkTotal">$0</b></div>
+        <div class="tk-total" id="tkTot" hidden><span>Total</span><b id="tkTotal"></b></div>
         <label class="tk-name">A nombre de<input id="tkName" type="text" autocomplete="given-name" placeholder="Tu nombre" maxlength="30"></label>
         <p class="tk-note">Precios de la carta. Tu pedido se confirma por WhatsApp.</p>
       </div>
@@ -190,7 +200,10 @@
       <li class="slip" data-reveal><div class="st" aria-label="5 estrellas">★★★★★</div><blockquote>Muy rica la comida, rica la música qué tienen rock 80's y 90' y suave cita, mi hamburguesa muy rica…</blockquote><p class="who"><b>Victor hugo Padilla Hernández</b> · Google, hace 4 años</p></li>
       <li class="slip" data-reveal><div class="st" aria-label="5 estrellas">★★★★★</div><blockquote>Las hamburguesas están super buenas aunque es un poco tardado el servicio por la demanda, supongo. Pero vale la pena la espera. El lugar es cómodo y un poco vintage. Lo recomiendo</blockquote><p class="who"><b>Hetzmir Antonio Arcos Sánchez</b> · Google, hace 7 años</p></li>
       <li class="slip" data-reveal><div class="st" aria-label="4 estrellas">★★★★<i>★</i></div><blockquote>Si eres un amante de las hamburguesas este lugar es el indicado, una carta amplia en variedad de hamburguesas u otros alimentos. La relación precio calidad es muy, muy buena, y el ambiente de El Codo lo hace perfecto para ir con amigos o pareja.</blockquote><p class="who"><b>Víctor Obregón</b> · Google, hace 8 años</p></li>
+      <li class="slip" data-reveal><div class="st" aria-label="5 estrellas">★★★★★</div><blockquote>La salchicha del hotdog es de buena calidad. Al igual que los restaurantes en el codo no cuenta con estacionamiento. Pero la atención y servicio es buena.</blockquote><p class="who"><b>Elizabeth Villalobos</b> · Google, hace 3 años</p></li>
+      <li class="slip" data-reveal><div class="st" aria-label="4 estrellas">★★★★<i>★</i></div><blockquote>Muy buen lugar para ir a comer con los amigos, el hot dog con salchicha alemana en su punto…</blockquote><p class="who"><b>juan carlos solis</b> · Google, hace 2 años</p></li>
     </ul>
+    <p class="swipe" aria-hidden="true">Desliza para leer más</p>
     <a class="nav-btn ops-btn" href="https://www.google.com/maps/place/Bodeguin+Hamburgueser%C3%ADa/@21.8815708,-102.297486,825m/data=!3m2!1e3!4b1!4m6!3m5!1s0x8429ee7cd438cec5:0x5f2f0cdddfec432d!8m2!3d21.8815708!4d-102.297486!16s%2Fg%2F11b6mgmdtt" target="_blank" rel="noopener">Ver todas en Google</a>
   </div>
 </section>
@@ -205,6 +218,8 @@
       <figure class="g g2" data-reveal><img src="img/lena-480.webp" srcset="img/lena-480.webp 480w, img/lena-960.webp 960w" sizes="(min-width:900px) 20vw, 46vw" width="1536" height="2048" alt="Pared de leña apilada y mesas de madera rústicas" loading="lazy"><figcaption>La leña</figcaption></figure>
       <figure class="g g3" data-reveal><img src="img/terraza-480.webp" srcset="img/terraza-480.webp 480w, img/terraza-960.webp 960w" sizes="(min-width:900px) 20vw, 46vw" width="1536" height="2048" alt="Terraza en el callejón con sombrilla y mesas" loading="lazy"><figcaption>La terraza</figcaption></figure>
       <figure class="g g4" data-reveal><img src="img/entrada-960.webp" srcset="img/entrada-480.webp 480w, img/entrada-960.webp 960w" sizes="(min-width:900px) 40vw, 92vw" width="1536" height="2048" alt="Puerta de vidrio y el interior iluminado por la noche" loading="lazy"><figcaption>Por dentro</figcaption></figure>
+      <figure class="g g5" data-reveal><img src="img/jugo-480.webp" srcset="img/jugo-480.webp 480w, img/jugo-960.webp 960w" sizes="(min-width:900px) 30vw, 46vw" width="921" height="1228" alt="Hamburguesa abierta sobre tabla de madera con un jugo de naranja" loading="lazy"><figcaption>Con jugo</figcaption></figure>
+      <figure class="g g6" data-reveal><img src="img/pannini-480.webp" srcset="img/pannini-480.webp 480w, img/pannini-960.webp 960w" sizes="(min-width:900px) 30vw, 46vw" width="921" height="1228" alt="Pannini sobre papel de cuadros y tabla de madera" loading="lazy"><figcaption>El pannini</figcaption></figure>
     </div>
     <a class="go" href="#visitanos">Cómo llegar</a>
   </div>
@@ -213,7 +228,7 @@
 <section class="vis" id="visitanos">
   <div class="wrap vis-grid">
     <div class="vis-map" data-reveal>
-      <div class="frame"><iframe title="Mapa de El Bodeguín en Google Maps" src="https://www.google.com/maps?q=El+Bodeguin+Hamburgueseria+General+Guadalupe+Victoria+112+Aguascalientes&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+      <div class="frame"><iframe title="Mapa de El Bodeguín en Google Maps" src="https://www.google.com/maps?q=Bodeguin+Hamburgueser%C3%ADa,+General+Guadalupe+Victoria+112,+Zona+Centro,+20000+Aguascalientes&ll=21.8815708,-102.297486&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
     </div>
     <div class="vis-info">
       <span class="eyebrow">Visítanos</span>
@@ -272,7 +287,7 @@
 </footer>
 
 </main>
-<script src="site.js?v=1791104661" defer></script>
+<script src="site.js?v=1791210759" defer></script>
 
 </body>
 </html>
