@@ -63,3 +63,4 @@
 | el-campirano | Júntenme las mesas (adultos y niños: las mesas de 4 se deslizan y se juntan, sillas de niño, total gigante; recado para Llamar o copiar) | 5 oct 2026 |
 | hotel-argentina | El llavero (cuarto con foto, personas, noches, fecha y cómo llega; resumen para llamar o copiar; sin WhatsApp) | 5 oct 2026 |
 | xama-cocina | La perilla del antojo (perilla de estufa con 5 paradas: café, desayuno, cocina, fresco, bar; cambia foto y platillos de reseñas; ticket Elige arriba; Llamar o copiar) | 5 oct 2026 |
+| hotel-hacienda-de-la-noria | El plano del patio (tocas jardin o alberca en un plano del patio, eliges pareja o familia, noches y dia de llegada; Llamar o copiar resumen; "Pregunta la tarifa"; sin WhatsApp) | 5 oct 2026 |
