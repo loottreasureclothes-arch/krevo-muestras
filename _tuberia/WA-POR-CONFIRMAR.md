@@ -26,3 +26,8 @@ Estas páginas usan botones de Llamar. Si se confirma un WhatsApp publicado por 
 | tacos-el-super | Tacos de Barbacoa El Súper | 449 385 0945 | no encontré (facebook.com/TaqueriasElSuper es de Guadalajara, no es este) | https://www.instagram.com/tacos_el_super_ags/ (probable; otra: https://www.instagram.com/tacosdebarbacoa_elsuper/) |
 | hotel-mansion-suiza | Hotel Mansión Suiza | 449 917 2233 | https://www.facebook.com/mansionsuiza | no encontré |
 | jardin-los-eucaliptos | Jardín Los Eucaliptos | 449 545 5102 | https://www.facebook.com/jardinloseucaliptos21/ | no encontré (TikTok: https://www.tiktok.com/@jardineucaliptos) |
+| menudos-rosy | Menudos Rosy | 449 155 6559 | https://www.facebook.com/menudosrosy/ | https://instagram.com/menudos_rosy |
+| restaurante-cascadas | Restaurante Cascadas (Jesús María) | 449 963 5657 | https://www.facebook.com/CascadasMariscosyCabrito/ | no encontré |
+| bananas-bar | Bananas Bar (Rincón de Romos) | 465 851 5039 (un directorio lista 55 6435 8003 como WhatsApp, sin confirmar) | https://www.facebook.com/bananasrestaurantbar1 | no encontré |
+| pelicanos-pabellon | Restaurante Pelicanos (Pabellón de Arteaga) | 465 958 0786 | https://www.facebook.com/pelicanosrestaurant1/ | no encontré |
+| birrieria-los-angeles-jm | Birriería Los Ángeles (Jesús María) | 449 194 1346 | https://www.facebook.com/p/Birrieria-los-Angeles-Margaritas-100027732171532/ | no encontré |
