@@ -1,6 +1,11 @@
-.casona{position:relative;height:min(78svh,640px);min-height:440px;overflow:hidden;background:var(--clay)}
+.casona{position:relative;height:min(88svh,720px);min-height:560px;overflow:hidden;background:var(--clay)}
 .casona img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.casona::after{content:"";position:absolute;inset:auto 0 0 0;height:62%;background:linear-gradient(to top,rgba(36,13,9,.92),rgba(36,13,9,0));pointer-events:none}
+.casona::after{content:"";position:absolute;inset:auto 0 0 0;height:72%;background:linear-gradient(to top,rgba(36,13,9,.92),rgba(36,13,9,0));pointer-events:none}
 .casona-t{position:absolute;left:0;right:0;bottom:0;z-index:2;padding-bottom:34px}
 .casona h2{font-size:clamp(46px,13.5vw,120px);line-height:.95;text-shadow:0 2px 18px rgba(36,13,9,.7);max-width:11ch}
 @media (min-width:760px){.casona{height:min(76svh,760px)}.casona-t{padding-bottom:56px}.casona h2{max-width:14ch}}
+
+.casona-p{margin-top:18px;max-width:34ch;font-size:16px;line-height:1.45;text-shadow:0 1px 10px rgba(36,13,9,.8)}
+.casona-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:18px}
+.casona-cta .lnk{color:var(--cream)}
+@media (min-width:760px){.casona{height:min(84svh,820px)}.casona-p{font-size:18px;max-width:40ch;margin-top:34px}.casona-cta{margin-top:24px}}

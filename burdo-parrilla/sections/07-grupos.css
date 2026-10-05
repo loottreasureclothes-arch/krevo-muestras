@@ -4,13 +4,12 @@
 .bd-gr-big span{display:block;font-size:.42em;color:#ffd9dc;text-shadow:none;margin-top:8px}
 .bd-gr-cap{font:600 12px/1 var(--f-b);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:14px 0 26px}
 .bd-gr-faq{display:flex;flex-direction:column}
-.bd-gr-faq details{border-top:1px solid rgba(255,59,74,.4)}
-.bd-gr-faq details:last-of-type{border-bottom:1px solid rgba(255,59,74,.4);margin-bottom:24px}
-.bd-gr-faq summary{list-style:none;cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;font:800 24px/1.05 var(--f-d);text-transform:uppercase;padding:12px 0}
-.bd-gr-faq summary::-webkit-details-marker{display:none}
-.bd-gr-faq summary::after{content:"";flex:none;width:14px;height:14px;border-right:2px solid var(--neon);border-bottom:2px solid var(--neon);transform:rotate(45deg) translateY(-4px);transition:transform .25s}
-.bd-gr-faq details[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
-.bd-gr-faq details p{padding:0 0 16px;color:var(--muted);font-size:17px}
+.bd-faq{margin:0 0 26px;display:grid}
+.bd-faq div{border-top:1px solid rgba(255,59,74,.4);padding:16px 0 18px;display:grid;gap:8px}
+.bd-faq div:last-child{border-bottom:1px solid rgba(255,59,74,.4)}
+.bd-faq dt{font:800 24px/1.05 var(--f-d);text-transform:uppercase;color:#ffd9dc;padding-left:18px;position:relative}
+.bd-faq dt::before{content:"";position:absolute;left:0;top:.35em;width:8px;height:8px;background:var(--neon)}
+.bd-faq dd{margin:0;padding-left:18px;color:var(--muted);font-size:17px}
 @media (min-width:820px){
   .bd-gr-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:72px;align-items:center}
   .bd-gr-faq .bd-btn{align-self:flex-start}

@@ -57,10 +57,14 @@ h1,h2,h3{font-family:"Passion One",Impact,sans-serif;font-weight:900;line-height
  body{font-size:18px}
  .nb-bar{padding:0 40px}
  .nb-brand{font-size:28px}
- .nb-menu{position:static;flex-direction:row;gap:30px;padding:0;background:none;opacity:1;visibility:visible;transform:none;overflow:visible}
- .nb-menu a{font:700 14px/1 "Barlow",sans-serif;letter-spacing:.16em;border:0;padding:0;display:flex;align-items:center;min-height:44px}
- .nb-menu a:hover{color:var(--red)}
- .nb-menu-btn{display:none}
+ .nb-menu a{font-size:64px}
  .wrap{padding:0 40px}
  .nb-foot{padding:64px 40px 72px}
+}
+/* en tableta el menú sigue siendo el panel rojo; en línea solo cuando cabe (1100+) */
+@media (min-width:1100px){
+ .nb-menu{position:static;flex-direction:row;gap:28px;padding:0;background:none;opacity:1;visibility:visible;transform:none;overflow:visible}
+ .nb-menu a{font:700 13px/1 "Barlow",sans-serif;letter-spacing:.14em;border:0;padding:0;display:flex;align-items:center;min-height:44px;white-space:nowrap}
+ .nb-menu a:hover{color:var(--red)}
+ .nb-menu-btn{display:none}
 }

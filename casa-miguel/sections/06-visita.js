@@ -7,9 +7,9 @@
     [].forEach.call(ul.children,function(li){if(li.dataset.d===d)li.classList.add("hoy");});
     var el=document.getElementById("cm-ahora");if(!el)return;
     var hr=CM.horario(n.dow),ab=n.h>=hr.a&&n.h<hr.c,t;
-    if(ab)t="Abierto ahora · cierra a las "+f(hr.c);
-    else if(n.h<hr.a)t="Cerrado ahora · abre hoy a las "+f(hr.a);
-    else t="Cerrado ahora · abre mañana a las "+f(CM.horario((n.dow+1)%7).a);
+    if(ab)t="Abierto ahora · cierra "+f(hr.c);
+    else if(n.h<hr.a)t="Cerrado · abre hoy "+f(hr.a);
+    else t="Cerrado · abre mañana "+f(CM.horario((n.dow+1)%7).a);
     el.querySelector("span").textContent=t;el.classList.add(ab?"on":"off");
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();

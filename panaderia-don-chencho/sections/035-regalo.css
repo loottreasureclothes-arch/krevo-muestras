@@ -1,0 +1,25 @@
+.regalo{background:var(--wine);border-top:1px solid rgba(217,164,65,.25)}
+.rg-p{margin:16px 0 0;font-size:17px;max-width:32ch;opacity:.9}
+.rg-dato{display:flex;align-items:center;gap:14px;margin:26px 0 0;padding:16px 0;border-top:1px solid rgba(217,164,65,.35);border-bottom:1px solid rgba(217,164,65,.35)}
+.rg-dato b{font-family:var(--f-d);font-size:clamp(56px,16vw,88px);line-height:1;color:var(--gold);letter-spacing:-.03em;flex:none}
+.rg-dato span{font-size:15px;line-height:1.3;max-width:20ch;opacity:.9}
+.rg-dato em{font-style:normal;color:var(--brick-l);font-weight:700}
+.rg-pasos{list-style:none;margin:24px 0 0;display:grid;gap:12px;max-width:420px}
+.rg-pasos li{display:flex;align-items:center;gap:14px;font-size:16px}
+.rg-pasos b{flex:none;width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold);font-family:var(--f-d);font-size:19px;border-radius:999px 999px 4px 4px}
+.rg-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;align-items:center}
+.rg-col{margin-top:34px;display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:auto auto;gap:12px}
+.rg-i{position:relative;margin:0;overflow:hidden;border:2px solid rgba(217,164,65,.55);background:var(--wine2)}
+.rg-i img{width:100%;height:100%;object-fit:cover}
+.rg-a{grid-row:1/3;border-radius:999px 999px 8px 8px;aspect-ratio:3/4}
+.rg-b,.rg-c{aspect-ratio:4/3;border-radius:8px}
+.rg-c{border-radius:8px 8px 60px 8px}
+.rg-i figcaption{position:absolute;left:0;bottom:0;background:var(--wine);color:var(--cream);font:700 10px var(--f-b);letter-spacing:.16em;text-transform:uppercase;padding:6px 9px;border-left:3px solid var(--gold);max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rg-i:hover img{transform:scale(1.03)}
+.rg-i img{transition:transform .3s}
+@media (min-width:820px){
+ .regalo .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+ .rg-col{margin-top:0;gap:16px}
+ .rg-i figcaption{font-size:11px;padding:7px 10px}
+ .rg-pasos li{font-size:17px}
+}

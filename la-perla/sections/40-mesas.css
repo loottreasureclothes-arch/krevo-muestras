@@ -4,8 +4,8 @@
 .lp-ops h2{font-size:clamp(48px,14vw,72px);margin-top:10px}
 .lp-ops h2 .t2{color:var(--deep);display:block}
 .lp-big{display:flex;align-items:flex-end;gap:18px;border-top:3px solid var(--ink);border-bottom:1px solid rgba(29,36,51,.25);padding:14px 0 18px}
-.lp-big b{font-family:var(--font-display);font-weight:900;font-size:clamp(150px,46vw,260px);line-height:.78;color:var(--ink);letter-spacing:-.01em}
-.lp-big p{font-size:15px;line-height:1.35;max-width:20ch;padding-bottom:8px}
+.lp-big b{display:block;font-family:var(--font-display);font-weight:900;font-size:clamp(150px,46vw,260px);line-height:.78;color:var(--ink);letter-spacing:-.01em}
+.lp-big p{font-size:15px;line-height:1.35;max-width:20ch;padding-bottom:8px;position:relative;z-index:1}
 .lp-big strong{color:var(--deep)}
 .lp-quotes{display:grid;gap:22px}
 .lp-quotes figure{border-left:4px solid var(--deep);padding:2px 0 2px 16px}
@@ -20,7 +20,7 @@
   .lp-quotes{grid-column:2;align-self:center}
   .lp-quotes blockquote{font-size:32px}
 }
-@media (max-width:819px){.lp-big{flex-direction:column;align-items:flex-start;gap:12px}.lp-big p{max-width:34ch;padding-bottom:0}}
+@media (max-width:819px){.lp-big{flex-direction:column;align-items:flex-start;gap:0}.lp-big b{padding-bottom:.2em}.lp-big p{max-width:34ch;padding-bottom:0}}
 /* carrusel de reseñas (platos ovalados de barro en fila) */
 .lp-ops{padding-bottom:48px}
 .lp-revs{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:30px var(--gut) 10px;scroll-padding:0 var(--gut);scrollbar-width:none;-webkit-overflow-scrolling:touch}

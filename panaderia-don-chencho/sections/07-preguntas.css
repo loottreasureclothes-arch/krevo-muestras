@@ -7,6 +7,7 @@
 .fq summary::after{content:"+";flex:none;width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--brick);color:var(--brick);font:400 22px var(--f-b);transition:transform .25s}
 .fq details[open] summary::after{transform:rotate(45deg);background:var(--brick);color:var(--cream)}
 .fq p{padding:0 0 20px;font-size:17px;max-width:46ch}
+.fq details:not([open])>p{display:none}
 .fq-cta{margin-top:30px}
 @media (min-width:820px){
  .faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:start}

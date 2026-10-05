@@ -1,0 +1,38 @@
+.lp-faq{background:var(--navy3);padding:56px 0 60px;border-top:4px solid var(--blue)}
+.lp-faq-grid{display:grid;gap:26px}
+.lp-faq h2{font-size:clamp(44px,12.5vw,72px);margin-top:10px}
+.lp-faq h2 .t2{display:block}
+.lp-faq-photo{position:relative;border-radius:999px 999px 6px 6px / 150px 150px 6px 6px;overflow:hidden;box-shadow:0 0 0 3px var(--navy3),0 0 0 5px #dcecf5;height:300px;background:var(--navy2)}
+.lp-faq-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.lp-faq-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:linear-gradient(to top,rgba(20,26,39,.85),rgba(20,26,39,0))}
+.lp-faq-list{display:grid;gap:0}
+.lp-q{border-top:1px solid rgba(255,255,255,.18)}
+.lp-q:last-of-type{border-bottom:1px solid rgba(255,255,255,.18)}
+.lp-q h3{font-weight:400;line-height:1.1}
+.lp-faq .lp-q button{width:100%;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;padding:14px 0;font-family:var(--font-display);font-weight:400;font-size:24px;line-height:1.1;transition:color 160ms ease}
+.lp-faq .lp-q button:hover{color:var(--sky)}
+.lp-faq .lp-q button i{position:relative;flex:none;width:32px;height:32px;border:1px solid var(--sky);border-radius:50%;transition:transform 260ms ease,background-color 160ms ease}
+.lp-faq .lp-q button i::before,.lp-faq .lp-q button i::after{content:"";position:absolute;left:50%;top:50%;background:var(--sky);transform:translate(-50%,-50%)}
+.lp-faq .lp-q button i::before{width:14px;height:2px}
+.lp-faq .lp-q button i::after{width:2px;height:14px;transition:opacity 160ms ease}
+.lp-q.is-open button{color:var(--sky)}
+.lp-q.is-open button i{transform:rotate(180deg);background:rgba(118,195,231,.12)}
+.lp-q.is-open button i::after{opacity:0}
+.lp-faq .lp-a{padding:0 44px 18px 0}
+.lp-faq .lp-a[hidden]{display:none}
+.lp-faq .lp-a p{color:#d3dbe8;font-size:16px;line-height:1.5;max-width:46ch}
+.lp-faq-cta{display:grid;gap:10px;margin-top:26px;max-width:380px}
+@media (prefers-reduced-motion:no-preference){
+  .lp-q.is-open .lp-a{animation:lp-faq-in 320ms cubic-bezier(.23,1,.32,1)}
+}
+@keyframes lp-faq-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (min-width:820px){
+  .lp-faq{padding:84px 0 92px}
+  .lp-faq-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);column-gap:56px;row-gap:36px;align-items:start}
+  .lp-faq-head{grid-column:1 / -1}
+  .lp-faq h2 .t2{display:inline}
+  .lp-faq-photo{grid-column:1;height:560px;border-radius:999px 999px 6px 6px / 220px 220px 6px 6px;position:sticky;top:110px}
+  .lp-faq-list{grid-column:2}
+  .lp-faq .lp-q button{font-size:27px}
+  .lp-faq-cta{grid-auto-flow:column;max-width:none;justify-content:start}
+}

@@ -1,0 +1,50 @@
+.pedir{background:var(--d2);padding:64px 0 72px;overflow:hidden}
+.pedir-lead{margin-top:16px;max-width:34ch;color:rgba(246,240,227,.82);text-wrap:pretty}
+/* ranking tipográfico: el número grande y una barra que crece (ancho real = menciones) */
+.rank{list-style:none;padding:0;margin:34px 0 0;border-top:1.5px solid rgba(246,240,227,.3)}
+.rank li{position:relative;display:grid;grid-template-columns:auto 1fr;align-items:baseline;gap:0 14px;padding:12px 0 14px;border-bottom:1px solid rgba(246,240,227,.14)}
+.rank-n{font:700 clamp(44px,12vw,64px)/.9 var(--serif);letter-spacing:-.04em;color:var(--teal);min-width:2ch}
+.rank-t{font:600 16px/1.2 var(--sans);color:var(--cream)}
+.rank-bar{grid-column:1/-1;display:block;height:6px;margin-top:10px;width:var(--w);background:var(--teal);transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.rank li:first-child .rank-n{font-size:clamp(64px,18vw,96px);line-height:.85}
+@media (prefers-reduced-motion:no-preference){.js .rank li:not(.is-in) .rank-bar{transform:scaleX(0)}}
+/* tres pasos */
+.pedir-steps{margin-top:44px}
+.pedir-sub{font:italic 600 clamp(26px,7vw,34px)/1.1 var(--serif);color:var(--cream);margin-bottom:18px}
+.pasos{list-style:none;padding:0;display:grid;gap:14px}
+.pasos li{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start;background:var(--d);padding:18px 18px 20px;border:1px solid rgba(246,240,227,.12)}
+.pasos b{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--cream);color:var(--d);font:italic 700 24px/1 var(--serif);box-shadow:0 0 0 3px var(--d),0 0 0 4.5px var(--teal)}
+.pasos h3{font:600 20px/1.15 var(--serif);letter-spacing:-.01em}
+.pasos p{margin-top:6px;font-size:15.5px;line-height:1.4;color:rgba(246,240,227,.78)}
+/* preguntas */
+.faq{margin-top:40px;border-top:1.5px solid rgba(246,240,227,.3)}
+.faq-i{border-bottom:1px solid rgba(246,240,227,.16)}
+.faq-i summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;padding:14px 0;font:600 19px/1.25 var(--serif);color:var(--cream)}
+.faq-i summary::-webkit-details-marker{display:none}
+.faq-i summary span{flex:none;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--teal);position:relative;transition:transform .25s,background .25s}
+.faq-i summary span::before,.faq-i summary span::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;background:var(--teal);transform:translate(-50%,-50%)}
+.faq-i summary span::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-i[open] summary span{transform:rotate(45deg);background:rgba(111,208,196,.12)}
+.faq-i p{padding:0 46px 20px 0;color:rgba(246,240,227,.82);font-size:16.5px;line-height:1.5;max-width:60ch}
+.pedir-cta{display:grid;gap:16px;margin-top:40px;justify-items:start}
+.pedir-tel{display:inline-flex;align-items:center;gap:10px;min-height:48px;font:700 13px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--teal);text-decoration:none;border-bottom:1.5px solid var(--teal)}
+.pedir-tel span{transition:transform .25s}.pedir-tel:hover span{transform:translateX(5px)}
+@media(min-width:620px){.pasos{grid-template-columns:repeat(3,1fr)}.pasos li{grid-template-columns:1fr;gap:12px}.pedir-cta{grid-auto-flow:column;align-items:center;gap:28px}}
+@media(min-width:900px){
+.pedir{padding:100px 0 110px}
+.pedir-top{display:grid;grid-template-columns:1fr 1fr;gap:40px 90px;align-items:start}
+.rank{margin-top:0}
+.rank li{grid-template-columns:auto 1fr;padding:14px 0 16px}
+.rank-n{font-size:clamp(56px,4.8vw,72px)}
+.rank li:first-child .rank-n{font-size:clamp(84px,7vw,110px)}
+.rank-t{font-size:18px}
+.pedir-steps{margin-top:80px}
+.pasos{gap:22px}.pasos li{padding:26px 26px 28px}
+.pedir-sub{font-size:38px;margin-bottom:26px}
+.faq{margin-top:72px;display:grid;grid-template-columns:1fr 1fr;column-gap:72px;border-top:0}
+.faq-i:nth-child(-n+2){border-top:1.5px solid rgba(246,240,227,.3)}
+.faq-i summary{font-size:22px;min-height:68px}
+.pedir-cta{margin-top:56px}
+}
+
+.faq-i:not([open])>p{display:none}

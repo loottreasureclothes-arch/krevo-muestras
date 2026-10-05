@@ -39,7 +39,7 @@
   var zones = Array.prototype.slice.call(document.querySelectorAll("[data-hide-wa]"));
   function wz() {
     var vh = window.innerHeight, on = false;
-    zones.forEach(function (z) { var r = z.getBoundingClientRect(); if (r.top < vh * 0.85 && r.bottom > vh * 0.1) on = true; });
+    zones.forEach(function (z) { var r = z.getBoundingClientRect(); if (r.top < vh && r.bottom > vh * 0.1) on = true; });
     body.classList.toggle("wa-off", on);
   }
   wz(); window.addEventListener("scroll", wz, { passive: true }); window.addEventListener("resize", wz);

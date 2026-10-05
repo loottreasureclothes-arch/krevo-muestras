@@ -14,16 +14,20 @@
 .cita blockquote{margin:8px 0;font-size:18px;line-height:1.45;max-width:34ch}
 .cita figcaption{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#7d4a22;font-weight:600}
 .mesa .btn{width:100%}
-.mesa-nota{margin:26px 0 22px;font-size:17px;color:#5a3520;max-width:34ch}
+.mesa-nota{margin:22px 0 22px;font-size:15px;color:#5a3520;max-width:36ch}
+.mesa-dice{list-style:none;margin:26px 0 0;display:grid;gap:10px}
+.mesa-dice li{display:flex;flex-direction:column;padding:14px 16px;background:#f8f1e8;border-left:3px solid #9a5a26}
+.mesa-dice b{font-family:Gloock,serif;font-weight:400;font-size:1.35rem;color:var(--tinta)}
+.mesa-dice span{font-size:14px;color:#6b4027;margin-top:2px}
 @media (min-width:760px){
  .mesa{padding:84px 56px}
  .mesa-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;column-gap:70px;align-items:start}
  .mesa h2{grid-column:1/-1;font-size:clamp(3.6rem,6vw,6.4rem);max-width:12ch}
- .mesa-fotos{grid-column:1;grid-row:2/5}
- .arch-m{aspect-ratio:4/3.4}
- .cita{align-self:center}
- .mesa .btn{align-self:end}
+ .mesa-fotos{display:contents}
+ .arch-m{grid-column:1;grid-row:2/6;aspect-ratio:4/4.6;align-self:stretch}
+ .mesa-chicas{grid-column:2;grid-row:3;margin:26px 0 0}
  .carta{grid-column:2;grid-row:2;margin-top:0}
- .mesa-nota{grid-column:2;grid-row:3;margin:30px 0}
- .mesa .btn{grid-column:2;grid-row:4;width:auto;justify-self:start;padding:0 38px}
+ .mesa-dice{grid-column:2;grid-row:4;grid-template-columns:repeat(3,1fr);margin-top:26px}
+ .mesa-nota{grid-column:2;grid-row:5;margin:18px 0 0;align-self:start}
+ .mesa .btn{grid-column:1/-1;grid-row:6;width:auto;justify-self:start;padding:0 38px;margin-top:34px}
 }

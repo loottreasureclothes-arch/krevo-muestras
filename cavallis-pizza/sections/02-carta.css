@@ -24,6 +24,12 @@
 .pedido-l .vacio{border:0;opacity:.7;font-weight:400}
 .pedido-wa{width:100%}
 .pedido-mitad{display:flex;align-items:center;justify-content:center;min-height:44px;font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-align:center;color:var(--rojo-c);padding:10px 0}
+.pasos{list-style:none;margin-top:34px;display:grid;gap:16px}
+.pasos li{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:center;border-top:1.5px solid var(--rojo);padding-top:14px}
+.pasos b{font:400 44px/1 var(--f-d);color:var(--rojo)}
+.pasos span{font:400 clamp(18px,4.8vw,22px)/1.2 var(--f-d);color:var(--tinta)}
+@media (min-width:760px){.pasos{grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}.pasos li{grid-template-columns:1fr;gap:10px;align-items:start}}
+@media (min-width:1100px){.pasos{grid-column:1/-1;grid-row:3}}
 @media (min-width:760px){
   .carta{padding:110px 0 90px}
   .carta-in{max-width:1240px;margin:auto}

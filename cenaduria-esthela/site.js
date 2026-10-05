@@ -50,7 +50,7 @@
  var out=d.getElementById("hd-open");
  function status(){
   var n=agsNow(), h=horas(n.d), msg;
-  if(h&&n.m>=h[0]&&n.m<h[1]) msg="<b>Abierto</b> hasta 11:45 pm";
+  if(h&&n.m>=h[0]&&n.m<h[1]) msg="<b>Abierto</b> hasta 11:45&nbsp;pm";
   else if(h&&n.m<h[0]) msg="<b>Hoy</b> abrimos "+(h[0]===14*60?"2 pm":"6 pm");
   else{var nd=(n.d+1)%7,nh=horas(nd); msg=nh?"<b>Cerrado</b> · abre "+(nd===1?"":(nd===6||nd===0?"mañana 2 pm":"mañana 6 pm")):"<b>Cerrado</b> · abre martes 6 pm"; if(nd===1) msg="<b>Cerrado</b> · abre martes 6 pm"; else if(!nh) msg="<b>Cerrado</b>";}
   if(n.d===1) msg="<b>Hoy cerrado</b> · abre martes 6 pm";

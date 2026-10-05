@@ -1,0 +1,27 @@
+.ped{padding:64px 0 60px}
+.ped-grid{display:grid;gap:30px}
+.ped .h2{margin:12px 0 14px}
+.ped-p{font-size:18px;max-width:28ch;color:#5a3d3a}
+.ped-pasos{list-style:none;display:grid;gap:0;border-top:1.5px solid var(--burd)}
+.ped-pasos li{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:start;padding:22px 0;border-bottom:1px dashed #bfa97c}
+.ped-n{font:400 64px/1 var(--serif);color:var(--teja);letter-spacing:-.04em;padding-top:2px}
+.ped-pasos h3{font:400 24px/1.1 var(--serif);color:var(--burd);margin-bottom:6px}
+.ped-pasos p{font-size:16px;line-height:1.45;color:#5a3d3a;max-width:30ch}
+.ped-pasos a{color:var(--burd);font-weight:800;text-underline-offset:3px}
+.ped-datos{background:var(--burd);color:var(--crema);padding:22px 20px 24px;--n:16px}
+.ped-datos-t{font:400 24px/1 var(--serif);color:var(--crema);margin-bottom:14px}
+.ped-datos ul{list-style:none;margin-bottom:22px}
+.ped-datos li{padding:10px 0;border-bottom:1px dashed #f3e8d355;font-size:15.5px;line-height:1.45}
+.ped-datos li:last-child{border:0}
+.ped-datos b{color:var(--teja);font-weight:800}
+.ped-datos .btn{color:var(--crema);border-color:var(--crema)}
+.ped-datos .btn:hover{background:var(--crema);color:var(--burd)}
+@media (min-width:760px){
+ .ped{padding:100px 0 92px}
+ .ped-grid{grid-template-columns:7fr 5fr;column-gap:64px;row-gap:36px;grid-template-areas:"head head" "pasos datos";align-items:start}
+ .ped-head{grid-area:head}.ped-pasos{grid-area:pasos}.ped-datos{grid-area:datos;padding:28px 28px 30px}
+ .ped-pasos li{grid-template-columns:90px 1fr;padding:26px 0}
+ .ped-n{font-size:84px}
+ .ped-pasos h3{font-size:28px}
+ .ped-pasos p{font-size:17px;max-width:40ch}
+}

@@ -24,3 +24,8 @@
  .pz-vis-btns{flex-direction:row;flex-wrap:wrap}
  .pz-hrs li{font-size:17px;padding:14px 12px}
 }
+@media (min-width:700px) and (max-width:899px){
+ .pz-vis-in{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"a m" "h h";gap:30px 40px;align-items:start}
+ .pz-vis-a{grid-area:a}.pz-mapa{grid-area:m;margin:0;aspect-ratio:auto;height:100%;min-height:520px}.pz-hrs{grid-area:h}
+ .pz-hrs li{padding:12px 10px}
+}

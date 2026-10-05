@@ -37,6 +37,7 @@
     });
     list.innerHTML = html || '<li class="tk-empty">Aquí se va escribiendo lo que pidas.</li>';
     totalEl.textContent = money(tot);
+    document.getElementById("tk-total-box").hidden = !count;
     pendEl.hidden = !pend;
     clear.hidden = !count;
     send.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(message());

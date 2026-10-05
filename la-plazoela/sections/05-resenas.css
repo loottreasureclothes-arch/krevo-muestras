@@ -10,7 +10,7 @@
 .pz-nota-st i.on{width:100px}
 .pz-nota-st svg{width:20px;height:20px;flex:none;fill:rgba(251,243,220,.25)}
 .pz-nota-st i.on svg{fill:var(--amar)}
-.pz-coms{list-style:none;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin:34px calc(var(--gut)*-1) 0;padding:18px var(--gut) 22px;scrollbar-width:none;outline:none}
+.pz-coms{list-style:none;display:flex;align-items:flex-start;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin:34px calc(var(--gut)*-1) 0;padding:18px var(--gut) 22px;scrollbar-width:none;outline:none}
 .pz-coms::-webkit-scrollbar{display:none}
 .pz-com{flex:0 0 82%;scroll-snap-align:center;background:var(--cre);color:var(--tinta);padding:30px 22px 22px;position:relative;transform:rotate(var(--r));box-shadow:0 10px 24px rgba(5,8,40,.35);
  -webkit-mask:radial-gradient(circle 7px at 50% 0,transparent 6.5px,#000 7px) 0 0/22px 100% repeat-x;mask:radial-gradient(circle 7px at 50% 0,transparent 6.5px,#000 7px) 0 0/22px 100% repeat-x}
@@ -34,4 +34,10 @@
  .pz-com:nth-child(3n+2){margin-top:30px}
  .pz-coms-ctl{display:none}
  .pz-res-btns{flex-direction:row;align-items:center;gap:30px;margin-top:50px}
+}
+@media (min-width:700px) and (max-width:899px){
+ .pz-res-top{display:grid;grid-template-columns:1.2fr 1fr;align-items:end;gap:30px}
+ .pz-nota{margin:0;justify-content:flex-end}
+ .pz-com{flex:0 0 48%}
+ .pz-res-btns{flex-direction:row;align-items:center;gap:30px}
 }

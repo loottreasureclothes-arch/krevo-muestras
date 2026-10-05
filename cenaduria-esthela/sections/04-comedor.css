@@ -1,10 +1,10 @@
 .mes{background:var(--vino);padding:0}
 .mes-fig{position:relative;margin:0;overflow:hidden}
-.mes-fig img{width:100%;height:clamp(380px,112vw,640px);object-fit:cover;object-position:50% 62%;transition:clip-path 1s cubic-bezier(.3,.7,.2,1)}
-.mes-fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#3a0a1800 40%,#3a0a18ee 100%);pointer-events:none}
-.mes-cap{position:absolute;left:var(--gut);right:var(--gut);bottom:26px;z-index:1;font:400 clamp(46px,14vw,120px)/.95 var(--serif);letter-spacing:-.02em}
+.mes-fig img{width:100%;height:clamp(420px,124vw,700px);object-fit:cover;object-position:50% 62%;transition:clip-path 1s cubic-bezier(.3,.7,.2,1)}
+.mes-fig::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#3a0a1800 34%,#3a0a18f2 100%);pointer-events:none}
+.mes-cap{position:absolute;left:var(--gut);right:var(--gut);bottom:26px;z-index:1;font:400 clamp(46px,14vw,120px)/1.14 var(--serif);letter-spacing:-.02em}
 .mes-cap span{display:inline-block}
-.mes-sub{display:none}
+.mes-sub{display:block;margin-top:10px;font-size:16px;max-width:30ch;opacity:.92}
 @media (prefers-reduced-motion:no-preference){.js .mes-fig:not(.is-in) img{clip-path:inset(0 14% 0 14%)}}
 @media (min-width:760px){
  .mes{padding:0 0 0}

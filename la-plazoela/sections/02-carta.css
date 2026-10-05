@@ -12,6 +12,8 @@
 .pz-lista li{list-style:none;display:flex;align-items:baseline;gap:8px;padding:10px 0;font-size:16px}
 .pz-lista li i{flex:1;border-bottom:2px dotted rgba(22,26,79,.35);transform:translateY(-4px)}
 .pz-lista li b{font-weight:700;color:var(--lad);white-space:nowrap}
+.pz-lista li b.pz-lp{font-weight:500;font-size:13px;color:var(--tinta);opacity:.7;letter-spacing:.04em}
+.pz-lista-n{margin-top:14px;font-size:14px;opacity:.75;grid-column:1/-1;border-top:1px solid rgba(22,26,79,.2);padding-top:12px}
 @media (min-width:900px){
  .pz-cards{grid-template-columns:repeat(4,1fr);gap:30px;margin-top:50px}
  .pz-card h3{font-size:26px}
@@ -19,4 +21,9 @@
  .pz-lista{padding:40px 48px 30px;margin-top:64px;display:grid;grid-template-columns:.8fr 2fr;gap:0 56px;align-items:start}
  .pz-lista h3{font-size:38px;line-height:1.05}
  .pz-lista ul{display:grid;grid-template-columns:1fr 1fr;column-gap:44px}
+}
+@media (min-width:700px) and (max-width:899px){
+ .pz-cards{grid-template-columns:repeat(4,1fr);gap:20px 14px}
+ .pz-lista{padding:34px 36px 24px}
+ .pz-lista ul{display:grid;grid-template-columns:1fr 1fr;column-gap:36px}
 }

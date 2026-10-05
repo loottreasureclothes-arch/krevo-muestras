@@ -46,7 +46,7 @@
    html+='<li class="'+(it.fresh?"nuevo":"")+'" data-k="'+esc(k)+'"><span class="ln-q"><button type="button" data-d="-1" aria-label="Quitar uno">&minus;</button><b>'+it.qty+'</b><button type="button" data-d="1" aria-label="Agregar uno">+</button></span><span class="ln-t">'+esc(it.name)+(it.variant?" "+esc(it.variant.toLowerCase()):"")+(it.unit?"<small>"+esc(it.unit)+"</small>":"")+'</span><span class="ln-p'+(sub==null?" ask":"")+'">'+(sub==null?"precio al pedir":money(sub))+'</span></li>';
    it.fresh=false;
   });
-  ul.innerHTML=html; tot.textContent=money(sum); aviso.hidden=!unk; arrancar.disabled=n<1;
+  ul.innerHTML=html; tot.textContent=n<1?"por sumar":money(sum); tot.classList.toggle("vacia",n<1); aviso.hidden=!unk; arrancar.disabled=n<1;
   if(pill){pill.hidden=n<1;pill.querySelector("b").textContent=n;pill.querySelector("span").textContent=money(sum)+(unk?" +":"");}
  }
  ul.addEventListener("click",function(e){

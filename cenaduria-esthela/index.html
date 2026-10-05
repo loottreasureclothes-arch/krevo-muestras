@@ -18,15 +18,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preload" href="fonts/youngserif.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="site.css?v=1791103726">
-<link rel="stylesheet" href="sections/01-portada.css?v=1791092007">
+<link rel="stylesheet" href="site.css?v=1791171860">
+<link rel="stylesheet" href="sections/01-portada.css?v=1791171915">
 <link rel="stylesheet" href="sections/02-carta.css?v=1791092007">
-<link rel="stylesheet" href="sections/03-comanda.css?v=1791088905">
-<link rel="stylesheet" href="sections/04-comedor.css?v=1791103735">
-<link rel="stylesheet" href="sections/05-opiniones.css?v=1791103846">
+<link rel="stylesheet" href="sections/03-comanda.css?v=1791172115">
+<link rel="stylesheet" href="sections/04-comedor.css?v=1791171915">
+<link rel="stylesheet" href="sections/05-opiniones.css?v=1791171963">
 <link rel="stylesheet" href="sections/06-mesa.css?v=1791103823">
-<link rel="stylesheet" href="sections/07-lugar.css?v=1791103718">
-<link rel="stylesheet" href="sections/08-pendientes.css?v=1791088894">
+<link rel="stylesheet" href="sections/07-pedir.css?v=1791171860">
+<link rel="stylesheet" href="sections/08-lugar.css?v=1791103718">
+<link rel="stylesheet" href="sections/09-pendientes.css?v=1791088894">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Cenaduría Esthela","servesCuisine":"Mexicana","priceRange":"$100-200","telephone":"+52 449 918 0751","email":"cenaduriaesthela@hotmail.com","address":{"@type":"PostalAddress","streetAddress":"Av. José María Chávez 644, Barrio del Encino","addressLocality":"Aguascalientes","addressRegion":"Ags.","postalCode":"20000","addressCountry":"MX"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday"],"opens":"18:00","closes":"23:45"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"14:00","closes":"23:45"}],"url":"https://loottreasureclothes-arch.github.io/krevo-muestras/cenaduria-esthela/"}</script>
 <script>/* seguro anti-blanco: todo [data-reveal] se ve a los 1.6 s pase lo que pase */
 setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i=0;i<e.length;i++)e[i].classList.add('is-in')},1600);</script>
@@ -51,6 +52,7 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
     <a href="#comanda">Tu comanda</a>
     <a href="#opiniones">Opiniones</a>
     <a href="#mesa">Los platos</a>
+    <a href="#pedir">Cómo pedir</a>
     <a href="#lugar">Horario y lugar</a>
     <a class="menu-call" href="tel:+524499180751">Llamar 449 918 0751</a>
   </div>
@@ -186,7 +188,7 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
             <label class="hoja-nom"><span>A nombre de</span><input id="pad-nombre" type="text" maxlength="40" autocomplete="off" placeholder="Tu nombre"></label>
             <ol class="hoja-lineas" id="hoja-lineas"></ol>
             <p class="hoja-vacio" id="hoja-vacio">Aún no apuntas nada.<br>Toca + en lo que se te antoje.</p>
-            <div class="hoja-tot"><span>Suma</span><strong id="hoja-total">$0</strong></div>
+            <div class="hoja-tot"><span>Suma</span><strong id="hoja-total" class="vacia">por sumar</strong></div>
             <p class="hoja-aviso" id="hoja-aviso" hidden>Faltan platillos sin precio aquí: se confirman al pedir.</p>
             <div class="hoja-perf" aria-hidden="true"></div>
             <button class="btn solid hoja-arrancar" id="pad-arrancar" type="button" disabled>Arrancar la hoja</button>
@@ -281,6 +283,7 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
       </li>
     </ul>
   </div>
+  <div class="wrap"><p class="op-temas" data-reveal>Lo que más se nombra en esas 4,535 opiniones: <b>pozole</b>, <b>sopes de lengua</b>, <b>flautas</b> y la <b>tradición</b> de la casa.</p></div>
   <div class="wrap op-pie">
     <div class="op-nav"><button type="button" class="op-b" data-dir="-1" aria-label="Opinión anterior">&larr;</button><span class="op-n" id="op-n">1 / 9</span><button type="button" class="op-b" data-dir="1" aria-label="Siguiente opinión">&rarr;</button></div>
     <a class="btn solid" href="https://www.google.com/maps/place/Cenadur%C3%ADa+Esthela/@21.8736205,-102.2949266,17z/data=!4m6!3m5!1s0x8429ee7ed35d7f4f:0x52b8f46a97bcca82!8m2!3d21.8736205!4d-102.2949266!16s%2Fg%2F1tnss7bw" target="_blank" rel="noopener">Ver todas en Google</a>
@@ -302,6 +305,31 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
     <figure class="ms-i w" data-reveal><img src="img/g-flautas-960.webp" srcset="img/g-flautas-480.webp 480w, img/g-flautas-960.webp 960w" sizes="(min-width:760px) 33vw, 50vw" width="960" height="1076" alt="Flautas con queso y lechuga, en Esthela"><figcaption>flautas</figcaption></figure>
     </div>
     <div class="ms-pie"><a class="btn" href="#comanda">Arma tu comanda</a><a class="arrow-link" href="#carta">Ver precios <span aria-hidden="true">&rarr;</span></a></div>
+  </div>
+</section>
+
+<section class="band ped" id="pedir">
+  <div class="wrap ped-grid">
+    <div class="ped-head">
+      <p class="eyebrow" data-reveal>Así se pide</p>
+      <h2 class="h2" data-reveal>Tres pasos <span class="t2">y a cenar.</span></h2>
+      <p class="ped-p" data-reveal>En mesa, para llevar o a domicilio. Tú escoges, nosotros servimos.</p>
+    </div>
+    <ol class="ped-pasos">
+      <li data-reveal><span class="ped-n">1</span><div><h3>Escoge en la carta</h3><p>Toca + en lo que se te antoje. Se apunta solo en tu libreta.</p></div></li>
+      <li data-reveal><span class="ped-n">2</span><div><h3>Arranca la hoja</h3><p>Pon tu nombre y arranca el talón. Ahí queda tu comanda escrita.</p></div></li>
+      <li data-reveal><span class="ped-n">3</span><div><h3>Llama y léela</h3><p>Marca al <a href="tel:+524499180751">449 918 0751</a> y la dices tal cual, o la copias y la mandas.</p></div></li>
+    </ol>
+    <aside class="ped-datos notch" data-reveal>
+      <p class="ped-datos-t">Para que no batalles</p>
+      <ul>
+        <li><b>Martes a viernes</b> abrimos a las 6 pm; <b>sábado y domingo</b> desde las 2 pm.</li>
+        <li><b>Chamorro con mole</b> solo sábado y domingo.</li>
+        <li><b>Medias órdenes</b> y platillos a tu gusto cuestan un poco más.</li>
+        <li><b>Lunes</b> descansamos.</li>
+      </ul>
+      <a class="btn" href="#carta">Ir a la carta</a>
+    </aside>
   </div>
 </section>
 
@@ -375,8 +403,8 @@ setTimeout(function(){var e=document.querySelectorAll('[data-reveal]');for(var i
   <span>Llamar</span>
 </a>
 <a class="com-pill" id="com-pill" href="#comanda" hidden><b>0</b><em>en tu comanda</em><span></span></a>
-<script src="site.js?v=1791103718"></script>
-<script src="sections/03-comanda.js?v=1791088335" defer></script>
+<script src="site.js?v=1791172115"></script>
+<script src="sections/03-comanda.js?v=1791172115" defer></script>
 <script src="sections/05-opiniones.js?v=1791103672" defer></script>
 </body>
 </html>

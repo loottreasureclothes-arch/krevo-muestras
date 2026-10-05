@@ -6,6 +6,7 @@
     var on = cards.filter(function (c) { return c.getAttribute("aria-pressed") === "true"; });
     var suma = 0, sinPrecio = 0;
     on.forEach(function (c) { var p = +c.dataset.p; if (p) suma += p; else sinPrecio++; });
+    document.getElementById("comanda").classList.toggle("on", on.length > 0);
     cnt.textContent = on.length + (on.length === 1 ? " marcada" : " marcadas");
     if (!on.length) {
       lst.textContent = "Toca y ponle frijol.";

@@ -25,8 +25,8 @@
     function paint(){
       var n=hoyAgs(),hr=horario(n.dow),abierto=n.h>=hr.a&&n.h<hr.c;
       est.classList.toggle("on",abierto);est.classList.toggle("off",!abierto);
-      est.querySelector("span").textContent=abierto?("Abierto hasta "+(hr.c>12?hr.c-12:hr.c)+" pm"):("Abre "+(hr.a)+" am");
-      if(!abierto&&n.h>=hr.c){var m=horario((n.dow+1)%7);est.querySelector("span").textContent="Abre mañana "+m.a+" am";}
+      est.querySelector("span").textContent=abierto?("Abierto hoy"):("Abre "+(hr.a)+" am");
+      if(!abierto&&n.h>=hr.c){var m=horario((n.dow+1)%7);est.querySelector("span").textContent="Abre "+m.a+" am";}
     }
     paint();setInterval(paint,60000);
   }

@@ -59,5 +59,13 @@
   });
   $("cm-side").addEventListener("change", function () { paint(); });
   paint();
+  /* barra "Ver comanda": solo mientras la lista está a la vista y el ticket todavía no */
+  var sec = document.getElementById("comanda"), side = $("cm-side"), raf = 0;
+  function bar() {
+    raf = 0; var h = window.innerHeight, l = list.getBoundingClientRect(), s = side.getBoundingClientRect();
+    sec.classList.toggle("bar-on", l.top < h * 0.5 && l.bottom > h * 0.3 && s.top > h - 60);
+  }
+  function sch() { if (!raf) raf = requestAnimationFrame(bar); }
+  window.addEventListener("scroll", sch, { passive: true }); window.addEventListener("resize", sch); bar();
   window.NBComanda = { message: message };
 })();

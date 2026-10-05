@@ -25,15 +25,16 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="fonts/alfa-400.woff2" crossorigin>
 <link rel="preload" as="image" href="img/fachada-960.webp" imagesrcset="img/fachada-480.webp 480w, img/fachada-960.webp 960w, img/fachada-1536.webp 1536w" imagesizes="(max-width: 759px) 90vw, 46vw" fetchpriority="high">
-<link rel="stylesheet" href="site.css?v=1791103718">
-<link rel="stylesheet" href="sections/01-hero.css?v=1791088549">
-<link rel="stylesheet" href="sections/02-tabla.css?v=1791091978">
-<link rel="stylesheet" href="sections/03-patio.css?v=1791088549">
-<link rel="stylesheet" href="sections/04-carta.css?v=1791103682">
-<link rel="stylesheet" href="sections/05-opiniones.css?v=1791103718">
+<link rel="stylesheet" href="site.css?v=1791171973">
+<link rel="stylesheet" href="sections/01-hero.css?v=1791171973">
+<link rel="stylesheet" href="sections/02-tabla.css?v=1791171973">
+<link rel="stylesheet" href="sections/03-patio.css?v=1791171973">
+<link rel="stylesheet" href="sections/04-carta.css?v=1791171973">
+<link rel="stylesheet" href="sections/05-opiniones.css?v=1791171973">
 <link rel="stylesheet" href="sections/06-recorrido.css?v=1791103771">
 <link rel="stylesheet" href="sections/07-llegar.css?v=1791103771">
-<link rel="stylesheet" href="sections/99-pie.css?v=1791103873">
+<link rel="stylesheet" href="sections/08-pedir.css?v=1791172130">
+<link rel="stylesheet" href="sections/99-pie.css?v=1791105488">
 </head>
 <body>
 <a class="skip" href="#tabla">Saltar al contenido</a>
@@ -83,7 +84,7 @@
   </div>
 </section>
 
-<section class="tabla" id="tabla" data-hide-wa>
+<section class="tabla" id="tabla">
   <div class="wrap">
     <p class="eyebrow">Como en la lotería</p>
     <h2 class="ttl" data-reveal>Marca<em>tu desayuno.</em></h2>
@@ -98,7 +99,7 @@
       <button type="button" class="carta" data-n="Pan de elote" data-p="" aria-pressed="false"><span class="num">7</span><img src="img/elote-480.webp" srcset="img/elote-480.webp 480w, img/elote-720.webp 720w" sizes="(max-width:759px) 44vw, 22vw" width="480" height="853" alt="Rebanada de pan de elote"><span class="frijol"><svg width="58" height="44"><use href="#i-bean"/></svg></span><span class="nom">El pan de elote</span><span class="pre">Pregunta el precio</span></button>
       <button type="button" class="carta sorpresa" data-n="El platillo del día (que me recomienden)" data-p="" aria-pressed="false"><span class="num">8</span><span class="sorp-q" aria-hidden="true">?</span><span class="frijol"><svg width="58" height="44"><use href="#i-bean"/></svg></span><span class="nom">La sorpresa</span><span class="pre">Que te recomienden</span></button>
     </div>
-    <div class="comanda" id="comanda">
+    <div class="comanda" id="comanda" data-hide-wa>
       <div class="com-info">
         <span class="com-cnt" id="com-cnt">0 marcadas</span>
         <span class="com-lst" id="com-lst">Toca y ponle frijol.</span>
@@ -110,7 +111,7 @@
 
 <section class="patio" id="patio">
   <img src="img/patio-960.webp" srcset="img/patio-480.webp 480w, img/patio-960.webp 960w, img/patio-1536.webp 1536w" sizes="100vw" width="960" height="1280" alt="Patio interior de La Mestiza Yucateca, techo de vigas y escultura maya de piedra">
-  <p class="patio-t" data-reveal><span>Patio.</span><span>Vigas.</span><span>Barro.</span></p>
+  <div class="patio-t" data-reveal><p><span>Patio.</span><span>Vigas.</span><span>Barro.</span></p><a class="patio-a" href="#recorrido">Pásale a ver el lugar &darr;</a></div>
 </section>
 
 <section class="carta-s on-crema" id="carta">
@@ -131,7 +132,7 @@
           <h3>Huevos</h3>
           <p><span>Rancheros</span><b>$98</b></p>
           <p><span>Divorciados</span><b>$105</b></p>
-          <p><span>Motuleños</span><b>$112</b></p>
+          <p class="top"><span>Motuleños</span><b>$112</b></p>
           <p><span>Chilaquiles</span><b>$115</b></p>
         </div>
         <div class="grupo" data-reveal>
@@ -144,10 +145,10 @@
           <h3>Carnes</h3>
           <p><span>Orden de chicharrón</span><b>$112</b></p>
           <p><span>Puerco en chile pasilla</span><b>$175</b></p>
-          <p><span>Cochinita pibil</span><b>$198</b></p>
+          <p class="top"><span>Cochinita pibil</span><b>$198</b></p>
         </div>
       </div>
-      <p class="nota">Precios de la carta en mesa, por orden.</p>
+      <p class="nota"><i class="top-i"></i> Lo que más nombra la gente en Google. Precios de la carta en mesa, por orden.</p>
       <div class="cs-btns">
         <a class="btn rosa" href="#tabla">Marcar mi tabla</a>
         <a class="btn tinta" href="tel:+524499159302">Llamar para pedir</a>
@@ -291,6 +292,31 @@
   </div>
 </section>
 
+<section class="pe on-crema" id="pedir">
+  <div class="wrap pe-in">
+    <div class="pe-pasos">
+      <p class="eyebrow eb-rosa">Así de fácil</p>
+      <h2 class="ttl" data-reveal>Así se pide<em>en La Mestiza.</em></h2>
+      <ol class="pasos">
+        <li data-reveal><b>1</b><div><h3>Marca tu tabla</h3><p>Toca los platillos que se te antojan y ponles su frijol.</p></div></li>
+        <li data-reveal><b>2</b><div><h3>Mándala por WhatsApp</h3><p>Llega escrita con lo que marcaste y la suma de lo que trae precio.</p></div></li>
+        <li data-reveal><b>3</b><div><h3>Comes aquí o pasas por ella</h3><p>En el patio, para llevar o a domicilio. Tú dinos.</p></div></li>
+      </ol>
+      <a class="btn rosa" href="#tabla">Marcar mi tabla</a>
+    </div>
+    <div class="pe-faq">
+      <p class="eyebrow eb-rosa">Lo que siempre preguntan</p>
+      <div class="fq"><h3><button type="button" class="fq-b" aria-expanded="true" aria-controls="fq1">¿Cuánto se gasta por persona?</button></h3><div class="fq-p" id="fq1"><p>Entre $100 y $200, según la gente que lo cuenta en Google. Un tamal yucateco cuesta $52 y los huevos motuleños $112.</p></div></div>
+      <div class="fq"><h3><button type="button" class="fq-b" aria-expanded="false" aria-controls="fq2">¿Hacen entrega a domicilio?</button></h3><div class="fq-p" id="fq2" hidden><p>Sí. Puedes comer aquí, llevarte tu pedido o pedirlo a domicilio. Escríbenos por WhatsApp y te confirmamos.</p></div></div>
+      <div class="fq"><h3><button type="button" class="fq-b" aria-expanded="false" aria-controls="fq3">¿A qué hora abren?</button></h3><div class="fq-p" id="fq3" hidden><p>Todos los días de 8:00 a 13:30. Si llegas temprano, el café de olla ya está en el jarro.</p></div></div>
+      <div class="fq"><h3><button type="button" class="fq-b" aria-expanded="false" aria-controls="fq4">¿Qué pido si es mi primera vez?</button></h3><div class="fq-p" id="fq4" hidden><p>Cochinita pibil, café de olla y huevos motuleños: son los tres platillos que más nombra la gente en Google.</p></div></div>
+      <div class="fq"><h3><button type="button" class="fq-b" aria-expanded="false" aria-controls="fq5">¿Es para ir en familia?</button></h3><div class="fq-p" id="fq5" hidden><p>Sí. Patio con vigas, ambiente tranquilo y el Jardín del Encino a unos pasos para pasear al salir.</p></div></div>
+      <div class="fq"><h3><button type="button" class="fq-b" aria-expanded="false" aria-controls="fq6">¿Dónde están?</button></h3><div class="fq-p" id="fq6" hidden><p>Abasolo 117, Barrio del Encino, 20240 Aguascalientes. <a href="#llegar">Ver el mapa &uarr;</a></p></div></div>
+      <a class="op-link pe-link" href="tel:+524499159302">¿Otra duda? Llámanos &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <section class="listo" id="completar" data-hide-wa>
   <div class="wrap">
     <p class="eyebrow">Para el dueño</p>
@@ -323,8 +349,9 @@
 <a class="wa-float" id="wa-float" href="https://wa.me/524499159302?text=Hola%20La%20Mestiza%20Yucateca%2C%20quiero%20pedir.%20%C2%BFQu%C3%A9%20tienen%20hoy%3F" aria-label="Escríbenos por WhatsApp" rel="noopener"><svg width="30" height="30" aria-hidden="true"><use href="#i-wa"/></svg></a>
 
 <script src="site.js?v=1791088467" defer></script>
-<script src="sections/02-tabla.js?v=1791091978" defer></script>
+<script src="sections/02-tabla.js?v=1791171973" defer></script>
 <script src="sections/05-opiniones.js?v=1791103718" defer></script>
 <script src="sections/07-llegar.js?v=1791103771" defer></script>
+<script src="sections/08-pedir.js?v=1791172130" defer></script>
 </body>
 </html>
