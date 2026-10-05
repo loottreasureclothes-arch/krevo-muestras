@@ -37,3 +37,4 @@
 | towate-brunch | La baraja de antojos (fotos reales que se deslizan y arman "Tu mesa" con precio o "Pregunta el precio"; copia el pedido o llama) | 5 oct 2026 |
 | cenaduria-el-sopecito | El plato en la mesa (platillos con foto y sello de precio que caen en un mantel de hule, cuenta y copiar pedido o Llamar) | 5 oct 2026 |
 | pibes-parrisha | La parrilla de la mesa (ahumados, parrishadas y postres de la carta caen como piezas a una parrilla con brasa y humo, con personas y total; copiar pedido o Llamar) | 5 oct 2026 |
+| vuelo76 | Pase a la mesa (rejilla de metal con canto turquesa donde aterrizan los platos con foto bajo un pase de abordar Vuelo 76 / Puerta 107; boleto troquelado que se copia o Llamar) | 5 oct 2026 |
