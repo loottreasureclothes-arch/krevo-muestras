@@ -66,3 +66,4 @@
 | hotel-hacienda-de-la-noria | El plano del patio (tocas jardin o alberca en un plano del patio, eliges pareja o familia, noches y dia de llegada; Llamar o copiar resumen; "Pregunta la tarifa"; sin WhatsApp) | 5 oct 2026 |
 | jardin-allegro | El arco de globos (arco SVG de 22 globos que se pintan por toque o arrastre, globo de edad, tema, nombre y fecha; el WhatsApp sale armado con todo eso) | 5 oct 2026 |
 | carnitas-los-casitos | La pesada (balanza SVG: arrastras la pesa de ¼ a 2 kg, el plato de carnitas crece; precios del cartel en ½ y 1 kg; el pedido sale armado a WhatsApp) | 5 oct 2026 |
+| puerto-camaron | La puertochela (vaso o cubeta SVG que se llena con cerveza, clamato y salsas con el tope de sus 10 puertochelas y precios reales; rondas y total; termina en WhatsApp) | 5 oct 2026 |

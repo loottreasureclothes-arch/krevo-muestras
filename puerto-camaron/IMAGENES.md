@@ -1,0 +1,1 @@
+Todas webp q78 en img/ (480/960 y 1600 solo terraza). Origen: web oficial puertocamaron.com.mx (camarones, coronas, carpaccio, filete, tacos, tostada, cocktel-a) y fotos de Google Maps (hero, terraza, barra, sala, logo-pared, fachada-americas, plato-a, charola-camp). Crudas en research/ (ignorado).

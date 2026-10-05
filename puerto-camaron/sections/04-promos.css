@@ -1,0 +1,23 @@
+.promo{padding:50px 0 46px;background:var(--red);background-image:radial-gradient(circle at 20% 0,#e8404a 0,transparent 55%);color:var(--cream)}
+.promo .pc-wrap{display:grid;gap:16px}
+.promo .pc-eyebrow{color:var(--cream)}
+.promo .pc-title em{color:var(--yellow);text-shadow:0 3px 0 #7c0f15}
+.promo .pc-title{text-shadow:0 3px 0 #7c0f15}
+.pr-days{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.pr-days button{min-height:48px;border:2px solid var(--cream);background:transparent;border-radius:6px;font-weight:900;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding:0 2px}
+.pr-days button[aria-selected="true"]{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.pr-days button.is-today::after{content:"hoy";display:block;font-size:.6rem;letter-spacing:.16em;margin-top:-2px}
+.pr-card{position:relative;background:var(--navy-3);border:4px solid var(--yellow);border-radius:18px;overflow:hidden;box-shadow:0 8px 0 #7c0f15;padding-bottom:20px}
+.pr-ph{width:100%;height:190px;object-fit:cover;opacity:.9}
+.pr-tag{position:absolute;top:12px;left:12px;background:var(--yellow);color:var(--ink);font-weight:900;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 10px;border-radius:4px;transform:rotate(-3deg)}
+.pr-price{padding:0 18px;margin-top:-22px;position:relative;line-height:1}
+.pr-price b{display:block;line-height:.95;padding-bottom:10px;font-family:var(--f-d);font-weight:400;font-size:clamp(5.4rem,30vw,9rem);color:var(--yellow);text-shadow:0 5px 0 #8c5d00,0 8px 0 #050d26;letter-spacing:-.02em}
+.pr-what{padding:6px 18px 0;font-family:var(--f-d);font-size:1.7rem;text-transform:uppercase;line-height:1}
+.pr-sub{padding:6px 18px 0;font-weight:700}
+.pr-fine{font-size:.86rem;color:rgba(255,243,214,.9)}
+.pr-card.swap .pr-price b{display:block;line-height:.95;padding-bottom:10px;animation:prpop .35s cubic-bezier(.3,1.5,.5,1)}
+@keyframes prpop{from{transform:scale(.8);opacity:0}to{transform:none;opacity:1}}
+@media (min-width:900px){
+  .promo{padding:96px 0}
+  .promo .pc-wrap{max-width:760px}
+}

@@ -1,0 +1,27 @@
+.rvs{padding:52px 0 48px;background:var(--cream);color:var(--ink);border-top:6px solid var(--yellow)}
+.rvs .pc-wrap{display:grid;gap:16px}
+.rvs .pc-eyebrow{color:var(--red)}
+.rvs .pc-title{color:var(--navy-2);text-shadow:none}
+.rvs .pc-title em{color:var(--red)}
+.rv-score{display:flex;align-items:center;gap:16px;background:var(--navy-2);color:var(--cream);border-radius:18px;padding:16px 18px;border:4px solid var(--navy-3);box-shadow:0 6px 0 var(--navy-3)}
+.rv-num{font-family:var(--f-d);font-weight:400;font-size:4.6rem;line-height:.9;color:var(--yellow)}
+.rv-bigst{font-size:1.7rem;color:var(--yellow);letter-spacing:.06em;line-height:1}
+.rv-bigst span,.rv-st span{opacity:.3}
+.rv-score p{font-weight:700;font-size:.95rem;margin-top:4px;line-height:1.35}
+.rv-list{display:grid;gap:12px;margin-top:4px}
+.rv{background:#fff;border:3px solid var(--navy-2);border-radius:16px;padding:16px 18px;display:grid;gap:8px;box-shadow:0 5px 0 rgba(12,31,82,.25)}
+.rv:nth-child(even){border-color:var(--red);box-shadow:0 5px 0 rgba(216,35,42,.25)}
+.rv-st{color:#e59b00;letter-spacing:.08em;font-size:1.1rem;line-height:1}
+.rv blockquote{font-weight:700;font-size:1rem;line-height:1.45;color:var(--ink);overflow-wrap:anywhere}
+.rv blockquote::before{content:"\201C"}.rv blockquote::after{content:"\201D"}
+.rv figcaption{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline;font-size:.82rem;border-top:2px dotted rgba(10,22,54,.25);padding-top:8px}
+.rv figcaption b{font-family:var(--f-d);font-weight:400;text-transform:uppercase;font-size:.95rem;color:var(--navy-2)}
+.rv figcaption span{font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#6b5a38;font-size:.7rem}
+.rv-fine{font-size:.8rem;color:#6b5a38}
+.rvs .pc-btn{margin-top:6px}
+@media (min-width:600px) and (max-width:899px){.rv-list{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:900px){
+  .rvs{padding:96px 0}
+  .rv-list{grid-template-columns:repeat(2,1fr);gap:18px}
+  .rvs .pc-btn{justify-self:start;min-width:300px}
+}
