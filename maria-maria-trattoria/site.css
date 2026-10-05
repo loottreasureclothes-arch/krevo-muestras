@@ -1,0 +1,88 @@
+@font-face{font-family:"Fraunces";src:url("fonts/fraunces-var.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Fraunces";src:url("fonts/fraunces-italic-var.woff2") format("woff2");font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Albert Sans";src:url("fonts/albert-sans-var.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+:root{
+  --bg:#1c1511;--bg2:#251b15;--bg3:#30241b;--paper:#f2e8d6;--paper2:#e9dcc3;--ink:#241a14;
+  --brand:#d6b48a;--brand-ink:#7a5526;--txt:#f1e6d2;--mut:#bba993;--line:rgba(214,180,138,.28);
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"Albert Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gut:20px;--hd:64px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--txt);font:400 17px/1.55 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,p,ol,ul,figure,dl,dd{margin:0}
+ol,ul{padding:0;list-style:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--brand);color:var(--ink);padding:10px 14px;z-index:99}
+.skip:focus{left:8px}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 var(--gut)}
+section{position:relative;padding:62px 0}
+.eyebrow{font:600 12px/1.2 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--brand);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.h2{font:600 clamp(40px,11.4vw,76px)/.98 var(--serif);letter-spacing:-.02em;font-variation-settings:"opsz" 120;color:var(--txt)}
+.h2 em{display:block;font-style:italic;font-weight:500;color:var(--brand)}
+.lead{font-size:18px;color:var(--mut);max-width:34ch;margin-top:20px}
+.arco{border-radius:999px 999px 0 0;overflow:hidden}
+
+/* botones: finos, rectangulares, mayusculas espaciadas */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;font:600 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:1px solid var(--brand);color:var(--brand);background:transparent;border-radius:0;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.btn:active{transform:translateY(1px)}
+.btn-fill{background:var(--brand);color:var(--ink)}
+.btn-fill:hover{background:#e6c79d}
+.btn-line:hover{background:rgba(214,180,138,.12)}
+.btn-ink{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:#3a2b21}
+.btn-ink-line{border-color:var(--ink);color:var(--ink)}
+.btn-ink-line:hover{background:rgba(36,26,20,.08)}
+.btns{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+.btns .btn{width:100%}
+.link{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 2px;font:600 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--brand);text-decoration:none;border-bottom:1px solid var(--line)}
+.link svg{transition:transform .25s}
+.link:hover svg{transform:translateX(4px)}
+.link-ink{color:var(--brand-ink);border-color:rgba(36,26,20,.25)}
+
+/* header */
+.hd{position:fixed;inset:0 0 auto 0;z-index:40;transition:background .3s,box-shadow .3s}
+.hd.is-solid{background:rgba(28,21,17,.94);box-shadow:0 1px 0 var(--line);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hd-bar{max-width:1180px;margin:0 auto;height:var(--hd);padding:0 var(--gut);display:flex;align-items:center;gap:10px}
+.hd-logo{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;color:var(--brand);min-height:48px}
+.hd-name{display:flex;flex-direction:column;line-height:1}
+.hd-name b{font:italic 600 22px/1 var(--serif);color:var(--txt);letter-spacing:-.01em}
+.hd-name i{font:600 9.5px/1 var(--sans);font-style:normal;letter-spacing:.2em;text-transform:uppercase;margin-top:5px;color:var(--brand)}
+.hd-call{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid var(--brand);color:var(--brand);text-decoration:none;font:600 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.hd-burger{flex:none;width:44px;height:44px;background:none;border:0;display:grid;place-content:center;gap:7px;cursor:pointer;padding:0}
+.hd-burger span{display:block;width:26px;height:1.5px;background:var(--txt);transition:transform .25s}
+.menu-open .hd-burger span:first-child{transform:translateY(4.2px) rotate(45deg)}
+.menu-open .hd-burger span:last-child{transform:translateY(-4.2px) rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:39;background:var(--bg);padding:calc(var(--hd) + 28px) var(--gut) 40px;display:flex;flex-direction:column;justify-content:space-between;overflow:auto}
+.menu[hidden]{display:none}
+.menu ol{counter-reset:m}
+.menu li{counter-increment:m;border-bottom:1px solid var(--line)}
+.menu li a{display:flex;align-items:baseline;gap:16px;min-height:64px;padding:12px 0;text-decoration:none;font:italic 500 38px/1.1 var(--serif);color:var(--txt)}
+.menu li a::before{content:"0" counter(m);font:600 12px var(--sans);letter-spacing:.2em;color:var(--brand)}
+.menu .btn{margin-top:28px}
+.menu-open{overflow:hidden}
+
+/* flotante */
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;width:58px;height:58px;border-radius:50%;background:var(--brand);color:var(--ink);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.45);transition:transform .3s,opacity .3s}
+.fab:active{transform:scale(.94)}
+body.fab-off .fab,body.menu-open .fab{opacity:0;pointer-events:none;transform:scale(.8)}
+
+/* reveal: el CSS base es el estado final */
+html.rv [data-reveal]{opacity:0;transform:translateY(18px)}
+html.rv [data-reveal].in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,.7,.2,1) var(--d,0s),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+
+@media (min-width:900px){
+  :root{--gut:40px;--hd:76px}
+  section{padding:120px 0}
+  .btns{flex-direction:row;flex-wrap:wrap}
+  .btns .btn{width:auto}
+  .hd-call{min-height:46px;padding:0 22px}
+  .hd-name b{font-size:26px}
+  .menu li a{font-size:56px}
+  .fab{right:28px;bottom:28px}
+}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}

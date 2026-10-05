@@ -1,0 +1,25 @@
+.vis{background:var(--paper);color:var(--ink)}
+.vis .eyebrow-ink{color:var(--brand-ink)}
+.h2-ink{color:var(--ink)}
+.h2-ink em{color:var(--brand-ink)}
+.vis-grid{display:grid;gap:36px}
+.vis .h2{font-size:clamp(38px,10.4vw,70px)}
+.mapa-marco{padding:10px;border:1px solid rgba(36,26,20,.35);border-radius:999px 999px 0 0;background:var(--paper2)}
+.mapa{display:block;width:100%;height:320px;border:0;background:#d8cdb8}
+address{font:italic 500 24px/1.3 var(--serif);font-style:italic}
+.vis-estado{display:flex;align-items:center;gap:10px;margin-top:14px;font:600 14px/1.3 var(--sans)}
+.vis-estado .dot{flex:none;width:10px;height:10px;border-radius:50%;background:#8a7b68}
+.vis-estado:has([data-abierto].on) .dot{background:#2f6b3a;box-shadow:0 0 0 4px rgba(47,107,58,.18)}
+.horario{margin:22px 0 4px;border-top:1px solid rgba(36,26,20,.25)}
+.horario>div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(36,26,20,.18);font-size:16px}
+.horario dt{font-weight:500}
+.horario dd{margin:0;color:#4a3a2e}
+.horario .hoy{font-weight:700;background:linear-gradient(90deg,rgba(122,85,38,.14),rgba(122,85,38,0));margin:0 -10px;padding:12px 10px;border-left:3px solid var(--brand-ink)}
+.horario .hoy dd{color:var(--ink)}
+.vis .btns{margin-top:28px}
+@media (min-width:900px){
+  .vis-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:90px;row-gap:40px;align-items:start}
+  .vis-cab{grid-column:1/3}
+  .mapa{height:520px}
+  .vis-info{padding-top:10px}
+}

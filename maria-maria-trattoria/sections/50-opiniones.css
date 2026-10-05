@@ -1,0 +1,27 @@
+.opi{background:var(--bg)}
+.opi-cab{display:flex;align-items:center;gap:20px;margin-bottom:26px}
+.opi-num{font:600 clamp(92px,28vw,230px)/.92 var(--serif);letter-spacing:-.05em;color:var(--brand);font-variation-settings:"opsz" 144}
+.opi-lado{display:flex;flex-direction:column;gap:8px}
+.rev-st{display:flex;gap:3px;color:var(--brand)}
+.rev-st-g .media{opacity:.45}
+.opi-n{font:600 13px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--txt)}
+.revs{display:grid;gap:12px;margin-top:34px}
+.rev figure{margin:0;height:100%;padding:20px 20px 18px;background:var(--bg2);border:1px solid var(--line);border-top:2px solid var(--brand);display:flex;flex-direction:column}
+.rev blockquote{margin:10px 0 14px;flex:1}
+.rev blockquote p{font:italic 400 17.5px/1.4 var(--serif);color:var(--txt)}
+.rev blockquote p::before{content:"\201C"}
+.rev blockquote p::after{content:"\201D"}
+.rev figcaption{display:flex;flex-direction:column;gap:2px}
+.rev figcaption b{font:600 15px/1.2 var(--sans);color:var(--txt)}
+.rev figcaption span{font-size:13px;color:var(--mut)}
+.opi .btns{margin-top:36px}
+.opi-nota{font-size:13px;color:var(--mut);margin-top:18px;max-width:48ch}
+@media (min-width:900px){
+  .opi-cab{margin-bottom:44px}
+  .revs{grid-template-columns:repeat(3,1fr);gap:20px;margin-top:64px}
+  .rev:nth-child(3n+2){transform:translateY(0)}
+  .opi .wrap{display:block}
+}
+@media (min-width:640px) and (max-width:899px){
+  .revs{grid-template-columns:1fr 1fr;gap:14px}
+}

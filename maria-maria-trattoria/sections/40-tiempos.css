@@ -1,0 +1,76 @@
+.tiempos{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tiempos-grid{display:grid;gap:26px;margin-top:30px}
+/* el pliego: carta de papel doblada en tres; cada doblez se abre al llegar */
+.pliego{background:var(--paper);color:var(--ink);padding:18px 16px 14px;box-shadow:0 22px 40px rgba(0,0,0,.45);perspective:1100px}
+.pliego-k{display:flex;align-items:center;gap:8px;font:600 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--brand-ink);padding-bottom:12px;border-bottom:1px solid rgba(36,26,20,.18)}
+.hoja{display:grid;grid-template-columns:1fr 84px;gap:0 14px;align-items:start;align-content:start;padding:16px 2px 14px;position:relative;transform-origin:50% 0;backface-visibility:hidden}
+.hoja+.hoja{background:linear-gradient(180deg,rgba(36,26,20,.09),rgba(36,26,20,0) 16px);border-top:1px solid rgba(36,26,20,.14)}
+.ventana{grid-column:2;grid-row:1;position:relative;width:84px;aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--paper2);box-shadow:0 0 0 4px #fff8ec,0 0 0 5px rgba(36,26,20,.18),0 8px 16px rgba(36,26,20,.22)}
+.ventana img{width:100%;height:100%;object-fit:cover}
+.ventana img[hidden]{display:none}
+.v-txt{position:absolute;inset:0;display:none;place-items:center;font:italic 600 15px/1 var(--serif);color:var(--brand-ink);letter-spacing:-.01em;background:radial-gradient(circle,#fff8ec 0 54%,var(--paper2) 55% 100%)}
+.ventana.txt .v-txt{display:grid}
+.ventana.cambia{animation:vent .32s cubic-bezier(.3,1.4,.5,1)}
+@keyframes vent{from{transform:scale(.82) rotate(-14deg);opacity:.35}to{transform:none;opacity:1}}
+.h-cuerpo{grid-column:1;grid-row:1;min-width:0}
+.h-cab{display:flex;align-items:baseline;gap:10px;font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--brand-ink);margin-bottom:4px}
+.h-cab b{font:italic 600 20px/1 var(--serif);letter-spacing:0;color:var(--ink)}
+.h-platos li{display:block}
+.pl{position:relative;display:inline-block;min-height:42px;padding:7px 10px 7px 4px;margin-left:-4px;background:none;border:0;cursor:pointer;text-align:left;font:italic 400 21px/1.2 var(--serif);letter-spacing:-.01em;color:rgba(36,26,20,.62);transition:color .2s;-webkit-tap-highlight-color:transparent}
+.pl:hover{color:var(--ink)}
+.pl[aria-pressed="true"]{color:var(--ink);font-weight:600}
+.tinta{position:absolute;left:-6px;top:-1px;width:calc(100% + 6px);height:calc(100% + 2px);overflow:visible;pointer-events:none;clip-path:inset(0 100% 0 0);transition:clip-path .34s cubic-bezier(.4,0,.2,1)}
+.tinta path{fill:none;stroke:#9a3a26;stroke-width:2.2;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.pl[aria-pressed="true"] .tinta{clip-path:inset(-4px -4px -4px -4px)}
+.pl:active{transform:translateY(1px)}
+.vino{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;margin-top:4px;padding:12px 2px 2px;border:0;border-top:1px dashed rgba(36,26,20,.3);background:none;cursor:pointer;text-align:left;font:500 16px/1.3 var(--sans);color:var(--ink)}
+.vino i{flex:none;width:26px;height:26px;border:1.5px solid rgba(36,26,20,.5);display:grid;place-items:center}
+.vino svg path{fill:none;stroke:#9a3a26;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.vino svg{clip-path:inset(0 100% 0 0);transition:clip-path .28s}
+.vino[aria-pressed="true"] svg{clip-path:inset(0 0 0 0)}
+.vino[aria-pressed="true"] i{border-color:#9a3a26}
+/* reveal propio: las hojas se despliegan (CSS base = abiertas) */
+html.rv .pliego[data-reveal]{opacity:1;transform:none}
+html.rv .pliego[data-reveal]:not(.in) .hoja{opacity:.2;transform:translateY(-14px);clip-path:inset(0 0 100% 0)}
+html.rv .pliego[data-reveal].in .hoja{opacity:1;transform:none;clip-path:inset(0 0 0 0);transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .5s,clip-path .8s cubic-bezier(.2,.8,.2,1)}
+html.rv .pliego[data-reveal].in .hoja:nth-child(2){transition-delay:.16s}
+html.rv .pliego[data-reveal].in .hoja:nth-child(3){transition-delay:.32s}
+/* la nota de lo que dices */
+.nota{background:#fff8ec;color:var(--ink);padding:22px 20px 20px;position:relative;border-left:3px solid #9a3a26}
+.nota-k{font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--brand-ink)}
+.nota-t{font:italic 500 22px/1.3 var(--serif);margin-top:12px;letter-spacing:-.01em;min-height:4em}
+.nota .btns{margin-top:18px}
+.nota.pop .nota-t{animation:pop .3s ease-out}
+@keyframes pop{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (min-width:640px){
+  .tiempos-grid{margin-top:44px;gap:30px}
+  .pliego{padding:24px 22px 16px}
+  .hojas{display:grid;grid-template-columns:repeat(3,1fr)}
+  .hoja{grid-template-columns:1fr;padding:18px 14px 12px;transform-origin:0 50%;text-align:center}
+  .hoja:first-child{transform-origin:100% 50%}
+  .hoja+.hoja{border-top:0;border-left:1px solid rgba(36,26,20,.14);background:linear-gradient(90deg,rgba(36,26,20,.08),rgba(36,26,20,0) 18px)}
+  .ventana{grid-column:1;grid-row:1;width:min(100%,128px);margin:4px auto 16px}
+  .v-txt{font-size:22px}
+  .h-cuerpo{grid-row:2}
+  .h-cab{justify-content:center;margin-bottom:8px}
+  .pl{font-size:19px;padding:7px 8px;margin-left:0;text-align:center}
+  .tinta{left:-4px;width:calc(100% + 8px)}
+  html.rv .pliego[data-reveal]:not(.in) .hoja{transform:rotateY(28deg);clip-path:inset(0 100% 0 0)}
+  html.rv .pliego[data-reveal]:not(.in) .hoja:first-child{transform:rotateY(-28deg);clip-path:inset(0 0 0 100%)}
+  html.rv .pliego[data-reveal]:not(.in) .hoja:nth-child(2){transform:none;clip-path:inset(0 50% 0 50%)}
+  .vino{justify-content:center;margin-top:8px}
+  .nota{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 28px;align-items:end;padding:24px 26px}
+  .nota-k{grid-column:1}
+  .nota-t{grid-column:1;min-height:0}
+  .nota .btns{grid-column:2;grid-row:1/3;margin:0}
+}
+@media (min-width:900px){
+  .tiempos-grid{margin-top:60px;gap:36px}
+  .pliego{padding:30px 34px 20px}
+  .hoja{padding:22px 26px 14px}
+  .ventana{width:168px;margin-bottom:20px}
+  .pl{font-size:23px}
+  .h-cab b{font-size:24px}
+  .nota{padding:30px 36px}
+  .nota-t{font-size:28px}
+}

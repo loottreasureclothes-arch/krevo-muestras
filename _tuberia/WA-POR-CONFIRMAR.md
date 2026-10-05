@@ -31,3 +31,4 @@ Estas páginas usan botones de Llamar. Si se confirma un WhatsApp publicado por 
 | bananas-bar | Bananas Bar (Rincón de Romos) | 465 851 5039 (un directorio lista 55 6435 8003 como WhatsApp, sin confirmar) | https://www.facebook.com/bananasrestaurantbar1 | no encontré |
 | pelicanos-pabellon | Restaurante Pelicanos (Pabellón de Arteaga) | 465 958 0786 | https://www.facebook.com/pelicanosrestaurant1/ | no encontré |
 | birrieria-los-angeles-jm | Birriería Los Ángeles (Jesús María) | 449 194 1346 | https://www.facebook.com/p/Birrieria-los-Angeles-Margaritas-100027732171532/ | no encontré |
+| maria-maria-trattoria | María María Trattoria | 449 321 7290 | no encontré | https://www.instagram.com/mariamaria_trattoria/ |
