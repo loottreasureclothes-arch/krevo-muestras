@@ -1,0 +1,14 @@
+.listo{background:var(--cream);color:var(--ink);padding:44px 0 36px}
+.listo .tit{color:var(--ink)}
+.listo .tit em{color:var(--red)}
+.listo .eyebrow{color:var(--red)}
+.listo-l{margin-top:26px}
+.listo-l li{position:relative;padding:10px 0 10px 30px;border-top:1px dashed rgba(42,26,20,.35);font-size:17px}
+.listo-l li::before{content:"";position:absolute;left:2px;top:15px;width:14px;height:14px;border:2px solid var(--red);border-radius:2px}
+.listo-p{margin-top:22px;font-weight:800;font-size:19px}
+.listo .link{color:var(--red)}
+@media (min-width:760px){
+  .listo{padding:80px 0}
+  .listo-l{columns:2;column-gap:48px}
+  .listo-l li{break-inside:avoid}
+}
