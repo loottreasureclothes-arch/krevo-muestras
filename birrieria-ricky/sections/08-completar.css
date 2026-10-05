@@ -1,0 +1,8 @@
+.falta h2{font-size:clamp(40px,11vw,76px)}
+.falta-l{list-style:none;margin-top:34px;border-top:2px solid var(--ink)}
+.falta-l li{padding:14px 0;border-bottom:1.5px dashed rgba(21,8,8,.35);font-size:18px;line-height:1.35;counter-increment:f;position:relative;padding-left:46px}
+.falta-l{counter-reset:f}
+.falta-l li::before{content:counter(f);position:absolute;left:0;top:13px;width:30px;height:30px;border-radius:50%;background:var(--red);color:var(--cream);font:400 17px/30px var(--disp);text-align:center}
+.falta-l b{font-weight:800}
+.falta-p{margin-top:30px;font-family:var(--disp);font-size:26px;line-height:1.2;max-width:20em}
+@media (min-width:900px){.falta-l{display:grid;grid-template-columns:1fr 1fr;column-gap:56px}}

@@ -1,0 +1,16 @@
+.carta h2{font-size:clamp(46px,13vw,92px)}
+.carta-nota{margin-top:18px;max-width:26em;font-size:17px;color:#4a3a2e}
+.carta-list{list-style:none;margin-top:36px;border-top:2px solid var(--ink)}
+.carta-list li{display:grid;grid-template-columns:104px 1fr;gap:2px 18px;align-items:center;padding:13px 0;border-bottom:1.5px dashed rgba(21,8,8,.35)}
+.tz{width:104px;height:104px;border-radius:50%;object-fit:cover;border:4px solid var(--cream);outline:2px solid var(--red);grid-row:span 2}
+.ct h3{font-size:25px;line-height:1.05}
+.ct p{font-size:15px;color:#4a3a2e;margin-top:5px;line-height:1.35}
+.pp{grid-column:2;font-weight:800;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;align-self:start}
+.pp::after{content:"\2192";margin-left:8px}
+.carta .cta-row{margin-top:36px}
+@media (min-width:760px){
+  .carta-list{display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
+  .carta-list li{grid-template-columns:132px 1fr}
+  .tz{width:132px;height:132px}
+  .ct h3{font-size:30px}
+}

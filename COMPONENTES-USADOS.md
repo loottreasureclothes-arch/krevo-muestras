@@ -33,3 +33,4 @@
 | los-reyes-del-taco | La comanda (presupuesto + Agregar que llena un ticket perforado y arma el WhatsApp) | 5 oct 2026 |
 | los-antojos-de-carranza | El cordón de papel picado (banderitas de platillos con foto que arman Tu mesa, con Llamar y copiar el pedido) | 5 oct 2026 |
 | cazona-corzo | La hora de la terraza (sol deslizable mediodía/atardecer/noche cambia la foto de la vista, propone platos por hora y arma el boleto "Tu mesa" que se llama o se copia) | 5 oct 2026 |
+| birrieria-ricky | La mesa de Ricky (plato con 4 fotos, cuántos y tazones de cebolla, cilantro, limón, salsa y tortillas que arman el papel del pedido, copiar o Llamar) | 5 oct 2026 |

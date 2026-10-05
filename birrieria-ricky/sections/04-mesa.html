@@ -1,0 +1,53 @@
+<section class="sec wine scal mesa" id="mesa" style="--prev:var(--ink)">
+  <p class="eyebrow">Tu mesa</p>
+  <h2 data-reveal>Arma tu mesa<br><em>antes de llegar.</em></h2>
+  <p class="mesa-lead" data-reveal>Elige, ponle lo de la mesa y cópialo. Se lo dices al mesero o lo cantas por teléfono.</p>
+  <div class="mesa-app" id="mesa-app">
+    <div class="mesa-stage">
+      <div class="plato" id="plato" aria-live="polite">
+        <img class="plato-img on" id="plato-a" src="img/12c-960.webp" alt="" width="960" height="576">
+        <span class="plato-cap" id="plato-cap">Elige arriba</span>
+        <span class="orb o-cebolla" data-orb="cebolla"></span>
+        <span class="orb o-cilantro" data-orb="cilantro"></span>
+        <span class="orb o-limon" data-orb="limon"></span>
+        <span class="orb o-salsa" data-orb="salsa"></span>
+        <span class="orb o-tortillas" data-orb="tortillas"></span>
+      </div>
+    </div>
+    <div class="mesa-ctl">
+      <fieldset class="paso">
+        <legend><b>1</b> Tu plato</legend>
+        <div class="opts" role="group">
+          <button type="button" class="opt" data-plato="tacos" data-img="01" aria-pressed="false"><img src="img/01-480.webp" alt="" width="480" height="360">Tacos de birria</button>
+          <button type="button" class="opt" data-plato="consome" data-img="02" aria-pressed="false"><img src="img/02-480.webp" alt="" width="480" height="360">Consomé</button>
+          <button type="button" class="opt" data-plato="plato" data-img="03" aria-pressed="false"><img src="img/03-480.webp" alt="" width="480" height="853">Plato de birria</button>
+          <button type="button" class="opt" data-plato="dorados" data-img="11" aria-pressed="false"><img src="img/11-480.webp" alt="" width="480" height="640">Tacos dorados</button>
+        </div>
+      </fieldset>
+      <fieldset class="paso">
+        <legend><b>2</b> Cuántos</legend>
+        <div class="step"><button type="button" id="menos" aria-label="Uno menos">&minus;</button><output id="cant">1</output><button type="button" id="mas" aria-label="Uno más">+</button></div>
+      </fieldset>
+      <fieldset class="paso">
+        <legend><b>3</b> Lo de la mesa</legend>
+        <div class="tazones" role="group">
+          <button type="button" class="tazon" data-extra="cebolla" aria-pressed="false"><i class="t-cebolla"></i>Cebolla</button>
+          <button type="button" class="tazon" data-extra="cilantro" aria-pressed="false"><i class="t-cilantro"></i>Cilantro</button>
+          <button type="button" class="tazon" data-extra="limon" aria-pressed="false"><i class="t-limon"></i>Limón</button>
+          <button type="button" class="tazon" data-extra="salsa" aria-pressed="false"><i class="t-salsa"></i>Salsa</button>
+          <button type="button" class="tazon" data-extra="tortillas" aria-pressed="false"><i class="t-tortillas"></i>Más tortillas</button>
+        </div>
+      </fieldset>
+    </div>
+    <div class="papel" id="papel">
+      <p class="papel-k">Tu pedido</p>
+      <p class="papel-t" id="papel-t">Elige arriba</p>
+      <p class="papel-tot">Total: <b id="papel-tot">Elige arriba</b></p>
+      <div class="cta-row">
+        <a class="btn btn-red" id="copiar" href="#mesa-app" role="button" aria-disabled="true">Copiar mi pedido</a>
+        <a class="btn btn-line" href="tel:+524491187548">Llamar</a>
+      </div>
+      <p class="papel-ok" id="papel-ok" role="status"></p>
+    </div>
+  </div>
+</section>
