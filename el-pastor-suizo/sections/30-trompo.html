@@ -1,0 +1,53 @@
+<section class="sec tr" id="trompo" aria-labelledby="tr-h">
+  <div class="wrap">
+    <span class="eyebrow">Arma tu pedido</span>
+    <h2 id="tr-h" data-reveal>Corta del<br><em>trompo.</em></h2>
+    <p class="tr-lead" data-reveal>Cada taco que pides baja el trompo. Elige y mándalo por WhatsApp.</p>
+  </div>
+  <div class="tr-grid wrap">
+    <div class="tr-viz" aria-hidden="true">
+      <div class="tr-spit">
+        <div class="tr-pina" id="tr-pina"></div>
+        <div class="tr-lonjas" id="tr-lonjas"></div>
+        <div class="tr-base"></div>
+      </div>
+      <div class="tr-plato" id="tr-plato"></div>
+    </div>
+    <form class="tr-form" id="tr-form" onsubmit="return false">
+      <fieldset class="tr-set">
+        <legend>Tacos</legend>
+        <div class="tr-row" data-id="t-pastor" data-p="14" data-n="al pastor"><span>Al pastor <i>$14</i></span><div class="step"><button type="button" data-d="-1" aria-label="Quitar taco al pastor">&minus;</button><output>0</output><button type="button" data-d="1" aria-label="Agregar taco al pastor">+</button></div></div>
+        <div class="tr-row" data-id="t-chorizo" data-p="14" data-n="de chorizo"><span>Chorizo <i>$14</i></span><div class="step"><button type="button" data-d="-1" aria-label="Quitar taco de chorizo">&minus;</button><output>0</output><button type="button" data-d="1" aria-label="Agregar taco de chorizo">+</button></div></div>
+        <div class="tr-row" data-id="t-cerdo" data-p="14" data-n="de bistec de cerdo"><span>Bistec de cerdo <i>$14</i></span><div class="step"><button type="button" data-d="-1" aria-label="Quitar taco de bistec de cerdo">&minus;</button><output>0</output><button type="button" data-d="1" aria-label="Agregar taco de bistec de cerdo">+</button></div></div>
+        <div class="tr-row" data-id="t-res" data-p="17" data-n="de bistec de res"><span>Bistec de res <i>$17</i></span><div class="step"><button type="button" data-d="-1" aria-label="Quitar taco de bistec de res">&minus;</button><output>0</output><button type="button" data-d="1" aria-label="Agregar taco de bistec de res">+</button></div></div>
+        <div class="tr-row" data-id="t-mixto" data-p="17" data-n="mixtos"><span>Mixto <i>$17</i></span><div class="step"><button type="button" data-d="-1" aria-label="Quitar taco mixto">&minus;</button><output>0</output><button type="button" data-d="1" aria-label="Agregar taco mixto">+</button></div></div>
+        <div class="tr-row" data-id="t-volcan" data-p="22" data-n="volcanes" data-fijo="1"><span>Volcán, con queso <i>$22</i></span><div class="step"><button type="button" data-d="-1" aria-label="Quitar volcán">&minus;</button><output>0</output><button type="button" data-d="1" aria-label="Agregar volcán">+</button></div></div>
+        <div class="tr-opts">
+          <div class="seg" role="group" aria-label="Tortilla">
+            <button type="button" class="on" data-tort="maiz">Maíz</button><button type="button" data-tort="harina">Harina +$15</button>
+          </div>
+          <div class="seg" role="group" aria-label="Queso en los tacos">
+            <button type="button" class="on" data-queso="0">Sin queso</button><button type="button" data-queso="1">Con queso +$3</button>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="tr-set">
+        <legend>Para acompañar</legend>
+        <div class="tr-row" data-id="orden-pastor" data-p="70" data-n="orden de al pastor (4 tacos con papa)" data-x="1"><span>Orden de al pastor <i>$70</i></span><div class="step"><button type="button" data-d="-1" aria-label="Quitar orden de al pastor">&minus;</button><output>0</output><button type="button" data-d="1" aria-label="Agregar orden de al pastor">+</button></div></div>
+        <div class="tr-row" data-id="queso-pastor" data-p="70" data-n="queso fundido al pastor" data-x="1"><span>Queso fundido al pastor <i>$70</i></span><div class="step"><button type="button" data-d="-1" aria-label="Quitar queso fundido">&minus;</button><output>0</output><button type="button" data-d="1" aria-label="Agregar queso fundido">+</button></div></div>
+        <div class="tr-row" data-id="alambre" data-p="100" data-n="alambre al pastor" data-x="1"><span>Alambre al pastor <i>$100</i></span><div class="step"><button type="button" data-d="-1" aria-label="Quitar alambre">&minus;</button><output>0</output><button type="button" data-d="1" aria-label="Agregar alambre">+</button></div></div>
+        <div class="tr-row" data-id="papa-pastor" data-p="75" data-n="papa rellena al pastor" data-x="1"><span>Papa rellena al pastor <i>$75</i></span><div class="step"><button type="button" data-d="-1" aria-label="Quitar papa rellena">&minus;</button><output>0</output><button type="button" data-d="1" aria-label="Agregar papa rellena">+</button></div></div>
+      </fieldset>
+      <div class="tr-aqui seg" role="group" aria-label="Cómo lo quieres">
+        <button type="button" class="on" data-modo="para llevar">Para llevar</button><button type="button" data-modo="para comer aquí">Comer aquí</button>
+      </div>
+      <div class="tr-total" aria-live="polite">
+        <div><small>Tu pedido</small><p id="tr-res">Elige arriba.</p></div>
+        <b id="tr-tot">Elige arriba</b>
+      </div>
+      <a class="btn wa block" id="tr-wa" href="https://wa.me/524495789542?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20El%20Pastor%20Suizo" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg><span>Mandar pedido por WhatsApp</span></a>
+      <button type="button" class="tr-clear" id="tr-clear">Vaciar el plato</button>
+      <p class="tr-nota">Precios de la carta de mayo 2024. Confirma al pedir.</p>
+    </form>
+  </div>
+</section>

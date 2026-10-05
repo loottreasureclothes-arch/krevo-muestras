@@ -1,0 +1,30 @@
+.carta{padding:44px 0 40px;background:var(--carbon)}
+.platos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+.plato{display:flex;flex-direction:column;background:var(--carbon2);border:2px solid rgba(252,240,50,.35);border-radius:2px;overflow:hidden}
+.plato img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.plato-t{padding:12px 12px 4px;flex:1}
+.plato h3{font-size:22px;line-height:1.05;color:#fff;letter-spacing:.02em}
+.plato-t p{margin-top:6px;font-size:14px;line-height:1.35;color:var(--mut)}
+.plato-f{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px 12px}
+.plato-f b{font:400 28px/1 var(--disp);color:var(--amar)}
+.add{min-height:44px;padding:0 14px;border:2px solid var(--amar);background:transparent;color:var(--amar);font:700 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.add:hover,.add.ok{background:var(--amar);color:var(--tinta)}
+.add:active{transform:scale(.95)}
+.carta-n{margin-top:12px;font-size:13px;color:var(--mut);letter-spacing:.04em}
+.lista{margin-top:22px;display:grid;gap:22px}
+.grupo h3{font-size:30px;color:#fff;padding-bottom:8px;border-bottom:4px solid var(--rojo);letter-spacing:.03em}
+.grupo ul{list-style:none;padding:0}
+.grupo li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:6px 0;border-bottom:2px dotted rgba(255,244,230,.25);font-size:17px}
+.grupo li b{font:400 24px/1 var(--disp);color:var(--amar);flex:none}
+.grupo p{margin-top:10px;font-size:14px;color:var(--mut)}
+.carta-cta{margin-top:26px;display:grid;gap:10px;justify-items:stretch}
+.carta-cta p{font-size:13px;color:var(--mut);text-align:center}
+@media (min-width:820px){
+  .carta{padding:96px 6vw}
+  .carta .wrap{padding:0}
+  .platos{grid-template-columns:repeat(4,1fr);gap:18px}
+  .plato h3{font-size:26px}
+  .lista{grid-template-columns:repeat(2,1fr);gap:64px;margin-top:56px}
+  .carta-cta{grid-template-columns:auto 1fr;align-items:center;gap:20px}
+  .carta-cta p{text-align:left}
+}
