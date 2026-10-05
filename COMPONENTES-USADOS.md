@@ -53,3 +53,4 @@
 | restaurante-cascadas | El recado de la mesa | 5 oct 2026 |
 | volodia-panaderia | El recado de la llamada (eliges día, hora en una regla y sillas de una mesa redonda, más mascota, para armar lo que vas a decir; Llamar o copiar el recado) | 5 oct 2026 |
 | tacos-el-super | La olla del consomé (barra de 3 paradas Temprano / Medio día / Al cierre baja el nivel de una olla dibujada con lo que cuentan los clientes; termina en Llamar) | 5 oct 2026 |
+| hotel-mansion-suiza | La llave (cuarto o sala, noches o personas y llegada en un llavero que se columpia; Llamar o copiar resumen; "Pregunta la tarifa"; sin WhatsApp) | 5 oct 2026 |

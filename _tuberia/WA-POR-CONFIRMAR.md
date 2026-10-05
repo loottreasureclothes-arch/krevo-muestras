@@ -24,3 +24,4 @@ Estas páginas usan botones de Llamar. Si se confirma un WhatsApp publicado por 
 | palermo-ags | Palermo (buffet de pizza) | 449 412 0866 | https://www.facebook.com/palermo.ags/ | https://www.instagram.com/palermoaguascalientes/ (no verificado) |
 | volodia-panaderia | Volodía Panadería y Desayunador | 449 489 9637 | https://www.facebook.com/volodiaaguascalientes/ (probable) | https://www.instagram.com/volodia_aguascalientes/ (probable) |
 | tacos-el-super | Tacos de Barbacoa El Súper | 449 385 0945 | no encontré (facebook.com/TaqueriasElSuper es de Guadalajara, no es este) | https://www.instagram.com/tacos_el_super_ags/ (probable; otra: https://www.instagram.com/tacosdebarbacoa_elsuper/) |
+| hotel-mansion-suiza | Hotel Mansión Suiza | 449 917 2233 | https://www.facebook.com/mansionsuiza | no encontré |
