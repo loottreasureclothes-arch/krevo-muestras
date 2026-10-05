@@ -55,3 +55,4 @@
 | tacos-el-super | La olla del consomé (barra de 3 paradas Temprano / Medio día / Al cierre baja el nivel de una olla dibujada con lo que cuentan los clientes; termina en Llamar) | 5 oct 2026 |
 | hotel-mansion-suiza | La llave (cuarto o sala, noches o personas y llegada en un llavero que se columpia; Llamar o copiar resumen; "Pregunta la tarifa"; sin WhatsApp) | 5 oct 2026 |
 | menudos-rosy | El tazón que se rellena | 5 oct 2026 |
+| bananas-bar | La hora de Bananas | 5 oct 2026 |
