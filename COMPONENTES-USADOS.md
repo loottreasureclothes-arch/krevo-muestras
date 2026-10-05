@@ -68,3 +68,4 @@
 | carnitas-los-casitos | La pesada (balanza SVG: arrastras la pesa de ¼ a 2 kg, el plato de carnitas crece; precios del cartel en ½ y 1 kg; el pedido sale armado a WhatsApp) | 5 oct 2026 |
 | puerto-camaron | La puertochela (vaso o cubeta SVG que se llena con cerveza, clamato y salsas con el tope de sus 10 puertochelas y precios reales; rondas y total; termina en WhatsApp) | 5 oct 2026 |
 | el-pastor-suizo | El trompo (se baja al pedir) | 5 oct 2026 |
+| elite-car-wash | El carril (arrastras el coche por 4 estaciones; donde lo sueltas fija Elite, Premier o Lux, ilumina las estaciones y arma el tiquete a WhatsApp) | 5 oct 2026 |

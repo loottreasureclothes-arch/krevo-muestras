@@ -1,0 +1,1 @@
+Todas de Google Maps (fotos de clientes), recortadas, webp q78: hero (maps-02), mostrador (maps-04), carril (03), trabajo (08), aroma (10), bolsa (12), llanta (17), pista (01). Sin placas visibles. Cartel de precios (maps-06) no usado.
