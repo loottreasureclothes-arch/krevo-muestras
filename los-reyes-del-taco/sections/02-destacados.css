@@ -1,0 +1,24 @@
+.destacados{background:var(--bg)}
+.platos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.plato{--cut:12px;position:relative;display:flex;flex-direction:column;background:var(--bg3);box-shadow:inset 0 0 0 2px var(--gold)}
+.plato img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.plato-b{display:flex;flex-direction:column;flex:1;padding:12px 12px 14px}
+.plato h3{font-size:1.05rem;line-height:1.05;margin-bottom:6px}
+.plato p{font-size:.88rem;color:var(--mute);line-height:1.3;flex:1}
+.plato-f{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px}
+.precio{font-family:var(--disp);font-weight:400;font-size:1.5rem;color:var(--gold)}
+.add{min-height:44px;padding:0 12px;background:var(--red);border:0;color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:background .2s,transform .15s}
+.add:hover{background:#ef3a3f}.add:active{transform:scale(.95)}
+.add.on{background:var(--cream);color:var(--ink)}
+.plato-mas{background:var(--red);padding:20px 16px;justify-content:center;text-decoration:none;box-shadow:inset 0 0 0 2px var(--gold),inset 0 0 0 6px var(--red),inset 0 0 0 8px #fff5}
+.plato-mas h3{font-size:1.6rem}
+.plato-mas p{flex:0;margin:10px 0 18px;color:#fff;font-size:.95rem}
+.arrow-w{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem}
+.nota{margin-top:22px;font-size:.85rem;color:var(--mute);font-style:italic}
+.cuenta{background:#fff;color:var(--red);min-width:24px;height:24px;display:inline-grid;place-items:center;font-size:.8rem;padding:0 6px}
+.cuenta:empty{display:none}
+@media (min-width:768px){
+  .platos{grid-template-columns:repeat(3,1fr);gap:22px}
+  .plato h3{font-size:1.3rem}
+  .plato img{aspect-ratio:4/3}
+}

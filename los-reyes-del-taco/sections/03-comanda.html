@@ -1,0 +1,33 @@
+<section class="sec comanda" id="comanda">
+  <div class="wrap comanda-g">
+    <div class="comanda-l">
+      <p class="eyebrow" data-hd-reveal>Pide para llevar</p>
+      <h2 class="t" data-hd-reveal><span class="a">Arma tu</span><span class="b">comanda</span></h2>
+      <p class="lead" data-hd-reveal>Dinos cuánto traes y la armamos. O elige tú, taco por taco.</p>
+      <div class="bolsa" data-hd-reveal>
+        <label for="presu">Cuánto traes</label>
+        <div class="bolsa-row"><input id="presu" type="range" min="40" max="400" step="10" value="100"><output id="presu-v" for="presu">$100</output></div>
+        <button class="btn btn-line btn-sm" type="button" id="llenar">Llénala por mí</button>
+      </div>
+      <div class="chips" id="chips" data-hd-reveal>
+        <button type="button" data-add="pastor">Pastor $14</button>
+        <button type="button" data-add="bisteck">Bisteck $14</button>
+        <button type="button" data-add="gringo">Taquigringo $18</button>
+        <button type="button" data-add="lengua">Lengua $17</button>
+        <button type="button" data-add="arrachera">Arrachera $45</button>
+        <button type="button" data-add="agua">Agua fresca $21</button>
+      </div>
+    </div>
+    <div class="comanda-r">
+      <div class="ticket" id="ticket" aria-live="polite">
+        <div class="ticket-h"><b>Los Reyes del Taco</b><span>Central · para llevar</span></div>
+        <ul class="ticket-l" id="ticket-l"></ul>
+        <div class="ticket-vacio" id="ticket-vacio">Tu comanda está vacía. Agrega un taco.</div>
+        <div class="ticket-t"><span>Total aprox.</span><b id="ticket-total">$0</b></div>
+        <div class="medidor"><i id="medidor"></i></div>
+        <p class="ticket-n" id="ticket-n">Precios de nuestra carta, pueden cambiar.</p>
+      </div>
+      <a class="btn btn-wa envia" id="envia" href="https://wa.me/524499409499?text=Hola%20Los%20Reyes%20del%20Taco%2C%20quiero%20hacer%20un%20pedido%20para%20llevar%20en%20la%20Central.">Mandar mi comanda</a>
+    </div>
+  </div>
+</section>

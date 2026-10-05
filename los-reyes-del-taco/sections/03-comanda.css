@@ -1,0 +1,46 @@
+.comanda{background:var(--bg2);background-image:radial-gradient(circle at 100% 0,#d8262b22,transparent 55%)}
+.comanda-g{display:grid;gap:26px}
+.bolsa{margin:26px 0 18px;padding:16px;background:#0003;box-shadow:inset 0 0 0 1px #fff2;display:grid;gap:12px}
+.bolsa label{font-weight:700;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.bolsa-row{display:flex;align-items:center;gap:16px}
+.bolsa output{font-family:var(--disp);font-size:2rem;min-width:4.2ch;text-align:right;color:var(--cream)}
+input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:44px;background:transparent;min-width:0}
+input[type=range]::-webkit-slider-runnable-track{height:8px;background:var(--bg3);box-shadow:inset 0 0 0 1px #fff3}
+input[type=range]::-moz-range-track{height:8px;background:var(--bg3);box-shadow:inset 0 0 0 1px #fff3}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-10px;background:var(--gold);border:3px solid var(--ink);border-radius:50%}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--gold);border:3px solid var(--ink);border-radius:50%}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{min-height:44px;padding:0 14px;background:transparent;border:0;box-shadow:inset 0 0 0 2px #fff4;color:var(--cream);font-weight:600;font-size:.9rem;transition:background .2s,box-shadow .2s,transform .15s}
+.chips button:hover{box-shadow:inset 0 0 0 2px var(--blue);background:#4fb8e222}
+.chips button:active{transform:scale(.95)}
+.ticket{position:relative;background:var(--cream);color:var(--ink);padding:22px 20px 30px;transform:rotate(-1deg);box-shadow:0 18px 40px #0007;
+  -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%}
+.ticket-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-bottom:12px;border-bottom:2px dashed #17110f66;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.ticket-h{flex-wrap:wrap}
+.ticket-h span{white-space:nowrap}
+.ticket-h b{white-space:nowrap;font-family:var(--disp);font-weight:400;font-size:1rem;letter-spacing:0;color:var(--red)}
+.ticket-l{list-style:none;margin:8px 0;min-height:40px}
+.ticket-l li{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;padding:6px 0;font-weight:600;border-bottom:1px dotted #17110f44;animation:imprime .28s ease-out}
+@keyframes imprime{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.ticket-l .lt{display:flex;align-items:center;gap:8px;min-width:0}
+.ticket-l .nm{overflow-wrap:anywhere}
+.ticket-l .st{display:flex;align-items:center;gap:4px}
+.ticket-l .st button{width:36px;height:36px;border:0;background:#17110f14;font-weight:700;font-size:1.1rem;line-height:1}
+.ticket-l .st button:hover{background:var(--red);color:#fff}
+.ticket-l .st span{min-width:22px;text-align:center;font-weight:700}
+.ticket-l .pr{font-family:var(--disp);min-width:3.6ch;text-align:right}
+.ticket-vacio{padding:14px 0;color:#17110f99;font-style:italic}
+.ticket-vacio[hidden]{display:none}
+.ticket-t{display:flex;justify-content:space-between;align-items:baseline;padding-top:10px;border-top:2px dashed #17110f66;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem}
+.ticket-t b{font-family:var(--disp);font-size:2rem;color:var(--red);letter-spacing:0}
+.medidor{height:8px;background:#17110f1f;margin-top:10px;overflow:hidden}
+.medidor i{display:block;height:100%;width:100%;background:var(--blue2);transform-origin:left;transform:scaleX(0);transition:transform .35s,background .2s}
+.medidor.pasa i{background:var(--red)}
+.ticket-n{margin-top:10px;font-size:.82rem;color:#17110fb0}
+.ticket-n.pasa{color:var(--red);font-weight:700}
+.envia{width:100%;margin-top:22px}
+@media (min-width:768px){
+  .comanda-g{grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+  .comanda-r{padding-top:30px}
+  .ticket{padding:28px 28px 36px}
+}

@@ -1,0 +1,8 @@
+# HOJA CORTA - Los Reyes del Taco (Central)
+**Trabajo:** pedir/llegar en 1 toque. wa.me/524499409499 (tel de directorio atribuido a Central, SIN CONFIRMAR, en PENDIENTES). Llamar tel:+524499409499.
+**Promesa:** "Tacos desde $14, a una cuadra de la Central de Autobuses." (carta, Maps).
+**Identidad:** lienzo carbon #17110f con ladrillo #2a1512; marca rojo #d8262b, azul carta #4fb8e2, corona #f2c230, crema #f3ecd9. Fuentes: Alfa Slab One (letrero) + Barlow. Forma: comanda/letrero con esquinas en chaflan y borde doble (como el marco de su carta); rayos azules de la carta. Header: barra roja con medallon RT y estado "Abierto ahora".
+**Firma (componente):** "La comanda": Agregar de la carta + presupuesto ("cuanto traes") -> ticket con borde perforado que crece; boton verde manda: "Hola Los Reyes del Taco, quiero para llevar en la Central: 3 Pastor, 2 Bisteck... Total aprox $X. Precios de su carta." 
+**Momento firma:** rayos azules de la carta giran con el scroll detras de la carta completa (transform, reversible, quieto a 1.6 s).
+**Secciones:** 01-hero | herom (central-09) | "TACOS DE REY / frente a la Central" ; 02-destacados | tacos,gringo,harina,torta,arrachera | "Lo que se pide / en la Central"; 03-comanda | - | "Arma tu / comanda"; 04-carta | rayos | "La carta / completa"; 05-resenas | dato 7,801 | "Lo dicen / en Google"; 06-recorrido | comedor + 4 | "Mesas / para todos"; 07-visitanos | mapa | "Llega / a la Central"; 08-completar | - | "Todo listo / para completar"; pie con Facebook, tel, direccion, horario.
+**Prohibidas:** central-06,10,13-21 (texto/persona), encino-11/12, nacozari-06..18. **PENDIENTE-DUENO:** WhatsApp, tel Central, horario (descripcion dice hasta 4 am), logo limpio, precios vigentes.
