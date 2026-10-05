@@ -1,0 +1,15 @@
+.pie{background:var(--noche);border-top:1px solid rgba(226,179,108,.35);padding:48px 0 30px}
+.pie-grid{display:grid;gap:30px}
+.pie-name{font:800 24px/1 var(--disp);letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:10px}
+.pie-name b+b{color:var(--cantera)}
+.pie p{color:var(--humo);font-size:16px}
+.pie h3{font:800 13px/1 var(--disp);letter-spacing:.24em;text-transform:uppercase;color:var(--oro);margin-bottom:10px}
+.pie a{text-decoration:none}
+.pie-col a[href^="tel"]{display:inline-flex;align-items:center;min-height:44px;color:var(--cantera);font-weight:600;font-size:18px}
+.pie-soc{display:flex;gap:12px}
+.pie-soc a{width:44px;height:44px;display:grid;place-items:center;border:1px solid rgba(226,179,108,.55);color:var(--oro);border-radius:50%;transition:background-color .2s,color .2s}
+.pie-soc svg{width:22px;height:22px;fill:currentColor}
+@media (hover:hover){.pie-soc a:hover{background:var(--oro);color:var(--noche)}}
+.pie-fine{margin-top:34px;font-size:13px!important;color:#8f7f6c!important;border-top:1px solid rgba(239,225,202,.12);padding-top:18px}
+@media (min-width:760px){.pie-grid{grid-template-columns:1.3fr 1fr 1fr .6fr;gap:40px}}
+.pie a.pie-call{margin-top:8px;color:var(--noche)}

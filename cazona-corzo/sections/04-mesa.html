@@ -1,0 +1,42 @@
+<section class="sec band-ladrillo mesa" id="mesa" aria-labelledby="mesa-t">
+  <div class="wrap">
+    <header class="mesa-head">
+      <p class="eyebrow" data-reveal>Tu mesa a su hora</p>
+      <h2 class="h2" id="mesa-t" data-reveal style="--d:.08s">Mueve el sol,<em>arma tu mesa.</em></h2>
+      <p class="lead" data-reveal style="--d:.16s">Elige la hora, agrega lo que se te antoja y llámanos con tu lista.</p>
+    </header>
+    <div class="mesa-app" id="mesa-app" data-reveal>
+      <div class="mesa-left">
+        <div class="mesa-stage arch" aria-live="polite">
+          <img class="st is-on" data-h="0" src="img/vista-dia-960.webp" srcset="img/vista-dia-480.webp 480w, img/vista-dia-960.webp 960w, img/vista-dia-1536.webp 1536w" sizes="(min-width:760px) 420px, 90vw" alt="Dos sangrías en la terraza, de día, con la Catedral al fondo" width="1536" height="2048" decoding="async">
+          <img class="st" aria-hidden="true" data-h="1" src="img/vista-tarde-960.webp" srcset="img/vista-tarde-480.webp 480w, img/vista-tarde-960.webp 960w, img/vista-tarde-1536.webp 1536w" sizes="(min-width:760px) 420px, 90vw" alt="La Catedral iluminada al atardecer vista desde la terraza" width="1536" height="2048" decoding="async">
+          <img class="st" aria-hidden="true" data-h="2" src="img/vista-noche-960.webp" srcset="img/vista-noche-480.webp 480w, img/vista-noche-960.webp 960w, img/vista-noche-1536.webp 1536w" sizes="(min-width:760px) 420px, 90vw" alt="Michelada con cerveza Modelo en la terraza de noche con la Catedral al fondo" width="1536" height="2048" decoding="async">
+          <p class="stage-tag" id="stage-tag">Mediodía</p>
+        </div>
+      </div>
+      <div class="mesa-right">
+        <div class="sky">
+          <input class="sky-r" id="sky" type="range" min="0" max="2" step="1" value="0" aria-label="Hora de la visita: mediodía, atardecer o noche">
+          <div class="sky-lbl" role="group" aria-label="Hora">
+            <button type="button" data-h="0" class="is-on">Mediodía</button>
+            <button type="button" data-h="1">Atardecer</button>
+            <button type="button" data-h="2">Noche</button>
+          </div>
+        </div>
+        <p class="mesa-note" id="mesa-note"></p>
+        <ul class="opts" id="opts" aria-label="Para esa hora"></ul>
+        <div class="ticket" id="ticket">
+          <div class="ticket-h"><b>Tu mesa</b><span id="ticket-hora">Mediodía</span></div>
+          <ul class="ticket-l" id="ticket-l"></ul>
+          <div class="ticket-t"><span>Total aproximado</span><b id="ticket-total">Elige arriba</b></div>
+          <p class="ticket-ask" id="ticket-ask" hidden>Hay platos sin precio en tu lista: pregúntalo al llamar.</p>
+          <div class="acts ticket-acts">
+            <a class="btn" id="mesa-call" href="tel:+524581610310"><svg class="ic" aria-hidden="true"><use href="#i-tel"/></svg><span>Llamar para apartar</span></a>
+            <button class="btn btn--ghost" id="mesa-copy" type="button" disabled><span>Copiar mi lista</span></button>
+          </div>
+          <p class="ticket-ok" id="ticket-ok" role="status"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

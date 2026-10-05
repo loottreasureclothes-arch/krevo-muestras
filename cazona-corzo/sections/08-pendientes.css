@@ -1,0 +1,7 @@
+.pend-grid{display:grid;gap:22px}
+.pend-grid>div:first-child{display:grid;gap:14px}
+.pend-l{display:grid;gap:0;border-top:2px solid var(--ladrillo)}
+.pend-l li{padding:14px 0 14px 28px;border-bottom:1px solid rgba(42,24,16,.18);position:relative;font-size:17px}
+.pend-l li::before{content:"";position:absolute;left:4px;top:22px;width:10px;height:10px;border:1.5px solid var(--ladrillo);border-radius:50%}
+.pend .sec-end{margin-top:6px}
+@media (min-width:760px){.pend{padding:76px 0}.pend-grid{grid-template-columns:1fr 1fr;gap:56px;align-items:start}.pend-grid .sec-end{grid-column:2}}

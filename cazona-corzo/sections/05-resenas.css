@@ -1,0 +1,23 @@
+.rvs-head{display:grid;gap:14px;margin-bottom:28px}
+.rvs-score{display:flex;align-items:center;gap:16px;margin-top:6px}
+.rvs-score b{font:900 84px/.9 var(--disp);color:var(--oro)}
+.rvs-score p{margin-top:6px;font-size:15px;color:var(--humo)}
+.rvs-list{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gut) * -1);padding:2px var(--gut) 14px;scrollbar-width:thin;scrollbar-color:var(--oro-d) transparent}
+.rvs-list>.rv{flex:0 0 84%;scroll-snap-align:start}
+.rvs-hint{margin-top:14px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--humo)}
+.rv{padding:20px 20px 18px;background:var(--noche);border:1px solid rgba(226,179,108,.28);border-radius:2px;display:grid;gap:12px;align-content:start}
+.rv blockquote{font-size:17px;line-height:1.5;color:var(--cantera)}
+.rv-by{display:grid;gap:2px;margin-top:2px}
+.rv-by b{font:800 15px/1.2 var(--disp);letter-spacing:.1em;text-transform:uppercase}
+.rv-by span,.rv-l{font-size:13px;color:var(--humo);letter-spacing:.04em}
+.rv-l{margin-top:-6px;font-style:italic}
+.rvs .sec-end{margin-top:34px}
+@media (min-width:760px){
+  .rvs-head{grid-template-columns:1fr auto;align-items:end;max-width:none}
+  .rvs-head .eyebrow,.rvs-head .h2{grid-column:1}
+  .rvs-score{grid-column:2;grid-row:1 / span 2;align-self:end}
+  .rvs-hint{display:none}
+  .rvs-list{display:block;columns:2;column-gap:16px;margin:0;padding:0;overflow:visible}
+  .rv{break-inside:avoid;margin-bottom:16px}
+}
+@media (min-width:1100px){.rvs-list{columns:3}}

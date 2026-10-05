@@ -32,3 +32,4 @@
 | tania-reposteria | El platón giratorio del pedido (disco con la foto cenital del pastel que gira en cada paso) | 20 sep 2026 |
 | los-reyes-del-taco | La comanda (presupuesto + Agregar que llena un ticket perforado y arma el WhatsApp) | 5 oct 2026 |
 | los-antojos-de-carranza | El cordón de papel picado (banderitas de platillos con foto que arman Tu mesa, con Llamar y copiar el pedido) | 5 oct 2026 |
+| cazona-corzo | La hora de la terraza (sol deslizable mediodía/atardecer/noche cambia la foto de la vista, propone platos por hora y arma el boleto "Tu mesa" que se llama o se copia) | 5 oct 2026 |

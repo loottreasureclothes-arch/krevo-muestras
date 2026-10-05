@@ -1,0 +1,66 @@
+.mesa{background:var(--ladrillo);background-image:linear-gradient(180deg,var(--ladrillo-d) 0,var(--ladrillo) 160px)}
+.mesa-head{display:grid;gap:14px;margin-bottom:30px}
+.mesa .lead{color:#e8cfb1}
+.mesa-app{display:grid;gap:26px}
+.mesa-stage{position:relative;width:min(100%,360px);margin:0 auto;aspect-ratio:4/5;background:var(--noche);box-shadow:0 0 0 1px rgba(226,179,108,.5),0 0 0 8px var(--ladrillo-d),0 0 0 9px rgba(226,179,108,.35)}
+.mesa-stage .st{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s var(--ease)}
+.mesa-stage .st.is-on{opacity:1}
+.stage-tag{position:absolute;left:0;right:0;bottom:16px;text-align:center;font:800 14px/1 var(--disp);letter-spacing:.3em;text-transform:uppercase;color:var(--cantera);text-shadow:0 1px 12px rgba(0,0,0,.8)}
+.mesa-stage::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(0deg,rgba(17,12,10,.7),transparent);pointer-events:none}
+.sky{display:grid;gap:10px}
+.sky-r{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:none;margin:0;cursor:pointer}
+.sky-r::-webkit-slider-runnable-track{height:12px;border-radius:2px;background:linear-gradient(90deg,#6fa8dc 0%,#e9b970 50%,#1c2a4a 100%);box-shadow:0 0 0 1px rgba(239,225,202,.5)}
+.sky-r::-moz-range-track{height:12px;border-radius:2px;background:linear-gradient(90deg,#6fa8dc 0%,#e9b970 50%,#1c2a4a 100%);box-shadow:0 0 0 1px rgba(239,225,202,.5)}
+.sky-r::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;margin-top:-9px;border-radius:50%;background:var(--cantera);border:5px solid var(--oro);box-shadow:0 2px 8px rgba(0,0,0,.5)}
+.sky-r::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--cantera);border:5px solid var(--oro);box-shadow:0 2px 8px rgba(0,0,0,.5)}
+.sky-lbl{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.sky-lbl button{min-height:44px;background:transparent;border:1px solid rgba(239,225,202,.35);color:var(--cantera);font:600 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:background-color .2s,color .2s}
+.sky-lbl button.is-on{background:var(--oro);color:var(--noche);border-color:var(--oro)}
+.mesa-note{margin-top:12px;font-size:15px;color:#e8cfb1;min-height:2.9em}
+.opts{display:grid;gap:8px;margin-top:6px}
+.opt{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 12px;padding:12px 14px;background:rgba(17,12,10,.38);border:1px solid rgba(239,225,202,.2);border-radius:2px;animation:optin .45s var(--ease) both;animation-delay:calc(var(--i,0) * 60ms)}
+@keyframes optin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.opt b{font-weight:600;font-size:17px;line-height:1.25}
+.opt .pr{color:var(--oro);font-size:16px}
+.opt .pr--ask{color:#e8cfb1}
+.opt-d{grid-column:1;font-size:14px;color:#e0c8aa;line-height:1.35}
+.add{grid-column:2;grid-row:1 / span 2;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:96px;min-height:44px;padding:0 12px;background:transparent;color:var(--oro);border:1px solid var(--oro);border-radius:2px;font:600 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background-color .2s,color .2s}
+.add .ic{width:14px;height:14px}
+.add.is-in{background:var(--oro);color:var(--noche)}
+@media (hover:hover){.add:hover{background:var(--oro);color:var(--noche)}}
+.opt .it-p{grid-column:1}
+.ticket{margin-top:22px;background:var(--cantera);color:var(--tinta);padding:18px 18px 20px;border-radius:2px;position:relative;
+  -webkit-mask:radial-gradient(circle 7px at 0 54px,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 7px at 100% 54px,transparent 98%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 7px at 0 54px,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 7px at 100% 54px,transparent 98%,#000) right/51% 100% no-repeat}
+.ticket-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:14px;margin-bottom:6px;border-bottom:2px dashed rgba(42,24,16,.4)}
+.ticket-h b{font:800 18px/1 var(--disp);letter-spacing:.14em;text-transform:uppercase}
+.ticket-h span{font:500 12px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--ladrillo)}
+.ticket-l li{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 10px;padding:9px 0;border-bottom:1px dotted rgba(42,24,16,.3)}
+.ticket-l .tl-n{font-weight:500;font-size:16px;line-height:1.25}
+.ticket-l .tl-p{font:700 15px/1 var(--disp);color:var(--ladrillo);text-align:right}
+.ticket-l .tl-p.ask{font:600 11px/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase}
+.qty{display:inline-flex;align-items:center;gap:2px;grid-column:1 / -1}
+.qty button{width:44px;height:44px;display:grid;place-items:center;background:none;border:1px solid rgba(42,24,16,.35);border-radius:2px;color:var(--tinta);cursor:pointer}
+.qty .ic{width:14px;height:14px}
+.qty output{min-width:34px;text-align:center;font-weight:600}
+.ticket-empty{padding:14px 0;color:#6b5240;font-size:15px}
+.ticket-t{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 0 4px}
+.ticket-t span{font:500 12px/1 var(--body);letter-spacing:.16em;text-transform:uppercase}
+.ticket-t b{font:800 26px/1 var(--disp);color:var(--ladrillo)}
+.ticket-t b.is-empty{font-size:17px;color:#6b5240}
+.ticket-ask{font-size:14px;color:#6b5240;margin-top:4px}
+.ticket-acts{margin-top:16px}
+.ticket-acts .btn{width:100%}
+.ticket .btn--ghost{color:var(--ladrillo);border-color:var(--ladrillo)}
+.ticket .btn--ghost:disabled{opacity:.45;cursor:not-allowed}
+@media (hover:hover){.ticket .btn--ghost:not(:disabled):hover{background:var(--ladrillo);color:var(--cantera);border-color:var(--ladrillo)}}
+.ticket .btn:not(.btn--ghost){background:var(--ladrillo);border-color:var(--ladrillo);color:var(--cantera)}
+@media (hover:hover){.ticket .btn:not(.btn--ghost):hover{background:var(--noche);border-color:var(--noche)}}
+.ticket-ok{min-height:1.4em;margin-top:8px;font-size:14px;color:var(--ladrillo);font-weight:500}
+@media (min-width:760px){
+  .mesa-head{max-width:640px;margin-bottom:36px}
+  .mesa-app{grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:56px;align-items:start}
+  .mesa-left{position:sticky;top:calc(var(--hdr) + 24px)}
+  .mesa-stage{width:100%}
+  .ticket-acts{display:grid;grid-template-columns:1fr 1fr}
+}

@@ -1,0 +1,25 @@
+.hero{position:relative;min-height:min(100svh,880px);display:flex;align-items:flex-end;overflow:clip;background:var(--noche);padding:calc(var(--hdr) + 20px) 0 34px}
+.hero-pic,.hero-pic img{position:absolute;inset:0;width:100%;height:100%}
+.hero-pic img{object-fit:cover;object-position:50% 20%}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,12,10,.5) 0%,rgba(17,12,10,0) 26%,rgba(17,12,10,.55) 55%,rgba(17,12,10,.96) 100%)}
+.hero-in{position:relative;z-index:2;display:grid;gap:16px;justify-items:start}
+.hero-t{font-family:var(--disp);font-weight:900;text-transform:uppercase;font-size:clamp(46px,14.5vw,64px);line-height:.95;letter-spacing:-.01em;color:var(--cantera);text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.hero-t em{display:block;font-style:normal;color:var(--oro)}
+.hero-p{max-width:30ch;font-size:18px;color:var(--cantera);text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.hero .acts{margin-top:4px}
+.hero .acts .btn{width:100%}
+.hero-rate{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:15px;font-weight:500;text-decoration:none;color:var(--cantera)}
+@media (hover:hover){.hero-rate:hover span:last-child{text-decoration:underline;text-underline-offset:4px}}
+@media (min-width:760px){
+  .hero{min-height:min(100svh,820px);align-items:center;padding-bottom:60px}
+  .hero-pic img{object-position:60% 40%}
+  .hero-veil{background:linear-gradient(90deg,rgba(17,12,10,.94) 0%,rgba(17,12,10,.72) 38%,rgba(17,12,10,.05) 72%),linear-gradient(180deg,rgba(17,12,10,.5) 0%,transparent 24%)}
+  .hero-t{font-size:clamp(56px,6.4vw,96px)}
+  .hero-in{max-width:1180px}
+  .hero-in>*{max-width:520px}
+  .hero .acts .btn{width:auto}
+}
+.hero .eyebrow{color:#f0c98a;text-shadow:0 1px 3px rgba(0,0,0,.95),0 0 18px rgba(0,0,0,.8);font-weight:600}
+/* 2 la linea de Google no queda bajo el boton flotante */
+@media (max-width:759px){.hero-rate{padding-right:70px}}
+@media (max-width:759px){.hero-veil{background:linear-gradient(180deg,rgba(17,12,10,.5) 0%,rgba(17,12,10,0) 20%,rgba(17,12,10,.6) 36%,rgba(17,12,10,.7) 55%,rgba(17,12,10,.96) 100%)}}

@@ -1,0 +1,36 @@
+.carta{padding-top:56px}
+.carta-head{display:grid;gap:14px;margin-bottom:30px}
+.carta-feat{position:relative;margin:0 0 34px;border-radius:2px;overflow:hidden;background:var(--tinta)}
+.carta-feat img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.carta-feat figcaption{position:absolute;inset:auto 0 0 0;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:46px 16px 14px;background:linear-gradient(0deg,rgba(17,12,10,.92),transparent);color:var(--cantera)}
+.carta-feat b{font:800 20px/1.1 var(--disp);text-transform:uppercase;letter-spacing:.02em}
+.carta-feat span{font:600 20px/1 var(--disp);color:var(--oro)}
+.carta-grid{display:grid;gap:34px}
+.cat h3{font:800 17px/1 var(--disp);letter-spacing:.2em;text-transform:uppercase;color:var(--ladrillo);padding-bottom:10px;margin-bottom:6px;border-bottom:2px solid var(--ladrillo)}
+.cat li{padding:11px 0;border-bottom:1px solid rgba(42,24,16,.16)}
+.it-h{display:flex;align-items:baseline;gap:8px}
+.it-h b{font-weight:600;font-size:17px;line-height:1.25}
+.dots{flex:1;min-width:14px;border-bottom:1px dotted rgba(42,24,16,.45);transform:translateY(-4px)}
+.pr{font:700 17px/1 var(--disp);color:var(--ladrillo);white-space:nowrap}
+.pr--ask{font:600 12px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#6b5240}
+.cat li p{margin-top:4px;font-size:15px;line-height:1.4;color:#5a4334;max-width:46ch}
+.carta .sec-end{margin-top:40px}
+@media (min-width:760px){
+  .carta{padding:80px 0}
+  .carta-head{max-width:640px;margin-bottom:36px}
+  .carta-body{display:grid;grid-template-columns:300px minmax(0,1fr);gap:40px;align-items:start}
+  .carta-feat{position:sticky;top:calc(var(--hdr) + 20px);margin:0}
+  .carta-feat img{aspect-ratio:3/4}
+  .carta-grid{grid-template-columns:1fr 1fr;gap:36px 40px}
+}
+@media (min-width:1100px){.carta-body{grid-template-columns:380px 1fr;gap:56px}.carta-grid{gap:36px 52px}}
+
+.carta-tabs{display:none}
+.js .carta-tabs{display:flex;gap:8px;overflow-x:auto;margin:0 calc(var(--gut) * -1) 18px;padding:2px var(--gut);scrollbar-width:none}
+.carta-tabs::-webkit-scrollbar{display:none}
+.carta-tabs button{flex:none;min-height:44px;padding:0 16px;background:transparent;border:1px solid var(--ladrillo);color:var(--ladrillo);font:600 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:background-color .2s,color .2s}
+.carta-tabs button.is-on{background:var(--ladrillo);color:var(--cantera)}
+.js .carta-grid .cat:not(.is-on){display:none}
+.js .carta-grid .cat.is-on{animation:catin .4s var(--ease) both}
+@keyframes catin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (min-width:760px){.js .carta-tabs{display:none}.js .carta-grid .cat:not(.is-on){display:block}.carta-main{min-width:0}}
