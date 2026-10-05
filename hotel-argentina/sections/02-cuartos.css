@@ -1,0 +1,25 @@
+.rooms{list-style:none;margin-top:38px;display:flex;flex-direction:column;gap:24px}
+.room{position:relative;border-bottom:8px solid var(--sky);background:var(--navy-d)}
+.room-n{position:absolute;top:0;left:0;z-index:2;font:900 30px/1 var(--f-d);background:var(--terra);color:var(--navy-dd);padding:10px 14px 8px}
+.room-ph{aspect-ratio:960/540;overflow:hidden}
+.room-ph img{width:100%;height:100%;object-fit:cover}
+.room-tx{padding:20px 20px 26px}
+.room-tx h3{font:900 36px/1 var(--f-d);text-transform:uppercase;letter-spacing:.02em}
+.room-p{margin-top:8px;font-size:16px;opacity:.85}
+.room-tx .link{margin-top:14px}
+@media (max-width:899px){
+ .rooms{margin-top:28px;gap:14px}
+ .room{display:grid;grid-template-columns:44% 1fr;align-items:center;border-bottom-width:6px}
+ .room-ph{aspect-ratio:auto;height:100%;min-height:150px}
+ .room-n{font-size:22px;padding:7px 10px 5px}
+ .room-tx{padding:14px 14px 12px}
+ .room-tx h3{font-size:clamp(24px,7vw,30px)}
+ .room-p{margin-top:4px;font-size:15px}
+ .room-tx .link{margin-top:6px;font-size:12px;letter-spacing:.1em}
+ #cuartos .btns{margin-top:26px}
+}
+#cuartos .btns{margin-top:36px}
+@media (min-width:900px){
+ .rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+ .room-tx{padding:22px 22px 28px}
+}

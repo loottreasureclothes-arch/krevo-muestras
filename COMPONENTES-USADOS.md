@@ -61,3 +61,4 @@
 | birrieria-los-angeles-jm | La ventanilla (papelito de la comanda, se dicta por teléfono o se copia) | 5 oct 2026 |
 | maria-maria-trattoria | Tres tiempos (carta de papel doblada en tres hojas que se despliega; encierras en tinta un plato real por tiempo y la ventana muestra su foto; Llamar o copiar) | 5 oct 2026 |
 | el-campirano | Júntenme las mesas (adultos y niños: las mesas de 4 se deslizan y se juntan, sillas de niño, total gigante; recado para Llamar o copiar) | 5 oct 2026 |
+| hotel-argentina | El llavero (cuarto con foto, personas, noches, fecha y cómo llega; resumen para llamar o copiar; sin WhatsApp) | 5 oct 2026 |

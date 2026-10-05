@@ -1,0 +1,16 @@
+.falta{list-style:none;margin-top:30px;border-top:2px solid var(--navy-dd)}
+.falta li{padding:14px 0;border-bottom:2px solid var(--navy-dd);font:900 26px/1.1 var(--f-d);text-transform:uppercase;letter-spacing:.03em}
+#cierre .lead{margin-top:26px;font-weight:600}
+.pie{background:var(--navy-dd);padding:40px var(--gut) 90px;border-top:8px solid var(--sky)}
+.pie-in{display:flex;flex-direction:column;gap:16px;font-size:16px}
+.pie a{text-decoration:none}
+.pie p a{border-bottom:1px solid currentColor;display:inline-block;padding:10px 0}
+.pie .hd-logo{align-self:flex-start;margin-bottom:6px}
+.soc{display:flex;gap:12px;margin-top:6px}
+.mini{font-size:13px;opacity:.6}
+@media (min-width:900px){
+ .pie{padding-bottom:56px}
+ .pie-in{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:28px 48px}
+ .falta{display:grid;grid-template-columns:repeat(3,1fr);gap:0 28px;border-top:0}
+ .falta li{border-top:2px solid var(--navy-dd)}
+}

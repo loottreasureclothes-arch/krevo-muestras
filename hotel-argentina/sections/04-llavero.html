@@ -1,0 +1,46 @@
+<section class="sec sec-terra" id="llavero">
+  <div class="wrap">
+    <p class="eyebrow">Tu cuarto en la llave</p>
+    <h2 class="t"><span>Arma tu llegada,</span><span class="c2">luego llama.</span></h2>
+    <p class="lead">Elige cuarto, personas y fecha. Te queda el resumen listo para dictar.</p>
+    <div class="llv" id="llv">
+      <div class="llv-key" aria-hidden="true">
+        <div class="llv-ring"></div>
+        <div class="llv-tag">
+          <div class="llv-ph"><img id="llv-img" src="img/cuarto1-480.webp" width="480" height="330" alt=""></div>
+          <div class="llv-id"><span>ARGENTINA</span><b>407</b></div>
+          <p class="llv-line" id="llv-line">Cama matrimonial</p>
+        </div>
+      </div>
+      <div class="llv-form">
+        <fieldset class="fs"><legend>1. El cuarto</legend>
+          <div class="chips" role="radiogroup" aria-label="Tipo de cuarto">
+            <button type="button" class="chip is-on" role="radio" aria-checked="true" data-room="Cama matrimonial" data-img="img/cuarto1-480.webp">Cama matrimonial</button>
+            <button type="button" class="chip" role="radio" aria-checked="false" data-room="Dos camas" data-img="img/cuarto2-480.webp">Dos camas</button>
+            <button type="button" class="chip" role="radio" aria-checked="false" data-room="Tres camas" data-img="img/cuarto3-480.webp">Tres camas</button>
+          </div>
+        </fieldset>
+        <fieldset class="fs"><legend>2. Cuántos son</legend>
+          <div class="step" data-step="pers" data-min="1" data-max="6"><button type="button" data-d="-1" aria-label="Menos personas">&minus;</button><output id="o-pers" aria-live="polite">2 personas</output><button type="button" data-d="1" aria-label="Más personas">+</button></div>
+        </fieldset>
+        <fieldset class="fs"><legend>3. Cuándo llegas</legend>
+          <div class="row2"><label class="date"><span>Llegada</span><input type="date" id="f-fecha"></label>
+          <div class="step" data-step="noch" data-min="1" data-max="14"><button type="button" data-d="-1" aria-label="Menos noches">&minus;</button><output id="o-noch" aria-live="polite">1 noche</output><button type="button" data-d="1" aria-label="Más noches">+</button></div></div>
+        </fieldset>
+        <fieldset class="fs"><legend>4. Cómo llegas</legend>
+          <div class="chips" role="radiogroup" aria-label="Cómo llegas">
+            <button type="button" class="chip is-on" role="radio" aria-checked="true" data-via="en camión">En camión</button>
+            <button type="button" class="chip" role="radio" aria-checked="false" data-via="en carro">En carro</button>
+          </div>
+        </fieldset>
+        <div class="ticket" aria-live="polite">
+          <p class="tk-h">Resumen</p>
+          <p id="tk-body" class="tk-b"></p>
+          <p class="tk-p">Tarifa: <b id="tk-rate">Pregunta la tarifa</b></p>
+        </div>
+        <div class="btns"><a class="btn" href="tel:+524497354464">Llamar con mi resumen</a><button type="button" class="btn btn-line" id="llv-copy">Copiar resumen</button></div>
+        <p class="llv-ok" id="llv-ok" role="status"></p>
+      </div>
+    </div>
+  </div>
+</section>

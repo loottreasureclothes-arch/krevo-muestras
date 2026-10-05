@@ -1,0 +1,9 @@
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:36px}
+.gal figure{overflow:hidden;background:var(--navy-d);aspect-ratio:960/660}
+.gal .g1{grid-column:1/-1;border-bottom:8px solid var(--terra)}
+.gal img{width:100%;height:100%;object-fit:cover}
+#galeria .btns{margin-top:34px}
+@media (min-width:900px){
+ .gal{grid-template-columns:repeat(4,1fr);gap:14px}
+ .gal .g1{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+}

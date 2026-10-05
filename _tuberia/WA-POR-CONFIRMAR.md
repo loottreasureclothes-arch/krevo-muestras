@@ -33,3 +33,4 @@ Estas páginas usan botones de Llamar. Si se confirma un WhatsApp publicado por 
 | birrieria-los-angeles-jm | Birriería Los Ángeles (Jesús María) | 449 194 1346 | https://www.facebook.com/p/Birrieria-los-Angeles-Margaritas-100027732171532/ | no encontré |
 | maria-maria-trattoria | María María Trattoria | 449 321 7290 | no encontré | https://www.instagram.com/mariamaria_trattoria/ |
 | el-campirano | El Campirano (Av. Universidad 411) | 449 813 5545 | https://www.facebook.com/people/El-Campirano/100040925202911/ (probable; hay otras de sucursales) | https://www.instagram.com/el.campirano/ (dudoso; también @elcampiranorestaurantehotel, @campirano_americas) |
+| hotel-argentina | Hotel Argentina | 449 735 4464 | https://www.facebook.com/hotel.argentina.ags | https://www.instagram.com/hotel.argentina/ |
