@@ -1,0 +1,30 @@
+<section class="vent" id="ventanilla">
+  <div class="wrap vent-grid">
+    <div class="vent-cab" data-reveal>
+      <p class="eyebrow">Tu papelito</p>
+      <h2 class="h2">La ventanilla<em>toma tu orden</em></h2>
+      <p class="lead">Lo que elegiste se anota en el papel. Llama y díctaselo, o cópialo.</p>
+    </div>
+    <figure class="vent-foto" data-reveal>
+      <img src="img/ventanilla-960.webp" srcset="img/ventanilla-480.webp 480w, img/ventanilla-960.webp 960w, img/ventanilla-1152.webp 1152w" sizes="(min-width:820px) 45vw, 100vw" width="1152" height="734" alt="Ventanilla de la cocina en pared blanca" loading="lazy">
+    </figure>
+    <div class="papel" id="papel" data-reveal>
+      <span class="papel-pin" aria-hidden="true"></span>
+      <p class="papel-tit">Orden para la mesa</p>
+      <div class="papel-para">
+        <span>¿Para cuántos?</span>
+        <div class="para-chips" role="group" aria-label="Personas">
+          <button type="button" data-n="1">1</button><button type="button" data-n="2" class="on">2</button><button type="button" data-n="3">3</button><button type="button" data-n="4">4</button><button type="button" data-n="5">5</button><button type="button" data-n="6">6+</button>
+        </div>
+      </div>
+      <ul class="papel-lineas" id="lineas" aria-live="polite"><li class="vacio">Elige arriba</li></ul>
+      <p class="papel-dicta" id="dicta" hidden></p>
+      <div class="papel-acc">
+        <a class="btn" id="btn-llamar" href="tel:+524491941346">Llamar y dictar</a>
+        <button class="btn ghost" id="btn-copiar" type="button">Copiar mi orden</button>
+      </div>
+      <button class="papel-vaciar" id="btn-vaciar" type="button" hidden>Vaciar el papel</button>
+      <p class="papel-ok" id="copiado" role="status"></p>
+    </div>
+  </div>
+</section>

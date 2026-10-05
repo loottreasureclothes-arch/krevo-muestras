@@ -1,0 +1,1 @@
+Fotos de Google Maps (research/fotos/maps), recortadas, nunca estiradas. hero: 03; carta: 11, 05, 09, 07; ventanilla: 06; tortilla: 09 (sin rostro); comedor: 01, 02 (sin cliente), 11, 07, 04, 05. No usadas: 08, 10, 13 (clientes y marca ajena). og.jpg y favicons hechos con PIL.

@@ -1,0 +1,29 @@
+.hero{position:relative;min-height:680px;height:100svh;max-height:760px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding-top:var(--hd)}
+.hero-img,.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hero-vela{position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,23,14,.55) 0,rgba(38,23,14,0) 24%,rgba(38,23,14,.35) 48%,rgba(38,23,14,.95) 82%)}
+.hero-in{position:relative;padding-bottom:84px}
+.hero-h1{font:900 clamp(52px,15.2vw,150px)/.86 var(--disp);text-transform:uppercase;letter-spacing:.005em;text-shadow:0 3px 24px rgba(0,0,0,.45)}
+.hero-h1 span{display:block}
+.hero-h1 em{display:block;font-style:normal;color:var(--amarillo)}
+.hero-sub{font-size:19px;max-width:20em;margin-top:14px;font-weight:600}
+.hero-sello{position:absolute;right:var(--g);top:calc(var(--hd) + 18px);width:92px;height:92px;border-radius:50%;background:var(--amarillo);color:var(--tinta);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(8deg);box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.hero-sello b{font:900 38px/.9 var(--disp)}
+.hero-sello span{font:800 10px/1 var(--txt);letter-spacing:.14em;text-transform:uppercase;margin-top:3px}
+.hero-mantel{position:absolute;left:0;right:0;bottom:0;background:var(--amarillo);color:var(--tinta);display:flex;justify-content:space-between;gap:12px;padding:14px var(--g);font:800 12px/1.2 var(--txt);letter-spacing:.12em;text-transform:uppercase}
+@media (min-width:820px){
+ .hero{height:min(100svh,820px);flex-direction:row;align-items:center;justify-content:flex-start;background:var(--cafe)}
+ .hero-img{left:auto;right:0;width:58%}
+ .hero-img img{object-position:50% 50%}
+ .hero-vela{background:linear-gradient(90deg,var(--cafe) 0,var(--cafe) 42%,rgba(38,23,14,0) 62%)}
+ .hero-in{padding-bottom:40px;max-width:1180px;margin:0 auto;left:0}
+ .hero-in>*{max-width:46%}
+ .hero-h1{font-size:clamp(88px,9.4vw,150px)}
+ .hero-sello{top:auto;bottom:90px;right:6%;width:130px;height:130px}
+ .hero-sello b{font-size:54px}
+}
+.hero .eyebrow{margin-bottom:22px}
+.hero-h1{padding-top:6px}
+.hero-sello b{display:block;line-height:1;margin-top:4px}
+.hero-sello span{display:block;margin-top:2px}
+.hero-sello span{margin-top:7px}.hero-sello b{margin-top:0}
+@media (min-width:820px){.hero-sello b{font-size:50px;line-height:1.1}.hero-sello span{margin-top:12px}}

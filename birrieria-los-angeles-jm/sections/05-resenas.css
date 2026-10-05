@@ -1,0 +1,26 @@
+.res{background:var(--crema);color:var(--tinta);padding:52px 0 48px}
+.res .eyebrow{color:var(--rojo)}
+.res .h2{color:var(--tinta)}
+.res .h2 em{color:var(--rojo)}
+.res-dato{display:flex;align-items:center;gap:18px;margin:4px 0 22px}
+.res-dato b{font:900 clamp(110px,34vw,190px)/.8 var(--disp);color:var(--tinta)}
+.res-dato p{font:800 13px/1.35 var(--txt);letter-spacing:.1em;text-transform:uppercase;margin-top:8px}
+.stars{display:block;width:90px;height:18px;background:linear-gradient(90deg,#d99a00 calc(var(--r)*20%),rgba(42,26,16,.2) 0);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M9 1l2.5 5.2 5.7.8-4.1 4 1 5.7L9 14l-5.1 2.7 1-5.7-4.1-4 5.7-.8z'/%3E%3C/svg%3E") 0 0/18px 18px repeat-x;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M9 1l2.5 5.2 5.7.8-4.1 4 1 5.7L9 14l-5.1 2.7 1-5.7-4.1-4 5.7-.8z'/%3E%3C/svg%3E") 0 0/18px 18px repeat-x}
+.res-lista{display:grid;gap:14px;margin-top:34px}
+.rcard{background:#fff8e4;border:2px solid var(--tinta);padding:22px 20px;display:flex;flex-direction:column;gap:12px}
+.rcard blockquote{font-size:17px;line-height:1.45;flex:1}
+.rcard footer{display:flex;justify-content:space-between;gap:8px;font-size:14px;border-top:1px dashed rgba(42,26,16,.4);padding-top:10px}
+.rcard footer span{font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:11px;color:rgba(42,26,16,.65);align-self:center}
+.res-fin{margin-top:30px}
+.res .btn{background:var(--tinta);border-color:var(--tinta);color:var(--amarillo)}
+.res .btn.link{background:none;color:var(--tinta)}
+@media (min-width:820px){
+ .res{padding:110px 0}
+ .res-cab{display:grid;grid-template-columns:auto 1fr;gap:0 60px;align-items:end}
+ .res-cab .eyebrow{grid-column:1/-1}
+ .res-dato{margin:0}
+ .res-lista{grid-template-columns:repeat(2,1fr);gap:18px;margin-top:44px}
+}
+@media (min-width:1200px){.res-lista{grid-template-columns:repeat(3,1fr)}}
+.res-cab .eyebrow{margin-bottom:20px}
+.res-dato b{line-height:1;padding-top:6px}
