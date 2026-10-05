@@ -1,0 +1,49 @@
+.cordon .wrap{display:block}
+.cord-flags{display:grid;grid-template-columns:1fr 1fr;gap:18px 12px;margin:34px 0 30px;position:relative;padding-top:20px}
+.cord-flags::before{content:"";position:absolute;left:-16px;right:-16px;top:8px;height:2px;background:var(--cream);opacity:.45}
+.cflag{--c:#ecb23e;position:relative;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;min-height:150px;padding:30px 12px 40px;border:0;cursor:pointer;color:#241405;font-family:var(--body);background:var(--c);transform-origin:50% 0;
+ clip-path:polygon(0 0,100% 0,100% 88%,87.5% 100%,75% 88%,62.5% 100%,50% 88%,37.5% 100%,25% 88%,12.5% 100%,0 88%);
+ -webkit-mask:radial-gradient(circle at 50% 14px,transparent 0 5px,#000 6px);mask:radial-gradient(circle at 50% 14px,transparent 0 5px,#000 6px);
+ opacity:.88;filter:saturate(.9);transition:transform .3s,opacity .25s,filter .25s}
+.cflag::before{content:"";position:absolute;inset:34px 10px 26px;border:2px dashed rgba(36,20,5,.35);pointer-events:none}
+.cf-n{font:400 21px/1.08 var(--disp);position:relative;display:block;margin:auto 0;padding:12px 8px}
+.cf-s{font:800 11px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;position:relative;margin-top:2px}
+.cflag:hover{transform:translateY(-3px);opacity:.95}
+.cflag[aria-pressed=true]{opacity:1;filter:none;animation:colgar .7s ease-out 1}
+.cflag[aria-pressed=true] .cf-s::before{content:"\2713  "}
+@keyframes colgar{0%{transform:rotate(0)}25%{transform:rotate(-7deg)}55%{transform:rotate(5deg)}80%{transform:rotate(-2deg)}100%{transform:rotate(0)}}
+.mesa{display:grid;gap:22px}
+.mesa-pic{position:relative;aspect-ratio:4/3;background:var(--bg2)}
+.mp{position:absolute;inset:0;display:none}
+.mp.on{display:block;animation:fadein .35s ease-out}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.mesa-tk{background:var(--paper);color:var(--ink);padding:24px 20px 22px;border-radius:2px 2px 2px 34px;position:relative;
+ -webkit-mask:linear-gradient(#000,#000);}
+.mesa-tk h3{font-size:34px;margin-bottom:6px}
+.bunting{display:flex;gap:3px;min-height:34px;margin:4px 0 8px;padding-top:4px;border-top:2px solid #b9791a;flex-wrap:wrap}
+.bunting i{width:26px;height:30px;background:var(--c);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;animation:colgar .6s ease-out 1}
+.tk{list-style:none}
+.tk li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-bottom:1px dashed rgba(42,28,12,.35);align-items:center}
+.tk b{font:400 21px/1.1 var(--disp)}
+.tk small{grid-column:1;font:800 11px/1.2 var(--body);letter-spacing:.12em;text-transform:uppercase;color:#8a5a14}
+.step{grid-row:1/3;grid-column:2;display:flex;align-items:center;gap:2px}
+.step button{width:44px;height:44px;border:2px solid var(--ink);background:transparent;color:var(--ink);font:800 20px/1 var(--body);cursor:pointer;border-radius:2px}
+.step output{min-width:28px;text-align:center;font:800 18px/1 var(--body)}
+.tk-empty{padding:14px 0;color:#8a5a14;font:800 14px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;border-bottom:1px dashed rgba(42,28,12,.35)}
+.tk-empty[hidden]{display:none}
+.tk-tot{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:14px 0 16px}
+.tk-tot span{font:800 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase}
+.tk-tot b{font:400 22px/1.1 var(--disp);text-align:right}
+.tk-btns{display:grid;gap:10px}
+.mesa-tk .btn-line{border-color:var(--ink);color:var(--ink)}
+.mesa-tk .btn-line:hover{background:var(--ink);color:var(--paper)}
+.tk-msg{min-height:22px;margin-top:10px;font-weight:800;font-size:14px;color:#8a5a14}
+.tk-clear{background:none;border:0;border-bottom:2px solid var(--ink);color:var(--ink);font:800 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;padding:8px 0;cursor:pointer;margin-top:4px}
+@media(min-width:820px){
+ .cordon .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;align-items:start}
+ .cord-head{grid-column:1/-1}
+ .cord-flags{grid-template-columns:repeat(2,1fr);margin-top:20px}
+ .mesa{display:block;position:sticky;top:96px}
+ .mesa-pic{aspect-ratio:4/3.1;border-radius:140px 140px 4px 4px;margin-bottom:22px}
+}
+@media(min-width:1100px){.cord-flags{grid-template-columns:repeat(3,1fr)}}

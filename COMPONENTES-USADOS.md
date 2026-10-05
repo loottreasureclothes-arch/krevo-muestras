@@ -31,3 +31,4 @@
 | muebles-del-alba | El interruptor de acabado (cuadritos que cambian la foto del mueble en su lugar) | 20 sep 2026 |
 | tania-reposteria | El platón giratorio del pedido (disco con la foto cenital del pastel que gira en cada paso) | 20 sep 2026 |
 | los-reyes-del-taco | La comanda (presupuesto + Agregar que llena un ticket perforado y arma el WhatsApp) | 5 oct 2026 |
+| los-antojos-de-carranza | El cordón de papel picado (banderitas de platillos con foto que arman Tu mesa, con Llamar y copiar el pedido) | 5 oct 2026 |
