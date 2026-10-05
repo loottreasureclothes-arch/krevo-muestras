@@ -1,0 +1,15 @@
+.cons{background:var(--blue);overflow:hidden}
+.cons-ph{position:relative;aspect-ratio:1/1.05;max-height:540px;width:100%;overflow:hidden}
+.cons-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+@media (min-width:900px){.cons-ph img{position:absolute;inset:0}}
+.cons-ph::after{content:"";position:absolute;inset:auto 0 0 0;height:42%;background:linear-gradient(180deg,rgba(47,79,160,0),var(--blue))}
+.cons.clip .cons-ph img{clip-path:circle(var(--r,140%) at 48% 40%)}
+.cons-tx{position:relative;margin-top:-120px;padding:0 var(--pad) 40px;z-index:2}
+.cons h2{font-size:clamp(52px,16vw,110px);margin:12px 0 14px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.cons .eyebrow{color:var(--orange)}
+@media (min-width:900px){
+  .cons{display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:640px}
+  .cons-ph{aspect-ratio:auto;max-height:none;height:100%;min-height:640px}
+  .cons-ph::after{inset:0 0 0 auto;width:30%;height:auto;background:linear-gradient(90deg,rgba(47,79,160,0),var(--blue))}
+  .cons-tx{margin:0;padding:56px var(--pad) 56px 24px;max-width:560px}
+}

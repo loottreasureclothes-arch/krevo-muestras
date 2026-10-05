@@ -1,0 +1,54 @@
+<section class="timon sec" id="timon">
+  <div class="wrap">
+    <div class="tm-hd">
+      <p class="eyebrow" data-reveal>El timón de la Morena</p>
+      <h2 data-reveal>Arma tu orden <span class="t2">con el timón.</span></h2>
+      <p class="lead" data-reveal>Elige el platillo, gira para el estilo y dile al mesero cómo lo quieres.</p>
+    </div>
+    <div class="tm-grid">
+      <div class="tm-left" data-reveal>
+        <div class="tabs" role="tablist" aria-label="Platillo" id="tabs">
+          <button type="button" role="tab" data-f="camaron" aria-selected="true">Camarones</button>
+          <button type="button" role="tab" data-f="pulpo" aria-selected="false">Pulpo</button>
+          <button type="button" role="tab" data-f="filete" aria-selected="false">Filete</button>
+          <button type="button" role="tab" data-f="coctel" aria-selected="false">Cóctel</button>
+        </div>
+        <div class="wheel" id="wheel" aria-label="Timón de estilos. Arrastra de lado o toca una manija">
+          <span class="ptr" aria-hidden="true"></span>
+          <div class="ring" id="ring"><span class="rim" aria-hidden="true"></span></div>
+          <div class="hub" aria-hidden="true">
+            <img class="on" data-h="camaron" src="img/hub-camaron-320.webp" width="320" height="320" alt="">
+            <svg data-h="pulpo" viewBox="0 0 100 100"><rect width="100" height="100" fill="#2F4FA0"/><g fill="none" stroke="#F6EEDD" stroke-width="5.5" stroke-linecap="round"><path d="M30 58C20 68 34 76 24 90"/><path d="M40 62C34 74 46 80 39 93"/><path d="M50 63C50 77 59 81 54 95"/><path d="M60 62C66 74 54 80 62 93"/><path d="M70 58C80 68 66 76 76 90"/></g><ellipse cx="50" cy="38" rx="23" ry="25" fill="#F6EEDD"/><circle cx="41" cy="42" r="4.2" fill="#22262B"/><circle cx="59" cy="42" r="4.2" fill="#22262B"/><path d="M42 54Q50 59 58 54" fill="none" stroke="#D8392B" stroke-width="3" stroke-linecap="round"/></svg>
+            <img data-h="filete" src="img/hub-filete-320.webp" width="320" height="320" alt="">
+            <img data-h="coctel" src="img/hub-coctel-320.webp" width="320" height="320" alt="">
+          </div>
+        </div>
+        <div class="pick">
+          <button type="button" class="stp" id="prev" aria-label="Estilo anterior"><svg class="ic" style="transform:scaleX(-1)" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <div class="pick-t"><p class="pick-k" id="pick-k">Estilo</p><p class="pick-v" id="pick-v" aria-live="polite">A la diabla</p><p class="pick-n" id="pick-n"></p></div>
+          <button type="button" class="stp" id="next" aria-label="Estilo siguiente"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="sizes" role="radiogroup" aria-label="Tamaño" id="sizes">
+          <button type="button" role="radio" data-s="c" aria-checked="true"><span></span><b></b></button>
+          <button type="button" role="radio" data-s="m" aria-checked="false"><span></span><b></b></button>
+        </div>
+        <p class="note" id="note" aria-live="polite"></p>
+        <button type="button" class="btn btn--red btn--wide" id="add">Agregar a mi pedido</button>
+      </div>
+      <div class="tm-right" data-reveal>
+        <div class="slip" aria-live="polite">
+          <p class="slip-h"><span>Tu pedido</span><span>Mariscos La Morena</span></p>
+          <p class="slip-e" id="empty">Elige arriba</p>
+          <ul class="lines" id="lines"></ul>
+          <p class="slip-t"><span>Total</span><b id="tot">Elige arriba</b></p>
+        </div>
+        <p class="fine">Precios del menú de mesa. Confirma al llamar.</p>
+        <div class="acts" data-hide-fab>
+          <button type="button" class="btn btn--line" id="copy" aria-disabled="true">Copiar pedido</button>
+          <a class="btn btn--red" href="tel:+524499137425"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Llamar</a>
+        </div>
+        <p class="ok" id="ok" role="status"></p>
+      </div>
+    </div>
+  </div>
+</section>

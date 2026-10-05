@@ -1,0 +1,2 @@
+# Imágenes (todas de clientes en Maps, research/fotos/maps-NN.jpg)
+hero=16; camaron/hub-camaron=11; filete/hub-filete=02; coctel/hub-coctel=13; consome=01; fachada=03 recortada (0,0,1300,780) sin carro ni placas; salon=15; arroz=10 recortada (0,370,1250,1400) sin brazo; caldo=14; tostada=07; sopa=06; logo=05 recorte. og.jpg, favicon-32, apple-touch-icon con PIL. No usadas: 12, 20, 17/19/24 (solo transcripción).

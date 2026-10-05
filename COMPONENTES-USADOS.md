@@ -45,3 +45,4 @@
 | lechon-rudy | El talón | 5 oct 2026 |
 | carnitas-mora | La mesa que se llena | 5 oct 2026 |
 | cenaduria-morelos | La mesa puesta (platos con foto sobre mantel, pozole por tamaño y carne, pedido para dictar por teléfono) | 5 oct 2026 |
+| mariscos-la-morena | El timón (rueda de barco de 13 manijas: platillo, estilo girando, tamaño con precio real, nota con total; copiar pedido o Llamar) | 5 oct 2026 |
