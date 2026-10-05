@@ -1,0 +1,38 @@
+<section class="sec pide" id="pide">
+  <div class="wrap pide-grid">
+    <div class="pide-plate">
+      <div class="plate" id="plate" data-state="idle">
+        <img class="plate-img" src="img/tlayuda-960.webp" srcset="img/tlayuda-480.webp 480w, img/tlayuda-960.webp 960w" sizes="(min-width:900px) 40vw, 80vw" alt="Tlayuda con carne y quesillo sobre papel de estraza" >
+        <div class="chap" id="chap" aria-hidden="true">
+          <svg viewBox="0 0 40 24"><g fill="#6b3a12"><ellipse cx="20" cy="13" rx="12" ry="4.5"/><circle cx="31" cy="10" r="3.4"/></g><path d="M8 13 L2 5 L10 10 M14 15 L9 22 L18 16 M30 7 L36 2 M31 7 L39 5" stroke="#6b3a12" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 40 24"><g fill="#6b3a12"><ellipse cx="20" cy="13" rx="12" ry="4.5"/><circle cx="31" cy="10" r="3.4"/></g><path d="M8 13 L2 5 L10 10 M14 15 L9 22 L18 16 M30 7 L36 2 M31 7 L39 5" stroke="#6b3a12" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 40 24"><g fill="#6b3a12"><ellipse cx="20" cy="13" rx="12" ry="4.5"/><circle cx="31" cy="10" r="3.4"/></g><path d="M8 13 L2 5 L10 10 M14 15 L9 22 L18 16 M30 7 L36 2 M31 7 L39 5" stroke="#6b3a12" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 40 24"><g fill="#6b3a12"><ellipse cx="20" cy="13" rx="12" ry="4.5"/><circle cx="31" cy="10" r="3.4"/></g><path d="M8 13 L2 5 L10 10 M14 15 L9 22 L18 16 M30 7 L36 2 M31 7 L39 5" stroke="#6b3a12" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <p class="plate-cap" id="plate-cap">Elige arriba</p>
+    </div>
+    <div class="pide-ctl">
+      <p class="eyebrow">Tu pedido a tu modo</p>
+      <h2 class="t2">Arma tu<br><em>tlayuda.</em></h2>
+      <fieldset class="step"><legend><span>1</span> Elige tu tlayuda</legend><div class="chips"><label class="chip"><input type="radio" name="tl" value="Oaxakita Especial" data-price="238"><span><b>Oaxakita Especial</b><i>$238</i></span></label><label class="chip"><input type="radio" name="tl" value="Oaxaca Tradicional" data-price="238"><span><b>Oaxaca Tradicional</b><i>$238</i></span></label><label class="chip"><input type="radio" name="tl" value="Zandunga" data-price="198"><span><b>Zandunga</b><i>$198</i></span></label><label class="chip"><input type="radio" name="tl" value="Danzantes" data-price="198"><span><b>Danzantes</b><i>$198</i></span></label><label class="chip"><input type="radio" name="tl" value="Quesillo" data-price="178"><span><b>Quesillo</b><i>$178</i></span></label></div></fieldset>
+      <div class="step step-row">
+        <label class="sw"><input type="checkbox" id="chapChk"><span class="sw-b"></span><span class="sw-t">Con chapulines <i>+$25</i></span></label>
+        <div class="qty" aria-label="Cantidad"><button type="button" id="qMinus" aria-label="Menos">−</button><output id="qVal">1</output><button type="button" id="qPlus" aria-label="Más">+</button></div>
+      </div>
+      <button class="btn btn-main" id="tlAdd" type="button" disabled>Agregar a mi pedido</button>
+    </div>
+    <aside class="ticket" id="ticket" aria-live="polite">
+      <div class="tk-top"><span>Tu pedido</span><button type="button" id="tkClear" class="tk-clear" hidden>Vaciar</button></div>
+      <ul class="tk-list" id="tkList"></ul>
+      <p class="tk-empty" id="tkEmpty">Elige arriba</p>
+      <div class="tk-total"><span>Total</span><b id="tkTotal">Elige arriba</b></div>
+      <p class="tk-how">Llama y dicta tu pedido, o cópialo para tenerlo a la mano.</p>
+      <div class="btns">
+        <a class="btn btn-main" href="tel:+524495803465"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span>Llamar y dictar</span></a>
+        <button class="btn btn-line" id="tkCopy" type="button" disabled>Copiar pedido</button>
+      </div>
+      <p class="tk-ok" id="tkOk" role="status"></p>
+    </aside>
+  </div>
+</section>
