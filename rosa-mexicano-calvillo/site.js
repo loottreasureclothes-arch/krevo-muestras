@@ -6,7 +6,7 @@
   var DIAS = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
   var MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
   function waUrl(m) { return "https://wa.me/" + WA + "?text=" + encodeURIComponent(m); }
-  function hr(h) { var s = h < 12 ? "a.m." : "p.m."; var x = h % 12 || 12; return x + ":00 " + s; }
+  function hr(h) { var s = h < 12 ? "a.m." : "p.m."; var x = h % 12 || 12; return x + " " + s; }
   function now() {
     var p = {};
     new Intl.DateTimeFormat("en-US", { timeZone: TZ, year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", hourCycle: "h23" })
@@ -44,7 +44,7 @@
   }
   function initReveal() {
     var els = document.querySelectorAll("[data-reveal]"), arcs = document.querySelectorAll(".arco");
-    function show(e) { e.classList.add("in"); }
+    function show(e) { e.classList.add("is-shown"); }
     if (!("IntersectionObserver" in window)) { for (var i = 0; i < els.length; i++) show(els[i]); for (i = 0; i < arcs.length; i++) arcs[i].classList.add("open"); return; }
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
     for (var a = 0; a < els.length; a++) io.observe(els[a]);

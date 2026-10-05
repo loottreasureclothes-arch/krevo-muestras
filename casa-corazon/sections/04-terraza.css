@@ -4,14 +4,31 @@
 .terr-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(26,10,13,.85))}
 .terr h2{position:absolute;z-index:2;left:var(--g);right:var(--g);bottom:28px;font-size:clamp(44px,13vw,110px)}
 .terr-dato{padding:36px var(--g) 44px;display:flex;align-items:center;gap:20px}
-.terr-dato b{font:400 clamp(110px,36vw,200px)/.8 var(--f-d);color:var(--marca)}
+.terr-dato b{font:400 clamp(110px,36vw,200px)/1 var(--f-d);color:var(--marca)}
 .terr-dato p{font-size:17px;color:var(--ink)}
 @media (min-width:760px){
   .terr{display:grid;grid-template-columns:1.5fr 1fr;min-height:84svh}
   .terr-ph{height:auto;min-height:0}
   .terr h2{font-size:clamp(52px,5.6vw,92px)}
   .terr-dato{flex-direction:column;align-items:flex-start;justify-content:center;padding:48px 40px}
-  .terr-dato b{font-size:clamp(150px,16vw,260px)}
+  .terr-dato b{font-size:clamp(150px,16vw,240px);line-height:1;padding-bottom:.22em;margin-top:-.1em}
 }
 .terr-dato .lnk{display:inline-block;margin-top:12px;color:var(--marca);font:700 13px/1 var(--f-b);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-bottom:1.5px solid var(--marca);padding:10px 0 6px}
 .terr-dato .lnk{display:inline-flex;align-items:center;min-height:44px;padding:0}
+.dia{background:var(--bg2);padding:48px var(--g) 52px}
+.dia-h{font:400 clamp(30px,8.4vw,56px)/1.05 var(--f-d);margin-bottom:26px}
+.dia-h em{display:block;font-style:normal;color:var(--marca)}
+.dia-g{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px}
+.dia-g figure{margin:0}
+.dia-g img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:999px 999px 8px 8px;border:1.5px solid rgba(255,176,46,.45)}
+.dia-g figcaption{font:400 19px/1.2 var(--f-d);margin-top:12px}
+.dia-g small{display:block;font:700 11px/1 var(--f-b);letter-spacing:.18em;text-transform:uppercase;color:var(--marca);margin-bottom:6px}
+.dia .btn{width:100%}
+@media (min-width:760px){
+  .dia{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.3fr;gap:24px 56px;align-items:center;padding:72px var(--g)}
+  .dia-h{grid-row:1/3}
+  .dia-g{margin:0}
+  .dia-g img{aspect-ratio:4/3}
+  .dia .btn{width:auto;justify-self:start}
+}
+@media (min-width:1200px){.dia{padding:80px calc((100vw - 1180px)/2)}}

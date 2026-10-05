@@ -235,7 +235,7 @@ address{font:600 19px/1.4 "Karla";margin:16px 0}
 }
 
 /* tableta y compu: diseño propio de 2 columnas */
-@media (min-width:900px){
+@media (min-width:780px){
   :root{--g:32px;--hh:72px}
   .cp-burger{display:none}
   .cp-nav{position:static;display:flex;flex-direction:row;gap:30px;border:0;background:transparent}
@@ -328,7 +328,7 @@ address{font:600 19px/1.4 "Karla";margin:16px 0}
 .vis-cta .btn-wa{grid-column:1/-1}
 .pie-tel{display:inline-block;margin-top:12px;font:400 26px/1 "Anton";color:var(--yel);text-decoration:none;min-height:44px;padding-top:8px}
 .pie-h{color:#c9d2ee;font-size:14.5px;margin-top:4px}
-@media (min-width:900px){
+@media (min-width:780px){
   .tk-wall{grid-template-columns:1fr 1fr;align-items:start}
   .t1{grid-column:1/-1}
   .t2{margin-left:0;margin-top:18px}.t3{margin-right:0}
@@ -348,4 +348,75 @@ address{font:600 19px/1.4 "Karla";margin:16px 0}
 }
 .vis-h{grid-column:1/-1}
 .visita-txt .estado{margin-top:0}
-@media (min-width:900px){.vis-h{margin-bottom:-10px}}
+@media (min-width:780px){.vis-h{margin-bottom:-10px}}
+
+/* === Corrección 4: sin encimes (Anton trae caja de 1.5em) + sección Cómo pedir === */
+.hero h1 span{line-height:1;padding-top:.2em}
+.hero h1 em{line-height:.95;padding-top:.22em;padding-bottom:.2em}
+.eyebrow + h2{padding-top:.2em}
+.item h3 + .note{margin-top:10px}
+.ops-pide li{border-radius:3px}
+.estado{border-radius:4px}
+/* reseñas: 4.3 con su columna al lado, nada encima ni debajo */
+.ops-row{display:flex;align-items:center;gap:16px}
+.big-n{font-size:min(35vw,290px);line-height:1;flex:none}
+.ops-side{min-width:0}
+.ops-side .eyebrow{margin-bottom:10px;line-height:1.3}
+.ops-side .ops-st{flex-wrap:wrap;gap:6px 10px;margin-top:0}
+.ops-side .ops-st .stars svg{width:20px;height:20px}
+.ops-side .big-l{font-size:15px}
+.dist{display:grid;gap:6px;margin-top:22px;max-width:420px}
+.dist li{display:grid;grid-template-columns:14px 1fr 40px;align-items:center;gap:10px;font:800 14px/1 "Karla"}
+.dist i{display:block;height:10px;background:rgba(10,21,48,.14);border-radius:2px;position:relative;overflow:hidden}
+.dist i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--ink)}
+.dist b{text-align:right}
+/* cómo pedir */
+.pide{background:var(--navy);padding:72px 0;position:relative}
+.pide::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:repeating-conic-gradient(var(--yel) 0 25%,#fff 0 50%) 0 0/20px 20px}
+.pide-grid{display:grid;gap:30px}
+.pide-sub{margin-top:16px;color:#c9d2ee;max-width:32ch}
+.ruta{display:grid;gap:0;border-left:3px dashed rgba(252,201,16,.55);margin-left:22px}
+.ruta li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start;padding:0 0 26px;margin-left:-24px}
+.ruta li:last-child{padding-bottom:0}
+.ruta-n{width:45px;height:45px;display:grid;place-items:center;background:var(--yel);color:var(--ink);font:400 26px/1 "Anton";border-radius:4px;box-shadow:4px 4px 0 var(--navy3);transform:rotate(-3deg)}
+.ruta li:nth-child(even) .ruta-n{transform:rotate(3deg)}
+.ruta b{display:block;font:400 30px/1.15 "Anton";text-transform:uppercase;letter-spacing:.01em}
+.ruta p{color:#c9d2ee;margin-top:6px;max-width:34ch}
+.ruta .lnk{margin-top:8px}
+.promo{background:var(--yel);color:var(--ink);border-radius:var(--r);padding:24px 20px 22px;box-shadow:8px 8px 0 var(--navy3);position:relative}
+.promo::after{content:"";position:absolute;top:18px;right:18px;width:15px;height:15px;border-radius:50%;background:var(--navy);box-shadow:inset 0 2px 3px rgba(0,0,0,.7)}
+.promo-k{font:800 12.5px/1.3 "Karla";letter-spacing:.2em;text-transform:uppercase}
+.promo-t{font:400 40px/1.15 "Anton";text-transform:uppercase;margin:12px 0 20px}
+.promo .btn{width:100%}
+@media (min-width:780px){
+  .big-n{font-size:clamp(170px,15vw,230px)}
+  .pide{padding:110px 0}
+  .pide-grid{grid-template-columns:1fr 1fr;gap:40px 72px;align-items:start}
+  .pide-head{grid-column:1;grid-row:1}
+  .promo{grid-column:1;grid-row:2;align-self:start;max-width:440px}
+  .ruta{grid-column:2;grid-row:1/span 2}
+  .ruta li{padding-bottom:38px}
+  .ruta b{font-size:38px}
+  .promo-t{font-size:52px}
+}
+.pide h2{padding-bottom:.12em}
+@media (max-width:779px){
+  .carta-ph{height:54svh;min-height:400px}
+  .gal-pano{display:none}
+  .ruta li{padding-bottom:18px}
+  .pide{padding:60px 0}
+  .listo-l li{padding:7px 0 7px 26px}
+  .listo-l li::before{top:14px}
+  .listo-l{padding-bottom:30px}
+}
+@media (min-width:780px){
+  .ops-grid{align-items:start}
+  .ops-big{position:sticky;top:110px}
+  .hero-copy{padding-bottom:44px}
+  .menu{padding-top:88px}
+}
+@media (min-width:780px) and (max-width:1099px){
+  .ops-grid{grid-template-columns:1fr}
+  .ops-big{position:static}
+  .pide h2{font-size:clamp(46px,7vw,64px)}
+}

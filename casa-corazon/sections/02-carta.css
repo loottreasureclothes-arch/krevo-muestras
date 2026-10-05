@@ -20,3 +20,13 @@
   .card h3{font-size:21px}
   .carta-hint{padding:28px 0 0}
 }
+.pasos{list-style:none;margin:40px var(--g) 0;padding:0;border-top:1px solid rgba(255,176,46,.35)}
+.pasos li{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-bottom:1px solid rgba(246,234,214,.14)}
+.pasos b{flex:none;width:52px;height:60px;display:grid;place-items:center;border:1.5px solid var(--marca);border-radius:999px 999px 6px 6px;font:400 28px/1 var(--f-d);color:var(--marca)}
+.pasos h3{font:400 22px/1.15 var(--f-d);color:var(--ink);margin:4px 0 4px}
+.pasos p{color:var(--mute);font-size:16px;margin:0}
+.lnk-c{display:inline-flex;align-items:center;min-height:44px;color:var(--marca);font:700 13px/1 var(--f-b);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-bottom:1.5px solid var(--marca)}
+@media (min-width:760px){
+  .pasos{margin:64px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;border-top:0}
+  .pasos li{border-top:1px solid rgba(255,176,46,.35);border-bottom:0}
+}

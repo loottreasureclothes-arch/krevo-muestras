@@ -7,12 +7,15 @@ from urllib.parse import quote
 from PIL import Image
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 WA = ''  # PENDIENTE: poner 52XXXXXXXXXX cuando el dueno confirme su WhatsApp (ver PENDIENTES.md)
+TEL = '4491859239'  # publicado por el dueño en su respuesta de Google Maps
 T = open('template.html').read()
 
 def V(f):
     return f'{f}?v={int(os.path.getmtime(f))}'
 
 def wa(m):
+    if not WA:
+        return f'tel:+52{TEL}'
     return f'https://wa.me/{WA}?text=' + quote(m.group(1).strip(), safe='')
 
 def img(m):

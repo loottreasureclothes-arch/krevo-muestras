@@ -1,7 +1,7 @@
 (function () {
   "use strict";
   var WA = document.body.getAttribute("data-wa") || "";
-  window.ITA = { WA: WA, waUrl: function (m) { return "https://wa.me/" + WA + "?text=" + encodeURIComponent(m); } };
+  window.ITA = { WA: WA, waUrl: function (m) { return WA ? "https://wa.me/" + WA + "?text=" + encodeURIComponent(m) : "tel:+52" + (document.body.getAttribute("data-tel") || ""); } };
   var root = document.documentElement, body = document.body;
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
