@@ -1,0 +1,28 @@
+.cobre{background:var(--vino);padding:64px 0 60px;overflow:hidden}
+.cobre::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0,rgba(211,141,74,.22),transparent 50%),radial-gradient(circle,rgba(0,0,0,.18) 2px,transparent 2.5px) 0 0/16px 16px;pointer-events:none}
+.cobre-in{position:relative;display:grid;gap:30px}
+.cobre .h2 em{color:var(--cobre-l)}
+.cobre .eyebrow{color:var(--cobre-l)}
+.cobre-lede{margin-top:14px;font-size:17px;line-height:1.4;max-width:30ch}
+.bebidas{margin-top:22px;border-top:1px solid rgba(240,229,209,.3)}
+.bebidas li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 0;border-bottom:1px solid rgba(240,229,209,.3)}
+.bebidas span{font:400 20px/1.2 var(--f-d)}
+.bebidas em{font:600 12px/1.2 var(--f-b);font-style:normal;color:var(--hueso2);text-align:right;flex:none;max-width:10ch}
+.cobre-col{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:170px 170px;gap:8px}
+.cobre-col img{width:100%;height:100%;object-fit:cover}
+.cobre-big{grid-row:1/3;border-radius:999px 999px 0 0;overflow:hidden;border-bottom:5px solid var(--cobre)}
+.cobre-s1,.cobre-s2{overflow:hidden;border:1px solid rgba(240,229,209,.3)}
+.cobre-cta{display:flex}
+.cobre-cta .btn{flex:1}
+/* momento firma: el vaso se llena (reversible) */
+.fill{transition:clip-path .9s cubic-bezier(.3,.7,.2,1)}
+html.js .fill:not(.is-in){clip-path:inset(100% 0 0 0)}
+html.js .fill.is-in{clip-path:inset(0 0 0 0)}
+@media (min-width:720px){
+ .cobre{padding:96px 0}
+ .cobre-in{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px 64px;align-items:center}
+ .cobre-col{grid-template-rows:230px 230px}
+ .cobre-cta{grid-column:1/-1}
+ .cobre-cta .btn{flex:0 0 auto}
+}
+@media (prefers-reduced-motion:reduce){.fill{transition:none}}

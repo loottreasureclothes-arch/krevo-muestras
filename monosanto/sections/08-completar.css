@@ -1,0 +1,8 @@
+.falta{padding:52px 0}
+.falta-in{display:grid;gap:22px}
+.falta-lede{margin-top:14px;font-size:17px;max-width:32ch}
+.falta-list li{padding:12px 0 12px 22px;border-top:1px solid rgba(94,27,21,.35);position:relative;font-size:16px}
+.falta-list li:last-child{border-bottom:1px solid rgba(94,27,21,.35)}
+.falta-list li::before{content:"";position:absolute;left:0;top:21px;width:9px;height:9px;border:1.5px solid var(--vino);border-radius:50%}
+.falta .link-arrow{justify-self:start}
+@media (min-width:720px){.falta{padding:80px 0}.falta-in{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:28px 64px;align-items:start}.falta .link-arrow{grid-column:2}}
