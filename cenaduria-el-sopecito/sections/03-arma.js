@@ -92,6 +92,7 @@
     elTotal.textContent=totalText();
     btnCopy.disabled=!cart.length;
     btnClear.hidden=!cart.length;
+    paintWa();
   }
   function message(){
     var lines=["Hola, quiero pedir en El Sopecito:"];
@@ -117,6 +118,11 @@
     copy(message()).then(function(){lbl.textContent="Copiado"},function(){lbl.textContent="Selecciona y copia"});
     setTimeout(function(){lbl.textContent="Copiar pedido"},1800);
   });
+  var btnWa=$("ma-wa");
+  function paintWa(){
+    var t=cart.length?message():"Hola, quiero pedir en El Sopecito.";
+    btnWa.href="https://wa.me/524491128659?text="+encodeURIComponent(t);
+  }
   window.sopecitoPedido=message;
   buildDishes();buildVars();paintStamp(false);render();
 })();

@@ -84,6 +84,8 @@
     var LINES=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
     function name(i){return cards[i].getAttribute("data-name")}
     function lista(){var o=[];N.forEach(function(n,i){if(n)o.push(n+" "+name(i).toLowerCase())});return o}
+    function wa(){return "https://wa.me/524492584516?text="+encodeURIComponent(l0().length?msg():"Hola, Cenaduría ALICE. Quiero cenar.")}
+    function l0(){return lista()}
     function msg(){var l=lista();return "Hola, Cenaduría ALICE. Quiero cenar: "+l.join(", ")+". ¿Me dicen el precio?"}
     function paint(i){
       var c=cards[i],b=$(".lt-beans",c);b.innerHTML="";
@@ -94,7 +96,7 @@
     function sync(){
       var l=lista();ticket.innerHTML="";
       N.forEach(function(n,i){if(n){var li=document.createElement("li");li.innerHTML="<b></b><span></span>";li.firstChild.textContent=n+" ×";li.lastChild.textContent=name(i);ticket.appendChild(li)}});
-      empty.hidden=l.length>0;copy.disabled=!l.length;copy.setAttribute("aria-disabled",l.length?"false":"true");
+      empty.hidden=l.length>0;if(callBtn)callBtn.href=wa();copy.disabled=!l.length;copy.setAttribute("aria-disabled",l.length?"false":"true");
       var win=LINES.some(function(L){return L.every(function(i){return N[i]>0})});
       stamp.hidden=!win;
       say.textContent="";
@@ -107,7 +109,7 @@
       function ok(){say.textContent="Copiado. Pégalo cuando contesten."}
       if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,function(){fb(t,ok)});else fb(t,ok);
     });
-    function fb(t,ok){var a=document.createElement("textarea");a.value=t;a.setAttribute("readonly","");a.style.cssText="position:fixed;opacity:0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok()}catch(e){say.textContent="No pude copiar. Dícelo por teléfono."}a.remove()}
+    function fb(t,ok){var a=document.createElement("textarea");a.value=t;a.setAttribute("readonly","");a.style.cssText="position:fixed;opacity:0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok()}catch(e){say.textContent="No pude copiar. Escríbelo en el chat."}a.remove()}
     cards.forEach(function(_,i){paint(i)});sync();
   }
 
