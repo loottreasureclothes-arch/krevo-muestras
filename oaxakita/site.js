@@ -65,7 +65,7 @@
     var l=cart.map(function(i){return i.qty+" x "+i.name+" ("+money(i.price*i.qty)+")"});
     return "Hola, quiero pedir en Oaxakita: "+l.join("; ")+". Total: "+money(total())+".";
   }
-  var tkList=$("#tkList"),tkEmpty=$("#tkEmpty"),tkTotal=$("#tkTotal"),tkCopy=$("#tkCopy"),tkClear=$("#tkClear"),tkOk=$("#tkOk");
+  var tkList=$("#tkList"),tkEmpty=$("#tkEmpty"),tkTotal=$("#tkTotal"),tkCopy=$("#tkCopy"),tkWa=$("#tkWa"),tkClear=$("#tkClear"),tkOk=$("#tkOk");
   function render(){
     var n=cart.reduce(function(s,i){return s+i.qty},0);
     $$("[data-cart-count]").forEach(function(e){e.textContent=n});
@@ -89,6 +89,7 @@
     tkEmpty.hidden=has;
     tkTotal.textContent=has?money(total()):"Elige arriba";
     tkCopy.disabled=!has;tkClear.hidden=!has;
+    if(tkWa)tkWa.setAttribute("href","https://wa.me/524495803465?text="+encodeURIComponent(has?orderText():"Hola, quiero hacer un pedido en Oaxakita."));
   }
   $$("[data-add]").forEach(function(b){
     b.addEventListener("click",function(){
@@ -100,7 +101,7 @@
   tkClear.addEventListener("click",function(){cart=[];save();render();tkOk.textContent=""});
   tkCopy.addEventListener("click",function(){
     var t=orderText();
-    function done(){tkOk.textContent="Pedido copiado. Llama y dicta, o léelo tal cual."}
+    function done(){tkOk.textContent="Pedido copiado. Pégalo cuando te contesten."}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fallback(t,done)})}else fallback(t,done);
   });
   function fallback(t,cb){var a=document.createElement("textarea");a.value=t;a.style.cssText="position:fixed;opacity:0";document.body.appendChild(a);a.select();try{document.execCommand("copy");cb()}catch(e){tkOk.textContent=t}document.body.removeChild(a)}

@@ -108,11 +108,16 @@
       var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;left:-999px;top:0";
       document.body.appendChild(ta); ta.select();
       var ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
-      document.body.removeChild(ta); said(ok ? "Copiado. Pégalo donde lo necesites." : "No se pudo copiar. Dícteselo al llamar.");
+      document.body.removeChild(ta); said(ok ? "Copiado. Pégalo donde lo necesites." : "No se pudo copiar. Mándalo por WhatsApp.");
     }
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { said("Copiado. Pégalo donde lo necesites."); }, fallback);
     else fallback();
   });
+  var waBtn = document.getElementById("pl-vu-wa"), WA_BASE = "https://wa.me/5214494120866?text=";
+  function genericMsg() { return "Hola, quiero ir al buffet de Palermo (Gral. Álvaro Obregón 236, Centro). ¿Cuál es el precio hoy?"; }
+  function syncWa() { if (waBtn) waBtn.href = WA_BASE + encodeURIComponent(filled() ? msg() : genericMsg()); }
+  var _render = render;
+  render = function (a) { _render(a); syncWa(); };
   render(false);
   window.PalermoVueltas = { mensaje: msg, plan: plan };
 })();

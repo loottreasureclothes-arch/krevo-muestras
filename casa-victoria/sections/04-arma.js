@@ -20,16 +20,20 @@
   function summary() {
     var n = parseInt(rg.value, 10), f = fechaTxt();
     if (!st.ev || !st.sp) return null;
-    var t = "Hola, me interesa Casa Victoria para " + st.ev.toLowerCase() + " en " + st.sp + ", para unos " + n + " invitados.";
+    var t = "Hola, me interesa Casa Victoria para " + (st.ev.indexOf("XV") === 0 ? st.ev : st.ev.toLowerCase()) + " en " + st.sp + ", para unos " + n + " invitados.";
     t += " Vi menús de $300 a $380 por invitado (" + money(n * 300) + " a " + money(n * 380) + " de menú).";
     if (f) t += " Fecha que tengo en mente: " + f + ".";
     t += " ¿Me pueden dar precio y disponibilidad?";
     return t;
   }
+  function waHref(t) {
+    return "https://wa.me/5214491552866?text=" + encodeURIComponent(t || "Hola, me interesa Casa Victoria para mi evento. ¿Me pueden dar información?");
+  }
   function paint() {
     var n = parseInt(rg.value, 10), f = fechaTxt();
     $("n").textContent = n; mesas(n);
     $("mcap").textContent = Math.ceil(n / 10) + " mesas de 10";
+    $("m-wa").setAttribute("href", waHref(summary()));
     if (st.ev && st.sp) {
       $("nota-r").textContent = st.ev + " en " + st.sp + ", " + n + " invitados" + (f ? ", " + f : "");
       $("nota-m").textContent = "Menú " + money(n * 300) + " a " + money(n * 380);

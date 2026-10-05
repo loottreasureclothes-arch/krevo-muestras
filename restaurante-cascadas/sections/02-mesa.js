@@ -1,6 +1,6 @@
 (function () {
   var root = document.getElementById("mesa"); if (!root) return;
-  var qty = {}, order = [], pers = 4, dia = "hoy", TEL = "+524499635657";
+  var qty = {}, order = [], pers = 4, dia = "hoy", TEL = "+524499635657", WAN = "524491424676", touched = false;
   var list = document.getElementById("tk-list"), empty = document.getElementById("tk-empty");
   var meta = document.getElementById("tk-meta"), persEl = document.getElementById("pers");
   var tk = document.getElementById("ticket"), msg = document.getElementById("tk-msg");
@@ -13,6 +13,7 @@
     c.innerHTML = '<div class="qty"><button type="button" data-d="-1" aria-label="Quitar uno">&minus;</button><output>' + q + '</output><button type="button" data-d="1" aria-label="Agregar uno">+</button></div>';
   }
   function texto() {
+    if (!order.length && !touched) return "Hola, buenas tardes. Vi la página de Restaurante Cascadas y quiero preguntar por una mesa.";
     var t = "Hola, buenas tardes. Quiero mesa para " + pers + (pers === 1 ? " persona " : " personas ") + dia + ".";
     if (order.length) {
       t += " Quisiera: " + order.map(function (id) { return qty[id] + " " + nameOf(id); }).join(", ") + ". ¿Cuánto sería?";
@@ -28,8 +29,9 @@
     var n = 0; order.forEach(function (id) { n += qty[id]; });
     barN.textContent = n; barT.textContent = n === 1 ? "platillo en tu recado" : "platillos en tu recado";
     bar.hidden = !(n > 0 && inMesa && !tkSeen);
+    waBtn.href = "https://wa.me/" + WAN + "?text=" + encodeURIComponent(texto());
   }
-  var bar = document.getElementById("tk-bar"), barN = document.getElementById("tk-bar-n"), barT = document.getElementById("tk-bar-t");
+  var waBtn = document.getElementById("tk-wa"), bar = document.getElementById("tk-bar"), barN = document.getElementById("tk-bar-n"), barT = document.getElementById("tk-bar-t");
   var inMesa = false, tkSeen = false;
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (es) {
@@ -53,21 +55,18 @@
       }
       renderCtl(el); paint(); msg.hidden = true; return;
     }
-    if (b.hasAttribute("data-pers")) { pers = Math.max(1, Math.min(30, pers + parseInt(b.getAttribute("data-pers"), 10))); paint(); return; }
+    if (b.hasAttribute("data-pers")) { touched = true; pers = Math.max(1, Math.min(30, pers + parseInt(b.getAttribute("data-pers"), 10))); paint(); return; }
     if (b.hasAttribute("data-dia")) {
-      dia = b.getAttribute("data-dia");
+      dia = b.getAttribute("data-dia"); touched = true;
       Array.prototype.forEach.call(root.querySelectorAll("[data-dia]"), function (x) { x.setAttribute("aria-checked", x === b ? "true" : "false"); });
       paint(); return;
     }
     if (b.id === "tk-copy") {
       var t = texto();
-      function ok() { msg.textContent = "Copiado. Pégalo o dícteselo al llamar."; msg.hidden = false; }
+      function ok() { msg.textContent = "Copiado. Pégalo en tu WhatsApp o dícteselo al llamar."; msg.hidden = false; }
       function fallback() { var ta = document.createElement("textarea"); ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (x) { msg.textContent = t; msg.hidden = false; } document.body.removeChild(ta); }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, fallback); else fallback();
     }
-  });
-  document.getElementById("tk-call").addEventListener("click", function () {
-    if (order.length) { try { navigator.clipboard && navigator.clipboard.writeText(texto()); } catch (x) {} }
   });
   window.CascadasMesa = { texto: texto };
 })();

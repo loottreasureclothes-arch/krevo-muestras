@@ -28,7 +28,8 @@ rf.addEventListener("click",function(){if(busy)return;busy=true;bowl.classList.a
  setTimeout(function(){bowl.classList.remove("low");rsay.textContent="Te lo rellenan. Así se come aquí."},reduce?50:1100);
  setTimeout(function(){busy=false;rsay.textContent="Pásale el tazón vacío: te sirven más."},reduce?900:2900)});
 /* mesa */
-var lines=$("#t-lines"),totalEl=$("#t-total"),noteEl=$("#t-note"),say=$("#t-say"),copyBtn=$("#t-copy"),nombre=$("#t-nombre"),mesa=$("#mesa");
+var lines=$("#t-lines"),totalEl=$("#t-total"),noteEl=$("#t-note"),say=$("#t-say"),waBtn=$("#t-wa"),WAN="524494159443",copyBtn=$("#t-copy"),nombre=$("#t-nombre"),mesa=$("#mesa");
+function setWa(m){waBtn.href="https://wa.me/"+WAN+"?text="+encodeURIComponent(m)}
 function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
 function setN(id,n,meta){n=Math.max(0,Math.min(40,n));if(!items[id]){if(!meta||n===0)return;items[id]=meta;order.push(id)}
  items[id].n=n;if(n===0){delete items[id];order=order.filter(function(k){return k!==id})}
@@ -53,7 +54,7 @@ $("#add-plate").addEventListener("click",function(){var c=cur();
 lines.addEventListener("click",function(e){var li=e.target.closest("li[data-id]");if(!li)return;var id=li.dataset.id,it=items[id];if(!it)return;
  if(e.target.closest(".minus"))setN(id,it.n-1);else if(e.target.closest(".plus"))setN(id,it.n+1)});
 function render(){lines.innerHTML="";
- if(!order.length){lines.innerHTML='<li class="t-empty">Elige arriba</li>';totalEl.textContent="Elige arriba";noteEl.textContent="Precios de la carta en mostrador. Pueden cambiar.";say.textContent="Dile esto por teléfono: elige arriba lo que se te antoja.";copyBtn.disabled=true;copyBtn.textContent="Copiar pedido";return}
+ if(!order.length){lines.innerHTML='<li class="t-empty">Elige arriba</li>';totalEl.textContent="Elige arriba";noteEl.textContent="Precios de la carta en mostrador. Pueden cambiar.";say.textContent="Elige arriba lo que se te antoja. Si no, mandamos un saludo.";setWa("Hola Menudos Rosy, quiero hacer un pedido.");copyBtn.disabled=true;copyBtn.textContent="Copiar pedido";return}
  var total=0,parts=[];
  order.forEach(function(id){var it=items[id],li=document.createElement("li");li.dataset.id=id;
   var a=document.createElement("span");a.textContent=it.n+" × "+cap(it.n>1?it.p:it.s);
@@ -64,7 +65,7 @@ function render(){lines.innerHTML="";
  totalEl.textContent=money(total);noteEl.textContent="Precios de la carta en mostrador. Pueden cambiar.";
  var nm=(nombre.value||"").trim();
  var msg="Hola, quiero pedir: "+parts.join(", ")+"."+(nm?" A nombre de "+nm+".":"");
- say.textContent="Dile esto por teléfono: "+msg;copyBtn.disabled=false;copyBtn.dataset.msg=msg;
+ say.textContent="Se manda así por WhatsApp: "+msg;setWa(msg);copyBtn.disabled=false;copyBtn.dataset.msg=msg;
  mesa.classList.remove("print");void mesa.offsetWidth;if(!reduce)mesa.classList.add("print")}
 nombre.addEventListener("input",function(){if(order.length)render()});
 copyBtn.addEventListener("click",function(){var m=copyBtn.dataset.msg;if(!m)return;

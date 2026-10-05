@@ -30,6 +30,8 @@
     rec.textContent = t; rec.className = "vr-rec" + (listo ? "" : " vacio");
     copy.disabled = !listo; copy.textContent = listo ? "Copiar el recado" : "Elige arriba";
     copy.dataset.t = listo ? t : "";
+    var wb = root.querySelector("#vr-wa");
+    if (wb) wb.href = "https://wa.me/524494899637?text=" + encodeURIComponent(listo ? t : "Hola, buen día. Quisiera una mesa en Volodía. ¿Hay lugar?");
   }
   dBtns.forEach(function (b, i) { b.addEventListener("click", function () { st.d = i; pinta(); }); });
   rng.addEventListener("input", function () { st.h = +rng.value; pinta(); });
