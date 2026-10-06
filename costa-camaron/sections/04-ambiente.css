@@ -1,0 +1,7 @@
+.bleed{padding:0;min-height:max(560px,78svh);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--deep3)}
+.bleed>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:35% 82%}
+.bleed::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,38,48,.1) 20%,rgba(7,38,48,.92) 100%);z-index:1}
+.bleed-tx{position:relative;z-index:2;padding:0 var(--gut);font:900 clamp(60px,17.5vw,170px)/.9 "Passion One",sans-serif;text-transform:uppercase;color:#fff}
+.bleed-tx em{font-style:normal;color:var(--aqua-l)}
+.bleed-lnk{position:relative;z-index:2;align-self:flex-start;margin:20px var(--gut) 34px}
+@media (min-width:900px){.bleed{min-height:86vh}.bleed-tx{padding:0 max(var(--gut),calc((100vw - 1180px)/2))}.bleed-lnk{margin-left:max(var(--gut),calc((100vw - 1180px)/2))}.bleed-tx p{display:inline}.bleed-tx p+p::before{content:" "}}

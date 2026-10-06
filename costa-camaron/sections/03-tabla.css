@@ -1,0 +1,34 @@
+.tabla{background:var(--deep2)}
+.tb-grid{display:grid;gap:34px}
+.tb-board{display:grid;place-items:center}
+.tb{width:min(230px,62vw);height:min(440px,118vw);background:linear-gradient(90deg,#4aa0b1,#6cc2d1 50%,#4aa0b1);clip-path:url(#board);display:flex;flex-direction:column;position:relative;padding:12% 0 14%}
+.tb-board{filter:drop-shadow(0 18px 24px rgba(0,0,0,.45))}
+.tb::after{content:"";position:absolute;left:50%;top:4%;bottom:4%;width:2px;background:rgba(10,51,64,.35);transform:translateX(-50%);pointer-events:none;z-index:3}
+.tb-empty{margin:auto;cursor:pointer;text-align:center;font:900 22px/1.05 "Passion One",sans-serif;text-transform:uppercase;color:#0a3340;z-index:4;padding:0 22%}
+.tb:has(.tb-empty)::before{content:"";position:absolute;inset:14% 18% 16%;background:repeating-linear-gradient(180deg,transparent 0 46px,rgba(10,51,64,.38) 46px 48px);pointer-events:none;z-index:2}
+.tb-st{flex:1 1 0;min-height:0;position:relative;background-size:cover;background-position:center;display:grid;place-items:center;animation:stIn .5s ease both}
+.tb-st::before{content:"";position:absolute;inset:0;background:rgba(7,38,48,.42)}
+.tb-st span{position:relative;z-index:4;font:900 19px/1 "Passion One",sans-serif;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);text-align:center;padding:0 20%}
+@keyframes stIn{from{opacity:0;clip-path:inset(0 50% 0 50%)}to{opacity:1;clip-path:inset(0)}}
+@media (prefers-reduced-motion:reduce){.tb-st{animation:none}}
+.tb-lead{margin:14px 0 22px;color:#bfdde4;max-width:44ch}
+.tb-list{list-style:none;margin-bottom:6px}
+.tb-list li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font:900 22px/1 "Passion One",sans-serif;text-transform:uppercase;letter-spacing:.01em}
+.tb-list .stp{width:128px;grid-template-columns:40px 1fr 40px}
+.tb-list .stp span{font-size:15px}
+.tb-back{margin:14px 0 18px}
+.tb-row{display:flex;align-items:center;gap:10px;margin:12px 0}
+.lbl{width:64px;flex:0 0 64px;font:800 12px/1 Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--aqua-l)}
+.tb-pers{width:140px}
+.tb-pers span{font:900 22px/1 "Passion One",sans-serif;letter-spacing:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips{gap:4px}.chips button{min-width:41px;height:44px;padding:0 6px;background:transparent;border:1.5px solid var(--aqua);border-radius:3px;color:var(--aqua-l);font:800 14px/1 Manrope,sans-serif;cursor:pointer;transition:background .2s,color .2s}
+.chips button.on{background:var(--aqua-l);color:#06303b;border-color:var(--aqua-l)}
+#tbWa{width:100%;margin-top:22px}
+.tb-note{margin-top:12px;font-size:13px;color:#9cc5cd}
+@media (min-width:900px){
+ .tb-grid{grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}
+ .tb-board{order:0}
+ .tb{width:290px;height:560px}
+ #tbWa{width:auto;min-width:300px}
+}

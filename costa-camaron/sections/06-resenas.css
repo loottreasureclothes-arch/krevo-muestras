@@ -1,0 +1,22 @@
+.resenas{padding-bottom:70px}
+.rate{display:flex;align-items:center;gap:16px;margin:22px 0 26px}
+.rate b{font:900 64px/.9 "Passion One",sans-serif;color:#1f6a7a}
+.rate>span{font-size:14px;font-weight:700;line-height:1.5}
+.stars{color:#d9a21b;letter-spacing:.12em;font-size:18px;font-style:normal}
+.stars i{font-style:normal;opacity:.28}
+.rv-grid{display:grid;gap:14px}
+.rv{background:#fff;border-radius:3px 34px 3px 34px;padding:22px 22px 20px;box-shadow:0 8px 22px rgba(10,42,51,.1)}
+.rv p{margin:10px 0 14px;font-size:16px;line-height:1.5;font-weight:500}
+.rv cite{font:900 22px/1 "Passion One",sans-serif;text-transform:uppercase;font-style:normal;color:#1f6a7a;display:block;letter-spacing:.01em}
+.rv cite small{display:block;margin-top:5px;font:700 12px/1.2 Manrope,sans-serif;letter-spacing:.06em;text-transform:none;color:#5a7a82}
+.rv-g p{font-size:14px;color:#3d6068;font-weight:700;margin:8px 0 12px}
+.frag{margin:30px 0 0;padding:22px 0 4px;border-top:2px solid rgba(10,42,51,.18)}
+.frag-h{font:800 12px/1 Manrope,sans-serif!important;letter-spacing:.18em;text-transform:uppercase;color:#2b7e90;margin-bottom:12px}
+.frag p{font:900 clamp(26px,7vw,38px)/1.02 "Passion One",sans-serif;text-transform:uppercase;color:var(--ink);margin:0 0 8px}
+.fb{margin:20px 0 22px;font-weight:700;color:#3d6068}
+@media (min-width:900px){
+ .rv-grid{grid-template-columns:repeat(6,1fr);gap:22px}
+ .rv{grid-column:span 3}.rv-g{grid-column:span 2}
+ .rate b{font-size:96px}.rate>span{font-size:17px}
+ .frag{display:grid;grid-template-columns:repeat(3,1fr);gap:0 36px;margin-top:44px}.frag-h{grid-column:1/-1}
+}

@@ -1,0 +1,66 @@
+@font-face{font-family:"Passion One";font-weight:400;font-display:swap;src:url(fonts/passion-400.woff2) format("woff2")}
+@font-face{font-family:"Passion One";font-weight:700;font-display:swap;src:url(fonts/passion-700.woff2) format("woff2")}
+@font-face{font-family:"Passion One";font-weight:900;font-display:swap;src:url(fonts/passion-900.woff2) format("woff2")}
+@font-face{font-family:Manrope;font-weight:400;font-display:swap;src:url(fonts/manrope-400.woff2) format("woff2")}
+@font-face{font-family:Manrope;font-weight:500;font-display:swap;src:url(fonts/manrope-500.woff2) format("woff2")}
+@font-face{font-family:Manrope;font-weight:700;font-display:swap;src:url(fonts/manrope-700.woff2) format("woff2")}
+@font-face{font-family:Manrope;font-weight:800;font-display:swap;src:url(fonts/manrope-800.woff2) format("woff2")}
+:root{--deep:#0a3340;--deep2:#0e4352;--deep3:#072630;--aqua:#5ab2c2;--aqua-l:#8fd6e3;--cream:#f3ead7;--ink:#0a2a33;--wood:#5c4221;--wa:#25D366;--wa-t:#0b3d1f;--line:rgba(143,214,227,.28);--gut:20px;--hd:62px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:70px}
+body{background:var(--deep);color:#e6f4f7;font:500 16px/1.5 Manrope,system-ui,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:"Passion One",Impact,sans-serif;font-weight:900;line-height:.95;letter-spacing:.005em;text-transform:uppercase}
+h2{font-size:clamp(40px,11.5vw,76px)}
+h2 em{display:block;font-style:normal;color:var(--aqua-l)}
+.band-cream h2 em,.band-cream .eyebrow{color:#2b7e90}
+.eyebrow{font:800 12px/1 Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--aqua-l);margin-bottom:14px}
+.sec{padding:64px var(--gut);position:relative}
+.wrap{max-width:1180px;margin:0 auto}
+.band-cream{background:var(--cream);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;font:800 14px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;border-radius:3px;transition:transform .2s,background .2s}
+.btn:active{transform:translateY(1px)}
+.btn-wa{background:var(--wa);color:var(--wa-t)}
+.btn-wa svg{width:20px;height:20px;fill:var(--wa-t)}
+.btn-line{background:transparent;color:var(--aqua-l);border:1.5px solid var(--aqua)}
+.btn-line:hover{background:rgba(90,178,194,.14)}
+.band-cream .btn-line{color:#1f6a7a;border-color:#2b7e90}
+.lnk{display:inline-flex;align-items:center;min-height:44px;margin-top:14px;font:800 13px/1 Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--aqua-l);text-decoration:none;border-bottom:1.5px solid var(--aqua);padding-bottom:6px}
+.band-cream .lnk{color:#1f6a7a;border-color:#2b7e90}
+/* header */
+.hd{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--hd);display:flex;align-items:center;justify-content:space-between;padding:0 var(--gut);transition:background .3s}
+.hd.solid{background:rgba(7,38,48,.94);backdrop-filter:blur(6px)}
+.hd-logo{min-height:44px;display:flex;align-items:center;gap:9px;text-decoration:none;position:relative;z-index:60}
+.hd-logo span{display:flex;flex-direction:column;font-family:"Passion One",sans-serif;line-height:.86;font-size:17px;letter-spacing:.06em;color:#fff}
+.hd-logo b{font-weight:900}
+.hd-nav,.hd-open{display:none}
+.hd-burger{width:46px;height:46px;background:none;border:0;cursor:pointer;position:relative;z-index:60;margin-right:-8px}
+.hd-burger i{position:absolute;left:11px;right:11px;height:2px;background:#fff;transition:transform .3s,top .3s}
+.hd-burger i:nth-child(1){top:19px}.hd-burger i:nth-child(2){top:27px;left:19px}
+.menu-open .hd-burger i:nth-child(1){top:23px;transform:rotate(45deg)}
+.menu-open .hd-burger i:nth-child(2){top:23px;left:11px;transform:rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:55;background:var(--deep3);display:flex;flex-direction:column;justify-content:center;padding:90px var(--gut) 40px;clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .3s ease,visibility 0s .3s}
+.menu-open .menu{clip-path:inset(0);visibility:visible;transition:clip-path .3s ease}
+.menu nav{display:flex;flex-direction:column;gap:6px}
+.menu nav a{font:900 54px/1.02 "Passion One",sans-serif;text-transform:uppercase;text-decoration:none;color:#fff}
+.menu nav a:nth-child(odd){color:var(--aqua-l)}
+.menu p{margin-top:30px;color:#9cc5cd;font-size:14px}
+.wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:45;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.35);transition:transform .25s,opacity .25s}
+.wa-float.off{opacity:0;transform:scale(.7);pointer-events:none}
+/* reveal: CSS base = estado final */
+@media (prefers-reduced-motion:no-preference){
+ .js-rv [data-reveal]:not(.is-in){opacity:0;transform:translateY(22px)}
+ [data-reveal]{transition:opacity .7s ease,transform .7s ease;transition-delay:var(--d,0s)}
+}
+@media (min-width:900px){
+ :root{--gut:48px;--hd:72px}
+ .sec{padding:84px var(--gut)}
+ .hd-burger{display:none}
+ .hd-nav{display:flex;gap:34px;margin-left:auto;margin-right:30px}
+ .hd-nav a{padding:16px 0;font:800 12px/1 Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:#d6eef3}
+ .hd-nav a:hover{color:var(--aqua-l)}
+ .hd-open{display:block;font:800 11px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--aqua-l);border:1px solid var(--line);padding:10px 14px;border-radius:3px}
+ .hd-logo span{font-size:20px}
+ .hd-logo svg{width:20px;height:38px}
+}

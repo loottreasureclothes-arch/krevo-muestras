@@ -1,0 +1,7 @@
+# Hoja corta KIMURA
+**Trabajo:** pedir en 1 toque. wa.me/524493939746 (confirmado por Emanuel, botón en facebook.com/restaurantekimura) + Llamar 449 914 3228 (Maps).
+**Promesa:** "Caldo caliente, mesa roja." Ramen, udon y rollos en Av. Universidad 1401, todos los días 1 a 10:30 pm, 2x1 y 3x2 en rollos.
+**Identidad:** lienzo tinto casi negro #14090a + rojo Kimura #a72329 (medido del logo) + crema #fbf1e4. Dela Gothic One + Hanken Grotesk. Forma: toldo con flecos (de su fachada) y palillo (línea fina vertical). Header: wordmark KIMURA con el toldo que se despliega debajo.
+**Firma:** "El palillo que parte el antojo": palillo arrastrable entre caldo (foto 12) y rollos (foto 16); resultado por zona (caldo / un poco de cada / rollos) con platillos reales de Maps; termina en WhatsApp con el mensaje armado. **Momento firma:** el toldo se despliega al entrar (0.9 s).
+**Secciones:** 01-hero (17) "Caldo caliente, / mesa roja." | 02-carta (19) "Lo que se pide / en Kimura." | 03-palillo (12/16) "¿Caldo / o rollos?" | 04-dos-por-uno dato gigante "2x1" | 05-opiniones "1,477 opiniones, / 4.1 en Google." | 06-recorrido (01) "Así se ve / tu mesa." | 07-llevar (16) "Para llevar, / también." | 08-visitanos mapa+horario "Pásale / a la mesa." | 09-completar | pie.
+**Prohibidas:** 02, 03, 09 (carta/flyers duplicados), 06, 18 (clientes), 23, 24, 26-28 (otros negocios). PENDIENTE-DUEÑO: precios, fotos propias, reseñas con nombre (solo 5), Instagram verificado.

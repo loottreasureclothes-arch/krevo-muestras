@@ -1,0 +1,11 @@
+.numero{background:var(--deep3);overflow:hidden;padding:80px var(--gut) 64px}
+.tide{position:absolute;inset:0;display:flex;flex-direction:column;transition:transform 1s cubic-bezier(.22,.8,.3,1)}
+.js-rv .tide:not(.is-in){transform:translateY(82%)}
+.tide-w{display:block;height:28px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 28' preserveAspectRatio='none'%3E%3Cpath d='M0 14Q15 0 30 14T60 14T90 14T120 14V28H0Z' fill='%230e4352'/%3E%3C/svg%3E") repeat-x;background-size:120px 28px}
+.tide-b{display:block;flex:1;background:#0e4352}
+.num-in{position:relative;z-index:2}
+.num-big{font:900 clamp(150px,50vw,380px)/1.02 "Passion One",sans-serif;color:var(--aqua-l);letter-spacing:-.01em;margin:10px 0 4px}
+.num-t{font:900 clamp(34px,9.5vw,64px)/.95 "Passion One",sans-serif;text-transform:uppercase;color:#fff}
+.num-t em{display:block;font-style:normal;color:var(--aqua-l)}
+.num-s{margin-top:18px;max-width:38ch;color:#cde6ec}
+@media (min-width:900px){.numero{padding:96px var(--gut)}.num-in{display:grid;grid-template-columns:auto 1fr;column-gap:60px;align-items:end}.num-in .eyebrow{grid-column:1/-1}.num-big{grid-row:2/5}.num-t{align-self:end}}

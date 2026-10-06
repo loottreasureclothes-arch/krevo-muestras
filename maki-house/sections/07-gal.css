@@ -1,0 +1,14 @@
+.gal{background:var(--bg2)}
+.gal-g{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:26px}
+.gal-g li{position:relative;overflow:hidden;aspect-ratio:4/3.4;background:var(--bg3)}
+.gal-g li img{width:100%;height:100%;object-fit:cover}
+.gal-g li span{position:absolute;left:8px;bottom:8px;font-family:var(--fd);font-weight:800;font-size:14px;letter-spacing:.16em;text-transform:uppercase;background:#17171a;color:var(--ink);padding:3px 8px}
+.gal-g .g0{grid-column:span 2;aspect-ratio:16/9}
+@media (min-width:900px){
+  .gal.pad{padding-bottom:36px}
+  .gal-g{grid-template-columns:repeat(6,1fr);gap:12px;margin-top:40px}
+  .gal-g li{aspect-ratio:1;grid-column:span 2}
+  .gal-g .g0{grid-column:span 4;aspect-ratio:auto;grid-row:span 2}
+  .gal-g .g1,.gal-g .g2{grid-column:span 2}
+  .gal-g .g3,.gal-g .g4{grid-column:span 3;aspect-ratio:3/2}
+}

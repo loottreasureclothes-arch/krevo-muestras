@@ -1,0 +1,19 @@
+.todo{background:var(--bg2);border-top:3px dashed var(--line)}
+.todo-p{margin-top:16px;font-size:19px;max-width:34ch}
+.todo-l{list-style:none;margin-top:22px;display:grid;gap:0;max-width:560px}
+.todo-l li{padding:11px 0 11px 30px;border-bottom:1px solid var(--line);position:relative;font-size:16.5px}
+.todo-l li::before{content:"";position:absolute;left:0;top:15px;width:16px;height:16px;border:2px solid var(--red);border-radius:50%}
+.foot{background:#0f0f11;padding:32px 0 96px}
+.foot-g{display:grid;gap:26px}
+.foot-a{display:flex;align-items:center;gap:16px}
+.foot-a .hd-logo{height:50px}
+.soc{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;color:var(--ink);border:1.5px solid var(--line)}
+.foot-b h3{font-size:30px;color:var(--red);margin-bottom:4px}
+.foot-b p{font-size:15.5px;line-height:1.7}
+.foot-b a{text-decoration:none;font-weight:800;font-size:18px}
+.foot-c{font-size:13px;color:var(--mut)}
+@media (min-width:900px){
+  .foot-g{grid-template-columns:auto 1fr 1fr;gap:56px;align-items:start}
+  .foot-c{grid-column:1/-1}
+  .foot{padding-bottom:40px}
+}
