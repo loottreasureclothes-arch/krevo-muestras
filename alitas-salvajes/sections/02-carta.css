@@ -1,0 +1,27 @@
+
+.as-carta{background:var(--noche)}
+.as-feat{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:34px 0 26px}
+.as-card{background:var(--vino);border-radius:var(--r);padding:10px 10px 16px;display:flex;flex-direction:column;border:1px solid rgba(246,234,215,.1)}
+.as-card .as-ph{aspect-ratio:3/4;border-radius:16px}
+.as-card h3{font:900 24px/.95 var(--disp);text-transform:uppercase;margin:14px 4px 6px}
+.as-card-p{font:900 38px/1 var(--disp);color:var(--oro);margin:0 4px 12px}
+.as-add{margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:46px;border:1px solid var(--fuego);color:var(--crema);text-decoration:none;font:700 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.as-rows{list-style:none;margin:0 0 20px;padding:0;border-top:1px solid rgba(246,234,215,.16)}
+.as-row{display:grid;grid-template-columns:1fr auto;column-gap:12px;row-gap:8px;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(246,234,215,.16)}
+.as-row-n{font:700 20px/1.15 var(--body)}
+.as-row-n small{display:block;font:400 14px/1.35 var(--body);color:rgba(246,234,215,.7);margin-top:2px}
+.as-row-dots{display:none}
+.as-row-p{font:900 28px/1 var(--disp);color:var(--oro);text-align:right}
+.as-row-add{grid-column:1/-1;justify-self:start;color:var(--fuego);font:700 13px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.as-row-add::after{content:" +"}
+.as-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(min-width:800px){
+ .as-carta .as-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:64px}
+ .as-carta .as-eye,.as-carta .as-h2{grid-column:1/-1}
+ .as-feat{grid-column:1;margin-top:40px;gap:18px;align-self:start}
+ .as-rows{grid-column:2;margin-top:40px}
+ .as-carta .as-link{grid-column:2}
+ .as-row{grid-template-columns:1fr auto auto;align-items:center}
+ .as-row-add{grid-column:auto;justify-self:end}
+ .as-card h3{font-size:30px}
+}

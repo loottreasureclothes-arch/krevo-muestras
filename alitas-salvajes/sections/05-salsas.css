@@ -1,0 +1,16 @@
+
+.as-salsas{background:var(--rojo);color:var(--crema);overflow:hidden}
+.as-salsas .as-eye{color:var(--oro)}
+.as-salsas .as-h2 em{color:var(--oro)}
+.as-salsas-in{position:relative}
+.as-salsas-big{position:absolute;right:-6px;top:-34px;font:900 300px/.8 var(--disp);color:rgba(26,3,7,.28);pointer-events:none}
+.as-salsas-txt{position:relative}
+.as-salsas-l{list-style:none;counter-reset:s;margin:28px 0 22px;padding:0}
+.as-salsas-l li{counter-increment:s;font:900 clamp(30px,8.6vw,44px)/1 var(--disp);text-transform:uppercase;padding:11px 0;border-bottom:1px solid rgba(246,234,215,.28);display:flex;gap:14px;align-items:baseline}
+.as-salsas-l li::before{content:"0" counter(s);font:500 13px/1 var(--body);letter-spacing:.14em;color:var(--oro);width:26px}
+.as-salsas .as-link{color:var(--crema);border-bottom:2px solid var(--oro);min-height:40px}
+@media(min-width:800px){
+ .as-salsas-in{display:grid;grid-template-columns:5fr 6fr;gap:40px;align-items:center}
+ .as-salsas-big{position:static;font-size:min(46vw,560px);color:rgba(26,3,7,.35);text-align:center}
+ .as-salsas-l{columns:1}
+}

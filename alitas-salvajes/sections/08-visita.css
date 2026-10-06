@@ -1,0 +1,19 @@
+
+.as-visita{background:var(--noche)}
+.as-visita-in{display:grid;gap:26px}
+.as-mapa{border-radius:var(--r);overflow:hidden;border:8px solid transparent;border-image:var(--cuadros) 8 round;aspect-ratio:4/3;background:var(--vino)}
+.as-mapa iframe{width:100%;height:100%;border:0;display:block;filter:saturate(.85) contrast(1.05)}
+.as-dir{font:500 19px/1.35 var(--body)}
+.as-open{display:inline-block;margin:12px 0 16px;font:500 13px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--oro);border:1px solid var(--oro);padding:10px 14px}
+.as-open.is-on{background:var(--oro);color:var(--tinta)}
+.as-hor{list-style:none;margin:0 0 14px;padding:0;border-top:1px solid rgba(246,234,215,.16)}
+.as-hor li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(246,234,215,.16);font-size:16px}
+.as-hor li.is-today{color:var(--oro);font-weight:500}
+.as-serv{color:rgba(246,234,215,.8);margin-bottom:20px}
+.as-visita-btns{display:flex;flex-direction:column;gap:12px}
+@media(min-width:800px){
+ .as-visita-in{grid-template-columns:minmax(0,6fr) minmax(0,5fr);column-gap:56px;align-items:start}
+ .as-visita-head{grid-column:1/-1}
+ .as-mapa{aspect-ratio:auto;min-height:520px;height:100%}
+ .as-visita-btns{flex-direction:row;flex-wrap:wrap}
+}

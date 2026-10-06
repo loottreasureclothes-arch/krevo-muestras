@@ -1,0 +1,50 @@
+<section class="as-sec as-arma" id="arma">
+  <div class="as-wrap as-arma-in">
+    <div class="as-arma-head">
+      <p class="as-eye" data-reveal>Tu charola</p>
+      <h2 class="as-h2" data-reveal>Arma tu kilo <em>a tu modo.</em></h2>
+      <p class="as-arma-p" data-reveal>Escoge tamaño, salsa y guarnición. El pedido sale armado al WhatsApp.</p>
+    </div>
+    <div class="as-tray-box" data-reveal>
+      <svg class="as-tray" id="as-tray" viewBox="0 0 300 300" role="img" aria-label="Charola de alitas partida en dos salsas">
+        <defs>
+          <pattern id="as-chk" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#f6ead7"/><rect width="10" height="10" fill="#8a0914"/><rect x="10" y="10" width="10" height="10" fill="#8a0914"/></pattern>
+          <clipPath id="as-clipA"><rect x="0" y="0" width="149" height="300"/></clipPath>
+          <clipPath id="as-clipB"><rect x="151" y="0" width="150" height="300"/></clipPath>
+          <clipPath id="as-inner"><circle cx="150" cy="150" r="112"/></clipPath>
+        </defs>
+        <circle cx="150" cy="150" r="146" fill="url(#as-chk)"/>
+        <circle cx="150" cy="150" r="118" fill="#2b060c"/>
+        <g clip-path="url(#as-inner)">
+          <g clip-path="url(#as-clipA)"><g id="as-wingsA"></g></g>
+          <g clip-path="url(#as-clipB)"><g id="as-wingsB"></g></g>
+        </g>
+        <line x1="150" y1="40" x2="150" y2="260" stroke="#2b060c" stroke-width="3" id="as-split"/>
+      </svg>
+      <p class="as-tray-cap" id="as-cap" aria-live="polite">Mitad A: BBQ. Mitad B: Búfalo.</p>
+    </div>
+    <div class="as-ctrl">
+      <fieldset class="as-fs" data-reveal><legend>1. Tamaño</legend>
+        <div class="as-seg" id="as-size">
+          <button type="button" class="is-on" data-size="1" aria-pressed="true">1 kg <b>$229</b></button>
+          <button type="button" data-size="0.5" aria-pressed="false">1/2 kg <b>$129</b></button>
+        </div>
+      </fieldset>
+      <fieldset class="as-fs" data-reveal><legend>2. Salsa <span id="as-which"></span></legend>
+        <div class="as-halves" id="as-halves">
+          <button type="button" class="is-on" data-half="A" aria-pressed="true">Mitad A</button>
+          <button type="button" data-half="B" aria-pressed="false">Mitad B</button>
+        </div>
+        <div class="as-sauces" id="as-sauces"></div>
+      </fieldset>
+      <fieldset class="as-fs" data-reveal><legend>3. Para acompañar</legend>
+        <div class="as-sides" id="as-sides"></div>
+      </fieldset>
+      <div class="as-total" data-reveal>
+        <p class="as-total-l">Tu pedido <span id="as-sum"></span></p>
+        <p class="as-total-n"><span>Total</span> <b id="as-tot">$229</b></p>
+        <a class="as-btn as-btn-wa" id="as-send" href="https://wa.me/524494399848" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>

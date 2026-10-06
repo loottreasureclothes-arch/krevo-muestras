@@ -1,0 +1,9 @@
+
+.as-sangre{position:relative;min-height:540px;display:flex;align-items:flex-end;overflow:hidden;background:var(--vino)}
+.as-sangre-ph{position:absolute;inset:0}
+.as-sangre-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.as-sangre::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,3,7,0) 38%,rgba(26,3,7,.92) 100%)}
+.as-sangre-txt{position:relative;z-index:2;padding:0 var(--gut) 36px;width:100%;max-width:1180px;margin:0 auto}
+.as-sangre-h{font:900 clamp(64px,20vw,150px)/.85 var(--disp);text-transform:uppercase;margin-bottom:12px}
+.as-sangre-h em{font-style:normal;color:var(--fuego)}
+@media(min-width:800px){.as-sangre{min-height:640px}.as-sangre-txt{padding-bottom:56px}}
