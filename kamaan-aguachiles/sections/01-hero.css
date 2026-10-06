@@ -1,0 +1,26 @@
+.hero{position:relative;min-height:calc(100svh - 24px);min-height:max(640px,calc(100svh - 24px));display:flex;flex-direction:column;justify-content:flex-end;padding-top:var(--hh);background:var(--deeper);overflow:hidden}
+.hero-photo{position:absolute;inset:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,34,74,.15) 0%,rgba(8,34,74,.05) 30%,rgba(8,34,74,.82) 66%,var(--deeper) 100%)}
+.hero-tag{position:absolute;z-index:2;right:16px;top:calc(var(--hh) + 26px);transform:rotate(3deg);text-align:center;line-height:1.15;font-size:1.05rem;box-shadow:4px 4px 0 var(--deeper)}
+.hero-tag small{font:700 .66rem var(--f2);letter-spacing:.14em}
+.hero-copy{position:relative;z-index:2;padding:0 var(--gut) 34px;max-width:640px}
+.hero-h1{font-family:var(--f1);font-weight:400;font-size:clamp(3.6rem,19.5vw,6.6rem);line-height:1;letter-spacing:.005em;margin:6px 0 22px;text-shadow:0 3px 0 rgba(8,34,74,.55)}
+.hero-ctas{display:grid;gap:12px;max-width:380px}
+.hero-note{margin-top:16px;font-size:.88rem;color:var(--sky);letter-spacing:.04em}
+.ola{height:40px;background:var(--deeper);overflow:hidden;position:relative}
+.ola-run{position:absolute;left:0;top:0;height:100%;width:calc(100% + 160px);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cpath d='M0 13Q20 1 40 13T80 13' fill='none' stroke='%23e8433f' stroke-width='6'/%3E%3Cpath d='M0 27Q20 15 40 27T80 27' fill='none' stroke='%23ffffff' stroke-width='6'/%3E%3C/svg%3E");background-repeat:repeat-x;will-change:transform}
+@media (min-width:768px){
+  .hero{display:grid;grid-template-columns:44% 56%;min-height:max(720px,calc(100svh - 24px));align-items:center;padding-top:var(--hh)}
+  .hero-photo{position:relative;grid-column:2;grid-row:1;inset:auto;height:100%;min-height:720px}
+  .hero-photo::after{background:linear-gradient(90deg,var(--deeper) 0%,rgba(8,34,74,0) 28%)}
+  .hero-copy{grid-column:1;grid-row:1;padding:40px 0 40px max(var(--gut),calc((100vw - 1180px)/2 + var(--gut)));max-width:none;margin-right:-60px;z-index:3}
+  .hero-h1{font-size:clamp(4.6rem,6.6vw,7.6rem)}
+  .hero-tag{top:calc(var(--hh) + 36px);right:36px}
+}
+@media (min-width:768px) and (max-width:1099px){
+  .hero{grid-template-columns:50% 50%;min-height:640px}
+  .hero-photo{min-height:640px}
+  .hero-h1{font-size:3.5rem}
+  .hero-copy{margin-right:-40px}
+}

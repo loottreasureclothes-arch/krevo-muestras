@@ -1,0 +1,12 @@
+.todo{background:var(--deeper);padding:60px 0 64px}
+.todo .h2{margin-bottom:28px}
+.todo-box{border:3px dashed var(--sky);padding:24px 22px;display:grid;gap:18px}
+.todo-box ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.todo-box li{position:relative;padding-left:30px;font-size:1.04rem}
+.todo-box li::before{content:"";position:absolute;left:0;top:.3em;width:16px;height:16px;border:2px solid var(--yellow)}
+.todo-p{font-family:var(--f1);font-size:1.3rem;color:var(--yellow);line-height:1.2}
+@media (min-width:768px){
+  .todo{padding:80px 0}
+  .todo-in{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+  .todo .h2{margin:0;font-size:4rem}
+}

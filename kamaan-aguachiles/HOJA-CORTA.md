@@ -1,0 +1,8 @@
+# Hoja corta Kamaan Aguachiles
+- Trabajo: pedir por WhatsApp en 1 toque. wa.me/524494262277 (confirmado: boton WhatsApp en su FB). Llamar tel:+524496351125.
+- Promesa: "Mucho flow. Mucho aguachile." (su pared del local). 4 Cenizas, el mas vendido.
+- Identidad: lienzo azul marca #1e5298 (medido) / azul profundo #0d2f63; amarillo menu #ffd93b; turquesa #8fe3d6; crema #fff6dc para leer. Fuentes: Righteous (titulos) + Hanken Grotesk (texto). Forma: placa de menu con sombra dura (rectangulo con sombra azul desplazada), olas rojo/blanco de su menu. Header propio: barra azul con placa amarilla "Kamaan" y ola abajo.
+- Firma: "La cesta de salsas": 11 salsas reales de su carta como botellas/fichas, eliges una + extras (pulpo +70, callo +90, tostada de aguachile 140) -> ticket con total y WhatsApp literal. Momento firma: la ola roja/blanca de su carta corre con el scroll entre hero y carta.
+- Secciones: 01-hero | interior "Mucho flow" | "Mucho flow. / Mucho aguachile." ; 02-carta | 6 platillos con foto + Agregar | "Pide lo que se antoja. / Aguachile en serio." ; 03-salsas | cesta de salsas | "Elige tu salsa. / Arma tu aguachile." ; 04-michelada | sangre | "Micheladas con ostión" ; 05-resenas | torre | "461 opiniones. / Todas con hambre." (4.3 gigante + 6 resenas) ; 06-recorrido | 5 fotos | "Así se ve. / Así se come." ; 07-visitanos | mapa | "Te esperamos. / Con la mesa lista." ; 08-todo-listo | "Todo listo para completar" ; pie.
+- Prohibidas: maps-05/08 dup, 20, 21, 22, 23, 19 (cliente), reseñas de Hector, Aurora, perros. 03 recortada (persona arriba).
+- PENDIENTE-DUEÑO: logo alta, precios menus 15/16 y bebidas, confirmar sucursal unica, fotos propias.

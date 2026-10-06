@@ -97,3 +97,4 @@
 | rosa-mexicano-calvillo | Elige tu rincón: ticket de reservación con rincón, día, hora y personas, suma platos de la carta | 2026-10-04 |
 | the-crunchy-corner | La charola: base (alitas/boneless/ceviche) + 2 salsas de su menú en botecitos que se llenan + modo, arma el WhatsApp; momento firma: letrero neón CRUJEN que se enciende; header de esquina | 2026-10-05 |
 | dntary-clinic | La sonrisa que marcas: arco de dientes tocable con motivo (chuecos/separados/manchados/rotos) que arma el WhatsApp | 2026-10-05 |
+| culichis | La tabla del grupo | 2026-10-06 |

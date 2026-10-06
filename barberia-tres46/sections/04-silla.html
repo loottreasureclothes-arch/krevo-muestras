@@ -1,0 +1,33 @@
+<section class="sec silla" id="silla" data-hide-wa>
+  <div class="wrap silla-in">
+    <div class="silla-hd" data-reveal>
+      <p class="eyebrow">Tu silla</p>
+      <h2 class="ttl">Escoge tu silla.<br><span class="t2">Llega y siéntate.</span></h2>
+    </div>
+    <form class="picker" id="picker" onsubmit="return false" data-reveal>
+      <fieldset><legend>1 · Sucursal</legend>
+        <div class="opts" data-grp="suc">
+          <button type="button" class="opt on" data-v="Colosio">Colosio</button>
+          <button type="button" class="opt" data-v="Universidad">Universidad</button>
+        </div></fieldset>
+      <fieldset><legend>2 · Barbero</legend>
+        <div class="opts" data-grp="bar" id="bar-opts"></div></fieldset>
+      <fieldset><legend>3 · Servicio</legend>
+        <div class="opts" data-grp="srv">
+          <button type="button" class="opt on" data-v="corte">Corte</button>
+          <button type="button" class="opt" data-v="barba">Barba</button>
+          <button type="button" class="opt" data-v="corte y barba">Corte y barba</button>
+        </div></fieldset>
+    </form>
+    <div class="ticket chamf" data-reveal aria-live="polite">
+      <div class="tk-pole" aria-hidden="true"><i id="tk-pole"></i></div>
+      <div class="tk-body">
+        <p class="tk-k">Tu silla</p>
+        <p class="tk-who" id="tk-who">Emanuel</p>
+        <p class="tk-line" id="tk-line">Colosio · corte</p>
+        <p class="tk-hrs" id="tk-hrs">Hoy: 11:00 a 21:00</p>
+        <a class="btn btn-wa" id="tk-go" href="https://wa.me/524492858816">Apartar mi silla</a>
+      </div>
+    </div>
+  </div>
+</section>
